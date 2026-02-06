@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.1504
-- -119.8104
+  - 37.1504
+  - -119.8104
 commencementYear: null
-description: A CCUS project in the DAC sector developed by University of Illinios,
+description:
+  A CCUS project in the DAC sector developed by University of Illinios,
   Climeworks. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

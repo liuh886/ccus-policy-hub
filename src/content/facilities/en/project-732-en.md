@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Cement
 storage_type: Unknown/unspecified
 coordinates:
-- 43.339532716094865
-- 8.183007964505576
+  - 43.339532716094865
+  - 8.183007964505576
 commencementYear: 2032
-description: A CCUS project in the Cement sector developed by Heidelberg Materials.
+description:
+  A CCUS project in the Cement sector developed by Heidelberg Materials.
   A key component of the global carbon management network.
 ---
 

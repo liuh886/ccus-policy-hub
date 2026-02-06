@@ -1,7 +1,7 @@
 ---
 name: Corn LP Goldfield biorefinery (IA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.215
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 35.092990849222666
-- -91.64304728811412
+  - 35.092990849222666
+  - -91.64304728811412
 commencementYear: 2028
 description: 由 Corn LP, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

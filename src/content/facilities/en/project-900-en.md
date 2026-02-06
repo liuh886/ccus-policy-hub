@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.0842
-- -119.4373
+  - 37.0842
+  - -119.4373
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Pelican Renewables
+description:
+  A CCUS project in the Biofuels sector developed by Pelican Renewables
   LLC . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -1,7 +1,7 @@
 ---
 name: LA CCS (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.1747
-- -92.3391
+  - 31.1747
+  - -92.3391
 commencementYear: null
 description: 由 DT Midstream Holdings LLC 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

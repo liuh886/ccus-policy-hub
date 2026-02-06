@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.6178
-- -119.5128
+  - 36.6178
+  - -119.5128
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Mote. A
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Mote. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

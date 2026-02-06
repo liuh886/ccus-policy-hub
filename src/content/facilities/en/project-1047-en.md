@@ -9,10 +9,11 @@ capacity: 0.123
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 47.093850213919005
-- -0.2906028468661144
+  - 47.093850213919005
+  - -0.2906028468661144
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by HY2GEN, Gazel
+description:
+  A CCUS project in the Power and heat sector developed by HY2GEN, Gazel
   Energie. A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

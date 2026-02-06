@@ -1,7 +1,7 @@
 ---
 name: Aramco gas plants (3 facilities)
 lang: zh
-country: "沙特阿拉伯"
+country: '沙特阿拉伯'
 location: Natural gas processing/LNG
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Natural gas processing/LNG
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 24.6750
-- 46.7223
+  - 24.6750
+  - 46.7223
 commencementYear: 2027
 description: 由 Saudi Aramco 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

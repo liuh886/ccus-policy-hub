@@ -1,7 +1,7 @@
 ---
 name: Sunda Asri Basin CCUS hub
 lang: zh
-country: "印度尼西亚"
+country: '印度尼西亚'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- -2.279784704773225
-- 111.45979046706499
+  - -2.279784704773225
+  - 111.45979046706499
 commencementYear: 2030
 description: 由 Pertamina, ExxonMobil  开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

@@ -9,10 +9,11 @@ capacity: 1.7
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 35.82306588132172
-- -99.65408996799066
+  - 35.82306588132172
+  - -99.65408996799066
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by LG&E Cane Run,
+description:
+  A CCUS project in the Power and heat sector developed by LG&E Cane Run,
   Electric Power Research Institute (FEED), University of Kentucky (tech), DOE (FEED
   funding). A key component of the global carbon management network.
 relatedPolicies:

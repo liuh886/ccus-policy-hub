@@ -9,10 +9,11 @@ capacity: 0.26
 sector: Natural gas processing/LNG
 storage_type: EOR
 coordinates:
-- 38.48185959499394
-- -92.06469272527869
+  - 38.48185959499394
+  - -92.06469272527869
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Targa Resources Group. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

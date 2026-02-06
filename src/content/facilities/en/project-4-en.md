@@ -10,10 +10,11 @@ sector: Iron and steel
 storage_type: EOR
 precision: approximate
 coordinates:
-- 24.4192
-- 54.3161
+  - 24.4192
+  - 54.3161
 commencementYear: 2016
-description: A CCUS project in the Iron and steel sector developed by ADNOC, Masdar.
+description:
+  A CCUS project in the Iron and steel sector developed by ADNOC, Masdar.
   A key component of the global carbon management network.
 ---
 

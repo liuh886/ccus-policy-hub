@@ -9,10 +9,11 @@ capacity: 0.12
 sector: Other industry
 storage_type: Unknown/unspecified
 coordinates:
-- 33.97358036171595
-- -99.63256351922789
+  - 33.97358036171595
+  - -99.63256351922789
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by RTI International,
+description:
+  A CCUS project in the Other industry sector developed by RTI International,
   IP, SLB, Amazon. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

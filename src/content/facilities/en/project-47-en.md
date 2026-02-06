@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.5783
-- -106.8338
+  - 52.5783
+  - -106.8338
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Santos (43.4%), SK E&S, JERA. A key component of the global carbon management network.
 ---
 

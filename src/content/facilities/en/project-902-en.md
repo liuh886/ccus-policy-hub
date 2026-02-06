@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.0628
-- -120.0251
+  - 37.0628
+  - -120.0251
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by California Resource
+description:
+  A CCUS project in the Biofuels sector developed by California Resource
   Corporation (Carbon TerraVault), Verde Clean Fuels . A key component of the global
   carbon management network.
 relatedPolicies:

@@ -1,7 +1,7 @@
 ---
 name: KEPCO 150MW NGCC plant
 lang: zh
-country: "韩国"
+country: '韩国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Power and heat
 storage_type: 地质封存
 coordinates:
-- 34.99595502169311
-- 122.27915902626633
+  - 34.99595502169311
+  - 122.27915902626633
 commencementYear: 2030
 description: 由 KEPCO 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

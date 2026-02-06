@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 22.7093633563074
-- -3.0043424902191065
+  - 22.7093633563074
+  - -3.0043424902191065
 commencementYear: 2033
-description: A CCUS project in the Transport sector developed by Air Liquide Polska,
+description:
+  A CCUS project in the Transport sector developed by Air Liquide Polska,
   PKN Orlen, Lafarge Cement, Orlen Lietuva. A key component of the global carbon management
   network.
 ---

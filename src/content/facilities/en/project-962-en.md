@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 39.9525
-- -88.9430
+  - 39.9525
+  - -88.9430
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by University of Illinois,
+description:
+  A CCUS project in the Storage sector developed by University of Illinois,
   Illinois State Geological Survey, Carbon Solutions. A key component of the global
   carbon management network.
 relatedPolicies:

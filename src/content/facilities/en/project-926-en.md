@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 38.4368
-- 106.2673
+  - 38.4368
+  - 106.2673
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by CEIC, CNPC. A key
+description:
+  A CCUS project in the Chemicals sector developed by CEIC, CNPC. A key
   component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

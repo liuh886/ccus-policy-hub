@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.9435
-- -92.0448
+  - 30.9435
+  - -92.0448
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Gulf Coast Sequestration
+description:
+  A CCUS project in the Storage sector developed by Gulf Coast Sequestration
   . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

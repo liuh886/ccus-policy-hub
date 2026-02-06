@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 24.6619
-- 46.6999
+  - 24.6619
+  - 46.6999
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by SPPC. A key
+description:
+  A CCUS project in the Power and heat sector developed by SPPC. A key
   component of the global carbon management network.
 ---
 

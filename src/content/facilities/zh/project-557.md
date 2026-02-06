@@ -1,7 +1,7 @@
 ---
 name: GO4ZERO Oburg
 lang: zh
-country: "比利时"
+country: '比利时'
 location: Cement
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 1.1
 sector: Cement
 storage_type: 咸水层
 coordinates:
-- 51.595106339494464
-- 6.559246909863509
+  - 51.595106339494464
+  - 6.559246909863509
 commencementYear: 2028
 description: 由 Holcim Group, TotalEnergies, Air Liquide 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

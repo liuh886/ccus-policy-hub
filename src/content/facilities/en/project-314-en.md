@@ -9,10 +9,11 @@ capacity: 2.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 56.8010292416863
-- -104.11760552338427
+  - 56.8010292416863
+  - -104.11760552338427
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Pieridae Energy
+description:
+  A CCUS project in the Power and heat sector developed by Pieridae Energy
   Ltd.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

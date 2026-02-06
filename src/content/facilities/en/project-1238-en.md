@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 43.1584
-- -107.0133
+  - 43.1584
+  - -107.0133
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by Spiritus, Casper carbon
+description:
+  A CCUS project in the Storage sector developed by Spiritus, Casper carbon
   sequestration. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

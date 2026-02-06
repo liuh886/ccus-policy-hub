@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.3639
-- -99.8290
+  - 32.3639
+  - -99.8290
 commencementYear: null
-description: A CCUS project in the Transport sector developed by 1PointFive, Entreprise
+description:
+  A CCUS project in the Transport sector developed by 1PointFive, Entreprise
   Product Partners. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

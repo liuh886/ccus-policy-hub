@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 71.7314
-- 20.7824
+  - 71.7314
+  - 20.7824
 commencementYear: 2008
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Equinor, Petoro, TotalEnergies, Eni (following acquisition of Neptune Energy), Wintershall
   Dea (Harbour Energy). A key component of the global carbon management network.
 relatedPolicies:

@@ -1,7 +1,7 @@
 ---
 name: Marquis Industrial Complex (IL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 全流程
 status: 计划中
@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 40.4671
-- -89.2722
+  - 40.4671
+  - -89.2722
 commencementYear: null
-description: 由 Marquis Inc., Gas Liquids Engineering Ltd (FEED) 开发的 Biofuels 行业 CCUS
+description:
+  由 Marquis Inc., Gas Liquids Engineering Ltd (FEED) 开发的 Biofuels 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

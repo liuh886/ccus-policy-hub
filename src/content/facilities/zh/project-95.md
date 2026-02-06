@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 22.3417
-- 114.1748
+  - 22.3417
+  - 114.1748
 commencementYear: 2023
 description: 由 CNOOC 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

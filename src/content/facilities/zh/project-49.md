@@ -1,7 +1,7 @@
 ---
 name: Bayou Bend East offshore (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,10 +10,11 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 32.1720
-- -99.7282
+  - 32.1720
+  - -99.7282
 commencementYear: 2029
-description: 由 Chevron (50%), Talos Energy (TotalEnergies) (25% and operator), Equinor
+description:
+  由 Chevron (50%), Talos Energy (TotalEnergies) (25% and operator), Equinor
   (25%) 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

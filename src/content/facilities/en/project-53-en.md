@@ -9,10 +9,11 @@ capacity: 0.16
 sector: Biofuels
 storage_type: EOR
 coordinates:
-- 34.0848571438171
-- -96.23468331021326
+  - 34.0848571438171
+  - -96.23468331021326
 commencementYear: 2012
-description: A CCUS project in the Biofuels sector developed by Conestoga Energy,
+description:
+  A CCUS project in the Biofuels sector developed by Conestoga Energy,
   Gary Climate Solutions Gary Climate Solutions. A key component of the global carbon
   management network.
 relatedPolicies:

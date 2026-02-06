@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 23.0979
-- 113.2294
+  - 23.0979
+  - 113.2294
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by China Resources
+description:
+  A CCUS project in the Power and heat sector developed by China Resources
   Power. A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Cement
 storage_type: Use low impact
 coordinates:
-- 20.79452360904544
-- 79.03544428023687
+  - 20.79452360904544
+  - 79.03544428023687
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Dalmia Cement, Carbon
+description:
+  A CCUS project in the Cement sector developed by Dalmia Cement, Carbon
   Clean. A key component of the global carbon management network.
 ---
 

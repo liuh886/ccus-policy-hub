@@ -9,10 +9,11 @@ capacity: 0.55
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 54.56629829192464
-- -3.0891152778368776
+  - 54.56629829192464
+  - -3.0891152778368776
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by Prax.
+description:
+  A CCUS project in the Other fuel transformation sector developed by Prax.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -9,10 +9,11 @@ capacity: 0.63
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 20.51802973778509
-- -4.81515817474567
+  - 20.51802973778509
+  - -4.81515817474567
 commencementYear: 2031
-description: A CCUS project in the T&S sector developed by Hydrocarbons Agency Croatia.
+description:
+  A CCUS project in the T&S sector developed by Hydrocarbons Agency Croatia.
   A key component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: DAC
 storage_type: EOR and storage
 precision: approximate
 coordinates:
-- 31.5686
-- -99.8686
+  - 31.5686
+  - -99.8686
 commencementYear: 2025
-description: A CCUS project in the DAC sector developed by 1PointFive,Occidental,
+description:
+  A CCUS project in the DAC sector developed by 1PointFive,Occidental,
   Blackrock, NYK (agreed to buy carbon credits). A key component of the global carbon
   management network.
 relatedPolicies:

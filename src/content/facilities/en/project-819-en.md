@@ -9,10 +9,11 @@ capacity: 1.8
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 52.272257754299844
-- 1.0330660501238533
+  - 52.272257754299844
+  - 1.0330660501238533
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by NHN, Gasterra,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by NHN, Gasterra,
   Gasunie, Port den Helder. A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 48.459525706234835
-- 6.8402400507692
+  - 48.459525706234835
+  - 6.8402400507692
 commencementYear: 2029
-description: A CCUS project in the Cement sector developed by Lhoist, Air Liquide.
+description:
+  A CCUS project in the Cement sector developed by Lhoist, Air Liquide.
   A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

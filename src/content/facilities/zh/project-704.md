@@ -1,7 +1,7 @@
 ---
 name: J-Power Sumitomo joint feasibility clean hydrogen Latrobe Valley (VI)
 lang: zh
-country: "澳大利亚"
+country: '澳大利亚'
 location: Hydrogen or ammonia
 type: 全流程
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: 咸水层
 coordinates:
-- -27.56954878120081
-- 132.16337509412625
+  - -27.56954878120081
+  - 132.16337509412625
 commencementYear: null
 description: 由 J-Power, Sumitomo corporation 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

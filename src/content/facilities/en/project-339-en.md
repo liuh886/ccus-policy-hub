@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 43.2591
-- -107.4352
+  - 43.2591
+  - -107.4352
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by North Shore
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by North Shore
   Energy, Starwood Energy Group. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

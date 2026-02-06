@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0143
-- -99.9793
+  - 31.0143
+  - -99.9793
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Port of Corpus Christi,
+description:
+  A CCUS project in the Storage sector developed by Port of Corpus Christi,
   1845 Carbon Storage LLC, Strategic Sequestration Development LLC, University of
   Texas Bureau of Economic Geology’s Gulf Coast Carbon Center. A key component of
   the global carbon management network.

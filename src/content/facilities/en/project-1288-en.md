@@ -9,10 +9,11 @@ capacity: 0.28
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 53.699535252866895
-- 5.437091593427303
+  - 53.699535252866895
+  - 5.437091593427303
 commencementYear: 2029
-description: A CCUS project in the Power and heat sector developed by Fjernvarme Fyn
+description:
+  A CCUS project in the Power and heat sector developed by Fjernvarme Fyn
   A/S. A key component of the global carbon management network.
 ---
 

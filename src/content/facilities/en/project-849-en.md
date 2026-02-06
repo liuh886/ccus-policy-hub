@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 51.62016809364258
-- 1.335635993508136
+  - 51.62016809364258
+  - 1.335635993508136
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Enquest CCS Ltd. A
+description:
+  A CCUS project in the Storage sector developed by Enquest CCS Ltd. A
   key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

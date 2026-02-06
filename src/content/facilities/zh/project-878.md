@@ -1,7 +1,7 @@
 ---
 name: River Parish Sequestration (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.2423
-- -92.3483
+  - 31.2423
+  - -92.3483
 commencementYear: 2026
-description: 由 River Parish Sequestration LLC, Blue Sky Infrastructure  开发的 T&S 行业
+description:
+  由 River Parish Sequestration LLC, Blue Sky Infrastructure  开发的 T&S 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

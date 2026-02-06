@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.1205
-- -92.0139
+  - 31.1205
+  - -92.0139
 commencementYear: 2027
-description: A CCUS project in the DAC sector developed by Battelle, Climeworks, Heirloom
+description:
+  A CCUS project in the DAC sector developed by Battelle, Climeworks, Heirloom
   Carbon, CapturePoint. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

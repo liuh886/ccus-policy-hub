@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Use
 precision: approximate
 coordinates:
-- 31.6645
-- -99.9483
+  - 31.6645
+  - -99.9483
 commencementYear: 2023
-description: A CCUS project in the Chemicals sector developed by Linde (CO2 capture
+description:
+  A CCUS project in the Chemicals sector developed by Linde (CO2 capture
   on CO production site, CCU tech), Celanese (operator of methanol plant), Fairway
   methanol. A key component of the global carbon management network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.05
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 67.18652880106492
-- -19.122146837524667
+  - 67.18652880106492
+  - -19.122146837524667
 commencementYear: 2028
-description: A CCUS project in the DAC sector developed by Removr (Greencap 40%, Vanir
+description:
+  A CCUS project in the DAC sector developed by Removr (Greencap 40%, Vanir
   Green Industries 60%), Carbfix. A key component of the global carbon management
   network.
 ---

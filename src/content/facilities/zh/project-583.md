@@ -1,7 +1,7 @@
 ---
 name: Energy Recovery Facility Edmonton EcoPark
 lang: zh
-country: "英国"
+country: '英国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 58.34296044061001
-- -6.639686684170885
+  - 58.34296044061001
+  - -6.639686684170885
 commencementYear: null
 description: 由 North London Waste Authority (NLWA) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

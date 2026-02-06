@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 38.4963
-- 106.3208
+  - 38.4963
+  - 106.3208
 commencementYear: 2025
-description: A CCUS project in the Chemicals sector developed by CEIC, CNPC. A key
+description:
+  A CCUS project in the Chemicals sector developed by CEIC, CNPC. A key
   component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

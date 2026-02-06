@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 55.5563042427521
-- -102.21261631682523
+  - 55.5563042427521
+  - -102.21261631682523
 commencementYear: 2027
-description: A CCUS project in the Storage sector developed by  Vault 44.01 Ltd.,
+description:
+  A CCUS project in the Storage sector developed by  Vault 44.01 Ltd.,
   Moraine Initiatives Ltd.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

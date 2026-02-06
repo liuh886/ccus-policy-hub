@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.7443
-- -91.7576
+  - 30.7443
+  - -91.7576
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   TotalEnergies, Sempra Infrastructure, Mitsui, Mitsubishi. A key component of the
   global carbon management network.
 relatedPolicies:

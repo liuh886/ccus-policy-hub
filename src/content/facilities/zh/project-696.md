@@ -1,7 +1,7 @@
 ---
 name: Linde-BASF capture SMR plant Covent (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.3798
-- -92.3020
+  - 31.3798
+  - -92.3020
 commencementYear: null
 description: 由 Praxair 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

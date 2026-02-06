@@ -9,10 +9,11 @@ capacity: 3.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 58.84364817837277
-- -110.02213058090611
+  - 58.84364817837277
+  - -110.02213058090611
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by Bison Low Carbon Ventures
+description:
+  A CCUS project in the T&S sector developed by Bison Low Carbon Ventures
   . A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

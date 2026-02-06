@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 59.36321589375161
-- -105.2290730942007
+  - 59.36321589375161
+  - -105.2290730942007
 commencementYear: null
-description: A CCUS project in the Storage sector developed by  Tourmaline Oil Corp..
+description:
+  A CCUS project in the Storage sector developed by  Tourmaline Oil Corp..
   A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

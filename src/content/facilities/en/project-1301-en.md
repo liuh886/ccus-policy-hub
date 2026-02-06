@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.6776
-- 104.0580
+  - 30.6776
+  - 104.0580
 commencementYear: 2025
-description: A CCUS project in the Power and heat sector developed by Chinese-European
+description:
+  A CCUS project in the Power and heat sector developed by Chinese-European
   Emission-Reducing Solutions project (CHEERS),  TotalEnergies and Dongfang Boiler
   Group Co., Ltd (DBC). A key component of the global carbon management network.
 relatedPolicies:

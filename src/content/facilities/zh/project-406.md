@@ -1,7 +1,7 @@
 ---
 name: Wabash Valley Resources/Wabash CarbonSAFE (IN)
 lang: zh
-country: "美国"
+country: '美国'
 location: Chemicals
 type: 全流程
 status: 计划中
@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 39.9581
-- -89.0318
+  - 39.9581
+  - -89.0318
 commencementYear: 2026
-description: 由 Wabash Valley Resources, Wabash Carbon services, University of Illinois,
+description:
+  由 Wabash Valley Resources, Wabash Carbon services, University of Illinois,
   Illinois State Geological Survey (CarbonSAFE) 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

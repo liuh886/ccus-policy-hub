@@ -9,10 +9,11 @@ capacity: 0.8
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 23.12498016059861
-- 1.8996546321903285
+  - 23.12498016059861
+  - 1.8996546321903285
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Stockolm Exergi,
+description:
+  A CCUS project in the Power and heat sector developed by Stockolm Exergi,
   CO2 Capsol (FEED). A key component of the global carbon management network.
 ---
 

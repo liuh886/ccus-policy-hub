@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Use
 precision: approximate
 coordinates:
-- 36.0176
-- 103.7860
+  - 36.0176
+  - 103.7860
 commencementYear: 2025
-description: A CCUS project in the Power and heat sector developed by China Huaneng
+description:
+  A CCUS project in the Power and heat sector developed by China Huaneng
   Group. A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

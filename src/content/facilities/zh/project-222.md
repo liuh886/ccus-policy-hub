@@ -1,7 +1,7 @@
 ---
 name: Illinois Clean Fuels Project (IL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 40.0306
-- -88.9346
+  - 40.0306
+  - -88.9346
 commencementYear: 2026
 description: 由 Illinois clean fuels, 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

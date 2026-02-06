@@ -10,10 +10,11 @@ sector: Iron and steel
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.8318
-- -91.6493
+  - 30.8318
+  - -91.6493
 commencementYear: 2026
-description: A CCUS project in the Iron and steel sector developed by Nucor, ExxonMobil.
+description:
+  A CCUS project in the Iron and steel sector developed by Nucor, ExxonMobil.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

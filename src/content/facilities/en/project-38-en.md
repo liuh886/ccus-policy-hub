@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9955
-- -92.0105
+  - 30.9955
+  - -92.0105
 commencementYear: 2028
-description: A CCUS project in the Hydrogen or ammonia sector developed by Air Products.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Air Products.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

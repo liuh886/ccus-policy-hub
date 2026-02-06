@@ -1,7 +1,7 @@
 ---
 name: Grizzly DAC plant
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: 全流程
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 1.0
 sector: DAC
 storage_type: 咸水层
 coordinates:
-- 40.40807660403334
-- -91.11726814901579
+  - 40.40807660403334
+  - -91.11726814901579
 commencementYear: 2030
 description: 由 Removr, Ankeron Carbon Management Hub consortium 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

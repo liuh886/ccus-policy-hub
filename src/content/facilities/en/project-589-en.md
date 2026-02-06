@@ -9,10 +9,11 @@ capacity: 0.86
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 57.91329040960763
-- -6.4326240304613815
+  - 57.91329040960763
+  - -6.4326240304613815
 commencementYear: 2028
-description: A CCUS project in the Other fuel transformation sector developed by Essar
+description:
+  A CCUS project in the Other fuel transformation sector developed by Essar
   Energy Transition (Essar Oil), Kent (pre-FEED), Mistubishi Heavy Industries (FEED),
   Topsoe (tech partner). A key component of the global carbon management network.
 relatedPolicies:

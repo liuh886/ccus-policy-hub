@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 34.2778
-- 108.9555
+  - 34.2778
+  - 108.9555
 commencementYear: 2033
-description: A CCUS project in the Other fuel transformation sector developed by  Shaanxi
+description:
+  A CCUS project in the Other fuel transformation sector developed by  Shaanxi
   Coal Group Yulin Chemical Co., Ltd. A key component of the global carbon management
   network.
 relatedPolicies:

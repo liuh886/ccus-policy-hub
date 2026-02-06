@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8264
-- 87.6505
+  - 43.8264
+  - 87.6505
 commencementYear: 2026
-description: A CCUS project in the Other fuel transformation sector developed by CNPC,
+description:
+  A CCUS project in the Other fuel transformation sector developed by CNPC,
   OGCI. A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

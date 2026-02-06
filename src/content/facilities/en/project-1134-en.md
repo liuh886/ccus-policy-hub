@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other industry
 storage_type: Dedicated storage
 coordinates:
-- 35.877209905645884
-- 135.28175596516
+  - 35.877209905645884
+  - 135.28175596516
 commencementYear: 2030
-description: A CCUS project in the Other industry sector developed by Hokuetsu, Mistubishi
+description:
+  A CCUS project in the Other industry sector developed by Hokuetsu, Mistubishi
   Heavy Industries. A key component of the global carbon management network.
 ---
 

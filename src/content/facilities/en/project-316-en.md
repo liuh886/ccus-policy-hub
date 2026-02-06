@@ -9,10 +9,11 @@ capacity: 1.8
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 36.63785418852007
-- -94.56629300216693
+  - 36.63785418852007
+  - -94.56629300216693
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Southern Company
+description:
+  A CCUS project in the Power and heat sector developed by Southern Company
   Services, Linde/BASF (FEED, tech provider). A key component of the global carbon
   management network.
 relatedPolicies:

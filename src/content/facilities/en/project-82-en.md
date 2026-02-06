@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.6865
-- -92.0759
+  - 30.6865
+  - -92.0759
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by CF Industries,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by CF Industries,
   Mitsui. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

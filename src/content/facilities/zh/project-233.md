@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 32.0372
-- 118.7954
+  - 32.0372
+  - 118.7954
 commencementYear: 2023
-description: 由  Jiangsu Sailboat Petrochemicals, Carbon Recycling International 开发的
+description:
+  由  Jiangsu Sailboat Petrochemicals, Carbon Recycling International 开发的
   Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - cn-national-standards

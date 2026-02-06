@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.0835
-- -119.3220
+  - 37.0835
+  - -119.3220
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by Aemetis Carbon Capture
+description:
+  A CCUS project in the Storage sector developed by Aemetis Carbon Capture
   (Aemetis). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

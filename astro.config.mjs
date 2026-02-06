@@ -9,15 +9,16 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://liuh886.github.io',
   base: '/ccus-policy-hub',
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],
     routing: {
-      prefixDefaultLocale: false
-    }
+      prefixDefaultLocale: false,
+    },
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
-  integrations: [sitemap()]
+  integrations: [sitemap()],
 });

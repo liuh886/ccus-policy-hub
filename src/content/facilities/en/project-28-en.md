@@ -9,10 +9,11 @@ capacity: 3.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 59.86355354711304
-- 4.61949778415757
+  - 59.86355354711304
+  - 4.61949778415757
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Altera, Hoegh LNG, Sevan
+description:
+  A CCUS project in the T&S sector developed by Altera, Hoegh LNG, Sevan
   SSP (FEED), Wintershall Dea (Harbour Energy). A key component of the global carbon
   management network.
 relatedPolicies:

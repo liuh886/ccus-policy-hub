@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Natural gas processing/LNG
 storage_type: EOR
 coordinates:
-- 0.35326748148280473
-- 110.0617232013428
+  - 0.35326748148280473
+  - 110.0617232013428
 commencementYear: 2030
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Pertamina, ITB, JGC, J-Power, JANUS (supported by METI Japan). A key component of
   the global carbon management network.
 ---

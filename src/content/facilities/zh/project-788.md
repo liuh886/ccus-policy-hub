@@ -1,7 +1,7 @@
 ---
 name: Yara Pilbara ammonia
 lang: zh
-country: "澳大利亚"
+country: '澳大利亚'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: 咸水层
 coordinates:
-- -24.967225819909878
-- 130.0677602310352
+  - -24.967225819909878
+  - 130.0677602310352
 commencementYear: null
 description: 由 Yara, JERA 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

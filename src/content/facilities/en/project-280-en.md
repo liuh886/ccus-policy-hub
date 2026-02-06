@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Use
 precision: approximate
 coordinates:
-- 36.4673
-- -119.3412
+  - 36.4673
+  - -119.3412
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Mote, CarbonCure,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Mote, CarbonCure,
   Fluor Corporation, SungasRenewables. A key component of the global carbon management
   network.
 relatedPolicies:

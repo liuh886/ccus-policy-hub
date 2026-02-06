@@ -9,10 +9,11 @@ capacity: 0.0
 sector: DAC
 storage_type: Use
 coordinates:
-- 36.61984360028502
-- -93.60820280559652
+  - 36.61984360028502
+  - -93.60820280559652
 commencementYear: null
-description: A CCUS project in the DAC sector developed by AirCapture, Nutrien. A
+description:
+  A CCUS project in the DAC sector developed by AirCapture, Nutrien. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

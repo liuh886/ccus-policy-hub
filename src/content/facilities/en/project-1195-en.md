@@ -9,10 +9,11 @@ capacity: 0.1
 sector: Iron and steel
 storage_type: Unknown/unspecified
 coordinates:
-- 17.666401557691515
-- 74.5952075325506
+  - 17.666401557691515
+  - 74.5952075325506
 commencementYear: 2030
-description: A CCUS project in the Iron and steel sector developed by BHP, Carbon
+description:
+  A CCUS project in the Iron and steel sector developed by BHP, Carbon
   Clean, JSW. A key component of the global carbon management network.
 ---
 

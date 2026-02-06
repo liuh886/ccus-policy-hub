@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.1607
-- -100.0537
+  - 32.1607
+  - -100.0537
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Milestone carbon (Milestone
+description:
+  A CCUS project in the Storage sector developed by Milestone carbon (Milestone
   Envrionmental services). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

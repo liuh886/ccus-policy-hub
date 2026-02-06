@@ -1,7 +1,7 @@
 ---
 name: Permian Regional Carbon Sequestration Hub (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,8 +10,8 @@ sector: T&S
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 32.2306
-- -99.9513
+  - 32.2306
+  - -99.9513
 commencementYear: null
 description: 由 Omnia midstream partners 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

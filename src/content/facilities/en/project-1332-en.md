@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Other industry
 storage_type: Dedicated storage
 coordinates:
-- 36.445289468476645
-- -94.32599987751779
+  - 36.445289468476645
+  - -94.32599987751779
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Domtar, Svante,
+description:
+  A CCUS project in the Other industry sector developed by Domtar, Svante,
   Paper Excellence and Wood . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

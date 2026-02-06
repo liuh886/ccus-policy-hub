@@ -13,7 +13,8 @@ export const ui = {
     'nav.compare': '对比分析',
     'nav.docs': '文档中心',
     'nav.search': '搜索',
-    'footer.description': '全球 CCUS 政策数据库与分析平台，助力全球净零排放目标。',
+    'footer.description':
+      '全球 CCUS 政策数据库与分析平台，助力全球净零排放目标。',
     'footer.links': '快速链接',
     'footer.contact': '联系我们',
     'policy.filter.country': '所有国家',
@@ -36,7 +37,8 @@ export const ui = {
     'nav.compare': 'Comparison',
     'nav.docs': 'Documentation',
     'nav.search': 'Search',
-    'footer.description': 'Global CCUS Policy Database & Analysis Platform, supporting global net-zero goals.',
+    'footer.description':
+      'Global CCUS Policy Database & Analysis Platform, supporting global net-zero goals.',
     'footer.links': 'Quick Links',
     'footer.contact': 'Contact Us',
     'policy.filter.country': 'All Countries',

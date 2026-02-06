@@ -1,7 +1,7 @@
 ---
 name: CALDAC (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: DAC
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.9171
-- -119.7953
+  - 36.9171
+  - -119.7953
 commencementYear: 2030
-description: 由 Origen Carbon, UC Berkeley, US DOE, multiple community and technology
+description:
+  由 Origen Carbon, UC Berkeley, US DOE, multiple community and technology
   partners 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

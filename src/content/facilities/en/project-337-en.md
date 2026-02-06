@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9671
-- -99.9759
+  - 30.9671
+  - -99.9759
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by White Energy, Occidental.
+description:
+  A CCUS project in the Biofuels sector developed by White Energy, Occidental.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

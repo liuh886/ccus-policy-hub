@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.1050
-- -119.0641
+  - 37.1050
+  - -119.0641
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Montezuma Carbon LLC, University
+description:
+  A CCUS project in the T&S sector developed by Montezuma Carbon LLC, University
   of Berkeley, Lawrence Berkeley National Lab. A key component of the global carbon
   management network.
 relatedPolicies:

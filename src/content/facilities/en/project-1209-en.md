@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 45.7268
-- 126.6473
+  - 45.7268
+  - 126.6473
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by CNPC. A key
+description:
+  A CCUS project in the Power and heat sector developed by CNPC. A key
   component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

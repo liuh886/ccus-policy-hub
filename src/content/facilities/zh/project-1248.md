@@ -1,7 +1,7 @@
 ---
 name: Rayonier carbon storage agreement (AL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 33.73606831296222
-- -93.957655512764
+  - 33.73606831296222
+  - -93.957655512764
 commencementYear: null
 description: 由 Reliant carbon capture, Rayonier 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

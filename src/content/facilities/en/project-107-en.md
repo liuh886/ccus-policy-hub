@@ -9,10 +9,11 @@ capacity: 0.215
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 35.092990849222666
-- -91.64304728811412
+  - 35.092990849222666
+  - -91.64304728811412
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Corn LP, Summit Carbon
+description:
+  A CCUS project in the Biofuels sector developed by Corn LP, Summit Carbon
   Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

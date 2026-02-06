@@ -9,10 +9,11 @@ capacity: 0.11
 sector: Other fuel transformation
 storage_type: Use
 coordinates:
-- 45.497205100611396
-- 6.958528503108667
+  - 45.497205100611396
+  - 6.958528503108667
 commencementYear: 2025
-description: A CCUS project in the Other fuel transformation sector developed by Air
+description:
+  A CCUS project in the Other fuel transformation sector developed by Air
   Liquide, TotalEnergies. A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

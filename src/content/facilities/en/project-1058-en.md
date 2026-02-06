@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.3819
-- -101.3117
+  - 47.3819
+  - -101.3117
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Dakota
+description:
+  A CCUS project in the Other fuel transformation sector developed by Dakota
   Gasification company. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.7
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 17.243142792762832
-- 1.1062284551798722
+  - 17.243142792762832
+  - 1.1062284551798722
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Carbfix, Dan-unity CO2.
+description:
+  A CCUS project in the T&S sector developed by Carbfix, Dan-unity CO2.
   A key component of the global carbon management network.
 ---
 

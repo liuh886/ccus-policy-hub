@@ -9,10 +9,11 @@ capacity: 0.45
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 34.546361480202464
-- -98.09788609547093
+  - 34.546361480202464
+  - -98.09788609547093
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Lapis Energy,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Lapis Energy,
   LSB. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

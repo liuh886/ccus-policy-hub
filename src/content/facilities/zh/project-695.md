@@ -1,8 +1,9 @@
 ---
-name: Advanced CO2 Capture from Hydrogen Production Unit at Phillips 66 Rodeo Refinery
+name:
+  Advanced CO2 Capture from Hydrogen Production Unit at Phillips 66 Rodeo Refinery
   (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Other fuel transformation
 type: 捕集
 status: 计划中
@@ -11,8 +12,8 @@ sector: Other fuel transformation
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 36.9007
-- -119.7411
+  - 36.9007
+  - -119.7411
 commencementYear: null
 description: 由 Phillips 66 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

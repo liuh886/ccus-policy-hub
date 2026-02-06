@@ -9,10 +9,11 @@ capacity: 0.45
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 38.21404741923144
-- -93.23340272824979
+  - 38.21404741923144
+  - -93.23340272824979
 commencementYear: null
-description: A CCUS project in the DAC sector developed by Southern States Energy
+description:
+  A CCUS project in the DAC sector developed by Southern States Energy
   Board, AirCapture, 8Rivers. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

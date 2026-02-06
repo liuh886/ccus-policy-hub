@@ -4,14 +4,16 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist --output-path dist/pagefind",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
     "manage:check": "node scripts/manage.mjs check-links",
-    "manage:new": "node scripts/manage.mjs new-policy"
+    "manage:new": "node scripts/manage.mjs new-policy",
+    "lint": "eslint . && prettier --check ."
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@tailwindcss/vite": "^4.1.18",
@@ -21,7 +23,8 @@
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "pagefind": "^1.4.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",

@@ -9,10 +9,11 @@ capacity: 0.2
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 38.7749159779898
-- 12.95172712294946
+  - 38.7749159779898
+  - 12.95172712294946
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Buzzi Unicem Spa. A
+description:
+  A CCUS project in the Cement sector developed by Buzzi Unicem Spa. A
   key component of the global carbon management network.
 ---
 

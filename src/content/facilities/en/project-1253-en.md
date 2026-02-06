@@ -9,10 +9,11 @@ capacity: 1.0
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 40.40807660403334
-- -91.11726814901579
+  - 40.40807660403334
+  - -91.11726814901579
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by Removr, Ankeron Carbon
+description:
+  A CCUS project in the DAC sector developed by Removr, Ankeron Carbon
   Management Hub consortium. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

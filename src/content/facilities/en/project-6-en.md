@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 24.4148
-- 54.3594
+  - 24.4148
+  - 54.3594
 commencementYear: 2030
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   ADNOC. A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.4
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 17.06262867415933
-- -2.5822104591280803
+  - 17.06262867415933
+  - -2.5822104591280803
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Malarenergi,
+description:
+  A CCUS project in the Power and heat sector developed by Malarenergi,
   Backock & Wilcox. A key component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.8497
-- -89.3162
+  - 40.8497
+  - -89.3162
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Alto Ingredient, Vault
+description:
+  A CCUS project in the Biofuels sector developed by Alto Ingredient, Vault
   44.01. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 1.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 18.434738502158453
-- -4.874820133799838
+  - 18.434738502158453
+  - -4.874820133799838
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by Energean. A key component
+description:
+  A CCUS project in the T&S sector developed by Energean. A key component
   of the global carbon management network.
 ---
 

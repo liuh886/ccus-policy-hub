@@ -9,10 +9,11 @@ capacity: 0.172
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 34.805636050022535
-- -96.07729305678758
+  - 34.805636050022535
+  - -96.07729305678758
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Green Plains Superior,
+description:
+  A CCUS project in the Biofuels sector developed by Green Plains Superior,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

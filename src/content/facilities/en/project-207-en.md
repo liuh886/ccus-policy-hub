@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Cement
 storage_type: Use
 coordinates:
-- 50.629940409581366
-- 13.956683084539552
+  - 50.629940409581366
+  - 13.956683084539552
 commencementYear: 2029
-description: A CCUS project in the Cement sector developed by Holcim Group, Hyscale100
+description:
+  A CCUS project in the Cement sector developed by Holcim Group, Hyscale100
   consortium. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

@@ -10,8 +10,8 @@ sector: T&S
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8550
-- 87.5932
+  - 43.8550
+  - 87.5932
 commencementYear: 2026
 description: 由 CNPC, OGCI 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

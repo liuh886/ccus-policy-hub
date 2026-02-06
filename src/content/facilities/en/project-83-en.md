@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8446
-- 125.3028
+  - 43.8446
+  - 125.3028
 commencementYear: 2018
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   PetroChina, CNPC. A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

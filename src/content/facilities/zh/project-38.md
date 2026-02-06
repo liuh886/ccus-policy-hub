@@ -1,7 +1,7 @@
 ---
 name: Eastern Louisiana Clean Energy Complex (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 全流程
 status: 建设中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.0249
-- -92.0301
+  - 31.0249
+  - -92.0301
 commencementYear: 2028
 description: 由 Air Products 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

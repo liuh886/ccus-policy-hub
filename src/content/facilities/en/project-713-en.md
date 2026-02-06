@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.8078
-- -119.1959
+  - 36.8078
+  - -119.1959
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by Advanced Resources
+description:
+  A CCUS project in the Storage sector developed by Advanced Resources
   International Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

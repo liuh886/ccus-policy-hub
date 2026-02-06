@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9460
-- -120.0552
+  - 36.9460
+  - -120.0552
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Next carbon
+description:
+  A CCUS project in the Power and heat sector developed by Next carbon
   solutions (NextDecade), California Resource Corporation (Carbon TerraVault). A key
   component of the global carbon management network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 5.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- -24.6833549034277
-- 134.31855525188905
+  - -24.6833549034277
+  - 134.31855525188905
 commencementYear: 2028
-description: A CCUS project in the Storage sector developed by Santos Offshore Pty
+description:
+  A CCUS project in the Storage sector developed by Santos Offshore Pty
   Ltd (50% and Operator), Chevron Australia Pty Ltd (50%). A key component of the
   global carbon management network.
 ---

@@ -1,7 +1,7 @@
 ---
 name: Oxy/ADNOC UAE DAC
 lang: zh
-country: "阿联酋"
+country: '阿联酋'
 location: DAC
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: DAC
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 24.4183
-- 54.2846
+  - 24.4183
+  - 54.2846
 commencementYear: null
 description: 由 Occidental, ADNOC 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

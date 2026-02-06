@@ -2,11 +2,13 @@
 import { getCollection } from 'astro:content';
 
 const lang = Astro.currentLocale || 'zh';
-const facilities = await getCollection(lang === 'en' ? 'facilities_en' : 'facilities_zh');
+const facilities = await getCollection(
+  lang === 'en' ? 'facilities_en' : 'facilities_zh'
+);
 
 // Aggregate data by year
 const yearMap = new Map<number, number>();
-facilities.forEach(f => {
+facilities.forEach((f) => {
   const year = f.data.commencementYear;
   // Handle potential string years or nulls from previous schema issues
   const numYear = typeof year === 'string' ? parseInt(year) : year;
@@ -17,61 +19,125 @@ facilities.forEach(f => {
 
 const sortedYears = Array.from(yearMap.keys()).sort((a, b) => a - b);
 let cumulative = 0;
-const chartData = sortedYears.map(year => {
+const chartData = sortedYears.map((year) => {
   cumulative += yearMap.get(year) || 0;
   return { year, value: cumulative.toFixed(1) };
 });
 
 const totalCapacity = cumulative.toFixed(1);
-const operationalCount = facilities.filter(f => f.data.status === '运行中' || f.data.status === 'Operational').length;
+const operationalCount = facilities.filter(
+  (f) => f.data.status === '运行中' || f.data.status === 'Operational'
+).length;
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
   <!-- Stats Counter -->
   <div class="lg:col-span-1 space-y-6">
-    <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+    <div
+      class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden"
+    >
       <div class="absolute -right-4 -bottom-4 opacity-5 text-blue-600">
-        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
+        >
       </div>
-      <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">
-        {lang === 'zh' ? '全球累计产能 (2030估)' : 'Global Capacity (2030 Est.)'}
+      <h3
+        class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
+      >
+        {
+          lang === 'zh'
+            ? '全球累计产能 (2030估)'
+            : 'Global Capacity (2030 Est.)'
+        }
       </h3>
-      <div class="text-5xl font-black text-blue-600 mb-2">{totalCapacity} <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span></div>
+      <div class="text-5xl font-black text-blue-600 mb-2">
+        {totalCapacity}
+        <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
+      </div>
       <p class="text-xs text-slate-500 font-medium">
-        {lang === 'zh' ? '基于 IEA 2025 项目库的各阶段产能预测加总。' : 'Projected cumulative capacity based on IEA 2025 pipeline data.'}
+        {
+          lang === 'zh'
+            ? '基于 IEA 2025 项目库的各阶段产能预测加总。'
+            : 'Projected cumulative capacity based on IEA 2025 pipeline data.'
+        }
       </p>
     </div>
 
-    <div class="p-8 bg-slate-900 rounded-3xl text-white shadow-xl relative overflow-hidden">
+    <div
+      class="p-8 bg-slate-900 rounded-3xl text-white shadow-xl relative overflow-hidden"
+    >
       <div class="absolute -right-4 -bottom-4 opacity-10">
-        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+          ></path></svg
+        >
       </div>
-      <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4">
+      <h3
+        class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4"
+      >
         {lang === 'zh' ? '在运设施数量' : 'Operational Facilities'}
       </h3>
-      <div class="text-5xl font-black mb-2 tracking-tighter">{operationalCount}</div>
+      <div class="text-5xl font-black mb-2 tracking-tighter">
+        {operationalCount}
+      </div>
       <p class="text-xs text-slate-400">
-        {lang === 'zh' ? '已进入正式商业化运营阶段的项目数量。' : 'Total number of projects in active commercial operation.'}
+        {
+          lang === 'zh'
+            ? '已进入正式商业化运营阶段的项目数量。'
+            : 'Total number of projects in active commercial operation.'
+        }
       </p>
     </div>
   </div>
 
   <!-- Chart Card -->
-  <div class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+  <div
+    class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+  >
     <div class="flex justify-between items-start mb-8">
       <div>
-        <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight">
-          {lang === 'zh' ? '全球捕集能力增长趋势' : 'Capture Capacity Growth Trend'}
+        <h3
+          class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight"
+        >
+          {
+            lang === 'zh'
+              ? '全球捕集能力增长趋势'
+              : 'Capture Capacity Growth Trend'
+          }
         </h3>
-        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Global Cumulative Capacity (Mtpa) 1970 - 2030</p>
+        <p
+          class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
+        >
+          Global Cumulative Capacity (Mtpa) 1970 - 2030
+        </p>
       </div>
-      <div class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest border border-blue-100 shadow-sm">
+      <div
+        class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest border border-blue-100 shadow-sm"
+      >
         IEA 2025 Intelligence
       </div>
     </div>
-    
+
     <div class="h-[300px] w-full">
-      <canvas id="capacityChart" data-values={JSON.stringify(chartData)} data-label={lang === 'zh' ? '累计产能' : 'Cumulative'}></canvas>
+      <canvas
+        id="capacityChart"
+        data-values={JSON.stringify(chartData)}
+        data-label={lang === 'zh' ? '累计产能' : 'Cumulative'}></canvas>
     </div>
   </div>
 </div>
@@ -80,27 +146,31 @@ const operationalCount = facilities.filter(f => f.data.status === '运行中' ||
   import Chart from 'chart.js/auto';
 
   function initChart() {
-    const canvas = document.getElementById('capacityChart') as HTMLCanvasElement;
+    const canvas = document.getElementById(
+      'capacityChart'
+    ) as HTMLCanvasElement;
     if (!canvas) return;
 
     const data = JSON.parse(canvas.dataset.values || '[]');
     const label = canvas.dataset.label;
-    
+
     new Chart(canvas, {
       type: 'line',
       data: {
         labels: data.map((d: any) => d.year),
-        datasets: [{
-          label: label,
-          data: data.map((d: any) => d.value),
-          borderColor: '#2563eb',
-          backgroundColor: 'rgba(37, 99, 235, 0.1)',
-          fill: true,
-          tension: 0.4,
-          borderWidth: 3,
-          pointRadius: 0,
-          pointHoverRadius: 6
-        }]
+        datasets: [
+          {
+            label: label,
+            data: data.map((d: any) => d.value),
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            fill: true,
+            tension: 0.4,
+            borderWidth: 3,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -112,21 +182,21 @@ const operationalCount = facilities.filter(f => f.data.status === '运行中' ||
             intersect: false,
             padding: 12,
             backgroundColor: '#0f172a',
-            titleFont: { size: 14, weight: 'bold' }
-          }
+            titleFont: { size: 14, weight: 'bold' },
+          },
         },
         scales: {
           x: {
             grid: { display: false },
-            ticks: { font: { size: 10 }, color: '#94a3b8' }
+            ticks: { font: { size: 10 }, color: '#94a3b8' },
           },
           y: {
             beginAtZero: true,
             grid: { color: 'rgba(148, 163, 184, 0.1)' },
-            ticks: { font: { size: 10 }, color: '#94a3b8' }
-          }
-        }
-      }
+            ticks: { font: { size: 10 }, color: '#94a3b8' },
+          },
+        },
+      },
     });
   }
 

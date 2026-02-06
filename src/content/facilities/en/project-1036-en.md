@@ -9,10 +9,11 @@ capacity: 0.233
 sector: Other industry
 storage_type: Use
 coordinates:
-- 54.06207204142354
-- -110.61268495967894
+  - 54.06207204142354
+  - -110.61268495967894
 commencementYear: 2028
-description: A CCUS project in the Other industry sector developed by RH2C, CMC, West
+description:
+  A CCUS project in the Other industry sector developed by RH2C, CMC, West
   Moberly First Nations. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

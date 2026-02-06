@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.2081
-- -99.5487
+  - 32.2081
+  - -99.5487
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Southern States Energy
+description:
+  A CCUS project in the Transport sector developed by Southern States Energy
   Board. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

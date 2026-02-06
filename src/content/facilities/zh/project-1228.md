@@ -1,7 +1,7 @@
 ---
 name: Valero Linden plant (IA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 全流程
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.7
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 34.14547762708486
-- -92.36724064750098
+  - 34.14547762708486
+  - -92.36724064750098
 commencementYear: null
 description: 由 Valero, Vault Alliance CCS (Vault) 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

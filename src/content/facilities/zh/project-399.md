@@ -1,7 +1,7 @@
 ---
 name: Venture Global LNG CP2 liquefaction facility CCS (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Natural gas processing/LNG
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Natural gas processing/LNG
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.7926
-- -92.1824
+  - 30.7926
+  - -92.1824
 commencementYear: null
 description: 由 Venture Global 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

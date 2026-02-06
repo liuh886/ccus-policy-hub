@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.2548
-- -89.5310
+  - 40.2548
+  - -89.5310
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by Warwick, ADM.
+description:
+  A CCUS project in the Power and heat sector developed by Warwick, ADM.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

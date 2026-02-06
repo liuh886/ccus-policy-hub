@@ -9,10 +9,11 @@ capacity: 0.4
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.79313929362629
-- -98.07618480502605
+  - 36.79313929362629
+  - -98.07618480502605
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by One Carbon Partnership
+description:
+  A CCUS project in the Biofuels sector developed by One Carbon Partnership
   (Cardinal Ethanol, Vault 44.01 joint venture). A key component of the global carbon
   management network.
 relatedPolicies:

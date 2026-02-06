@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 53.35234746290726
-- -6.796237400897365
+  - 53.35234746290726
+  - -6.796237400897365
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Origin, Singleton Birch.
+description:
+  A CCUS project in the Cement sector developed by Origin, Singleton Birch.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

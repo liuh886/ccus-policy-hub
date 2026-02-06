@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- -24.967225819909878
-- 130.0677602310352
+  - -24.967225819909878
+  - 130.0677602310352
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Yara, JERA.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Yara, JERA.
   A key component of the global carbon management network.
 ---
 

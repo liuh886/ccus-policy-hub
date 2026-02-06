@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.8404
-- -100.8377
+  - 47.8404
+  - -100.8377
 commencementYear: null
-description: A CCUS project in the Storage sector developed by University of North
+description:
+  A CCUS project in the Storage sector developed by University of North
   Dakota, ONEOK, EERC. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

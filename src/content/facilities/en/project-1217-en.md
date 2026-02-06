@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.1649
-- -99.5086
+  - 32.1649
+  - -99.5086
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Sempra Infrastructure. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

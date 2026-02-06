@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9663
-- -99.9618
+  - 30.9663
+  - -99.9618
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Port of Corpus Christi,
+description:
+  A CCUS project in the Storage sector developed by Port of Corpus Christi,
   Talos Energy (Total Energies), Howard Energy Partners, Texas A&M University System.
   A key component of the global carbon management network.
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.1775
-- -100.9172
+  - 47.1775
+  - -100.9172
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Tharaldson Ethanol,
+description:
+  A CCUS project in the Biofuels sector developed by Tharaldson Ethanol,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

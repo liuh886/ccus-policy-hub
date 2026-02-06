@@ -9,10 +9,11 @@ capacity: 5.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 58.21587715812972
-- 1.7276596934986408
+  - 58.21587715812972
+  - 1.7276596934986408
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by Spirit Energy (Centrica
+description:
+  A CCUS project in the T&S sector developed by Spirit Energy (Centrica
   and Stadtwerke Mucnchen GmbH joint venture). A key component of the global carbon
   management network.
 relatedPolicies:

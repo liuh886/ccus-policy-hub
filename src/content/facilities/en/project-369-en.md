@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.0568
-- 118.8259
+  - 32.0568
+  - 118.8259
 commencementYear: 2021
-description: A CCUS project in the Other fuel transformation sector developed by Sinopec.
+description:
+  A CCUS project in the Other fuel transformation sector developed by Sinopec.
   A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

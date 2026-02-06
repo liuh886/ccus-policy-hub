@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: EOR
 precision: approximate
 coordinates:
-- 31.6564
-- -99.5973
+  - 31.6564
+  - -99.5973
 commencementYear: 2016
-description: A CCUS project in the Power and heat sector developed by NRG (equity),
+description:
+  A CCUS project in the Power and heat sector developed by NRG (equity),
   JX Nippon (equity), JBIC (debt), Mizhou bank (backed by NEXI)(debt). A key component
   of the global carbon management network.
 relatedPolicies:

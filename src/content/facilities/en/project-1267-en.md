@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 55.8637
-- 2.8325
+  - 55.8637
+  - 2.8325
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by Smart Delta Resources,
+description:
+  A CCUS project in the T&S sector developed by Smart Delta Resources,
   Port company North Sea Port, ArcelorMittal, Dow Benelux, PZEM, Yara and Zeeland
   Refinery, Gasunie and Fluxys. A key component of the global carbon management network.
 ---

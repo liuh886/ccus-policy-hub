@@ -1,7 +1,7 @@
 ---
 name: Tharaldson Ethanol Casselton biorefinery (ND)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.2478
-- -101.0193
+  - 47.2478
+  - -101.0193
 commencementYear: 2028
 description: 由 Tharaldson Ethanol, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

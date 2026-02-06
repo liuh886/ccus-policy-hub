@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 55.8021
-- 2.6701
+  - 55.8021
+  - 2.6701
 commencementYear: 2030
-description: A CCUS project in the Transport sector developed by Wintershell Dea (Harbour
+description:
+  A CCUS project in the Transport sector developed by Wintershell Dea (Harbour
   Energy), Fluxys, OGE. A key component of the global carbon management network.
 ---
 

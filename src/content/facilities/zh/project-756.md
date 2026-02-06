@@ -1,7 +1,7 @@
 ---
 name: Asnæs Power Station
 lang: zh
-country: "丹麦"
+country: '丹麦'
 location: Power and heat
 type: 捕集
 status: 建设中
@@ -9,10 +9,11 @@ capacity: 0.28
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 53.09556763778393
-- 8.366078548687401
+  - 53.09556763778393
+  - 8.366078548687401
 commencementYear: 2026
-description: 由 Orsted, Aker Carbon Capture (tech), NCC (construction) 开发的 Power and
+description:
+  由 Orsted, Aker Carbon Capture (tech), NCC (construction) 开发的 Power and
   heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---
 

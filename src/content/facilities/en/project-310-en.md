@@ -9,10 +9,11 @@ capacity: 10.6
 sector: Natural gas processing/LNG
 storage_type: EOR
 coordinates:
-- -13.039317282749966
-- -52.60263017269835
+  - -13.039317282749966
+  - -52.60263017269835
 commencementYear: 2013
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Petrobas. A key component of the global carbon management network.
 relatedPolicies:
   - br-bill-1425-2022

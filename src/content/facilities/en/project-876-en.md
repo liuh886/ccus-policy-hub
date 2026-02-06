@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.8404
-- -92.1095
+  - 30.8404
+  - -92.1095
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Shell US Power and
+description:
+  A CCUS project in the Storage sector developed by Shell US Power and
   Gas LLC, Geo Stock Sandia LLC . A key component of the global carbon management
   network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.18
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 34.17846569022022
-- -98.15560628420553
+  - 34.17846569022022
+  - -98.15560628420553
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Granite Falls Energy,
+description:
+  A CCUS project in the Biofuels sector developed by Granite Falls Energy,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

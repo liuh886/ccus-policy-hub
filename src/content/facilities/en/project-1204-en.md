@@ -9,10 +9,11 @@ capacity: 0.7
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 47.85997239838612
-- -2.6352956094917817
+  - 47.85997239838612
+  - -2.6352956094917817
 commencementYear: 2031
-description: A CCUS project in the Cement sector developed by Lafarge France (Holcim
+description:
+  A CCUS project in the Cement sector developed by Lafarge France (Holcim
   Group). A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

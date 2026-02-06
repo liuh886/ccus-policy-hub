@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.0976
-- 118.7768
+  - 32.0976
+  - 118.7768
 commencementYear: 2023
-description: A CCUS project in the Other fuel transformation sector developed by Sinopec
+description:
+  A CCUS project in the Other fuel transformation sector developed by Sinopec
   (Nanjing refinery), Jiling Petrochemical, Jiangsu oilfield. A key component of the
   global carbon management network.
 relatedPolicies:

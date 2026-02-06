@@ -9,10 +9,11 @@ capacity: 0.19
 sector: Chemicals
 storage_type: Unknown/unspecified
 coordinates:
-- 17.745504394100177
-- -4.484500718040177
+  - 17.745504394100177
+  - -4.484500718040177
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by INA, MOL Group. A
+description:
+  A CCUS project in the Chemicals sector developed by INA, MOL Group. A
   key component of the global carbon management network.
 ---
 

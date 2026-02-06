@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.1387
-- -92.2249
+  - 31.1387
+  - -92.2249
 commencementYear: 2027
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Net Power, Siemens, EJM. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

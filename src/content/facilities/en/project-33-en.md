@@ -9,10 +9,11 @@ capacity: 3.1
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 51.114240129808785
-- 0.23459697840842342
+  - 51.114240129808785
+  - 0.23459697840842342
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by TotalEnergies, Shell,
+description:
+  A CCUS project in the Storage sector developed by TotalEnergies, Shell,
   EBN, Gasunie. A key component of the global carbon management network.
 ---
 

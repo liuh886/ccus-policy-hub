@@ -9,10 +9,11 @@ capacity: 4.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 44.33696326215566
-- 7.875576180112194
+  - 44.33696326215566
+  - 7.875576180112194
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Eni, Snam. A key component
+description:
+  A CCUS project in the T&S sector developed by Eni, Snam. A key component
   of the global carbon management network.
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: Great Plains Synfuel Plant to sequestration (ND)
 lang: zh
-country: "美国"
+country: '美国'
 location: Other fuel transformation
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.5356
-- -101.1829
+  - 47.5356
+  - -101.1829
 commencementYear: null
 description: 由 Dakota Gasification company 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

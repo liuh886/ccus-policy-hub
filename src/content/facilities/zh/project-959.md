@@ -1,7 +1,7 @@
 ---
 name: William Echo Springs CarbonSAFE (WY)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 42.9937
-- -106.9997
+  - 42.9937
+  - -106.9997
 commencementYear: null
 description: 由 University of Wyoming, Williams 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

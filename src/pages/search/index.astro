@@ -6,8 +6,21 @@ import Search from '../../components/Search.astro';
 <Layout title="全文检索">
   <div class="max-w-4xl mx-auto py-8">
     <div class="mb-12">
-      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue-600"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <h1
+        class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center gap-3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          class="text-blue-600"
+          ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+          ></path></svg
+        >
         全站搜索引擎
       </h1>
       <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -15,27 +28,47 @@ import Search from '../../components/Search.astro';
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
+    <div
+      class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
+    >
       <Search />
     </div>
 
     <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-6 bg-blue-50 dark:bg-blue-900/10 rounded-2xl border border-blue-100 dark:border-blue-900/20">
-        <h3 class="font-bold text-blue-900 dark:text-blue-300 mb-2">搜索技巧</h3>
+      <div
+        class="p-6 bg-blue-50 dark:bg-blue-900/10 rounded-2xl border border-blue-100 dark:border-blue-900/20"
+      >
+        <h3 class="font-bold text-blue-900 dark:text-blue-300 mb-2">
+          搜索技巧
+        </h3>
         <ul class="text-sm text-blue-700 dark:text-blue-400 space-y-2">
           <li>• 输入项目名称（如 "Northern Lights"）</li>
           <li>• 输入技术关键词（如 "DAC", "Amine"）</li>
           <li>• 输入国家名称直接定位</li>
         </ul>
       </div>
-      <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800">
-        <h3 class="font-bold text-slate-900 dark:text-white mb-2">数据导出 / Export</h3>
+      <div
+        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800"
+      >
+        <h3 class="font-bold text-slate-900 dark:text-white mb-2">
+          数据导出 / Export
+        </h3>
         <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">
           下载全量政策数据库，支持研究员进行离线量化分析。
         </p>
         <div class="flex gap-3">
-          <a href="/api/policies.json" target="_blank" class="px-3 py-1.5 bg-white dark:bg-slate-800 text-[10px] font-black uppercase rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors">JSON</a>
-          <a href="/api/policies.csv" download class="px-3 py-1.5 bg-white dark:bg-slate-800 text-[10px] font-black uppercase rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors">CSV (Excel)</a>
+          <a
+            href="/ccus-policy-hub/api/policies.json"
+            target="_blank"
+            class="px-3 py-1.5 bg-white dark:bg-slate-800 text-[10px] font-black uppercase rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors"
+            >JSON</a
+          >
+          <a
+            href="/ccus-policy-hub/api/policies.csv"
+            download
+            class="px-3 py-1.5 bg-white dark:bg-slate-800 text-[10px] font-black uppercase rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-colors"
+            >CSV (Excel)</a
+          >
         </div>
       </div>
     </div>

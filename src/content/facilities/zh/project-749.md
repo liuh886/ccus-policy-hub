@@ -1,8 +1,9 @@
 ---
-name: Combined Carbon Capture Solution on Air Liquide Northern California Steam Methane
+name:
+  Combined Carbon Capture Solution on Air Liquide Northern California Steam Methane
   Reformer (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -11,8 +12,8 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 36.9633
-- -120.0475
+  - 36.9633
+  - -120.0475
 commencementYear: null
 description: 由 Electricore Inc., Air Liquide 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

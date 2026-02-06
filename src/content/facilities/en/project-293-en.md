@@ -9,10 +9,11 @@ capacity: 1.3
 sector: Other fuel transformation
 storage_type: EOR
 coordinates:
-- 59.34374063272071
-- -110.25657013858402
+  - 59.34374063272071
+  - -110.25657013858402
 commencementYear: 2020
-description: A CCUS project in the Other fuel transformation sector developed by Northwest
+description:
+  A CCUS project in the Other fuel transformation sector developed by Northwest
   Redwater Partnership. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

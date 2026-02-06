@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 57.84439187718625
-- -7.966156710108355
+  - 57.84439187718625
+  - -7.966156710108355
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Oilex. A key
+description:
+  A CCUS project in the Power and heat sector developed by Oilex. A key
   component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

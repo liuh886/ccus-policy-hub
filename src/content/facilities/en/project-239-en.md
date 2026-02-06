@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 54.13200605737794
-- -4.361443485191456
+  - 54.13200605737794
+  - -4.361443485191456
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by SSE Thermal,
+description:
+  A CCUS project in the Power and heat sector developed by SSE Thermal,
   Equinor, Aker Solutions (FEED), Siemens Energy, Doosan Babcock; Fugro (ground investigation
   contract). A key component of the global carbon management network.
 relatedPolicies:

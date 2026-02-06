@@ -9,10 +9,11 @@ capacity: 0.343
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 37.78931086415406
-- -95.82886546505063
+  - 37.78931086415406
+  - -95.82886546505063
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Louis Dreyfus Grand
+description:
+  A CCUS project in the Biofuels sector developed by Louis Dreyfus Grand
   Junction, Summit Carbon Solutions. A key component of the global carbon management
   network.
 relatedPolicies:

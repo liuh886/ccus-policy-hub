@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated Storage
 precision: approximate
 coordinates:
-- 30.7707
-- -92.2974
+  - 30.7707
+  - -92.2974
 commencementYear: 2027
-description: A CCUS project in the DAC sector developed by Heirloom, Leilac, CapturePoint.
+description:
+  A CCUS project in the DAC sector developed by Heirloom, Leilac, CapturePoint.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

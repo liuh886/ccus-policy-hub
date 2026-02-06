@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 36.55724907918356
-- 135.45511429862967
+  - 36.55724907918356
+  - 135.45511429862967
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Taiheiyo Cement Corporation.
+description:
+  A CCUS project in the Cement sector developed by Taiheiyo Cement Corporation.
   A key component of the global carbon management network.
 ---
 

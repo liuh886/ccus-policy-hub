@@ -1,7 +1,7 @@
 ---
 name: HOFOR Amagerværket
 lang: zh
-country: "丹麦"
+country: '丹麦'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.9
 sector: Power and heat
 storage_type: 地质封存
 coordinates:
-- 53.78362384512417
-- 9.066839082394699
+  - 53.78362384512417
+  - 9.066839082394699
 commencementYear: 2030
 description: 由 Hofor 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

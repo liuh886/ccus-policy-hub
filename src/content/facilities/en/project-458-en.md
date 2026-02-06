@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.8325
-- -91.6704
+  - 30.8325
+  - -91.6704
 commencementYear: 2025
-description: A CCUS project in the Hydrogen or ammonia sector developed by CF Industries,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by CF Industries,
   ExxonMobil (storage), EnLink Midstream (transport). A key component of the global
   carbon management network.
 relatedPolicies:

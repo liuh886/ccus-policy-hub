@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 33.77247157331476
-- -93.44658864463011
+  - 33.77247157331476
+  - -93.44658864463011
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Drax. A key
+description:
+  A CCUS project in the Power and heat sector developed by Drax. A key
   component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

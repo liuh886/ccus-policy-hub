@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 24.4165
-- 54.3212
+  - 24.4165
+  - 54.3212
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by TA'ZIZ,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by TA'ZIZ,
   Fertiglobe (ADNOC shares sold to Fertiglobe), Mitsui, GS Energy. A key component
   of the global carbon management network.
 ---

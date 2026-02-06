@@ -1,7 +1,7 @@
 ---
 name: Tarastenjärvi power (Tampere)
 lang: zh
-country: "芬兰"
+country: '芬兰'
 location: Power and heat
 type: CCU
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.11
 sector: Power and heat
 storage_type: 地质封存
 coordinates:
-- 19.816135849205327
-- -1.7438743560299876
+  - 19.816135849205327
+  - -1.7438743560299876
 commencementYear: 2026
 description: 由 RenGas, Tampereen Energia 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

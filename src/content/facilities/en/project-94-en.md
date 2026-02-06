@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Storage
 storage_type: EOR
 coordinates:
-- 56.90202502676374
-- -104.03989424304376
+  - 56.90202502676374
+  - -104.03989424304376
 commencementYear: 2020
-description: A CCUS project in the Storage sector developed by Enhance Energy. A key
+description:
+  A CCUS project in the Storage sector developed by Enhance Energy. A key
   component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

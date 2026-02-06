@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 24.4101
-- 54.3336
+  - 24.4101
+  - 54.3336
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Sharjah National Oil Corporation
+description:
+  A CCUS project in the T&S sector developed by Sharjah National Oil Corporation
   (SNOC), Sumitomo Middle East . A key component of the global carbon management network.
 ---
 

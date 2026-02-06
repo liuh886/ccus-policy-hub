@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 53.03842782204008
-- 12.920468592606866
+  - 53.03842782204008
+  - 12.920468592606866
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Aalborg Portland (Cementir
+description:
+  A CCUS project in the Cement sector developed by Aalborg Portland (Cementir
   Holding Group), Air Liquide. A key component of the global carbon management network.
 ---
 

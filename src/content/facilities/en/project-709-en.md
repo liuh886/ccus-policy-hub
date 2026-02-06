@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0178
-- -91.8136
+  - 31.0178
+  - -91.8136
 commencementYear: 2025
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   CapturePoint Solutions, Energy transfer. A key component of the global carbon management
   network.
 relatedPolicies:

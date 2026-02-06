@@ -1,7 +1,7 @@
 ---
 name: Orchard (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,10 +10,11 @@ sector: Storage
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.6309
-- -99.5393
+  - 31.6309
+  - -99.5393
 commencementYear: null
-description: 由 Orchard Storage Company LLC, Elysian Ventures LLC, EnCap Flatrock Midstream,
+description:
+  由 Orchard Storage Company LLC, Elysian Ventures LLC, EnCap Flatrock Midstream,
   Buckeye Partners, Lonquist Sequestration 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

@@ -12,46 +12,78 @@ interface Region {
   enHref: string;
 }
 
+const BASE = '/ccus-policy-hub';
+
 const regions: Region[] = [
-  { 
-    id: 'north-america', name: '北美', enName: 'North America', 
-    x: 200, y: 180, policyCount: 5, 
-    keyIncentive: '45Q 增强抵免', enKeyIncentive: 'IRA 45Q Credit',
-    href: '/policy/us-45q-ira', enHref: '/en/policy/us-45q-ira'
+  {
+    id: 'north-america',
+    name: '北美',
+    enName: 'North America',
+    x: 200,
+    y: 180,
+    policyCount: 5,
+    keyIncentive: '45Q 增强抵免',
+    enKeyIncentive: 'IRA 45Q Credit',
+    href: `${BASE}/policy/us-45q-ira/`,
+    enHref: `${BASE}/en/policy/us-45q-ira/`,
   },
-  { 
-    id: 'europe', name: '欧盟', enName: 'Europe', 
-    x: 480, y: 150, policyCount: 8, 
-    keyIncentive: 'NZIA 存储目标', enKeyIncentive: 'NZIA Mandate',
-    href: '/policy/eu-nzia', enHref: '/en/policy/eu-nzia'
+  {
+    id: 'europe',
+    name: '欧盟',
+    enName: 'Europe',
+    x: 480,
+    y: 150,
+    policyCount: 8,
+    keyIncentive: 'NZIA 存储目标',
+    enKeyIncentive: 'NZIA Mandate',
+    href: `${BASE}/policy/eu-nzia/`,
+    enHref: `${BASE}/en/policy/eu-nzia/`,
   },
-  { 
-    id: 'china', name: '中国', enName: 'China', 
-    x: 750, y: 200, policyCount: 4, 
-    keyIncentive: 'CERF 绿色金融', enKeyIncentive: 'CERF Finance',
-    href: '/policy/cn-pboc-cerf', enHref: '/en/policy/cn-pboc-cerf'
+  {
+    id: 'china',
+    name: '中国',
+    enName: 'China',
+    x: 750,
+    y: 200,
+    policyCount: 4,
+    keyIncentive: 'CERF 绿色金融',
+    enKeyIncentive: 'CERF Finance',
+    href: `${BASE}/policy/cn-pboc-cerf/`,
+    enHref: `${BASE}/en/policy/cn-pboc-cerf/`,
   },
-  { 
-    id: 'sea', name: '印尼', enName: 'Indonesia', 
-    x: 780, y: 320, policyCount: 2, 
-    keyIncentive: '跨境存储许可', enKeyIncentive: 'Cross-border Regs',
-    href: '/policy/id-presidential-reg-14-2024', enHref: '/en/policy/id-presidential-reg-14-2024'
-  }
+  {
+    id: 'sea',
+    name: '印尼',
+    enName: 'Indonesia',
+    x: 780,
+    y: 320,
+    policyCount: 2,
+    keyIncentive: '跨境存储许可',
+    enKeyIncentive: 'Cross-border Regs',
+    href: `${BASE}/policy/id-presidential-reg-14-2024/`,
+    enHref: `${BASE}/en/policy/id-presidential-reg-14-2024/`,
+  },
 ];
 
 const { lang = 'zh' } = Astro.props;
 const isEn = lang === 'en';
 ---
 
-<div class="relative w-full aspect-[2.2/1] bg-slate-950 rounded-[2.5rem] border border-slate-800 p-8 overflow-hidden shadow-2xl group/console">
+<div
+  class="relative w-full aspect-[2.2/1] bg-slate-950 rounded-[2.5rem] border border-slate-800 p-8 overflow-hidden shadow-2xl group/console"
+>
   <!-- Intelligence Header -->
   <div class="absolute top-8 left-10 z-20">
     <div class="flex items-center gap-3 mb-2">
-      <div class="px-2 py-0.5 rounded bg-blue-500/20 border border-blue-500/30 text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]">
+      <div
+        class="px-2 py-0.5 rounded bg-blue-500/20 border border-blue-500/30 text-blue-400 text-[10px] font-black uppercase tracking-[0.2em]"
+      >
         Live Intelligence
       </div>
       <div class="h-[1px] w-12 bg-slate-800"></div>
-      <div class="text-slate-500 text-[10px] font-bold uppercase tracking-widest animate-pulse">
+      <div
+        class="text-slate-500 text-[10px] font-bold uppercase tracking-widest animate-pulse"
+      >
         {isEn ? 'Scanning Global Frameworks...' : '全球政策扫描中...'}
       </div>
     </div>
@@ -61,49 +93,92 @@ const isEn = lang === 'en';
   </div>
 
   <!-- Background Grid -->
-  <div class="absolute inset-0 opacity-20 pointer-events-none" 
-       style="background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 30px 30px;">
+  <div
+    class="absolute inset-0 opacity-20 pointer-events-none"
+    style="background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 30px 30px;"
+  >
   </div>
 
   <!-- Minimalist World SVG -->
-  <svg viewBox="0 0 1000 500" class="w-full h-full opacity-40 group-hover/console:opacity-60 transition-opacity duration-700">
+  <svg
+    viewBox="0 0 1000 500"
+    class="w-full h-full opacity-40 group-hover/console:opacity-60 transition-opacity duration-700"
+  >
     <!-- Abstract Continents (Simplified Paths) -->
-    <path d="M150,120 Q200,100 250,130 T350,150 L380,250 Q300,350 200,320 T120,200 Z" class="fill-slate-800" />
-    <path d="M450,120 Q500,100 550,130 T600,200 L580,280 Q500,300 450,250 Z" class="fill-slate-800" />
-    <path d="M650,150 Q750,120 850,150 T900,250 Q850,400 750,380 T650,300 Z" class="fill-slate-800" />
-    
+    <path
+      d="M150,120 Q200,100 250,130 T350,150 L380,250 Q300,350 200,320 T120,200 Z"
+      class="fill-slate-800"></path>
+    <path
+      d="M450,120 Q500,100 550,130 T600,200 L580,280 Q500,300 450,250 Z"
+      class="fill-slate-800"></path>
+    <path
+      d="M650,150 Q750,120 850,150 T900,250 Q850,400 750,380 T650,300 Z"
+      class="fill-slate-800"></path>
+
     <!-- Interaction Layer -->
-    {regions.map(r => (
-      <a href={isEn ? r.enHref : r.href} class="region-node cursor-pointer group/node">
-        <circle cx={r.x} cy={r.y} r="30" class="fill-transparent" />
-        <circle cx={r.x} cy={r.y} r="20" class="fill-blue-500/0 group-hover/node:fill-blue-500/10 transition-all duration-500" />
-        
-        <!-- Pulse Dot -->
-        <circle cx={r.x} cy={r.y} r="4" class="fill-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]" />
-        <circle cx={r.x} cy={r.y} r="4" class="fill-blue-500 animate-ping opacity-75" />
-        
-        <!-- Text Labels (Robust alternative to foreignObject) -->
-        <text x={r.x + 15} y={r.y - 15} class="fill-white text-[12px] font-black opacity-0 group-hover/node:opacity-100 transition-opacity duration-300">
-          {isEn ? r.enName : r.name}
-        </text>
-        <text x={r.x + 15} y={r.y} class="fill-blue-400 text-[9px] font-bold opacity-0 group-hover/node:opacity-100 transition-opacity duration-300">
-          {isEn ? r.enKeyIncentive : r.keyIncentive}
-        </text>
-      </a>
-    ))}
+    {
+      regions.map((r) => (
+        <a
+          href={isEn ? r.enHref : r.href}
+          class="region-node cursor-pointer group/node"
+        >
+          <circle cx={r.x} cy={r.y} r="30" class="fill-transparent" />
+          <circle
+            cx={r.x}
+            cy={r.y}
+            r="20"
+            class="fill-blue-500/0 group-hover/node:fill-blue-500/10 transition-all duration-500"
+          />
+
+          <circle
+            cx={r.x}
+            cy={r.y}
+            r="4"
+            class="fill-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]"
+          />
+          <circle
+            cx={r.x}
+            cy={r.y}
+            r="4"
+            class="fill-blue-500 animate-ping opacity-75"
+          />
+
+          <text
+            x={r.x + 15}
+            y={r.y - 15}
+            class="fill-white text-[12px] font-black opacity-0 group-hover/node:opacity-100 transition-opacity duration-300"
+          >
+            {isEn ? r.enName : r.name}
+          </text>
+          <text
+            x={r.x + 15}
+            y={r.y}
+            class="fill-blue-400 text-[9px] font-bold opacity-0 group-hover/node:opacity-100 transition-opacity duration-300"
+          >
+            {isEn ? r.enKeyIncentive : r.keyIncentive}
+          </text>
+        </a>
+      ))
+    }
   </svg>
 
   <!-- Data Legend -->
-  <div class="absolute bottom-8 left-10 flex gap-8 items-center border-t border-slate-800/50 pt-6">
+  <div
+    class="absolute bottom-8 left-10 flex gap-8 items-center border-t border-slate-800/50 pt-6"
+  >
     <div class="flex items-center gap-3">
       <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
-      <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+      <div
+        class="text-[10px] font-black text-slate-500 uppercase tracking-widest"
+      >
         {isEn ? 'Direct Financial Support' : '直接财政补贴'}
       </div>
     </div>
     <div class="flex items-center gap-3">
       <div class="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
-      <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+      <div
+        class="text-[10px] font-black text-slate-500 uppercase tracking-widest"
+      >
         {isEn ? 'Regulatory Framework' : '法律监管框架'}
       </div>
     </div>
@@ -112,8 +187,23 @@ const isEn = lang === 'en';
   <!-- Decorative HUD -->
   <div class="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
     <svg width="120" height="120" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="none" stroke="#3b82f6" stroke-width="0.5" stroke-dasharray="2 2" />
-      <circle cx="50" cy="50" r="35" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="10 5" class="animate-[spin_20s_linear_infinite]" />
+      <circle
+        cx="50"
+        cy="50"
+        r="45"
+        fill="none"
+        stroke="#3b82f6"
+        stroke-width="0.5"
+        stroke-dasharray="2 2"></circle>
+      <circle
+        cx="50"
+        cy="50"
+        r="35"
+        fill="none"
+        stroke="#3b82f6"
+        stroke-width="1"
+        stroke-dasharray="10 5"
+        class="animate-[spin_20s_linear_infinite]"></circle>
     </svg>
   </div>
 </div>

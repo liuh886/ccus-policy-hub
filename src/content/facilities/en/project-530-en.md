@@ -9,10 +9,11 @@ capacity: 5.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 56.80585147888262
-- 3.6455976068457803
+  - 56.80585147888262
+  - 3.6455976068457803
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by (60%, Harbour Energy),
+description:
+  A CCUS project in the Storage sector developed by (60%, Harbour Energy),
   TotalEnergies (40%) (formerly owned by CapeOmega). A key component of the global
   carbon management network.
 relatedPolicies:

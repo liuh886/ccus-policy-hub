@@ -1,7 +1,7 @@
 ---
 name: Ascension Clean Energy (ACE) complex (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.8528
-- -92.1806
+  - 30.8528
+  - -92.1806
 commencementYear: 2029
-description: 由 Clean Hydrogen Works (Joint venture between Denbury Carbon Solutions
+description:
+  由 Clean Hydrogen Works (Joint venture between Denbury Carbon Solutions
   (ExxonMobil) (T&S), Hafnia (ammonia export), MOL (shipping), Mitsui OSK 开发的 Hydrogen
   or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 39.9764
-- -88.9799
+  - 39.9764
+  - -88.9799
 commencementYear: 2026
-description: A CCUS project in the Chemicals sector developed by Wabash Valley Resources,
+description:
+  A CCUS project in the Chemicals sector developed by Wabash Valley Resources,
   Wabash Carbon services, University of Illinois, Illinois State Geological Survey
   (CarbonSAFE). A key component of the global carbon management network.
 relatedPolicies:

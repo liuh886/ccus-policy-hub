@@ -9,10 +9,11 @@ capacity: 1.1
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 42.254580254142226
-- -2.589956638721099
+  - 42.254580254142226
+  - -2.589956638721099
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by CEMEX. A key component
+description:
+  A CCUS project in the Cement sector developed by CEMEX. A key component
   of the global carbon management network.
 ---
 

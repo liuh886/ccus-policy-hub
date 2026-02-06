@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 53.701262041929894
-- 8.960791201913306
+  - 53.701262041929894
+  - 8.960791201913306
 commencementYear: 2028
-description: A CCUS project in the Transport sector developed by Wintershall Dea (Harbour
+description:
+  A CCUS project in the Transport sector developed by Wintershall Dea (Harbour
   Energy). A key component of the global carbon management network.
 ---
 

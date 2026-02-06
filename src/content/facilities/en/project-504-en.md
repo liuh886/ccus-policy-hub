@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 58.32435574210559
-- -102.2056592925116
+  - 58.32435574210559
+  - -102.2056592925116
 commencementYear: null
-description: A CCUS project in the Storage sector developed by  Kiwetinohk Energy
+description:
+  A CCUS project in the Storage sector developed by  Kiwetinohk Energy
   Corp.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

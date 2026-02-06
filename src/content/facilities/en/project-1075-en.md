@@ -9,10 +9,11 @@ capacity: 0.185
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 58.90596331163594
-- -109.51906982142478
+  - 58.90596331163594
+  - -109.51906982142478
 commencementYear: 2027
-description: A CCUS project in the Power and heat sector developed by Varme Energy,
+description:
+  A CCUS project in the Power and heat sector developed by Varme Energy,
   Gibson Energy, City of Edmonton, Canada Growth Fund. A key component of the global
   carbon management network.
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 55.9163
-- 2.7575
+  - 55.9163
+  - 2.7575
 commencementYear: 2027
-description: A CCUS project in the Transport sector developed by Fluxys, ArcelorMittal,
+description:
+  A CCUS project in the Transport sector developed by Fluxys, ArcelorMittal,
   North Sea Port. A key component of the global carbon management network.
 ---
 

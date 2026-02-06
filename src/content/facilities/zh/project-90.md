@@ -1,7 +1,7 @@
 ---
 name: Climeworks DAC at Brawley Geothermal (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: DAC
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 37.1534
-- -119.4338
+  - 37.1534
+  - -119.4338
 commencementYear: null
 description: 由 University of Illinios, Climeworks 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

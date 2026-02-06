@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Unknown/unspecified
 coordinates:
-- 21.3640936629874
-- 3.7808728021725955
+  - 21.3640936629874
+  - 3.7808728021725955
 commencementYear: 2026
-description: A CCUS project in the Transport sector developed by Hyundai Mipo Dockyard,
+description:
+  A CCUS project in the Transport sector developed by Hyundai Mipo Dockyard,
   Carbon Fit, Capital Gas, ERMA FIRST, Babcock. A key component of the global carbon
   management network.
 ---

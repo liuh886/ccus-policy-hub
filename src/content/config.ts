@@ -78,6 +78,7 @@ const facilities_en = defineCollection({
 const changelog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/changelog' }),
   schema: z.object({
+    version: z.string(),
     title: z.string(),
     pubDate: z.coerce.date(),
   }),
@@ -88,11 +89,15 @@ const docs = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    order: z.number(),
   }),
 });
 
-export const collections = { 
-  policies_zh, policies_en, 
-  facilities_zh, facilities_en, 
-  changelog, docs 
+export const collections = {
+  policies_zh,
+  policies_en,
+  facilities_zh,
+  facilities_en,
+  changelog,
+  docs,
 };

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9797
-- -119.9587
+  - 36.9797
+  - -119.9587
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Lone Cypress
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Lone Cypress
   Energy services, California Resources Corporation (Carbon TerraVault). A key component
   of the global carbon management network.
 relatedPolicies:

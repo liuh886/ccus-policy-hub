@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.1306
-- -92.2226
+  - 31.1306
+  - -92.2226
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by Origen carbon, US DOE,
+description:
+  A CCUS project in the DAC sector developed by Origen carbon, US DOE,
   Pelican Consortium (Shell, University of Houston). A key component of the global
   carbon management network.
 relatedPolicies:

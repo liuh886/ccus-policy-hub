@@ -1,7 +1,7 @@
 ---
 name: CO2 capture at Duke Energy's East Bend Station (KY)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Power and heat
 storage_type: EOR
 coordinates:
-- 35.784959700640925
-- -97.43186522565192
+  - 35.784959700640925
+  - -97.43186522565192
 commencementYear: null
 description: 由 EPRI, MTR 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.0101
-- -100.2277
+  - 32.0101
+  - -100.2277
 commencementYear: null
-description: A CCUS project in the T&S sector developed by BKVerde. A key component
+description:
+  A CCUS project in the T&S sector developed by BKVerde. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

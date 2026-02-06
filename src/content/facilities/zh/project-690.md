@@ -1,7 +1,7 @@
 ---
 name: Prinos sigma plant
 lang: zh
-country: "希腊"
+country: '希腊'
 location: Natural gas processing/LNG
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 1.0
 sector: Natural gas processing/LNG
 storage_type: 咸水层
 coordinates:
-- 16.506068082190257
-- -4.126290776890126
+  - 16.506068082190257
+  - -4.126290776890126
 commencementYear: 2026
 description: 由 Energean 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

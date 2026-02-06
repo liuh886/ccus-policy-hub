@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9926
-- -119.4125
+  - 36.9926
+  - -119.4125
 commencementYear: 2027
-description: A CCUS project in the Storage sector developed by Carbon TerraVault Holdings
+description:
+  A CCUS project in the Storage sector developed by Carbon TerraVault Holdings
   LLC . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.1542
-- -92.2689
+  - 31.1542
+  - -92.2689
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by St. Charles
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by St. Charles
   Clean Fuels (Copenhagen Infrastructure Partners and Sustainable Fuels Group). A
   key component of the global carbon management network.
 relatedPolicies:

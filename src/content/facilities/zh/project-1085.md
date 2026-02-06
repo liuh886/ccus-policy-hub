@@ -1,7 +1,7 @@
 ---
 name: Montauk Energy biogas plants (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: CCU
 status: 计划中
@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 32.2326
-- -100.1246
+  - 32.2326
+  - -100.1246
 commencementYear: null
-description: 由 Montauk Renewables, EE North America (European Energy) 开发的 Biofuels
+description:
+  由 Montauk Renewables, EE North America (European Energy) 开发的 Biofuels
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

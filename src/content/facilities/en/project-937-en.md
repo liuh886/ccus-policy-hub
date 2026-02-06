@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 36.50165136334516
-- 135.87165912547007
+  - 36.50165136334516
+  - 135.87165912547007
 commencementYear: 2030
-description: A CCUS project in the Iron and steel sector developed by Nippon Steel.
+description:
+  A CCUS project in the Iron and steel sector developed by Nippon Steel.
   A key component of the global carbon management network.
 ---
 

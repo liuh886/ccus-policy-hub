@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 36.61345232653528
-- -90.45059559032839
+  - 36.61345232653528
+  - -90.45059559032839
 commencementYear: null
-description: A CCUS project in the Storage sector developed by University of Utah.
+description:
+  A CCUS project in the Storage sector developed by University of Utah.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

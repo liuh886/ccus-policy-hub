@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.0704
-- -91.7585
+  - 31.0704
+  - -91.7585
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Praxair.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Praxair.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

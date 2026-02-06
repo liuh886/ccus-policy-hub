@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0335
-- -92.1457
+  - 31.0335
+  - -92.1457
 commencementYear: 2027
-description: A CCUS project in the Storage sector developed by CarbonVert, Castex
+description:
+  A CCUS project in the Storage sector developed by CarbonVert, Castex
   (joint venture). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

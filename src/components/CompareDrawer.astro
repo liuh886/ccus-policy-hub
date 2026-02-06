@@ -5,23 +5,48 @@ interface Props {
   lang?: 'zh' | 'en';
 }
 
-const lang = Astro.props.lang ?? (Astro.currentLocale as 'zh' | 'en' | undefined) ?? defaultLang;
-const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const lang =
+  Astro.props.lang ??
+  (Astro.currentLocale as 'zh' | 'en' | undefined) ??
+  defaultLang;
+const t = (key: keyof (typeof ui)['zh']) =>
+  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 const isEn = lang === 'en';
-const compareHref = isEn ? '/en/compare' : '/compare';
+const BASE = '/ccus-policy-hub';
+const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
 ---
-<div id="compare-drawer" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden">
-  <div class="bg-slate-900 text-white px-6 py-4 rounded-full shadow-2xl border border-slate-700 flex items-center gap-6 backdrop-blur-md bg-slate-900/90">
+
+<div
+  id="compare-drawer"
+  class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden"
+>
+  <div
+    class="bg-slate-900 text-white px-6 py-4 rounded-full shadow-2xl border border-slate-700 flex items-center gap-6 backdrop-blur-md bg-slate-900/90"
+  >
     <div class="flex items-center gap-2">
-      <div class="bg-blue-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full" id="compare-count">0</div>
-      <span class="text-sm font-medium">{isEn ? 'policies selected' : '项政策已选择'}</span>
+      <div
+        class="bg-blue-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full"
+        id="compare-count"
+      >
+        0
+      </div>
+      <span class="text-sm font-medium"
+        >{isEn ? 'policies selected' : '项政策已选择'}</span
+      >
     </div>
-    
+
     <div class="h-4 w-px bg-slate-700"></div>
-    
+
     <div class="flex items-center gap-4">
-      <button id="clear-compare" class="text-sm text-slate-400 hover:text-white transition-colors">{isEn ? 'Clear' : '清除'}</button>
-      <a href={compareHref} class="bg-white text-slate-900 px-4 py-1.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-colors">
+      <button
+        id="clear-compare"
+        class="text-sm text-slate-400 hover:text-white transition-colors"
+        >{isEn ? 'Clear' : '清除'}</button
+      >
+      <a
+        href={compareHref}
+        class="bg-white text-slate-900 px-4 py-1.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-colors"
+      >
         {t('compare.btn')}
       </a>
     </div>
@@ -32,7 +57,7 @@ const compareHref = isEn ? '/en/compare' : '/compare';
   const STORAGE_KEY = 'compare-list';
   const LEGACY_KEY = 'compare-policies';
 
-  function safeParseList(value) {
+  function safeParseList(value: string | null) {
     try {
       const parsed = JSON.parse(value || '[]');
       return Array.isArray(parsed) ? parsed : [];
@@ -57,9 +82,9 @@ const compareHref = isEn ? '/en/compare' : '/compare';
     const drawer = document.getElementById('compare-drawer');
     const countEl = document.getElementById('compare-count');
     const list = getCompareList();
-    
+
     if (countEl) countEl.innerText = list.length.toString();
-    
+
     if (list.length > 0) {
       drawer?.classList.remove('hidden');
       drawer?.classList.add('flex');
@@ -82,12 +107,16 @@ const compareHref = isEn ? '/en/compare' : '/compare';
       let list = getCompareList();
       const id = target.dataset.id;
       if (!id) return;
-      
+
       if (target.checked) {
         if (!list.includes(id)) {
           if (list.length >= 5) {
             const isEn = document.documentElement.lang === 'en';
-            alert(isEn ? 'You can compare up to 5 policies.' : '最多只能同时对比 5 项政策');
+            alert(
+              isEn
+                ? 'You can compare up to 5 policies.'
+                : '最多只能同时对比 5 项政策'
+            );
             target.checked = false;
             return;
           }
@@ -96,7 +125,7 @@ const compareHref = isEn ? '/en/compare' : '/compare';
       } else {
         list = list.filter((i: string) => i !== id);
       }
-      
+
       localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       // 发送自定义事件以便同窗口监听
       window.dispatchEvent(new CustomEvent('compare-updated'));

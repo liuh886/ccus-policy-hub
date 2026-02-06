@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.7245
-- -92.3306
+  - 30.7245
+  - -92.3306
 commencementYear: 2029
-description: A CCUS project in the Hydrogen or ammonia sector developed by Clean Hydrogen
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Clean Hydrogen
   Works (Joint venture between Denbury Carbon Solutions (ExxonMobil) (T&S), Hafnia
   (ammonia export), MOL (shipping), Mitsui OSK. A key component of the global carbon
   management network.

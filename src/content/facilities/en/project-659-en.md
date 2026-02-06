@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Storage
 storage_type: EOR
 coordinates:
-- 57.838393061204854
-- -107.58434156609908
+  - 57.838393061204854
+  - -107.58434156609908
 commencementYear: 2020
-description: A CCUS project in the Storage sector developed by Whitecap Resources
+description:
+  A CCUS project in the Storage sector developed by Whitecap Resources
   Inc., Cardinal Energy LTD.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 59.11776441746222
-- 6.291647315769783
+  - 59.11776441746222
+  - 6.291647315769783
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by Kalundborg,
+description:
+  A CCUS project in the Other fuel transformation sector developed by Kalundborg,
   Aker Carbon Capture . A key component of the global carbon management network.
 ---
 

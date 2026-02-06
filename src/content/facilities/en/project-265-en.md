@@ -9,10 +9,11 @@ capacity: 4.5
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 53.38816037789246
-- -7.882843218380014
+  - 53.38816037789246
+  - -7.882843218380014
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Eni, Halliburton (Well
+description:
+  A CCUS project in the T&S sector developed by Eni, Halliburton (Well
   completions). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

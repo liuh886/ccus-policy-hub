@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 42.9242
-- -106.9201
+  - 42.9242
+  - -106.9201
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by Tallgrass energy. A
+description:
+  A CCUS project in the Storage sector developed by Tallgrass energy. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

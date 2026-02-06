@@ -9,10 +9,11 @@ capacity: 2.0
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 59.94025566906636
-- 5.403325020202508
+  - 59.94025566906636
+  - 5.403325020202508
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by Horisont
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Horisont
   Energi . A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

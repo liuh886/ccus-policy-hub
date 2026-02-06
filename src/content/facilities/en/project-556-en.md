@@ -9,10 +9,11 @@ capacity: 0.8
 sector: Cement
 storage_type: Unknown/unspecified
 coordinates:
-- 48.183591614726666
-- 5.565039566931017
+  - 48.183591614726666
+  - 5.565039566931017
 commencementYear: 2028
-description: A CCUS project in the Cement sector developed by Holcim Group, Cool Planet
+description:
+  A CCUS project in the Cement sector developed by Holcim Group, Cool Planet
   Technologies. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

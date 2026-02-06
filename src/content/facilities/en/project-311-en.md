@@ -9,10 +9,11 @@ capacity: 3.3
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- 4.8957617893224015
-- 100.05532172178178
+  - 4.8957617893224015
+  - 100.05532172178178
 commencementYear: 2025
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Petronas, Technip, National Petroleum Construction Company, Worley (EPC), Kawasaki
   Heavy Industries, Malaysia Marine and Heavy Engineering Sdn Bhd (Compressor). A
   key component of the global carbon management network.

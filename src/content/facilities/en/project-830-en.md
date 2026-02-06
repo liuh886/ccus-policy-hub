@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.2808
-- -91.7725
+  - 31.2808
+  - -91.7725
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Babcock
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Babcock
   & Wilcox’s, CGI Gases (CO2 offtaker, transport), General Hydrogen (H2 offtaker).
   A key component of the global carbon management network.
 relatedPolicies:

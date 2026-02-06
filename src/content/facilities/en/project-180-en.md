@@ -9,10 +9,11 @@ capacity: 0.172
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.6935086530873
-- -98.13660531378095
+  - 36.6935086530873
+  - -98.13660531378095
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Green Plains Otter
+description:
+  A CCUS project in the Biofuels sector developed by Green Plains Otter
   Tail, Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.35
 sector: Natural gas processing/LNG
 storage_type: EOR
 coordinates:
-- 35.75891338133687
-- -98.80036014978319
+  - 35.75891338133687
+  - -98.80036014978319
 commencementYear: 2003
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Core Energy. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

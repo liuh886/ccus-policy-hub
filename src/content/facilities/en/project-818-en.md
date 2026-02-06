@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.2658
-- -0.6828
+  - 53.2658
+  - -0.6828
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Equinor,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Equinor,
   SSE Thermal. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

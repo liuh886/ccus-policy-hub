@@ -1,7 +1,7 @@
 ---
 name: Alberta Carbon Trunk Line (ACTL) (ALB)
 lang: zh
-country: "加拿大"
+country: '加拿大'
 location: Transport
 type: Transport
 status: 运行中
@@ -10,10 +10,11 @@ sector: Transport
 storage_type: EOR
 precision: approximate
 coordinates:
-- 53.9056
-- -116.8348
+  - 53.9056
+  - -116.8348
 commencementYear: 2020
-description: 由 Wolf Carbon Solutions (Wolf Midstream, Enhance Energy) 开发的 Transport
+description:
+  由 Wolf Carbon Solutions (Wolf Midstream, Enhance Energy) 开发的 Transport
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - ca-ccus-itc

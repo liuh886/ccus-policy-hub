@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9715
-- -92.0047
+  - 30.9715
+  - -92.0047
 commencementYear: 2027
-description: A CCUS project in the T&S sector developed by CapturePoint Solutions,
+description:
+  A CCUS project in the T&S sector developed by CapturePoint Solutions,
   Energy transfer. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

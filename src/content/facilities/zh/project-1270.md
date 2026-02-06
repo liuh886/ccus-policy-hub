@@ -1,7 +1,7 @@
 ---
 name: Kinno carbon storage
 lang: zh
-country: "挪威"
+country: '挪威'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 5.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 61.09686598891366
-- 4.602832273216805
+  - 61.09686598891366
+  - 4.602832273216805
 commencementYear: null
 description: 由 Equinor 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

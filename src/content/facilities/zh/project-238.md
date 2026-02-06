@@ -10,8 +10,8 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 45.6093
-- 84.8822
+  - 45.6093
+  - 84.8822
 commencementYear: 2015
 description: 由 Dunhua Oil Company 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

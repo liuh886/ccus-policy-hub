@@ -9,10 +9,11 @@ capacity: 0.1
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 19.958232470187593
-- 0.3633091688573362
+  - 19.958232470187593
+  - 0.3633091688573362
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by LIPOR (Intermunicipal
+description:
+  A CCUS project in the Power and heat sector developed by LIPOR (Intermunicipal
   Waste Management of Greater Porto), P2X Europe, Veolia. A key component of the global
   carbon management network.
 ---

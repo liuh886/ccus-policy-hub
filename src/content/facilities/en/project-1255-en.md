@@ -9,10 +9,11 @@ capacity: 0.29
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 39.292698367024286
-- -92.25624809195553
+  - 39.292698367024286
+  - -92.25624809195553
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Gevo. A key component
+description:
+  A CCUS project in the Biofuels sector developed by Gevo. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.9016
-- -101.0266
+  - 47.9016
+  - -101.0266
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Summit carbon solutions
+description:
+  A CCUS project in the T&S sector developed by Summit carbon solutions
   (SK E&S 10%). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

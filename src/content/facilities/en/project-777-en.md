@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 21.038234147887245
-- -2.015062251244617
+  - 21.038234147887245
+  - -2.015062251244617
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by Japan Petroleum
+description:
+  A CCUS project in the Iron and steel sector developed by Japan Petroleum
   Exploration Co., Ltd. (JAPEX), JGC Holdings Corporation (JGC HD), Kawasaki Kisen
   Kaisha, Ltd. (“K” LINE), JFE Steel Corporation, Petronas. A key component of the
   global carbon management network.

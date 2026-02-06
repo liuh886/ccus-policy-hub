@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- 2.404025090147427
-- 102.02133399759461
+  - 2.404025090147427
+  - 102.02133399759461
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Petronas, JX Nippon. A key component of the global carbon management network.
 ---
 

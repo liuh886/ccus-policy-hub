@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.9705
-- -99.5574
+  - 31.9705
+  - -99.5574
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Rwe, Lotte
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Rwe, Lotte
   Chemical Corporation, Mitsubishi Corporation (JSA). A key component of the global
   carbon management network.
 relatedPolicies:

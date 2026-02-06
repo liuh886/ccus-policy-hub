@@ -9,10 +9,11 @@ capacity: 1.4
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 39.388519443627544
-- -91.1825667788659
+  - 39.388519443627544
+  - -91.1825667788659
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Southern States Energy
+description:
+  A CCUS project in the Cement sector developed by Southern States Energy
   Board, DOE Office of Clean Energy Demonstrations. A key component of the global
   carbon management network.
 relatedPolicies:

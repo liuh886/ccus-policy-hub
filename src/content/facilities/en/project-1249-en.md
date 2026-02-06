@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9366
-- -120.0420
+  - 36.9366
+  - -120.0420
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by California Resources
+description:
+  A CCUS project in the Storage sector developed by California Resources
   Corporation (Carbon TerraVault). A key component of the global carbon management
   network.
 relatedPolicies:

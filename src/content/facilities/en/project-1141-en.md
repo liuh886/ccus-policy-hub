@@ -9,10 +9,11 @@ capacity: 1.9
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 23.1787793543676
-- -3.6685028213461344
+  - 23.1787793543676
+  - -3.6685028213461344
 commencementYear: 2029
-description: A CCUS project in the Cement sector developed by Titan Group. A key component
+description:
+  A CCUS project in the Cement sector developed by Titan Group. A key component
   of the global carbon management network.
 ---
 

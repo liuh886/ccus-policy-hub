@@ -9,10 +9,11 @@ capacity: 30.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 57.348414105695376
-- -4.761952416449758
+  - 57.348414105695376
+  - -4.761952416449758
 commencementYear: 2035
-description: A CCUS project in the Storage sector developed by Prenco UK (operator),
+description:
+  A CCUS project in the Storage sector developed by Prenco UK (operator),
   Carbon Catalyst Ltd, Wintershall dea (10% of carbon catalyst license, Harbour Energy).
   A key component of the global carbon management network.
 relatedPolicies:

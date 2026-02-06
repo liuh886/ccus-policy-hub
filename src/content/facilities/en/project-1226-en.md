@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0046
-- -100.0192
+  - 31.0046
+  - -100.0192
 commencementYear: null
-description: A CCUS project in the Storage sector developed by ConocoPhillips. A key
+description:
+  A CCUS project in the Storage sector developed by ConocoPhillips. A key
   component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

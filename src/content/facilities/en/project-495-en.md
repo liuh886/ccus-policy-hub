@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.3391
-- -91.7334
+  - 31.3391
+  - -91.7334
 commencementYear: 2026
-description: A CCUS project in the Transport sector developed by EnLink Midstream.
+description:
+  A CCUS project in the Transport sector developed by EnLink Midstream.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

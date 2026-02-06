@@ -1,7 +1,7 @@
 ---
 name: Montezuma NorCal Carbon Hub (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 37.1544
-- -119.4478
+  - 37.1544
+  - -119.4478
 commencementYear: null
-description: 由 Montezuma Carbon LLC, University of Berkeley, Lawrence Berkeley National
+description:
+  由 Montezuma Carbon LLC, University of Berkeley, Lawrence Berkeley National
   Lab 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

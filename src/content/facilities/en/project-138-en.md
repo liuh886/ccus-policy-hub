@@ -9,10 +9,11 @@ capacity: 2.5
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 22.00764652595927
-- -2.2676099450322997
+  - 22.00764652595927
+  - -2.2676099450322997
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Energean
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Energean
   Plc. A key component of the global carbon management network.
 ---
 

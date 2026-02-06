@@ -9,10 +9,11 @@ capacity: 10.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 56.445280361389436
-- -4.513933051709709
+  - 56.445280361389436
+  - -4.513933051709709
 commencementYear: 2029
-description: A CCUS project in the T&S sector developed by Veri Energy (EnQuest).
+description:
+  A CCUS project in the T&S sector developed by Veri Energy (EnQuest).
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

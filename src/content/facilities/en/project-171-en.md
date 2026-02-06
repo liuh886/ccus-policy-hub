@@ -9,10 +9,11 @@ capacity: 0.192
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 53.131887382727086
-- -104.41451149468517
+  - 53.131887382727086
+  - -104.41451149468517
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by  Entropy Inc.
+description:
+  A CCUS project in the Power and heat sector developed by  Entropy Inc.
   ABC Engineering, University of Regina, Brookfield Renewable Partners . A key component
   of the global carbon management network.
 relatedPolicies:

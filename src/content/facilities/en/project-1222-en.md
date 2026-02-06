@@ -9,10 +9,11 @@ capacity: 2.727
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 35.55127355292909
-- -98.4623055914299
+  - 35.55127355292909
+  - -98.4623055914299
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by Tenaska, Southern States
+description:
+  A CCUS project in the Storage sector developed by Tenaska, Southern States
   Energy Board. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

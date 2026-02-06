@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 50.40482293506152
-- 2.3498789863048817
+  - 50.40482293506152
+  - 2.3498789863048817
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Fluxys, Heidelberg
+description:
+  A CCUS project in the Transport sector developed by Fluxys, Heidelberg
   Materials. A key component of the global carbon management network.
 ---
 

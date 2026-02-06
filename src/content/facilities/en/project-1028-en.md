@@ -9,10 +9,11 @@ capacity: 0.11
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 19.816135849205327
-- -1.7438743560299876
+  - 19.816135849205327
+  - -1.7438743560299876
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by RenGas, Tampereen
+description:
+  A CCUS project in the Power and heat sector developed by RenGas, Tampereen
   Energia. A key component of the global carbon management network.
 ---
 

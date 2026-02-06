@@ -9,10 +9,11 @@ capacity: 0.257
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.224150987199835
-- -95.98114864550696
+  - 36.224150987199835
+  - -95.98114864550696
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Dakota Ethanol, Summit
+description:
+  A CCUS project in the Biofuels sector developed by Dakota Ethanol, Summit
   Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

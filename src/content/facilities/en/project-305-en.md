@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 30.6462
-- -92.1480
+  - 30.6462
+  - -92.1480
 commencementYear: 2013
-description: A CCUS project in the Chemicals sector developed by Nutrien, ExxonMobil
+description:
+  A CCUS project in the Chemicals sector developed by Nutrien, ExxonMobil
   (formerly Denbury carbon solutions). A key component of the global carbon management
   network.
 relatedPolicies:

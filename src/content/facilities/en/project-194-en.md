@@ -9,10 +9,11 @@ capacity: 1.495
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 56.98499912008235
-- 0.49932462700213875
+  - 56.98499912008235
+  - 0.49932462700213875
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by Kellas
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Kellas
   Midstream, SSE Thermal (50%). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

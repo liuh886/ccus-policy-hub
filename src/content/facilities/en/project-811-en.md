@@ -9,10 +9,11 @@ capacity: 3.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 34.28954906761738
-- 139.50428715432108
+  - 34.28954906761738
+  - 139.50428715432108
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by ENEOS Corporation, JX Nippon
+description:
+  A CCUS project in the T&S sector developed by ENEOS Corporation, JX Nippon
   Oil & Gas Exploration Corporation, Electric Power Development Co.,Ltd. (J-POWER).
   A key component of the global carbon management network.
 ---

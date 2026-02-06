@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 53.12326345208493
-- -108.84246309115865
+  - 53.12326345208493
+  - -108.84246309115865
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by  City of Medicine
+description:
+  A CCUS project in the Power and heat sector developed by  City of Medicine
   Hat. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

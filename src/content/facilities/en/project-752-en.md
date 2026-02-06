@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Biofuels
 storage_type: Use
 coordinates:
-- 52.385671717412016
-- -1.4210469019566192
+  - 52.385671717412016
+  - -1.4210469019566192
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Velocys, Clariant
+description:
+  A CCUS project in the Biofuels sector developed by Velocys, Clariant
   Catalysts, Technip Energies, British Airways. A key component of the global carbon
   management network.
 relatedPolicies:

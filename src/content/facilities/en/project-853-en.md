@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 52.61634891236206
-- -0.30174367642348
+  - 52.61634891236206
+  - -0.30174367642348
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by Eni (following acquisition
+description:
+  A CCUS project in the Storage sector developed by Eni (following acquisition
   of Neptune Energy) (100%). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

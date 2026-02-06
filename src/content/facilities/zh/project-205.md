@@ -1,7 +1,7 @@
 ---
 name: HIF USA eFuels Matagorda County (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: CCU
 status: 计划中
@@ -10,10 +10,11 @@ sector: DAC
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.6560
-- -99.6280
+  - 31.6560
+  - -99.6280
 commencementYear: 2027
-description: 由 HIF USA, Baker Hughes (DAC), Topsoe (e-fuel tech), Bechtel (FEED),
+description:
+  由 HIF USA, Baker Hughes (DAC), Topsoe (e-fuel tech), Bechtel (FEED),
   Siemens energy (electrolysers), (Still involved Honeywell (e-methanol to e-SAF
   tech), Johnson Matthey (e-methanol tech)) 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

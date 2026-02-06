@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9329
-- -92.2022
+  - 30.9329
+  - -92.2022
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Onstream CO2 (Enbridge,
+description:
+  A CCUS project in the T&S sector developed by Onstream CO2 (Enbridge,
   CarbonVert, CASTEX). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

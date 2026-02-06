@@ -9,10 +9,11 @@ capacity: 3.6
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 17.008234607550357
-- -1.3616423291227053
+  - 17.008234607550357
+  - -1.3616423291227053
 commencementYear: 2029
-description: A CCUS project in the Transport sector developed by Air Liquide, Eni,
+description:
+  A CCUS project in the Transport sector developed by Air Liquide, Eni,
   Snam. A key component of the global carbon management network.
 ---
 

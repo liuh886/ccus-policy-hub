@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 31.5690
-- -99.7134
+  - 31.5690
+  - -99.7134
 commencementYear: 2010
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Mitchell group, Sandridge Energy. A key component of the global carbon management
   network.
 relatedPolicies:

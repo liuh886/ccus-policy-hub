@@ -9,10 +9,11 @@ capacity: 0.8
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 55.27287667224081
-- -6.134248858972295
+  - 55.27287667224081
+  - -6.134248858972295
 commencementYear: 2028
-description: A CCUS project in the Cement sector developed by Heidelberg Materials,
+description:
+  A CCUS project in the Cement sector developed by Heidelberg Materials,
   Hanson, Mistubishi Heavy Industries (pre-FEED/FEED), Worley (FEED). A key component
   of the global carbon management network.
 relatedPolicies:

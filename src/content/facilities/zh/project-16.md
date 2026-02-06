@@ -1,7 +1,7 @@
 ---
 name: Aemetis CCS Riverbank facility (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.8490
-- -119.5370
+  - 36.8490
+  - -119.5370
 commencementYear: 2026
 description: 由 Aemetis 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

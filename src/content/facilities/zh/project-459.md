@@ -1,7 +1,7 @@
 ---
 name: CF Industries blue ammonia Yazoo (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 全流程
 status: 建设中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.3833
-- -91.6523
+  - 31.3833
+  - -91.6523
 commencementYear: 2028
 description: 由 ExxonMobil, CF Industries 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

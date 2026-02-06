@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.5783
-- -99.6206
+  - 31.5783
+  - -99.6206
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   NextDecade, Mistubishi Heavy Industries (ESA/Tech). A key component of the global
   carbon management network.
 relatedPolicies:

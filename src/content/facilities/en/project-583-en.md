@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 58.34296044061001
-- -6.639686684170885
+  - 58.34296044061001
+  - -6.639686684170885
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by North London
+description:
+  A CCUS project in the Power and heat sector developed by North London
   Waste Authority (NLWA). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

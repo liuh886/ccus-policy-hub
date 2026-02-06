@@ -1,7 +1,7 @@
 ---
 name: CO2NNECTION Central Appalachian Basin hub (OH, PA, WV)
 lang: zh
-country: "美国"
+country: '美国'
 location: Transport
 type: Transport
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Transport
 storage_type: 地质封存
 coordinates:
-- 40.10111955033919
-- -92.26078896876707
+  - 40.10111955033919
+  - -92.26078896876707
 commencementYear: null
 description: 由 Battelle 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

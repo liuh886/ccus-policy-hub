@@ -9,10 +9,11 @@ capacity: 0.25
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 19.134733034529596
-- -0.9272705647872215
+  - 19.134733034529596
+  - -0.9272705647872215
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Teniska Verken,
+description:
+  A CCUS project in the Power and heat sector developed by Teniska Verken,
   Capsol Technologies (feasibility). A key component of the global carbon management
   network.
 ---

@@ -9,10 +9,11 @@ capacity: 4.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 52.209483895294106
-- -4.71936192729834
+  - 52.209483895294106
+  - -4.71936192729834
 commencementYear: null
-description: A CCUS project in the T&S sector developed by BP, Equinor, TotalEnergies.
+description:
+  A CCUS project in the T&S sector developed by BP, Equinor, TotalEnergies.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

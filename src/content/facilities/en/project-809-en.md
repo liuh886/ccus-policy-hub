@@ -9,10 +9,11 @@ capacity: 0.24
 sector: Other industry
 storage_type: Unknown/unspecified
 coordinates:
-- 48.85500276617712
-- 5.858222092435055
+  - 48.85500276617712
+  - 5.858222092435055
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by EDF, Aluminium
+description:
+  A CCUS project in the Other industry sector developed by EDF, Aluminium
   Dunkerque, Trimet, Rio Tinto,  Fives. A key component of the global carbon management
   network.
 relatedPolicies:

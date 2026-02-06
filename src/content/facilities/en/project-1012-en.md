@@ -9,10 +9,11 @@ capacity: 0.76
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 49.2560277661749
-- 7.098506356856622
+  - 49.2560277661749
+  - 7.098506356856622
 commencementYear: 2029
-description: A CCUS project in the Cement sector developed by Heidelberg Materials,
+description:
+  A CCUS project in the Cement sector developed by Heidelberg Materials,
   Wintershall Dea (Harbour Energy). A key component of the global carbon management
   network.
 relatedPolicies:

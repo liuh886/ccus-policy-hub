@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.6691
-- -99.9648
+  - 31.6691
+  - -99.9648
 commencementYear: 2028
-description: A CCUS project in the Other fuel transformation sector developed by Delek,
+description:
+  A CCUS project in the Other fuel transformation sector developed by Delek,
   Svante. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

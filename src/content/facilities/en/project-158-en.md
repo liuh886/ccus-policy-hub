@@ -9,10 +9,11 @@ capacity: 0.2
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 53.362628513231684
-- 1.0409586947615193
+  - 53.362628513231684
+  - 1.0409586947615193
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Future Biogas. A key
+description:
+  A CCUS project in the Biofuels sector developed by Future Biogas. A key
   component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

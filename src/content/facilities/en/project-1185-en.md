@@ -9,10 +9,11 @@ capacity: 0.146
 sector: Chemicals
 storage_type: EOR and use
 coordinates:
-- 57.95629967892645
-- -107.99671504606081
+  - 57.95629967892645
+  - -107.99671504606081
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by Methanex Corporation,
+description:
+  A CCUS project in the Chemicals sector developed by Methanex Corporation,
   Entropy Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

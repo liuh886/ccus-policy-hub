@@ -9,10 +9,11 @@ capacity: 2.7
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 57.93355027205489
-- -103.55898465865035
+  - 57.93355027205489
+  - -103.55898465865035
 commencementYear: null
-description: A CCUS project in the Storage sector developed by  West Lake Energy Corp..
+description:
+  A CCUS project in the Storage sector developed by  West Lake Energy Corp..
   A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

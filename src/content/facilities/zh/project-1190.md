@@ -1,7 +1,7 @@
 ---
 name: Blue Horizon
 lang: zh
-country: "阿曼"
+country: '阿曼'
 location: Hydrogen or ammonia
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 23.5806
-- 58.3965
+  - 23.5806
+  - 58.3965
 commencementYear: null
 description: 由 Oman Shell, Wood, KBR 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

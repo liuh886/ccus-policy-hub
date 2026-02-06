@@ -9,10 +9,11 @@ capacity: 0.23
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 38.14040737978062
-- -95.24564530999129
+  - 38.14040737978062
+  - -95.24564530999129
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Bushmills Ethanol,
+description:
+  A CCUS project in the Biofuels sector developed by Bushmills Ethanol,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

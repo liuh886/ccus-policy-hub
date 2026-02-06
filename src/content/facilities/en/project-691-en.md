@@ -10,10 +10,11 @@ sector: Iron and steel
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.9880
-- -100.0218
+  - 30.9880
+  - -100.0218
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by Dastur International
+description:
+  A CCUS project in the Iron and steel sector developed by Dastur International
   Inc., ON Clean Energy, Inc., University of Texas,Cleveland-Cliffs Inc.. A key component
   of the global carbon management network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 6.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- -27.30263139368799
-- 137.95938462068972
+  - -27.30263139368799
+  - 137.95938462068972
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by Victorian Government/Australian
+description:
+  A CCUS project in the T&S sector developed by Victorian Government/Australian
   Government, (DNV). A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.572
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 39.048908601359756
-- -95.76646060261325
+  - 39.048908601359756
+  - -95.76646060261325
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Homeland Energy Solutions,
+description:
+  A CCUS project in the Biofuels sector developed by Homeland Energy Solutions,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

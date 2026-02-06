@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.7635
-- -101.3797
+  - 47.7635
+  - -101.3797
 commencementYear: 2026
-description: A CCUS project in the DAC sector developed by Origen carbon, Energy &
+description:
+  A CCUS project in the DAC sector developed by Origen carbon, Energy &
   Environmental Research Center . A key component of the global carbon management
   network.
 relatedPolicies:

@@ -1,7 +1,7 @@
 ---
 name: Linde hydrogen plant for OCI fertilizer blue ammonia Beaumont (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 建设中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 32.1544
-- -100.2865
+  - 32.1544
+  - -100.2865
 commencementYear: 2026
-description: 由 Woodside Energy (new owner, bought from OCI), Linde (owns, builds,
+description:
+  由 Woodside Energy (new owner, bought from OCI), Linde (owns, builds,
   operates), OCI (H2 demand) 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

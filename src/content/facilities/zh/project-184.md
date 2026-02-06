@@ -1,7 +1,7 @@
 ---
 name: Green Plains York biorefinery (NE)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 建设中
@@ -9,8 +9,8 @@ capacity: 0.143
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 35.29046626915773
-- -97.79188031797227
+  - 35.29046626915773
+  - -97.79188031797227
 commencementYear: 2028
 description: 由 Green Plains York, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

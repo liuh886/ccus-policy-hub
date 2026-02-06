@@ -9,10 +9,11 @@ capacity: 0.0
 sector: T&S
 storage_type: Unknown/unspecified
 coordinates:
-- 23.083904677958913
-- -2.3374680429910355
+  - 23.083904677958913
+  - -2.3374680429910355
 commencementYear: null
-description: A CCUS project in the T&S sector developed by BP, Chubu Electric. A key
+description:
+  A CCUS project in the T&S sector developed by BP, Chubu Electric. A key
   component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 43.0761
-- -107.0304
+  - 43.0761
+  - -107.0304
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by 8Rivers,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by 8Rivers,
   Wyoming Energy Authority. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

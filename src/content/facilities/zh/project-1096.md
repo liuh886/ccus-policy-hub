@@ -1,7 +1,7 @@
 ---
 name: OCAP
 lang: zh
-country: "荷兰"
+country: '荷兰'
 location: Transport
 type: Transport
 status: 运行中
@@ -9,8 +9,8 @@ capacity: 0.5
 sector: Transport
 storage_type: 地质封存
 coordinates:
-- 53.64872301040963
-- 2.197001022016388
+  - 53.64872301040963
+  - 2.197001022016388
 commencementYear: 2005
 description: 由 OCAP (Linde) 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

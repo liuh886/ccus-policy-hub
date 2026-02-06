@@ -1,7 +1,7 @@
 ---
 name: Unita Basin Carbon SAFE (UT)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 36.61345232653528
-- -90.45059559032839
+  - 36.61345232653528
+  - -90.45059559032839
 commencementYear: null
 description: 由 University of Utah 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

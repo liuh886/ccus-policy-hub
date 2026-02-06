@@ -5,20 +5,21 @@ import Citation from '../../components/Citation.astro';
 
 export async function getStaticPaths() {
   const policies = await getCollection('policies_zh');
-  return policies.map(entry => {
+  return policies.map((entry) => {
     return { params: { slug: entry.id }, props: { entry } };
   });
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, country, year, category, source, url, relatedFacilities } = entry.data;
+const { title, country, year, category, source, url, relatedFacilities } =
+  entry.data;
 
 const pureSlug = entry.id.replace(/^zh\//, '');
 
 // 查找对应的英文版本
 const policiesEn = await getCollection('policies_en');
-const hasEnglish = policiesEn.some(p => p.id === entry.id);
+const hasEnglish = policiesEn.some((p) => p.id === entry.id);
 ---
 
 <Layout title={title}>
@@ -28,49 +29,99 @@ const hasEnglish = policiesEn.some(p => p.id === entry.id);
     <div class="hidden" data-pagefind-filter={`country:${country}`}></div>
     <div class="hidden" data-pagefind-filter={`category:${category}`}></div>
 
-    <nav class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div class="flex items-center gap-2 text-xs text-slate-500 uppercase tracking-wider">
-        <a href="/" class="hover:text-blue-600">首页</a>
+    <nav
+      class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+    >
+      <div
+        class="flex items-center gap-2 text-xs text-slate-500 uppercase tracking-wider"
+      >
+        <a href="/ccus-policy-hub/" class="hover:text-blue-600">首页</a>
         <span>/</span>
-        <a href="/policy" class="hover:text-blue-600">政策数据库</a>
+        <a href="/ccus-policy-hub/policy/" class="hover:text-blue-600"
+          >政策数据库</a
+        >
         <span>/</span>
         <span class="text-slate-400">{title}</span>
       </div>
-      
-      {hasEnglish && (
-        <a href={`/en/policy/${pureSlug}`} class="flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full transition-all">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-          View English Version
-        </a>
-      )}
+
+      {
+        hasEnglish && (
+          <a
+            href={`/ccus-policy-hub/en/policy/${pureSlug}/`}
+            class="flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full transition-all"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <>
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                <path d="M2 12h20" />
+              </>
+            </svg>
+            View English Version
+          </a>
+        )
+      }
     </nav>
 
     <header class="mb-10 border-b dark:border-slate-800 pb-8">
       <div class="flex items-center gap-4 mb-4">
-        <span class="bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded">
+        <span
+          class="bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded"
+        >
           {category}
         </span>
         <span class="text-slate-400 text-sm font-bold">{country} • {year}</span>
       </div>
-      <h1 class="text-4xl font-black mb-6 text-slate-900 dark:text-white leading-tight">{title}</h1>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
+      <h1
+        class="text-4xl font-black mb-6 text-slate-900 dark:text-white leading-tight"
+      >
+        {title}
+      </h1>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800"
+      >
         <div>
-          <span class="text-[10px] font-black uppercase text-slate-400 block mb-1">发布机构 SOURCE</span>
+          <span
+            class="text-[10px] font-black uppercase text-slate-400 block mb-1"
+            >发布机构 SOURCE</span
+          >
           <span class="font-bold dark:text-slate-300">{source || '未知'}</span>
         </div>
         <div>
-          <span class="text-[10px] font-black uppercase text-slate-400 block mb-1">官方链接 URL</span>
-          {url ? (
-            <a href={url} target="_blank" rel="noopener noreferrer" class="text-blue-600 font-bold hover:underline">查看原文 &rarr;</a>
-          ) : (
-            <span class="text-slate-400">暂无链接</span>
-          )}
+          <span
+            class="text-[10px] font-black uppercase text-slate-400 block mb-1"
+            >官方链接 URL</span
+          >
+          {
+            url ? (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 font-bold hover:underline"
+              >
+                查看原文 &rarr;
+              </a>
+            ) : (
+              <span class="text-slate-400">暂无链接</span>
+            )
+          }
         </div>
       </div>
     </header>
 
-    <article class="prose prose-slate dark:prose-invert max-w-none mb-12 prose-headings:font-black prose-strong:text-blue-600">
+    <article
+      class="prose prose-slate dark:prose-invert max-w-none mb-12 prose-headings:font-black prose-strong:text-blue-600"
+    >
       <Content />
     </article>
 

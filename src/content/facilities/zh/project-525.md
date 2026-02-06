@@ -1,7 +1,7 @@
 ---
 name: Heidelberg Materials Mitchell plant (IN)
 lang: zh
-country: "美国"
+country: '美国'
 location: Cement
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 2.0
 sector: Cement
 storage_type: 咸水层
 coordinates:
-- 37.058089043195885
-- -94.67462027204225
+  - 37.058089043195885
+  - -94.67462027204225
 commencementYear: 2030
 description: 由 Heidelberg Materials 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

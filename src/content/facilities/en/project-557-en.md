@@ -9,10 +9,11 @@ capacity: 1.1
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 51.595106339494464
-- 6.559246909863509
+  - 51.595106339494464
+  - 6.559246909863509
 commencementYear: 2028
-description: A CCUS project in the Cement sector developed by Holcim Group, TotalEnergies,
+description:
+  A CCUS project in the Cement sector developed by Holcim Group, TotalEnergies,
   Air Liquide. A key component of the global carbon management network.
 ---
 

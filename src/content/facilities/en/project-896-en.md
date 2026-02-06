@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9240
-- -119.0414
+  - 36.9240
+  - -119.0414
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Aera
+description:
+  A CCUS project in the Other fuel transformation sector developed by Aera
   Energy LLC . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

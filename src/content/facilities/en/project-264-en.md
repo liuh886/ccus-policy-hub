@@ -9,10 +9,11 @@ capacity: 0.458
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 37.203406152937625
-- -90.90522669647747
+  - 37.203406152937625
+  - -90.90522669647747
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Little Sioux Corn
+description:
+  A CCUS project in the Biofuels sector developed by Little Sioux Corn
   Processors, Summit Carbon Solutions. A key component of the global carbon management
   network.
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 37.0663
-- -119.3763
+  - 37.0663
+  - -119.3763
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Aemetis. A key component
+description:
+  A CCUS project in the Biofuels sector developed by Aemetis. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -4,33 +4,48 @@ const currentLang = Astro.currentLocale || 'zh';
 
 // 动态计算当前页面的路径，以便切换时保留
 const pathname = Astro.url.pathname;
+const BASE = '/ccus-policy-hub';
 ---
 
-<div class="flex items-center gap-1 bg-slate-50 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-  {Object.entries(languages).map(([lang, label]) => {
-    // 计算跳转路径
-    let href = pathname;
-    if (lang === 'en') {
-      if (!pathname.startsWith('/en')) {
-        href = `/en${pathname === '/' ? '' : pathname}`;
-      }
-    } else {
-      if (pathname.startsWith('/en')) {
-        href = pathname.replace('/en', '') || '/';
-      }
-    }
+<div
+  class="flex items-center gap-1 bg-slate-50 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700"
+>
+  {
+    Object.entries(languages).map(([lang, label]) => {
+      // 计算跳转路径
+      let href = pathname;
+      const pathWithoutBase =
+        (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname) ||
+        '/';
 
-    return (
-      <a
-        href={href}
-        class={`text-[10px] font-bold px-2 py-1 rounded-lg transition-all ${
-          currentLang === lang 
-            ? 'bg-blue-600 text-white shadow-sm' 
-            : 'text-slate-500 hover:text-blue-600'
-        }`}
-      >
-        {label}
-      </a>
-    );
-  })}
+      if (lang === 'en') {
+        if (!pathWithoutBase.startsWith('/en')) {
+          href = `${BASE}/en${pathWithoutBase === '/' ? '/' : pathWithoutBase}`;
+          // Ensure ends with slash
+          if (!href.endsWith('/')) href += '/';
+        }
+      } else {
+        if (pathWithoutBase.startsWith('/en')) {
+          href = `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`;
+          if (!href.endsWith('/')) href += '/';
+        } else {
+          href = `${BASE}${pathWithoutBase}`;
+          if (!href.endsWith('/')) href += '/';
+        }
+      }
+
+      return (
+        <a
+          href={href}
+          class={`text-[10px] font-bold px-2 py-1 rounded-lg transition-all ${
+            currentLang === lang
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-500 hover:text-blue-600'
+          }`}
+        >
+          {label}
+        </a>
+      );
+    })
+  }
 </div>

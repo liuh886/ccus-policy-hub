@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 24.4353
-- 54.2681
+  - 24.4353
+  - 54.2681
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by ADNOC. A key component
+description:
+  A CCUS project in the Storage sector developed by ADNOC. A key component
   of the global carbon management network.
 ---
 

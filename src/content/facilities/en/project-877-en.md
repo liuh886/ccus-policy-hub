@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.2026
-- -99.9401
+  - 32.2026
+  - -99.9401
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Orchard Storage Company
+description:
+  A CCUS project in the Storage sector developed by Orchard Storage Company
   LLC, Elysian Ventures LLC, EnCap Flatrock Midstream, Buckeye Partners, Lonquist
   Sequestration. A key component of the global carbon management network.
 relatedPolicies:

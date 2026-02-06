@@ -1,7 +1,7 @@
 ---
 name: EXL013
 lang: zh
-country: "挪威"
+country: '挪威'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 61.67599415059835
-- 10.950897994606837
+  - 61.67599415059835
+  - 10.950897994606837
 commencementYear: null
-description: 由 Aker BP ASA(50%), Equinor Low Carbon Solution (50%) 开发的 Storage 行业
+description:
+  由 Aker BP ASA(50%), Equinor Low Carbon Solution (50%) 开发的 Storage 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - no-storage-regulations

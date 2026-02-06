@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 56.0712
-- 2.6816
+  - 56.0712
+  - 2.6816
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Port of Rotterdam,
+description:
+  A CCUS project in the Transport sector developed by Port of Rotterdam,
   port of Antwerp, North Sea Port, Fluxys, Gasunie. A key component of the global
   carbon management network.
 ---

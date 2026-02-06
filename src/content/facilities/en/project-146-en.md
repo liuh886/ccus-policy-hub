@@ -9,10 +9,11 @@ capacity: 2.5
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 23.44675002006905
-- 3.9815844828499003
+  - 23.44675002006905
+  - 3.9815844828499003
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by Irving
+description:
+  A CCUS project in the Other fuel transformation sector developed by Irving
   Oil, Ervia Cork. A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 54.68163592686512
-- -1.901767410488791
+  - 54.68163592686512
+  - -1.901767410488791
 commencementYear: 2030
-description: A CCUS project in the Transport sector developed by Progressive Energy,
+description:
+  A CCUS project in the Transport sector developed by Progressive Energy,
   Breedon group. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.2995
-- 4.7883
+  - 52.2995
+  - 4.7883
 commencementYear: 2026
-description: A CCUS project in the Other fuel transformation sector developed by Exxonmobil,
+description:
+  A CCUS project in the Other fuel transformation sector developed by Exxonmobil,
   Air Products. A key component of the global carbon management network.
 ---
 

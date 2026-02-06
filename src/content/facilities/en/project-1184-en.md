@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.8363
-- -106.3334
+  - 52.8363
+  - -106.3334
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Strathcona
+description:
+  A CCUS project in the Other fuel transformation sector developed by Strathcona
   Resources Ltd., Canada Growth Fund. A key component of the global carbon management
   network.
 relatedPolicies:

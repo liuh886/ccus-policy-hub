@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.8519
-- -119.6664
+  - 36.8519
+  - -119.6664
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Gas Technology Institute,
+description:
+  A CCUS project in the T&S sector developed by Gas Technology Institute,
   Calpine, 1pointfive (storage). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

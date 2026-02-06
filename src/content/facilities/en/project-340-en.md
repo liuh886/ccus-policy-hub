@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 20.253077953863013
-- -4.350274918116183
+  - 20.253077953863013
+  - -4.350274918116183
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by 8Rivers,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by 8Rivers,
   Toshiba, McDermott, Exelon. A key component of the global carbon management network.
 ---
 

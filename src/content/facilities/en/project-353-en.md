@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- -2.5388350408025016
-- 111.51002312144763
+  - -2.5388350408025016
+  - 111.51002312144763
 commencementYear: 2028
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Repsol, Petronas, MOECO. A key component of the global carbon management network.
 ---
 

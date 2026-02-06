@@ -9,10 +9,11 @@ capacity: 0.65
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 53.004300919151056
-- -104.059956219452
+  - 53.004300919151056
+  - -104.059956219452
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Shell Canada Limited, ATCO
+description:
+  A CCUS project in the T&S sector developed by Shell Canada Limited, ATCO
   EnPower. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

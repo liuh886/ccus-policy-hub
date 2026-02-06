@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.2600
-- -99.9914
+  - 32.2600
+  - -99.9914
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by Wood Environment
+description:
+  A CCUS project in the Chemicals sector developed by Wood Environment
   & Infrastructure Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

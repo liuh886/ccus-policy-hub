@@ -9,10 +9,11 @@ capacity: 10.3
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 23.18297077795231
-- -1.7826333335461775
+  - 23.18297077795231
+  - -1.7826333335461775
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Vopak, Gasunie. A
+description:
+  A CCUS project in the Transport sector developed by Vopak, Gasunie. A
   key component of the global carbon management network.
 ---
 

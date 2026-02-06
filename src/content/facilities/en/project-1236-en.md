@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.3222
-- -92.1839
+  - 31.3222
+  - -92.1839
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Capio sequestration. A
+description:
+  A CCUS project in the T&S sector developed by Capio sequestration. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

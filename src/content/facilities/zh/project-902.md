@@ -1,7 +1,7 @@
 ---
 name: 'Carbon TerraVault1: Verde (CA)'
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 37.0504
-- -120.0034
+  - 37.0504
+  - -120.0034
 commencementYear: null
-description: 由 California Resource Corporation (Carbon TerraVault), Verde Clean Fuels  开发的
+description:
+  由 California Resource Corporation (Carbon TerraVault), Verde Clean Fuels  开发的
   Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Cement
 storage_type: Unknown/unspecified
 coordinates:
-- 36.64248473069378
-- -94.46799950309668
+  - 36.64248473069378
+  - -94.46799950309668
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Aker Carbon Capture,
+description:
+  A CCUS project in the Cement sector developed by Aker Carbon Capture,
   unknown company. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

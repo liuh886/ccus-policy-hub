@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.6085
-- -119.7065
+  - 36.6085
+  - -119.7065
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Chevron, Fluor
+description:
+  A CCUS project in the Power and heat sector developed by Chevron, Fluor
   (FEED, tech licensing). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

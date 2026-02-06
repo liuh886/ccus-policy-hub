@@ -9,10 +9,11 @@ capacity: 0.005
 sector: DAC
 storage_type: Use
 coordinates:
-- 36.49545450093735
-- -91.68433271925862
+  - 36.49545450093735
+  - -91.68433271925862
 commencementYear: null
-description: A CCUS project in the DAC sector developed by CarbonCapture, CarbonCure,
+description:
+  A CCUS project in the DAC sector developed by CarbonCapture, CarbonCure,
   US Steel. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

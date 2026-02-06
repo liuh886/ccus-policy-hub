@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 34.2975
-- 108.9405
+  - 34.2975
+  - 108.9405
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Northwest University.
+description:
+  A CCUS project in the Storage sector developed by Northwest University.
   A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

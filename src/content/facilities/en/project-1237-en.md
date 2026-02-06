@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 43.3780
-- -107.2676
+  - 43.3780
+  - -107.2676
 commencementYear: 2026
-description: A CCUS project in the DAC sector developed by Spiritus, Casper carbon
+description:
+  A CCUS project in the DAC sector developed by Spiritus, Casper carbon
   sequestration. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

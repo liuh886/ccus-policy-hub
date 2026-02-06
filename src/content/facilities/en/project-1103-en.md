@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 36.12576544111177
-- -98.20708554235614
+  - 36.12576544111177
+  - -98.20708554235614
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Aker
+description:
+  A CCUS project in the Other fuel transformation sector developed by Aker
   Carbon Capture, unknown company. A key component of the global carbon management
   network.
 relatedPolicies:

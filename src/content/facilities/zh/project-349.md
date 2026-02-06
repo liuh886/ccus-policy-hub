@@ -1,7 +1,7 @@
 ---
 name: Ravenna CCS phase 2
 lang: zh
-country: "意大利"
+country: '意大利'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 4.0
 sector: T&S
 storage_type: 咸水层
 coordinates:
-- 44.33696326215566
-- 7.875576180112194
+  - 44.33696326215566
+  - 7.875576180112194
 commencementYear: 2028
 description: 由 Eni, Snam 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

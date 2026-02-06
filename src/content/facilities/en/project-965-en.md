@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 20.394490208713957
-- -4.205364463673659
+  - 20.394490208713957
+  - -4.205364463673659
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Limeco, Aker
+description:
+  A CCUS project in the Power and heat sector developed by Limeco, Aker
   Carbon Capture. A key component of the global carbon management network.
 ---
 

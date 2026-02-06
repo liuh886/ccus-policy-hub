@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.4441
-- -119.0482
+  - 36.4441
+  - -119.0482
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Pelican Renewables
+description:
+  A CCUS project in the Storage sector developed by Pelican Renewables
   LLC . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

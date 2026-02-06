@@ -1,7 +1,7 @@
 ---
 name: POET 17 bioprocessing plants (IA, NE, SD)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 5.0
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 33.708657000489474
-- -95.52826355999787
+  - 33.708657000489474
+  - -95.52826355999787
 commencementYear: 2026
 description: 由 POET 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

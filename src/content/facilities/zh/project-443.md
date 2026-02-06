@@ -10,8 +10,8 @@ sector: Chemicals
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 23.1135
-- 113.2408
+  - 23.1135
+  - 113.2408
 commencementYear: null
 description: 由 Shell 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.1
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 47.210202400233726
-- -1.216979933560956
+  - 47.210202400233726
+  - -1.216979933560956
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by RepAir Carbon US Inc.,
+description:
+  A CCUS project in the DAC sector developed by RepAir Carbon US Inc.,
   C-Questra. A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 57.661294538289376
-- -103.43689757029706
+  - 57.661294538289376
+  - -103.43689757029706
 commencementYear: 2027
-description: A CCUS project in the Cement sector developed by Heidelberg Materials,
+description:
+  A CCUS project in the Cement sector developed by Heidelberg Materials,
   Government of Canada (MoU), Enbridge. A key component of the global carbon management
   network.
 relatedPolicies:

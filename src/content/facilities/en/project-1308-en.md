@@ -9,10 +9,11 @@ capacity: 0.12
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 40.13289810508868
-- -92.22306344233762
+  - 40.13289810508868
+  - -92.22306344233762
 commencementYear: 2024
-description: A CCUS project in the Other fuel transformation sector developed by Stakeholder
+description:
+  A CCUS project in the Other fuel transformation sector developed by Stakeholder
   Gas Services. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

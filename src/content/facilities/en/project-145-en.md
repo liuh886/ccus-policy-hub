@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 16.99571341665409
-- -0.8062754304940842
+  - 16.99571341665409
+  - -0.8062754304940842
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Aghata, Ervia
+description:
+  A CCUS project in the Power and heat sector developed by Aghata, Ervia
   Cork. A key component of the global carbon management network.
 ---
 

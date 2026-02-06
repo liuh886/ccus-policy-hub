@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.9655
-- -89.2201
+  - 40.9655
+  - -89.2201
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Marquis Inc., Gas
+description:
+  A CCUS project in the Biofuels sector developed by Marquis Inc., Gas
   Liquids Engineering Ltd (FEED). A key component of the global carbon management
   network.
 relatedPolicies:

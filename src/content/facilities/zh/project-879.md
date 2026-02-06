@@ -1,7 +1,7 @@
 ---
 name: Diamond Vault (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.9626
-- -92.2399
+  - 30.9626
+  - -92.2399
 commencementYear: null
 description: 由 Cleco Power LLC, Battelle, Sargebt abd Kybdy  开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

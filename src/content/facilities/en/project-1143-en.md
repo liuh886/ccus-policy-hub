@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 17.85049405350494
-- 4.062238713339786
+  - 17.85049405350494
+  - 4.062238713339786
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by Orlen
+description:
+  A CCUS project in the Other fuel transformation sector developed by Orlen
   Lietuva. A key component of the global carbon management network.
 ---
 

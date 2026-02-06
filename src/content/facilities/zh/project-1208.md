@@ -1,5 +1,6 @@
 ---
-name: Carbon Dioxide Full Oxygen Combustion Enrichment and Purification Demonstration
+name:
+  Carbon Dioxide Full Oxygen Combustion Enrichment and Purification Demonstration
   Project Qingzhou (Shandong)
 lang: zh
 country: 中国
@@ -11,10 +12,11 @@ sector: Cement
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 36.6779
-- 116.9769
+  - 36.6779
+  - 116.9769
 commencementYear: 2024
-description: 由 China United Cement Company, Tianjin Cement Industry Design & Research
+description:
+  由 China United Cement Company, Tianjin Cement Industry Design & Research
   Institute, Shanghai Triumph Energy Conservation Engineering Co Ltd 开发的 Cement 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

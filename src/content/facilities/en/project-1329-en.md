@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- -2.485194502422212
-- 111.30986628148142
+  - -2.485194502422212
+  - 111.30986628148142
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by Mitsubishi, Pupuk
+description:
+  A CCUS project in the Chemicals sector developed by Mitsubishi, Pupuk
   Indonesia. A key component of the global carbon management network.
 ---
 

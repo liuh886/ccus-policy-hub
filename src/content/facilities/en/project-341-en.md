@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.7746
-- -101.1492
+  - 47.7746
+  - -101.1492
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by Minnkota Power
+description:
+  A CCUS project in the Power and heat sector developed by Minnkota Power
   Cooperative Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

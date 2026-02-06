@@ -1,7 +1,7 @@
 ---
 name: Taiwan Cement Hoping oxyfuel pilot
 lang: zh
-country: "中国台湾"
+country: '中国台湾'
 location: Cement
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Cement
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 23.6640
-- 120.9238
+  - 23.6640
+  - 120.9238
 commencementYear: 2026
 description: 由 Taiwan cement, Thyssenkrupp Polysius 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

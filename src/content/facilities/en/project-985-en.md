@@ -9,10 +9,11 @@ capacity: 0.001
 sector: DAC
 storage_type: Use
 coordinates:
-- 38.485212841786435
-- -92.73650482182364
+  - 38.485212841786435
+  - -92.73650482182364
 commencementYear: 2023
-description: A CCUS project in the DAC sector developed by Heirloom, CarbonCure. A
+description:
+  A CCUS project in the DAC sector developed by Heirloom, CarbonCure. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

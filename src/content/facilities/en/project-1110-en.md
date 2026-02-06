@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 54.3774519349222
-- -1.9437207887084167
+  - 54.3774519349222
+  - -1.9437207887084167
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Uniper, Technip
+description:
+  A CCUS project in the Power and heat sector developed by Uniper, Technip
   Energies(FEED). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

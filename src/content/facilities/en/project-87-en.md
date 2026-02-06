@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 17.62250913496874
-- 4.674663153693427
+  - 17.62250913496874
+  - 4.674663153693427
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Nordion Energi, Göteborg
+description:
+  A CCUS project in the Transport sector developed by Nordion Energi, Göteborg
   Energi, Renova, Gothenburg Port Authority, Preem, St1.. A key component of the global
   carbon management network.
 ---

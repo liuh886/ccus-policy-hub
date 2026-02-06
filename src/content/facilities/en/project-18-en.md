@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 51.6873
-- 4.6643
+  - 51.6873
+  - 4.6643
 commencementYear: 2026
-description: A CCUS project in the Other fuel transformation sector developed by Air
+description:
+  A CCUS project in the Other fuel transformation sector developed by Air
   Liquide (build, own, operate). A key component of the global carbon management network.
 ---
 

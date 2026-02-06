@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: EOR
 precision: approximate
 coordinates:
-- 45.5731
-- 84.8796
+  - 45.5731
+  - 84.8796
 commencementYear: 2027
-description: A CCUS project in the Power and heat sector developed by CNPC. A key
+description:
+  A CCUS project in the Power and heat sector developed by CNPC. A key
   component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

@@ -1,7 +1,7 @@
 ---
 name: GeZero carbon capture project (Geseke)
 lang: zh
-country: "德国"
+country: '德国'
 location: Cement
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.76
 sector: Cement
 storage_type: 咸水层
 coordinates:
-- 49.2560277661749
-- 7.098506356856622
+  - 49.2560277661749
+  - 7.098506356856622
 commencementYear: 2029
-description: 由 Heidelberg Materials, Wintershall Dea (Harbour Energy) 开发的 Cement 行业
+description:
+  由 Heidelberg Materials, Wintershall Dea (Harbour Energy) 开发的 Cement 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - de-icm-strategy

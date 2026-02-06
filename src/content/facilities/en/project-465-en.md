@@ -9,10 +9,11 @@ capacity: 0.8
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 54.10329239377476
-- 3.992699464439183
+  - 54.10329239377476
+  - 3.992699464439183
 commencementYear: 2026
-description: A CCUS project in the Chemicals sector developed by Yara. A key component
+description:
+  A CCUS project in the Chemicals sector developed by Yara. A key component
   of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 54.2257924133022
-- -106.9534287836721
+  - 54.2257924133022
+  - -106.9534287836721
 commencementYear: 2027
-description: A CCUS project in the Power and heat sector developed by Moraine Initiative
+description:
+  A CCUS project in the Power and heat sector developed by Moraine Initiative
   Ltd (GE). A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

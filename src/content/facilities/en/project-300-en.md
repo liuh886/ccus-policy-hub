@@ -9,10 +9,11 @@ capacity: 4.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 56.49480483681064
-- -101.94542713317139
+  - 56.49480483681064
+  - -101.94542713317139
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by Enbridge, Capital Power,
+description:
+  A CCUS project in the T&S sector developed by Enbridge, Capital Power,
   First Nation Capital Investment Partnership (FNCIP). A key component of the global
   carbon management network.
 relatedPolicies:

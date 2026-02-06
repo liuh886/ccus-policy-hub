@@ -1,7 +1,7 @@
 ---
 name: Louis Dreyfus Grand Junction biorefinery (IA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.343
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 37.78931086415406
-- -95.82886546505063
+  - 37.78931086415406
+  - -95.82886546505063
 commencementYear: 2028
-description: 由 Louis Dreyfus Grand Junction, Summit Carbon Solutions 开发的 Biofuels
+description:
+  由 Louis Dreyfus Grand Junction, Summit Carbon Solutions 开发的 Biofuels
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

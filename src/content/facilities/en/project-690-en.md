@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- 16.506068082190257
-- -4.126290776890126
+  - 16.506068082190257
+  - -4.126290776890126
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Energean. A key component of the global carbon management network.
 ---
 

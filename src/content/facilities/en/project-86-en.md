@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: EOR and use
 precision: approximate
 coordinates:
-- 34.2298
-- 108.9307
+  - 34.2298
+  - 108.9307
 commencementYear: 2021
-description: A CCUS project in the Power and heat sector developed by China Energy.
+description:
+  A CCUS project in the Power and heat sector developed by China Energy.
   A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

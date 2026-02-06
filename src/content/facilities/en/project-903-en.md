@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9725
-- -120.0112
+  - 36.9725
+  - -120.0112
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by California Resource
+description:
+  A CCUS project in the Chemicals sector developed by California Resource
   Corporation (Carbon TerraVault), InEnTEc. A key component of the global carbon management
   network.
 relatedPolicies:

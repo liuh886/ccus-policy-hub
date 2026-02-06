@@ -6,16 +6,32 @@ import Search from '../../../components/Search.astro';
 <Layout title="Search">
   <div class="max-w-4xl mx-auto py-8">
     <div class="mb-12">
-      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-blue-600"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <h1
+        class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center gap-3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          class="text-blue-600"
+          ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+          ></path></svg
+        >
         Site-wide Search
       </h1>
       <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-        Millisecond-level full-text search across 1,000+ policies, international standards, and global CCUS facilities.
+        Millisecond-level full-text search across 1,000+ policies, international
+        standards, and global CCUS facilities.
       </p>
     </div>
 
-    <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
+    <div
+      class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
+    >
       <Search />
     </div>
   </div>

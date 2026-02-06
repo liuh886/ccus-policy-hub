@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 22.046181648789133
-- 74.39819596770548
+  - 22.046181648789133
+  - 74.39819596770548
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Dalstur
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Dalstur
   Energy (Kolkata), Coal India (CIL). A key component of the global carbon management
   network.
 ---

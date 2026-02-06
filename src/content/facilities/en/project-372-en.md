@@ -9,10 +9,11 @@ capacity: 0.186
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 35.21383778283458
-- -91.72335990315922
+  - 35.21383778283458
+  - -91.72335990315922
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Siouxland Energy Cooperative,
+description:
+  A CCUS project in the Biofuels sector developed by Siouxland Energy Cooperative,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

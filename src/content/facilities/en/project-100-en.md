@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.3100
-- -101.0279
+  - 47.3100
+  - -101.0279
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by EERC, NDIC,
+description:
+  A CCUS project in the Power and heat sector developed by EERC, NDIC,
   Rainbow Energy, Mitshubishi HI, Kiewit. A key component of the global carbon management
   network.
 relatedPolicies:

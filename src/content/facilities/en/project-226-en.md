@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 54.747796388292244
-- -7.384657264338504
+  - 54.747796388292244
+  - -7.384657264338504
 commencementYear: 2030
-description: A CCUS project in the Chemicals sector developed by INEOS, Petroineos.
+description:
+  A CCUS project in the Chemicals sector developed by INEOS, Petroineos.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

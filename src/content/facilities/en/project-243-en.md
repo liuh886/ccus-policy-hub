@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 39.06945834879312
-- 123.56101439247125
+  - 39.06945834879312
+  - 123.56101439247125
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by KEPCO. A key
+description:
+  A CCUS project in the Power and heat sector developed by KEPCO. A key
   component of the global carbon management network.
 ---
 

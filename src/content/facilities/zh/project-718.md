@@ -1,7 +1,7 @@
 ---
 name: Project Lochridge (Gulf of Mexico CCS Partnership Hub) (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.7759
-- -92.1329
+  - 30.7759
+  - -92.1329
 commencementYear: 2030
-description: 由 Carbon Zero (Storage), Cox (field owner), Crescent Midstream (pipeline
+description:
+  由 Carbon Zero (Storage), Cox (field owner), Crescent Midstream (pipeline
   operator), Repsol 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 52.622287050447014
-- 6.000009818794979
+  - 52.622287050447014
+  - 6.000009818794979
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Norne Thorning Storage
+description:
+  A CCUS project in the Storage sector developed by Norne Thorning Storage
   ApS. A key component of the global carbon management network.
 ---
 

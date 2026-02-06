@@ -9,10 +9,11 @@ capacity: 0.235
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 52.47356311277442
-- -3.301507812069076
+  - 52.47356311277442
+  - -3.301507812069076
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Enfinium. A
+description:
+  A CCUS project in the Power and heat sector developed by Enfinium. A
   key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

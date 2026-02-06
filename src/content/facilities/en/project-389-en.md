@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.2974
-- -100.0689
+  - 32.2974
+  - -100.0689
 commencementYear: 1972
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Blue Source, Occidental, Chevron. A key component of the global carbon management
   network.
 relatedPolicies:

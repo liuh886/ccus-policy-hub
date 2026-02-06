@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 36.46754135572041
-- 135.41303218216893
+  - 36.46754135572041
+  - 135.41303218216893
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Tohoku Electric
+description:
+  A CCUS project in the Power and heat sector developed by Tohoku Electric
   Power. A key component of the global carbon management network.
 ---
 

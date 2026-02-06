@@ -10,10 +10,11 @@ sector: Cement
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 23.6992
-- 120.9932
+  - 23.6992
+  - 120.9932
 commencementYear: 2026
-description: A CCUS project in the Cement sector developed by Taiwan cement, Thyssenkrupp
+description:
+  A CCUS project in the Cement sector developed by Taiwan cement, Thyssenkrupp
   Polysius. A key component of the global carbon management network.
 ---
 

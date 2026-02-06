@@ -1,7 +1,7 @@
 ---
 name: Borealis Antwerp CCS
 lang: zh
-country: "比利时"
+country: '比利时'
 location: Chemicals
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Chemicals
 storage_type: 地质封存
 coordinates:
-- 46.52206992412657
-- 3.314252781697369
+  - 46.52206992412657
+  - 3.314252781697369
 commencementYear: 2030
 description: 由 Borealis 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

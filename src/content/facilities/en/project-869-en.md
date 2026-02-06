@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 40.8673
-- -89.2319
+  - 40.8673
+  - -89.2319
 commencementYear: 2028
-description: A CCUS project in the Storage sector developed by ADM. A key component
+description:
+  A CCUS project in the Storage sector developed by ADM. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

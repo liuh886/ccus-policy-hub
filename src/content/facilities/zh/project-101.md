@@ -1,7 +1,7 @@
 ---
 name: CO2 TO METHANOL Finnfjord Ferrosilicon
 lang: zh
-country: "挪威"
+country: '挪威'
 location: Iron and steel
 type: CCU
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Iron and steel
 storage_type: 地质封存
 coordinates:
-- 61.95417248847625
-- 11.766522719126982
+  - 61.95417248847625
+  - 11.766522719126982
 commencementYear: null
-description: 由 Statkraft, Carbon Recycling International 开发的 Iron and steel 行业 CCUS
+description:
+  由 Statkraft, Carbon Recycling International 开发的 Iron and steel 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - no-storage-regulations

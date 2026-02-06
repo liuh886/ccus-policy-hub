@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 53.55556686271716
-- -104.00983764326749
+  - 53.55556686271716
+  - -104.00983764326749
 commencementYear: null
-description: A CCUS project in the Storage sector developed by  Bison Low Carbon Ventures
+description:
+  A CCUS project in the Storage sector developed by  Bison Low Carbon Ventures
   Inc. . A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

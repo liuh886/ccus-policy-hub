@@ -9,10 +9,11 @@ capacity: 0.4
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 58.031087467161605
-- 13.879481942820972
+  - 58.031087467161605
+  - 13.879481942820972
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by INEOS E&P, Wintershell
+description:
+  A CCUS project in the T&S sector developed by INEOS E&P, Wintershell
   Dea (Harbour Energy), Welltec (storage), Aquaterra Energy (FEED), Royal Wagenborg
   (ship). A key component of the global carbon management network.
 ---

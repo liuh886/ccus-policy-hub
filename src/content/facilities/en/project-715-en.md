@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 39.9501
-- -89.0689
+  - 39.9501
+  - -89.0689
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Illinois State Geological
+description:
+  A CCUS project in the Storage sector developed by Illinois State Geological
   Survey, Heidelberg Materials, Projeo, IGS, University of Illinois. A key component
   of the global carbon management network.
 relatedPolicies:

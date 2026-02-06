@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9894
-- -92.0050
+  - 30.9894
+  - -92.0050
 commencementYear: 2027
-description: A CCUS project in the Biofuels sector developed by Strategic Biofuels
+description:
+  A CCUS project in the Biofuels sector developed by Strategic Biofuels
   LLC, Louisianna Green Fuels, SLB. A key component of the global carbon management
   network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.131
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 54.10262935337933
-- 11.586734251124213
+  - 54.10262935337933
+  - 11.586734251124213
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by BioCirc CO2 ApS. A
+description:
+  A CCUS project in the Biofuels sector developed by BioCirc CO2 ApS. A
   key component of the global carbon management network.
 ---
 

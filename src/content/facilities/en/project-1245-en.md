@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 49.16787479946289
-- -1.9533529117172428
+  - 49.16787479946289
+  - -1.9533529117172428
 commencementYear: 2029
-description: A CCUS project in the Power and heat sector developed by Biomasse Energy
+description:
+  A CCUS project in the Power and heat sector developed by Biomasse Energy
   d'Alizay, Verso Energy. A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

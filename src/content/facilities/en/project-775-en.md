@@ -9,10 +9,11 @@ capacity: 5.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 62.53435464155361
-- 9.17907188567428
+  - 62.53435464155361
+  - 9.17907188567428
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Aker BP (60%), OMV
+description:
+  A CCUS project in the Storage sector developed by Aker BP (60%), OMV
   AS (4%). A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

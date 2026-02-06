@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Power and heat
 storage_type: EOR
 coordinates:
-- 56.475951232021245
-- -108.76773948146707
+  - 56.475951232021245
+  - -108.76773948146707
 commencementYear: 2014
-description: A CCUS project in the Power and heat sector developed by Saskpower. A
+description:
+  A CCUS project in the Power and heat sector developed by Saskpower. A
   key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

@@ -1,7 +1,7 @@
 ---
 name: Trailblazer CO2 pipeline
 lang: zh
-country: "美国"
+country: '美国'
 location: Transport
 type: Transport
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 10.0
 sector: Transport
 storage_type: 咸水层
 coordinates:
-- 35.30632138416619
-- -91.95381612008278
+  - 35.30632138416619
+  - -91.95381612008278
 commencementYear: null
 description: 由 Tallgrass energy 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

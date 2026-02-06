@@ -9,10 +9,11 @@ capacity: 0.109
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.558721221772686
-- -93.908357130763
+  - 36.558721221772686
+  - -93.908357130763
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Quad County Corn Processors,
+description:
+  A CCUS project in the Biofuels sector developed by Quad County Corn Processors,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira
