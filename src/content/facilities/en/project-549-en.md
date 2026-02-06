@@ -10,10 +10,11 @@ sector: Iron and steel
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.0532
-- -88.9744
+  - 40.0532
+  - -88.9744
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by Board of Trustees
+description:
+  A CCUS project in the Iron and steel sector developed by Board of Trustees
   of the University of Illinois, Voestalpine, Air Liquide. A key component of the
   global carbon management network.
 relatedPolicies:

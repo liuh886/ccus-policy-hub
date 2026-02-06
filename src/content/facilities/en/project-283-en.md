@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9797
-- -99.9681
+  - 30.9797
+  - -99.9681
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Golden Spread
+description:
+  A CCUS project in the Power and heat sector developed by Golden Spread
   Electric Cooperative,  University of Texas at Austin . A key component of the global
   carbon management network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 1.8
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- -22.89478836350127
-- 128.74386686192588
+  - -22.89478836350127
+  - 128.74386686192588
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by Kawasaki
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Kawasaki
   heavy industries, J-POWER, Iwatani Corporation, Marubeni Corporation, AGL, Sumitomo
   Corporation. A key component of the global carbon management network.
 ---

@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 55.7527695435356
-- 0.730183926932769
+  - 55.7527695435356
+  - 0.730183926932769
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by Summit Power.
+description:
+  A CCUS project in the Power and heat sector developed by Summit Power.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

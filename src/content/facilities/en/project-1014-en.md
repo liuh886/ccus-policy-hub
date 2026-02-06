@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 22.378760454794246
-- 1.5959442476743666
+  - 22.378760454794246
+  - 1.5959442476743666
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Woodside Energy,
+description:
+  A CCUS project in the Transport sector developed by Woodside Energy,
   Sumitomo Corporation, JFE Steel Corporation, Sumitomo Osaka Cement Co. Ltd, Kawasaki
   Kisen Kaisha Ltd.. A key component of the global carbon management network.
 ---

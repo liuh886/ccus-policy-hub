@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.7411
-- -116.2529
+  - 53.7411
+  - -116.2529
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Pembina Pipeline Corporation,
+description:
+  A CCUS project in the T&S sector developed by Pembina Pipeline Corporation,
   TC Energy. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

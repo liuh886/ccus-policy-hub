@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Use
 precision: approximate
 coordinates:
-- 31.8550
-- -99.6178
+  - 31.8550
+  - -99.6178
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Montauk Renewables,
+description:
+  A CCUS project in the Biofuels sector developed by Montauk Renewables,
   EE North America (European Energy). A key component of the global carbon management
   network.
 relatedPolicies:

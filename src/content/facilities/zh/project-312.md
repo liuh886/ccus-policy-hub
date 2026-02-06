@@ -1,7 +1,7 @@
 ---
 name: Phillips 66 Humber refinery
 lang: zh
-country: "英国"
+country: '英国'
 location: Other fuel transformation
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 53.7217
-- -0.5941
+  - 53.7217
+  - -0.5941
 commencementYear: 2028
-description: 由 Phillips 66, Babcock & Wilcox (FEED) 开发的 Other fuel transformation
+description:
+  由 Phillips 66, Babcock & Wilcox (FEED) 开发的 Other fuel transformation
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - uk-ccus-vision

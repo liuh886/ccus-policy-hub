@@ -9,10 +9,11 @@ capacity: 0.15
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 62.729003769535744
-- 5.858398002555561
+  - 62.729003769535744
+  - 5.858398002555561
 commencementYear: 2035
-description: A CCUS project in the Power and heat sector developed by Borg Havn, Borregaard.
+description:
+  A CCUS project in the Power and heat sector developed by Borg Havn, Borregaard.
   A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

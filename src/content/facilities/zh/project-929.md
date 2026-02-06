@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 36.5683
-- 109.4804
+  - 36.5683
+  - 109.4804
 commencementYear: 2030
 description: 由 Yanchang Petroleum 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 1.42
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 50.94948011394779
-- 2.5159872097792224
+  - 50.94948011394779
+  - 2.5159872097792224
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by Air Liquide, BASF.
+description:
+  A CCUS project in the Chemicals sector developed by Air Liquide, BASF.
   A key component of the global carbon management network.
 ---
 

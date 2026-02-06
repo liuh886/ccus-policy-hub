@@ -1,7 +1,7 @@
 ---
 name: Polk county hub (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,10 +10,11 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.7858
-- -100.1751
+  - 31.7858
+  - -100.1751
 commencementYear: null
-description: 由 1PointFive (Occidental), Natural Resource Partners 开发的 Storage 行业 CCUS
+description:
+  由 1PointFive (Occidental), Natural Resource Partners 开发的 Storage 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

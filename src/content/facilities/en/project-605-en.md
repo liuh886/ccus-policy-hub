@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 52.53577614129805
-- -101.76790239677878
+  - 52.53577614129805
+  - -101.76790239677878
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Lafarge Canada (Holcim
+description:
+  A CCUS project in the Cement sector developed by Lafarge Canada (Holcim
   Group). A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

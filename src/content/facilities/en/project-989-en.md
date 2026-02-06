@@ -9,10 +9,11 @@ capacity: 0.063
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 23.235587695822247
-- -4.958128172379369
+  - 23.235587695822247
+  - -4.958128172379369
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Liquid Wind,
+description:
+  A CCUS project in the Power and heat sector developed by Liquid Wind,
   Sundsvall Energi. A key component of the global carbon management network.
 ---
 

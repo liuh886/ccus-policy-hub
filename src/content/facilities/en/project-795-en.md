@@ -9,10 +9,11 @@ capacity: 2.0
 sector: Other industry
 storage_type: Dedicated storage
 coordinates:
-- 37.51909575395385
-- -95.06598206752535
+  - 37.51909575395385
+  - -95.06598206752535
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Timberlands
+description:
+  A CCUS project in the Other industry sector developed by Timberlands
   Sequestration LLC, Alabama River Cellulose (ARC), Georgia Pacific LLC. A key component
   of the global carbon management network.
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.1033
-- -92.1965
+  - 31.1033
+  - -92.1965
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Venture Global. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

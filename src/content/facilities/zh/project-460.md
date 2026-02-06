@@ -1,7 +1,7 @@
 ---
 name: Northern Endurance Partnership phase 3
 lang: zh
-country: "英国"
+country: '英国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 2.0
 sector: T&S
 storage_type: 咸水层
 coordinates:
-- 55.769355165991435
-- -1.452952791166033
+  - 55.769355165991435
+  - -1.452952791166033
 commencementYear: null
 description: 由 BP, Equinor, TotalEnergies 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

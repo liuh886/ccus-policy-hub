@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 47.9290
-- -101.3858
+  - 47.9290
+  - -101.3858
 commencementYear: 2000
-description: A CCUS project in the Other fuel transformation sector developed by Dakota
+description:
+  A CCUS project in the Other fuel transformation sector developed by Dakota
   Gasification company, Cenovus, Whitecap, Cardinal. A key component of the global
   carbon management network.
 relatedPolicies:

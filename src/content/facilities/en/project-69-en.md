@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 37.375262530399226
-- -93.92919294545878
+  - 37.375262530399226
+  - -93.92919294545878
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Carbon America. A
+description:
+  A CCUS project in the Biofuels sector developed by Carbon America. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

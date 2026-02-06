@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.3889
-- -0.3680
+  - 53.3889
+  - -0.3680
 commencementYear: 2028
-description: A CCUS project in the Other fuel transformation sector developed by Phillips
+description:
+  A CCUS project in the Other fuel transformation sector developed by Phillips
   66, Babcock & Wilcox (FEED). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

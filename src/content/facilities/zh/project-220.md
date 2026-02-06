@@ -1,7 +1,7 @@
 ---
 name: Hydrogen to Humber (H2H) Saltend phase 1
 lang: zh
-country: "英国"
+country: '英国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 53.2225
-- -0.2157
+  - 53.2225
+  - -0.2157
 commencementYear: null
-description: 由 Equinor, SSE Thermal, Linde (FEED/EPC), BOC (Operation and maintenance),
+description:
+  由 Equinor, SSE Thermal, Linde (FEED/EPC), BOC (Operation and maintenance),
   Jonhson Matthey (FEED) 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - uk-ccus-vision

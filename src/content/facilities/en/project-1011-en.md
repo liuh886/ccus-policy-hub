@@ -9,10 +9,11 @@ capacity: 2.0
 sector: Transport
 storage_type: Unknown/unspecified
 coordinates:
-- 34.51132962688643
-- -95.75097037889533
+  - 34.51132962688643
+  - -95.75097037889533
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Overseas Shipholding
+description:
+  A CCUS project in the Transport sector developed by Overseas Shipholding
   Group, Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

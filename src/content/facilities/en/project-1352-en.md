@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 27.0131
-- 49.6195
+  - 27.0131
+  - 49.6195
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Linde.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Linde.
   A key component of the global carbon management network.
 ---
 

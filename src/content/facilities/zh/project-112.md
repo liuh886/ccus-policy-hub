@@ -10,8 +10,8 @@ sector: Power and heat
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 23.1772
-- 113.2800
+  - 23.1772
+  - 113.2800
 commencementYear: 2030
 description: 由 China Resources Power 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

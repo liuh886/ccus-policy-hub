@@ -9,10 +9,11 @@ capacity: 0.93
 sector: Natural gas processing/LNG
 storage_type: EOR
 coordinates:
-- 2.6978319125463406
-- 112.96596447170045
+  - 2.6978319125463406
+  - 112.96596447170045
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Pertamina, Lemigas, JAPEX (supported by METI), JOGMEC. A key component of the global
   carbon management network.
 ---

@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 43.0170
-- -106.9952
+  - 43.0170
+  - -106.9952
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by MTR Carbon Capture,
+description:
+  A CCUS project in the Power and heat sector developed by MTR Carbon Capture,
   Basin Electric Power Cooperative, Electric Power Research Institute, University
   of Wyoming, Bismarck. A key component of the global carbon management network.
 relatedPolicies:

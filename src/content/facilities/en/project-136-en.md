@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.1477
-- -99.7124
+  - 32.1477
+  - -99.7124
 commencementYear: 2028
-description: A CCUS project in the Hydrogen or ammonia sector developed by Enbridge,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Enbridge,
   Yara. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

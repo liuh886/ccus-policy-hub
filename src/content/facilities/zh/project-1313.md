@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 34.2765
-- 108.9347
+  - 34.2765
+  - 108.9347
 commencementYear: 2026
-description: 由  Shaanxi Coal Group Yulin Chemical Co., Ltd 开发的 Other fuel transformation
+description:
+  由  Shaanxi Coal Group Yulin Chemical Co., Ltd 开发的 Other fuel transformation
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - cn-national-standards

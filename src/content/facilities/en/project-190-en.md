@@ -9,10 +9,11 @@ capacity: 1.8
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 47.92187224911339
-- 7.203527199744647
+  - 47.92187224911339
+  - 7.203527199744647
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by Equinor,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Equinor,
   Engie. A key component of the global carbon management network.
 ---
 

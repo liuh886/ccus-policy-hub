@@ -9,10 +9,11 @@ capacity: 1.8
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 33.696725689701694
-- -97.14442333210758
+  - 33.696725689701694
+  - -97.14442333210758
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Mitsubishi, ExxonMobil
+description:
+  A CCUS project in the T&S sector developed by Mitsubishi, ExxonMobil
   (formerly Denbury carbon solutions). A key component of the global carbon management
   network.
 relatedPolicies:

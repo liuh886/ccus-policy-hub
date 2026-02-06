@@ -10,10 +10,11 @@ sector: T&S
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8276
-- 87.6445
+  - 43.8276
+  - 87.6445
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by CNPC, OGCI. A key component
+description:
+  A CCUS project in the T&S sector developed by CNPC, OGCI. A key component
   of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

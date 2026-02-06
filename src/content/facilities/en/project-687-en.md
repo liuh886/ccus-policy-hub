@@ -9,10 +9,11 @@ capacity: 0.2
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 21.46242271331092
-- 1.3100553101639338
+  - 21.46242271331092
+  - 1.3100553101639338
 commencementYear: 2029
-description: A CCUS project in the Transport sector developed by Buzzi Unicem Spa.
+description:
+  A CCUS project in the Transport sector developed by Buzzi Unicem Spa.
   A key component of the global carbon management network.
 ---
 

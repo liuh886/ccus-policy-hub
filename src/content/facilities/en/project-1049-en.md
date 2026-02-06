@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.6744
-- -100.2923
+  - 31.6744
+  - -100.2923
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Tenaska. A key component
+description:
+  A CCUS project in the Storage sector developed by Tenaska. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

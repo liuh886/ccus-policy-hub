@@ -9,10 +9,11 @@ capacity: 5.0
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 33.708657000489474
-- -95.52826355999787
+  - 33.708657000489474
+  - -95.52826355999787
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by POET. A key component
+description:
+  A CCUS project in the Biofuels sector developed by POET. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

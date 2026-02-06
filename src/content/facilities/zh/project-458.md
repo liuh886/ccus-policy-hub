@@ -1,7 +1,7 @@
 ---
 name: CF Industries blue ammonia Donaldsonville (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 建设中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.7464
-- -92.0643
+  - 30.7464
+  - -92.0643
 commencementYear: 2025
-description: 由 CF Industries, ExxonMobil (storage), EnLink Midstream (transport) 开发的
+description:
+  由 CF Industries, ExxonMobil (storage), EnLink Midstream (transport) 开发的
   Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

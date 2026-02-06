@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 52.27693537287705
-- 8.558876149167173
+  - 52.27693537287705
+  - 8.558876149167173
 commencementYear: 2031
-description: A CCUS project in the Cement sector developed by Lhoist. A key component
+description:
+  A CCUS project in the Cement sector developed by Lhoist. A key component
   of the global carbon management network.
 ---
 

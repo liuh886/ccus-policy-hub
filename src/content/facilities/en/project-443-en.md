@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 23.1213
-- 113.2500
+  - 23.1213
+  - 113.2500
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by Shell. A key component
+description:
+  A CCUS project in the Chemicals sector developed by Shell. A key component
   of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.1232
-- -99.9551
+  - 32.1232
+  - -99.9551
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Omnia midstream partners.
+description:
+  A CCUS project in the T&S sector developed by Omnia midstream partners.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

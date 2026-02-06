@@ -9,10 +9,11 @@ capacity: 12.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 56.25224231048193
-- -109.8197644079387
+  - 56.25224231048193
+  - -109.8197644079387
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by CNRL, Cenovus Energy, ConocoPhilips,
+description:
+  A CCUS project in the T&S sector developed by CNRL, Cenovus Energy, ConocoPhilips,
   Imperial, MEG Energy, Suncor (Pathway Alliance). A key component of the global carbon
   management network.
 relatedPolicies:

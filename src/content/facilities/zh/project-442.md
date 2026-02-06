@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 23.1440
-- 113.2279
+  - 23.1440
+  - 113.2279
 commencementYear: null
-description: 由 Shell, ExxonMobil, CNOOC, Guangdong Provincial Development & Reform
+description:
+  由 Shell, ExxonMobil, CNOOC, Guangdong Provincial Development & Reform
   Commission (JSA) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - cn-national-standards

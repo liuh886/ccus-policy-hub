@@ -8,98 +8,142 @@ const policies = await getCollection('policies_zh');
 ---
 
 <Layout title="政策数据库">
-	<div class="mb-10">
-		<div class="max-w-2xl mb-8">
-			<h1 class="text-4xl font-black mb-4 dark:text-white">政策数据库</h1>
-			<p class="text-slate-600 dark:text-slate-400">
-				收录全球主要经济体的 CCUS 相关政策，涵盖法律监管、经济激励、市场机制及战略引导四大维度。
-			</p>
-		</div>
+  <div class="mb-10">
+    <div class="max-w-2xl mb-8">
+      <h1 class="text-4xl font-black mb-4 dark:text-white">政策数据库</h1>
+      <p class="text-slate-600 dark:text-slate-400">
+        收录全球主要经济体的 CCUS
+        相关政策，涵盖法律监管、经济激励、市场机制及战略引导四大维度。
+      </p>
+    </div>
 
-		<div class="flex flex-col md:flex-row gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-			<div class="flex-grow relative">
-				<input 
-					type="text" 
-					id="search-input"
-					placeholder="搜索政策标题、内容或标签..." 
-					class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white"
-				/>
-				<svg class="absolute left-3 top-2.5 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-			</div>
-			
-			<select id="country-filter" class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white">
-				<option value="">所有国家</option>
-				{Array.from(new Set(policies.map(p => p.data.country))).sort().map(country => (
-					<option value={country}>{country}</option>
-				))}
-			</select>
+    <div
+      class="flex flex-col md:flex-row gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm"
+    >
+      <div class="flex-grow relative">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="搜索政策标题、内容或标签..."
+          class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white"
+        />
+        <svg
+          class="absolute left-3 top-2.5 text-slate-400"
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+          ></path></svg
+        >
+      </div>
 
-			<select id="category-filter" class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white">
-				<option value="">所有类型</option>
-				{Array.from(new Set(policies.map(p => p.data.category))).sort().map(cat => (
-					<option value={cat}>{cat}</option>
-				))}
-			</select>
-		</div>
-	</div>
+      <select
+        id="country-filter"
+        class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
+      >
+        <option value="">所有国家</option>
+        {
+          Array.from(new Set(policies.map((p) => p.data.country)))
+            .sort()
+            .map((country) => <option value={country}>{country}</option>)
+        }
+      </select>
 
-	<div id="policy-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-		{policies.sort((a, b) => b.data.year - a.data.year).map(policy => (
-			<div class="policy-item" data-title={policy.data.title} data-country={policy.data.country} data-category={policy.data.category} data-tags={policy.data.tags?.join(',') || ''}>
-				<PolicyCard policy={policy} lang="zh" />
-			</div>
-		))}
-	</div>
+      <select
+        id="category-filter"
+        class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
+      >
+        <option value="">所有类型</option>
+        {
+          Array.from(new Set(policies.map((p) => p.data.category)))
+            .sort()
+            .map((cat) => <option value={cat}>{cat}</option>)
+        }
+      </select>
+    </div>
+  </div>
 
-	<div id="no-results" class="hidden py-20 text-center">
-		<p class="text-slate-500">未找到符合条件的政策。</p>
-	</div>
+  <div
+    id="policy-grid"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    {
+      policies
+        .sort((a, b) => b.data.year - a.data.year)
+        .map((policy) => (
+          <div
+            class="policy-item"
+            data-title={policy.data.title}
+            data-country={policy.data.country}
+            data-category={policy.data.category}
+            data-tags={policy.data.tags?.join(',') || ''}
+          >
+            <PolicyCard policy={policy} lang="zh" />
+          </div>
+        ))
+    }
+  </div>
+
+  <div id="no-results" class="hidden py-20 text-center">
+    <p class="text-slate-500">未找到符合条件的政策。</p>
+  </div>
 </Layout>
 
 <script>
-	function setupFiltering() {
-		const searchInput = document.getElementById('search-input') as HTMLInputElement;
-		const countryFilter = document.getElementById('country-filter') as HTMLSelectElement;
-		const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
-		const policyItems = document.querySelectorAll('.policy-item');
-		const noResults = document.getElementById('no-results');
+  function setupFiltering() {
+    const searchInput = document.getElementById(
+      'search-input'
+    ) as HTMLInputElement;
+    const countryFilter = document.getElementById(
+      'country-filter'
+    ) as HTMLSelectElement;
+    const categoryFilter = document.getElementById(
+      'category-filter'
+    ) as HTMLSelectElement;
+    const policyItems = document.querySelectorAll('.policy-item');
+    const noResults = document.getElementById('no-results');
 
-		function filterPolicies() {
-			const searchTerm = searchInput?.value.toLowerCase() || '';
-			const country = countryFilter?.value || '';
-			const category = categoryFilter?.value || '';
+    function filterPolicies() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const country = countryFilter?.value || '';
+      const category = categoryFilter?.value || '';
 
-			let visibleCount = 0;
+      let visibleCount = 0;
 
-			policyItems.forEach((item) => {
-				const htmlItem = item as HTMLElement;
-				const title = htmlItem.dataset.title?.toLowerCase() || '';
-				const itemCountry = htmlItem.dataset.country || '';
-				const itemCategory = htmlItem.dataset.category || '';
-				const tags = htmlItem.dataset.tags?.toLowerCase() || '';
+      policyItems.forEach((item) => {
+        const htmlItem = item as HTMLElement;
+        const title = htmlItem.dataset.title?.toLowerCase() || '';
+        const itemCountry = htmlItem.dataset.country || '';
+        const itemCategory = htmlItem.dataset.category || '';
+        const tags = htmlItem.dataset.tags?.toLowerCase() || '';
 
-				const matchesSearch = title.includes(searchTerm) || tags.includes(searchTerm);
-				const matchesCountry = !country || itemCountry === country;
-				const matchesCategory = !category || itemCategory === category;
+        const matchesSearch =
+          title.includes(searchTerm) || tags.includes(searchTerm);
+        const matchesCountry = !country || itemCountry === country;
+        const matchesCategory = !category || itemCategory === category;
 
-				if (matchesSearch && matchesCountry && matchesCategory) {
-					htmlItem.style.display = 'block';
-					visibleCount++;
-				} else {
-					htmlItem.style.display = 'none';
-				}
-			});
+        if (matchesSearch && matchesCountry && matchesCategory) {
+          htmlItem.style.display = 'block';
+          visibleCount++;
+        } else {
+          htmlItem.style.display = 'none';
+        }
+      });
 
-			if (noResults) {
-				noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-			}
-		}
+      if (noResults) {
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    }
 
-		searchInput?.addEventListener('input', filterPolicies);
-		countryFilter?.addEventListener('change', filterPolicies);
-		categoryFilter?.addEventListener('change', filterPolicies);
-	}
+    searchInput?.addEventListener('input', filterPolicies);
+    countryFilter?.addEventListener('change', filterPolicies);
+    categoryFilter?.addEventListener('change', filterPolicies);
+  }
 
-	document.addEventListener('astro:page-load', setupFiltering);
-	setupFiltering();
+  document.addEventListener('astro:page-load', setupFiltering);
+  setupFiltering();
 </script>

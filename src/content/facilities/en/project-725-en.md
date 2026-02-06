@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: EOR
 coordinates:
-- 16.71871942396127
-- 4.677917700578448
+  - 16.71871942396127
+  - 4.677917700578448
 commencementYear: null
-description: A CCUS project in the Storage sector developed by INA/MOL. A key component
+description:
+  A CCUS project in the Storage sector developed by INA/MOL. A key component
   of the global carbon management network.
 ---
 

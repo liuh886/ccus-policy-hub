@@ -9,10 +9,11 @@ capacity: 1.5
 sector: Other industry
 storage_type: Use
 coordinates:
-- 54.132374976761675
-- -102.73021568018308
+  - 54.132374976761675
+  - -102.73021568018308
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Canada Nickel
+description:
+  A CCUS project in the Other industry sector developed by Canada Nickel
   Company Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

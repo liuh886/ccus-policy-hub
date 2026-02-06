@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.9581
-- -116.4880
+  - 53.9581
+  - -116.4880
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by Pembina
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Pembina
   Pipeline Corporation, Marubeni. A key component of the global carbon management
   network.
 relatedPolicies:

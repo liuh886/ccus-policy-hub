@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.3640
-- -99.7261
+  - 32.3640
+  - -99.7261
 commencementYear: null
-description: A CCUS project in the Storage sector developed by 1PointFive (Occidental),
+description:
+  A CCUS project in the Storage sector developed by 1PointFive (Occidental),
   Natural Resource Partners. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

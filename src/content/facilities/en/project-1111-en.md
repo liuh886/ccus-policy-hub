@@ -9,10 +9,11 @@ capacity: 0.26
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 58.568912433140135
-- 11.261674228327475
+  - 58.568912433140135
+  - 11.261674228327475
 commencementYear: 2030
-description: A CCUS project in the Iron and steel sector developed by Eramet Norway.
+description:
+  A CCUS project in the Iron and steel sector developed by Eramet Norway.
   A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

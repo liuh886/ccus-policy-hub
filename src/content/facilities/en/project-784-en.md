@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 58.43651470904525
-- 6.066032625773576
+  - 58.43651470904525
+  - 6.066032625773576
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by CarbonCuts, bluenord
+description:
+  A CCUS project in the Storage sector developed by CarbonCuts, bluenord
   (funding). A key component of the global carbon management network.
 ---
 

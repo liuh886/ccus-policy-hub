@@ -9,10 +9,11 @@ capacity: 3.7
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 59.8986347426778
-- 9.012931150787585
+  - 59.8986347426778
+  - 9.012931150787585
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by Ferroglobe.
+description:
+  A CCUS project in the Iron and steel sector developed by Ferroglobe.
   A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

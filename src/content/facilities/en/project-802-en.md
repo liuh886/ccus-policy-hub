@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Unknown/unspecified
 coordinates:
-- 35.17292929588432
-- 134.75067917665172
+  - 35.17292929588432
+  - 134.75067917665172
 commencementYear: 2027
-description: A CCUS project in the Transport sector developed by Mitsubishi Shipbuilding
+description:
+  A CCUS project in the Transport sector developed by Mitsubishi Shipbuilding
   (Mitsubishi Heavy Industries (Mistubishi Heavy Industries)) Group,Nihon Shipyard
   Co.. A key component of the global carbon management network.
 ---

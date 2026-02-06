@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Use and storage
 precision: approximate
 coordinates:
-- 31.0171
-- -92.0454
+  - 31.0171
+  - -92.0454
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by Proman, ExxonMobil
+description:
+  A CCUS project in the Chemicals sector developed by Proman, ExxonMobil
   (formerly Denbury), Fluor. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

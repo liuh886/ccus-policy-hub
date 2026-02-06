@@ -9,10 +9,11 @@ capacity: 0.3
 sector: Iron and steel
 storage_type: Use
 coordinates:
-- 61.95417248847625
-- 11.766522719126982
+  - 61.95417248847625
+  - 11.766522719126982
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by Statkraft, Carbon
+description:
+  A CCUS project in the Iron and steel sector developed by Statkraft, Carbon
   Recycling International. A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

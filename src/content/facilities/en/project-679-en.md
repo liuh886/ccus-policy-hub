@@ -9,10 +9,11 @@ capacity: 3.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 51.79535578481709
-- 0.9617301586452687
+  - 51.79535578481709
+  - 0.9617301586452687
 commencementYear: 2040
-description: A CCUS project in the T&S sector developed by Eni (following acquisition
+description:
+  A CCUS project in the T&S sector developed by Eni (following acquisition
   of Neptune Energy), EBN, OneDyas. A key component of the global carbon management
   network.
 ---

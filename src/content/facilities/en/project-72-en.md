@@ -9,10 +9,11 @@ capacity: 0.7
 sector: Cement
 storage_type: Use
 coordinates:
-- 21.712872506666
-- -0.9897702265276642
+  - 21.712872506666
+  - -0.9897702265276642
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Holcim Group, OMV, Verbund,
+description:
+  A CCUS project in the Cement sector developed by Holcim Group, OMV, Verbund,
   Borealis. A key component of the global carbon management network.
 ---
 

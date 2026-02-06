@@ -1,7 +1,7 @@
 ---
 name: Lone Star Storage Hub Project (Jasper) (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,8 +10,8 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.7031
-- -100.1317
+  - 31.7031
+  - -100.1317
 commencementYear: 2026
 description: 由 BP carbon solutions, Linde (capture/CO2 supplier) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

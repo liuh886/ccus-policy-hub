@@ -1,7 +1,7 @@
 ---
 name: Svante capture Linde SMR plant (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.6200
-- -99.9407
+  - 31.6200
+  - -99.9407
 commencementYear: 2026
 description: 由 BP 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.343
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 38.1819092415903
-- -95.02381280845447
+  - 38.1819092415903
+  - -95.02381280845447
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Green Plains Fairmont,
+description:
+  A CCUS project in the Biofuels sector developed by Green Plains Fairmont,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

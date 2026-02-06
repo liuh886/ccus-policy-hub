@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- -26.473241001166592
-- 128.54848230766703
+  - -26.473241001166592
+  - 128.54848230766703
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Chevron, Woodside Energy.
+description:
+  A CCUS project in the Storage sector developed by Chevron, Woodside Energy.
   A key component of the global carbon management network.
 ---
 

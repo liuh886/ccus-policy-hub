@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 25.2939
-- 51.5235
+  - 25.2939
+  - 51.5235
 commencementYear: 2025
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   QatarEnergy LNG. A key component of the global carbon management network.
 ---
 

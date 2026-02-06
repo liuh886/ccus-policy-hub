@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 45.38330035604809
-- 2.6951887389041103
+  - 45.38330035604809
+  - 2.6951887389041103
 commencementYear: 2031
-description: A CCUS project in the Transport sector developed by Air Liquide, Borealis,
+description:
+  A CCUS project in the Transport sector developed by Air Liquide, Borealis,
   Esso (Exxon Mobil), TotalEnergies, Yara. A key component of the global carbon management
   network.
 relatedPolicies:

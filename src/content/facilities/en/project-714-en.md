@@ -9,10 +9,11 @@ capacity: 2.1
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 38.13315806550749
-- -93.86637371579991
+  - 38.13315806550749
+  - -93.86637371579991
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Battelle Memorial Institute,
+description:
+  A CCUS project in the Storage sector developed by Battelle Memorial Institute,
   DTE Energy. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.4
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 50.22334809761242
-- 6.898590325774316
+  - 50.22334809761242
+  - 6.898590325774316
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Aker Carbon
+description:
+  A CCUS project in the Power and heat sector developed by Aker Carbon
   Capture, TES. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

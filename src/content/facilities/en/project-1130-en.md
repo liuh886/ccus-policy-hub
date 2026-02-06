@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9874
-- -92.3034
+  - 30.9874
+  - -92.3034
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by Entergy, Crescent
+description:
+  A CCUS project in the Power and heat sector developed by Entergy, Crescent
   Midstream,Talos Energy (Total Energies), DOE Office of Clean Energy Demonstrations.
   A key component of the global carbon management network.
 relatedPolicies:

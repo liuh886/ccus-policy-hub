@@ -1,7 +1,7 @@
 ---
 name: South Texas DAC Hub (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: DAC
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.9669
-- -99.9772
+  - 30.9669
+  - -99.9772
 commencementYear: 2030
 description: 由 1PointFive, Oxy low carbon ventures (Occidental) 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

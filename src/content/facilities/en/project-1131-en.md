@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 35.750093119713746
-- -91.28855809848262
+  - 35.750093119713746
+  - -91.28855809848262
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Navajo Transitional
+description:
+  A CCUS project in the Power and heat sector developed by Navajo Transitional
   Energy Company, LLC (NTEC), DOE Office of Clean Energy Demonstrations. A key component
   of the global carbon management network.
 relatedPolicies:

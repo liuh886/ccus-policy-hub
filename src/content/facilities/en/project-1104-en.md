@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 56.184906559737826
-- -0.37120586322338056
+  - 56.184906559737826
+  - -0.37120586322338056
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Alfanar. A key component
+description:
+  A CCUS project in the Biofuels sector developed by Alfanar. A key component
   of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.0426
-- -100.2875
+  - 32.0426
+  - -100.2875
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by Woodside
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Woodside
   Energy (new owner, bought from OCI), Linde (owns, builds, operates), OCI (H2 demand).
   A key component of the global carbon management network.
 relatedPolicies:

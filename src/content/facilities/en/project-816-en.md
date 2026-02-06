@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.8156
-- -89.2223
+  - 40.8156
+  - -89.2223
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by ADM. A key component of
+description:
+  A CCUS project in the T&S sector developed by ADM. A key component of
   the global carbon management network.
 relatedPolicies:
   - us-45q-ira

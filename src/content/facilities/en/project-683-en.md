@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 54.1346
-- -116.8909
+  - 54.1346
+  - -116.8909
 commencementYear: 2031
-description: A CCUS project in the Transport sector developed by Kalipedos Nafta AB.
+description:
+  A CCUS project in the Transport sector developed by Kalipedos Nafta AB.
   A key component of the global carbon management network.
 ---
 

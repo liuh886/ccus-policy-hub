@@ -1,7 +1,7 @@
 ---
 name: 'Coal creek capture: site characterisation and permitting (ND)'
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 46.9714
-- -99.9718
+  - 46.9714
+  - -99.9718
 commencementYear: null
 description: 由 University of North Dakota 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

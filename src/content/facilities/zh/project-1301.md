@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 30.6724
-- 104.0509
+  - 30.6724
+  - 104.0509
 commencementYear: 2025
-description: 由 Chinese-European Emission-Reducing Solutions project (CHEERS),  TotalEnergies
+description:
+  由 Chinese-European Emission-Reducing Solutions project (CHEERS),  TotalEnergies
   and Dongfang Boiler Group Co., Ltd (DBC) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - cn-national-standards

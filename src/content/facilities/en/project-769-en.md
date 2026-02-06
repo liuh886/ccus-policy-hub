@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 35.30632138416619
-- -91.95381612008278
+  - 35.30632138416619
+  - -91.95381612008278
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Tallgrass energy.
+description:
+  A CCUS project in the Transport sector developed by Tallgrass energy.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

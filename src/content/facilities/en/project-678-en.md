@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 22.708432099283293
-- 0.4010187794481528
+  - 22.708432099283293
+  - 0.4010187794481528
 commencementYear: 2029
-description: A CCUS project in the Transport sector developed by TES. A key component
+description:
+  A CCUS project in the Transport sector developed by TES. A key component
   of the global carbon management network.
 ---
 

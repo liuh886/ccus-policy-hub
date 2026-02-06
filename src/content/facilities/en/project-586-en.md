@@ -9,10 +9,11 @@ capacity: 2.5
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 18.596629495832417
-- 2.1331085987411837
+  - 18.596629495832417
+  - 2.1331085987411837
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Chevron, Mitsui.
+description:
+  A CCUS project in the Transport sector developed by Chevron, Mitsui.
   A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.315
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 22.60040256163497
-- -2.0694381451031507
+  - 22.60040256163497
+  - -2.0694381451031507
 commencementYear: 2032
-description: A CCUS project in the Cement sector developed by DDC. A key component
+description:
+  A CCUS project in the Cement sector developed by DDC. A key component
   of the global carbon management network.
 ---
 

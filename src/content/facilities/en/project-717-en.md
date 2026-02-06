@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 35.52006833300498
-- -96.78640159537602
+  - 35.52006833300498
+  - -96.78640159537602
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Southern States Energy
+description:
+  A CCUS project in the Storage sector developed by Southern States Energy
   Board. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

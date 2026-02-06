@@ -9,10 +9,11 @@ capacity: 3.3
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 55.68223003067068
-- -108.22055702809126
+  - 55.68223003067068
+  - -108.22055702809126
 commencementYear: null
-description: A CCUS project in the Storage sector developed by  Keyera Corp.,  Entropy
+description:
+  A CCUS project in the Storage sector developed by  Keyera Corp.,  Entropy
   Inc., NorthRiver Midstream. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

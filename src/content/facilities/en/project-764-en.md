@@ -10,10 +10,11 @@ sector: Storage
 storage_type: EOR
 precision: approximate
 coordinates:
-- 46.5964
-- 125.1078
+  - 46.5964
+  - 125.1078
 commencementYear: 2031
-description: A CCUS project in the Storage sector developed by Petrochina (Daqing
+description:
+  A CCUS project in the Storage sector developed by Petrochina (Daqing
   Petroleum Services), PT Gemilang Buana Utama. A key component of the global carbon
   management network.
 ---

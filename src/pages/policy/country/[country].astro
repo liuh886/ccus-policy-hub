@@ -8,7 +8,9 @@ export async function getStaticPaths() {
   const countries = [...new Set(allPolicies.map((p) => p.data.country))];
 
   return countries.map((country) => {
-    const countryPolicies = allPolicies.filter((p) => p.data.country === country);
+    const countryPolicies = allPolicies.filter(
+      (p) => p.data.country === country
+    );
     return {
       params: { country },
       props: { policies: countryPolicies },
@@ -22,8 +24,19 @@ const { policies } = Astro.props;
 
 <Layout title={`${country} 政策集`}>
   <nav class="mb-8">
-    <a href="/policy" class="text-blue-600 hover:underline flex items-center gap-2 text-sm">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    <a
+      href="/ccus-policy-hub/policy/"
+      class="text-blue-600 hover:underline flex items-center gap-2 text-sm"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg
+      >
       返回全球政策库
     </a>
   </nav>
@@ -36,8 +49,6 @@ const { policies } = Astro.props;
   </header>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {policies.map(policy => (
-      <PolicyCard policy={policy} lang="zh" />
-    ))}
+    {policies.map((policy) => <PolicyCard policy={policy} lang="zh" />)}
   </div>
 </Layout>

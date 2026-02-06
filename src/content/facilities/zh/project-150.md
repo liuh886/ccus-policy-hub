@@ -1,7 +1,7 @@
 ---
 name: Air Products for Exxonmobil Botlek Rotterdam refinery
 lang: zh
-country: "荷兰"
+country: '荷兰'
 location: Other fuel transformation
 type: 捕集
 status: 建设中
@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 51.8370
-- 4.6425
+  - 51.8370
+  - 4.6425
 commencementYear: 2026
 description: 由 Exxonmobil, Air Products 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

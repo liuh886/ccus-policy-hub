@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 25.2735
-- 51.4621
+  - 25.2735
+  - 51.4621
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by QAFCO,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by QAFCO,
   thyssenkrupp Uhde/Consolidated Contractors Company (EPC). A key component of the
   global carbon management network.
 ---

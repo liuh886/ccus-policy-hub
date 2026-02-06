@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.6493
-- -99.9299
+  - 31.6493
+  - -99.9299
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by GTI Energy,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by GTI Energy,
   AES Corporation, Air Liquide, Chevron, Mitsubishi Power Americas, Chevron, Orsetd,
   Shell, Sempra Infrastructure . A key component of the global carbon management network.
 relatedPolicies:

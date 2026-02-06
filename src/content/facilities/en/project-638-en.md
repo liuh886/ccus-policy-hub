@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 54.33405963693115
-- -6.315000775483494
+  - 54.33405963693115
+  - -6.315000775483494
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Tarmac, SigmaRoc. A
+description:
+  A CCUS project in the Cement sector developed by Tarmac, SigmaRoc. A
   key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

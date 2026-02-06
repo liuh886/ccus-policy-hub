@@ -9,10 +9,11 @@ capacity: 0.0
 sector: T&S
 storage_type: Unknown/unspecified
 coordinates:
-- 0.6801839707527493
-- 102.1598908891435
+  - 0.6801839707527493
+  - 102.1598908891435
 commencementYear: 2029
-description: A CCUS project in the T&S sector developed by Petronas. A key component
+description:
+  A CCUS project in the T&S sector developed by Petronas. A key component
   of the global carbon management network.
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: Bayu-Undan field storage hub Timor-Leste phase 1
 lang: zh
-country: "澳大利亚-东帝汶"
+country: '澳大利亚-东帝汶'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 52.6167
-- -106.8068
+  - 52.6167
+  - -106.8068
 commencementYear: 2028
-description: 由 Santos (36.5%), SK E&S (21%), Timor GAP (16%), INPEX (9.6%), Eni SPA
+description:
+  由 Santos (36.5%), SK E&S (21%), Timor GAP (16%), INPEX (9.6%), Eni SPA
   (9.2%), Tokyo Timor Sea Resources Pty Ltd. (7.6%). 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 51.80641440649332
-- 7.398845663757843
+  - 51.80641440649332
+  - 7.398845663757843
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Boson Energy
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Boson Energy
   SA. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

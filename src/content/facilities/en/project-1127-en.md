@@ -9,10 +9,11 @@ capacity: 3.6
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 38.400864006362
-- -99.50071802112626
+  - 38.400864006362
+  - -99.50071802112626
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Duke Energy,
+description:
+  A CCUS project in the Power and heat sector developed by Duke Energy,
   DOE Office of Clean Energy Demonstrations. A key component of the global carbon
   management network.
 relatedPolicies:

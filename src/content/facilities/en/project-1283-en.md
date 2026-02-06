@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.9857
-- -106.7072
+  - 52.9857
+  - -106.7072
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by InCapture, SK earthon
+description:
+  A CCUS project in the Storage sector developed by InCapture, SK earthon
   Australia, Carbon CQ. A key component of the global carbon management network.
 ---
 

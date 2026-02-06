@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.0178
-- -99.6413
+  - 32.0178
+  - -99.6413
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by BP carbon solutions, Linde
+description:
+  A CCUS project in the T&S sector developed by BP carbon solutions, Linde
   (capture/CO2 supplier). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

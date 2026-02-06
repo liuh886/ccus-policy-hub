@@ -9,10 +9,11 @@ capacity: 0.25
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 37.994874766297166
-- -95.38379221556313
+  - 37.994874766297166
+  - -95.38379221556313
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by OCI, Enerflex (CO2
+description:
+  A CCUS project in the Chemicals sector developed by OCI, Enerflex (CO2
   capture), Blackrock (funding), Navigor (T). A key component of the global carbon
   management network.
 relatedPolicies:

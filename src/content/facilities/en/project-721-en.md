@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 42.9623
-- -107.0749
+  - 42.9623
+  - -107.0749
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by University of
+description:
+  A CCUS project in the Power and heat sector developed by University of
   Wyoming, PNNL, 1PointFive, Calpine, Carbfix, Schlumberger. A key component of the
   global carbon management network.
 relatedPolicies:

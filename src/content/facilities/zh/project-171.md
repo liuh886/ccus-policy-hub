@@ -1,7 +1,7 @@
 ---
 name: Glacier Gas Plant CCS full capacity (ALB)
 lang: zh
-country: "加拿大"
+country: '加拿大'
 location: Power and heat
 type: 全流程
 status: 建设中
@@ -9,10 +9,11 @@ capacity: 0.192
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 53.131887382727086
-- -104.41451149468517
+  - 53.131887382727086
+  - -104.41451149468517
 commencementYear: 2026
-description: 由  Entropy Inc. ABC Engineering, University of Regina, Brookfield Renewable
+description:
+  由  Entropy Inc. ABC Engineering, University of Regina, Brookfield Renewable
   Partners  开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - ca-ccus-itc

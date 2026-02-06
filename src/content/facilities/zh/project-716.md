@@ -1,7 +1,7 @@
 ---
 name: Sutter Decarbonization Project (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,10 +10,11 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.9920
-- -119.5740
+  - 36.9920
+  - -119.5740
 commencementYear: 2028
-description: 由 Gas Technology Institute, Calpine, 1pointfive (storage) 开发的 T&S 行业
+description:
+  由 Gas Technology Institute, Calpine, 1pointfive (storage) 开发的 T&S 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

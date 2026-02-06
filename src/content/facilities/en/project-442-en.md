@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 23.1027
-- 113.2995
+  - 23.1027
+  - 113.2995
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Shell, ExxonMobil, CNOOC,
+description:
+  A CCUS project in the T&S sector developed by Shell, ExxonMobil, CNOOC,
   Guangdong Provincial Development & Reform Commission (JSA). A key component of the
   global carbon management network.
 relatedPolicies:

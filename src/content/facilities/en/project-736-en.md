@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 23.6263
-- 58.4292
+  - 23.6263
+  - 58.4292
 commencementYear: 2026
-description: A CCUS project in the DAC sector developed by Mission Zero Technologies.
+description:
+  A CCUS project in the DAC sector developed by Mission Zero Technologies.
   A key component of the global carbon management network.
 ---
 

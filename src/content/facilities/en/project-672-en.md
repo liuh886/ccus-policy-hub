@@ -9,10 +9,11 @@ capacity: 4.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 53.35207088065985
-- 5.846058473473869
+  - 53.35207088065985
+  - 5.846058473473869
 commencementYear: 2026
-description: A CCUS project in the Transport sector developed by Fidelis new energy,
+description:
+  A CCUS project in the Transport sector developed by Fidelis new energy,
   Gas Storage Denmark, Capio Danmark (PCI coordinator), KBR (FEED). A key component
   of the global carbon management network.
 ---

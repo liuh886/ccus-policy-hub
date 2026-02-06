@@ -1,7 +1,7 @@
 ---
 name: Leo (MS)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 37.211466272350265
-- -94.34022462171488
+  - 37.211466272350265
+  - -94.34022462171488
 commencementYear: 2026
-description: 由 ExxonMobil (formerly Denbury carbon solutions) 开发的 Storage 行业 CCUS
+description:
+  由 ExxonMobil (formerly Denbury carbon solutions) 开发的 Storage 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

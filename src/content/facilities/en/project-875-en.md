@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.0314
-- -92.2778
+  - 31.0314
+  - -92.2778
 commencementYear: null
-description: A CCUS project in the Storage sector developed by DT Midstream Holdings
+description:
+  A CCUS project in the Storage sector developed by DT Midstream Holdings
   LLC. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

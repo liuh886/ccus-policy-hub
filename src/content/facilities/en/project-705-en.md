@@ -9,10 +9,11 @@ capacity: 5.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 57.359989010046796
-- -5.021420698396872
+  - 57.359989010046796
+  - -5.021420698396872
 commencementYear: 2035
-description: A CCUS project in the T&S sector developed by Harbour Energy (operator),
+description:
+  A CCUS project in the T&S sector developed by Harbour Energy (operator),
   BP (40%), Technip energies (FEED transport). A key component of the global carbon
   management network.
 relatedPolicies:

@@ -10,8 +10,8 @@ sector: Power and heat
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 36.0827
-- 103.8178
+  - 36.0827
+  - 103.8178
 commencementYear: 2025
 description: 由 China Huaneng Group 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

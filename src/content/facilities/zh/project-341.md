@@ -1,7 +1,7 @@
 ---
 name: Project Tundra at Milton R Young Station (ND)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Power and heat
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.6117
-- -100.7411
+  - 47.6117
+  - -100.7411
 commencementYear: 2028
 description: 由 Minnkota Power Cooperative Inc. 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

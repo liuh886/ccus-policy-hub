@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.9523
-- -99.5592
+  - 31.9523
+  - -99.5592
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by ExxonMobil. A key component
+description:
+  A CCUS project in the T&S sector developed by ExxonMobil. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

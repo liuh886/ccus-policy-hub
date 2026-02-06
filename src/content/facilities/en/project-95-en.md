@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 22.3475
-- 114.2065
+  - 22.3475
+  - 114.2065
 commencementYear: 2023
-description: A CCUS project in the Other fuel transformation sector developed by CNOOC.
+description:
+  A CCUS project in the Other fuel transformation sector developed by CNOOC.
   A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

@@ -10,10 +10,11 @@ sector: Cement
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.7925
-- -99.6683
+  - 31.7925
+  - -99.6683
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Research Triangle Institute
+description:
+  A CCUS project in the Cement sector developed by Research Triangle Institute
   (RTI) International, Cemex. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

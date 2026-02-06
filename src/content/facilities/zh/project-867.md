@@ -1,7 +1,7 @@
 ---
 name: Lorain CCS (OH)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 34.55411995871551
-- -93.58961862855682
+  - 34.55411995871551
+  - -93.58961862855682
 commencementYear: null
 description: 由 Lorain Carbon Zero Solutions 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

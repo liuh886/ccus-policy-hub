@@ -9,10 +9,11 @@ capacity: 3.402
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 37.29991537083648
-- -98.86309860205738
+  - 37.29991537083648
+  - -98.86309860205738
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by Adams Fork
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Adams Fork
   Energy, the Flandreau Santee Sioux Tribe. A key component of the global carbon management
   network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 2.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 33.59008547507737
-- 140.78545557292745
+  - 33.59008547507737
+  - 140.78545557292745
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by ITOCHU, ITOCHU Oil exploration  Mistubishi
+description:
+  A CCUS project in the T&S sector developed by ITOCHU, ITOCHU Oil exploration  Mistubishi
   Heavy Industries, INPEX, Taisei. A key component of the global carbon management
   network.
 ---

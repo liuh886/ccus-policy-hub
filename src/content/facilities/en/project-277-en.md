@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.4088
-- -101.0426
+  - 47.4088
+  - -101.0426
 commencementYear: 2023
-description: A CCUS project in the Biofuels sector developed by Blue Flint Sequester
+description:
+  A CCUS project in the Biofuels sector developed by Blue Flint Sequester
   Company LLC, Harvestone Low Carbon Partners, Ag Energy Group LLC . A key component
   of the global carbon management network.
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 37.4959
-- 118.5175
+  - 37.4959
+  - 118.5175
 commencementYear: 2022
-description: A CCUS project in the Chemicals sector developed by Sinopec, Qilu Petrochemical.
+description:
+  A CCUS project in the Chemicals sector developed by Sinopec, Qilu Petrochemical.
   A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

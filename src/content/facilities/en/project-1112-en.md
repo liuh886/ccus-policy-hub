@@ -9,10 +9,11 @@ capacity: 0.22
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 61.52292057808323
-- 7.90935097091736
+  - 61.52292057808323
+  - 7.90935097091736
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Statkraft Varme,
+description:
+  A CCUS project in the Power and heat sector developed by Statkraft Varme,
   Aker Carbon Capture. A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

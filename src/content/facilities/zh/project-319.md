@@ -1,7 +1,7 @@
 ---
 name: ECO2CEE (Poland EU CCS Interconnector) phase 1
 lang: zh
-country: "波兰、拉脱维亚、立陶宛"
+country: '波兰、拉脱维亚、立陶宛'
 location: Transport
 type: Transport
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 2.5
 sector: Transport
 storage_type: 咸水层
 coordinates:
-- 20.58447953010988
-- -4.092870619827179
+  - 20.58447953010988
+  - -4.092870619827179
 commencementYear: 2027
-description: 由 Air Liquide Polska, PKN Orlen, Lafarge Cement, Orlen Lietuva 开发的 Transport
+description:
+  由 Air Liquide Polska, PKN Orlen, Lafarge Cement, Orlen Lietuva 开发的 Transport
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---
 

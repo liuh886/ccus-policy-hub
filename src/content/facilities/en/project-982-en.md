@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.2277
-- -100.2113
+  - 32.2277
+  - -100.2113
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Projeo Corporation.
+description:
+  A CCUS project in the Storage sector developed by Projeo Corporation.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

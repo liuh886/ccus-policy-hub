@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.2764
-- -92.0534
+  - 31.2764
+  - -92.0534
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by ExxonMobil (formerly
+description:
+  A CCUS project in the Storage sector developed by ExxonMobil (formerly
   Denbury carbon solutions). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

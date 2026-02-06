@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.6114
-- -119.7412
+  - 36.6114
+  - -119.7412
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Electric Power Research
+description:
+  A CCUS project in the Storage sector developed by Electric Power Research
   Institute. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -1,7 +1,7 @@
 ---
 name: Net Power Odessa gas plant (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.9269
-- -99.9017
+  - 31.9269
+  - -99.9017
 commencementYear: 2026
-description: 由 Net Power, Occidental (T&S), 8 Rivers capital (funding) 开发的 Power and
+description:
+  由 Net Power, Occidental (T&S), 8 Rivers capital (funding) 开发的 Power and
   heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

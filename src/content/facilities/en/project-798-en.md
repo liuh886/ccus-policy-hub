@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 43.0343
-- -106.9303
+  - 43.0343
+  - -106.9303
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Carbon Solutions
+description:
+  A CCUS project in the Transport sector developed by Carbon Solutions
   LLC, Enhanced Oil Recovery Institute of University of Wyoming. A key component of
   the global carbon management network.
 relatedPolicies:

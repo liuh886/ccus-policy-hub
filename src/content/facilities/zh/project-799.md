@@ -1,7 +1,7 @@
 ---
 name: Port of Corpus Christi-Mississippi pipeline (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Transport
 type: Transport
 status: 计划中
@@ -10,8 +10,8 @@ sector: Transport
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 32.1849
-- -99.8898
+  - 32.1849
+  - -99.8898
 commencementYear: null
 description: 由 Howard Midstream Energy Partners LLC 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

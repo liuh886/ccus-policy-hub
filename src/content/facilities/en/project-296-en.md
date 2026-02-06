@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 60.9973
-- 4.4347
+  - 60.9973
+  - 4.4347
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Shell (33.3%), TotalEnergies
+description:
+  A CCUS project in the T&S sector developed by Shell (33.3%), TotalEnergies
   (33.3%), Equinor (33.3%). A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

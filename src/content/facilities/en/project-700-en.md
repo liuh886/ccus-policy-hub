@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: EOR
 coordinates:
-- 35.784959700640925
-- -97.43186522565192
+  - 35.784959700640925
+  - -97.43186522565192
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by EPRI, MTR. A
+description:
+  A CCUS project in the Power and heat sector developed by EPRI, MTR. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

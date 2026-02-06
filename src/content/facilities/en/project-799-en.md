@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.0260
-- -99.8373
+  - 32.0260
+  - -99.8373
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Howard Midstream
+description:
+  A CCUS project in the Transport sector developed by Howard Midstream
   Energy Partners LLC. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

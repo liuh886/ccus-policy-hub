@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 18.29307478482342
-- 0.7889393980689814
+  - 18.29307478482342
+  - 0.7889393980689814
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Air Liquide, Lhoist,
+description:
+  A CCUS project in the Transport sector developed by Air Liquide, Lhoist,
   Duisport. A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 1.1
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 57.381097723550695
-- -104.94367181330064
+  - 57.381097723550695
+  - -104.94367181330064
 commencementYear: 2015
-description: A CCUS project in the Other fuel transformation sector developed by Canadian
+description:
+  A CCUS project in the Other fuel transformation sector developed by Canadian
   Natural Resources Limited, Shell Canada, Chevron Canada. A key component of the
   global carbon management network.
 relatedPolicies:

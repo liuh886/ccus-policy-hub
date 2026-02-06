@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.1945
-- 121.4832
+  - 31.1945
+  - 121.4832
 commencementYear: 2028
 description: 由 SCIPIG (Air Liquide) 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

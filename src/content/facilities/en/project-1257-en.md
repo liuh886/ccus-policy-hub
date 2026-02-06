@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.0177
-- -99.5740
+  - 32.0177
+  - -99.5740
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by Chevron (50%), Talos
+description:
+  A CCUS project in the Storage sector developed by Chevron (50%), Talos
   Energy (TotalEnergies) (25% and operator), Equinor (25%). A key component of the
   global carbon management network.
 relatedPolicies:

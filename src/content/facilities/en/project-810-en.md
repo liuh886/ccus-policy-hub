@@ -9,10 +9,11 @@ capacity: 1.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 36.754361888488646
-- 137.45317020092804
+  - 36.754361888488646
+  - 137.45317020092804
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by INPEX Corporation, Nippon
+description:
+  A CCUS project in the T&S sector developed by INPEX Corporation, Nippon
   Steel Corporation, Kanto Natural Gas Development Co., Ltd.. A key component of the
   global carbon management network.
 ---

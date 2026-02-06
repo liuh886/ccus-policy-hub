@@ -9,10 +9,11 @@ capacity: 0.1
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 19.777724509619524
-- 1.314991158537393
+  - 19.777724509619524
+  - 1.314991158537393
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by KVA Linth, VBSA,
+description:
+  A CCUS project in the Power and heat sector developed by KVA Linth, VBSA,
   Capsol (feasibility). A key component of the global carbon management network.
 ---
 

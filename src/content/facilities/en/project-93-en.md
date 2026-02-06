@@ -9,10 +9,11 @@ capacity: 0.184
 sector: DAC
 storage_type: Use
 coordinates:
-- 57.08407365250004
-- 9.255764869793639
+  - 57.08407365250004
+  - 9.255764869793639
 commencementYear: 2029
-description: A CCUS project in the DAC sector developed by Sunfire GmbH, Climeworks
+description:
+  A CCUS project in the DAC sector developed by Sunfire GmbH, Climeworks
   AG, Paul Wurth SA (SMS group), Valinor (Norsk Vind). A key component of the global
   carbon management network.
 relatedPolicies:

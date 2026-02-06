@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 34.89865615111255
-- -98.12218303188008
+  - 34.89865615111255
+  - -98.12218303188008
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Tampa Electric
+description:
+  A CCUS project in the Power and heat sector developed by Tampa Electric
   Company, ION Clean Energy, DOE Office of Clean Energy Demonstrations (FEED funding).
   A key component of the global carbon management network.
 relatedPolicies:

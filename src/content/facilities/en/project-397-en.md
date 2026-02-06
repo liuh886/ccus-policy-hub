@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Biofuels
 storage_type: EOR
 coordinates:
-- 36.25065457931394
-- -99.14905209378801
+  - 36.25065457931394
+  - -99.14905209378801
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Velocys,Bechtel (FEED).
+description:
+  A CCUS project in the Biofuels sector developed by Velocys,Bechtel (FEED).
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

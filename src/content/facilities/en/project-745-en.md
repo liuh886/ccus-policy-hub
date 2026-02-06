@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 21.886244793260133
-- -0.31782418130254175
+  - 21.886244793260133
+  - -0.31782418130254175
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by emov, Danubeenergy
+description:
+  A CCUS project in the Biofuels sector developed by emov, Danubeenergy
   ventures, ClonBio Group. A key component of the global carbon management network.
 ---
 

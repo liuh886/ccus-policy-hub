@@ -9,10 +9,11 @@ capacity: 0.4
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 38.55673370553234
-- -92.5172414595085
+  - 38.55673370553234
+  - -92.5172414595085
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Glacial Lakes Energy,
+description:
+  A CCUS project in the Biofuels sector developed by Glacial Lakes Energy,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

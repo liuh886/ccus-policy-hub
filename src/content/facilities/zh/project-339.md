@@ -1,7 +1,7 @@
 ---
 name: Project Phoenix ammonia (WY)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 全流程
 status: 计划中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 42.9148
-- -107.5464
+  - 42.9148
+  - -107.5464
 commencementYear: null
-description: 由 North Shore Energy, Starwood Energy Group 开发的 Hydrogen or ammonia 行业
+description:
+  由 North Shore Energy, Starwood Energy Group 开发的 Hydrogen or ammonia 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 60.2965
-- 4.7865
+  - 60.2965
+  - 4.7865
 commencementYear: 2035
-description: A CCUS project in the Transport sector developed by Gassco, Equinor,
+description:
+  A CCUS project in the Transport sector developed by Gassco, Equinor,
   Harbour, Northern Lights, Total Energies, Aker BP, Vår Energi, Norske Shell. A key
   component of the global carbon management network.
 ---

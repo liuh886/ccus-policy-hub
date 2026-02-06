@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Cement
 storage_type: Use
 coordinates:
-- 48.947513330261
-- -1.7224455290119418
+  - 48.947513330261
+  - -1.7224455290119418
 commencementYear: 2026
-description: A CCUS project in the Cement sector developed by Vicat. A key component
+description:
+  A CCUS project in the Cement sector developed by Vicat. A key component
   of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

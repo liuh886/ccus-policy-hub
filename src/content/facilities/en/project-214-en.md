@@ -9,10 +9,11 @@ capacity: 0.315
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 39.41544369108053
-- -91.77311648542688
+  - 39.41544369108053
+  - -91.77311648542688
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Husker Ag, Summit
+description:
+  A CCUS project in the Biofuels sector developed by Husker Ag, Summit
   Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

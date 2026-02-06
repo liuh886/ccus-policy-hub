@@ -9,10 +9,11 @@ capacity: 0.0
 sector: T&S
 storage_type: Unknown/unspecified
 coordinates:
-- 38.748528090376084
-- -99.2635889819485
+  - 38.748528090376084
+  - -99.2635889819485
 commencementYear: null
-description: A CCUS project in the T&S sector developed by K-Line, Sumitomo. A key
+description:
+  A CCUS project in the T&S sector developed by K-Line, Sumitomo. A key
   component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

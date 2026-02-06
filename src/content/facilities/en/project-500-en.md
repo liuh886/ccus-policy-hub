@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 54.3276
-- -116.5050
+  - 54.3276
+  - -116.5050
 commencementYear: 2027
-description: A CCUS project in the Storage sector developed by  Wolf Midstream, Whitecap
+description:
+  A CCUS project in the Storage sector developed by  Wolf Midstream, Whitecap
   Resources Inc., the First Nation Capital Investment Partnership (FNCIP), Heart Lake
   First Nation. A key component of the global carbon management network.
 relatedPolicies:

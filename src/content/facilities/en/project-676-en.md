@@ -9,10 +9,11 @@ capacity: 24.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 63.15187989398551
-- 11.880595426643886
+  - 63.15187989398551
+  - 11.880595426643886
 commencementYear: 2035
-description: A CCUS project in the T&S sector developed by Equinor. A key component
+description:
+  A CCUS project in the T&S sector developed by Equinor. A key component
   of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

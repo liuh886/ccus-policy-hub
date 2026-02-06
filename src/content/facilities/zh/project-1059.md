@@ -1,7 +1,7 @@
 ---
 name: Central Louisiana Regional Carbon Storage (CENLA) Hub (Wilcox) (LA) phase 2
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,8 +10,8 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.9648
-- -92.0374
+  - 30.9648
+  - -92.0374
 commencementYear: 2027
 description: 由 CapturePoint Solutions, Energy transfer 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

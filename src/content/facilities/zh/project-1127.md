@@ -1,7 +1,7 @@
 ---
 name: Duke Energy Edwardsport Integrated Gasification Combined Cycle plant (IN)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 3.6
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 38.400864006362
-- -99.50071802112626
+  - 38.400864006362
+  - -99.50071802112626
 commencementYear: null
-description: 由 Duke Energy, DOE Office of Clean Energy Demonstrations 开发的 Power and
+description:
+  由 Duke Energy, DOE Office of Clean Energy Demonstrations 开发的 Power and
   heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

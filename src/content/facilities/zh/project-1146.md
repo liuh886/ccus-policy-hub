@@ -1,7 +1,7 @@
 ---
 name: ECOPLANTA (Tarragona)
 lang: zh
-country: "西班牙"
+country: '西班牙'
 location: Power and heat
 type: CCU
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.34
 sector: Power and heat
 storage_type: 地质封存
 coordinates:
-- 42.10345442643492
-- 1.3434165676778953
+  - 42.10345442643492
+  - 1.3434165676778953
 commencementYear: 2027
 description: '由 ECOPLANTA MOLECULAR RECYCLING
 

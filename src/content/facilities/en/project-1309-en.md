@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8042
-- 87.6538
+  - 43.8042
+  - 87.6538
 commencementYear: 2024
-description: A CCUS project in the Chemicals sector developed by Xinjiang Guoneng
+description:
+  A CCUS project in the Chemicals sector developed by Xinjiang Guoneng
   Chemical Co., Ltd, Xinjiang Huarui Gas Co., Ltd (built ccu infrastructure). A key
   component of the global carbon management network.
 relatedPolicies:

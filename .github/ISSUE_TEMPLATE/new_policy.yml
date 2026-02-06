@@ -1,7 +1,7 @@
-name: "🆕 新政策提交 / New Policy Submission"
+name: '🆕 新政策提交 / New Policy Submission'
 description: 提交一个新的 CCUS 政策入库建议
-title: "[POLICY] 国家-政策名称"
-labels: ["data:policy", "needs-review"]
+title: '[POLICY] 国家-政策名称'
+labels: ['data:policy', 'needs-review']
 body:
   - type: markdown
     attributes:

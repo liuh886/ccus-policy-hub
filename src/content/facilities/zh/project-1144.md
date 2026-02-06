@@ -1,7 +1,7 @@
 ---
 name: AEB Amsterdam
 lang: zh
-country: "荷兰"
+country: '荷兰'
 location: Power and heat
 type: 全流程
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.44
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 51.019373582265445
-- 3.5342384266589013
+  - 51.019373582265445
+  - 3.5342384266589013
 commencementYear: 2028
 description: 由 AEB Amsterdam 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

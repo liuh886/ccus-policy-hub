@@ -9,10 +9,11 @@ capacity: 0.9
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 53.78362384512417
-- 9.066839082394699
+  - 53.78362384512417
+  - 9.066839082394699
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Hofor. A key
+description:
+  A CCUS project in the Power and heat sector developed by Hofor. A key
   component of the global carbon management network.
 ---
 

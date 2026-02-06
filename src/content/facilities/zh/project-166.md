@@ -1,7 +1,7 @@
 ---
 name: Glacial Lakes Energy Aberdeen biorefinery (SD)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.14
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 37.15108336471405
-- -90.41657616083243
+  - 37.15108336471405
+  - -90.41657616083243
 commencementYear: 2028
-description: 由 Glacial Lakes Energy, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS
+description:
+  由 Glacial Lakes Energy, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

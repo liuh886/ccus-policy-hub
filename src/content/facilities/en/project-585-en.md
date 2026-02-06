@@ -9,10 +9,11 @@ capacity: 7.5
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 46.65408800871232
-- 1.7785986860828613
+  - 46.65408800871232
+  - 1.7785986860828613
 commencementYear: 2030
-description: A CCUS project in the Transport sector developed by Air Liquide, BASF,
+description:
+  A CCUS project in the Transport sector developed by Air Liquide, BASF,
   Borealis, ExxonMobil, INEOS, TotalEnergies, Fluxys, Port of Antwerp. A key component
   of the global carbon management network.
 ---

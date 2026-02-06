@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.7636
-- -101.1996
+  - 47.7636
+  - -101.1996
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by Bakken
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Bakken
   Energy, Mistubishi Heavy Industries (as Mitsubishi Power Americas), Mandan, Hidatsa,
   Arikara Nation. A key component of the global carbon management network.
 relatedPolicies:

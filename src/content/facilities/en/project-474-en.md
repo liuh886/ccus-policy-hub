@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.9858
-- -100.0151
+  - 30.9858
+  - -100.0151
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by 1PointFive, Oxy low carbon
+description:
+  A CCUS project in the DAC sector developed by 1PointFive, Oxy low carbon
   ventures (Occidental). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.55
 sector: Cement
 storage_type: Dedicated Storage
 coordinates:
-- 33.76434008057815
-- -92.71768637065213
+  - 33.76434008057815
+  - -92.71768637065213
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Titan(owner of Roanoke
+description:
+  A CCUS project in the Cement sector developed by Titan(owner of Roanoke
   Cement Company), Leilac, Amazon, Virginia Tech. A key component of the global carbon
   management network.
 relatedPolicies:

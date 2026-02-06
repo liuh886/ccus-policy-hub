@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.0151
-- -89.0701
+  - 40.0151
+  - -89.0701
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Illinois clean fuels,.
+description:
+  A CCUS project in the Biofuels sector developed by Illinois clean fuels,.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

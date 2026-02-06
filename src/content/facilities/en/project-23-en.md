@@ -9,10 +9,11 @@ capacity: 0.25
 sector: DAC
 storage_type: Use
 coordinates:
-- 54.40520184525959
-- -101.3052407404987
+  - 54.40520184525959
+  - -101.3052407404987
 commencementYear: 2026
-description: A CCUS project in the DAC sector developed by Huron Clean Energy , Oxy
+description:
+  A CCUS project in the DAC sector developed by Huron Clean Energy , Oxy
   Low Carbon Ventures, Carbon Engineering  (Oxy). A key component of the global carbon
   management network.
 relatedPolicies:

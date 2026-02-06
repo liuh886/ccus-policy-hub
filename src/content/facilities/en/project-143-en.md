@@ -9,10 +9,11 @@ capacity: 0.2
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 38.842712021617345
-- 8.113158602490817
+  - 38.842712021617345
+  - 8.113158602490817
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by Eni.
+description:
+  A CCUS project in the Other fuel transformation sector developed by Eni.
   A key component of the global carbon management network.
 ---
 

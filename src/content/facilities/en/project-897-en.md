@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Other industry
 storage_type: Dedicated storage
 coordinates:
-- 38.66443914579591
-- -92.7289446854821
+  - 38.66443914579591
+  - -92.7289446854821
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Purefield Carbon
+description:
+  A CCUS project in the Other industry sector developed by Purefield Carbon
   Capture LLC (Purefield ingredients). A key component of the global carbon management
   network.
 relatedPolicies:

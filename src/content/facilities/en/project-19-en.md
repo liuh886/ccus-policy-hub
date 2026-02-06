@@ -9,10 +9,11 @@ capacity: 22.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 53.85569311906374
-- 7.843136475734813
+  - 53.85569311906374
+  - 7.843136475734813
 commencementYear: 2029
-description: A CCUS project in the Transport sector developed by TotalEnergies, Shell,
+description:
+  A CCUS project in the Transport sector developed by TotalEnergies, Shell,
   EBN, Gasunie, . A key component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 0.229
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 35.63699682877775
-- -92.1492046094341
+  - 35.63699682877775
+  - -92.1492046094341
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Ringneck Energy, Summit
+description:
+  A CCUS project in the Biofuels sector developed by Ringneck Energy, Summit
   Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

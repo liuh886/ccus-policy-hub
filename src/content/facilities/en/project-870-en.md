@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 40.5414
-- -89.0382
+  - 40.5414
+  - -89.0382
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Heartland Greenway
+description:
+  A CCUS project in the Storage sector developed by Heartland Greenway
   Carbon Storage LLC (Navigator Carbon Ventures). A key component of the global carbon
   management network.
 relatedPolicies:

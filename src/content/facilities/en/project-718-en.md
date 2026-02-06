@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.1837
-- -91.9478
+  - 31.1837
+  - -91.9478
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by Carbon Zero (Storage),
+description:
+  A CCUS project in the T&S sector developed by Carbon Zero (Storage),
   Cox (field owner), Crescent Midstream (pipeline operator), Repsol. A key component
   of the global carbon management network.
 relatedPolicies:

@@ -1,7 +1,7 @@
 ---
 name: Monkey Island carbon storage project (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.1959
-- -92.0832
+  - 31.1959
+  - -92.0832
 commencementYear: null
 description: 由 Advanced Resources International Inc. 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

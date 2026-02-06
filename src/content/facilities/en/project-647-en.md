@@ -9,10 +9,11 @@ capacity: 2.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 33.414973062650134
-- 134.00853657248672
+  - 33.414973062650134
+  - 134.00853657248672
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Nippon steel, ExxonMobil,
+description:
+  A CCUS project in the T&S sector developed by Nippon steel, ExxonMobil,
   Mitsubishi. A key component of the global carbon management network.
 ---
 

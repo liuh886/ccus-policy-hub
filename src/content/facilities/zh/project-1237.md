@@ -1,7 +1,7 @@
 ---
 name: Orchard One (WY)
 lang: zh
-country: "美国"
+country: '美国'
 location: DAC
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: DAC
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 43.2407
-- -107.3237
+  - 43.2407
+  - -107.3237
 commencementYear: 2026
 description: 由 Spiritus, Casper carbon sequestration 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.19
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- 39.50616632747396
-- -97.43463513524314
+  - 39.50616632747396
+  - -97.43463513524314
 commencementYear: 2024
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Piñon Midstream. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

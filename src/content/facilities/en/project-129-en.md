@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 53.1792
-- -106.3224
+  - 53.1792
+  - -106.3224
 commencementYear: 2028
-description: A CCUS project in the Chemicals sector developed by Dow Chemical, Linde,
+description:
+  A CCUS project in the Chemicals sector developed by Dow Chemical, Linde,
   Fluor, Wolf Midstream. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

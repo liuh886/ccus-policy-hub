@@ -1,7 +1,7 @@
 ---
 name: Big spring refinery (TX) pilot
 lang: zh
-country: "美国"
+country: '美国'
 location: Other fuel transformation
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 31.5728
-- -99.7955
+  - 31.5728
+  - -99.7955
 commencementYear: 2028
 description: 由 Delek, Svante 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

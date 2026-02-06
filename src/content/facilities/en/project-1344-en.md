@@ -9,10 +9,11 @@ capacity: 0.001
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 19.123724506680343
-- 3.4967233397403295
+  - 19.123724506680343
+  - 3.4967233397403295
 commencementYear: null
-description: A CCUS project in the DAC sector developed by RepAir Carbon, Cella. A
+description:
+  A CCUS project in the DAC sector developed by RepAir Carbon, Cella. A
   key component of the global carbon management network.
 ---
 

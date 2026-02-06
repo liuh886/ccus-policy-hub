@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 33.08829715974395
-- 135.1850594837364
+  - 33.08829715974395
+  - 135.1850594837364
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by J-Power. A key
+description:
+  A CCUS project in the Power and heat sector developed by J-Power. A key
   component of the global carbon management network.
 ---
 

@@ -9,10 +9,11 @@ capacity: 10.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 20.21428180114638
-- -2.747049823347364
+  - 20.21428180114638
+  - -2.747049823347364
 commencementYear: 2040
-description: A CCUS project in the T&S sector developed by Santos,  JX Nippon Oil
+description:
+  A CCUS project in the T&S sector developed by Santos,  JX Nippon Oil
   & Gas Exploration Corporation, ENEOS. A key component of the global carbon management
   network.
 ---

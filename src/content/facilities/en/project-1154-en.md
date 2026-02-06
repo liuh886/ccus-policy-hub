@@ -9,10 +9,11 @@ capacity: 0.18
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 47.51474936813317
-- 9.134537821165832
+  - 47.51474936813317
+  - 9.134537821165832
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Capsol, unknown
+description:
+  A CCUS project in the Power and heat sector developed by Capsol, unknown
   companies. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

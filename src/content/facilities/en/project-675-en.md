@@ -9,10 +9,11 @@ capacity: 25.8
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 53.28950204243034
-- 5.063983617545398
+  - 53.28950204243034
+  - 5.063983617545398
 commencementYear: 2028
-description: A CCUS project in the Transport sector developed by Open Grid Europe
+description:
+  A CCUS project in the Transport sector developed by Open Grid Europe
   (OGE), TES. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

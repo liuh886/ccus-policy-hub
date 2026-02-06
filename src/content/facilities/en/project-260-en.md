@@ -9,10 +9,11 @@ capacity: 0.257
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.47446241218137
-- -98.99687336892075
+  - 36.47446241218137
+  - -98.99687336892075
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Lincolnway Energy,
+description:
+  A CCUS project in the Biofuels sector developed by Lincolnway Energy,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

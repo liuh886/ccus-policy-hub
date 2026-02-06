@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: EOR
 precision: approximate
 coordinates:
-- 37.4512
-- 118.4838
+  - 37.4512
+  - 118.4838
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Sinopec. A key
+description:
+  A CCUS project in the Power and heat sector developed by Sinopec. A key
   component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

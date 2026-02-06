@@ -1,7 +1,7 @@
 ---
 name: Prax Lindsey Oil Refinery Phase 2
 lang: zh
-country: "英国"
+country: '英国'
 location: Other fuel transformation
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.55
 sector: Other fuel transformation
 storage_type: 咸水层
 coordinates:
-- 54.56629829192464
-- -3.0891152778368776
+  - 54.56629829192464
+  - -3.0891152778368776
 commencementYear: 2030
 description: 由 Prax 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

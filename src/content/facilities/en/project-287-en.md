@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 54.2333
-- -0.8686
+  - 54.2333
+  - -0.8686
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by BP, Equinor,
+description:
+  A CCUS project in the Power and heat sector developed by BP, Equinor,
   Shell (Cansolv). A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

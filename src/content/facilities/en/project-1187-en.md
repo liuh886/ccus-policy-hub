@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 51.6976025845588
-- -2.448338096565002
+  - 51.6976025845588
+  - -2.448338096565002
 commencementYear: null
-description: A CCUS project in the Transport sector developed by RWE, Dragon . A key
+description:
+  A CCUS project in the Transport sector developed by RWE, Dragon . A key
   component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -9,10 +9,11 @@ capacity: 0.31
 sector: Biofuels
 storage_type: EOR
 coordinates:
-- 35.8887591754042
-- -90.29498513630861
+  - 35.8887591754042
+  - -90.29498513630861
 commencementYear: 2009
-description: A CCUS project in the Biofuels sector developed by Conestoga Energy.
+description:
+  A CCUS project in the Biofuels sector developed by Conestoga Energy.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

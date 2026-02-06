@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Unknown/unspecified
 coordinates:
-- 37.199611165664024
-- -95.51479003228026
+  - 37.199611165664024
+  - -95.51479003228026
 commencementYear: null
-description: A CCUS project in the Storage sector developed by CapturePoint LLC. A
+description:
+  A CCUS project in the Storage sector developed by CapturePoint LLC. A
   key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

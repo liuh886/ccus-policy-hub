@@ -9,10 +9,11 @@ capacity: 0.128
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 34.57009515252798
-- -92.19808291790885
+  - 34.57009515252798
+  - -92.19808291790885
 commencementYear: null
-description: A CCUS project in the Biofuels sector developed by Carbon Storage Solutions
+description:
+  A CCUS project in the Biofuels sector developed by Carbon Storage Solutions
   (Front range energy). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

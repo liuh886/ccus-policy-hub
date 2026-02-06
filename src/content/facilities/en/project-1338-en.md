@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.8208
-- -119.2783
+  - 36.8208
+  - -119.2783
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by Origen Carbon, UC Berkeley,
+description:
+  A CCUS project in the DAC sector developed by Origen Carbon, UC Berkeley,
   US DOE, multiple community and technology partners. A key component of the global
   carbon management network.
 relatedPolicies:

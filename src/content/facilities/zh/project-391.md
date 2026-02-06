@@ -1,7 +1,7 @@
 ---
 name: The ZEROS project Chambers & Liberty County (Jefferson) (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Power and heat
 storage_type: EOR
 precision: approximate
 coordinates:
-- 30.9696
-- -100.0325
+  - 30.9696
+  - -100.0325
 commencementYear: 2026
 description: 由 Texas Water Resources Institute 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

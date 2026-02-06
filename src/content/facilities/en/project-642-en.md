@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.8607
-- 87.6171
+  - 43.8607
+  - 87.6171
 commencementYear: 2023
-description: A CCUS project in the Chemicals sector developed by Guanghui Energy CO.,
+description:
+  A CCUS project in the Chemicals sector developed by Guanghui Energy CO.,
   Ltd, China Kunlun Engineering  (EPC). A key component of the global carbon management
   network.
 relatedPolicies:

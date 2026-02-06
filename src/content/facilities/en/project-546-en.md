@@ -9,10 +9,11 @@ capacity: 0.8
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 55.40929099765336
-- -6.340211169432191
+  - 55.40929099765336
+  - -6.340211169432191
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Peel NRE, Progressive
+description:
+  A CCUS project in the Transport sector developed by Peel NRE, Progressive
   Energy. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

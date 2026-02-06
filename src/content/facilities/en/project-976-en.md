@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 37.24992793873805
-- -92.48200498804736
+  - 37.24992793873805
+  - -92.48200498804736
 commencementYear: null
-description: A CCUS project in the Storage sector developed by University of Alaska
+description:
+  A CCUS project in the Storage sector developed by University of Alaska
   Fairbanks. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

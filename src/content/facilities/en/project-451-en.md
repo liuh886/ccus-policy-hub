@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.1699
-- -100.2714
+  - 32.1699
+  - -100.2714
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by MMEX.
+description:
+  A CCUS project in the Other fuel transformation sector developed by MMEX.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

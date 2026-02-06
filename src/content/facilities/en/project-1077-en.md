@@ -9,10 +9,11 @@ capacity: 0.001
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 16.6095888998305
-- 4.733881988362844
+  - 16.6095888998305
+  - 4.733881988362844
 commencementYear: 2025
-description: A CCUS project in the DAC sector developed by Octavia carbon, Cella Mineral.
+description:
+  A CCUS project in the DAC sector developed by Octavia carbon, Cella Mineral.
   A key component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.7812
-- -106.3355
+  - 52.7812
+  - -106.3355
 commencementYear: 2026
-description: A CCUS project in the T&S sector developed by Whitecap Resources Inc..
+description:
+  A CCUS project in the T&S sector developed by Whitecap Resources Inc..
   A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

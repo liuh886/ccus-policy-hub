@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 53.2887
-- -106.8507
+  - 53.2887
+  - -106.8507
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Honeywell, SK
+description:
+  A CCUS project in the Power and heat sector developed by Honeywell, SK
   E&S . A key component of the global carbon management network.
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: Pembina low carbon complex (AB)
 lang: zh
-country: "加拿大"
+country: '加拿大'
 location: Hydrogen or ammonia
 type: 全流程
 status: 计划中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 53.9680
-- -116.8376
+  - 53.9680
+  - -116.8376
 commencementYear: 2027
-description: 由 Pembina Pipeline Corporation, Marubeni 开发的 Hydrogen or ammonia 行业 CCUS
+description:
+  由 Pembina Pipeline Corporation, Marubeni 开发的 Hydrogen or ammonia 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - ca-ccus-itc

@@ -1,7 +1,7 @@
 ---
 name: Pine Lake Corn Processors Steamboat Rock biorefinery (IA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.229
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 34.078762968292935
-- -96.51344897233253
+  - 34.078762968292935
+  - -96.51344897233253
 commencementYear: 2028
-description: 由 Pine Lake Corn Processors, Summit Carbon Solutions 开发的 Biofuels 行业
+description:
+  由 Pine Lake Corn Processors, Summit Carbon Solutions 开发的 Biofuels 行业
   CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

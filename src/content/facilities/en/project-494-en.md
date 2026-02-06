@@ -10,10 +10,11 @@ sector: Cement
 storage_type: Use
 precision: approximate
 coordinates:
-- 23.7141
-- 120.9854
+  - 23.7141
+  - 120.9854
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by Taiwan cement. A key
+description:
+  A CCUS project in the Cement sector developed by Taiwan cement. A key
   component of the global carbon management network.
 ---
 

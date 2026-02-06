@@ -9,10 +9,11 @@ capacity: 0.9
 sector: Chemicals
 storage_type: EOR
 coordinates:
-- 35.465086607137124
-- -94.07713106160638
+  - 35.465086607137124
+  - -94.07713106160638
 commencementYear: 2013
-description: A CCUS project in the Chemicals sector developed by Coffeyville Resources,
+description:
+  A CCUS project in the Chemicals sector developed by Coffeyville Resources,
   Chaparral Energy, Coffeyville Resource Nitrogen Fertilizers. A key component of
   the global carbon management network.
 relatedPolicies:

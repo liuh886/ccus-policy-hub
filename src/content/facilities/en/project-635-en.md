@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.8686
-- -116.8977
+  - 53.8686
+  - -116.8977
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Inter Pipeline, Rockpoint
+description:
+  A CCUS project in the T&S sector developed by Inter Pipeline, Rockpoint
   Gas Storage. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

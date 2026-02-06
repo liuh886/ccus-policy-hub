@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 24.7024
-- 46.7080
+  - 24.7024
+  - 46.7080
 commencementYear: 2027
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Saudi Aramco. A key component of the global carbon management network.
 ---
 

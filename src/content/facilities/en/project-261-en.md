@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.5945
-- -100.1927
+  - 31.5945
+  - -100.1927
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by BP. A key
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by BP. A key
   component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

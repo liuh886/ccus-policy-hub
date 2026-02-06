@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.7380
-- -100.1925
+  - 31.7380
+  - -100.1925
 commencementYear: 2029
-description: A CCUS project in the Hydrogen or ammonia sector developed by Inpex,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Inpex,
   Air Liquide (hydrogen production), LSB, Vopak, KBR (tech). A key component of the
   global carbon management network.
 relatedPolicies:

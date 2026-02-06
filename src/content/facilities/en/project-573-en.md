@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 52.9448
-- -106.2084
+  - 52.9448
+  - -106.2084
 commencementYear: 2026
-description: A CCUS project in the Biofuels sector developed by Federated Co-operatives
+description:
+  A CCUS project in the Biofuels sector developed by Federated Co-operatives
   (FCL), Whitecap Resources Inc. (MoU with FCL to capture, transport and store). A
   key component of the global carbon management network.
 relatedPolicies:

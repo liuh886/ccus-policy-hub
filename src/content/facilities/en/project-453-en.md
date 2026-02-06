@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 17.657874392326022
-- 1.7846988023321773
+  - 17.657874392326022
+  - 1.7846988023321773
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Pemex.
+description:
+  A CCUS project in the Other fuel transformation sector developed by Pemex.
   A key component of the global carbon management network.
 ---
 

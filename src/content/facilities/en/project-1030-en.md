@@ -9,10 +9,11 @@ capacity: 0.11
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 19.85989259552382
-- -1.677378722133108
+  - 19.85989259552382
+  - -1.677378722133108
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by RenGas, Kotkan
+description:
+  A CCUS project in the Power and heat sector developed by RenGas, Kotkan
   Energia. A key component of the global carbon management network.
 ---
 

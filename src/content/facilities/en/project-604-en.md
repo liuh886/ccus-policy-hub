@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 53.8754
-- -116.8522
+  - 53.8754
+  - -116.8522
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by TransAlta(formerly
+description:
+  A CCUS project in the Power and heat sector developed by TransAlta(formerly
   Heartland Generation Ltd). A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

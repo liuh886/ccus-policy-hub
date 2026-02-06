@@ -9,10 +9,11 @@ capacity: 0.18
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 34.234081059618646
-- 138.6738000572787
+  - 34.234081059618646
+  - 138.6738000572787
 commencementYear: 2020
-description: A CCUS project in the Power and heat sector developed by SIGMA Power
+description:
+  A CCUS project in the Power and heat sector developed by SIGMA Power
   Ariake (Toshiba), ESS. A key component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 23.6372
-- 58.4179
+  - 23.6372
+  - 58.4179
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by OQ group,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by OQ group,
   Omifco. A key component of the global carbon management network.
 ---
 

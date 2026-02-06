@@ -9,10 +9,11 @@ capacity: 1.5
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 38.79003361332269
-- 140.81924039810602
+  - 38.79003361332269
+  - 140.81924039810602
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by Idemitsu, Hokkaido Electric
+description:
+  A CCUS project in the T&S sector developed by Idemitsu, Hokkaido Electric
   Power, JAPEX. A key component of the global carbon management network.
 ---
 

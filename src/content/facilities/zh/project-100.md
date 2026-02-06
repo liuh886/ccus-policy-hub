@@ -1,7 +1,7 @@
 ---
 name: CO2 capture at Coal Creek (ND)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.9218
-- -100.8280
+  - 47.9218
+  - -100.8280
 commencementYear: null
-description: 由 EERC, NDIC, Rainbow Energy, Mitshubishi HI, Kiewit 开发的 Power and heat
+description:
+  由 EERC, NDIC, Rainbow Energy, Mitshubishi HI, Kiewit 开发的 Power and heat
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

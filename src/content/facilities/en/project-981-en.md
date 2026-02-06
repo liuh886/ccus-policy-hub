@@ -9,10 +9,11 @@ capacity: 8.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 38.77625039355739
-- -91.74649084883268
+  - 38.77625039355739
+  - -91.74649084883268
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by New Mexico Institute
+description:
+  A CCUS project in the Storage sector developed by New Mexico Institute
   of Mining and Technology. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

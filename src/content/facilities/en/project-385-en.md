@@ -9,10 +9,11 @@ capacity: 2.0
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 54.37691287992523
-- -105.07623407462924
+  - 54.37691287992523
+  - -105.07623407462924
 commencementYear: 2028
-description: A CCUS project in the Other fuel transformation sector developed by Suncor,
+description:
+  A CCUS project in the Other fuel transformation sector developed by Suncor,
   ATCO. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

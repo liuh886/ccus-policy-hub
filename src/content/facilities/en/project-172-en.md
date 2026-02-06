@@ -9,10 +9,11 @@ capacity: 0.343
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 38.25443187541288
-- -94.19744805490143
+  - 38.25443187541288
+  - -94.19744805490143
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Golden Grain Energy,
+description:
+  A CCUS project in the Biofuels sector developed by Golden Grain Energy,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

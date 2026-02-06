@@ -9,10 +9,11 @@ capacity: 2.5
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- -22.197790284828223
-- 128.12535793984387
+  - -22.197790284828223
+  - 128.12535793984387
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by Inpex (53%), TotalEnergies
+description:
+  A CCUS project in the Storage sector developed by Inpex (53%), TotalEnergies
   (26%), Woodside (21%, operator). A key component of the global carbon management
   network.
 ---

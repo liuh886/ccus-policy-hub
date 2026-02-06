@@ -1,7 +1,7 @@
 ---
 name: Rose carbon capture and storage (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,8 +10,8 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 32.1905
-- -99.6105
+  - 32.1905
+  - -99.6105
 commencementYear: 2026
 description: 由 ExxonMobil 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.7162
-- -101.1007
+  - 47.7162
+  - -101.1007
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Red River BioRefinery,
+description:
+  A CCUS project in the Biofuels sector developed by Red River BioRefinery,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

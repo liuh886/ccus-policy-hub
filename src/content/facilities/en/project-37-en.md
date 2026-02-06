@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 1.5541886311493294
-- 109.13712138777012
+  - 1.5541886311493294
+  - 109.13712138777012
 commencementYear: 2029
-description: A CCUS project in the Storage sector developed by Carbon Aceh, PEMA (JV).
+description:
+  A CCUS project in the Storage sector developed by Carbon Aceh, PEMA (JV).
   A key component of the global carbon management network.
 ---
 

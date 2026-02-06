@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 43.3591
-- -107.6177
+  - 43.3591
+  - -107.6177
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Tallgrass
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Tallgrass
   MLP Operations, LLC (FEED). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

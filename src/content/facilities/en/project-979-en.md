@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 40.7478
-- -89.1619
+  - 40.7478
+  - -89.1619
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by BP Carbon Solutions LLC.
+description:
+  A CCUS project in the T&S sector developed by BP Carbon Solutions LLC.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

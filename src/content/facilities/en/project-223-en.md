@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 39.9757
-- -89.0256
+  - 39.9757
+  - -89.0256
 commencementYear: 2017
-description: A CCUS project in the Biofuels sector developed by ADM. A key component
+description:
+  A CCUS project in the Biofuels sector developed by ADM. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

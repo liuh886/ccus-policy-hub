@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated Storage
 precision: approximate
 coordinates:
-- 54.3103
-- -116.7100
+  - 54.3103
+  - -116.7100
 commencementYear: 2025
-description: A CCUS project in the DAC sector developed by Deep Sky, Airhive, Avnos,
+description:
+  A CCUS project in the DAC sector developed by Deep Sky, Airhive, Avnos,
   Phlair, Greenlyte, Mission Zero, Skyrenu, Skytree, Neg8 Carbon. A key component
   of the global carbon management network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 1.5
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 38.24415649440104
-- 142.35024388913274
+  - 38.24415649440104
+  - 142.35024388913274
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by JAPEX, Tohoku Electric
+description:
+  A CCUS project in the T&S sector developed by JAPEX, Tohoku Electric
   Power, Mitsubishi Gas Chemical, Hokuetsu, NRI. A key component of the global carbon
   management network.
 ---

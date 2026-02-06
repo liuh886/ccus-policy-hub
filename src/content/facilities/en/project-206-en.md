@@ -9,10 +9,11 @@ capacity: 0.157
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 35.02218181539358
-- -99.60987801122198
+  - 35.02218181539358
+  - -99.60987801122198
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Highwater Ethanol
+description:
+  A CCUS project in the Biofuels sector developed by Highwater Ethanol
   Lamberton, Summit Carbon Solutions. A key component of the global carbon management
   network.
 relatedPolicies:

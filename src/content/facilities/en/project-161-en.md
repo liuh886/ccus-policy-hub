@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 24.3815
-- 54.2956
+  - 24.3815
+  - 54.2956
 commencementYear: 2028
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   ADNOC (70%), Eni (10% - Only CO2 capture), Wintershall Dea (Harbour Energy) (10%),
   OMV (5%), Lukoil (5%). A key component of the global carbon management network.
 ---

@@ -1,7 +1,7 @@
 ---
 name: HyNet Hydrogen Production Project (HPP) Plant 1 (Hynet phase 1)
 lang: zh
-country: "英国"
+country: '英国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 0.65
 sector: Hydrogen or ammonia
 storage_type: 咸水层
 coordinates:
-- 54.921668713402546
-- -4.434696859976107
+  - 54.921668713402546
+  - -4.434696859976107
 commencementYear: 2027
-description: 由 EET Hydrogen (former Vertex Hydrogen, joint venture Essar Oil 90% and
+description:
+  由 EET Hydrogen (former Vertex Hydrogen, joint venture Essar Oil 90% and
   progressive energy 10%), ENKA 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - uk-ccus-vision

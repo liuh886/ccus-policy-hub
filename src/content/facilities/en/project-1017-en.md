@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 51.52124603759764
-- -1.164237416179497
+  - 51.52124603759764
+  - -1.164237416179497
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by ExxonMobil, (Shell).
+description:
+  A CCUS project in the Chemicals sector developed by ExxonMobil, (Shell).
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 42.9630
-- -107.0568
+  - 42.9630
+  - -107.0568
 commencementYear: null
-description: A CCUS project in the Storage sector developed by University of Wyoming,
+description:
+  A CCUS project in the Storage sector developed by University of Wyoming,
   Williams. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

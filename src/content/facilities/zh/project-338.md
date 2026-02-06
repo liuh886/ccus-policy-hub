@@ -1,7 +1,7 @@
 ---
 name: Project Interseqt - Plainview Ethanol Plant (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: Biofuels
 storage_type: EOR
 precision: approximate
 coordinates:
-- 31.8340
-- -99.5853
+  - 31.8340
+  - -99.5853
 commencementYear: 2026
 description: 由 White Energy,Occidental 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

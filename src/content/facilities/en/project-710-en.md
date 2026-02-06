@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 57.37859125431273
-- 12.660328452552582
+  - 57.37859125431273
+  - 12.660328452552582
 commencementYear: 2029
-description: A CCUS project in the Storage sector developed by Eni (following acquisition
+description:
+  A CCUS project in the Storage sector developed by Eni (following acquisition
   of Neptune Energy)  (30%), Sval (28% op), Storegga (30%), INPEX(12%). A key component
   of the global carbon management network.
 relatedPolicies:

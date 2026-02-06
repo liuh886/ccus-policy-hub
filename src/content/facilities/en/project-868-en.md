@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Unknown/unspecified
 coordinates:
-- 37.954468301668086
-- -92.82862642154105
+  - 37.954468301668086
+  - -92.82862642154105
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Vault. A key component
+description:
+  A CCUS project in the Storage sector developed by Vault. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

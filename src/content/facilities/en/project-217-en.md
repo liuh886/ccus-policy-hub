@@ -9,10 +9,11 @@ capacity: 1.3
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 52.15297580147911
-- 7.402297254498896
+  - 52.15297580147911
+  - 7.402297254498896
 commencementYear: 2029
-description: A CCUS project in the Hydrogen or ammonia sector developed by Nuon (Vattenfall
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Nuon (Vattenfall
   sub.), Equinor, Gasunie. A key component of the global carbon management network.
 ---
 

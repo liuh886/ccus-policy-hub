@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 54.0117
-- -116.8397
+  - 54.0117
+  - -116.8397
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Cenovus. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

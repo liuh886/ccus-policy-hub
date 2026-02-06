@@ -9,10 +9,11 @@ capacity: 2.1
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 39.6601776829137
-- -93.52445920921262
+  - 39.6601776829137
+  - -93.52445920921262
 commencementYear: 2028
-description: A CCUS project in the Hydrogen or ammonia sector developed by Yara, BASF.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Yara, BASF.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

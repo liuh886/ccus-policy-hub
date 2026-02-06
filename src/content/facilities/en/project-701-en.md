@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.0618
-- -99.8519
+  - 32.0618
+  - -99.8519
 commencementYear: 2028
-description: A CCUS project in the Power and heat sector developed by Calpine, Technip
+description:
+  A CCUS project in the Power and heat sector developed by Calpine, Technip
   Energies, Shell, Zachry Group. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

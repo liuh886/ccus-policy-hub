@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.0358
-- -100.0179
+  - 47.0358
+  - -100.0179
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Summit carbon solutions,
+description:
+  A CCUS project in the Storage sector developed by Summit carbon solutions,
   Minnkota Power Cooperative, Inc., University of North Dakota EERC (data from CarbonSafe
   used for project). A key component of the global carbon management network.
 relatedPolicies:

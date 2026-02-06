@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 56.33078474825534
-- 0.7006945338354811
+  - 56.33078474825534
+  - 0.7006945338354811
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by solar 21 Renewable
+description:
+  A CCUS project in the Power and heat sector developed by solar 21 Renewable
   Energy Limited. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

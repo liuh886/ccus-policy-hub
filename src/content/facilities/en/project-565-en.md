@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 17.06195022718726
-- -3.299698473442204
+  - 17.06195022718726
+  - -3.299698473442204
 commencementYear: 2027
-description: A CCUS project in the Cement sector developed by Lafarge Cement Polska
+description:
+  A CCUS project in the Cement sector developed by Lafarge Cement Polska
   (Holcim Group), Air Liquide, Protech Sp. z o. o. (FEED). A key component of the
   global carbon management network.
 ---

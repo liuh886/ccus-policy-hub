@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.3698
-- -92.1078
+  - 31.3698
+  - -92.1078
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Harvest Bend CCS LLC
+description:
+  A CCUS project in the Storage sector developed by Harvest Bend CCS LLC
   (Talos Energy (Total Energies), Enlink Midsteram, Storegga) . A key component of
   the global carbon management network.
 relatedPolicies:

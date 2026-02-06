@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other industry
 storage_type: Dedicated storage
 coordinates:
-- 58.144323260437595
-- -2.6717087096836494
+  - 58.144323260437595
+  - -2.6717087096836494
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Saint-gobain
+description:
+  A CCUS project in the Other industry sector developed by Saint-gobain
   glass. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

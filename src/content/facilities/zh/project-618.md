@@ -1,7 +1,7 @@
 ---
 name: Omifco ammonia capture
 lang: zh
-country: "阿曼"
+country: '阿曼'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 23.5863
-- 58.4333
+  - 23.5863
+  - 58.4333
 commencementYear: null
 description: 由 OQ group, Omifco 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 20.558394366293587
-- 3.5743558619340483
+  - 20.558394366293587
+  - 3.5743558619340483
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by ORLEN. A key component
+description:
+  A CCUS project in the Storage sector developed by ORLEN. A key component
   of the global carbon management network.
 ---
 

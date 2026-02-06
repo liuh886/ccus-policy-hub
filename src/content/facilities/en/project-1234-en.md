@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 54.95392524676971
-- -6.9744839741643165
+  - 54.95392524676971
+  - -6.9744839741643165
 commencementYear: 2029
-description: A CCUS project in the Power and heat sector developed by Ocean-Power
+description:
+  A CCUS project in the Power and heat sector developed by Ocean-Power
   AS, Amplus Energy Services Limited. A key component of the global carbon management
   network.
 relatedPolicies:

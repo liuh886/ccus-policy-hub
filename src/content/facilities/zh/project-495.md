@@ -1,7 +1,7 @@
 ---
 name: EnLink midstream network (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Transport
 type: Transport
 status: 计划中
@@ -10,8 +10,8 @@ sector: Transport
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 30.7710
-- -92.0264
+  - 30.7710
+  - -92.0264
 commencementYear: 2026
 description: 由 EnLink Midstream 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

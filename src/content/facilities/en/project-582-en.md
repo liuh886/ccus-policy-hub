@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 42.61759198511948
-- -0.20572988545392867
+  - 42.61759198511948
+  - -0.20572988545392867
 commencementYear: null
-description: A CCUS project in the Iron and steel sector developed by 0. A key component
+description:
+  A CCUS project in the Iron and steel sector developed by 0. A key component
   of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

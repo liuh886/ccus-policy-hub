@@ -10,10 +10,11 @@ sector: Biofuels
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.5733
-- -100.9649
+  - 47.5733
+  - -100.9649
 commencementYear: 2022
-description: A CCUS project in the Biofuels sector developed by Plains CO2 Reduction
+description:
+  A CCUS project in the Biofuels sector developed by Plains CO2 Reduction
   Partnership,  Energy & Environmental Research Centre,  Red Trail Energy (acquired
   by Gevo). A key component of the global carbon management network.
 relatedPolicies:

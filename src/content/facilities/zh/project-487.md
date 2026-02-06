@@ -1,7 +1,7 @@
 ---
 name: 1PointFive and Entreprise BlueBonnet transport network (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Transport
 type: Transport
 status: 计划中
@@ -10,8 +10,8 @@ sector: Transport
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 32.3589
-- -100.0735
+  - 32.3589
+  - -100.0735
 commencementYear: null
 description: 由 1PointFive, Entreprise Product Partners 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

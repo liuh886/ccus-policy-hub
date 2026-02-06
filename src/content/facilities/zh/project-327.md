@@ -1,7 +1,7 @@
 ---
 name: Prairie State Generating Station Carbon Capture (IL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 39.9282
-- -89.0466
+  - 39.9282
+  - -89.0466
 commencementYear: 2026
-description: 由 Prairie Research Institute (University of Illinois), Mitsubishi Heavy
+description:
+  由 Prairie Research Institute (University of Illinois), Mitsubishi Heavy
   Industries, Kiewit Engineering Group, Sargent & Lundy 开发的 Power and heat 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 60.233060870482205
-- 11.872400850747244
+  - 60.233060870482205
+  - 11.872400850747244
 commencementYear: null
-description: A CCUS project in the Storage sector developed by Harbour Energy Norge
+description:
+  A CCUS project in the Storage sector developed by Harbour Energy Norge
   AS (60%), Equinor Low Carbon Solution (40%). A key component of the global carbon
   management network.
 relatedPolicies:

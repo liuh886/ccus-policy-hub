@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: EOR
 precision: approximate
 coordinates:
-- 30.9651
-- -100.0017
+  - 30.9651
+  - -100.0017
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Texas Water
+description:
+  A CCUS project in the Power and heat sector developed by Texas Water
   Resources Institute. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

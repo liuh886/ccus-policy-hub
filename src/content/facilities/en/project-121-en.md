@@ -9,10 +9,11 @@ capacity: 3.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 46.488932111207156
-- 5.919309846791002
+  - 46.488932111207156
+  - 5.919309846791002
 commencementYear: 2027
-description: A CCUS project in the Transport sector developed by ArcelorMittal, Port
+description:
+  A CCUS project in the Transport sector developed by ArcelorMittal, Port
   of Dunkerque, Chaux et Dolomines du boulonnais, Verdalis, Air Liquide. A key component
   of the global carbon management network.
 relatedPolicies:

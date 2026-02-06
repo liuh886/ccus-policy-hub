@@ -1,7 +1,7 @@
 ---
 name: NSW CO2 SAP
 lang: zh
-country: "澳大利亚"
+country: '澳大利亚'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.0
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- -26.664741524349864
-- 135.03556992322476
+  - -26.664741524349864
+  - 135.03556992322476
 commencementYear: null
 description: 由 Coal Innovation NSW 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

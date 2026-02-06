@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.8188
-- -91.8500
+  - 30.8188
+  - -91.8500
 commencementYear: 2028
-description: A CCUS project in the Hydrogen or ammonia sector developed by ExxonMobil,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by ExxonMobil,
   CF Industries. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

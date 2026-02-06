@@ -1,7 +1,7 @@
 ---
 name: WAH2 Blue  Ammonia Project - phase 2
 lang: zh
-country: "澳大利亚"
+country: '澳大利亚'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.55
 sector: Hydrogen or ammonia
 storage_type: 地质封存
 coordinates:
-- -26.98755095861696
-- 135.78878082297234
+  - -26.98755095861696
+  - 135.78878082297234
 commencementYear: null
 description: 由 Hexagon Energy Materials  开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

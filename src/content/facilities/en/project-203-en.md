@@ -9,10 +9,11 @@ capacity: 0.186
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 34.30310635185902
-- -94.48009678220458
+  - 34.30310635185902
+  - -94.48009678220458
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Heron Lake BioEnergy,
+description:
+  A CCUS project in the Biofuels sector developed by Heron Lake BioEnergy,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

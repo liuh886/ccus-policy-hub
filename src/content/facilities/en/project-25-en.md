@@ -10,10 +10,11 @@ sector: Transport
 storage_type: EOR
 precision: approximate
 coordinates:
-- 53.9608
-- -116.3807
+  - 53.9608
+  - -116.3807
 commencementYear: 2020
-description: A CCUS project in the Transport sector developed by Wolf Carbon Solutions
+description:
+  A CCUS project in the Transport sector developed by Wolf Carbon Solutions
   (Wolf Midstream, Enhance Energy). A key component of the global carbon management
   network.
 relatedPolicies:

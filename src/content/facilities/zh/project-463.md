@@ -1,7 +1,7 @@
 ---
 name: MoU ADNOC ENEOS Mitsui Ruwais Industrial Area
 lang: zh
-country: "阿联酋"
+country: '阿联酋'
 location: Chemicals
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Chemicals
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 24.0776
-- 52.7328
+  - 24.0776
+  - 52.7328
 commencementYear: null
 description: 由 ADNOC, ENEOS, Mitsui 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

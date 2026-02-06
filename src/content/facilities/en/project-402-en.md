@@ -9,10 +9,11 @@ capacity: 0.9
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 56.76698690680582
-- 0.7001671792899984
+  - 56.76698690680582
+  - 0.7001671792899984
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Viridor. A key
+description:
+  A CCUS project in the Power and heat sector developed by Viridor. A key
   component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

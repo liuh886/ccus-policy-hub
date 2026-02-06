@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Unknown/unspecified
 coordinates:
-- 59.03771517576361
-- 13.876756694474356
+  - 59.03771517576361
+  - 13.876756694474356
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by ARGO. A key
+description:
+  A CCUS project in the Power and heat sector developed by ARGO. A key
   component of the global carbon management network.
 ---
 

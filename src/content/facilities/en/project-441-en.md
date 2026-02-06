@@ -9,10 +9,11 @@ capacity: 0.006
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 67.02462817094732
-- -17.68861343121054
+  - 67.02462817094732
+  - -17.68861343121054
 commencementYear: 2024
-description: A CCUS project in the DAC sector developed by Climeworks, Carbfix. A
+description:
+  A CCUS project in the DAC sector developed by Climeworks, Carbfix. A
   key component of the global carbon management network.
 ---
 

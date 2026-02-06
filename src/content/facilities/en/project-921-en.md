@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 24.3621
-- 54.2604
+  - 24.3621
+  - 54.2604
 commencementYear: null
-description: A CCUS project in the DAC sector developed by Occidental, ADNOC. A key
+description:
+  A CCUS project in the DAC sector developed by Occidental, ADNOC. A key
   component of the global carbon management network.
 ---
 

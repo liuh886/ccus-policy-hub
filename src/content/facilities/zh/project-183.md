@@ -1,7 +1,7 @@
 ---
 name: Green Plains Wood River biorefinery (NE)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 捕集
 status: 建设中
@@ -9,10 +9,11 @@ capacity: 0.346
 sector: Biofuels
 storage_type: 咸水层
 coordinates:
-- 37.82844413533043
-- -93.87932943797298
+  - 37.82844413533043
+  - -93.87932943797298
 commencementYear: 2028
-description: 由 Green Plains Wood River, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS
+description:
+  由 Green Plains Wood River, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS
   项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

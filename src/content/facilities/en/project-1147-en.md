@@ -9,10 +9,11 @@ capacity: 0.6
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 56.6658909013664
-- -6.573930842580899
+  - 56.6658909013664
+  - -6.573930842580899
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by RWE. A key component
+description:
+  A CCUS project in the Power and heat sector developed by RWE. A key component
   of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -1,7 +1,7 @@
 ---
 name: Pelican Rindge Tract CCS Project (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Biofuels
 type: 全流程
 status: 计划中
@@ -10,8 +10,8 @@ sector: Biofuels
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.6420
-- -119.0467
+  - 36.6420
+  - -119.0467
 commencementYear: null
 description: 由 Pelican Renewables LLC  开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

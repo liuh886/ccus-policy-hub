@@ -9,10 +9,11 @@ capacity: 0.6
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 18.9448238654344
-- 2.9022476291633
+  - 18.9448238654344
+  - 2.9022476291633
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by HELLENiQ
+description:
+  A CCUS project in the Other fuel transformation sector developed by HELLENiQ
   ENERGY - Helpe. A key component of the global carbon management network.
 ---
 

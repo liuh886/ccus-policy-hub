@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.2148
-- -99.8222
+  - 32.2148
+  - -99.8222
 commencementYear: 2028
-description: A CCUS project in the Other fuel transformation sector developed by ExxonMobil,
+description:
+  A CCUS project in the Other fuel transformation sector developed by ExxonMobil,
   Honeywell (tech), Technip Energies (FEED), JERA. A key component of the global carbon
   management network.
 relatedPolicies:

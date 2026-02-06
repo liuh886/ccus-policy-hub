@@ -1,12 +1,13 @@
 ---
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
 import { ui, defaultLang } from '../i18n/ui';
 const lang = Astro.currentLocale || defaultLang;
-const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const t = (key: keyof (typeof ui)['zh']) =>
+  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 
 const { title, description } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -18,37 +19,51 @@ import '../styles/global.css';
 
 <!doctype html>
 <html lang={lang}>
-	<head>
-		<SEO title={title} description={description} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-	</head>
-	<body class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-['Inter',_sans-serif] transition-colors">
-		<NavBar />
-		<main class="flex-grow container mx-auto px-4 py-8">
-			<slot />
-		</main>
-		<CompareDrawer lang={lang as 'zh' | 'en'} />
-		<Footer lang={lang as string} />
-	</body>
+  <head>
+    <SEO title={title} description={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-['Inter',_sans-serif] transition-colors"
+  >
+    <NavBar />
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <CompareDrawer lang={lang as 'zh' | 'en'} />
+    <Footer lang={lang as string} />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+  html {
+    font-family: system-ui, sans-serif;
+  }
 </style>

@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 54.1069
-- -116.9455
+  - 54.1069
+  - -116.9455
 commencementYear: 2025
-description: A CCUS project in the T&S sector developed by Wolf Midstream. A key component
+description:
+  A CCUS project in the T&S sector developed by Wolf Midstream. A key component
   of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

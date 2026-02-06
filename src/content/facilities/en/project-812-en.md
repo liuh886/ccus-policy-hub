@@ -9,10 +9,11 @@ capacity: 2.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 19.656020254477816
-- 4.826797226234643
+  - 19.656020254477816
+  - 4.826797226234643
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by Mitsui, TotalEnergies,
+description:
+  A CCUS project in the T&S sector developed by Mitsui, TotalEnergies,
   PETRONAS. A key component of the global carbon management network.
 ---
 

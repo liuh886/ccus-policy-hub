@@ -10,10 +10,11 @@ sector: Transport
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.0387
-- -91.9059
+  - 31.0387
+  - -91.9059
 commencementYear: null
-description: A CCUS project in the Transport sector developed by ExxonMobil, Technip
+description:
+  A CCUS project in the Transport sector developed by ExxonMobil, Technip
   Energies, Turner Industries. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

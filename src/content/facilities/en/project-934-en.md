@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 39.16666540746188
-- -97.21940000755382
+  - 39.16666540746188
+  - -97.21940000755382
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Fidelis
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Fidelis
   new energy, State of West Virginia, MCDA, West Virginia University, West Virginia
   DNR,WVGES, Babcock & Wilcox, Topsoe, Battelle Carbon Services (Storage). A key component
   of the global carbon management network.

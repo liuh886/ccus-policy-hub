@@ -1,7 +1,7 @@
 ---
 name: Carbon TerraVault 4 (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.4209
-- -119.7356
+  - 36.4209
+  - -119.7356
 commencementYear: null
 description: 由 Carbon TerraVault Holdings LLC  开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

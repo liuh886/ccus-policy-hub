@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 54.202496924452255
-- 1.0033527421747657
+  - 54.202496924452255
+  - 1.0033527421747657
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by BP, ADNOC.
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by BP, ADNOC.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

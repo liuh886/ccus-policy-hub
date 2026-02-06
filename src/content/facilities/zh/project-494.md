@@ -1,7 +1,7 @@
 ---
 name: Taiwan Cement Hoping/Heping plant
 lang: zh
-country: "中国台湾"
+country: '中国台湾'
 location: Cement
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Cement
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 23.7283
-- 120.9690
+  - 23.7283
+  - 120.9690
 commencementYear: 2030
 description: 由 Taiwan cement 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 ---

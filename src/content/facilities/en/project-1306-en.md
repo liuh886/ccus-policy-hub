@@ -1,5 +1,6 @@
 ---
-name: European Energy/Brønderslev PtX (Biogas or waste incineration plants in Northern
+name:
+  European Energy/Brønderslev PtX (Biogas or waste incineration plants in Northern
   Jutland)
 lang: en
 country: Denmark
@@ -10,10 +11,11 @@ capacity: 0.15
 sector: Biofuels
 storage_type: Use
 coordinates:
-- 55.162363025811004
-- 11.545014867664714
+  - 55.162363025811004
+  - 11.545014867664714
 commencementYear: 2030
-description: A CCUS project in the Biofuels sector developed by European Energy .
+description:
+  A CCUS project in the Biofuels sector developed by European Energy .
   A key component of the global carbon management network.
 ---
 

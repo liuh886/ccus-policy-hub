@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Chemicals
 storage_type: Dedicated storage
 coordinates:
-- 40.43994614169396
-- -98.34001118305017
+  - 40.43994614169396
+  - -98.34001118305017
 commencementYear: 2026
-description: A CCUS project in the Chemicals sector developed by KeyState Energy.
+description:
+  A CCUS project in the Chemicals sector developed by KeyState Energy.
   A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

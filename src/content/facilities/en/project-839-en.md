@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.6408
-- -91.6576
+  - 30.6408
+  - -91.6576
 commencementYear: 2027
-description: A CCUS project in the Storage sector developed by Lapis Energy (50% permitting
+description:
+  A CCUS project in the Storage sector developed by Lapis Energy (50% permitting
   process pre-FID), ExxonMobil (formerly Denbury carbon solutions) (50%; operatorship
   managing construction). A key component of the global carbon management network.
 relatedPolicies:

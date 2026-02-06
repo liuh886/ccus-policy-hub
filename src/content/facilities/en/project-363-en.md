@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0331
-- -100.0344
+  - 31.0331
+  - -100.0344
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Calpine Texas
+description:
+  A CCUS project in the Power and heat sector developed by Calpine Texas
   CCUS Holdings. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

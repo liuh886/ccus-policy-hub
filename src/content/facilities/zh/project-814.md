@@ -1,7 +1,7 @@
 ---
 name: Aemetis CCS (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 36.6904
-- -119.4160
+  - 36.6904
+  - -119.4160
 commencementYear: 2026
 description: 由 Aemetis Carbon Capture (Aemetis) 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

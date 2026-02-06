@@ -9,10 +9,11 @@ capacity: 0.05
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 57.82883085045941
-- -4.508138457516032
+  - 57.82883085045941
+  - -4.508138457516032
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by Sizewell C,  Nottingham
+description:
+  A CCUS project in the DAC sector developed by Sizewell C,  Nottingham
   University, Strata Technology, Atkins and Doosan Babcock. A key component of the
   global carbon management network.
 relatedPolicies:

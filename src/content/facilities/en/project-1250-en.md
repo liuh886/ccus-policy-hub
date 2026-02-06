@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 32.3078
-- -100.2286
+  - 32.3078
+  - -100.2286
 commencementYear: 2030
-description: A CCUS project in the DAC sector developed by SkyTree, Verified Carbon,
+description:
+  A CCUS project in the DAC sector developed by SkyTree, Verified Carbon,
   Greenalia (wind provider). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

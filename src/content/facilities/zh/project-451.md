@@ -1,7 +1,7 @@
 ---
 name: Pecos County Ultra Clean Fuels Refining (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Other fuel transformation
 type: 捕集
 status: 计划中
@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.0250
-- -100.2973
+  - 32.0250
+  - -100.2973
 commencementYear: null
 description: 由 MMEX 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

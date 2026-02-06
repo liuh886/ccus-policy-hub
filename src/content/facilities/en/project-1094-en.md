@@ -9,10 +9,11 @@ capacity: 0.2
 sector: Cement
 storage_type: Use
 coordinates:
-- 48.447987838399385
-- -0.2790575003309952
+  - 48.447987838399385
+  - -0.2790575003309952
 commencementYear: 2028
-description: A CCUS project in the Cement sector developed by Elyse Energy, Holcim
+description:
+  A CCUS project in the Cement sector developed by Elyse Energy, Holcim
   Group, Air Liquide. A key component of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

@@ -9,10 +9,11 @@ capacity: 5.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 47.64266885601881
-- 2.8218091012490323
+  - 47.64266885601881
+  - 2.8218091012490323
 commencementYear: 2028
-description: A CCUS project in the Transport sector developed by GRTGaz. A key component
+description:
+  A CCUS project in the Transport sector developed by GRTGaz. A key component
   of the global carbon management network.
 relatedPolicies:
   - fr-ccus-roadmap

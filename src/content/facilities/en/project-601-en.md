@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 26.9940
-- 49.6717
+  - 26.9940
+  - 49.6717
 commencementYear: 2027
-description: A CCUS project in the T&S sector developed by Saudi Aramco (60%), SLB
+description:
+  A CCUS project in the T&S sector developed by Saudi Aramco (60%), SLB
   (20%), Linde (20%). A key component of the global carbon management network.
 ---
 

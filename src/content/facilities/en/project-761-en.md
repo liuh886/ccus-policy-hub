@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- -3.873642544481659
-- 117.85444582928854
+  - -3.873642544481659
+  - 117.85444582928854
 commencementYear: 2030
-description: A CCUS project in the Storage sector developed by Pertamina, Mitsui .
+description:
+  A CCUS project in the Storage sector developed by Pertamina, Mitsui .
   A key component of the global carbon management network.
 ---
 

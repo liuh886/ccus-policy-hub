@@ -10,10 +10,11 @@ sector: DAC
 storage_type: Use
 precision: approximate
 coordinates:
-- 32.1391
-- -100.0002
+  - 32.1391
+  - -100.0002
 commencementYear: 2027
-description: A CCUS project in the DAC sector developed by HIF USA, Baker Hughes (DAC),
+description:
+  A CCUS project in the DAC sector developed by HIF USA, Baker Hughes (DAC),
   Topsoe (e-fuel tech), Bechtel (FEED), Siemens energy (electrolysers), (Still involved
   Honeywell (e-methanol to e-SAF tech), Johnson Matthey (e-methanol tech)). A key
   component of the global carbon management network.

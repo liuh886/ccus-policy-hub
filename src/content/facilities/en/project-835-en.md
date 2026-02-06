@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0024
-- -99.9932
+  - 31.0024
+  - -99.9932
 commencementYear: 2026
-description: A CCUS project in the Storage sector developed by Milestone carbon (Milestone
+description:
+  A CCUS project in the Storage sector developed by Milestone carbon (Milestone
   Envrionmental services), Texas Pacific Land Corporation . A key component of the
   global carbon management network.
 relatedPolicies:

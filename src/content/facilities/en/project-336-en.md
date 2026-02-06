@@ -9,10 +9,11 @@ capacity: 7.6
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 55.87985617657122
-- 6.592821650427949
+  - 55.87985617657122
+  - 6.592821650427949
 commencementYear: 2030
-description: A CCUS project in the T&S sector developed by INEOS E&P, Wintershell
+description:
+  A CCUS project in the T&S sector developed by INEOS E&P, Wintershell
   Dea (Harbour Energy), Welltec (storage). A key component of the global carbon management
   network.
 ---

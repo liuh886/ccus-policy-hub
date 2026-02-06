@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 43.4094
-- -107.2726
+  - 43.4094
+  - -107.2726
 commencementYear: 2013
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Contango Oil & Gas (bought plant in 2021 from Conocophillips), ExxonMobil (formerly
   Denbury). A key component of the global carbon management network.
 relatedPolicies:

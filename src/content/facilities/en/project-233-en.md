@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Use
 precision: approximate
 coordinates:
-- 32.0846
-- 118.7692
+  - 32.0846
+  - 118.7692
 commencementYear: 2023
-description: A CCUS project in the Chemicals sector developed by  Jiangsu Sailboat
+description:
+  A CCUS project in the Chemicals sector developed by  Jiangsu Sailboat
   Petrochemicals, Carbon Recycling International. A key component of the global carbon
   management network.
 relatedPolicies:

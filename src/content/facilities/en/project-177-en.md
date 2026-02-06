@@ -9,10 +9,11 @@ capacity: 0.157
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 36.13651377524404
-- -99.9085176103563
+  - 36.13651377524404
+  - -99.9085176103563
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Green Plains Atkinson,
+description:
+  A CCUS project in the Biofuels sector developed by Green Plains Atkinson,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

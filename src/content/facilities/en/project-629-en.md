@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- -24.871406756957605
-- 135.396589621857
+  - -24.871406756957605
+  - 135.396589621857
 commencementYear: null
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Woodside, BP, Japan Australia LNG (MIMI), PetroChina . A key component of the global
   carbon management network.
 ---

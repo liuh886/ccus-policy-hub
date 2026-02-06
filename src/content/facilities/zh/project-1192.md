@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 34.2840
-- 108.9796
+  - 34.2840
+  - 108.9796
 commencementYear: null
 description: 由 Northwest University 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

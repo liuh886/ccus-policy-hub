@@ -1,7 +1,7 @@
 ---
 name: Mote biomass-to-hydrogen plant Kern County (CA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Hydrogen or ammonia
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 36.7551
-- -119.3224
+  - 36.7551
+  - -119.3224
 commencementYear: 2026
-description: 由 Mote, CarbonCure, Fluor Corporation, SungasRenewables 开发的 Hydrogen
+description:
+  由 Mote, CarbonCure, Fluor Corporation, SungasRenewables 开发的 Hydrogen
   or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

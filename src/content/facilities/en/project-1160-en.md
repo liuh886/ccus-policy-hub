@@ -10,10 +10,11 @@ sector: Cement
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.9404
-- -120.0521
+  - 36.9404
+  - -120.0521
 commencementYear: 2030
-description: A CCUS project in the Cement sector developed by National Cement Company
+description:
+  A CCUS project in the Cement sector developed by National Cement Company
   of California (NCC-California). A key component of the global carbon management
   network.
 relatedPolicies:

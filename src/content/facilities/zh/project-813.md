@@ -10,8 +10,8 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 38.4437
-- 106.2587
+  - 38.4437
+  - 106.2587
 commencementYear: 2025
 description: 由 CEIC, CNPC 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

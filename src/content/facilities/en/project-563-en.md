@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Use
 precision: approximate
 coordinates:
-- 53.7872
-- -116.5485
+  - 53.7872
+  - -116.5485
 commencementYear: 2027
-description: A CCUS project in the Chemicals sector developed by Perstorp Oxo AB (capture
+description:
+  A CCUS project in the Chemicals sector developed by Perstorp Oxo AB (capture
   and methanol), FORTUM SVERIGE AB (hydrogen), Sydkraft AB, Uniper, Sunfire (electrolyser),
   Johnson Matthey (methanol synthesis, FEED). A key component of the global carbon
   management network.

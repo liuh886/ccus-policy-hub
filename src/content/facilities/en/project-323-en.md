@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 31.7220
-- -99.6778
+  - 31.7220
+  - -99.6778
 commencementYear: 2013
-description: A CCUS project in the Other fuel transformation sector developed by Air
+description:
+  A CCUS project in the Other fuel transformation sector developed by Air
   products, ExxonMobil (formerly Denbury carbon solutions). A key component of the
   global carbon management network.
 relatedPolicies:

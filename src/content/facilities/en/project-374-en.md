@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 58.5978
-- 1.8064
+  - 58.5978
+  - 1.8064
 commencementYear: 1996
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Equinor, Eni. A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

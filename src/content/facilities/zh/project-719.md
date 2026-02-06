@@ -1,7 +1,7 @@
 ---
 name: Roughrider Carbon Storage Hub (ND)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.0086
-- -99.9785
+  - 47.0086
+  - -99.9785
 commencementYear: null
 description: 由 University of North Dakota, ONEOK, EERC 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

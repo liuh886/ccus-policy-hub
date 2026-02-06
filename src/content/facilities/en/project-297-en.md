@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.2691
-- -101.1502
+  - 47.2691
+  - -101.1502
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by Northern Plains Nitrogen,
+description:
+  A CCUS project in the Chemicals sector developed by Northern Plains Nitrogen,
   Summit Carbon Solutions (T&S). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

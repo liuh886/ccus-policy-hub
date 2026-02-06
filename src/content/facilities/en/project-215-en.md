@@ -9,10 +9,11 @@ capacity: 1.3
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 53.5693821434878
-- 7.466379286623447
+  - 53.5693821434878
+  - 7.466379286623447
 commencementYear: 2030
-description: A CCUS project in the Other fuel transformation sector developed by bp.
+description:
+  A CCUS project in the Other fuel transformation sector developed by bp.
   A key component of the global carbon management network.
 ---
 

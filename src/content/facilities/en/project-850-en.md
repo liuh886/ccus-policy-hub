@@ -9,10 +9,11 @@ capacity: 1.0
 sector: Storage
 storage_type: Dedicated storage
 coordinates:
-- 55.766208957321744
-- -5.090975999368601
+  - 55.766208957321744
+  - -5.090975999368601
 commencementYear: 2031
-description: A CCUS project in the Storage sector developed by Prenco UK (licencee
+description:
+  A CCUS project in the Storage sector developed by Prenco UK (licencee
   80%), Carbon Catalyst Ltd (10%), Summit Energy Evolution Limited (Sumitomo) (10%).
   A key component of the global carbon management network.
 relatedPolicies:

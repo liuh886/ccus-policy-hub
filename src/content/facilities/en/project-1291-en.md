@@ -9,10 +9,11 @@ capacity: 0.33
 sector: Power and heat
 storage_type: Use
 coordinates:
-- 53.83489385331685
-- 9.922994118376872
+  - 53.83489385331685
+  - 9.922994118376872
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by CIPNordværk,
+description:
+  A CCUS project in the Power and heat sector developed by CIPNordværk,
   Aalborg Forsyning, and Copenhagen Infrastructure Partners. (CIP). A key component
   of the global carbon management network.
 ---

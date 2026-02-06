@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 47.2333
-- -101.3309
+  - 47.2333
+  - -101.3309
 commencementYear: 2029
-description: A CCUS project in the Other fuel transformation sector developed by Cerilon
+description:
+  A CCUS project in the Other fuel transformation sector developed by Cerilon
   GTL. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

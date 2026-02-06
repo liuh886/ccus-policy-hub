@@ -9,10 +9,11 @@ capacity: 4.0
 sector: T&S
 storage_type: Dedicated storage
 coordinates:
-- 18.680275373753428
-- -3.0659062943591566
+  - 18.680275373753428
+  - -3.0659062943591566
 commencementYear: 2035
-description: A CCUS project in the T&S sector developed by Terega, Pole Avenia, Agglo
+description:
+  A CCUS project in the T&S sector developed by Terega, Pole Avenia, Agglo
   Pau, Holcim Group, Université de Pau, BGRM, IFPEN, Schlumberger, Repsol, CNAM, geostock,
   geopetrol. A key component of the global carbon management network.
 ---

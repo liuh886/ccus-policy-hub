@@ -9,10 +9,11 @@ capacity: 22.0
 sector: Transport
 storage_type: Dedicated storage
 coordinates:
-- 17.495058858873513
-- 0.17363920374157615
+  - 17.495058858873513
+  - 0.17363920374157615
 commencementYear: 2027
-description: A CCUS project in the Transport sector developed by 0. A key component
+description:
+  A CCUS project in the Transport sector developed by 0. A key component
   of the global carbon management network.
 ---
 

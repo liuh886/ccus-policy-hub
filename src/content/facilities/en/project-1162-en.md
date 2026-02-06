@@ -9,10 +9,11 @@ capacity: 0.411
 sector: Chemicals
 storage_type: Use
 coordinates:
-- 34.01189927223034
-- -95.44981126007801
+  - 34.01189927223034
+  - -95.44981126007801
 commencementYear: null
-description: A CCUS project in the Chemicals sector developed by T.EN Stone & Webster
+description:
+  A CCUS project in the Chemicals sector developed by T.EN Stone & Webster
   Process Technology. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

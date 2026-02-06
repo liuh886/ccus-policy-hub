@@ -10,10 +10,11 @@ sector: Storage
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 43.0731
-- -107.0528
+  - 43.0731
+  - -107.0528
 commencementYear: null
-description: A CCUS project in the Storage sector developed by University of Wyoming,
+description:
+  A CCUS project in the Storage sector developed by University of Wyoming,
   Frontier Carbon Solutions Holdings LLC . A key component of the global carbon management
   network.
 relatedPolicies:

@@ -9,10 +9,11 @@ capacity: 0.43
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 34.38848473020674
-- 131.0564869325265
+  - 34.38848473020674
+  - 131.0564869325265
 commencementYear: 2030
-description: A CCUS project in the Hydrogen or ammonia sector developed by Hanyang
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Hanyang
   Corporation, Linde. A key component of the global carbon management network.
 ---
 

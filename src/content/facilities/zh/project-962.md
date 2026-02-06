@@ -1,7 +1,7 @@
 ---
 name: CarbonSAFE Illinois Storage Corridor (IL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,10 +10,11 @@ sector: Storage
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 39.9540
-- -89.0049
+  - 39.9540
+  - -89.0049
 commencementYear: 2026
-description: 由 University of Illinois, Illinois State Geological Survey, Carbon Solutions
+description:
+  由 University of Illinois, Illinois State Geological Survey, Carbon Solutions
   开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

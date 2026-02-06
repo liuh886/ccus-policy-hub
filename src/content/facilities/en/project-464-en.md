@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- -28.035524883862486
-- 137.15451903594743
+  - -28.035524883862486
+  - 137.15451903594743
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Wesfarmers,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Wesfarmers,
   Mitsui. A key component of the global carbon management network.
 ---
 

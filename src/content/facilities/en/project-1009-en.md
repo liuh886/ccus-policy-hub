@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Transport
 storage_type: Unknown/unspecified
 coordinates:
-- 40.10111955033919
-- -92.26078896876707
+  - 40.10111955033919
+  - -92.26078896876707
 commencementYear: null
-description: A CCUS project in the Transport sector developed by Battelle. A key component
+description:
+  A CCUS project in the Transport sector developed by Battelle. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.094
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 18.128123966139626
-- 4.666147306874942
+  - 18.128123966139626
+  - 4.666147306874942
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Liquid Wind,
+description:
+  A CCUS project in the Power and heat sector developed by Liquid Wind,
   Umea Energi. A key component of the global carbon management network.
 ---
 

@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.2341
-- 121.4548
+  - 31.2341
+  - 121.4548
 commencementYear: 2028
-description: A CCUS project in the Hydrogen or ammonia sector developed by SCIPIG
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by SCIPIG
   (Air Liquide). A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

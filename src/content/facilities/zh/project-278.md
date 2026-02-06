@@ -1,7 +1,7 @@
 ---
 name: Midwest Carbon Express (NE, SD, ND, MI, IA)
 lang: zh
-country: "美国"
+country: '美国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -10,8 +10,8 @@ sector: T&S
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 47.7046
-- -101.2756
+  - 47.7046
+  - -101.2756
 commencementYear: 2028
 description: 由 Summit carbon solutions (SK E&S 10%) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

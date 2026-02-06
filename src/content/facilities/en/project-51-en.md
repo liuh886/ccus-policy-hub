@@ -9,10 +9,11 @@ capacity: 0.5
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 17.293911699883573
-- -4.0784029213342805
+  - 17.293911699883573
+  - -4.0784029213342805
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Soderenergi,
+description:
+  A CCUS project in the Power and heat sector developed by Soderenergi,
   Aker Carbon Capture (feasibility) (first feasibility by biorecro). A key component
   of the global carbon management network.
 ---

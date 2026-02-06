@@ -1,7 +1,7 @@
 ---
 name: Oak Grove CCS hub (Tri-state CCS hub) (PA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 0.682
 sector: Storage
 storage_type: 咸水层
 coordinates:
-- 39.174775695470544
-- -91.02899904409394
+  - 39.174775695470544
+  - -91.02899904409394
 commencementYear: 2030
 description: 由 Tenaska, Southern States Energy Board 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

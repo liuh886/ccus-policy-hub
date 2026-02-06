@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Iron and steel
 storage_type: Dedicated storage
 coordinates:
-- 36.98273963373468
-- 142.10232395223667
+  - 36.98273963373468
+  - 142.10232395223667
 commencementYear: 2030
-description: A CCUS project in the Iron and steel sector developed by INPEX Corporation,
+description:
+  A CCUS project in the Iron and steel sector developed by INPEX Corporation,
   Nippon Steel Corporation, Kanto Natural Gas Development Co., Ltd.. A key component
   of the global carbon management network.
 ---

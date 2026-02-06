@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 38.053250468456056
-- -98.23502433532646
+  - 38.053250468456056
+  - -98.23502433532646
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by The Commonwealth
+description:
+  A CCUS project in the Power and heat sector developed by The Commonwealth
   of Virginia DoE (Big Stone Gap). A key component of the global carbon management
   network.
 relatedPolicies:

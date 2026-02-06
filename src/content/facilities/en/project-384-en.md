@@ -9,10 +9,11 @@ capacity: 0.24
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 52.933579976727486
-- -0.45888128012073537
+  - 52.933579976727486
+  - -0.45888128012073537
 commencementYear: 2027
-description: A CCUS project in the Power and heat sector developed by Suez, Fluor.
+description:
+  A CCUS project in the Power and heat sector developed by Suez, Fluor.
   A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

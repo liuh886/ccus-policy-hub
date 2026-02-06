@@ -10,8 +10,8 @@ sector: Iron and steel
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 40.8485
-- 111.7658
+  - 40.8485
+  - 111.7658
 commencementYear: 2025
 description: 由 Baotou Steel Group 开发的 Iron and steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

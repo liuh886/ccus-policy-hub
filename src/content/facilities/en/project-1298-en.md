@@ -10,10 +10,11 @@ sector: Chemicals
 storage_type: EOR and storage
 precision: approximate
 coordinates:
-- 43.7943
-- 87.6385
+  - 43.7943
+  - 87.6385
 commencementYear: 2023
-description: A CCUS project in the Chemicals sector developed by Qishi Jinjiang Chemical
+description:
+  A CCUS project in the Chemicals sector developed by Qishi Jinjiang Chemical
   Co., Ltd. A key component of the global carbon management network.
 relatedPolicies:
   - cn-national-standards

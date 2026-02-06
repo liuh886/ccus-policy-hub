@@ -1,7 +1,7 @@
 ---
 name: ADM Maroa/Forsyth CO2 Storage Site Development (IL)
 lang: zh
-country: "美国"
+country: '美国'
 location: Storage
 type: 封存
 status: 计划中
@@ -10,8 +10,8 @@ sector: Storage
 storage_type: 地质封存
 precision: approximate
 coordinates:
-- 41.0099
-- -89.6354
+  - 41.0099
+  - -89.6354
 commencementYear: 2028
 description: 由 ADM 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

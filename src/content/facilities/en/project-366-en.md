@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.5521
-- -0.1770
+  - 53.5521
+  - -0.1770
 commencementYear: 2027
-description: A CCUS project in the Hydrogen or ammonia sector developed by Shell,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Shell,
   Uniper. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

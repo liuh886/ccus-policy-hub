@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 coordinates:
-- 57.7894875062147
-- -1.6663361342751033
+  - 57.7894875062147
+  - -1.6663361342751033
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Centrica,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Centrica,
   Equinor. A key component of the global carbon management network.
 relatedPolicies:
   - uk-ccus-vision

@@ -1,7 +1,7 @@
 ---
 name: Four Corners Power Plant Integrated Carbon Capture and Storage (NM)
 lang: zh
-country: "美国"
+country: '美国'
 location: Power and heat
 type: 全流程
 status: 计划中
@@ -9,10 +9,11 @@ capacity: 10.0
 sector: Power and heat
 storage_type: 咸水层
 coordinates:
-- 35.750093119713746
-- -91.28855809848262
+  - 35.750093119713746
+  - -91.28855809848262
 commencementYear: null
-description: 由 Navajo Transitional Energy Company, LLC (NTEC), DOE Office of Clean
+description:
+  由 Navajo Transitional Energy Company, LLC (NTEC), DOE Office of Clean
   Energy Demonstrations 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 4.0
 sector: Other industry
 storage_type: Unknown/unspecified
 coordinates:
-- 23.30218897358592
-- 2.9620883779643563
+  - 23.30218897358592
+  - 2.9620883779643563
 commencementYear: null
-description: A CCUS project in the Other industry sector developed by Metsa Group,
+description:
+  A CCUS project in the Other industry sector developed by Metsa Group,
   ANDRITZ. A key component of the global carbon management network.
 ---
 

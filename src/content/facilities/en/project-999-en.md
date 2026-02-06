@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 30.9665
-- -91.7486
+  - 30.9665
+  - -91.7486
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Proman,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Proman,
   Mitsubishi. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 36.7822
-- -119.6637
+  - 36.7822
+  - -119.6637
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by ION Clean Energy,
+description:
+  A CCUS project in the Power and heat sector developed by ION Clean Energy,
   Inc., Calpine. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

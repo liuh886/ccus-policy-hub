@@ -9,10 +9,11 @@ capacity: 0.15
 sector: Cement
 storage_type: Dedicated Storage
 coordinates:
-- 38.34159467014166
-- -92.16943633435352
+  - 38.34159467014166
+  - -92.16943633435352
 commencementYear: null
-description: A CCUS project in the Cement sector developed by MLC, Leilac,  Industrial
+description:
+  A CCUS project in the Cement sector developed by MLC, Leilac,  Industrial
   Ally, Nuada, . A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

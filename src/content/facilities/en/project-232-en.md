@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.8003
-- -99.6078
+  - 31.8003
+  - -99.6078
 commencementYear: null
-description: A CCUS project in the Hydrogen or ammonia sector developed by Port of
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by Port of
   Corpus Christi Authority, Howard Midstream. A key component of the global carbon
   management network.
 relatedPolicies:

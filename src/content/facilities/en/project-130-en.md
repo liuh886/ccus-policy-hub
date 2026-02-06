@@ -9,10 +9,11 @@ capacity: 4.3
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 52.70293316142994
-- -2.594946437394089
+  - 52.70293316142994
+  - -2.594946437394089
 commencementYear: 2027
-description: A CCUS project in the Power and heat sector developed by Drax, Worley
+description:
+  A CCUS project in the Power and heat sector developed by Drax, Worley
   (FEED), Mistubishi Heavy Industries (tech). A key component of the global carbon
   management network.
 relatedPolicies:

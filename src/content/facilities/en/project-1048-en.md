@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 31.0698
-- -92.2887
+  - 31.0698
+  - -92.2887
 commencementYear: null
-description: A CCUS project in the T&S sector developed by Venture Global. A key component
+description:
+  A CCUS project in the T&S sector developed by Venture Global. A key component
   of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -9,10 +9,11 @@ capacity: 0.0
 sector: TBD
 storage_type: Use
 coordinates:
-- 59.13333072863351
-- 5.934914297657989
+  - 59.13333072863351
+  - 5.934914297657989
 commencementYear: 2027
-description: A CCUS project in the TBD sector developed by European Energy. A key
+description:
+  A CCUS project in the TBD sector developed by European Energy. A key
   component of the global carbon management network.
 ---
 

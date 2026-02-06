@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 24.6669
-- 46.7274
+  - 24.6669
+  - 46.7274
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by ASHOMCo, GE
+description:
+  A CCUS project in the Power and heat sector developed by ASHOMCo, GE
   Vernova. A key component of the global carbon management network.
 ---
 

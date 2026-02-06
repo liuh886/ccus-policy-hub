@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other fuel transformation
 storage_type: Unknown/unspecified
 coordinates:
-- 55.459282970354025
-- -102.56034191055657
+  - 55.459282970354025
+  - -102.56034191055657
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by Suncor,
+description:
+  A CCUS project in the Other fuel transformation sector developed by Suncor,
   Svante. A key component of the global carbon management network.
 relatedPolicies:
   - ca-ccus-itc

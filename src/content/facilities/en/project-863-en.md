@@ -10,10 +10,11 @@ sector: T&S
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 31.7536
-- -99.8491
+  - 31.7536
+  - -99.8491
 commencementYear: 2028
-description: A CCUS project in the T&S sector developed by Enbridge (transport), 1PointFive,
+description:
+  A CCUS project in the T&S sector developed by Enbridge (transport), 1PointFive,
   Occidental (Storage). A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

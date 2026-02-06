@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Unknown/unspecified
 precision: approximate
 coordinates:
-- 32.3217
-- -99.5536
+  - 32.3217
+  - -99.5536
 commencementYear: null
-description: A CCUS project in the Power and heat sector developed by Bechtel National,
+description:
+  A CCUS project in the Power and heat sector developed by Bechtel National,
   Inc.. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

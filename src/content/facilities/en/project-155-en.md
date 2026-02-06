@@ -9,10 +9,11 @@ capacity: 0.12
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 61.31500478716976
-- 6.098291384637809
+  - 61.31500478716976
+  - 6.098291384637809
 commencementYear: 2035
-description: A CCUS project in the Power and heat sector developed by Borg Havn, Kvitebjørn
+description:
+  A CCUS project in the Power and heat sector developed by Borg Havn, Kvitebjørn
   Bio-El, FREVAR. A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

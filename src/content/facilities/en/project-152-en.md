@@ -10,10 +10,11 @@ sector: Power and heat
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 30.6490
-- -92.2137
+  - 30.6490
+  - -92.2137
 commencementYear: 2032
-description: A CCUS project in the Power and heat sector developed by Fidelis new
+description:
+  A CCUS project in the Power and heat sector developed by Fidelis new
   energy  (Cyclus Steam & Power, Gron Fuels, Capio Sequestration). A key component
   of the global carbon management network.
 relatedPolicies:

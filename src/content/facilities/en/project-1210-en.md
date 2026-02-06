@@ -9,10 +9,11 @@ capacity: 0.4
 sector: Cement
 storage_type: Dedicated storage
 coordinates:
-- 48.213879438023
-- 5.931201302579872
+  - 48.213879438023
+  - 5.931201302579872
 commencementYear: null
-description: A CCUS project in the Cement sector developed by Capsol, unknown companies.
+description:
+  A CCUS project in the Cement sector developed by Capsol, unknown companies.
   A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

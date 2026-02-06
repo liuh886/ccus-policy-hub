@@ -9,10 +9,11 @@ capacity: 0.152
 sector: Biofuels
 storage_type: Dedicated storage
 coordinates:
-- 35.47018204593159
-- -98.83732600014328
+  - 35.47018204593159
+  - -98.83732600014328
 commencementYear: 2028
-description: A CCUS project in the Biofuels sector developed by Louis Dreyfus Norfolk,
+description:
+  A CCUS project in the Biofuels sector developed by Louis Dreyfus Norfolk,
   Summit Carbon Solutions. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: EOR
 precision: approximate
 coordinates:
-- 23.5980
-- 53.7075
+  - 23.5980
+  - 53.7075
 commencementYear: 2026
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   ADNOC, Petrofac (EPC), Levidian. A key component of the global carbon management
   network.
 ---

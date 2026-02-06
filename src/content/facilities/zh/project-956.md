@@ -1,7 +1,7 @@
 ---
 name: Commonwealth LNG CCS (LA)
 lang: zh
-country: "美国"
+country: '美国'
 location: Natural gas processing/LNG
 type: 捕集
 status: 计划中
@@ -10,10 +10,11 @@ sector: Natural gas processing/LNG
 storage_type: 咸水层
 precision: approximate
 coordinates:
-- 31.0617
-- -91.8489
+  - 31.0617
+  - -91.8489
 commencementYear: 2027
-description: 由 Commonwealth LNG, OnStream CO2 LLC (JV between Carbonvert Inc, Castex
+description:
+  由 Commonwealth LNG, OnStream CO2 LLC (JV between Carbonvert Inc, Castex
   Carbon Solutions LLC) (own, design, operate capture) 开发的 Natural gas processing/LNG
   行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:

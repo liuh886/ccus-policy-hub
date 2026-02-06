@@ -9,10 +9,11 @@ capacity: 0.001
 sector: DAC
 storage_type: Dedicated storage
 coordinates:
-- 22.28951546028593
-- 3.6475735761745582
+  - 22.28951546028593
+  - 3.6475735761745582
 commencementYear: 2026
-description: A CCUS project in the DAC sector developed by EnEarth (Subsidiary of
+description:
+  A CCUS project in the DAC sector developed by EnEarth (Subsidiary of
   Energean), RepAIr. A key component of the global carbon management network.
 ---
 

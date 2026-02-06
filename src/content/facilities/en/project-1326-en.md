@@ -10,10 +10,11 @@ sector: Hydrogen or ammonia
 storage_type: Dedicated storage
 precision: approximate
 coordinates:
-- 53.0194
-- -106.2969
+  - 53.0194
+  - -106.2969
 commencementYear: 2026
-description: A CCUS project in the Hydrogen or ammonia sector developed by SK, Honeywell
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by SK, Honeywell
   . A key component of the global carbon management network.
 ---
 

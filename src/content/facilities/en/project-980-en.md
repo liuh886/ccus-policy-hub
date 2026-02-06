@@ -9,10 +9,11 @@ capacity: 0.0
 sector: Other fuel transformation
 storage_type: Dedicated storage
 coordinates:
-- 34.2105673282206
-- -97.58352893178504
+  - 34.2105673282206
+  - -97.58352893178504
 commencementYear: null
-description: A CCUS project in the Other fuel transformation sector developed by BP
+description:
+  A CCUS project in the Other fuel transformation sector developed by BP
   Carbon Solutions LLC. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

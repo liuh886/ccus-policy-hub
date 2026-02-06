@@ -9,10 +9,11 @@ capacity: 0.1
 sector: Cement
 storage_type: Unknown/unspecified
 coordinates:
-- 49.565521928540456
-- 9.031391033993485
+  - 49.565521928540456
+  - 9.031391033993485
 commencementYear: 2025
-description: A CCUS project in the Cement sector developed by Heidelberg Materials,
+description:
+  A CCUS project in the Cement sector developed by Heidelberg Materials,
   Calix. A key component of the global carbon management network.
 relatedPolicies:
   - de-icm-strategy

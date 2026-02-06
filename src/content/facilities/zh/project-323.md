@@ -1,7 +1,7 @@
 ---
 name: Valero Port Arthur Refinery (TX)
 lang: zh
-country: "美国"
+country: '美国'
 location: Other fuel transformation
 type: 全流程
 status: 运行中
@@ -10,10 +10,11 @@ sector: Other fuel transformation
 storage_type: EOR
 precision: approximate
 coordinates:
-- 32.2863
-- -99.5034
+  - 32.2863
+  - -99.5034
 commencementYear: 2013
-description: 由 Air products, ExxonMobil (formerly Denbury carbon solutions) 开发的 Other
+description:
+  由 Air products, ExxonMobil (formerly Denbury carbon solutions) 开发的 Other
   fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
   - us-45q-ira

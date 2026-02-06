@@ -9,10 +9,11 @@ capacity: 1.924
 sector: Hydrogen or ammonia
 storage_type: Unknown/unspecified
 coordinates:
-- 38.4361980549384
-- -96.82866260879001
+  - 38.4361980549384
+  - -96.82866260879001
 commencementYear: 2031
-description: A CCUS project in the Hydrogen or ammonia sector developed by ENEOS,
+description:
+  A CCUS project in the Hydrogen or ammonia sector developed by ENEOS,
   MVCE Gulf Coast. A key component of the global carbon management network.
 relatedPolicies:
   - us-45q-ira

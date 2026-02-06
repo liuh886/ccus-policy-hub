@@ -9,10 +9,11 @@ capacity: 0.13
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 57.235846958806846
-- 9.314577539230712
+  - 57.235846958806846
+  - 9.314577539230712
 commencementYear: 2030
-description: A CCUS project in the Power and heat sector developed by Returkraft.
+description:
+  A CCUS project in the Power and heat sector developed by Returkraft.
   A key component of the global carbon management network.
 relatedPolicies:
   - no-storage-regulations

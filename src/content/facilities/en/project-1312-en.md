@@ -9,10 +9,11 @@ capacity: 1.2
 sector: Natural gas processing/LNG
 storage_type: Dedicated storage
 coordinates:
-- 34.26920643346631
-- -93.91192803961935
+  - 34.26920643346631
+  - -93.91192803961935
 commencementYear: 2025
-description: A CCUS project in the Natural gas processing/LNG sector developed by
+description:
+  A CCUS project in the Natural gas processing/LNG sector developed by
   Momentum Midstream, ExxonMobil. A key component of the global carbon management
   network.
 relatedPolicies:

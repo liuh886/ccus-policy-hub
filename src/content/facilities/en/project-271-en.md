@@ -9,10 +9,11 @@ capacity: 0.1
 sector: Power and heat
 storage_type: Dedicated storage
 coordinates:
-- 62.38990406900106
-- 5.75086472915142
+  - 62.38990406900106
+  - 5.75086472915142
 commencementYear: 2026
-description: A CCUS project in the Power and heat sector developed by Lyse, Forus
+description:
+  A CCUS project in the Power and heat sector developed by Lyse, Forus
   Energi, Aker Carbon Capture (tech). A key component of the global carbon management
   network.
 relatedPolicies:

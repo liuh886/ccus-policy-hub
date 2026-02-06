@@ -1,7 +1,7 @@
 ---
 name: Sullom voe terminal and Shetland basin hub (SVT)
 lang: zh
-country: "英国"
+country: '英国'
 location: T&S
 type: 枢纽
 status: 计划中
@@ -9,8 +9,8 @@ capacity: 10.0
 sector: T&S
 storage_type: 咸水层
 coordinates:
-- 56.445280361389436
-- -4.513933051709709
+  - 56.445280361389436
+  - -4.513933051709709
 commencementYear: 2029
 description: 由 Veri Energy (EnQuest) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
 relatedPolicies:
