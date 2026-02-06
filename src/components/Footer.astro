@@ -1,0 +1,45 @@
+---
+import { ui, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = defaultLang } = Astro.props;
+const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const prefix = lang === 'zh' ? '' : `/${lang}`;
+
+const currentYear = new Date().getFullYear();
+---
+<footer class="border-t bg-slate-50 dark:bg-slate-900 dark:border-slate-800 transition-colors">
+  <div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4 dark:text-white">CCUS Policy Hub</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          {t('footer.description')}
+        </p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white mb-4">{t('footer.links')}</h4>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+          <li><a href={`${prefix}/policy`} class="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.policy')}</a></li>
+          <li><a href={`${prefix}/facilities`} class="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.map')}</a></li>
+          <li><a href={`${prefix}/compare`} class="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.compare')}</a></li>
+          <li><a href={`${prefix}/docs`} class="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.docs')}</a></li>
+          <li><a href={`${prefix}/changelog`} class="hover:text-blue-600 dark:hover:text-blue-400">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white mb-4">{t('footer.contact')}</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+          如有建议或反馈，请通过文档中心的反馈渠道与我们联系。
+        </p>
+        <a href={`${prefix}/legal`} class="text-xs text-slate-400 hover:text-blue-600 underline decoration-slate-200 underline-offset-4">Legal & Privacy</a>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t dark:border-slate-800 text-center text-xs text-slate-400 dark:text-slate-500">
+      &copy; {currentYear} CCUS Policy Hub. All rights reserved.
+    </div>
+  </div>
+</footer>

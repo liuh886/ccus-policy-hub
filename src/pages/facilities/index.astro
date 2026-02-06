@@ -1,0 +1,158 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FacilityMap from '../../components/FacilityMap.astro';
+import FacilityCard from '../../components/FacilityCard.astro';
+
+const facilities = await getCollection('facilities_zh');
+
+const countries = Array.from(new Set(facilities.map(f => f.data.country))).sort();
+const sectors = Array.from(new Set(facilities.map(f => f.data.sector))).filter(Boolean).sort();
+const types = Array.from(new Set(facilities.map(f => f.data.type))).sort();
+const statuses = Array.from(new Set(facilities.map(f => f.data.status))).sort();
+---
+
+<Layout title="全球设施名录">
+  <div class="mb-12">
+    <div class="max-w-3xl mb-10">
+      <h1 class="text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">全球设施名录</h1>
+      <p class="text-slate-500 text-lg leading-relaxed font-medium">
+        集成全球在运及计划中的 CCUS 设施数据，支持按国家、行业、状态及设施类型进行多维筛选。
+      </p>
+    </div>
+
+    <div class="relative mb-12 group/map-container">
+      <FacilityMap lang="zh" />
+      
+      <div class="absolute bottom-6 left-6 z-[400] pointer-events-none flex flex-col gap-2">
+        <div class="bg-slate-900/90 dark:bg-slate-800/90 backdrop-blur-xl p-4 rounded-3xl border border-white/10 shadow-2xl transition-all duration-500 group-hover/map-container:translate-x-1">
+          <div class="flex items-center gap-6">
+            <div class="flex flex-col">
+              <span class="text-[9px] font-black text-blue-400 uppercase tracking-widest mb-0.5">匹配项目</span>
+              <div id="stat-count" class="text-xl font-black text-white leading-none">0</div>
+            </div>
+            <div class="w-px h-8 bg-white/10"></div>
+            <div class="flex flex-col">
+              <span class="text-[9px] font-black text-blue-400 uppercase tracking-widest mb-0.5">总规模 (MTPA)</span>
+              <div id="stat-capacity" class="text-xl font-black text-white leading-none">0.0</div>
+            </div>
+            <div class="w-px h-8 bg-white/10"></div>
+            <div class="flex flex-col">
+              <span class="text-[9px] font-black text-emerald-400 uppercase tracking-widest mb-0.5">当前在运</span>
+              <div class="flex items-baseline gap-1">
+                <span id="stat-operational" class="text-xl font-black text-white leading-none">0</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase">Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky top-20 z-40 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
+        <div class="md:col-span-1 relative">
+          <input type="text" id="search-input" placeholder="项目搜索..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:text-white" />
+          <svg class="absolute left-3 top-3 text-slate-400" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <select id="country-filter" class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold">
+          <option value="">所有国家</option>
+          {countries.map(c => <option value={c}>{c}</option>)}
+        </select>
+        <!-- 默认选中“运行中” -->
+        <select id="status-filter" class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-emerald-600">
+          <option value="">所有状态</option>
+          {statuses.map(s => <option value={s} selected={s === '运行中'}>{s}</option>)}
+        </select>
+        <select id="sector-filter" class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold">
+          <option value="">所有行业</option>
+          {sectors.map(s => <option value={s}>{s}</option>)}
+        </select>
+        <select id="type-filter" class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold">
+          <option value="">所有类型</option>
+          {types.map(t => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <div id="facility-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {facilities.map(f => (
+        <div class="facility-item" 
+             data-name={f.data.name} 
+             data-country={f.data.country} 
+             data-sector={f.data.sector} 
+             data-type={f.data.type}
+             data-status={f.data.status}
+             data-capacity={f.data.capacity}>
+          <FacilityCard facility={f} />
+        </div>
+      ))}
+    </div>
+
+    <div id="no-results" class="hidden py-32 text-center bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+      <p class="text-slate-500 font-bold">未找到符合条件的设施。</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function setupFiltering() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const countryFilter = document.getElementById('country-filter') as HTMLSelectElement;
+    const statusFilter = document.getElementById('status-filter') as HTMLSelectElement;
+    const sectorFilter = document.getElementById('sector-filter') as HTMLSelectElement;
+    const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
+    const items = document.querySelectorAll('.facility-item');
+    const noResults = document.getElementById('no-results');
+
+    const statCount = document.getElementById('stat-count');
+    const statCapacity = document.getElementById('stat-capacity');
+    const statOperational = document.getElementById('stat-operational');
+
+    function filterAndStats() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const country = countryFilter?.value || '';
+      const status = statusFilter?.value || '';
+      const sector = sectorFilter?.value || '';
+      const type = typeFilter?.value || '';
+
+      let count = 0;
+      let capacity = 0;
+      let operational = 0;
+
+      items.forEach((item: any) => {
+        const d = item.dataset;
+        const matches = d.name.toLowerCase().includes(search) &&
+                        (!country || d.country === country) &&
+                        (!status || d.status === status) &&
+                        (!sector || d.sector === sector) &&
+                        (!type || d.type === type);
+
+        if (matches) {
+          item.style.display = 'block';
+          count++;
+          capacity += parseFloat(d.capacity || 0);
+          if (d.status === '运行中' || d.status === 'Operational') operational++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (statCount) statCount.textContent = count.toString();
+      if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
+      if (statOperational) statOperational.textContent = operational.toString();
+
+      if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
+    }
+
+    [searchInput, countryFilter, statusFilter, sectorFilter, typeFilter].forEach(el => {
+      el?.addEventListener('input', filterAndStats);
+      el?.addEventListener('change', filterAndStats);
+    });
+
+    filterAndStats();
+  }
+
+  document.addEventListener('astro:page-load', setupFiltering);
+  setupFiltering();
+</script>

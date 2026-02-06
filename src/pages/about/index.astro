@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="关于我们">
+	<div class="max-w-3xl mx-auto">
+		<h1 class="text-4xl font-extrabold mb-6">关于 CCUS Policy Hub</h1>
+		
+		<div class="prose prose-slate dark:prose-invert max-w-none mb-16">
+			<p class="text-lg">
+				CCUS Policy Hub 是一个致力于推动全球碳捕集、利用与封存（CCUS）技术发展的开源知识基础设施。
+			</p>
+			<p>
+				我们的核心使命是通过结构化的政策数据，消除跨国合作中的信息壁垒，为全球能源转型提供有力的政策参考依据。
+			</p>
+			<h3>联系我们</h3>
+			<p>
+				如果您有任何建议、数据补充或合作意向，请填写下方的反馈表单。
+			</p>
+		</div>
+
+		<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
+			<h2 class="text-2xl font-bold mb-6">反馈与建议</h2>
+			<form id="feedback-form" class="space-y-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div class="space-y-2">
+						<label for="name" class="text-sm font-medium">姓名</label>
+						<input type="text" id="name" required class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white" />
+					</div>
+					<div class="space-y-2">
+						<label for="email" class="text-sm font-medium">邮箱</label>
+						<input type="email" id="email" required class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white" />
+					</div>
+				</div>
+				<div class="space-y-2">
+					<label for="subject" class="text-sm font-medium">主题</label>
+					<select id="subject" class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white">
+						<option>政策数据补充</option>
+						<option>信息纠错</option>
+						<option>功能建议</option>
+						<option>合作咨询</option>
+						<option>其他</option>
+					</select>
+				</div>
+				<div class="space-y-2">
+					<label for="message" class="text-sm font-medium">留言内容</label>
+					<textarea id="message" rows="4" required class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white"></textarea>
+				</div>
+				<button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+					提交反馈
+				</button>
+			</form>
+			<div id="form-success" class="hidden text-center py-4 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-lg mt-4 font-medium">
+				感谢您的反馈！我们将尽快查阅。
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	const form = document.getElementById('feedback-form') as HTMLFormElement;
+	const successMsg = document.getElementById('form-success');
+
+	form?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		// Simulate submission
+		form.classList.add('hidden');
+		successMsg?.classList.remove('hidden');
+	});
+</script>

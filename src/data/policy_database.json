@@ -1,0 +1,1422 @@
+{
+  "version": "2.0-Fidelity",
+  "lastUpdated": "2026-02-06T04:08:14.300Z",
+  "policies": [
+    {
+      "id": "us-45q-ira",
+      "zh": {
+        "title": "美国 45Q 碳氧化物封存税收抵免 (IRA 2022 增强版)",
+        "country": "美国",
+        "year": 2022,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "45Q",
+          "IRA",
+          "税收抵免"
+        ],
+        "incentive_usd_per_ton": 85,
+        "mrv_rigor": 5,
+        "description": "通过《通胀削减法案》(IRA) 对 45Q 条款进行了重大增强，将专用封存抵免额提升至 85 美元/吨，并引入直接支付与转让机制，是全球 CCUS 货币化的核心标杆。",
+        "pubDate": "2022-08-16",
+        "source": "IRS / EPA",
+        "pore_space_rights": "主要归私人所有（取决于各州法律）",
+        "liability_transfer": "通过 Class VI 许可建立长期管理机制",
+        "cross_border_rules": "允许境内跨州运输，跨境需符合伦敦议定书框架",
+        "third_party_access": "非强制，多由市场合同决定",
+        "plr_index": 92,
+        "co2_definition": "受控管理物质/商品",
+        "closure_criteria": "地质压力稳定且无泄漏风险证据（Class VI 标准）",
+        "financial_assurance": "强制性财务担保（用于井筒封堵与泄漏风险）",
+        "permitting_lead_time": "3-6 年 (Class VI 许可周期)",
+        "liability_period_years": "50 年 (除非另有州级规定)",
+        "public_consultation": "强制性 (EPA 环境正义审核)",
+        "incentive_duration_years": 12,
+        "eor_eligibility": "符合条件 ($60/t)",
+        "legal_citation": "26 U.S. Code § 45Q - 碳氧化物封存抵免"
+      },
+      "en": {
+        "title": "Section 45Q Tax Credit for Carbon Oxide Sequestration (IRA 2022 Enhanced)",
+        "country": "United States",
+        "year": 2022,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "45Q",
+          "IRA",
+          "Tax Credit"
+        ],
+        "incentive_usd_per_ton": 85,
+        "mrv_rigor": 5,
+        "description": "The Inflation Reduction Act (IRA) significantly enhanced 45Q credits, raising sequestration value to $85/t and introducing direct pay mechanisms, anchoring the global CCUS value chain.",
+        "pubDate": "2022-08-16",
+        "source": "IRS / EPA",
+        "pore_space_rights": "Primarily private ownership (varies by state)",
+        "liability_transfer": "Long-term stewardship via Class VI permit framework",
+        "cross_border_rules": "Allowed via bilateral arrangements; aligns with London Protocol intent",
+        "third_party_access": "Negotiated/Market-based",
+        "plr_index": 92,
+        "co2_definition": "Managed substance/Commodity",
+        "closure_criteria": "Pressure stabilization and evidence of no leakage (Class VI)",
+        "financial_assurance": "Mandatory financial security for plugging and leakage",
+        "permitting_lead_time": "3-6 years (Class VI timeline)",
+        "liability_period_years": "50 years (standard Class VI)",
+        "public_consultation": "Mandatory (EPA Environmental Justice review)",
+        "incentive_duration_years": 12,
+        "eor_eligibility": "Eligible ($60/t)",
+        "legal_citation": "26 U.S. Code § 45Q - Credit for carbon oxide sequestration"
+      }
+    },
+    {
+      "id": "eu-nzia",
+      "zh": {
+        "title": "欧盟净零工业法案 (NZIA)",
+        "country": "欧盟",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "NZIA",
+          "封存目标",
+          "准入简化"
+        ],
+        "mrv_rigor": 4,
+        "description": "欧盟核心战略立法，确立了到 2030 年实现年度 5000 万吨二氧化碳注入能力的目标，并规定油气生产商承担封存义务。",
+        "pubDate": "2024-02-06",
+        "source": "European Commission",
+        "pore_space_rights": "成员国主权所有",
+        "liability_transfer": "遵循欧盟 CCS 指令 (2009/31/EC)，通常 20 年后转移",
+        "cross_border_rules": "欧盟内部完全打通，支持跨境输送网络",
+        "third_party_access": "受欧盟指令保护的公平准入权",
+        "plr_index": 88,
+        "legal_citation": "EU Directive 2009/31/EC 第 18 条 (责任转移)"
+      },
+      "en": {
+        "title": "Net-Zero Industry Act (NZIA)",
+        "country": "European Union",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "NZIA",
+          "Storage Target",
+          "Strategy"
+        ],
+        "mrv_rigor": 4,
+        "description": "Key EU legislation mandating a 50 Mtpa annual injection capacity by 2030 and assigning storage construction obligations to oil and gas producers.",
+        "pubDate": "2024-02-06",
+        "source": "European Commission",
+        "pore_space_rights": "Member State sovereignty",
+        "liability_transfer": "Aligns with CCS Directive; typically 20-year transfer",
+        "cross_border_rules": "Fully integrated within EU single market",
+        "third_party_access": "Fair access rights under EU directive",
+        "plr_index": 88,
+        "legal_citation": "EU Directive 2009/31/EC Article 18 (Transfer of Responsibility)"
+      }
+    },
+    {
+      "id": "cn-national-standards",
+      "zh": {
+        "title": "中国 CCUS 12 项国家标准 (GB/T 46870-46880)",
+        "country": "中国",
+        "year": 2026,
+        "status": "Upcoming",
+        "category": "法律监管",
+        "tags": [
+          "国标",
+          "MRV 规范",
+          "全链条"
+        ],
+        "mrv_rigor": 5,
+        "description": "2026 年 7 月起实施的 12 项国家标准，系统性覆盖了捕集、输送、封存及减排量评估，是中国 CCUS 规范化发展的制度基石。",
+        "pubDate": "2026-01-12",
+        "source": "国家标准委",
+        "pore_space_rights": "国家所有（宪法规定地下资源归国家所有）",
+        "liability_transfer": "目前由运营商承担，国家储备金机制研究中",
+        "cross_border_rules": "目前仅限境内，暂无跨境封存实例",
+        "third_party_access": "鼓励共享，但缺乏强制性开放规则",
+        "plr_index": 78,
+        "co2_definition": "未明确法律定义（监管缺口）",
+        "closure_criteria": "目前主要依赖工程验收，缺乏长期稳定性判定标准",
+        "financial_assurance": "暂无强制性财务保证机制",
+        "permitting_lead_time": "2-3 年 (审批链条优化中)",
+        "liability_period_years": "尚未明确规定",
+        "public_consultation": "环评环节强制要求",
+        "incentive_duration_years": "基于 CCER 签发周期",
+        "eor_eligibility": "高度优先支持"
+      },
+      "en": {
+        "title": "China 12 National Standards for CCUS (GB/T 46870-46880)",
+        "country": "China",
+        "year": 2026,
+        "status": "Upcoming",
+        "category": "Regulation",
+        "tags": [
+          "GB Standards",
+          "MRV",
+          "Full Chain"
+        ],
+        "mrv_rigor": 5,
+        "description": "A set of 12 national standards effective from July 2026, covering capture, transport, storage, and emission reduction assessment, forming the institutional foundation for China's CCUS sector.",
+        "pubDate": "2026-01-12",
+        "source": "SAC",
+        "pore_space_rights": "State-owned (Constitutional)",
+        "liability_transfer": "Operator-led; State reserve mechanism under research",
+        "cross_border_rules": "Domestic focus; no cross-border framework yet",
+        "third_party_access": "Encouraged sharing; no mandatory rules",
+        "plr_index": 78,
+        "co2_definition": "Not explicitly defined (Regulatory gap)",
+        "closure_criteria": "Engineering acceptance based; lacks long-term stability criteria",
+        "financial_assurance": "No mandatory financial assurance mechanism yet",
+        "permitting_lead_time": "2-3 years",
+        "liability_period_years": "Not explicitly defined",
+        "public_consultation": "Mandatory via EIA process",
+        "incentive_duration_years": "Based on CCER issuance cycles",
+        "eor_eligibility": "High priority support"
+      }
+    },
+    {
+      "id": "cn-pboc-cerf",
+      "zh": {
+        "title": "中国碳减排支持工具 (CERF)",
+        "country": "中国",
+        "year": 2021,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "绿色金融",
+          "低息贷款",
+          "人行"
+        ],
+        "description": "由中国人民银行设立，向金融机构提供 1.75% 的低息资金以定向支持 CCUS 等项目，强调数据真实性与第三方核查。",
+        "pubDate": "2021-11-08",
+        "source": "中国人民银行"
+      },
+      "en": {
+        "title": "PBOC Carbon Emission Reduction Facility (CERF)",
+        "country": "China",
+        "year": 2021,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "Green Finance",
+          "Low-cost Loan",
+          "Central Bank"
+        ],
+        "description": "Established by the People's Bank of China to provide 1.75% low-cost funds for CCUS projects, mandating rigorous disclosure and third-party verification of emission data.",
+        "pubDate": "2021-11-08",
+        "source": "PBOC"
+      }
+    },
+    {
+      "id": "eu-cbam",
+      "zh": {
+        "title": "欧盟碳边境调节机制 (CBAM)",
+        "country": "欧盟",
+        "year": 2023,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "碳关税",
+          "贸易壁垒",
+          "合规减排"
+        ],
+        "description": "全球首个碳关税，2026 年起正式征费。CCUS 减排量在经 MRV 核证后，可用于抵减进口产品的嵌入排放强度。",
+        "pubDate": "2023-05-16",
+        "source": "European Parliament"
+      },
+      "en": {
+        "title": "EU Carbon Border Adjustment Mechanism (CBAM)",
+        "country": "European Union",
+        "year": 2023,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "Carbon Tariff",
+          "Trade",
+          "Compliance"
+        ],
+        "description": "The world's first carbon tariff, effective 2026. Verified CCUS emission reductions can be deducted from the embedded emissions of imported goods.",
+        "pubDate": "2023-05-16",
+        "source": "European Parliament"
+      }
+    },
+    {
+      "id": "no-storage-regulations",
+      "zh": {
+        "title": "挪威二氧化碳存储监管体系",
+        "country": "挪威",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "北极光",
+          "存储许可",
+          "责任转移"
+        ],
+        "mrv_rigor": 5,
+        "description": "全球最成熟的离岸封存管理框架，定义了从勘探许可证到场址关闭后 20 年责任转移给国家的完整流程，支持跨境运输与封存。",
+        "pubDate": "2024-04-01",
+        "source": "Norwegian Offshore Directorate",
+        "pore_space_rights": "国家主权所有",
+        "liability_transfer": "场址关闭 20 年后转移给国家",
+        "cross_border_rules": "全球先行者，已签署伦敦议定书修正案",
+        "third_party_access": "强制开放准入 (Open Access)",
+        "plr_index": 95,
+        "co2_definition": "受监管工业物质",
+        "closure_criteria": "封存场址关闭后 20 年的监测稳定性证据",
+        "financial_assurance": "要求提供财务担保以覆盖长期监测成本",
+        "permitting_lead_time": "2-4 年",
+        "liability_period_years": "20 年 (基于稳定性验证)",
+        "public_consultation": "强制性",
+        "incentive_duration_years": "25 年 (长船计划项目生命周期)",
+        "eor_eligibility": "目前仅限纯封存"
+      },
+      "en": {
+        "title": "Norway CO2 Storage Regulations",
+        "country": "Norway",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "Northern Lights",
+          "Storage Permit",
+          "Liability"
+        ],
+        "mrv_rigor": 5,
+        "description": "The world's most mature offshore storage regulatory framework, defining the path from exploration permits to liability transfer to the state 20 years after site closure.",
+        "pubDate": "2024-04-01",
+        "source": "Norwegian Offshore Directorate",
+        "pore_space_rights": "State-owned",
+        "liability_transfer": "Transfer to state 20 years post-closure",
+        "cross_border_rules": "Global leader; ratified London Protocol amendment",
+        "third_party_access": "Mandatory Open Access",
+        "plr_index": 95,
+        "co2_definition": "Regulated industrial substance",
+        "closure_criteria": "20 years of monitoring evidence post-closure showing stability",
+        "financial_assurance": "Mandatory security to cover long-term monitoring",
+        "permitting_lead_time": "2-4 years",
+        "liability_period_years": "20 years (performance-based)",
+        "public_consultation": "Mandatory",
+        "incentive_duration_years": "25 years (Longship lifespan)",
+        "eor_eligibility": "Dedicated storage focus"
+      }
+    },
+    {
+      "id": "ca-ccus-itc",
+      "zh": {
+        "title": "加拿大 CCUS 投资税收抵免 (ITC)",
+        "country": "加拿大",
+        "year": 2023,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "ITC",
+          "投资抵免",
+          "税收激励"
+        ],
+        "incentive_type": "投资抵免",
+        "incentive_value": "捕集设备 50%；运输与封存 37.5%",
+        "description": "加拿大政府推出的核心财政激励措施，通过投资税收抵免（ITC）直接抵消 CCUS 项目的资本支出。捕集设备可获得高达 50% 的抵免，运输与封存设施可获得 37.5% 的抵免。",
+        "pubDate": "2023-11-30",
+        "source": "加拿大财政部",
+        "url": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html",
+        "permitting_lead_time": "3-5 年",
+        "liability_period_years": "省政府承担，各省周期不同",
+        "public_consultation": "强制性",
+        "incentive_duration_years": "2022-2040 (2030年后抵免额减半)",
+        "eor_eligibility": "明确排除 (Explicitly Excluded)"
+      },
+      "en": {
+        "title": "Canada CCUS Investment Tax Credit (ITC)",
+        "country": "Canada",
+        "year": 2023,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "ITC",
+          "Investment Credit",
+          "Fiscal"
+        ],
+        "incentive_type": "Investment Tax Credit",
+        "incentive_value": "50% for capture; 37.5% for T&S",
+        "description": "A primary fiscal incentive to offset capital costs, focusing on dedicated geological storage while explicitly excluding Enhanced Oil Recovery (EOR) projects.",
+        "pubDate": "2023-11-30",
+        "source": "Finance Canada",
+        "permitting_lead_time": "3-5 years",
+        "liability_period_years": "Provincial responsibility; varies",
+        "public_consultation": "Mandatory",
+        "incentive_duration_years": "2022-2040 (halved after 2030)",
+        "eor_eligibility": "Explicitly Excluded"
+      }
+    },
+    {
+      "id": "uk-ccus-vision",
+      "zh": {
+        "title": "英国 CCUS 发展愿景",
+        "country": "英国",
+        "year": 2023,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "愿景",
+          "集群化",
+          "Track-1/2"
+        ],
+        "description": "英国长期路线图，旨在建立具有全球竞争力的 CCUS 市场。目标到 2030 年实现年封存 2000-3000 万吨二氧化碳，并承诺投入 200 亿英镑支持集群建设。",
+        "pubDate": "2023-12-20",
+        "source": "英国能源安全与净零部"
+      },
+      "en": {
+        "title": "UK CCUS Vision",
+        "country": "United Kingdom",
+        "year": 2023,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "Vision",
+          "Clusters",
+          "Track-1",
+          "Track-2"
+        ],
+        "description": "A long-term roadmap to create a competitive market, aiming for 20-30 Mtpa storage by 2030 with a £20 billion funding commitment for cluster sequencing.",
+        "pubDate": "2023-12-20",
+        "source": "DESNZ"
+      }
+    },
+    {
+      "id": "au-safeguard-mechanism",
+      "zh": {
+        "title": "澳大利亚保障机制改革 (Safeguard Mechanism)",
+        "country": "澳大利亚",
+        "year": 2023,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "基准线",
+          "ACCU",
+          "合规义务"
+        ],
+        "description": "核心气候政策，要求年排放量超过 10 万吨的工业设施每年强制降低 4.9% 的排放强度，通过惩罚性合规成本驱动油气与重工业对 CCUS 的投资需求。",
+        "pubDate": "2023-03-30",
+        "source": "DCCEEW"
+      },
+      "en": {
+        "title": "Australia Safeguard Mechanism Reform",
+        "country": "Australia",
+        "year": 2023,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "Safeguard",
+          "ACCU",
+          "Baselines"
+        ],
+        "description": "Central climate policy mandating a 4.9% annual emissions intensity reduction for large facilities, effectively creating a compliance-driven market for CCUS abatement.",
+        "pubDate": "2023-03-30",
+        "source": "DCCEEW"
+      }
+    },
+    {
+      "id": "id-presidential-reg-14-2024",
+      "zh": {
+        "title": "印度尼西亚 2024 年第 14 号总统令 (跨境 CCS 框架)",
+        "country": "印度尼西亚",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "跨境封存",
+          "东南亚枢纽",
+          "许可框架"
+        ],
+        "description": "印度尼西亚政府于 2024 年初发布的里程碑式法规，旨在建立国家 CCS 监管框架。该法案的核心突破是允许将印尼 30% 的碳封存容量分配给跨境二氧化碳来源，标志着印尼正式向亚太地区碳封存枢纽转型。",
+        "pubDate": "2024-01-30",
+        "source": "印尼内阁秘书处",
+        "url": "https://setkab.go.id/presiden-jokowi-teken-perpres-terkait-penyelenggaraan-kegiatan-penangkapan-dan-penyimpanan-karbon/",
+        "co2_definition": "受监管物质（包含跨境贸易属性）",
+        "closure_criteria": "符合印尼能矿部规定的安全稳定条件",
+        "financial_assurance": "要求运营商建立废弃处置储备金"
+      },
+      "en": {
+        "title": "Indonesia Presidential Regulation No. 14/2024",
+        "country": "Indonesia",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "Cross-border",
+          "Asia-Pacific",
+          "CCS Hub"
+        ],
+        "description": "Landmark regulation enabling Indonesia to allocate 30% of its storage capacity to international CO2, establishing the first major legal framework for cross-border CCS in Asia.",
+        "pubDate": "2024-01-30",
+        "source": "Cabinet Secretariat of RI",
+        "co2_definition": "Regulated substance (with trade attributes)",
+        "closure_criteria": "Safety and stability criteria per MEMR regulations",
+        "financial_assurance": "Mandatory abandonment and site restoration fund"
+      }
+    },
+    {
+      "id": "japan-ccs-act",
+      "zh": {
+        "title": "日本 CCS 商业法 (2024)",
+        "country": "日本",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "许可权",
+          "盐水层",
+          "责任转移"
+        ],
+        "description": "2024 年 5 月通过，将 CCS 封存权从油气法中剥离并独立化，允许专业运营商获得咸水层封存权，并建立了向国家机构 (JOGMEC) 转移长期责任的机制。",
+        "pubDate": "2024-05-20",
+        "source": "日本经济产业省 (METI)"
+      },
+      "en": {
+        "title": "Japan CCS Business Act (2024)",
+        "country": "Japan",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "Storage Rights",
+          "Saline Aquifers",
+          "Liability"
+        ],
+        "description": "Legislation passed in May 2024 decoupling CCS storage rights from oil/gas laws, enabling saline aquifer storage permits and defining a state-backed liability transfer mechanism.",
+        "pubDate": "2024-05-20",
+        "source": "METI Japan"
+      }
+    },
+    {
+      "id": "denmark-ccfd",
+      "zh": {
+        "title": "丹麦 CCfD 碳捕捉与封存基金招标机制",
+        "country": "丹麦",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "CCfD",
+          "负向招标",
+          "北欧枢纽"
+        ],
+        "description": "丹麦政府推出的为期 20 年的补贴计划，通过竞争性招标（负向招标）确定每吨二氧化碳的差价合约价格，旨在启动丹麦的大规模 CCS 商业化部署。",
+        "pubDate": "2024-05-01",
+        "source": "丹麦能源署"
+      },
+      "en": {
+        "title": "Danish CCfD Bidding Mechanism",
+        "country": "Denmark",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "Danish Policy",
+          "CfD",
+          "Tendering"
+        ],
+        "description": "A 20-year subsidy scheme based on competitive tendering (Carbon Contract for Difference), designed to kickstart large-scale CCS deployment and position Denmark as a European storage hub.",
+        "pubDate": "2024-05-01",
+        "source": "Danish Energy Agency"
+      }
+    },
+    {
+      "id": "br-fuels-of-the-future-ccs",
+      "zh": {
+        "title": "巴西“未来燃料”法案与 CCS 监管框架 (Bill 528/2020)",
+        "country": "巴西",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "南美首部",
+          "生物质碳捕集",
+          "ANP 监管"
+        ],
+        "description": "巴西首部 CCS 专门法律框架，由国家石油、天然气和生物燃料管理局 (ANP) 监管。法案规定封存授权期通常为 30 年，并明确了运营商在环境风险与长期监测方面的义务。",
+        "pubDate": "2024-09-01",
+        "source": "巴西参议院 / 总统府"
+      },
+      "en": {
+        "title": "Brazil Fuels of the Future & CCS Framework (Bill 528/2020)",
+        "country": "Brazil",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "Brazil",
+          "Latin America",
+          "Geological Storage"
+        ],
+        "description": "A comprehensive law establishing Brazil's first legal framework for CCS, governed by ANP. It mandates federal authorization for 30-year storage terms and defines operator liabilities.",
+        "pubDate": "2024-09-01",
+        "source": "Brazilian Senate / Presidency"
+      }
+    },
+    {
+      "id": "kr-ccus-act",
+      "zh": {
+        "title": "韩国 CCUS 法案 (2024)",
+        "country": "韩国",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "法律集成",
+          "战略集群",
+          "MOTIE"
+        ],
+        "description": "韩国首部 CCUS 专项综合立法，旨在整合之前分散在 40 多部法律中的审批流程。法案确立了“CCUS 战略集群”制度，并为关键基础设施的建设与运营提供法律支撑与研发补贴。",
+        "pubDate": "2024-01-09",
+        "source": "韩国产业通商资源部 (MOTIE)"
+      },
+      "en": {
+        "title": "South Korea CCUS Act",
+        "country": "South Korea",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "South Korea",
+          "CCUS Act",
+          "MOTIE"
+        ],
+        "description": "A comprehensive new law consolidating CCUS-related regulations from 40+ different acts into a single framework, facilitating 'Strategic Clusters' and streamlining the permitting process.",
+        "pubDate": "2024-01-09",
+        "source": "MOTIE Korea"
+      }
+    },
+    {
+      "id": "iso-standards",
+      "zh": {
+        "title": "ISO 27914 & 27916 CCUS 国际标准",
+        "country": "国际",
+        "year": 2019,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "技术标准",
+          "地质封存",
+          "EOR 量化"
+        ],
+        "description": "由 ISO TC265 制定的全球公认标准。ISO 27914 聚焦于专用地质封存的安全性与完整性；ISO 27916 为二氧化碳增强采油 (CO2-EOR) 场景下的封存量化建立了统一核算规则。",
+        "pubDate": "2019-01-01",
+        "source": "ISO TC265"
+      },
+      "en": {
+        "title": "ISO 27914 & 27916 CCUS International Standards",
+        "country": "International",
+        "year": 2019,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "ISO",
+          "Technical Standards",
+          "Geological Storage",
+          "EOR"
+        ],
+        "description": "Constitutes the universal language for CCUS. ISO 27914 focuses on the safety of dedicated storage, while ISO 27916 establishes accounting rules for storage in CO2-EOR scenarios.",
+        "pubDate": "2019-01-01",
+        "source": "ISO TC265"
+      }
+    },
+    {
+      "id": "ipcc-guidelines",
+      "zh": {
+        "title": "IPCC 国家温室气体清单指南",
+        "country": "国际",
+        "year": 2019,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "碳核算",
+          "UNFCCC",
+          "方法论"
+        ],
+        "description": "2019 年修订版指南为各国在 UNFCCC 框架下报告 CCUS 活动提供了全球公认的科学依据，详细规定了捕集、输送与封存环节的排放量化与泄漏估算方法。",
+        "pubDate": "2019-05-01",
+        "source": "IPCC"
+      },
+      "en": {
+        "title": "IPCC Guidelines for National GHG Inventories",
+        "country": "International",
+        "year": 2019,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "Accounting",
+          "Methodology",
+          "UN"
+        ],
+        "description": "The 2019 Refinement provides the global scientific basis for accounting CCUS activities, enabling nations to report verified emission reductions to the UNFCCC.",
+        "pubDate": "2019-05-01",
+        "source": "IPCC"
+      }
+    },
+    {
+      "id": "eu-innovation-fund",
+      "zh": {
+        "title": "欧盟创新基金 (Innovation Fund)",
+        "country": "欧盟",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "资金支持",
+          "技术示范",
+          "ETS 收入"
+        ],
+        "description": "全球最大的支持低碳技术示范的资助计划之一，资金来源于欧盟碳市场 (EU ETS) 拍卖收入。到 2030 年预计投入约 400 亿欧元，重点支持 CCUS 等突破性技术的规模化应用。",
+        "pubDate": "2024-01-01",
+        "source": "欧盟委员会"
+      },
+      "en": {
+        "title": "EU Innovation Fund",
+        "country": "European Union",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "Funding",
+          "Demonstration",
+          "Breakthrough"
+        ],
+        "description": "One of the world's largest funding programs for low-carbon technologies, expected to deploy ~€40 billion until 2030, with a major focus on full-chain CCUS innovation.",
+        "pubDate": "2024-01-01",
+        "source": "European Commission"
+      }
+    },
+    {
+      "id": "my-ccs-framework",
+      "zh": {
+        "title": "马来西亚 CCS 激励与监管框架",
+        "country": "马来西亚",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "ITA",
+          "税收优惠",
+          "东南亚枢纽"
+        ],
+        "incentive_type": "投资税收抵免",
+        "incentive_value": "100% ITA (10年期) 或 100% ITE",
+        "description": "马来西亚政府通过 MIDA 设立的强力财政激励方案，旨在吸引 CCS 运营商与服务商。开发商可申请 10 年期 100% 投资税收抵免，以抵消法定收入，同时享受设备进口税和销售税的全额免除。",
+        "pubDate": "2024-01-01",
+        "source": "MIDA / 马来西亚财政部"
+      },
+      "en": {
+        "title": "Malaysia CCS Incentives & Regulatory Framework",
+        "country": "Malaysia",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "Malaysia",
+          "Tax Incentive",
+          "MIDA"
+        ],
+        "incentive_type": "Investment Tax Allowance (ITA)",
+        "incentive_value": "100% ITA for 10 years or 100% ITE",
+        "description": "Robust tax incentives provided through MIDA to attract CCS operators. Developers can claim 100% ITA for 10 years, alongside full import duty and sales tax exemptions on equipment.",
+        "pubDate": "2024-01-01",
+        "source": "MIDA / MoF Malaysia"
+      }
+    },
+    {
+      "id": "netherlands-sde",
+      "zh": {
+        "title": "荷兰 SDE++ 运营补贴机制",
+        "country": "荷兰",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "CfD",
+          "运营补贴",
+          "Porthos"
+        ],
+        "incentive_type": "差价合约",
+        "description": "荷兰核心低碳技术资助计划，采用差价合约 (CfD) 模型，由政府补足项目运营成本与欧盟碳价 (EU ETS) 之间的差额。该机制对 Porthos 等大规模 CCS 项目的财务可行性至关重要。",
+        "pubDate": "2024-01-01",
+        "source": "荷兰经济部"
+      },
+      "en": {
+        "title": "Netherlands SDE++ Subsidy Scheme",
+        "country": "Netherlands",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "SDE++",
+          "CfD",
+          "Porthos"
+        ],
+        "incentive_type": "Carbon Contract for Difference",
+        "description": "A major Dutch subsidy scheme using a CfD model, where the government pays the delta between project costs and EU ETS prices, critical for large-scale CCS financial viability.",
+        "pubDate": "2024-01-01",
+        "source": "Dutch Ministry of Economic Affairs"
+      }
+    },
+    {
+      "id": "california-lcfs",
+      "zh": {
+        "title": "加州低碳燃料标准 (LCFS) CCUS 协议",
+        "country": "美国",
+        "year": 2024,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "LCFS",
+          "积分交易",
+          "激励叠加"
+        ],
+        "incentive_type": "市场化积分",
+        "incentive_value": "$100-$200/吨 (积分价格)",
+        "description": "加州首创的市场机制，允许符合条件的 CCUS 项目通过降低燃料碳强度生成可交易积分。该积分可与联邦 45Q 税收抵免叠加，是全球激励强度最高的市场化工具之一。",
+        "pubDate": "2024-01-01",
+        "source": "加州空气资源委员会 (CARB)"
+      },
+      "en": {
+        "title": "California Low Carbon Fuel Standard (LCFS) CCUS Protocol",
+        "country": "United States",
+        "year": 2024,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "LCFS",
+          "California",
+          "Carbon Credits"
+        ],
+        "incentive_type": "Market-based Credit",
+        "incentive_value": "$100-$200/t (Credit price)",
+        "description": "A premier market mechanism allowing CCUS projects to generate tradable credits based on CI reduction. LCFS credits can be stacked with federal 45Q credits for maximum incentive value.",
+        "pubDate": "2024-01-01",
+        "source": "California ARB"
+      }
+    },
+    {
+      "id": "cn-ccer",
+      "zh": {
+        "title": "中国核证自愿减排机制 (CCER)",
+        "country": "中国",
+        "year": 2024,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "碳市场",
+          "抵消机制",
+          "重启"
+        ],
+        "description": "中国核证自愿减排机制（CCER）是全国碳排放权交易市场的重要补充机制。通过鼓励自愿减排项目产生可交易的减排量，为 CCUS 等技术路径提供市场化激励。",
+        "pubDate": "2024-01-22",
+        "source": "中国生态环境部",
+        "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml"
+      },
+      "en": {
+        "title": "China Certified Emission Reduction (CCER)",
+        "country": "China",
+        "year": 2024,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "CCER",
+          "Carbon Market",
+          "Reboot"
+        ],
+        "description": "China's official voluntary offset scheme, rebooted in 2024. Entities in the national ETS can use CCERs to meet up to 5% of their obligations, with CCUS identified as a priority methodology.",
+        "pubDate": "2024-01-22",
+        "source": "MEE China"
+      }
+    },
+    {
+      "id": "cn-zero-carbon-parks",
+      "zh": {
+        "title": "中国零碳工业园区建设指南 (2024)",
+        "country": "中国",
+        "year": 2024,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "集群化",
+          "工业脱碳",
+          "循环利用"
+        ],
+        "description": "系统性指导工业园区通过碳捕集与循环利用实现整体脱碳。强调共享运输与封存基础设施的建设，优先支持二氧化碳用于化工合成或驱油 (EOR)。",
+        "pubDate": "2024-01-15",
+        "source": "工业和信息化部"
+      },
+      "en": {
+        "title": "China Guidance on Zero-Carbon Industrial Parks (2024)",
+        "country": "China",
+        "year": 2024,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "Industrial Hubs",
+          "Clusters",
+          "Decarbonization"
+        ],
+        "description": "Comprehensive guidance for decarbonizing industrial clusters through shared CCUS infrastructure and prioritized utilization in chemical synthesis or EOR.",
+        "pubDate": "2024-01-15",
+        "source": "MIIT China"
+      }
+    },
+    {
+      "id": "alberta-tier",
+      "zh": {
+        "title": "阿尔伯塔省 TIER 监管法规",
+        "country": "加拿大",
+        "year": 2023,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "碳定价",
+          "EPC积分",
+          "省级政策"
+        ],
+        "incentive_type": "碳定价与抵消",
+        "incentive_usd_per_ton": 59,
+        "description": "阿尔伯塔省针对大型排放源的碳定价系统。设施通过 CCUS 产生的减排量可转化为排放性能积分 (EPC)，用于市场交易或履行合规义务。可与联邦 ITC 叠加，是油砂脱碳的核心动力。",
+        "pubDate": "2023-01-01",
+        "source": "阿尔伯塔省政府"
+      },
+      "en": {
+        "title": "Alberta TIER Regulation",
+        "country": "Canada",
+        "year": 2023,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "Carbon Pricing",
+          "EPC",
+          "Provincial Policy"
+        ],
+        "incentive_type": "Carbon Pricing / Offsets",
+        "incentive_usd_per_ton": 59,
+        "description": "Alberta's industrial carbon pricing system. CCUS projects generate tradable Emission Performance Credits (EPCs). Stackable with federal ITC, it serves as the financial pillar for oil sands decarbonization.",
+        "pubDate": "2023-01-01",
+        "source": "Government of Alberta"
+      }
+    },
+    {
+      "id": "norway-longship",
+      "zh": {
+        "title": "挪威“长船”计划与碳税框架",
+        "country": "挪威",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "国家投资",
+          "去风险",
+          "北极光"
+        ],
+        "incentive_type": "税收驱动+国家注资",
+        "mrv_rigor": 5,
+        "description": "挪威将全球领先的高额离岸碳税与“长船”计划的直接国家投资相结合。政府分担了项目前十年的大部分资本与运营支出，旨在通过公私合营模式降低全链条 CCS 的商业风险。",
+        "pubDate": "2024-01-01",
+        "source": "挪威政府 / Gassnova"
+      },
+      "en": {
+        "title": "Norway Longship & Carbon Tax Framework",
+        "country": "Norway",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "State Investment",
+          "De-risking",
+          "Longship"
+        ],
+        "incentive_type": "Tax Drive + Grant",
+        "mrv_rigor": 5,
+        "description": "Norway pairs high offshore carbon taxes with the Longship project's direct state funding. The government covers significant capex and opex, creating a blueprint for de-risking full-chain CCS.",
+        "pubDate": "2024-01-01",
+        "source": "Norwegian Government / Gassnova"
+      }
+    },
+    {
+      "id": "verra-vm0049",
+      "zh": {
+        "title": "Verra CCS 方法学 VM0049",
+        "country": "国际",
+        "year": 2024,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "自愿碳市场",
+          "VCS",
+          "方法学"
+        ],
+        "mrv_rigor": 5,
+        "description": "Verra 发布的 CCS 专项方法学，允许项目在自愿碳市场发行核证碳单位 (VCU)。严格要求额外性论证，并强制执行 100 年的责任监控或通过缓冲池抵御封存风险。",
+        "pubDate": "2024-03-01",
+        "source": "Verra"
+      },
+      "en": {
+        "title": "Verra Methodology VM0049",
+        "country": "International",
+        "year": 2024,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "Voluntary Market",
+          "VCS",
+          "Methodology"
+        ],
+        "mrv_rigor": 5,
+        "description": "Verified Carbon Standard (VCS) methodology for CCS, enabling VCU issuance. It mandates rigorous additionality proof and 100-year liability monitoring or buffer pool mechanisms.",
+        "pubDate": "2024-03-01",
+        "source": "Verra"
+      }
+    },
+    {
+      "id": "gold-standard",
+      "zh": {
+        "title": "黄金标准 (Gold Standard) CCUS 准则",
+        "country": "国际",
+        "year": 2023,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "高标准",
+          "SDGs",
+          "碳信用"
+        ],
+        "description": "自愿碳市场的高端标准，支持 CCUS 与 DAC 项目的信用核证。除要求 100 年以上的封存持久性外，还强制要求项目必须对联合国可持续发展目标 (SDGs) 做出额外贡献。",
+        "pubDate": "2023-01-01",
+        "source": "Gold Standard"
+      },
+      "en": {
+        "title": "Gold Standard CCUS Methodology",
+        "country": "International",
+        "year": 2023,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "High Integrity",
+          "SDGs",
+          "Offsets"
+        ],
+        "description": "A premier voluntary market standard for CCUS and DAC. Beyond 100-year durability, it mandates positive contributions to multiple UN Sustainable Development Goals.",
+        "pubDate": "2023-01-01",
+        "source": "Gold Standard"
+      }
+    },
+    {
+      "id": "puro-earth",
+      "zh": {
+        "title": "Puro.earth 碳移除证书标准",
+        "country": "国际",
+        "year": 2019,
+        "status": "Active",
+        "category": "市场机制",
+        "tags": [
+          "CORC",
+          "工程化移除",
+          "永久封存"
+        ],
+        "description": "领先的工程化碳移除 (CDR) 标准，专注于核发 CORC 证书。该标准仅认可具有极高地质封存或矿化封存永久性的项目，并通过储备账户机制管理未来风险。",
+        "pubDate": "2019-05-01",
+        "source": "Puro.earth"
+      },
+      "en": {
+        "title": "Puro.earth Carbon Removal Standard",
+        "country": "International",
+        "year": 2019,
+        "status": "Active",
+        "category": "Market",
+        "tags": [
+          "CORC",
+          "CDR",
+          "Permanence"
+        ],
+        "description": "The primary standard for engineered carbon removal, issuing CORC certificates. It exclusively focuses on projects with verified high geological or mineralized storage permanence.",
+        "pubDate": "2019-05-01",
+        "source": "Puro.earth"
+      }
+    },
+    {
+      "id": "us-iija-hubs",
+      "zh": {
+        "title": "美国 IIJA 基础设施法案 (CCUS 枢纽专项)",
+        "country": "美国",
+        "year": 2021,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "枢纽化",
+          "直接赠款",
+          "基础设施"
+        ],
+        "description": "通过《基础设施投资和就业法案》(IIJA) 拨付巨额资金，支持建立大规模区域性 CCUS 枢纽。包含 35 亿美元专门用于直接空气捕集 (DAC) 枢纽的建设，侧重于共享基础设施的规模化。",
+        "pubDate": "2021-11-15",
+        "source": "美国能源部 (DOE)"
+      },
+      "en": {
+        "title": "US IIJA Infrastructure Act (CCUS Hubs)",
+        "country": "United States",
+        "year": 2021,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "Hubs",
+          "Direct Grant",
+          "Infrastructure"
+        ],
+        "description": "Allocates significant funding via IIJA to establish regional CCUS hubs. Includes a $3.5 billion carve-out for Direct Air Capture (DAC) hubs, focusing on shared infrastructure scalability.",
+        "pubDate": "2021-11-15",
+        "source": "US DOE"
+      }
+    },
+    {
+      "id": "br-bill-1425-2022",
+      "zh": {
+        "title": "巴西 CCS 综合法律框架 (Bill 1425/2022)",
+        "country": "巴西",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "南美首部",
+          "综合立法",
+          "许可制度"
+        ],
+        "description": "巴西建立的首个全面 CCS 监管框架，明确了运营商的义务、孔隙权属及许可流程，是南美洲 CCS 法律的标杆。",
+        "pore_space_rights": "属于联盟（联邦政府）",
+        "liability_transfer": "场址关闭 30 年后责任转移",
+        "pubDate": "2024-01-01",
+        "plr_index": 82
+      },
+      "en": {
+        "title": "Brazil CCS Legal Framework (Bill 1425/2022)",
+        "country": "Brazil",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "First in SA",
+          "Comprehensive",
+          "Licensing"
+        ],
+        "description": "The first comprehensive CCS regulatory framework in Brazil, defining operator obligations, pore space rights, and permitting processes.",
+        "pore_space_rights": "Belongs to the Union",
+        "liability_transfer": "Transfer 30 years post-closure",
+        "pubDate": "2024-01-01",
+        "plr_index": 82
+      }
+    },
+    {
+      "id": "ae-carbon-strategy",
+      "zh": {
+        "title": "阿联酋碳管理策略与 ADNOC CCS 计划",
+        "country": "阿联酋",
+        "year": 2023,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "中东枢纽",
+          "ADNOC",
+          "咸水层封存"
+        ],
+        "description": "阿联酋国家碳管理路线图，依托 ADNOC 建立区域 CCS 枢纽。目前已启动在阿布扎比碳酸盐岩咸水层的二氧化碳注入项目。",
+        "pore_space_rights": "国家所有",
+        "liability_transfer": "由国家石油公司 (ADNOC) 统筹",
+        "cross_border_rules": "支持区域性 CCS 协作",
+        "pubDate": "2023-01-01",
+        "plr_index": 75
+      },
+      "en": {
+        "title": "UAE Carbon Management Strategy & ADNOC CCS",
+        "country": "United Arab Emirates",
+        "year": 2023,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "Middle East Hub",
+          "ADNOC",
+          "Saline Aquifer"
+        ],
+        "description": "UAE national roadmap for carbon management, leveraging ADNOC to build a regional CCS hub, including injection into carbonate saline aquifers.",
+        "pore_space_rights": "State-owned",
+        "liability_transfer": "Managed via ADNOC/State framework",
+        "cross_border_rules": "Regional collaboration focus",
+        "pubDate": "2023-01-01",
+        "plr_index": 75
+      }
+    },
+    {
+      "id": "my-mida-incentives",
+      "zh": {
+        "title": "马来西亚投资发展局 (MIDA) CCS 税收激励",
+        "country": "马来西亚",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "ITA",
+          "税收抵免",
+          "快速通道"
+        ],
+        "description": "马来西亚通过 MIDA 提供 100% 投资税收抵免 (ITA)，旨在吸引全球 CCS 投资。该政策正在通过简化审批流程建立亚洲领先的 CCS 环境。",
+        "pore_space_rights": "属于国家（通过 PETRONAS 管理）",
+        "liability_transfer": "机制完善中",
+        "financial_assurance": "正在研究保证金机制",
+        "pubDate": "2024-01-01",
+        "plr_index": 72
+      },
+      "en": {
+        "title": "Malaysia MIDA CCS Tax Incentives",
+        "country": "Malaysia",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "ITA",
+          "Tax Credit",
+          "MIDA"
+        ],
+        "description": "Malaysia offers 100% Investment Tax Allowance (ITA) through MIDA to attract CCS investment, focusing on streamlined permitting and regional hub status.",
+        "pore_space_rights": "State-owned (Managed via PETRONAS)",
+        "liability_transfer": "Under development",
+        "financial_assurance": "Bonding mechanisms being researched",
+        "pubDate": "2024-01-01",
+        "plr_index": 72
+      }
+    },
+    {
+      "id": "de-icm-strategy",
+      "zh": {
+        "title": "德国工业碳管理战略 (KMS)",
+        "country": "德国",
+        "year": 2024,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "立场转型",
+          "工业脱碳",
+          "管网建设"
+        ],
+        "description": "德国政府于 2024 年发布的战略框架，标志着德国在 CCUS 政策上的重大转向。法案允许对难以减排的行业（如水泥、石灰）实施 CCS，并计划建立全国性的二氧化碳输送基础设施。",
+        "pore_space_rights": "受监管准入",
+        "liability_transfer": "机制研究中",
+        "co2_definition": "受控工业物质",
+        "pubDate": "2024-05-29",
+        "plr_index": 80
+      },
+      "en": {
+        "title": "Germany Industrial Carbon Management Strategy (KMS)",
+        "country": "Germany",
+        "year": 2024,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "Policy Shift",
+          "Industrial Decarb",
+          "Pipeline"
+        ],
+        "description": "A strategic framework released in 2024 marking a major shift in German policy, allowing CCS for hard-to-abate industries and planning a national CO2 transport network.",
+        "pore_space_rights": "Regulated Access",
+        "liability_transfer": "Under development",
+        "co2_definition": "Regulated industrial substance",
+        "pubDate": "2024-05-29",
+        "plr_index": 80
+      }
+    },
+    {
+      "id": "fr-ccus-roadmap",
+      "zh": {
+        "title": "法国 2030 CCUS 部署路线图",
+        "country": "法国",
+        "year": 2024,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "法国 2030",
+          "CfD 补贴",
+          "捕集目标"
+        ],
+        "description": "法国政府推出的 CCUS 专项路线图，旨在通过“法国 2030”计划提供资金支持。目标是到 2030 年实现每年 400-800 万吨的捕集能力，并重点支持工业园区的枢纽化建设。",
+        "pore_space_rights": "国家特许经营",
+        "liability_transfer": "遵循欧盟指令",
+        "closure_criteria": "地质稳定性验证",
+        "pubDate": "2024-01-01",
+        "plr_index": 82
+      },
+      "en": {
+        "title": "France 2030 CCUS Roadmap",
+        "country": "France",
+        "year": 2024,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "France 2030",
+          "CfD Support",
+          "Capture Target"
+        ],
+        "description": "A dedicated roadmap aimed at deploying CCUS via the France 2030 plan, targeting 4-8 Mtpa of capture capacity by 2030 with a focus on industrial hubs.",
+        "pore_space_rights": "State Concession",
+        "liability_transfer": "EU Directive aligned",
+        "closure_criteria": "Geological stability verification",
+        "pubDate": "2024-01-01",
+        "plr_index": 82
+      }
+    },
+    {
+      "id": "sa-megi-ccus",
+      "zh": {
+        "title": "沙特阿拉伯中东绿色倡议 (MEGI) CCUS 框架",
+        "country": "沙特阿拉伯",
+        "year": 2023,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "中东枢纽",
+          "蓝氢协作",
+          "区域中心"
+        ],
+        "description": "沙特阿拉伯主导的区域性气候行动计划，目标是建立全球最大的 CCUS 枢纽之一。通过与区域国家合作，推动二氧化碳在增强采油 (EOR) 和石化产品生产中的应用。",
+        "pore_space_rights": "国家所有",
+        "liability_transfer": "由国家石油框架统筹",
+        "pubDate": "2023-10-01",
+        "plr_index": 70
+      },
+      "en": {
+        "title": "Saudi Arabia MEGI CCUS Framework",
+        "country": "Saudi Arabia",
+        "year": 2023,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "MEGI",
+          "Blue Hydrogen",
+          "Regional Hub"
+        ],
+        "description": "A regional initiative led by Saudi Arabia aiming to establish one of the world's largest CCUS hubs, fostering collaboration on EOR and petrochemical utilization.",
+        "pore_space_rights": "State-owned",
+        "liability_transfer": "Managed via State-oil framework",
+        "pubDate": "2023-10-01",
+        "plr_index": 70
+      }
+    },
+    {
+      "id": "th-boi-incentives",
+      "zh": {
+        "title": "泰国投资委员会 (BOI) CCUS 税收优惠",
+        "country": "泰国",
+        "year": 2024,
+        "status": "Active",
+        "category": "经济激励",
+        "tags": [
+          "BOI",
+          "税收豁免",
+          "东部经济走廊"
+        ],
+        "description": "泰国政府通过 BOI 提供的专项激励，对符合条件的 CCUS 设备进口提供免关税待遇，并对相关业务提供企业所得税阶段性豁免，以支持东部经济走廊 (EEC) 的脱碳。",
+        "pore_space_rights": "机制完善中",
+        "financial_assurance": "尚未强制要求",
+        "pubDate": "2024-01-01",
+        "plr_index": 65
+      },
+      "en": {
+        "title": "Thailand BOI CCUS Incentives",
+        "country": "Thailand",
+        "year": 2024,
+        "status": "Active",
+        "category": "Incentive",
+        "tags": [
+          "BOI",
+          "Tax Exemption",
+          "EEC"
+        ],
+        "description": "Fiscal incentives provided by the Thailand Board of Investment, including import duty waivers on CCUS equipment and corporate income tax exemptions to support industrial decarbonization.",
+        "pore_space_rights": "Under development",
+        "financial_assurance": "Not mandatory yet",
+        "pubDate": "2024-01-01",
+        "plr_index": 65
+      }
+    },
+    {
+      "id": "in-ccus-roadmap",
+      "zh": {
+        "title": "印度国家 CCUS 路线图 (NITI Aayog)",
+        "country": "印度",
+        "year": 2022,
+        "status": "Active",
+        "category": "战略引导",
+        "tags": [
+          "新兴市场",
+          "45Q 模式探讨",
+          "工业脱碳"
+        ],
+        "description": "由印度智库 NITI Aayog 发布的权威报告，确立了印度发展 CCUS 的路线图。报告重点探讨了通过类似美国 45Q 的税收抵免机制来吸引投资，旨在解决钢铁和水泥行业的排放问题。",
+        "pore_space_rights": "政府统筹",
+        "liability_transfer": "处于政策建议阶段",
+        "co2_definition": "待明确",
+        "pubDate": "2022-11-01",
+        "plr_index": 58
+      },
+      "en": {
+        "title": "India National CCUS Roadmap (NITI Aayog)",
+        "country": "India",
+        "year": 2022,
+        "status": "Active",
+        "category": "Strategy",
+        "tags": [
+          "Emerging Market",
+          "45Q Model",
+          "Industrial Decarb"
+        ],
+        "description": "A landmark report by NITI Aayog outlining India's CCUS strategy. It discusses the potential for tax credits similar to US 45Q to incentivize capture in steel and cement sectors.",
+        "pore_space_rights": "State-coordinated",
+        "liability_transfer": "Under recommendation",
+        "co2_definition": "To be defined",
+        "pubDate": "2022-11-01",
+        "plr_index": 58
+      }
+    },
+    {
+      "id": "is-cdr-framework",
+      "zh": {
+        "title": "冰岛碳移除 (CDR) 监管框架",
+        "country": "冰岛",
+        "year": 2024,
+        "status": "Active",
+        "category": "法律监管",
+        "tags": [
+          "DAC",
+          "矿化封存",
+          "Mammoth"
+        ],
+        "description": "冰岛针对直接空气捕集 (DAC) 与原位矿化封存建立的专项监管体系。依托其独特的地热与玄武岩资源，为 Climeworks 等项目提供了清晰的许可路径与永久性核证标准。",
+        "pore_space_rights": "土地所有者与国家共有",
+        "liability_transfer": "长期稳定性验证后转移",
+        "closure_criteria": "矿化程度达标",
+        "pubDate": "2024-01-01",
+        "plr_index": 85
+      },
+      "en": {
+        "title": "Iceland CDR Regulatory Framework",
+        "country": "Iceland",
+        "year": 2024,
+        "status": "Active",
+        "category": "Regulation",
+        "tags": [
+          "DAC",
+          "Mineralization",
+          "Mammoth"
+        ],
+        "description": "Specific regulatory framework for Direct Air Capture and in-situ mineralization. Leveraging its basaltic resources, Iceland provides clear permitting for projects like Mammoth.",
+        "pore_space_rights": "Joint Landowner/State",
+        "liability_transfer": "Post-mineralization transfer",
+        "closure_criteria": "Verification of mineralization",
+        "pubDate": "2024-01-01",
+        "plr_index": 85
+      }
+    }
+  ]
+}

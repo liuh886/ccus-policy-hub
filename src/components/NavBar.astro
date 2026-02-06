@@ -1,0 +1,77 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import LanguagePicker from './LanguagePicker.astro';
+import { ui, defaultLang } from '../i18n/ui';
+
+const lang = Astro.currentLocale || defaultLang;
+const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+
+const prefix = lang === 'zh' ? '' : `/${lang}`;
+
+const navItems = [
+  { name: t('nav.home'), href: `${prefix}/` },
+  { name: t('nav.policy'), href: `${prefix}/policy` },
+  { name: t('nav.map'), href: `${prefix}/facilities` },
+  { name: t('nav.compare'), href: `${prefix}/compare` },
+  { name: t('nav.docs'), href: `${prefix}/docs` },
+];
+---
+<header class="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md dark:border-slate-800 transition-colors">
+  <div class="container mx-auto flex h-16 items-center justify-between px-4">
+    <div class="flex items-center gap-2">
+      <a href={`${prefix}/`} class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+        <span class="bg-blue-600 text-white p-1 rounded font-bold">CCUS</span>
+        <span class="hidden md:inline font-bold tracking-tight">Policy Hub</span>
+      </a>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-6">
+      {navItems.map(item => (
+        <a href={item.href} class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          {item.name}
+        </a>
+      ))}
+      <div class="flex items-center gap-2 border-l pl-4 ml-4 dark:border-slate-700">
+        <a href={`${prefix}/search`} class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </a>
+        <LanguagePicker />
+        <ThemeToggle />
+      </div>
+    </nav>
+
+    <button id="mobile-menu-toggle" class="md:hidden p-2 dark:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white dark:bg-slate-900 border-b dark:border-slate-800 shadow-lg">
+    <nav class="flex flex-col p-4 gap-4">
+      {navItems.map(item => (
+        <a href={item.href} class="text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 px-2 py-1">
+          {item.name}
+        </a>
+      ))}
+      <div class="flex items-center justify-between border-t pt-4 dark:border-slate-800">
+        <a href={`${prefix}/search`} class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          {t('nav.search')}
+        </a>
+        <div class="flex items-center gap-2">
+          <LanguagePicker />
+          <ThemeToggle />
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

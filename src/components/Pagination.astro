@@ -1,0 +1,36 @@
+---
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  current: number;
+  total: number;
+}
+
+const { prevUrl, nextUrl, current, total } = Astro.props;
+---
+
+<nav class="flex justify-center items-center gap-4 mt-12">
+  {prevUrl ? (
+    <a href={prevUrl} class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 transition-colors text-sm font-medium">
+      &larr; 上一页
+    </a>
+  ) : (
+    <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 rounded-lg text-slate-300 text-sm cursor-not-allowed">
+      &larr; 上一页
+    </span>
+  )}
+
+  <span class="text-sm font-bold text-slate-500">
+    第 {current} 页 / 共 {total} 页
+  </span>
+
+  {nextUrl ? (
+    <a href={nextUrl} class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 transition-colors text-sm font-medium">
+      下一页 &rarr;
+    </a>
+  ) : (
+    <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 rounded-lg text-slate-300 text-sm cursor-not-allowed">
+      下一页 &rarr;
+    </span>
+  )}
+</nav>

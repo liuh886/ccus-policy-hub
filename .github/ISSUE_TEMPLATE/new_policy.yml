@@ -1,0 +1,58 @@
+name: "🆕 新政策提交 / New Policy Submission"
+description: 提交一个新的 CCUS 政策入库建议
+title: "[POLICY] 国家-政策名称"
+labels: ["data:policy", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您为 CCUS Policy Hub 贡献数据！请填写以下字段，我们会尽快审核并入库。
+  - type: input
+    id: title
+    attributes:
+      label: 政策名称 / Policy Title
+      placeholder: 例如：美国 45Q 税收抵免政策修订
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: 国家或地区 / Country or Region
+      placeholder: 例如：United States
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: 发布年份 / Year
+      placeholder: 2022
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 政策类别 / Category
+      options:
+        - 法律法规 (Regulation)
+        - 经济激励 (Incentive)
+        - 技术标准 (Standard)
+        - 战略规划 (Strategy)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 简要描述 / Description
+      placeholder: 请简述该政策的核心内容及其对 CCUS 行业的影响。
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: 官方链接 / Source URL
+      placeholder: https://...
+  - type: textarea
+    id: mrv_requirements
+    attributes:
+      label: MRV 要求 (如有) / MRV Requirements
+      placeholder: 该政策是否提及具体的碳核查或监测要求？

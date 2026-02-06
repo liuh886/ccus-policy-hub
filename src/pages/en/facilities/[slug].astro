@@ -1,0 +1,164 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const facilities = await getCollection('facilities_en');
+  return facilities.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { name, country, sector, capacity, status, relatedPolicies = [] } = entry.data;
+
+const allPolicies = await getCollection('policies_en');
+
+// 1. Explicit: Linked in Frontmatter
+const explicitPolicies = allPolicies.filter(p => {
+  return relatedPolicies.includes(p.id);
+});
+
+// 2. Applicable: Same Country + International (Excluding explicit)
+const applicablePolicies = allPolicies.filter(p => {
+  if (relatedPolicies.includes(p.id)) return false;
+
+  const pCountry = p.data.country;
+  const isSameCountry = pCountry === country || 
+                       (pCountry === "USA" && country === "United States");
+  const isInternational = pCountry === "International";
+  return isSameCountry || isInternational;
+});
+
+// 3. Benchmarks: Different Country + Same Sector
+const benchmarkPolicies = allPolicies.filter(p => {
+  const pCountry = p.data.country;
+  const pSectors = p.data.sectors || [];
+  
+  const isDuplicate = applicablePolicies.some(ap => ap.id === p.id) || relatedPolicies.includes(p.id);
+  
+  const isSectorMatch = sector && pSectors.some(s => 
+    sector.toLowerCase().includes(s.toLowerCase()) || 
+    s.toLowerCase().includes(sector.toLowerCase())
+  );
+  return isSectorMatch && !isDuplicate;
+});
+---
+
+<Layout title={name}>
+  <div class="max-w-5xl mx-auto py-8 px-4">
+    <nav class="mb-10 text-sm">
+      <a href="/en/facilities" class="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-2 group">
+        <div class="p-1 rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 18-6-6 6-6"/></svg>
+        </div>
+        Back to Global Directory
+      </a>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <header class="mb-12">
+          <h1 class="text-5xl font-black mb-6 dark:text-white leading-tight">{name}</h1>
+          <p class="text-xl text-slate-500 italic border-l-4 border-blue-500 pl-6">
+            {entry.data.description}
+          </p>
+        </header>
+        
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm mb-12">
+          <article class="prose prose-slate dark:prose-invert max-w-none">
+            <Content />
+          </article>
+        </div>
+
+        <!-- Explicit Linked Policies -->
+        {explicitPolicies.length > 0 && (
+          <div class="mb-12 p-8 bg-blue-600 rounded-[2.5rem] text-white shadow-xl">
+            <h2 class="text-2xl font-black mb-6 flex items-center gap-3">
+              Key Supporting Policies
+            </h2>
+            <div class="grid grid-cols-1 gap-4">
+              {explicitPolicies.map(p => (
+                <a href={`/en/policy/${p.id.replace(/^en\//, '')}`} class="block p-6 bg-white/10 hover:bg-white/20 rounded-2xl border border-white/20 transition-all">
+                  <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-black text-lg">{p.data.title}</h3>
+                    {p.data.incentive_usd_per_ton && (
+                      <span class="text-xs font-black bg-white text-blue-600 px-2 py-1 rounded">
+                        ${p.data.incentive_usd_per_ton}/t
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-sm text-blue-100 line-clamp-2">{p.data.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Applicable Policies -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-black mb-6 text-slate-900 dark:text-white">Applicable Policies & Regulations</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {applicablePolicies.map(p => {
+              const pureId = p.id.replace(/^en\//, '');
+              return (
+                <a href={`/en/policy/${pureId}`} class="group p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all shadow-sm">
+                  <div class="flex justify-between mb-3">
+                    <span class="px-2 py-0.5 rounded text-[9px] font-black bg-blue-100 text-blue-700 uppercase">{p.data.country}</span>
+                    <div class="flex gap-1">
+                      {[...Array(p.data.mrv_rigor || 0)].map(() => (
+                        <div class="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+                      ))}
+                    </div>
+                  </div>
+                  <h3 class="font-bold text-sm mb-2 group-hover:text-blue-600 transition-colors">{p.data.title}</h3>
+                  <p class="text-[11px] text-slate-500 line-clamp-2">{p.data.description}</p>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        <!-- Global Benchmarks -->
+        {benchmarkPolicies.length > 0 && (
+          <div>
+            <h2 class="text-2xl font-black mb-6 text-slate-400">Global Industry Benchmarks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 opacity-70 hover:opacity-100 transition-opacity">
+              {benchmarkPolicies.slice(0, 4).map(p => {
+                const pureId = p.id.replace(/^en\//, '');
+                return (
+                  <a href={`/en/policy/${pureId}`} class="group p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-400 transition-all">
+                    <div class="flex justify-between mb-3">
+                      <span class="px-2 py-0.5 rounded text-[9px] font-black bg-slate-200 text-slate-600 uppercase">{p.data.country}</span>
+                      <span class="text-[9px] font-black text-blue-500 uppercase">Benchmark</span>
+                    </div>
+                    <h3 class="font-bold text-sm mb-2 text-slate-700 dark:text-slate-300">{p.data.title}</h3>
+                    <p class="text-[10px] text-slate-400">Strategic reference for the {sector} sector.</p>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-1">
+        <div class="bg-slate-900 rounded-3xl p-8 text-white sticky top-24">
+          <h2 class="text-xs font-black text-blue-400 uppercase tracking-widest mb-8 border-b border-white/10 pb-4 text-center">Technical Profile</h2>
+          <dl class="space-y-6">
+            <div>
+              <dt class="text-[10px] text-slate-500 uppercase font-black mb-1">Country</dt>
+              <dd class="text-base font-bold">{country}</dd>
+            </div>
+            <div>
+              <dt class="text-[10px] text-slate-500 uppercase font-black mb-1">Annual Capacity</dt>
+              <dd class="text-3xl font-black text-blue-400">{capacity} Mtpa</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

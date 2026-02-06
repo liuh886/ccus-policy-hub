@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const logs = await getCollection('changelog');
+const sortedLogs = logs.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<Layout title="更新日志">
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-12">
+      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">更新日志</h1>
+      <p class="text-slate-600 dark:text-slate-400">
+        追踪 CCUS Policy Hub 的每一次迭代与功能改进。
+      </p>
+    </header>
+
+    <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+      {sortedLogs.map(async (log) => {
+        const { Content } = await render(log);
+        return (
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            {/* Dot */}
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-slate-900 bg-slate-200 dark:bg-slate-800 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+              <svg class="fill-current" viewBox="0 0 12 12" width="12" height="12">
+                <path d="M12 10v2H0v-2h12zm0-4v2H0V6h12zm0-4v2H0V2h12z" />
+              </svg>
+            </div>
+            {/* Card */}
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+              <div class="flex items-center justify-between space-x-2 mb-1">
+                <div class="font-bold text-slate-900 dark:text-white">{log.data.version} - {log.data.title}</div>
+                <time class="font-medium text-blue-600 text-sm whitespace-nowrap">
+                  {log.data.pubDate.toLocaleDateString('zh-CN')}
+                </time>
+              </div>
+              <div class="prose prose-sm prose-slate dark:prose-invert max-w-none">
+                <Content />
+              </div>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</Layout>

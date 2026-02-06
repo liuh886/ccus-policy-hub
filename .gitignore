@@ -1,0 +1,34 @@
+# Core Build & Runtime
+dist/
+.astro/
+node_modules/
+.env
+.env.production
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System & IDE
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+
+# Internal Agent & Governance (Non-website content)
+.gemini/
+.codex/
+skills/
+*.skill
+
+# Local Scripts & Maintenance Tools
+scripts/
+*.pyc
+__pycache__/
+
+# Documentation & Raw Materials
+docs/
+SELF_CHECK_REPORT.md
+ccus-db-governance.skill

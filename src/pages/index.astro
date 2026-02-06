@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WorldMapNav from '../components/WorldMapNav.astro';
+import CapacityTrend from '../components/CapacityTrend.astro';
+import { getCollection } from 'astro:content';
+
+const policies = await getCollection('policies_zh');
+const policyCount = policies.length;
+---
+
+<Layout title="CCUS 政策与设施全球数据库">
+  <div class="py-12">
+    <!-- Hero Section -->
+    <header class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm mx-auto">
+        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+        Global CCUS Intelligence Hub 2026
+      </div>
+      <h1 class="text-6xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1]">
+        全球 CCUS 政策与设施<br/><span class="text-blue-600">知识基础设施</span>
+      </h1>
+      <p class="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+        集成 IEA 全球设施数据库与核心激励机制，提供多维度政策对比、地理空间分布及行业趋势 analysis。
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/facilities" class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 dark:shadow-none hover:-translate-y-1">
+          探索全球设施地图
+        </a>
+        <a href="/policy" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
+          查阅政策数据库
+        </a>
+      </div>
+    </header>
+
+    <!-- Data Insights Section -->
+    <CapacityTrend />
+
+    <div class="mb-24 px-4 py-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-100 dark:border-slate-800">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 shadow-sm">
+          <span class="flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+          </span>
+          <span class="text-[10px] font-black uppercase tracking-wider text-slate-500">
+            当前已纳入 <b>{policyCount}</b> 项核心政策
+          </span>
+        </div>
+        <h2 class="text-3xl font-black mb-4 dark:text-white">全球政策准入控制台</h2>
+        <p class="text-slate-500 text-balance">点击高亮活跃区域，实时获取该地区的关键政策框架、准入要求及激励规模。</p>
+      </div>
+      <WorldMapNav lang="zh" />
+    </div>
+
+    <div class="py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">权威数据源</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">同步 IEA CCUS Projects Database 2025、GCCSI 等国际组织及各国政府官网的最新动态。</p>
+      </div>
+      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">可视化分析</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">通过交互式地图、高性能点聚合图表和多维对比工具，深度洞察各国政策激励强度。</p>
+      </div>
+      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">行业精准对标</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">首创“设施-政策”自动化关联引擎，针对不同行业领域（如制氢、电力、钢铁）提供专项对标建议。</p>
+      </div>
+    </div>
+  </div>
+</Layout>

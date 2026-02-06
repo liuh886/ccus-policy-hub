@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const { lang = 'zh' } = Astro.props;
+const isEn = lang === 'en';
+
+const facilities = await getCollection(isEn ? 'facilities_en' : 'facilities_zh');
+---
+
+<div class="facility-map-container h-[600px] w-full rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative bg-slate-100 dark:bg-slate-950">
+  <div id="map" class="h-full w-full z-0"></div>
+  
+  <!-- Map Loader -->
+  <div id="map-loader" class="absolute inset-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-[1000] flex flex-col items-center justify-center transition-opacity duration-700">
+    <div class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+
+  <!-- Legend (Only) -->
+  <div class="absolute bottom-6 right-6 z-[500] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-5 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-2xl">
+    <div class="space-y-3">
+      <div class="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">
+        {isEn ? 'Legend' : '地图图例'}
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300">{isEn ? 'Operational' : '运行中'}</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300">{isEn ? 'Planned' : '计划/开发中'}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+
+<script define:vars={{ facilities, isEn }}>
+  async function initMap() {
+    if (typeof L === 'undefined') return;
+
+    const map = L.map('map', {
+      center: [30, 10],
+      zoom: 3,
+      zoomControl: false,
+      attributionControl: false,
+      preferCanvas: true
+    });
+
+    L.control.zoom({ position: 'topleft' }).addTo(map);
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const esriUrl = isDark 
+      ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+      : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+
+    L.tileLayer(esriUrl, { maxZoom: 16, minZoom: 2 }).addTo(map);
+
+    const markers = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 40,
+      iconCreateFunction: (cluster) => L.divIcon({
+        html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
+        className: 'custom-cluster-icon',
+        iconSize: [32, 32]
+      })
+    });
+
+    facilities.forEach(f => {
+      const { name, coordinates, status, capacity, type } = f.data;
+      const isOperational = status === '运行中' || status === 'Operational';
+      const color = isOperational ? '#10b981' : '#3b82f6';
+      
+      const marker = L.marker(coordinates, {
+        icon: L.divIcon({
+          html: `<div class="w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg" style="background-color: ${color}"></div>`,
+          className: 'custom-marker',
+          iconSize: [14, 14]
+        })
+      });
+
+      marker.bindPopup(`
+        <div class="p-1 min-w-[180px]">
+          <div class="text-[9px] font-black text-blue-600 uppercase mb-1">${type}</div>
+          <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${name}</div>
+          <div class="text-xs font-bold text-slate-500">${capacity} Mtpa | ${status}</div>
+          <a href="/${isEn ? 'en/facilities' : 'facilities'}/${f.id.replace(/^(en|zh)\//, '')}" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg">Details</a>
+        </div>
+      `);
+      markers.addLayer(marker);
+    });
+
+    map.addLayer(markers);
+    const loader = document.getElementById('map-loader');
+    if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 500); }
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const s = document.createElement('script');
+      s.src = src; s.onload = resolve;
+      document.head.appendChild(s);
+    });
+  }
+
+  (async () => {
+    if (typeof L === 'undefined') {
+      await loadScript("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js");
+      await loadScript("https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js");
+    }
+    initMap();
+  })();
+</script>

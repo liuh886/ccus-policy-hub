@@ -1,0 +1,124 @@
+---
+import { ui, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const lang = Astro.props.lang ?? (Astro.currentLocale as 'zh' | 'en' | undefined) ?? defaultLang;
+const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const isEn = lang === 'en';
+const compareHref = isEn ? '/en/compare' : '/compare';
+---
+<div id="compare-drawer" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden">
+  <div class="bg-slate-900 text-white px-6 py-4 rounded-full shadow-2xl border border-slate-700 flex items-center gap-6 backdrop-blur-md bg-slate-900/90">
+    <div class="flex items-center gap-2">
+      <div class="bg-blue-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full" id="compare-count">0</div>
+      <span class="text-sm font-medium">{isEn ? 'policies selected' : '项政策已选择'}</span>
+    </div>
+    
+    <div class="h-4 w-px bg-slate-700"></div>
+    
+    <div class="flex items-center gap-4">
+      <button id="clear-compare" class="text-sm text-slate-400 hover:text-white transition-colors">{isEn ? 'Clear' : '清除'}</button>
+      <a href={compareHref} class="bg-white text-slate-900 px-4 py-1.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-colors">
+        {t('compare.btn')}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'compare-list';
+  const LEGACY_KEY = 'compare-policies';
+
+  function safeParseList(value) {
+    try {
+      const parsed = JSON.parse(value || '[]');
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function getCompareList() {
+    const current = safeParseList(localStorage.getItem(STORAGE_KEY));
+    const legacy = safeParseList(localStorage.getItem(LEGACY_KEY));
+
+    if (legacy.length === 0) return current;
+
+    const merged = Array.from(new Set([...current, ...legacy]));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    localStorage.removeItem(LEGACY_KEY);
+    return merged;
+  }
+
+  function updateDrawer() {
+    const drawer = document.getElementById('compare-drawer');
+    const countEl = document.getElementById('compare-count');
+    const list = getCompareList();
+    
+    if (countEl) countEl.innerText = list.length.toString();
+    
+    if (list.length > 0) {
+      drawer?.classList.remove('hidden');
+      drawer?.classList.add('flex');
+    } else {
+      drawer?.classList.add('hidden');
+      drawer?.classList.remove('flex');
+    }
+
+    // 同步所有页面上的复选框
+    document.querySelectorAll('.compare-checkbox').forEach((cb) => {
+      const checkbox = cb as HTMLInputElement;
+      checkbox.checked = list.includes(checkbox.dataset.id || '');
+    });
+  }
+
+  // 监听复选框变化 (使用委托)
+  document.addEventListener('change', (e) => {
+    const target = e.target as HTMLInputElement;
+    if (target.classList.contains('compare-checkbox')) {
+      let list = getCompareList();
+      const id = target.dataset.id;
+      if (!id) return;
+      
+      if (target.checked) {
+        if (!list.includes(id)) {
+          if (list.length >= 5) {
+            const isEn = document.documentElement.lang === 'en';
+            alert(isEn ? 'You can compare up to 5 policies.' : '最多只能同时对比 5 项政策');
+            target.checked = false;
+            return;
+          }
+          list.push(id);
+        }
+      } else {
+        list = list.filter((i: string) => i !== id);
+      }
+      
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      // 发送自定义事件以便同窗口监听
+      window.dispatchEvent(new CustomEvent('compare-updated'));
+      updateDrawer();
+    }
+  });
+
+  // 监听清除按钮
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'clear-compare') {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(LEGACY_KEY);
+      window.dispatchEvent(new CustomEvent('compare-updated'));
+      updateDrawer();
+    }
+  });
+
+  // 初始加载和路由跳转后加载
+  window.addEventListener('load', updateDrawer);
+  document.addEventListener('astro:page-load', updateDrawer);
+  // 监听多标签同步
+  window.addEventListener('storage', updateDrawer);
+  updateDrawer();
+</script>

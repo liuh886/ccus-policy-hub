@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  country: string;
+  year: number;
+  url?: string;
+}
+
+const { title, country, year, url } = Astro.props;
+const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const citationText = `CCUS Policy Hub. (${year}). ${title} [${country}]. Retrieved from ${url || 'CCUS Policy Hub Database'} (Accessed: ${today})`;
+---
+
+<div class="mt-12 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800">
+  <div class="flex items-center justify-between mb-4">
+    <h4 class="text-xs font-black uppercase tracking-widest text-slate-400">学术引用 / Suggest Citation</h4>
+    <button 
+      id="copy-citation" 
+      data-citation={citationText}
+      class="text-[10px] font-black uppercase px-3 py-1 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+    >
+      Copy
+    </button>
+  </div>
+  <p class="text-sm font-mono text-slate-600 dark:text-slate-400 leading-relaxed break-words">
+    {citationText}
+  </p>
+</div>
+
+<script>
+  function initCitation() {
+    const btn = document.getElementById('copy-citation');
+    btn?.addEventListener('click', () => {
+      const text = btn.getAttribute('data-citation') || '';
+      navigator.clipboard.writeText(text);
+      const originalText = btn.innerText;
+      btn.innerText = 'COPIED!';
+      setTimeout(() => btn.innerText = originalText, 2000);
+    });
+  }
+  document.addEventListener('astro:page-load', initCitation);
+  initCitation();
+</script>

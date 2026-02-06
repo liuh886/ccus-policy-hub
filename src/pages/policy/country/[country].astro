@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PolicyCard from '../../../components/PolicyCard.astro';
+
+export async function getStaticPaths() {
+  const allPolicies = await getCollection('policies_zh');
+  const countries = [...new Set(allPolicies.map((p) => p.data.country))];
+
+  return countries.map((country) => {
+    const countryPolicies = allPolicies.filter((p) => p.data.country === country);
+    return {
+      params: { country },
+      props: { policies: countryPolicies },
+    };
+  });
+}
+
+const { country } = Astro.params;
+const { policies } = Astro.props;
+---
+
+<Layout title={`${country} 政策集`}>
+  <nav class="mb-8">
+    <a href="/policy" class="text-blue-600 hover:underline flex items-center gap-2 text-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      返回全球政策库
+    </a>
+  </nav>
+
+  <header class="mb-12">
+    <h1 class="text-4xl font-extrabold mb-4">{country} CCUS 政策集</h1>
+    <p class="text-slate-600 dark:text-slate-400">
+      当前收录了 {policies.length} 条来自 {country} 的相关政策与法规。
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {policies.map(policy => (
+      <PolicyCard policy={policy} lang="zh" />
+    ))}
+  </div>
+</Layout>
