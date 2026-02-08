@@ -1,26 +1,46 @@
 ---
-name: Air Liquide Shanghai Chemical Industry Park (SCIP) decarbonisation (Shanghai)
-lang: zh
-country: 中国
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Hydrogen or ammonia
-storage_type: 地质封存
-precision: approximate
+id: '541'
+country: China
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 31.1945
-  - 121.4832
-commencementYear: 2028
-description: 由 SCIPIG (Air Liquide) 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5325
+  - -101.0104
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Air Liquide Shanghai Chemical Industry Park (SCIP) decarbonisation (Shanghai)
+region: Other Asia Pacific
+partners:
+  - SCIPIG (Air Liquide)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 氢能与氨能
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2022'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2028.0。

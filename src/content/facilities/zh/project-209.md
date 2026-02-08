@@ -1,25 +1,46 @@
 ---
-name: Horizon mine tailings (ALB)
-lang: zh
-country: '加拿大'
-location: Other fuel transformation
-type: CCU
-status: 运行中
+id: '209'
+country: Canada
+status: Operational
+reviewStatus: draft
 capacity: 0.4
-sector: Other fuel transformation
-storage_type: 地质封存
 coordinates:
-  - 53.25076273804837
-  - -102.63771066655084
-commencementYear: 2017
-description:
-  由 Canadian Natural Resources Ltd 开发的 Other fuel transformation 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7562
+  - -119.3972
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Horizon mine tailings (ALB)
+region: North America
+partners:
+  - Canadian Natural Resources Ltd
+type: 碳利用
+phase: ''
+announcedCapacity: 0.4
+estimatedCapacity: 0.4
+sector: 其他能源转换
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: ''
+fid: ''
+operation: '2017'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other fuel transformation 领域。预计/实际投产年份为 2017.0。

@@ -1,24 +1,45 @@
 ---
-name: Aker Carbon Capture mineral production (unknown facilities)
-lang: zh
-country: '美国'
-location: Cement
-type: 捕集
-status: 计划中
+id: '920'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 1.5
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 36.64248473069378
-  - -94.46799950309668
-commencementYear: null
-description: 由 Aker Carbon Capture, unknown company 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7554
+  - -119.4028
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Aker Carbon Capture mineral production (unknown facilities)
+region: North America
+partners:
+  - Aker Carbon Capture, unknown company
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 水泥行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Cement 领域。预计/实际投产年份为 未知。

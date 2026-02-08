@@ -1,20 +1,45 @@
 ---
-name: Northern to Western Kyushu Offshore CCS - Eneos refinery
-lang: zh
-country: '日本'
-location: Other fuel transformation
-type: 全流程
-status: 计划中
-capacity: 0.0
-sector: Other fuel transformation
-storage_type: 咸水层
+id: '1136'
+country: Japan
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 33.336778755991894
-  - 134.08792457574785
-commencementYear: 2030
-description: 由 Eneos Holdings, J-Power, JX 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.2043
+  - 138.2654
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Northern to Western Kyushu Offshore CCS - Eneos refinery
+region: Other Asia Pacific
+partners:
+  - Eneos Holdings, J-Power, JX
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: Northern to Western Kyushu Offshore CCS
+announcement: '2022'
+fid: '2026'
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Japan 的 Other fuel transformation 领域。预计/实际投产年份为 2030.0。

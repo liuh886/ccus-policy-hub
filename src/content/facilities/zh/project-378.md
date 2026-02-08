@@ -1,22 +1,46 @@
 ---
-name: South West Hub Project
-lang: zh
-country: '澳大利亚'
-location: Storage
-type: 封存
-status: 计划中
+id: '378'
+country: Australia
+status: Planned
+reviewStatus: draft
 capacity: 0.8
-sector: Storage
-storage_type: 咸水层
 coordinates:
-  - -25.19305559345322
-  - 133.13036046339343
-commencementYear: null
-description:
-  由 Department of Mines, Industry Regulation and Safety (DMIRS) 开发的 Storage
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9917
+  - -91.9507
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: South West Hub Project
+region: Australia and New Zealand
+partners:
+  - Department of Mines, Industry Regulation and Safety (DMIRS)
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 0.8
+estimatedCapacity: 0.8
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: South West Hub Project
+announcement: '2010'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Storage 领域。预计/实际投产年份为 未知。

@@ -1,26 +1,47 @@
 ---
-name: Bluebell  (Roanoke Cement Company CCS)
-lang: zh
-country: '美国'
-location: Cement
-type: Full Chain
-status: 计划中
+id: '1260'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.55
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 33.76434008057815
-  - -92.71768637065213
-commencementYear: null
-description:
-  由 Titan(owner of Roanoke Cement Company), Leilac, Amazon, Virginia Tech
-  开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7841
+  - -119.4185
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Bluebell  (Roanoke Cement Company CCS)
+region: North America
+partners:
+  - Titan(owner of Roanoke Cement Company), Leilac, Amazon, Virginia Tech
+type: Full Chain
+phase: ''
+announcedCapacity: 0.55
+estimatedCapacity: 0.55
+sector: 水泥行业
+fateOfCarbon: Dedicated Storage
+hub: ''
+announcement: '2025'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Cement 领域。预计/实际投产年份为 未知。

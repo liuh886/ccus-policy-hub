@@ -1,23 +1,46 @@
 ---
-name: Moraine (GE) Power Generation (ALB)
-lang: zh
-country: '加拿大'
-location: Power and heat
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Power and heat
-storage_type: 咸水层
+id: '1125'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 54.2257924133022
-  - -106.9534287836721
-commencementYear: 2027
-description: 由 Moraine Initiative Ltd (GE) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7632
+  - -119.419
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Moraine (GE) Power Generation (ALB)
+region: North America
+partners:
+  - Moraine Initiative Ltd (GE)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: Athabasca Banks Carbon Hub (ALB)
+announcement: '2022'
+fid: '2025'
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Power and heat 领域。预计/实际投产年份为 2027.0。

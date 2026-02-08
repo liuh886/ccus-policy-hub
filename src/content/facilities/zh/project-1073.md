@@ -1,24 +1,45 @@
 ---
-name: Vicksburg Containerboard Mill (MS)
-lang: zh
-country: '美国'
-location: Other industry
-type: 捕集
-status: 计划中
+id: '1073'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.12
-sector: Other industry
-storage_type: 地质封存
 coordinates:
-  - 33.97358036171595
-  - -99.63256351922789
-commencementYear: null
-description: 由 RTI International, IP, SLB, Amazon 开发的 Other industry 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7697
+  - -119.4001
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Vicksburg Containerboard Mill (MS)
+region: North America
+partners:
+  - RTI International, IP, SLB, Amazon
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.12
+estimatedCapacity: 0.12
+sector: 其他工业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2024'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Other industry 领域。预计/实际投产年份为 未知。

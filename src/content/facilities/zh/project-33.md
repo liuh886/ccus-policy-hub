@@ -1,20 +1,48 @@
 ---
-name: Aramis CCS storage phase 2
-lang: zh
-country: '荷兰'
-location: Storage
-type: 封存
-status: 计划中
+id: '33'
+country: Netherlands
+status: Planned
+reviewStatus: draft
 capacity: 3.1
-sector: Storage
-storage_type: 咸水层
 coordinates:
-  - 51.114240129808785
-  - 0.23459697840842342
-commencementYear: 2030
-description: 由 TotalEnergies, Shell, EBN, Gasunie 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.1313
+  - 5.2738
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Aramis CCS storage phase 2
+region: Europe
+partners:
+  - TotalEnergies, Shell, EBN, Gasunie
+type: 二氧化碳封存
+phase: '2'
+announcedCapacity: 3.1
+estimatedCapacity: 3.1
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Aramis CCS
+announcement: '2019'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 Storage 领域。预计/实际投产年份为 2030.0。

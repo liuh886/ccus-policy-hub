@@ -1,21 +1,45 @@
 ---
-name: Aramco gas plants (3 facilities)
-lang: zh
-country: '沙特阿拉伯'
-location: Natural gas processing/LNG
-type: 捕集
-status: 计划中
-capacity: 6.0
-sector: Natural gas processing/LNG
-storage_type: 咸水层
-precision: approximate
+id: '1240'
+country: Saudi Arabia
+status: Planned
+reviewStatus: draft
+capacity: 6
 coordinates:
-  - 24.6750
-  - 46.7223
-commencementYear: 2027
-description: 由 Saudi Aramco 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9957
+  - -91.9675
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Aramco gas plants (3 facilities)
+region: Middle East
+partners:
+  - Saudi Aramco
+type: 碳捕集
+phase: ''
+announcedCapacity: 6
+estimatedCapacity: 6
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: Jubail CCS hub
+announcement: '2022'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Saudi Arabia 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2027.0。

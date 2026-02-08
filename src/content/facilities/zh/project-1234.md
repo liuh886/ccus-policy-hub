@@ -1,24 +1,45 @@
 ---
-name: Shetland Offshore power generation
-lang: zh
-country: '英国'
-location: Power and heat
-type: 捕集
-status: 计划中
-capacity: 1.0
-sector: Power and heat
-storage_type: 咸水层
+id: '1234'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
+capacity: 1
 coordinates:
-  - 54.95392524676971
-  - -6.9744839741643165
-commencementYear: 2029
-description:
-  由 Ocean-Power AS, Amplus Energy Services Limited 开发的 Power and heat 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9766
+  - -91.9704
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Shetland Offshore power generation
+region: Europe
+partners:
+  - Ocean-Power AS, Amplus Energy Services Limited
+type: 碳捕集
+phase: ''
+announcedCapacity: 1
+estimatedCapacity: 1
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: Sullom voe terminal and Shetland basin hub (SVT)
+announcement: '2024'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Power and heat 领域。预计/实际投产年份为 2029.0。

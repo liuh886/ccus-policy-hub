@@ -1,23 +1,49 @@
 ---
-name: Net Zero Teesside Power
-lang: zh
-country: '英国'
-location: Power and heat
-type: 捕集
-status: 建设中
-capacity: 2.0
-sector: Power and heat
-storage_type: 咸水层
-precision: approximate
+id: '287'
+country: United Kingdom
+status: Under construction
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 54.9715
-  - -0.9556
-commencementYear: 2028
-description: 由 BP, Equinor, Shell (Cansolv) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 55.3873
+  - -3.415
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Net Zero Teesside Power
+region: Europe
+partners:
+  - BP, Equinor, Shell (Cansolv)
+type: 碳捕集
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: Northern Endurance Partnership
+announcement: '2018'
+fid: '2024'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Power and heat 领域。预计/实际投产年份为 2028.0。

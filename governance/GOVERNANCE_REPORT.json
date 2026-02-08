@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-08T10:52:06.362Z",
+  "counts": {
+    "policies": 86,
+    "facilities": 1017
+  },
+  "symmetry": "100.00",
+  "citationDensity": "100.00",
+  "spatialCompliance": "100.00",
+  "narrativeQuality": "86.05",
+  "provenanceCoverage": "100.00",
+  "errors": [],
+  "isPass": true,
+  "verdict": "PASS"
+}

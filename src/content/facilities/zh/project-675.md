@@ -1,22 +1,46 @@
 ---
-name: German carbon transport grid
-lang: zh
-country: '德国'
-location: Transport
-type: Transport
-status: 计划中
+id: '675'
+country: Germany
+status: Planned
+reviewStatus: draft
 capacity: 25.8
-sector: Transport
-storage_type: 咸水层
 coordinates:
-  - 53.28950204243034
-  - 5.063983617545398
-commencementYear: 2028
-description: 由 Open Grid Europe (OGE), TES 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7656
+  - -119.4122
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: German carbon transport grid
+region: Europe
+partners:
+  - Open Grid Europe (OGE), TES
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 25.8
+estimatedCapacity: 25.8
+sector: 交通运输
+fateOfCarbon: 永久封存
+hub: German Carbon transport grid
+announcement: '2022'
+fid: '2025'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Transport 领域。预计/实际投产年份为 2028.0。

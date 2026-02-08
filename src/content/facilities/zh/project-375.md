@@ -1,27 +1,47 @@
 ---
-name: Snohvit CO2 capture and storage
-lang: zh
-country: '挪威'
-location: Natural gas processing/LNG
-type: 全流程
-status: 运行中
+id: '375'
+country: Norway
+status: Operational
+reviewStatus: draft
 capacity: 0.7
-sector: Natural gas processing/LNG
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 71.1367
-  - 20.6990
-commencementYear: 2008
-description:
-  由 Equinor, Petoro, TotalEnergies, Eni (following acquisition of Neptune
-  Energy), Wintershall Dea (Harbour Energy) 开发的 Natural gas processing/LNG 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5332
+  - -101.0183
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Snohvit CO2 capture and storage
+region: Europe
+partners:
+  - Equinor, Petoro, TotalEnergies, Eni (following acquisition of Neptune Energy), Wintershall Dea (Harbour Energy)
+type: 全产业链
+phase: ''
+announcedCapacity: 0.7
+estimatedCapacity: 0.7
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2002'
+fid: '2002'
+operation: '2008'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2008.0。

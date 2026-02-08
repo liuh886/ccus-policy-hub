@@ -1,27 +1,48 @@
 ---
-name: PCS Nitrogen-Geismar plant (LA)
-lang: zh
-country: '美国'
-location: Chemicals
-type: 全流程
-status: 运行中
+id: '305'
+country: United States
+status: Operational
+reviewStatus: draft
 capacity: 0.3
-sector: Chemicals
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 31.2915
-  - -91.6125
-commencementYear: 2013
-description:
-  由 Nutrien, ExxonMobil (formerly Denbury carbon solutions) 开发的 Chemicals
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9704
+  - -91.9696
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: PCS Nitrogen-Geismar plant (LA)
+region: North America
+partners:
+  - Nutrien, ExxonMobil (formerly Denbury carbon solutions)
+type: 全产业链
+phase: ''
+announcedCapacity: 0.3
+estimatedCapacity: 0.3
+sector: 化工行业
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2011'
+fid: '2011'
+operation: '2013'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Chemicals 领域。预计/实际投产年份为 2013.0。

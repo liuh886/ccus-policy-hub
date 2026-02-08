@@ -1,24 +1,48 @@
 ---
-name: Ince Bioenergy Carbon Capture and Storage (InBECCS) scaleup
-lang: zh
-country: '英国'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '545'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
 capacity: 0.25
-sector: Power and heat
-storage_type: 咸水层
 coordinates:
-  - 51.64831276165777
-  - -3.123952927814229
-commencementYear: 2029
-description:
-  由 Bioenergy Infrastructure Group (Evero), Peel NRE, Mistubishi Heavy
-  Industries 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.554
+  - -101.0129
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ince Bioenergy Carbon Capture and Storage (InBECCS) scaleup
+region: Europe
+partners:
+  - Bioenergy Infrastructure Group (Evero), Peel NRE, Mistubishi Heavy Industries
+type: 碳捕集
+phase: '1'
+announcedCapacity: 0.25
+estimatedCapacity: 0.25
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: Liverpool Bay CO2 storage
+announcement: '2021'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Power and heat 领域。预计/实际投产年份为 2029.0。

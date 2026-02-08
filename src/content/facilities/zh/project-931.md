@@ -1,26 +1,45 @@
 ---
-name: CPNC coal power Baijiantan Karamay (Xinjiang)
-lang: zh
-country: 中国
-location: Power and heat
-type: 全流程
-status: 建设中
-capacity: 2.0
-sector: Power and heat
-storage_type: EOR
-precision: approximate
+id: '931'
+country: China
+status: Under construction
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 45.5570
-  - 84.8554
-commencementYear: 2027
-description: 由 CNPC 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 41.1059
+  - 85.2759
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CPNC coal power Baijiantan Karamay (Xinjiang)
+region: Other Asia Pacific
+partners:
+  - CNPC
+type: 全产业链
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 电力与供热
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: CNPC China Northwest hub (Xinjiang)
+announcement: '2023'
+fid: '2023'
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Power and heat 领域。预计/实际投产年份为 2027.0。

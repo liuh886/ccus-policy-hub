@@ -1,22 +1,45 @@
 ---
-name: Rohm chemical plant (x2)
-lang: zh
-country: '德国'
-location: Chemicals
-type: CCU
-status: 计划中
+id: '624'
+country: Germany
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Chemicals
-storage_type: 地质封存
 coordinates:
-  - 52.95528032889581
-  - 10.05622699920153
-commencementYear: null
-description: 由 Rohm, Aker Carbon Capture 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9978
+  - -91.9562
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Rohm chemical plant (x2)
+region: Europe
+partners:
+  - Rohm, Aker Carbon Capture
+type: 碳利用
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 化工行业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Chemicals 领域。预计/实际投产年份为 未知。

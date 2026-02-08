@@ -1,22 +1,45 @@
 ---
-name: Fife ethylene plant
-lang: zh
-country: '英国'
-location: Chemicals
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Chemicals
-storage_type: 咸水层
+id: '1017'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 51.52124603759764
-  - -1.164237416179497
-commencementYear: null
-description: 由 ExxonMobil, (Shell) 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9974
+  - -91.9746
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Fife ethylene plant
+region: Europe
+partners:
+  - ExxonMobil, (Shell?)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 化工行业
+fateOfCarbon: 永久封存
+hub: Acorn CCS
+announcement: '2021'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Chemicals 领域。预计/实际投产年份为 未知。

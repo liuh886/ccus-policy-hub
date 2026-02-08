@@ -1,23 +1,47 @@
 ---
-name: 7 Blue Ammonia Facility
-lang: zh
-country: '卡塔尔'
-location: Hydrogen or ammonia
-type: 全流程
-status: 建设中
+id: '1055'
+country: Qatar
+status: Under construction
+reviewStatus: draft
 capacity: 1.5
-sector: Hydrogen or ammonia
-storage_type: 地质封存
-precision: approximate
 coordinates:
-  - 25.2933
-  - 51.5117
-commencementYear: 2026
-description:
-  由 QAFCO, thyssenkrupp Uhde/Consolidated Contractors Company (EPC) 开发的
-  Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 25.2212
+  - 51.0707
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: 7 Blue Ammonia Facility
+region: Middle East
+partners:
+  - QAFCO, thyssenkrupp Uhde/Consolidated Contractors Company (EPC)
+type: 全产业链
+phase: ''
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 氢能与氨能
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2022'
+fid: '2022'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Qatar 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2026.0。

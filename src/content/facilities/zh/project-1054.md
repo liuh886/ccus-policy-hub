@@ -1,26 +1,46 @@
 ---
-name: Baotou Steel (Baogang Group) (Inner Mongolia) phase 2
-lang: zh
-country: 中国
-location: Iron and steel
-type: 全流程
-status: 建设中
+id: '1054'
+country: China
+status: Under construction
+reviewStatus: draft
 capacity: 1.5
-sector: Iron and steel
-storage_type: 地质封存
-precision: approximate
 coordinates:
-  - 40.7852
-  - 111.7442
-commencementYear: 2026
-description: 由 Baotou Steel Group 开发的 Iron and steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 35.6689
+  - 104.1749
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Baotou Steel (Baogang Group) (Inner Mongolia) phase 2
+region: Other Asia Pacific
+partners:
+  - Baotou Steel Group
+type: 全产业链
+phase: '2'
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 钢铁行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2022'
+fid: '2022'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Iron and steel 领域。预计/实际投产年份为 2026.0。

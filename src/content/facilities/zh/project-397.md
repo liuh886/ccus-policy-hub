@@ -1,24 +1,45 @@
 ---
-name: Velocys Bayou Fuels (MS)
-lang: zh
-country: '美国'
-location: Biofuels
-type: 捕集
-status: 计划中
+id: '397'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Biofuels
-storage_type: EOR
 coordinates:
-  - 36.25065457931394
-  - -99.14905209378801
-commencementYear: 2026
-description: 由 Velocys,Bechtel (FEED) 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7883
+  - -119.4135
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Velocys Bayou Fuels (MS)
+region: North America
+partners:
+  - Velocys,Bechtel (FEED)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 生物燃料
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Livingston Parish CO2 sequestration hub (LA)
+announcement: '2019'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Biofuels 领域。预计/实际投产年份为 2026.0。

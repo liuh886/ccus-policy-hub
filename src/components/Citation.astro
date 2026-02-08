@@ -7,12 +7,18 @@ interface Props {
 }
 
 const { title, country, year, url } = Astro.props;
-const today = new Date().toLocaleDateString('en-US', {
+const lang = Astro.currentLocale || 'zh';
+const isEn = lang === 'en';
+
+const today = new Date().toLocaleDateString(isEn ? 'en-US' : 'zh-CN', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
-const citationText = `CCUS Policy Hub. (${year}). ${title} [${country}]. Retrieved from ${url || 'CCUS Policy Hub Database'} (Accessed: ${today})`;
+
+const citationText = isEn 
+  ? `CCUS Policy Hub. (${year}). ${title} [${country}]. Retrieved from ${url || 'CCUS Policy Hub Database'} (Accessed: ${today})`
+  : `全球 CCUS 政策中心. (${year}). ${title} [${country}]. 检索自 ${url || 'CCUS Policy Hub 数据库'} (访问日期: ${today})`;
 ---
 
 <div
@@ -20,14 +26,14 @@ const citationText = `CCUS Policy Hub. (${year}). ${title} [${country}]. Retriev
 >
   <div class="flex items-center justify-between mb-4">
     <h4 class="text-xs font-black uppercase tracking-widest text-slate-400">
-      学术引用 / Suggest Citation
+      {isEn ? 'Suggest Citation' : '学术引用建议'}
     </h4>
     <button
       id="copy-citation"
       data-citation={citationText}
       class="text-[10px] font-black uppercase px-3 py-1 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
     >
-      Copy
+      {isEn ? 'Copy' : '复制'}
     </button>
   </div>
   <p
@@ -43,8 +49,9 @@ const citationText = `CCUS Policy Hub. (${year}). ${title} [${country}]. Retriev
     btn?.addEventListener('click', () => {
       const text = btn.getAttribute('data-citation') || '';
       navigator.clipboard.writeText(text);
+      const isEn = document.documentElement.lang === 'en';
       const originalText = btn.innerText;
-      btn.innerText = 'COPIED!';
+      btn.innerText = isEn ? 'COPIED!' : '已复制！';
       setTimeout(() => (btn.innerText = originalText), 2000);
     });
   }

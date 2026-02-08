@@ -1,20 +1,48 @@
 ---
-name: Kairos@C
-lang: zh
-country: '比利时'
-location: Chemicals
-type: 捕集
-status: 计划中
+id: '237'
+country: Belgium
+status: Planned
+reviewStatus: draft
 capacity: 1.42
-sector: Chemicals
-storage_type: 咸水层
 coordinates:
-  - 50.94948011394779
-  - 2.5159872097792224
-commencementYear: 2027
-description: 由 Air Liquide, BASF 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 50.5519
+  - 4.5759
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Kairos@C
+region: Europe
+partners:
+  - Air Liquide, BASF
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.42
+estimatedCapacity: 1.42
+sector: 化工行业
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Belgium 的 Chemicals 领域。预计/实际投产年份为 2027.0。

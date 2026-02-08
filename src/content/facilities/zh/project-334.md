@@ -1,26 +1,45 @@
 ---
-name: 'ECO2S: Early CO2 Storage Complex in Kemper County (MS)'
-lang: zh
-country: '美国'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 3.0
-sector: T&S
-storage_type: 咸水层
+id: '334'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 3
 coordinates:
-  - 38.96714022508461
-  - -90.56273074180297
-commencementYear: null
-description:
-  由 Southern States Energy Board, Mississipi Power (Southern Company) 开发的
-  T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7676
+  - -119.3964
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: 'ECO2S: Early CO2 Storage Complex in Kemper County (MS)'
+region: North America
+partners:
+  - Southern States Energy Board, Mississipi Power (Southern Company)
+type: 运输与封存
+phase: ''
+announcedCapacity: 3
+estimatedCapacity: 3
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: 'Project ECO2S: Early CO2 Storage Complex in Kemper County (MS)'
+announcement: '2017'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 T&S 领域。预计/实际投产年份为 未知。

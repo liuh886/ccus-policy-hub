@@ -1,23 +1,49 @@
 ---
-name: Atlas Carbon Sequestration Hub Phase 2 (ALB)
-lang: zh
-country: '加拿大'
-location: T&S
-type: 枢纽
-status: 计划中
+id: '40'
+country: Canada
+status: Planned
+reviewStatus: draft
 capacity: 9.25
-sector: T&S
-storage_type: 咸水层
 coordinates:
-  - 54.030173255146984
-  - -105.44540398128494
-commencementYear: 2026
-description: 由 Shell Canada Limited, ATCO Energy Solutions 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9878
+  - -91.9615
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Atlas Carbon Sequestration Hub Phase 2 (ALB)
+region: North America
+partners:
+  - Shell Canada Limited, ATCO Energy Solutions
+type: 运输与封存
+phase: '2'
+announcedCapacity: 9.25
+estimatedCapacity: 9.25
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Atlas Carbon Sequestration Hub (ALB)
+announcement: '2022'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 T&S 领域。预计/实际投产年份为 2026.0。

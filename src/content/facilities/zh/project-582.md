@@ -1,22 +1,45 @@
 ---
-name: Arcelor Mittal Air Liquide Low-carbon steel (phase 2)
-lang: zh
-country: '法国'
-location: Iron and steel
-type: 捕集
-status: 计划中
-capacity: 1.0
-sector: Iron and steel
-storage_type: 咸水层
+id: '582'
+country: France
+status: Planned
+reviewStatus: draft
+capacity: 2.85
 coordinates:
-  - 42.61759198511948
-  - -0.20572988545392867
-commencementYear: null
-description: 由 0 开发的 Iron and steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7837
+  - -119.4033
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Arcelor Mittal Air Liquide Low-carbon steel (phase 2?)
+region: Europe
+partners:
+  - '0'
+type: 碳捕集
+phase: '2'
+announcedCapacity: 2.85
+estimatedCapacity: 1
+sector: 钢铁行业
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2020'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 Iron and steel 领域。预计/实际投产年份为 未知。

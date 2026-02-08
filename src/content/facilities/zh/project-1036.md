@@ -1,23 +1,45 @@
 ---
-name: Tumbler Ridge e-methanol project (BC)
-lang: zh
-country: '加拿大'
-location: Other industry
-type: CCU
-status: 计划中
+id: '1036'
+country: Canada
+status: Planned
+reviewStatus: draft
 capacity: 0.233
-sector: Other industry
-storage_type: 地质封存
 coordinates:
-  - 54.06207204142354
-  - -110.61268495967894
-commencementYear: 2028
-description: 由 RH2C, CMC, West Moberly First Nations 开发的 Other industry 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7602
+  - -119.3919
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Tumbler Ridge e-methanol project (BC)
+region: North America
+partners:
+  - RH2C, CMC, West Moberly First Nations
+type: 碳利用
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0.233
+sector: 其他工业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2015'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other industry 领域。预计/实际投产年份为 2028.0。

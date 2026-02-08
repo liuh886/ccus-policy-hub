@@ -1,20 +1,45 @@
 ---
-name: Aker Carbon Capture WtE e-fuels
-lang: zh
-country: '芬兰'
-location: Power and heat
-type: CCU
-status: 计划中
+id: '1098'
+country: Finland
+status: Planned
+reviewStatus: draft
 capacity: 0.1
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 21.01591574571203
-  - -3.4812068278478856
-commencementYear: null
-description: 由 Aker Carbon Capture, unknown company 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7573
+  - -119.4248
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Aker Carbon Capture WtE e-fuels
+region: Europe
+partners:
+  - Aker Carbon Capture, unknown company
+type: 碳利用
+phase: ''
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 电力与供热
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Finland 的 Power and heat 领域。预计/实际投产年份为 未知。

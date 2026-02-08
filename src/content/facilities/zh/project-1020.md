@@ -1,25 +1,46 @@
 ---
-name: Cormorant Clean Energy project (TX)
-lang: zh
-country: '美国'
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
+id: '1020'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 1.4
-sector: Hydrogen or ammonia
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 31.7436
-  - -100.0969
-commencementYear: 2027
-description: 由 8 Rivers, Casale 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9641
+  - -99.9033
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Cormorant Clean Energy project (TX)
+region: North America
+partners:
+  - 8 Rivers, Casale
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.4
+estimatedCapacity: 1.4
+sector: 氢能与氨能
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2024'
+fid: '2025'
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2027.0。

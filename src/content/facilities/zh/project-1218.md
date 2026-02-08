@@ -1,25 +1,45 @@
 ---
-name: Rose carbon capture and storage (TX)
-lang: zh
-country: '美国'
-location: T&S
-type: 枢纽
-status: 计划中
+id: '1218'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 2.2
-sector: T&S
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 32.1905
-  - -99.6105
-commencementYear: 2026
-description: 由 ExxonMobil 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9558
+  - -99.8866
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Rose carbon capture and storage (TX)
+region: North America
+partners:
+  - ExxonMobil
+type: 运输与封存
+phase: ''
+announcedCapacity: 2.2
+estimatedCapacity: 2.2
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Rose carbon capture and storage (TX)
+announcement: '2024'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 T&S 领域。预计/实际投产年份为 2026.0。

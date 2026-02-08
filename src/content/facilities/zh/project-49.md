@@ -1,27 +1,50 @@
 ---
-name: Bayou Bend East offshore (TX)
-lang: zh
-country: '美国'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 10.0
-sector: Storage
-storage_type: 咸水层
-precision: approximate
+id: '49'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 10
 coordinates:
-  - 32.1720
-  - -99.7282
-commencementYear: 2029
-description:
-  由 Chevron (50%), Talos Energy (TotalEnergies) (25% and operator), Equinor
-  (25%) 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9742
+  - -99.9116
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Bayou Bend East offshore (TX)
+region: North America
+partners:
+  - Chevron (50%), Talos Energy (TotalEnergies) (25% and operator), Equinor (25%)
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 10
+estimatedCapacity: 10
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Bayou Bend CCS offshore (TX)
+announcement: '2021'
+fid: '2026'
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Storage 领域。预计/实际投产年份为 2029.0。

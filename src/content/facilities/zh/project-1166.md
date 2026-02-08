@@ -1,23 +1,45 @@
 ---
-name: Rana ferrosilicon smelter capture
-lang: zh
-country: '挪威'
-location: Iron and steel
-type: 捕集
-status: 计划中
+id: '1166'
+country: Norway
+status: Planned
+reviewStatus: draft
 capacity: 1.5
-sector: Iron and steel
-storage_type: 咸水层
 coordinates:
-  - 62.62195512175474
-  - 10.18325912270842
-commencementYear: null
-description: 由 Elkem 开发的 Iron and steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.788
+  - -119.4012
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Rana ferrosilicon smelter capture
+region: Europe
+partners:
+  - Elkem
+type: 碳捕集
+phase: '1'
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 钢铁行业
+fateOfCarbon: 永久封存
+hub: Rana CCS hub
+announcement: '2024'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Iron and steel 领域。预计/实际投产年份为 未知。

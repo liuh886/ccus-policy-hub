@@ -1,20 +1,45 @@
 ---
-name: CO2NTESSA
-lang: zh
-country: '克罗地亚'
-location: Cement
-type: 捕集
-status: 计划中
+id: '1138'
+country: Croatia
+status: Planned
+reviewStatus: draft
 capacity: 0.7
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 20.30451935817842
-  - -4.731972650071226
-commencementYear: 2028
-description: 由 Nexe Group,  ThyssenKrupp Group, Nasice cement 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 45.1049
+  - 15.212
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CO2NTESSA
+region: Europe
+partners:
+  - Nexe Group,  ThyssenKrupp Group, Nasice cement
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.7
+estimatedCapacity: 0.7
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: Geothermal CCS Croatia
+announcement: '2023'
+fid: '2026'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Croatia 的 Cement 领域。预计/实际投产年份为 2028.0。

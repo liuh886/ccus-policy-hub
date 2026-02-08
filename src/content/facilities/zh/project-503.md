@@ -1,23 +1,45 @@
 ---
-name: Greenview Region CCS Project (ALB)
-lang: zh
-country: '加拿大'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 0.0
-sector: Storage
-storage_type: 咸水层
+id: '503'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 56.57742323216774
-  - -109.21360179597752
-commencementYear: null
-description: 由  ARC Resources Ltd.  开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7865
+  - -119.4151
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Greenview Region CCS Project (ALB)
+region: North America
+partners:
+  - ARC Resources Ltd.
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Greenview Region CCS Project (ALB)
+announcement: '2022'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Storage 领域。预计/实际投产年份为 未知。

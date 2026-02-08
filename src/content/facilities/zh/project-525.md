@@ -1,24 +1,49 @@
 ---
-name: Heidelberg Materials Mitchell plant (IN)
-lang: zh
-country: '美国'
-location: Cement
-type: 捕集
-status: 计划中
-capacity: 2.0
-sector: Cement
-storage_type: 咸水层
+id: '525'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 37.058089043195885
-  - -94.67462027204225
-commencementYear: 2030
-description: 由 Heidelberg Materials 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9871
+  - -91.9629
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Heidelberg Materials Mitchell plant (IN)
+region: North America
+partners:
+  - Heidelberg Materials
+type: 碳捕集
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: Mitchell CarbonSAFE (IL)
+announcement: '2022'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Cement 领域。预计/实际投产年份为 2030.0。

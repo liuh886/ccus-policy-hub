@@ -1,25 +1,45 @@
 ---
-name: Hinton Bioenergy CCS project (ALB)
-lang: zh
-country: '加拿大'
-location: Other industry
-type: 捕集
-status: 计划中
+id: '609'
+country: Canada
+status: Planned
+reviewStatus: draft
 capacity: 1.26
-sector: Other industry
-storage_type: 咸水层
 coordinates:
-  - 56.68101688745951
-  - -107.83628096365516
-commencementYear: 2027
-description:
-  由  Vault 44.01 Ltd, West Fraser, TorchLight Bioresources 开发的 Other industry
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7615
+  - -119.4057
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Hinton Bioenergy CCS project (ALB)
+region: North America
+partners:
+  - Vault 44.01 Ltd, West Fraser, TorchLight Bioresources
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.26
+estimatedCapacity: 1.26
+sector: 其他工业
+fateOfCarbon: 永久封存
+hub: Rocky Mountain Carbon Vault (ALB)
+announcement: '2022'
+fid: '2025'
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other industry 领域。预计/实际投产年份为 2027.0。

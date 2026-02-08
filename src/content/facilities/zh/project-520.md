@@ -1,23 +1,48 @@
 ---
-name: Cstore 1
-lang: zh
-country: '澳大利亚'
-location: T&S
-type: 枢纽
-status: 计划中
+id: '520'
+country: Australia
+status: Planned
+reviewStatus: draft
 capacity: 7.5
-sector: T&S
-storage_type: 咸水层
 coordinates:
-  - -25.665440724945398
-  - 134.39223754372438
-commencementYear: null
-description:
-  由 deepC Store, Add Energy, CSIRO, JX Nippon Oil and Gas Exploration Corporation,
-  Kyushu Electric Power, Mitsui OSK Lines, Osaka Gas, Technip Energies, Toho Gas 开发的
-  T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9959
+  - -91.9523
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Cstore 1
+region: Australia and New Zealand
+partners:
+  - deepC Store, Add Energy, CSIRO, JX Nippon Oil and Gas Exploration Corporation, Kyushu Electric Power, Mitsui OSK Lines, Osaka Gas, Technip Energies, Toho Gas
+type: 运输与封存
+phase: ''
+announcedCapacity: 7.5
+estimatedCapacity: 7.5
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Cstore 1
+announcement: '2021'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 T&S 领域。预计/实际投产年份为 未知。

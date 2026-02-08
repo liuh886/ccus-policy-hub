@@ -5,15 +5,35 @@ import PolicyCard from '../../../components/PolicyCard.astro';
 
 // Only fetch English policies
 const policies = await getCollection('policies_en');
+
+// Category mapping logic
+const categoryMap: Record<string, string> = {
+  '经济激励': 'Economic Incentive',
+  '法律监管': 'Regulatory Framework',
+  '市场机制': 'Market Mechanism',
+  '战略引导': 'Strategic Guidance',
+  '技术标准': 'Technical Standard',
+  'Economic Incentives': 'Economic Incentive',
+  'Legal & Regulatory': 'Regulatory Framework',
+  'Market Mechanisms': 'Market Mechanism',
+};
+
+const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country))).sort();
+const uniqueSectors = Array.from(new Set(policies.flatMap((p) => p.data.sectors || []))).sort();
+const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))).sort();
 ---
 
-<Layout title="Policy Database">
+<Layout 
+  title="Policy Database"
+  description="Search and analyze global CCUS policies and regulations across five dimensions: Legal, Economic, Market, Strategic, and Technical."
+  keywords="CCUS Policies, Carbon Capture Regulations, Climate Policy Database, Global CCS Incentives"
+>
   <div class="mb-10">
     <div class="max-w-2xl mb-8">
       <h1 class="text-4xl font-black mb-4 dark:text-white">Policy Database</h1>
       <p class="text-slate-600 dark:text-slate-400">
         Global CCUS policy repository covering Legal & Regulatory, Economic
-        Incentives, Market Mechanisms, and Strategic Guidance.
+        Incentives, Market Mechanisms, Strategic Guidance, and Technical Standards.
       </p>
     </div>
 
@@ -46,11 +66,15 @@ const policies = await getCollection('policies_en');
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
         <option value="">All Countries</option>
-        {
-          Array.from(new Set(policies.map((p) => p.data.country)))
-            .sort()
-            .map((country) => <option value={country}>{country}</option>)
-        }
+        {uniqueCountries.map((country) => <option value={country}>{country}</option>)}
+      </select>
+
+      <select
+        id="industry-filter"
+        class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
+      >
+        <option value="">All Sectors</option>
+        {uniqueSectors.map((sector) => <option value={sector}>{sector}</option>)}
       </select>
 
       <select
@@ -58,11 +82,7 @@ const policies = await getCollection('policies_en');
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
         <option value="">All Categories</option>
-        {
-          Array.from(new Set(policies.map((p) => p.data.category)))
-            .sort()
-            .map((cat) => <option value={cat}>{cat}</option>)
-        }
+        {uniqueCategories.map((cat) => <option value={cat}>{cat}</option>)}
       </select>
     </div>
   </div>
@@ -74,17 +94,21 @@ const policies = await getCollection('policies_en');
     {
       policies
         .sort((a, b) => b.data.year - a.data.year)
-        .map((policy) => (
-          <div
-            class="policy-item"
-            data-title={policy.data.title}
-            data-country={policy.data.country}
-            data-category={policy.data.category}
-            data-tags={policy.data.tags?.join(',') || ''}
-          >
-            <PolicyCard policy={policy} lang="en" />
-          </div>
-        ))
+        .map((policy) => {
+          const displayCategory = categoryMap[policy.data.category] || policy.data.category;
+          return (
+            <div
+              class="policy-item"
+              data-title={policy.data.title}
+              data-country={policy.data.country}
+              data-category={displayCategory}
+              data-sectors={policy.data.sectors?.join(',') || ''}
+              data-tags={policy.data.tags?.join(',') || ''}
+            >
+              <PolicyCard policy={policy} lang="en" />
+            </div>
+          )
+        })
     }
   </div>
 
@@ -101,6 +125,9 @@ const policies = await getCollection('policies_en');
     const countryFilter = document.getElementById(
       'country-filter'
     ) as HTMLSelectElement;
+    const industryFilter = document.getElementById(
+      'industry-filter'
+    ) as HTMLSelectElement;
     const categoryFilter = document.getElementById(
       'category-filter'
     ) as HTMLSelectElement;
@@ -110,6 +137,7 @@ const policies = await getCollection('policies_en');
     function filterPolicies() {
       const searchTerm = searchInput?.value.toLowerCase() || '';
       const country = countryFilter?.value || '';
+      const industry = industryFilter?.value || '';
       const category = categoryFilter?.value || '';
 
       let visibleCount = 0;
@@ -119,14 +147,16 @@ const policies = await getCollection('policies_en');
         const title = htmlItem.dataset.title?.toLowerCase() || '';
         const itemCountry = htmlItem.dataset.country || '';
         const itemCategory = htmlItem.dataset.category || '';
+        const itemSectors = htmlItem.dataset.sectors || '';
         const tags = htmlItem.dataset.tags?.toLowerCase() || '';
 
         const matchesSearch =
           title.includes(searchTerm) || tags.includes(searchTerm);
         const matchesCountry = !country || itemCountry === country;
         const matchesCategory = !category || itemCategory === category;
+        const matchesIndustry = !industry || itemSectors.split(',').includes(industry);
 
-        if (matchesSearch && matchesCountry && matchesCategory) {
+        if (matchesSearch && matchesCountry && matchesCategory && matchesIndustry) {
           htmlItem.style.display = 'block';
           visibleCount++;
         } else {
@@ -141,6 +171,7 @@ const policies = await getCollection('policies_en');
 
     searchInput?.addEventListener('input', filterPolicies);
     countryFilter?.addEventListener('change', filterPolicies);
+    industryFilter?.addEventListener('change', filterPolicies);
     categoryFilter?.addEventListener('change', filterPolicies);
   }
 

@@ -1,22 +1,46 @@
 ---
-name: NL CCS Direct Injection Phase 1
-lang: zh
-country: '荷兰'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 3.0
-sector: T&S
-storage_type: 咸水层
+id: '679'
+country: Netherlands
+status: Planned
+reviewStatus: draft
+capacity: 3
 coordinates:
-  - 51.79535578481709
-  - 0.9617301586452687
-commencementYear: 2040
-description:
-  由 Eni (following acquisition of Neptune Energy), EBN, OneDyas 开发的 T&S
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.1238
+  - 5.2847
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: NL CCS Direct Injection Phase 1
+region: Europe
+partners:
+  - Eni (following acquisition of Neptune Energy), EBN, OneDyas
+type: 运输与封存
+phase: '1'
+announcedCapacity: 3
+estimatedCapacity: 3
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: DI Hub
+announcement: '2023'
+fid: '2037'
+operation: '2040'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 T&S 领域。预计/实际投产年份为 2040.0。

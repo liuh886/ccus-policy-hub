@@ -1,24 +1,47 @@
 ---
-name: Industrial Carbon Capture (ICC) Stanlow
-lang: zh
-country: '英国'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
+id: '589'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
 capacity: 0.86
-sector: Other fuel transformation
-storage_type: 咸水层
 coordinates:
-  - 57.91329040960763
-  - -6.4326240304613815
-commencementYear: 2028
-description:
-  由 Essar Energy Transition (Essar Oil), Kent (pre-FEED), Mistubishi Heavy
-  Industries (FEED), Topsoe (tech partner) 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5627
+  - -100.9843
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Industrial Carbon Capture (ICC) Stanlow
+region: Europe
+partners:
+  - Essar Energy Transition (Essar Oil), Kent (pre-FEED), Mistubishi Heavy Industries (FEED), Topsoe (tech partner)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.86
+estimatedCapacity: 0.86
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: Liverpool Bay CO2 storage (Hynet)
+announcement: '2019'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Other fuel transformation 领域。预计/实际投产年份为 2028.0。

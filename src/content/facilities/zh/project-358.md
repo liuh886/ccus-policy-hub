@@ -1,20 +1,51 @@
 ---
-name: Moomba Carbon Capture and Storage
-lang: zh
-country: '澳大利亚'
-location: Natural gas processing/LNG
-type: 全流程
-status: 运行中
+id: '358'
+country: Australia
+status: Operational
+reviewStatus: draft
 capacity: 1.7
-sector: Natural gas processing/LNG
-storage_type: 咸水层
 coordinates:
-  - -26.575647915037006
-  - 137.87485879049757
-commencementYear: 2024
-description: 由 Santos, Beach Energy 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9903
+  - -91.9475
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Moomba Carbon Capture and Storage
+region: Australia and New Zealand
+partners:
+  - Santos, Beach Energy
+type: 全产业链
+phase: '1'
+announcedCapacity: 1.7
+estimatedCapacity: 1.7
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: Moomba CCS storage hub
+announcement: '2019'
+fid: '2021'
+operation: '2024'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+  - Link 7
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2024.0。

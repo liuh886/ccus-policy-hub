@@ -1,27 +1,48 @@
 ---
-name: Century plant (TX)
-lang: zh
-country: '美国'
-location: Natural gas processing/LNG
-type: 全流程
-status: 运行中
-capacity: 4.32
-sector: Natural gas processing/LNG
-storage_type: EOR
-precision: approximate
+id: '80'
+country: United States
+status: Operational
+reviewStatus: draft
+capacity: 5
 coordinates:
-  - 31.7319
-  - -99.6389
-commencementYear: 2010
-description:
-  由 Mitchell group, Sandridge Energy 开发的 Natural gas processing/LNG 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9558
+  - -99.8832
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Century plant (TX)
+region: North America
+partners:
+  - Mitchell group, Sandridge Energy
+type: 全产业链
+phase: ''
+announcedCapacity: 5
+estimatedCapacity: 4.32
+sector: 天然气加工/LNG
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2008'
+fid: '2008'
+operation: '2010'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2010.0。

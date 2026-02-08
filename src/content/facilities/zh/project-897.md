@@ -1,26 +1,45 @@
 ---
-name: Russel CO2 storage complex (KS)
-lang: zh
-country: '美国'
-location: Other industry
-type: 全流程
-status: 计划中
-capacity: 1.0
-sector: Other industry
-storage_type: 咸水层
+id: '897'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 1
 coordinates:
-  - 38.66443914579591
-  - -92.7289446854821
-commencementYear: null
-description:
-  由 Purefield Carbon Capture LLC (Purefield ingredients) 开发的 Other industry
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7755
+  - -119.4049
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Russel CO2 storage complex (KS)
+region: North America
+partners:
+  - Purefield Carbon Capture LLC (Purefield ingredients)
+type: 全产业链
+phase: ''
+announcedCapacity: 1
+estimatedCapacity: 1
+sector: 其他工业
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2020'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Other industry 领域。预计/实际投产年份为 未知。

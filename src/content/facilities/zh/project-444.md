@@ -1,28 +1,46 @@
 ---
-name: Daya Bay CCS Hub phase 2 (Guangdong)
-lang: zh
-country: 中国
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 8.0
-sector: T&S
-storage_type: 咸水层
-precision: approximate
+id: '444'
+country: China
+status: Planned
+reviewStatus: draft
+capacity: 8
 coordinates:
-  - 23.1435
-  - 113.2913
-commencementYear: null
-description:
-  由 Shell, CNOOC, Guangdong Provincial Development and Reform Commission,
-  ExxonMobil 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 23.3561
+  - 113.7633
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Daya Bay CCS Hub phase 2 (Guangdong)
+region: Other Asia Pacific
+partners:
+  - Shell, CNOOC, Guangdong Provincial Development and Reform Commission, ExxonMobil
+type: 运输与封存
+phase: '2'
+announcedCapacity: 8
+estimatedCapacity: 8
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Daya bay CCS Hub
+announcement: '2022'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 T&S 领域。预计/实际投产年份为 未知。

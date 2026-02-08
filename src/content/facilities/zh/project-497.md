@@ -1,23 +1,47 @@
 ---
-name: Battle River Carbon Hub (ALB)
-lang: zh
-country: '加拿大'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 5.0
-sector: T&S
-storage_type: 咸水层
+id: '497'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 5
 coordinates:
-  - 55.713381010197025
-  - -110.86440445728756
-commencementYear: 2029
-description: 由 Heartland Generation Ltd., Carbon Alpha 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7807
+  - -119.3966
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Battle River Carbon Hub (ALB)
+region: North America
+partners:
+  - Heartland Generation Ltd., Carbon Alpha
+type: 运输与封存
+phase: ''
+announcedCapacity: 5
+estimatedCapacity: 5
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Battle River Carbon Hub (ALB)
+announcement: '2022'
+fid: '2025'
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 T&S 领域。预计/实际投产年份为 2029.0。

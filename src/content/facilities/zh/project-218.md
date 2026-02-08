@@ -1,22 +1,50 @@
 ---
-name: Hydrogen Energy Supply Chain (HESC) Project Full scale (CarbonNET)
-lang: zh
-country: '澳大利亚'
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
+id: '218'
+country: Australia
+status: Planned
+reviewStatus: draft
 capacity: 1.8
-sector: Hydrogen or ammonia
-storage_type: 咸水层
 coordinates:
-  - -22.89478836350127
-  - 128.74386686192588
-commencementYear: 2030
-description:
-  由 Kawasaki heavy industries, J-POWER, Iwatani Corporation, Marubeni Corporation,
-  AGL, Sumitomo Corporation 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9634
+  - -91.9408
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Hydrogen Energy Supply Chain (HESC) Project Full scale (CarbonNET)
+region: Australia and New Zealand
+partners:
+  - Kawasaki heavy industries, J-POWER, Iwatani Corporation, Marubeni Corporation, AGL, Sumitomo Corporation
+type: 碳捕集
+phase: '1'
+announcedCapacity: 1.8
+estimatedCapacity: 1.8
+sector: 氢能与氨能
+fateOfCarbon: 永久封存
+hub: CarbonNET or SEA CCS Hub
+announcement: '2018'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2030.0。

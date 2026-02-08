@@ -1,26 +1,45 @@
 ---
-name: Alberta Carbon Trunk Line (ACTL) (ALB)
-lang: zh
-country: '加拿大'
-location: Transport
-type: Transport
-status: 运行中
+id: '25'
+country: Canada
+status: Operational
+reviewStatus: draft
 capacity: 14.6
-sector: Transport
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 53.9056
-  - -116.8348
-commencementYear: 2020
-description:
-  由 Wolf Carbon Solutions (Wolf Midstream, Enhance Energy) 开发的 Transport
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7625
+  - -119.4273
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Alberta Carbon Trunk Line (ACTL) (ALB)
+region: North America
+partners:
+  - Wolf Carbon Solutions (Wolf Midstream, Enhance Energy)
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 14.6
+estimatedCapacity: 14.6
+sector: 交通运输
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Alberta Carbon Trunk Line (ACTL)/Enhance Clive Sequestration Facility
+announcement: '2011'
+fid: '2018'
+operation: '2020'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Transport 领域。预计/实际投产年份为 2020.0。

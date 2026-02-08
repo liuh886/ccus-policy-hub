@@ -1,27 +1,47 @@
 ---
-name: River Parish Sequestration (LA)
-lang: zh
-country: '美国'
-location: T&S
-type: 枢纽
-status: 计划中
+id: '878'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 5.867
-sector: T&S
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 31.2423
-  - -92.3483
-commencementYear: 2026
-description:
-  由 River Parish Sequestration LLC, Blue Sky Infrastructure  开发的 T&S 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9669
+  - -91.9624
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: River Parish Sequestration (LA)
+region: North America
+partners:
+  - River Parish Sequestration LLC, Blue Sky Infrastructure
+type: 运输与封存
+phase: ''
+announcedCapacity: 5.867
+estimatedCapacity: 5.867
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: River Paris Sequestration (LA)
+announcement: '2023'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 T&S 领域。预计/实际投产年份为 2026.0。

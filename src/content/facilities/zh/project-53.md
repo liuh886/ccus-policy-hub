@@ -1,26 +1,47 @@
 ---
-name: Bonanza BioEnergy CCUS (KS)
-lang: zh
-country: '美国'
-location: Biofuels
-type: 全流程
-status: 运行中
+id: '53'
+country: United States
+status: Operational
+reviewStatus: draft
 capacity: 0.16
-sector: Biofuels
-storage_type: EOR
 coordinates:
-  - 34.0848571438171
-  - -96.23468331021326
-commencementYear: 2012
-description:
-  由 Conestoga Energy, Gary Climate Solutions Gary Climate Solutions 开发的
-  Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7545
+  - -119.4221
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Bonanza BioEnergy CCUS (KS)
+region: North America
+partners:
+  - Conestoga Energy, Gary Climate Solutions Gary Climate Solutions
+type: 全产业链
+phase: ''
+announcedCapacity: 0.16
+estimatedCapacity: 0.16
+sector: 生物燃料
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2010'
+fid: ''
+operation: '2012'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Biofuels 领域。预计/实际投产年份为 2012.0。

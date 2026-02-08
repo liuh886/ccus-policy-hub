@@ -1,24 +1,45 @@
 ---
-name: Southeast Saskatchewan CCUS Hub (Belle Plaine and Weyburn) (SK)
-lang: zh
-country: '加拿大'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 3.0
-sector: T&S
-storage_type: 咸水层
-precision: approximate
+id: '574'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 3
 coordinates:
-  - 53.0681
-  - -106.2064
-commencementYear: 2026
-description: 由 Whitecap Resources Inc. 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9888
+  - -91.9433
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Southeast Saskatchewan CCUS Hub (Belle Plaine and Weyburn) (SK)
+region: North America
+partners:
+  - Whitecap Resources Inc.
+type: 运输与封存
+phase: '2'
+announcedCapacity: 3
+estimatedCapacity: 3
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Southeast Saskatchewan CCUS Hub (Belle Plaine and Weyburn)
+announcement: '2021'
+fid: '2026'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 T&S 领域。预计/实际投产年份为 2026.0。

@@ -1,27 +1,45 @@
 ---
-name: Project Concho (TX) phase 2
-lang: zh
-country: '美国'
-location: DAC
-type: 全流程
-status: 计划中
+id: '1251'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.45
-sector: DAC
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 32.0224
-  - -100.2097
-commencementYear: null
-description:
-  由 SkyTree, Verified Carbon, Greenalia (wind provider) 开发的 DAC 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9447
+  - -99.9086
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Project Concho (TX) phase 2
+region: North America
+partners:
+  - SkyTree, Verified Carbon, Greenalia (wind provider)
+type: 全产业链
+phase: '2'
+announcedCapacity: 0.45
+estimatedCapacity: 0.45
+sector: 空气直接捕集 (DAC)
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2024'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 DAC 领域。预计/实际投产年份为 未知。

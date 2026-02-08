@@ -5,6 +5,7 @@ import FacilityMap from '../../components/FacilityMap.astro';
 import FacilityCard from '../../components/FacilityCard.astro';
 
 const facilities = await getCollection('facilities_zh');
+const policies = await getCollection('policies_zh');
 
 const countries = Array.from(
   new Set(facilities.map((f) => f.data.country))
@@ -18,7 +19,11 @@ const statuses = Array.from(
 ).sort();
 ---
 
-<Layout title="全球设施名录">
+<Layout 
+  title="全球设施名录"
+  description="探索全球在运及计划中的 CCUS 设施，提供详细的产能数据、行业分类及地理空间位置。"
+  keywords="CCUS 设施, 碳捕集项目地图, 全球封存点, 工业脱碳项目"
+>
   <div class="mb-12">
     <div class="max-w-3xl mb-10">
       <h1
@@ -146,6 +151,13 @@ const statuses = Array.from(
           <option value="">所有类型</option>
           {types.map((t) => <option value={t}>{t}</option>)}
         </select>
+        <select
+          id="policy-filter"
+          class="px-3 py-2.5 bg-blue-50 dark:bg-blue-900/20 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-blue-600"
+        >
+          <option value="">关联政策 (Policy Filter)</option>
+          {policies.map((p) => <option value={p.id.replace(/^zh\//, '')}>{p.data.title}</option>)}
+        </select>
       </div>
     </div>
 
@@ -163,6 +175,7 @@ const statuses = Array.from(
             data-type={f.data.type}
             data-status={f.data.status}
             data-capacity={f.data.capacity}
+            data-policies={f.data.relatedPolicies?.join(',') || ''}
           >
             <FacilityCard facility={f} />
           </div>
@@ -196,6 +209,9 @@ const statuses = Array.from(
     const typeFilter = document.getElementById(
       'type-filter'
     ) as HTMLSelectElement;
+    const policyFilter = document.getElementById(
+      'policy-filter'
+    ) as HTMLSelectElement;
     const items = document.querySelectorAll('.facility-item');
     const noResults = document.getElementById('no-results');
 
@@ -209,6 +225,10 @@ const statuses = Array.from(
       const status = statusFilter?.value || '';
       const sector = sectorFilter?.value || '';
       const type = typeFilter?.value || '';
+      const policyId = policyFilter?.value || '';
+
+      // Dispatch to map
+      window.dispatchEvent(new CustomEvent('map-filter', { detail: { policyId } }));
 
       let count = 0;
       let capacity = 0;
@@ -221,7 +241,8 @@ const statuses = Array.from(
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&
-          (!type || d.type === type);
+          (!type || d.type === type) &&
+          (!policyId || d.policies.split(',').includes(policyId));
 
         if (matches) {
           item.style.display = 'block';
@@ -247,6 +268,7 @@ const statuses = Array.from(
       statusFilter,
       sectorFilter,
       typeFilter,
+      policyFilter,
     ].forEach((el) => {
       el?.addEventListener('input', filterAndStats);
       el?.addEventListener('change', filterAndStats);

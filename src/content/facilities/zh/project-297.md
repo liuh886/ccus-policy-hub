@@ -1,27 +1,47 @@
 ---
-name: Northern Plains Nitrogen Blue ammonia (ND)
-lang: zh
-country: '美国'
-location: Chemicals
-type: 捕集
-status: 计划中
+id: '297'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Chemicals
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 47.3748
-  - -100.9759
-commencementYear: null
-description:
-  由 Northern Plains Nitrogen, Summit Carbon Solutions (T&S) 开发的 Chemicals
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9862
+  - -91.9731
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Northern Plains Nitrogen Blue ammonia (ND)
+region: North America
+partners:
+  - Northern Plains Nitrogen, Summit Carbon Solutions (T&S)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 化工行业
+fateOfCarbon: 永久封存
+hub: Midwest carbon express
+announcement: '2013'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Chemicals 领域。预计/实际投产年份为 未知。

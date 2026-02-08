@@ -1,20 +1,46 @@
 ---
-name: FlagshipTHREE Umea Dava plant
-lang: zh
-country: '瑞典'
-location: Power and heat
-type: CCU
-status: 计划中
+id: '990'
+country: Sweden
+status: Planned
+reviewStatus: draft
 capacity: 0.136
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 17.344977521354615
-  - -3.9683218275876375
-commencementYear: 2026
-description: 由 Liquid Wind, Umea Energi 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9919
+  - -91.9663
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: FlagshipTHREE Umea Dava plant
+region: Europe
+partners:
+  - Liquid Wind, Umea Energi
+type: 碳利用
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0.136
+sector: 电力与供热
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2023'
+fid: '2025'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Sweden 的 Power and heat 领域。预计/实际投产年份为 2026.0。

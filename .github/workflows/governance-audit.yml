@@ -1,0 +1,30 @@
+name: Governance Heartbeat Audit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: npm install -g pnpm && pnpm install
+        
+      - name: Run Logic Integrity Audit
+        run: node scripts/governance-heartbeat.mjs
+        
+      - name: Run Geospatial Health Check
+        run: node scripts/audit-geospatial-full.mjs
+        
+      - name: Verify Build
+        run: pnpm build

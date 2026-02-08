@@ -1,20 +1,44 @@
 ---
-name: Exxonmobil Antwerp Refinery CCS
-lang: zh
-country: '比利时'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Other fuel transformation
-storage_type: 地质封存
+id: '149'
+country: Belgium
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 51.65707842585732
-  - 1.4365937819469363
-commencementYear: 2030
-description: 由 Exxonmobil 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 50.7269
+  - 4.3541
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Exxonmobil Antwerp Refinery CCS
+region: Europe
+partners:
+  - Exxonmobil
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 其他能源转换
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: '2025'
+operation: '2030'
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Belgium 的 Other fuel transformation 领域。预计/实际投产年份为 2030.0。

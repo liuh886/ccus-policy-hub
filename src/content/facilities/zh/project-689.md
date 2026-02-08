@@ -1,20 +1,48 @@
 ---
-name: Prinos CCS phase 2
-lang: zh
-country: '希腊'
-location: T&S
-type: 枢纽
-status: 计划中
+id: '689'
+country: Greece
+status: Planned
+reviewStatus: draft
 capacity: 2.5
-sector: T&S
-storage_type: 咸水层
 coordinates:
-  - 22.14256240268334
-  - 4.159392593699057
-commencementYear: 2027
-description: 由 Energean 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 39.0535
+  - 21.8369
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Prinos CCS phase 2
+region: Europe
+partners:
+  - Energean
+type: 运输与封存
+phase: '2'
+announcedCapacity: 2.5
+estimatedCapacity: 2.5
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Prinos CO2 storage
+announcement: '2021'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Greece 的 T&S 领域。预计/实际投产年份为 2027.0。

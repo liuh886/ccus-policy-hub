@@ -1,23 +1,45 @@
 ---
-name: BIR Waste-to-Energy Bergen
-lang: zh
-country: '挪威'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '645'
+country: Norway
+status: Planned
+reviewStatus: draft
 capacity: 0.1
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 59.657381052186665
-  - 7.5426073737032375
-commencementYear: null
-description: 由 BIR, Aker Carbon Capture 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.4617
+  - 8.4748
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: BIR Waste-to-Energy Bergen
+region: Europe
+partners:
+  - BIR, Aker Carbon Capture
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 电力与供热
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Power and heat 领域。预计/实际投产年份为 未知。

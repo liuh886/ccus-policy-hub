@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
+import i18nDict from '../data/i18n_dictionary.json';
+
 interface Props {
   lang?: 'zh' | 'en';
 }
@@ -11,6 +13,8 @@ const isEn = lang === 'en';
 const facilities = await getCollection(
   isEn ? 'facilities_en' : 'facilities_zh'
 );
+
+const statusLabels = i18nDict.ui.status;
 ---
 
 <div
@@ -42,13 +46,13 @@ const facilities = await getCollection(
       <div class="flex items-center gap-3">
         <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
         <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300"
-          >{isEn ? 'Operational' : '运行中'}</span
+          >{statusLabels.Operational[lang]}</span
         >
       </div>
       <div class="flex items-center gap-3">
         <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
         <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300"
-          >{isEn ? 'Planned' : '计划/开发中'}</span
+          >{statusLabels.Planned[lang]}</span
         >
       </div>
     </div>
@@ -64,7 +68,7 @@ const facilities = await getCollection(
   href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
 />
 
-<script define:vars={{ facilities, isEn }}>
+<script define:vars={{ facilities, isEn, statusLabels, lang }}>
   async function initMap() {
     if (typeof L === 'undefined') return;
 
@@ -98,7 +102,7 @@ const facilities = await getCollection(
 
     facilities.forEach((f) => {
       const { name, coordinates, status, capacity, type } = f.data;
-      const isOperational = status === '运行中' || status === 'Operational';
+      const isOperational = status === statusLabels.Operational[lang];
       const color = isOperational ? '#10b981' : '#3b82f6';
 
       const marker = L.marker(coordinates, {
@@ -111,7 +115,10 @@ const facilities = await getCollection(
 
       marker.bindPopup(`
         <div class="p-1 min-w-[180px]">
-          <div class="text-[9px] font-black text-blue-600 uppercase mb-1">${type}</div>
+          <div class="flex justify-between items-start mb-1">
+            <div class="text-[9px] font-black text-blue-600 uppercase">${type}</div>
+            ${f.data.hub ? `<div class="text-[8px] font-black bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded border border-blue-100 uppercase">Hub: ${f.data.hub}</div>` : ''}
+          </div>
           <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${name}</div>
           <div class="text-xs font-bold text-slate-500">${capacity} Mtpa | ${status}</div>
           <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${f.id.replace(/^(en|zh)\//, '')}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg">Details</a>
@@ -121,6 +128,39 @@ const facilities = await getCollection(
     });
 
     map.addLayer(markers);
+
+    // Dynamic Filter Listener
+    window.addEventListener('map-filter', (e) => {
+      const { policyId } = e.detail;
+      markers.clearLayers();
+      
+      facilities.forEach((f) => {
+        if (policyId && !f.data.relatedPolicies?.includes(policyId)) return;
+        
+        const { name, coordinates, status, capacity, type } = f.data;
+        const isOperational = status === statusLabels.Operational[lang];
+        const color = isOperational ? '#10b981' : '#3b82f6';
+
+        const marker = L.marker(coordinates, {
+          icon: L.divIcon({
+            html: `<div class="w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg" style="background-color: ${color}"></div>`,
+            className: 'custom-marker',
+            iconSize: [14, 14],
+          }),
+        });
+
+        marker.bindPopup(`
+          <div class="p-1 min-w-[180px]">
+            <div class="text-[9px] font-black text-blue-600 uppercase mb-1">${type}</div>
+            <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${name}</div>
+            <div class="text-xs font-bold text-slate-500">${capacity} Mtpa | ${status}</div>
+            <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${f.id.replace(/^(en|zh)\//, '')}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg">Details</a>
+          </div>
+        `);
+        markers.addLayer(marker);
+      });
+    });
+
     const loader = document.getElementById('map-loader');
     if (loader) {
       loader.style.opacity = '0';

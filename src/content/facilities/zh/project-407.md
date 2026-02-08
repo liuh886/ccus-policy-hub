@@ -1,23 +1,44 @@
 ---
-name: Nutrien Redwater Fertilizer (ALB) phase 1
-lang: zh
-country: '加拿大'
-location: Chemicals
-type: 捕集
-status: 运行中
+id: '407'
+country: Canada
+status: Operational
+reviewStatus: draft
 capacity: 0.3
-sector: Chemicals
-storage_type: EOR
 coordinates:
-  - 53.305640354652425
-  - -109.94035547890542
-commencementYear: 2020
-description: 由 Nutrien (formerly Agrium) 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7867
+  - -119.4267
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Nutrien Redwater Fertilizer (ALB) phase 1
+region: North America
+partners:
+  - Nutrien (formerly Agrium)
+type: 碳捕集
+phase: '1'
+announcedCapacity: 0.3
+estimatedCapacity: 0.3
+sector: 化工行业
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Alberta Carbon Trunk Line (ACTL)/Enhance Clive Sequestration Facility (ALB)
+announcement: '2011'
+fid: '2018'
+operation: '2020'
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Chemicals 领域。预计/实际投产年份为 2020.0。

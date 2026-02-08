@@ -1,26 +1,45 @@
 ---
-name: Xinjiang Dunhua Wucaiwan Industrial Park CO2 Capture Project (Xinjiang)
-lang: zh
-country: 中国
-location: Chemicals
-type: 全流程
-status: 运行中
+id: '1299'
+country: China
+status: Operational
+reviewStatus: draft
 capacity: 0.15
-sector: Chemicals
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 43.8588
-  - 87.6180
-commencementYear: 2024
-description: 由 Dunhua Oil Company 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5377
+  - -100.9954
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Xinjiang Dunhua Wucaiwan Industrial Park CO2 Capture Project (Xinjiang)
+region: Other Asia Pacific
+partners:
+  - Dunhua Oil Company
+type: 全产业链
+phase: ''
+announcedCapacity: 0.15
+estimatedCapacity: 0.15
+sector: 化工行业
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: ''
+fid: ''
+operation: '2024'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Chemicals 领域。预计/实际投产年份为 2024.0。

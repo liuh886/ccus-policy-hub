@@ -1,22 +1,46 @@
 ---
-name: Killingholme Low Carbon Power project
-lang: zh
-country: '英国'
-location: Power and heat
-type: 全流程
-status: 计划中
-capacity: 0.0
-sector: Power and heat
-storage_type: 咸水层
+id: '1348'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 56.14216207762939
-  - -2.200504795697693
-commencementYear: 2031
-description: 由 Uniper 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7588
+  - -119.4157
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Killingholme Low Carbon Power project
+region: Europe
+partners:
+  - Uniper
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2025'
+fid: ''
+operation: '2031'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Power and heat 领域。预计/实际投产年份为 2031.0。

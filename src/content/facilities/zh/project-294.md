@@ -1,24 +1,51 @@
 ---
-name: Northern Endurance Partnership phase 1
-lang: zh
-country: '英国'
-location: T&S
-type: 枢纽
-status: 建设中
-capacity: 4.0
-sector: T&S
-storage_type: 咸水层
+id: '294'
+country: United Kingdom
+status: Under construction
+reviewStatus: draft
+capacity: 4
 coordinates:
-  - 55.41596247390339
-  - 1.9280107548065928
-commencementYear: 2028
-description:
-  由 BP, Equinor, TotalEnergies (partners), Worley (technical advisors),
-  Costain (FEED transport) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5617
+  - -100.9972
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Northern Endurance Partnership phase 1
+region: Europe
+partners:
+  - BP, Equinor, TotalEnergies (partners), Worley (technical advisors), Costain (FEED transport)
+type: 运输与封存
+phase: '1'
+announcedCapacity: 4
+estimatedCapacity: 4
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Northern Endurance Partnership
+announcement: '2018'
+fid: '2024'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+  - Link 7
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 T&S 领域。预计/实际投产年份为 2028.0。

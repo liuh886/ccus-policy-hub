@@ -1,23 +1,46 @@
 ---
-name: Shand
-lang: zh
-country: '加拿大'
-location: Power and heat
-type: 捕集
-status: 计划中
-capacity: 2.0
-sector: Power and heat
-storage_type: EOR
+id: '1117'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 57.206258982041184
-  - -106.32989593748472
-commencementYear: null
-description: 由 Saskpower 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5453
+  - -100.9925
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Shand
+region: North America
+partners:
+  - Saskpower
+type: 碳捕集
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 电力与供热
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2018'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Power and heat 领域。预计/实际投产年份为 未知。

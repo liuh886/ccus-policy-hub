@@ -1,22 +1,44 @@
 ---
-name: Hynet Northwest phase 3
-lang: zh
-country: '英国'
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
+id: '446'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
 capacity: 8.1
-sector: Hydrogen or ammonia
-storage_type: 咸水层
 coordinates:
-  - 51.78406784764827
-  - -7.784086156504813
-commencementYear: 2030
-description: 由 Hynet consortium 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 55.3855
+  - -3.414
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Hynet Northwest phase 3
+region: Europe
+partners:
+  - Hynet consortium
+type: 碳捕集
+phase: '3'
+announcedCapacity: 8.1
+estimatedCapacity: 8.1
+sector: 氢能与氨能
+fateOfCarbon: 永久封存
+hub: Liverpool Bay CO2 storage (Hynet)
+announcement: '2019'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2030.0。

@@ -1,22 +1,46 @@
 ---
-name: Antwerp - ARCaDe
-lang: zh
-country: '比利时'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
+id: '1258'
+country: Belgium
+status: Planned
+reviewStatus: draft
 capacity: 0.74
-sector: Other fuel transformation
-storage_type: 咸水层
 coordinates:
-  - 46.880113391750754
-  - 4.3651834308169875
-commencementYear: null
-description:
-  由 Fluxys, AirLiquide, TotalEnergies 开发的 Other fuel transformation 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7503
+  - -119.4244
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Antwerp - ARCaDe
+region: Europe
+partners:
+  - Fluxys, AirLiquide, TotalEnergies
+type: 碳捕集
+phase: '1'
+announcedCapacity: 0.74
+estimatedCapacity: 0.74
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2024'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Belgium 的 Other fuel transformation 领域。预计/实际投产年份为 未知。

@@ -1,25 +1,50 @@
 ---
-name: Acorn CCS phase 1-Capture at St Fergus
-lang: zh
-country: '英国'
-location: Natural gas processing/LNG
-type: 捕集
-status: 计划中
+id: '7'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
 capacity: 0.3
-sector: Natural gas processing/LNG
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 55.7998
-  - 2.7577
-commencementYear: 2028
-description:
-  由 Storegga(30%), Shell (30%), Harbour (30%), North Sea Midstream partners
-  (10%) 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7777
+  - -119.3968
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Acorn CCS phase 1-Capture at St Fergus
+region: Europe
+partners:
+  - Storegga(30%), Shell (30%), Harbour (30%), North Sea Midstream partners (10%)
+type: 碳捕集
+phase: '1'
+announcedCapacity: 0.3
+estimatedCapacity: 0.3
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: Acorn CCS
+announcement: '2016'
+fid: '2025'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2028.0。

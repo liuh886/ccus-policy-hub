@@ -1,26 +1,49 @@
 ---
-name: China Energy Taizhou power (Jiangsu)
-lang: zh
-country: 中国
-location: Power and heat
-type: 全流程
-status: 运行中
+id: '85'
+country: China
+status: Operational
+reviewStatus: draft
 capacity: 0.5
-sector: Power and heat
-storage_type: 地质封存
-precision: approximate
 coordinates:
-  - 32.0205
-  - 118.7690
-commencementYear: 2023
-description: 由 China Energy 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 32.9772
+  - 119.777
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: China Energy Taizhou power (Jiangsu)
+region: Other Asia Pacific
+partners:
+  - China Energy
+type: 全产业链
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 电力与供热
+fateOfCarbon: EOR and use
+hub: ''
+announcement: '2021'
+fid: '2021'
+operation: '2023'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Power and heat 领域。预计/实际投产年份为 2023.0。

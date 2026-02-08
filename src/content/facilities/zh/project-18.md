@@ -1,23 +1,48 @@
 ---
-name: Air Liquide hydrogen facility Rotterdam
-lang: zh
-country: '荷兰'
-location: Other fuel transformation
-type: 捕集
-status: 建设中
+id: '18'
+country: Netherlands
+status: Under construction
+reviewStatus: draft
 capacity: 0.5
-sector: Other fuel transformation
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 51.5777
-  - 4.7426
-commencementYear: 2026
-description:
-  由 Air Liquide (build, own, operate) 开发的 Other fuel transformation 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.1312
+  - 5.2986
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Air Liquide hydrogen facility Rotterdam
+region: Europe
+partners:
+  - Air Liquide (build, own, operate)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: Porthos
+announcement: '2012'
+fid: '2023'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 Other fuel transformation 领域。预计/实际投产年份为 2026.0。

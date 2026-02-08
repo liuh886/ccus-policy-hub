@@ -1,25 +1,45 @@
 ---
-name: Central Louisiana Regional Carbon Storage (CENLA) Hub (Wilcox) (LA) phase 3
-lang: zh
-country: '美国'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 2.0
-sector: T&S
-storage_type: 咸水层
-precision: approximate
+id: '1060'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 7
 coordinates:
-  - 31.0326
-  - -91.9931
-commencementYear: 2029
-description: 由 CapturePoint Solutions, Energy transfer 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9753
+  - -91.9499
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Central Louisiana Regional Carbon Storage (CENLA) Hub (Wilcox) (LA) phase 3
+region: North America
+partners:
+  - CapturePoint Solutions, Energy transfer
+type: 运输与封存
+phase: '3'
+announcedCapacity: 7
+estimatedCapacity: 2
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Central Louisiana Regional Carbon Storage (CENLA) Hub (LA)
+announcement: '2022'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 T&S 领域。预计/实际投产年份为 2029.0。

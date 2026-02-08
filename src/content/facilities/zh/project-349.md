@@ -1,20 +1,45 @@
 ---
-name: Ravenna CCS phase 2
-lang: zh
-country: '意大利'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 4.0
-sector: T&S
-storage_type: 咸水层
+id: '349'
+country: Italy
+status: Planned
+reviewStatus: draft
+capacity: 4
 coordinates:
-  - 44.33696326215566
-  - 7.875576180112194
-commencementYear: 2028
-description: 由 Eni, Snam 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 41.8608
+  - 12.5762
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ravenna CCS phase 2
+region: Europe
+partners:
+  - Eni, Snam
+type: 运输与封存
+phase: '1'
+announcedCapacity: 4
+estimatedCapacity: 4
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Ravenna CCS
+announcement: '2020'
+fid: '2025'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Italy 的 T&S 领域。预计/实际投产年份为 2028.0。

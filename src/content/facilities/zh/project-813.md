@@ -1,26 +1,46 @@
 ---
-name: CEIC-CNPC CCUS-EOR demonstration (Ningxia) Phase 1
-lang: zh
-country: 中国
-location: Other fuel transformation
-type: 全流程
-status: 建设中
+id: '813'
+country: China
+status: Under construction
+reviewStatus: draft
 capacity: 0.4
-sector: Other fuel transformation
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 38.4437
-  - 106.2587
-commencementYear: 2025
-description: 由 CEIC, CNPC 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 35.925
+  - 104.1194
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CEIC-CNPC CCUS-EOR demonstration (Ningxia) Phase 1
+region: Other Asia Pacific
+partners:
+  - CEIC, CNPC
+type: 全产业链
+phase: '1'
+announcedCapacity: 0.4
+estimatedCapacity: 0.4
+sector: 其他能源转换
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2023'
+fid: '2023'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Other fuel transformation 领域。预计/实际投产年份为 2025.0。

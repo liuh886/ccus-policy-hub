@@ -1,22 +1,45 @@
 ---
-name: Buxton Lime Net Zero
-lang: zh
-country: '英国'
-location: Cement
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Cement
-storage_type: 咸水层
+id: '638'
+country: United Kingdom
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 54.33405963693115
-  - -6.315000775483494
-commencementYear: null
-description: 由 Tarmac, SigmaRoc 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 55.3645
+  - -3.418
 relatedPolicies:
-  - uk-ccus-vision
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Buxton Lime Net Zero
+region: Europe
+partners:
+  - Tarmac, SigmaRoc
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: Liverpool Bay CO2 storage (Hynet)
+announcement: '2022'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United Kingdom 的 Cement 领域。预计/实际投产年份为 未知。

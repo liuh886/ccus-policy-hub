@@ -1,22 +1,45 @@
 ---
-name: Usine RYAM Tartas
-lang: zh
-country: '法国'
-location: Other industry
-type: CCU
-status: 计划中
-capacity: 0.0
-sector: Other industry
-storage_type: 地质封存
+id: '1247'
+country: France
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 46.913040110020425
-  - -0.4832518834115538
-commencementYear: 2029
-description: 由 RYAM, Verso Energy 开发的 Other industry 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 46.2344
+  - 2.1915
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Usine RYAM Tartas
+region: Europe
+partners:
+  - RYAM, Verso Energy
+type: 碳利用
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 其他工业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2024'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 Other industry 领域。预计/实际投产年份为 2029.0。

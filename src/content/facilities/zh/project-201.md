@@ -1,25 +1,49 @@
 ---
-name: Heidelberg Materials Brevik cement
-lang: zh
-country: '挪威'
-location: Cement
-type: 捕集
-status: 建设中
+id: '201'
+country: Norway
+status: Under construction
+reviewStatus: draft
 capacity: 0.4
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 63.09597031187039
-  - 11.786620533662202
-commencementYear: 2025
-description:
-  由 Heidelberg Materials (Norcem), Aker Carbon Capture (tech) 开发的 Cement
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.4628
+  - 8.4465
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Heidelberg Materials Brevik cement
+region: Europe
+partners:
+  - Heidelberg Materials (Norcem), Aker Carbon Capture (tech)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.4
+estimatedCapacity: 0.4
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: Northern Lights
+announcement: '2016'
+fid: '2020'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Cement 领域。预计/实际投产年份为 2025.0。

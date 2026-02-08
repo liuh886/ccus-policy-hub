@@ -16,11 +16,18 @@ const {
   sector,
   commencementYear,
   precision,
+  phase,
+  announcedCapacity,
+  estimatedCapacity
 } = facility.data;
 
 const isEn = facility.data.lang === 'en';
 const BASE = '/ccus-policy-hub';
 const detailHref = `${BASE}/${isEn ? 'en/facilities' : 'facilities'}/${facility.id.replace(/^(en|zh)\//, '')}/`;
+
+// Capacity Logic
+const displayCapacity = announcedCapacity || estimatedCapacity || capacity;
+const isAnnounced = !!announcedCapacity;
 
 // 状态颜色映射
 const statusColors: Record<string, string> = {
@@ -30,6 +37,9 @@ const statusColors: Record<string, string> = {
   Planned: 'bg-blue-500',
   开发中: 'bg-blue-400',
   'Under Development': 'bg-blue-400',
+  'Under construction': 'bg-amber-500',
+  'Suspended': 'bg-red-500',
+  'Decommissioned': 'bg-slate-600'
 };
 
 const statusColor = statusColors[status] || 'bg-slate-400';
@@ -38,19 +48,26 @@ const statusColor = statusColors[status] || 'bg-slate-400';
 <div
   class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 hover:shadow-2xl transition-all group flex flex-col h-full relative overflow-hidden"
 >
-  <!-- Status Badge -->
+  <!-- Status Badge Row -->
   <div class="flex justify-between items-start mb-6">
-    <div
-      class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
-    >
+    <div class="flex gap-2">
       <div
-        class={`w-2 h-2 rounded-full ${statusColor} shadow-[0_0_8px_rgba(0,0,0,0.1)]`}
+        class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
       >
+        <div
+          class={`w-2 h-2 rounded-full ${statusColor} shadow-[0_0_8px_rgba(0,0,0,0.1)]`}
+        >
+        </div>
+        <span
+          class="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400"
+          >{status}</span
+        >
       </div>
-      <span
-        class="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400"
-        >{status}</span
-      >
+      {phase && (
+        <span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-800">
+          {phase}
+        </span>
+      )}
     </div>
     {
       precision === 'approximate' && (
@@ -67,11 +84,9 @@ const statusColor = statusColors[status] || 'bg-slate-400';
             stroke="currentColor"
             stroke-width="2.5"
           >
-            <>
-              <path d="M12 9v4" />
-              <path d="M12 17h.01" />
-              <path d="m3.34 19 8.66-15 8.66 15H3.34Z" />
-            </>
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+            <path d="m3.34 19 8.66-15 8.66 15H3.34Z" />
           </svg>
         </div>
       )
@@ -88,8 +103,12 @@ const statusColor = statusColors[status] || 'bg-slate-400';
     class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-6"
   >
     <span>{country}</span>
-    <span>•</span>
-    <span class="truncate">{location}</span>
+    {facility.data.region && (
+      <>
+        <span>•</span>
+        <span class="truncate">{facility.data.region}</span>
+      </>
+    )}
   </div>
 
   <div
@@ -97,12 +116,13 @@ const statusColor = statusColors[status] || 'bg-slate-400';
   >
     <div>
       <div
-        class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
+        class="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
       >
         {isEn ? 'Capacity' : '年捕集规模'}
+        {isAnnounced && <span class="w-1 h-1 rounded-full bg-emerald-500" title="Announced Value"></span>}
       </div>
       <div class="text-lg font-black text-slate-900 dark:text-white">
-        {capacity}
+        {displayCapacity}
         <span class="text-[10px] font-medium text-slate-400">Mtpa</span>
       </div>
     </div>
@@ -112,7 +132,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
       >
         {isEn ? 'Type' : '设施类型'}
       </div>
-      <div class="text-xs font-bold text-blue-600">{type}</div>
+      <div class="text-xs font-bold text-blue-600 truncate">{type}</div>
     </div>
   </div>
 

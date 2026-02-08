@@ -1,25 +1,47 @@
 ---
-name:
-  Joint study CCS value chain Japan Malaysia phase 1 (M3 CCS Project/Eastern CCS
-  Hub project)
-lang: zh
-country: '日本-马来西亚'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 2.0
-sector: T&S
-storage_type: 咸水层
+id: '957'
+country: Japan
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 16.925410343047634
-  - -1.0052705352985178
-commencementYear: 2028
-description:
-  由 Japan Petroleum Exploration Co., Ltd. (JAPEX), JGC Holdings Corporation
-  (JGC HD), Kawasaki Kisen Kaisha, Ltd. (“K” LINE), Petronas CCS Ventures 开发的 T&S
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9681
+  - -91.9634
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Joint study CCS value chain Japan Malaysia phase 1 (M3 CCS Project/Eastern CCS Hub project)
+region: Other Asia Pacific
+partners:
+  - Japan Petroleum Exploration Co., Ltd. (JAPEX), JGC Holdings Corporation (JGC HD), Kawasaki Kisen Kaisha, Ltd. (“K” LINE), Petronas CCS Ventures
+type: 运输与封存
+phase: '1'
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: M3 CCS Project/Eastern CCS Hub project
+announcement: '2022'
+fid: '2025'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Japan-Malaysia 的 T&S 领域。预计/实际投产年份为 2028.0。

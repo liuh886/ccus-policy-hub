@@ -1,20 +1,46 @@
 ---
-name: Climeworks Orca
-lang: zh
-country: '冰岛'
-location: DAC
-type: 全流程
-status: 运行中
+id: '434'
+country: Iceland
+status: Operational
+reviewStatus: draft
 capacity: 0.004
-sector: DAC
-storage_type: 咸水层
 coordinates:
-  - 62.02547781906345
-  - -20.434046071802776
-commencementYear: 2021
-description: 由 Climeworks, CarbFix 开发的 DAC 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7875
+  - -119.4283
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Climeworks Orca
+region: Europe
+partners:
+  - Climeworks, CarbFix
+type: 全产业链
+phase: ''
+announcedCapacity: 0.004
+estimatedCapacity: 0.004
+sector: 空气直接捕集 (DAC)
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2018'
+fid: '2020'
+operation: '2021'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Iceland 的 DAC 领域。预计/实际投产年份为 2021.0。

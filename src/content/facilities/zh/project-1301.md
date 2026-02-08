@@ -1,28 +1,47 @@
 ---
-name: Dongfang Boiler CLC Demonstration (Sichuan)
-lang: zh
-country: 中国
-location: Power and heat
-type: 捕集
-status: 建设中
-capacity: 0.0
-sector: Power and heat
-storage_type: 地质封存
-precision: approximate
+id: '1301'
+country: China
+status: Under construction
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 30.6724
-  - 104.0509
-commencementYear: 2025
-description:
-  由 Chinese-European Emission-Reducing Solutions project (CHEERS),  TotalEnergies
-  and Dongfang Boiler Group Co., Ltd (DBC) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 35.8299
+  - 104.2711
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Dongfang Boiler CLC Demonstration (Sichuan)
+region: Other Asia Pacific
+partners:
+  - Chinese-European Emission-Reducing Solutions project (CHEERS),  TotalEnergies and Dongfang Boiler Group Co., Ltd (DBC)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 电力与供热
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2017'
+fid: ''
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Power and heat 领域。预计/实际投产年份为 2025.0。

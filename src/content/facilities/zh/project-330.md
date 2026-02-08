@@ -1,22 +1,45 @@
 ---
-name: Preem CCS at Lysekil refinery
-lang: zh
-country: '瑞典'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
+id: '330'
+country: Sweden
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Other fuel transformation
-storage_type: 咸水层
 coordinates:
-  - 21.694514362273686
-  - -4.844909115505075
-commencementYear: 2026
-description:
-  由 Preem, Aker solutions, Equinor 开发的 Other fuel transformation 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 59.9304
+  - 18.5437
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Preem CCS at Lysekil refinery
+region: Europe
+partners:
+  - Preem, Aker solutions, Equinor
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: Northern Lights
+announcement: '2018'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Sweden 的 Other fuel transformation 领域。预计/实际投产年份为 2026.0。

@@ -1,27 +1,46 @@
 ---
-name: Pegasus (LA)
-lang: zh
-country: '美国'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 10.0
-sector: Storage
-storage_type: 地质封存
-precision: approximate
+id: '883'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 20
 coordinates:
-  - 31.1476
-  - -92.0539
-commencementYear: 2027
-description:
-  由 ExxonMobil (formerly Denbury carbon solutions) 开发的 Storage 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9892
+  - -91.9478
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Pegasus (LA)
+region: North America
+partners:
+  - ExxonMobil (formerly Denbury carbon solutions)
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 20
+estimatedCapacity: 10
+sector: 二氧化碳封存
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2022'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Storage 领域。预计/实际投产年份为 2027.0。
