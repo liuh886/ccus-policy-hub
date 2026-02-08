@@ -1,25 +1,46 @@
 ---
-name: Lyse Forus Energigjenvinning Stavanger
-lang: zh
-country: '挪威'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '271'
+country: Norway
+status: Planned
+reviewStatus: draft
 capacity: 0.1
-sector: Power and heat
-storage_type: 咸水层
 coordinates:
-  - 62.38990406900106
-  - 5.75086472915142
-commencementYear: 2026
-description:
-  由 Lyse, Forus Energi, Aker Carbon Capture (tech) 开发的 Power and heat 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.4512
+  - 8.4638
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Lyse Forus Energigjenvinning Stavanger
+region: Europe
+partners:
+  - Lyse, Forus Energi, Aker Carbon Capture (tech)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Power and heat 领域。预计/实际投产年份为 2026.0。

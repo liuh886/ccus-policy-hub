@@ -1,20 +1,45 @@
 ---
-name: East Niigata area CCS - Mitsubshi gas chemical
-lang: zh
-country: '日本'
-location: Chemicals
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Chemicals
-storage_type: 咸水层
+id: '1133'
+country: Japan
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 36.71456548629743
-  - 138.2233392936335
-commencementYear: 2030
-description: 由 Mitsubishi Gas Chemical 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.79
+  - -119.4189
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: East Niigata area CCS - Mitsubshi gas chemical
+region: Other Asia Pacific
+partners:
+  - Mitsubishi Gas Chemical
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 化工行业
+fateOfCarbon: 永久封存
+hub: East Niigata area CCS
+announcement: '2023'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Japan 的 Chemicals 领域。预计/实际投产年份为 2030.0。

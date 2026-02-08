@@ -1,22 +1,46 @@
 ---
-name: K6 Program- Lumbres cement plant
-lang: zh
-country: '法国'
-location: Cement
-type: 捕集
-status: 计划中
+id: '236'
+country: France
+status: Planned
+reviewStatus: draft
 capacity: 0.81
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 45.99349993713678
-  - 2.1315886024997024
-commencementYear: 2028
-description: 由 EQIOM, Air Liquide, France Industries, VDZ 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9747
+  - -91.9667
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: K6 Program- Lumbres cement plant
+region: Europe
+partners:
+  - EQIOM, Air Liquide, France Industries, VDZ
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.81
+estimatedCapacity: 0.81
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: D'Artagnan
+announcement: '2021'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 Cement 领域。预计/实际投产年份为 2028.0。

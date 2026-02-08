@@ -1,22 +1,46 @@
 ---
-name: Soderenergi Igelsta plant
-lang: zh
-country: '瑞典'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '51'
+country: Sweden
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Power and heat
-storage_type: 咸水层
 coordinates:
-  - 17.293911699883573
-  - -4.0784029213342805
-commencementYear: 2030
-description:
-  由 Soderenergi, Aker Carbon Capture (feasibility) (first feasibility by
-  biorecro) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9773
+  - -91.9627
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Soderenergi Igelsta plant
+region: Europe
+partners:
+  - Soderenergi, Aker Carbon Capture (feasibility) (first feasibility by biorecro)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2020'
+fid: '2026'
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Sweden 的 Power and heat 领域。预计/实际投产年份为 2030.0。

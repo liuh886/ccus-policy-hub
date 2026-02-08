@@ -5,48 +5,30 @@ interface Props {
   lang?: 'zh' | 'en';
 }
 
-const lang =
-  Astro.props.lang ??
-  (Astro.currentLocale as 'zh' | 'en' | undefined) ??
-  defaultLang;
-const t = (key: keyof (typeof ui)['zh']) =>
-  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const lang = Astro.props.lang ?? (Astro.currentLocale as 'zh' | 'en' | undefined) ?? defaultLang;
+const t = (key: keyof typeof ui['zh']) => ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 const isEn = lang === 'en';
 const BASE = '/ccus-policy-hub';
 const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
 ---
-
-<div
-  id="compare-drawer"
-  class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden"
->
-  <div
-    class="bg-slate-900 text-white px-6 py-4 rounded-full shadow-2xl border border-slate-700 flex items-center gap-6 backdrop-blur-md bg-slate-900/90"
-  >
-    <div class="flex items-center gap-2">
-      <div
-        class="bg-blue-600 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full"
-        id="compare-count"
-      >
-        0
+<div id="compare-drawer" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden animate-in slide-in-from-bottom-8 duration-500">
+  <div class="bg-slate-900/95 dark:bg-black/90 text-white px-8 py-5 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 flex items-center gap-8 backdrop-blur-2xl">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center">
+        <div class="bg-blue-600 text-[10px] font-black w-7 h-7 flex items-center justify-center rounded-full z-10 shadow-lg shadow-blue-500/40 border border-white/20" id="compare-count">0</div>
+        <div class="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-20"></div>
       </div>
-      <span class="text-sm font-medium"
-        >{isEn ? 'policies selected' : '项政策已选择'}</span
-      >
+      <div class="flex flex-col">
+        <span class="text-[10px] font-black uppercase tracking-widest text-blue-400 leading-none mb-1">Benchmarking</span>
+        <span class="text-sm font-bold text-white leading-none">{isEn ? 'policies selected' : '项政策已选'}</span>
+      </div>
     </div>
-
-    <div class="h-4 w-px bg-slate-700"></div>
-
-    <div class="flex items-center gap-4">
-      <button
-        id="clear-compare"
-        class="text-sm text-slate-400 hover:text-white transition-colors"
-        >{isEn ? 'Clear' : '清除'}</button
-      >
-      <a
-        href={compareHref}
-        class="bg-white text-slate-900 px-4 py-1.5 rounded-full text-sm font-bold hover:bg-blue-50 transition-colors"
-      >
+    
+    <div class="h-8 w-px bg-white/10"></div>
+    
+    <div class="flex items-center gap-6">
+      <button id="clear-compare" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-400 transition-colors cursor-pointer">{isEn ? 'Reset' : '重置'}</button>
+      <a href={compareHref} class="bg-white text-slate-900 px-6 py-2.5 rounded-2xl text-xs font-black uppercase tracking-[0.1em] hover:bg-blue-500 hover:text-white transition-all shadow-xl active:scale-95">
         {t('compare.btn')}
       </a>
     </div>
@@ -82,9 +64,9 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
     const drawer = document.getElementById('compare-drawer');
     const countEl = document.getElementById('compare-count');
     const list = getCompareList();
-
+    
     if (countEl) countEl.innerText = list.length.toString();
-
+    
     if (list.length > 0) {
       drawer?.classList.remove('hidden');
       drawer?.classList.add('flex');
@@ -107,16 +89,12 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
       let list = getCompareList();
       const id = target.dataset.id;
       if (!id) return;
-
+      
       if (target.checked) {
         if (!list.includes(id)) {
           if (list.length >= 5) {
             const isEn = document.documentElement.lang === 'en';
-            alert(
-              isEn
-                ? 'You can compare up to 5 policies.'
-                : '最多只能同时对比 5 项政策'
-            );
+            alert(isEn ? 'You can compare up to 5 policies.' : '最多只能同时对比 5 项政策');
             target.checked = false;
             return;
           }
@@ -125,7 +103,7 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
       } else {
         list = list.filter((i: string) => i !== id);
       }
-
+      
       localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
       // 发送自定义事件以便同窗口监听
       window.dispatchEvent(new CustomEvent('compare-updated'));

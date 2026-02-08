@@ -1,24 +1,45 @@
 ---
-name: GeZero carbon capture project (Geseke)
-lang: zh
-country: '德国'
-location: Cement
-type: 捕集
-status: 计划中
+id: '1012'
+country: Germany
+status: Planned
+reviewStatus: draft
 capacity: 0.76
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 49.2560277661749
-  - 7.098506356856622
-commencementYear: 2029
-description:
-  由 Heidelberg Materials, Wintershall Dea (Harbour Energy) 开发的 Cement 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7654
+  - -119.4105
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: GeZero carbon capture project (Geseke)
+region: Europe
+partners:
+  - Heidelberg Materials, Wintershall Dea (Harbour Energy)
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.76
+estimatedCapacity: 0.76
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: CO2nnectNow HES Wilhelmshaven Tank Terminal phase 1
+announcement: '2023'
+fid: '2026'
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Cement 领域。预计/实际投产年份为 2029.0。

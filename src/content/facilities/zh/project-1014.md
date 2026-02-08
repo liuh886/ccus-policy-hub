@@ -1,22 +1,45 @@
 ---
-name: Setouchi / Shikoku CO2 Hub Concept (capture sources under evaluation)
-lang: zh
-country: '日本-澳大利亚'
-location: Transport
-type: Transport
-status: 计划中
-capacity: 0.0
-sector: Transport
-storage_type: 咸水层
+id: '1014'
+country: Japan
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 22.378760454794246
-  - 1.5959442476743666
-commencementYear: null
-description:
-  由 Woodside Energy, Sumitomo Corporation, JFE Steel Corporation, Sumitomo
-  Osaka Cement Co. Ltd, Kawasaki Kisen Kaisha Ltd. 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9812
+  - -91.9732
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Setouchi / Shikoku CO2 Hub Concept (capture sources under evaluation)
+region: Australia and New Zealand
+partners:
+  - Woodside Energy, Sumitomo Corporation, JFE Steel Corporation, Sumitomo Osaka Cement Co. Ltd, Kawasaki Kisen Kaisha Ltd.
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 交通运输
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Japan-Australia 的 Transport 领域。预计/实际投产年份为 未知。

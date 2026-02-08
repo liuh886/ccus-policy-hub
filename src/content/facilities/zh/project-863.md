@@ -1,27 +1,44 @@
 ---
-name: Corpus Christi CO2 pipeline (TX)
-lang: zh
-country: '美国'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 0.0
-sector: T&S
-storage_type: 地质封存
-precision: approximate
+id: '863'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 20
 coordinates:
-  - 32.1768
-  - -99.6091
-commencementYear: 2028
-description:
-  由 Enbridge (transport), 1PointFive, Occidental (Storage) 开发的 T&S 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.959
+  - -99.8855
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Corpus Christi carbon storage hub (TX)
+region: North America
+partners:
+  - Repsol (operator), Carbonvert, MEPUSA (Mitsui E&P USA), POSCO
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 20
+estimatedCapacity: 20
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Corpus Christi carbon storage hub (TX)
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 T&S 领域。预计/实际投产年份为 2028.0。

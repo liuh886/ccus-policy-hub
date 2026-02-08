@@ -1,26 +1,47 @@
 ---
-name: Ash Grove Cement Foreman Plant (AR)
-lang: zh
-country: '美国'
-location: Cement
-type: 全流程
-status: 计划中
+id: '1129'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 1.4
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 39.388519443627544
-  - -91.1825667788659
-commencementYear: 2030
-description:
-  由 Southern States Energy Board, DOE Office of Clean Energy Demonstrations
-  开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9916
+  - -91.9795
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ash Grove Cement Foreman Plant (AR)
+region: North America
+partners:
+  - Southern States Energy Board, DOE Office of Clean Energy Demonstrations
+type: 全产业链
+phase: ''
+announcedCapacity: 1.4
+estimatedCapacity: 1.4
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Cement 领域。预计/实际投产年份为 2030.0。

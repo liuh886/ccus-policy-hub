@@ -15,6 +15,7 @@ const navItems = [
   { name: t('nav.policy'), href: `${prefix}/policy/` },
   { name: t('nav.map'), href: `${prefix}/facilities/` },
   { name: t('nav.compare'), href: `${prefix}/compare/` },
+  { name: t('nav.docs'), href: `${prefix}/docs/` },
 ];
 ---
 
@@ -25,10 +26,13 @@ const navItems = [
     <div class="flex items-center gap-2">
       <a
         href={`${prefix}/`}
-        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2"
+        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 group"
       >
-        <span class="bg-blue-600 text-white p-1 rounded font-bold">CCUS</span>
-        <span class="hidden md:inline font-bold tracking-tight">Policy Hub</span
+        <div class="relative flex items-center justify-center">
+          <span class="bg-blue-600 text-white p-1 rounded font-black text-sm z-10">CCUS</span>
+          <div class="absolute inset-0 bg-blue-400 rounded blur-sm animate-pulse opacity-50"></div>
+        </div>
+        <span class="hidden md:inline font-black tracking-tighter text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">Policy Hub</span
         >
       </a>
     </div>

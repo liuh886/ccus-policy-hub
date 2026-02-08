@@ -1,22 +1,47 @@
 ---
-name: Twence Hengelo facility
-lang: zh
-country: '荷兰'
-location: Power and heat
-type: CCU
-status: 运行中
+id: '394'
+country: Netherlands
+status: Operational
+reviewStatus: draft
 capacity: 0.1
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 55.1721843468756
-  - 0.6672284963583515
-commencementYear: 2025
-description:
-  由 Twence, Aker Carbon Capture (SLB Capturi) 开发的 Power and heat 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.1399
+  - 5.2954
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Twence Hengelo facility
+region: Europe
+partners:
+  - Twence, Aker Carbon Capture (SLB Capturi)
+type: 碳利用
+phase: ''
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 电力与供热
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2019'
+fid: '2021'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 Power and heat 领域。预计/实际投产年份为 2025.0。

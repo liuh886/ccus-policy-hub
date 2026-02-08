@@ -1,22 +1,45 @@
 ---
-name: Moomba CCS storage hub (phase 4)
-lang: zh
-country: '澳大利亚-日本'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 10.0
-sector: T&S
-storage_type: 咸水层
+id: '967'
+country: Australia
+status: Planned
+reviewStatus: draft
+capacity: 10
 coordinates:
-  - 20.21428180114638
-  - -2.747049823347364
-commencementYear: 2040
-description:
-  由 Santos,  JX Nippon Oil & Gas Exploration Corporation, ENEOS 开发的 T&S
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9996
+  - -91.9445
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Moomba CCS storage hub (phase 4)
+region: Australia and New Zealand
+partners:
+  - Santos,  JX Nippon Oil & Gas Exploration Corporation, ENEOS
+type: 运输与封存
+phase: '3'
+announcedCapacity: 10
+estimatedCapacity: 10
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Moomba CCS storage hub
+announcement: '2023'
+fid: ''
+operation: '2040'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia-Japan 的 T&S 领域。预计/实际投产年份为 2040.0。

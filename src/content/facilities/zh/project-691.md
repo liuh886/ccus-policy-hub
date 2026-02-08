@@ -1,27 +1,46 @@
 ---
-name: Burns Harbour (IN)
-lang: zh
-country: '美国'
-location: Iron and steel
-type: 捕集
-status: 计划中
+id: '691'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 2.8
-sector: Iron and steel
-storage_type: 地质封存
-precision: approximate
 coordinates:
-  - 30.9866
-  - -100.0383
-commencementYear: null
-description:
-  由 Dastur International Inc., ON Clean Energy, Inc., University of Texas,Cleveland-Cliffs
-  Inc. 开发的 Iron and steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7572
+  - -119.4298
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Burns Harbour (IN)
+region: North America
+partners:
+  - Dastur International Inc., ON Clean Energy, Inc., University of Texas,Cleveland-Cliffs Inc.
+type: 碳捕集
+phase: ''
+announcedCapacity: 2.8
+estimatedCapacity: 2.8
+sector: 钢铁行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2020'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Iron and steel 领域。预计/实际投产年份为 未知。

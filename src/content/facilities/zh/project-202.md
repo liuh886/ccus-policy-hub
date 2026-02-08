@@ -1,22 +1,46 @@
 ---
-name: Heidelberg Materials LEILAC 2
-lang: zh
-country: '德国'
-location: Cement
-type: 捕集
-status: 建设中
+id: '202'
+country: Germany
+status: Under construction
+reviewStatus: draft
 capacity: 0.1
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 49.565521928540456
-  - 9.031391033993485
-commencementYear: 2025
-description: 由 Heidelberg Materials, Calix 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9752
+  - -91.97
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Heidelberg Materials LEILAC 2
+region: Europe
+partners:
+  - Heidelberg Materials, Calix
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 水泥行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: '2022'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Cement 领域。预计/实际投产年份为 2025.0。

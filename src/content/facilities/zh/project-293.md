@@ -1,25 +1,47 @@
 ---
-name: NWR Sturgeon Refinery (ALB)
-lang: zh
-country: '加拿大'
-location: Other fuel transformation
-type: 捕集
-status: 运行中
+id: '293'
+country: Canada
+status: Operational
+reviewStatus: draft
 capacity: 1.3
-sector: Other fuel transformation
-storage_type: EOR
 coordinates:
-  - 59.34374063272071
-  - -110.25657013858402
-commencementYear: 2020
-description:
-  由 Northwest Redwater Partnership 开发的 Other fuel transformation 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7728
+  - -119.4077
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: NWR Sturgeon Refinery (ALB)
+region: North America
+partners:
+  - Northwest Redwater Partnership
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.3
+estimatedCapacity: 1.3
+sector: 其他能源转换
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Alberta Carbon Trunk Line (ACTL)/Enhance Clive Sequestration Facility (ALB)
+announcement: '2011'
+fid: '2014'
+operation: '2020'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other fuel transformation 领域。预计/实际投产年份为 2020.0。

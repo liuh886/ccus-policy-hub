@@ -1,22 +1,48 @@
 ---
-name: Arcelor LanzaTech Carbalyst (Steelanol) Ghent
-lang: zh
-country: '比利时'
-location: Iron and steel
-type: CCU
-status: 运行中
+id: '34'
+country: Belgium
+status: Operational
+reviewStatus: draft
 capacity: 0.125
-sector: Iron and steel
-storage_type: 地质封存
 coordinates:
-  - 47.25226584779858
-  - 1.4563963292486246
-commencementYear: 2022
-description:
-  由 ArcelorMittal, LanzaTech, Primetals Technologies, E4tech 开发的 Iron and
-  steel 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.999
+  - -91.94
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Arcelor LanzaTech Carbalyst (Steelanol) Ghent
+region: Europe
+partners:
+  - ArcelorMittal, LanzaTech, Primetals Technologies, E4tech
+type: 碳利用
+phase: ''
+announcedCapacity: 0.125
+estimatedCapacity: 0.125
+sector: 钢铁行业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2011'
+fid: '2015'
+operation: '2022'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Belgium 的 Iron and steel 领域。预计/实际投产年份为 2022.0。

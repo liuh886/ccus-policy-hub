@@ -1,20 +1,47 @@
 ---
-name: Ifestos Carbon Capture (Kamari plant)
-lang: zh
-country: '希腊'
-location: Cement
-type: 捕集
-status: 计划中
+id: '1141'
+country: Greece
+status: Planned
+reviewStatus: draft
 capacity: 1.9
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 23.1787793543676
-  - -3.6685028213461344
-commencementYear: 2029
-description: 由 Titan Group 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9985
+  - -91.949
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ifestos Carbon Capture (Kamari plant)
+region: Europe
+partners:
+  - Titan Group
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.9
+estimatedCapacity: 1.9
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: '2026'
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Greece 的 Cement 领域。预计/实际投产年份为 2029.0。

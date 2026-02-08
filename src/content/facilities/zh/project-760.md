@@ -1,20 +1,46 @@
 ---
-name: Ramba CCUS/EOR
-lang: zh
-country: '印度尼西亚'
-location: Natural gas processing/LNG
-type: 全流程
-status: 计划中
-capacity: 0.0
-sector: Natural gas processing/LNG
-storage_type: EOR
+id: '760'
+country: Indonesia
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - -1.7534135535008473
-  - 112.36450905647564
-commencementYear: 2032
-description: 由 Pertamina 开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - -0.7937
+  - 113.9266
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ramba CCUS/EOR
+region: Other Asia Pacific
+partners:
+  - Pertamina
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 天然气加工/LNG
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: '2022'
+fid: ''
+operation: '2032'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Indonesia 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2032.0。

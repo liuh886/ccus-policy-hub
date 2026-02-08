@@ -1,27 +1,45 @@
 ---
-name: Mitchell CarbonSAFE (IN)
-lang: zh
-country: '美国'
-location: Storage
-type: 封存
-status: 计划中
+id: '715'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 1.667
-sector: Storage
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 39.9593
-  - -89.0580
-commencementYear: null
-description:
-  由 Illinois State Geological Survey, Heidelberg Materials, Projeo, IGS,
-  University of Illinois 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7693
+  - -119.4006
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Mitchell CarbonSAFE (IN)
+region: North America
+partners:
+  - Illinois State Geological Survey, Heidelberg Materials, Projeo, IGS, University of Illinois
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 1.667
+estimatedCapacity: 1.667
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Mitchell CarbonSAFE (IL)
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Storage 领域。预计/实际投产年份为 未知。

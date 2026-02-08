@@ -1,23 +1,46 @@
 ---
-name: Barents Blue ammonia project Train 2
-lang: zh
-country: '挪威'
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
-capacity: 2.0
-sector: Hydrogen or ammonia
-storage_type: 咸水层
+id: '45'
+country: Norway
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 62.94272507275024
-  - 8.443241094065687
-commencementYear: null
-description: 由 Horisont Energi 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.459
+  - 8.4585
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Barents Blue ammonia project Train 2
+region: Europe
+partners:
+  - Horisont Energi
+type: 碳捕集
+phase: '2'
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 氢能与氨能
+fateOfCarbon: 永久封存
+hub: Polaris offshore storage facility (Errai project)
+announcement: '2021'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Hydrogen or ammonia 领域。预计/实际投产年份为 未知。

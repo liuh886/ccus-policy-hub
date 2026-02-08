@@ -1,23 +1,51 @@
 ---
-name: Net-zero Hydrogen Energy Complex (ALB)
-lang: zh
-country: '加拿大'
-location: Hydrogen or ammonia
-type: 捕集
-status: 建设中
-capacity: 3.0
-sector: Hydrogen or ammonia
-storage_type: 地质封存
+id: '20'
+country: Canada
+status: Under construction
+reviewStatus: draft
+capacity: 3
 coordinates:
-  - 53.65439621245283
-  - -103.42733600654846
-commencementYear: 2025
-description: 由 Air Products 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7695
+  - -119.4023
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Net-zero Hydrogen Energy Complex (ALB)
+region: North America
+partners:
+  - Air Products
+type: 碳捕集
+phase: ''
+announcedCapacity: 3
+estimatedCapacity: 3
+sector: 氢能与氨能
+fateOfCarbon: 未知/未指定
+hub: Alberta Carbon Trunk Line (ACTL)
+announcement: '2021'
+fid: '2022'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+  - Link 7
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2025.0。

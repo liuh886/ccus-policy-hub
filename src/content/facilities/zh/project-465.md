@@ -1,20 +1,47 @@
 ---
-name: Yara Sluiskil fertiliser
-lang: zh
-country: '荷兰'
-location: Chemicals
-type: 捕集
-status: 建设中
+id: '465'
+country: Netherlands
+status: Under construction
+reviewStatus: draft
 capacity: 0.8
-sector: Chemicals
-storage_type: 咸水层
 coordinates:
-  - 54.10329239377476
-  - 3.992699464439183
-commencementYear: 2026
-description: 由 Yara 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.9495
+  - -106.4432
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Yara Sluiskil fertiliser
+region: Europe
+partners:
+  - Yara
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.8
+estimatedCapacity: 0.8
+sector: 化工行业
+fateOfCarbon: 永久封存
+hub: Northern Lights
+announcement: '2022'
+fid: '2023'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 Chemicals 领域。预计/实际投产年份为 2026.0。

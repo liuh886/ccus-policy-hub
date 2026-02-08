@@ -1,21 +1,46 @@
 ---
-name: Incapture G-15-AP
-lang: zh
-country: '澳大利亚'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 0.0
-sector: Storage
-storage_type: 咸水层
-precision: approximate
+id: '1283'
+country: Australia
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 52.5904
-  - -106.3668
-commencementYear: 2030
-description: 由 InCapture, SK earthon Australia, Carbon CQ 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9797
+  - -91.9767
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Incapture G-15-AP
+region: Australia and New Zealand
+partners:
+  - InCapture, SK earthon Australia, Carbon CQ
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2024'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Storage 领域。预计/实际投产年份为 2030.0。

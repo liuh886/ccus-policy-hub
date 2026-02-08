@@ -1,23 +1,47 @@
 ---
-name: Norske Skog Saugbrugs (Borg CO2)
-lang: zh
-country: '挪威'
-location: Other industry
-type: 捕集
-status: 计划中
+id: '290'
+country: Norway
+status: Planned
+reviewStatus: draft
 capacity: 0.15
-sector: Other industry
-storage_type: 咸水层
 coordinates:
-  - 59.23343550289842
-  - 6.1350397750006245
-commencementYear: 2035
-description: 由 Borg Havn, Norske Skog Saugbrugs 开发的 Other industry 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 52.9298
+  - -106.4599
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Norske Skog Saugbrugs (Borg CO2)
+region: Europe
+partners:
+  - Borg Havn, Norske Skog Saugbrugs
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.15
+estimatedCapacity: 0.15
+sector: 其他工业
+fateOfCarbon: 永久封存
+hub: Northern Lights
+announcement: '2019'
+fid: ''
+operation: '2035'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 Other industry 领域。预计/实际投产年份为 2035.0。

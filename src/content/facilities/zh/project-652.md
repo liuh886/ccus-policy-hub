@@ -1,20 +1,45 @@
 ---
-name: Callisto Mediterranean CO2 Network phase 1
-lang: zh
-country: '法国-意大利'
-location: Transport
-type: Transport
-status: 计划中
+id: '652'
+country: France
+status: Planned
+reviewStatus: draft
 capacity: 3.6
-sector: Transport
-storage_type: 咸水层
 coordinates:
-  - 17.008234607550357
-  - -1.3616423291227053
-commencementYear: 2029
-description: 由 Air Liquide, Eni, Snam 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7836
+  - -119.4251
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Callisto Mediterranean CO2 Network phase 1
+region: Europe
+partners:
+  - Air Liquide, Eni, Snam
+type: 二氧化碳运输
+phase: '1'
+announcedCapacity: 3.6
+estimatedCapacity: 3.6
+sector: 交通运输
+fateOfCarbon: 永久封存
+hub: Ravenna CCS
+announcement: '2023'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France-Italy 的 Transport 领域。预计/实际投产年份为 2029.0。

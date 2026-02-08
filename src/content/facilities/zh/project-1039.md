@@ -1,20 +1,46 @@
 ---
-name: HIF Paysandú eFuels Facility Alur bioethanol plant
-lang: zh
-country: '乌拉圭'
-location: Biofuels
-type: CCU
-status: 计划中
+id: '1039'
+country: Uruguay
+status: Planned
+reviewStatus: draft
 capacity: 0.15
-sector: Biofuels
-storage_type: 地质封存
 coordinates:
-  - 17.815513825684025
-  - 1.4603474205696116
-commencementYear: 2026
-description: 由 HIF Urugay, Alur 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9751
+  - -91.9553
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: HIF Paysandú eFuels Facility Alur bioethanol plant
+region: Central and South America
+partners:
+  - HIF Urugay, Alur
+type: 碳利用
+phase: ''
+announcedCapacity: 0.15
+estimatedCapacity: 0.15
+sector: 生物燃料
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2023'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Uruguay 的 Biofuels 领域。预计/实际投产年份为 2026.0。

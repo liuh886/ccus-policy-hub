@@ -1,26 +1,45 @@
 ---
-name: Pembina low carbon complex (AB)
-lang: zh
-country: '加拿大'
-location: Hydrogen or ammonia
-type: 全流程
-status: 计划中
+id: '791'
+country: Canada
+status: Planned
+reviewStatus: draft
 capacity: 1.575
-sector: Hydrogen or ammonia
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 53.9680
-  - -116.8376
-commencementYear: 2027
-description:
-  由 Pembina Pipeline Corporation, Marubeni 开发的 Hydrogen or ammonia 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7793
+  - -119.4254
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Pembina low carbon complex (AB)
+region: North America
+partners:
+  - Pembina Pipeline Corporation, Marubeni
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 1.575
+sector: 氢能与氨能
+fateOfCarbon: 永久封存
+hub: Alberta Carbon Grid (ALB)
+announcement: '2023'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2027.0。

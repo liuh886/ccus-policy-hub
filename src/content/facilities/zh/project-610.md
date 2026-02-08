@@ -1,23 +1,45 @@
 ---
-name: Suncor Edmonton Refinery - Fluid Catalytic Cracker Capture (ALB)
-lang: zh
-country: '加拿大'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Other fuel transformation
-storage_type: 地质封存
+id: '610'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 55.459282970354025
-  - -102.56034191055657
-commencementYear: null
-description: 由 Suncor, Svante 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7742
+  - -119.4038
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Suncor Edmonton Refinery - Fluid Catalytic Cracker Capture (ALB)
+region: North America
+partners:
+  - Suncor, Svante
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 其他能源转换
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other fuel transformation 领域。预计/实际投产年份为 未知。

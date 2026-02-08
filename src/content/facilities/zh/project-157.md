@@ -1,24 +1,49 @@
 ---
-name: FS Lucas do Rio Verde ethanol biorefinery complex
-lang: zh
-country: '巴西'
-location: Biofuels
-type: 全流程
-status: 计划中
+id: '157'
+country: Brazil
+status: Planned
+reviewStatus: draft
 capacity: 0.423
-sector: Biofuels
-storage_type: 咸水层
 coordinates:
-  - -13.104537307156196
-  - -54.081774592234765
-commencementYear: 2030
-description:
-  由 Summit Agricultural group, Tapajós Participações S.A, FS Bioenergy,
-  Schlumberger (Storage studies) 开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5621
+  - -100.9831
 relatedPolicies:
-  - br-bill-1425-2022
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: FS Lucas do Rio Verde ethanol biorefinery complex
+region: Central and South America
+partners:
+  - Summit Agricultural group, Tapajós Participações S.A, FS Bioenergy, Schlumberger (Storage studies)
+type: 全产业链
+phase: ''
+announcedCapacity: 0.423
+estimatedCapacity: 0.423
+sector: 生物燃料
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Brazil 的 Biofuels 领域。预计/实际投产年份为 2030.0。

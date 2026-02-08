@@ -1,21 +1,46 @@
 ---
-name: Nordbex Aker feasibility study
-lang: zh
-country: '瑞典'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '946'
+country: Sweden
+status: Planned
+reviewStatus: draft
 capacity: 0.2
-sector: Power and heat
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 54.0148
-  - -116.3968
-commencementYear: null
-description: 由 Aker Carbon Capture, Nordbex AB 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.2689
+  - 18.7017
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Nordbex Aker feasibility study
+region: Europe
+partners:
+  - Aker Carbon Capture, Nordbex AB
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.2
+estimatedCapacity: 0.2
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Sweden 的 Power and heat 领域。预计/实际投产年份为 未知。

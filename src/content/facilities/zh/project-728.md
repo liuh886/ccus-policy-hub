@@ -1,22 +1,48 @@
 ---
-name: ACCSION Aalborg Portland
-lang: zh
-country: '丹麦'
-location: Cement
-type: 捕集
-status: 计划中
+id: '728'
+country: Denmark
+status: Planned
+reviewStatus: draft
 capacity: 1.5
-sector: Cement
-storage_type: 咸水层
 coordinates:
-  - 53.03842782204008
-  - 12.920468592606866
-commencementYear: 2030
-description:
-  由 Aalborg Portland (Cementir Holding Group), Air Liquide 开发的 Cement 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.999
+  - -91.9679
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: ACCSION Aalborg Portland
+region: Europe
+partners:
+  - Aalborg Portland (Cementir Holding Group), Air Liquide
+type: 碳捕集
+phase: ''
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 水泥行业
+fateOfCarbon: 永久封存
+hub: Norne carbon storage hub
+announcement: '2021'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Denmark 的 Cement 领域。预计/实际投产年份为 2030.0。

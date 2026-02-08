@@ -1,22 +1,45 @@
 ---
-name: Carbon Fit four 22.000 cbm LCO2 carriers
-lang: zh
-country: '未知'
-location: Transport
-type: Transport
-status: 计划中
-capacity: 0.0
-sector: Transport
-storage_type: 地质封存
+id: '1178'
+country: Other
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 21.3640936629874
-  - 3.7808728021725955
-commencementYear: 2026
-description:
-  由 Hyundai Mipo Dockyard, Carbon Fit, Capital Gas, ERMA FIRST, Babcock
-  开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.759
+  - -119.3918
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Carbon Fit four 22.000 cbm LCO2 carriers
+region: Unknown
+partners:
+  - Hyundai Mipo Dockyard, Carbon Fit, Capital Gas, ERMA FIRST, Babcock
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 交通运输
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2024'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Unknown 的 Transport 领域。预计/实际投产年份为 2026.0。

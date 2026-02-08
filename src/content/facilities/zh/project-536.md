@@ -1,22 +1,45 @@
 ---
-name: Removr Carbfix Polar plant phase 1
-lang: zh
-country: '冰岛'
-location: DAC
-type: 全流程
-status: 计划中
+id: '536'
+country: Iceland
+status: Planned
+reviewStatus: draft
 capacity: 0.002
-sector: DAC
-storage_type: 咸水层
 coordinates:
-  - 67.08666495751882
-  - -19.6918738456909
-commencementYear: 2026
-description:
-  由 Removr (Greencap 40%, Vanir Green Industries 60%), Carbfix 开发的 DAC
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9795
+  - -91.9644
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Removr Carbfix Polar plant phase 1
+region: Europe
+partners:
+  - Removr (Greencap 40%, Vanir Green Industries 60%), Carbfix
+type: 全产业链
+phase: '1'
+announcedCapacity: 0.002
+estimatedCapacity: 0.002
+sector: 空气直接捕集 (DAC)
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2022'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Iceland 的 DAC 领域。预计/实际投产年份为 2026.0。

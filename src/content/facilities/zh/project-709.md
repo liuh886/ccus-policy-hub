@@ -1,27 +1,47 @@
 ---
-name: Haynesville Shale natural gas (LA)
-lang: zh
-country: '美国'
-location: Natural gas processing/LNG
-type: 捕集
-status: 建设中
-capacity: 2.0
-sector: Natural gas processing/LNG
-storage_type: 咸水层
-precision: approximate
+id: '709'
+country: United States
+status: Under construction
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 31.0545
-  - -92.3180
-commencementYear: 2025
-description:
-  由 CapturePoint Solutions, Energy transfer 开发的 Natural gas processing/LNG
-  行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9833
+  - -91.9781
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Haynesville Shale natural gas (LA)
+region: North America
+partners:
+  - CapturePoint Solutions, Energy transfer
+type: 碳捕集
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: Central Louisiana Regional Carbon Storage (CENLA) Hub (LA)
+announcement: '2022'
+fid: '2022'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2025.0。

@@ -1,28 +1,46 @@
 ---
-name: Coastal Bend Offshore CO2 Storage (TX)
-lang: zh
-country: '美国'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 0.0
-sector: Storage
-storage_type: 咸水层
-precision: approximate
+id: '712'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 31.0270
-  - -99.9763
-commencementYear: null
-description:
-  由 Port of Corpus Christi, 1845 Carbon Storage LLC, Strategic Sequestration
-  Development LLC, University of Texas Bureau of Economic Geology’s Gulf Coast Carbon
-  Center 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 31.9484
+  - -99.8951
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: "Coastal Bend Offshore CO2\_Storage (TX)"
+region: North America
+partners:
+  - Port of Corpus Christi, 1845 Carbon Storage LLC, Strategic Sequestration Development LLC, University of Texas Bureau of Economic Geology’s Gulf Coast Carbon Center
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Corpus Christi offshore storage (TX)
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Storage 领域。预计/实际投产年份为 未知。

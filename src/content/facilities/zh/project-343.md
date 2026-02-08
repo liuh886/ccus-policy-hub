@@ -1,24 +1,45 @@
 ---
-name: PYCASSO hub phase 1 - eastern and western pipeline
-lang: zh
-country: '法国'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 1.0
-sector: T&S
-storage_type: 咸水层
+id: '343'
+country: France
+status: Planned
+reviewStatus: draft
+capacity: 1
 coordinates:
-  - 46.49105926568011
-  - -1.82568591401931
-commencementYear: 2030
-description:
-  由 Terega, Pole Avenia, Agglo Pau, Holcim Group, Université de Pau, BGRM,
-  IFPEN, Schlumberger, Repsol, CNAM, geostock, geopetrol 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5551
+  - -101.0036
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: PYCASSO hub phase 1 - eastern and western pipeline
+region: Europe
+partners:
+  - Terega, Pole Avenia, Agglo Pau, Holcim Group, Université de Pau, BGRM, IFPEN, Schlumberger, Repsol, CNAM, geostock, geopetrol
+type: 运输与封存
+phase: '1'
+announcedCapacity: 1
+estimatedCapacity: 1
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: PYCASSO hub
+announcement: '2021'
+fid: '2025'
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 T&S 领域。预计/实际投产年份为 2030.0。

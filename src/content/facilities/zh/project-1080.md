@@ -1,20 +1,45 @@
 ---
-name: HOFOR Amagerværket
-lang: zh
-country: '丹麦'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '1080'
+country: Denmark
+status: Planned
+reviewStatus: draft
 capacity: 0.9
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 53.78362384512417
-  - 9.066839082394699
-commencementYear: 2030
-description: 由 Hofor 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 56.2768
+  - 9.5098
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: HOFOR Amagerværket
+region: Europe
+partners:
+  - Hofor
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.9
+estimatedCapacity: 0.9
+sector: 电力与供热
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Denmark 的 Power and heat 领域。预计/实际投产年份为 2030.0。

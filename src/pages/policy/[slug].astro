@@ -1,130 +1,389 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import Citation from '../../components/Citation.astro';
+import RadarChart from '../../components/RadarChart.astro';
+import i18nDict from '../../data/i18n_dictionary.json';
 
 export async function getStaticPaths() {
   const policies = await getCollection('policies_zh');
-  return policies.map((entry) => {
-    return { params: { slug: entry.id }, props: { entry } };
+  return policies.map(entry => {
+    const slug = entry.id.replace(/^zh\//, '');
+    return { params: { slug }, props: { entry } };
   });
 }
 
+const inferredLang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, country, year, category, source, url, relatedFacilities } =
-  entry.data;
+const { 
+  title, country, year, category, source, url, 
+  interpretation, analysis, sectors = [], status, legalWeight,
+  impactAnalysis, evolution, implementationDetails, reviewStatus
+} = entry.data;
 
-const pureSlug = entry.id.replace(/^zh\//, '');
+const allPolicies = await getCollection('policies_zh');
+const isVerified = reviewStatus === 'verified';
 
-// 查找对应的英文版本
-const policiesEn = await getCollection('policies_en');
-const hasEnglish = policiesEn.some((p) => p.id === entry.id);
+// Country Aggregation Logic
+const normalizeCountry = (c: string) => i18nDict.countries[c as keyof typeof i18nDict.countries] || c;
+const targetCountry = normalizeCountry(country);
+
+const countryPolicies = allPolicies.filter(p => normalizeCountry(p.data.country) === targetCountry);
+const countryFacilities = (await getCollection('facilities_zh')).filter(f => normalizeCountry(f.data.country) === targetCountry);
+
+const aggregateAnalysis = {
+  incentive: Math.round(countryPolicies.reduce((acc, p) => acc + (p.data.analysis?.incentive?.score || 0), 0) / countryPolicies.length),
+  statutory: Math.round(countryPolicies.reduce((acc, p) => acc + (p.data.analysis?.statutory?.score || 0), 0) / countryPolicies.length),
+  market: Math.round(countryPolicies.reduce((acc, p) => acc + (p.data.analysis?.market?.score || 0), 0) / countryPolicies.length),
+  strategic: Math.round(countryPolicies.reduce((acc, p) => acc + (p.data.analysis?.strategic?.score || 0), 0) / countryPolicies.length),
+  mrv: Math.round(countryPolicies.reduce((acc, p) => acc + (p.data.analysis?.mrv?.score || 0), 0) / countryPolicies.length)
+};
+
+const stats = {
+  policies: countryPolicies.length,
+  facilities: countryFacilities.length,
+  operational: countryFacilities.filter(f => f.data.status === 'Operational' || f.data.status === '运行中').reduce((acc, f) => acc + (f.data.capacity || 0), 0),
+  construction: countryFacilities.filter(f => f.data.status === 'Under construction' || f.data.status === '建设中').reduce((acc, f) => acc + (f.data.capacity || 0), 0),
+  planned: countryFacilities.filter(f => f.data.status === 'Planned' || f.data.status === '计划中').reduce((acc, f) => acc + (f.data.capacity || 0), 0)
+};
+
+const dimensionConfig = [
+  { key: 'incentive', icon: 'I', color: 'bg-emerald-500', text: 'emerald-500' },
+  { key: 'statutory', icon: 'R', color: 'bg-blue-500', text: 'blue-500' },
+  { key: 'market', icon: 'M', color: 'bg-amber-500', text: 'amber-500' },
+  { key: 'strategic', icon: 'S', color: 'bg-purple-500', text: 'purple-500' },
+  { key: 'mrv', icon: 'T', color: 'bg-slate-500', text: 'slate-500' }
+];
+
+const activeDimensions = dimensionConfig.filter(d => (analysis?.[d.key as keyof typeof analysis]?.score || 0) >= 50);
+
+// Resolved Evolution Data
+const supersededPolicies = evolution?.supersedes 
+  ? allPolicies.filter(p => evolution.supersedes.includes(p.id.replace(/^zh\//, '')))
+  : [];
+
+const successorPolicy = evolution?.supersededBy
+  ? allPolicies.find(p => p.id.replace(/^zh\//, '') === evolution.supersededBy)
+  : null;
+
+const allFacilities = await getCollection('facilities_zh');
+const relatedFacilities = allFacilities.filter(f => 
+  f.data.relatedPolicies?.includes(entry.id.replace(/^zh\//, ''))
+);
+
+const dimensionInfo = i18nDict.ui.dimensions;
+
+const chartData = {
+  incentive: analysis?.incentive?.score || 0,
+  statutory: analysis?.statutory?.score || 0,
+  market: analysis?.market?.score || 0,
+  strategic: analysis?.strategic?.score || 0,
+  mrv: analysis?.mrv?.score || 0
+};
+
+const chartDetails = {
+  incentive: analysis?.incentive?.evidence,
+  statutory: analysis?.statutory?.evidence,
+  market: analysis?.market?.evidence,
+  strategic: analysis?.strategic?.evidence,
+  mrv: analysis?.mrv?.evidence
+};
 ---
 
-<Layout title={title}>
-  <div class="max-w-4xl mx-auto py-8 px-4" data-pagefind-body>
-    <!-- Pagefind Filters -->
-    <div class="hidden" data-pagefind-filter="type:政策 Policy"></div>
-    <div class="hidden" data-pagefind-filter={`country:${country}`}></div>
-    <div class="hidden" data-pagefind-filter={`category:${category}`}></div>
+<Layout title={`${title} | CCUS Policy Hub`}>
+  <div class="bg-white dark:bg-slate-950 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
+    
+    <main class="max-w-7xl mx-auto px-6 py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        
+        <!-- Left: Core Content -->
+        <div class="lg:col-span-8">
+          <div class="mb-12">
+            <div class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest">
+              <a href="/ccus-policy-hub/policy" class="hover:text-slate-900 dark:hover:text-white transition-colors">Database</a>
+              <span class="text-slate-200 dark:text-slate-800">/</span>
+              <span>{country}</span>
+              <span class="text-slate-200 dark:text-slate-800">/</span>
+              <span>{year}</span>
+            </div>
 
-    <nav
-      class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
-    >
-      <div
-        class="flex items-center gap-2 text-xs text-slate-500 uppercase tracking-wider"
-      >
-        <a href="/ccus-policy-hub/" class="hover:text-blue-600">首页</a>
-        <span>/</span>
-        <a href="/ccus-policy-hub/policy/" class="hover:text-blue-600"
-          >政策数据库</a
-        >
-        <span>/</span>
-        <span class="text-slate-400">{title}</span>
-      </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-8">
+              {title}
+            </h1>
 
-      {
-        hasEnglish && (
-          <a
-            href={`/ccus-policy-hub/en/policy/${pureSlug}/`}
-            class="flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full transition-all"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <>
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                <path d="M2 12h20" />
-              </>
-            </svg>
-            View English Version
-          </a>
-        )
-      }
-    </nav>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase rounded">
+                {category}
+              </span>
+              <span class="px-3 py-1 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase rounded">
+                {status}
+              </span>
+              {isVerified && (
+                <span class="px-3 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-black uppercase rounded flex items-center gap-1.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Verified
+                </span>
+              )}
+            </div>
+          </div>
 
-    <header class="mb-10 border-b dark:border-slate-800 pb-8">
-      <div class="flex items-center gap-4 mb-4">
-        <span
-          class="bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded"
-        >
-          {category}
-        </span>
-        <span class="text-slate-400 text-sm font-bold">{country} • {year}</span>
-      </div>
-      <h1
-        class="text-4xl font-black mb-6 text-slate-900 dark:text-white leading-tight"
-      >
-        {title}
-      </h1>
+          {interpretation && (
+            <div class="mb-12">
+              <p class="text-2xl text-slate-600 dark:text-slate-300 leading-relaxed font-serif italic border-l-4 border-slate-200 dark:border-slate-800 pl-8">
+                "{interpretation}"
+              </p>
+            </div>
+          )}
 
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800"
-      >
-        <div>
-          <span
-            class="text-[10px] font-black uppercase text-slate-400 block mb-1"
-            >发布机构 SOURCE</span
-          >
-          <span class="font-bold dark:text-slate-300">{source || '未知'}</span>
+          <article class="prose prose-slate dark:prose-invert max-w-none 
+            prose-headings:text-slate-900 dark:prose-headings:text-white 
+            prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-600 dark:prose-p:text-slate-400
+            prose-strong:text-slate-900 dark:prose-strong:text-white mb-20">
+            <Content />
+          </article>
+
+          <!-- National Governance System Card -->
+          <section class="bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] p-10 border border-slate-100 dark:border-slate-800 mb-12">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+              <div class="w-full md:w-1/2">
+                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-2">National Governance Context</h2>
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">{country} Overview</h3>
+                
+                <div class="grid grid-cols-2 gap-6">
+                  <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Policies</p>
+                    <p class="text-2xl font-black text-slate-900 dark:text-white">{stats.policies}</p>
+                  </div>
+                  <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Projects</p>
+                    <p class="text-2xl font-black text-slate-900 dark:text-white">{stats.facilities}</p>
+                  </div>
+                  <div class="col-span-2 space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <div class="flex justify-between items-center">
+                      <span class="text-[10px] font-bold text-slate-500 uppercase">Operational</span>
+                      <span class="text-sm font-black text-emerald-600">{stats.operational.toFixed(1)} Mtpa</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-[10px] font-bold text-slate-500 uppercase">Under Construction</span>
+                      <span class="text-sm font-black text-amber-600">{stats.construction.toFixed(1)} Mtpa</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-[10px] font-bold text-slate-500 uppercase">Planned</span>
+                      <span class="text-sm font-black text-blue-600">{stats.planned.toFixed(1)} Mtpa</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="w-full md:w-1/2 h-64">
+                <RadarChart data={aggregateAnalysis} id="countryRadar" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Integrated Policy Network (Lineage + Peer Context) -->
+          <section class="mb-12">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">Related Policy Network</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* 1. Lineage Card */}
+              {(supersededPolicies.length > 0 || successorPolicy) && (
+                <div class="p-8 bg-blue-50/50 dark:bg-blue-900/10 rounded-3xl border border-blue-100 dark:border-blue-900/30">
+                  <h3 class="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-6 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2v10"/><path d="m16 8-4 4-4-4"/></svg>
+                    Evolutionary Lineage
+                  </h3>
+                  <div class="space-y-6">
+                    {supersededPolicies.map(p => (
+                      <a href={`/ccus-policy-hub/policy/${p.id.replace(/^zh\//, '')}/`} class="group block">
+                        <div class="text-[9px] font-black text-slate-400 uppercase mb-1">{p.data.year} - Superseded</div>
+                        <p class="text-xs font-bold text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-1">{p.data.title}</p>
+                      </a>
+                    ))}
+                    <div class="relative pl-4 border-l-2 border-blue-500 py-1">
+                      <div class="text-[9px] font-black text-blue-600 uppercase mb-1">{year} - Active Context</div>
+                      <p class="text-xs font-black text-slate-900 dark:text-white">Current Document</p>
+                    </div>
+                    {successorPolicy && (
+                      <a href={`/ccus-policy-hub/policy/${successorPolicy.id.replace(/^zh\//, '')}/`} class="group block">
+                        <div class="text-[9px] font-black text-emerald-500 uppercase mb-1">{successorPolicy.data.year} - Successor</div>
+                        <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-1">{successorPolicy.data.title}</p>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* 2. Peer Frameworks Card */}
+              {countryPolicies.length > 1 && (
+                <div class="p-8 bg-slate-50/50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800">
+                  <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5L7 7.5a4.8 4.8 0 0 0-3.5-1H2"/><path d="M9 22v-4a4.8 4.8 0 0 1 1-3.5l7-7a4.8 4.8 0 0 1 3.5-1H22"/><path d="M15 2v4a4.8 4.8 0 0 1-1 3.5L7 16.5a4.8 4.8 0 0 1-3.5 1H2"/></svg>
+                    Peer Frameworks
+                  </h3>
+                  <div class="space-y-4">
+                    {countryPolicies.filter(p => p.id !== entry.id).slice(0, 3).map(p => (
+                      <a href={`/ccus-policy-hub/policy/${p.id.replace(/^zh\//, '')}/`} class="group block">
+                        <div class="flex justify-between items-start mb-1">
+                          <span class="text-[10px] font-black text-slate-400 uppercase">{p.data.year}</span>
+                          <span class="text-[9px] font-bold text-slate-400 uppercase opacity-60">{p.data.category}</span>
+                        </div>
+                        <p class="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">{p.data.title}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+
+          <!-- Related Assets -->
+          {relatedFacilities.length > 0 && (
+            <section class="mt-20 pt-12 border-t border-slate-100 dark:border-slate-900">
+              <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">Directly Linked Assets</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedFacilities.map(f => (
+                  <a href={`/ccus-policy-hub/facilities/${f.id.replace(/^zh\//, '')}/`} class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group">
+                    <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">{f.data.name}</h3>
+                    <p class="text-xs text-slate-500 uppercase font-black tracking-tighter">{f.data.type} • {f.data.capacity} Mtpa</p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
-        <div>
-          <span
-            class="text-[10px] font-black uppercase text-slate-400 block mb-1"
-            >官方链接 URL</span
-          >
-          {
-            url ? (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-blue-600 font-bold hover:underline"
-              >
-                查看原文 &rarr;
-              </a>
-            ) : (
-              <span class="text-slate-400">暂无链接</span>
-            )
-          }
-        </div>
+
+        <!-- Right: Sidebar -->
+        <aside class="lg:col-span-4 space-y-12">
+          
+          <!-- Compact FSRTM 5.0 Classification -->
+          <section class="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between mb-8">
+              <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Policy Classification</h2>
+              <span class="text-[10px] font-mono text-slate-400">FSRTM 5.0</span>
+            </div>
+            
+            <div class="space-y-4 mb-10">
+              {activeDimensions.map((d) => {
+                const dim = analysis?.[d.key as keyof typeof analysis];
+                const info = dimensionInfo[d.key as keyof typeof dimensionInfo];
+                return (
+                  <div class="group cursor-default">
+                    <div class="flex items-center gap-3">
+                      <div class={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-black text-white ${d.color} flex-shrink-0 shadow-sm`}>
+                        {d.icon}
+                      </div>
+                      <div class="flex-1">
+                        <div class="flex justify-between items-baseline border-b border-slate-200/50 dark:border-slate-800 pb-1">
+                          <h3 class="text-[10px] font-black uppercase text-slate-500 tracking-tighter" title={info.desc[inferredLang]}>
+                            {info.label[inferredLang]}
+                          </h3>
+                          <span class="font-mono text-xs font-black text-slate-900 dark:text-white opacity-40 group-hover:opacity-100 transition-opacity">{dim.score}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100 group-hover:pt-3 transition-all duration-500 ease-in-out pl-9 border-l border-slate-200 dark:border-slate-800 ml-3">
+                      <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                        {dim.evidence}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {impactAnalysis && (
+              <div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+                <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Strategic Impact</h3>
+                <div class="space-y-3">
+                  {Object.entries(impactAnalysis).filter(([_, val]) => !!val).map(([key, val]) => (
+                    <div class="flex gap-3">
+                      <div class="w-1 h-1 rounded-full bg-blue-400 mt-1.5 flex-shrink-0"></div>
+                      <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <span class="font-bold uppercase text-[9px] text-slate-400 mr-1">{key}:</span>
+                        {val}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </section>
+
+          <!-- Rich Metadata Section -->
+          <section class="p-8 border border-slate-100 dark:border-slate-900 rounded-3xl space-y-8 bg-white dark:bg-slate-950 shadow-sm">
+            <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Technical Metadata</h2>
+            
+            <div class="space-y-6 text-sm">
+              <div>
+                <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Lead Institution</span>
+                <span class="font-bold text-slate-900 dark:text-white">{source || 'N/A'}</span>
+              </div>
+
+              {entry.data.pubDate && (
+                <div>
+                  <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Release Date</span>
+                  <span class="font-mono font-bold text-slate-900 dark:text-white">
+                    {(() => {
+                      try {
+                        const d = new Date(entry.data.pubDate);
+                        return isNaN(d.getTime()) ? entry.data.pubDate : d.toISOString().split('T')[0];
+                      } catch {
+                        return entry.data.pubDate;
+                      }
+                    })()}
+                  </span>
+                </div>
+              )}
+
+              {sectors.length > 0 && (
+                <div>
+                  <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Target Sectors</span>
+                  <div class="flex flex-wrap gap-1 mt-1">
+                    {sectors.map(s => (
+                      <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-900 text-[10px] font-bold text-slate-600 dark:text-slate-400 rounded border border-slate-100 dark:border-slate-800">{s}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Legal Weight</span>
+                <span class="font-bold text-blue-600">{legalWeight || 'Standard'}</span>
+              </div>
+              
+              {implementationDetails?.authority && (
+                <div>
+                  <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Competent Authority</span>
+                  <span class="font-bold text-slate-900 dark:text-white">{implementationDetails.authority}</span>
+                </div>
+              )}
+
+              {implementationDetails?.fundingScale && (
+                <div class="p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-xl border border-emerald-100 dark:border-emerald-900/30">
+                  <span class="block text-[9px] font-black text-emerald-600/60 uppercase mb-1">Incentive Scale</span>
+                  <span class="font-black text-emerald-600 text-lg leading-none">{implementationDetails.fundingScale}</span>
+                </div>
+              )}
+
+              {url && (
+                <div class="pt-4">
+                  <a href={url} target="_blank" class="flex items-center justify-between p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition-all group/doc">
+                    Original Document
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="group-hover/doc:translate-x-1 group-hover/doc:-translate-y-1 transition-transform"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div class="pt-6 border-t border-slate-50 dark:border-slate-900 flex justify-between items-center text-[9px] font-black text-slate-400 uppercase">
+              <span>Last Intelligence Audit</span>
+              <span class="text-blue-500 font-mono">{entry.data.provenance?.lastAuditDate || '2026-02-08'}</span>
+            </div>
+          </section>
+
+        </aside>
+
       </div>
-    </header>
-
-    <article
-      class="prose prose-slate dark:prose-invert max-w-none mb-12 prose-headings:font-black prose-strong:text-blue-600"
-    >
-      <Content />
-    </article>
-
-    <Citation title={title} country={country} year={year} url={url} />
+    </main>
   </div>
 </Layout>

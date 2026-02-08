@@ -1,20 +1,45 @@
 ---
-name: Petronas Kuantan hub
-lang: zh
-country: '马来西亚'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 0.0
-sector: T&S
-storage_type: 地质封存
+id: '1242'
+country: Malaysia
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 0.6801839707527493
-  - 102.1598908891435
-commencementYear: 2029
-description: 由 Petronas 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 4.1943
+  - 101.963
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Petronas Kuantan hub
+region: Other Asia Pacific
+partners:
+  - Petronas
+type: 运输与封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 运输与封存
+fateOfCarbon: 未知/未指定
+hub: Petronas Kuantan hub
+announcement: '2024'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Malaysia 的 T&S 领域。预计/实际投产年份为 2029.0。

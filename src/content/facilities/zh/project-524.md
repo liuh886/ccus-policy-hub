@@ -1,23 +1,46 @@
 ---
-name: Santos Bonaparte Basin storage
-lang: zh
-country: '澳大利亚'
-location: Storage
-type: 封存
-status: 计划中
-capacity: 0.0
-sector: Storage
-storage_type: 咸水层
-precision: approximate
+id: '524'
+country: Australia
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 52.8558
-  - -106.2764
-commencementYear: null
-description:
-  由 Santos Offshore Pty Ltd (40% and Operator), Chevron Australia Pty Ltd
-  (30%), SK E&S (30%)  开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9827
+  - -91.946
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Santos Bonaparte Basin storage
+region: Australia and New Zealand
+partners:
+  - Santos Offshore Pty Ltd (40% and Operator), Chevron Australia Pty Ltd (30%), SK E&S (30%)
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 二氧化碳封存
+fateOfCarbon: 永久封存
+hub: Santos Bonaparte Basin storage
+announcement: '2022'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Storage 领域。预计/实际投产年份为 未知。

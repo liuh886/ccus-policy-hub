@@ -1,20 +1,45 @@
 ---
-name: WH2V therminal (Wilhelshaven green energy hub phase 1)
-lang: zh
-country: '欧洲多个国家'
-location: Transport
-type: Transport
-status: 计划中
-capacity: 10.0
-sector: Transport
-storage_type: 咸水层
+id: '678'
+country: European Union
+status: Planned
+reviewStatus: draft
+capacity: 10
 coordinates:
-  - 22.708432099283293
-  - 0.4010187794481528
-commencementYear: 2029
-description: 由 TES 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 45.2335
+  - 10.1843
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: WH2V therminal (Wilhelshaven green energy hub phase 1)
+region: Europe
+partners:
+  - TES
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 10
+estimatedCapacity: 10
+sector: 交通运输
+fateOfCarbon: 永久封存
+hub: German Carbon Grid
+announcement: '2022'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Multiple Europe 的 Transport 领域。预计/实际投产年份为 2029.0。

@@ -1,20 +1,46 @@
 ---
-name: Hyskies Vattenfall CHP Lanzatech
-lang: zh
-country: '瑞典'
-location: Power and heat
-type: CCU
-status: 计划中
+id: '564'
+country: Sweden
+status: Planned
+reviewStatus: draft
 capacity: 0.207
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 16.83105829026151
-  - -2.287555849363947
-commencementYear: 2028
-description: 由 Vattenfall, SAS, Lanzatech 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9772
+  - -91.9534
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Hyskies Vattenfall CHP Lanzatech
+region: Europe
+partners:
+  - Vattenfall, SAS, Lanzatech
+type: 碳利用
+phase: ''
+announcedCapacity: 0.207
+estimatedCapacity: 0.207
+sector: 电力与供热
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Sweden 的 Power and heat 领域。预计/实际投产年份为 2028.0。

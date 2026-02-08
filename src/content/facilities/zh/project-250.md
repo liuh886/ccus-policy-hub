@@ -1,25 +1,48 @@
 ---
-name: Labarge Shute Creek Gas Processing Plant 1.2 Mtpa expansion (WY)
-lang: zh
-country: '美国'
-location: Natural gas processing/LNG
-type: 全流程
-status: 建设中
-capacity: 1.0
-sector: Natural gas processing/LNG
-storage_type: 地质封存
-precision: approximate
+id: '250'
+country: United States
+status: Under construction
+reviewStatus: draft
+capacity: 1.2
 coordinates:
-  - 42.8646
-  - -107.1598
-commencementYear: 2025
-description: 由 ExxonMobil  开发的 Natural gas processing/LNG 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.963
+  - -91.9723
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Labarge Shute Creek Gas Processing Plant 1.2 Mtpa expansion (WY)
+region: North America
+partners:
+  - ExxonMobil
+type: 全产业链
+phase: ''
+announcedCapacity: 1.2
+estimatedCapacity: 1
+sector: 天然气加工/LNG
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: '2022'
+operation: '2025'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2025.0。

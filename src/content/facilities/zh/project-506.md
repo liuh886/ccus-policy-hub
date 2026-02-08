@@ -1,25 +1,50 @@
 ---
-name: Pathways Alliance (T&S) (ALB)
-lang: zh
-country: '加拿大'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 12.0
-sector: T&S
-storage_type: 咸水层
+id: '506'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 12
 coordinates:
-  - 56.25224231048193
-  - -109.8197644079387
-commencementYear: 2030
-description:
-  由 CNRL, Cenovus Energy, ConocoPhilips, Imperial, MEG Energy, Suncor (Pathway
-  Alliance) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.776
+  - -119.4297
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Pathways Alliance (T&S) (ALB)
+region: North America
+partners:
+  - CNRL, Cenovus Energy, ConocoPhilips, Imperial, MEG Energy, Suncor (Pathway Alliance)
+type: 运输与封存
+phase: ''
+announcedCapacity: 12
+estimatedCapacity: 12
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Pathways Alliance
+announcement: '2022'
+fid: '2025'
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+  - Link 6
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 T&S 领域。预计/实际投产年份为 2030.0。

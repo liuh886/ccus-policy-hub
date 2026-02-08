@@ -1,20 +1,46 @@
 ---
-name: CO2 Highway Europe (formerly known as Eluxys Equinor Belgium-Norway Trunk Line)
-lang: zh
-country: '法国-比利时-挪威'
-location: Transport
-type: Transport
-status: 计划中
-capacity: 18.0
-sector: Transport
-storage_type: 咸水层
+id: '1179'
+country: France
+status: Planned
+reviewStatus: draft
+capacity: 30
 coordinates:
-  - 21.258571249709192
-  - -2.4637007907959187
-commencementYear: null
-description: 由 Equinor, GRTgaz, Fluxys 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.4718
+  - 8.4524
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CO2 Highway Europe (formerly known as Eluxys Equinor Belgium-Norway Trunk Line)
+region: Europe
+partners:
+  - Equinor, GRTgaz, Fluxys
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 30
+estimatedCapacity: 18
+sector: 交通运输
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2024'
+fid: '2026'
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France-Belgium-Norway 的 Transport 领域。预计/实际投产年份为 未知。

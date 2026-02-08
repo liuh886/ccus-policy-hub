@@ -1,27 +1,47 @@
 ---
-name: Redfield Energy biorefinery (ND)
-lang: zh
-country: '美国'
-location: Biofuels
-type: 捕集
-status: 计划中
+id: '352'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.172
-sector: Biofuels
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 47.5456
-  - -100.6290
-commencementYear: 2028
-description:
-  由 Red River BioRefinery, Summit Carbon Solutions 开发的 Biofuels 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5587
+  - -101.0103
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Redfield Energy biorefinery (ND)
+region: North America
+partners:
+  - Red River BioRefinery, Summit Carbon Solutions
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.17
+estimatedCapacity: 0.172
+sector: 生物燃料
+fateOfCarbon: 永久封存
+hub: Midwest carbon express
+announcement: '2021'
+fid: '2026'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Biofuels 领域。预计/实际投产年份为 2028.0。

@@ -1,24 +1,47 @@
 ---
-name: Arthit offshore gas field CCS
-lang: zh
-country: '泰国'
-location: Natural gas processing/LNG
-type: 全流程
-status: 计划中
-capacity: 0.0
-sector: Natural gas processing/LNG
-storage_type: 咸水层
+id: '36'
+country: Thailand
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 12.905076614673177
-  - 96.48204256461666
-commencementYear: 2027
-description:
-  由 PTTEP, Honeywell (tech and FEED) 开发的 Natural gas processing/LNG 行业
-  CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 15.8517
+  - 100.9724
 relatedPolicies:
-  - th-boi-incentives
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Arthit offshore gas field CCS
+region: Other Asia Pacific
+partners:
+  - PTTEP, Honeywell (tech and FEED)
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 天然气加工/LNG
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Thailand 的 Natural gas processing/LNG 领域。预计/实际投产年份为 2027.0。

@@ -1,22 +1,45 @@
 ---
-name: BEA Alizay
-lang: zh
-country: '法国'
-location: Power and heat
-type: CCU
-status: 计划中
+id: '1245'
+country: France
+status: Planned
+reviewStatus: draft
 capacity: 0.3
-sector: Power and heat
-storage_type: 地质封存
 coordinates:
-  - 49.16787479946289
-  - -1.9533529117172428
-commencementYear: 2029
-description: 由 Biomasse Energy d'Alizay, Verso Energy 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 46.2056
+  - 2.2031
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: BEA Alizay
+region: Europe
+partners:
+  - Biomasse Energy d'Alizay, Verso Energy
+type: 碳利用
+phase: ''
+announcedCapacity: 0.3
+estimatedCapacity: 0.3
+sector: 电力与供热
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2024'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 Power and heat 领域。预计/实际投产年份为 2029.0。

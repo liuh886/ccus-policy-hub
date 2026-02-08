@@ -1,27 +1,46 @@
 ---
-name: Cypress DAC Hub (LA)
-lang: zh
-country: '美国'
-location: DAC
-type: 捕集
-status: 计划中
+id: '747'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.683
-sector: DAC
-storage_type: 咸水层
-precision: approximate
 coordinates:
-  - 31.3280
-  - -92.2767
-commencementYear: 2027
-description:
-  由 Battelle, Climeworks, Heirloom Carbon, CapturePoint 开发的 DAC 行业 CCUS
-  项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.961
+  - -91.9733
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Cypress DAC Hub (LA)
+region: North America
+partners:
+  - Battelle, Climeworks, Heirloom Carbon, CapturePoint
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.683
+estimatedCapacity: 0.683
+sector: 空气直接捕集 (DAC)
+fateOfCarbon: 永久封存
+hub: Central Louisiana Regional Carbon Storage (CENLA) Hub (LA)
+announcement: '2023'
+fid: ''
+operation: '2027'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 DAC 领域。预计/实际投产年份为 2027.0。

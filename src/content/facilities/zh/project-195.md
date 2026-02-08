@@ -1,20 +1,48 @@
 ---
-name: H2Perth Woodside
-lang: zh
-country: '澳大利亚'
-location: Hydrogen or ammonia
-type: 全流程
-status: 计划中
-capacity: 0.0
-sector: Hydrogen or ammonia
-storage_type: 地质封存
+id: '195'
+country: Australia
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - -23.99731835675801
-  - 131.5531608099581
-commencementYear: 2026
-description: 由 Woodside, McDermott (pre-FEED) 开发的 Hydrogen or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9957
+  - -91.9466
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: H2Perth Woodside
+region: Australia and New Zealand
+partners:
+  - Woodside, McDermott (pre-FEED)
+type: 全产业链
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 氢能与氨能
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: '2025'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Australia 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2026.0。

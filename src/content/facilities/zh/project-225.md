@@ -1,20 +1,44 @@
 ---
-name: Ineos Antwerp CCS
-lang: zh
-country: '比利时'
-location: Chemicals
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Chemicals
-storage_type: 地质封存
+id: '225'
+country: Belgium
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 49.45818341211211
-  - 7.3513514558841475
-commencementYear: 2030
-description: 由 INEOS 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 50.4582
+  - 4.6292
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ineos Antwerp CCS
+region: Europe
+partners:
+  - INEOS
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 化工行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: '2025'
+operation: '2030'
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Belgium 的 Chemicals 领域。预计/实际投产年份为 2030.0。

@@ -1,22 +1,48 @@
 ---
-name: Carbon2Business Laegerdorf
-lang: zh
-country: '德国'
-location: Cement
-type: CCU
-status: 计划中
+id: '207'
+country: Germany
+status: Planned
+reviewStatus: draft
 capacity: 1.2
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 50.629940409581366
-  - 13.956683084539552
-commencementYear: 2029
-description: 由 Holcim Group, Hyscale100 consortium 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9986
+  - -91.962
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Carbon2Business Laegerdorf
+region: Europe
+partners:
+  - Holcim Group, Hyscale100 consortium
+type: 碳利用
+phase: ''
+announcedCapacity: 1.2
+estimatedCapacity: 1.2
+sector: 水泥行业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2020'
+fid: ''
+operation: '2029'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Cement 领域。预计/实际投产年份为 2029.0。

@@ -1,0 +1,46 @@
+---
+id: '681'
+country: Netherlands
+status: Planned
+reviewStatus: draft
+capacity: 7
+coordinates:
+  - 30.9775
+  - -91.9704
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: RWE Amer power plant (BECCUS project)
+region: Europe
+partners:
+  - RWE
+type: Capture
+phase: ''
+announcedCapacity: 7
+estimatedCapacity: 7
+sector: Power and heat
+fateOfCarbon: Dedicated storage
+hub: Noorkaap
+announcement: '2022'
+fid: ''
+operation: '2032'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: en
+---
+
+

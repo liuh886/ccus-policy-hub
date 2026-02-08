@@ -1,23 +1,45 @@
 ---
-name: Equinor Smeaheia storage phase 2
-lang: zh
-country: '挪威'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 24.0
-sector: T&S
-storage_type: 咸水层
+id: '676'
+country: Norway
+status: Planned
+reviewStatus: draft
+capacity: 24
 coordinates:
-  - 63.15187989398551
-  - 11.880595426643886
-commencementYear: 2035
-description: 由 Equinor 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 60.4526
+  - 8.4526
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Equinor Smeaheia storage phase 2
+region: Europe
+partners:
+  - Equinor
+type: 运输与封存
+phase: '2'
+announcedCapacity: 24
+estimatedCapacity: 24
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Wilhelmshaven/Smeahia
+announcement: '2022'
+fid: ''
+operation: '2035'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 T&S 领域。预计/实际投产年份为 2035.0。

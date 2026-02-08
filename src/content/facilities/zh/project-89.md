@@ -1,20 +1,48 @@
 ---
-name: Amager Bakke/Amager Resource Centre (ARC)
-lang: zh
-country: '丹麦'
-location: Power and heat
-type: 捕集
-status: 计划中
+id: '89'
+country: Denmark
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Power and heat
-storage_type: 咸水层
 coordinates:
-  - 57.53109308684061
-  - 8.92613858027449
-commencementYear: 2026
-description: 由 ARC, Babcock & Wilcox, Copenhagen Port 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 56.267
+  - 9.4812
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Amager Bakke/Amager Resource Centre (ARC)
+region: Europe
+partners:
+  - ARC, Babcock & Wilcox, Copenhagen Port
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2020'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Denmark 的 Power and heat 领域。预计/实际投产年份为 2026.0。

@@ -1,26 +1,47 @@
 ---
-name: CNPC China Northwest hub phase 2 (Xinjiang)
-lang: zh
-country: 中国
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 2.0
-sector: T&S
-storage_type: EOR
-precision: approximate
+id: '97'
+country: China
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 43.8602
-  - 87.6477
-commencementYear: 2030
-description: 由 CNPC, OGCI 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 41.1177
+  - 85.2791
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CNPC China Northwest hub phase 2 (Xinjiang)
+region: Other Asia Pacific
+partners:
+  - CNPC, OGCI
+type: 运输与封存
+phase: '2'
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 运输与封存
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: CNPC China Northwest hub (Xinjiang)
+announcement: '2019'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 T&S 领域。预计/实际投产年份为 2030.0。

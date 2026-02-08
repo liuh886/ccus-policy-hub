@@ -1,26 +1,46 @@
 ---
-name: Yulin Coal Chemical CCUS (Shaanxi) Phase 2
-lang: zh
-country: 中国
-location: Other fuel transformation
-type: 全流程
-status: 计划中
+id: '930'
+country: China
+status: Planned
+reviewStatus: draft
 capacity: 2.6
-sector: Other fuel transformation
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 36.6163
-  - 109.5274
-commencementYear: 2050
-description: 由 Yanchang Petroleum 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7757
+  - -119.3986
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Yulin Coal Chemical CCUS (Shaanxi) Phase 2
+region: Other Asia Pacific
+partners:
+  - Yanchang Petroleum
+type: 全产业链
+phase: '2'
+announcedCapacity: 2.6
+estimatedCapacity: 2.6
+sector: 其他能源转换
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Yanchang oilfield
+announcement: '2022'
+fid: ''
+operation: '2050'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Other fuel transformation 领域。预计/实际投产年份为 2050.0。

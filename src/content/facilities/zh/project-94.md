@@ -1,23 +1,46 @@
 ---
-name: Enhance Clive Sequestration Facility (ACTL) (ALB)
-lang: zh
-country: '加拿大'
-location: Storage
-type: 封存
-status: 运行中
+id: '94'
+country: Canada
+status: Operational
+reviewStatus: draft
 capacity: 1.5
-sector: Storage
-storage_type: EOR
 coordinates:
-  - 56.90202502676374
-  - -104.03989424304376
-commencementYear: 2020
-description: 由 Enhance Energy 开发的 Storage 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7882
+  - -119.3936
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Enhance Clive Sequestration Facility (ACTL) (ALB)
+region: North America
+partners:
+  - Enhance Energy
+type: 二氧化碳封存
+phase: ''
+announcedCapacity: 1.5
+estimatedCapacity: 1.5
+sector: 二氧化碳封存
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: Alberta Carbon Trunk Line (ACTL)/Enhance Clive Sequestration Facility (ALB)
+announcement: '2011'
+fid: '2018'
+operation: '2020'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Storage 领域。预计/实际投产年份为 2020.0。

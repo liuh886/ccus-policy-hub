@@ -1,26 +1,47 @@
 ---
-name: CRP Haifeng Project (Guangdong)
-lang: zh
-country: 中国
-location: Power and heat
-type: 捕集
-status: 计划中
-capacity: 1.0
-sector: Power and heat
-storage_type: 地质封存
-precision: approximate
+id: '112'
+country: China
+status: Planned
+reviewStatus: draft
+capacity: 1
 coordinates:
-  - 23.1772
-  - 113.2800
-commencementYear: 2030
-description: 由 China Resources Power 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 23.3599
+  - 113.7796
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: CRP Haifeng Project (Guangdong)
+region: Other Asia Pacific
+partners:
+  - China Resources Power
+type: 碳捕集
+phase: '1'
+announcedCapacity: 1
+estimatedCapacity: 1
+sector: 电力与供热
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2013'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Power and heat 领域。预计/实际投产年份为 2030.0。

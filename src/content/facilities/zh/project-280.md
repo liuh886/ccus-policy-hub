@@ -1,27 +1,46 @@
 ---
-name: Mote biomass-to-hydrogen plant Kern County (CA)
-lang: zh
-country: '美国'
-location: Hydrogen or ammonia
-type: 捕集
-status: 计划中
+id: '280'
+country: United States
+status: Planned
+reviewStatus: draft
 capacity: 0.14
-sector: Hydrogen or ammonia
-storage_type: 地质封存
-precision: approximate
 coordinates:
-  - 36.7551
-  - -119.3224
-commencementYear: 2026
-description:
-  由 Mote, CarbonCure, Fluor Corporation, SungasRenewables 开发的 Hydrogen
-  or ammonia 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9906
+  - -91.9508
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Mote biomass-to-hydrogen plant Kern County (CA)
+region: North America
+partners:
+  - Mote, CarbonCure, Fluor Corporation, SungasRenewables
+type: 碳捕集
+phase: ''
+announcedCapacity: 0.14
+estimatedCapacity: 0.14
+sector: 氢能与氨能
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Hydrogen or ammonia 领域。预计/实际投产年份为 2026.0。

@@ -2,160 +2,100 @@
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-// 关键修复：改用 id 前缀判断语言
 const policies = await getCollection('policies_en');
 ---
 
-<Layout title="Policy Comparison Matrix">
-  <div class="max-w-7xl mx-auto py-8 px-4">
-    <div class="print:hidden mb-12 flex justify-between items-end">
-      <div>
-        <h1
-          class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white flex items-center gap-3"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            class="text-blue-600"
-            ><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path
-              d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"></path><path
-              d="m15 10.828 5.828-5.828"></path><path
-              d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"></path></svg
-          >
-          Comparison Matrix
-        </h1>
-        <p class="text-slate-500 max-w-2xl">
-          Compare multiple policies side-by-side. Generate automated briefs and
-          export professional PDF reports.
-        </p>
-      </div>
-      <div class="flex gap-3">
-        <button
-          id="clear-all"
-          class="px-4 py-2 text-sm font-bold text-slate-400 hover:text-red-500 transition-colors"
-        >
-          Clear All
-        </button>
-        <button
-          id="print-report"
-          class="px-6 py-2.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path d="M6 9V2h12v7"></path><path
-              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
-            ></path><rect width="12" height="8" x="6" y="14"></rect></svg
-          >
-          Export Analysis (PDF)
-        </button>
-      </div>
-    </div>
-
-    <div class="hidden print:block mb-12 border-b-4 border-slate-900 pb-8">
-      <h1 class="text-4xl font-black text-slate-900 mb-2">
-        Global CCUS Policy Briefing
-      </h1>
-      <p class="text-slate-500">
-        Generated: {new Date().toLocaleDateString('en-US')} | Data: CCUS Policy Hub
-      </p>
-    </div>
-
-    <div id="compare-container" class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      <div class="lg:col-span-3 overflow-x-auto">
-        <table
-          id="comparison-matrix"
-          class="w-full border-collapse bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-800"
-        >
-          <thead>
-            <tr id="matrix-header" class="bg-slate-50 dark:bg-slate-800/50">
-              <th
-                class="p-6 text-left text-xs font-black uppercase tracking-widest text-slate-400 border-b dark:border-slate-700 w-48 italic"
-                >Dimensions</th
-              >
-            </tr>
-          </thead>
-          <tbody id="matrix-body" class="divide-y dark:divide-slate-800"
-          ></tbody>
-        </table>
-      </div>
-
-      <div class="lg:col-span-1 space-y-6">
-        <div
-          id="briefing-box"
-          class="p-8 bg-blue-50 dark:bg-blue-900/10 rounded-3xl border border-blue-100 dark:border-blue-900/20"
-        >
-          <h3
-            class="font-bold text-blue-900 dark:text-blue-300 mb-4 flex items-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              ><path
-                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-              ></path></svg
-            >
-            Automated Insights
-          </h3>
-          <div
-            id="briefing-content"
-            class="text-sm text-blue-800/80 dark:text-blue-400/80 leading-relaxed space-y-4"
-          >
+<Layout 
+  title="Policy Benchmarking Canvas | CCUS Policy Hub"
+>
+  <div class="bg-[#f8fafc] dark:bg-slate-950 min-h-screen font-sans selection:bg-blue-500 selection:text-white">
+    
+    <!-- 1. Benchmarking Header -->
+    <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 pb-12 print:hidden">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-end gap-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 dark:border-blue-800">
+            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Advanced Analytics Engine
           </div>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 dark:text-white leading-none">
+            Benchmarking <br/><span class="text-blue-600">Canvas</span>
+          </h1>
+        </div>
+        <div class="flex gap-4">
+          <button id="clear-all" class="px-6 py-3 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-red-500 transition-all cursor-pointer border border-slate-200 dark:border-slate-800 rounded-2xl">
+            Reset Matrix
+          </button>
+          <button id="print-report" class="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-xl cursor-pointer">
+            Export Insight (PDF)
+          </button>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div
-      id="empty-state"
-      class="hidden py-32 text-center bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800"
-    >
-      <h2 class="text-xl font-bold mb-2">No Policies Selected</h2>
-      <p class="text-slate-500 mb-8">
-        Please select at least 2 policies from the database to start analysis.
-      </p>
-      <a
-        href="/ccus-policy-hub/en/policy/"
-        class="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold"
-        >Go to Database</a
-      >
-    </div>
+    <main class="max-w-7xl mx-auto px-6 py-16">
+      <div id="compare-container" class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Radar Comparison -->
+        <div class="lg:col-span-12">
+          <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-12 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col lg:flex-row gap-12 items-center">
+            <div class="flex-1">
+              <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight text-balance">
+                FSRTM 5.0 Systemic Maturity Cross-Check
+              </h2>
+              <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-md leading-relaxed font-medium">
+                Visualizing the regulatory, financial, and technical spread between selected frameworks. High variance zones indicate competitive gaps.
+              </p>
+              <div id="briefing-content" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+            <div class="w-full lg:w-1/2 aspect-square max-w-[500px]">
+              <canvas id="nationalGovernanceChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Matrix -->
+        <div class="lg:col-span-12 overflow-x-auto pb-12">
+          <table id="comparison-matrix" class="w-full border-separate border-spacing-x-4 min-w-[1000px]">
+            <thead>
+              <tr id="matrix-header">
+                <th class="p-8 text-left text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 w-64 italic">Analysis Dimension</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden py-40 text-center bg-white dark:bg-slate-900 rounded-[4rem] border border-slate-200 dark:border-slate-800 shadow-inner">
+        <div class="max-w-md mx-auto">
+          <div class="w-24 h-24 bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-8 border border-slate-100 dark:border-slate-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-300"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"/><path d="m15 10.828 5.828-5.828"/><path d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"/></svg>
+          </div>
+          <h2 class="text-2xl font-black mb-4 dark:text-white">Matrix Empty</h2>
+          <p class="text-slate-500 mb-10 font-medium leading-relaxed px-8">No policies selected for comparison. Visit the global database to add items to your analysis canvas.</p>
+          <a href="/ccus-policy-hub/en/policy/" class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20">Go to Database</a>
+        </div>
+      </div>
+    </main>
   </div>
 
-  <div
-    id="all-policies-data"
-    data-policies={JSON.stringify(policies)}
-    class="hidden"
-  >
-  </div>
+  <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
 </Layout>
 
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  let governanceChart: any = null;
+
   function renderMatrix() {
-    const selectedSlugs = JSON.parse(
-      localStorage.getItem('compare-list') || '[]'
-    );
-    const allPolicies = JSON.parse(
-      (document.getElementById('all-policies-data') as any).dataset.policies
-    );
-    const selectedData = allPolicies.filter((p: any) =>
-      selectedSlugs.includes(p.id)
-    );
+    const selectedSlugs = JSON.parse(localStorage.getItem('compare-list') || '[]');
+    const allPolicies = JSON.parse((document.getElementById('all-policies-data') as any).dataset.policies);
+    
+    const selectedData = allPolicies.filter((p: any) => {
+      const slug = p.id.split('/').pop();
+      return selectedSlugs.includes(slug);
+    });
 
     const matrixHeader = document.getElementById('matrix-header');
     const matrixBody = document.getElementById('matrix-body');
@@ -164,68 +104,164 @@ const policies = await getCollection('policies_en');
     const compareContainer = document.getElementById('compare-container');
 
     if (selectedData.length === 0) {
-      if (emptyState) emptyState.classList.remove('hidden');
-      if (compareContainer) compareContainer.classList.add('hidden');
+      emptyState?.classList.remove('hidden');
+      compareContainer?.classList.add('hidden');
       return;
     } else {
-      if (emptyState) emptyState.classList.add('hidden');
-      if (compareContainer) compareContainer.classList.remove('hidden');
+      emptyState?.classList.add('hidden');
+      compareContainer?.classList.remove('hidden');
     }
 
-    if (matrixHeader) {
-      matrixHeader.innerHTML =
-        '<th class="p-6 text-left text-xs font-black uppercase tracking-widest text-slate-400 border-b dark:border-slate-700 w-48 italic">Dimension</th>' +
-        selectedData
-          .map(
-            (p: any) => `
-          <th class="p-6 text-left border-b dark:border-slate-700 min-w-[240px]">
-            <div class="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">${p.data.country}</div>
-            <div class="font-bold text-slate-900 dark:text-white leading-snug">${p.data.title}</div>
-          </th>
-        `
-          )
-          .join('');
+    // --- Chart Logic ---
+    const colors = [
+      { border: 'rgb(37, 99, 235)', bg: 'rgba(37, 99, 235, 0.1)' },
+      { border: 'rgb(16, 185, 129)', bg: 'rgba(16, 185, 129, 0.1)' },
+      { border: 'rgb(245, 158, 11)', bg: 'rgba(245, 158, 11, 0.1)' },
+      { border: 'rgb(99, 102, 241)', bg: 'rgba(99, 102, 241, 0.1)' },
+      { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' }
+    ];
+
+    const datasets = selectedData.map((p, i) => ({
+      label: p.data.country,
+      data: [
+        p.data.analysis?.incentive?.score || 0,
+        p.data.analysis?.statutory?.score || 0,
+        p.data.analysis?.market?.score || 0,
+        p.data.analysis?.strategic?.score || 0,
+        p.data.analysis?.mrv?.score || 0
+      ],
+      borderColor: colors[i % colors.length].border,
+      backgroundColor: colors[i % colors.length].bg,
+      borderWidth: 3,
+      pointRadius: 4,
+      pointBackgroundColor: colors[i % colors.length].border,
+      lineTension: 0.3
+    }));
+
+    const ctx = document.getElementById('nationalGovernanceChart') as HTMLCanvasElement;
+    if (ctx) {
+      if (governanceChart) governanceChart.destroy();
+      // @ts-ignore
+      governanceChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'],
+          datasets
+        },
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              ticks: { display: false, stepSize: 20 },
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              pointLabels: { font: { size: 11, weight: 'bold' }, color: '#94a3b8' }
+            }
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 6, font: { size: 10, weight: 'bold' } } }
+          }
+        }
+      });
     }
+
+    // --- Header Matrix ---
+    if (matrixHeader) {
+      matrixHeader.innerHTML = '<th class="p-8"></th>' + selectedData.map((p, i) => `
+        <th class="p-8 text-left bg-white dark:bg-slate-900 rounded-t-3xl border-t border-x border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-3 h-3 rounded-full" style="background-color: ${colors[i % colors.length].border}"></div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">${p.data.country}</span>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 dark:text-white leading-tight">${p.data.title}</h3>
+        </th>
+      `).join('');
+    }
+
+    // --- Body Dimensions ---
+    const fsrtmKeys = ['incentive', 'statutory', 'market', 'strategic', 'mrv'];
+    const dimensionNames = {
+      incentive: 'Incentive', 
+      statutory: 'Regulatory', 
+      market: 'Market', 
+      strategic: 'Strategic', 
+      mrv: 'Technical'
+    };
 
     const dimensions = [
+      { label: 'Review Status', key: 'reviewStatus', isStatus: true },
+      ...fsrtmKeys.map(k => ({ 
+        label: `${dimensionNames[k]} (Score)`, 
+        key: 'analysis', 
+        fsrtmKey: k, 
+        isFSRTMScore: true 
+      })),
+      ...fsrtmKeys.map(k => ({ 
+        label: `${dimensionNames[k]} (Evidence)`, 
+        key: 'analysis', 
+        fsrtmKey: k, 
+        isFSRTMEvidence: true 
+      })),
+      { label: 'Strategic Impact (Eco)', key: 'impactAnalysis', subKey: 'economic' },
+      { label: 'Technical Preference', key: 'impactAnalysis', subKey: 'technical' },
+      { label: 'Implementation', key: 'implementationDetails', subKey: 'mechanism' },
       { label: 'Category', key: 'category' },
-      { label: 'Incentive Value', key: 'incentive_value' },
-      { label: 'Incentive Type', key: 'incentive_type' },
-      { label: 'MRV Rigor', key: 'mrv_requirement' },
-      { label: 'Target Sectors', key: 'sectors', isArray: true },
-      { label: 'Year', key: 'year' },
-      { label: 'Source', key: 'source' },
+      { label: 'Legal Weight', key: 'legalWeight' },
+      { label: 'Pub Year', key: 'year' }
     ];
 
     if (matrixBody) {
-      matrixBody.innerHTML = dimensions
-        .map(
-          (dim) => `
-        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
-          <td class="p-6 text-sm font-bold text-slate-500 dark:text-slate-400 bg-slate-50/50 dark:bg-slate-800/20">${dim.label}</td>
-          ${selectedData
-            .map((p: any) => {
-              const val = p.data[dim.key] || '---';
-              const displayVal = dim.isArray
-                ? Array.isArray(val)
-                  ? val.join(', ')
-                  : val
-                : val;
-              return `<td class="p-6 text-sm font-medium dark:text-slate-300 leading-relaxed">${displayVal}</td>`;
-            })
-            .join('')}
+      matrixBody.innerHTML = dimensions.map((dim, dimIdx) => `
+        <tr>
+          <td class="p-8 text-xs font-black uppercase tracking-[0.2em] text-slate-400 align-top border-b border-slate-100 dark:border-slate-800">${dim.label}</td>
+          ${selectedData.map(p => {
+            let cellContent = '---';
+            let cellClass = "p-8 bg-white dark:bg-slate-900 border-x border-b border-slate-100 dark:border-slate-800 align-top";
+
+            if (dim.isFSRTMScore) {
+              const score = p.data.analysis?.[dim.fsrtmKey]?.score || 0;
+              cellContent = `
+                <div class="flex items-center gap-4">
+                  <span class="font-mono font-black text-2xl text-slate-900 dark:text-white">${score}</span>
+                  <div class="flex-1 h-2 bg-slate-50 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-blue-500" style="width: ${score}%"></div>
+                  </div>
+                </div>
+              `;
+            } else if (dim.isFSRTMEvidence) {
+              const evidence = p.data.analysis?.[dim.fsrtmKey]?.evidence || 'No substantive evidence provided.';
+              cellContent = `<p class="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic">"${evidence}"</p>`;
+            } else if (dim.isStatus) {
+              const status = p.data.reviewStatus || 'draft';
+              const colorClass = status === 'verified' ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'text-amber-500 bg-amber-50 dark:bg-amber-900/20';
+              cellContent = `<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${colorClass}">${status}</span>`;
+            } else {
+              const val = dim.subKey ? (p.data[dim.key]?.[dim.subKey] || '---') : (p.data[dim.key] || '---');
+              cellContent = `<span class="font-bold text-slate-700 dark:text-slate-300 text-sm leading-relaxed">${val}</span>`;
+            }
+            
+            return `<td class="${cellClass}">${cellContent}</td>`;
+          }).join('')}
         </tr>
-      `
-        )
-        .join('');
+      `).join('');
     }
 
     if (briefingContent) {
-      const countries = [
-        ...new Set(selectedData.map((p: any) => p.data.country)),
-      ];
+      const avgScores = ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(k => {
+        const avg = Math.round(selectedData.reduce((acc, p) => acc + (p.data.analysis?.[k]?.score || 0), 0) / selectedData.length);
+        return { k, avg };
+      }).sort((a, b) => b.avg - a.avg);
+
       briefingContent.innerHTML = `
-        <p><b>Overview:</b> Benchmarking <b>${selectedData.length}</b> policies from <b>${countries.join(', ')}</b>.</p>
+        <div class="p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl border border-emerald-100 dark:border-emerald-800">
+          <p class="text-[10px] font-black text-emerald-600 uppercase mb-1 tracking-widest">Dominant Strengths</p>
+          <p class="text-lg font-black text-emerald-900 dark:text-emerald-300">${avgScores[0].k.toUpperCase()} (Avg ${avgScores[0].avg})</p>
+        </div>
+        <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-100 dark:border-blue-800">
+          <p class="text-[10px] font-black text-blue-600 uppercase mb-1 tracking-widest">Primary Gaps</p>
+          <p class="text-lg font-black text-blue-900 dark:text-blue-300">${avgScores[avgScores.length-1].k.toUpperCase()} (Avg ${avgScores[avgScores.length-1].avg})</p>
+        </div>
       `;
     }
   }
@@ -236,11 +272,19 @@ const policies = await getCollection('policies_en');
     renderMatrix();
   });
 
-  document
-    .getElementById('print-report')
-    ?.addEventListener('click', () => window.print());
+  document.getElementById('print-report')?.addEventListener('click', () => window.print());
   window.addEventListener('compare-updated', renderMatrix);
   window.addEventListener('storage', renderMatrix);
   document.addEventListener('astro:page-load', renderMatrix);
   renderMatrix();
 </script>
+
+<style is:global>
+  @media print {
+    body { background: white !important; }
+    .max-w-7xl { max-width: 100% !important; width: 100% !important; padding: 0 !important; }
+    header, button, footer { display: none !important; }
+    .rounded-3xl, .rounded-[3rem], .rounded-[4rem] { border-radius: 0 !important; border: 1px solid #eee !important; box-shadow: none !important; }
+    canvas { max-width: 400px !important; margin: 0 auto; }
+  }
+</style>

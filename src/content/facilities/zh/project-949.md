@@ -1,20 +1,45 @@
 ---
-name: Bapco MOL CCUS value chain
-lang: zh
-country: '巴林'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 0.0
-sector: T&S
-storage_type: 咸水层
+id: '949'
+country: Bahrain
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 19.85399659711676
-  - -4.525155520078487
-commencementYear: null
-description: 由 Bapco energies (storage), MOL (transport) 开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 45.1727
+  - 9.9017
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Bapco MOL CCUS value chain
+region: Middle East
+partners:
+  - Bapco energies (storage), MOL (transport)
+type: 运输与封存
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Bahrain 的 T&S 领域。预计/实际投产年份为 未知。

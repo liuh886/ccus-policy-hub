@@ -1,22 +1,47 @@
 ---
-name: Hover cement works Hannover phase 2
-lang: zh
-country: '德国'
-location: Cement
-type: 捕集
-status: 计划中
+id: '556'
+country: Germany
+status: Planned
+reviewStatus: draft
 capacity: 0.8
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 48.183591614726666
-  - 5.565039566931017
-commencementYear: 2028
-description: 由 Holcim Group, Cool Planet Technologies 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 51.1604
+  - 10.453
 relatedPolicies:
-  - de-icm-strategy
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Hover cement works Hannover phase 2
+region: Europe
+partners:
+  - Holcim Group, Cool Planet Technologies
+type: 碳捕集
+phase: '2'
+announcedCapacity: 0.8
+estimatedCapacity: 0.8
+sector: 水泥行业
+fateOfCarbon: 未知/未指定
+hub: ''
+announcement: '2021'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Germany 的 Cement 领域。预计/实际投产年份为 2028.0。

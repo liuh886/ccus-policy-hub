@@ -1,25 +1,45 @@
 ---
-name: Pelican Rindge Tract CCS Project (CA)
-lang: zh
-country: '美国'
-location: Biofuels
-type: 全流程
-status: 计划中
-capacity: 2.0
-sector: Biofuels
-storage_type: 咸水层
-precision: approximate
+id: '900'
+country: United States
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 36.6420
-  - -119.0467
-commencementYear: null
-description: 由 Pelican Renewables LLC  开发的 Biofuels 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 47.5637
+  - -100.9902
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Pelican Rindge Tract CCS Project (CA)
+region: North America
+partners:
+  - Pelican Renewables LLC
+type: 全产业链
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 生物燃料
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2023'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Biofuels 领域。预计/实际投产年份为 未知。

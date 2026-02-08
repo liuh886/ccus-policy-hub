@@ -1,23 +1,46 @@
 ---
-name: Heartland hydrogen hub (ALB)
-lang: zh
-country: '加拿大'
-location: Other fuel transformation
-type: 捕集
-status: 计划中
-capacity: 2.0
-sector: Other fuel transformation
-storage_type: 咸水层
+id: '385'
+country: Canada
+status: Planned
+reviewStatus: draft
+capacity: 2
 coordinates:
-  - 54.37691287992523
-  - -105.07623407462924
-commencementYear: 2028
-description: 由 Suncor, ATCO 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.976
+  - -91.9628
 relatedPolicies:
-  - ca-ccus-itc
-  - alberta-tier
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Heartland hydrogen hub (ALB)
+region: North America
+partners:
+  - Suncor, ATCO
+type: 碳捕集
+phase: ''
+announcedCapacity: 2
+estimatedCapacity: 2
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: Atlas Carbon Sequestration Hub (alb)
+announcement: '2021'
+fid: '2025'
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Canada 的 Other fuel transformation 领域。预计/实际投产年份为 2028.0。

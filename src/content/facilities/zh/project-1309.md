@@ -1,28 +1,45 @@
 ---
-name: Xinjiang Guoneng Chemical Co CCU Phase 1  (Xinjiang)
-lang: zh
-country: 中国
-location: Chemicals
-type: CCU
-status: 运行中
+id: '1309'
+country: China
+status: Operational
+reviewStatus: draft
 capacity: 0.1
-sector: Chemicals
-storage_type: EOR
-precision: approximate
 coordinates:
-  - 43.7911
-  - 87.6518
-commencementYear: 2024
-description:
-  由 Xinjiang Guoneng Chemical Co., Ltd, Xinjiang Huarui Gas Co., Ltd (built
-  ccu infrastructure) 开发的 Chemicals 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.762
+  - -119.4113
 relatedPolicies:
-  - cn-national-standards
-  - cn-ccer
-  - cn-pboc-cerf
-  - cn-zero-carbon-parks
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Xinjiang Guoneng Chemical Co CCU Phase 1  (Xinjiang)
+region: Other Asia Pacific
+partners:
+  - Xinjiang Guoneng Chemical Co., Ltd, Xinjiang Huarui Gas Co., Ltd (built ccu infrastructure)
+type: 碳利用
+phase: '1'
+announcedCapacity: 0.1
+estimatedCapacity: 0.1
+sector: 化工行业
+fateOfCarbon: 提高石油采收率 (EOR)
+hub: ''
+announcement: ''
+fid: ''
+operation: '2024'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 中国 的 Chemicals 领域。预计/实际投产年份为 2024.0。

@@ -1,20 +1,45 @@
 ---
-name: Dalmia Cement (Bharat) Tamil Nadu
-lang: zh
-country: '印度'
-location: Cement
-type: CCU
-status: 计划中
+id: '119'
+country: India
+status: Planned
+reviewStatus: draft
 capacity: 0.5
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 20.79452360904544
-  - 79.03544428023687
-commencementYear: null
-description: 由 Dalmia Cement, Carbon Clean 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 20.3928
+  - 78.9954
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Dalmia Cement (Bharat) Tamil Nadu
+region: Other Asia Pacific
+partners:
+  - Dalmia Cement, Carbon Clean
+type: 碳利用
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 水泥行业
+fateOfCarbon: Use low impact
+hub: ''
+announcement: '2019'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 India 的 Cement 领域。预计/实际投产年份为 未知。

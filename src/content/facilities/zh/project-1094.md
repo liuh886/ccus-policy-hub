@@ -1,22 +1,45 @@
 ---
-name: Ecapt-Rhone LeTeil
-lang: zh
-country: '法国'
-location: Cement
-type: CCU
-status: 计划中
+id: '1094'
+country: France
+status: Planned
+reviewStatus: draft
 capacity: 0.2
-sector: Cement
-storage_type: 地质封存
 coordinates:
-  - 48.447987838399385
-  - -0.2790575003309952
-commencementYear: 2028
-description: 由 Elyse Energy, Holcim Group, Air Liquide 开发的 Cement 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7725
+  - -119.4143
 relatedPolicies:
-  - fr-ccus-roadmap
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Ecapt-Rhone LeTeil
+region: Europe
+partners:
+  - Elyse Energy, Holcim Group, Air Liquide
+type: 碳利用
+phase: ''
+announcedCapacity: 0.2
+estimatedCapacity: 0.2
+sector: 水泥行业
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2023'
+fid: ''
+operation: '2028'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 France 的 Cement 领域。预计/实际投产年份为 2028.0。

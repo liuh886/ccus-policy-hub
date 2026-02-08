@@ -1,20 +1,49 @@
 ---
-name: Avedøre Power Station CCS
-lang: zh
-country: '丹麦'
-location: Power and heat
-type: 捕集
-status: 建设中
+id: '42'
+country: Denmark
+status: Under construction
+reviewStatus: draft
 capacity: 0.15
-sector: Power and heat
-storage_type: 咸水层
 coordinates:
-  - 54.12241911610182
-  - 9.850980426433772
-commencementYear: 2026
-description: 由 Orsted, Aker Carbon Capture (tech) 开发的 Power and heat 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 56.2796
+  - 9.4843
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Avedøre Power Station CCS
+region: Europe
+partners:
+  - Orsted, Aker Carbon Capture (tech)
+type: 碳捕集
+phase: '1'
+announcedCapacity: 0.15
+estimatedCapacity: 0.15
+sector: 电力与供热
+fateOfCarbon: 永久封存
+hub: Kalundborg hub/Northern Lights
+announcement: '2021'
+fid: '2023'
+operation: '2026'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Denmark 的 Power and heat 领域。预计/实际投产年份为 2026.0。

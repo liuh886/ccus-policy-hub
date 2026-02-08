@@ -1,20 +1,44 @@
 ---
-name: OCAP
-lang: zh
-country: '荷兰'
-location: Transport
-type: Transport
-status: 运行中
+id: '1096'
+country: Netherlands
+status: Operational
+reviewStatus: draft
 capacity: 0.5
-sector: Transport
-storage_type: 地质封存
 coordinates:
-  - 53.64872301040963
-  - 2.197001022016388
-commencementYear: 2005
-description: 由 OCAP (Linde) 开发的 Transport 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 36.7671
+  - -119.4197
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: OCAP
+region: Europe
+partners:
+  - OCAP (Linde)
+type: 二氧化碳运输
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: 交通运输
+fateOfCarbon: 资源化利用
+hub: ''
+announcement: '2005'
+fid: ''
+operation: '2005'
+suspensionDate: ''
+links: []
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Netherlands 的 Transport 领域。预计/实际投产年份为 2005.0。

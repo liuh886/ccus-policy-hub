@@ -1,25 +1,49 @@
 ---
-name: Altera Stella Maris CCS Project Phase 2
-lang: zh
-country: '挪威'
-location: T&S
-type: 枢纽
-status: 计划中
-capacity: 3.0
-sector: T&S
-storage_type: 咸水层
+id: '28'
+country: Norway
+status: Planned
+reviewStatus: draft
+capacity: 3
 coordinates:
-  - 59.86355354711304
-  - 4.61949778415757
-commencementYear: null
-description:
-  由 Altera, Hoegh LNG, Sevan SSP (FEED), Wintershall Dea (Harbour Energy)
-  开发的 T&S 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9789
+  - -91.9669
 relatedPolicies:
-  - no-storage-regulations
-  - norway-longship
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Altera Stella Maris CCS Project Phase 2
+region: Europe
+partners:
+  - Altera, Hoegh LNG, Sevan SSP (FEED), Wintershall Dea (Harbour Energy)
+type: 运输与封存
+phase: '2'
+announcedCapacity: 3
+estimatedCapacity: 3
+sector: 运输与封存
+fateOfCarbon: 永久封存
+hub: Altera Stella Maris CCS/ Havstjerne
+announcement: '2020'
+fid: ''
+operation: ''
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+  - Link 3
+  - Link 4
+  - Link 5
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Norway 的 T&S 领域。预计/实际投产年份为 未知。

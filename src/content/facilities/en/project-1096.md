@@ -1,0 +1,44 @@
+---
+id: '1096'
+country: Netherlands
+status: Operational
+reviewStatus: draft
+capacity: 0.5
+coordinates:
+  - 36.7671
+  - -119.4197
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: OCAP
+region: Europe
+partners:
+  - OCAP (Linde)
+type: Transport
+phase: ''
+announcedCapacity: 0.5
+estimatedCapacity: 0.5
+sector: Transport
+fateOfCarbon: Use
+hub: ''
+announcement: '2005'
+fid: ''
+operation: '2005'
+suspensionDate: ''
+links: []
+lang: en
+---
+
+

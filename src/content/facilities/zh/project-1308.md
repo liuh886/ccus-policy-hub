@@ -1,24 +1,46 @@
 ---
-name: Campo Viejo Gas Processing Plant
-lang: zh
-country: '美国'
-location: Other fuel transformation
-type: Full Chain
-status: 运行中
-capacity: 0.12
-sector: Other fuel transformation
-storage_type: 咸水层
+id: '1308'
+country: United States
+status: Operational
+reviewStatus: draft
+capacity: 0.19
 coordinates:
-  - 40.13289810508868
-  - -92.22306344233762
-commencementYear: 2024
-description: 由 Stakeholder Gas Services 开发的 Other fuel transformation 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9644
+  - -91.9668
 relatedPolicies:
-  - us-45q-ira
-  - california-lcfs
-  - us-iija-hubs
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: Campo Viejo Gas Processing Plant
+region: North America
+partners:
+  - Stakeholder Gas Services
+type: Full Chain
+phase: ''
+announcedCapacity: 0.19
+estimatedCapacity: 0.12
+sector: 其他能源转换
+fateOfCarbon: 永久封存
+hub: ''
+announcement: '2018'
+fid: ''
+operation: '2024'
+suspensionDate: ''
+links:
+  - Link 1
+  - Link 2
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 United States 的 Other fuel transformation 领域。预计/实际投产年份为 2024.0。

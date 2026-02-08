@@ -1,20 +1,45 @@
 ---
-name: East Niigata area CCS - Hokuetsu pulp plant
-lang: zh
-country: '日本'
-location: Other industry
-type: 捕集
-status: 计划中
-capacity: 0.0
-sector: Other industry
-storage_type: 咸水层
+id: '1134'
+country: Japan
+status: Planned
+reviewStatus: draft
+capacity: 0
 coordinates:
-  - 35.877209905645884
-  - 135.28175596516
-commencementYear: 2030
-description: 由 Hokuetsu, Mistubishi Heavy Industries 开发的 Other industry 行业 CCUS 项目。该项目是全球碳管理网络的重要组成部分。
+  - 30.9981
+  - -91.967
+relatedPolicies:
+  - gold-standard
+  - icao-corsia-ccu-2024
+  - imo-marpol-occs-2024
+  - intl-ccs-plus-framework
+  - intl-gcca-net-zero-2050
+  - intl-paris-art-6-4-ccs
+  - ipcc-guidelines
+  - iso-standards
+  - puro-earth
+  - verra-vm0049
+provenance:
+  author: IEA Master Ingestion Script v5.1
+  lastAuditDate: '2026-02-08'
+precision: approximate
+name: East Niigata area CCS - Hokuetsu pulp plant
+region: Other Asia Pacific
+partners:
+  - Hokuetsu, Mistubishi Heavy Industries
+type: 碳捕集
+phase: ''
+announcedCapacity: 0
+estimatedCapacity: 0
+sector: 其他工业
+fateOfCarbon: 永久封存
+hub: East Niigata area CCS
+announcement: '2023'
+fid: ''
+operation: '2030'
+suspensionDate: ''
+links:
+  - Link 1
+lang: zh
 ---
 
-### 项目详情
 
-该项目位于 Japan 的 Other industry 领域。预计/实际投产年份为 2030.0。
