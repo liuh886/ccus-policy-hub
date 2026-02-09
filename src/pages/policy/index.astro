@@ -12,10 +12,11 @@ const categoryMap: Record<string, string> = {
   'Regulatory Framework': '法律监管',
   'Market Mechanism': '市场机制',
   'Strategic Guidance': '战略引导',
-  'Technical Standard': '技术标准',
+  'Technical Standard': '技术规范',
   'Economic Incentives': '经济激励',
   'Legal & Regulatory': '法律监管',
   'Market Mechanisms': '市场机制',
+  'Regulatory': '法律监管',
 };
 
 const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country))).sort();
@@ -23,7 +24,7 @@ const uniqueSectors = Array.from(new Set(policies.flatMap((p) => p.data.sectors 
 const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))).sort();
 ---
 
-<Layout 
+<Layout
   title="政策数据库"
   description="检索全球主要的 CCUS 政策与法规，涵盖法律监管、经济激励、市场机制、战略引导及技术标准五大维度。"
   keywords="CCUS 政策, 碳捕集法规, 碳封存激励, 气候政策数据库"
@@ -87,7 +88,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
 
       <button
         id="ranking-toggle"
-        class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2"
+        class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2"        
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
         <span>加权排名</span>
@@ -101,15 +102,15 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
     >
       <div class="flex justify-between items-center mb-6">
         <h3 class="text-xs font-black uppercase tracking-widest text-blue-600">自定义评价权重 (FSRTM 5.0)</h3>
-        <button id="reset-weights" class="text-[10px] font-black uppercase text-slate-400 hover:text-blue-600">重置比例</button>
+        <button id="reset-weights" class="text-[10px] font-black uppercase text-slate-400 hover:text-blue-600">重置比例</button>      
       </div>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         {[
-          { id: 'weight-incentive', label: 'Incentive', color: 'bg-emerald-500' },
-          { id: 'weight-statutory', label: 'Regulatory', color: 'bg-blue-500' },
-          { id: 'weight-market', label: 'Market', color: 'bg-amber-500' },
-          { id: 'weight-strategic', label: 'Strategic', color: 'bg-purple-500' },
-          { id: 'weight-mrv', label: 'Technical', color: 'bg-slate-500' }
+          { id: 'weight-incentive', label: '经济激励', color: 'bg-emerald-500', key: 'incentive' },
+          { id: 'weight-statutory', label: '法律监管', color: 'bg-blue-500', key: 'statutory' },
+          { id: 'weight-market', label: '市场机制', color: 'bg-amber-500', key: 'market' },
+          { id: 'weight-strategic', label: '战略引导', color: 'bg-purple-500', key: 'strategic' },
+          { id: 'weight-mrv', label: '技术规范', color: 'bg-slate-500', key: 'mrv' }
         ].map(w => (
           <div class="space-y-3">
             <div class="flex justify-between items-center">
@@ -147,7 +148,6 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
               data-country={policy.data.country}
               data-category={displayCategory}
               data-sectors={policy.data.sectors?.join(',') || ''}
-              data-tags={policy.data.tags?.join(',') || ''}
               data-year={policy.data.year}
               data-analysis={JSON.stringify({
                 incentive: policy.data.analysis?.incentive?.score || 0,
@@ -179,7 +179,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
     const rankingControls = document.getElementById('ranking-controls');
     const resetWeights = document.getElementById('reset-weights');
     const noResults = document.getElementById('no-results');
-    
+
     const weightSliders = ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(k => ({
       key: k,
       slider: document.getElementById(`weight-${k}`) as HTMLInputElement,
@@ -225,17 +225,16 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         const itemCountry = htmlItem.dataset.country || '';
         const itemCategory = htmlItem.dataset.category || '';
         const itemSectors = htmlItem.dataset.sectors || '';
-        const tags = htmlItem.dataset.tags?.toLowerCase() || '';
         const year = parseInt(htmlItem.dataset.year || '0');
         const analysis = JSON.parse(htmlItem.dataset.analysis || '{}');
 
-        const matchesSearch = title.includes(searchTerm) || tags.includes(searchTerm);
+        const matchesSearch = title.includes(searchTerm);
         const matchesCountry = !country || itemCountry === country;
         const matchesCategory = !category || itemCategory === category;
         const matchesIndustry = !industry || itemSectors.split(',').includes(industry);
 
         const isVisible = matchesSearch && matchesCountry && matchesCategory && matchesIndustry;
-        
+
         let weightedScore = 0;
         if (isRankingMode) {
           Object.entries(weights).forEach(([k, w]) => {

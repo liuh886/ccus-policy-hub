@@ -1,70 +1,82 @@
 ---
-id: jp-meti-specified-zones-2024
-country: 日本
-year: 2024
-status: Active
-category: Regulatory
-pubDate: '2024-11-18'
-reviewStatus: draft
-legalWeight: Guideline/Policy
-sectors: []
-analysis:
-  frameworkVersion: '5.0'
-  incentive:
-    score: 65
-    label: Auctioned Support
-    evidence: Tenders include integrated subsidies for exploratory drilling.
-    citation: JOGMEC FY2024 Tender Rules
-  statutory:
-    score: 95
-    label: Designated Area Law
-    evidence: METI has the power to designate and tender exclusive storage zones.
-    citation: Act No. 38 of 2024, Art. 3
-    auditNote: Strong S-dimension for sovereign resource management.
-  liability:
-    score: 70
-    label: State-backed Risks
-    evidence: State provides technical de-risking for early exploration drilling.
-    citation: CCS Business Act, Chapter 4
-  mrv:
-    score: 85
-    label: Zone-specific MRV
-    evidence: Mandatory monitoring standards specific to the geological characteristics of designated zones.
-    citation: Safety Regulations Annex
-  market:
-    score: 75
-    label: Competitive Entry
-    evidence: Uses a public tender system to select most efficient operators.
-    citation: METI Bidding Guidelines
-  strategic:
-    score: 30
-    label: Initial Assessment
-    evidence: Baseline strategic alignment under V5.0 migration.
-impactAnalysis:
-  economic: ''
-  technical: ''
-  environmental: ''
-evolution:
-  supersedes: []
-  supersededBy: ''
-  clusters: []
-implementationDetails:
-  authority: ''
-  mechanism: ''
-  fundingScale: ''
-relatedFacilities: []
-url: https://www.meti.go.jp/english/press/2024/1118_001.html
-source: METI Japan
-provenance:
-  author: Legacy System
-  lastAuditDate: '2026-02-07'
-title: Japan METI Specified Zones & CCS Tender Guidelines (2024)
-scope: National
-tags:
-  - Specified Zones
-  - Tendering
-  - Exploration
-description: METI guidelines for designating CCS zones and conducting tenders for exploration and business permits.
+{
+  "analysis": {
+    "incentive": {
+      "auditNote": "",
+      "citation": "JOGMEC FY2024 Tender Rules",
+      "evidence": "Tenders include integrated subsidies for exploratory drilling.",
+      "label": "Auctioned Support",
+      "score": 65
+    },
+    "market": {
+      "auditNote": "",
+      "citation": "METI Bidding Guidelines",
+      "evidence": "Uses a public tender system to select most efficient operators.",
+      "label": "Competitive Entry",
+      "score": 75
+    },
+    "mrv": {
+      "auditNote": "",
+      "citation": "Safety Regulations Annex",
+      "evidence": "Mandatory monitoring standards specific to the geological characteristics of designated zones.",
+      "label": "Zone-specific MRV",
+      "score": 85
+    },
+    "statutory": {
+      "auditNote": "Strong S-dimension for sovereign resource management.",
+      "citation": "Act No. 38 of 2024, Art. 3",
+      "evidence": "METI has the power to designate and tender exclusive storage zones.",
+      "label": "Designated Area Law",
+      "score": 95
+    },
+    "strategic": {
+      "auditNote": "",
+      "citation": "",
+      "evidence": "Baseline strategic alignment under V5.0 migration.",
+      "label": "Initial Assessment",
+      "score": 30
+    }
+  },
+  "category": "Regulatory",
+  "country": "Japan",
+  "description": "METI guidelines for designating CCS zones and conducting tenders for exploration and business permits.",
+  "evolution": {
+    "clusters": [],
+    "supersededBy": "",
+    "supersedes": []
+  },
+  "id": "jp-meti-specified-zones-2024",
+  "impactAnalysis": {
+    "economic": "",
+    "environmental": "",
+    "technical": ""
+  },
+  "interpretation": "",
+  "legalWeight": "Guideline/Policy",
+  "provenance": {
+    "author": "Legacy System",
+    "lastAuditDate": "2026-02-07",
+    "reviewer": ""
+  },
+  "pubDate": "2024-11-18",
+  "regulatory": {
+    "co2_definition": "",
+    "cross_border_rules": "",
+    "financial_assurance": "",
+    "liability_period": "",
+    "liability_transfer": "",
+    "permitting_lead_time": "",
+    "pore_space_rights": ""
+  },
+  "relatedFacilities": [],
+  "reviewStatus": "draft",
+  "sectors": [],
+  "source": "METI Japan",
+  "status": "Active",
+  "title": "Japan METI Specified Zones & CCS Tender Guidelines (2024)",
+  "year": 2024,
+  "url": "https://www.meti.go.jp/english/press/2024/1118_001.html"
+}
 ---
 
 METI guidelines for designating CCS zones and conducting tenders for exploration and business permits.

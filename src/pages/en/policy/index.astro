@@ -8,14 +8,16 @@ const policies = await getCollection('policies_en');
 
 // Category mapping logic
 const categoryMap: Record<string, string> = {
+  'Economic Incentive': 'Economic Incentive',
+  'Regulatory Framework': 'Regulatory Framework',
+  'Market Mechanism': 'Market Mechanism',
+  'Strategic Guidance': 'Strategic Guidance',
+  'Technical Standard': 'Technical Standard',
   '经济激励': 'Economic Incentive',
   '法律监管': 'Regulatory Framework',
   '市场机制': 'Market Mechanism',
   '战略引导': 'Strategic Guidance',
-  '技术标准': 'Technical Standard',
-  'Economic Incentives': 'Economic Incentive',
-  'Legal & Regulatory': 'Regulatory Framework',
-  'Market Mechanisms': 'Market Mechanism',
+  '技术规范': 'Technical Standard',
 };
 
 const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country))).sort();
@@ -23,7 +25,7 @@ const uniqueSectors = Array.from(new Set(policies.flatMap((p) => p.data.sectors 
 const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))).sort();
 ---
 
-<Layout 
+<Layout
   title="Policy Database"
   description="Search and analyze global CCUS policies and regulations across five dimensions: Legal, Economic, Market, Strategic, and Technical."
   keywords="CCUS Policies, Carbon Capture Regulations, Climate Policy Database, Global CCS Incentives"
@@ -103,7 +105,6 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
               data-country={policy.data.country}
               data-category={displayCategory}
               data-sectors={policy.data.sectors?.join(',') || ''}
-              data-tags={policy.data.tags?.join(',') || ''}
             >
               <PolicyCard policy={policy} lang="en" />
             </div>
@@ -148,10 +149,8 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         const itemCountry = htmlItem.dataset.country || '';
         const itemCategory = htmlItem.dataset.category || '';
         const itemSectors = htmlItem.dataset.sectors || '';
-        const tags = htmlItem.dataset.tags?.toLowerCase() || '';
 
-        const matchesSearch =
-          title.includes(searchTerm) || tags.includes(searchTerm);
+        const matchesSearch = title.includes(searchTerm);
         const matchesCountry = !country || itemCountry === country;
         const matchesCategory = !category || itemCategory === category;
         const matchesIndustry = !industry || itemSectors.split(',').includes(industry);

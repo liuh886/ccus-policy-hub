@@ -1,116 +1,154 @@
 {
   "countries": {
-    "People's Republic of China": "China",
+    "Australia": "Australia",
+    "Canada": "Canada",
+    "China": "China",
+    "Denmark": "Denmark",
+    "European Union": "European Union",
+    "France": "France",
+    "Germany": "Germany",
+    "Greece": "Greece",
+    "Iceland": "Iceland",
+    "Indonesia": "Indonesia",
+    "Italy": "Italy",
+    "Japan": "Japan",
+    "Netherlands": "Netherlands",
+    "Norway": "Norway",
+    "Saudi Arabia": "Saudi Arabia",
+    "South Korea": "South Korea",
+    "Sweden": "Sweden",
+    "Thailand": "Thailand",
+    "United Arab Emirates": "United Arab Emirates",
+    "United Kingdom": "United Kingdom",
+    "United States": "United States",
     "USA": "United States",
     "UK": "United Kingdom",
-    "Republic of Korea": "South Korea",
-    "United Arab Emirates": "United Arab Emirates",
-    "Australia-Timor Leste": "Australia",
-    "Island": "Iceland",
-    "Germany-Netherlands": "Germany",
-    "United States-Canada": "United States",
-    "Norway-Germany": "Norway",
-    "Belgium-Germany": "Belgium",
-    "Germany-Belgium": "Germany",
-    "Belgium-Norway": "Belgium",
-    "Netherlands-Norway": "Netherlands",
-    "Belgium-Netherlands": "Belgium",
-    "Netherlands-Belgium": "Netherlands",
-    "France-Italy": "France",
-    "France-Spain": "France",
-    "France-Belgium-Norway": "France",
-    "Italy-Greece": "Italy",
-    "Japan-Australia": "Japan",
-    "Australia-Japan": "Australia",
-    "Japan-Malaysia": "Japan",
-    "Japan-Indonesia": "Japan",
-    "Japan-United States": "Japan",
-    "Lithuania, Latvia": "Lithuania",
-    "Multiple Europe": "European Union",
-    "Chinese Taipei": "China",
-    "Canada-United States": "Canada",
-    "Lybia": "Libya",
-    "Unknown": "Other"
+    "美国": "United States",
+    "中国": "China",
+    "英国": "United Kingdom",
+    "欧盟": "European Union",
+    "加拿大": "Canada",
+    "澳大利亚": "Australia",
+    "挪威": "Norway",
+    "荷兰": "Netherlands",
+    "日本": "Japan",
+    "巴西": "Brazil",
+    "印度": "India",
+    "阿联酋": "United Arab Emirates",
+    "国际": "International",
+    "缇庡浗": "United States",
+    "娆х洘": "European Union",
+    "涓浗": "China",
+    "鎸▉": "Norway",
+    "鍔犳嬁澶": "Canada",
+    "鑻卞浗": "United Kingdom",
+    "婢冲ぇ鍒╀簹": "Australia",
+    "鍗板害灏艰タ浜": "Indonesia",
+    "鏃ユ湰": "Japan",
+    "涓归害": "Denmark",
+    "闊╁浗": "South Korea",
+    "鍥介檯": "International",
+    "椹潵瑗夸簹": "Malaysia",
+    "鑽峰叞": "Netherlands",
+    "宸磋タ": "Brazil",
+    "闃胯仈閰": "United Arab Emirates",
+    "寰峰浗": "Germany",
+    "娉曞浗": "France",
+    "娌欑壒闃挎媺浼": "Saudi Arabia",
+    "娉板浗": "Thailand",
+    "鍗板害": "India",
+    "鍐板矝": "Iceland",
+    "瓒婂崡": "Vietnam",
+    "鍏嬬綏鍦颁簹": "Croatia",
+    "缃楅┈灏间簹": "Romania",
+    "灏兼棩鍒╀簹": "Nigeria",
+    "鍝ヤ鸡姣斾簹": "Colombia"
   },
   "sectors": {
-    "Iron and steel": "钢铁行业",
-    "Cement": "水泥行业",
-    "Power and heat": "电力与供热",
-    "Natural gas processing": "天然气加工",
-    "Natural gas processing/LNG": "天然气加工/LNG",
-    "Hydrogen or ammonia": "氢能与氨能",
-    "Chemicals": "化工行业",
-    "Refining": "炼油行业",
-    "Other fuel transformation": "其他能源转换",
     "Bioenergy": "生物能源",
     "Biofuels": "生物燃料",
-    "Transport": "交通运输",
-    "Direct air capture": "空气直接捕集 (DAC)",
-    "DAC": "空气直接捕集 (DAC)",
-    "Storage": "二氧化碳封存",
+    "Cement": "水泥行业",
+    "Chemicals": "化工行业",
+    "DAC": "直接空气捕集 (DAC)",
+    "Direct air capture": "直接空气捕集 (DAC)",
     "Fertilizer": "化肥生产",
-    "Waste-to-energy": "垃圾焚烧发电",
-    "Pulp and paper": "造纸行业",
-    "T&S": "运输与封存",
+    "Hydrogen or ammonia": "制氢/氨",
+    "Iron and steel": "钢铁行业",
+    "Multiple": "多行业领域",
+    "Natural gas processing": "天然气处理",
+    "Natural gas processing/LNG": "天然气处理/LNG",
+    "Other": "其他领域",
+    "Other fuel transformation": "其他能源转化",
     "Other industry": "其他工业",
-    "Other": "其他行业",
-    "Multiple": "多行业集成",
-    "TBD": "待定"
+    "Power and heat": "电力与供热",
+    "Pulp and paper": "造纸行业",
+    "Refining": "炼油行业",
+    "Storage": "封存设施",
+    "T&S": "运输与封存",
+    "TBD": "待定",
+    "Transport": "运输设施",
+    "Waste-to-energy": "垃圾发电"
   },
   "types": {
-    "Capture": "碳捕集",
-    "T&S": "运输与封存",
-    "Transport": "二氧化碳运输",
-    "Storage": "二氧化碳封存",
     "CCU": "碳利用",
-    "Full value chain": "全产业链",
-    "Full chain": "全产业链"
+    "Capture": "碳捕集",
+    "Full chain": "全流程项目",
+    "Full value chain": "全流程项目",
+    "Storage": "碳封存",
+    "T&S": "运输与封存",
+    "Transport": "碳运输"
   },
   "fates": {
     "Dedicated storage": "永久封存",
-    "Use": "资源化利用",
-    "EOR": "提高石油采收率 (EOR)",
-    "Unknown/unspecified": "未知/未指定",
-    "Use and storage": "利用与封存",
+    "EOR": "强化采油 (EOR)",
+    "EOR and storage": "EOR与封存",
     "EOR and use": "EOR与利用",
-    "EOR and storage": "EOR与封存"
+    "Unknown/unspecified": "未知/未指定",
+    "Use": "工业利用",
+    "Use and storage": "利用与封存"
   },
   "ui": {
     "categories": {
+      "Economic Incentive": { "zh": "经济激励", "en": "Economic Incentive" },
+      "Regulatory Framework": { "zh": "法律监管", "en": "Regulatory Framework" },
+      "Market Mechanism": { "zh": "市场机制", "en": "Market Mechanism" },
+      "Strategic Guidance": { "zh": "战略引导", "en": "Strategic Guidance" },
+      "Technical Standard": { "zh": "技术规范", "en": "Technical Standard" },
       "Incentive": { "zh": "经济激励", "en": "Economic Incentive" },
       "Regulatory": { "zh": "法律监管", "en": "Regulatory Framework" },
       "Market": { "zh": "市场机制", "en": "Market Mechanism" },
       "Strategic": { "zh": "战略引导", "en": "Strategic Guidance" },
-      "Technical": { "zh": "技术标准", "en": "Technical Standard" }
-    },
-    "dimensions": {
-      "incentive": { 
-        "label": { "zh": "激励强度", "en": "Incentive" },
-        "desc": { "zh": "财税支持机制，包括直接补贴、税收抵免（如45Q）和低息贷款。", "en": "Financial support mechanisms including subsidies, tax credits, and loans." }
-      },
-      "statutory": { 
-        "label": { "zh": "法律完善度", "en": "Regulatory" },
-        "desc": { "zh": "法律框架的稳健性与清晰度，包括许可流程和长期责任。", "en": "Legal robustness, including permitting processes and long-term liability." }
-      },
-      "market": { 
-        "label": { "zh": "市场化程度", "en": "Market" },
-        "desc": { "zh": "与碳市场、排放交易体系（ETS）及自愿信用机制的整合。", "en": "Integration with carbon markets and emission trading systems (ETS)." }
-      },
-      "strategic": { 
-        "label": { "zh": "战略一致性", "en": "Strategic" },
-        "desc": { "zh": "与国家净零目标、长期路线图和国际承诺的对齐程度。", "en": "Alignment with national net-zero targets and long-term roadmaps." }
-      },
-      "mrv": { 
-        "label": { "zh": "技术核证", "en": "Technical" },
-        "desc": { "zh": "监测、报告与核查标准，确保技术完整性和环境安全。", "en": "Monitoring, Reporting, and Verification standards ensuring safety." }
-      }
+      "Technical": { "zh": "技术规范", "en": "Technical Standard" }
     },
     "status": {
-      "Operational": { "zh": "运行中", "en": "Operational" },
+      "Active": { "zh": "运行中", "en": "Active" },
       "Planned": { "zh": "计划中", "en": "Planned" },
-      "Under construction": { "zh": "建设中", "en": "Under Construction" },
-      "Suspended": { "zh": "已暂停/取消", "en": "Suspended" },
-      "Decommissioned": { "zh": "已关停", "en": "Decommissioned" }
+      "Under development": { "zh": "开发中", "en": "Under development" },
+      "Upcoming": { "zh": "即将出台", "en": "Upcoming" },
+      "Inactive": { "zh": "已失效", "en": "Inactive" },
+      "Superseded": { "zh": "已废止", "en": "Superseded" }
+    },
+    "dimensions": {
+      "incentive": {
+        "label": { "zh": "经济激励", "en": "Economic" },
+        "desc": { "zh": "财政补贴、税收抵免及直接资金支持力度。", "en": "Direct funding, tax credits, and subsidies." }
+      },
+      "statutory": {
+        "label": { "zh": "法律监管", "en": "Statutory" },
+        "desc": { "zh": "法律授权、准入许可及监管框架的完备性。", "en": "Legal authority and permitting rigor." }
+      },
+      "market": {
+        "label": { "zh": "市场机制", "en": "Market" },
+        "desc": { "zh": "碳交易、信用补偿及商业模式的成熟度。", "en": "Carbon trading and commercial maturity." }
+      },
+      "strategic": {
+        "label": { "zh": "战略引导", "en": "Strategic" },
+        "desc": { "zh": "国家长期目标、路线图及政策稳定性。", "en": "Long-term goals and roadmaps." }
+      },
+      "mrv": {
+        "label": { "zh": "技术规范", "en": "Technical" },
+        "desc": { "zh": "监测、报告与核证 (MRV) 的技术严谨性。", "en": "Monitoring, Reporting and Verification rigor." }
+      }
     }
   }
 }

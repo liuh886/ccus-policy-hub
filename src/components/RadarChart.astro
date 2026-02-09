@@ -1,6 +1,7 @@
 ---
 interface Props {
   id?: string;
+  labels?: string[];
   data: {
     incentive: number;
     statutory: number;
@@ -17,7 +18,7 @@ interface Props {
   };
 }
 
-const { data, details, id = 'fsrtmChart' } = Astro.props;
+const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'] } = Astro.props;
 ---
 
 <div class="relative w-full h-full min-h-[200px]">
@@ -25,15 +26,15 @@ const { data, details, id = 'fsrtmChart' } = Astro.props;
 </div>
 
 <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script is:inline define:vars={{ chartData: data, chartDetails: details, canvasId: id }}>
+<script is:inline define:vars={{ chartData: data, chartDetails: details, canvasId: id, chartLabels: labels }}>
   const ctx = document.getElementById(canvasId);
   if (ctx) {
     const labelMapping = {
-      'Incentive': 'incentive',
-      'Regulatory': 'statutory',
-      'Market': 'market',
-      'Strategic': 'strategic',
-      'Technical': 'mrv'
+      [chartLabels[0]]: 'incentive',
+      [chartLabels[1]]: 'statutory',
+      [chartLabels[2]]: 'market',
+      [chartLabels[3]]: 'strategic',
+      [chartLabels[4]]: 'mrv'
     };
 
     // Calculate dynamic color based on average score
@@ -45,7 +46,7 @@ const { data, details, id = 'fsrtmChart' } = Astro.props;
     new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'],
+        labels: chartLabels,
         datasets: [{
           data: [
             chartData.incentive,

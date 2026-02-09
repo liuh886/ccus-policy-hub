@@ -8,59 +8,33 @@ const facilities = await getCollection(
 
 // Aggregate data by year
 const yearMap = new Map<number, number>();
-const futureMap = new Map<number, number>();
-
 facilities.forEach((f) => {
-  const year = f.data.commencementYear;
-  const isOperational = f.data.status === '运行中' || f.data.status === 'Operational';
-  const isConstruction = f.data.status === '在建' || f.data.status === 'Under construction';
-  
-  if (year && year >= 1970 && year <= 2050) {
-    if (isOperational || isConstruction) {
-      yearMap.set(year, (yearMap.get(year) || 0) + f.data.capacity);
-    } else {
-      futureMap.set(year, (futureMap.get(year) || 0) + f.data.capacity);
-    }
+  const year = f.data.operation;
+  // Handle potential string years or nulls from previous schema issues
+  const numYear = typeof year === 'string' ? parseInt(year) : year;
+  if (numYear && numYear >= 1970 && numYear <= 2040) {
+    yearMap.set(numYear, (yearMap.get(numYear) || 0) + (f.data.estimatedCapacity || 0));
   }
 });
 
-const currentYear = new Date().getFullYear();
-const sortedYears = Array.from(new Set([...yearMap.keys(), ...futureMap.keys()])).sort((a, b) => a - b);
-
+const sortedYears = Array.from(yearMap.keys()).sort((a, b) => a - b);
 let cumulative = 0;
-let futureCumulative = 0;
-
 const chartData = sortedYears.map((year) => {
   cumulative += yearMap.get(year) || 0;
-  // Future capacity includes operational + planned
-  futureCumulative = cumulative + Array.from(futureMap.entries())
-    .filter(([y]) => y <= year)
-    .reduce((sum, [_, cap]) => sum + cap, 0);
-    
-  return { 
-    year, 
-    value: cumulative.toFixed(1),
-    futureValue: futureCumulative.toFixed(1)
-  };
+  return { year, value: cumulative.toFixed(1) };
 });
 
 const totalCapacity = cumulative.toFixed(1);
-const totalPotential = futureCumulative.toFixed(1);
-const operationalCount = facilities.filter(
+const operationalFacilities = facilities.filter(
   (f) => f.data.status === '运行中' || f.data.status === 'Operational'
-).length;
-const operationalCapacity = facilities
-  .filter((f) => f.data.status === '运行中' || f.data.status === 'Operational')
-  .reduce((sum, f) => sum + f.data.capacity, 0)
-  .toFixed(1);
+);
+const operationalCount = operationalFacilities.length;
+const operationalCapacity = operationalFacilities.reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0).toFixed(1);
 
-const constructionCount = facilities.filter(
-  (f) => f.data.status === '在建' || f.data.status === 'Under construction'
-).length;
-const constructionCapacity = facilities
-  .filter((f) => f.data.status === '在建' || f.data.status === 'Under construction')
-  .reduce((sum, f) => sum + f.data.capacity, 0)
-  .toFixed(1);
+const constructionFacilities = facilities.filter(
+  (f) => f.data.status === '建设中' || f.data.status === 'Under construction'
+);
+const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0).toFixed(1);
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
@@ -86,24 +60,21 @@ const constructionCapacity = facilities
       >
         {
           lang === 'zh'
-            ? '全球总潜力产能 (2050)'
-            : 'Global Potential (2050)'
+            ? '全球累计产能 (2030估)'
+            : 'Global Capacity (2030 Est.)'
         }
       </h3>
-      <div class="text-5xl font-black text-emerald-600 mb-2">
-        {totalPotential}
+      <div class="text-5xl font-black text-blue-600 mb-2">
+        {totalCapacity}
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
-      <div class="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
-        <div>
-          <div class="text-[10px] font-black text-slate-400 uppercase mb-1">{lang === 'zh' ? '在运总产能' : 'Op. Capacity'}</div>
-          <div class="text-lg font-black dark:text-white text-blue-600">{totalCapacity} <span class="text-[10px] text-slate-400">Mtpa</span></div>
-        </div>
-        <div>
-          <div class="text-[10px] font-black text-slate-400 uppercase mb-1">{lang === 'zh' ? '在建总产能' : 'Const. Capacity'}</div>
-          <div class="text-lg font-black dark:text-white">{constructionCapacity} <span class="text-[10px] text-slate-400">Mtpa</span></div>
-        </div>
-      </div>
+      <p class="text-xs text-slate-500 font-medium">
+        {
+          lang === 'zh'
+            ? '基于 IEA 2025 项目库的各阶段产能预测加总。'
+            : 'Projected cumulative capacity based on IEA 2025 pipeline data.'
+        }
+      </p>
     </div>
 
     <div
@@ -123,24 +94,26 @@ const constructionCapacity = facilities
           ></path></svg
         >
       </div>
-      <div class="flex justify-between items-start mb-4">
-        <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest">
-          {lang === 'zh' ? '在运 / 在建设施' : 'Op. / Const. Facilities'}
-        </h3>
-      </div>
+      <h3
+        class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4"
+      >
+        {lang === 'zh' ? '在运设施 / 规模' : 'Operational Facilities / Cap'}
+      </h3>
       <div class="flex items-baseline gap-2 mb-2">
         <div class="text-5xl font-black tracking-tighter">
           {operationalCount}
         </div>
-        <div class="text-xl font-bold text-slate-500">/ {constructionCount}</div>
+        <div class="text-xl font-bold text-blue-400">/ {operationalCapacity} <span class="text-[10px] uppercase">Mtpa</span></div>
       </div>
-      <p class="text-xs text-slate-400">
-        {
-          lang === 'zh'
-            ? '当前全球已商业化运行及正在建设中的项目数量。'
-            : 'Number of projects in commercial operation and under construction.'
-        }
-      </p>
+      
+      <div class="pt-4 border-t border-white/10">
+        <h3 class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">
+          {lang === 'zh' ? '在建捕集能力' : 'Under Construction Cap'}
+        </h3>
+        <div class="text-2xl font-black">
+          {constructionCapacity} <span class="text-[10px] text-slate-400 uppercase">Mtpa</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -162,7 +135,7 @@ const constructionCapacity = facilities
         <p
           class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
         >
-          Global Cumulative Capacity (Mtpa) 1970 - 2050
+          Global Cumulative Capacity (Mtpa) 1970 - 2030
         </p>
       </div>
       <div
@@ -209,18 +182,6 @@ const constructionCapacity = facilities
             pointRadius: 0,
             pointHoverRadius: 6,
           },
-          {
-            label: 'Potential (Incl. Planned)',
-            data: data.map((d: any) => d.futureValue),
-            borderColor: '#10b981',
-            backgroundColor: 'transparent',
-            borderDash: [5, 5],
-            fill: false,
-            tension: 0.4,
-            borderWidth: 2,
-            pointRadius: 0,
-            pointHoverRadius: 4,
-          }
         ],
       },
       options: {

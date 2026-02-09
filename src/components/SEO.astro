@@ -2,7 +2,6 @@
 interface Props {
   title: string;
   description?: string;
-  keywords?: string;
   image?: string;
   canonicalURL?: string;
 }
@@ -10,7 +9,6 @@ interface Props {
 const {
   title,
   description = 'CCUS Policy Hub - 全球 CCUS 政策数据库与分析平台',
-  keywords = 'CCUS, 碳捕集, 碳封存, 气候政策, 碳中和, Carbon Capture, CCS',
   image = '/social-preview.png',
   canonicalURL = Astro.url.href,
 } = Astro.props;
@@ -29,7 +27,6 @@ const {
 <title>{title} | CCUS Policy Hub</title>
 <meta name="title" content={`${title} | CCUS Policy Hub`} />
 <meta name="description" content={description} />
-<meta name="keywords" content={keywords} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

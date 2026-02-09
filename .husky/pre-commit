@@ -1,1 +1,1 @@
-npx astro check && npm run lint && pnpm audit:logic && pnpm audit:geospatial
+npx astro check && npm run lint

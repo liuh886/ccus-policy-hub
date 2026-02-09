@@ -9,25 +9,23 @@ const { facility } = Astro.props;
 const {
   name,
   country,
-  location,
   type,
   status,
-  capacity,
+  estimatedCapacity,
+  announcedCapacityMax,
   sector,
-  commencementYear,
   precision,
   phase,
-  announcedCapacity,
-  estimatedCapacity
+  region
 } = facility.data;
 
 const isEn = facility.data.lang === 'en';
 const BASE = '/ccus-policy-hub';
-const detailHref = `${BASE}/${isEn ? 'en/facilities' : 'facilities'}/${facility.id.replace(/^(en|zh)\//, '')}/`;
+const detailHref = `${BASE}/${isEn ? 'en/facilities' : 'facilities'}/${facility.id}/`;
 
 // Capacity Logic
-const displayCapacity = announcedCapacity || estimatedCapacity || capacity;
-const isAnnounced = !!announcedCapacity;
+const displayCapacity = estimatedCapacity || announcedCapacityMax || 0;
+const isAnnounced = !!announcedCapacityMax && !estimatedCapacity;
 
 // 状态颜色映射
 const statusColors: Record<string, string> = {
@@ -38,127 +36,142 @@ const statusColors: Record<string, string> = {
   开发中: 'bg-blue-400',
   'Under Development': 'bg-blue-400',
   'Under construction': 'bg-amber-500',
-  'Suspended': 'bg-red-500',
-  'Decommissioned': 'bg-slate-600'
+  '建设中': 'bg-amber-500',
 };
 
 const statusColor = statusColors[status] || 'bg-slate-400';
 ---
 
-<div
-  class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 hover:shadow-2xl transition-all group flex flex-col h-full relative overflow-hidden"
->
-  <!-- Status Badge Row -->
-  <div class="flex justify-between items-start mb-6">
-    <div class="flex gap-2">
-      <div
-        class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
-      >
+<div class="relative group h-full">
+  <div
+    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 hover:shadow-2xl transition-all flex flex-col h-full relative overflow-hidden"
+  >
+    <!-- Status Badge Row -->
+    <div class="flex justify-between items-start mb-6">
+      <div class="flex gap-2">
         <div
-          class={`w-2 h-2 rounded-full ${statusColor} shadow-[0_0_8px_rgba(0,0,0,0.1)]`}
+          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
         >
+          <div
+            class={`w-2 h-2 rounded-full ${statusColor} shadow-[0_0_8px_rgba(0,0,0,0.1)]`}
+          >
+          </div>
+          <span
+            class="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400"
+            >{status}</span
+          >
         </div>
-        <span
-          class="text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400"
-          >{status}</span
-        >
+        {phase && (
+          <span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-800">
+            {phase}
+          </span>
+        )}
       </div>
-      {phase && (
-        <span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-800">
-          {phase}
-        </span>
+      <div class="flex items-center gap-3">
+        {
+          precision === 'approximate' && (
+            <div
+              class="text-orange-500"
+              title={isEn ? 'Approximate location' : '区域近似坐标'}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path d="M12 9v4" />
+                <path d="M12 17h.01" />
+                <path d="m3.34 19 8.66-15 8.66 15H3.34Z" />
+              </svg>
+            </div>
+          )
+        }
+        <!-- Spacer for checkbox -->
+        <div class="w-5"></div>
+      </div>
+    </div>
+
+    <h3
+      class="text-xl font-black mb-2 text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-tight line-clamp-2"
+    >
+      <a href={detailHref}>{name}</a>
+    </h3>
+
+    <div
+      class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-6"
+    >
+      <span>{country}</span>
+      {region && (
+        <>
+          <span>•</span>
+          <span class="truncate">{region}</span>
+        </>
       )}
     </div>
-    {
-      precision === 'approximate' && (
-        <div
-          class="text-orange-500"
-          title={isEn ? 'Approximate location' : '区域近似坐标'}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          >
-            <path d="M12 9v4" />
-            <path d="M12 17h.01" />
-            <path d="m3.34 19 8.66-15 8.66 15H3.34Z" />
-          </svg>
-        </div>
-      )
-    }
-  </div>
 
-  <h3
-    class="text-xl font-black mb-2 text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-tight line-clamp-2"
-  >
-    <a href={detailHref}>{name}</a>
-  </h3>
-
-  <div
-    class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-6"
-  >
-    <span>{country}</span>
-    {facility.data.region && (
-      <>
-        <span>•</span>
-        <span class="truncate">{facility.data.region}</span>
-      </>
-    )}
-  </div>
-
-  <div
-    class="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-slate-100 dark:border-slate-800"
-  >
-    <div>
-      <div
-        class="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
-      >
-        {isEn ? 'Capacity' : '年捕集规模'}
-        {isAnnounced && <span class="w-1 h-1 rounded-full bg-emerald-500" title="Announced Value"></span>}
-      </div>
-      <div class="text-lg font-black text-slate-900 dark:text-white">
-        {displayCapacity}
-        <span class="text-[10px] font-medium text-slate-400">Mtpa</span>
-      </div>
-    </div>
-    <div>
-      <div
-        class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
-      >
-        {isEn ? 'Type' : '设施类型'}
-      </div>
-      <div class="text-xs font-bold text-blue-600 truncate">{type}</div>
-    </div>
-  </div>
-
-  <div class="mt-auto flex items-center justify-between">
-    <div class="flex flex-col">
-      <span
-        class="text-[9px] font-black text-slate-400 uppercase tracking-widest"
-        >{isEn ? 'Industry' : '所属行业'}</span
-      >
-      <span class="text-xs font-bold text-slate-600 dark:text-slate-300"
-        >{sector || 'General'}</span
-      >
-    </div>
-    <a
-      href={detailHref}
-      class="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm"
+    <div
+      class="grid grid-cols-2 gap-4 mb-6 pt-6 border-t border-slate-100 dark:border-slate-800"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg
+      <div>
+        <div
+          class="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
+        >
+          {isEn ? 'Capacity' : '年捕集规模'}
+          {isAnnounced && <span class="w-1 h-1 rounded-full bg-emerald-500" title="Announced Value"></span>}
+        </div>
+        <div class="text-lg font-black text-slate-900 dark:text-white">
+          {displayCapacity}
+          <span class="text-[10px] font-medium text-slate-400">Mtpa</span>
+        </div>
+      </div>
+      <div>
+        <div
+          class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
+        >
+          {isEn ? 'Type' : '设施类型'}
+        </div>
+        <div class="text-xs font-bold text-blue-600 truncate">{type}</div>
+      </div>
+    </div>
+
+    <div class="mt-auto flex items-center justify-between">
+      <div class="flex flex-col">
+        <span
+          class="text-[9px] font-black text-slate-400 uppercase tracking-widest"
+          >{isEn ? 'Industry' : '所属行业'}</span
+        >
+        <span class="text-xs font-bold text-slate-600 dark:text-slate-300"
+          >{sector || 'General'}</span
+        >
+      </div>
+      <a
+        href={detailHref}
+        class="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm"
       >
-    </a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg
+        >
+      </a>
+    </div>
+  </div>
+
+  <!-- Compare Checkbox -->
+  <div class="absolute top-6 right-6 z-10">
+    <label class="relative inline-flex items-center cursor-pointer group/cb">
+      <input type="checkbox" class="sr-only peer compare-checkbox" data-id={facility.id} />
+      <div class="w-5 h-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded peer peer-checked:bg-blue-600 peer-checked:border-blue-600 transition-all shadow-sm flex items-center justify-center overflow-hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 peer-checked:opacity-100 transition-opacity"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+    </label>
   </div>
 </div>

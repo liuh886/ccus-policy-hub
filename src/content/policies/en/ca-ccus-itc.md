@@ -1,68 +1,84 @@
 ---
-id: ca-ccus-itc
-country: 加拿大
-year: 2023
-status: Active
-category: Regulatory
-pubDate: '2023-11-30'
-reviewStatus: verified
-legalWeight: Primary Legislation
-sectors: []
-analysis:
-  incentive:
-    score: 100
-    label: 60% DAC / 50% General
-    evidence: Statutory rates set at 60% for DAC and 50% for standard capture projects.
-    citation: Income Tax Act s. 127.44
-  statutory:
-    score: 85
-    label: Bill C-59 Codified
-    evidence: Enacted in June 2024, providing a predictable long-term legislative framework.
-    citation: Bill C-59 Royal Assent
-  market:
-    score: 75
-    label: TIER Synergy
-    evidence: Deeply integrated with provincial carbon pricing systems to maximize revenue.
-    citation: NRCan Strategic Framework
-  mrv:
-    score: 90
-    label: Labour & Tech Verification
-    evidence: Strict compliance requirements for labour standards and technical performance.
-    citation: CRA Ingestion Guide
-  strategic:
-    score: 80
-    label: Decarbonization Pillar
-    evidence: Defined as a critical tool to keep Canadian industry competitive against US IRA.
-    citation: Canada 2030 ERP
-impactAnalysis:
-  economic: Provides up to 50%-60% refundable tax credit, drastically lowering CAPEX barriers; stackable with provincial grants like Alberta's ACCIP.
-  technical: Preferential rates for Direct Air Capture (60%) and saline storage explicitly steer capital towards high-impact NETs.
-  environmental: Acts as the financial engine for Canada's 2030 ERP, enabling decarbonization across oil sands, steel, and cement sectors.
-evolution:
-  supersedes: []
-  clusters:
-    - Canada 2030 Emissions Reduction Plan
-    - Alberta TIER Alignment
-implementationDetails:
-  authority: Canada Revenue Agency (CRA) & Natural Resources Canada (NRCan)
-  mechanism: Refundable Investment Tax Credit
-  fundingScale: Estimated CAD 12.4 Billion through 2030
-relatedFacilities: []
-url: https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html
-source: 加拿大财政部
-provenance:
-  author: Gemini Intelligence
-  lastAuditDate: '2026-02-08'
-title: Canada CCUS Investment Tax Credit (ITC)
-scope: National
-tags:
-  - ITC
-  - Investment Credit
-  - Fiscal
-description: |-
-  ## Policy Core
-
-  The Canada CCUS ITC is a refundable tax credit of up to 60%, legally established in 2024.
+{
+  "analysis": {
+    "incentive": {
+      "auditNote": "",
+      "citation": "Bill C-59 (June 2024)",
+      "evidence": "[AI-Generated] Refundable tax credits up to 60% for DAC and 50% for other capture. Stacks with Alberta's 12% grant.",
+      "label": "50-60% Capex Credit",
+      "score": 90
+    },
+    "market": {
+      "auditNote": "",
+      "citation": "ACCIP Alignment",
+      "evidence": "[AI-Generated] Complementary to provincial carbon pricing. Enhances monetizability of captured emissions.",
+      "label": "TIER Integration",
+      "score": 70
+    },
+    "mrv": {
+      "auditNote": "",
+      "citation": "CRA ITC Rules",
+      "evidence": "[AI-Generated] Mandates technical reporting and data sharing for projects >$250M.",
+      "label": "Knowledge Sharing",
+      "score": 80
+    },
+    "statutory": {
+      "auditNote": "",
+      "citation": "Finance Canada Guidance",
+      "evidence": "[AI-Generated] Legally codified into federal tax system. NRCan provides robust technical evaluation.",
+      "label": "Income Tax Act Basis",
+      "score": 85
+    },
+    "strategic": {
+      "auditNote": "",
+      "citation": "Budget 2025",
+      "evidence": "[AI-Generated] Central tool for Canada's 40-45% reduction goal. Rates extended to 2035.",
+      "label": "2030 Mitigation Core",
+      "score": 85
+    }
+  },
+  "category": "Regulatory",
+  "country": "Canada",
+  "description": "## Policy Core  The Canada CCUS ITC is a refundable tax credit of up to 60%, legally established in 2024.",
+  "evolution": {
+    "clusters": [
+      "Canada 2030 Emissions Reduction Plan",
+      "Alberta TIER Alignment"
+    ],
+    "supersedes": []
+  },
+  "id": "ca-ccus-itc",
+  "impactAnalysis": {
+    "economic": "Provides up to 50%-60% refundable tax credit, drastically lowering CAPEX barriers; stackable with provincial grants like Alberta's ACCIP.",
+    "environmental": "Acts as the financial engine for Canada's 2030 ERP, enabling decarbonization across oil sands, steel, and cement sectors.",
+    "technical": "Preferential rates for Direct Air Capture (60%) and saline storage explicitly steer capital towards high-impact NETs."
+  },
+  "interpretation": "",
+  "legalWeight": "Guideline/Policy",
+  "provenance": {
+    "author": "Gemini Intelligence",
+    "lastAuditDate": "2026-02-08",
+    "reviewer": ""
+  },
+  "pubDate": "2023-11-30",
+  "regulatory": {
+    "co2_definition": "",
+    "cross_border_rules": "",
+    "financial_assurance": "",
+    "liability_period": "Provincial responsibility; varies",
+    "liability_transfer": "",
+    "permitting_lead_time": "3-5 years",
+    "pore_space_rights": ""
+  },
+  "relatedFacilities": [],
+  "reviewStatus": "verified",
+  "sectors": [],
+  "source": "加拿大财政部",
+  "status": "Active",
+  "title": "Canada CCUS Investment Tax Credit (ITC)",
+  "year": 2023,
+  "url": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html"
+}
 ---
 
 ## Policy Core

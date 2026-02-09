@@ -4,30 +4,42 @@ import WorldMapNav from '../../components/WorldMapNav.astro';
 import CapacityTrend from '../../components/CapacityTrend.astro';
 ---
 
-<Layout 
-  title="Global CCUS Policy & Facility Database"
-  description="World-leading CCUS policy database and facility map, integrating latest IEA data with deep FSRTM 5.0 policy analysis and comparison."
-  keywords="CCUS, Carbon Capture, Carbon Storage, Policy Database, Facility Map, IEA, FSRTM, Net Zero"
->
+<Layout title="Global CCUS Policy & Facility Database">
   <div class="py-12">
     <!-- Hero Section -->
     <header class="text-center mb-20">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm mx-auto">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm mx-auto"
+      >
         <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
         Global CCUS Intelligence Hub 2026
       </div>
-      <h1 class="text-6xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1]">
-        Global CCUS Policy & Facility<br/><span class="text-blue-600">Knowledge Infrastructure</span>
+      <h1
+        class="text-6xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1]"
+      >
+        Global CCUS Policy & Facility<br /><span class="text-blue-600"
+          >Knowledge Infrastructure</span
+        >
       </h1>
-      <p class="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-        Integrating IEA global project data with key incentive mechanisms, providing multi-dimensional comparison, spatial mapping, and industry trend analysis.
+      <p
+        class="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
+      >
+        Integrating IEA global project data with key incentive mechanisms,
+        providing multi-dimensional comparison, spatial mapping, and industry
+        trend analysis.
       </p>
-      
+
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/ccus-policy-hub/en/facilities/" class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 dark:shadow-none hover:-translate-y-1">
+        <a
+          href="/ccus-policy-hub/en/facilities/"
+          class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 dark:shadow-none hover:-translate-y-1"
+        >
           Explore Facility Map
         </a>
-        <a href="/ccus-policy-hub/en/policy/" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm">
+        <a
+          href="/ccus-policy-hub/en/policy/"
+          class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm"
+        >
           Browse Policy Database
         </a>
       </div>
@@ -36,35 +48,93 @@ import CapacityTrend from '../../components/CapacityTrend.astro';
     <!-- Data Insights Section -->
     <CapacityTrend />
 
-    <div class="mb-24 px-4 py-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-100 dark:border-slate-800">
+    <div
+      class="mb-24 px-4 py-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-100 dark:border-slate-800"
+    >
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-black mb-4 dark:text-white">Policy Access Console</h2>
-        <p class="text-slate-500 text-balance">Select an active region to scan for sectoral incentives, regulatory requirements, and deployment status.</p>
+        <h2 class="text-3xl font-black mb-4 dark:text-white">
+          Policy Access Console
+        </h2>
+        <p class="text-slate-500 text-balance">
+          Select an active region to scan for sectoral incentives, regulatory
+          requirements, and deployment status.
+        </p>
       </div>
       <WorldMapNav lang="en" />
     </div>
 
     <div class="py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div
+        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+      >
         <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg
+          >
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">Authoritative Data</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Synced with IEA CCUS Projects Database 2025, GCCSI, and official government announcements.</p>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">
+          Authoritative Data
+        </h3>
+        <p class="text-sm text-slate-500 leading-relaxed">
+          Synced with IEA CCUS Projects Database 2025, GCCSI, and official
+          government announcements.
+        </p>
       </div>
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div
+        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+      >
         <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
+              d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
+          >
         </div>
         <h3 class="text-xl font-bold mb-3 dark:text-white">Visual Analytics</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">In-depth insights into global incentives through interactive maps and multi-dimensional comparison matrices.</p>
+        <p class="text-sm text-slate-500 leading-relaxed">
+          In-depth insights into global incentives through interactive maps and
+          multi-dimensional comparison matrices.
+        </p>
       </div>
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div
+        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+      >
         <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
+              cx="9"
+              cy="7"
+              r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path
+              d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
+          >
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">Sectoral Benchmarking</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Automated policy linkage engine providing specific benchmarks for Hydrogen, Power, and Industrial sectors.</p>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">
+          Sectoral Benchmarking
+        </h3>
+        <p class="text-sm text-slate-500 leading-relaxed">
+          Automated policy linkage engine providing specific benchmarks for
+          Hydrogen, Power, and Industrial sectors.
+        </p>
       </div>
     </div>
   </div>

@@ -1,34 +1,39 @@
-# Core Build & Runtime
+# --- Core Build & Runtime ---
 dist/
 .astro/
 node_modules/
 .env
 .env.production
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# System & IDE
+# --- OS & IDE Junk ---
 .DS_Store
-.idea/
-.vscode/
 Thumbs.db
+.vscode/
+.idea/
+*.log
 
-# Internal Agent & Governance (Non-website content)
+# --- Lean Architecture: Archive & Tests ---
+# 这些是历史遗留和开发调试文件，不属于运行环境
+archive/
+tests/
+
+# --- Lean Architecture: Governance ---
+# 仅保留数据库主文件和结构定义，排除原始 Excel 和所有生成的审计报告
+governance/*
+!governance/db/
+governance/db/*
+!governance/db/ccus_master.sqlite
+!governance/db/schema.sql
+
+# --- Lean Architecture: Scripts ---
+# 仅保留管理入口，确保系统精干
+scripts/*
+!scripts/manage.mjs
+!scripts/init-standardization.mjs
+
+# --- Internal AI Context ---
 .gemini/
 .codex/
 skills/
 *.skill
-
-# Local Scripts & Maintenance Tools
-scripts/
-*.pyc
-__pycache__/
-
-# Documentation & Raw Materials
-/docs/
-SELF_CHECK_REPORT.md
 ccus-db-governance.skill

@@ -19,8 +19,8 @@ const statuses = Array.from(
 ).sort();
 ---
 
-<Layout 
-  title="全球设施名录"
+<Layout
+  title="全球设施目录"
   description="探索全球在运及计划中的 CCUS 设施，提供详细的产能数据、行业分类及地理空间位置。"
   keywords="CCUS 设施, 碳捕集项目地图, 全球封存点, 工业脱碳项目"
 >
@@ -29,7 +29,7 @@ const statuses = Array.from(
       <h1
         class="text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white"
       >
-        全球设施名录
+        全球设施目录
       </h1>
       <p class="text-slate-500 text-lg leading-relaxed font-medium">
         集成全球在运及计划中的 CCUS
@@ -83,8 +83,40 @@ const statuses = Array.from(
                   id="stat-operational"
                   class="text-xl font-black text-white leading-none">0</span
                 >
-                <span class="text-[10px] font-bold text-slate-500 uppercase"
+                <span class="text-[9px] font-bold text-slate-500 uppercase"
                   >Active</span
+                >
+              </div>
+            </div>
+            <div class="w-px h-8 bg-white/10"></div>
+            <div class="flex flex-col">
+              <span
+                class="text-[9px] font-black text-blue-400 uppercase tracking-widest mb-0.5"
+                >在运产能</span
+              >
+              <div class="flex items-baseline gap-1">
+                <span
+                  id="stat-operational-cap"
+                  class="text-xl font-black text-white leading-none">0.0</span
+                >
+                <span class="text-[9px] font-bold text-slate-500 uppercase"
+                  >MTPA</span
+                >
+              </div>
+            </div>
+            <div class="w-px h-8 bg-white/10"></div>
+            <div class="flex flex-col">
+              <span
+                class="text-[9px] font-black text-amber-400 uppercase tracking-widest mb-0.5"
+                >在建产能</span
+              >
+              <div class="flex items-baseline gap-1">
+                <span
+                  id="stat-construction-cap"
+                  class="text-xl font-black text-white leading-none">0.0</span
+                >
+                <span class="text-[9px] font-bold text-slate-500 uppercase"
+                  >MTPA</span
                 >
               </div>
             </div>
@@ -123,7 +155,6 @@ const statuses = Array.from(
           <option value="">所有国家</option>
           {countries.map((c) => <option value={c}>{c}</option>)}
         </select>
-        <!-- 默认选中“运行中” -->
         <select
           id="status-filter"
           class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-emerald-600"
@@ -131,7 +162,7 @@ const statuses = Array.from(
           <option value="">所有状态</option>
           {
             statuses.map((s) => (
-              <option value={s} selected={s === '运行中'}>
+              <option value={s} selected={s === '运行中' || s === 'Operational'}>
                 {s}
               </option>
             ))
@@ -151,13 +182,6 @@ const statuses = Array.from(
           <option value="">所有类型</option>
           {types.map((t) => <option value={t}>{t}</option>)}
         </select>
-        <select
-          id="policy-filter"
-          class="px-3 py-2.5 bg-blue-50 dark:bg-blue-900/20 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-blue-600"
-        >
-          <option value="">关联政策 (Policy Filter)</option>
-          {policies.map((p) => <option value={p.id.replace(/^zh\//, '')}>{p.data.title}</option>)}
-        </select>
       </div>
     </div>
 
@@ -174,7 +198,7 @@ const statuses = Array.from(
             data-sector={f.data.sector}
             data-type={f.data.type}
             data-status={f.data.status}
-            data-capacity={f.data.capacity}
+            data-capacity={f.data.estimatedCapacity || 0}
             data-policies={f.data.relatedPolicies?.join(',') || ''}
           >
             <FacilityCard facility={f} />
@@ -209,15 +233,14 @@ const statuses = Array.from(
     const typeFilter = document.getElementById(
       'type-filter'
     ) as HTMLSelectElement;
-    const policyFilter = document.getElementById(
-      'policy-filter'
-    ) as HTMLSelectElement;
     const items = document.querySelectorAll('.facility-item');
     const noResults = document.getElementById('no-results');
 
     const statCount = document.getElementById('stat-count');
     const statCapacity = document.getElementById('stat-capacity');
     const statOperational = document.getElementById('stat-operational');
+    const statOperationalCap = document.getElementById('stat-operational-cap');
+    const statConstructionCap = document.getElementById('stat-construction-cap');
 
     function filterAndStats() {
       const search = searchInput?.value.toLowerCase() || '';
@@ -225,14 +248,12 @@ const statuses = Array.from(
       const status = statusFilter?.value || '';
       const sector = sectorFilter?.value || '';
       const type = typeFilter?.value || '';
-      const policyId = policyFilter?.value || '';
-
-      // Dispatch to map
-      window.dispatchEvent(new CustomEvent('map-filter', { detail: { policyId } }));
 
       let count = 0;
       let capacity = 0;
       let operational = 0;
+      let operationalCap = 0;
+      let constructionCap = 0;
 
       items.forEach((item: any) => {
         const d = item.dataset;
@@ -241,15 +262,20 @@ const statuses = Array.from(
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&
-          (!type || d.type === type) &&
-          (!policyId || d.policies.split(',').includes(policyId));
+          (!type || d.type === type);
 
         if (matches) {
           item.style.display = 'block';
           count++;
-          capacity += parseFloat(d.capacity || 0);
-          if (d.status === '运行中' || d.status === 'Operational')
+          const cap = parseFloat(d.capacity || 0);
+          capacity += cap;
+          if (d.status === '运行中' || d.status === 'Operational') {
             operational++;
+            operationalCap += cap;
+          }
+          if (d.status === '建设中' || d.status === 'Under construction') {
+            constructionCap += cap;
+          }
         } else {
           item.style.display = 'none';
         }
@@ -258,6 +284,8 @@ const statuses = Array.from(
       if (statCount) statCount.textContent = count.toString();
       if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
       if (statOperational) statOperational.textContent = operational.toString();
+      if (statOperationalCap) statOperationalCap.textContent = operationalCap.toFixed(1);
+      if (statConstructionCap) statConstructionCap.textContent = constructionCap.toFixed(1);
 
       if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
     }
@@ -268,7 +296,6 @@ const statuses = Array.from(
       statusFilter,
       sectorFilter,
       typeFilter,
-      policyFilter,
     ].forEach((el) => {
       el?.addEventListener('input', filterAndStats);
       el?.addEventListener('change', filterAndStats);

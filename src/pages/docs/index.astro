@@ -5,30 +5,48 @@ import Layout from '../../layouts/Layout.astro';
 const docs = await getCollection('docs');
 ---
 
-<Layout 
-	title="文档中心"
-	description="CCUS Policy Hub 使用指南、项目背景以及贡献者准则。"
-	keywords="CCUS 文档, 使用手册, 贡献指南, 项目背景"
->
-	<div class="max-w-4xl mx-auto">
-		<header class="mb-12">
-			<h1 class="text-4xl font-extrabold mb-4">文档中心</h1>
-			<p class="text-slate-600 dark:text-slate-400">
-				了解项目背景、学习使用技巧，或加入我们的贡献计划。
-			</p>
-		</header>
+<Layout title="文档中心">
+  <div class="max-w-4xl mx-auto">
+    <header class="mb-12">
+      <h1 class="text-4xl font-extrabold mb-4">文档中心</h1>
+      <p class="text-slate-600 dark:text-slate-400">
+        了解项目背景、学习使用技巧，或加入我们的贡献计划。
+      </p>
+    </header>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			{docs.sort((a, b) => a.data.order - b.data.order).map(doc => (
-				<a href={`/ccus-policy-hub/docs/${doc.id}/`} class="block p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all group">
-					<h2 class="text-xl font-bold mb-2 group-hover:text-blue-600 dark:text-white transition-colors">{doc.data.title}</h2>
-					<p class="text-sm text-slate-500 dark:text-slate-400">{doc.data.description}</p>
-					<div class="mt-4 text-blue-600 text-sm font-medium flex items-center gap-1">
-						阅读更多
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="m9 18 6-6-6-6"/></svg>
-					</div>
-				</a>
-			))}
-		</div>
-	</div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        docs
+          .sort((a, b) => a.data.order - b.data.order)
+          .map((doc) => (
+            <a
+              href={`/docs/${doc.id}`}
+              class="block p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all group"
+            >
+              <h2 class="text-xl font-bold mb-2 group-hover:text-blue-600 dark:text-white transition-colors">
+                {doc.data.title}
+              </h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                {doc.data.description}
+              </p>
+              <div class="mt-4 text-blue-600 text-sm font-medium flex items-center gap-1">
+                阅读更多
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  class="group-hover:translate-x-1 transition-transform"
+                >
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+            </a>
+          ))
+      }
+    </div>
+  </div>
 </Layout>

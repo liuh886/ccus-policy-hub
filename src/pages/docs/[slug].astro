@@ -14,11 +14,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout 
-  title={entry.data.title}
-  description={entry.data.description}
-  keywords={`${entry.data.title}, CCUS Guide, CCUS Documentation`}
->
+<Layout title={entry.data.title}>
   <div class="max-w-3xl mx-auto py-8 px-4">
     <nav class="mb-8">
       <a
@@ -39,20 +35,27 @@ const { Content } = await render(entry);
     </nav>
 
     <article class="prose prose-slate dark:prose-invert max-w-none">
-      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">{entry.data.title}</h1>
+      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">
+        {entry.data.title}
+      </h1>
       <p
         class="text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-4"
       >
         {entry.data.description}
       </p>
-      <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+      <div
+        class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm"
+      >
         <Content />
       </div>
     </article>
 
     <div class="mt-16 pt-8 border-t dark:border-slate-800">
       <p class="text-sm text-slate-400">
-        如果您对此文档有任何补充或发现错误，欢迎通过 <a href="/ccus-policy-hub/about/" class="text-blue-600 underline">反馈表单</a> 或 GitHub 提交修改。
+        如果您对此文档有任何补充或发现错误，欢迎通过 <a
+          href="/ccus-policy-hub/about/"
+          class="text-blue-600 underline">反馈表单</a
+        > 或 GitHub 提交修改。
       </p>
     </div>
   </div>
