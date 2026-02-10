@@ -3,13 +3,20 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import FacilityMap from '../../components/FacilityMap.astro';
 import FacilityCard from '../../components/FacilityCard.astro';
+import countryData from '../../data/countries.json';
 
 const facilities = await getCollection('facilities_zh');
 const policies = await getCollection('policies_zh');
 
+// Country name mapping logic
+const countryMap: Record<string, any> = countryData;
+
 const countries = Array.from(
   new Set(facilities.map((f) => f.data.country))
-).sort();
+).sort().map(canon => ({
+  canon,
+  display: countryMap[canon]?.zh || canon
+}));
 const sectors = Array.from(new Set(facilities.map((f) => f.data.sector)))
   .filter(Boolean)
   .sort();
@@ -153,7 +160,7 @@ const statuses = Array.from(
           class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold"
         >
           <option value="">所有国家</option>
-          {countries.map((c) => <option value={c}>{c}</option>)}
+          {countries.map((c) => <option value={c.canon}>{c.display}</option>)}
         </select>
         <select
           id="status-filter"

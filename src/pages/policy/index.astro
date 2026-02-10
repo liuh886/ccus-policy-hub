@@ -2,9 +2,13 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PolicyCard from '../../components/PolicyCard.astro';
+import countryData from '../../data/countries.json';
 
 // 只获取中文政策
 const policies = await getCollection('policies_zh');
+
+// Country name mapping logic
+const countryMap: Record<string, any> = countryData;
 
 // Category translation and logic
 const categoryMap: Record<string, string> = {
@@ -19,7 +23,12 @@ const categoryMap: Record<string, string> = {
   'Regulatory': '法律监管',
 };
 
-const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country))).sort();
+const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country)))
+  .sort()
+  .map(canon => ({
+    canon,
+    display: countryMap[canon]?.zh || canon
+  }));
 const uniqueSectors = Array.from(new Set(policies.flatMap((p) => p.data.sectors || []))).sort();
 const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))).sort();
 ---
@@ -67,7 +76,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
         <option value="">所有国家</option>
-        {uniqueCountries.map((country) => <option value={country}>{country}</option>)}
+        {uniqueCountries.map((c) => <option value={c.canon}>{c.display}</option>)}
       </select>
 
       <select

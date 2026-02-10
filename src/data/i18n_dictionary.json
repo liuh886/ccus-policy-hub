@@ -18,51 +18,51 @@
     "South Korea": "South Korea",
     "Sweden": "Sweden",
     "Thailand": "Thailand",
+    "UK": "United Kingdom",
+    "USA": "United States",
     "United Arab Emirates": "United Arab Emirates",
     "United Kingdom": "United Kingdom",
     "United States": "United States",
-    "USA": "United States",
-    "UK": "United Kingdom",
-    "美国": "United States",
     "中国": "China",
-    "英国": "United Kingdom",
-    "欧盟": "European Union",
     "加拿大": "Canada",
-    "澳大利亚": "Australia",
-    "挪威": "Norway",
-    "荷兰": "Netherlands",
-    "日本": "Japan",
-    "巴西": "Brazil",
     "印度": "India",
-    "阿联酋": "United Arab Emirates",
     "国际": "International",
-    "缇庡浗": "United States",
     "娆х洘": "European Union",
-    "涓浗": "China",
-    "鎸▉": "Norway",
-    "鍔犳嬁澶": "Canada",
-    "鑻卞浗": "United Kingdom",
-    "婢冲ぇ鍒╀簹": "Australia",
-    "鍗板害灏艰タ浜": "Indonesia",
-    "鏃ユ湰": "Japan",
-    "涓归害": "Denmark",
-    "闊╁浗": "South Korea",
-    "鍥介檯": "International",
-    "椹潵瑗夸簹": "Malaysia",
-    "鑽峰叞": "Netherlands",
-    "宸磋タ": "Brazil",
-    "闃胯仈閰": "United Arab Emirates",
-    "寰峰浗": "Germany",
     "娉曞浗": "France",
-    "娌欑壒闃挎媺浼": "Saudi Arabia",
     "娉板浗": "Thailand",
-    "鍗板害": "India",
-    "鍐板矝": "Iceland",
-    "瓒婂崡": "Vietnam",
-    "鍏嬬綏鍦颁簹": "Croatia",
-    "缃楅┈灏间簹": "Romania",
+    "娌欑壒闃挎媺浼": "Saudi Arabia",
+    "婢冲ぇ鍒╀簹": "Australia",
+    "宸磋タ": "Brazil",
+    "寰峰浗": "Germany",
+    "巴西": "Brazil",
+    "挪威": "Norway",
+    "日本": "Japan",
+    "椹潵瑗夸簹": "Malaysia",
+    "欧盟": "European Union",
+    "涓归害": "Denmark",
+    "涓浗": "China",
+    "澳大利亚": "Australia",
     "灏兼棩鍒╀簹": "Nigeria",
-    "鍝ヤ鸡姣斾簹": "Colombia"
+    "瓒婂崡": "Vietnam",
+    "缃楅┈灏间簹": "Romania",
+    "缇庡浗": "United States",
+    "美国": "United States",
+    "英国": "United Kingdom",
+    "荷兰": "Netherlands",
+    "鍏嬬綏鍦颁簹": "Croatia",
+    "鍐板矝": "Iceland",
+    "鍔犳嬁澶": "Canada",
+    "鍗板害": "India",
+    "鍗板害灏艰タ浜": "Indonesia",
+    "鍝ヤ鸡姣斾簹": "Colombia",
+    "鍥介檯": "International",
+    "鎸▉": "Norway",
+    "鏃ユ湰": "Japan",
+    "鑻卞浗": "United Kingdom",
+    "鑽峰叞": "Netherlands",
+    "闃胯仈閰": "United Arab Emirates",
+    "闊╁浗": "South Korea",
+    "阿联酋": "United Arab Emirates"
   },
   "sectors": {
     "Bioenergy": "生物能源",
@@ -109,45 +109,123 @@
   },
   "ui": {
     "categories": {
-      "Economic Incentive": { "zh": "经济激励", "en": "Economic Incentive" },
-      "Regulatory Framework": { "zh": "法律监管", "en": "Regulatory Framework" },
-      "Market Mechanism": { "zh": "市场机制", "en": "Market Mechanism" },
-      "Strategic Guidance": { "zh": "战略引导", "en": "Strategic Guidance" },
-      "Technical Standard": { "zh": "技术规范", "en": "Technical Standard" },
-      "Incentive": { "zh": "经济激励", "en": "Economic Incentive" },
-      "Regulatory": { "zh": "法律监管", "en": "Regulatory Framework" },
-      "Market": { "zh": "市场机制", "en": "Market Mechanism" },
-      "Strategic": { "zh": "战略引导", "en": "Strategic Guidance" },
-      "Technical": { "zh": "技术规范", "en": "Technical Standard" }
+      "Economic Incentive": {
+        "zh": "经济激励",
+        "en": "Economic Incentive"
+      },
+      "Incentive": {
+        "zh": "经济激励",
+        "en": "Economic Incentive"
+      },
+      "Market": {
+        "zh": "市场机制",
+        "en": "Market Mechanism"
+      },
+      "Market Mechanism": {
+        "zh": "市场机制",
+        "en": "Market Mechanism"
+      },
+      "Regulatory": {
+        "zh": "法律监管",
+        "en": "Regulatory Framework"
+      },
+      "Regulatory Framework": {
+        "zh": "法律监管",
+        "en": "Regulatory Framework"
+      },
+      "Strategic": {
+        "zh": "战略引导",
+        "en": "Strategic Guidance"
+      },
+      "Strategic Guidance": {
+        "zh": "战略引导",
+        "en": "Strategic Guidance"
+      },
+      "Technical": {
+        "zh": "技术规范",
+        "en": "Technical Standard"
+      },
+      "Technical Standard": {
+        "zh": "技术规范",
+        "en": "Technical Standard"
+      }
     },
     "status": {
-      "Active": { "zh": "运行中", "en": "Active" },
-      "Planned": { "zh": "计划中", "en": "Planned" },
-      "Under development": { "zh": "开发中", "en": "Under development" },
-      "Upcoming": { "zh": "即将出台", "en": "Upcoming" },
-      "Inactive": { "zh": "已失效", "en": "Inactive" },
-      "Superseded": { "zh": "已废止", "en": "Superseded" }
+      "Active": {
+        "zh": "现行",
+        "en": "Active"
+      },
+      "Inactive": {
+        "zh": "失效",
+        "en": "Inactive"
+      },
+      "Planned": {
+        "zh": "计划中",
+        "en": "Planned"
+      },
+      "Superseded": {
+        "zh": "被取代",
+        "en": "Superseded"
+      },
+      "Under development": {
+        "zh": "制定中",
+        "en": "Under development"
+      },
+      "Upcoming": {
+        "zh": "即将实施",
+        "en": "Upcoming"
+      }
     },
     "dimensions": {
       "incentive": {
-        "label": { "zh": "经济激励", "en": "Economic" },
-        "desc": { "zh": "财政补贴、税收抵免及直接资金支持力度。", "en": "Direct funding, tax credits, and subsidies." }
-      },
-      "statutory": {
-        "label": { "zh": "法律监管", "en": "Statutory" },
-        "desc": { "zh": "法律授权、准入许可及监管框架的完备性。", "en": "Legal authority and permitting rigor." }
+        "label": {
+          "zh": "经济激励",
+          "en": "Economic"
+        },
+        "desc": {
+          "zh": "财政补贴、税收抵免及直接资金支持力度。",
+          "en": "Direct funding, tax credits, and subsidies."
+        }
       },
       "market": {
-        "label": { "zh": "市场机制", "en": "Market" },
-        "desc": { "zh": "碳交易、信用补偿及商业模式的成熟度。", "en": "Carbon trading and commercial maturity." }
-      },
-      "strategic": {
-        "label": { "zh": "战略引导", "en": "Strategic" },
-        "desc": { "zh": "国家长期目标、路线图及政策稳定性。", "en": "Long-term goals and roadmaps." }
+        "label": {
+          "zh": "市场机制",
+          "en": "Market"
+        },
+        "desc": {
+          "zh": "碳交易、信用补偿及商业模式的成熟度。",
+          "en": "Carbon trading and commercial maturity."
+        }
       },
       "mrv": {
-        "label": { "zh": "技术规范", "en": "Technical" },
-        "desc": { "zh": "监测、报告与核证 (MRV) 的技术严谨性。", "en": "Monitoring, Reporting and Verification rigor." }
+        "label": {
+          "zh": "技术规范",
+          "en": "Technical"
+        },
+        "desc": {
+          "zh": "监测、报告与核证 (MRV) 的技术严谨性。",
+          "en": "Monitoring, Reporting and Verification rigor."
+        }
+      },
+      "statutory": {
+        "label": {
+          "zh": "法律监管",
+          "en": "Statutory"
+        },
+        "desc": {
+          "zh": "法律授权、准入许可及监管框架的完备性。",
+          "en": "Legal authority and permitting rigor."
+        }
+      },
+      "strategic": {
+        "label": {
+          "zh": "战略引导",
+          "en": "Strategic"
+        },
+        "desc": {
+          "zh": "国家长期目标、路线图及政策稳定性。",
+          "en": "Long-term goals and roadmaps."
+        }
       }
     }
   }
