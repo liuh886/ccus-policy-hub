@@ -20,7 +20,16 @@ const countries = Array.from(
 const sectors = Array.from(new Set(facilities.map((f) => f.data.sector)))
   .filter(Boolean)
   .sort();
-const types = Array.from(new Set(facilities.map((f) => f.data.type))).sort();
+const types = Array.from(
+  new Set(
+    facilities.map((f) => {
+      const t = f.data.type;
+      if (t === 'Full chain' || t === 'Full Chain' || t === 'fullchain')
+        return '全产业链';
+      return t;
+    })
+  )
+).sort();
 const statuses = Array.from(
   new Set(facilities.map((f) => f.data.status))
 ).sort();
@@ -134,7 +143,7 @@ const statuses = Array.from(
 
     <div class="sticky top-20 z-40 mb-12">
       <div
-        class="grid grid-cols-1 md:grid-cols-5 gap-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
+        class="grid grid-cols-1 md:grid-cols-6 gap-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
       >
         <div class="md:col-span-1 relative">
           <input
@@ -189,6 +198,14 @@ const statuses = Array.from(
           <option value="">所有类型</option>
           {types.map((t) => <option value={t}>{t}</option>)}
         </select>
+        <select
+          id="sort-select"
+          class="px-3 py-2.5 bg-blue-50 dark:bg-blue-900/30 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-blue-600"
+        >
+          <option value="default">默认排序</option>
+          <option value="capacity-desc">按规模（大到小）</option>
+          <option value="year-asc">按年份（先到后）</option>
+        </select>
       </div>
     </div>
 
@@ -197,20 +214,32 @@ const statuses = Array.from(
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
     >
       {
-        facilities.map((f) => (
-          <div
-            class="facility-item"
-            data-name={f.data.name}
-            data-country={f.data.country}
-            data-sector={f.data.sector}
-            data-type={f.data.type}
-            data-status={f.data.status}
-            data-capacity={f.data.estimatedCapacity || 0}
-            data-policies={f.data.relatedPolicies?.join(',') || ''}
-          >
-            <FacilityCard facility={f} />
-          </div>
-        ))
+        facilities.map((f) => {
+          const normalizedType =
+            f.data.type === 'Full chain' ||
+            f.data.type === 'Full Chain' ||
+            f.data.type === 'fullchain'
+              ? '全产业链'
+              : f.data.type;
+
+          return (
+            <div
+              class="facility-item"
+              data-name={f.data.name}
+              data-country={f.data.country}
+              data-sector={f.data.sector}
+              data-type={normalizedType}
+              data-status={f.data.status}
+              data-capacity={f.data.estimatedCapacity || 0}
+              data-year={f.data.announcement || ''}
+              data-partners={f.data.partners?.join(' ') || ''}
+              data-operator={f.data.operator || ''}
+              data-policies={f.data.relatedPolicies?.join(',') || ''}
+            >
+              <FacilityCard facility={f} />
+            </div>
+          );
+        })
       }
     </div>
 
@@ -240,7 +269,11 @@ const statuses = Array.from(
     const typeFilter = document.getElementById(
       'type-filter'
     ) as HTMLSelectElement;
-    const items = document.querySelectorAll('.facility-item');
+    const sortSelect = document.getElementById(
+      'sort-select'
+    ) as HTMLSelectElement;
+    const items = Array.from(document.querySelectorAll('.facility-item'));
+    const grid = document.getElementById('facility-grid');
     const noResults = document.getElementById('no-results');
 
     const statCount = document.getElementById('stat-count');
@@ -255,6 +288,7 @@ const statuses = Array.from(
       const status = statusFilter?.value || '';
       const sector = sectorFilter?.value || '';
       const type = typeFilter?.value || '';
+      const sortValue = sortSelect?.value || 'default';
 
       let count = 0;
       let capacity = 0;
@@ -262,10 +296,13 @@ const statuses = Array.from(
       let operationalCap = 0;
       let constructionCap = 0;
 
+      // Filter
       items.forEach((item: any) => {
         const d = item.dataset;
         const matches =
-          d.name.toLowerCase().includes(search) &&
+          (d.name.toLowerCase().includes(search) ||
+            d.partners.toLowerCase().includes(search) ||
+            d.operator.toLowerCase().includes(search)) &&
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&
@@ -288,6 +325,24 @@ const statuses = Array.from(
         }
       });
 
+      // Sort
+      const sortedItems = [...items].sort((a: any, b: any) => {
+        if (sortValue === 'capacity-desc') {
+          return (
+            parseFloat(b.dataset.capacity || 0) -
+            parseFloat(a.dataset.capacity || 0)
+          );
+        } else if (sortValue === 'year-asc') {
+          const yearA = parseInt(a.dataset.year) || 9999;
+          const yearB = parseInt(b.dataset.year) || 9999;
+          return yearA - yearB;
+        }
+        // Default order (original index)
+        return items.indexOf(a) - items.indexOf(b);
+      });
+
+      sortedItems.forEach((item) => grid?.appendChild(item));
+
       if (statCount) statCount.textContent = count.toString();
       if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
       if (statOperational) statOperational.textContent = operational.toString();
@@ -303,6 +358,7 @@ const statuses = Array.from(
       statusFilter,
       sectorFilter,
       typeFilter,
+      sortSelect,
     ].forEach((el) => {
       el?.addEventListener('input', filterAndStats);
       el?.addEventListener('change', filterAndStats);
