@@ -3,18 +3,19 @@
 本设施的更新与维护，可以做增量更新，但不能随意删除内容或使用占位符替代，除非得到用户同意。
 
 ## Compatibility / Deprecation
+
 - **已废弃介质**：`src/data/policy_database.json`, `src/data/facility_database.json` (不再作为真理源)。
 - **已废弃脚本**：`scripts/fix-relationships.cjs`, `scripts/sync.cjs`, `scripts/standardize-facilities.mjs`。
 - **替代方案**：统一使用 `pnpm manage db:*` 系列命令。
 
 ## 0. 治理层级与效力 (Hierarchy of Authority)
 
-本项目的治理体系由以下四层构成，效力由高到低排列：
+本项目采用“核心最小集治理”，效力由高到低排列：
 
 1.  **宪法 (`0_GOVERNANCE.md`)**：最高准则。定义底线、红线与枚举真理。冲突时以此为准。
-2.  **蓝图 (`1_project_proposal.md`)**：业务定义。负责分类字典、评价模型与设计愿景。
-3.  **任务系统 (`2_todolist.md`)**：动态状态。负责追踪治理缺口与当前操作优先级。
-4.  **执行手册 (`SKILL_MASTER.md`)**：操作指令。将上述层级转化为人机可执行 SOP。
+2.  **操作规则 (`OPERATING_RULES_AGENT.md`)**：Agent 必须遵守的强制执行顺序。
+3.  **执行手册 (`SKILL_MASTER.md`)**：端到端 SOP 与故障处理。
+4.  **目录入口 (`README.md`)**：核心文件白名单、命令入口、归档边界。
 
 ---
 
@@ -38,18 +39,35 @@
 - **`reviewStatus`**: 审核状态（`draft`, `verified`）。
 - **`description`**: **叙事核心 (Narrative Core)**。必须包含核心条款、背景及具体目标的实质性描述（200 字以上）。
 - **`legalWeight`**: 法律效力等级（`Primary Legislation`, `Administrative Regulation`, `Departmental Rules`, `Technical Standard`, `Strategic Guidance`, `Guideline/Policy`）。
+- **`scope`**: 管辖范围（`International`, `National`, `Sub-national`, `Regional`）。
+- **`sectors`**: 覆盖行业列表（`Power`, `Industry`, `Hydrogen`, `DAC`, `Cement`, `Steel`）。
 
 **B. FSRTM 效能切片 (Evaluative Intensity)**
 
-- **量化值** (0-100)。对齐 1.3 节的分值锚点。得分 > 40 时必填 `citation`。
+- **物理结构**：对应 JSON 中的 `analysis` 对象，包含 5 个轴向：`incentive`, `statutory`, `market`, `strategic`, `mrv`。
+- **内部契约 (Field Contract)**：
+  - `score`: **量化值** (0-100)。必须对齐 1.3 节的分值锚点。
+  - `label`: **摘要标签**。用极简短语描述核心特征。
+  - `evidence`: **逻辑支撑**。必须解释为什么给这个分，严禁废话。
+  - `citation`: **溯源证据**。得分 > 40 时必填，必须引用具体条款或 URL。
 
 **C. 实质影响切片 (Strategic Intelligence)**
 
-- 包含 `economic`, `technical`, `environmental` 影响分析及 `authority`, `mechanism` 执行细节。
+- **`impactAnalysis`**:
+  - `economic`: 描述成本/补贴如何改变项目经济性（如降低 LCOE）。
+  - `technical`: 描述对具体捕集/封存技术路径的选择性引导。
+  - `environmental`: 描述预估的二氧化碳减排贡献。
+- **`implementationDetails`**:
+  - `authority`: 牵头执行机构（如 DOE, IRS, MEE）。
+  - `mechanism`: 具体的政策执行工具（如 CfD, Tax Credit, 专项基金）。
 
 **D. 谱系与关联切片 (Relational & Lineage)**
 
-- 包含 `evolution` (supersedes/supersededBy) 关系及 `relatedFacilities` 物理关联。
+- **`evolution`**:
+  - `supersedes`: 被该政策取代的旧政策 ID 列表。
+  - `supersededBy`: 取代该政策的新政策 ID。
+- **`clusters`**: 所属的重大政策丛林（如：Inflation Reduction Act, EU Green Deal）。
+- **`relatedFacilities`**: 物理关联的设施 ID 列表。
 
 #### **1.1.2 设施数据：IEA 2025 对齐协议 (IEA-Standard Ingestion Protocol)**
 
@@ -90,9 +108,11 @@
 
 - **无人工干预导出 (Zero-Intervention)**：所有前端所需数据（影响力分析、监管矩阵、设施叙事）必须由 `db:export:md` 自动生成。严禁导出后手动修补 Markdown。
 - **临时文件治理 (Temp File Management)**：
-    *   定期执行 `pnpm manage:db:clean` 清理冗余报告。
-    *   `governance/reports/` 仅保留最新的审计日志与心跳文件。
+  - 定期执行 `pnpm manage:db:clean` 清理冗余报告。
+  - `governance/reports/` 仅保留最新的审计日志与心跳文件。
 - **工具链收敛**：所有维护逻辑必须集成至 `scripts/manage.mjs`。严禁在 `scripts/` 根目录下存放散乱的临时 JS 脚本（旧脚本必须移至 `archive/`）。
+- **一键流水线**：默认通过 `pnpm manage:db:pipeline` 执行标准化、审计、导出与统计，避免人工漏步。
+- **文件数量治理**：`governance/` 根目录只允许核心白名单文件；阶段性文档必须进入 `governance/archive/`。
 
 ## 3. 前端交互与视觉治理 (UI/UX Governance)
 

@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-02-10T07:19:44.789Z",
+  "summary": {
+    "overall": "PASS",
+    "notes": "Deep audit sourced from governance heartbeat and integrity summary."
+  },
+  "policies": {
+    "total": 86,
+    "min_required": 80,
+    "pass": true,
+    "errors": []
+  },
+  "facilities": {
+    "total": 1017,
+    "min_required": 1000,
+    "pass": true,
+    "errors": []
+  },
+  "quality": {
+    "unmapped_tokens": 0,
+    "invalid_links": 0,
+    "invalid_geo": 0,
+    "pass": true
+  },
+  "relationships": {
+    "status": "managed by db:fix-relationships and FK constraints",
+    "errors": []
+  }
+}

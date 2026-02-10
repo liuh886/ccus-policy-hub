@@ -18,6 +18,8 @@
     "manage:db:audit:deep": "node scripts/manage.mjs db:audit:deep",
     "manage:db:export:i18n": "node scripts/manage.mjs db:export:i18n",
     "manage:db:export:md": "node scripts/manage.mjs db:export:md",
+    "manage:db:pipeline": "node scripts/manage.mjs db:pipeline",
+    "manage:db:lint-governance": "node scripts/manage.mjs db:governance:lint-files",
     "manage:db:optimize": "node scripts/manage.mjs db:optimize",
     "manage:db:clean": "node scripts/manage.mjs db:clean",
     "sync:all": "pnpm manage:db:export:md",

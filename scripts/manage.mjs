@@ -13,6 +13,7 @@ const LEGACY_I18N_PATH = path.join(__dirname, '../src/data/i18n_dictionary.json'
 const REPORTS_DIR = path.join(__dirname, '../governance/reports');
 const LOCK_PATH = path.join(__dirname, '../governance/db/.lock');
 const THRESHOLDS_PATH = path.join(__dirname, '../governance/audit_thresholds.json');
+const GOVERNANCE_ROOT = path.join(__dirname, '../governance');
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -159,6 +160,8 @@ async function main() {
       case 'db:backup': await dbBackup(args.slice(1)); break;
       case 'db:restore': await dbRestore(args[1]); break;
       case 'db:optimize': await dbOptimize(SQL); break;
+      case 'db:pipeline': await dbPipeline(SQL, args.slice(1)); break;
+      case 'db:governance:lint-files': await dbGovernanceLintFiles(); break;
       case 'db:clean': await dbClean(); break;
       default: printHelp();
     }
@@ -195,9 +198,21 @@ Usage:
   pnpm manage db:export:golden
   pnpm manage db:test:golden
   pnpm manage db:stats [--output <path>]
+  pnpm manage db:pipeline [--init] [--with-imports] [--with-iea] [--excel <path>]
+  pnpm manage db:governance:lint-files
   pnpm manage db:backup [--tag <name>]
   pnpm manage db:restore <filename>
   `);
+}
+
+function hasFlag(argv, flag) {
+  return argv.includes(flag);
+}
+
+function getFlagValue(argv, flag, fallback = null) {
+  const idx = argv.indexOf(flag);
+  if (idx === -1) return fallback;
+  return argv[idx + 1] || fallback;
 }
 
 function loadDb(SQL) {
@@ -1352,6 +1367,96 @@ async function dbOptimize(SQL) {
   db.exec('ANALYZE;');
   db.save();
   console.log('DONE.');
+}
+
+async function dbPipeline(SQL, argv = []) {
+  console.log('PIPELINE: Running end-to-end governance pipeline...');
+
+  const options = {
+    init: hasFlag(argv, '--init'),
+    withImports: hasFlag(argv, '--with-imports'),
+    withIea: hasFlag(argv, '--with-iea'),
+    excelPath: getFlagValue(argv, '--excel', path.join(__dirname, '../governance/IEA CCUS Projects Database 2025.xlsx'))
+  };
+
+  const steps = [];
+  const runStep = async (name, fn) => {
+    const start = new Date().toISOString();
+    try {
+      await fn();
+      steps.push({ name, status: 'ok', startedAt: start, endedAt: new Date().toISOString() });
+    } catch (err) {
+      steps.push({ name, status: 'failed', startedAt: start, endedAt: new Date().toISOString(), error: err.message });
+      throw err;
+    }
+  };
+
+  if (options.init) await runStep('db:init', async () => dbInit(SQL));
+  if (options.withImports) {
+    await runStep('db:import:i18n', async () => dbImportI18n(SQL));
+    await runStep('db:import:legacy', async () => dbImportLegacy(SQL));
+  }
+  if (options.withIea) {
+    await runStep('db:import:iea:links', async () => dbImportIeaLinks(SQL, ['--excel', options.excelPath]));
+  }
+
+  await runStep('db:standardize', async () => dbStandardize(SQL));
+  await runStep('db:standardize:region-zh', async () => dbStandardizeRegionZh(SQL));
+  await runStep('db:standardize:policy-source', async () => dbStandardizePolicySource(SQL));
+  await runStep('db:fix-relationships', async () => dbFixRelationships(SQL));
+  await runStep('db:audit:deep', async () => dbAuditDeep(SQL));
+  await runStep('db:dict:lint', async () => dbDictLint(SQL));
+  await runStep('db:export:i18n', async () => dbExportI18n(SQL));
+  await runStep('db:export:md', async () => dbExportMd(SQL));
+  await runStep('db:export:schema-enums', async () => dbExportSchemaEnums(SQL));
+  await runStep('db:stats', async () => dbStats(SQL));
+
+  const report = {
+    ts: new Date().toISOString(),
+    command: 'db:pipeline',
+    options,
+    steps,
+    pass: steps.every(s => s.status === 'ok')
+  };
+  fs.writeFileSync(path.join(REPORTS_DIR, 'pipeline_run.json'), JSON.stringify(report, null, 2));
+  console.log(`DONE. Pipeline report: ${path.join(REPORTS_DIR, 'pipeline_run.json')}`);
+}
+
+async function dbGovernanceLintFiles() {
+  console.log('GOVERNANCE LINT: checking root file count and allowed set...');
+  const allowedFiles = new Set([
+    '0_GOVERNANCE.md',
+    'OPERATING_RULES_AGENT.md',
+    'SKILL_MASTER.md',
+    'field_mapping_sqlite.md',
+    'audit_thresholds.json',
+    'README.md',
+    'IEA CCUS Projects Database 2025.xlsx'
+  ]);
+  const allowedDirs = new Set(['db', 'reports', 'archive']);
+
+  const entries = fs.readdirSync(GOVERNANCE_ROOT, { withFileTypes: true });
+  const extras = [];
+
+  for (const ent of entries) {
+    if (ent.isDirectory() && !allowedDirs.has(ent.name)) extras.push(ent.name + '/');
+    if (ent.isFile() && !allowedFiles.has(ent.name)) extras.push(ent.name);
+  }
+
+  const report = {
+    ts: new Date().toISOString(),
+    rootPath: GOVERNANCE_ROOT,
+    allowedFiles: Array.from(allowedFiles),
+    allowedDirs: Array.from(allowedDirs),
+    extras
+  };
+  fs.writeFileSync(path.join(REPORTS_DIR, 'governance_file_lint.json'), JSON.stringify(report, null, 2));
+
+  if (extras.length > 0) {
+    console.error(`FAILED. Unexpected governance root entries: ${extras.join(', ')}`);
+    throw new Error('Governance root contains unmanaged files');
+  }
+  console.log('PASSED.');
 }
 
 async function dbClean() {
