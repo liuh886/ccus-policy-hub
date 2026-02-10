@@ -2,326 +2,336 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+// 关键修复：改用 id 前缀判断语言
 const policies = await getCollection('policies_zh');
 ---
 
-<Layout 
-  title="Policy Benchmarking Canvas | CCUS Policy Hub"
->
-  <div class="bg-[#f8fafc] dark:bg-slate-950 min-h-screen font-sans selection:bg-blue-500 selection:text-white">
-    
-    <!-- 1. Benchmarking Header -->
-    <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 pt-24 pb-12 print:hidden">
-      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-end gap-8">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 dark:border-blue-800">
-            <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            Advanced Analytics Engine
-          </div>
-          <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 dark:text-white leading-none">
-            Benchmarking <br/><span class="text-blue-600">Canvas</span>
-          </h1>
-        </div>
-        <div class="flex gap-4">
-          <button id="clear-all" class="px-6 py-3 text-xs font-black uppercase tracking-widest text-slate-400 hover:text-red-500 transition-all cursor-pointer border border-slate-200 dark:border-slate-800 rounded-2xl">
-            Reset Matrix
-          </button>
-          <button id="print-report" class="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-xl cursor-pointer">
-            Export Insight (PDF)
-          </button>
-        </div>
+<Layout title="政策对比分析">
+  <div class="max-w-7xl mx-auto py-8 px-4">
+    <div class="print:hidden mb-12 flex justify-between items-end">
+      <div>
+        <h1
+          class="text-4xl font-black mb-4 text-slate-900 dark:text-white flex items-center gap-3"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            class="text-blue-600"
+            ><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path
+              d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"></path><path
+              d="m15 10.828 5.828-5.828"></path><path
+              d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"></path></svg
+          >
+          政策对比矩阵
+        </h1>
+        <p class="text-slate-500 max-w-2xl">
+          选择多项政策进行横向维度对比，支持一键生成专业分析简报与 PDF 导出。
+        </p>
       </div>
-    </header>
+      <div class="flex gap-3">
+        <button
+          id="clear-all"
+          class="px-4 py-2 text-sm font-bold text-slate-400 hover:text-red-500 transition-colors"
+        >
+          清空选择
+        </button>
+        <button
+          id="print-report"
+          class="px-6 py-2.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            ><path d="M6 9V2h12v7"></path><path
+              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+            ></path><rect width="12" height="8" x="6" y="14"></rect></svg
+          >
+          导出分析报告 (PDF)
+        </button>
+      </div>
+    </div>
 
-    <main class="max-w-7xl mx-auto px-6 py-16">
-      <div id="compare-container" class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <!-- Radar Comparison -->
-        <div class="lg:col-span-12">
-          <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-12 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col lg:flex-row gap-12 items-center">
-            <div class="flex-1">
-              <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight text-balance">
-                FSRTM 5.0 Systemic Maturity Cross-Check
-              </h2>
-              <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-md leading-relaxed font-medium">
-                Visualizing the regulatory, financial, and technical spread between selected frameworks. High variance zones indicate competitive gaps.
-              </p>
-              <div id="briefing-content" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    <div class="hidden print:block mb-12 border-b-4 border-slate-900 pb-8">
+      <h1 class="text-4xl font-black text-slate-900 mb-2">
+        CCUS 政策对比分析简报
+      </h1>
+      <p class="text-slate-500">
+        生成日期：{new Date().toLocaleDateString('zh-CN')} | 数据来源：CCUS Policy
+        Hub
+      </p>
+    </div>
+
+    <div id="compare-container" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left: Analytics & Stats -->
+      <div class="lg:col-span-5 space-y-8">
+        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm sticky top-24">
+          <div class="mb-8">
+            <h2 class="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-2">Governance Benchmarking</h2>
+            <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">国家治理体系对标</h3>
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest italic">Multi-Country Aggregate Analysis (Peak Strength)</p>
+          </div>
+          
+          <div class="h-80 w-full mb-8">
+            <canvas id="compare-radar-canvas"></canvas>
+          </div>
+
+          <!-- Facility Stats Comparison -->
+          <div id="facility-stats-compare" class="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
+            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+              设施规模对标 Facility Benchmarking
+            </h4>
+            <div id="stats-grid" class="space-y-4">
+              <!-- Stats rows injected here -->
             </div>
-            <div class="w-full lg:w-1/2 aspect-square max-w-[500px]">
-              <canvas id="nationalGovernanceChart"></canvas>
-            </div>
           </div>
-        </div>
-
-        <!-- The Matrix -->
-        <div class="lg:col-span-12 overflow-x-auto pb-12">
-          <table id="comparison-matrix" class="w-full border-separate border-spacing-x-4 min-w-[1000px]">
-            <thead>
-              <tr id="matrix-header">
-                <th class="p-8 text-left text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 w-64 italic">Analysis Dimension</th>
-              </tr>
-            </thead>
-            <tbody id="matrix-body"></tbody>
-          </table>
         </div>
       </div>
 
-      <!-- Empty State -->
-      <div id="empty-state" class="hidden py-40 text-center bg-white dark:bg-slate-900 rounded-[4rem] border border-slate-200 dark:border-slate-800 shadow-inner">
-        <div class="max-w-md mx-auto">
-          <div class="w-24 h-24 bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-8 border border-slate-100 dark:border-slate-700">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-300"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"/><path d="m15 10.828 5.828-5.828"/><path d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"/></svg>
+      <!-- Right: Contributors & Regulatory Matrix -->
+      <div class="lg:col-span-7 space-y-12">
+        <!-- Peak Contributors -->
+        <section>
+          <div class="flex items-center gap-3 mb-8">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400">治理核心贡献政策 Peak Contributors</h2>
+            <div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div>
           </div>
-          <h2 class="text-2xl font-black mb-4 dark:text-white">Matrix Empty</h2>
-          <p class="text-slate-500 mb-10 font-medium leading-relaxed px-8">No policies selected for comparison. Visit the global database to add items to your analysis canvas.</p>
-          <a href="/ccus-policy-hub/policy/" class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20">Go to Database</a>
-        </div>
-      </div>
-    </main>
-  </div>
+          <div id="policy-bundles-container" class="space-y-10">
+            <!-- Bundles per country -->
+          </div>
+        </section>
 
-  <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
+        <!-- Regulatory Comparison Matrix -->
+        <section class="bg-white dark:bg-slate-950 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
+          <div class="p-8 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+            <h3 class="text-xs font-black uppercase tracking-widest text-slate-500">关键制度要素对标 Regulatory Matrix</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead id="reg-matrix-header"></thead>
+              <tbody id="reg-matrix-body" class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Data Bridges -->
+    <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_zh'))} class="hidden"></div>
+    <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
 </Layout>
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  let governanceChart: any = null;
+  import Chart from 'chart.js/auto';
 
-  function renderMatrix() {
+  let currentChart: any = null;
+  const colors = [
+    { border: 'rgb(37, 99, 235)', bg: 'rgba(37, 99, 235, 0.1)' },
+    { border: 'rgb(16, 185, 129)', bg: 'rgba(16, 185, 129, 0.1)' },
+    { border: 'rgb(245, 158, 11)', bg: 'rgba(245, 158, 11, 0.1)' },
+    { border: 'rgb(139, 92, 246)', bg: 'rgba(139, 92, 246, 0.1)' },
+    { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' }
+  ];
+
+  function renderCompareView() {
     const selectedSlugs = JSON.parse(localStorage.getItem('compare-list') || '[]');
     const allPolicies = JSON.parse((document.getElementById('all-policies-data') as any).dataset.policies);
+    const allFacilities = JSON.parse((document.getElementById('all-facilities-data') as any).dataset.facilities);
     
-    const selectedData = allPolicies.filter((p: any) => {
-      const slug = p.id.split('/').pop();
-      return selectedSlugs.includes(slug);
-    });
+    const userSelected = allPolicies.filter((p: any) => selectedSlugs.includes(p.id));
+    const selectedCountries = [...new Set(userSelected.map((p: any) => p.data.country))];
 
-    const matrixHeader = document.getElementById('matrix-header');
-    const matrixBody = document.getElementById('matrix-body');
-    const briefingContent = document.getElementById('briefing-content');
+    const container = document.getElementById('compare-container');
     const emptyState = document.getElementById('empty-state');
-    const compareContainer = document.getElementById('compare-container');
+    const bundleContainer = document.getElementById('policy-bundles-container');
+    const statsGrid = document.getElementById('stats-grid');
+    const regHeader = document.getElementById('reg-matrix-header');
+    const regBody = document.getElementById('reg-matrix-body');
 
-    if (selectedData.length === 0) {
+    if (selectedCountries.length === 0) {
       emptyState?.classList.remove('hidden');
-      compareContainer?.classList.add('hidden');
+      container?.classList.add('hidden');
       return;
     } else {
       emptyState?.classList.add('hidden');
-      compareContainer?.classList.remove('hidden');
+      container?.classList.remove('hidden');
     }
 
-    // --- Chart Logic ---
-    const colors = [
-      { border: 'rgb(37, 99, 235)', bg: 'rgba(37, 99, 235, 0.1)' },
-      { border: 'rgb(16, 185, 129)', bg: 'rgba(16, 185, 129, 0.1)' },
-      { border: 'rgb(245, 158, 11)', bg: 'rgba(245, 158, 11, 0.1)' },
-      { border: 'rgb(99, 102, 241)', bg: 'rgba(99, 102, 241, 0.1)' },
-      { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' }
-    ];
+    // 1. Group Data by Country and Calculate Peaks
+    const countryData = selectedCountries.map((c, idx) => {
+      const countryPolicies = allPolicies.filter((p: any) => p.data.country === c && (p.data.status === '运行中' || p.data.status === 'Active'));
+      const facilities = allFacilities.filter((f: any) => f.data.country === c || (c === 'United States' && f.data.country === 'USA'));
+      
+      const peakAnalysis = {
+        incentive: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.incentive?.score || 0), 0),
+        statutory: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.statutory?.score || 0), 0),
+        market: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.market?.score || 0), 0),
+        strategic: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.strategic?.score || 0), 0),
+        mrv: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.mrv?.score || 0), 0)
+      };
 
-    const datasets = selectedData.map((p, i) => ({
-      label: p.data.country,
-      data: [
-        p.data.analysis?.incentive?.score || 0,
-        p.data.analysis?.statutory?.score || 0,
-        p.data.analysis?.market?.score || 0,
-        p.data.analysis?.strategic?.score || 0,
-        p.data.analysis?.mrv?.score || 0
-      ],
-      borderColor: colors[i % colors.length].border,
-      backgroundColor: colors[i % colors.length].bg,
-      borderWidth: 3,
-      pointRadius: 4,
-      pointBackgroundColor: colors[i % colors.length].border,
-      lineTension: 0.3
-    }));
+      // Find contributors: policies that have the max score in any dimension
+      const contributors = countryPolicies.filter((p: any) => {
+        return Object.entries(peakAnalysis).some(([dim, score]) => (p.data.analysis?.[dim]?.score || 0) === score && score > 0);
+      }).sort((a:any, b:any) => b.data.year - a.data.year);
 
-    const ctx = document.getElementById('nationalGovernanceChart') as HTMLCanvasElement;
+      // Facility Stats
+      const stats = {
+        operational: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').length,
+        operationalCap: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0),
+        constructionCap: facilities.filter((f:any) => f.data.status === 'Under construction' || f.data.status === '建设中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0),
+        plannedCap: facilities.filter((f:any) => f.data.status === 'Planned' || f.data.status === '计划中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0)
+      };
+
+      // Representative Regulatory Data (take from most recent primary contributor)
+      const primary = contributors[0]?.data.regulatory || {};
+
+      return { country: c, color: colors[idx % colors.length], peakAnalysis, contributors, stats, regulatory: primary };
+    });
+
+    // 2. Render Radar Chart
+    const ctx = document.getElementById('compare-radar-canvas') as HTMLCanvasElement;
     if (ctx) {
-      if (governanceChart) governanceChart.destroy();
-      // @ts-ignore
-      governanceChart = new Chart(ctx, {
+      if (currentChart) currentChart.destroy();
+      currentChart = new Chart(ctx, {
         type: 'radar',
         data: {
-          labels: ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'],
-          datasets
+          labels: ['经济激励', '法律监管', '市场机制', '战略引导', '技术规范'],
+          datasets: countryData.map(cd => ({
+            label: cd.country,
+            data: [cd.peakAnalysis.incentive, cd.peakAnalysis.statutory, cd.peakAnalysis.market, cd.peakAnalysis.strategic, cd.peakAnalysis.mrv],
+            borderColor: cd.color.border,
+            backgroundColor: cd.color.bg,
+            borderWidth: 3,
+            pointRadius: 4,
+            fill: true
+          }))
         },
         options: {
+          responsive: true,
           maintainAspectRatio: false,
           scales: {
-            r: {
-              suggestedMin: 0,
-              suggestedMax: 100,
-              ticks: { display: false, stepSize: 20 },
-              grid: { color: 'rgba(0,0,0,0.05)' },
-              pointLabels: { font: { size: 11, weight: 'bold' }, color: '#94a3b8' }
-            }
-          },
-          plugins: {
-            legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 6, font: { size: 10, weight: 'bold' } } }
+            r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false }, grid: { color: 'rgba(148, 163, 184, 0.1)' } }
           }
         }
       });
     }
 
-    // --- Header Matrix ---
-    if (matrixHeader) {
-      matrixHeader.innerHTML = '<th class="p-8"></th>' + selectedData.map((p, i) => `
-        <th class="p-8 text-left bg-white dark:bg-slate-900 rounded-t-3xl border-t border-x border-slate-200 dark:border-slate-800">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-3 h-3 rounded-full" style="background-color: ${colors[i % colors.length].border}"></div>
-            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">${p.data.country}</span>
+    // 3. Render Bundles
+    if (bundleContainer) {
+      const dimColors: any = {
+        incentive: 'bg-emerald-500',
+        statutory: 'bg-blue-500',
+        market: 'bg-amber-500',
+        strategic: 'bg-purple-500',
+        mrv: 'bg-slate-500'
+      };
+
+      bundleContainer.innerHTML = countryData.map(cd => `
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <div class="w-3 h-3 rounded-full" style="background-color: ${cd.color.border}"></div>
+            <h3 class="text-xl font-bold dark:text-white">${cd.country} 治理核心贡献政策</h3>
           </div>
-          <h3 class="text-xl font-black text-slate-900 dark:text-white leading-tight">${p.data.title}</h3>
-        </th>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${cd.contributors.map((p: any) => `
+              <div class="p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm hover:border-blue-500 transition-all relative">
+                <div class="flex justify-between items-start mb-3">
+                  <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">${p.data.year}</span>
+                  <div class="flex gap-1">
+                    ${['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(dim => {
+                      const score = p.data.analysis?.[dim]?.score || 0;
+                      const isPeak = score === cd.peakAnalysis[dim as keyof typeof cd.peakAnalysis] && score > 0;
+                      return isPeak ? `<span class="w-1.5 h-1.5 rounded-full ${dimColors[dim]}"></span>` : '';
+                    }).join('')}
+                  </div>
+                </div>
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1 mb-4">${p.data.title}</h4>
+                <div class="flex gap-1.5">
+                  ${['incentive', 'statutory', 'market', 'strategic', 'mrv'].map((key) => {
+                    const score = p.data.analysis?.[key]?.score || 0;
+                    const isPeak = score === cd.peakAnalysis[key as keyof typeof cd.peakAnalysis] && score > 0;
+                    const barColor = isPeak ? dimColors[key] : 'bg-slate-200 dark:bg-slate-800';
+                    return `
+                      <div class="flex-1">
+                        <div class="h-1 w-full bg-slate-50 dark:bg-slate-900 rounded-full overflow-hidden mb-1">
+                          <div class="h-full ${barColor} transition-all duration-1000" style="width: ${score}%"></div>
+                        </div>
+                        <div class="text-[7px] font-black text-center ${isPeak ? 'text-slate-900 dark:text-white' : 'text-slate-400 opacity-50'}">${key.substring(0,3).toUpperCase()}</div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+                <a href="/ccus-policy-hub/policy/${p.id}/" class="absolute inset-0"></a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('<div class="h-px bg-slate-100 dark:bg-slate-800 my-8"></div>');
+    }
+
+    // 4. Facility Stats
+    if (statsGrid) {
+      statsGrid.innerHTML = countryData.map(cd => `
+        <div class="p-6 bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-3xl">
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-bold text-slate-900 dark:text-white">${cd.country}</span>
+            <span class="text-[10px] font-black text-blue-600">${cd.stats.operational} 在运项目</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="text-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <p class="text-[8px] font-black text-emerald-500 uppercase">Operational</p>
+              <p class="text-xs font-bold dark:text-white">${cd.stats.operationalCap.toFixed(1)}</p>
+            </div>
+            <div class="text-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <p class="text-[8px] font-black text-amber-500 uppercase">Construction</p>
+              <p class="text-xs font-bold dark:text-white">${cd.stats.constructionCap.toFixed(1)}</p>
+            </div>
+            <div class="text-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+              <p class="text-[8px] font-black text-blue-500 uppercase">Planned</p>
+              <p class="text-xs font-bold dark:text-white">${cd.stats.plannedCap.toFixed(1)}</p>
+            </div>
+          </div>
+        </div>
       `).join('');
     }
 
-    // --- Body Dimensions ---
-    const fsrtmKeys = ['incentive', 'statutory', 'market', 'strategic', 'mrv'];
-    const dimensionNames = {
-      incentive: 'Incentive', 
-      statutory: 'Regulatory', 
-      market: 'Market', 
-      strategic: 'Strategic', 
-      mrv: 'Technical'
-    };
-
-    const dimensions = [
-      { label: 'Review Status', key: 'reviewStatus', isStatus: true },
-      ...fsrtmKeys.map(k => ({ 
-        label: `${dimensionNames[k]} (Score)`, 
-        key: 'analysis', 
-        fsrtmKey: k, 
-        isFSRTMScore: true 
-      })),
-      ...fsrtmKeys.map(k => ({ 
-        label: `${dimensionNames[k]} (Evidence)`, 
-        key: 'analysis', 
-        fsrtmKey: k, 
-        isFSRTMEvidence: true 
-      })),
-      { label: 'Strategic Impact (Eco)', key: 'impactAnalysis', subKey: 'economic' },
-      { label: 'Technical Preference', key: 'impactAnalysis', subKey: 'technical' },
-      { label: 'Implementation', key: 'implementationDetails', subKey: 'mechanism' },
-      { label: 'Category', key: 'category' },
-      { label: 'Legal Weight', key: 'legalWeight' },
-      { label: 'Pub Year', key: 'year' }
+    // 5. Regulatory Matrix
+    const regKeys = [
+      { label: '空隙归属权 Pore Space', key: 'pore_space_rights' },
+      { label: '长期责任转移 Liability', key: 'liability_transfer' },
+      { label: '责任期限 Period', key: 'liability_period' },
+      { label: '财务保证 Assurance', key: 'financial_assurance' },
+      { label: '审批周期 Lead Time', key: 'permitting_lead_time' }
     ];
 
-    if (matrixBody) {
-      matrixBody.innerHTML = dimensions.map((dim, dimIdx) => `
-        <tr>
-          <td class="p-8 text-xs font-black uppercase tracking-[0.2em] text-slate-400 align-top border-b border-slate-100 dark:border-slate-800">${dim.label}</td>
-          ${selectedData.map(p => {
-            let cellContent = '---';
-            let cellClass = "p-8 bg-white dark:bg-slate-900 border-x border-b border-slate-100 dark:border-slate-800 align-top";
+    if (regHeader) {
+      regHeader.innerHTML = `<tr><th class="p-6 text-[10px] font-black uppercase text-slate-400">对比维度 Dimension</th>` + 
+        countryData.map(cd => `<th class="p-6 font-bold text-slate-900 dark:text-white border-l border-slate-100 dark:border-slate-800">${cd.country}</th>`).join('') + `</tr>`;
+    }
 
-            if (dim.isFSRTMScore) {
-              const score = p.data.analysis?.[dim.fsrtmKey]?.score || 0;
-              cellContent = `
-                <div class="flex items-center gap-4">
-                  <span class="font-mono font-black text-2xl text-slate-900 dark:text-white">${score}</span>
-                  <div class="flex-1 h-2 bg-slate-50 dark:bg-slate-800 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-500" style="width: ${score}%"></div>
-                  </div>
-                </div>
-              `;
-            } else if (dim.isFSRTMEvidence) {
-              const evidence = p.data.analysis?.[dim.fsrtmKey]?.evidence || 'No substantive evidence provided.';
-              cellContent = `<p class="text-sm font-medium text-slate-600 dark:text-slate-400 leading-relaxed italic">"${evidence}"</p>`;
-            } else if (dim.isStatus) {
-              const status = p.data.reviewStatus || 'draft';
-              const colorClass = status === 'verified' ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20' : 'text-amber-500 bg-amber-50 dark:bg-amber-900/20';
-              cellContent = `<span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${colorClass}">${status}</span>`;
-            } else {
-              const val = dim.subKey ? (p.data[dim.key]?.[dim.subKey] || '---') : (p.data[dim.key] || '---');
-              cellContent = `<span class="font-bold text-slate-700 dark:text-slate-300 text-sm leading-relaxed">${val}</span>`;
-            }
-            
-            return `<td class="${cellClass}">${cellContent}</td>`;
-          }).join('')}
+    if (regBody) {
+      regBody.innerHTML = regKeys.map(rk => `
+        <tr class="group hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+          <td class="p-6 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-50/30 dark:bg-slate-900/20">${rk.label}</td>
+          ${countryData.map(cd => `<td class="p-6 text-xs text-slate-600 dark:text-slate-400 border-l border-slate-100 dark:border-slate-800 font-medium">${(cd.regulatory as any)[rk.key] || '---'}</td>`).join('')}
         </tr>
       `).join('');
     }
-
-    if (briefingContent) {
-      const avgScores = ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(k => {
-        const avg = Math.round(selectedData.reduce((acc, p) => acc + (p.data.analysis?.[k]?.score || 0), 0) / selectedData.length);
-        return { k, avg };
-      }).sort((a, b) => b.avg - a.avg);
-
-      const topPolicies = [...selectedData].sort((a, b) => {
-        const scoreA = Object.values(a.data.analysis || {}).reduce((acc: number, cur: any) => acc + (cur.score || 0), 0);
-        const scoreB = Object.values(b.data.analysis || {}).reduce((acc: number, cur: any) => acc + (cur.score || 0), 0);
-        return scoreB - scoreA;
-      });
-
-      briefingContent.innerHTML = `
-        <div class="space-y-4">
-          <div class="p-6 bg-slate-900 text-white rounded-3xl border border-white/10 shadow-xl overflow-hidden relative group">
-            <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:rotate-12 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-            </div>
-            <p class="text-[9px] font-black uppercase tracking-widest text-blue-400 mb-2">Expert Analysis Engine</p>
-            <h4 class="text-sm font-bold mb-3">Systemic Synthesis</h4>
-            <p class="text-xs text-slate-400 leading-relaxed italic">
-              "Analysis of <b>${selectedData.length}</b> frameworks indicates that <b>${topPolicies[0].data.country}</b> maintains the most comprehensive CCUS governance profile. The primary competitive advantage lies in <b>${avgScores[0].k.toUpperCase()}</b> mechanisms."
-            </p>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div class="p-6 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl border border-emerald-100 dark:border-emerald-800">
-              <p class="text-[10px] font-black text-emerald-600 uppercase mb-1 tracking-widest">Global Lead</p>
-              <p class="text-lg font-black text-emerald-900 dark:text-emerald-300">${avgScores[0].k.toUpperCase()}</p>
-              <p class="text-[10px] text-emerald-600/60 font-bold">Avg Score: ${avgScores[0].avg}</p>
-            </div>
-            <div class="p-6 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-100 dark:border-blue-800">
-              <p class="text-[10px] font-black text-blue-600 uppercase mb-1 tracking-widest">Maturity Gap</p>
-              <p class="text-lg font-black text-blue-900 dark:text-blue-300">${avgScores[avgScores.length-1].k.toUpperCase()}</p>
-              <p class="text-[10px] text-blue-600/60 font-bold">Avg Score: ${avgScores[avgScores.length-1].avg}</p>
-            </div>
-          </div>
-
-          <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800">
-            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Strategic Recommendation</h4>
-            <ul class="space-y-3">
-              <li class="flex gap-3 text-xs">
-                <span class="text-blue-600 font-black">01</span>
-                <span class="text-slate-600 dark:text-slate-400">Prioritize <b>${avgScores[avgScores.length-1].k}</b> alignment to reduce cross-border friction.</span>
-              </li>
-              <li class="flex gap-3 text-xs">
-                <span class="text-blue-600 font-black">02</span>
-                <span class="text-slate-600 dark:text-slate-400">Leverage <b>${topPolicies[0].data.country}'s</b> model for optimized <b>${avgScores[0].k}</b> implementation.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      `;
-    }
   }
 
-  document.getElementById('clear-all')?.addEventListener('click', () => {
-    localStorage.removeItem('compare-list');
-    window.dispatchEvent(new CustomEvent('compare-updated'));
-    renderMatrix();
-  });
-
-  document.getElementById('print-report')?.addEventListener('click', () => window.print());
-  window.addEventListener('compare-updated', renderMatrix);
-  window.addEventListener('storage', renderMatrix);
-  document.addEventListener('astro:page-load', renderMatrix);
-  renderMatrix();
+  window.addEventListener('compare-updated', renderCompareView);
+  window.addEventListener('storage', renderCompareView);
+  document.addEventListener('astro:page-load', renderCompareView);
+  renderCompareView();
 </script>
-
-<style is:global>
-  @media print {
-    body { background: white !important; }
-    .max-w-7xl { max-width: 100% !important; width: 100% !important; padding: 0 !important; }
-    header, button, footer { display: none !important; }
-    .rounded-3xl, .rounded-[3rem], .rounded-[4rem] { border-radius: 0 !important; border: 1px solid #eee !important; box-shadow: none !important; }
-    canvas { max-width: 400px !important; margin: 0 auto; }
-  }
-</style>

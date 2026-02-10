@@ -13,13 +13,13 @@
       [
         '45Q',
         'Northern Lights',
-        'Post-combustion',
-        'Saline Aquifer',
+        'Sinopec',
         'Hydrogen',
         'China',
         'Norway',
         'Tax Credit',
         'DAC',
+        'Standard',
         'EOR',
       ].map((term) => (
         <button class="suggestion-btn px-3 py-1.5 bg-slate-50 dark:bg-slate-800 hover:bg-blue-600 hover:text-white dark:text-slate-300 rounded-full text-xs font-bold transition-all border border-slate-100 dark:border-slate-700">
@@ -42,35 +42,37 @@
       (window as any).PagefindUI
     ) {
       // @ts-ignore
-      const _pagefind = new (window as any).PagefindUI({
+      new (window as any).PagefindUI({
         element: '#search',
         showImages: false,
         showSubResults: true,
         excerptLength: 30,
         showEmptyFilters: false,
-        translations: isEn ? {
-          placeholder: 'Search policies, facilities or keywords...',
-          clear_search: 'Clear',
-          load_more: 'Load more results',
-          search_label: 'Search',
-          filters_label: 'Filters',
-          zero_results: 'No results found for [SEARCH_TERM]',
-          many_results: '[COUNT] results found for [SEARCH_TERM]',
-          one_result: '[COUNT] result found for [SEARCH_TERM]',
-          searching: 'Searching for [SEARCH_TERM]...',
-        } : {
-          placeholder: '搜索政策、设施或关键词...',
-          clear_search: '清除',
-          load_more: '更多结果',
-          search_label: '搜索',
-          filters_label: '筛选',
-          zero_results: '未找到关于 [SEARCH_TERM] 的结果',
-          many_results: '找到 [COUNT] 条关于 [SEARCH_TERM] 的结果',
-          one_result: '找到 [COUNT] 条关于 [SEARCH_TERM] 的结果',
-          alt_search: '未找到结果，显示关于 [SEARCH_TERM] 的替代搜索结果',
-          search_suggestion: '您是不是想找 [SEARCH_TERM]？',
-          searching: '正在搜索 [SEARCH_TERM]...',
-        },
+        translations: isEn
+          ? {
+              placeholder: 'Search policies, facilities or keywords...',
+              clear_search: 'Clear',
+              load_more: 'Load more results',
+              search_label: 'Search',
+              filters_label: 'Filters',
+              zero_results: 'No results found for [SEARCH_TERM]',
+              many_results: '[COUNT] results found for [SEARCH_TERM]',
+              one_result: '[COUNT] result found for [SEARCH_TERM]',
+              searching: 'Searching for [SEARCH_TERM]...',
+            }
+          : {
+              placeholder: '搜索政策、设施或关键词...',
+              clear_search: '清除',
+              load_more: '更多结果',
+              search_label: '搜索',
+              filters_label: '筛选',
+              zero_results: '未找到关于 [SEARCH_TERM] 的结果',
+              many_results: '找到 [COUNT] 条关于 [SEARCH_TERM] 的结果',
+              one_result: '找到 [COUNT] 条关于 [SEARCH_TERM] 的结果',
+              alt_search: '未找到结果，显示关于 [SEARCH_TERM] 的替代搜索结果',
+              search_suggestion: '您是不是想找 [SEARCH_TERM]？',
+              searching: '正在搜索 [SEARCH_TERM]...',
+            },
       });
       // @ts-ignore
       searchContainer._pagefind_initialized = true;

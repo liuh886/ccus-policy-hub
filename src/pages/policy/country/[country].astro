@@ -2,14 +2,17 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import PolicyCard from '../../../components/PolicyCard.astro';
-import RadarChart from '../../../components/RadarChart.astro';
 
 export async function getStaticPaths() {
   const allPolicies = await getCollection('policies_zh');
-  const countries = [...new Set(allPolicies.map((p) => p.data.country))];
+  const validPolicies = allPolicies.filter(p => {
+    const c = p.data.country;
+    return c && !c.includes('*') && !c.includes('?') && c.length > 1;
+  });
+  const countries = [...new Set(validPolicies.map((p) => p.data.country))];
 
   return countries.map((country) => {
-    const countryPolicies = allPolicies.filter(
+    const countryPolicies = validPolicies.filter(
       (p) => p.data.country === country
     );
     return {
@@ -21,29 +24,9 @@ export async function getStaticPaths() {
 
 const { country } = Astro.params;
 const { policies } = Astro.props;
-
-// --- 治理体系能力聚合逻辑 (FSRTM Systemic Capacity) ---
-// 逻辑：取该国家所有政策在各维度的最大值，且保底 30 分
-const aggregateScore = (dimension: string) => {
-  const scores = policies.map(p => p.data.analysis?.[dimension]?.score || 0);
-  const maxScore = Math.max(...scores);
-  return Math.max(30, maxScore); // 默认最低分 30
-};
-
-const systemicFSRTM = {
-  incentive: aggregateScore('incentive'),
-  statutory: aggregateScore('statutory'),
-  market: aggregateScore('market'),
-  strategic: aggregateScore('strategic'),
-  mrv: aggregateScore('mrv')
-};
 ---
 
-<Layout 
-  title={`${country} CCUS 治理能力审计`}
-  description={`深入分析 ${country} 的 CCUS 政策框架，基于 FSRTM 5.0 体系评估其在激励、法律、责任、技术及市场维度的治理成熟度。`}
-  keywords={`${country} CCUS, 政策审计, FSRTM 评分, 治理成熟度, 碳捕集`}
->
+<Layout title={`${country} 政策集`}>
   <nav class="mb-8">
     <a
       href="/ccus-policy-hub/policy/"
@@ -62,28 +45,14 @@ const systemicFSRTM = {
     </a>
   </nav>
 
-  <header class="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-    <div class="lg:col-span-2">
-      <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold mb-4">
-        治理体系审计 (Governance 5.0)
-      </div>
-      <h1 class="text-4xl font-extrabold mb-4">{country} CCUS 治理能力分析</h1>
-      <p class="text-slate-600 dark:text-slate-400 max-w-2xl text-lg">
-        当前基于收录的 {policies.length} 条政策进行系统性评估。该国家的治理能力由其各维度下的最先进政策工具（最高分）决定。
-      </p>
-    </div>
-    <div class="h-64">
-      <RadarChart data={systemicFSRTM} />
-    </div>
+  <header class="mb-12">
+    <h1 class="text-4xl font-extrabold mb-4">{country} CCUS 政策集</h1>
+    <p class="text-slate-600 dark:text-slate-400">
+      当前收录了 {policies.length} 条来自 {country} 的相关政策与法规。
+    </p>
   </header>
 
-  <section>
-    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-      支撑政策矩阵
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {policies.map((policy) => <PolicyCard policy={policy} lang="zh" />)}
-    </div>
-  </section>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {policies.map((policy) => <PolicyCard policy={policy} lang="zh" />)}
+  </div>
 </Layout>

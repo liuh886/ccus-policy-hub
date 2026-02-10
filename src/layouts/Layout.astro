@@ -2,7 +2,6 @@
 interface Props {
   title: string;
   description?: string;
-  keywords?: string;
 }
 
 import { ui, defaultLang } from '../i18n/ui';
@@ -10,20 +9,18 @@ const lang = Astro.currentLocale || defaultLang;
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 
-const { title, description, keywords } = Astro.props;
+const { title, description } = Astro.props;
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
 import CompareDrawer from '../components/CompareDrawer.astro';
-import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang}>
   <head>
-    <SEO title={title} description={description} keywords={keywords} />
-    <ViewTransitions />
+    <SEO title={title} description={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -1,70 +1,82 @@
 ---
-id: kr-motie-cluster-district-2025
-country: 韩国
-year: 2025
-status: Active
-category: Strategic
-pubDate: '2025-02-06'
-reviewStatus: draft
-legalWeight: Departmental Rules
-sectors: []
-analysis:
-  frameworkVersion: '5.0'
-  incentive:
-    score: 80
-    label: Public Property Benefits
-    evidence: Provides reduced rents for public properties and direct national project subsidies.
-    citation: CCUS Act 2024, Article 10
-  statutory:
-    score: 85
-    label: Cluster District Law
-    evidence: Enables mayors/governors to apply for specialized districts with legal standing.
-    citation: 'Article 9: District Designation'
-    auditNote: Strong cluster-based governance model.
-  liability:
-    score: 50
-    label: Collective Responsibility
-    evidence: Encourages shared safety infrastructure within clusters.
-    citation: Safety Management Plan Requirements
-  mrv:
-    score: 75
-    label: Unified Monitoring
-    evidence: Requires cluster-level unified emission inventory and verification.
-    citation: Article 32
-  market:
-    score: 80
-    label: Scale Aggregation
-    evidence: Aims to foster a competitive domestic industry by co-locating capture and storage players.
-    citation: Strategic Plan Annex
-  strategic:
-    score: 30
-    label: Initial Assessment
-    evidence: Baseline strategic alignment under V5.0 migration.
-impactAnalysis:
-  economic: ''
-  technical: ''
-  environmental: ''
-evolution:
-  supersedes: []
-  supersededBy: ''
-  clusters: []
-implementationDetails:
-  authority: ''
-  mechanism: ''
-  fundingScale: ''
-relatedFacilities: []
-url: https://www.motie.go.kr/
-source: MOTIE Korea
-provenance:
-  author: Legacy System
-  lastAuditDate: '2026-02-07'
-title: 韩国 MOTIE CCUS 专项产业集群认定标准
-scope: National
-tags:
-  - 产业集群
-  - 租金减免
-  - MOTIE
-description: 韩国产业通商资源部 (MOTIE) 发布的标准，规定了如何申请“CCUS 战略集群”，申请获批后可获得公共地产租金减免和国家项目优先权。
+{
+  "analysis": {
+    "incentive": {
+      "auditNote": "",
+      "citation": "CCUS Act 2024, Article 10",
+      "evidence": "Provides reduced rents for public properties and direct national project subsidies.",
+      "label": "Public Property Benefits",
+      "score": 80
+    },
+    "market": {
+      "auditNote": "",
+      "citation": "Strategic Plan Annex",
+      "evidence": "Aims to foster a competitive domestic industry by co-locating capture and storage players.",
+      "label": "Scale Aggregation",
+      "score": 80
+    },
+    "mrv": {
+      "auditNote": "",
+      "citation": "Article 32",
+      "evidence": "Requires cluster-level unified emission inventory and verification.",
+      "label": "Unified Monitoring",
+      "score": 75
+    },
+    "statutory": {
+      "auditNote": "Strong cluster-based governance model.",
+      "citation": "Article 9: District Designation",
+      "evidence": "Enables mayors/governors to apply for specialized districts with legal standing.",
+      "label": "Cluster District Law",
+      "score": 85
+    },
+    "strategic": {
+      "auditNote": "",
+      "citation": "",
+      "evidence": "Baseline strategic alignment under V5.0 migration.",
+      "label": "Initial Assessment",
+      "score": 30
+    }
+  },
+  "category": "Strategic",
+  "country": "韩国",
+  "description": "韩国产业通商资源部 (MOTIE) 发布的标准，规定了如何申请“CCUS 战略集群”，申请获批后可获得公共地产租金减免和国家项目优先权。",
+  "evolution": {
+    "clusters": [],
+    "supersededBy": "",
+    "supersedes": []
+  },
+  "id": "kr-motie-cluster-district-2025",
+  "impactAnalysis": {
+    "economic": "",
+    "environmental": "",
+    "technical": ""
+  },
+  "interpretation": "",
+  "legalWeight": "Departmental Rules",
+  "provenance": {
+    "author": "Legacy System",
+    "lastAuditDate": "2026-02-07",
+    "reviewer": ""
+  },
+  "pubDate": "2025-02-06",
+  "regulatory": {
+    "co2_definition": "",
+    "cross_border_rules": "",
+    "financial_assurance": "",
+    "liability_period": "",
+    "liability_transfer": "",
+    "permitting_lead_time": "",
+    "pore_space_rights": ""
+  },
+  "relatedFacilities": [],
+  "reviewStatus": "draft",
+  "sectors": [],
+  "source": "MOTIE Korea",
+  "status": "Active",
+  "title": "韩国 MOTIE CCUS 专项产业集群认定标准",
+  "year": 2025,
+  "url": "https://www.motie.go.kr/"
+}
 ---
 
 韩国产业通商资源部 (MOTIE) 发布的标准，规定了如何申请“CCUS 战略集群”，申请获批后可获得公共地产租金减免和国家项目优先权。

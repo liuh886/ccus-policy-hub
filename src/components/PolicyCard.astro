@@ -13,19 +13,22 @@ interface Props {
 
 const inferredLang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const { policy, lang = inferredLang } = Astro.props;
-const { title, country, year, category, tags, status, description, reviewStatus, analysis, implementationDetails, sectors = [] } =
+const { title, country, year, category, sectors = [], status, description, reviewStatus, analysis } =
   policy.data;
+
+// implementationDetails might be in legacy data
+const implementationDetails = (policy.data as any).implementationDetails;
 
 const isEn = lang === 'en';
 const isVerified = reviewStatus === 'verified';
-const pureSlug = policy.id.replace(/^(zh|en)\//, '');
+const pureSlug = policy.id;
 
 const BASE = '/ccus-policy-hub';
 const href = isEn
   ? `${BASE}/en/policy/${pureSlug}/`
   : `${BASE}/policy/${pureSlug}/`;
 
-const categoryData = i18nDict.ui.categories[category as keyof typeof i18nDict.ui.categories];
+const categoryData = (i18nDict.ui.categories as any)[category];
 const displayCategory = categoryData ? categoryData[lang] : category;
 
 // FSRTM Dimension Config
@@ -40,57 +43,69 @@ const dimensions = [
 const activeDimensions = dimensions.filter(d => (analysis?.[d.key as keyof typeof analysis]?.score || 0) >= 50);
 ---
 
-<a href={href} class="block group h-full">
-  <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-slate-300 dark:hover:border-slate-700 transition-all h-full flex flex-col">
-    
-    <div class="flex justify-between items-start mb-3">
-      <div class="flex gap-2 items-center">
-        <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 border border-slate-200 dark:border-slate-800 px-2 py-0.5 rounded">
-          {displayCategory}
-        </span>
-        {isVerified && (
-          <span class="text-emerald-600 dark:text-emerald-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<div class="relative group h-full">
+  <a href={href} class="block h-full">
+    <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 transition-all h-full flex flex-col relative overflow-hidden shadow-sm hover:shadow-md">
+
+      <div class="flex justify-between items-start mb-3">
+        <div class="flex gap-2 items-center">
+          <span class="text-[10px] font-black uppercase tracking-wider text-slate-500 border border-slate-200 dark:border-slate-800 px-2 py-0.5 rounded">
+            {displayCategory}
           </span>
-        )}
+          {isVerified && (
+            <span class="text-emerald-600 dark:text-emerald-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+          )}
+        </div>
+        <span class="text-[10px] font-medium text-slate-400 mr-8">{status}</span>
       </div>
-      <span class="text-[10px] font-medium text-slate-400">{status}</span>
-    </div>
 
-    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-blue-600 transition-colors">
-      {title}
-    </h3>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-blue-600 transition-colors">      
+        {title}
+      </h3>
 
-    <div class="flex items-center gap-3 text-xs text-slate-500 mb-4">
-      <span class="font-bold text-slate-700 dark:text-slate-300">{country}</span>
-      <span class="text-slate-300">•</span>
-      <span>{year}</span>
-    </div>
-
-    <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-6 leading-relaxed">
-      {description}
-    </p>
-
-    <div class="flex-1"></div>
-
-    <!-- Integrated Classification Badges -->
-    <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-      <div class="flex gap-1.5">
-        {activeDimensions.map(d => (
-          <div 
-            class={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-black text-white ${d.color} shadow-sm`}
-            title={i18nDict.ui.dimensions[d.key as keyof typeof i18nDict.ui.dimensions].label[lang]}
-          >
-            {d.icon}
-          </div>
-        ))}
-        {activeDimensions.length === 0 && <span class="text-[10px] text-slate-400 italic">Core baseline</span>}
+      <div class="flex items-center gap-3 text-xs text-slate-500 mb-4">
+        <span class="font-bold text-slate-700 dark:text-slate-300">{country}</span>
+        <span class="text-slate-300">•</span>
+        <span>{year}</span>
       </div>
-      
-      <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-        {implementationDetails?.fundingScale ? 'Scale: ' + implementationDetails.fundingScale : ''}
-      </div>
-    </div>
 
-  </article>
-</a>
+      <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-6 leading-relaxed">
+        {description}
+      </p>
+
+      <div class="flex-1"></div>
+
+      <!-- Integrated Classification Badges -->
+      <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+        <div class="flex gap-1.5">
+          {activeDimensions.map(d => (
+            <div
+              class={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-black text-white ${d.color} shadow-sm`}
+              title={(i18nDict.ui.dimensions as any)[d.key]?.label[lang] || d.key}
+            >
+              {d.icon}
+            </div>
+          ))}
+          {activeDimensions.length === 0 && <span class="text-[10px] text-slate-400 italic">Core baseline</span>}
+        </div>
+
+        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+          {implementationDetails?.fundingScale ? 'Scale: ' + implementationDetails.fundingScale : ''}
+        </div>
+      </div>
+
+    </article>
+  </a>
+
+  <!-- Compare Checkbox -->
+  <div class="absolute top-5 right-5 z-10">
+    <label class="relative inline-flex items-center cursor-pointer group/cb">
+      <input type="checkbox" class="sr-only peer compare-checkbox" data-id={policy.id} />
+      <div class="w-5 h-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded peer peer-checked:bg-blue-600 peer-checked:border-blue-600 transition-all shadow-sm flex items-center justify-center overflow-hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 peer-checked:opacity-100 transition-opacity"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+    </label>
+  </div>
+</div>
