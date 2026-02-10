@@ -126,9 +126,30 @@ const policies = await getCollection('policies_zh');
       </div>
     </div>
 
-    <!-- Data Bridges -->
-    <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_zh'))} class="hidden"></div>
-    <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
+    <!-- Empty State -->
+    <div
+      id="empty-state"
+      class="hidden py-32 text-center bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800"
+    >
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-400"><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"></path><path d="m15 10.828 5.828-5.828"></path><path d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"></path></svg>
+      </div>
+      <h2 class="text-xl font-bold mb-2 dark:text-white">暂未选择对比政策</h2>
+      <p class="text-slate-500 mb-8 max-w-md mx-auto">
+        请从政策数据库中选择多项政策（最多5项）进行横向治理维度与监管机制对标分析。
+      </p>
+      <a
+        href="/ccus-policy-hub/policy/"
+        class="px-8 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20"
+      >
+        前往政策数据库
+      </a>
+    </div>
+  </div>
+
+  <!-- Data Bridges -->
+  <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_zh'))} class="hidden"></div>
+  <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
 </Layout>
 
 <script>
@@ -357,8 +378,30 @@ const policies = await getCollection('policies_zh');
     }
   }
 
+  // Event Listeners
+  function initComparePage() {
+    document.getElementById('clear-all')?.addEventListener('click', () => {
+      localStorage.removeItem('compare-list');
+      window.dispatchEvent(new CustomEvent('compare-updated'));
+      renderCompareView();
+    });
+
+    document.getElementById('print-report')?.addEventListener('click', () => {
+      window.print();
+    });
+
+    renderCompareView();
+  }
+
+  // Lifecycle
   window.addEventListener('compare-updated', renderCompareView);
   window.addEventListener('storage', renderCompareView);
-  document.addEventListener('astro:page-load', renderCompareView);
-  renderCompareView();
+  document.addEventListener('astro:page-load', initComparePage);
+  
+  // Initial load
+  if (document.readyState === 'complete') {
+    initComparePage();
+  } else {
+    window.addEventListener('load', initComparePage);
+  }
 </script>

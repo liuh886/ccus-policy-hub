@@ -374,15 +374,27 @@ const policies = await getCollection('policies_en');
     }
   }
 
-  document.getElementById('clear-all')?.addEventListener('click', () => {
-    localStorage.removeItem('compare-list');
-    window.dispatchEvent(new CustomEvent('compare-updated'));
-    renderCompareView();
-  });
+  function initComparePage() {
+    document.getElementById('clear-all')?.addEventListener('click', () => {
+      localStorage.removeItem('compare-list');
+      window.dispatchEvent(new CustomEvent('compare-updated'));
+      renderCompareView();
+    });
 
-  document.getElementById('print-report')?.addEventListener('click', () => window.print());
+    document.getElementById('print-report')?.addEventListener('click', () => {
+      window.print();
+    });
+
+    renderCompareView();
+  }
+
   window.addEventListener('compare-updated', renderCompareView);
   window.addEventListener('storage', renderCompareView);
-  document.addEventListener('astro:page-load', renderCompareView);
-  renderCompareView();
+  document.addEventListener('astro:page-load', initComparePage);
+  
+  if (document.readyState === 'complete') {
+    initComparePage();
+  } else {
+    window.addEventListener('load', initComparePage);
+  }
 </script>
