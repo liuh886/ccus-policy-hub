@@ -33,6 +33,7 @@ Preferred reusable command:
 - Run `pnpm manage:db:lint-governance` before claiming governance work is complete.
 
 ## 5. UI/UX Integrity (User-Enforced)
-- **Design Freeze**: The current frontend interface (as of Feb 9, 2026) is finalized.
+- **Design Freeze**: The current frontend interface (as of Feb 10, 2026) is finalized and considered complete.
+- **Refactor Prohibition**: Large-scale refactoring of the frontend codebase, CSS restyling, or component re-architecture is STRICTLY PROHIBITED without explicit user permission.
 - **Modification Rule**: Substantial UI/UX modifications (layout changes, major theme shifts, component overhauls) MUST be proposed and APPROVED by the user before execution.
 - **Debugging**: Fine-grained bug fixes and data-binding repairs are permitted without prior approval, provided they do not alter the established visual aesthetic.
