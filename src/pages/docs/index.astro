@@ -6,43 +6,51 @@ const docs = await getCollection('docs');
 ---
 
 <Layout title="文档中心">
-  <div class="max-w-4xl mx-auto">
-    <header class="mb-12">
-      <h1 class="text-4xl font-extrabold mb-4">文档中心</h1>
-      <p class="text-slate-600 dark:text-slate-400">
-        了解项目背景、学习使用技巧，或加入我们的贡献计划。
+  <div class="max-w-5xl mx-auto py-12">
+    <header class="mb-16 text-center">
+      <div class="inline-flex items-center justify-center p-3 bg-blue-50 dark:bg-blue-900/30 rounded-2xl mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600 dark:text-blue-400">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+      </div>
+      <h1 class="text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
+        知识中心 <span class="text-blue-600">&</span> 帮助文档
+      </h1>
+      <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium">
+        了解项目背景、标准体系，或学习如何贡献您的力量。
       </p>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         docs
           .sort((a, b) => a.data.order - b.data.order)
           .map((doc) => (
             <a
-              href={`/docs/${doc.id}`}
-              class="block p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 transition-all group"
+              href={`/ccus-policy-hub/docs/${doc.id}/`}
+              class="group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1"
             >
-              <h2 class="text-xl font-bold mb-2 group-hover:text-blue-600 dark:text-white transition-colors">
-                {doc.data.title}
-              </h2>
-              <p class="text-sm text-slate-500 dark:text-slate-400">
-                {doc.data.description}
-              </p>
-              <div class="mt-4 text-blue-600 text-sm font-medium flex items-center gap-1">
-                阅读更多
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  class="group-hover:translate-x-1 transition-transform"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
+              <div class="flex flex-col h-full">
+                <div class="mb-6 flex items-center justify-between">
+                  <span class="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 dark:bg-blue-900/40 px-3 py-1 rounded-full">
+                    Document
+                  </span>
+                  <div class="p-2 bg-slate-50 dark:bg-slate-800 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                </div>
+                <h2 class="text-2xl font-black mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors tracking-tight">
+                  {doc.data.title}
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-6 font-medium line-clamp-3">
+                  {doc.data.description}
+                </p>
+                <div class="mt-auto flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <span>查看详情</span>
+                  <div class="h-1 w-1 rounded-full bg-slate-300"></div>
+                  <span>{doc.data.order.toString().padStart(2, '0')}</span>
+                </div>
               </div>
             </a>
           ))

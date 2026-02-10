@@ -196,7 +196,33 @@ const policies = await getCollection('policies_en');
         plannedCap: facilities.filter((f:any) => f.data.status === 'Planned' || f.data.status === '计划中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0)
       };
 
-      const primary = contributors[0]?.data.regulatory || {};
+      // Aggregate Regulatory Data (take best available values from all country policies)
+      const primary: any = {};
+      const regFields = [
+        'pore_space_rights',
+        'liability_transfer',
+        'liability_period',
+        'financial_assurance',
+        'permitting_lead_time',
+        'co2_definition',
+        'cross_border_rules',
+      ];
+
+      // Use all policies for the country to fill the matrix, not just active ones
+      const countryPoliciesForAllStatuses = allPolicies.filter((p: any) => p.data.country === c);
+      const sortedPolicies = [...countryPoliciesForAllStatuses].sort(
+        (a: any, b: any) => b.data.year - a.data.year
+      );
+
+      regFields.forEach((field) => {
+        for (const p of sortedPolicies) {
+          const val = p.data.regulatory?.[field];
+          if (val && val !== '' && val !== '---') {
+            primary[field] = val;
+            break;
+          }
+        }
+      });
 
       return { country: c, color: colors[idx % colors.length], peakAnalysis, contributors, stats, regulatory: primary };
     });
@@ -328,7 +354,9 @@ const policies = await getCollection('policies_en');
       { label: 'Liability Transfer', key: 'liability_transfer' },
       { label: 'Liability Period', key: 'liability_period' },
       { label: 'Financial Assurance', key: 'financial_assurance' },
-      { label: 'Permitting Lead Time', key: 'permitting_lead_time' }
+      { label: 'Permitting Lead Time', key: 'permitting_lead_time' },
+      { label: 'CO2 Legal Definition', key: 'co2_definition' },
+      { label: 'Cross-border Rules', key: 'cross_border_rules' }
     ];
 
     if (regHeader) {

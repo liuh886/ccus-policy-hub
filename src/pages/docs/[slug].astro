@@ -6,57 +6,202 @@ export async function getStaticPaths() {
   const docs = await getCollection('docs');
   return docs.map((entry) => ({
     params: { slug: entry.id },
-    props: { entry },
+    props: { entry, allDocs: docs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0)) },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, allDocs } = Astro.props;
 const { Content } = await render(entry);
+
+// Simple reading time estimate
+const wordCount = entry.body?.split(/\s+/).length || 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
-<Layout title={entry.data.title}>
-  <div class="max-w-3xl mx-auto py-8 px-4">
-    <nav class="mb-8">
-      <a
-        href="/ccus-policy-hub/docs/"
-        class="text-blue-600 hover:underline flex items-center gap-2 text-sm font-bold"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg
-        >
-        返回文档中心
-      </a>
-    </nav>
+<Layout title={`${entry.data.title} - 文档中心`} description={entry.data.description}>
+  <div class="max-w-7xl mx-auto py-12 px-4">
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Sidebar Navigation -->
+      <aside class="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 h-fit order-2 lg:order-1">
+        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-6 border border-slate-100 dark:border-slate-800">
+          <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 px-2">
+            文档目录
+          </h3>
+          <nav class="space-y-1">
+            {allDocs.map((doc) => (
+              <a
+                href={`/ccus-policy-hub/docs/${doc.id}/`}
+                class={`block px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                  doc.id === entry.id
+                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-600'
+                }`}
+              >
+                {doc.data.title}
+              </a>
+            ))}
+          </nav>
 
-    <article class="prose prose-slate dark:prose-invert max-w-none">
-      <h1 class="text-4xl font-extrabold mb-4 text-slate-900 dark:text-white">
-        {entry.data.title}
-      </h1>
-      <p
-        class="text-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed italic border-l-4 border-blue-600 pl-4"
-      >
-        {entry.data.description}
-      </p>
-      <div
-        class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm"
-      >
-        <Content />
-      </div>
-    </article>
+          <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <a
+              href="/ccus-policy-hub/docs/"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"></path></svg>
+              返回中心
+            </a>
+          </div>
+        </div>
+      </aside>
 
-    <div class="mt-16 pt-8 border-t dark:border-slate-800">
-      <p class="text-sm text-slate-400">
-        如果您对此文档有任何补充或发现错误，欢迎通过 <a
-          href="/ccus-policy-hub/about/"
-          class="text-blue-600 underline">反馈表单</a
-        > 或 GitHub 提交修改。
-      </p>
+      <!-- Main Content -->
+      <main class="flex-grow min-w-0 order-1 lg:order-2">
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">
+          <a href="/ccus-policy-hub/" class="hover:text-blue-600 transition-colors">HOME</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg>
+          <a href="/ccus-policy-hub/docs/" class="hover:text-blue-600 transition-colors">DOCS</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg>
+          <span class="text-blue-600 truncate max-w-[200px]">{entry.data.title.toUpperCase()}</span>
+        </nav>
+
+        <header class="mb-12 px-4">
+          <h1 class="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1] text-balance">
+            {entry.data.title}
+          </h1>
+          
+          <div class="flex flex-wrap items-center gap-4 text-[11px] font-black uppercase tracking-widest">
+            <div class="flex items-center gap-2 text-slate-500 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              READ: {readingTime} MIN
+            </div>
+            <div class="flex items-center gap-2 text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              DOC-ID: {entry.data.order?.toString().padStart(2, '0') || '00'}
+            </div>
+          </div>
+        </header>
+
+        <div class="bg-white dark:bg-slate-950 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none overflow-hidden transition-colors">
+          <div class="p-8 md:p-16 lg:p-20">
+            {entry.data.description && (
+              <div class="mb-16">
+                <p class="text-2xl md:text-3xl text-slate-400 dark:text-slate-500 font-medium leading-tight tracking-tighter mb-4 text-balance italic">
+                  {entry.data.description}
+                </p>
+                <div class="h-1.5 w-24 bg-blue-600 rounded-full"></div>
+              </div>
+            )}
+
+            <article class="prose-container prose prose-slate prose-lg lg:prose-xl dark:prose-invert max-w-none">
+              <Content />
+            </article>
+          </div>
+        </div>
+
+        <!-- Footer Action (Slim Version) -->
+        <div class="mt-12 bg-slate-50 dark:bg-slate-900/40 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="text-left">
+            <h2 class="text-lg font-black text-slate-900 dark:text-white mb-1">发现错误或有改进建议？</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+              我们的文档由社区驱动。如果您发现任何不准确之处，请参与共建。
+            </p>
+          </div>
+          <div class="flex gap-3 shrink-0">
+            <a href="/ccus-policy-hub/about/" class="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/10">
+              提交反馈
+            </a>
+            <a href="https://github.com/liuh886/ccus-policy-hub" target="_blank" class="px-5 py-2.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 </Layout>
+
+<style is:global>
+  /* 优化后的 Markdown 标题排版：更优雅、更专业 */
+  .prose-container h2 {
+    font-weight: 800 !important;
+    font-size: 1.75rem !important; /* text-2xl+ */
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.25rem !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.3 !important;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 0.5rem;
+    color: #0f172a;
+    display: block;
+  }
+  
+  .dark .prose-container h2 {
+    color: #f8fafc;
+    border-bottom-color: #1e293b;
+  }
+
+  .prose-container h3 {
+    font-weight: 700 !important;
+    font-size: 1.25rem !important; /* text-xl */
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
+    letter-spacing: -0.01em !important;
+    color: #334155;
+  }
+
+  .dark .prose-container h3 {
+    color: #e2e8f0;
+  }
+
+  .prose-container p {
+    margin-bottom: 1.25rem !important;
+    line-height: 1.75 !important;
+    color: #475569;
+    font-size: 1.05rem;
+  }
+
+  .dark .prose-container p {
+    color: #94a3b8;
+  }
+
+  .prose-container blockquote {
+    border-left: 3px solid #3b82f6 !important;
+    background: #f8fafc !important;
+    padding: 1.25rem 1.75rem !important;
+    border-radius: 0.75rem !important;
+    margin: 2rem 0 !important;
+    font-style: normal !important;
+    color: #64748b !important;
+  }
+
+  .dark .prose-container blockquote {
+    background: rgba(30, 41, 59, 0.3) !important;
+    border-left-color: #2563eb !important;
+    color: #94a3b8 !important;
+  }
+
+  .prose-container ul {
+    list-style-type: disc !important;
+    padding-left: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .prose-container li {
+    margin-bottom: 0.5rem !important;
+    color: #475569;
+  }
+
+  .dark .prose-container li {
+    color: #94a3b8;
+  }
+
+  .prose-container strong {
+    font-weight: 700 !important;
+    color: #0f172a;
+  }
+
+  .dark .prose-container strong {
+    color: #f8fafc;
+  }
+</style>

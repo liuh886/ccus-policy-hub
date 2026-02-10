@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-02-10T07:19:44.789Z",
+  "source": "governance/reports/governance_heartbeat.json + governance/reports/stats.json",
+  "counts": {
+    "policies": 86,
+    "facilities": 1017
+  },
+  "gates": {
+    "policies_ok": true,
+    "facilities_ok": true,
+    "unmapped_ok": true,
+    "links_ok": true,
+    "geo_ok": true
+  },
+  "metrics": {
+    "unmapped_tokens": 0,
+    "invalid_links": 0,
+    "invalid_geo": 0,
+    "policy_url_non_empty_rate": 0.6976744186046512,
+    "facility_links_non_empty_rate": 0,
+    "region_zh_non_chinese_rate": 1
+  },
+  "errors": [],
+  "isPass": true,
+  "verdict": "PASS"
+}
