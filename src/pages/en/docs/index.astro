@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 
-const docs = await getCollection('docs_zh');
+const docs = await getCollection('docs_en');
 ---
 
-<Layout title="文档中心">
+
+<Layout title="Documentation">
   <div class="max-w-5xl mx-auto py-12 px-4">
     <header class="mb-16 text-center">
       <div class="inline-flex items-center justify-center p-3 bg-blue-50 dark:bg-blue-900/30 rounded-2xl mb-6">
@@ -15,10 +16,10 @@ const docs = await getCollection('docs_zh');
         </svg>
       </div>
       <h1 class="text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
-        知识中心 <span class="text-blue-600">&</span> 帮助文档
+        Knowledge Hub <span class="text-blue-600">&</span> Documentation
       </h1>
       <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium">
-        了解项目背景、标准体系，或学习如何贡献您的力量。
+        Learn about project background, standards, or how to contribute your efforts.
       </p>
     </header>
 
@@ -28,7 +29,7 @@ const docs = await getCollection('docs_zh');
           .sort((a, b) => a.data.order - b.data.order)
           .map((doc) => (
             <a
-              href={`/ccus-policy-hub/docs/${doc.id.replace(/^zh\//, '')}/`}
+              href={`/ccus-policy-hub/en/docs/${doc.id.replace(/^en\//, '')}/`}
               class="group relative p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1"
             >
               <div class="flex flex-col h-full">
@@ -47,7 +48,7 @@ const docs = await getCollection('docs_zh');
                   {doc.data.description}
                 </p>
                 <div class="mt-auto flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                  <span>查看详情</span>
+                  <span>View Details</span>
                   <div class="h-1 w-1 rounded-full bg-slate-300"></div>
                   <span>{doc.data.order.toString().padStart(2, '0')}</span>
                 </div>

@@ -90,8 +90,6 @@ const statusColor = statusColors[status] || 'bg-slate-400';
             </div>
           )
         }
-        <!-- Spacer for checkbox -->
-        <div class="w-5"></div>
       </div>
     </div>
 
@@ -163,15 +161,5 @@ const statusColor = statusColors[status] || 'bg-slate-400';
         >
       </a>
     </div>
-  </div>
-
-  <!-- Compare Checkbox -->
-  <div class="absolute top-6 right-6 z-10">
-    <label class="relative inline-flex items-center cursor-pointer group/cb">
-      <input type="checkbox" class="sr-only peer compare-checkbox" data-id={facility.id} />
-      <div class="w-5 h-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded peer peer-checked:bg-blue-600 peer-checked:border-blue-600 transition-all shadow-sm flex items-center justify-center overflow-hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 peer-checked:opacity-100 transition-opacity"><polyline points="20 6 9 17 4 12"></polyline></svg>
-      </div>
-    </label>
   </div>
 </div>
