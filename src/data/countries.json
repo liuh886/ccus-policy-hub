@@ -9,6 +9,7 @@
   "Canada": { "zh": "加拿大", "en": "Canada" },
   "Chile": { "zh": "智利", "en": "Chile" },
   "China": { "zh": "中国", "en": "China" },
+  "Colombia": { "zh": "哥伦比亚", "en": "Colombia" },
   "Croatia": { "zh": "克罗地亚", "en": "Croatia" },
   "Denmark": { "zh": "丹麦", "en": "Denmark" },
   "European Union": { "zh": "欧盟", "en": "European Union" },
@@ -33,6 +34,7 @@
   "Mexico": { "zh": "墨西哥", "en": "Mexico" },
   "Netherlands": { "zh": "荷兰", "en": "Netherlands" },
   "New Zealand": { "zh": "新西兰", "en": "New Zealand" },
+  "Nigeria": { "zh": "尼日利亚", "en": "Nigeria" },
   "Norway": { "zh": "挪威", "en": "Norway" },
   "Oman": { "zh": "阿曼", "en": "Oman" },
   "Other": { "zh": "其他", "en": "Other" },
@@ -53,5 +55,6 @@
   "United Kingdom": { "zh": "英国", "en": "United Kingdom" },
   "United States": { "zh": "美国", "en": "United States" },
   "Uruguay": { "zh": "乌拉圭", "en": "Uruguay" },
+  "Vietnam": { "zh": "越南", "en": "Vietnam" },
   "International": { "zh": "国际", "en": "International" }
 }

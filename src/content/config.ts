@@ -4,16 +4,16 @@ import { POLICY_CATEGORIES, POLICY_STATUSES, ANALYSIS_DIMENSIONS, FACILITY_STATU
 
 const provenanceSchema = z.object({
   author: z.string(),
-  reviewer: z.string(),
+  reviewer: z.string().optional().default(""),
   lastAuditDate: z.string(),
 });
 
 const analysisDimensionSchema = z.object({
-  score: z.number().min(0).max(100),
-  label: z.string(),
-  evidence: z.string(),
-  citation: z.string(),
-  auditNote: z.string(),
+  score: z.number().min(0).max(100).optional().default(0),
+  label: z.string().optional().default("Pending"),
+  evidence: z.string().optional().default(""),
+  citation: z.string().optional().default(""),
+  auditNote: z.string().optional().default(""),
 });
 
 const policySchema = z.object({
@@ -138,6 +138,41 @@ const docs_en = defineCollection({
   }),
 });
 
+const countrySchema = z.object({
+  id: z.string(), // Canonical English name (e.g., "China")
+  name: z.string(), // Localized name
+  lang: z.enum(['en', 'zh']),
+  region: z.string().optional(),
+  summary: z.string().optional(),
+  // The 7 Regulatory Pillars
+  regulatory: z.object({
+    pore_space_rights: z.string().default("Pending"),
+    liability_transfer: z.string().default("Pending"),
+    liability_period: z.string().default("Pending"),
+    financial_assurance: z.string().default("Pending"),
+    permitting_lead_time: z.string().default("Pending"),
+    co2_definition: z.string().default("Pending"),
+    cross_border_rules: z.string().default("Pending"),
+  }),
+  // Strategic Outlook
+  strategicTargets: z.object({
+    capture2030: z.string().optional().nullable(),
+    storage2050: z.string().optional().nullable(),
+    netZeroYear: z.coerce.number().optional().nullable(),
+  }).optional().nullable(),
+  provenance: provenanceSchema.optional(),
+});
+
+const countries_zh = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/countries/zh' }),
+  schema: countrySchema,
+});
+
+const countries_en = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/countries/en' }),
+  schema: countrySchema,
+});
+
 export const collections = {
   policies_zh,
   policies_en,
@@ -146,4 +181,6 @@ export const collections = {
   changelog,
   docs_zh,
   docs_en,
+  countries_zh,
+  countries_en,
 };

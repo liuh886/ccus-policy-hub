@@ -227,11 +227,13 @@ const statuses = Array.from(
               class="facility-item"
               data-name={f.data.name}
               data-country={f.data.country}
+              data-region={f.data.region || ''}
               data-sector={f.data.sector}
               data-type={normalizedType}
               data-status={f.data.status}
               data-capacity={f.data.estimatedCapacity || 0}
               data-year={f.data.announcement || ''}
+              data-hub={f.data.hub || ''}
               data-partners={f.data.partners?.join(' ') || ''}
               data-operator={f.data.operator || ''}
               data-policies={f.data.relatedPolicies?.join(',') || ''}
@@ -301,8 +303,11 @@ const statuses = Array.from(
         const d = item.dataset;
         const matches =
           (d.name.toLowerCase().includes(search) ||
+            d.hub.toLowerCase().includes(search) ||
             d.partners.toLowerCase().includes(search) ||
-            d.operator.toLowerCase().includes(search)) &&
+            d.operator.toLowerCase().includes(search) ||
+            d.country.toLowerCase().includes(search) ||
+            d.region.toLowerCase().includes(search)) &&
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&

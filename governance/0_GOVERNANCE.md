@@ -51,25 +51,31 @@
   - `evidence`: **逻辑支撑**。必须解释为什么给这个分，严禁废话。
   - `citation`: **溯源证据**。得分 > 40 时必填，必须引用具体条款或 URL。
 
-**C. 实质影响切片 (Strategic Intelligence)**
+**C. 实质影响与制度对标 (Impact & Regulatory Matrix)**
 
 - **`impactAnalysis`**:
   - `economic`: 描述成本/补贴如何改变项目经济性（如降低 LCOE）。
   - `technical`: 描述对具体捕集/封存技术路径的选择性引导。
   - `environmental`: 描述预估的二氧化碳减排贡献。
-- **`implementationDetails`**:
-  - `authority`: 牵头执行机构（如 DOE, IRS, MEE）。
-  - `mechanism`: 具体的政策执行工具（如 CfD, Tax Credit, 专项基金）。
+#### **1.1.3 国家治理档案：监管体系底座 (National Governance Profiles)**
 
-**D. 谱系与关联切片 (Relational & Lineage)**
+监管矩阵（Regulatory Matrix）的对象是**国家治理体系**而非单一政策。每个国家必须建立唯一的治理档案：
 
-- **`evolution`**:
-  - `supersedes`: 被该政策取代的旧政策 ID 列表。
-  - `supersededBy`: 取代该政策的新政策 ID。
-- **`clusters`**: 所属的重大政策丛林（如：Inflation Reduction Act, EU Green Deal）。
-- **`relatedFacilities`**: 物理关联的设施 ID 列表。
+- **真理源 (Source of Truth)**：档案中定义的 7 大支柱是全站展示该国监管现状的唯一标准。
+- **自动同步逻辑 (Bubbling Logic)**：治理底座遵循“政策驱动”原则。当政策文件更新时，流水线会自动提取该国**最新有效政策**中的监管条款，并自动更新至国家档案。
+- **关联性 (Relationships)**：
+  - **政策关联**：政策文件通过 `country` 字段挂钩到档案，并提供具体的法律支撑。
+  - **设施关联**：设施通过 `country` 字段继承该国的治理底座信息。
+- **7 大支柱定义**：
+  1.  **`pore_space_rights` (空隙归属权)**：定义地下封存空间的物理所有权（国家、私有、矿权附带）。
+  2.  **`liability_transfer` (长期责任转移)**：定义封存闭坑后，长期监测责任是否及如何从运营商转移至政府。
+  3.  **`liability_period` (责任期限)**：责任转移前的法定监测年限（如 20 年、50 年）。
+  4.  **`financial_assurance` (财务保证)**：法律要求的闭坑及意外泄漏保险、担保金或信托要求。
+  5.  **`permitting_lead_time` (审批周期)**：法定的许可发放时限或实际行业平均周期预测。
+  6.  **`co2_definition` (CO2 法律定义)**：CO2 被定义为“废弃物”、“污染物”还是“商品/工业产品”。
+  7.  **`cross_border_rules` (跨国/跨境规则)**：对《伦敦议定书》修正案的采纳情况及 CO2 进出口限制。
 
-#### **1.1.2 设施数据：IEA 2025 对齐协议 (IEA-Standard Ingestion Protocol)**
+#### **1.1.4 政策数据：四维切片模型 (Four-Dimensional Slicing Model)**
 
 必须完整捕获 IEA 原始 Excel 的所有字段，ID 碰撞处理执行 **“后缀唯一化”**（如 `487-2`）。
 

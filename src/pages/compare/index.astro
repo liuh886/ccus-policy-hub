@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 
 // 关键修复：改用 id 前缀判断语言
 const policies = await getCollection('policies_zh');
+const countriesProfiles = await getCollection('countries_zh');
+import countryData from '../../data/countries.json';
 ---
 
 <Layout title="政策对比分析">
@@ -150,6 +152,8 @@ const policies = await getCollection('policies_zh');
   <!-- Data Bridges -->
   <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_zh'))} class="hidden"></div>
   <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
+  <div id="country-data" data-countries={JSON.stringify(countryData)} class="hidden"></div>
+  <div id="countries-profiles-data" data-profiles={JSON.stringify(countriesProfiles)} class="hidden"></div>
 </Layout>
 
 <script>
@@ -168,6 +172,8 @@ const policies = await getCollection('policies_zh');
     const selectedSlugs = JSON.parse(localStorage.getItem('compare-list') || '[]');
     const allPolicies = JSON.parse((document.getElementById('all-policies-data') as any).dataset.policies);
     const allFacilities = JSON.parse((document.getElementById('all-facilities-data') as any).dataset.facilities);
+    const countryMap = JSON.parse((document.getElementById('country-data') as any).dataset.countries);
+    const countriesProfiles = JSON.parse((document.getElementById('countries-profiles-data') as any).dataset.profiles);
     
     const userSelected = allPolicies.filter((p: any) => selectedSlugs.includes(p.id));
     const selectedCountries = [...new Set(userSelected.map((p: any) => p.data.country))];
@@ -190,8 +196,31 @@ const policies = await getCollection('policies_zh');
 
     // 1. Group Data by Country and Calculate Peaks
     const countryData = selectedCountries.map((c, idx) => {
-      const countryPolicies = allPolicies.filter((p: any) => p.data.country === c && (p.data.status === '运行中' || p.data.status === 'Active'));
-      const facilities = allFacilities.filter((f: any) => f.data.country === c || (c === 'United States' && f.data.country === 'USA'));
+      let displayCountry = c as string;
+      if (countryMap[displayCountry]?.zh) {
+        displayCountry = countryMap[displayCountry].zh;
+      } else {
+        for (const key in countryMap) {
+          if (countryMap[key].zh === c) {
+            displayCountry = countryMap[key].zh;
+            break;
+          }
+        }
+      }
+
+      const countryPolicies = allPolicies.filter((p: any) => {
+        const pCountry = p.data.country;
+        const match = pCountry === c || 
+                     (countryMap[pCountry]?.en && countryMap[pCountry].en === countryMap[c as string]?.en);
+        return match && (p.data.status === '运行中' || p.data.status === 'Active' || p.data.status === '现行');
+      });
+
+      const facilities = allFacilities.filter((f: any) => {
+        const fCountry = f.data.country;
+        const fCanon = countryMap[fCountry]?.en || fCountry;
+        const cCanon = countryMap[c as string]?.en || c;
+        return fCanon === cCanon;
+      });
       
       const peakAnalysis = {
         incentive: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.incentive?.score || 0), 0),
@@ -201,12 +230,10 @@ const policies = await getCollection('policies_zh');
         mrv: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.mrv?.score || 0), 0)
       };
 
-      // Find contributors: policies that have the max score in any dimension
       const contributors = countryPolicies.filter((p: any) => {
         return Object.entries(peakAnalysis).some(([dim, score]) => (p.data.analysis?.[dim]?.score || 0) === score && score > 0);
       }).sort((a:any, b:any) => b.data.year - a.data.year);
 
-      // Facility Stats
       const stats = {
         operational: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').length,
         operationalCap: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0),
@@ -214,35 +241,20 @@ const policies = await getCollection('policies_zh');
         plannedCap: facilities.filter((f:any) => f.data.status === 'Planned' || f.data.status === '计划中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0)
       };
 
-      // Aggregate Regulatory Data (take best available values from all country policies)
-      const primary: any = {};
-      const regFields = [
-        'pore_space_rights',
-        'liability_transfer',
-        'liability_period',
-        'financial_assurance',
-        'permitting_lead_time',
-        'co2_definition',
-        'cross_border_rules',
-      ];
+      // NEW: Get Regulatory Data from Country Profile SSOT
+      const canonName = countryMap[c as string]?.en || c;
+      const profile = countriesProfiles.find((cp: any) => cp.data.id === canonName);
+      const regulatory = profile?.data.regulatory || {
+        pore_space_rights: 'Pending',
+        liability_transfer: 'Pending',
+        liability_period: 'Pending',
+        financial_assurance: 'Pending',
+        permitting_lead_time: 'Pending',
+        co2_definition: 'Pending',
+        cross_border_rules: 'Pending'
+      };
 
-      // Use all policies for the country to fill the matrix, not just active ones
-      const countryPoliciesForAllStatuses = allPolicies.filter((p: any) => p.data.country === c);
-      const sortedPolicies = [...countryPoliciesForAllStatuses].sort(
-        (a: any, b: any) => b.data.year - a.data.year
-      );
-
-      regFields.forEach((field) => {
-        for (const p of sortedPolicies) {
-          const val = p.data.regulatory?.[field];
-          if (val && val !== '' && val !== '---') {
-            primary[field] = val;
-            break;
-          }
-        }
-      });
-
-      return { country: c, color: colors[idx % colors.length], peakAnalysis, contributors, stats, regulatory: primary };
+      return { country: c, displayCountry, color: colors[idx % colors.length], peakAnalysis, contributors, stats, regulatory };
     });
 
     // 2. Render Radar Chart
@@ -254,7 +266,7 @@ const policies = await getCollection('policies_zh');
         data: {
           labels: ['经济激励', '法律监管', '市场机制', '战略引导', '技术规范'],
           datasets: countryData.map(cd => ({
-            label: cd.country,
+            label: cd.displayCountry,
             data: [cd.peakAnalysis.incentive, cd.peakAnalysis.statutory, cd.peakAnalysis.market, cd.peakAnalysis.strategic, cd.peakAnalysis.mrv],
             borderColor: cd.color.border,
             backgroundColor: cd.color.bg,
@@ -287,7 +299,7 @@ const policies = await getCollection('policies_zh');
         <div class="space-y-6">
           <div class="flex items-center gap-4">
             <div class="w-3 h-3 rounded-full" style="background-color: ${cd.color.border}"></div>
-            <h3 class="text-xl font-bold dark:text-white">${cd.country} 治理核心贡献政策</h3>
+            <h3 class="text-xl font-bold dark:text-white">${cd.displayCountry} 治理核心贡献政策</h3>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${cd.contributors.map((p: any) => `
@@ -331,7 +343,7 @@ const policies = await getCollection('policies_zh');
       statsGrid.innerHTML = countryData.map(cd => `
         <div class="p-6 bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-3xl">
           <div class="flex justify-between items-center mb-4">
-            <span class="font-bold text-slate-900 dark:text-white">${cd.country}</span>
+            <span class="font-bold text-slate-900 dark:text-white">${cd.displayCountry}</span>
             <span class="text-[10px] font-black text-blue-600">${cd.stats.operational} 在运项目</span>
           </div>
           <div class="grid grid-cols-3 gap-2">
@@ -365,7 +377,7 @@ const policies = await getCollection('policies_zh');
 
     if (regHeader) {
       regHeader.innerHTML = `<tr><th class="p-6 text-[10px] font-black uppercase text-slate-400">对比维度 Dimension</th>` + 
-        countryData.map(cd => `<th class="p-6 font-bold text-slate-900 dark:text-white border-l border-slate-100 dark:border-slate-800">${cd.country}</th>`).join('') + `</tr>`;
+        countryData.map(cd => `<th class="p-6 font-bold text-slate-900 dark:text-white border-l border-slate-100 dark:border-slate-800">${cd.displayCountry}</th>`).join('') + `</tr>`;
     }
 
     if (regBody) {
