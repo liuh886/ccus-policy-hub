@@ -23,7 +23,7 @@
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": "Human Audit Pending"
+    "reviewer": ""
   },
   "pubDate": "2023-01-01",
   "regulatory": {

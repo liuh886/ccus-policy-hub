@@ -16,6 +16,7 @@
 | $.policies[].analysis.<axis> | policy_analysis | axis（incentive/statutory/market/strategic/mrv）UI 文案来自 ui_dimension |
 | $.policies[].en.title/description/scope/tags | policy_i18n(lang='en') | narrative >= 200 的门禁仍有效 |
 | $.policies[].zh.title/description/scope/tags | policy_i18n(lang='zh') | zh 非强制，但影响 Symmetry Score |
+| $.policies[].regulatory | policy_i18n.regulatory_json | 包含 7 大支柱：pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules |
 
 ---
 

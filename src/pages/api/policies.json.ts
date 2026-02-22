@@ -5,7 +5,6 @@ export async function GET() {
   const policiesEn = await getCollection('policies_en');
 
   const data = [...policiesZh, ...policiesEn].map((p) => ({
-    id: p.id,
     ...p.data,
   }));
 

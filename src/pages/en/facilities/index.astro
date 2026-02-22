@@ -153,16 +153,20 @@ const statuses = Array.from(
       id="facility-grid"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
     >
-      {
+        {
         facilities.map((f) => (
           <div
             class="facility-item"
             data-name={f.data.name}
             data-country={f.data.country}
+            data-region={f.data.region || ''}
             data-sector={f.data.sector}
             data-type={f.data.type}
             data-status={f.data.status}
-            data-capacity={f.data.capacity}
+            data-capacity={f.data.estimatedCapacity || f.data.announcedCapacityMax || 0}
+            data-hub={f.data.hub || ''}
+            data-partners={f.data.partners?.join(' ') || ''}
+            data-operator={f.data.operator || ''}
           >
             <FacilityCard facility={f} />
           </div>
@@ -217,7 +221,12 @@ const statuses = Array.from(
       items.forEach((item: any) => {
         const d = item.dataset;
         const matches =
-          d.name.toLowerCase().includes(search) &&
+          (d.name.toLowerCase().includes(search) ||
+           d.hub.toLowerCase().includes(search) ||
+           d.partners.toLowerCase().includes(search) ||
+           d.operator.toLowerCase().includes(search) ||
+           d.country.toLowerCase().includes(search) ||
+           d.region.toLowerCase().includes(search)) &&
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&

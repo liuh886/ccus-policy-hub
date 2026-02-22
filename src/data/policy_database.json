@@ -4,7 +4,7 @@
   "policies": [
     {
       "id": "us-45q-ira",
-      "country": "美国",
+      "country": "United States",
       "year": 2022,
       "status": "Active",
       "category": "Regulatory",
@@ -108,7 +108,7 @@
     },
     {
       "id": "eu-nzia",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -302,7 +302,7 @@
     },
     {
       "id": "cn-national-standards",
-      "country": "中国",
+      "country": "China",
       "year": 2026,
       "status": "Upcoming",
       "category": "Regulatory",
@@ -495,7 +495,7 @@
     },
     {
       "id": "cn-pboc-cerf",
-      "country": "中国",
+      "country": "China",
       "year": 2021,
       "status": "Active",
       "category": "Regulatory",
@@ -691,7 +691,7 @@
     },
     {
       "id": "eu-cbam",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -886,7 +886,7 @@
     },
     {
       "id": "no-storage-framework",
-      "country": "挪威",
+      "country": "Norway",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -1088,7 +1088,7 @@
     },
     {
       "id": "ca-ccus-itc",
-      "country": "加拿大",
+      "country": "Canada",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -1277,7 +1277,7 @@
     },
     {
       "id": "uk-ccus-vision",
-      "country": "英国",
+      "country": "United Kingdom",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -1466,7 +1466,7 @@
     },
     {
       "id": "au-safeguard-mechanism",
-      "country": "澳大利亚",
+      "country": "Australia",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -1658,7 +1658,7 @@
     },
     {
       "id": "id-presidential-reg-14-2024",
-      "country": "印度尼西亚",
+      "country": "Indonesia",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -1860,7 +1860,7 @@
     },
     {
       "id": "japan-ccs-act",
-      "country": "日本",
+      "country": "Japan",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -2063,7 +2063,7 @@
     },
     {
       "id": "denmark-ccfd",
-      "country": "丹麦",
+      "country": "Denmark",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -2267,7 +2267,7 @@
     },
     {
       "id": "kr-ccus-act",
-      "country": "韩国",
+      "country": "South Korea",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -2456,7 +2456,7 @@
     },
     {
       "id": "iso-standards",
-      "country": "国际",
+      "country": "International",
       "year": 2019,
       "status": "Active",
       "category": "Regulatory",
@@ -3669,7 +3669,7 @@
     },
     {
       "id": "ipcc-guidelines",
-      "country": "国际",
+      "country": "International",
       "year": 2019,
       "status": "Active",
       "category": "Regulatory",
@@ -4881,7 +4881,7 @@
     },
     {
       "id": "eu-innovation-fund",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -5077,7 +5077,7 @@
     },
     {
       "id": "my-ccs-framework",
-      "country": "马来西亚",
+      "country": "Malaysia",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -5273,7 +5273,7 @@
     },
     {
       "id": "netherlands-sde",
-      "country": "荷兰",
+      "country": "Netherlands",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -5479,7 +5479,7 @@
     },
     {
       "id": "california-lcfs",
-      "country": "美国",
+      "country": "United States",
       "year": 2024,
       "status": "Active",
       "category": "Market",
@@ -5676,7 +5676,7 @@
     },
     {
       "id": "cn-ccer",
-      "country": "中国",
+      "country": "China",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -5872,7 +5872,7 @@
     },
     {
       "id": "cn-zero-carbon-parks",
-      "country": "中国",
+      "country": "China",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -6040,7 +6040,7 @@
     },
     {
       "id": "alberta-tier",
-      "country": "加拿大",
+      "country": "Canada",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -6238,7 +6238,7 @@
     },
     {
       "id": "norway-longship",
-      "country": "挪威",
+      "country": "Norway",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -6429,7 +6429,7 @@
     },
     {
       "id": "verra-vm0049",
-      "country": "国际",
+      "country": "International",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -7643,7 +7643,7 @@
     },
     {
       "id": "gold-standard",
-      "country": "国际",
+      "country": "International",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -8857,7 +8857,7 @@
     },
     {
       "id": "puro-earth",
-      "country": "国际",
+      "country": "International",
       "year": 2019,
       "status": "Active",
       "category": "Regulatory",
@@ -10071,7 +10071,7 @@
     },
     {
       "id": "us-iija-hubs",
-      "country": "美国",
+      "country": "United States",
       "year": 2021,
       "status": "Active",
       "category": "Regulatory",
@@ -10267,7 +10267,7 @@
     },
     {
       "id": "br-bill-1425-2022",
-      "country": "巴西",
+      "country": "Brazil",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -10435,7 +10435,7 @@
     },
     {
       "id": "ae-carbon-strategy",
-      "country": "阿联酋",
+      "country": "United Arab Emirates",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -10603,7 +10603,7 @@
     },
     {
       "id": "my-mida-incentives",
-      "country": "马来西亚",
+      "country": "Malaysia",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -10771,7 +10771,7 @@
     },
     {
       "id": "de-icm-strategy",
-      "country": "德国",
+      "country": "Germany",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -10967,7 +10967,7 @@
     },
     {
       "id": "fr-ccus-roadmap",
-      "country": "法国",
+      "country": "France",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -11135,7 +11135,7 @@
     },
     {
       "id": "sa-megi-ccus",
-      "country": "沙特阿拉伯",
+      "country": "Saudi Arabia",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -11340,7 +11340,7 @@
     },
     {
       "id": "th-boi-incentives",
-      "country": "泰国",
+      "country": "Thailand",
       "year": 2023,
       "status": "Active",
       "category": "Incentive",
@@ -11542,7 +11542,7 @@
     },
     {
       "id": "in-ccus-roadmap",
-      "country": "印度",
+      "country": "India",
       "year": 2022,
       "status": "Active",
       "category": "Regulatory",
@@ -11744,7 +11744,7 @@
     },
     {
       "id": "is-cdr-framework",
-      "country": "冰岛",
+      "country": "Iceland",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -11938,7 +11938,7 @@
     },
     {
       "id": "eu-ccs-directive",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2009,
       "status": "Active",
       "category": "Regulatory",
@@ -12135,7 +12135,7 @@
     },
     {
       "id": "uk-energy-act-2023",
-      "country": "英国",
+      "country": "United Kingdom",
       "year": 2023,
       "status": "Active",
       "category": "Market",
@@ -12340,7 +12340,7 @@
     },
     {
       "id": "us-cifia-lpo",
-      "country": "美国",
+      "country": "United States",
       "year": 2021,
       "status": "Active",
       "category": "Incentive",
@@ -12536,7 +12536,7 @@
     },
     {
       "id": "us-epa-class-vi-primacy",
-      "country": "美国",
+      "country": "United States",
       "year": 2010,
       "status": "Active",
       "category": "Regulatory",
@@ -12733,7 +12733,7 @@
     },
     {
       "id": "ca-sk-spii",
-      "country": "加拿大",
+      "country": "Canada",
       "year": 2019,
       "status": "Active",
       "category": "Incentive",
@@ -12929,7 +12929,7 @@
     },
     {
       "id": "cn-mee-env-guidance-2024",
-      "country": "中国",
+      "country": "China",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -13129,7 +13129,7 @@
     },
     {
       "id": "in-union-budget-2026-ccus",
-      "country": "印度",
+      "country": "India",
       "year": 2026,
       "status": "Active",
       "category": "Incentive",
@@ -13293,7 +13293,7 @@
     },
     {
       "id": "vn-decree-119-2025",
-      "country": "越南",
+      "country": "Vietnam",
       "year": 2025,
       "status": "Active",
       "category": "Market",
@@ -13462,7 +13462,7 @@
     },
     {
       "id": "br-law-14993-2024",
-      "country": "巴西",
+      "country": "Brazil",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -13664,7 +13664,7 @@
     },
     {
       "id": "sa-hydrogen-strategy-ccus",
-      "country": "沙特阿拉伯",
+      "country": "Saudi Arabia",
       "year": 2023,
       "status": "Active",
       "category": "Strategic",
@@ -13831,7 +13831,7 @@
     },
     {
       "id": "intl-paris-art-6-4-ccs",
-      "country": "国际",
+      "country": "International",
       "year": 2024,
       "status": "Active",
       "category": "Market",
@@ -15048,7 +15048,7 @@
     },
     {
       "id": "us-la-primacy-rules",
-      "country": "美国",
+      "country": "United States",
       "year": 2023,
       "status": "Active",
       "category": "Regulatory",
@@ -15219,7 +15219,7 @@
     },
     {
       "id": "cn-gd-carbon-inclusive",
-      "country": "中国",
+      "country": "China",
       "year": 2024,
       "status": "Active",
       "category": "Market",
@@ -15390,7 +15390,7 @@
     },
     {
       "id": "ca-ab-sequestration-tenure",
-      "country": "加拿大",
+      "country": "Canada",
       "year": 2011,
       "status": "Active",
       "category": "Regulatory",
@@ -15598,7 +15598,7 @@
     },
     {
       "id": "eu-ets-mrr-2018",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2018,
       "status": "Active",
       "category": "Technical",
@@ -15806,7 +15806,7 @@
     },
     {
       "id": "cn-miit-industrial-plan-2022",
-      "country": "中国",
+      "country": "China",
       "year": 2022,
       "status": "Active",
       "category": "Strategic",
@@ -15974,7 +15974,7 @@
     },
     {
       "id": "ca-sk-ccs-directives",
-      "country": "加拿大",
+      "country": "Canada",
       "year": 2015,
       "status": "Active",
       "category": "Regulatory",
@@ -16146,7 +16146,7 @@
     },
     {
       "id": "eu-crcf-2024",
-      "country": "欧盟",
+      "country": "European Union",
       "year": 2024,
       "status": "Active",
       "category": "Technical",
@@ -16342,7 +16342,7 @@
     },
     {
       "id": "tx-hb-1284-ccus",
-      "country": "美国",
+      "country": "United States",
       "year": 2021,
       "status": "Active",
       "category": "Regulatory",
@@ -16513,7 +16513,7 @@
     },
     {
       "id": "intl-ccs-plus-framework",
-      "country": "国际",
+      "country": "International",
       "year": 2021,
       "status": "Active",
       "category": "Technical",
@@ -17700,7 +17700,7 @@
     },
     {
       "id": "cn-sd-eco-plan-14fym",
-      "country": "中国",
+      "country": "China",
       "year": 2022,
       "status": "Active",
       "category": "Strategic",
@@ -17871,7 +17871,7 @@
     },
     {
       "id": "hr-hydrocarbon-act-ccs",
-      "country": "克罗地亚",
+      "country": "Croatia",
       "year": 2018,
       "status": "Active",
       "category": "Regulatory",
@@ -18040,7 +18040,7 @@
     },
     {
       "id": "ro-law-114-2013-ccs",
-      "country": "罗马尼亚",
+      "country": "Romania",
       "year": 2013,
       "status": "Active",
       "category": "Regulatory",
@@ -18209,7 +18209,7 @@
     },
     {
       "id": "au-offshore-ghg-safety-2024",
-      "country": "澳大利亚",
+      "country": "Australia",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -18379,7 +18379,7 @@
     },
     {
       "id": "ng-nuprc-decarb-2024",
-      "country": "尼日利亚",
+      "country": "Nigeria",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -18548,7 +18548,7 @@
     },
     {
       "id": "intl-gcca-net-zero-2050",
-      "country": "国际",
+      "country": "International",
       "year": 2021,
       "status": "Active",
       "category": "Strategic",
@@ -19735,7 +19735,7 @@
     },
     {
       "id": "jp-jogmec-advanced-ccs-2024",
-      "country": "日本",
+      "country": "Japan",
       "year": 2024,
       "status": "Active",
       "category": "Incentive",
@@ -19933,7 +19933,7 @@
     },
     {
       "id": "my-ccus-act-2025",
-      "country": "马来西亚",
+      "country": "Malaysia",
       "year": 2025,
       "status": "Active",
       "category": "Regulatory",
@@ -20135,7 +20135,7 @@
     },
     {
       "id": "cn-js-industrial-decarb-2022",
-      "country": "中国",
+      "country": "China",
       "year": 2022,
       "status": "Active",
       "category": "Regulatory",
@@ -20306,7 +20306,7 @@
     },
     {
       "id": "nl-porthos-sde-subsidy",
-      "country": "荷兰",
+      "country": "Netherlands",
       "year": 2021,
       "status": "Active",
       "category": "Incentive",
@@ -20475,7 +20475,7 @@
     },
     {
       "id": "imo-marpol-occs-2024",
-      "country": "国际",
+      "country": "International",
       "year": 2024,
       "status": "Under development",
       "category": "Technical",
@@ -21662,7 +21662,7 @@
     },
     {
       "id": "icao-corsia-ccu-2024",
-      "country": "国际",
+      "country": "International",
       "year": 2024,
       "status": "Active",
       "category": "Market",
@@ -22848,7 +22848,7 @@
     },
     {
       "id": "us-nd-century-code-38-22",
-      "country": "美国",
+      "country": "United States",
       "year": 2009,
       "status": "Active",
       "category": "Regulatory",
@@ -23019,7 +23019,7 @@
     },
     {
       "id": "us-wy-hb-0200",
-      "country": "美国",
+      "country": "United States",
       "year": 2020,
       "status": "Active",
       "category": "Incentive",
@@ -23115,7 +23115,7 @@
     },
     {
       "id": "cn-ordos-pilot-2024",
-      "country": "中国",
+      "country": "China",
       "year": 2024,
       "status": "Active",
       "category": "Strategic",
@@ -23211,7 +23211,7 @@
     },
     {
       "id": "jp-ccs-business-act-2024",
-      "country": "日本",
+      "country": "Japan",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -23298,7 +23298,7 @@
     },
     {
       "id": "my-netr-ccus-2023",
-      "country": "马来西亚",
+      "country": "Malaysia",
       "year": 2023,
       "status": "Active",
       "category": "Strategic",
@@ -23391,7 +23391,7 @@
     },
     {
       "id": "is-carbfix-act",
-      "country": "冰岛",
+      "country": "Iceland",
       "year": 1998,
       "status": "Active",
       "category": "Regulatory",
@@ -23485,7 +23485,7 @@
     },
     {
       "id": "us-tx-natural-resources-121",
-      "country": "美国",
+      "country": "United States",
       "year": 2009,
       "status": "Active",
       "category": "Regulatory",
@@ -23581,7 +23581,7 @@
     },
     {
       "id": "no-tax-deduction-ccs",
-      "country": "挪威",
+      "country": "Norway",
       "year": 2023,
       "status": "Active",
       "category": "Incentive",
@@ -23778,7 +23778,7 @@
     },
     {
       "id": "br-anp-ccs-resolution",
-      "country": "巴西",
+      "country": "Brazil",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -23872,7 +23872,7 @@
     },
     {
       "id": "jp-meti-specified-zones-2024",
-      "country": "日本",
+      "country": "Japan",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -23966,7 +23966,7 @@
     },
     {
       "id": "kr-motie-cluster-district-2025",
-      "country": "韩国",
+      "country": "South Korea",
       "year": 2025,
       "status": "Active",
       "category": "Strategic",
@@ -24060,7 +24060,7 @@
     },
     {
       "id": "au-wa-petroleum-amendment-2024",
-      "country": "澳大利亚",
+      "country": "Australia",
       "year": 2024,
       "status": "Active",
       "category": "Regulatory",
@@ -24156,7 +24156,7 @@
     },
     {
       "id": "cn-hb-ets-offset",
-      "country": "中国",
+      "country": "China",
       "year": 2023,
       "status": "Active",
       "category": "Market",
@@ -24355,7 +24355,7 @@
     },
     {
       "id": "uae-adnoc-ccs-2030",
-      "country": "阿联酋",
+      "country": "United Arab Emirates",
       "year": 2024,
       "status": "Active",
       "category": "Strategic",
@@ -24558,7 +24558,7 @@
     },
     {
       "id": "co-law-2099-energy-transition",
-      "country": "哥伦比亚",
+      "country": "Colombia",
       "year": 2021,
       "status": "Active",
       "category": "Incentive",
@@ -24783,11 +24783,29 @@
       "category": "Regulatory",
       "status": "Active",
       "reviewStatus": "verified",
+      "regulatory": {
+        "pore_space_rights": "Commonwealth owned (offshore)",
+        "liability_transfer": "Conditional transfer to Commonwealth",
+        "liability_period": "15 years",
+        "financial_assurance": "Mandatory life-of-project assurance",
+        "permitting_lead_time": "3-5 years",
+        "co2_definition": "Greenhouse Gas Substance",
+        "cross_border_rules": "Approved cross-border export (2023 Sea Dumping Amendment)"
+      },
       "zh": {
         "title": "澳大利亚离岸温室气体存储法案及 2023 倾废法修正案",
         "legalWeight": "Primary Legislation",
         "reviewStatus": "verified",
         "description": "## 政策概览\n\n澳大利亚通过 2023 年《环境保护（倾废）修正案》，完成了支持跨国 CCUS 合作的关键立法拼图。该修正案打破了以往禁止出口捕集二氧化碳的法律限制，正式允许澳大利亚境内捕集的 CO2 运输至其他国家领海进行永久性地质封存。这一变革直接对齐了《伦敦议定书》的国际准则，确立了通过双边协议进行跨境碳管理的许可制度。\n\n该政策的实施核心是支撑 **Bayu-Undan CCS 项目**。该项目由 Santos 领衔，旨在将北领地 Darwin Hub 捕集的二氧化碳输送至位于东帝汶海域的枯竭气田进行封存。配合既有的《离岸石油与温室气体存储法案》(OPGGS Act)，澳大利亚建立了一套从离岸评估许可、注入授权到跨境环境评估的完整规制体系。这一立法使澳大利亚能够利用其广阔的离岸枯竭气田，为日本、韩国等能源进口国提供‘封存即服务’的区域性低碳解决方案。",
+        "regulatory": {
+          "pore_space_rights": "联邦所有 (海上)",
+          "liability_transfer": "有条件转移至联邦",
+          "liability_period": "15 年",
+          "financial_assurance": "强制性终身担保",
+          "permitting_lead_time": "3-5 年",
+          "co2_definition": "温室气体物质",
+          "cross_border_rules": "已批准跨境出口 (2023 倾废法修正案)"
+        },
         "impactAnalysis": {
           "economic": "通过解决跨境封存的法律合法性，确保了 Bayu-Undan 等世界级项目的最终投资决策 (FID) 具备制度前提，并有效推迟了枯竭油气田的高额拆除费用。",
           "technical": "推动了跨国深海 CO2 管道与海底注入系统的技术标准化，确立了澳大利亚在亚太地区海洋封存安全监控领域的技术标杆。",
@@ -24844,6 +24862,15 @@
         "legalWeight": "Primary Legislation",
         "reviewStatus": "verified",
         "description": "## Policy Overview\n\nAustralia’s 2023 Environment Protection (Sea Dumping) Amendment represents a critical legislative milestone for the international CCUS market. It rescinds the previous prohibition on exporting captured CO2, formally permitting the transport of Australian-captured carbon to offshore reservoirs in other jurisdictions for permanent sequestration. This change aligns domestic law with the 2009 and 2013 amendments to the London Protocol, establishing a formal permit regime based on bilateral 'agreements or arrangements' between nations.\n\nThe primary beneficiary of this legislation is the **Bayu-Undan CCS Project** led by Santos, which aims to transport CO2 from the Darwin LNG hub to a depleted reservoir in Timor-Leste waters. Integrated with the existing Offshore Petroleum and Greenhouse Gas Storage (OPGGS) Act, the framework provides a comprehensive system for offshore licensing, environmental auditing, and liability management. By opening its geological storage potential to partners like Japan and South Korea, Australia is positioning itself as the 'Carbon Sink of the Asia-Pacific,' turning its offshore assets into a strategic export-grade carbon management service.",
+        "regulatory": {
+          "pore_space_rights": "Commonwealth owned (offshore)",
+          "liability_transfer": "Conditional transfer to Commonwealth",
+          "liability_period": "15 years",
+          "financial_assurance": "Mandatory life-of-project assurance",
+          "permitting_lead_time": "3-5 years",
+          "co2_definition": "Greenhouse Gas Substance",
+          "cross_border_rules": "Approved cross-border export (2023 Sea Dumping Amendment)"
+        },
         "impactAnalysis": {
           "economic": "Resolves the fatal regulatory risk for cross-border projects, enabling billion-dollar FID decisions and significantly deferring the massive decommissioning costs of offshore assets.",
           "technical": "Drives the technical standardization of long-distance sub-sea CO2 pipelines and high-pressure injection wellheads, solidifying Australian expertise in offshore plume monitoring.",

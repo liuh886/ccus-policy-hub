@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS policy_i18n (
 
 CREATE TABLE IF NOT EXISTS policy_analysis (
   policy_id TEXT NOT NULL,
-  dimension TEXT NOT NULL CHECK(dimension IN ('incentive','statutory','market','strategic','mrv')),
+  dimension TEXT NOT NULL,
   score INTEGER NOT NULL,
   label TEXT,
   evidence TEXT,
@@ -188,4 +188,38 @@ CREATE TABLE IF NOT EXISTS policy_facility_links (
   PRIMARY KEY(policy_id, facility_id),
   FOREIGN KEY(policy_id) REFERENCES policies(id) ON DELETE CASCADE,
   FOREIGN KEY(facility_id) REFERENCES facilities(id) ON DELETE CASCADE
+);
+
+-- -------------------------
+-- National Governance Profiles
+-- -------------------------
+CREATE TABLE IF NOT EXISTS country_profiles (
+  id TEXT PRIMARY KEY, -- Canonical English Name
+  region TEXT,
+  net_zero_year INTEGER,
+  capture_2030 TEXT,
+  storage_2050 TEXT,
+  
+  provenance_author TEXT,
+  provenance_reviewer TEXT,
+  provenance_last_audit_date TEXT
+);
+
+CREATE TABLE IF NOT EXISTS country_i18n (
+  country_id TEXT NOT NULL,
+  lang TEXT NOT NULL CHECK(lang IN ('en','zh')),
+  name TEXT NOT NULL,
+  summary TEXT,
+  
+  -- The 7 Regulatory Pillars
+  pore_space_rights TEXT DEFAULT 'Pending',
+  liability_transfer TEXT DEFAULT 'Pending',
+  liability_period TEXT DEFAULT 'Pending',
+  financial_assurance TEXT DEFAULT 'Pending',
+  permitting_lead_time TEXT DEFAULT 'Pending',
+  co2_definition TEXT DEFAULT 'Pending',
+  cross_border_rules TEXT DEFAULT 'Pending',
+  
+  PRIMARY KEY(country_id, lang),
+  FOREIGN KEY(country_id) REFERENCES country_profiles(id) ON DELETE CASCADE
 );
