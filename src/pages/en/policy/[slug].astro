@@ -15,24 +15,20 @@ export async function getStaticPaths() {
 const inferredLang = 'en';
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const allPolicies = await getCollection('policies_en');
 const {
-  title, country, year, category, source, url,
+  title, country: rawCountry, year, category, source, url,
   analysis = {}, sectors = [], status, legalWeight,
   reviewStatus, relatedFacilities: policyRelatedFacilities = []
 } = entry.data;
-
-// Fields that might be in legacy or extended data
-const interpretation = (entry.data as any).interpretation;
-const evolution = (entry.data as any).evolution;
+const { interpretation, evolution, impactAnalysis } = entry.data;
 const implementationDetails = (entry.data as any).implementationDetails;
-const impactAnalysis = (entry.data as any).impactAnalysis;
-
-const allPolicies = await getCollection('policies_en');
 const isVerified = reviewStatus === 'verified';
 
 // Country Aggregation Logic
 const normalizeCountry = (c: string) => i18nDict.countries[c as keyof typeof i18nDict.countries] || c;
-const targetCountry = normalizeCountry(country);
+const country = normalizeCountry(rawCountry);
+const targetCountry = country;
 
 const countryPolicies = allPolicies.filter(p => normalizeCountry(p.data.country) === targetCountry);
 const allFacilities = await getCollection('facilities_en');
@@ -65,12 +61,15 @@ const dimensionConfig = [
 const activeDimensions = dimensionConfig.filter(d => (analysis?.[d.key as keyof typeof analysis]?.score || 0) >= 0);
 
 // Resolved Evolution Data
-const supersededPolicies = evolution?.supersedes
-  ? allPolicies.filter(p => evolution.supersedes.includes(p.id.replace(/^en\//, '')))
+const supersedes = evolution?.supersedes ?? [];
+const supersededBy = evolution?.supersededBy;
+
+const supersededPolicies = supersedes.length > 0
+  ? allPolicies.filter(p => supersedes.includes(p.id.replace(/^en\//, '')))
   : [];
 
-const successorPolicy = evolution?.supersededBy
-  ? allPolicies.find(p => p.id.replace(/^en\//, '') === evolution.supersededBy)
+const successorPolicy = supersededBy
+  ? allPolicies.find(p => p.id.replace(/^en\//, '') === supersededBy)
   : null;
 
 // Combined Facility Linking Logic

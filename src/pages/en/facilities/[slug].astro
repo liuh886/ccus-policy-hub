@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
+import i18nDict from '../../../data/i18n_dictionary.json';
 
 export async function getStaticPaths() {
   const facilities = await getCollection('facilities_en');
@@ -21,6 +22,7 @@ const {
 } = entry.data;
 
 const allPolicies = await getCollection('policies_en');
+const dictCountries: Record<string, string> = i18nDict.countries;
 
 // Applicable Policies: Direct links from facility data
 const applicablePolicies = allPolicies.filter(p =>
@@ -30,10 +32,12 @@ const applicablePolicies = allPolicies.filter(p =>
 // Auto-suggested Policies: Same country or international
 const suggestedPolicies = allPolicies.filter(p => {
   if (relatedPolicies.includes(p.id)) return false;
-  const isSameCountry = p.data.country === country || 
-    (country === 'USA' && p.data.country === '美国') ||
-    (country === 'China' && p.data.country === '中国');
-  return isSameCountry || p.data.country === 'International' || p.data.country === '国际';
+  
+  const pCountry = dictCountries[p.data.country] || p.data.country;
+  const fCountry = dictCountries[country] || country;
+  
+  const isSameCountry = pCountry === fCountry;
+  return isSameCountry || pCountry === 'International';
 });
 
 const statusColors: Record<string, string> = {

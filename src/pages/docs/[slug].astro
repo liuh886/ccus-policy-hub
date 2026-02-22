@@ -4,11 +4,11 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs_zh');
+  const sortedDocs = [...docs].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
   return docs.map((entry) => {
-    const slug = entry.id.replace(/^zh\//, '');
     return {
-      params: { slug },
-      props: { entry, allDocs: docs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0)) },
+      params: { slug: entry.id },
+      props: { entry, allDocs: sortedDocs },
     };
   });
 }
@@ -33,7 +33,7 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
           <nav class="space-y-1">
             {allDocs.map((doc) => (
               <a
-                href={`/ccus-policy-hub/docs/${doc.id.replace(/^zh\//, '')}/`}
+                href={`/ccus-policy-hub/docs/${doc.id}/`}
                 class={`block px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
                   doc.id === entry.id
                     ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'

@@ -1,9 +1,27 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import i18nDict from '../../../data/i18n_dictionary.json';
 
-// 关键修复：改用 id 前缀判断语言
-const policies = await getCollection('policies_en');
+const allPolicies = await getCollection('policies_en');
+const dictCountries: Record<string, string> = i18nDict.countries;
+
+const policies = allPolicies.map(p => ({
+  ...p,
+  data: {
+    ...p.data,
+    country: dictCountries[p.data.country] || p.data.country
+  }
+}));
+
+const allFacilities = (await getCollection('facilities_en')).map(f => ({
+  ...f,
+  data: {
+    ...f.data,
+    country: dictCountries[f.data.country] || f.data.country
+  }
+}));
+
 import countryData from '../../../data/countries.json';
 ---
 
@@ -133,7 +151,7 @@ import countryData from '../../../data/countries.json';
     </div>
   </div>
 
-  <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_en'))} class="hidden"></div>
+  <div id="all-facilities-data" data-facilities={JSON.stringify(allFacilities)} class="hidden"></div>
   <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
   <div id="country-data" data-countries={JSON.stringify(countryData)} class="hidden"></div>
 </Layout>

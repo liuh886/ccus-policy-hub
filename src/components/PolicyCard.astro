@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import i18nDict from '../data/i18n_dictionary.json';
+import countryData from '../data/countries.json';
 
 type PolicyEntry =
   | CollectionEntry<'policies_zh'>
@@ -13,8 +14,13 @@ interface Props {
 
 const inferredLang = Astro.currentLocale === 'en' ? 'en' : 'zh';
 const { policy, lang = inferredLang } = Astro.props;
-const { title, country, year, category, sectors = [], status, description, reviewStatus, analysis } =
+const { title, country: rawCountry, year, category, sectors = [], status, description, reviewStatus, analysis } =
   policy.data;
+
+// Normalize and translate country
+const dictCountries: Record<string, string> = i18nDict.countries;
+const canonicalCountry = dictCountries[rawCountry] || rawCountry;
+const country = (countryData as any)[canonicalCountry]?.[lang] || canonicalCountry;
 
 // implementationDetails might be in legacy data
 const implementationDetails = (policy.data as any).implementationDetails;
