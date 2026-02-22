@@ -34,9 +34,6 @@ jobs:
       - name: Build Project
         run: pnpm build
 
-      - name: Index Search (Pagefind)
-        run: npx pagefind --site dist
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
