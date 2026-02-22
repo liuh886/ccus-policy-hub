@@ -1,10 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import i18nDict from '../../data/i18n_dictionary.json';
 
-// 关键修复：改用 id 前缀判断语言
-const policies = await getCollection('policies_zh');
-const countriesProfiles = await getCollection('countries_zh');
+const allPolicies = await getCollection('policies_zh');
+const dictCountries: Record<string, string> = i18nDict.countries;
+
+const policies = allPolicies.map(p => ({
+  ...p,
+  data: {
+    ...p.data,
+    country: dictCountries[p.data.country] || p.data.country
+  }
+}));
+
+const allFacilities = (await getCollection('facilities_zh')).map(f => ({
+  ...f,
+  data: {
+    ...f.data,
+    country: dictCountries[f.data.country] || f.data.country
+  }
+}));
+
+const countriesProfiles = (await getCollection('countries_zh')).map(cp => ({
+  ...cp,
+  data: {
+    ...cp.data,
+    id: dictCountries[cp.data.id] || cp.data.id
+  }
+}));
+
 import countryData from '../../data/countries.json';
 ---
 
@@ -150,7 +175,7 @@ import countryData from '../../data/countries.json';
   </div>
 
   <!-- Data Bridges -->
-  <div id="all-facilities-data" data-facilities={JSON.stringify(await getCollection('facilities_zh'))} class="hidden"></div>
+  <div id="all-facilities-data" data-facilities={JSON.stringify(allFacilities)} class="hidden"></div>
   <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
   <div id="country-data" data-countries={JSON.stringify(countryData)} class="hidden"></div>
   <div id="countries-profiles-data" data-profiles={JSON.stringify(countriesProfiles)} class="hidden"></div>

@@ -2,16 +2,26 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import PolicyCard from '../../../components/PolicyCard.astro';
+import i18nDict from '../../../data/i18n_dictionary.json';
 
 export async function getStaticPaths() {
   const allPolicies = await getCollection('policies_zh');
+  const dictCountries: Record<string, string> = i18nDict.countries;
+
   const validPolicies = allPolicies.filter(p => {
     const c = p.data.country;
     return c && !c.includes('*') && !c.includes('?') && c.length > 1;
-  });
-  const countries = [...new Set(validPolicies.map((p) => p.data.country))];
+  }).map(p => ({
+    ...p,
+    data: {
+      ...p.data,
+      country: dictCountries[p.data.country] || p.data.country
+    }
+  }));
 
-  return countries.map((country) => {
+  const uniqueCountries = [...new Set(validPolicies.map((p) => p.data.country))];
+
+  return uniqueCountries.map((country) => {
     const countryPolicies = validPolicies.filter(
       (p) => p.data.country === country
     );

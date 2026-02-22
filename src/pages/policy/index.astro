@@ -3,12 +3,22 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PolicyCard from '../../components/PolicyCard.astro';
 import countryData from '../../data/countries.json';
+import i18nDict from '../../data/i18n_dictionary.json';
 
 // 只获取中文政策
-const policies = await getCollection('policies_zh');
+const allPolicies = await getCollection('policies_zh');
 
-// Country name mapping logic
+// Country and Category mapping logic
 const countryMap: Record<string, any> = countryData;
+const dictCountries: Record<string, string> = i18nDict.countries;
+
+const policies = allPolicies.map(p => ({
+  ...p,
+  data: {
+    ...p.data,
+    country: dictCountries[p.data.country] || p.data.country
+  }
+}));
 
 // Category translation and logic
 const categoryMap: Record<string, string> = {
