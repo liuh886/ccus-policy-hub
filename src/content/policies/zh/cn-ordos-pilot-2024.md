@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Strategic",
-  "country": "China",
-  "description": "国家发改委批准的试点方案，将鄂尔多斯定位为 CCUS 规模化应用的高地，重点支持煤制油、煤化工全流程示范。",
+  "category": "战略引导",
+  "country": "中国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-04-29",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "鄂尔多斯市人民政府",
-  "status": "Active",
+  "status": "现行",
   "title": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)",
-  "year": 2024,
-  "url": "http://www.ordos.gov.cn/"
+  "url": "http://www.ordos.gov.cn/",
+  "year": 2024
 }
 ---
 

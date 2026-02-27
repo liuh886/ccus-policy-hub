@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Incentive",
+  "category": "经济激励",
   "country": "哥伦比亚",
-  "description": "哥伦比亚能源转型法，将蓝氢及其关联的 CCS 技术列为非传统可再生能源，并提供 15 年内 50% 投资额所得税抵扣。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2021-07-10",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "哥伦比亚能源部",
-  "status": "Active",
+  "status": "现行",
   "title": "哥伦比亚第 2099/2021 号能源法 (CCS 所得税减免)",
-  "year": 2021,
-  "url": "https://www.minenergia.gov.co/"
+  "url": "https://www.minenergia.gov.co/",
+  "year": 2021
 }
 ---
 

@@ -37,9 +37,8 @@
       "score": 90
     }
   },
-  "category": "Regulatory",
-  "country": "Japan",
-  "description": "## 政策核心  日本 CCS 事业法 (2024) 为 CCS 商业化提供了首个专用法律框架，确立了“存储权”并由 JOGMEC 提供财政支持。",
+  "category": "法律监管",
+  "country": "日本",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-24",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "METI",
-  "status": "Active",
+  "status": "现行",
   "title": "日本 CCS 商业法 (2024)",
-  "year": 2024,
-  "url": "https://www.meti.go.jp/english/policy/energy_environment/global_warming/ccs_business_act.html"
+  "url": "https://www.meti.go.jp/english/policy/energy_environment/global_warming/ccs_business_act.html",
+  "year": 2024
 }
 ---
 

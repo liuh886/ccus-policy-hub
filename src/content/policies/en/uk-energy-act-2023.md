@@ -39,7 +39,6 @@
   },
   "category": "Market",
   "country": "United Kingdom",
-  "description": "## Policy Overview  The Energy Act 2023 is the primary legislative engine for the UK's energy transition, providing the robust legal framework needed to reach Net Zero by 2050. For the CCUS sector, it establishes a world-first **Economic Regulation model for Transport and Storage (T&S)**. The Act designates Ofgem as the independent economic regulator for CO2 networks, applying a Regulated Asset Base (RAB) model. This ensures that infrastructure operators can earn a predictable, regulated return ",
   "evolution": {
     "clusters": [
       "UK Net Zero Strategy",
@@ -54,12 +53,11 @@
     "environmental": "Anchors the UK's legally binding carbon budgets, ensuring that industrial sequestration delivers physical and verifiable GHG reductions towards the 2050 goal.",
     "technical": "Standardizes technical protocols for large-scale offshore sequestration and high-pressure CO2 pipelines, enabling the deployment of world-class industrial clusters."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-10-26",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "UK Government",
   "status": "Active",
   "title": "UK Energy Act 2023 (CCUS Economic Regulation)",
-  "year": 2023,
-  "url": "https://www.legislation.gov.uk/ukpga/2023/67/contents"
+  "url": "https://www.legislation.gov.uk/ukpga/2023/67/contents",
+  "year": 2023
 }
 ---
 

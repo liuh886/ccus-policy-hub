@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Incentive",
-  "country": "United States",
-  "description": "怀俄明州核心能源法，强制要求公用事业公司到 2030 年必须包含一定比例的 CCUS 低碳电力，否则将面临成本回收限制。",
+  "category": "经济激励",
+  "country": "美国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2020-03-12",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "Wyoming Legislature",
-  "status": "Active",
+  "status": "现行",
   "title": "美国怀俄明州 HB 0200 号法案 (低碳可靠能源标准)",
-  "year": 2020,
-  "url": "https://wyoleg.gov/2020/Enroll/HB0200.pdf"
+  "url": "https://wyoleg.gov/2020/Enroll/HB0200.pdf",
+  "year": 2020
 }
 ---
 

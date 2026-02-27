@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "United States",
-  "description": "NDCC Chapter 38-22 is the pioneering state-level legislation that established North Dakota as the first jurisdiction in the US to receive EPA Class VI Primacy. The law formally defines **CO2 as a valuable commodity** and codifies the ownership and unitization of sub-surface pore space. Updated in 2024 to refine project completion protocols and the transfer of long-term liability, the Code serves as the 'North Dakota Model' for CCS governance. By designating carbon sequestration as a 'public use,",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Provides the physical foundation for North Dakota’s climate strategy, enabling the province to maintain energy reliability while achieving verifiable, massive-scale GHG reductions.",
     "technical": "Propels technical excellence in sub-surface pressure management and reservoir integrity monitoring, setting the benchmark for onshore saline formation storage."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2009-07-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "ND Legislature",
   "status": "Active",
   "title": "North Dakota Century Code Chapter 38-22 (CCS Act)",
-  "year": 2009,
-  "url": "https://www.ndlegis.gov/cencode/t38c22.pdf"
+  "url": "https://www.ndlegis.gov/cencode/t38c22.pdf",
+  "year": 2009
 }
 ---
 

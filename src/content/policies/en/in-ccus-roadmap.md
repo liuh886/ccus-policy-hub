@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "India",
-  "description": "## Policy Overview  India launched its comprehensive CCUS roadmap in December 2025, signaling a strategic shift for the world's third-largest emitter towards technical decarbonization. Led by the Department of Science and Technology (DST), the roadmap outlines a phased approach: Pilot and R&D (2025-2030), Industrial Integration (2030-2035), and Commercial Scale-up (2035-2045).  To match this ambition, the **2026-27 Union Budget** allocated a historic **200 billion rupees (approx. $2.2 billion US",
   "evolution": {
     "clusters": [
       "India Net Zero 2070 Roadmap",
@@ -53,12 +52,11 @@
     "environmental": "Projected to mitigate up to 750 million tonnes annually by 2050, serving as a non-negotiable pillar for India's 2070 Net Zero milestone.",
     "technical": "Focuses on capture energy efficiency for high-ash fuels and large-scale industrial cluster integration in heavy industry belts."
   },
-  "interpretation": "",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-11-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": "State-coordinated"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "NITI Aayog",
   "status": "Active",
   "title": "India National CCUS R&D and Deployment Roadmap (2025-2045)",
-  "year": 2022,
-  "url": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf"
+  "url": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf",
+  "year": 2022
 }
 ---
 

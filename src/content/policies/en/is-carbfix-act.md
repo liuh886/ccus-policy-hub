@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "冰岛",
-  "description": "Icelandic implementation of CCS standards specifically tailored for in-situ carbon mineralization in basaltic rocks.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "1998-01-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "冰岛议会",
   "status": "Active",
   "title": "Iceland Geologic Storage Act (Carbfix Mineralization)",
-  "year": 1998,
-  "url": "https://www.carbfix.com/"
+  "url": "https://www.carbfix.com/",
+  "year": 1998
 }
 ---
 

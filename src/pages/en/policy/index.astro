@@ -139,6 +139,10 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
 
 <script>
   function setupFiltering() {
+    const policyGridEl = document.getElementById('policy-grid');
+    if (policyGridEl?.getAttribute('data-filter-bound') === '1') return;
+    policyGridEl?.setAttribute('data-filter-bound', '1');
+
     const searchInput = document.getElementById(
       'search-input'
     ) as HTMLInputElement;

@@ -53,14 +53,16 @@ The platform is built on a **Data-Driven SSG (Static Site Generation)** architec
 
 ```mermaid
 graph LR
-    A[(JSON SSOT)] --> B{Astro Build}
-    B --> C[Static HTML Pages]
-    B --> D[Pagefind Search Index]
-    C --> E[Global Edge Delivery]
-    D --> E
+    A[(SQLite SSOT)] --> B[Markdown Export]
+    B --> C{Astro Build}
+    C --> D[Static HTML Pages]
+    C --> E[Pagefind Search Index]
+    D --> F[Global Edge Delivery]
+    E --> F
 ```
 
-- **SSOT (Single Source of Truth)**: `src/data/policy_database.json` manages all multilingual metadata.
+- **SSOT (Single Source of Truth)**: `governance/db/ccus_master.sqlite` is the governance source of truth.
+- **Published Content Layer**: `src/content/policies/{en,zh}` and `src/content/facilities/{en,zh}` are exported build inputs.
 - **Astro 5**: Leverages the latest content layer API for high-performance rendering.
 - **Pagefind**: Provides ultra-fast full-text search without a backend server.
 
@@ -79,7 +81,11 @@ pnpm dev
 
 ### Data Governance
 
-We maintain a strict **Database Governance Protocol** to prevent encoding issues and ensure bilingual consistency. All data updates should be made via the JSON database and synced using our internal toolchain.
+We maintain a strict **Database Governance Protocol** to prevent encoding issues and ensure bilingual consistency.
+
+- Governance edits should be made in `SQLite` (`governance/db/ccus_master.sqlite`) and exported to Markdown.
+- `src/content/.../*.md` is treated as generated/published content for the site build.
+- Reverse sync (`Markdown -> SQLite`) is migration-only and requires explicit acknowledgement.
 
 ---
 

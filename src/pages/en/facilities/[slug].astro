@@ -219,13 +219,13 @@ const timeline = [
             <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Reference Matrix</h3>
             <div class="space-y-3">
               {url && (
-                <a href={url} target="_blank" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
+                <a href={url} target="_blank" rel="noopener noreferrer" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
                   <p class="text-[9px] font-black uppercase text-slate-400 mb-1">Primary Source</p>
                   <p class="text-xs font-bold text-slate-900 dark:text-white truncate">Project Portal &nearr;</p>
                 </a>
               )}
               {links.filter(l => l && l.startsWith('http')).slice(0, 3).map((link, i) => (
-                <a href={link} target="_blank" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
+                <a href={link} target="_blank" rel="noopener noreferrer" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
                   <p class="text-[9px] font-black uppercase text-slate-400 mb-1">Link {i + 1}</p>
                   <p class="text-xs font-bold text-slate-500 truncate">{link}</p>
                 </a>

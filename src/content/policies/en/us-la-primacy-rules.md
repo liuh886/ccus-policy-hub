@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "United States",
-  "description": "Effective February 2024, Louisiana assumed primary enforcement authority (Primacy) over Class VI injection wells from the EPA. The Louisiana Department of Natural Resources (LDNR) has codified detailed administrative rules that refine the federal baseline, with a heightened focus on **Community Engagement** and environmental justice. In October 2025, Executive Order JML 25-119 further optimized these standards, mandating that applicants provide verifiable local community benefit plans. While the",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Balances administrative speed with social equity through mandatory environmental justice reviews, preventing disparate impacts on vulnerable local communities.",
     "technical": "Propels the digital integration of sub-surface geological data and ensures that state-level monitoring plans meet or exceed federal Safe Drinking Water Act (SDWA) standards."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-12-28",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Louisiana DNR",
   "status": "Active",
   "title": "Louisiana Class VI Primacy Administrative Rules",
-  "year": 2023,
-  "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf"
+  "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf",
+  "year": 2023
 }
 ---
 

@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Australia",
-  "description": "Australia implemented the Offshore Petroleum and Greenhouse Gas Storage (Safety) Regulations 2024 in June 2025, modernizing the safety landscape for offshore carbon management. The new rules focus heavily on **psychosocial risks** and enhanced worker protection, aligning with international health and safety benchmarks. A critical pillar is the **Design Notification Scheme**, which requires storage projects to submit detailed safety cases to NOPSEMA during the early engineering phase. Furthermore",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Synthesizes operational safety with ecological protection, ensuring that large-scale offshore sequestration activities minimize risks to both the workforce and the marine biome.",
     "technical": "Sets global technical benchmarks for high-pressure CO2 sub-sea infrastructure, particularly in the management of sub-surface injection systems and diving safety protocols."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-06-19",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "澳大利亚议会",
   "status": "Active",
   "title": "Australia Offshore GHG Storage (Safety) Regulations 2024",
-  "year": 2024,
-  "url": "https://www.legislation.gov.au/Details/C2024A00042"
+  "url": "https://www.legislation.gov.au/Details/C2024A00042",
+  "year": 2024
 }
 ---
 

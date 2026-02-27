@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "丹麦",
-  "description": "## Policy Core  The Denmark CCfD Program is a 20-year subsidy scheme based on competitive tendering, designed to kickstart large-scale CCS deployment.",
   "evolution": {
     "clusters": [
       "Denmark CCS Strategy 2030",
@@ -53,12 +52,11 @@
     "environmental": "Targets 2.3 Mtpa of annual emissions reduction via CCS by 2030, focusing on carbon removals from bioenergy and waste-to-energy.",
     "technical": "Drives the development of the 'Ørsted Kalundborg' multi-point capture hub, integrating biomass capture with cross-border shipping to Norway."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-01",
   "regulatory": {
@@ -70,16 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [
-    "756"
-  ],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "丹麦能源署",
   "status": "Active",
   "title": "Denmark Negative Emission Carbon Capture and Storage (NECCS) Fund & CCfD",
-  "year": 2024,
-  "url": "https://ens.dk/en/our-responsibilities/ccs"
+  "url": "https://ens.dk/en/our-responsibilities/ccs",
+  "year": 2024
 }
 ---
 

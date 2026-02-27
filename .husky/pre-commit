@@ -1,1 +1,4 @@
-npx astro check && npm run lint
+#!/bin/sh
+
+# 这里不再引用 _/husky.sh，直接跑真正的命令
+bash -lc 'npx astro check && npm run lint'

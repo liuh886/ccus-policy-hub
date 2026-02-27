@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Market",
-  "country": "United States",
-  "description": "## 政策概览  加利福尼亚州低碳燃料标准 (LCFS) 是全球最重要的运输部门减排机制之一。其核心创新在于其专门的 CCUS 议定书 (CCUS Protocol)，允许捕集并永久封存二氧化碳的项目产生 LCFS 信用额度。由于 LCFS 信用价格通常处于高位（历史峰值超 200 美元/吨），该政策为美国的直接空气捕集 (DAC) 和生物质能与碳捕集封存 (BECCS) 项目提供了极具吸引力的额外收入来源，是北美 CCUS 商业化的重要驱动力。",
+  "category": "市场机制",
+  "country": "美国",
   "evolution": {
     "clusters": [
       "California Net Zero Strategy",
@@ -55,12 +54,11 @@
     "environmental": "作为加州 2045 碳中和的核心工具，LCFS 已通过市场机制成功吸引了全球范围内的 CCS 投资，支撑了交通运输行业的深度脱碳。",
     "technical": "依托成熟的 LCFS CCS Protocol，支持全生命周期的碳强度核算，并严格限制生物燃料来源，引导技术流向高环境保真度路径。"
   },
-  "interpretation": "LCFS CCUS 协议是全球最成功的市场化减排工具之一，其独特的‘积分叠加’效应极大提升了直接空气捕集 (DAC) 等昂贵技术的项目可行性。",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-01",
   "regulatory": {
@@ -72,14 +70,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "California Air Resources Board",
-  "status": "Active",
+  "status": "现行",
   "title": "加州低碳燃料标准 (LCFS) 2024/2025 修订版",
-  "year": 2024,
-  "url": "https://ww2.arb.ca.gov/"
+  "url": "https://ww2.arb.ca.gov/",
+  "year": 2024
 }
 ---
 

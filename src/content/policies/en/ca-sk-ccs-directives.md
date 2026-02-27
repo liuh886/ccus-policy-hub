@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Canada",
-  "description": "Saskatchewan governs its CCS sector through a comprehensive set of Directives managing everything from wellbore integrity to carbon credit trading. In May 2024, the province released the updated **CCUS Credit Standard**, formalizing a trading mechanism and refining the legal definitions of CO2 liability. Critically, in early 2026, the province legislatively confirmed that federal coal-fire emission regulations would not apply in Saskatchewan, cementing a governance path where CCS is used to main",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -52,12 +51,11 @@
     "label": "High-value Economic Impact",
     "score": 100
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2015-07-01",
   "regulatory": {
@@ -69,14 +67,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Saskatchewan ER",
   "status": "Active",
   "title": "Saskatchewan CCS Regulatory Directives",
-  "year": 2015,
-  "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/"
+  "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/",
+  "year": 2015
 }
 ---
 

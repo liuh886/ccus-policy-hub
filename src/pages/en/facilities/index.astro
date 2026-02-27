@@ -185,6 +185,10 @@ const statuses = Array.from(
 
 <script>
   function setupFiltering() {
+    const facilityGridEl = document.getElementById('facility-grid');
+    if (facilityGridEl?.getAttribute('data-filter-bound') === '1') return;
+    facilityGridEl?.setAttribute('data-filter-bound', '1');
+
     const searchInput = document.getElementById(
       'search-input'
     ) as HTMLInputElement;

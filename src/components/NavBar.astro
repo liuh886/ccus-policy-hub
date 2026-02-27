@@ -142,10 +142,12 @@ const navItems = [
 </header>
 
 <script>
-  const toggle = document.getElementById('mobile-menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-  });
+  if (!(window as any).__ccusNavBarBound) {
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement | null;
+      if (!target?.closest('#mobile-menu-toggle')) return;
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+    (window as any).__ccusNavBarBound = true;
+  }
 </script>

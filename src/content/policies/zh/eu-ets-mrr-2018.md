@@ -37,9 +37,8 @@
       "score": 90
     }
   },
-  "category": "Technical",
-  "country": "European Union",
-  "description": "## 政策概览  欧盟监测与汇报条例（MRR）是 EU ETS 运行的基石，规定了数千家工业设施如何核算、监测并汇报其排放数据。2023-2024 年的修订版标志着 CCS 和 CCU 在欧盟碳核算体系中的重大地位提升。最核心的变化是：**对于经核证已捕集、运输并永久地质封存的 CO2，企业无需上缴对应的排放配额（Allowance）**。这一机制将 CCS 从‘成本项’直接转变为‘减支项’，极大提升了工业捕集的财务激励。  2024 修订版还将核算边界扩展至海运领域，并引入了对‘永久结合在产品中（Permanently bound）’的 CCU 路径的豁免权。此外，针对船运、公路等非管网 CO2 运输方式的监测规则也于 2024 年内补全，消除了跨国封存枢纽（如 Northern Lights）在不同运输模态下的核算盲区。作为全球最严苛、数据保真度最高的碳核算规制，修订后的 MRR 确保了每一吨被封存的 CO2 都能在 ETS 账本上得到物理准确的体现，为欧洲碳管理市场的金融化提供了数据主权。",
+  "category": "技术规范",
+  "country": "欧盟",
   "evolution": {
     "clusters": [
       "EU ETS Reform 2024",
@@ -56,12 +55,11 @@
     "environmental": "作为全球高保真核算的巅峰，MRR 确保了每一吨被封存二氧化碳的物理真实性，维护了欧盟碳中和进程的信用底色。",
     "technical": "2024 年新增的非管网运输（如液化 CO2 船运）监测规则，解决了欧洲跨境封存枢纽在多模态物流环节的核算不确定性问题。"
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2018-12-19",
   "regulatory": {
@@ -73,14 +71,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "European Commission",
-  "status": "Active",
+  "status": "现行",
   "title": "欧盟排放交易体系监测与汇报条例 (MRR) 2024 修订版",
-  "year": 2018,
-  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066"
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066",
+  "year": 2018
 }
 ---
 

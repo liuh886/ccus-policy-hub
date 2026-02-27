@@ -39,7 +39,6 @@
   },
   "category": "Market",
   "country": "China",
-  "description": "## Policy Overview  The Hubei Emissions Trading Scheme (Hubei ETS) is one of China's most robust regional carbon market pilots, featuring a dedicated offset mechanism that includes CCUS activities. Under the 2024 Allocation Plan, covered entities in Hubei can purchase CCERs (National Certified Voluntary Emission Reductions), including those from CCUS projects, to offset up to **5%** of their annual allowance compliance obligations.  The strategic value of this policy lies in its ability to conve",
   "evolution": {
     "clusters": [
       "China Regional ETS Pilots",
@@ -54,12 +53,11 @@
     "environmental": "Guarantees the physical integrity of offset credits through provincial-level third-party auditing, ensuring that market-based flexibility delivers real GHG reductions toward national Dual-Carbon targets.",
     "technical": "Incentivizes the integration of end-of-pipe capture with existing steel and cement industrial processes, fostering regional technical excellence in synergistic carbon-pollutant control."
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-01-01",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "湖北省生态环境厅",
   "status": "Active",
   "title": "Hubei ETS Carbon Offset Rules (CCUS Provisions)",
-  "year": 2023,
-  "url": "https://www.hubei.gov.cn/"
+  "url": "https://www.hubei.gov.cn/",
+  "year": 2023
 }
 ---
 

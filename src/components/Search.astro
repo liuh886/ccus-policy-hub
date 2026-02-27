@@ -31,6 +31,9 @@
 </div>
 
 <script>
+  const PAGEFIND_CSS_HREF = '/ccus-policy-hub/pagefind/pagefind-ui.css';
+  const PAGEFIND_JS_SRC = '/ccus-policy-hub/pagefind/pagefind-ui.js';
+
   function initSearch() {
     const searchContainer = document.getElementById('search');
     const isEn = document.documentElement.lang === 'en';
@@ -77,10 +80,14 @@
       // @ts-ignore
       searchContainer._pagefind_initialized = true;
 
-      // Handle suggestions
-      document.querySelectorAll('.suggestion-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const term = (btn as HTMLElement).innerText;
+      const suggestions = document.getElementById('search-suggestions');
+      if (suggestions && !suggestions.hasAttribute('data-suggestions-bound')) {
+        suggestions.setAttribute('data-suggestions-bound', '1');
+        suggestions.addEventListener('click', (event) => {
+          const target = event.target as HTMLElement | null;
+          const btn = target?.closest('.suggestion-btn') as HTMLElement | null;
+          if (!btn) return;
+          const term = btn.innerText;
           const input = document.querySelector(
             '.pagefind-ui__search-input'
           ) as HTMLInputElement;
@@ -89,22 +96,68 @@
             input.dispatchEvent(new Event('input', { bubbles: true }));
           }
         });
-      });
+      }
     }
   }
 
-  // Load Pagefind UI assets
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = '/ccus-policy-hub/pagefind/pagefind-ui.css';
-  document.head.appendChild(link);
+  function ensurePagefindAssets() {
+    // @ts-ignore
+    if ((window as any).PagefindUI) {
+      initSearch();
+      return;
+    }
 
-  const script = document.createElement('script');
-  script.src = '/ccus-policy-hub/pagefind/pagefind-ui.js';
-  script.onload = initSearch;
-  document.head.appendChild(script);
+    if (!(window as any).__ccusSearchAssetsRequested) {
+      (window as any).__ccusSearchAssetsRequested = true;
 
-  document.addEventListener('astro:page-load', initSearch);
+      if (!document.querySelector('link[data-pagefind-ui-css]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = PAGEFIND_CSS_HREF;
+        link.setAttribute('data-pagefind-ui-css', '1');
+        document.head.appendChild(link);
+      }
+
+      (window as any).__ccusSearchAssetsPromise = new Promise((resolve) => {
+        const existingScript = document.querySelector(
+          'script[data-pagefind-ui-js]'
+        ) as HTMLScriptElement | null;
+
+        if (existingScript) {
+          existingScript.addEventListener(
+            'load',
+            () => {
+              resolve(true);
+              initSearch();
+            },
+            { once: true }
+          );
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = PAGEFIND_JS_SRC;
+        script.setAttribute('data-pagefind-ui-js', '1');
+        script.onload = () => {
+          resolve(true);
+          initSearch();
+        };
+        document.head.appendChild(script);
+      });
+      return;
+    }
+
+    if ((window as any).__ccusSearchAssetsPromise) {
+      (window as any).__ccusSearchAssetsPromise.then(() => initSearch());
+    }
+  }
+
+  ensurePagefindAssets();
+
+  if (!(window as any).__ccusSearchPageLoadBound) {
+    document.addEventListener('astro:page-load', ensurePagefindAssets);
+    (window as any).__ccusSearchPageLoadBound = true;
+  }
 </script>
 
 <style is:global>

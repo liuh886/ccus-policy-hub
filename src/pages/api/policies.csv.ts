@@ -2,6 +2,10 @@ import { getCollection } from 'astro:content';
 
 export async function GET() {
   const policies = await getCollection('policies_zh');
+  const escapeCsv = (value: unknown) => {
+    const s = String(value ?? '');
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
 
   // Define CSV headers based on Policy Schema
   const headers = [
@@ -11,8 +15,8 @@ export async function GET() {
     'year',
     'status',
     'category',
-    'incentive_type',
-    'incentive_value',
+    'legal_weight',
+    'pub_date',
     'url',
   ];
 
@@ -21,15 +25,15 @@ export async function GET() {
     ...policies.map((p) => {
       const d = p.data;
       return [
-        p.id,
-        `"${d.title.replace(/"/g, '""')}"`,
-        d.country,
-        d.year,
-        d.status,
-        d.category,
-        d.incentive_type || '',
-        `"${(d.incentive_value || '').replace(/"/g, '""')}"`,
-        d.url || '',
+        escapeCsv(p.id),
+        escapeCsv(d.title),
+        escapeCsv(d.country),
+        escapeCsv(d.year),
+        escapeCsv(d.status),
+        escapeCsv(d.category),
+        escapeCsv(d.legalWeight || ''),
+        escapeCsv(d.pubDate || ''),
+        escapeCsv(d.url || ''),
       ].join(',');
     }),
   ];

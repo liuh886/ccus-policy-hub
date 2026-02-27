@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "United States",
-  "description": "确立了德州铁路委员会 (RRC) 对油气藏中二氧化碳注入的绝对管辖权，并规定了人为二氧化碳的长期所有权归属。",
+  "category": "法律监管",
+  "country": "美国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2009-09-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "Texas Legislature",
-  "status": "Active",
+  "status": "现行",
   "title": "德克萨斯州自然资源法第 121 章 (人为 CO2 管理)",
-  "year": 2009,
-  "url": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm"
+  "url": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm",
+  "year": 2009
 }
 ---
 

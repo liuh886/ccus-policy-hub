@@ -39,7 +39,6 @@
   },
   "category": "Incentive",
   "country": "泰国",
-  "description": "## Policy Overview  Managed by the Board of Investment (BOI), Thailand's CCUS incentives are a centerpiece of the 2023-2027 'Green Transformation' strategy. Under the 2024 update, projects integrating CCUS in petrochemical and natural gas separation sectors are eligible for the maximum investment incentive: **an 8-year Corporate Income Tax (CIT) holiday**. This policy is specifically designed to offset high initial capital costs and facilitate industrial decarbonization in the Eastern Economic C",
   "evolution": {
     "clusters": [
       "Thailand BCG Economy",
@@ -53,12 +52,11 @@
     "environmental": "Acts as the financial motor for Thailand's 2050 decarbonization targets, aiming to mitigate significant process emissions across industrial clusters.",
     "technical": "Specifically targets Thailand's dominant industrial base in petrochemicals and gas processing, steering technical expertise toward high-concentration capture."
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-06-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": "Under development"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "泰国投资委员会",
   "status": "Active",
   "title": "Thailand BOI CCUS Investment Promotion Incentives",
-  "year": 2023,
-  "url": "https://www.boi.go.th/"
+  "url": "https://www.boi.go.th/",
+  "year": 2023
 }
 ---
 

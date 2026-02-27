@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Japan",
-  "description": "## Policy Core  The Japan CCS Business Act (2024) provides the first dedicated legal framework for CCS, establishing storage rights and JOGMEC support.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-24",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "METI",
   "status": "Active",
   "title": "Japan CCS Business Act (2024)",
-  "year": 2024,
-  "url": "https://www.meti.go.jp/english/policy/energy_environment/global_warming/ccs_business_act.html"
+  "url": "https://www.meti.go.jp/english/policy/energy_environment/global_warming/ccs_business_act.html",
+  "year": 2024
 }
 ---
 

@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "China",
-  "description": "## 1. 2026 Governance Milestone China's 12 new national standards establish technical benchmarks.",
   "evolution": {
     "clusters": [
       "China Dual-Carbon Standards System",
@@ -53,12 +52,11 @@
     "environmental": "A core pillar of the Dual-Carbon framework, ensuring precise quantification and verification of emission reductions to prevent greenwashing.",
     "technical": "The 2024 energy-efficiency standards steer CCUS development from 'demonstration' to 'performance-driven', setting benchmarks for industry clusters."
   },
-  "interpretation": "These 12 standards form the technical bedrock of China's CCUS regulation, bridging the gap from fragmented rules to full-chain standardization.",
   "legalWeight": "Technical Standard",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2026-01-12",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "2-3 years",
     "pore_space_rights": "State-owned (Constitutional)"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Standardization Administration of China",
   "status": "Upcoming",
   "title": "China National Standards for CCUS (GB Series)",
-  "year": 2026,
-  "url": "https://std.samr.gov.cn/"
+  "url": "https://std.samr.gov.cn/",
+  "year": 2026
 }
 ---
 

@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "United States",
-  "description": "## 政策概览  美国 45Q 碳氧化物封存税收抵免是目前全球最成熟且最具影响力的 CCUS 激励机制之一。在 2022 年《通胀削减法案》(IRA) 的大幅增强下，该政策从根本上重塑了碳管理产业的经济性。核心变革包括：首先，大幅上调抵免额度，将常规工业设施和电力项目的地质封存抵免额从每吨 $50 提升至 **$85**，将直接空气捕集 (DAC) 的抵免额从 $50 跃升至 **$180**；其次，引入了“直接支付 (Direct Pay)”和“额度转让 (Transferability)”机制，允许非营利组织、政府机构乃至普通纳税实体能够通过现金方式提前变现税收资产，极大地缓解了 CCUS 项目的高初期资本压力。  此外，该法案将项目开工期限延长至 **2033 年**，为长期资本规划提供了十年以上的确定性窗口。为了促进社会公平和高质量就业，法案还规定，只有满足“现行工资 (Prevailing Wage)”和“学徒制”要求的项目才能获得上述全额抵免，否则其基本抵免率将下调 80%。这一机制不仅是降碳工具，更是美国能源独立与制造业升级的国家战略引擎。",
+  "category": "法律监管",
+  "country": "美国",
   "evolution": {
     "clusters": [
       "Inflation Reduction Act (IRA)",
@@ -55,12 +54,11 @@
     "environmental": "预计到 2030 年每年可额外减少数千万吨二氧化碳排放。",
     "technical": "倾向于盐水层封存（补贴额度最高），同时放低了年捕集量的门槛，支持了中小型设施的参与。"
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-08-16",
   "regulatory": {
@@ -72,11 +70,9 @@
     "permitting_lead_time": "3-6 年 (Class VI 许可周期)",
     "pore_space_rights": "主要归私人所有（取决于各州法律）"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "IRS / EPA",
-  "status": "Active",
+  "status": "现行",
   "title": "美国 45Q 碳氧化物封存税收抵免 (IRA 2022 增强版)",
   "year": 2022
 }

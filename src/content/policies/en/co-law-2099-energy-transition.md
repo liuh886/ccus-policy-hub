@@ -39,7 +39,6 @@
   },
   "category": "Incentive",
   "country": "哥伦比亚",
-  "description": "Energy Transition Law in Colombia providing significant tax benefits for CCS-enabled hydrogen production.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2021-07-10",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "哥伦比亚能源部",
   "status": "Active",
   "title": "Colombia Law 2099 of 2021 (CCS Income Tax Incentives)",
-  "year": 2021,
-  "url": "https://www.minenergia.gov.co/"
+  "url": "https://www.minenergia.gov.co/",
+  "year": 2021
 }
 ---
 

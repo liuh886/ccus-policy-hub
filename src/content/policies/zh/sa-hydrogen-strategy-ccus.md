@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Strategic",
+  "category": "战略引导",
   "country": "沙特阿拉伯",
-  "description": "沙特阿拉伯将其氢能战略与 CCS 技术进行了深度绑定，作为实现其‘循环碳经济’愿景的核心。沙特阿美 (Saudi Aramco) 已宣布将其 2024-2026 年资本开支的 **10%** 专门投向包括 CCS 在内的新能源领域。战略重点是生产‘蓝氢’，即通过 CCUS 技术消除天然气制氢过程中的排放。沙特绿色倡议 (SGI) 设定了到 2030 年每年减排 2.78 亿吨的目标，其中 CCS 枢纽建设被视为实现该目标的物理引擎。通过大规模低成本封存，沙特旨在确立其作为全球低碳能源出口国的绝对竞争力。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "直接支撑沙特 2060 净零愿景，旨在通过 CCS 每年抵消数千万吨能源出口产生的碳足迹，维护全球气候治理信誉。",
     "technical": "驱动了全球最大规模的沙漠/离岸盐水层高压封存技术的应用，确立了针对含硫/酸性气体捕集与封存的工业标准。"
   },
-  "interpretation": "",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-01-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "沙特能源部",
-  "status": "Active",
+  "status": "现行",
   "title": "沙特阿拉伯氢能战略与 CCS 耦合计划 (2024)",
-  "year": 2023,
-  "url": "https://www.moenergy.gov.sa/"
+  "url": "https://www.moenergy.gov.sa/",
+  "year": 2023
 }
 ---
 

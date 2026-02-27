@@ -101,6 +101,7 @@
 - **SSOT**：`governance/db/ccus_master.sqlite` 是唯一真理。
 - **Artifacts**：Markdown 文件与 `src/data/i18n_dictionary.json` 均为 generated artifacts（覆盖写）。
 - **单向性**：严禁任何“从 artifacts 反向驱动标准化/审计/导入”的代码路径。
+- **迁移例外**：`Markdown -> SQLite` 仅允许一次性迁移/应急恢复，且必须显式确认风险，不得纳入日常流水线。
 
 ### 2.2 P0 安全门禁 (Safety Gates)
 

@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "尼日利亚",
-  "description": "In late 2024, the Nigerian Upstream Petroleum Regulatory Commission (NUPRC) introduced the Upstream Petroleum Decarbonisation Template (UPDT), a mandatory regulatory tool for any licensee or lessee in the oil and gas sector. Effective January 2025, compliance with the UPDT is a prerequisite for obtaining and renewing upstream permits. The framework identifies CCUS as a primary lever for zero flaring and blue hydrogen production, mandating that operators submit detailed CCS deployment roadmaps. T",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Acts as the legal guarantor for Nigeria’s emission reductions, ensuring that industrial removals are physically verified and permanently sequestered to meet national NDC targets.",
     "technical": "Accelerates technical expertise in tropical point-source capture and depleted field sequestration, specifically targeting the resolution of Nigeria's systemic gas flaring challenges."
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-12-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "NUPRC Nigeria",
   "status": "Active",
   "title": "Nigeria NUPRC Upstream Petroleum Decarbonisation Template (UPDT)",
-  "year": 2024,
-  "url": "https://nuprc.gov.ng/"
+  "url": "https://nuprc.gov.ng/",
+  "year": 2024
 }
 ---
 

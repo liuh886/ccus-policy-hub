@@ -39,7 +39,6 @@
   },
   "category": "Market",
   "country": "China",
-  "description": "Guangdong Province released its updated 2024 Carbon Allocation and Offset Rules in March 2025, allowing covered entities to use offset credits (CCERs and local PHCERs) for up to **10%** of their verified emissions. A key innovation is the 'Local Stimulus' mandate: 70% of used credits must originate from projects within Guangdong. For CCUS demonstrations, the province provides a dedicated Carbon Inclusive pathway, allowing physical sequestration outcomes to be monetized at a premium within the re",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Anchors Guangdong's net-zero trajectory in high-fidelity removals, ensuring that market-based flexibility delivers real, permanent GHG reductions in the industrial heartland.",
     "technical": "Accelerates the regional standardization of micro-capture and CCU (utilization) technologies, positioning Guangdong as a technical leader in digital carbon footprint management."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "广东省生态环境厅",
   "status": "Active",
   "title": "Guangdong Carbon Inclusive & CCUS Offset Rules 2024",
-  "year": 2024,
-  "url": "https://gdee.gd.gov.cn/zwgk/content/post_4281415.html"
+  "url": "https://gdee.gd.gov.cn/zwgk/content/post_4281415.html",
+  "year": 2024
 }
 ---
 

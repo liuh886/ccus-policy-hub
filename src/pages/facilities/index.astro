@@ -24,7 +24,7 @@ const types = Array.from(
   new Set(
     facilities.map((f) => {
       const t = f.data.type;
-      if (t === 'Full chain' || t === 'Full Chain' || t === 'fullchain')
+      if (t === 'Full chain' || t === 'fullchain')
         return '全产业链';
       return t;
     })
@@ -217,7 +217,6 @@ const statuses = Array.from(
         facilities.map((f) => {
           const normalizedType =
             f.data.type === 'Full chain' ||
-            f.data.type === 'Full Chain' ||
             f.data.type === 'fullchain'
               ? '全产业链'
               : f.data.type;
@@ -256,6 +255,10 @@ const statuses = Array.from(
 
 <script>
   function setupFiltering() {
+    const facilityGridEl = document.getElementById('facility-grid');
+    if (facilityGridEl?.getAttribute('data-filter-bound') === '1') return;
+    facilityGridEl?.setAttribute('data-filter-bound', '1');
+
     const searchInput = document.getElementById(
       'search-input'
     ) as HTMLInputElement;

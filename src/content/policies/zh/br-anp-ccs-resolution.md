@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "Brazil",
-  "description": "国家石油、天然气和生物燃料管理局 (ANP) 发布的具体执行准则，规定了 CCS 30 年特许经营权的授权流程及强制性的碳泄漏核算要求。",
+  "category": "法律监管",
+  "country": "巴西",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-10-08",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "ANP Brazil",
-  "status": "Active",
+  "status": "现行",
   "title": "巴西 ANP CCS 授权与监管决议 (基于 14.993 号法)",
-  "year": 2024,
-  "url": "https://www.gov.br/anp/"
+  "url": "https://www.gov.br/anp/",
+  "year": 2024
 }
 ---
 

@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Australia",
-  "description": "Legislation establishing the regulatory framework for permanent geological storage of GHG substances in Western Australian waters.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-14",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "WA Government",
   "status": "Active",
   "title": "Western Australia Petroleum Legislation Amendment Act 2024",
-  "year": 2024,
-  "url": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024"
+  "url": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024",
+  "year": 2024
 }
 ---
 

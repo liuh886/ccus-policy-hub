@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "United States",
-  "description": "随着 2024 年 2 月路易斯安那州正式获得 EPA 的 Class VI 井州级执法权（Primacy），该州发布了详尽的行政执行细则。路州自然资源部 (LDNR) 授权建立了一套比联邦标准更具属地化特征的审批流程，重点强化了**社区参与 (Public Engagement)** 和环境正义审查。2025 年 10 月，路州通过 JML 25-119 号行政令进一步优化了准入标准，要求项目必须包含明确的地方社区投资计划。虽然路州目前正处于新申请的临时审计期，但其州级执法权已使审批周期预估缩短了 50%，成为全美 CCS 投资最具吸引力的法制高地之一。",
+  "category": "法律监管",
+  "country": "美国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "在权力下放的同时，通过地方性的‘环境正义审查’加强了对脆弱社区的保护，确立了 CCS 部署的社会正当性。",
     "technical": "推动了各州地质数据的数字化整合，建立了符合联邦安全饮用水法（SDWA）的高标准实时地下水动态监测体系。"
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-12-28",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Louisiana DNR",
-  "status": "Active",
+  "status": "现行",
   "title": "路易斯安那州 Class VI 井州级行政执行细则",
-  "year": 2023,
-  "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf"
+  "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf",
+  "year": 2023
 }
 ---
 

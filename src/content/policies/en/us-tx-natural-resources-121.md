@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "United States",
-  "description": "Legislation giving the Railroad Commission of Texas authority over anthropogenic CO2 and its geologic sequestration.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2009-09-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "Texas Legislature",
   "status": "Active",
   "title": "Texas Natural Resources Code Chapter 121 (CO2 Stewardship)",
-  "year": 2009,
-  "url": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm"
+  "url": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm",
+  "year": 2009
 }
 ---
 

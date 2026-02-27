@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "Japan",
-  "description": "经济产业省 (METI) 发布的指南，规定了如何划定 CCS “指定区域”并进行公开招标，以授予勘探和商业运营权。",
+  "category": "法律监管",
+  "country": "日本",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Guideline/Policy",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-11-18",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "METI Japan",
-  "status": "Active",
+  "status": "现行",
   "title": "日本 METI CCS 指定区域与招标指南 (2024)",
-  "year": 2024,
-  "url": "https://www.meti.go.jp/english/press/2024/1118_001.html"
+  "url": "https://www.meti.go.jp/english/press/2024/1118_001.html",
+  "year": 2024
 }
 ---
 

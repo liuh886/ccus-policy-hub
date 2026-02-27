@@ -12,10 +12,13 @@
     "manage:db:init": "node scripts/manage.mjs db:init",
     "manage:db:init-standard": "node scripts/init-standardization.mjs",
     "manage:db:import:i18n": "node scripts/manage.mjs db:import:i18n",
-    "manage:db:import:legacy": "node scripts/manage.mjs db:import:legacy",
+    "manage:db:import:md:migration": "node scripts/manage.mjs db:import:md:migration --allow-reverse-sync-migration",
     "manage:db:standardize": "node scripts/manage.mjs db:standardize",
     "manage:db:fix-relationships": "node scripts/manage.mjs db:fix-relationships",
     "manage:db:audit:deep": "node scripts/manage.mjs db:audit:deep",
+    "manage:db:audit:facilities-parity": "node scripts/audit-facilities-parity.mjs",
+    "manage:db:repair:facilities-from-md": "node scripts/repair-facilities-db-from-md.mjs",
+    "manage:db:repair:facilities-from-md:dry-run": "node scripts/repair-facilities-db-from-md.mjs --dry-run",
     "manage:db:export:i18n": "node scripts/manage.mjs db:export:i18n",
     "manage:db:export:md": "node scripts/manage.mjs db:export:md",
     "manage:db:pipeline": "node scripts/manage.mjs db:pipeline",
@@ -23,6 +26,7 @@
     "manage:db:optimize": "node scripts/manage.mjs db:optimize",
     "manage:db:clean": "node scripts/manage.mjs db:clean",
     "sync:all": "pnpm manage:db:export:md",
+    "check:facilities-parity": "node scripts/audit-facilities-parity.mjs",
     "lint": "eslint . && prettier --check ."
   },
   "dependencies": {

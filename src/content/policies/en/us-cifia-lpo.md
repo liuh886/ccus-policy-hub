@@ -39,7 +39,6 @@
   },
   "category": "Incentive",
   "country": "United States",
-  "description": "## Policy Overview  The CIFIA program, established under the 2021 Bipartisan Infrastructure Law (BIL), is the federal government’s primary vehicle for financing large-scale CO2 transport networks. Administered by the DOE Loan Programs Office (LPO), the program provides **$2.1 billion** in low-interest federal loans, loan guarantees, and grants. It specifically addresses the high capital risks associated with first-of-a-kind (FOAK) infrastructure, where high upfront costs often outpace early-stag",
   "evolution": {
     "clusters": [
       "Bipartisan Infrastructure Law (BIL)",
@@ -54,12 +53,11 @@
     "environmental": "Constructs the essential physical link for the US net-zero trajectory, facilitating the transfer of CO2 from heavy industrial clusters to permanent sequestration sites across state lines.",
     "technical": "Drives the standardization of high-capacity CO2 transport, incentivizing the design of 'over-sized' systems that eliminate logistical bottlenecks for the next decade of CCS growth."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2021-11-15",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "US DOE",
   "status": "Active",
   "title": "US CIFIA: Carbon Dioxide Transportation Infrastructure Finance and Innovation",
-  "year": 2021,
-  "url": "https://www.energy.gov/lpo/carbon-dioxide-transportation-infrastructure-finance-and-innovation-act-cifia"
+  "url": "https://www.energy.gov/lpo/carbon-dioxide-transportation-infrastructure-finance-and-innovation-act-cifia",
+  "year": 2021
 }
 ---
 

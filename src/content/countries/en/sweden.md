@@ -5,8 +5,8 @@
   "name": "Sweden",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-02-14",
-    "reviewer": ""
+    "lastAuditDate": "2026-02-27",
+    "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {

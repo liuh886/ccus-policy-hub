@@ -39,7 +39,6 @@
   },
   "category": "Market",
   "country": "United States",
-  "description": "A premier market mechanism allowing CCUS projects to generate tradable credits based on CI reduction. LCFS credits can be stacked with federal 45Q credits for maximum incentive value.",
   "evolution": {
     "clusters": [
       "California Net Zero Strategy",
@@ -55,12 +54,11 @@
     "environmental": "Core engine for California's 2045 carbon neutrality, leveraging market forces to decarbonize the global fuel supply chain reaching California.",
     "technical": "The rigorous CCS Protocol ensures 100-year storage permanence, steering investment towards high-fidelity geological sequestration."
   },
-  "interpretation": "The LCFS CCUS protocol is a premier market mechanism. Its 'credit stacking' potential with 45Q significantly enhances the ROI for capital-intensive projects like DAC.",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-01",
   "regulatory": {
@@ -72,14 +70,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "California Air Resources Board",
   "status": "Active",
   "title": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
-  "year": 2024,
-  "url": "https://ww2.arb.ca.gov/"
+  "url": "https://ww2.arb.ca.gov/",
+  "year": 2024
 }
 ---
 

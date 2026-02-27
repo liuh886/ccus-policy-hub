@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "克罗地亚",
-  "description": "Croatia has integrated the EU CCS Directive into its national legal framework through the Act on the Exploration and Exploitation of Hydrocarbons. The legislation designates the Croatian Hydrocarbon Agency (AZU) as the primary regulator for sequestration titles. Amendments in 2019 and 2021 specifically codified the permanent storage of CO2, backed by a €4 million state-funded study to identify suitable sub-surface formations. While navigating minor overlaps with mining laws, the Act serves as th",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Anchors Croatia's 2050 climate inventory in physical and verifiable removals, ensuring that hard-to-abate industrial emissions are permanently isolated from the atmosphere.",
     "technical": "Standardizes high-pressure CO2 injection and plume monitoring protocols tailored for the Adriatic region’s specific geological features."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2018-05-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Croatian Hydrocarbon Agency (AZU)",
   "status": "Active",
   "title": "Croatia Hydrocarbon Act (CCS Amendments)",
-  "year": 2018,
-  "url": "https://www.azu.hr/en/legislation/act-on-the-exploration-and-exploitation-of-hydrocarbons/"
+  "url": "https://www.azu.hr/en/legislation/act-on-the-exploration-and-exploitation-of-hydrocarbons/",
+  "year": 2018
 }
 ---
 

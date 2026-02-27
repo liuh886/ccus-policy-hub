@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "Australia",
-  "description": "西澳里程碑式立法，将温室气体封存正式引入州级石油法律体系，允许在州管辖水域内进行 CO2 运输和永久封存。",
+  "category": "法律监管",
+  "country": "澳大利亚",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-14",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "WA Government",
-  "status": "Active",
+  "status": "现行",
   "title": "西澳大利亚州 2024 石油立法修正案 (GHG 封存)",
-  "year": 2024,
-  "url": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024"
+  "url": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024",
+  "year": 2024
 }
 ---
 
