@@ -39,7 +39,6 @@
   },
   "category": "Technical",
   "country": "European Union",
-  "description": "## Policy Overview  The EU Carbon Removal Certification Framework (CRCF) is the world's first voluntary framework providing a unified legal definition for high-quality carbon removals. Enacted via Regulation 2024/3012, it establishes the 'QU.A.L.ITY' criteria—Quantification, Additionality, Long-term storage, and Sustainability—to verify carbon sequestration activities across the Union. For the CCUS sector, the CRCF is transformative as it formally classifies **DACCS (Direct Air Capture with Carb",
   "evolution": {
     "clusters": [
       "European Green Deal",
@@ -54,12 +53,11 @@
     "environmental": "Guarantees the absolute permanence of carbon removals, safeguarding the environmental integrity of the Union's climate inventory towards the 2040 targets.",
     "technical": "Enforces a clear distinction between temporary and permanent storage, driving technical innovation in sub-surface monitoring and biogenic carbon accounting."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-11-27",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "European Parliament",
   "status": "Active",
   "title": "EU Carbon Removal Certification Framework (CRCF)",
-  "year": 2024,
-  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3012"
+  "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3012",
+  "year": 2024
 }
 ---
 

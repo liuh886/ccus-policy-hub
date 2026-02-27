@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "马来西亚",
-  "description": "## Policy Overview  Gazetted in August 2025, Malaysia’s standalone CCUS Act (Act 859) provides the robust legal architecture needed to position the nation as a premier carbon management hub in the Asia Pacific. The Act mandates the creation of the Malaysia CCUS Agency (MyCCUS), which serves as a one-stop regulatory body for the entire value chain. Covering Peninsular Malaysia and Labuan, the legislation focuses on streamlining offshore exploration and storage permits.  At its core, the Act aims ",
   "evolution": {
     "clusters": [
       "Malaysia National Energy Transition Roadmap (NETR)",
@@ -53,12 +52,11 @@
     "environmental": "Directly supports Malaysia's 2050 Net Zero ambition, targeting an initial 5 Mtpa storage capacity by 2030.",
     "technical": "Drives standard development for deepwater reservoir injection and port-side liquid CO2 handling, facilitating technical interoperability across ASEAN."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2025-01-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "马来西亚议会",
   "status": "Active",
   "title": "Malaysia Carbon Capture, Utilisation, and Storage (CCUS) Act 2025",
-  "year": 2025,
-  "url": "https://www.parlimen.gov.my/"
+  "url": "https://www.parlimen.gov.my/",
+  "year": 2025
 }
 ---
 

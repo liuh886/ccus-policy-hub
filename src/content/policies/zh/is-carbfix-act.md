@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
+  "category": "法律监管",
   "country": "冰岛",
-  "description": "冰岛将欧盟 CCS 指令转化为国内法，并特别针对 Carbfix 的原位矿化技术确立了许可准则，通过将 CO2 转化为石头实现永久封存。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "1998-01-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "冰岛议会",
-  "status": "Active",
+  "status": "现行",
   "title": "冰岛地质封存法案 (Carbfix 矿化许可)",
-  "year": 1998,
-  "url": "https://www.carbfix.com/"
+  "url": "https://www.carbfix.com/",
+  "year": 1998
 }
 ---
 

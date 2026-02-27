@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "United States",
-  "description": "## Policy Overview  Class VI Primacy is the most critical regulatory mechanism for accelerating the development of the US CCS market. Under the Safe Drinking Water Act (SDWA), the EPA is responsible for overseeing the injection of CO2 into Class VI wells but allows qualified states to assume primary enforcement authority. As of late 2025, the program achieved massive scale with **Louisiana (Feb 2024)** and **Texas (Dec 2025)** joining North Dakota and Wyoming as primacy states.  The real-world i",
   "evolution": {
     "clusters": [
       "US Safe Drinking Water Act (SDWA)",
@@ -54,12 +53,11 @@
     "environmental": "Ensures that administrative speed does not compromise safety, as states must maintain regulatory stringency at or above the federal SDWA baseline for drinking water protection.",
     "technical": "Propels state-level geological expertise and ensures high-fidelity integration between state sub-surface databases and the federal EPA GGRDW reporting system."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2010-12-10",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "US EPA",
   "status": "Active",
   "title": "US EPA Class VI Primacy Delegation",
-  "year": 2010,
-  "url": "https://www.epa.gov/uic/primary-enforcement-authority-uic-program"
+  "url": "https://www.epa.gov/uic/primary-enforcement-authority-uic-program",
+  "year": 2010
 }
 ---
 

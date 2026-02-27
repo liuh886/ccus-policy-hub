@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Norway",
-  "description": "## Policy Overview  Norway’s legal framework for carbon storage is anchored in Regulation No. 1517, originally established in 2014 and updated in 2020. Built upon the EU CCS Directive and integrated with Norwegian petroleum law, it provides the definitive regulatory structure for offshore storage on the Norwegian Continental Shelf (NCS). The regulation asserts state ownership over all subsea reservoirs and mandates a rigorous permitting system for exploration, development, and operation.  A key ",
   "evolution": {
     "clusters": [
       "Norway Longship / Langskip",
@@ -53,12 +52,11 @@
     "environmental": "Ensures the highest fidelity for permanent geological isolation of European industrial CO2, maintaining the integrity of the broader EU carbon market.",
     "technical": "Sets global benchmarks for subsea reservoir monitoring and integrity verification, driving innovation in 4D seismic and plume modeling technologies."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-04-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Norwegian Offshore Directorate",
   "status": "Active",
   "title": "Norway CO2 Storage & Transport Regulations (Offshore)",
-  "year": 2024,
-  "url": "https://www.offshoredirectorate.no/en/"
+  "url": "https://www.offshoredirectorate.no/en/",
+  "year": 2024
 }
 ---
 

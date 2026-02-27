@@ -37,9 +37,8 @@
       "score": 100
     }
   },
-  "category": "Regulatory",
-  "country": "India",
-  "description": "## 政策概览  印度在 2025 年 12 月正式发布了其国家 CCUS 路线图，标志着这个全球第三大排放国进入了技术脱碳的实战阶段。该路线图由科学技术部 (DST) 领衔，将印度的 CCUS 进程划分为三个阶段：2025-2030 年为基础研究与试点示范期；2030-2035 年为工业集成与监管完善期；2035-2045 年进入全面商业化扩展期。  为了匹配这一雄心勃勃的路线图，印度政府在 **2026-27 联邦预算案**中开创性地拨付了 **2000 亿卢比（约 22 亿美元）** 的专项资金，计划在未来五年内重点支持钢铁、水泥和电力等高排放行业的捕集技术规模化。此外，印度正在探索类似于太阳能领域的生产挂钩激励 (PLI) 计划和可行性缺口资金 (VGF)，旨在将 CCUS 整合入国家排放交易体系 (ETS)，并以此应对欧盟碳边境调节机制 (CBAM) 对印度出口竞争力的潜在挑战。",
+  "category": "法律监管",
+  "country": "印度",
   "evolution": {
     "clusters": [
       "India Net Zero 2070 Roadmap",
@@ -53,12 +52,11 @@
     "environmental": "目标到 2050 年每年实现 7.5 亿吨的减排潜力，是印度实现 2070 净零排放承诺的关键技术底座。",
     "technical": "重点聚焦于针对印度本土高灰分燃料的捕集效率优化，以及钢铁、化工等硬减排集群的大规模技术集成方案。"
   },
-  "interpretation": "",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-11-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": "政府统筹"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "NITI Aayog",
-  "status": "Active",
+  "status": "现行",
   "title": "印度国家 CCUS 开发与部署路线图 (2025-2045)",
-  "year": 2022,
-  "url": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf"
+  "url": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf",
+  "year": 2022
 }
 ---
 

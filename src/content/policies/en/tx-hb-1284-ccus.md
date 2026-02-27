@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "United States",
-  "description": "Texas House Bill 1284 is the definitive legislative pillar establishing state sovereignty over carbon sequestration. Enacted to consolidate oversight of Class VI injection wells under the **Railroad Commission of Texas (RRC)**, the bill was the prerequisite for Texas receiving EPA Primacy in December 2025. By centralizing authority, the law resolves administrative overlaps and accelerates the permitting of over 30 pending multi-billion dollar projects. HB 1284 provides the legal clarity needed f",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Anchors the Gulf Coast’s industrial net-zero vision by providing a robust legal guarantee for safe, permanent geological storage at the gigatonne scale.",
     "technical": "Triggers the statewide digitization of sub-surface data and mandates world-class seismic and pressure monitoring standards overseen by the RRC’s expert technical staff."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2021-06-09",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Texas Legislature",
   "status": "Active",
   "title": "Texas HB 1284: CCS Jurisdictional Act",
-  "year": 2021,
-  "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=87R&Bill=HB1284"
+  "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=87R&Bill=HB1284",
+  "year": 2021
 }
 ---
 

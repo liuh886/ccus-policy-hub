@@ -58,6 +58,7 @@ const operationalCapacity = operationalFacilities.reduce((acc, f) => acc + (f.da
 const constructionFacilities = facilities.filter(
   (f) => f.data.status === '建设中' || f.data.status === 'Under construction'
 );
+const constructionCount = constructionFacilities.length;
 const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0).toFixed(1);
 ---
 
@@ -125,17 +126,22 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
       </h3>
       <div class="flex items-baseline gap-2 mb-2">
         <div class="text-5xl font-black tracking-tighter">
-          {operationalCount}
+          {operationalCount}<span class="text-xs ml-1 opacity-40 font-bold">{lang === 'zh' ? '个' : ''}</span>
         </div>
         <div class="text-xl font-bold text-blue-400">/ {operationalCapacity} <span class="text-[10px] uppercase">Mtpa</span></div>
       </div>
       
       <div class="pt-4 border-t border-white/10">
         <h3 class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">
-          {lang === 'zh' ? '在建捕集能力' : 'Under Construction Cap'}
+          {lang === 'zh' ? '在建设施 / 规模' : 'Under Construction / Cap'}
         </h3>
-        <div class="text-2xl font-black text-emerald-400">
-          {constructionCapacity} <span class="text-[10px] text-slate-400 uppercase">Mtpa</span>
+        <div class="flex items-baseline gap-2">
+          <div class="text-2xl font-black text-emerald-400">
+            {constructionCount}<span class="text-[9px] ml-0.5 opacity-40 font-bold">{lang === 'zh' ? '个' : ''}</span>
+          </div>
+          <div class="text-sm font-bold text-emerald-600">
+            / {constructionCapacity} <span class="text-[10px] uppercase">Mtpa</span>
+          </div>
         </div>
       </div>
     </div>

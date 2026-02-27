@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "Canada",
-  "description": "萨斯喀彻温省的 CCS 监管体系由一系列部委指令（Directives）构成，涵盖了从井位许可到碳积分交易的全流程。2024 年 5 月，该省发布了更新版《CCUS 积分标准》，引入了 **CCUS 积分交易机制** 并扩展了关于二氧化碳长期责任（CO2 Liability）的法律定义。指令强制要求所有封存项目在 2025 年 7 月前提交 2024 合规年度的排放报告。特别值得注意的是，2026 年初该省通过法律确认，联邦针对煤电的二氧化碳削减法规在该省不适用，确立了其通过 CCS 维持现有能源资产运营的独立治理路径。",
+  "category": "法律监管",
+  "country": "加拿大",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "作为萨省能源主权的核心，确保了燃煤发电厂能够通过 CCS 改造实现 90% 以上的物理减排，履行省级气候承诺的同时保障能源安全。",
     "technical": "制定了极高标准的井下完整性监测规范，特别是针对长达 100 年的封场后管护责任，确立了北美领先的地质封存技术红线。"
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2015-07-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Saskatchewan ER",
-  "status": "Active",
+  "status": "现行",
   "title": "萨斯喀彻温省 CCS 监管指令集 (Directives)",
-  "year": 2015,
-  "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/"
+  "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/",
+  "year": 2015
 }
 ---
 

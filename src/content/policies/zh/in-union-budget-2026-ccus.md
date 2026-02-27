@@ -37,9 +37,8 @@
       "score": 90
     }
   },
-  "category": "Incentive",
-  "country": "India",
-  "description": "印度 2026-27 财年联邦预算案于 2026 年 2 月 1 日正式发布，拨付了总计 **2000 亿卢比**（约 22 亿美元）的专项资金，计划在未来五年内重点支持电力、钢铁、水泥等难减排行业的 CCUS 技术规模化。该政策引入了创新的‘可行性缺口资金 (VGF)’机制，旨在通过政府补贴弥补商业化初期的财务亏损。配合 2025 年底发布的《国家 CCUS 研发路线图》，印度正致力于通过公私合营 (PPP) 模式，在主要工业走廊建立区域性的碳捕集枢纽，以支撑其 2070 年净零承诺。",
+  "category": "经济激励",
+  "country": "印度",
   "evolution": {
     "clusters": [
       "Direct Fiscal Incentives"
@@ -53,12 +52,11 @@
     "environmental": "作为印度 NDC 承诺的核心执行工具，旨在通过 CCS 抵消 2030 年后重工业增长带来的排放增量，确立了印度在‘全球南方’低碳技术竞争中的地位。",
     "technical": "驱动了符合印度本土煤质特征的高效捕集技术研发，推动了跨部门共享二氧化碳管网建设的技术集成。"
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2026-02-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "印度财政部",
-  "status": "Active",
+  "status": "现行",
   "title": "印度 2026 联邦预算案 - CCUS 专项激励计划",
-  "year": 2026,
-  "url": "https://www.indiabudget.gov.in/"
+  "url": "https://www.indiabudget.gov.in/",
+  "year": 2026
 }
 ---
 

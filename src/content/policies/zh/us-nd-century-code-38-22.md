@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Regulatory",
-  "country": "United States",
-  "description": "北达科他州《世纪法典》第 38-22 章是全美首个确立地质封存法律主权的州级法案。该法案早在 2018 年就促使该州获得 EPA 的 Class VI 井执法权。法案明确定义了 **二氧化碳作为商业商品 (Commodity)** 的属性，并确立了孔隙权 (Pore Space) 的归属与单元化（Unitization）规则。2024 年更新版进一步细化了项目完工证明与长期责任移交流程。作为美国 CCS 治理的‘北达科他模式’，它通过将封存确立为‘公共用途’，为该州大规模褐煤发电资产应用 CCS 提供了最稳健的法律盾牌。",
+  "category": "法律监管",
+  "country": "美国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "作为全美封存效率最高的州级框架，确保了北达科他州在维持传统煤电产出的同时，能够通过大规模物理封存实现深度的碳强度削减。",
     "technical": "推动了针对威尔利斯顿盆地（Williston Basin）地质特征的注入压力与完整性监测标准的成熟，确立了陆上封存技术的工业标杆。"
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2009-07-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "ND Legislature",
-  "status": "Active",
+  "status": "现行",
   "title": "北达科他州《世纪法典》第 38-22 章 (CCS 核心法案)",
-  "year": 2009,
-  "url": "https://www.ndlegis.gov/cencode/t38c22.pdf"
+  "url": "https://www.ndlegis.gov/cencode/t38c22.pdf",
+  "year": 2009
 }
 ---
 

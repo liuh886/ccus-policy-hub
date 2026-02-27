@@ -39,7 +39,6 @@
   },
   "category": "Strategic",
   "country": "United Arab Emirates",
-  "description": "## Policy Overview  ADNOC, the UAE's state-owned energy giant, is aggressively scaling its CCUS capacity with a revised target of **10 million tonnes per annum (Mtpa) by 2030**, double its previous goal. This strategy is central to achieving ADNOC's accelerated Net Zero 2045 ambition. Key pillars include the operational Al Reyadah facility—the world's first commercial iron and steel carbon capture plant—and the newly approved Habshan CCS project.  The Habshan project, targeting 1.5 Mtpa by 2026,",
   "evolution": {
     "clusters": [
       "UAE Net Zero 2050 Strategy",
@@ -53,12 +52,11 @@
     "environmental": "A primary engine for the UAE's 2050 Net Zero mission, targeting the removal of 10 Mt of industrial CO2 annually by the end of the decade.",
     "technical": "Establishes global technical paradigms for large-scale natural gas capture and high-pressure sub-surface sequestration in Middle Eastern reservoirs."
   },
-  "interpretation": "",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-01",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "ADNOC",
   "status": "Active",
   "title": "ADNOC 2030 Carbon Capture & Decarbonization Strategy",
-  "year": 2024,
-  "url": "https://www.adnoc.ae/"
+  "url": "https://www.adnoc.ae/",
+  "year": 2024
 }
 ---
 

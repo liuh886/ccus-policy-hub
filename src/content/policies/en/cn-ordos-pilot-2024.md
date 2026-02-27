@@ -39,7 +39,6 @@
   },
   "category": "Strategic",
   "country": "China",
-  "description": "A flagship national pilot roadmap positioning Ordos as a global leader in large-scale CCUS applications for coal-based industries.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-04-29",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "鄂尔多斯市人民政府",
   "status": "Active",
   "title": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
-  "year": 2024,
-  "url": "http://www.ordos.gov.cn/"
+  "url": "http://www.ordos.gov.cn/",
+  "year": 2024
 }
 ---
 

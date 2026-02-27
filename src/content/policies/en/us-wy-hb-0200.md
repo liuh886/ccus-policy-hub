@@ -39,7 +39,6 @@
   },
   "category": "Incentive",
   "country": "United States",
-  "description": "A state law requiring public utilities to generate a portion of their electricity using CCUS-equipped coal plants.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2020-03-12",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "Wyoming Legislature",
   "status": "Active",
   "title": "Wyoming House Bill 0200 (Low-Carbon Reliable Energy Standard)",
-  "year": 2020,
-  "url": "https://wyoleg.gov/2020/Enroll/HB0200.pdf"
+  "url": "https://wyoleg.gov/2020/Enroll/HB0200.pdf",
+  "year": 2020
 }
 ---
 

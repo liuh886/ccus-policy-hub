@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Canada",
-  "description": "## Policy Core  The Canada CCUS ITC is a refundable tax credit of up to 60%, legally established in 2024.",
   "evolution": {
     "clusters": [
       "Canada 2030 Emissions Reduction Plan",
@@ -53,12 +52,11 @@
     "environmental": "Acts as the financial engine for Canada's 2030 ERP, enabling decarbonization across oil sands, steel, and cement sectors.",
     "technical": "Preferential rates for Direct Air Capture (60%) and saline storage explicitly steer capital towards high-impact NETs."
   },
-  "interpretation": "",
   "legalWeight": "Guideline/Policy",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-11-30",
   "regulatory": {
@@ -70,14 +68,12 @@
     "permitting_lead_time": "3-5 years",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "加拿大财政部",
   "status": "Active",
   "title": "Canada CCUS Investment Tax Credit (ITC)",
-  "year": 2023,
-  "url": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html"
+  "url": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html",
+  "year": 2023
 }
 ---
 

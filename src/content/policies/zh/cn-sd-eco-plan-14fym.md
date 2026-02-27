@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Strategic",
-  "country": "China",
-  "description": "山东省‘十四五’生态环境保护规划将 CCUS 定位为实现该省重化工业集群（如东营、滨州）碳中和的关键路径。规划强制要求严控钢铁、电解铝等行业产能增量，并重点支持胜利油田等传统能源基地向 **“捕集-驱动-存储”** 一体化基地转型。该政策的一大特色是将 CCUS 纳入区域性环境风险评估体系，明确了针对大规模二氧化碳回注的安全监管红线。作为中国工业大省，山东通过该规划确立了将气候目标与属地化环境治理深度融合的典型范式，为胜利油田 CCUS 示范区等世界级项目的合规运营提供了地方性法制保障。",
+  "category": "战略引导",
+  "country": "中国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "作为山东生态治理的纲领性文件，确保了 CCUS 在削减工业大气污染物与温室气体排放方面的协同效应，维护了黄河流域生态保护的底线安全。",
     "technical": "重点驱动了针对胜利油田复杂地质条件的二氧化碳驱油与存储（CCUS-EOR）技术的集成，提升了山东在陆上老旧油田碳库转化领域的技术标准。"
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-12-29",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "山东省人民政府",
-  "status": "Active",
+  "status": "现行",
   "title": "山东省“十四五”生态环境保护规划 (CCUS 条款)",
-  "year": 2022,
-  "url": "http://www.shandong.gov.cn/art/2022/12/29/art_2259_4281415.html"
+  "url": "http://www.shandong.gov.cn/art/2022/12/29/art_2259_4281415.html",
+  "year": 2022
 }
 ---
 

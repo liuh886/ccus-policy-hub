@@ -39,7 +39,6 @@
   },
   "category": "Strategic",
   "country": "China",
-  "description": "Released in August 2022 and expanded through 2024, the MIIT Action Plan is the cornerstone of China’s strategy to transition its heavy industry to a low-carbon footing. It mandates sectors including steel, building materials, and petrochemicals to peak emissions by 2030, explicitly promoting the deployment of CCUS as a fundamental technology. The plan shifts CCUS from an experimental technology to a strategic infrastructure requirement, particularly for state-owned enterprises (SOEs). By integra",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Anchors the decarbonization of China's most carbon-intensive industrial sectors, providing the physical storage capacity needed to achieve absolute emission reductions.",
     "technical": "Accelerates the development of localized capture solutions for low-concentration flue gas from industrial kilns and blast furnaces, fostering full-chain technology maturity."
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-08-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "工信部",
   "status": "Active",
   "title": "China MIIT Action Plan for Industrial Carbon Peaking",
-  "year": 2022,
-  "url": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html"
+  "url": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html",
+  "year": 2022
 }
 ---
 

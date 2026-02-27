@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "China",
-  "description": "## Policy Core  Formally relaunched in 2024, CCER is a critical voluntary emission reduction mechanism for China's dual carbon goals. It provides a commercial pathway for CCUS projects to generate additional revenue through carbon credit trading, with CEA prices consistently exceeding **100 RMB/t**.",
   "evolution": {
     "clusters": [
       "China National Carbon Market"
@@ -54,12 +53,11 @@
     "environmental": "First batch of 9.48M tonnes certified in 2025, boosting voluntary decarbonization.",
     "technical": "Initially covers offshore wind and forestry; CCUS methodologies under active research."
   },
-  "interpretation": "The 2024 relaunch of CCER establishes a dual-track carbon market in China, providing a robust monetization pathway for CCUS projects.",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-22",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Ministry of Ecology and Environment",
   "status": "Active",
   "title": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)",
-  "year": 2024,
-  "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml"
+  "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml",
+  "year": 2024
 }
 ---
 

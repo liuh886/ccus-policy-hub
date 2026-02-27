@@ -37,9 +37,8 @@
       "score": 95
     }
   },
-  "category": "Regulatory",
-  "country": "China",
-  "description": "## 政策概览  中国自愿减排交易机制 (CCER) 于 2024 年 1 月正式重启，标志着中国多层次碳市场体系的完善。重启后的 CCER 体系特别强调了对 CCUS 等高技术含量减排项目的支持。通过发布专门的 CCUS 项目方法学，法律允许 CCUS 项目产生的减排量进入碳市场进行交易，并可用于抵消全国碳排放权交易体系 (ETS) 中最高 5% 的配额义务。这一机制为中国早期的 CCUS 示范项目提供了关键的市场化补充资金，是实现“双碳”目标的重要政策杠杆。",
+  "category": "法律监管",
+  "country": "中国",
   "evolution": {
     "clusters": [
       "China National Carbon Market"
@@ -54,12 +53,11 @@
     "environmental": "2025年首批核证量达 948 万吨，显著提升非控排行业的减排参与度。",
     "technical": "首批覆盖海上风电与造林，正加速研究 CCUS 方法学，引导资金流向高技术减排路径。"
   },
-  "interpretation": "CCER 2024 重启标志着中国碳市场双轮驱动格局的形成，为 CCUS 项目提供了清晰的商业化收益路径。",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-22",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Ministry of Ecology and Environment",
-  "status": "Active",
+  "status": "现行",
   "title": "温室气体自愿减排交易管理办法（试行）",
-  "year": 2024,
-  "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml"
+  "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml",
+  "year": 2024
 }
 ---
 

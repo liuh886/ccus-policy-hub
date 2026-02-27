@@ -39,7 +39,6 @@
   },
   "category": "Strategic",
   "country": "韩国",
-  "description": "Rules for designating specialized CCUS clusters, providing financial and administrative support for industrial co-location.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2025-02-06",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "MOTIE Korea",
   "status": "Active",
   "title": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
-  "year": 2025,
-  "url": "https://www.motie.go.kr/"
+  "url": "https://www.motie.go.kr/",
+  "year": 2025
 }
 ---
 

@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Japan",
-  "description": "Legislation passed in May 2024 decoupling CCS storage rights from oil/gas laws, enabling saline aquifer storage permits and defining a state-backed liability transfer mechanism.",
   "evolution": {
     "clusters": [
       "Japan GX Strategy",
@@ -53,12 +52,11 @@
     "environmental": "Provides the legal backbone for Japan's GX strategy, enabling the national goal of 6-12 Mtpa storage by 2030.",
     "technical": "Sets high-fidelity safety and monitoring standards, specifically tailored for geological stability, boosting public acceptance."
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-20",
   "regulatory": {
@@ -70,16 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [
-    "667"
-  ],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "日本经济产业省 (METI)",
   "status": "Active",
   "title": "Act on Carbon Dioxide Storage Business (CCS Business Act)",
-  "year": 2024,
-  "url": "https://www.meti.go.jp/english/press/2024/0213_001.html"
+  "url": "https://www.meti.go.jp/english/press/2024/0213_001.html",
+  "year": 2024
 }
 ---
 

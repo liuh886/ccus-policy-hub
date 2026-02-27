@@ -20,8 +20,12 @@
 ## Reusable Commands
 
 - 一键生产线：`pnpm manage:db:pipeline`
-- 全量重建（谨慎）：`pnpm manage db:pipeline --init --with-imports --with-iea --excel "governance/IEA CCUS Projects Database 2025.xlsx"`
+- 设施对等审计（MD 对照 DB）：`pnpm manage:db:audit:facilities-parity`
+- 设施 DB 修复（按 MD，对当前库执行；先 dry-run）：`pnpm manage:db:repair:facilities-from-md:dry-run`
+- 迁移期反向导入（仅一次性迁移/应急，需显式确认）：`pnpm manage:db:import:md:migration`
 - 核心文件守卫：`pnpm manage:db:lint-governance`
+
+> 注：`db:import:legacy` 与 `db:pipeline --with-imports` 已退役，不再作为正式流程入口。
 
 ## End-to-End Output
 

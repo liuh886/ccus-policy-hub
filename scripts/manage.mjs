@@ -8,8 +8,6 @@ import matter from 'gray-matter';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, '../governance/db/ccus_master.sqlite');
 const SCHEMA_PATH = path.join(__dirname, '../governance/db/schema.sql');
-const LEGACY_POLICY_PATH = path.join(__dirname, '../src/data/policy_database.json');
-const LEGACY_FACILITY_PATH = path.join(__dirname, '../src/data/facility_database.json');
 const LEGACY_I18N_PATH = path.join(__dirname, '../src/data/i18n_dictionary.json');
 const REPORTS_DIR = path.join(__dirname, '../governance/reports');
 const LOCK_PATH = path.join(__dirname, '../governance/db/.lock');
@@ -20,6 +18,7 @@ const args = process.argv.slice(2);
 const command = args[0];
 
 const EXIT_CODES = { SUCCESS: 0, AUDIT_FAILED: 2, INPUT_ERROR: 3, EXPORT_ERROR: 4, FATAL: 1 };
+const REVERSE_SYNC_MIGRATION_FLAG = '--allow-reverse-sync-migration';
 
 class SqlJsDatabase {
   constructor(SQL, buffer = null) {
@@ -78,9 +77,12 @@ async function main() {
     switch (command) {
       case 'db:init': await dbInit(SQL); break;
       case 'db:import:i18n': await dbImportI18n(SQL); break;
-      case 'db:import:legacy': await dbImportLegacy(SQL); break;
+      case 'db:import:legacy':
+        throw new Error("db:import:legacy is retired. Facilities legacy JSON import has been removed from the active workflow.");
       case 'db:import:iea:links': await dbImportIeaLinks(SQL, args.slice(1)); break;
-      case 'db:import:md': await dbImportMdReverse(SQL); break;
+      case 'db:import:md':
+        throw new Error("db:import:md is deprecated for daily use. Reverse sync is migration-only; use db:import:md:migration with explicit acknowledgement.");
+      case 'db:import:md:migration': await dbImportMdReverse(SQL, args.slice(1)); break;
       case 'db:standardize': await dbStandardize(SQL); break;
       case 'db:standardize:region-zh': await dbStandardizeRegionZh(SQL); break;
       case 'db:standardize:policy-source': await dbStandardizePolicySource(SQL); break;
@@ -154,75 +156,8 @@ async function dbImportI18n(SQL) {
 }
 
 async function dbImportLegacy(SQL) {
-  const db = loadDb(SQL);
-  const policies = JSON.parse(fs.readFileSync(LEGACY_POLICY_PATH, 'utf8')).policies;
-  const facilities = JSON.parse(fs.readFileSync(LEGACY_FACILITY_PATH, 'utf8')).facilities;
-  db.transaction(() => {
-    for (const p of policies) {
-      db.run(`INSERT OR REPLACE INTO policies (id, country, year, status, category, review_status, legal_weight, source, url, pub_date, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-        [p.id, p.country, p.year, p.status, p.category, p.reviewStatus, p.legalWeight, p.source, p.url, p.pubDate, p.provenance?.author, p.provenance?.reviewer, p.provenance?.lastAuditDate]);
-      ['en', 'zh'].forEach(lang => {
-        const d = p[lang] || {};
-        db.run(`INSERT OR REPLACE INTO policy_i18n (policy_id, lang, title, description, interpretation, impact_analysis_json, evolution_json, regulatory_json) VALUES (?,?,?,?,?,?,?,?)`,
-          [
-            p.id,
-            lang,
-            d.title || p.title,
-            d.description || p.description,
-            d.interpretation || p.interpretation,
-            JSON.stringify(d.impactAnalysis || p.impactAnalysis || {}),
-            JSON.stringify(d.evolution || p.evolution || {}),
-            JSON.stringify(d.regulatory || p.regulatory || {})
-          ]);
-      });
-      if (p.analysis) {
-        for (const [dim, v] of Object.entries(p.analysis)) {
-          db.run(`INSERT OR REPLACE INTO policy_analysis (policy_id, dimension, score, label, evidence, citation, audit_note) VALUES (?,?,?,?,?,?,?)`,
-            [p.id, dim, v.score || 0, v.label, v.evidence, v.citation, v.auditNote]);
-        }
-      }
-    }
-    for (const f of facilities) {
-      const [lat, lng] = Array.isArray(f.coordinates) ? f.coordinates : [0, 0];
-      db.run(`INSERT OR REPLACE INTO facilities (id, country, status, announced_capacity_min, announced_capacity_max, announced_capacity_raw, estimated_capacity, lat, lng, precision, investment_scale, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-        [f.id, f.country, f.status, f.announcedCapacity || 0, f.announcedCapacityMax || 0, f.announcedCapacityRaw || "", f.estimatedCapacity || 0, lat, lng, "country", f.investmentScale, f.provenance?.author, f.provenance?.reviewer, f.provenance?.lastAuditDate]);
-      
-      if (f.relatedPolicies) {
-        f.relatedPolicies.forEach(pid => {
-           try {
-             db.run(`INSERT OR REPLACE INTO policy_facility_links (policy_id, facility_id) VALUES (?,?)`, [pid, f.id]);
-           } catch (e) {}
-        });
-      }
-
-      for (const l of ['en', 'zh']) {
-        const d = f[l] || {};
-        db.run(`INSERT OR REPLACE INTO facility_i18n (facility_id, lang, name, region, type, sector, fate_of_carbon, hub, operator, capture_technology, storage_type, announcement, fid, operation, suspension_date, phase) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-          [
-            f.id,
-            l,
-            d.name || f.name,
-            d.region || f.region,
-            d.type || f.type,
-            d.sector || f.sector,
-            d.fateOfCarbon || f.fateOfCarbon,
-            d.hub || f.hub,
-            d.operator || f.operator,
-            d.captureTechnology || f.captureTechnology,
-            d.storageType || f.storageType,
-            d.announcement || f.announcement,
-            d.fid || f.fid,
-            d.operation || f.operation,
-            d.suspensionDate || f.suspensionDate,
-            d.phase || f.phase
-          ]);
-        (d.partners || f.partners || []).forEach((p, i) => db.run(`INSERT OR REPLACE INTO facility_partners (facility_id, lang, order_index, partner) VALUES (?,?,?,?)`, [f.id, l, i, p]));
-        (d.links || f.links || []).forEach((link, i) => db.run(`INSERT OR REPLACE INTO facility_links (facility_id, lang, order_index, link) VALUES (?,?,?,?)`, [f.id, l, i, link]));
-      }
-    }
-  });
-  db.save();
-  console.log('IMPORT LEGACY DONE.');
+  void SQL;
+  throw new Error('dbImportLegacy() has been retired. Legacy JSON import logic was removed; use SQLite-native ingest and export flows.');
 }
 
 async function dbImportIeaLinks(SQL, args = []) {
@@ -522,7 +457,10 @@ This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''},
   console.log('EXPORT DONE.');
 }
 
-async function dbImportMdReverse(SQL) {
+async function dbImportMdReverse(SQL, argv = []) {
+  if (!argv.includes(REVERSE_SYNC_MIGRATION_FLAG)) {
+    throw new Error(`Reverse sync is migration-only. Re-run with ${REVERSE_SYNC_MIGRATION_FLAG} to acknowledge DB overwrite risk.`);
+  }
   const db = loadDb(SQL);
   console.log('REVERSE IMPORT: Markdown -> DB...');
 
@@ -593,9 +531,7 @@ async function dbPipeline(SQL, argv = []) {
   const run = async (name, fn) => { await fn(); };
   if (argv.includes('--init')) await run('db:init', () => dbInit(SQL));
   if (argv.includes('--with-imports')) {
-    await run('db:import:i18n', () => dbImportI18n(SQL));
-    await run('db:import:legacy', () => dbImportLegacy(SQL));
-    await run('db:seed:countries', () => dbSeedCountries(SQL));
+    throw new Error("--with-imports is retired. Legacy JSON facilities import was removed; run explicit SQLite-native ingest/bootstrap steps before db:pipeline.");
   }
   await run('db:standardize', () => dbStandardize(SQL));
   await run('db:geocode:facilities', () => dbGeocodeFacilities(SQL));

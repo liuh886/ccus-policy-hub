@@ -37,9 +37,8 @@
       "score": 95
     }
   },
-  "category": "Regulatory",
-  "country": "Japan",
-  "description": "## 政策概览  日本于 2024 年 5 月正式颁布了《二氧化碳存储业务法》（CCS 事业法），这是日本实现 2030 年 CCS 商业化目标的核心法律基石。该法案确立了全球领先的许可与确权制度，允许专业运营商在指定的咸水层区域获得排他性的封存权。法案最显著的特征是引入了“无过错责任”原则，明确了运营商在钻探与封存活动中的损害赔偿义务，同时建立了向日本能源和金属矿物资源机构 (JOGMEC) 转移长期责任的法律路径。这一立法不仅支撑了苫小牧等示范项目的扩大，也为日本企业参与“亚洲 CCUS 网络”提供了制度保障。",
+  "category": "法律监管",
+  "country": "日本",
   "evolution": {
     "clusters": [
       "Japan GX Strategy",
@@ -53,12 +52,11 @@
     "environmental": "作为日本 GX 战略的法制保障，支撑实现 2030 年最高 1200 万吨的年度封存量目标。",
     "technical": "确立了极高标准的监测与安全规范，特别是针对地震带特征的压力监控，提升了社会对 CCS 技术的安全性信任。"
   },
-  "interpretation": "",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-20",
   "regulatory": {
@@ -70,16 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [
-    "667"
-  ],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "日本经济产业省 (METI)",
-  "status": "Active",
+  "status": "现行",
   "title": "二氧化碳存储业务法 (CCS 事业法)",
-  "year": 2024,
-  "url": "https://www.meti.go.jp/english/press/2024/0213_001.html"
+  "url": "https://www.meti.go.jp/english/press/2024/0213_001.html",
+  "year": 2024
 }
 ---
 

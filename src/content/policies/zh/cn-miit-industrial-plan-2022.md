@@ -37,9 +37,8 @@
       "score": 30
     }
   },
-  "category": "Strategic",
-  "country": "China",
-  "description": "中国工信部 (MIIT) 于 2022 年 8 月发布《工业领域碳达峰实施方案》，确立了 2030 年前工业整体排放达峰的目标。2024 年该计划进一步升级为针对重点行业的细化执行路径。方案明确鼓励钢铁、建材、石化及炼化行业加快 CCUS 设施的部署，并要求国有企业发挥技术先导作用。作为中国工业脱碳的母法级政策，它将 CCUS 从‘可选技术’提升为‘必选基建’，并配套了针对绿色工厂和零碳园区的评价体系，旨在通过技术集成实现重工业的深度脱碳。",
+  "category": "战略引导",
+  "country": "中国",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "作为中国工业达峰的底座政策，确保了重工业在维持产出的同时，通过物理封存路径实现二氧化碳排放的绝对值下降。",
     "technical": "重点驱动了针对工业窑炉、炼铁高炉的低浓度二氧化碳捕集技术的产业化，推动了工业领域‘源头减量-过程控制-末端治理’的集成。"
   },
-  "interpretation": "",
   "legalWeight": "Departmental Rules",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-08-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "工信部",
-  "status": "Active",
+  "status": "现行",
   "title": "中国工信部工业领域碳达峰实施方案",
-  "year": 2022,
-  "url": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html"
+  "url": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html",
+  "year": 2022
 }
 ---
 

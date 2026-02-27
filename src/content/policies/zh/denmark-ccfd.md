@@ -37,9 +37,8 @@
       "score": 95
     }
   },
-  "category": "Regulatory",
+  "category": "法律监管",
   "country": "丹麦",
-  "description": "## 政策概览  丹麦的 CCUS 基金与负排放差价合约 (NECCS) 是全球首个专门针对生物质碳捕集与封存 (BECCS) 的大规模竞争性招标机制。该计划由丹麦能源署 (ENS) 管理，通过为期 20 年的长期合约补偿项目捕集与封存每吨二氧化碳的成本缺口。2024 年，丹麦政府大幅增加了该基金的预算，累计投入达 287 亿丹麦克朗，旨在到 2030 年实现每年 230 万吨至 320 万吨的额外减排。这一机制不仅支持了 Orsted 等能源巨头的 CCUS 转型，也通过与挪威北极光项目的跨境协作，确立了丹麦作为北欧碳管理枢纽的关键地位。",
   "evolution": {
     "clusters": [
       "Denmark CCS Strategy 2030",
@@ -53,12 +52,11 @@
     "environmental": "目标到 2030 年每年通过 CCS 实现 230 万吨的额外减排，重点攻克生物质能与废弃物发电领域的碳移除。",
     "technical": "驱动了‘Ørsted Kalundborg’多点捕集枢纽的建设，实现了生物质碳捕集与跨境（至挪威）封存的技术集成方案。"
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-01",
   "regulatory": {
@@ -70,16 +68,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [
-    "756"
-  ],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "丹麦能源署",
-  "status": "Active",
+  "status": "现行",
   "title": "丹麦负排放碳捕集与封存 (NECCS) 基金与差价合约",
-  "year": 2024,
-  "url": "https://ens.dk/en/our-responsibilities/ccs"
+  "url": "https://ens.dk/en/our-responsibilities/ccs",
+  "year": 2024
 }
 ---
 

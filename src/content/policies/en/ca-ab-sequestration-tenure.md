@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "Canada",
-  "description": "## Policy Overview  Alberta’s Sequestration Tenure Framework is a global pioneer in the standardized management of pore space rights. Asserting the Crown's ownership over all sub-surface sequestration assets, the framework utilizes a competitive Request for Full Proposals (RFFP) process to award storage rights. In July 2024, the government reached a landmark milestone by signing the first formal **Carbon Sequestration Lease Agreement** with Shell Canada and ATCO EnPower for the Atlas Carbon Stor",
   "evolution": {
     "clusters": [
       "Alberta TIER Ecosystem",
@@ -54,12 +53,11 @@
     "environmental": "Provides the legal guarantee for permanent isolation of industrial emissions, ensuring the integrity of the 1 Mt+ sequestered annually in Alberta.",
     "technical": "Enforces state-of-the-art MMV requirements under AER Directive 065, driving the technical standardization of high-pressure saline aquifer injection and monitoring."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2011-04-27",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "Alberta King's Printer",
   "status": "Active",
   "title": "Alberta CO2 Sequestration Tenure Framework",
-  "year": 2011,
-  "url": "https://kings-printer.alberta.ca/1266.cfm?page=2011_068.cfm&leg_type=Regs&isbncln=9780779758418"
+  "url": "https://kings-printer.alberta.ca/1266.cfm?page=2011_068.cfm&leg_type=Regs&isbncln=9780779758418",
+  "year": 2011
 }
 ---
 

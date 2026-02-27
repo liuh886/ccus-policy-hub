@@ -4,21 +4,29 @@ To maintain system integrity, all agents MUST follow these rules when interactin
 
 ## 1. SQLite Sovereignty
 - `governance/db/ccus_master.sqlite` is the SINGLE Source of Truth.
-- All JSON/Markdown files in `src/data/` and `src/content/` are GENERATED artifacts.
-- NEVER edit generated artifacts manually. Changes will be overwritten.
+- `src/content/policies/{en,zh}` and `src/content/facilities/{en,zh}` are GENERATED/PUBLISHED artifacts.
+- Facilities workflow is **one-way** by default: `SQLite -> Markdown`.
+- `Markdown -> SQLite` reverse sync is **migration-only** and requires explicit acknowledgement.
+- NEVER rely on `src/data/*_database.json` as the active import source.
 
 ## 2. Production Line Order
 You MUST run the pipeline in this order:
 1. `pnpm manage db:init` (if schema changed)
-2. `pnpm manage db:import:i18n` / `pnpm manage db:import:legacy` (if bulk importing)
-3. `pnpm manage db:standardize` (always after import)
+2. Run explicit SQLite-native ingest/update steps (no legacy JSON import)
+3. `pnpm manage db:standardize` (always after ingest/update)
 4. `pnpm manage db:fix-relationships`
 5. `pnpm manage db:audit:deep` (REQUIRED before export)
-6. `pnpm manage db:export:i18n`
-7. `pnpm manage db:export:md`
+6. `pnpm manage db:audit:facilities-parity` (RECOMMENDED before facilities cutover/export)
+7. `pnpm manage db:export:i18n`
+8. `pnpm manage db:export:md`
+
+Migration-only exception:
+- `pnpm manage:db:import:md:migration` may be used for one-time backfill/emergency recovery only.
+- Daily use of `db:import:md` is prohibited.
 
 Preferred reusable command:
 - `pnpm manage:db:pipeline` (serial, includes audit gate and exports)
+- `pnpm manage:db:pipeline --with-imports` is retired.
 
 ## 3. Mandatory Safety Gates
 - **Locking**: The manage script automatically locks the DB. Do not bypass.

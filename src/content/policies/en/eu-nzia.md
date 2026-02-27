@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "European Union",
-  "description": "## Policy Overview  The Net-Zero Industry Act (NZIA), which entered into force in June 2024, is the legislative backbone of the EU’s strategy to scale up the manufacturing of clean technologies. For the CCS sector, it introduces a groundbreaking mandate: **a Union-wide objective to reach an annual injection capacity of at least 50 million tonnes of CO2 by 2030**.   Central to achieving this goal is the **individual contribution obligation for oil and gas producers**. Companies producing crude oi",
   "evolution": {
     "clusters": [
       "European Green Deal",
@@ -54,12 +53,11 @@
     "environmental": "Establishes the world’s first legally binding sovereign storage target (50 Mtpa), providing the physical foundation necessary for the EU to remain on track for climate neutrality by 2050.",
     "technical": "Triggers a massive European-wide characterization of geological storage sites and accelerates the standardization of cross-border CO2 transport protocols."
   },
-  "interpretation": "The NZIA is the first EU legislation to turn CO2 storage capacity into a 'legal obligation', mandating O&G producers to contribute to regional goals.",
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-02-06",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": "Member State sovereignty"
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "European Commission",
   "status": "Active",
   "title": "EU Net-Zero Industry Act (NZIA)",
-  "year": 2024,
-  "url": "https://eur-lex.europa.eu/"
+  "url": "https://eur-lex.europa.eu/",
+  "year": 2024
 }
 ---
 

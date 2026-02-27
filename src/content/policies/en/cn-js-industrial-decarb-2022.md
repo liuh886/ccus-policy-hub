@@ -39,7 +39,6 @@
   },
   "category": "Regulatory",
   "country": "China",
-  "description": "As a premier industrial hub in China, Jiangsu Province released its decarbonization plan in 2022, prioritizing CCS upgrades for the power and chemical sectors along the Yangtze River. A landmark achievement is the 500,000 tpa Taizhou Capture Project, operational since 2023. The policy specifically encourages the utilization of captured CO2 for **Sustainable Aviation Fuel (SAF)** and methanol production, with Sinopec leading megatonne-scale deployments in local oilfields. By integrating CCS with ",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "Provides the physical sequestration capacity needed to meet Jiangsu's ambitious 2025 carbon intensity targets, safeguarding the environmental integrity of its massive industrial output.",
     "technical": "Propels technical maturity in coal-fire flue gas capture and large-scale CO2-to-methanol conversion, standardizing 'Source-to-Product' engineering codes in East China."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2022-10-01",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "江苏省工信厅",
   "status": "Active",
   "title": "Jiangsu Province Industrial Green Transformation Action Plan (CCUS)",
-  "year": 2022,
-  "url": "http://gxt.jiangsu.gov.cn/"
+  "url": "http://gxt.jiangsu.gov.cn/",
+  "year": 2022
 }
 ---
 

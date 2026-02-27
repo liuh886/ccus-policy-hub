@@ -39,7 +39,6 @@
   },
   "category": "Incentive",
   "country": "Norway",
-  "description": "## Policy Overview  The Norwegian Petroleum Tax Act provides a world-leading fiscal environment for offshore CCS operations. With a combined marginal tax rate of **78%** (22% corporate + 71.8% special tax), Norway applies a 'Cash-flow system' where CCS investments since 2022 are 100% deductible in the year they occur against the 71.8% special tax base.   Operationally, the regime offers three massive benefits: 1. **CO2 Tax Exemption**: Since 2023, emitters can reclaim CO2 taxes paid on fuel once",
   "evolution": {
     "clusters": [
       "Norway Longship Strategy",
@@ -54,12 +53,11 @@
     "environmental": "Provides the financial foundation for the permanent isolation of industrial emissions in the NCS, ensuring the credibility of Norway's net-zero contribution and EU climate synergy.",
     "technical": "Incentivizes the build-out of high-pressure offshore pipeline clusters and advanced reservoir monitoring, standardizing deep-water sequestration protocols across the North Sea."
   },
-  "interpretation": "",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Intelligence",
     "lastAuditDate": "2026-02-08",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-01-01",
   "regulatory": {
@@ -71,14 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "verified",
-  "sectors": [],
   "source": "挪威政府",
   "status": "Active",
   "title": "Norway Petroleum Tax Act: CCS Deduction & Exemptions",
-  "year": 2023,
-  "url": "https://www.norskpetroleum.no/en/framework/taxes/"
+  "url": "https://www.norskpetroleum.no/en/framework/taxes/",
+  "year": 2023
 }
 ---
 

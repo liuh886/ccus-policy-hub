@@ -39,7 +39,6 @@
   },
   "category": "Strategic",
   "country": "马来西亚",
-  "description": "Malaysia's strategic roadmap identifying CCUS as a key lever for decarbonization and economic growth.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -51,12 +50,11 @@
     "environmental": "",
     "technical": ""
   },
-  "interpretation": "",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Legacy System",
     "lastAuditDate": "2026-02-07",
-    "reviewer": ""
+    "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-08-29",
   "regulatory": {
@@ -68,14 +66,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
   "reviewStatus": "draft",
-  "sectors": [],
   "source": "Ministry of Economy",
   "status": "Active",
   "title": "Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar",
-  "year": 2023,
-  "url": "https://www.ekonomi.gov.my/en/netr"
+  "url": "https://www.ekonomi.gov.my/en/netr",
+  "year": 2023
 }
 ---
 

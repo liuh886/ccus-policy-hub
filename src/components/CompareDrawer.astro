@@ -122,10 +122,13 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
     }
   });
 
-  // 初始加载和路由跳转后加载
-  window.addEventListener('load', updateDrawer);
-  document.addEventListener('astro:page-load', updateDrawer);
-  // 监听多标签同步
-  window.addEventListener('storage', updateDrawer);
+  if (!(window as any).__ccusCompareDrawerBound) {
+    // 初始加载和路由跳转后加载
+    window.addEventListener('load', updateDrawer);
+    document.addEventListener('astro:page-load', updateDrawer);
+    // 监听多标签同步
+    window.addEventListener('storage', updateDrawer);
+    (window as any).__ccusCompareDrawerBound = true;
+  }
   updateDrawer();
 </script>

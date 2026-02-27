@@ -22,8 +22,9 @@
 
 ### 1.2 数据录入
 
-1. `pnpm manage:db:import:legacy`
+1. 执行显式 SQLite-native 导入/更新步骤（禁止使用 legacy JSON import）
 2. `pnpm manage db:import:iea:links --excel "governance/IEA CCUS Projects Database 2025.xlsx"`（可选但推荐）
+3. （仅迁移/应急）`pnpm manage:db:import:md:migration`，禁止日常使用
 
 ### 1.3 标准化与关系修复
 
@@ -35,8 +36,9 @@
 ### 1.4 审计门禁（不通过不得导出）
 
 1. `pnpm manage:db:audit:deep`
-2. `pnpm manage db:stats`
-3. `pnpm manage db:dict:lint`
+2. `pnpm manage:db:audit:facilities-parity`（设施治理/切换阶段强烈推荐）
+3. `pnpm manage db:stats`
+4. `pnpm manage db:dict:lint`
 
 ### 1.5 导出与前端消费
 
@@ -77,4 +79,4 @@
 ---
 
 **版本**：v6.2 (2026-02-10)  
-**状态**：可执行、与当前代码实现对齐
+**状态**：已更新（SQLite -> MD 单向设施流程；legacy import 退役）
