@@ -16,6 +16,10 @@
 
 ---
 
+## CCUS Policy Hub
+
+**The open-source bridge between fragmented regulatory texts and actionable global CCUS insights.**
+
 ## 🌟 Overview
 
 **CCUS Policy Hub** is a professional-grade, open-source knowledge infrastructure dedicated to the global CCUS sector. It bridges the gap between fragmented regulatory texts and actionable data insights by integrating the **IEA Global Facilities Database** with **GCCSI Policy & Legal Readiness (PLR) indicators**.
