@@ -22,6 +22,8 @@
 
 Our mission is to provide researchers, policymakers, and investors with a high-fidelity tool for benchmarking CCUS incentives and regulatory frameworks worldwide.
 
+> **AI-Ready Infrastructure**: Beyond human researchers, the Hub serves as a high-fidelity grounding source for **AI Agents** specializing in climate policy, enabling precise reasoning across complex regulatory landscapes.
+
 ---
 
 ## ✨ Key Features
