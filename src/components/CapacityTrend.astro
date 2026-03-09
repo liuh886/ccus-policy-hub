@@ -66,9 +66,11 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
   <!-- Stats Counter -->
   <div class="lg:col-span-1 space-y-6">
     <div
-      class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden"
+      class="group p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden transition-all duration-500 hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]"
     >
-      <div class="absolute -right-4 -bottom-4 opacity-5 text-blue-600">
+      <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-500/0 group-hover:bg-emerald-500/50 transition-all"></div>
+      <div class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700">CAP_MONITOR_v2.5</div>
+      <div class="absolute -right-4 -bottom-4 opacity-5 text-emerald-600">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="120"
@@ -89,7 +91,7 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
             : 'Global Capacity (2040 Est.)'
         }
       </h3>
-      <div class="text-5xl font-black text-emerald-600 mb-2">
+      <div class="text-5xl font-black text-emerald-600 mb-2 tracking-tighter">
         {totalCapacity}
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
@@ -103,8 +105,11 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
     </div>
 
     <div
-      class="p-8 bg-slate-900 rounded-3xl text-white shadow-xl relative overflow-hidden"
+      class="group p-8 bg-slate-900 rounded-3xl text-white shadow-2xl relative overflow-hidden transition-all duration-500 hover:shadow-blue-500/20 border border-slate-800 hover:border-blue-500/30"
     >
+      <div class="absolute top-0 right-0 p-3 opacity-40">
+         <div class="text-[8px] font-mono tracking-widest animate-pulse">SYSTEM_ACTIVE</div>
+      </div>
       <div class="absolute -right-4 -bottom-4 opacity-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -149,9 +154,17 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
 
   <!-- Chart Card -->
   <div
-    class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+    class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group/chart transition-all duration-500 hover:border-blue-500/30 hover:shadow-[0_0_40px_rgba(37,99,235,0.05)]"
   >
-    <div class="flex justify-between items-start mb-8">
+    <!-- Tech Accents -->
+    <div class="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 blur-3xl group-hover/chart:bg-blue-500/10 transition-colors"></div>
+    <div class="absolute top-6 right-8 flex gap-1.5 opacity-30">
+       <div class="w-1 h-6 bg-blue-500 animate-[bounce_2s_infinite]"></div>
+       <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]"></div>
+       <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]"></div>
+    </div>
+
+    <div class="flex justify-between items-start mb-4 relative z-10">
       <div>
         <h3
           class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight"
@@ -165,17 +178,61 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
         <p
           class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
         >
-          Global Cumulative Capacity (Mtpa) 1970 - 2040
+          Global Cumulative Capacity (Mtpa) <span class="text-blue-500">1970</span> - <span class="text-emerald-500">2040</span>
         </p>
       </div>
       <div
-        class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest border border-blue-100 shadow-sm"
+        class="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-500/20 shadow-sm"
       >
         IEA 2025 Intelligence
       </div>
     </div>
 
-    <div class="h-[300px] w-full">
+    <!-- Time Range Slider UI -->
+    <div class="mt-2 mb-6 px-2 relative z-10 flex flex-col gap-3">
+      <div class="flex justify-between items-center">
+        <div id="timeRangeIndicator" class="font-mono text-[10px] px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.05)] backdrop-blur-sm transition-all duration-300">
+          <span class="opacity-40">[</span> <span id="yearMinVal" class="font-bold">1990</span> - <span id="yearMaxVal" class="font-bold">2030</span> <span class="opacity-40">]</span> <span class="ml-1.5 text-[9px] text-emerald-500 font-black animate-pulse tracking-tighter">{lang === 'zh' ? '视图激活' : 'ACTIVE_VIEW'}</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+           <div class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></div>
+           <div class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]">Timeline_Viewport</div>
+        </div>
+      </div>
+      
+      <div class="relative w-full h-6 flex items-center group/slider">
+        <!-- Main Track -->
+        <div class="absolute w-full h-[3px] bg-slate-100 dark:bg-slate-800/50 rounded-full shadow-inner"></div>
+        
+        <!-- Active Range Highlight -->
+        <div id="sliderTrackHighlight" class="absolute h-[3px] bg-gradient-to-r from-blue-500 to-emerald-500 shadow-[0_0_10px_rgba(37,99,235,0.4)] z-10 rounded-full transition-all duration-300"></div>
+        
+        <!-- Native Range Inputs -->
+        <input 
+          type="range" 
+          id="minYearSlider" 
+          min="1970" 
+          max="2040" 
+          value="1990" 
+          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
+                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
+                 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
+        />
+        <input 
+          type="range" 
+          id="maxYearSlider" 
+          min="1970" 
+          max="2040" 
+          value="2030" 
+          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
+                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
+                 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
+        />
+      </div>
+    </div>
+
+    <div class="h-[300px] w-full relative z-10">
+      <div class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover/chart:opacity-100 transition-opacity duration-1000 pointer-events-none rounded-xl"></div>
       <canvas
         id="capacityChart"
         data-values={JSON.stringify(chartData)}
@@ -191,6 +248,12 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
     const canvas = document.getElementById('capacityChart');
     if (!canvas) return;
 
+    const minSlider = document.getElementById('minYearSlider');
+    const maxSlider = document.getElementById('maxYearSlider');
+    const trackHighlight = document.getElementById('sliderTrackHighlight');
+    const yearMinVal = document.getElementById('yearMinVal');
+    const yearMaxVal = document.getElementById('yearMaxVal');
+
     // Clear previous instance if exists
     const existingChart = Chart.getChart(canvas);
     if (existingChart) {
@@ -205,7 +268,7 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
       const opData = rawData.map(d => d.operational === null ? null : parseFloat(d.operational));
       const pipeData = rawData.map(d => parseFloat(d.pipeline));
 
-      new Chart(canvas, {
+      const chart = new Chart(canvas, {
         type: 'line',
         data: {
           labels: labels,
@@ -217,10 +280,12 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
               backgroundColor: 'rgba(37, 99, 235, 0.1)',
               fill: true,
               tension: 0.3,
-              borderWidth: 3,
+              borderWidth: 4,
               pointRadius: 0,
               pointHoverRadius: 6,
-              spanGaps: false, // Ensure line stops at current year
+              spanGaps: false,
+              shadowBlur: 15,
+              shadowColor: 'rgba(37, 99, 235, 0.5)',
             },
             {
               label: canvas.dataset.labelPipe,
@@ -229,9 +294,11 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
               backgroundColor: 'rgba(16, 185, 129, 0.05)',
               fill: true,
               tension: 0.3,
-              borderWidth: 3,
+              borderWidth: 4,
               pointRadius: 0,
               pointHoverRadius: 6,
+              shadowBlur: 15,
+              shadowColor: 'rgba(16, 185, 129, 0.5)',
             }
           ],
         },
@@ -260,6 +327,8 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
           },
           scales: {
             x: {
+              min: 1990,
+              max: 2030,
               grid: { display: false },
               ticks: { font: { size: 10 }, color: '#94a3b8', maxTicksLimit: 10 },
             },
@@ -271,6 +340,47 @@ const constructionCapacity = constructionFacilities.reduce((acc, f) => acc + (f.
           },
         },
       });
+
+      function updateSliderUI(e) {
+        let min = parseInt(minSlider.value);
+        let max = parseInt(maxSlider.value);
+        
+        // Ensure handles don't cross and have a minimum gap
+        if (min >= max) {
+          if (e && e.target === minSlider) {
+            min = max - 1;
+            minSlider.value = min;
+          } else {
+            max = min + 1;
+            maxSlider.value = max;
+          }
+        }
+
+        const minPercent = ((min - 1970) / (2040 - 1970)) * 100;
+        const maxPercent = ((max - 1970) / (2040 - 1970)) * 100;
+        
+        if (trackHighlight) {
+          trackHighlight.style.left = minPercent + '%';
+          trackHighlight.style.width = (maxPercent - minPercent) + '%';
+        }
+        
+        if (yearMinVal) yearMinVal.textContent = min;
+        if (yearMaxVal) yearMaxVal.textContent = max;
+        
+        // Update chart axes
+        chart.options.scales.x.min = min;
+        chart.options.scales.x.max = max;
+        chart.update('none');
+      }
+
+      if (minSlider && maxSlider) {
+        minSlider.addEventListener('input', updateSliderUI);
+        maxSlider.addEventListener('input', updateSliderUI);
+        
+        // Initial sync
+        updateSliderUI();
+      }
+
     } catch (e) {
       console.error('Failed to init capacity chart:', e);
     }

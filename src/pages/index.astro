@@ -80,72 +80,128 @@ const policyCount = policies.length;
       <WorldMapNav lang="zh" />
     </div>
 
-    <div class="py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="py-24 grid grid-cols-1 md:grid-cols-3 gap-10 relative">
+      <!-- Background Glow for Section -->
+      <div class="absolute inset-0 bg-blue-500/5 blur-[120px] pointer-events-none -z-10"></div>
+
+      <!-- Feature Card 1 -->
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="group relative p-10 bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 dark:border-cyan-500/10 shadow-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/40 hover:-translate-y-3 hover:shadow-cyan-500/10"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg
-          >
+        <!-- HUD Elements -->
+        <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-cyan-500/0 group-hover:border-cyan-500/40 transition-all duration-500 rounded-tl-xl"></div>
+        <div class="absolute bottom-4 right-6 text-[8px] font-mono text-slate-400 dark:text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">
+          COORD: 34.0522° N, 118.2437° W
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">权威数据源</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
-          同步 IEA CCUS Projects Database 2025、GCCSI
-          等国际组织及各国政府官网的最新动态。
-        </p>
+        <div class="absolute top-10 right-10 w-32 h-32 bg-cyan-500/5 blur-3xl group-hover:bg-cyan-500/10 transition-colors"></div>
+        
+        <div class="relative z-10">
+          <div class="text-cyan-600 dark:text-cyan-400 mb-8 p-4 bg-cyan-50 dark:bg-cyan-500/10 rounded-2xl w-fit shadow-sm border border-cyan-100/50 dark:border-cyan-500/20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg
+            >
+          </div>
+          <h3 class="text-2xl font-black mb-4 dark:text-white tracking-tight">权威数据源</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+            同步 IEA CCUS Projects Database 2025、GCCSI
+            等国际组织及各国政府官网的最新动态，确保情报的实时性与准确性。
+          </p>
+          <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+             <span class="text-[10px] font-black text-cyan-600 dark:text-cyan-400 uppercase tracking-widest">Live Feed Verified</span>
+             <div class="flex gap-1">
+               <div class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
+               <div class="w-1.5 h-1.5 rounded-full bg-cyan-500/40"></div>
+             </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Feature Card 2 -->
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="group relative p-10 bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 dark:border-blue-500/10 shadow-2xl overflow-hidden transition-all duration-700 hover:border-blue-500/40 hover:-translate-y-3 hover:shadow-blue-500/10"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
-              d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
-          >
+        <!-- HUD Elements -->
+        <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-500/0 group-hover:border-blue-500/40 transition-all duration-500 rounded-tl-xl"></div>
+        <div class="absolute bottom-4 right-6 text-[8px] font-mono text-slate-400 dark:text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">
+          COORD: 51.5074° N, 0.1278° W
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">可视化分析</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
-          通过交互式地图、高性能点聚合图表和多维对比工具，深度洞察各国政策激励强度。
-        </p>
+        <div class="absolute top-10 right-10 w-32 h-32 bg-blue-500/5 blur-3xl group-hover:bg-blue-500/10 transition-colors"></div>
+
+        <div class="relative z-10">
+          <div class="text-blue-600 dark:text-blue-400 mb-8 p-4 bg-blue-50 dark:bg-blue-500/10 rounded-2xl w-fit shadow-sm border border-blue-100/50 dark:border-blue-500/20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
+                d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
+            >
+          </div>
+          <h3 class="text-2xl font-black mb-4 dark:text-white tracking-tight">可视化分析</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+            通过交互式地图、高性能点聚合图表和多维对比工具，深度洞察各国政策激励强度与设施分布关系。
+          </p>
+          <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+             <span class="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-widest">Visual Engine Active</span>
+             <div class="flex gap-1">
+               <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+               <div class="w-1.5 h-1.5 rounded-full bg-blue-500/40"></div>
+             </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Feature Card 3 -->
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="group relative p-10 bg-white/80 dark:bg-slate-900/40 backdrop-blur-2xl rounded-[2.5rem] border border-slate-200/60 dark:border-indigo-500/10 shadow-2xl overflow-hidden transition-all duration-700 hover:border-indigo-500/40 hover:-translate-y-3 hover:shadow-indigo-500/10"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
-              cx="9"
-              cy="7"
-              r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path
-              d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
-          >
+        <!-- HUD Elements -->
+        <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-indigo-500/0 group-hover:border-indigo-500/40 transition-all duration-500 rounded-tl-xl"></div>
+        <div class="absolute bottom-4 right-6 text-[8px] font-mono text-slate-400 dark:text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">
+          COORD: 39.9042° N, 116.4074° E
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">行业精准对标</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
-          首创“设施-政策”自动化关联引擎，针对不同行业领域（如制氢、电力、钢铁）提供专项对标建 议。
-        </p>
+        <div class="absolute top-10 right-10 w-32 h-32 bg-indigo-500/5 blur-3xl group-hover:bg-indigo-500/10 transition-colors"></div>
+
+        <div class="relative z-10">
+          <div class="text-indigo-600 dark:text-indigo-400 mb-8 p-4 bg-indigo-50 dark:bg-indigo-500/10 rounded-2xl w-fit shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
+                cx="9"
+                cy="7"
+                r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path
+                d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
+            >
+          </div>
+          <h3 class="text-2xl font-black mb-4 dark:text-white tracking-tight">行业精准对标</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+            针对不同行业领域（如制氢、电力、钢铁）提供专项对标建议，首创“设施-政策”自动化关联引擎。
+          </p>
+          <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+             <span class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Benchmarking Sync</span>
+             <div class="flex gap-1">
+               <div class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></div>
+               <div class="w-1.5 h-1.5 rounded-full bg-indigo-500/40"></div>
+             </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
