@@ -4,6 +4,7 @@ interface Props {
   description?: string;
   image?: string;
   canonicalURL?: string;
+  keywords?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   description = 'CCUS Policy Hub - 全球 CCUS 政策数据库与分析平台',
   image = '/social-preview.png',
   canonicalURL = Astro.url.href,
+  keywords,
 } = Astro.props;
 ---
 
@@ -19,6 +21,8 @@ const {
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/ccus-policy-hub/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+{keywords && <meta name="keywords" content={keywords} />}
+
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

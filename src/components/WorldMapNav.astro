@@ -185,14 +185,14 @@ const regions: Region[] = [
             style={`left: ${r.x}%; top: ${r.y}%;`}
           >
             <a href={isEn ? r.enHref : r.href} class="relative block group/node">
-              <!-- Hub Visuals -->
+              {/* Hub Visuals */}
               <div class="absolute -inset-10 bg-cyan-500/0 group-hover/node:bg-cyan-500/5 rounded-full transition-all duration-700 blur-2xl"></div>
               
               <div class="relative flex items-center justify-center">
                 <div class="absolute w-4 h-4 bg-cyan-500/30 rounded-full animate-ping"></div>
                 <div class="absolute w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-[0_0_15px_rgba(34,211,238,0.8)] z-10"></div>
                 
-                <!-- Label (Visible on Hover) -->
+                {/* Label (Visible on Hover) */}
                 <div class="absolute top-6 left-6 whitespace-nowrap opacity-0 group-hover/node:opacity-100 transition-all duration-500 transform translate-y-2 group-hover/node:translate-y-0 z-30">
                    <div class="px-3 py-1.5 bg-slate-900/95 backdrop-blur-md border border-cyan-500/50 rounded-xl shadow-2xl">
                      <span class="text-white font-black text-sm tracking-tight">{isEn ? r.enName : r.name}</span>
@@ -201,7 +201,7 @@ const regions: Region[] = [
                 </div>
               </div>
 
-              <!-- Word Cloud Effect -->
+              {/* Word Cloud Effect */}
               <div class="absolute inset-0 pointer-events-none">
                 {r.policies.map((p, idx) => (
                   <div

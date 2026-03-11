@@ -2,6 +2,7 @@
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
 }
 
 import { ui, defaultLang } from '../i18n/ui';
@@ -9,18 +10,44 @@ const lang = Astro.currentLocale || defaultLang;
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 
-const { title, description } = Astro.props;
+const { title, description, keywords } = Astro.props;
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
 import CompareDrawer from '../components/CompareDrawer.astro';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <SEO title={title} description={description} />
+    <SEO title={title} description={description} keywords={keywords} />
+    <ClientRouter />
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      };
+    
+      const setTheme = () => {
+        const theme = getTheme();
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+        window.localStorage.setItem('theme', theme);
+      };
+
+      setTheme();
+      document.addEventListener('astro:after-swap', setTheme);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

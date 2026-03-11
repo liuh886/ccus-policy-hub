@@ -77,6 +77,7 @@ const facilitySchema = z.object({
   hub: z.string().optional().default(""),
   operator: z.string().optional(),
   captureTechnology: z.string().optional(),
+  storageTechnology: z.string().optional(),
   storageType: z.string().optional(),
   investmentScale: z.string().optional(),
   phase: z.string().optional().default(""),
