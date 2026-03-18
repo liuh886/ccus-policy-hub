@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "待定",
+    "cross_border_rules": "待定",
+    "financial_assurance": "待定",
+    "liability_period": "待定",
+    "liability_transfer": "待定",
+    "permitting_lead_time": "待定",
+    "pore_space_rights": "待定"
   },
   "summary": "Profile for 葡萄牙"
 }

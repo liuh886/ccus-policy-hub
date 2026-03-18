@@ -14,12 +14,12 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strictly reserved for unavoidable industrial residual emissions.",
-    "cross_border_rules": "Leading advocate for London Protocol compliance; 2024 bilateral export agreement with Norway.",
-    "financial_assurance": "15-year Carbon Contract for Difference (CCfD) mechanism.",
-    "liability_period": "Approx. 20-30 years (aligned with EU Directive 2009/31/EC).",
+    "co2_definition": "严格保留给不可避免的工业残留排放。",
+    "cross_border_rules": "伦敦议定书合规的主要倡导者；2024 年与挪威签署双边出口协议。",
+    "financial_assurance": "15 年期碳差价合约 (CCfD) 机制。",
+    "liability_period": "约 20-30 年（与欧盟指令 2009/31/EC 保持一致）。",
     "liability_transfer": "遵循欧盟指令",
-    "permitting_lead_time": "Streamlined via 4 primary industrial hubs (Dunkirk, Le Havre, etc.).",
+    "permitting_lead_time": "通过 4 个主要工业枢纽（敦刻尔克、勒阿弗尔等）进行简化。",
     "pore_space_rights": "国家特许经营"
   },
   "summary": "Profile for 法国"

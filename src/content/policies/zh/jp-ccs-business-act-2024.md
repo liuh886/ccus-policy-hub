@@ -53,13 +53,13 @@
   },
   "pubDate": "2024-05-17",
   "regulatory": {
-    "co2_definition": "Regulated industrial commodity with Open Access mandate.",
-    "cross_border_rules": "Aligned with London Protocol for export potential.",
-    "financial_assurance": "Mandatory Monitoring Reserves to be accumulated during injection.",
-    "liability_period": "Post-injection period until CO2 stability is verified.",
-    "liability_transfer": "Monitoring responsibility transfers to JOGMEC after stability confirmation.",
-    "permitting_lead_time": "Approx. 2-3 years via Specified Area licensing.",
-    "pore_space_rights": "Established as 'Storage Right' (Real Right) granted by METI."
+    "co2_definition": "具有开放获取强制要求的受监管工业商品。",
+    "cross_border_rules": "与伦敦议定书保持一致以释放出口潜力。",
+    "financial_assurance": "注入期间必须累积强制性的监测储备金。",
+    "liability_period": "注入后期，直到验证二氧化碳稳定性为止。",
+    "liability_transfer": "稳定性确认后，监测责任转移给 JOGMEC。",
+    "permitting_lead_time": "通过指定区域许可约需 2-3 年。",
+    "pore_space_rights": "确立为由 METI 授予的“封存权”（物权）。"
   },
   "reviewStatus": "verified",
   "source": "METI",

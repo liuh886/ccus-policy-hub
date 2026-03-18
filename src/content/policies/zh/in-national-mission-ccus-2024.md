@@ -11,13 +11,13 @@
   },
   "pubDate": "2024-07-01",
   "regulatory": {
-    "co2_definition": "Industrial Resource/Carbon Asset under CCTS.",
-    "cross_border_rules": "Focus on domestic market; London Protocol alignment pending.",
-    "financial_assurance": "Viability Gap Funding (VGF) and Production Linked Incentives (PLI).",
-    "liability_period": "Approx. 20 years (Proposed).",
-    "liability_transfer": "Proposed transfer to State after 20-year post-closure monitoring.",
-    "permitting_lead_time": "Streamlined via National Mission testbeds (Estimated 3-4 years).",
-    "pore_space_rights": "Leaning towards State Ownership; unified federal policy under draft."
+    "co2_definition": "CCTS 框架下的工业资源/碳资产。",
+    "cross_border_rules": "侧重于国内市场；伦敦议定书一致性待定。",
+    "financial_assurance": "可行性缺口资金 (VGF) 和生产挂钩激励 (PLI)。",
+    "liability_period": "约 20 年（建议）。",
+    "liability_transfer": "提议在 20 年闭坑后监测后转移给国家。",
+    "permitting_lead_time": "通过国家使命试验平台进行简化（预计 3-4 年）。",
+    "pore_space_rights": "倾向于国家所有；统一的联邦政策正在起草中。"
   },
   "reviewStatus": "verified",
   "source": "NITI Aayog",

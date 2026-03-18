@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Greenhouse Gas Substance",
-    "cross_border_rules": "Permitted (London Protocol amended)",
-    "financial_assurance": "Mandatory (Full lifecycle)",
-    "liability_period": "Min. 15 years post-closure",
-    "liability_transfer": "Yes, to Commonwealth after closure",
-    "permitting_lead_time": "3-5 years (Offshore)",
-    "pore_space_rights": "Commonwealth (Offshore) / State (Onshore)"
+    "co2_definition": "温室气体物质",
+    "cross_border_rules": "允许（伦敦议定书已修订）",
+    "financial_assurance": "强制性（全生命周期）",
+    "liability_period": "闭坑后至少 15 年",
+    "liability_transfer": "是，闭坑后转移给联邦",
+    "permitting_lead_time": "3-5 年（离岸）",
+    "pore_space_rights": "联邦（离岸）/ 州（陆上）"
   },
   "summary": "Profile for 澳大利亚"
 }

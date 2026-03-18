@@ -62,13 +62,13 @@
   },
   "pubDate": "2024-11-01",
   "regulatory": {
-    "co2_definition": "Industrial Resource / Pollutant",
-    "cross_border_rules": "Pending / Bilateral",
-    "financial_assurance": "Project-level assessment",
-    "liability_period": "Project lifetime + Post-closure (TBD)",
-    "liability_transfer": "Pending specific legislation",
-    "permitting_lead_time": "2-3 years (Pilot projects)",
-    "pore_space_rights": "State Owned (Mineral Resources Law)"
+    "co2_definition": "工业资源 / 污染物",
+    "cross_border_rules": "待定 / 双边",
+    "financial_assurance": "项目级评估",
+    "liability_period": "项目寿命 + 闭坑后（待定）",
+    "liability_transfer": "待定具体立法",
+    "permitting_lead_time": "2-3 年（试点项目）",
+    "pore_space_rights": "国家所有（矿产资源法）"
   },
   "reviewStatus": "verified",
   "source": "生态环境部",

@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Carbon Dioxide",
-    "cross_border_rules": "London Protocol / Bilateral Treaties",
-    "financial_assurance": "Mandatory (Decommissioning Fund)",
-    "liability_period": "Risk-based assessment",
-    "liability_transfer": "Transfer to State (conditions apply)",
-    "permitting_lead_time": "Track-1 / Track-2 Clusters process",
-    "pore_space_rights": "Crown Estate (Offshore)"
+    "co2_definition": "二氧化碳",
+    "cross_border_rules": "伦敦议定书 / 双边条约",
+    "financial_assurance": "强制性（退役基金）",
+    "liability_period": "基于风险的评估",
+    "liability_transfer": "转移给国家（适用相关条件）",
+    "permitting_lead_time": "第一轨 / 第二轨集群流程",
+    "pore_space_rights": "官方地产（离岸）"
   },
   "summary": "Profile for 英国"
 }

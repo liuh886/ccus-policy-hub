@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Sequestered Substance",
-    "cross_border_rules": "Provincial/Federal regulated",
-    "financial_assurance": "Mandatory payments to Fund",
-    "liability_period": "Post-closure Stewardship Fund",
-    "liability_transfer": "Yes, to Province (PICS Fund)",
-    "permitting_lead_time": "High (Competitive Hub selection)",
-    "pore_space_rights": "Crown (Provincial)"
+    "co2_definition": "封存物质",
+    "cross_border_rules": "省/联邦监管",
+    "financial_assurance": "强制向基金支付",
+    "liability_period": "闭坑后管理基金",
+    "liability_transfer": "是，转移给省（PICS 基金）",
+    "permitting_lead_time": "高（竞争性枢纽选择）",
+    "pore_space_rights": "官方所有（省级）"
   },
   "summary": "Profile for 加拿大"
 }

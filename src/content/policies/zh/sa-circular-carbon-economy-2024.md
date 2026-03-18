@@ -48,13 +48,13 @@
   },
   "pubDate": "2024-03-01",
   "regulatory": {
-    "co2_definition": "Economic Resource/Asset under CCE framework and GCOM.",
-    "cross_border_rules": "Leading international producer forums; focused on Blue Hydrogen and export standards.",
-    "financial_assurance": "Green Financing Framework (2024); Green Bonds/Sukuk; Project-level guarantees.",
-    "liability_period": "Performance-based period (Estimated 20-30 years post-injection).",
-    "liability_transfer": "Responsibility transfers to State after stability monitoring period.",
-    "permitting_lead_time": "Streamlined via Multi-user Hub infrastructure planning.",
-    "pore_space_rights": "State-owned subsurface; concessions granted by Ministry of Energy."
+    "co2_definition": "CCE 框架和 GCOM 下 the 经济资源/资产。",
+    "cross_border_rules": "领先的国际生产商论坛；侧重于蓝氢和出口标准。",
+    "financial_assurance": "绿色融资框架 (2024)；绿色债券/伊斯兰债券；项目级担保。",
+    "liability_period": "基于表现的监测期（预计注入后 20-30 年）。",
+    "liability_transfer": "在稳定性监测期后，责任转移给国家。",
+    "permitting_lead_time": "通过多用户枢纽基础设施规划进行简化。",
+    "pore_space_rights": "地下资源归国家所有；特许权由能源部授予。"
   },
   "reviewStatus": "verified",
   "source": "Ministry of Energy",

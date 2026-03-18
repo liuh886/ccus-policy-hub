@@ -14,12 +14,12 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Greenhouse Gas",
-    "cross_border_rules": "Pending regulation",
-    "financial_assurance": "Mandatory",
-    "liability_period": "Permanent monitoring required until transfer",
+    "co2_definition": "温室气体",
+    "cross_border_rules": "法规待定",
+    "financial_assurance": "强制性",
+    "liability_period": "转移前需要永久监测",
     "liability_transfer": "场址关闭 30 年后责任转移",
-    "permitting_lead_time": "ANP Bidding Rounds",
+    "permitting_lead_time": "ANP 招标轮次",
     "pore_space_rights": "属于联盟（联邦政府）"
   },
   "summary": "Profile for 巴西"

@@ -60,13 +60,13 @@
   },
   "pubDate": "2024-04-01",
   "regulatory": {
-    "co2_definition": "Industrial Gas",
-    "cross_border_rules": "Permitted (Northern Lights precedent)",
-    "financial_assurance": "Mandatory",
-    "liability_period": "Agreed in Plan for Development (PDO)",
-    "liability_transfer": "Transfer to State allowed",
-    "permitting_lead_time": "1-3 years (Mature regulatory)",
-    "pore_space_rights": "State Owned (NCS)"
+    "co2_definition": "工业气体",
+    "cross_border_rules": "允许（以“北极光”项目为先例）",
+    "financial_assurance": "强制性",
+    "liability_period": "在开发计划 (PDO) 中商定",
+    "liability_transfer": "允许转移给国家",
+    "permitting_lead_time": "1-3 年（成熟监管）",
+    "pore_space_rights": "国家所有 (NCS)"
   },
   "reviewStatus": "verified",
   "source": "Norwegian Offshore Directorate",

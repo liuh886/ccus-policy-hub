@@ -48,13 +48,13 @@
   },
   "pubDate": "2024-08-01",
   "regulatory": {
-    "co2_definition": "Strategic tool for hard-to-abate industries; coal-sector exclusion.",
-    "cross_border_rules": "Ratifying London Protocol amendment to enable CO2 export.",
-    "financial_assurance": "EUR 3.3 billion KTF funding; mandatory operator security for site closure.",
-    "liability_period": "Approx. 40 years (aligned with EU Directive 2009/31/EC).",
-    "liability_transfer": "Standardized 40-year monitoring period post-closure before state transfer.",
-    "permitting_lead_time": "Accelerated via 'Overriding Public Interest' status.",
-    "pore_space_rights": "Offshore storage permitted in EEZ; Onshore is 'Opt-in' by Federal States."
+    "co2_definition": "难减排行业的战略工具；排除煤炭行业。",
+    "cross_border_rules": "批准伦敦议定书修正案以允许二氧化碳出口。",
+    "financial_assurance": "33 亿欧元 KTF 资金；强制性的运营商场址关闭担保。",
+    "liability_period": "约 40 年（与欧盟指令 2009/31/EC 保持一致）。",
+    "liability_transfer": "国家转移前，闭坑后标准监测期为 40 年。",
+    "permitting_lead_time": "通过“高于公共利益”状态加速。",
+    "pore_space_rights": "允许在专属经济区 (EEZ) 进行离岸封存；陆上由联邦各州选择加入。"
   },
   "reviewStatus": "verified",
   "source": "BMWK",

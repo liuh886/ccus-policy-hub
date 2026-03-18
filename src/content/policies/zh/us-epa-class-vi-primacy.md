@@ -61,13 +61,13 @@
   },
   "pubDate": "2010-12-10",
   "regulatory": {
-    "co2_definition": "Solid waste or commodity (State dependent)",
-    "cross_border_rules": "Not applicable (Domestic)",
-    "financial_assurance": "Mandatory (Trust/Bond/Insurance)",
-    "liability_period": "50 years (Default Class VI)",
-    "liability_transfer": "No Federal Transfer (Site Care: 50 years)",
-    "permitting_lead_time": "2-6 years (State Primacy accelerates)",
-    "pore_space_rights": "Private Ownership (Surface Owner rules)"
+    "co2_definition": "固体废物或商品（取决于各州）",
+    "cross_border_rules": "不适用（国内）",
+    "financial_assurance": "强制性（信托/债券/保险）",
+    "liability_period": "50 年（默认 Class VI）",
+    "liability_transfer": "无联邦转移（场址维护：50 年）",
+    "permitting_lead_time": "2-6 年（州级管辖加速）",
+    "pore_space_rights": "私人所有（地表所有者规则）"
   },
   "reviewStatus": "verified",
   "source": "US EPA",

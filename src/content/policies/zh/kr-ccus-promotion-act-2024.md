@@ -48,13 +48,13 @@
   },
   "pubDate": "2024-01-09",
   "regulatory": {
-    "co2_definition": "Strategic resource for utilization and regulated storage matter.",
-    "cross_border_rules": "Legal basis for international CCS partnerships and CO2 export (e.g., to SE Asia).",
-    "financial_assurance": "CCUS Industry Promotion Fund; mandatory bonds for closure/leakage.",
-    "liability_period": "Performance-based period until stabilization is verified.",
-    "liability_transfer": "Responsibility transfers to state-designated entity after stability monitoring.",
-    "permitting_lead_time": "Streamlined via 'One-stop Shop' mechanism (Target 1-2 years reduction).",
-    "pore_space_rights": "Exclusive Storage Licenses granted by MOTIE in designated areas."
+    "co2_definition": "用于利用的战略资源和受监管的封存物质。",
+    "cross_border_rules": "国际 CCS 伙伴关系和二氧化碳出口（如出口至东南亚）的法律基础。",
+    "financial_assurance": "CCUS 产业振兴基金；强制性的闭坑/泄漏保证金。",
+    "liability_period": "基于表现的监测期，直到验证稳定性为止。",
+    "liability_transfer": "在稳定性监测后，责任转移给国家指定的实体。",
+    "permitting_lead_time": "通过“一站式”机制简化（目标缩短 1-2 年）。",
+    "pore_space_rights": "MOTIE 在指定区域授予的独占封存许可。"
   },
   "reviewStatus": "verified",
   "source": "MOTIE",

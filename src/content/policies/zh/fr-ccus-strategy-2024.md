@@ -48,13 +48,13 @@
   },
   "pubDate": "2024-07-01",
   "regulatory": {
-    "co2_definition": "Strictly reserved for unavoidable industrial residual emissions.",
-    "cross_border_rules": "Leading advocate for London Protocol compliance; 2024 bilateral export agreement with Norway.",
-    "financial_assurance": "15-year Carbon Contract for Difference (CCfD) mechanism.",
-    "liability_period": "Approx. 20-30 years (aligned with EU Directive 2009/31/EC).",
-    "liability_transfer": "Responsibility transfers to State after stability confirmation (post-closure).",
-    "permitting_lead_time": "Streamlined via 4 primary industrial hubs (Dunkirk, Le Havre, etc.).",
-    "pore_space_rights": "Strong State control; streamlined site conversion via Green Industry Act."
+    "co2_definition": "严格保留给不可避免的工业残留排放。",
+    "cross_border_rules": "伦敦议定书合规的主要倡导者；2024 年与挪威签署双边出口协议。",
+    "financial_assurance": "15 年期碳差价合约 (CCfD) 机制。",
+    "liability_period": "约 20-30 年（与欧盟指令 2009/31/EC 保持一致）。",
+    "liability_transfer": "稳定性确认后（闭坑后），责任转移给国家。",
+    "permitting_lead_time": "通过 4 个主要工业枢纽（敦刻尔克、勒阿弗尔等）进行简化。",
+    "pore_space_rights": "强大的国家控制；通过《绿色工业法》简化场址转换。"
   },
   "reviewStatus": "verified",
   "source": "MTE",

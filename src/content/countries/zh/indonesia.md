@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Carbon Emission",
-    "cross_border_rules": "Allowed (30% Capacity Cap allocated)",
-    "financial_assurance": "Mandatory (Performance Bond)",
-    "liability_period": "10 years (Proposed)",
-    "liability_transfer": "To Government after monitoring period",
-    "permitting_lead_time": "Developing (PSC amendment)",
-    "pore_space_rights": "State Owned"
+    "co2_definition": "碳排放",
+    "cross_border_rules": "允许（分配 30% 的容量上限）",
+    "financial_assurance": "强制性（履约保证金）",
+    "liability_period": "10 年（建议）",
+    "liability_transfer": "监测期后移交给政府",
+    "permitting_lead_time": "开发中（PSC 修订）",
+    "pore_space_rights": "国家所有"
   },
   "summary": "Profile for 印度尼西亚"
 }
