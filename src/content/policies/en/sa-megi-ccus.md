@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "沙特阿拉伯",
+  "country": "Saudi Arabia",
   "evolution": {
     "clusters": [
       "Circular Carbon Economy National Program",

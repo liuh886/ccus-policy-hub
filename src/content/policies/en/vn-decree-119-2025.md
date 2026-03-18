@@ -38,7 +38,7 @@
     }
   },
   "category": "Market",
-  "country": "越南",
+  "country": "Vietnam",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

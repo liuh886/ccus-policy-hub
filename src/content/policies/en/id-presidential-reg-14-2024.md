@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "印度尼西亚",
+  "country": "Indonesia",
   "evolution": {
     "clusters": [
       "ASEAN CCS Hub Strategy",
@@ -60,13 +60,13 @@
   },
   "pubDate": "2024-01-30",
   "regulatory": {
-    "co2_definition": "Regulated substance (with trade attributes)",
-    "cross_border_rules": "",
-    "financial_assurance": "Mandatory abandonment and site restoration fund",
-    "liability_period": "",
-    "liability_transfer": "Transfer to Government 10 years post-closure subject to stability monitoring",
-    "permitting_lead_time": "",
-    "pore_space_rights": "State Sovereignty Control"
+    "co2_definition": "Carbon Emission",
+    "cross_border_rules": "Allowed (30% Capacity Cap allocated)",
+    "financial_assurance": "Mandatory (Performance Bond)",
+    "liability_period": "10 years (Proposed)",
+    "liability_transfer": "To Government after monitoring period",
+    "permitting_lead_time": "Developing (PSC amendment)",
+    "pore_space_rights": "State Owned"
   },
   "reviewStatus": "verified",
   "source": "印度尼西亚内阁秘书处",

@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "尼日利亚",
+  "country": "Nigeria",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

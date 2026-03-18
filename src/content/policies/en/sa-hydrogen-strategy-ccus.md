@@ -38,7 +38,7 @@
     }
   },
   "category": "Strategic",
-  "country": "沙特阿拉伯",
+  "country": "Saudi Arabia",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

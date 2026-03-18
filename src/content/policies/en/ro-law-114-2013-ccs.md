@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "罗马尼亚",
+  "country": "Romania",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

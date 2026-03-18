@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "丹麦",
+  "country": "Denmark",
   "evolution": {
     "clusters": [
       "Denmark CCS Strategy 2030",

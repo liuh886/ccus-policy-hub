@@ -61,13 +61,13 @@
   },
   "pubDate": "2009-04-23",
   "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
+    "co2_definition": "CO2 Stream (Over 95% purity)",
+    "cross_border_rules": "TEN-E Regulation / London Protocol",
+    "financial_assurance": "Mandatory (EU Directive Art. 19)",
+    "liability_period": "Min. 20 years post-closure",
+    "liability_transfer": "Transfer to Competent Authority",
+    "permitting_lead_time": "Member State dependent",
+    "pore_space_rights": "Member State Jurisdiction"
   },
   "reviewStatus": "verified",
   "source": "European Parliament",

@@ -38,7 +38,7 @@
     }
   },
   "category": "Incentive",
-  "country": "哥伦比亚",
+  "country": "Colombia",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

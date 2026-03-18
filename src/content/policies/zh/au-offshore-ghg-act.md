@@ -24,13 +24,13 @@
   },
   "pubDate": "2023-01-01",
   "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
+    "co2_definition": "Greenhouse Gas Substance",
+    "cross_border_rules": "Permitted (London Protocol amended)",
+    "financial_assurance": "Mandatory (Full lifecycle)",
+    "liability_period": "Min. 15 years post-closure",
+    "liability_transfer": "Yes, to Commonwealth after closure",
+    "permitting_lead_time": "3-5 years (Offshore)",
+    "pore_space_rights": "Commonwealth (Offshore) / State (Onshore)"
   },
   "reviewStatus": "verified",
   "source": "",

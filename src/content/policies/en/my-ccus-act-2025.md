@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "马来西亚",
+  "country": "Malaysia",
   "evolution": {
     "clusters": [
       "Malaysia National Energy Transition Roadmap (NETR)",

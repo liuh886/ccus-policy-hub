@@ -38,7 +38,7 @@
     }
   },
   "category": "Strategic",
-  "country": "韩国",
+  "country": "South Korea",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

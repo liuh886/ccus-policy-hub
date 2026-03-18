@@ -38,7 +38,7 @@
     }
   },
   "category": "Strategic",
-  "country": "马来西亚",
+  "country": "Malaysia",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

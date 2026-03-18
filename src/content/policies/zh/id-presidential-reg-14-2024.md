@@ -60,13 +60,13 @@
   },
   "pubDate": "2024-01-30",
   "regulatory": {
-    "co2_definition": "受监管物质（包含跨境贸易属性）",
-    "cross_border_rules": "",
-    "financial_assurance": "要求运营商建立废弃处置储备金",
-    "liability_period": "",
-    "liability_transfer": "封存停止并监测 10 年后责任可转移至政府，前提是满足长期稳定性标准",
-    "permitting_lead_time": "",
-    "pore_space_rights": "国家主权控制 (State Control)"
+    "co2_definition": "Carbon Emission",
+    "cross_border_rules": "Allowed (30% Capacity Cap allocated)",
+    "financial_assurance": "Mandatory (Performance Bond)",
+    "liability_period": "10 years (Proposed)",
+    "liability_transfer": "To Government after monitoring period",
+    "permitting_lead_time": "Developing (PSC amendment)",
+    "pore_space_rights": "State Owned"
   },
   "reviewStatus": "verified",
   "source": "印度尼西亚内阁秘书处",

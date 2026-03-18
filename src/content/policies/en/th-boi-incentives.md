@@ -38,7 +38,7 @@
     }
   },
   "category": "Incentive",
-  "country": "泰国",
+  "country": "Thailand",
   "evolution": {
     "clusters": [
       "Thailand BCG Economy",

@@ -61,13 +61,13 @@
   },
   "pubDate": "2010-12-10",
   "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
+    "co2_definition": "Solid waste or commodity (State dependent)",
+    "cross_border_rules": "Not applicable (Domestic)",
+    "financial_assurance": "Mandatory (Trust/Bond/Insurance)",
+    "liability_period": "50 years (Default Class VI)",
+    "liability_transfer": "No Federal Transfer (Site Care: 50 years)",
+    "permitting_lead_time": "2-6 years (State Primacy accelerates)",
+    "pore_space_rights": "Private Ownership (Surface Owner rules)"
   },
   "reviewStatus": "verified",
   "source": "US EPA",

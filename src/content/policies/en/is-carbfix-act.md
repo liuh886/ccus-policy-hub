@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "冰岛",
+  "country": "Iceland",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

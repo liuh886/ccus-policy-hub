@@ -48,6 +48,21 @@ scripts/*
 .gemini/
 .codex/
 skills/
-agent/
 *.skill
 ccus-db-governance.skill
+
+# --- CCUS AI Agent Governance ---
+agent/*
+!agent/ccus-ai-agent/
+!agent/ccus-ai-agent/SKILL.md
+!agent/ccus-ai-agent/governance/
+!agent/ccus-ai-agent/governance/*.md
+!agent/ccus-ai-agent/governance/audit_thresholds.json
+!agent/ccus-ai-agent/db/
+!agent/ccus-ai-agent/db/ccus_master.sqlite
+!agent/ccus-ai-agent/db/schema.sql
+!agent/ccus-ai-agent/logic/
+!agent/ccus-ai-agent/logic/*.mjs
+agent/ccus-ai-agent/governance/reports/*
+agent/ccus-ai-agent/governance/archive/*
+agent/ccus-ai-agent/db/.lock

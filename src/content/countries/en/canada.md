@@ -5,7 +5,7 @@
   "name": "Canada",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-02-27",
+    "lastAuditDate": "2026-03-18",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -13,9 +13,9 @@
     "co2_definition": "Sequestered Substance",
     "cross_border_rules": "Provincial/Federal regulated",
     "financial_assurance": "Mandatory payments to Fund",
-    "liability_period": "Post-closure Stewardship Fund",
+    "liability_period": "Provincial responsibility; varies",
     "liability_transfer": "Yes, to Province (PICS Fund)",
-    "permitting_lead_time": "High (Competitive Hub selection)",
+    "permitting_lead_time": "3-5 years",
     "pore_space_rights": "Crown (Provincial)"
   },
   "summary": "Profile for Canada"

@@ -38,7 +38,7 @@
     }
   },
   "category": "Regulatory",
-  "country": "克罗地亚",
+  "country": "Croatia",
   "evolution": {
     "clusters": [],
     "supersededBy": "",

@@ -61,13 +61,13 @@
   },
   "pubDate": "2023-10-26",
   "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
+    "co2_definition": "Carbon Dioxide",
+    "cross_border_rules": "London Protocol / Bilateral Treaties",
+    "financial_assurance": "Mandatory (Decommissioning Fund)",
+    "liability_period": "Risk-based assessment",
+    "liability_transfer": "Transfer to State (conditions apply)",
+    "permitting_lead_time": "Track-1 / Track-2 Clusters process",
+    "pore_space_rights": "Crown Estate (Offshore)"
   },
   "reviewStatus": "verified",
   "source": "UK Government",
