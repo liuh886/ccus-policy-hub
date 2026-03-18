@@ -4,7 +4,7 @@
   "lang": "en",
   "maturity": {
     "x": 0,
-    "y": 0
+    "y": 415
   },
   "name": "Greece",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Managed Waste",
+    "cross_border_rules": "London Protocol",
+    "financial_assurance": "Mandatory Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "State Handover",
+    "permitting_lead_time": "18-24 months",
+    "pore_space_rights": "State Concession"
   },
   "summary": "Profile for Greece"
 }

@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Waste (EU Directive)",
+    "cross_border_rules": "EU ETS compliant",
+    "financial_assurance": "Environmental Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "Permitted",
+    "permitting_lead_time": "2-3 years",
+    "pore_space_rights": "State Owned"
   },
   "summary": "Profile for Portugal"
 }

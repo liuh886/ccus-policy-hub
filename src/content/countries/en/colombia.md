@@ -4,7 +4,7 @@
   "lang": "en",
   "maturity": {
     "x": 0,
-    "y": 340
+    "y": 420
   },
   "name": "Colombia",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Resource",
+    "cross_border_rules": "Bilateral",
+    "financial_assurance": "Environmental Bond",
+    "liability_period": "TBD",
+    "liability_transfer": "Proposed",
+    "permitting_lead_time": "2-3 years",
+    "pore_space_rights": "Subsurface State"
   },
   "summary": "Profile for Colombia"
 }

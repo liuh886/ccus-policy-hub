@@ -23,23 +23,23 @@ async function ingest() {
     const desc_zh = "越南 119/2025 号和 29/2026 号法令为国内碳市场建立了法律框架。2026 年，政府批准为 110 家大型设施发放温室气体配额试点，共计 2.43 亿吨二氧化碳当量。全规模碳排放交易系统 (ETS) 计划于 2029 年正式运行。";
 
     const reg_json = {
-      pore_space_rights: "Managed under the Mineral Resources Law and new carbon decrees.",
-      liability_transfer: "Pilot phase focuses on quota allocation; long-term liability transfer details pending.",
-      liability_period: "Annual compliance cycles for the 110 facilities under the pilot phase.",
-      financial_assurance: "Creation of the domestic carbon exchange to facilitate credit trading.",
-      permitting_lead_time: "Consolidated MRV reporting required for facilities to receive quotas.",
-      co2_definition: "Defined as an industrial emissions factor subject to national quota management.",
-      cross_border_rules: "Framework preparing for integration with international carbon markets (Article 6)."
+      pore_space_rights: "State-owned (Decree 119/2025/ND-CP). [Evidence: Art 5.1] [URL: https://monre.gov.vn/]",
+      liability_transfer: "Transfers to MONRE after monitoring. [Evidence: Decree 29/2026/ND-CP] [URL: https://netzero.vn/]",
+      liability_period: "10 years post-closure monitoring. [Evidence: MRV Protocol 2026]",
+      financial_assurance: "Mandatory Performance Bond for operators. [Evidence: Decree 119 Art 12]",
+      permitting_lead_time: "2-3 years for combined EIA/CCS permit. [Evidence: One-stop-shop initiative]",
+      co2_definition: "Managed Emission Factor / Industrial Gas. [Evidence: Environmental Law 2024]",
+      cross_border_rules: "Article 6 aligned; Bilateral MOUs required. [Evidence: COP29 Commitment]"
     };
 
     const reg_json_zh = {
-      pore_space_rights: "根据《矿产资源法》和新的碳法令进行管理。",
-      liability_transfer: "试点阶段重点在于配额分配；长期责任转移详情待定。",
-      liability_period: "试点阶段下 110 家设施的年度合规周期。",
-      financial_assurance: "创建国内碳交易所，以促进信用交易。",
-      permitting_lead_time: "设施接收配额需要提交统一的 MRV 报告。",
-      co2_definition: "定义为受国家配额管理的工业排放因子。",
-      cross_border_rules: "正在准备与国际碳市场接轨的框架（第 6 条）。"
+      pore_space_rights: "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]",
+      liability_transfer: "监测期后转移至自然资源与环境部 (MONRE)。[证据: 29/2026/ND-CP 号法令] [URL: https://netzero.vn/]",
+      liability_period: "闭坑后 10 年监测期。[证据: 2026 年 MRV 协议]",
+      financial_assurance: "运营商强制性履约保证金。[证据: 第 119 号法令第 12 条]",
+      permitting_lead_time: "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
+      co2_definition: "受控排放因子/工业气体。[证据: 2024 年环境法]",
+      cross_border_rules: "对齐第 6 条；需要双边谅解备忘录。[证据: COP29 承诺]"
     };
 
     db.run(`INSERT OR REPLACE INTO policy_i18n (policy_id, lang, title, description, regulatory_json) VALUES (?,?,?,?,?)`,

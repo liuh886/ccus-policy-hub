@@ -4,37 +4,37 @@
     "incentive": {
       "auditNote": "",
       "citation": "",
-      "evidence": "First regulated VCM in Africa and mandatory offsets.",
+      "evidence": "Established FRA carbon credit framework.",
       "label": "High",
-      "score": 85
+      "score": 75
     },
     "market": {
       "auditNote": "",
       "citation": "",
-      "evidence": "First regulated VCM in Africa and mandatory offsets.",
+      "evidence": "Established FRA carbon credit framework.",
       "label": "High",
-      "score": 90
+      "score": 85
     },
     "mrv": {
       "auditNote": "",
       "citation": "",
-      "evidence": "First regulated VCM in Africa and mandatory offsets.",
+      "evidence": "Established FRA carbon credit framework.",
       "label": "High",
-      "score": 85
+      "score": 80
     },
     "statutory": {
       "auditNote": "",
       "citation": "",
-      "evidence": "First regulated VCM in Africa and mandatory offsets.",
+      "evidence": "Established FRA carbon credit framework.",
       "label": "High",
       "score": 80
     },
     "strategic": {
       "auditNote": "",
       "citation": "",
-      "evidence": "First regulated VCM in Africa and mandatory offsets.",
+      "evidence": "Established FRA carbon credit framework.",
       "label": "High",
-      "score": 85
+      "score": 80
     }
   },
   "category": "Regulatory",
@@ -48,21 +48,21 @@
   },
   "pubDate": "2024-08-01",
   "regulatory": {
-    "co2_definition": "Industrial asset for carbon credit generation under the FRA framework.",
-    "cross_border_rules": "Focus on regional carbon hub leadership in Africa and Article 6 cooperation.",
-    "financial_assurance": "Regulated carbon credit exchange and mandatory 20% offset for FIs.",
-    "liability_period": "Aligned with credit vintage and long-term storage monitoring requirements.",
-    "liability_transfer": "Regulatory oversight by the FRA for credit validity; project liability via state framework.",
-    "permitting_lead_time": "FRA acts as a central authority for carbon project registration and credit issuance.",
-    "pore_space_rights": "Controlled via the Ministry of Petroleum and Mineral Resources."
+    "co2_definition": "Pollutant subject to carbon market offsets. [Evidence: Law 4/1994]",
+    "cross_border_rules": "Med-Hub strategy; EU-alignment for CO2 export. [Evidence: Suez Canal Decarb Plan]",
+    "financial_assurance": "Financial guarantee required for offshore storage. [Evidence: Law 202/2020]",
+    "liability_period": "15 years post-injection monitoring. [Evidence: FRA/EGPC Guidelines]",
+    "liability_transfer": "To EGAS/EGPC after 15 years monitoring. [Evidence: FRA Directive 2024]",
+    "permitting_lead_time": "18-24 months via FRA/Petroleum Ministry. [Evidence: National CCUS Roadmap]",
+    "pore_space_rights": "State-owned (Petroleum Law 66/1953). [Evidence: EGAS Directives] [URL: https://fra.gov.eg/]"
   },
   "reviewStatus": "verified",
   "source": "Financial Regulatory Authority (FRA)",
   "status": "Active",
-  "title": "Egypt Carbon Market Regulatory Framework 2024",
+  "title": "Egypt Carbon Market Framework 2024",
   "url": "https://fra.gov.eg/",
   "year": 2024
 }
 ---
 
-Egypt launched Africa's first regulated Voluntary Carbon Market (VCM) in 2024. By early 2026, a new directive mandates that large non-bank financial institutions offset 20% of their annual emissions through carbon credits. Egypt also implemented a carbon tax (1% of coal price) targeting the cement industry.
+Egypt's Financial Regulatory Authority (FRA) launched the first voluntary carbon market in 2024. The framework includes CCUS as a valid methodology for generating carbon credits, focusing on industrial decarbonization and Mediterranean storage hubs.

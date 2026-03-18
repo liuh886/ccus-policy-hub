@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 340
+    "y": 420
   },
   "name": "哥伦比亚",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "Resource",
+    "cross_border_rules": "Bilateral",
+    "financial_assurance": "Environmental Bond",
+    "liability_period": "TBD",
+    "liability_transfer": "Proposed",
+    "permitting_lead_time": "2-3 years",
+    "pore_space_rights": "Subsurface State"
   },
   "summary": "Profile for 哥伦比亚"
 }

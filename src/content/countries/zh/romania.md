@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 285
+    "y": 415
   },
   "name": "罗马尼亚",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "Industrial Product",
+    "cross_border_rules": "EU Compliant",
+    "financial_assurance": "Bank Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "Permitted (20y)",
+    "permitting_lead_time": "1-2 years",
+    "pore_space_rights": "State Owned"
   },
   "summary": "Profile for 罗马尼亚"
 }

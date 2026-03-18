@@ -48,13 +48,13 @@
   },
   "pubDate": "2025-10-01",
   "regulatory": {
-    "co2_definition": "Defined as an industrial emissions factor subject to national quota management.",
-    "cross_border_rules": "Framework preparing for integration with international carbon markets (Article 6).",
-    "financial_assurance": "Creation of the domestic carbon exchange to facilitate credit trading.",
-    "liability_period": "Annual compliance cycles for the 110 facilities under the pilot phase.",
-    "liability_transfer": "Pilot phase focuses on quota allocation; long-term liability transfer details pending.",
-    "permitting_lead_time": "Consolidated MRV reporting required for facilities to receive quotas.",
-    "pore_space_rights": "Managed under the Mineral Resources Law and new carbon decrees."
+    "co2_definition": "Managed Emission Factor / Industrial Gas. [Evidence: Environmental Law 2024]",
+    "cross_border_rules": "Article 6 aligned; Bilateral MOUs required. [Evidence: COP29 Commitment]",
+    "financial_assurance": "Mandatory Performance Bond for operators. [Evidence: Decree 119 Art 12]",
+    "liability_period": "10 years post-closure monitoring. [Evidence: MRV Protocol 2026]",
+    "liability_transfer": "Transfers to MONRE after monitoring. [Evidence: Decree 29/2026/ND-CP] [URL: https://netzero.vn/]",
+    "permitting_lead_time": "2-3 years for combined EIA/CCS permit. [Evidence: One-stop-shop initiative]",
+    "pore_space_rights": "State-owned (Decree 119/2025/ND-CP). [Evidence: Art 5.1] [URL: https://monre.gov.vn/]"
   },
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",

@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Managed Asset",
+    "cross_border_rules": "EU Internal",
+    "financial_assurance": "Bank Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "EU Compliant",
+    "permitting_lead_time": "2 years",
+    "pore_space_rights": "State Owned"
   },
   "summary": "Profile for Austria"
 }

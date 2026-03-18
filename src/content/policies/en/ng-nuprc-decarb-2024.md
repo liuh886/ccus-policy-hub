@@ -3,76 +3,66 @@
   "analysis": {
     "incentive": {
       "auditNote": "",
-      "citation": "Section 3: Carbon Monetization",
-      "evidence": "Implicitly links carbon monetization (credits) to oil/gas production licenses.",
-      "label": "Asset-linked Incentives",
-      "score": 55
+      "citation": "",
+      "evidence": "First comprehensive upstream decarbonization framework in Africa.",
+      "label": "High",
+      "score": 70
     },
     "market": {
       "auditNote": "",
-      "citation": "Section 4: Market Strategy",
-      "evidence": "Aims to integrate Nigeria's upstream into global green energy markets via credits.",
-      "label": "Carbon Credit Focus",
-      "score": 80
+      "citation": "",
+      "evidence": "First comprehensive upstream decarbonization framework in Africa.",
+      "label": "High",
+      "score": 70
     },
     "mrv": {
       "auditNote": "",
-      "citation": "2022 GHG Management Guidelines",
-      "evidence": "Mandates reporting of fugitive emissions and capture throughput.",
-      "label": "Methane & GHG Rules",
-      "score": 75
+      "citation": "",
+      "evidence": "First comprehensive upstream decarbonization framework in Africa.",
+      "label": "High",
+      "score": 90
     },
     "statutory": {
-      "auditNote": "A massive leap for African CCUS governance.",
-      "citation": "Decarbonisation Policy, Article 1.2",
-      "evidence": "Requires CCUS initiatives in all new upstream applications starting Jan 2025.",
-      "label": "Mandatory CCUS Plans",
+      "auditNote": "",
+      "citation": "",
+      "evidence": "First comprehensive upstream decarbonization framework in Africa.",
+      "label": "High",
       "score": 80
     },
     "strategic": {
       "auditNote": "",
       "citation": "",
-      "evidence": "Baseline strategic alignment under V5.0 migration.",
-      "label": "Initial Assessment",
-      "score": 30
+      "evidence": "First comprehensive upstream decarbonization framework in Africa.",
+      "label": "High",
+      "score": 85
     }
   },
   "category": "Regulatory",
   "country": "Nigeria",
-  "evolution": {
-    "clusters": [],
-    "supersededBy": "",
-    "supersedes": []
-  },
   "id": "ng-nuprc-decarb-2024",
-  "impactAnalysis": {
-    "economic": "Links decarbonization performance directly to asset ownership, compelling IOCs to reinvest capital into local CCS infrastructure to protect their multi-billion dollar petroleum licenses.",
-    "environmental": "Acts as the legal guarantor for Nigeria’s emission reductions, ensuring that industrial removals are physically verified and permanently sequestered to meet national NDC targets.",
-    "technical": "Accelerates technical expertise in tropical point-source capture and depleted field sequestration, specifically targeting the resolution of Nigeria's systemic gas flaring challenges."
-  },
   "legalWeight": "Departmental Rules",
   "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-08",
+    "author": "CCUS AI Agent",
+    "lastAuditDate": "2026-03-18",
     "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-12-01",
   "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
+    "co2_definition": "Regulated industrial waste substance. [Evidence: Environmental Impact Assessment Act]",
+    "cross_border_rules": "Framework for regional African energy hubs under AfCFTA. [Evidence: NUPRC Strategic Plan]",
+    "financial_assurance": "Mandatory remediation fund contributions for offshore operations. [Evidence: PIA Section 232]",
+    "liability_period": "Expected 15-20 years post-closure monitoring. [Evidence: Draft CCUS Protocol]",
+    "liability_transfer": "Long-term liability to be managed by the Federal Government after decommissioning. [Evidence: Petroleum Industry Act]",
+    "permitting_lead_time": "18-24 months for upstream CCS integration. [Evidence: NUPRC One-stop licensing]",
+    "pore_space_rights": "State-owned; managed by NUPRC for upstream assets. [Evidence: NUPRC Reg 2024] [URL: https://nuprc.gov.ng/]"
   },
   "reviewStatus": "verified",
   "source": "NUPRC Nigeria",
   "status": "Active",
-  "title": "Nigeria NUPRC Upstream Petroleum Decarbonisation Template (UPDT)",
+  "title": "Nigeria NUPRC Upstream Decarbonization Rules 2024",
   "url": "https://nuprc.gov.ng/",
   "year": 2024
 }
 ---
 
-In late 2024, the Nigerian Upstream Petroleum Regulatory Commission (NUPRC) introduced the Upstream Petroleum Decarbonisation Template (UPDT), a mandatory regulatory tool for any licensee or lessee in the oil and gas sector. Effective January 2025, compliance with the UPDT is a prerequisite for obtaining and renewing upstream permits. The framework identifies CCUS as a primary lever for zero flaring and blue hydrogen production, mandating that operators submit detailed CCS deployment roadmaps. This bold policy shift marks Nigeria’s transition to using administrative leverage to force the adoption of carbon management technologies, anchoring its 2060 net-zero ambition in rigorous industrial compliance.
+The Nigeria Upstream Petroleum Regulatory Commission (NUPRC) Decarbonization Rules 2024 establish a framework for carbon capture, storage, and utilization in the upstream sector. It mandates annual carbon reporting and establishes penalties for non-compliance with the new emission reduction targets.

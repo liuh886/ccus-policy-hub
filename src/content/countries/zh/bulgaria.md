@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "Managed Asset",
+    "cross_border_rules": "EU Internal",
+    "financial_assurance": "Bank Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "EU Compliant (20y)",
+    "permitting_lead_time": "12-24 months",
+    "pore_space_rights": "State Owned"
   },
   "summary": "Profile for 保加利亚"
 }

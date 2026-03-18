@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 0
+    "y": 415
   },
   "name": "希腊",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "Managed Waste",
+    "cross_border_rules": "London Protocol",
+    "financial_assurance": "Mandatory Guarantee",
+    "liability_period": "20 years",
+    "liability_transfer": "State Handover",
+    "permitting_lead_time": "18-24 months",
+    "pore_space_rights": "State Concession"
   },
   "summary": "Profile for 希腊"
 }

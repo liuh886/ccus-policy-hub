@@ -66,3 +66,18 @@ agent/*
 agent/ccus-ai-agent/governance/reports/*
 agent/ccus-ai-agent/governance/archive/*
 agent/ccus-ai-agent/db/.lock
+
+# --- Consolidated Governance Ignoring ---
+DESIGN.md
+TASKS.md
+agent/
+tasks/
+
+
+# --- Absolute Governance Ignore ---
+DESIGN.md
+TASKS.md
+agent.md
+agent/
+tasks/
+

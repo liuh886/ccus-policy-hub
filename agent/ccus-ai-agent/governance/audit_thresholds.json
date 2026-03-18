@@ -3,5 +3,5 @@
   "min_policy_count": 80,
   "min_facility_count": 1000,
   "require_citation_density": 0.9,
-  "min_regulatory_fill_rate": 0.0
+  "min_regulatory_fill_rate": 0.7
 }

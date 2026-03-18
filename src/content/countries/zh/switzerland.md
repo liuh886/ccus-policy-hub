@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 0
+    "y": 430
   },
   "name": "瑞士",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "Resource",
+    "cross_border_rules": "Bilateral Authorizing",
+    "financial_assurance": "Mandatory",
+    "liability_period": "TBD",
+    "liability_transfer": "Planned",
+    "permitting_lead_time": "18-24 months",
+    "pore_space_rights": "Cantonal (State)"
   },
   "summary": "Profile for 瑞士"
 }

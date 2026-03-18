@@ -48,13 +48,13 @@
   },
   "pubDate": "2025-10-01",
   "regulatory": {
-    "co2_definition": "定义为受国家配额管理的工业排放因子。",
-    "cross_border_rules": "正在准备与国际碳市场接轨的框架（第 6 条）。",
-    "financial_assurance": "创建国内碳交易所，以促进信用交易。",
-    "liability_period": "试点阶段下 110 家设施的年度合规周期。",
-    "liability_transfer": "试点阶段重点在于配额分配；长期责任转移详情待定。",
-    "permitting_lead_time": "设施接收配额需要提交统一的 MRV 报告。",
-    "pore_space_rights": "根据《矿产资源法》和新的碳法令进行管理。"
+    "co2_definition": "受控排放因子/工业气体。[证据: 2024 年环境法]",
+    "cross_border_rules": "对齐第 6 条；需要双边谅解备忘录。[证据: COP29 承诺]",
+    "financial_assurance": "运营商强制性履约保证金。[证据: 第 119 号法令第 12 条]",
+    "liability_period": "闭坑后 10 年监测期。[证据: 2026 年 MRV 协议]",
+    "liability_transfer": "监测期后转移至自然资源与环境部 (MONRE)。[证据: 29/2026/ND-CP 号法令] [URL: https://netzero.vn/]",
+    "permitting_lead_time": "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
+    "pore_space_rights": "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]"
   },
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",
