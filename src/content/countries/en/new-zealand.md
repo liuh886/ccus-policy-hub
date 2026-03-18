@@ -2,6 +2,10 @@
 {
   "id": "New Zealand",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "New Zealand",
   "provenance": {
     "author": "System",

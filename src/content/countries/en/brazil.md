@@ -2,6 +2,10 @@
 {
   "id": "Brazil",
   "lang": "en",
+  "maturity": {
+    "x": 10.6,
+    "y": 425
+  },
   "name": "Brazil",
   "provenance": {
     "author": "System",

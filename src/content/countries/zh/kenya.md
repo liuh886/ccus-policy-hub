@@ -2,6 +2,10 @@
 {
   "id": "Kenya",
   "lang": "zh",
+  "maturity": {
+    "x": 0.001,
+    "y": 0
+  },
   "name": "肯尼亚",
   "provenance": {
     "author": "System",

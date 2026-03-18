@@ -2,6 +2,10 @@
 {
   "id": "Luxembourg",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Luxembourg",
   "provenance": {
     "author": "System",

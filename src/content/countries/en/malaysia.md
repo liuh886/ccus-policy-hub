@@ -2,6 +2,10 @@
 {
   "id": "Malaysia",
   "lang": "en",
+  "maturity": {
+    "x": 3.3,
+    "y": 455
+  },
   "name": "Malaysia",
   "provenance": {
     "author": "System",

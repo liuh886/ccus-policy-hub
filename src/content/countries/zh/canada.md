@@ -2,6 +2,10 @@
 {
   "id": "Canada",
   "lang": "zh",
+  "maturity": {
+    "x": 36.695,
+    "y": 445
+  },
   "name": "加拿大",
   "provenance": {
     "author": "System",

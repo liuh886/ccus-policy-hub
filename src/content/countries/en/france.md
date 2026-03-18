@@ -2,6 +2,10 @@
 {
   "id": "France",
   "lang": "en",
+  "maturity": {
+    "x": 0.11,
+    "y": 420
+  },
   "name": "France",
   "provenance": {
     "author": "System",

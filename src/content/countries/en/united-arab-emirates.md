@@ -2,6 +2,10 @@
 {
   "id": "United Arab Emirates",
   "lang": "en",
+  "maturity": {
+    "x": 3.8,
+    "y": 445
+  },
   "name": "United Arab Emirates",
   "provenance": {
     "author": "System",

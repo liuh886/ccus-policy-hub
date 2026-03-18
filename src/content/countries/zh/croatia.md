@@ -2,6 +2,10 @@
 {
   "id": "Croatia",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 305
+  },
   "name": "克罗地亚",
   "provenance": {
     "author": "System",

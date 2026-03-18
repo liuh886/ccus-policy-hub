@@ -2,6 +2,10 @@
 {
   "id": "Luxembourg",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "卢森堡",
   "provenance": {
     "author": "System",

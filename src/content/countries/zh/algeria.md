@@ -2,6 +2,10 @@
 {
   "id": "Algeria",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "阿尔及利亚",
   "provenance": {
     "author": "System",

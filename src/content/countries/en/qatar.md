@@ -2,6 +2,10 @@
 {
   "id": "Qatar",
   "lang": "en",
+  "maturity": {
+    "x": 7.9,
+    "y": 405
+  },
   "name": "Qatar",
   "provenance": {
     "author": "System",

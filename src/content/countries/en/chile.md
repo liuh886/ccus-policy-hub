@@ -2,6 +2,10 @@
 {
   "id": "Chile",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Chile",
   "provenance": {
     "author": "System",

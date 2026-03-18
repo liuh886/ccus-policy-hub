@@ -2,6 +2,10 @@
 {
   "id": "Republic of Korea",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 445
+  },
   "name": "South Korea",
   "provenance": {
     "author": "System",

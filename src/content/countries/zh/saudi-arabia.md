@@ -2,6 +2,10 @@
 {
   "id": "Saudi Arabia",
   "lang": "zh",
+  "maturity": {
+    "x": 0.8,
+    "y": 445
+  },
   "name": "沙特阿拉伯",
   "provenance": {
     "author": "System",

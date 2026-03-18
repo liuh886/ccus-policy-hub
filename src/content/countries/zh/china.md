@@ -2,6 +2,10 @@
 {
   "id": "China",
   "lang": "zh",
+  "maturity": {
+    "x": 10.86,
+    "y": 425
+  },
   "name": "中国",
   "provenance": {
     "author": "System",

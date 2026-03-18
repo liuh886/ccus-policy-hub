@@ -2,6 +2,10 @@
 {
   "id": "Iceland",
   "lang": "en",
+  "maturity": {
+    "x": 0.04,
+    "y": 475
+  },
   "name": "Iceland",
   "provenance": {
     "author": "System",

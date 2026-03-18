@@ -2,6 +2,10 @@
 {
   "id": "Thailand",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 400
+  },
   "name": "泰国",
   "provenance": {
     "author": "System",

@@ -2,6 +2,10 @@
 {
   "id": "Bahrain",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Bahrain",
   "provenance": {
     "author": "System",

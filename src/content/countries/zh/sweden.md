@@ -2,6 +2,10 @@
 {
   "id": "Sweden",
   "lang": "zh",
+  "maturity": {
+    "x": 0.8,
+    "y": 0
+  },
   "name": "瑞典",
   "provenance": {
     "author": "System",

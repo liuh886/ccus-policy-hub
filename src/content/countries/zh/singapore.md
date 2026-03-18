@@ -2,6 +2,10 @@
 {
   "id": "Singapore",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "新加坡",
   "provenance": {
     "author": "System",

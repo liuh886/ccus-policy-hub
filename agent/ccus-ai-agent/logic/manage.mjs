@@ -439,6 +439,10 @@ This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''},
           co2_definition: i.co2_definition,
           cross_border_rules: i.cross_border_rules
         },
+        maturity: {
+          x: c.maturity_x || 0,
+          y: c.maturity_y || 0
+        },
         strategicTargets: {
           capture2030: c.capture_2030,
           storage2050: c.storage_2050,

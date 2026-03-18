@@ -2,6 +2,10 @@
 {
   "id": "Oman",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Oman",
   "provenance": {
     "author": "System",

@@ -2,6 +2,10 @@
 {
   "id": "Nigeria",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 320
+  },
   "name": "Nigeria",
   "provenance": {
     "author": "System",

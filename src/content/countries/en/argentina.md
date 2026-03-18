@@ -2,6 +2,10 @@
 {
   "id": "Argentina",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 385
+  },
   "name": "Argentina",
   "provenance": {
     "author": "System",

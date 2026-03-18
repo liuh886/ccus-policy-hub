@@ -2,6 +2,10 @@
 {
   "id": "Indonesia",
   "lang": "zh",
+  "maturity": {
+    "x": 3.3,
+    "y": 390
+  },
   "name": "印度尼西亚",
   "provenance": {
     "author": "System",

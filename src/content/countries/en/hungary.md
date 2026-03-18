@@ -2,6 +2,10 @@
 {
   "id": "Hungary",
   "lang": "en",
+  "maturity": {
+    "x": 0.16,
+    "y": 0
+  },
   "name": "Hungary",
   "provenance": {
     "author": "System",

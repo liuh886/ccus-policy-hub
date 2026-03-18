@@ -2,6 +2,10 @@
 {
   "id": "Bulgaria",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "保加利亚",
   "provenance": {
     "author": "System",

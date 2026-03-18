@@ -2,6 +2,10 @@
 {
   "id": "Finland",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "芬兰",
   "provenance": {
     "author": "System",

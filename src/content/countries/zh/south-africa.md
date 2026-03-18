@@ -2,6 +2,10 @@
 {
   "id": "South Africa",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 420
+  },
   "name": "南非",
   "provenance": {
     "author": "System",

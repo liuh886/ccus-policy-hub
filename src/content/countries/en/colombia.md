@@ -2,6 +2,10 @@
 {
   "id": "Colombia",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 340
+  },
   "name": "Colombia",
   "provenance": {
     "author": "System",

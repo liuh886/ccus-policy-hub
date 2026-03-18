@@ -2,6 +2,10 @@
 {
   "id": "Lithuania",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "立陶宛",
   "provenance": {
     "author": "System",

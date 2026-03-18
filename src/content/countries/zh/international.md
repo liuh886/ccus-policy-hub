@@ -2,6 +2,10 @@
 {
   "id": "International",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 390
+  },
   "name": "国际",
   "provenance": {
     "author": "System",

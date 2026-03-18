@@ -2,6 +2,10 @@
 {
   "id": "Colombia",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 340
+  },
   "name": "哥伦比亚",
   "provenance": {
     "author": "System",

@@ -2,6 +2,10 @@
 {
   "id": "Other",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "其他",
   "provenance": {
     "author": "System",

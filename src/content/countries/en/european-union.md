@@ -2,6 +2,10 @@
 {
   "id": "European Union",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 480
+  },
   "name": "European Union",
   "provenance": {
     "author": "System",

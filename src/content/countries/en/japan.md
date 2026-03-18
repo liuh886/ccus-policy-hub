@@ -2,6 +2,10 @@
 {
   "id": "Japan",
   "lang": "en",
+  "maturity": {
+    "x": 0.18,
+    "y": 440
+  },
   "name": "Japan",
   "provenance": {
     "author": "System",

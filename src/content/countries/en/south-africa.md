@@ -2,6 +2,10 @@
 {
   "id": "South Africa",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 420
+  },
   "name": "South Africa",
   "provenance": {
     "author": "System",

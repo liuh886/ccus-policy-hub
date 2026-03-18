@@ -2,6 +2,10 @@
 {
   "id": "Belgium",
   "lang": "en",
+  "maturity": {
+    "x": 0.125,
+    "y": 0
+  },
   "name": "Belgium",
   "provenance": {
     "author": "System",

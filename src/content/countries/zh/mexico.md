@@ -2,6 +2,10 @@
 {
   "id": "Mexico",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 360
+  },
   "name": "墨西哥",
   "provenance": {
     "author": "System",

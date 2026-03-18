@@ -2,6 +2,10 @@
 {
   "id": "Brazil",
   "lang": "zh",
+  "maturity": {
+    "x": 10.6,
+    "y": 425
+  },
   "name": "巴西",
   "provenance": {
     "author": "System",

@@ -2,6 +2,10 @@
 {
   "id": "Ireland",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "爱尔兰",
   "provenance": {
     "author": "System",

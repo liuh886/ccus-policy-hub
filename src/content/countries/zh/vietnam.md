@@ -2,6 +2,10 @@
 {
   "id": "Vietnam",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 430
+  },
   "name": "越南",
   "provenance": {
     "author": "System",

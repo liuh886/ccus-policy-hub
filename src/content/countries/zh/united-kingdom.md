@@ -2,6 +2,10 @@
 {
   "id": "United Kingdom",
   "lang": "zh",
+  "maturity": {
+    "x": 6,
+    "y": 465
+  },
   "name": "英国",
   "provenance": {
     "author": "System",

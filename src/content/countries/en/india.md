@@ -2,6 +2,10 @@
 {
   "id": "India",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 425
+  },
   "name": "India",
   "provenance": {
     "author": "System",

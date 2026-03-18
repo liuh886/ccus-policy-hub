@@ -2,6 +2,10 @@
 {
   "id": "Australia",
   "lang": "zh",
+  "maturity": {
+    "x": 3.3,
+    "y": 435
+  },
   "name": "澳大利亚",
   "provenance": {
     "author": "System",

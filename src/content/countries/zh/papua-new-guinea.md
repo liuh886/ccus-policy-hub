@@ -2,6 +2,10 @@
 {
   "id": "Papua New Guinea",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "巴布亚新几内亚",
   "provenance": {
     "author": "System",

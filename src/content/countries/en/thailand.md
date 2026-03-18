@@ -2,6 +2,10 @@
 {
   "id": "Thailand",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 400
+  },
   "name": "Thailand",
   "provenance": {
     "author": "System",

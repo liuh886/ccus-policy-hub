@@ -2,6 +2,10 @@
 {
   "id": "United States",
   "lang": "zh",
+  "maturity": {
+    "x": 40.128,
+    "y": 410
+  },
   "name": "美国",
   "provenance": {
     "author": "System",

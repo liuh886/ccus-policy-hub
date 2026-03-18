@@ -2,6 +2,10 @@
 {
   "id": "International",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 390
+  },
   "name": "International",
   "provenance": {
     "author": "System",

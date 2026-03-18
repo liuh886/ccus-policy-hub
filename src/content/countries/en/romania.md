@@ -2,6 +2,10 @@
 {
   "id": "Romania",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 285
+  },
   "name": "Romania",
   "provenance": {
     "author": "System",

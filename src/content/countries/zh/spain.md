@@ -2,6 +2,10 @@
 {
   "id": "Spain",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "西班牙",
   "provenance": {
     "author": "System",

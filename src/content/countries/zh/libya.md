@@ -2,6 +2,10 @@
 {
   "id": "Libya",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "利比亚",
   "provenance": {
     "author": "System",

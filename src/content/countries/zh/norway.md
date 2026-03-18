@@ -2,6 +2,10 @@
 {
   "id": "Norway",
   "lang": "zh",
+  "maturity": {
+    "x": 7.65,
+    "y": 485
+  },
   "name": "挪威",
   "provenance": {
     "author": "System",

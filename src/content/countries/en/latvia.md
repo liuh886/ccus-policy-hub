@@ -2,6 +2,10 @@
 {
   "id": "Latvia",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Latvia",
   "provenance": {
     "author": "System",

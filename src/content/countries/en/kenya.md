@@ -2,6 +2,10 @@
 {
   "id": "Kenya",
   "lang": "en",
+  "maturity": {
+    "x": 0.001,
+    "y": 0
+  },
   "name": "Kenya",
   "provenance": {
     "author": "System",

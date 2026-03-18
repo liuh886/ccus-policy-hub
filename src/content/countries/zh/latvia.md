@@ -2,6 +2,10 @@
 {
   "id": "Latvia",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "拉脱维亚",
   "provenance": {
     "author": "System",

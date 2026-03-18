@@ -2,6 +2,10 @@
 {
   "id": "Portugal",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "葡萄牙",
   "provenance": {
     "author": "System",

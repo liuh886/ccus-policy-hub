@@ -2,6 +2,10 @@
 {
   "id": "Turkey",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 420
+  },
   "name": "土耳其",
   "provenance": {
     "author": "System",

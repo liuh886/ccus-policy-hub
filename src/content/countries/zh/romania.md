@@ -2,6 +2,10 @@
 {
   "id": "Romania",
   "lang": "zh",
+  "maturity": {
+    "x": 0,
+    "y": 285
+  },
   "name": "罗马尼亚",
   "provenance": {
     "author": "System",

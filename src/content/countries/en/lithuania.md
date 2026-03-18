@@ -2,6 +2,10 @@
 {
   "id": "Lithuania",
   "lang": "en",
+  "maturity": {
+    "x": 0,
+    "y": 0
+  },
   "name": "Lithuania",
   "provenance": {
     "author": "System",

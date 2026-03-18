@@ -2,6 +2,10 @@
 {
   "id": "Germany",
   "lang": "zh",
+  "maturity": {
+    "x": 0.1,
+    "y": 420
+  },
   "name": "德国",
   "provenance": {
     "author": "System",

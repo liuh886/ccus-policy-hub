@@ -2,6 +2,10 @@
 {
   "id": "United States",
   "lang": "en",
+  "maturity": {
+    "x": 40.128,
+    "y": 410
+  },
   "name": "United States",
   "provenance": {
     "author": "System",
