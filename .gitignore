@@ -48,5 +48,6 @@ scripts/*
 .gemini/
 .codex/
 skills/
+agent/
 *.skill
 ccus-db-governance.skill
