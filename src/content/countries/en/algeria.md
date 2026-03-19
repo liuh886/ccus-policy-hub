@@ -8,22 +8,22 @@
   },
   "name": "Algeria",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Commodity/Industrial Gas (dual-use for EOR/Utilization vs Waste).",
+    "cross_border_rules": "Aligning with EU CBAM; third-party access rules in development.",
+    "financial_assurance": "Mandatory; incentives via reduced royalties (5%) and tax breaks.",
+    "liability_period": "10-30 years post-injection monitoring.",
+    "liability_transfer": "Transfer to State (Sonatrach) after stability period (10-30y).",
+    "permitting_lead_time": "2-3 years (Managed by ALNAFT and ARH).",
+    "pore_space_rights": "State-owned (Hydrocarbon Law 19-13). ALNAFT issues mining titles."
   },
-  "summary": "Profile for Algeria"
+  "summary": "Regulatory profile for Algeria"
 }
 ---
 
-Profile for Algeria
+Regulatory profile for Algeria

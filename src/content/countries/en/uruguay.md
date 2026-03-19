@@ -8,22 +8,22 @@
   },
   "name": "Uruguay",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Resource for utilization or Sequestered Substance.",
+    "cross_border_rules": "Focus on Green Hydrogen Roadmap and biogenic CO2 (BECCS).",
+    "financial_assurance": "Mandatory; incentives via Investment Promotion Regime.",
+    "liability_period": "20-30 years post-closure (proposed).",
+    "liability_transfer": "Transfer to State after stability proof post-closure.",
+    "permitting_lead_time": "3-5 years (Ministry of Environment oversight).",
+    "pore_space_rights": "State-owned (Mining Code); access similar to concessions."
   },
-  "summary": "Profile for Uruguay"
+  "summary": "Regulatory profile for Uruguay"
 }
 ---
 
-Profile for Uruguay
+Regulatory profile for Uruguay

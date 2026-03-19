@@ -8,22 +8,22 @@
   },
   "name": "爱尔兰",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "待定",
-    "cross_border_rules": "待定",
-    "financial_assurance": "待定",
-    "liability_period": "待定",
-    "liability_transfer": "待定",
-    "permitting_lead_time": "待定",
-    "pore_space_rights": "待定"
+    "co2_definition": "永久封存不归类为废物；侧重于高纯度。",
+    "cross_border_rules": "国家 CCUS 政策框架侧重于 Cork/Shannon 集群。",
+    "financial_assurance": "用于修复和未来成本的强制性债券/代管。",
+    "liability_period": "至少 20 年闭坑后监测。",
+    "liability_transfer": "遵循欧盟指令；至少 20 年后转移至国家。",
+    "permitting_lead_time": "3-6 年 (EPA/MARA 监管)。",
+    "pore_space_rights": "国家所有 (矿产开发法)；颁发独占封存许可。"
   },
-  "summary": "Profile for 爱尔兰"
+  "summary": "爱尔兰 的监管概况"
 }
 ---
 
-Profile for 爱尔兰
+爱尔兰 的监管概况

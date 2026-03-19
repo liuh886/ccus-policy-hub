@@ -8,22 +8,22 @@
   },
   "name": "Ireland",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Not classified as waste for permanent storage; high-purity focus.",
+    "cross_border_rules": "National CCUS Policy Framework focus on Cork/Shannon clusters.",
+    "financial_assurance": "Mandatory Bonds/Escrow for remediation and future costs.",
+    "liability_period": "Minimum 20 years post-closure monitoring.",
+    "liability_transfer": "Follows EU Directive; transfer to State after min. 20 years.",
+    "permitting_lead_time": "3-6 years (EPA/MARA oversight).",
+    "pore_space_rights": "State-owned (Minerals Dev. Acts); exclusive Storage Permits issued."
   },
-  "summary": "Profile for Ireland"
+  "summary": "Regulatory profile for Ireland"
 }
 ---
 
-Profile for Ireland
+Regulatory profile for Ireland

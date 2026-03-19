@@ -8,22 +8,22 @@
   },
   "name": "Bahrain",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Hybrid/CCE Asset (Resource for industrial use vs Sequestration).",
+    "cross_border_rules": "International collaboration with SLB; safety standards focus.",
+    "financial_assurance": "Exploring Carbon Fund / Tipping fee per tonne for monitoring.",
+    "liability_period": "10-20 years post-injection monitoring (proposed).",
+    "liability_transfer": "Two-stage: Operator liable during injection; State after stability.",
+    "permitting_lead_time": "2-4 years (Pilot and research phase).",
+    "pore_space_rights": "State-owned (NOGA/Bapco Energies); concession-based model."
   },
-  "summary": "Profile for Bahrain"
+  "summary": "Regulatory profile for Bahrain"
 }
 ---
 
-Profile for Bahrain
+Regulatory profile for Bahrain

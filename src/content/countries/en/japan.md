@@ -4,7 +4,7 @@
   "lang": "en",
   "maturity": {
     "x": 0.18,
-    "y": 450
+    "y": 455
   },
   "name": "Japan",
   "provenance": {
@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Regulated industrial commodity with Open Access mandate.",
-    "cross_border_rules": "Aligned with London Protocol for export potential.",
-    "financial_assurance": "Mandatory Monitoring Reserves to be accumulated during injection.",
-    "liability_period": "Post-injection period until CO2 stability is verified.",
-    "liability_transfer": "Monitoring responsibility transfers to JOGMEC after stability confirmation.",
-    "permitting_lead_time": "Approx. 2-3 years via Specified Area licensing.",
-    "pore_space_rights": "Established as 'Storage Right' (Real Right) granted by METI."
+    "co2_definition": "Regulated industrial commodity with strict environmental safety standards.",
+    "cross_border_rules": "Aligned with London Protocol (Art 6) to enable Asia-Pacific hubs.",
+    "financial_assurance": "Mandatory Monitoring Reserves (Contributions) paid to JOGMEC.",
+    "liability_period": "Phase-in from 2024-2026; monitoring contribution required during operation.",
+    "liability_transfer": "Monitoring/Management responsibility transfers to JOGMEC after stability confirmation.",
+    "permitting_lead_time": "Approx. 2-3 years via METI Specified Area licensing.",
+    "pore_space_rights": "拟制物权 (Quasi-real Rights / Mina-shi Bukken)."
   },
   "summary": "Profile for Japan"
 }

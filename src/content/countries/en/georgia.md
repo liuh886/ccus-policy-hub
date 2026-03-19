@@ -8,22 +8,22 @@
   },
   "name": "Georgia",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Regulated as a Greenhouse Gas (GHG); distinct from waste.",
+    "cross_border_rules": "EU Association Agreement alignment; EU ETS compatibility focus.",
+    "financial_assurance": "閉坑和修复的强制性财务担保。",
+    "liability_period": "20+ years post-injection (proposed in 2026 regulations).",
+    "liability_transfer": "Aligning with EU standards; transfer after stability period.",
+    "permitting_lead_time": "2-4 years (Updated Law on Environmental Protection).",
+    "pore_space_rights": "Surface property interest model; state coordinates large clusters."
   },
-  "summary": "Profile for Georgia"
+  "summary": "Regulatory profile for Georgia"
 }
 ---
 
-Profile for Georgia
+Regulatory profile for Georgia

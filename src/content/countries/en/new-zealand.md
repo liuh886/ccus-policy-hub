@@ -8,22 +8,22 @@
   },
   "name": "New Zealand",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Industrial Gas (not waste) if meeting purity standards.",
+    "cross_border_rules": "One-for-one ETS mechanism; international credit potential.",
+    "financial_assurance": "Mandatory Trust/Bond for remediation and leakage costs.",
+    "liability_period": "15 years closure assurance period (proposed).",
+    "liability_transfer": "Phased model: Operator (injection) $\rightarrow$ Crown (after 15y closure).",
+    "permitting_lead_time": "3-5 years (Integration into 2026 CCUS legislation).",
+    "pore_space_rights": "Proposed Crown management of deep formations (CCUS Bill 2026)."
   },
-  "summary": "Profile for New Zealand"
+  "summary": "Regulatory profile for New Zealand"
 }
 ---
 
-Profile for New Zealand
+Regulatory profile for New Zealand

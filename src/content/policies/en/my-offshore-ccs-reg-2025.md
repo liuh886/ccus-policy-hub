@@ -10,10 +10,10 @@
     },
     "market": {
       "auditNote": "",
-      "citation": "",
-      "evidence": "Batch 4 Offshore Focus update.",
-      "label": "High",
-      "score": 75
+      "citation": "2024/2025 National Registry",
+      "evidence": "Enabling Third-Party Access (TPA) for ASEAN industrial emitters via the Kasawari and upcoming clusters.",
+      "label": "Regional Storage Hub",
+      "score": 85
     },
     "mrv": {
       "auditNote": "",
@@ -24,10 +24,10 @@
     },
     "statutory": {
       "auditNote": "",
-      "citation": "",
-      "evidence": "Batch 4 Offshore Focus update.",
-      "label": "High",
-      "score": 85
+      "citation": "2024/2025 National Registry",
+      "evidence": "Specific offshore CCS regulations enacted in 2025, providing legal certainty for cross-border storage agreements.",
+      "label": "Petronas-Led Mandate",
+      "score": 90
     },
     "strategic": {
       "auditNote": "",

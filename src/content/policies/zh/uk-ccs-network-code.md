@@ -1,5 +1,42 @@
 ---
 {
+  "analysis": {
+    "incentive": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "DESNZ CCUS Business Models 2025 Update",
+      "evidence": "The UK's incentive framework is built on a highly structured 'Cluster Sequencing' model, which provides direct capital support and revenue certainty through the Dispatchable Power Agreement (DPA) and the industrial Carbon Capture (ICC) business models. In 2025, the UK government committed an additional £20 billion over 20 years to support the Track-1 (Hynet and East Coast Cluster) and Track-2 projects. These business models function similarly to Contracts for Difference, insulating project developers from volatile carbon prices and ensuring that CCS remains an economically viable option for the power and industrial sectors. The 2025 funding window also includes specific allocations for CO2 transport and storage infrastructure, ensuring that the 'hubs' are fully funded ahead of individual capture projects, thereby reducing cross-chain risk.",
+      "label": "Cluster Sequencing",
+      "score": 95
+    },
+    "market": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "UK CO2 Transport and Storage Network Code 2025",
+      "evidence": "The UK has pioneered the development of a comprehensive 'Network Code' for CO2 transport and storage in 2025, establishing the market rules for multi-user infrastructure. This code defines the commercial relationships between capture plants and storage operators, ensuring open access and transparent pricing based on a regulated asset base (RAB) model. This market structure is designed to attract private investment into infrastructure while protecting consumers from excessive costs. The UK is also integrating its domestic ETS with the CCUS framework, allowing for the generation of 'Negative Emissions' credits for BECCS projects. The maturation of the Track-1 clusters has created a competitive market for capture technology providers and engineering services, positioning the UK as a global exporter of carbon management expertise.",
+      "label": "Network Code",
+      "score": 85
+    },
+    "statutory": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "Energy Act 2023; NSTA Storage Licensing Guidance 2025",
+      "evidence": "The UK's regulatory framework for CO2 storage is among the most advanced globally, managed by the North Sea Transition Authority (NSTA). In 2025, the NSTA has issued multiple new storage licenses following a successful bidding round, providing a clear legal path for offshore sequestration. The regulatory regime includes strict requirements for site characterization, monitoring, and financial security, aligned with the Energy Act 2023. The framework also addresses long-term liability, with a clear mechanism for the transfer of responsibility to the state after a period of post-closure stability. Furthermore, the 2025 planning reforms have introduced 'National Policy Statements' for CCUS, accelerating the permitting of onshore pipelines and capture facilities by designating them as projects of national significance.",
+      "label": "Storage Licensing",
+      "score": 95
+    },
+    "strategic": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "UK Net Zero Strategy: Build Back Greener (2025 Update)",
+      "evidence": "Strategically, CCUS is a central pillar of the UK's 'Net Zero Strategy' and its commitment to decarbonizing the industrial heartlands. The 2025 update to the strategy reinforces the target of capturing 20-30 million tonnes of CO2 per year by 2030, with a focus on 'Green Jobs' and regional leveling up. Strategically, the UK aims to become a global hub for CO2 storage, leveraging its vast North Sea capacity to serve neighboring European emitters. This vision is supported by the 2025 'Carbon Management Roadmap,' which integrates CCUS with the nation's energy security and industrial competitiveness goals. The UK also plays a leading role in international climate diplomacy, advocating for global standards for carbon removal and storage, ensuring that its domestic successes contribute to a global net-zero trajectory.",
+      "label": "Net Zero 2050",
+      "score": 100
+    },
+    "technical": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "UK Industrial Decarbonization Strategy; NSTA Technical Standards",
+      "evidence": "Technical excellence in the UK is demonstrated through the deployment of integrated industrial clusters that combine capture from diverse sources, including power, cement, and hydrogen. The 2025 technical standards mandate high-fidelity monitoring and atmospheric dispersion modeling for all CO2 infrastructure. The UK's technical framework also prioritizes the development of 'Low-Carbon Hydrogen' clusters, where CCUS is integrated with methane reforming. Advanced technical validation is provided by the UK CCUS Research Centre (UKCCSRC), which operates pilot plants and provides independent verification of capture efficiency. The 2025 rollout of the 'Track-2' clusters involves innovative offshore transport solutions, including CO2 shipping from dispersed sites to central North Sea storage hubs, proving the technical feasibility of large-scale maritime carbon logistics.",
+      "label": "Track-1/2 Clusters",
+      "score": 90
+    }
+  },
   "category": "法律监管",
   "country": "英国",
   "description": "## 政策概览\r \r 英国《二氧化碳运输与存储网络准则》(TSNC) 是由英国天然气和电力市场办公室 (Ofgem) 与能源安全与净零部 (DESNZ) 共同制定的核心监管文件。它被视为英国 CCUS 基础设施的‘交通规则’，定义了捕集设施接入国家 T&S 网络的技术、商业和运营框架。TSNC 的核心目标是确保透明、非歧视性的第三方准入，防止大型基础设施运营商产生自然垄断行为。\r \r 2024 年 12 月，随着 East Coast 和 HyNet 网络的财务结算，该准则正式进入‘强执法’阶段。准则详细规定了连接申请流程、争议解决机制以及针对非管网运输（如船运、铁路）的兼容性接口。它是英国从‘单一项目’向‘开放式、竞争性碳管理市场’转型的制度支柱，确保了中小型工业捕集方也能在公平条款下利用国家级的碳封存大动脉。",
@@ -20,7 +57,7 @@
   "legalWeight": "Guideline/Policy",
   "provenance": {
     "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-08",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-01-01",

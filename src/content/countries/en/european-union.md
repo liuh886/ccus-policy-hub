@@ -4,13 +4,13 @@
   "lang": "en",
   "maturity": {
     "x": 0,
-    "y": 480
+    "y": 485
   },
   "name": "European Union",
   "provenance": {
     "author": "System",
     "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {

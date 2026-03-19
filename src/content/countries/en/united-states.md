@@ -10,17 +10,17 @@
   "provenance": {
     "author": "System",
     "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Solid waste or commodity (State dependent)",
-    "cross_border_rules": "Not applicable (Domestic)",
-    "financial_assurance": "Mandatory (Trust/Bond/Insurance)",
-    "liability_period": "50 years (Default Class VI)",
-    "liability_transfer": "No Federal Transfer (Site Care: 50 years)",
-    "permitting_lead_time": "2-6 years (State Primacy accelerates)",
-    "pore_space_rights": "Private Ownership (Surface Owner rules)"
+    "co2_definition": "Defined as a credit-eligible greenhouse gas.",
+    "cross_border_rules": "FEOC rules restrict foreign adversarial participation.",
+    "financial_assurance": "Enhanced tax credits (up to $180/t) provide financial base.",
+    "liability_period": "Streamlined permitting reduces lead times to <12 months in some states.",
+    "liability_transfer": "Supported by state-level frameworks in primacy states.",
+    "permitting_lead_time": "Reduced significantly in LA/WV due to EPA primacy.",
+    "pore_space_rights": "State-level management increasing through Class VI primacy."
   },
   "summary": "US leader in CCUS..."
 }

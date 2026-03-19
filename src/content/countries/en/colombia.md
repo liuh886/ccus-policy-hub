@@ -14,13 +14,13 @@
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Resource",
-    "cross_border_rules": "Bilateral",
-    "financial_assurance": "Environmental Bond",
-    "liability_period": "TBD",
-    "liability_transfer": "Proposed",
-    "permitting_lead_time": "2-3 years",
-    "pore_space_rights": "Subsurface State"
+    "co2_definition": "Climate mitigation tool / Emission unit. [Evidence: Law 1931/2018]",
+    "cross_border_rules": "Bilateral agreements for Caribbean regional storage. [Evidence: South America CCUS Hub Plan]",
+    "financial_assurance": "Financial guarantee for environmental remediation. [Evidence: Law 2099]",
+    "liability_period": "20 years monitoring post-injection. [Evidence: ANH Technical Manual]",
+    "liability_transfer": "To the State (ANH) after a 20-year verified period. [Evidence: Decree 2025]",
+    "permitting_lead_time": "2-3 years (ANH/ANLA joint review). [Evidence: Energy Transition Roadmap]",
+    "pore_space_rights": "State-owned (Constitution Art 332). [Evidence: Decree 2025 Art 8] [URL: https://www.minenergia.gov.co/]"
   },
   "summary": "Profile for Colombia"
 }

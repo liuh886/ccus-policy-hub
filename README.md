@@ -24,6 +24,8 @@
 
 **CCUS Policy Hub** is a professional-grade, open-source knowledge infrastructure dedicated to the global CCUS sector. It bridges the gap between fragmented regulatory texts and actionable data insights by integrating the **IEA Global Facilities Database** with **GCCSI Policy & Legal Readiness (PLR) indicators**.
 
+> **Value Proposition**: In the past, cross-border policy comparison was a daunting task requiring deep expertise in regional industry and regulatory landscapes. Now, even an entry-level intern can easily compare the governance structures of nations like China and Japan, while visualizing the specific number and scale of facilities governed by each framework.
+
 Our mission is to provide researchers, policymakers, and investors with a high-fidelity tool for benchmarking CCUS incentives and regulatory frameworks worldwide.
 
 > **AI-Ready Infrastructure**: Beyond human researchers, the Hub serves as a high-fidelity grounding source for **AI Agents** specializing in climate policy, enabling precise reasoning across complex regulatory landscapes.

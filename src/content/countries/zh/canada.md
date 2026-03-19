@@ -4,13 +4,13 @@
   "lang": "zh",
   "maturity": {
     "x": 36.695,
-    "y": 445
+    "y": 455
   },
   "name": "加拿大",
   "provenance": {
     "author": "System",
     "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {

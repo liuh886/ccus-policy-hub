@@ -8,22 +8,22 @@
   },
   "name": "Papua New Guinea",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "Defined under Climate Change Management Regulation 2023.",
+    "cross_border_rules": "Paris Agreement Art. 6 alignment for carbon monetization.",
+    "financial_assurance": "Exploring Post-Closure Stewardship Fund via operator levies.",
+    "liability_period": "10-20 years post-injection monitoring (proposed).",
+    "liability_transfer": "Proposed transfer to State/Crown after stability proof.",
+    "permitting_lead_time": "3-6 years (CCDA as primary regulator).",
+    "pore_space_rights": "Derived from customary ownership of surface land (97% land)."
   },
-  "summary": "Profile for Papua New Guinea"
+  "summary": "Regulatory profile for Papua New Guinea"
 }
 ---
 
-Profile for Papua New Guinea
+Regulatory profile for Papua New Guinea

@@ -8,22 +8,22 @@
   },
   "name": "Latvia",
   "provenance": {
-    "author": "System",
+    "author": "CCUS AI Agent",
     "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Pending",
-    "cross_border_rules": "Pending",
-    "financial_assurance": "Pending",
-    "liability_period": "Pending",
-    "liability_transfer": "Pending",
-    "permitting_lead_time": "Pending",
-    "pore_space_rights": "Pending"
+    "co2_definition": "High-purity Stream (>95% CO2); distinct from industrial waste.",
+    "cross_border_rules": "CCS Baltic Consortium for cross-border value chains.",
+    "financial_assurance": "Mandatory contribution to future monitoring costs.",
+    "liability_period": "20 years post-closure monitoring.",
+    "liability_transfer": "Follows EU Directive; transfer after stability proof (20y).",
+    "permitting_lead_time": "3-5 years (Integrated into Climate Law 2025).",
+    "pore_space_rights": "State-owned (Law on Subterranean Depths); storage ban lifted 2025."
   },
-  "summary": "Profile for Latvia"
+  "summary": "Regulatory profile for Latvia"
 }
 ---
 
-Profile for Latvia
+Regulatory profile for Latvia

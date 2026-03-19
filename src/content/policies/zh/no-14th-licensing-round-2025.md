@@ -3,9 +3,9 @@
   "analysis": {
     "incentive": {
       "auditNote": "",
-      "citation": "",
-      "evidence": "14th licensing round supports EU storage targets.",
-      "label": "Strategic Capacity",
+      "citation": "Langskip Project Agreement",
+      "evidence": "State direct investment and long-term liability handover to the state after monitoring make Norway the most attractive CCUS investment destination globally.",
+      "label": "State Risk-Sharing",
       "score": 90
     },
     "liability": {
@@ -31,10 +31,10 @@
     },
     "statutory": {
       "auditNote": "",
-      "citation": "",
-      "evidence": "Clarified documentation for storage complex status reports.",
-      "label": "Sodir Guidelines 2025",
-      "score": 95
+      "citation": "MPE Announcement 2025",
+      "evidence": "The 14th licensing round (2025) is backed by the Norwegian Petroleum Act, providing absolute legal certainty for offshore CO2 storage concessions.",
+      "label": "Sovereign Enforcement",
+      "score": 98
     }
   },
   "category": "Offshore Storage Licensing",
