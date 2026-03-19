@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Vietnam",
+  "description": "Vietnam's Decree 119/2025 and 29/2026 establish the legal framework for the domestic carbon market. In 2026, pilot GHG quotas were authorized for 110 large facilities, totaling 243 Mt CO2e. The full ETS official operation is scheduled for 2029.",
   "id": "vn-carbon-market-decree-2025",
   "legalWeight": "Decree",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-3 years for combined EIA/CCS permit. [Evidence: One-stop-shop initiative]",
     "pore_space_rights": "State-owned (Decree 119/2025/ND-CP). [Evidence: Art 5.1] [URL: https://monre.gov.vn/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",
   "status": "Active",

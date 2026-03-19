@@ -39,6 +39,7 @@
   },
   "category": "经济激励",
   "country": "Argentina",
+  "description": "2024年大型投资激励机制 (RIGI，第27.742号法律) 为超过2亿美元的项目提供了巨大的税收、海关和外汇激励。CCUS被明确列为能源部门的一项合格活动，支持二氧化碳的捕集、运输和封存，特别是针对 Vaca Muerta 页岩盆地和“蓝氢”生产。",
   "id": "ar-rigi-ccus-2024",
   "legalWeight": "Law (RIGI)",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "省级减排计划（内乌肯/门多萨 2025）作为先导。",
     "pore_space_rights": "省级管辖权；已纳入碳氢化合物减排计划（如内乌肯第 21/2025 号决议）。"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Government of Argentina",
   "status": "现行",

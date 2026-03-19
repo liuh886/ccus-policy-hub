@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Singapore",
+  "description": "Singapore's Carbon Pricing Act was amended in 2024 to raise carbon tax and include CCUS as an eligibility for carbon credits. The focus is on cross-border transport and Article 6 integration for regional hubs.",
   "id": "sg-carbon-tax-ccus-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "1-2 years for export terminal approval. [Evidence: Jurong Island Roadmap]",
     "pore_space_rights": "State-owned (State Lands Act). [Evidence: MTI/EMA Guidelines] [URL: https://www.nea.gov.sg/]"
   },
+  "relatedFacilities": [
+    "1148",
+    "586"
+  ],
   "reviewStatus": "verified",
   "source": "National Environment Agency (NEA)",
   "status": "Active",

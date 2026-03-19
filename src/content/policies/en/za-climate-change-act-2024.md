@@ -39,6 +39,7 @@
   },
   "category": "Statutory",
   "country": "South Africa",
+  "description": "The Climate Change Act No. 22 of 2024 establishes mandatory carbon budgets and sectoral emission targets. It integrates CCUS as a key technology for hard-to-abate sectors, supported by the national pilot project in Mpumalanga (confirming 34Gt storage capacity) and a transitioning carbon tax regime reaching R308/t by 2026.",
   "id": "za-climate-change-act-2024",
   "legalWeight": "Act of Parliament",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "Mandatory Carbon Budgets replacing voluntary systems (Commenced March 2025).",
     "pore_space_rights": "Governed by MPRDA; 34Gt capacity confirmed at Leandra pilot site via Council for Geoscience (CGS)."
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Government of South Africa",
   "status": "Active",

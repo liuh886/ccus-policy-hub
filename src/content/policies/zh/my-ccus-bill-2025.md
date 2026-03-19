@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "马来西亚",
+  "description": "2025年马来西亚 CCUS 法案为整个 CCUS 价值链提供了全面的监管框架。该法案设立了 MyCCUS 作为一站式机构，并通过注入征费引入了闭坑后管理基金。该法案允许进口二氧化碳进行封存，但禁止利用进口的二氧化碳。",
   "id": "my-ccus-bill-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "通过马来西亚 CCUS 机构 (MyCCUS) 实现一站式监管。",
     "pore_space_rights": "分两个阶段授权：评估许可（地质研究）和封存许可（运营）。"
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Economy",
   "status": "现行",

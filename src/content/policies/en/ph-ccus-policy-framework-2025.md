@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Philippines",
+  "description": "The Philippine DOE Circular 2025 establishes the initial guidelines for carbon capture and storage in depleted oil and gas fields (e.g., Malampaya). It integrates CCUS into the Philippine Energy Plan (PEP) 2020-2040.",
   "id": "ph-ccus-policy-framework-2025",
   "legalWeight": "Departmental Circular",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-4 years (Multi-agency ECC process). [Evidence: DENR/DOE Roadmap]",
     "pore_space_rights": "State-owned (1987 Constitution). [Evidence: DOE Circular 2025] [URL: https://www.doe.gov.ph/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Department of Energy (DOE)",
   "status": "Active",

@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "马来西亚",
+  "description": "## 政策概览\r \r 马来西亚《CCUS 法案 2025》于 2025 年 8 月正式签署成法，是该国确立亚太地区 CCUS 枢纽地位的里程碑式立法。该法案设立了专门的监管机构——马来西亚 CCUS 管理局 (MyCCUS)，负责全产业链的许可发放与合规监管。法案的法律效力目前覆盖马来西亚半岛及纳闽联邦直辖区，重点规范了离岸封存场的勘探、建设与运营。\r \r 该法案的核心战略目标是**利用马来西亚丰富的离岸枯竭油气田资源吸引国际碳封存业务**。通过建立明确的跨境 CO2 运输与封存法律框架，法案为国家石油公司 (PETRONAS) 及其国际合作伙伴（如 ADNOC）在马来西亚水域开发区域性存储枢纽扫清了确权障碍。这一立法不仅是马来西亚能源转型的重要工具，更是其‘国家能源转型路线图 (NETR)’中将 CCUS 转化为新型经济增长点的关键法制保障。",
   "evolution": {
     "clusters": [
       "Malaysia National Energy Transition Roadmap (NETR)",
@@ -68,6 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "马来西亚议会",
   "status": "现行",

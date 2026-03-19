@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "马来西亚",
+  "description": "马来西亚投资发展局 (MIDA) 确立了全球最具竞争力的 CCUS 财税激励体系。根据 2024 年预算案及同年 9 月发布的豁免令，从事 CCS 活动的企业可享受 **100% 的投资税收抵免 (ITA)**，抵扣期长达 10 年。此外，CCS 专用设备在 2023-2027 年间享受全额进口税与销售税豁免。对于提供 CCS 服务的第三方实体，则可选择 70% 的所得税免除。这一政策通过‘重金补贴’模式，极大地降低了马来西亚作为东南亚封存枢纽的准入成本，吸引了全球碳管理资本的加速流入。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": "属于国家（通过 PETRONAS 管理）"
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "",
   "status": "现行",

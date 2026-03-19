@@ -2,11 +2,12 @@
 {
   "category": "Strategic",
   "country": "Philippines",
+  "description": "The roadmap outlines the regulatory and technical pathways for CCUS implementation in the Philippines, focusing on offshore storage potential in the West Philippine Sea.",
   "id": "ph-doe-ccus-roadmap-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-03-18",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {
@@ -18,6 +19,7 @@
     "permitting_lead_time": "2-4 years (estimated)",
     "pore_space_rights": "State Owned (DOE managed)"
   },
+  "relatedFacilities": [],
   "source": "Department of Energy (DOE)",
   "status": "Planned",
   "title": "Philippines CCUS Strategic Roadmap",

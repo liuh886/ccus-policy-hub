@@ -2,11 +2,12 @@
 {
   "category": "Regulatory",
   "country": "Romania",
+  "description": "A specific legal framework for the transport and storage of CO2, aligned with EU directives and supporting the Hope and Constanta clusters.",
   "id": "ro-emergency-ordinance-2024",
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-03-18",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {
@@ -18,6 +19,9 @@
     "permitting_lead_time": "1-2 years (EU expedited)",
     "pore_space_rights": "State Owned"
   },
+  "relatedFacilities": [
+    "733"
+  ],
   "source": "Ministry of Energy",
   "status": "Active",
   "title": "Romania CCUS Regulatory Framework 2024",

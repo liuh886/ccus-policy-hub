@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "阿联酋",
+  "description": "## 政策概览\r \r 阿联酋（UAE）的 CCUS 发展由其国家能源巨头 ADNOC 强力驱动。ADNOC 已将其 2030 年碳捕集目标提升至 **1000 万吨/年 (10 Mtpa)**，旨在通过这一技术杠杆实现其 2045 净零排放加速目标。该战略的核心项目包括已运营的全球首个商业化钢铁行业捕集设施‘Al Reyadah’（0.8 Mtpa）以及处于 FID 阶段的‘Habshan’项目。\r \r Habshan 项目是该战略的最新里程碑，预计 2026 年投入运营，单体捕集能力达 150 万吨/年。ADNOC 正在整合其庞大的上游天然气处理厂与封存能力，通过将 CO2 注入 Bab Far North 等油田，实现了从捕集到永久地质封存的技术闭环。阿联酋政府通过 ADNOC 承诺投入超过 230 亿美元用于低碳解决方案，旨在使阿联酋生产的能源具备全球最低的碳强度，从而在未来的低碳能源出口市场中占据领导地位。",
   "evolution": {
     "clusters": [
       "UAE Net Zero 2050 Strategy",
@@ -68,6 +69,17 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "161",
+    "387",
+    "4",
+    "463",
+    "5",
+    "6",
+    "906",
+    "921",
+    "928"
+  ],
   "reviewStatus": "verified",
   "source": "ADNOC",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Belgium",
+  "description": "Belgium's updated strategy focuses on its role as a CO2 transit hub for Western Europe. The framework regulates the transport via the Antwerp-Bruges and North Sea Port clusters, and establishes cross-border storage agreements with Norway and Denmark.",
   "id": "be-ccus-strategy-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,25 @@
     "permitting_lead_time": "18-24 months for export terminal pipelines. [Evidence: North Sea Port Roadmap]",
     "pore_space_rights": "Not applicable (Transit focus); North Sea storage via bilateral treaties. [Evidence: Federal Energy Law] [URL: https://economie.fgov.be/]"
   },
+  "relatedFacilities": [
+    "1258",
+    "1357",
+    "149",
+    "190",
+    "225",
+    "237",
+    "31",
+    "34",
+    "447",
+    "532",
+    "55",
+    "557",
+    "585",
+    "660",
+    "664",
+    "677",
+    "766"
+  ],
   "reviewStatus": "verified",
   "source": "Federal Ministry of Energy",
   "status": "Active",

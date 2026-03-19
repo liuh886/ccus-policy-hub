@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "智利",
+  "description": "智利《2023-2030 年绿氢行动计划》将 CCUS 视为开发合成燃料的关键技术。监管框架正在扩大，以涵盖麦哲伦和安托法加斯塔地区的碳捕集与封存。",
   "id": "cl-green-hydrogen-ccs-2025",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "2-4 年 (多机构审批)。[证据: 麦哲伦集群路线图]",
     "pore_space_rights": "国家所有 (采矿法)。[证据: 能源部指令] [URL: https://www.energia.gob.cl/]"
   },
+  "relatedFacilities": [
+    "1038"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy",
   "status": "现行",

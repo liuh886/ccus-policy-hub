@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "Philippines",
+  "description": "菲律宾能源部 (DOE) 2025 年通告确立了在枯竭油气田（如 Malampaya）进行碳捕集与封存的初步指南。它将 CCUS 纳入了《2020-2040 年菲律宾能源计划》(PEP)。",
   "id": "ph-ccus-policy-framework-2025",
   "legalWeight": "Departmental Circular",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-4 年 (多机构 ECC 流程)。[证据: DENR/DOE 路线图]",
     "pore_space_rights": "国家所有 (1987 年宪法)。[证据: 2025 年 DOE 通告] [URL: https://www.doe.gov.ph/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Department of Energy (DOE)",
   "status": "现行",

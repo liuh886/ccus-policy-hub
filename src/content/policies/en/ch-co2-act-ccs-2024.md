@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Switzerland",
+  "description": "Switzerland's revised CO2 Act (post-2024) integrates CCS and Negative Emission Technologies (NETs) as core components of its climate strategy. The framework establishes a subsidy scheme for large-scale CCS and focuses on international cooperation for cross-border CO2 transport and storage.",
   "id": "ch-co2-act-ccs-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "2-4 years (Cantonal + Federal coordination). [Evidence: Demo-Up Storage Project]",
     "pore_space_rights": "Cantonal jurisdiction; governed by Cantonal Subsurface Laws. [Evidence: FOEN CCS Guidelines] [URL: https://www.bafu.admin.ch/]"
   },
+  "relatedFacilities": [
+    "646",
+    "965"
+  ],
   "reviewStatus": "verified",
   "source": "Federal Office for the Environment (FOEN)",
   "status": "Active",

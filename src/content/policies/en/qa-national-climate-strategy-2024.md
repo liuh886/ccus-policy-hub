@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Qatar",
+  "description": "Qatar's refreshed National Environment and Climate Change Strategy (2024) focuses on integrating CCUS into its LNG expansion. It targets a 25% GHG reduction by 2030 and aims to capture 11 Mt CO2/year by 2035, supported by new MRV systems and regulatory standards for carbon management.",
   "id": "qa-national-climate-strategy-2024",
   "legalWeight": "National Strategy",
   "provenance": {
@@ -56,6 +57,11 @@
     "permitting_lead_time": "Streamlined integration with large-scale LNG infrastructure permits.",
     "pore_space_rights": "Managed by the State via QatarEnergy and the Ministry of Environment."
   },
+  "relatedFacilities": [
+    "1055",
+    "344",
+    "345"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Environment and Climate Change",
   "status": "Active",

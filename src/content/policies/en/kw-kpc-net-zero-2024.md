@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Kuwait",
+  "description": "Kuwait Petroleum Corporation (KPC) released its Energy Transition Strategy in 2023/2024, targeting Net Zero by 2050 for domestic operations. CCUS is identified as a core pillar for industrial decarbonization, particularly in the refinery and petrochemical sectors.",
   "id": "kw-kpc-net-zero-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "Developing (Integrated with KOC upstream protocols). [Evidence: KOC CCUS Pilot Case]",
     "pore_space_rights": "State-owned; managed by KPC/KOC under the Ministry of Oil. [Evidence: KPC Sustainability Report] [URL: https://www.kpc.com.kw/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Kuwait Petroleum Corporation (KPC)",
   "status": "Active",

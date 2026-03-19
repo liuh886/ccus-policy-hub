@@ -39,6 +39,7 @@
   },
   "category": "市场机制",
   "country": "国际",
+  "description": "国际民航组织 (ICAO) 的 CORSIA 机制已于 2024 年进入第一阶段，覆盖 126 个国家。该政策的核心在于允许航空公司通过购买合格的碳信贷或使用 **CCU 合成燃料 (e-fuels)** 来履行碳中和义务。2024-2025 年更新的准则明确了 SAF（可持续航空燃料）中碳捕集来源的核证标准，要求燃料生产必须符合严苛的可持续性准则。CORSIA 为全球 CCU 产业提供了极其稀缺的高价值终端应用市场，将捕集的二氧化碳转化为高溢价的可再生航空燃油，是支撑航空业 2050 净零排放的支柱性政策。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "ICAO",
   "status": "现行",

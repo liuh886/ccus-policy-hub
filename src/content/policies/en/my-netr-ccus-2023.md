@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Malaysia",
+  "description": "Malaysia's strategic roadmap identifying CCUS as a key lever for decarbonization and economic growth.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "draft",
   "source": "Ministry of Economy",
   "status": "Active",

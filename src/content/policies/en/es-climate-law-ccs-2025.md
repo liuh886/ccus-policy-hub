@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Spain",
+  "description": "Spain's Law 7/2021 on Climate Change was updated to facilitate the geological storage of CO2. The focus is on industrial clusters in the Basque Country and Pyrenees region, aligning with EU TEN-E regulations for cross-border infrastructure.",
   "id": "es-climate-law-ccs-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "3-5 years (MITECO approval process). [Evidence: PNIECC 2023-2030]",
     "pore_space_rights": "State-owned (Mining Law). [Evidence: Law 7/2021 Art 12] [URL: https://www.miteco.gob.es/]"
   },
+  "relatedFacilities": [
+    "1146",
+    "1203",
+    "1277",
+    "1317"
+  ],
   "reviewStatus": "verified",
   "source": "MITECO",
   "status": "Active",

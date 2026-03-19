@@ -39,6 +39,7 @@
   },
   "category": "Technical",
   "country": "International",
+  "description": "The CCS+ Initiative is a high-level industry consortium—led by global energy and technology giants including TotalEnergies and SLB—dedicated to establishing a unified carbon accounting logic for the voluntary carbon market. In October 2024, Verra formally approved and published the first modules under the CCS+ Framework (VMD0056-0058), covering Direct Air Capture (DAC), transport networks, and saline aquifer storage. By April 2025, the framework expanded to include Bio-energy CCS (BECCS). The in",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "CCS+ Initiative",
   "status": "Active",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "United Arab Emirates",
+  "description": "Federal Decree-Law No. (11) of 2024 mandates GHG MRV for all entities starting May 2025. In early 2026, Abu Dhabi launched a dedicated Carbon Capture Policy to support its 2050 Net Zero goal, establishing a regulatory framework and a National Register for Carbon Credits (NRCC).",
   "id": "ae-federal-climate-law-2024",
   "legalWeight": "Federal Decree",
   "provenance": {
@@ -56,6 +57,17 @@
     "permitting_lead_time": "Mandatory registration for emitters exceeding 0.5M tons CO2e.",
     "pore_space_rights": "Managed at Federal and Emirate level (Abu Dhabi SCFEA)."
   },
+  "relatedFacilities": [
+    "161",
+    "387",
+    "4",
+    "463",
+    "5",
+    "6",
+    "906",
+    "921",
+    "928"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Climate Change and Environment",
   "status": "Active",

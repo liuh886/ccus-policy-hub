@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Russia",
+  "description": "The updated 2023 Climate Doctrine of the Russian Federation reaffirms carbon neutrality by 2060 and prioritizes CCUS development. It is supported by mandatory carbon reporting for large emitters (starting 2023) and the Sakhalin Carbon Experiment, which aims for regional neutrality by 2025 through a quota-based system and domestic technological sovereignty.",
   "id": "ru-climate-doctrine-2023",
   "legalWeight": "Presidential Decree",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "Mandatory reporting thresholds (>50k tons by 2025) and quota compliance by July 2025.",
     "pore_space_rights": "Federal ownership of subsurface resources; utilization of depleted reservoirs by state firms (Rosneft/Gazprom Neft)."
   },
+  "relatedFacilities": [
+    "410"
+  ],
   "reviewStatus": "verified",
   "source": "President of Russia",
   "status": "Active",

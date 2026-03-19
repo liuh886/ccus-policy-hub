@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Greece",
+  "description": "Greece's 2025 framework focuses on the Prinos offshore storage hub and the development of the 'Eni-Hellas' Mediterranean corridor. It integrates EU NZIA targets into national climate legislation.",
   "id": "gr-ccs-regulatory-framework-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,20 @@
     "permitting_lead_time": "2-4 years (Strategic Investment status). [Evidence: National Energy & Climate Plan]",
     "pore_space_rights": "State-owned; managed by HEREMA. [Evidence: Law 4001/2011 update] [URL: https://ypen.gov.gr/]"
   },
+  "relatedFacilities": [
+    "1140",
+    "1141",
+    "1180",
+    "1339",
+    "1340",
+    "1341",
+    "138",
+    "657",
+    "688",
+    "689",
+    "690",
+    "820"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Environment and Energy",
   "status": "Active",

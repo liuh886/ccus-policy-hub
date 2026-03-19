@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "冰岛",
+  "description": "冰岛将欧盟 CCS 指令转化为国内法，并特别针对 Carbfix 的原位矿化技术确立了许可准则，通过将 CO2 转化为石头实现永久封存。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,18 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "102",
+    "103",
+    "104",
+    "1172",
+    "1199",
+    "434",
+    "441",
+    "536",
+    "803",
+    "939"
+  ],
   "reviewStatus": "draft",
   "source": "冰岛议会",
   "status": "现行",

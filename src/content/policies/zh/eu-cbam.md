@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "欧盟",
+  "description": "## 政策概览\r \r 欧盟碳边境调节机制 (CBAM) 是全球首个针对高碳进口产品征收“碳关税”的政策工具。虽然 CBAM 的核心是防止碳泄漏，但它对全球 CCUS 产业具有深远的倒逼效应。根据 2024 年的最新实施细则，欧盟正在研究如何在其碳核算体系中正式承认出口国生产工艺中的 CCUS 减排贡献。如果生产商能够证明其通过 CCUS 降低了产品的嵌入排放强度，则可相应减少 CBAM 凭证的购买义务。这一政策直接驱动了中国、印度及东南亚等贸易伙伴国在其出口导向型行业（如钢铁、水泥）中加速部署 CCUS 技术，以维护其在全球低碳贸易中的竞争力。",
   "evolution": {
     "clusters": [
       "European Green Deal",
@@ -69,6 +70,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "678"
+  ],
   "reviewStatus": "verified",
   "source": "European Parliament",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Colombia",
+  "description": "Colombia's Decree 2025 provides the specific regulatory details missing from Law 2099. It regulates CO2 storage in the Llanos and Caribbean basins, focusing on EOR and offshore sequestration potentials.",
   "id": "co-ccus-regulatory-decree-2025",
   "legalWeight": "Decree",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-3 years (ANH/ANLA joint review). [Evidence: Energy Transition Roadmap]",
     "pore_space_rights": "State-owned (Constitution Art 332). [Evidence: Decree 2025 Art 8] [URL: https://www.minenergia.gov.co/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Mines and Energy",
   "status": "Active",

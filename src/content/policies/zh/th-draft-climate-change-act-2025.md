@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "泰国",
+  "description": "泰国 2025 年 12 月批准的《气候变化法》草案在国家气候变化政策委员会 (NCCPC) 下建立了集中治理框架。该法案引入了初步的碳税（200 泰铢/吨），并指定矿产燃料部 (DMF) 为 CCS 的牵头机构，重点关注泰国湾上部。",
   "id": "th-draft-climate-change-act-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "DMF 被指定为技术牵头机构，以简化 CCUS 项目的许可。",
     "pore_space_rights": "国家所有；由矿产燃料部 (DMF) 负责离岸封存管理。"
   },
+  "relatedFacilities": [
+    "1000",
+    "36"
+  ],
   "reviewStatus": "verified",
   "source": "Department of Mineral Fuels (DMF)",
   "status": "现行",

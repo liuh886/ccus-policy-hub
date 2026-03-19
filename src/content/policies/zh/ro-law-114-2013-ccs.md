@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "罗马尼亚",
+  "description": "罗马尼亚通过第 114/2013 号法律完成了欧盟 CCS 指令的本地化。该法律强制要求所有二氧化碳地质封存项目必须包含基于风险分析的监测计划，并由国家矿产资源、石油与地质封存监管局 (ANRMPSG) 执行全生命周期的合规审计。该法律确立了罗马尼亚作为东南欧潜在碳库的技术标准，涵盖了从勘探许可发放到封场后责任移交的完整路径，为该国通过地质封存实现重工业深度脱碳提供了法律基石。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "733"
+  ],
   "reviewStatus": "verified",
   "source": "罗马尼亚矿产资源管理局",
   "status": "现行",

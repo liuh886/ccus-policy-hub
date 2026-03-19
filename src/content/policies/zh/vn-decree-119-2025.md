@@ -39,6 +39,7 @@
   },
   "category": "市场机制",
   "country": "越南",
+  "description": "越南政府于 2025 年 6 月发布第 119/2025/ND-CP 号政令，系统性地建立了国家温室气体配额与信用管理体系。该政令确立了越南首个**国家注册登记系统**，并明确了针对火电、钢铁和水泥行业的强制性配额分配方案（2025-2026 试点期）。对于 CCUS 领域，政令首次从法律上承认了 CCS 项目产生的减排量可用于履行国家配额义务，并授权自然资源与环境部制定详尽的核证与监测标准。这一法案是越南对接全球气候投融资、建立本国碳市场的制度核心。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "越南政府",
   "status": "现行",

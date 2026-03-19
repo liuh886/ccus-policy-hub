@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Poland",
+  "description": "Poland's amendment to the Geological and Mining Law in 2023 removes the prohibition of large-scale CO2 storage and implements the EU CCS Directive. The framework enables offshore and onshore CO2 storage and integrates with the national energy transition strategy (PEP2040).",
   "id": "pl-mining-law-ccs-2024",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,14 @@
     "permitting_lead_time": "3-5 years (Ministry approval process). [Evidence: EU Project of Mutual Interest (PMI) status]",
     "pore_space_rights": "State-owned (Treasury). [Evidence: Art 10 Mining Law] [URL: https://www.gov.pl/web/klimat]"
   },
+  "relatedFacilities": [
+    "1034",
+    "1278",
+    "319",
+    "320",
+    "565",
+    "648"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Climate and Environment",
   "status": "Active",

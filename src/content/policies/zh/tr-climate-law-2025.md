@@ -39,6 +39,7 @@
   },
   "category": "Statutory",
   "country": "Turkey",
+  "description": "2025年第7552号气候法案为国家排放交易体系 (TR ETS) 和2053年净零排放目标奠定了法律基础。它针对碳密集型行业（水泥、钢铁、电力）进行 CBAM 对接，并引入“绿色分类法”法规以解锁 CCUS 基础设施融资。",
   "id": "tr-climate-law-2025",
   "legalWeight": "Law No. 7552",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "排放量 >5 万吨二氧化碳/年的设施必须获得 ETS 许可。",
     "pore_space_rights": "在 2053 年长期战略 (LTS) 中为工业集群确定；具体封存权将通过 2025 年绿色分类法定义。"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Grand National Assembly of Turkey",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Chile",
+  "description": "Chile's Green Hydrogen Action Plan 2023-2030 includes CCUS as a critical technology for the development of synthetic fuels. The regulatory framework is being expanded to cover carbon capture and storage in the Magallanes and Antofagasta regions.",
   "id": "cl-green-hydrogen-ccs-2025",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "2-4 years (Multi-agency approval). [Evidence: Magallanes Cluster Roadmap]",
     "pore_space_rights": "State-owned (Mining Code). [Evidence: Ministry of Energy Decree] [URL: https://www.energia.gob.cl/]"
   },
+  "relatedFacilities": [
+    "1038"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy",
   "status": "Active",

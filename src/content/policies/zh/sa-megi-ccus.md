@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "沙特阿拉伯",
+  "description": "## 政策概览\r \r 沙特阿拉伯的 CCUS 战略是其‘循环碳经济 (Circular Carbon Economy, CCE)’框架的核心支柱。该战略由沙特在 2020 年 G20 峰会期间提出并推广，确立了‘减少、重用、回收、移除’四大原则。作为实现 2060 净零排放目标的关键路径，沙特设定了极其宏伟的阶段性目标：到 **2035 年实现每年 4400 万吨 (44 Mtpa) 的 CO2 捕捉与封存能力**。\r \r 该战略的旗舰工程是位于朱拜勒 (Jubail) 的大型 CCS 集群。该枢纽一期计划于 2027 年投入运营，初始设计产能为 900 万吨/年，其中沙特阿美 (Aramco) 提供约 600 万吨，其余来自周边工业区。沙特不仅将 CCUS 视为减排工具，更将其作为生产‘全球碳强度最低’氢能与石化产品的竞争优势。通过主权基金支持和沙特阿美的技术领导，沙特正在加速从资源出口国向全球碳管理服务中心的战略转型。",
   "evolution": {
     "clusters": [
       "Circular Carbon Economy National Program",
@@ -69,6 +70,15 @@
     "permitting_lead_time": "",
     "pore_space_rights": "国家所有"
   },
+  "relatedFacilities": [
+    "1015",
+    "1016",
+    "1198",
+    "1240",
+    "1352",
+    "395",
+    "601"
+  ],
   "reviewStatus": "verified",
   "source": "Saudi Ministry of Energy",
   "status": "现行",

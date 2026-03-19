@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Iceland",
+  "description": "Icelandic implementation of CCS standards specifically tailored for in-situ carbon mineralization in basaltic rocks.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,18 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "102",
+    "103",
+    "104",
+    "1172",
+    "1199",
+    "434",
+    "441",
+    "536",
+    "803",
+    "939"
+  ],
   "reviewStatus": "draft",
   "source": "冰岛议会",
   "status": "Active",

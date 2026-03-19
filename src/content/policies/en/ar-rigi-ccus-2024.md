@@ -39,6 +39,7 @@
   },
   "category": "Incentive",
   "country": "Argentina",
+  "description": "The 2024 Incentive Regime for Large Investments (RIGI, Law 27.742) establishes massive tax, customs, and foreign exchange incentives for projects exceeding $200M. CCUS is explicitly listed as an eligible activity within the energy sector, supporting the capture, transport, and storage of CO2, particularly for the Vaca Muerta shale basin and 'Blue Hydrogen' production.",
   "id": "ar-rigi-ccus-2024",
   "legalWeight": "Law (RIGI)",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "Provincial mitigation programs (Neuquén/Mendoza 2025) as precursors.",
     "pore_space_rights": "Provincial jurisdiction; integrated into hydrocarbon mitigation programs (e.g., Neuquén Res. 21/2025)."
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Government of Argentina",
   "status": "Active",

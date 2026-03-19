@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "Egypt",
+  "description": "埃及金融监管局 (FRA) 于 2024 年启动了首个自愿碳市场。该框架将 CCUS 纳入生成碳信用的有效方法，重点关注工业脱碳和地中海封存枢纽。",
   "id": "eg-carbon-market-framework-2024",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "通过 FRA/石油部需 18-24 个月。[证据: 国家 CCUS 路线图]",
     "pore_space_rights": "国家所有 (1953 年第 66 号石油法)。[证据: EGAS 指令] [URL: https://fra.gov.eg/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Financial Regulatory Authority (FRA)",
   "status": "现行",

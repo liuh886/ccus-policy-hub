@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "International",
+  "description": "The GCCA 2050 Roadmap is the definitive global blueprint for decarbonizing the built environment’s foundational material. It targets a **25% reduction by 2030** and identifies **CCUS** as the single largest lever for reaching net-zero by 2050, projected to contribute 36% of total industry abatement. The roadmap provides a standardized multi-pathway strategy—incorporating clinker substitution, alternative fuels, and recarbonation. Representing 80% of global production outside China, the framework",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "GCCA",
   "status": "Active",

@@ -9,7 +9,7 @@
   "name": "巴布亚新几内亚",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-18",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

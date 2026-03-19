@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Brazil",
+  "description": "Detailed regulatory resolution defining the application process for 30-year CCS permits and mandatory inventory standards.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1170",
+    "157",
+    "310",
+    "837"
+  ],
   "reviewStatus": "draft",
   "source": "ANP Brazil",
   "status": "Active",

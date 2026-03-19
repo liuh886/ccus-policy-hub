@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Thailand",
+  "description": "Thailand's draft Climate Change Act, approved in Dec 2025, establishes a centralized governance framework under the National Climate Change Policy Committee (NCCPC). It introduces a preliminary carbon tax (THB 200/ton) and designates the Department of Mineral Fuels (DMF) as the lead for CCS, focusing on the Upper Gulf of Thailand.",
   "id": "th-draft-climate-change-act-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "DMF designated as the technical lead to streamline CCUS project permitting.",
     "pore_space_rights": "State-owned; managed by the Department of Mineral Fuels (DMF) for offshore storage."
   },
+  "relatedFacilities": [
+    "1000",
+    "36"
+  ],
   "reviewStatus": "verified",
   "source": "Department of Mineral Fuels (DMF)",
   "status": "Active",

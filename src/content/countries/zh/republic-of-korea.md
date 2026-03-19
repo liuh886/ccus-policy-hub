@@ -9,7 +9,7 @@
   "name": "韩国",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-18",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "region": "East Asia",
@@ -25,4 +25,4 @@
 }
 ---
 
-null
+

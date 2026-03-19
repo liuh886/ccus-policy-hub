@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "希腊",
+  "description": "希腊 2025 年框架重点关注 Prinos 离岸封存枢纽以及“Eni-Hellas”地中海走廊的发展。它将欧盟 NZIA 目标纳入了国家气候立法。",
   "id": "gr-ccs-regulatory-framework-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,20 @@
     "permitting_lead_time": "2-4 年 (战略投资地位)。[证据: 国家能源与气候计划]",
     "pore_space_rights": "国家所有；由 HEREMA 管理。[证据: 第 4001/2011 号法律更新] [URL: https://ypen.gov.gr/]"
   },
+  "relatedFacilities": [
+    "1140",
+    "1141",
+    "1180",
+    "1339",
+    "1340",
+    "1341",
+    "138",
+    "657",
+    "688",
+    "689",
+    "690",
+    "820"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Environment and Energy",
   "status": "现行",

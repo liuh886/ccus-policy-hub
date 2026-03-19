@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Saudi Arabia",
+  "description": "The Saudi Circular Carbon Economy (CCE) National Program framework, strengthened in 2024, establishes the Kingdom's regulatory path for the Jubail CCS Hub. It integrates the Green Financing Framework for CCUS funding and the GCOM (GHG Crediting and Offsetting Mechanism) for carbon monetization. The Ministry of Energy manages pore space as a state asset via concessions.",
   "id": "sa-circular-carbon-economy-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,15 @@
     "permitting_lead_time": "Streamlined via Multi-user Hub infrastructure planning.",
     "pore_space_rights": "State-owned subsurface; concessions granted by Ministry of Energy."
   },
+  "relatedFacilities": [
+    "1015",
+    "1016",
+    "1198",
+    "1240",
+    "1352",
+    "395",
+    "601"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy",
   "status": "Active",

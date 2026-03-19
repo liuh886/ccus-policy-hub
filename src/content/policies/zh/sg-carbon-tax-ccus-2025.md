@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "新加坡",
+  "description": "新加坡《碳定价法》于 2024 年修订，提高了碳税并将 CCUS 纳入碳信用的适用范围。重点在于跨境运输和区域枢纽的第 6 条整合。",
   "id": "sg-carbon-tax-ccus-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "出口终端审批需 1-2 年。[证据: 裕廊岛路线图]",
     "pore_space_rights": "国家所有 (土地法)。[证据: MTI/EMA 指南] [URL: https://www.nea.gov.sg/]"
   },
+  "relatedFacilities": [
+    "1148",
+    "586"
+  ],
   "reviewStatus": "verified",
   "source": "National Environment Agency (NEA)",
   "status": "现行",

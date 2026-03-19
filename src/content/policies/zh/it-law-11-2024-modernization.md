@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "意大利",
+  "description": "第11/2024号法律通过修订第162/2011号法令，实现了意大利 CCUS 框架的现代化。该法律规定离岸枯竭油气田在法律上被视为合适的封存场址，引入了最少 20 年的责任转移窗口，并豁免了小规模试点项目（<10万吨）的环境影响评估。它支持拉文纳 (Ravenna) CCS 枢纽和 Callisto 地中海网络的发展。",
   "id": "it-law-11-2024-modernization",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,15 @@
     "permitting_lead_time": "小于 10 万吨的试点项目免除环境影响评价 (EIA)；简化工业许可。",
     "pore_space_rights": "枯竭的离岸碳氢化合物储层在法律上被指定为合适场址（第 11/2024 号法律）。"
   },
+  "relatedFacilities": [
+    "1205",
+    "142",
+    "143",
+    "349",
+    "686",
+    "687",
+    "732"
+  ],
   "reviewStatus": "verified",
   "source": "MASE",
   "status": "现行",

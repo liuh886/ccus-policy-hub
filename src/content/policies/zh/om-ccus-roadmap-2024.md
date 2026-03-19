@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "阿曼",
+  "description": "阿曼能源和矿产部 (MEM) 主导的 2024 年 CCUS 路线图确定，到 2050 年每年二氧化碳封存潜力达 2500 万吨。该框架侧重于 PDO 运营的封存枢纽以及橄榄岩地层碳矿化技术的整合。",
   "id": "om-ccus-roadmap-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,11 @@
     "permitting_lead_time": "2-3 年 (与上游油气许可整合)。[证据: PDO CCUS 项目计划]",
     "pore_space_rights": "国家所有；通过第 96/2020 号皇家法令进行管理。[证据: 2024 年 MEM 指南] [URL: https://mem.gov.om/]"
   },
+  "relatedFacilities": [
+    "1190",
+    "618",
+    "736"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy and Minerals",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Romania",
+  "description": "Updating the 2013 framework, Romania's 2025 Law operationalizes large-scale storage in depleted gas fields in Transylvania and offshore Black Sea. It aligns with the EU NZIA and establishes the national authority for CCS monitoring.",
   "id": "ro-ccs-operational-law-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "3-5 years (EU Projects of Mutual Interest). [Evidence: Black Sea CCS Roadmap]",
     "pore_space_rights": "State-owned; managed by NAMR. [Evidence: Law 114/2013 update] [URL: https://namr.ro/]"
   },
+  "relatedFacilities": [
+    "733"
+  ],
   "reviewStatus": "verified",
   "source": "NAMR / Ministry of Energy",
   "status": "Active",

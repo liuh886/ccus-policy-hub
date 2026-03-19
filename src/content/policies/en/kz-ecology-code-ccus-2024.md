@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Kazakhstan",
+  "description": "Kazakhstan's Ecology Code was amended in 2023/2024 to formally recognize CCUS technologies as climate mitigation measures. The framework provides the legal basis for geological CO2 storage permits and integrates with the national ETS (Zhasyl Damu).",
   "id": "kz-ecology-code-ccus-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-3 years (EIA + Subsurface permit). [Evidence: Simplified Pilot Procedure]",
     "pore_space_rights": "State-owned (Subsurface Use Code). [Evidence: Art 14.2 Ecology Code] [URL: https://www.gov.kz/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Ecology",
   "status": "Active",

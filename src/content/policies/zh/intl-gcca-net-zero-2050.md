@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "国际",
+  "description": "全球水泥与混凝土协会 (GCCA) 发布的《2050 净零路线图》是该行业脱碳的全球最高技术共识。该路线图设定了 2030 年减排 **25%** 的中期目标，并将 **CCUS 技术** 明确为实现该行业 2050 物理净零的最关键技术杠杆（预计贡献减排量的 36%）。路线图详细规划了涵盖熟料替代、燃料切换及‘碳化利用’在内的多重路径。作为代表全球 80% 产能（除中国外）的行业蓝图，它通过建立统一的技术边界和核算准则，为全球水泥厂碳捕集设施的商业化与公共融资谈判提供了事实上的准入标准。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "GCCA",
   "status": "现行",

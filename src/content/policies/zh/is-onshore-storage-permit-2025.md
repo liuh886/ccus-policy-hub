@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "冰岛",
+  "description": "2025 年 4 月，Carbfix 获得了冰岛有史以来首个欧盟陆上二氧化碳矿化封存许可。这一里程碑在陆上玄武岩矿化方面落实了欧盟 CCS 指令。冰岛还正在建设 Coda 终端，这是一个耗资 1.15 亿欧元的欧盟资助的二氧化碳进口与永久封存跨境枢纽。",
   "id": "is-onshore-storage-permit-2025",
   "legalWeight": "Storage Permit",
   "provenance": {
@@ -56,6 +57,18 @@
     "permitting_lead_time": "2025 年获得首个陆上许可，为矿化项目建立了清晰的路径。",
     "pore_space_rights": "通过 Carbfix 技术对陆上矿化（玄武岩）封存进行专门治理。"
   },
+  "relatedFacilities": [
+    "102",
+    "103",
+    "104",
+    "1172",
+    "1199",
+    "434",
+    "441",
+    "536",
+    "803",
+    "939"
+  ],
   "reviewStatus": "verified",
   "source": "Environment Agency of Iceland",
   "status": "现行",

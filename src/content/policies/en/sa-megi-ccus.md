@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Saudi Arabia",
+  "description": "## Policy Overview\r \r Saudi Arabia’s CCUS strategy is built upon the Circular Carbon Economy (CCE) framework, a model it successfully championed during its 2020 G20 Presidency. Based on the 4Rs (Reduce, Reuse, Recycle, Remove), the strategy sets a massive milestone: reaching **44 million tonnes per annum (Mtpa) of CO2 storage by 2035**. This is a non-negotiable pillar for the Kingdom’s 2060 Net Zero target.\r \r The flagship Jubail CCS Hub, scheduled for 2027 startup, will initially capture 9 Mtpa",
   "evolution": {
     "clusters": [
       "Circular Carbon Economy National Program",
@@ -69,6 +70,15 @@
     "permitting_lead_time": "",
     "pore_space_rights": "State-owned"
   },
+  "relatedFacilities": [
+    "1015",
+    "1016",
+    "1198",
+    "1240",
+    "1352",
+    "395",
+    "601"
+  ],
   "reviewStatus": "verified",
   "source": "Saudi Ministry of Energy",
   "status": "Active",

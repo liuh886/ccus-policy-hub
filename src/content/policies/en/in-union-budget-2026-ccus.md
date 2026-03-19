@@ -39,6 +39,7 @@
   },
   "category": "Incentive",
   "country": "India",
+  "description": "India's 2026-27 Union Budget represents a historic fiscal commitment to carbon management, allocating **200 billion rupees** (~$2.2 Billion USD) over five years. The centerpiece is the 'Viability Gap Funding (VGF)' mechanism, specifically designed to de-risk high-CAPEX sequestration projects in the cement, steel, and refining sectors. Launched alongside the 2025 National CCUS R&D Roadmap, the policy promotes a Public-Private Partnership (PPP) model to establish regional sequestration hubs across",
   "evolution": {
     "clusters": [
       "Direct Fiscal Incentives"
@@ -68,6 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "119",
+    "1195",
+    "120",
+    "224"
+  ],
   "reviewStatus": "verified",
   "source": "印度财政部",
   "status": "Active",

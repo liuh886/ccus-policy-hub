@@ -39,6 +39,7 @@
   },
   "category": "Market",
   "country": "International",
+  "description": "## Policy Overview\r \r Article 6.4 of the Paris Agreement establishes a United Nations-led global carbon market mechanism (A6.4ERs), enabling parties to trade high-integrity emission reductions and removals. In October 2024, the Article 6.4 Supervisory Body (SBM) finalized and adopted groundbreaking standards for **Carbon Removals**, which became effective during COP29. This formalizes the path for CCS and Direct Air Capture (DAC) projects to generate internationally recognized carbon credits eli",
   "evolution": {
     "clusters": [
       "UNFCCC Paris Agreement implementation",
@@ -70,6 +71,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "UNFCCC",
   "status": "Active",

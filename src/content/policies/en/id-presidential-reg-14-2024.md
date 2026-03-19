@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Indonesia",
+  "description": "## Policy Overview\r \r Enacted on January 30, 2024, Indonesia’s Presidential Regulation No. 14 of 2024 (PR 14/2024) provides the first comprehensive legal architecture for Carbon Capture and Storage (CCS) in Southeast Asia. Designed to turn Indonesia into a premier carbon management hub, the regulation establishes two primary operating models: CCS within existing upstream Oil & Gas Working Areas (conducted by PSC contractors via contract amendments) and independent Carbon Storage Permit Areas (WI",
   "evolution": {
     "clusters": [
       "ASEAN CCS Hub Strategy",
@@ -68,6 +69,28 @@
     "permitting_lead_time": "Developing (PSC amendment)",
     "pore_space_rights": "State Owned"
   },
+  "relatedFacilities": [
+    "1022",
+    "1329",
+    "187",
+    "227",
+    "230",
+    "342",
+    "353",
+    "37",
+    "388",
+    "43",
+    "760",
+    "761",
+    "762",
+    "764",
+    "765",
+    "857",
+    "860",
+    "947",
+    "948",
+    "998"
+  ],
   "reviewStatus": "verified",
   "source": "印度尼西亚内阁秘书处",
   "status": "Active",

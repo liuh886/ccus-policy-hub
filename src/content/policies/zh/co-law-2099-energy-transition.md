@@ -39,6 +39,7 @@
   },
   "category": "经济激励",
   "country": "哥伦比亚",
+  "description": "哥伦比亚能源转型法，将蓝氢及其关联的 CCS 技术列为非传统可再生能源，并提供 15 年内 50% 投资额所得税抵扣。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "draft",
   "source": "哥伦比亚能源部",
   "status": "现行",

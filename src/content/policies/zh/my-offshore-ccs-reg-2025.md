@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "马来西亚",
+  "description": "马来西亚于 2025 年颁布了全面的 CCUS 立法，专门针对离岸二氧化碳封存。该法指定马石油 (PETRONAS) 为技术管理者，并规定了跨境封存枢纽（如 Kasawari）的财政激励措施。",
   "id": "my-offshore-ccs-reg-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "2-3 年 (与 PSC 流程整合)。[证据: MIDA CCUS 手册]",
     "pore_space_rights": "国家所有；根据《石油发展法》由马石油管理。[证据: 2025 年 CCUS 法第 4 条] [URL: https://www.petronas.com/]"
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Economy / PETRONAS",
   "status": "现行",

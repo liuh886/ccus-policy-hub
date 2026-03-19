@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "马来西亚",
+  "description": "## 政策概览\r \r 马来西亚《2025 年碳捕集、利用与封存法案》(CCUS Act 2025) 是东南亚首部针对 CCUS 全生命周期的专项母法。该法案于 2025 年 3 月获批并于同年 8 月正式生效，确立了马来西亚作为亚太地区碳管理枢纽的法律地位。其核心举措是成立了专门的监管机构——**马来西亚 CCUS 管理局 (MyCCUS)**，负责统筹全马（西马及纳闽）的许可发放、安全监管与合规审计。\r \r 法案引入了双层授权体系：**评估许可 (Assessment Permits)** 用于前期的地质详查，**封存许可 (Storage Licences)** 用于实际的注入与长期运营。最具战略意义的是，该法案正式允许二氧化碳的跨国流动，并配套了《2025 离岸许可条例》，为 PETRONAS 等企业利用马来西亚广阔的离岸枯竭气田（预估潜力达 15 Mtpa）接收来自日本、韩国等地的 CO2 提供了制度保障。此外，法案还设立了‘闭场后管护基金 (Post-Closure Stewardship Fund)’，通过征收注入费来覆盖长达数十年的环境监测责任。",
   "evolution": {
     "clusters": [
       "National Energy Transition Roadmap (NETR)",
@@ -69,6 +70,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "MIDA / 马来西亚财政部",
   "status": "现行",

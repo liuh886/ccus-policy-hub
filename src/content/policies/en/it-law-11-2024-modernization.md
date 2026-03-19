@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Italy",
+  "description": "Law 11/2024 modernizes Italy's CCUS framework by amending Legislative Decree 162/2011. It designates offshore depleted reservoirs as legally suitable for storage, introduces a 20-year minimum liability transfer window, and exempts small-scale pilot projects (<100kt) from Environmental Impact Assessments. It supports the development of the Ravenna CCS hub and the Callisto Mediterranean Network.",
   "id": "it-law-11-2024-modernization",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,15 @@
     "permitting_lead_time": "Exemption from EIA for pilots <100kt; streamlined industrial licensing.",
     "pore_space_rights": "Depleted offshore hydrocarbon reservoirs legally designated as suitable sites (Law 11/2024)."
   },
+  "relatedFacilities": [
+    "1205",
+    "142",
+    "143",
+    "349",
+    "686",
+    "687",
+    "732"
+  ],
   "reviewStatus": "verified",
   "source": "MASE",
   "status": "Active",

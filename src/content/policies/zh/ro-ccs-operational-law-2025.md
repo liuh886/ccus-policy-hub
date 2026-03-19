@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "罗马尼亚",
+  "description": "罗马尼亚 2025 年法律更新了 2013 年的框架，落实了特兰西瓦尼亚枯竭气田和黑海离岸的大规模封存。该法对齐欧盟 NZIA，并建立了国家 CCS 监测机构。",
   "id": "ro-ccs-operational-law-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "3-5 年 (欧盟共同利益项目)。[证据: 黑海 CCS 路线图]",
     "pore_space_rights": "国家所有；由 NAMR 管理。[证据: 第 114/2013 号法律更新] [URL: https://namr.ro/]"
   },
+  "relatedFacilities": [
+    "733"
+  ],
   "reviewStatus": "verified",
   "source": "NAMR / Ministry of Energy",
   "status": "现行",

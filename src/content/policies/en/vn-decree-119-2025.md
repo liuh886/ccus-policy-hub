@@ -39,6 +39,7 @@
   },
   "category": "Market",
   "country": "Vietnam",
+  "description": "Issued in June 2025, Decree No. 119/2025/ND-CP is the primary executive order governing Vietnam's transition to a structured carbon economy. It establishes the **National Registration System** for GHG quotas and credits and mandates an emission allowance pilot for the power, steel, and cement sectors during 2025-2026. For the CCUS sector, the Decree provides the first legal recognition of sequestration outcomes as tradeable offsets within the domestic system. By delegating methodology developmen",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "越南政府",
   "status": "Active",

@@ -3,71 +3,102 @@
   "analysis": {
     "incentive": {
       "auditNote": "",
-      "citation": "Art. 45",
-      "evidence": "Legal certainty facilitates funding",
-      "label": "High",
-      "score": 65
+      "citation": "JOGMEC Operational Protocol 2025",
+      "evidence": "Liability handover to JOGMEC after post-injection monitoring period (Art. 35).",
+      "label": "JOGMEC Risk Mitigation",
+      "score": 80
     },
     "market": {
       "auditNote": "",
-      "citation": "Chapter 4",
-      "evidence": "Open access and business transparency",
-      "label": "High",
-      "score": 75
+      "citation": "METI CCS Guidelines 2025",
+      "evidence": "Mandatory third-party access (TPA) guidelines for specified storage areas established by METI.",
+      "label": "Managed Open Access",
+      "score": 85
     },
     "mrv": {
       "auditNote": "",
       "citation": "Section 5",
-      "evidence": "Mandatory monitoring and reserve accumulation",
+      "evidence": "Clear legal definition of \"Stability\" for JOGMEC transfer.",
       "label": "High",
-      "score": 85
+      "score": 90
     },
     "statutory": {
       "auditNote": "",
-      "citation": "Full Act",
-      "evidence": "Primary legislation for CCUS business",
-      "label": "High",
+      "citation": "Japan CCS Business Act (2025 Enforcement)",
+      "evidence": "Article 12-15 explicitly defines storage rights as proprietary property (Real Right), ensuring investment security.",
+      "label": "Legally Protected Real Right",
       "score": 95
     },
     "strategic": {
       "auditNote": "",
       "citation": "METI Strategy",
-      "evidence": "Alignment with 2030 Roadmap",
+      "evidence": "Cornerstone of GX strategy and Asia CCUS Network.",
       "label": "High",
-      "score": 90
+      "score": 95
     }
   },
   "category": "法律监管",
   "country": "日本",
+  "description": "日本《二氧化碳存储业务法》（CCS 业务法）为全产业链建立了首个综合性法律框架。该法案于 2024 年 5 月颁布，采取分阶段生效模式：试掘权于 2024 年 11 月生效，全部条款（包括储集权、责任移交）将于 2026 年 5 月前全面施行。2025 年是 JOGMEC 支持的示范项目进入基础工程设计 (FEED) 的关键年。法案将“储集权”定义为“拟制物权”，受法律保护且可用于抵押融资。二氧化碳达到稳定状态后，监测职责可移交给 JOGMEC，但运营商需承担无过错责任。",
   "id": "jp-ccs-business-act-2024",
   "impactAnalysis": {
-    "economic": "Reduces legal uncertainty for investors; provides funding mechanism for long-term monitoring.",
-    "environmental": "Targeting 6-12 million tons of annual storage by 2030.",
-    "technical": "Enables large-scale offshore storage through clear subsurface rights."
+    "economic": "Enables project financing through real-right registration; reduces long-term liability costs via JOGMEC transfer.",
+    "environmental": "Legal backbone for Japan's 2030 target of 6-12 Mtpa storage capacity.",
+    "technical": "Establishes 'Stable Behavior' as the legal threshold for monitoring transfer, driving 4D seismic adoption."
   },
   "legalWeight": "Primary Legislation",
   "provenance": {
-    "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-18",
+    "author": "CCUS AI Agent (DV Update)",
+    "lastAuditDate": "2026-03-19",
     "reviewer": "Human Audit Pending"
   },
   "pubDate": "2024-05-17",
   "regulatory": {
-    "co2_definition": "具有开放获取强制要求的受监管工业商品。",
-    "cross_border_rules": "与伦敦议定书保持一致以释放出口潜力。",
-    "financial_assurance": "注入期间必须累积强制性的监测储备金。",
-    "liability_period": "注入后期，直到验证二氧化碳稳定性为止。",
-    "liability_transfer": "稳定性确认后，监测责任转移给 JOGMEC。",
-    "permitting_lead_time": "通过指定区域许可约需 2-3 年。",
-    "pore_space_rights": "确立为由 METI 授予的“封存权”（物权）。"
+    "co2_definition": "Regulated industrial commodity with strict environmental safety standards.",
+    "cross_border_rules": "Aligned with London Protocol (Art 6) to enable Asia-Pacific hubs.",
+    "financial_assurance": "Mandatory Monitoring Reserves (Contributions) paid to JOGMEC.",
+    "liability_period": "Phase-in from 2024-2026; monitoring contribution required during operation.",
+    "liability_transfer": "Monitoring/Management responsibility transfers to JOGMEC after stability confirmation.",
+    "permitting_lead_time": "Approx. 2-3 years via METI Specified Area licensing.",
+    "pore_space_rights": "拟制物权 (Quasi-real Rights / Mina-shi Bukken)."
   },
+  "relatedFacilities": [
+    "1014",
+    "1070",
+    "1091",
+    "1092",
+    "1132",
+    "1133",
+    "1134",
+    "1135",
+    "1136",
+    "1194",
+    "1366",
+    "137",
+    "279",
+    "289",
+    "359",
+    "647",
+    "666",
+    "667",
+    "777",
+    "802",
+    "810",
+    "811",
+    "812",
+    "858",
+    "937",
+    "938",
+    "957",
+    "958"
+  ],
   "reviewStatus": "verified",
   "source": "METI",
   "status": "现行",
-  "title": "二氧化碳封存业务法 (CCS 业务法)",
+  "title": "二氧化碳存储业务法 (2025年生效)",
   "url": "https://www.meti.go.jp/english/press/2024/0517_001.html",
   "year": 2024
 }
 ---
 
-《二氧化碳封存业务法》（简称 CCS 业务法）为日本 CCUS 全产业链建立了首个综合性法律框架。该法案创设了“存储权”这一物权概念，由经济产业省（METI）统一授信。它规定在二氧化碳达到稳定状态后，可将监测责任移交给 JOGMEC。关键创新在于为封存运营商引入了“无过错责任（Strict Liability）”制度。
+日本《二氧化碳存储业务法》（CCS 业务法）为全产业链建立了首个综合性法律框架。该法案于 2024 年 5 月颁布，采取分阶段生效模式：试掘权于 2024 年 11 月生效，全部条款（包括储集权、责任移交）将于 2026 年 5 月前全面施行。2025 年是 JOGMEC 支持的示范项目进入基础工程设计 (FEED) 的关键年。法案将“储集权”定义为“拟制物权”，受法律保护且可用于抵押融资。二氧化碳达到稳定状态后，监测职责可移交给 JOGMEC，但运营商需承担无过错责任。

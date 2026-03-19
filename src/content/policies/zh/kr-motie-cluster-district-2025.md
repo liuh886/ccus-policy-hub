@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "韩国",
+  "description": "韩国产业通商资源部 (MOTIE) 发布的标准，规定了如何申请“CCUS 战略集群”，申请获批后可获得公共地产租金减免和国家项目优先权。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,18 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1066",
+    "1275",
+    "1325",
+    "1326",
+    "242",
+    "243",
+    "247",
+    "373",
+    "57",
+    "919"
+  ],
   "reviewStatus": "draft",
   "source": "MOTIE Korea",
   "status": "现行",

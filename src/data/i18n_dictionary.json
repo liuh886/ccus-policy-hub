@@ -1,32 +1,21 @@
 {
   "countries": {
     "Algeria": "Algeria",
-    "Australia": "Australia",
     "Austria": "Austria",
     "Bahrain": "Bahrain",
-    "Belgium": "Belgium",
     "Brazil": "Brazil",
     "Bulgaria": "Bulgaria",
-    "Canada": "Canada",
     "Chile": "Chile",
-    "China": "China",
     "Colombia": "Colombia",
     "Croatia": "Croatia",
-    "Denmark": "Denmark",
     "European Union": "European Union",
     "Finland": "Finland",
-    "France": "France",
     "Georgia": "Georgia",
-    "Germany": "Germany",
-    "Greece": "Greece",
     "Hungary": "Hungary",
-    "Iceland": "Iceland",
     "India": "India",
-    "Indonesia": "Indonesia",
     "International": "International",
     "Ireland": "Ireland",
     "Italy": "Italy",
-    "Japan": "Japan",
     "Kenya": "Kenya",
     "Latvia": "Latvia",
     "Libya": "Libya",
@@ -34,10 +23,8 @@
     "Luxembourg": "Luxembourg",
     "Malaysia": "Malaysia",
     "Mexico": "Mexico",
-    "Netherlands": "Netherlands",
     "New Zealand": "New Zealand",
     "Nigeria": "Nigeria",
-    "Norway": "Norway",
     "Oman": "Oman",
     "Other": "Other",
     "Papua New Guinea": "Papua New Guinea",
@@ -48,16 +35,12 @@
     "Russia": "Russia",
     "Saudi Arabia": "Saudi Arabia",
     "Singapore": "Singapore",
-    "South Korea": "South Korea",
     "Spain": "Spain",
-    "Sweden": "Sweden",
     "Switzerland": "Switzerland",
     "Thailand": "Thailand",
     "UK": "United Kingdom",
     "USA": "United States",
     "United Arab Emirates": "United Arab Emirates",
-    "United Kingdom": "United Kingdom",
-    "United States": "United States",
     "Uruguay": "Uruguay",
     "Vietnam": "Vietnam",
     "中国": "China",
@@ -117,7 +100,37 @@
     "阿曼": "Oman",
     "阿联酋": "United Arab Emirates",
     "韩国": "South Korea",
-    "马来西亚": "Malaysia"
+    "马来西亚": "Malaysia",
+    "United States": "United States",
+    "United Kingdom": "United Kingdom",
+    "Canada": "Canada",
+    "Norway": "Norway",
+    "China": "China",
+    "Australia": "Australia",
+    "France": "France",
+    "Netherlands": "Netherlands",
+    "Denmark": "Denmark",
+    "Japan": "Japan",
+    "Germany": "Germany",
+    "Indonesia": "Indonesia",
+    "Sweden": "Sweden",
+    "Belgium": "Belgium",
+    "Greece": "Greece",
+    "South Korea": "South Korea",
+    "Iceland": "Iceland"
+  },
+  "regions": {
+    "North America": "北美",
+    "Europe": "欧洲",
+    "China": "中国",
+    "Asia Pacific": "亚太地区",
+    "Middle East": "中东",
+    "Central and South America": "中南美洲",
+    "Africa": "非洲",
+    "Eurasia": "欧亚大陆",
+    "Australia and New Zealand": "澳大利亚与新西兰",
+    "Other Asia Pacific": "其他亚太地区",
+    "Unknown": "未知"
   },
   "sectors": {
     "Bioenergy": "生物能源",
@@ -249,58 +262,6 @@
       "Upcoming": {
         "zh": "即将实施",
         "en": "Upcoming"
-      }
-    },
-    "dimensions": {
-      "incentive": {
-        "label": {
-          "zh": "经济激励",
-          "en": "Economic"
-        },
-        "desc": {
-          "zh": "财政补贴、税收抵免及直接资金支持力度。",
-          "en": "Direct funding, tax credits, and subsidies."
-        }
-      },
-      "market": {
-        "label": {
-          "zh": "市场机制",
-          "en": "Market"
-        },
-        "desc": {
-          "zh": "碳交易、信用补偿及商业模式的成熟度。",
-          "en": "Carbon trading and commercial maturity."
-        }
-      },
-      "mrv": {
-        "label": {
-          "zh": "技术规范",
-          "en": "Technical"
-        },
-        "desc": {
-          "zh": "监测、报告与核证 (MRV) 的技术严谨性。",
-          "en": "Monitoring, Reporting and Verification rigor."
-        }
-      },
-      "statutory": {
-        "label": {
-          "zh": "法律监管",
-          "en": "Statutory"
-        },
-        "desc": {
-          "zh": "法律授权、准入许可及监管框架的完备性。",
-          "en": "Legal authority and permitting rigor."
-        }
-      },
-      "strategic": {
-        "label": {
-          "zh": "战略引导",
-          "en": "Strategic"
-        },
-        "desc": {
-          "zh": "国家长期目标、路线图及政策稳定性。",
-          "en": "Long-term goals and roadmaps."
-        }
       }
     }
   }

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Iceland",
+  "description": "In April 2025, Carbfix received the first-ever EU onshore CO2 storage permit for mineralization in Iceland. This milestone operationalizes the EU CCS Directive for onshore basaltic mineralization. Iceland is also developing the Coda Terminal, an €115M EU-funded cross-border hub for CO2 import and permanent storage.",
   "id": "is-onshore-storage-permit-2025",
   "legalWeight": "Storage Permit",
   "provenance": {
@@ -56,6 +57,18 @@
     "permitting_lead_time": "First onshore permit granted in 2025 establishes a clear path for mineralization projects.",
     "pore_space_rights": "Specific governance for onshore mineralization (basaltic) via Carbfix technology."
   },
+  "relatedFacilities": [
+    "102",
+    "103",
+    "104",
+    "1172",
+    "1199",
+    "434",
+    "441",
+    "536",
+    "803",
+    "939"
+  ],
   "reviewStatus": "verified",
   "source": "Environment Agency of Iceland",
   "status": "Active",

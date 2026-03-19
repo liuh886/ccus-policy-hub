@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Saudi Arabia",
+  "description": "Saudi Arabia has fully integrated CCS into its National Hydrogen Strategy as the primary vehicle for achieving a 'Circular Carbon Economy.' Saudi Aramco has committed **10% of its 2024-2026 CAPEX** to its New Energies division, focusing heavily on Carbon Capture and blue hydrogen production. The Saudi Green Initiative (SGI) targets 278 Mtpa of emission reductions by 2030, with CCS hubs serving as the physical backbone for this goal. By leveraging its unrivaled geological assets and low-cost natu",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,15 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1015",
+    "1016",
+    "1198",
+    "1240",
+    "1352",
+    "395",
+    "601"
+  ],
   "reviewStatus": "verified",
   "source": "沙特能源部",
   "status": "Active",

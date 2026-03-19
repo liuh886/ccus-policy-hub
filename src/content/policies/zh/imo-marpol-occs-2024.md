@@ -39,6 +39,7 @@
   },
   "category": "技术规范",
   "country": "国际",
+  "description": "国际海事组织 (IMO) 正在通过修订 MARPOL 附则 VI，确立全球统一的**船载碳捕集 (OCCS)** 监管框架。2024 年发布的 LCA 指南已正式纳入船载捕集的减排积分。该框架计划于 2028 年前补全环境风险评估、二氧化碳岸上接收设施（Reception Facilities）接口标准及认证准则。这一全球性政策标志着海运行业脱碳从单纯的‘燃料切换’转向‘燃料切换+碳捕集’的双轨制，为跨国 LCO2 运输船队和远洋巨轮应用捕集技术提供了全球通行证。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "IMO",
   "status": "制定中",

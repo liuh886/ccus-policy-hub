@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Malaysia",
+  "description": "The Malaysia CCUS Bill 2025 provides a comprehensive regulatory framework for the entire CCUS value chain. It establishes MyCCUS as a one-stop agency and introduces a Post-Closure Stewardship Fund via an injection levy. The bill permits CO2 import for storage but prohibits utilization of imported CO2.",
   "id": "my-ccus-bill-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "One-stop regulatory center via Malaysia CCUS Agency (MyCCUS).",
     "pore_space_rights": "Two-phased authorization: Assessment Permits (geological study) and Storage Permits (operation)."
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Economy",
   "status": "Active",

@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Mexico",
+  "description": "The 2025 SENER CCUS Legal Framework re-integrates carbon capture into Mexico's national climate strategy, aiming for a 35% emissions reduction by 2030. It plans the development of CCS clusters by 2027 and prioritizes state-led initiatives via PEMEX (CO2-EOR) and CFE (Plan México) while leveraging subnational leadership in states like Tamaulipas and Querétaro.",
   "id": "mx-sener-ccus-2025",
   "legalWeight": "Executive Order/Framework",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "Targeting cluster-based permitting by 2027.",
     "pore_space_rights": "Currently under national hydrocarbon law; new state-led framework to clarify specific storage rights."
   },
+  "relatedFacilities": [
+    "453"
+  ],
   "reviewStatus": "verified",
   "source": "SENER",
   "status": "Active",

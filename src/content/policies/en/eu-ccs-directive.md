@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "European Union",
+  "description": "## Policy Overview\r \r The EU CCS Directive (Directive 2009/31/EC) is the constitutional foundation of Europe's carbon management legal system. It establishes the highest regulatory standards for the safe geological sequestration of CO2 across the EU, ensuring environmental integrity and public safety. Its most celebrated provision is the **Long-term Liability Transfer mechanism**, which allows operators to hand over monitoring and remediation responsibilities to Member State governments after a ",
   "evolution": {
     "clusters": [
       "European Green Deal",
@@ -69,6 +70,9 @@
     "permitting_lead_time": "Member State dependent",
     "pore_space_rights": "Member State Jurisdiction"
   },
+  "relatedFacilities": [
+    "678"
+  ],
   "reviewStatus": "verified",
   "source": "European Parliament",
   "status": "Active",

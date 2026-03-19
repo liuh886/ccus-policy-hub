@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Romania",
+  "description": "Romania’s Law No. 114/2013 formally transposes the EU CCS Directive into the national legal framework. It mandates that all geological storage projects incorporate a risk-based monitoring plan implemented through all project phases. Managed by the National Authority for Regulation in Mining, Petroleum, and Geological Storage (ANRMPSG), the law establishes the technical and legal requirements for exploration permits, injection licenses, and the eventual transfer of long-term liability. As a count",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "733"
+  ],
   "reviewStatus": "verified",
   "source": "罗马尼亚矿产资源管理局",
   "status": "Active",

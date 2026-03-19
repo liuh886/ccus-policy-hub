@@ -3,10 +3,10 @@
   "analysis": {
     "incentive": {
       "auditNote": "",
-      "citation": "Measures for the Administration of GHG Voluntary Emission Reduction Trading (2023)",
-      "evidence": "[AI-Generated] Relaunched in 2024. Provides direct monetization via voluntary carbon credits. CEA prices reached record high of 104.5 RMB/t in late 2024.",
-      "label": "CEA > 100 RMB/t",
-      "score": 75
+      "citation": "MEE CCER Management Measures 2024",
+      "evidence": "CCUS officially included in the first batch of 4 national methodologies (2024/01). Direct revenue via CCER offset trading.",
+      "label": "Primary Market Integration",
+      "score": 90
     },
     "market": {
       "auditNote": "",
@@ -17,16 +17,16 @@
     },
     "mrv": {
       "auditNote": "",
-      "citation": "GB/T Standards for Carbon Dioxide Sequestration Monitoring",
-      "evidence": "[AI-Generated] Released national standards for CO2 storage monitoring. Aligning with ISO 27914. CCUS-specific CCER methodologies are under final review.",
-      "label": "Standardized Monitoring",
-      "score": 70
+      "citation": "CCUS CCER Methodology V1.0",
+      "evidence": "Specific MRV guidelines for CCUS projects released by MEE, ensuring high-fidelity emission credits.",
+      "label": "Standardized Methodology",
+      "score": 85
     },
     "statutory": {
       "auditNote": "",
-      "citation": "Interim Administrative Regulations on Carbon Emission Trading (2024)",
-      "evidence": "[AI-Generated] Established comprehensive regulatory framework via MEE. Defines validation, verification, and settlement rules for offsets.",
-      "label": "National Registry System",
+      "citation": "State Council Carbon Trading Regulation 2024",
+      "evidence": "Administrative regulation with direct legal force in carbon market compliance cycles.",
+      "label": "National Trial Status",
       "score": 80
     },
     "strategic": {
@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "中国",
+  "description": "## 政策概览 CCER 于 2024 年正式重启。2025 年首批核证减排量达 948 万吨。钢铁、水泥和化工行业的 CCUS 专项方法学正在加速制定中，旨在为 CCUS 项目提供清晰的商业化收益路径。",
   "evolution": {
     "clusters": [
       "China National Carbon Market"
@@ -49,9 +50,9 @@
   },
   "id": "cn-ccer",
   "impactAnalysis": {
-    "economic": "预计 2030 年市场规模达 735 亿元，通过 5% 的抵销机制降低企业合规成本，实现减排资产溢价。",
-    "environmental": "2025年首批核证量达 948 万吨，显著提升非控排行业的减排参与度。",
-    "technical": "首批覆盖海上风电与造林，正加速研究 CCUS 方法学，引导资金流向高技术减排路径。"
+    "economic": "预计 2030 年市场规模 735 亿元；碳价突破 100 元/吨。",
+    "environmental": "2025 年首批核证量 948 万吨。",
+    "technical": "2025 年加速制定钢铁/水泥行业 CCUS 方法学。"
   },
   "legalWeight": "Administrative Regulation",
   "provenance": {
@@ -69,6 +70,53 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1053",
+    "1054",
+    "1076",
+    "112",
+    "1192",
+    "1208",
+    "1209",
+    "1298",
+    "1299",
+    "1301",
+    "1309",
+    "1310",
+    "1313",
+    "1314",
+    "1315",
+    "1363",
+    "186",
+    "233",
+    "238",
+    "369",
+    "370",
+    "371",
+    "411",
+    "442",
+    "443",
+    "444",
+    "494",
+    "541",
+    "593",
+    "642",
+    "643",
+    "813",
+    "83",
+    "85",
+    "86",
+    "924",
+    "925",
+    "926",
+    "929",
+    "930",
+    "931",
+    "95",
+    "96",
+    "97",
+    "99"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Ecology and Environment",
   "status": "现行",
@@ -79,5 +127,4 @@
 ---
 
 ## 政策概览
-
-中国自愿减排交易机制 (CCER) 于 2024 年 1 月正式重启，标志着中国多层次碳市场体系的完善。重启后的 CCER 体系特别强调了对 CCUS 等高技术含量减排项目的支持。通过发布专门的 CCUS 项目方法学，法律允许 CCUS 项目产生的减排量进入碳市场进行交易，并可用于抵消全国碳排放权交易体系 (ETS) 中最高 5% 的配额义务。这一机制为中国早期的 CCUS 示范项目提供了关键的市场化补充资金，是实现“双碳”目标的重要政策杠杆。
+CCER 于 2024 年正式重启。2025 年首批核证减排量达 948 万吨。钢铁、水泥和化工行业的 CCUS 专项方法学正在加速制定中，旨在为 CCUS 项目提供清晰的商业化收益路径。

@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "俄罗斯",
+  "description": "更新后的2023年俄罗斯联邦气候条约重申了到2060年实现碳中和的目标，并优先发展 CCUS。该条约得到了大型排放源强制性碳报告（从2023年开始）和萨哈林碳实验的支持，后者旨在通过配额制度和国内技术自主实现2025年区域碳中和。",
   "id": "ru-climate-doctrine-2023",
   "legalWeight": "Presidential Decree",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "强制性报告阈值（到 2025 年 >5 万吨）和 2025 年 7 月前的配额合规。",
     "pore_space_rights": "地下资源归联邦所有；国有企业（俄罗斯石油公司/俄罗斯天然气工业石油公司）利用枯竭储层。"
   },
+  "relatedFacilities": [
+    "410"
+  ],
   "reviewStatus": "verified",
   "source": "President of Russia",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Egypt",
+  "description": "Egypt's Financial Regulatory Authority (FRA) launched the first voluntary carbon market in 2024. The framework includes CCUS as a valid methodology for generating carbon credits, focusing on industrial decarbonization and Mediterranean storage hubs.",
   "id": "eg-carbon-market-framework-2024",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "18-24 months via FRA/Petroleum Ministry. [Evidence: National CCUS Roadmap]",
     "pore_space_rights": "State-owned (Petroleum Law 66/1953). [Evidence: EGAS Directives] [URL: https://fra.gov.eg/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Financial Regulatory Authority (FRA)",
   "status": "Active",

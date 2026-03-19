@@ -2,6 +2,7 @@
 {
   "category": "Strategic",
   "country": "India",
+  "description": "The 2024 National Mission for CCUS, led by NITI Aayog, establishes a comprehensive framework including Viability Gap Funding (VGF), regional hub development, and a regulatory roadmap for pore space and liability. It integrates with the Indian Carbon Market (CCTS) to monetize emissions reductions.",
   "id": "in-national-mission-ccus-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -19,6 +20,12 @@
     "permitting_lead_time": "Streamlined via National Mission testbeds (Estimated 3-4 years).",
     "pore_space_rights": "Leaning towards State Ownership; unified federal policy under draft."
   },
+  "relatedFacilities": [
+    "119",
+    "1195",
+    "120",
+    "224"
+  ],
   "reviewStatus": "verified",
   "source": "NITI Aayog",
   "status": "Planned",

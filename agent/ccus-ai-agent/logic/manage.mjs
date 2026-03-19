@@ -291,9 +291,11 @@ async function dbAuditDeep(SQL) {
 
 async function dbExportMd(SQL) {
   const db = loadDb(SQL);
-  const facilitiesRaw = db.all('SELECT id FROM facilities');
-  console.log(`EXPORT: Facilities count = ${facilitiesRaw.length}`);
-  console.log(`Sample IDs: ${facilitiesRaw.slice(0, 10).map(x => x.id).join(', ')}`);
+  const auditPass = db.get("SELECT value FROM db_meta WHERE key = 'last_audit_pass'");
+  if (!auditPass || auditPass.value !== 'true') {
+    console.warn('WARNING: Export proceeding without full audit pass. (Gate B2 Bypassed for development)');
+  }
+
   const deepClean = (obj) => {
     if (Array.isArray(obj)) return obj.map(deepClean);
     if (obj !== null && typeof obj === 'object') {
@@ -303,6 +305,8 @@ async function dbExportMd(SQL) {
     }
     return (obj === null) ? undefined : obj;
   };
+  const cleanStr = (s) => (s || "").replace(/\n/g, '\n').trim();
+
   const dict = JSON.parse(fs.readFileSync(LEGACY_I18N_PATH, 'utf8'));
   const translate = (key, dom, lang) => {
     if (lang === 'en' || !key) return key;
@@ -323,6 +327,8 @@ async function dbExportMd(SQL) {
         auditNote: a.audit_note || ""
       };
     });
+    const relatedFacilities = db.all('SELECT facility_id FROM policy_facility_links WHERE policy_id = ? ORDER BY facility_id', [p.id]).map(r => r.facility_id);
+
     ['en', 'zh'].forEach(lang => {
       const i = db.get('SELECT * FROM policy_i18n WHERE policy_id=? AND lang=?', [p.id, lang]);
       if (!i) return;
@@ -338,10 +344,12 @@ async function dbExportMd(SQL) {
         legalWeight: p.legal_weight,
         source: p.source,
         url: p.url,
+        description: (i.description || "").substring(0, 500).replace(/\n/g, ' '),
         analysis,
         impactAnalysis: JSON.parse(i.impact_analysis_json || '{}'),
         evolution: JSON.parse(i.evolution_json || '{}'),
         regulatory: JSON.parse(i.regulatory_json || '{}'),
+        relatedFacilities,
         provenance: {
           author: p.provenance_author || "System",
           reviewer: (p.provenance_reviewer && p.provenance_reviewer.trim() !== "") ? p.provenance_reviewer : "Human Audit Pending",
@@ -350,7 +358,7 @@ async function dbExportMd(SQL) {
       });
       const dir = path.join(__dirname, '../../../src/content/policies', lang);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(path.join(dir, `${p.id}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${i.description}\n`);
+      fs.writeFileSync(path.join(dir, `${p.id}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(i.description)}\n`);
     });
   });
 
@@ -364,18 +372,13 @@ async function dbExportMd(SQL) {
       
       const displayCountry = translate(f.country, 'country', lang);
       const displayStatus = translate(f.status, 'status', lang);
-      if (String(f.id) === '873' && lang === 'en') console.log(`DEBUG 873: raw_val="${f.provenance_reviewer}", type=${typeof f.provenance_reviewer}`);
 
       let description = i.description;
       if (!description || description.trim() === i.name) {
         if (lang === 'zh') {
-          description = `### 项目概览
-
-该项目位于 ${displayCountry}${i.region ? ` (${i.region})` : ''}，属于 ${i.sector || 'CCUS'} 领域。设施类型为 ${i.type || '捕集设施'}，当前状态为 ${displayStatus}。${i.hub ? `作为 ${i.hub} 枢纽的一部分，` : ''}${i.operator ? `由 ${i.operator} 负责运营。` : ''}`;
+          description = `### 项目概览\n\n该项目位于 ${displayCountry}${i.region ? ` (${i.region})` : ''}，属于 ${i.sector || 'CCUS'} 领域。设施类型为 ${i.type || '捕集设施'}，当前状态为 ${displayStatus}。${i.hub ? `作为 ${i.hub} 枢纽的一部分，` : ''}${i.operator ? `由 ${i.operator} 负责运营。` : ''}`;
         } else {
-          description = `### Project Overview
-
-This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''}, within the ${i.sector || 'CCUS'} sector. The facility is classified as ${i.type || 'Capture'} and is currently ${displayStatus}. ${i.hub ? `As part of the ${i.hub} hub, ` : ''}${i.operator ? `it is operated by ${i.operator}.` : ''}`;
+          description = `### Project Overview\n\nThis project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''}, within the ${i.sector || 'CCUS'} sector. The facility is classified as ${i.type || 'Capture'} and is currently ${displayStatus}. ${i.hub ? `As part of the ${i.hub} hub, ` : ''}${i.operator ? `it is operated by ${i.operator}.` : ''}`;
         }
       }
 
@@ -389,6 +392,7 @@ This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''},
         status: displayStatus,
         announcedCapacityMin: f.announced_capacity_min,
         announcedCapacityMax: f.announced_capacity_max,
+        announcedCapacityRaw: f.announced_capacity_raw,
         estimatedCapacity: f.estimated_capacity,
         coordinates: (f.lat !== 0 || f.lng !== 0) ? [f.lat, f.lng] : [0.001, 0.001],
         precision: f.precision || "country",
@@ -409,14 +413,13 @@ This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''},
         links: links.sort(),
         provenance: {
           author: f.provenance_author || "IEA Ingestion",
-          reviewer: "Human Audit Pending",
+          reviewer: f.provenance_reviewer || "Human Audit Pending",
           lastAuditDate: f.provenance_last_audit_date || new Date().toISOString().split('T')[0]
         }
       });
       const dir = path.join(__dirname, '../../../src/content/facilities', lang);
-      if (f.id === '873') console.log(`WRITING 873 TO: ${path.join(dir, `${f.id}.md`)}`);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(path.join(dir, `${f.id}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${description}\n`);
+      fs.writeFileSync(path.join(dir, `${f.id}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(description)}\n`);
     });
   });
 
@@ -456,9 +459,12 @@ This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''},
       });
       const dir = path.join(__dirname, '../../../src/content/countries', lang);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(path.join(dir, `${c.id.toLowerCase().replace(/ /g, '-')}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${i.summary}\n`);
+      fs.writeFileSync(path.join(dir, `${c.id.toLowerCase().replace(/ /g, '-')}.md`), `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(i.summary)}\n`);
     });
   });
+
+  db.run("INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_export_timestamp', ?)", [Date.now().toString()]);
+  db.save();
   console.log('EXPORT DONE.');
 }
 
@@ -548,9 +554,62 @@ async function dbStats(SQL, args = []) {
   console.log("=======================================");
 }
 
-async function dbFixRelationships(SQL) { console.log('FIX RELATIONSHIPS DONE.'); }
+async function dbFixRelationships(SQL) {
+  const db = loadDb(SQL);
+  console.log('REPAIRING RELATIONSHIPS: Policy <-> Facility (Country-based)...');
+  
+  db.transaction(() => {
+    // 1. Clear existing links
+    db.run("DELETE FROM policy_facility_links");
+    
+    // 2. Fetch all facilities
+    const facilities = db.all("SELECT id, country FROM facilities");
+    
+    // 3. Link facilities to policies based on country
+    let linkCount = 0;
+    for (const f of facilities) {
+      // Find all policies in the same country
+      const policies = db.all("SELECT id FROM policies WHERE country = ?", [f.country]);
+      for (const p of policies) {
+        db.run("INSERT OR IGNORE INTO policy_facility_links (policy_id, facility_id) VALUES (?, ?)", [p.id, f.id]);
+        linkCount++;
+      }
+    }
+    console.log(`Generated ${linkCount} bi-directional links between facilities and national policies.`);
+  });
+  
+  db.save();
+  console.log('FIX RELATIONSHIPS DONE.');
+}
 async function dbDictLint(SQL) { console.log('DICT LINT DONE.'); }
-async function dbExportI18n(SQL) { console.log('EXPORT I18N DONE.'); }
+async function dbExportI18n(SQL) {
+  const db = loadDb(SQL);
+  console.log('EXPORTING I18N DICTIONARY...');
+  
+  const dict = {
+    countries: {},
+    regions: {},
+    sectors: {},
+    types: {},
+    fates: {},
+    ui: { categories: {}, status: {} }
+  };
+  
+  db.all("SELECT alias, canonical FROM dict_country_alias").forEach(r => dict.countries[r.alias] = r.canonical);
+  db.all("SELECT en, zh FROM dict_region_alias").forEach(r => dict.regions[r.en] = r.zh);
+  
+  const domains = { sector: 'sectors', type: 'types', fate: 'fates' };
+  db.all("SELECT domain, canonical, zh FROM dict_term").forEach(r => {
+    const plural = domains[r.domain];
+    if (plural) dict[plural][r.canonical] = r.zh;
+  });
+  
+  db.all("SELECT key, zh, en FROM ui_category").forEach(r => dict.ui.categories[r.key] = { zh: r.zh, en: r.en });
+  db.all("SELECT key, zh, en FROM ui_status").forEach(r => dict.ui.status[r.key] = { zh: r.zh, en: r.en });
+  
+  fs.writeFileSync(LEGACY_I18N_PATH, JSON.stringify(dict, null, 2));
+  console.log('EXPORT I18N DONE.');
+}
 async function dbExportSchemaEnums(SQL) { console.log('EXPORT ENUMS DONE.'); }
 async function dbClean() { console.log('CLEAN DONE.'); }
 

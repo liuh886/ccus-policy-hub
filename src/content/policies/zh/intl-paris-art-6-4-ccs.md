@@ -39,6 +39,7 @@
   },
   "category": "市场机制",
   "country": "国际",
+  "description": "## 政策概览\r \r 《巴黎协定》第 6.4 条旨在建立一个由联合国直接监管的全球碳减排机制（A6.4ERs），允许各国通过高质量的减排项目进行碳信用交易。2024 年 10 月，第 6.4 条监管机构（Supervisory Body）正式通过了针对**碳移除（Carbon Removals）**和方法学的关键标准，并于 COP29 期间正式生效。这标志着基于 CCS 和直接空气捕集（DAC）等技术手段实现的物理减排量，正式获得了进入国际主权碳市场的‘入场券’。\r \r 该机制的核心是确立了严苛的‘逆转标准（Reversal Standard）’和风险减缓措施，通过建立全球碳汇缓冲池（Buffer Pool）来对冲因火灾、泄露等不可抗力导致的碳减排失效风险。对于 CCS 项目，该机制规定了长达 **15 年** 的初始计入期（可续展两次），并强制要求执行‘相应调整（Corresponding Adjustments）’以彻底消除双重计算。这一全球统一的市场准则，将极大地促进跨国封存枢纽的商业化，为‘全球南方’国家的低碳基础设施通过国际资本市场融资提供了制度保障。",
   "evolution": {
     "clusters": [
       "UNFCCC Paris Agreement implementation",
@@ -70,6 +71,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "UNFCCC",
   "status": "现行",

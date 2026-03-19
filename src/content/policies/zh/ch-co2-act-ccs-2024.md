@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "瑞士",
+  "description": "瑞士修订后的《二氧化碳法》（2024 年后）将 CCS 和负排放技术 (NETs) 作为其气候战略的核心组成部分。该框架建立了大规模 CCS 补贴计划，并侧重于开展跨境二氧化碳运输和封存的国际合作。",
   "id": "ch-co2-act-ccs-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,10 @@
     "permitting_lead_time": "2-4 年 (州级 + 联邦协调)。[证据: Demo-Up 封存项目]",
     "pore_space_rights": "州级管辖权；受州地下资源法管辖。[证据: FOEN CCS 指南] [URL: https://www.bafu.admin.ch/]"
   },
+  "relatedFacilities": [
+    "646",
+    "965"
+  ],
   "reviewStatus": "verified",
   "source": "Federal Office for the Environment (FOEN)",
   "status": "现行",

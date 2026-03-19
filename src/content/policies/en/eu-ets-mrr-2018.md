@@ -39,6 +39,7 @@
   },
   "category": "Technical",
   "country": "European Union",
+  "description": "## Policy Overview\r \r The Monitoring and Reporting Regulation (MRR) is the operational bedrock of the EU ETS, dictating how thousands of industrial sites quantify and report their carbon footprint. The 2023-2024 revisions represent a breakthrough for the carbon management sector: **CO2 that is verified as captured and permanently geologically stored is now exempt from the obligation to surrender emission allowances**. This effectively anchors the financial value of CCS to the prevailing EU ETS p",
   "evolution": {
     "clusters": [
       "EU ETS Reform 2024",
@@ -71,6 +72,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "678"
+  ],
   "reviewStatus": "verified",
   "source": "European Commission",
   "status": "Active",

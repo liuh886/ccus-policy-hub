@@ -1,7 +1,7 @@
 import initSqlJs from 'sql.js';
 import fs from 'fs';
 
-const DB_PATH = 'governance/db/ccus_master.sqlite';
+const DB_PATH = 'agent/ccus-ai-agent/db/ccus_master.sqlite';
 
 async function initStandard() {
   const SQL = await initSqlJs();

@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "Republic of Korea",
+  "description": "2024年《CCUS 培育法》（全称《二氧化碳捕集、利用与封存培育及安全管理法》）为韩国 CCUS 产业提供了首个统一法律框架。该法引入了“一站式”审批机制，确立了地下封存权，并建立了在二氧化碳稳定后向国家转移责任的机制。法案明确支持通过国际 CCS 项目进行二氧化碳出口。",
   "id": "kr-ccus-promotion-act-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "通过“一站式”机制简化（目标缩短 1-2 年）。",
     "pore_space_rights": "MOTIE 在指定区域授予的独占封存许可。"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "MOTIE",
   "status": "现行",

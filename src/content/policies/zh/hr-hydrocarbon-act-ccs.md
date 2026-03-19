@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "克罗地亚",
+  "description": "克罗地亚通过修订《碳氢化合物勘探与开采法案》，正式将欧盟 CCS 指令转化为国内法。该法案确立了克罗地亚碳氢化合物管理局 (AZU) 作为 CCS 封存权的唯一监管机构。2021 年修订版明确了二氧化碳永久地质封存的许可程序，并拨付了 **400 万欧元** 的专项资金用于普查适宜封存的地质结构。法案支撑了克罗地亚在天然气发电、水泥及化肥行业 2040 年后的深度脱碳战略，为该国利用枯竭油气田开展商业化封存奠定了法制底座。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,14 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1138",
+    "1264",
+    "658",
+    "684",
+    "725",
+    "726"
+  ],
   "reviewStatus": "verified",
   "source": "Croatian Hydrocarbon Agency (AZU)",
   "status": "现行",

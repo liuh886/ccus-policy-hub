@@ -39,6 +39,7 @@
   },
   "category": "技术规范",
   "country": "欧盟",
+  "description": "## 政策概览\r \r 欧盟监测与汇报条例（MRR）是 EU ETS 运行的基石，规定了数千家工业设施如何核算、监测并汇报其排放数据。2023-2024 年的修订版标志着 CCS 和 CCU 在欧盟碳核算体系中的重大地位提升。最核心的变化是：**对于经核证已捕集、运输并永久地质封存的 CO2，企业无需上缴对应的排放配额（Allowance）**。这一机制将 CCS 从‘成本项’直接转变为‘减支项’，极大提升了工业捕集的财务激励。\r \r 2024 修订版还将核算边界扩展至海运领域，并引入了对‘永久结合在产品中（Permanently bound）’的 CCU 路径的豁免权。此外，针对船运、公路等非管网 CO2 运输方式的监测规则也于 2024 年内补全，消除了跨国封存枢纽（如 Northern Lights）在不同运输模态下的核算盲区。作为全球最严苛、数据保真度最高的碳核算规制，修订后的 MRR 确保了每一吨被封存的 CO2 都能在 ETS 账本上得到物理准确的体现，为欧洲碳管理市场的金融化提供了数据主权。",
   "evolution": {
     "clusters": [
       "EU ETS Reform 2024",
@@ -71,6 +72,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "678"
+  ],
   "reviewStatus": "verified",
   "source": "European Commission",
   "status": "现行",

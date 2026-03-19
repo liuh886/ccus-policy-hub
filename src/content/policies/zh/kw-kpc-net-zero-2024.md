@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "Kuwait",
+  "description": "科威特石油公司 (KPC) 于 2023/2024 年发布了其能源转型战略，目标是到 2050 年实现国内业务的净零排放。CCUS 被确定为工业脱碳的核心支柱，特别是在炼油和石化领域。",
   "id": "kw-kpc-net-zero-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "开发中 (与 KOC 上游协议整合)。[证据: KOC CCUS 试点案例]",
     "pore_space_rights": "国家所有；在石油部领导下由 KPC/KOC 管理。[证据: KPC 可持续发展报告] [URL: https://www.kpc.com.kw/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Kuwait Petroleum Corporation (KPC)",
   "status": "现行",

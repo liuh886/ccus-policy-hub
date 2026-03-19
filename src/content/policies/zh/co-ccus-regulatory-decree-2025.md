@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "哥伦比亚",
+  "description": "哥伦比亚 2025 年法令提供了第 2099 号法律中缺失的具体监管细节。它监管亚诺斯 (Llanos) 和加勒比盆地的二氧化碳封存，重点关注 EOR 和离岸封存潜力。",
   "id": "co-ccus-regulatory-decree-2025",
   "legalWeight": "Decree",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-3 年 (ANH/ANLA 联合审查)。[证据: 能源转型路线图]",
     "pore_space_rights": "国家所有 (宪法第 332 条)。[证据: 2025 年法令第 8 条] [URL: https://www.minenergia.gov.co/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Mines and Energy",
   "status": "现行",

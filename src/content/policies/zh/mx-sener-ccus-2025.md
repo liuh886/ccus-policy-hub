@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "墨西哥",
+  "description": "2025年 SENER CCUS 法律框架将碳捕集重新纳入墨西哥的国家气候战略，目标是到2030年减排35%。它计划在2027年之前开发 CCS 集群，并优先考虑通过 PEMEX (CO2-EOR) 和 CFE (Plan México) 实施的国家主导举措，同时利用塔毛利帕斯州和克雷塔罗州等地方政府的领导力。",
   "id": "mx-sener-ccus-2025",
   "legalWeight": "Executive Order/Framework",
   "provenance": {
@@ -56,6 +57,9 @@
     "permitting_lead_time": "目标到 2027 年实现基于集群的许可。",
     "pore_space_rights": "目前根据国家碳氢化合物法律管理；新的国家主导框架将明确具体的封存权。"
   },
+  "relatedFacilities": [
+    "453"
+  ],
   "reviewStatus": "verified",
   "source": "SENER",
   "status": "现行",

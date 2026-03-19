@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "比利时",
+  "description": "比利时更新后的战略侧重于其作为西欧二氧化碳转运枢纽的角色。该框架监管通过安特卫普-布鲁日和北海港集群的运输，并与挪威和丹麦建立了跨境封存协议。",
   "id": "be-ccus-strategy-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,25 @@
     "permitting_lead_time": "出口终端管道需 18-24 个月。[证据: 北海港路线图]",
     "pore_space_rights": "不适用（侧重转运）；通过双边条约进行北海封存。[证据: 联邦能源法] [URL: https://economie.fgov.be/]"
   },
+  "relatedFacilities": [
+    "1258",
+    "1357",
+    "149",
+    "190",
+    "225",
+    "237",
+    "31",
+    "34",
+    "447",
+    "532",
+    "55",
+    "557",
+    "585",
+    "660",
+    "664",
+    "677",
+    "766"
+  ],
   "reviewStatus": "verified",
   "source": "Federal Ministry of Energy",
   "status": "现行",

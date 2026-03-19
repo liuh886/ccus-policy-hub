@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Republic of Korea",
+  "description": "The 2024 CCUS Promotion Act (Act on the Promotion of Carbon Capture, Utilization, and Storage and Safety Management) provides the first unified legal framework for CCUS in Korea. It introduces a 'One-stop Shop' for permitting, establishes subsurface storage rights, and creates a liability transfer mechanism to the state after stability is confirmed. It explicitly supports international CCS projects for CO2 export.",
   "id": "kr-ccus-promotion-act-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "Streamlined via 'One-stop Shop' mechanism (Target 1-2 years reduction).",
     "pore_space_rights": "Exclusive Storage Licenses granted by MOTIE in designated areas."
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "MOTIE",
   "status": "Active",

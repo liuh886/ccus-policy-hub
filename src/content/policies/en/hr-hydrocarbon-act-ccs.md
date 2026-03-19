@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Croatia",
+  "description": "Croatia has integrated the EU CCS Directive into its national legal framework through the Act on the Exploration and Exploitation of Hydrocarbons. The legislation designates the Croatian Hydrocarbon Agency (AZU) as the primary regulator for sequestration titles. Amendments in 2019 and 2021 specifically codified the permanent storage of CO2, backed by a €4 million state-funded study to identify suitable sub-surface formations. While navigating minor overlaps with mining laws, the Act serves as th",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,14 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1138",
+    "1264",
+    "658",
+    "684",
+    "725",
+    "726"
+  ],
   "reviewStatus": "verified",
   "source": "Croatian Hydrocarbon Agency (AZU)",
   "status": "Active",

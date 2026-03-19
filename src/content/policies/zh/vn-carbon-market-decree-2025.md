@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "越南",
+  "description": "越南 119/2025 号和 29/2026 号法令为国内碳市场建立了法律框架。2026 年，政府批准为 110 家大型设施发放温室气体配额试点，共计 2.43 亿吨二氧化碳当量。全规模碳排放交易系统 (ETS) 计划于 2029 年正式运行。",
   "id": "vn-carbon-market-decree-2025",
   "legalWeight": "Decree",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
     "pore_space_rights": "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",
   "status": "现行",

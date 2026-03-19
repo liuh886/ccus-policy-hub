@@ -39,6 +39,7 @@
   },
   "category": "Statutory",
   "country": "Turkey",
+  "description": "Climate Law No. 7552 (2025) provides the legal foundation for a national Emissions Trading System (TR ETS) and a 2053 Net-Zero target. It targets carbon-intensive sectors (Cement, Steel, Electricity) for CBAM alignment and introduces 'Green Taxonomy' regulations to unlock CCUS infrastructure financing.",
   "id": "tr-climate-law-2025",
   "legalWeight": "Law No. 7552",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "Mandatory ETS permits for installations >50k tons CO2/year.",
     "pore_space_rights": "Identified in LTS 2053 for industrial clusters; detailed storage rights to be defined via Green Taxonomy 2025."
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Grand National Assembly of Turkey",
   "status": "Active",

@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "卡塔尔",
+  "description": "卡塔尔 2024 年更新的国家环境与气候变化战略侧重于将 CCUS 纳入其液化天然气 (LNG) 扩张中。该战略目标到 2030 年减少 25% 的温室气体排放，并计划到 2035 年每年捕集 1100 万吨二氧化碳，并辅之以新的 MRV 系统和碳管理监管标准。",
   "id": "qa-national-climate-strategy-2024",
   "legalWeight": "National Strategy",
   "provenance": {
@@ -56,6 +57,11 @@
     "permitting_lead_time": "与大型 LNG 基础设施许可流程简化整合。",
     "pore_space_rights": "由国家通过卡塔尔能源公司 (QatarEnergy) 和环境部进行管理。"
   },
+  "relatedFacilities": [
+    "1055",
+    "344",
+    "345"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Environment and Climate Change",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "国际",
+  "description": "## 政策概览\r \r Puro.earth 是全球首个专注于工程化碳移除（CDR）的核证标准与交易平台，目前由纳斯达克（Nasdaq）控股。其核心使命是通过签发 **CORCs（二氧化碳移除证书）**，为能够将碳锁定 1000 年以上的技术路径提供信用背书。2024 年，Puro.earth 发布了修订版《地质封存碳（GSC）方法学》，正式将计入期从 5 年延长至 15 年，并对 DACS 和 BECCS 项目实施了更严苛的生命周期评估（LCA）要求。\r \r Puro.earth 的独特价值在于其 **“价格发现机制”**。通过与 Nasdaq 合作建立的 CORC 指数系列，该平台为全球 CDR 市场提供了稀缺的价格透明度。2024 年更新的方法学强制要求存储的 CO2 纯度需达到 95% 以上，并明确禁止将 CCS 用于强化采油（EOR）或与煤炭共燃的 BECCS 设施。通过 Pre-CORC 框架，该平台还允许早期项目在正式运营前预售未来收益，为全球百万吨级负排放项目的商业闭环提供了核心的金融基础设施。",
   "evolution": {
     "clusters": [
       "Nasdaq CORC Index Family",
@@ -69,6 +70,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Puro.earth",
   "status": "现行",

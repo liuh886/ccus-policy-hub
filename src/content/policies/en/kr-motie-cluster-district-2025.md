@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "South Korea",
+  "description": "Rules for designating specialized CCUS clusters, providing financial and administrative support for industrial co-location.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,18 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1066",
+    "1275",
+    "1325",
+    "1326",
+    "242",
+    "243",
+    "247",
+    "373",
+    "57",
+    "919"
+  ],
   "reviewStatus": "draft",
   "source": "MOTIE Korea",
   "status": "Active",

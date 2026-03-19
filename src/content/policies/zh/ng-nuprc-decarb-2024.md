@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "尼日利亚",
+  "description": "尼日利亚上游石油监管委员会 (NUPRC) 2024 年脱碳规则为上游部门的碳捕集、封存和利用建立了框架。它强制执行年度碳报告，并对不遵守新减排目标的行为设定了处罚。",
   "id": "ng-nuprc-decarb-2024",
   "legalWeight": "Departmental Rules",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "上游 CCS 整合需 18-24 个月。[证据: NUPRC 一站式许可]",
     "pore_space_rights": "国家所有；由 NUPRC 管理上游资产。[证据: NUPRC 2024 年条例] [URL: https://nuprc.gov.ng/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "NUPRC Nigeria",
   "status": "现行",

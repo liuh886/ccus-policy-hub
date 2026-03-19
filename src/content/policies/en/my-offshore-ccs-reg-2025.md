@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Malaysia",
+  "description": "Malaysia's comprehensive CCUS legislation enacted in 2025, specifically addressing offshore CO2 storage. It establishes PETRONAS as the technical manager and defines the fiscal incentives for cross-border storage hubs (e.g., Kasawari).",
   "id": "my-offshore-ccs-reg-2025",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "2-3 years (Integrated with PSC process). [Evidence: MIDA CCUS Handbook]",
     "pore_space_rights": "State-owned; managed by PETRONAS under the Petroleum Development Act. [Evidence: CCUS Act 2025 Art 4] [URL: https://www.petronas.com/]"
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Economy / PETRONAS",
   "status": "Active",

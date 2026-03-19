@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "Kazakhstan",
+  "description": "哈萨克斯坦《生态法》于 2023/2024 年修订，正式将 CCUS 技术确认为气候减缓措施。该框架为地质二氧化碳封存许可提供了法律依据，并与国家排放交易系统 (Zhasyl Damu) 相结合。",
   "id": "kz-ecology-code-ccus-2024",
   "legalWeight": "Primary Legislation",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "2-3 年 (EIA + 地下资源许可)。[证据: 简化试点程序]",
     "pore_space_rights": "国家所有 (地下资源利用法)。[证据: 生态法第 14.2 条] [URL: https://www.gov.kz/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Ministry of Ecology",
   "status": "现行",

@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "Nigeria",
+  "description": "The Nigeria Upstream Petroleum Regulatory Commission (NUPRC) Decarbonization Rules 2024 establish a framework for carbon capture, storage, and utilization in the upstream sector. It mandates annual carbon reporting and establishes penalties for non-compliance with the new emission reduction targets.",
   "id": "ng-nuprc-decarb-2024",
   "legalWeight": "Departmental Rules",
   "provenance": {
@@ -56,6 +57,7 @@
     "permitting_lead_time": "18-24 months for upstream CCS integration. [Evidence: NUPRC One-stop licensing]",
     "pore_space_rights": "State-owned; managed by NUPRC for upstream assets. [Evidence: NUPRC Reg 2024] [URL: https://nuprc.gov.ng/]"
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "NUPRC Nigeria",
   "status": "Active",

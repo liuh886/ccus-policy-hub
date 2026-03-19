@@ -39,6 +39,7 @@
   },
   "category": "Strategic",
   "country": "Oman",
+  "description": "Oman's CCUS Roadmap 2024, led by the Ministry of Energy and Minerals (MEM), identifies 25 Mt CO2/yr storage potential by 2050. The framework focuses on PDO-operated storage hubs and the integration of carbon mineralization in peridotite formations.",
   "id": "om-ccus-roadmap-2024",
   "legalWeight": "Strategic Guidance",
   "provenance": {
@@ -56,6 +57,11 @@
     "permitting_lead_time": "2-3 years (Integrated with upstream oil & gas permits). [Evidence: PDO CCUS Project Plan]",
     "pore_space_rights": "State-owned; administered via Royal Decree 96/2020. [Evidence: MEM Guidelines 2024] [URL: https://mem.gov.om/]"
   },
+  "relatedFacilities": [
+    "1190",
+    "618",
+    "736"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy and Minerals",
   "status": "Active",

@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "波兰",
+  "description": "波兰 2023 年对《地质和采矿法》的修订取消了对大规模二氧化碳封存的禁令，并落实了欧盟 CCS 指令。该框架允许开展离岸和陆上二氧化碳封存，并与国家能源转型战略 (PEP2040) 相结合。",
   "id": "pl-mining-law-ccs-2024",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,14 @@
     "permitting_lead_time": "3-5 年 (部级审批流程)。[证据: 欧盟共同利益项目 (PMI) 状态]",
     "pore_space_rights": "国家所有 (国库)。[证据: 采矿法第 10 条] [URL: https://www.gov.pl/web/klimat]"
   },
+  "relatedFacilities": [
+    "1034",
+    "1278",
+    "319",
+    "320",
+    "565",
+    "648"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Climate and Environment",
   "status": "现行",

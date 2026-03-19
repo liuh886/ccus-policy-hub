@@ -39,6 +39,7 @@
   },
   "category": "Incentive",
   "country": "Colombia",
+  "description": "Energy Transition Law in Colombia providing significant tax benefits for CCS-enabled hydrogen production.",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "draft",
   "source": "哥伦比亚能源部",
   "status": "Active",

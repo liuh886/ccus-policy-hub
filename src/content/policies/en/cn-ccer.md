@@ -3,10 +3,10 @@
   "analysis": {
     "incentive": {
       "auditNote": "",
-      "citation": "Measures for the Administration of GHG Voluntary Emission Reduction Trading (2023)",
-      "evidence": "[AI-Generated] Relaunched in 2024. Provides direct monetization via voluntary carbon credits. CEA prices reached record high of 104.5 RMB/t in late 2024.",
-      "label": "CEA > 100 RMB/t",
-      "score": 75
+      "citation": "MEE CCER Management Measures 2024",
+      "evidence": "CCUS officially included in the first batch of 4 national methodologies (2024/01). Direct revenue via CCER offset trading.",
+      "label": "Primary Market Integration",
+      "score": 90
     },
     "market": {
       "auditNote": "",
@@ -17,16 +17,16 @@
     },
     "mrv": {
       "auditNote": "",
-      "citation": "GB/T Standards for Carbon Dioxide Sequestration Monitoring",
-      "evidence": "[AI-Generated] Released national standards for CO2 storage monitoring. Aligning with ISO 27914. CCUS-specific CCER methodologies are under final review.",
-      "label": "Standardized Monitoring",
-      "score": 70
+      "citation": "CCUS CCER Methodology V1.0",
+      "evidence": "Specific MRV guidelines for CCUS projects released by MEE, ensuring high-fidelity emission credits.",
+      "label": "Standardized Methodology",
+      "score": 85
     },
     "statutory": {
       "auditNote": "",
-      "citation": "Interim Administrative Regulations on Carbon Emission Trading (2024)",
-      "evidence": "[AI-Generated] Established comprehensive regulatory framework via MEE. Defines validation, verification, and settlement rules for offsets.",
-      "label": "National Registry System",
+      "citation": "State Council Carbon Trading Regulation 2024",
+      "evidence": "Administrative regulation with direct legal force in carbon market compliance cycles.",
+      "label": "National Trial Status",
       "score": 80
     },
     "strategic": {
@@ -39,6 +39,7 @@
   },
   "category": "Regulatory",
   "country": "China",
+  "description": "The CCER restart in 2024 explicitly includes CCUS as one of the first four supported methodologies. Projects can generate certified emission reductions for trade in the national carbon market, providing a clear revenue stream for CCS projects in the power and industrial sectors.",
   "evolution": {
     "clusters": [
       "China National Carbon Market"
@@ -49,9 +50,9 @@
   },
   "id": "cn-ccer",
   "impactAnalysis": {
-    "economic": "Projected market size of 73.5B CNY by 2030; reduces compliance costs via a 5% offset cap.",
-    "environmental": "First batch of 9.48M tonnes certified in 2025, boosting voluntary decarbonization.",
-    "technical": "Initially covers offshore wind and forestry; CCUS methodologies under active research."
+    "economic": "Projected market size of 73.5B CNY by 2030; CEA prices >100 RMB/t.",
+    "environmental": "First 9.48M tons certified in 2025.",
+    "technical": "CCUS methodologies for steel/cement expedited in 2025."
   },
   "legalWeight": "Administrative Regulation",
   "provenance": {
@@ -69,6 +70,53 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1053",
+    "1054",
+    "1076",
+    "112",
+    "1192",
+    "1208",
+    "1209",
+    "1298",
+    "1299",
+    "1301",
+    "1309",
+    "1310",
+    "1313",
+    "1314",
+    "1315",
+    "1363",
+    "186",
+    "233",
+    "238",
+    "369",
+    "370",
+    "371",
+    "411",
+    "442",
+    "443",
+    "444",
+    "494",
+    "541",
+    "593",
+    "642",
+    "643",
+    "813",
+    "83",
+    "85",
+    "86",
+    "924",
+    "925",
+    "926",
+    "929",
+    "930",
+    "931",
+    "95",
+    "96",
+    "97",
+    "99"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Ecology and Environment",
   "status": "Active",
@@ -78,6 +126,4 @@
 }
 ---
 
-## Policy Core
-
-Formally relaunched in 2024, CCER is a critical voluntary emission reduction mechanism for China's dual carbon goals. It provides a commercial pathway for CCUS projects to generate additional revenue through carbon credit trading, with CEA prices consistently exceeding **100 RMB/t**.
+The CCER restart in 2024 explicitly includes CCUS as one of the first four supported methodologies. Projects can generate certified emission reductions for trade in the national carbon market, providing a clear revenue stream for CCS projects in the power and industrial sectors.

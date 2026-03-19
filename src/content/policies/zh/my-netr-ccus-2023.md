@@ -39,6 +39,7 @@
   },
   "category": "战略引导",
   "country": "马来西亚",
+  "description": "马来西亚能源转型的核心路线图，将 CCUS 确定为六大杠杆之一，并确立了 PETRONAS Kasawari 等旗舰催化项目。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "1242",
+    "1243",
+    "311",
+    "598"
+  ],
   "reviewStatus": "draft",
   "source": "Ministry of Economy",
   "status": "现行",

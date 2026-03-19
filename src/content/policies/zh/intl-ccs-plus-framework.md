@@ -39,6 +39,7 @@
   },
   "category": "技术规范",
   "country": "国际",
+  "description": "CCS+ Initiative 是由全球工业巨头（包括 TotalEnergies, SLB 等）发起的、旨在为自愿碳市场建立统一 CCS 核算逻辑的顶级行业联盟。2024 年 10 月，Verra 正式批准并发布了该框架下的首批模块（VMD0056-0058），涵盖了 DAC、管网运输和盐水层封存。2025 年 4 月，框架进一步扩展至 Bio-CCS (BECCS) 捕集模块。该计划的核心价值在于其 **“碳资产基础设施”** 属性：通过与 Puro.earth 和 Nasdaq 指数集成，CCS+ 成功将其方法学转化为全球碳移除（CDR）资产的通用底层语言。它是目前全球最前沿的、能够处理跨行业源汇匹配、跨国运输损耗及地质持久性的物理核算标准体系。",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "CCS+ Initiative",
   "status": "现行",

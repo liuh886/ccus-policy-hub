@@ -39,6 +39,7 @@
   },
   "category": "Market",
   "country": "International",
+  "description": "The ICAO Carbon Offsetting and Reduction Scheme for International Aviation (CORSIA) entered its first phase in 2024, involving 126 member states. The policy's heart is the mandatory use of certified carbon credits or **CCU-based e-fuels (SAF)** to meet carbon-neutral growth targets. Updated for 2024-2025, the framework establishes rigorous certification for the CO2 sources used in fuel synthesis, ensuring they meet strict sustainability criteria. CORSIA provides the most critical high-value end-",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "ICAO",
   "status": "Active",

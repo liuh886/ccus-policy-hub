@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "国际",
+  "description": "## 政策概览\r \r Verra 的 VM0049 方法学于 2024 年 6 月正式发布，是目前全球自愿碳市场（VCM）中覆盖面最广、最具模块化的 CCS 核证标准。该方法学旨在为生成高质量的碳移除（CDR）额度和排放减量信用提供统一的物理量化框架。其核心优势在于其**模块化结构**：项目开发者可以根据具体的捕集来源（如空气、生物质、天然气加工）、运输方式及封存地质（如盐水层、枯竭油气藏）灵活选择对应的 VMD 模块进行组合。\r \r 2024-2025 年间，Verra 密集发布了多项配套工具，包括专门针对直接空气捕集 (DAC) 的 VMD0056 模块和针对生物质能捕集 (Bio-CCS) 的 VMD0059 模块。VM0049 强制要求执行严苛的‘额外性’检测（需证明没有碳信贷收益项目将无法推进），并确立了对 100 年以上封存永久性的监测要求。通过将 CCS 减排量数字化并接入 Verra Project Hub，该政策为全球范围内的 CCS 项目通过国际资本市场实现碳资产溢价提供了标准化的‘度量衡’。",
   "evolution": {
     "clusters": [
       "Verified Carbon Standard (VCS)",
@@ -69,6 +70,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "Verra",
   "status": "现行",

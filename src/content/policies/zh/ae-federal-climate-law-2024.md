@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "阿联酋",
+  "description": "2024年第 (11) 号联邦法令规定，从2025年5月开始，所有实体都必须进行温室气体 MRV 监测。2026年初，阿布扎比发布了专门的碳捕集政策，以支持其 2050 年净零排放目标，建立了监管框架和国家碳信用登记簿 (NRCC)。",
   "id": "ae-federal-climate-law-2024",
   "legalWeight": "Federal Decree",
   "provenance": {
@@ -56,6 +57,17 @@
     "permitting_lead_time": "排放量超过 50 万吨二氧化碳当量的实体必须进行强制登记。",
     "pore_space_rights": "在联邦和酋长国层面（阿布扎比 SCFEA）进行管理。"
   },
+  "relatedFacilities": [
+    "161",
+    "387",
+    "4",
+    "463",
+    "5",
+    "6",
+    "906",
+    "921",
+    "928"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Climate Change and Environment",
   "status": "现行",

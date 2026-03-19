@@ -39,6 +39,7 @@
   },
   "category": "经济激励",
   "country": "印度",
+  "description": "印度 2026-27 财年联邦预算案于 2026 年 2 月 1 日正式发布，拨付了总计 **2000 亿卢比**（约 22 亿美元）的专项资金，计划在未来五年内重点支持电力、钢铁、水泥等难减排行业的 CCUS 技术规模化。该政策引入了创新的‘可行性缺口资金 (VGF)’机制，旨在通过政府补贴弥补商业化初期的财务亏损。配合 2025 年底发布的《国家 CCUS 研发路线图》，印度正致力于通过公私合营 (PPP) 模式，在主要工业走廊建立区域性的碳捕集枢纽，以支撑其 2070 年净零承诺。",
   "evolution": {
     "clusters": [
       "Direct Fiscal Incentives"
@@ -68,6 +69,12 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [
+    "119",
+    "1195",
+    "120",
+    "224"
+  ],
   "reviewStatus": "verified",
   "source": "印度财政部",
   "status": "现行",

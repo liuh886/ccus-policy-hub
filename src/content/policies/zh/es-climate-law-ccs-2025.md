@@ -39,6 +39,7 @@
   },
   "category": "法律监管",
   "country": "西班牙",
+  "description": "西班牙第 7/2021 号《气候变化法》进行了更新，以促进二氧化碳的地质封存。重点在于巴斯克地区和比利牛斯地区的工业集群，对齐欧盟关于跨境基础设施的 TEN-E 法规。",
   "id": "es-climate-law-ccs-2025",
   "legalWeight": "Regulatory Directive",
   "provenance": {
@@ -56,6 +57,12 @@
     "permitting_lead_time": "3-5 年 (MITECO 审批流程)。[证据: PNIECC 2023-2030]",
     "pore_space_rights": "国家所有 (矿业法)。[证据: 第 7/2021 号法律第 12 条] [URL: https://www.miteco.gob.es/]"
   },
+  "relatedFacilities": [
+    "1146",
+    "1203",
+    "1277",
+    "1317"
+  ],
   "reviewStatus": "verified",
   "source": "MITECO",
   "status": "现行",

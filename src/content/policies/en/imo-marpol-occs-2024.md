@@ -39,6 +39,7 @@
   },
   "category": "Technical",
   "country": "International",
+  "description": "The International Maritime Organization (IMO) is formalizing the global regulatory landscape for Onboard Carbon Capture and Storage (OCCS) by amending MARPOL Annex VI. The 2024 Life Cycle Assessment (LCA) Guidelines now officially recognize emissions credits for carbon captured at sea. This framework is set to be fully complemented by 2028 with standards for environmental risk assessment and CO2 shore-based reception facilities. It represents a strategic shift in shipping decarbonization toward ",
   "evolution": {
     "clusters": [],
     "supersededBy": "",
@@ -66,6 +67,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "IMO",
   "status": "Under development",
