@@ -50,6 +50,7 @@ scripts/*
 skills/
 *.skill
 ccus-db-governance.skill
+.worktrees/
 
 # --- CCUS AI Agent Governance ---
 agent/*
@@ -80,4 +81,3 @@ TASKS.md
 agent.md
 agent/
 tasks/
-
