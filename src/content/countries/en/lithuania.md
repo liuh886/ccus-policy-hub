@@ -9,12 +9,12 @@
   "name": "Lithuania",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Commodity/Stream (Circular economy and CCU focus).",
+    "co2_definition": "CO2 stream / industrial feedstock for CCU-oriented use; dedicated storage classification remains limited.",
     "cross_border_rules": "CCS Baltic Consortium; open-access infrastructure criteria.",
     "financial_assurance": "Mandatory bank guarantees/insurance for leakage and closure.",
     "liability_period": "20 years post-closure monitoring.",

@@ -9,12 +9,12 @@
   "name": "阿根廷",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "工业残留排放；侧重于蓝氢和页岩脱碳。",
+    "co2_definition": "工业残余 CO2 排放流，可用于利用或封存；尚无独立全国性 CCS 法定分类。",
     "cross_border_rules": "通过国家碳市场战略 (ENUMeC) 制定中。",
     "financial_assurance": "通过 RIGI（第 27.742 号法律）提供长达 30 年的巨额税收、海关和外汇激励。",
     "liability_period": "未具体说明。",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "省级减排计划（内乌肯/门多萨 2025）作为先导。",
     "pore_space_rights": "省级管辖权；已纳入碳氢化合物减排计划（如内乌肯第 21/2025 号决议）。"
   },
-  "summary": "Profile for 阿根廷"
+  "summary": "阿根廷的 CCUS 监管画像以省级资源管辖、投资激励和早期 CCUS 制度探索为特征。"
 }
 ---
 
-Profile for 阿根廷
+阿根廷的 CCUS 监管画像以省级资源管辖、投资激励和早期 CCUS 制度探索为特征。

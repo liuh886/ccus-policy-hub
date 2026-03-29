@@ -9,12 +9,12 @@
   "name": "India",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Industrial Resource/Carbon Asset under CCTS.",
+    "co2_definition": "Industrial CO2 / carbon asset within the emerging CCTS framework; no dedicated CCS legal class yet.",
     "cross_border_rules": "Focus on domestic market; London Protocol alignment pending.",
     "financial_assurance": "Viability Gap Funding (VGF) and Production Linked Incentives (PLI).",
     "liability_period": "Approx. 20 years (Proposed).",

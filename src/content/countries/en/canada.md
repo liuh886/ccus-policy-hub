@@ -3,18 +3,18 @@
   "id": "Canada",
   "lang": "en",
   "maturity": {
-    "x": 36.695,
+    "x": 37.136,
     "y": 455
   },
   "name": "Canada",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Sequestered Substance",
+    "co2_definition": "Provincially regulated CO2 stream / sequestered substance for storage; exact classification varies by province.",
     "cross_border_rules": "Provincial/Federal regulated",
     "financial_assurance": "Mandatory payments to Fund",
     "liability_period": "Provincial responsibility; varies",

@@ -9,12 +9,12 @@
   "name": "Norway",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Primary climate mitigation tool for industrial and cross-border decarbonization.",
+    "co2_definition": "CO2 stream for transport and offshore geological storage under a licensed CCS regime.",
     "cross_border_rules": "Active bilateral MoUs with EU partners to bypass London Protocol export restrictions.",
     "financial_assurance": "Massive state investment (Longship project); mandatory operator financial security.",
     "liability_period": "Site-specific monitoring period post-closure; standard EU-aligned risk transfer.",

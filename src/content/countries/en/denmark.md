@@ -3,18 +3,18 @@
   "id": "Denmark",
   "lang": "en",
   "maturity": {
-    "x": 0.8300000000000001,
+    "x": 15.961,
     "y": 460
   },
   "name": "Denmark",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Emphasis on Carbon Dioxide Removal (CDR) and negative emissions from biomass.",
+    "co2_definition": "CO2 stream for storage; current policy gives special priority to biogenic CO2 and removals.",
     "cross_border_rules": "Pioneer in operationalizing cross-border CO2 transport from Belgium (2023).",
     "financial_assurance": "€3.8 billion in NECCS and CCS funds; mandatory operator guarantees.",
     "liability_period": "Standard 20-year period post-closure before state transfer (EU baseline).",

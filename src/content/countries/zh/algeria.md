@@ -9,12 +9,12 @@
   "name": "阿尔及利亚",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "商品/工业气体 (EOR/利用与废物的双重用途)。",
+    "co2_definition": "工业 CO2 资源 / 气体；在利用与封存场景中的监管定位不同。",
     "cross_border_rules": "对齐欧盟 CBAM；第三方准入规则正在制定中。",
     "financial_assurance": "强制性；通过降低特许权使用费 (5%) 和税收减免提供激励。",
     "liability_period": "注入后需监测 10-30 年。",

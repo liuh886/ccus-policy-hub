@@ -9,12 +9,12 @@
   "name": "Turkey",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Primary decarbonization route for cement and steel sectors via LTS 2053 roadmaps.",
+    "co2_definition": "Industrial emissions stream for potential CCS deployment; dedicated legal classification remains under development.",
     "cross_border_rules": "Strong alignment with EU CBAM definitive period (2026) for export protection.",
     "financial_assurance": "Administrative penalties (up to 50m TRY); TR ETS cap-and-trade system (Pilot 2026).",
     "liability_period": "TBD.",

@@ -9,12 +9,12 @@
   "name": "Oman",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strategic industrial resource for EOR and Green Hydrogen. [Evidence: Net Zero Oman 2050 Plan]",
+    "co2_definition": "Industrial CO2 resource for EOR and low-carbon industry; dedicated storage classification remains policy-led.",
     "cross_border_rules": "Framework for Blue Ammonia export certification. [Evidence: Oman-Japan Hydrogen MOU]",
     "financial_assurance": "Incentives through Green Hydrogen Oman (HYROM) credits. [Evidence: Royal Decree 10/2023]",
     "liability_period": "TBD (Standard 20 years proposed for salt/depleted fields). [Evidence: Draft CCUS Law 2025]",

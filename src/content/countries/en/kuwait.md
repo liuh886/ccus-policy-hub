@@ -9,12 +9,12 @@
   "name": "Kuwait",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Resource for Enhanced Oil Recovery (EOR). [Evidence: KPC Strategic Pillars]",
+    "co2_definition": "Industrial CO2 resource for EOR and potential storage; no dedicated CCS legal class yet.",
     "cross_border_rules": "Bilateral agreements focused on regional energy security. [Evidence: GCC Climate Ministerial]",
     "financial_assurance": "Project-level funding through KPC capital expenditure. [Evidence: KPC 2040 Strategy]",
     "liability_period": "Not specified; aligning with GCC regional practices. [Evidence: KPC Decarbonization Roadmap]",

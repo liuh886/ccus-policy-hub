@@ -9,12 +9,12 @@
   "name": "Italy",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strategic decarbonization asset with non-discriminatory access rules under study.",
+    "co2_definition": "CO2 stream for transport and storage within the CCS framework; access rules are still evolving.",
     "cross_border_rules": "Developing Mediterranean export/import hub via Callisto Project of Common Interest (PCI).",
     "financial_assurance": "Mandatory operator security for closure and long-term monitoring.",
     "liability_period": "Minimum 20 years post-closure (competitive compared to EU standard).",

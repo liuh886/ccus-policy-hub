@@ -6,28 +6,28 @@ import i18nDict from '../../data/i18n_dictionary.json';
 const allPolicies = await getCollection('policies_zh');
 const dictCountries: Record<string, string> = i18nDict.countries;
 
-const policies = allPolicies.map(p => ({
+const policies = allPolicies.map((p) => ({
   ...p,
   data: {
     ...p.data,
-    country: dictCountries[p.data.country] || p.data.country
-  }
+    country: dictCountries[p.data.country] || p.data.country,
+  },
 }));
 
-const allFacilities = (await getCollection('facilities_zh')).map(f => ({
+const allFacilities = (await getCollection('facilities_zh')).map((f) => ({
   ...f,
   data: {
     ...f.data,
-    country: dictCountries[f.data.country] || f.data.country
-  }
+    country: dictCountries[f.data.country] || f.data.country,
+  },
 }));
 
-const countriesProfiles = (await getCollection('countries_zh')).map(cp => ({
+const countriesProfiles = (await getCollection('countries_zh')).map((cp) => ({
   ...cp,
   data: {
     ...cp.data,
-    id: dictCountries[cp.data.id] || cp.data.id
-  }
+    id: dictCountries[cp.data.id] || cp.data.id,
+  },
 }));
 
 import countryData from '../../data/countries.json';
@@ -98,41 +98,102 @@ import countryData from '../../data/countries.json';
       </p>
     </div>
 
-    <div id="compare-container" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <div
+      id="compare-container"
+      class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
+    >
       <!-- Left: Analytics & Stats -->
       <div class="lg:col-span-5 space-y-8">
-        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm sticky top-24">
+        <div
+          class="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-10 border border-slate-100 dark:border-slate-800 shadow-sm sticky top-24"
+        >
           <div class="mb-8">
-            <h2 class="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-2">Governance Benchmarking</h2>
-            <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">国家治理体系对标</h3>
-            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest italic">Multi-Country Aggregate Analysis (Peak Strength)</p>
+            <h2
+              class="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-2"
+            >
+              Governance Benchmarking
+            </h2>
+            <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+              国家治理体系对标
+            </h3>
+            <p
+              class="text-[10px] font-bold text-slate-400 uppercase tracking-widest italic"
+            >
+              Multi-Country Aggregate Analysis (Peak Strength)
+            </p>
           </div>
-          
+
           <div class="h-80 w-full mb-8">
             <canvas id="compare-radar-canvas"></canvas>
           </div>
 
           <!-- Maturity Matrix Quadrant Chart -->
           <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
-            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"></path><path d="M2 12h20"></path></svg>
+            <h4
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                ><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"
+                ></path><path d="M2 12h20"></path></svg
+              >
               全球治理成熟度矩阵 Maturity Matrix
             </h4>
             <div class="h-64 w-full mb-4">
               <canvas id="maturity-matrix-canvas"></canvas>
             </div>
-            <div class="grid grid-cols-2 gap-2 text-[8px] font-bold uppercase tracking-tighter text-slate-400">
-              <div class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center">Top-Left: Policy First</div>
-              <div class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center text-blue-600">Top-Right: Leaders</div>
-              <div class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center">Bot-Left: Early Stage</div>
-              <div class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center">Bot-Right: Project Led</div>
+            <div
+              class="grid grid-cols-2 gap-2 text-[8px] font-bold uppercase tracking-tighter text-slate-400"
+            >
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Top-Left: Policy First
+              </div>
+              <div
+                class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center text-blue-600"
+              >
+                Top-Right: Leaders
+              </div>
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Bot-Left: Early Stage
+              </div>
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Bot-Right: Project Led
+              </div>
             </div>
           </div>
 
           <!-- Facility Stats Comparison -->
-          <div id="facility-stats-compare" class="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6">
-            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          <div
+            id="facility-stats-compare"
+            class="pt-8 border-t border-slate-200 dark:border-slate-800 space-y-6"
+          >
+            <h4
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                ><path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path></svg
+              >
               设施规模对标 Facility Benchmarking
             </h4>
             <div id="stats-grid" class="space-y-4">
@@ -147,7 +208,11 @@ import countryData from '../../data/countries.json';
         <!-- Peak Contributors -->
         <section>
           <div class="flex items-center gap-3 mb-8">
-            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400">治理核心贡献政策 Peak Contributors</h2>
+            <h2
+              class="text-sm font-bold uppercase tracking-widest text-slate-400"
+            >
+              治理核心贡献政策 Peak Contributors
+            </h2>
             <div class="h-px bg-slate-100 dark:bg-slate-800 flex-1"></div>
           </div>
           <div id="policy-bundles-container" class="space-y-10">
@@ -156,14 +221,24 @@ import countryData from '../../data/countries.json';
         </section>
 
         <!-- Regulatory Comparison Matrix -->
-        <section class="bg-white dark:bg-slate-950 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden">
-          <div class="p-8 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
-            <h3 class="text-xs font-black uppercase tracking-widest text-slate-500">关键制度要素对标 Regulatory Matrix</h3>
+        <section
+          class="bg-white dark:bg-slate-950 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden"
+        >
+          <div
+            class="p-8 bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800"
+          >
+            <h3
+              class="text-xs font-black uppercase tracking-widest text-slate-500"
+            >
+              关键制度要素对标 Regulatory Matrix
+            </h3>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
               <thead id="reg-matrix-header"></thead>
-              <tbody id="reg-matrix-body" class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
+              <tbody
+                id="reg-matrix-body"
+                class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
             </table>
           </div>
         </section>
@@ -175,8 +250,23 @@ import countryData from '../../data/countries.json';
       id="empty-state"
       class="hidden py-32 text-center bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800"
     >
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 mb-6">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-400"><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"></path><path d="m15 10.828 5.828-5.828"></path><path d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"></path></svg>
+      <div
+        class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 mb-6"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          class="text-slate-400"
+          ><path d="M16 3h5v5"></path><path d="M8 3H3v5"></path><path
+            d="M12 22v-8.3a4 4 0 0 0-1.172-2.83L3 3"></path><path
+            d="m15 10.828 5.828-5.828"></path><path
+            d="M12 14.172a4 4 0 0 1 1.172-2.828L21 3"></path></svg
+        >
       </div>
       <h2 class="text-xl font-bold mb-2 dark:text-white">暂未选择对比政策</h2>
       <p class="text-slate-500 mb-8 max-w-md mx-auto">
@@ -192,10 +282,30 @@ import countryData from '../../data/countries.json';
   </div>
 
   <!-- Data Bridges -->
-  <div id="all-facilities-data" data-facilities={JSON.stringify(allFacilities)} class="hidden"></div>
-  <div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
-  <div id="country-data" data-countries={JSON.stringify(countryData)} class="hidden"></div>
-  <div id="countries-profiles-data" data-profiles={JSON.stringify(countriesProfiles)} class="hidden"></div>
+  <div
+    id="all-facilities-data"
+    data-facilities={JSON.stringify(allFacilities)}
+    class="hidden"
+  >
+  </div>
+  <div
+    id="all-policies-data"
+    data-policies={JSON.stringify(policies)}
+    class="hidden"
+  >
+  </div>
+  <div
+    id="country-data"
+    data-countries={JSON.stringify(countryData)}
+    class="hidden"
+  >
+  </div>
+  <div
+    id="countries-profiles-data"
+    data-profiles={JSON.stringify(countriesProfiles)}
+    class="hidden"
+  >
+  </div>
 </Layout>
 
 <script>
@@ -208,13 +318,13 @@ import countryData from '../../data/countries.json';
       /[&<>"']/g,
       (char) =>
         (
-          {
+          ({
             '&': '&amp;',
             '<': '&lt;',
             '>': '&gt;',
             '"': '&quot;',
             "'": '&#39;',
-          } as Record<string, string>
+          }) as Record<string, string>
         )[char] || char
     );
   const colors = [
@@ -222,18 +332,33 @@ import countryData from '../../data/countries.json';
     { border: 'rgb(16, 185, 129)', bg: 'rgba(16, 185, 129, 0.1)' },
     { border: 'rgb(245, 158, 11)', bg: 'rgba(245, 158, 11, 0.1)' },
     { border: 'rgb(139, 92, 246)', bg: 'rgba(139, 92, 246, 0.1)' },
-    { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' }
+    { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' },
   ];
 
   function renderCompareView() {
-    const selectedSlugs = JSON.parse(localStorage.getItem('compare-list') || '[]');
-    const allPolicies = JSON.parse((document.getElementById('all-policies-data') as any).dataset.policies);
-    const allFacilities = JSON.parse((document.getElementById('all-facilities-data') as any).dataset.facilities);
-    const countryMap = JSON.parse((document.getElementById('country-data') as any).dataset.countries);
-    const countriesProfiles = JSON.parse((document.getElementById('countries-profiles-data') as any).dataset.profiles);
-    
-    const userSelected = allPolicies.filter((p: any) => selectedSlugs.includes(p.id));
-    const selectedCountries = [...new Set(userSelected.map((p: any) => p.data.country))];
+    const selectedSlugs = JSON.parse(
+      localStorage.getItem('compare-list') || '[]'
+    );
+    const allPolicies = JSON.parse(
+      (document.getElementById('all-policies-data') as any).dataset.policies
+    );
+    const allFacilities = JSON.parse(
+      (document.getElementById('all-facilities-data') as any).dataset.facilities
+    );
+    const countryMap = JSON.parse(
+      (document.getElementById('country-data') as any).dataset.countries
+    );
+    const countriesProfiles = JSON.parse(
+      (document.getElementById('countries-profiles-data') as any).dataset
+        .profiles
+    );
+
+    const userSelected = allPolicies.filter((p: any) =>
+      selectedSlugs.includes(p.id)
+    );
+    const selectedCountries = [
+      ...new Set(userSelected.map((p: any) => p.data.country)),
+    ];
 
     const container = document.getElementById('compare-container');
     const emptyState = document.getElementById('empty-state');
@@ -267,9 +392,16 @@ import countryData from '../../data/countries.json';
 
       const countryPolicies = allPolicies.filter((p: any) => {
         const pCountry = p.data.country;
-        const match = pCountry === c || 
-                     (countryMap[pCountry]?.en && countryMap[pCountry].en === countryMap[c as string]?.en);
-        return match && (p.data.status === '运行中' || p.data.status === 'Active' || p.data.status === '现行');
+        const match =
+          pCountry === c ||
+          (countryMap[pCountry]?.en &&
+            countryMap[pCountry].en === countryMap[c as string]?.en);
+        return (
+          match &&
+          (p.data.status === '运行中' ||
+            p.data.status === 'Active' ||
+            p.data.status === '现行')
+        );
       });
 
       const facilities = allFacilities.filter((f: any) => {
@@ -278,29 +410,87 @@ import countryData from '../../data/countries.json';
         const cCanon = countryMap[c as string]?.en || c;
         return fCanon === cCanon;
       });
-      
+
       const peakAnalysis = {
-        incentive: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.incentive?.score || 0), 0),
-        statutory: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.statutory?.score || 0), 0),
-        market: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.market?.score || 0), 0),
-        strategic: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.strategic?.score || 0), 0),
-        mrv: Math.max(...countryPolicies.map((p: any) => p.data.analysis?.mrv?.score || 0), 0)
+        incentive: Math.max(
+          ...countryPolicies.map(
+            (p: any) => p.data.analysis?.incentive?.score || 0
+          ),
+          0
+        ),
+        statutory: Math.max(
+          ...countryPolicies.map(
+            (p: any) => p.data.analysis?.statutory?.score || 0
+          ),
+          0
+        ),
+        market: Math.max(
+          ...countryPolicies.map(
+            (p: any) => p.data.analysis?.market?.score || 0
+          ),
+          0
+        ),
+        strategic: Math.max(
+          ...countryPolicies.map(
+            (p: any) => p.data.analysis?.strategic?.score || 0
+          ),
+          0
+        ),
+        mrv: Math.max(
+          ...countryPolicies.map((p: any) => p.data.analysis?.mrv?.score || 0),
+          0
+        ),
       };
 
-      const contributors = countryPolicies.filter((p: any) => {
-        return Object.entries(peakAnalysis).some(([dim, score]) => (p.data.analysis?.[dim]?.score || 0) === score && score > 0);
-      }).sort((a:any, b:any) => b.data.year - a.data.year);
+      const contributors = countryPolicies
+        .filter((p: any) => {
+          return Object.entries(peakAnalysis).some(
+            ([dim, score]) =>
+              (p.data.analysis?.[dim]?.score || 0) === score && score > 0
+          );
+        })
+        .sort((a: any, b: any) => b.data.year - a.data.year);
 
       const stats = {
-        operational: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').length,
-        operationalCap: facilities.filter((f:any) => f.data.status === 'Operational' || f.data.status === '运行中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0),
-        constructionCap: facilities.filter((f:any) => f.data.status === 'Under construction' || f.data.status === '建设中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0),
-        plannedCap: facilities.filter((f:any) => f.data.status === 'Planned' || f.data.status === '计划中').reduce((acc:number, f:any) => acc + (f.data.estimatedCapacity || 0), 0)
+        operational: facilities.filter(
+          (f: any) =>
+            f.data.status === 'Operational' || f.data.status === '运行中'
+        ).length,
+        operationalCap: facilities
+          .filter(
+            (f: any) =>
+              f.data.status === 'Operational' || f.data.status === '运行中'
+          )
+          .reduce(
+            (acc: number, f: any) => acc + (f.data.estimatedCapacity || 0),
+            0
+          ),
+        constructionCap: facilities
+          .filter(
+            (f: any) =>
+              f.data.status === 'Under construction' ||
+              f.data.status === '建设中'
+          )
+          .reduce(
+            (acc: number, f: any) => acc + (f.data.estimatedCapacity || 0),
+            0
+          ),
+        plannedCap: facilities
+          .filter(
+            (f: any) =>
+              f.data.status === 'Planned' || f.data.status === '计划中'
+          )
+          .reduce(
+            (acc: number, f: any) => acc + (f.data.estimatedCapacity || 0),
+            0
+          ),
       };
 
       // NEW: Get Regulatory Data from Country Profile SSOT
       const canonName = countryMap[c as string]?.en || c;
-      const profile = countriesProfiles.find((cp: any) => cp.data.id === canonName);
+      const profile = countriesProfiles.find(
+        (cp: any) => cp.data.id === canonName
+      );
       const regulatory = profile?.data.regulatory || {
         pore_space_rights: 'Pending',
         liability_transfer: 'Pending',
@@ -308,65 +498,87 @@ import countryData from '../../data/countries.json';
         financial_assurance: 'Pending',
         permitting_lead_time: 'Pending',
         co2_definition: 'Pending',
-        cross_border_rules: 'Pending'
+        cross_border_rules: 'Pending',
       };
 
-      return { country: c, displayCountry, color: colors[idx % colors.length], peakAnalysis, contributors, stats, regulatory };
+      return {
+        country: c,
+        displayCountry,
+        color: colors[idx % colors.length],
+        peakAnalysis,
+        contributors,
+        stats,
+        regulatory,
+      };
     });
 
     // 2. Render Radar Chart
-    const ctx = document.getElementById('compare-radar-canvas') as HTMLCanvasElement;
+    const ctx = document.getElementById(
+      'compare-radar-canvas'
+    ) as HTMLCanvasElement;
     if (ctx) {
       if (currentChart) currentChart.destroy();
       currentChart = new Chart(ctx, {
         type: 'radar',
         data: {
           labels: ['经济激励', '法律监管', '市场机制', '战略引导', '技术规范'],
-          datasets: countryData.map(cd => ({
+          datasets: countryData.map((cd) => ({
             label: cd.displayCountry,
-            data: [cd.peakAnalysis.incentive, cd.peakAnalysis.statutory, cd.peakAnalysis.market, cd.peakAnalysis.strategic, cd.peakAnalysis.mrv],
+            data: [
+              cd.peakAnalysis.incentive,
+              cd.peakAnalysis.statutory,
+              cd.peakAnalysis.market,
+              cd.peakAnalysis.strategic,
+              cd.peakAnalysis.mrv,
+            ],
             borderColor: cd.color.border,
             backgroundColor: cd.color.bg,
             borderWidth: 3,
             pointRadius: 4,
-            fill: true
-          }))
+            fill: true,
+          })),
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           scales: {
-            r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false }, grid: { color: 'rgba(148, 163, 184, 0.1)' } }
-          }
-        }
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              ticks: { display: false },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+            },
+          },
+        },
       });
     }
 
-    
     // 2.5 Render Maturity Matrix Chart
     const mCtx = document.getElementById('maturity-matrix-canvas');
     if (mCtx) {
       if (maturityChart) maturityChart.destroy();
-      const mData = countryData.map(cd => {
+      const mData = countryData.map((cd) => {
         const canonName = countryMap[cd.country]?.en || cd.country;
-        const profile = countriesProfiles.find(cp => cp.data.id === canonName);
+        const profile = countriesProfiles.find(
+          (cp) => cp.data.id === canonName
+        );
         return {
           label: cd.displayCountry,
           x: profile?.data.maturity?.x || 0,
           y: profile?.data.maturity?.y || 0,
-          color: cd.color.border
+          color: cd.color.border,
         };
       });
       maturityChart = new Chart(mCtx, {
         type: 'scatter',
         data: {
-          datasets: mData.map(d => ({
+          datasets: mData.map((d) => ({
             label: d.label,
             data: [{ x: d.x, y: d.y }],
             backgroundColor: d.color,
             pointRadius: 8,
-            pointHoverRadius: 12
-          }))
+            pointHoverRadius: 12,
+          })),
         },
         options: {
           responsive: true,
@@ -375,23 +587,32 @@ import countryData from '../../data/countries.json';
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (ctx) => `${ctx.dataset.label}: Cap=${ctx.raw.x}Mt, Gov=${ctx.raw.y}`
-              }
-            }
+                label: (ctx) =>
+                  `${ctx.dataset.label}: Cap=${ctx.raw.x}Mt, Gov=${ctx.raw.y}`,
+              },
+            },
           },
           scales: {
             x: {
-              title: { display: true, text: '落地规模 (Mt/yr)', font: { size: 10, weight: 'bold' } },
-              grid: { color: 'rgba(148, 163, 184, 0.1)' }
+              title: {
+                display: true,
+                text: '落地规模 (Mt/yr)',
+                font: { size: 10, weight: 'bold' },
+              },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
             },
             y: {
               min: 0,
               max: 500,
-              title: { display: true, text: '治理强度 (FSRTM)', font: { size: 10, weight: 'bold' } },
-              grid: { color: 'rgba(148, 163, 184, 0.1)' }
-            }
-          }
-        }
+              title: {
+                display: true,
+                text: '治理强度 (FSRTM)',
+                font: { size: 10, weight: 'bold' },
+              },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+            },
+          },
+        },
       });
     }
 
@@ -402,55 +623,81 @@ import countryData from '../../data/countries.json';
         statutory: 'bg-blue-500',
         market: 'bg-amber-500',
         strategic: 'bg-purple-500',
-        mrv: 'bg-slate-500'
+        mrv: 'bg-slate-500',
       };
 
-      bundleContainer.innerHTML = countryData.map(cd => `
+      bundleContainer.innerHTML = countryData
+        .map(
+          (cd) => `
         <div class="space-y-6">
           <div class="flex items-center gap-4">
             <div class="w-3 h-3 rounded-full" style="background-color: ${cd.color.border}"></div>
             <h3 class="text-xl font-bold dark:text-white">${escapeHtml(cd.displayCountry)} 治理核心贡献政策</h3>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            ${cd.contributors.map((p: any) => `
+            ${cd.contributors
+              .map(
+                (p: any) => `
               <div class="p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm hover:border-blue-500 transition-all relative">
                 <div class="flex justify-between items-start mb-3">
                   <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">${p.data.year}</span>
                   <div class="flex gap-1">
-                    ${['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(dim => {
-                      const score = p.data.analysis?.[dim]?.score || 0;
-                      const isPeak = score === cd.peakAnalysis[dim as keyof typeof cd.peakAnalysis] && score > 0;
-                      return isPeak ? `<span class="w-1.5 h-1.5 rounded-full ${dimColors[dim]}"></span>` : '';
-                    }).join('')}
+                    ${['incentive', 'statutory', 'market', 'strategic', 'mrv']
+                      .map((dim) => {
+                        const score = p.data.analysis?.[dim]?.score || 0;
+                        const isPeak =
+                          score ===
+                            cd.peakAnalysis[
+                              dim as keyof typeof cd.peakAnalysis
+                            ] && score > 0;
+                        return isPeak
+                          ? `<span class="w-1.5 h-1.5 rounded-full ${dimColors[dim]}"></span>`
+                          : '';
+                      })
+                      .join('')}
                   </div>
                 </div>
                 <h4 class="text-sm font-bold text-slate-900 dark:text-white line-clamp-1 mb-4">${escapeHtml(p.data.title)}</h4>
                 <div class="flex gap-1.5">
-                  ${['incentive', 'statutory', 'market', 'strategic', 'mrv'].map((key) => {
-                    const score = p.data.analysis?.[key]?.score || 0;
-                    const isPeak = score === cd.peakAnalysis[key as keyof typeof cd.peakAnalysis] && score > 0;
-                    const barColor = isPeak ? dimColors[key] : 'bg-slate-200 dark:bg-slate-800';
-                    return `
+                  ${['incentive', 'statutory', 'market', 'strategic', 'mrv']
+                    .map((key) => {
+                      const score = p.data.analysis?.[key]?.score || 0;
+                      const isPeak =
+                        score ===
+                          cd.peakAnalysis[
+                            key as keyof typeof cd.peakAnalysis
+                          ] && score > 0;
+                      const barColor = isPeak
+                        ? dimColors[key]
+                        : 'bg-slate-200 dark:bg-slate-800';
+                      return `
                       <div class="flex-1">
                         <div class="h-1 w-full bg-slate-50 dark:bg-slate-900 rounded-full overflow-hidden mb-1">
                           <div class="h-full ${barColor} transition-all duration-1000" style="width: ${score}%"></div>
                         </div>
-                        <div class="text-[7px] font-black text-center ${isPeak ? 'text-slate-900 dark:text-white' : 'text-slate-400 opacity-50'}">${key.substring(0,3).toUpperCase()}</div>
+                        <div class="text-[7px] font-black text-center ${isPeak ? 'text-slate-900 dark:text-white' : 'text-slate-400 opacity-50'}">${key.substring(0, 3).toUpperCase()}</div>
                       </div>
                     `;
-                  }).join('')}
+                    })
+                    .join('')}
                 </div>
                 <a href="/ccus-policy-hub/policy/${encodeURIComponent(String(p.id))}/" class="absolute inset-0"></a>
               </div>
-            `).join('')}
+            `
+              )
+              .join('')}
           </div>
         </div>
-      `).join('<div class="h-px bg-slate-100 dark:bg-slate-800 my-8"></div>');
+      `
+        )
+        .join('<div class="h-px bg-slate-100 dark:bg-slate-800 my-8"></div>');
     }
 
     // 4. Facility Stats
     if (statsGrid) {
-      statsGrid.innerHTML = countryData.map(cd => `
+      statsGrid.innerHTML = countryData
+        .map(
+          (cd) => `
         <div class="p-6 bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-3xl">
           <div class="flex justify-between items-center mb-4">
             <span class="font-bold text-slate-900 dark:text-white">${escapeHtml(cd.displayCountry)}</span>
@@ -471,7 +718,9 @@ import countryData from '../../data/countries.json';
             </div>
           </div>
         </div>
-      `).join('');
+      `
+        )
+        .join('');
     }
 
     // 5. Regulatory Matrix
@@ -481,30 +730,41 @@ import countryData from '../../data/countries.json';
       { label: '责任期限 Period', key: 'liability_period' },
       { label: '财务保证 Assurance', key: 'financial_assurance' },
       { label: '审批周期 Lead Time', key: 'permitting_lead_time' },
-      { label: 'CO2 法律定义 Definition', key: 'co2_definition' },
-      { label: '跨国/跨境规则 Cross-border', key: 'cross_border_rules' }
+      { label: 'CO2 监管属性 / 法律定位', key: 'co2_definition' },
+      { label: '跨国/跨境规则 Cross-border', key: 'cross_border_rules' },
     ];
 
     if (regHeader) {
-      regHeader.innerHTML = `<tr><th class="p-6 text-[10px] font-black uppercase text-slate-400">对比维度 Dimension</th>` + 
-        countryData.map(cd => `<th class="p-6 font-bold text-slate-900 dark:text-white border-l border-slate-100 dark:border-slate-800">${escapeHtml(cd.displayCountry)}</th>`).join('') + `</tr>`;
+      regHeader.innerHTML =
+        `<tr><th class="p-6 text-[10px] font-black uppercase text-slate-400">对比维度 Dimension</th>` +
+        countryData
+          .map(
+            (cd) =>
+              `<th class="p-6 font-bold text-slate-900 dark:text-white border-l border-slate-100 dark:border-slate-800">${escapeHtml(cd.displayCountry)}</th>`
+          )
+          .join('') +
+        `</tr>`;
     }
 
     if (regBody) {
-      regBody.innerHTML = regKeys.map(rk => `
+      regBody.innerHTML = regKeys
+        .map(
+          (rk) => `
         <tr class="group hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
           <td class="p-6 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-50/30 dark:bg-slate-900/20">${rk.label}</td>
-          ${countryData.map(cd => `<td class="p-6 text-xs text-slate-600 dark:text-slate-400 border-l border-slate-100 dark:border-slate-800 font-medium">${escapeHtml((cd.regulatory as any)[rk.key] || '---')}</td>`).join('')}
+          ${countryData.map((cd) => `<td class="p-6 text-xs text-slate-600 dark:text-slate-400 border-l border-slate-100 dark:border-slate-800 font-medium">${escapeHtml((cd.regulatory as any)[rk.key] || '---')}</td>`).join('')}
         </tr>
-      `).join('');
+      `
+        )
+        .join('');
     }
   }
 
   // Event Listeners
   function initComparePage() {
-    const clearBtn = document.getElementById('clear-all') as
-      | HTMLButtonElement
-      | null;
+    const clearBtn = document.getElementById(
+      'clear-all'
+    ) as HTMLButtonElement | null;
     if (clearBtn) {
       clearBtn.onclick = () => {
         localStorage.removeItem('compare-list');
@@ -513,9 +773,9 @@ import countryData from '../../data/countries.json';
       };
     }
 
-    const printBtn = document.getElementById('print-report') as
-      | HTMLButtonElement
-      | null;
+    const printBtn = document.getElementById(
+      'print-report'
+    ) as HTMLButtonElement | null;
     if (printBtn) {
       printBtn.onclick = () => {
         window.print();

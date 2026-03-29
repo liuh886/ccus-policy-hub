@@ -9,12 +9,12 @@
   "name": "Ireland",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Not classified as waste for permanent storage; high-purity focus.",
+    "co2_definition": "High-purity CO2 stream for permanent storage; generally positioned outside waste treatment when stored under CCS rules.",
     "cross_border_rules": "National CCUS Policy Framework focus on Cork/Shannon clusters.",
     "financial_assurance": "Mandatory Bonds/Escrow for remediation and future costs.",
     "liability_period": "Minimum 20 years post-closure monitoring.",

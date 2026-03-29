@@ -3,18 +3,18 @@
   "id": "Saudi Arabia",
   "lang": "en",
   "maturity": {
-    "x": 0.8,
+    "x": 15.8,
     "y": 445
   },
   "name": "Saudi Arabia",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Economic Resource/Asset under CCE framework and GCOM.",
+    "co2_definition": "Industrial carbon resource under circular-carbon-economy policy; dedicated CCS legal classification remains limited.",
     "cross_border_rules": "Leading international producer forums; focused on Blue Hydrogen and export standards.",
     "financial_assurance": "Green Financing Framework (2024); Green Bonds/Sukuk; Project-level guarantees.",
     "liability_period": "Performance-based period (Estimated 20-30 years post-injection).",

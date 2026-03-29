@@ -3,18 +3,18 @@
   "id": "Germany",
   "lang": "en",
   "maturity": {
-    "x": 0.1,
+    "x": 0.2,
     "y": 420
   },
   "name": "Germany",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strategic tool for hard-to-abate industries; coal-sector exclusion.",
+    "co2_definition": "High-purity CO2 stream for transport and storage; access is policy-limited to hard-to-abate sectors and removals.",
     "cross_border_rules": "Ratifying London Protocol amendment to enable CO2 export.",
     "financial_assurance": "EUR 3.3 billion KTF funding; mandatory operator security for site closure.",
     "liability_period": "Approx. 40 years (aligned with EU Directive 2009/31/EC).",

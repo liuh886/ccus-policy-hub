@@ -9,12 +9,12 @@
   "name": "South Korea",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "East Asia",
   "regulatory": {
-    "co2_definition": "Strategic resource for utilization and regulated storage matter.",
+    "co2_definition": "Non-waste CO2 stream; treated as an industrial resource for use and as a regulated storage substance for CCS.",
     "cross_border_rules": "Legal basis for international CCS partnerships and CO2 export (e.g., to SE Asia).",
     "financial_assurance": "CCUS Industry Promotion Fund; mandatory bonds for closure/leakage.",
     "liability_period": "Performance-based period until stabilization is verified.",

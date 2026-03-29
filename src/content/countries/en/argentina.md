@@ -9,12 +9,12 @@
   "name": "Argentina",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Industrial residual emissions; focus on Blue Hydrogen and shale decarbonization.",
+    "co2_definition": "Residual industrial CO2 emissions stream for utilization or storage; no standalone national CCS legal class yet.",
     "cross_border_rules": "Under development via National Strategy for Carbon Markets (ENUMeC).",
     "financial_assurance": "Massive 30-year tax, customs, and FX incentives via RIGI (Law 27.742).",
     "liability_period": "Not specified.",

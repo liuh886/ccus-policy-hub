@@ -9,12 +9,12 @@
   "name": "马来西亚",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "监管整个价值链：捕集、运输、利用和永久封存。",
+    "co2_definition": "CCUS 框架下贯穿捕集、运输、利用和永久封存全链条的受监管 CO2 流。",
     "cross_border_rules": "允许进口二氧化碳进行封存；禁止利用进口二氧化碳。",
     "financial_assurance": "强制缴纳闭坑后管理基金；需要运营担保。",
     "liability_period": "通过注入征费建立的闭坑后管理基金进行管理。",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "通过马来西亚 CCUS 机构 (MyCCUS) 实现一站式监管。",
     "pore_space_rights": "分两个阶段授权：评估许可（地质研究）和封存许可（运营）。"
   },
-  "summary": "Profile for 马来西亚"
+  "summary": "马来西亚的 CCUS 监管画像正从政策文件转向专门立法，覆盖全价值链监管。"
 }
 ---
 
-Profile for 马来西亚
+马来西亚的 CCUS 监管画像正从政策文件转向专门立法，覆盖全价值链监管。

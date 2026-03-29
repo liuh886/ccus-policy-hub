@@ -9,12 +9,12 @@
   "name": "Iceland",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Primary climate tool for negative emissions; CO2 turned to stone within 2 years.",
+    "co2_definition": "CO2 stream for mineral storage; regulated as a storage feed stream rather than as a waste category.",
     "cross_border_rules": "Coda Terminal enables large-scale CO2 import from Europe for storage in Iceland.",
     "financial_assurance": "€115M EU grant for Coda Terminal; mandatory operator closure security.",
     "liability_period": "Approx. 20-30 years post-closure; accelerated by fast mineralization physics.",

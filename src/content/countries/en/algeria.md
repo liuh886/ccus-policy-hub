@@ -9,12 +9,12 @@
   "name": "Algeria",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Commodity/Industrial Gas (dual-use for EOR/Utilization vs Waste).",
+    "co2_definition": "Industrial CO2 resource / gas; treatment differs between utilization and storage contexts.",
     "cross_border_rules": "Aligning with EU CBAM; third-party access rules in development.",
     "financial_assurance": "Mandatory; incentives via reduced royalties (5%) and tax breaks.",
     "liability_period": "10-30 years post-injection monitoring.",

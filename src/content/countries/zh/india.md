@@ -9,12 +9,12 @@
   "name": "印度",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "CCTS 框架下的工业资源/碳资产。",
+    "co2_definition": "新兴 CCTS 框架下的工业 CO2 / 碳资产；尚无专门 CCS 法定类别。",
     "cross_border_rules": "侧重于国内市场；伦敦议定书一致性待定。",
     "financial_assurance": "可行性缺口资金 (VGF) 和生产挂钩激励 (PLI)。",
     "liability_period": "约 20 年（建议）。",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "通过国家使命试验平台进行简化（预计 3-4 年）。",
     "pore_space_rights": "倾向于国家所有；统一的联邦政策正在起草中。"
   },
-  "summary": "Profile for 印度"
+  "summary": "印度的 CCUS 监管画像仍处政策培育阶段，重点落在工业脱碳和碳市场衔接。"
 }
 ---
 
-Profile for 印度
+印度的 CCUS 监管画像仍处政策培育阶段，重点落在工业脱碳和碳市场衔接。

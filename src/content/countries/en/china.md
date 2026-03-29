@@ -3,18 +3,18 @@
   "id": "China",
   "lang": "en",
   "maturity": {
-    "x": 10.86,
+    "x": 11.08,
     "y": 440
   },
   "name": "China",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Not explicitly defined (Regulatory gap)",
+    "co2_definition": "No unified statutory definition yet; treated functionally as an industrial resource for use and as a regulated emissions/storage stream for CCS.",
     "cross_border_rules": "Domestic focus; no cross-border framework yet",
     "financial_assurance": "No mandatory financial assurance mechanism yet",
     "liability_period": "Not explicitly defined",

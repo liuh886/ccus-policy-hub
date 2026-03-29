@@ -9,12 +9,12 @@
   "name": "Colombia",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Climate mitigation tool / Emission unit. [Evidence: Law 1931/2018]",
+    "co2_definition": "Emissions stream / mitigation outcome within climate-law framework; no standalone CCS substance class yet.",
     "cross_border_rules": "Bilateral agreements for Caribbean regional storage. [Evidence: South America CCUS Hub Plan]",
     "financial_assurance": "Financial guarantee for environmental remediation. [Evidence: Law 2099]",
     "liability_period": "20 years monitoring post-injection. [Evidence: ANH Technical Manual]",

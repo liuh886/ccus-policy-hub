@@ -9,12 +9,12 @@
   "name": "Thailand",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Regulated as a managed substance under the new Climate Change Act framework.",
+    "co2_definition": "Managed substance / emissions stream under emerging climate legislation; dedicated CCS class is still forming.",
     "cross_border_rules": "Aligning with EU CBAM by 2026; bilateral cooperation on regional storage.",
     "financial_assurance": "Preliminary carbon tax (THB 200/ton) implemented on petroleum products.",
     "liability_period": "Under discussion; expected to align with international standards (20-50 years).",

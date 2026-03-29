@@ -46,7 +46,7 @@ Go beyond simple dollar-per-ton comparisons. Our advanced matrix allows side-by-
 
 - **Pore Space Rights**: Ownership of underground storage volumes.
 - **Liability Transfer**: Timelines for long-term stewardship handover.
-- **CO2 Definition**: Legal classification (Waste vs. Commodity).
+- **CO2 Regulatory Positioning / Legal Status**: How captured CO2 is treated in regulation across utilization, transport, and storage contexts.
 - **Permitting Lead Times**: Estimated timelines for regulatory approval.
 
 ### 3. Facility-Policy Intelligence

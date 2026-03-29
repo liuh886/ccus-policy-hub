@@ -9,12 +9,12 @@
   "name": "Mexico",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Essential for industrial decarbonization; focus on state-owned PEMEX/CFE assets.",
+    "co2_definition": "Industrial emissions stream for CCUS use or storage; dedicated legal classification is still developing.",
     "cross_border_rules": "Proposed regional cooperation via Tamaulipas hub.",
     "financial_assurance": "State-level carbon tax offsets (e.g., Querétaro 50% offset limit).",
     "liability_period": "TBD.",

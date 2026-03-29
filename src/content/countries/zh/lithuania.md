@@ -9,12 +9,12 @@
   "name": "立陶宛",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "商品/流 (循环经济和 CCU 重点)。",
+    "co2_definition": "面向 CCU 的 CO2 流 / 工业原料；专门封存分类仍有限。",
     "cross_border_rules": "CCS 波罗的海联盟；基础设施开放准入标准。",
     "financial_assurance": "针对泄漏和闭坑的强制性银行担保/保险。",
     "liability_period": "闭坑后 20 年监测期。",

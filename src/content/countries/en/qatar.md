@@ -3,18 +3,18 @@
   "id": "Qatar",
   "lang": "en",
   "maturity": {
-    "x": 7.9,
+    "x": 8,
     "y": 405
   },
   "name": "Qatar",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strategic industrial emission for sequestration and enhanced oil recovery (EOR).",
+    "co2_definition": "Industrial CO2 emissions stream for sequestration and EOR; dedicated CCS legal class remains limited.",
     "cross_border_rules": "Focus on Article 6 international credit trading for national decarbonization.",
     "financial_assurance": "Investment largely driven by state-owned QatarEnergy North Field expansion.",
     "liability_period": "Aligned with project lifecycle (typically 25+ years) with state oversight.",

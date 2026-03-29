@@ -9,12 +9,12 @@
   "name": "Netherlands",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strategic focus on permanent storage (CCS) and CDR removals (DACCS/BECCS).",
+    "co2_definition": "CO2 stream for permanent storage, with a separate policy track for carbon-removal projects.",
     "cross_border_rules": "MoU with Norway and UK for cross-border storage and hub connectivity.",
     "financial_assurance": "SDE++ subsidy mechanism (carbon contract for difference); CO2 levy for greenhouse horticulture.",
     "liability_period": "Standard EU-aligned 20-year post-closure monitoring.",

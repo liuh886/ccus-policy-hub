@@ -3,18 +3,18 @@
   "id": "Sweden",
   "lang": "en",
   "maturity": {
-    "x": 0.8,
+    "x": 1.01,
     "y": 0
   },
   "name": "Sweden",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Managed substance (>95% CO2); bio-CO2 focus (BECCS).",
+    "co2_definition": "Managed high-purity CO2 stream for storage, with specific support for bio-CO2 and BECCS.",
     "cross_border_rules": "Active bilateral agreements (NO/DK) for North Sea storage.",
     "financial_assurance": "Mandatory bank guarantees/insurance for site care.",
     "liability_period": "20 years post-closure monitoring required.",

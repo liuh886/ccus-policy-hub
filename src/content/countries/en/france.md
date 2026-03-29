@@ -9,12 +9,12 @@
   "name": "France",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Strictly reserved for unavoidable industrial residual emissions.",
+    "co2_definition": "Residual industrial CO2 stream eligible for storage; framed around unavoidable emissions.",
     "cross_border_rules": "Leading advocate for London Protocol compliance; 2024 bilateral export agreement with Norway.",
     "financial_assurance": "15-year Carbon Contract for Difference (CCfD) mechanism.",
     "liability_period": "Approx. 20-30 years (aligned with EU Directive 2009/31/EC).",

@@ -9,12 +9,12 @@
   "name": "爱尔兰",
   "provenance": {
     "author": "CCUS AI Agent",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "永久封存不归类为废物；侧重于高纯度。",
+    "co2_definition": "用于永久封存的高纯度 CO2 流；在 CCS 规则下通常不按废物处置定位。",
     "cross_border_rules": "国家 CCUS 政策框架侧重于 Cork/Shannon 集群。",
     "financial_assurance": "用于修复和未来成本的强制性债券/代管。",
     "liability_period": "至少 20 年闭坑后监测。",

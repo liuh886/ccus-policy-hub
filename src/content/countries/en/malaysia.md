@@ -9,12 +9,12 @@
   "name": "Malaysia",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Regulates entire value chain: capture, transport, utilization, and permanent storage.",
+    "co2_definition": "Regulated CO2 stream across capture, transport, utilization, and permanent storage under the CCUS framework.",
     "cross_border_rules": "Permits CO2 import for storage; prohibits utilization of imported CO2.",
     "financial_assurance": "Mandatory contribution to Post-Closure Stewardship Fund; operational security required.",
     "liability_period": "Managed via Post-Closure Stewardship Fund with injection levy.",

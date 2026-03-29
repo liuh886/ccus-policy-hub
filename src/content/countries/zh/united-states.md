@@ -3,18 +3,18 @@
   "id": "United States",
   "lang": "zh",
   "maturity": {
-    "x": 40.128,
+    "x": 55.608,
     "y": 490
   },
   "name": "美国",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "被定义为符合抵免条件的温室气体。",
+    "co2_definition": "联邦层面按地质封存用 CO2 流监管；在不同用途和州法下也可能呈现商品或废弃物的混合定位。",
     "cross_border_rules": "FEOC 规则限制外国对手参与。",
     "financial_assurance": "增强的税收抵免（高达 $180/t）提供了财务基础。",
     "liability_period": "精简许可在某些州将提前期缩短至 <12 个月。",

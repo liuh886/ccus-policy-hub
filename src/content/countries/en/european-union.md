@@ -9,12 +9,12 @@
   "name": "European Union",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "CO2 Stream (Over 95% purity)",
+    "co2_definition": "CO2 stream for geological storage; must consist overwhelmingly of carbon dioxide.",
     "cross_border_rules": "Fully integrated within EU single market",
     "financial_assurance": "Mandatory (EU Directive Art. 19)",
     "liability_period": "Min. 20 years post-closure",

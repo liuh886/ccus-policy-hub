@@ -9,12 +9,12 @@
   "name": "Chile",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
-    "reviewer": "Human Audit Pending"
+    "lastAuditDate": "2026-03-29",
+    "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Managed waste / Emission offset source. [Evidence: Framework Law on Climate Change]",
+    "co2_definition": "Managed emissions stream that can support mitigation outcomes; not framed solely as waste.",
     "cross_border_rules": "Framework for Article 6 carbon credit exports. [Evidence: Chile-Singapore MOU]",
     "financial_assurance": "Environmental Impact Assessment (SEIA) bonds. [Evidence: Law 19.300]",
     "liability_period": "TBD (Target: 20 years monitoring). [Evidence: Draft CCS Regulation 2025]",

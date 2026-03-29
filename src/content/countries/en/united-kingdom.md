@@ -3,18 +3,18 @@
   "id": "United Kingdom",
   "lang": "en",
   "maturity": {
-    "x": 6,
+    "x": 12.08,
     "y": 470
   },
   "name": "United Kingdom",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "Carbon Dioxide",
+    "co2_definition": "CO2 stream for transport and geological storage under the CCS licensing regime.",
     "cross_border_rules": "London Protocol / Bilateral Treaties",
     "financial_assurance": "Mandatory (Decommissioning Fund)",
     "liability_period": "Risk-based assessment",

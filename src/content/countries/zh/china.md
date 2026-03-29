@@ -3,18 +3,18 @@
   "id": "China",
   "lang": "zh",
   "maturity": {
-    "x": 10.86,
+    "x": 11.08,
     "y": 440
   },
   "name": "中国",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "CCUS AI Agent"
   },
   "region": "Global",
   "regulatory": {
-    "co2_definition": "未明确法律定义（监管缺口）",
+    "co2_definition": "尚无统一法定定义；利用环节多按工业资源处理，CCS 环节按受控排放流 / 封存活动监管。",
     "cross_border_rules": "目前仅限境内，暂无跨境封存实例",
     "financial_assurance": "暂无强制性财务保证机制",
     "liability_period": "尚未明确规定",
