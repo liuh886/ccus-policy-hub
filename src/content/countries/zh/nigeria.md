@@ -9,7 +9,7 @@
   "name": "尼日利亚",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "上游 CCS 整合需 18-24 个月。[证据: NUPRC 一站式许可]",
     "pore_space_rights": "国家所有；由 NUPRC 管理上游资产。[证据: NUPRC 2024 年条例] [URL: https://nuprc.gov.ng/]"
   },
-  "summary": "Profile for 尼日利亚"
+  "summary": "尼日利亚的 CCUS 监管画像主要依附油气与环境制度，独立封存规则仍较有限。"
 }
 ---
 
-Profile for 尼日利亚
+尼日利亚的 CCUS 监管画像主要依附油气与环境制度，独立封存规则仍较有限。

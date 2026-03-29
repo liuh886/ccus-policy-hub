@@ -58,6 +58,8 @@
     "pore_space_rights": "State-owned; managed by NAMR. [Evidence: Law 114/2013 update] [URL: https://namr.ro/]"
   },
   "relatedFacilities": [
+    "1445",
+    "1525",
     "733"
   ],
   "reviewStatus": "verified",

@@ -59,7 +59,7 @@
   },
   "relatedFacilities": [
     "1148",
-    "586"
+    "1457"
   ],
   "reviewStatus": "verified",
   "source": "National Environment Agency (NEA)",

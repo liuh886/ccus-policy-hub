@@ -67,7 +67,9 @@
     "permitting_lead_time": "",
     "pore_space_rights": ""
   },
-  "relatedFacilities": [],
+  "relatedFacilities": [
+    "1508"
+  ],
   "reviewStatus": "verified",
   "source": "越南政府",
   "status": "Active",

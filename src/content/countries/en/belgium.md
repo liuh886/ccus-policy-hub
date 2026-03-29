@@ -3,13 +3,13 @@
   "id": "Belgium",
   "lang": "en",
   "maturity": {
-    "x": 0.125,
+    "x": 10.125,
     "y": 415
   },
   "name": "Belgium",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

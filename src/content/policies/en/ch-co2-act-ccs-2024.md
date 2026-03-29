@@ -58,6 +58,8 @@
     "pore_space_rights": "Cantonal jurisdiction; governed by Cantonal Subsurface Laws. [Evidence: FOEN CCS Guidelines] [URL: https://www.bafu.admin.ch/]"
   },
   "relatedFacilities": [
+    "1391",
+    "1506",
     "646",
     "965"
   ],

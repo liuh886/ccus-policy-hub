@@ -9,7 +9,7 @@
   "name": "西班牙",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "3-5 年 (MITECO 审批流程)。[证据: PNIECC 2023-2030]",
     "pore_space_rights": "国家所有 (矿业法)。[证据: 第 7/2021 号法律第 12 条] [URL: https://www.miteco.gob.es/]"
   },
-  "summary": "Profile for 西班牙"
+  "summary": "西班牙的 CCUS 监管画像建立在欧盟制度基础上，并通过国家气候法和工业脱碳政策推进。"
 }
 ---
 
-Profile for 西班牙
+西班牙的 CCUS 监管画像建立在欧盟制度基础上，并通过国家气候法和工业脱碳政策推进。

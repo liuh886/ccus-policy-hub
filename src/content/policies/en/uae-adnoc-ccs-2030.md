@@ -70,6 +70,7 @@
     "pore_space_rights": ""
   },
   "relatedFacilities": [
+    "1496",
     "161",
     "387",
     "4",

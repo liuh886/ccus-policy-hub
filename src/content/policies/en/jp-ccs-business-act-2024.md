@@ -2,17 +2,17 @@
 {
   "analysis": {
     "incentive": {
-      "auditNote": "",
-      "citation": "JOGMEC Operational Protocol 2025",
-      "evidence": "Liability handover to JOGMEC after post-injection monitoring period (Art. 35).",
-      "label": "JOGMEC Risk Mitigation",
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "METI GX Roadmap 2025; JOGMEC Advanced CCS Program",
+      "evidence": "Japan's incentive framework for CCUS is driven by the Green Transformation (GX) policy, with JOGMEC providing substantial financial support for exploratory drilling and infrastructure. In 2025, METI launched a working group to design 'Carbon Contracts for Difference' (CCfD) to bridge the cost gap between CCUS and traditional energy. Additionally, the government has selected 9 'Advanced CCS Projects' to receive direct subsidies. While a full carbon market is still developing, the combination of direct grants and the promise of price-gap support has provided enough certainty for major industrial groups to commit to 2030 operational targets.",
+      "label": "GX Subsidy",
       "score": 80
     },
     "market": {
-      "auditNote": "",
-      "citation": "METI CCS Guidelines 2025",
-      "evidence": "Mandatory third-party access (TPA) guidelines for specified storage areas established by METI.",
-      "label": "Managed Open Access",
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "JOGMEC CCS Selection 2024; METI Interim Report 2025",
+      "evidence": "The Japanese CCUS market is structured around government-led 'Advanced CCS Projects' that create industrial hubs in regions like Tomakomai and Higashi-Niigata. By 2025, these hubs have established initial commercial frameworks for CO2 supply, involving power utilities and steel manufacturers. JOGMEC acts as a market catalyst, funding common-user infrastructure to reduce entry barriers. Japan is also aggressively pursuing an international market, with 4 of its 9 advanced projects located overseas in Malaysia and Oceania. The 2024 CCS Business Act facilitates this by treating storage rights as real property, enabling secondary market transactions and project financing.",
+      "label": "JOGMEC Hubs",
       "score": 85
     },
     "mrv": {
@@ -23,18 +23,25 @@
       "score": 90
     },
     "statutory": {
-      "auditNote": "",
-      "citation": "Japan CCS Business Act (2025 Enforcement)",
-      "evidence": "Article 12-15 explicitly defines storage rights as proprietary property (Real Right), ensuring investment security.",
-      "label": "Legally Protected Real Right",
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "Japan CCS Business Act 2024; METI Ordinances 2025",
+      "evidence": "Japan achieved high regulatory maturity with the enactment of the CCS Business Act in May 2024, which became partially effective in August 2024 and enters full enforcement by 2025-2026. The Act replaces a fragmented legal landscape with a unified 'Permit System' for CO2 storage and transport. Crucially, it defines 'Storage Rights' as a new form of real right, allowing them to be mortgaged and protected. The Act also clarifies pipeline access and safety standards. This legal certainty, combined with the government's role in designating 'Specified Areas' for storage, provides a robust statutory foundation that is among the most comprehensive in Asia.",
+      "label": "CCS Business Act",
       "score": 95
     },
     "strategic": {
-      "auditNote": "",
-      "citation": "METI Strategy",
-      "evidence": "Cornerstone of GX strategy and Asia CCUS Network.",
-      "label": "High",
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "Japan 6th Strategic Energy Plan (2025 Update); AZEC Declaration",
+      "evidence": "Strategically, CCUS is a core pillar of Japan's 2050 Carbon Neutrality goal and its 'GX Promotion Act.' The national strategy aims to store 120-240 million tonnes of CO2 per year by 2050, with 2025 marking a critical transition to commercial-scale infrastructure. Japan strategically positions CCUS as a tool for regional climate leadership, utilizing the Asia Zero Emission Community (AZEC) framework to export its technology and develop overseas storage hubs. This strategic vision is integrated with the nation's energy security, as CCUS enables the continued use of fossil fuels during the transition to a hydrogen-based economy, ensuring industrial stability while meeting climate targets.",
+      "label": "2050 Net Zero",
       "score": 95
+    },
+    "technical": {
+      "auditNote": "FSRTM 5.0 Audit (2025-03-19)",
+      "citation": "Tomakomai Project Technical Report 2024; JOGMEC Monitoring Guidelines",
+      "evidence": "Japan's technical baseline is built on the successful Tomakomai demonstration project, which has successfully injected 300,000 tonnes of CO2. In 2025, technical standards focus on 'Autonomous Seabed Monitoring' and advanced plume tracking using fiber-optic sensors. The technical framework is overseen by JOGMEC, which sets rigorous site characterization and monitoring requirements for its supported projects. Japan also leads in technical research for 'Low-Pressure CO2 Shipping,' which is essential for its hub-and-spoke maritime logistics strategy. These technical norms are increasingly aligned with international standards to ensure that Japanese credits are globally recognized.",
+      "label": "Tomakomai Ops",
+      "score": 90
     }
   },
   "category": "Regulatory",
@@ -63,8 +70,6 @@
     "pore_space_rights": "拟制物权 (Quasi-real Rights / Mina-shi Bukken)."
   },
   "relatedFacilities": [
-    "1014",
-    "1070",
     "1091",
     "1092",
     "1132",
@@ -72,25 +77,20 @@
     "1134",
     "1135",
     "1136",
-    "1194",
     "1366",
     "137",
+    "1537",
+    "1538",
     "279",
     "289",
-    "359",
     "647",
     "666",
     "667",
-    "777",
     "802",
     "810",
     "811",
-    "812",
-    "858",
     "937",
-    "938",
-    "957",
-    "958"
+    "938"
   ],
   "reviewStatus": "verified",
   "source": "METI",

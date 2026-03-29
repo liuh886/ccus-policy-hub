@@ -3,13 +3,13 @@
   "id": "Belgium",
   "lang": "zh",
   "maturity": {
-    "x": 0.125,
+    "x": 10.125,
     "y": 415
   },
   "name": "比利时",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "出口终端管道需 18-24 个月。[证据: 北海港路线图]",
     "pore_space_rights": "不适用（侧重转运）；通过双边条约进行北海封存。[证据: 联邦能源法] [URL: https://economie.fgov.be/]"
   },
-  "summary": "Profile for 比利时"
+  "summary": "比利时的 CCUS 监管画像以港口集群、区域政府权限和跨境运输协同为特征。"
 }
 ---
 
-Profile for 比利时
+比利时的 CCUS 监管画像以港口集群、区域政府权限和跨境运输协同为特征。

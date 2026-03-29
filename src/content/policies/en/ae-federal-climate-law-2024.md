@@ -58,6 +58,7 @@
     "pore_space_rights": "Managed at Federal and Emirate level (Abu Dhabi SCFEA)."
   },
   "relatedFacilities": [
+    "1496",
     "161",
     "387",
     "4",

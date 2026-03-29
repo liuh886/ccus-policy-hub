@@ -57,7 +57,9 @@
     "permitting_lead_time": "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
     "pore_space_rights": "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]"
   },
-  "relatedFacilities": [],
+  "relatedFacilities": [
+    "1508"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",
   "status": "现行",

@@ -9,7 +9,7 @@
   "name": "波兰",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "3-5 年 (部级审批流程)。[证据: 欧盟共同利益项目 (PMI) 状态]",
     "pore_space_rights": "国家所有 (国库)。[证据: 采矿法第 10 条] [URL: https://www.gov.pl/web/klimat]"
   },
-  "summary": "Profile for 波兰"
+  "summary": "波兰的 CCUS 监管画像以欧盟合规、高纯度 CO2 流要求和国家主导矿业治理为特征。"
 }
 ---
 
-Profile for 波兰
+波兰的 CCUS 监管画像以欧盟合规、高纯度 CO2 流要求和国家主导矿业治理为特征。

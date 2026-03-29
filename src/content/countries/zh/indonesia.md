@@ -9,7 +9,7 @@
   "name": "印度尼西亚",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "开发中（PSC 修订）",
     "pore_space_rights": "国家所有"
   },
-  "summary": "Profile for 印度尼西亚"
+  "summary": "印度尼西亚的 CCUS 监管画像以油气法制为基础，正向独立 CCUS 监管框架过渡。"
 }
 ---
 
-Profile for 印度尼西亚
+印度尼西亚的 CCUS 监管画像以油气法制为基础，正向独立 CCUS 监管框架过渡。

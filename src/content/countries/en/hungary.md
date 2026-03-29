@@ -3,7 +3,7 @@
   "id": "Hungary",
   "lang": "en",
   "maturity": {
-    "x": 0.16,
+    "x": 0.66,
     "y": 0
   },
   "name": "Hungary",

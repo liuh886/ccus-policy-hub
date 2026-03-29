@@ -9,7 +9,7 @@
   "name": "瑞士",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "2-4 年 (州级 + 联邦协调)。[证据: Demo-Up 封存项目]",
     "pore_space_rights": "州级管辖权；受州地下资源法管辖。[证据: FOEN CCS 指南] [URL: https://www.bafu.admin.ch/]"
   },
-  "summary": "Profile for 瑞士"
+  "summary": "瑞士的 CCUS 监管画像以减排法和国际合作为核心，国内封存空间与规则仍较有限。"
 }
 ---
 
-Profile for 瑞士
+瑞士的 CCUS 监管画像以减排法和国际合作为核心，国内封存空间与规则仍较有限。

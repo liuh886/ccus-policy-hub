@@ -9,7 +9,7 @@
   "name": "新加坡",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "出口终端审批需 1-2 年。[证据: 裕廊岛路线图]",
     "pore_space_rights": "国家所有 (土地法)。[证据: MTI/EMA 指南] [URL: https://www.nea.gov.sg/]"
   },
-  "summary": "Profile for 新加坡"
+  "summary": "新加坡的 CCUS 监管画像以碳定价、跨境合作和区域运输枢纽角色为特征。"
 }
 ---
 
-Profile for 新加坡
+新加坡的 CCUS 监管画像以碳定价、跨境合作和区域运输枢纽角色为特征。

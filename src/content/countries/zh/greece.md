@@ -3,13 +3,13 @@
   "id": "Greece",
   "lang": "zh",
   "maturity": {
-    "x": 0,
+    "x": 1,
     "y": 415
   },
   "name": "希腊",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "2-4 年 (战略投资地位)。[证据: 国家能源与气候计划]",
     "pore_space_rights": "国家所有；由 HEREMA 管理。[证据: 第 4001/2011 号法律更新] [URL: https://ypen.gov.gr/]"
   },
-  "summary": "Profile for 希腊"
+  "summary": "希腊的 CCUS 监管画像依托欧盟框架和海上封存开发推进，重点聚焦区域枢纽建设。"
 }
 ---
 
-Profile for 希腊
+希腊的 CCUS 监管画像依托欧盟框架和海上封存开发推进，重点聚焦区域枢纽建设。

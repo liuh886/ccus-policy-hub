@@ -59,8 +59,7 @@
   },
   "relatedFacilities": [
     "1190",
-    "618",
-    "736"
+    "618"
   ],
   "reviewStatus": "verified",
   "source": "Ministry of Energy and Minerals",

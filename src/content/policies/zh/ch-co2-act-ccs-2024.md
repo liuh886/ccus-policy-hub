@@ -58,6 +58,8 @@
     "pore_space_rights": "州级管辖权；受州地下资源法管辖。[证据: FOEN CCS 指南] [URL: https://www.bafu.admin.ch/]"
   },
   "relatedFacilities": [
+    "1391",
+    "1506",
     "646",
     "965"
   ],

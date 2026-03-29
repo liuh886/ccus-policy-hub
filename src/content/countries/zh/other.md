@@ -9,7 +9,7 @@
   "name": "其他",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "待定",
     "pore_space_rights": "待定"
   },
-  "summary": "Profile for 其他"
+  "summary": "该条目用于承接尚未归入主要法域的国家或地区，其监管画像需结合具体国家另行判断。"
 }
 ---
 
-Profile for 其他
+该条目用于承接尚未归入主要法域的国家或地区，其监管画像需结合具体国家另行判断。

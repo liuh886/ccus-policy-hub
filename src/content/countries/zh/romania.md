@@ -9,7 +9,7 @@
   "name": "罗马尼亚",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "3-5 年 (欧盟共同利益项目)。[证据: 黑海 CCS 路线图]",
     "pore_space_rights": "国家所有；由 NAMR 管理。[证据: 第 114/2013 号法律更新] [URL: https://namr.ro/]"
   },
-  "summary": "Profile for 罗马尼亚"
+  "summary": "罗马尼亚的 CCUS 监管画像以欧盟 CCS 转置框架为基础，封存与工业气体属性并存。"
 }
 ---
 
-Profile for 罗马尼亚
+罗马尼亚的 CCUS 监管画像以欧盟 CCS 转置框架为基础，封存与工业气体属性并存。

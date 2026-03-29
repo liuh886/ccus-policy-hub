@@ -68,6 +68,7 @@
     "pore_space_rights": "国家所有"
   },
   "relatedFacilities": [
+    "1496",
     "161",
     "387",
     "4",

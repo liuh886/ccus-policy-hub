@@ -7,7 +7,7 @@
   "legalWeight": "Primary Legislation",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {
@@ -22,11 +22,11 @@
   "relatedFacilities": [
     "1140",
     "1141",
-    "1180",
     "1339",
     "1340",
     "1341",
     "138",
+    "1446",
     "657",
     "688",
     "689",

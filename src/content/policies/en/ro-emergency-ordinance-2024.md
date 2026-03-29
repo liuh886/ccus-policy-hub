@@ -7,7 +7,7 @@
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {
@@ -20,6 +20,8 @@
     "pore_space_rights": "State Owned"
   },
   "relatedFacilities": [
+    "1445",
+    "1525",
     "733"
   ],
   "source": "Ministry of Energy",

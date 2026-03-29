@@ -36,6 +36,7 @@ const href = isEn
 
 const categoryData = (i18nDict.ui.categories as any)[category];
 const displayCategory = categoryData ? categoryData[lang] : category;
+const dimensionInfo = (i18nDict.ui?.dimensions || {}) as any;
 
 // FSRTM Dimension Config
 const dimensions = [
@@ -89,7 +90,7 @@ const activeDimensions = dimensions.filter(d => (analysis?.[d.key as keyof typeo
           {activeDimensions.map(d => (
             <div
               class={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-black text-white ${d.color} shadow-sm`}
-              title={(i18nDict.ui.dimensions as any)[d.key]?.label[lang] || d.key}
+              title={dimensionInfo[d.key]?.label?.[lang] || d.key}
             >
               {d.icon}
             </div>

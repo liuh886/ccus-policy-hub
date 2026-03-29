@@ -68,6 +68,8 @@
     "pore_space_rights": ""
   },
   "relatedFacilities": [
+    "1445",
+    "1525",
     "733"
   ],
   "reviewStatus": "verified",

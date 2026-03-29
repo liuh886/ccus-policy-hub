@@ -9,7 +9,7 @@
   "name": "哈萨克斯坦",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "2-3 年 (EIA + 地下资源许可)。[证据: 简化试点程序]",
     "pore_space_rights": "国家所有 (地下资源利用法)。[证据: 生态法第 14.2 条] [URL: https://www.gov.kz/]"
   },
-  "summary": "Profile for 哈萨克斯坦"
+  "summary": "哈萨克斯坦的 CCUS 监管画像主要嵌入生态法典与 ETS 体系，制度仍在早期发展。"
 }
 ---
 
-Profile for 哈萨克斯坦
+哈萨克斯坦的 CCUS 监管画像主要嵌入生态法典与 ETS 体系，制度仍在早期发展。

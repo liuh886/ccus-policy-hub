@@ -58,6 +58,7 @@
     "pore_space_rights": "在联邦和酋长国层面（阿布扎比 SCFEA）进行管理。"
   },
   "relatedFacilities": [
+    "1496",
     "161",
     "387",
     "4",

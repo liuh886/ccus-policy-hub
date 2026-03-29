@@ -58,6 +58,8 @@
     "pore_space_rights": "国家所有；由 NAMR 管理。[证据: 第 114/2013 号法律更新] [URL: https://namr.ro/]"
   },
   "relatedFacilities": [
+    "1445",
+    "1525",
     "733"
   ],
   "reviewStatus": "verified",

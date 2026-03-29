@@ -60,10 +60,7 @@
   "relatedFacilities": [
     "1034",
     "1278",
-    "319",
-    "320",
-    "565",
-    "648"
+    "565"
   ],
   "reviewStatus": "verified",
   "source": "Ministry of Climate and Environment",

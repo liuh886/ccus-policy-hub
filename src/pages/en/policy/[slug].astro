@@ -78,7 +78,7 @@ const relatedFacilities = allFacilities.filter(f =>
   f.data.relatedPolicies?.includes(entry.id.replace(/^en\//, ''))
 );
 
-const dimensionInfo = i18nDict.ui.dimensions;
+const dimensionInfo = (i18nDict.ui?.dimensions || {}) as any;
 
 const chartData = {
   incentive: analysis?.incentive?.score || 0,
@@ -275,7 +275,7 @@ const chartLabels = ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technica
             <div class="space-y-4 mb-10">
               {activeDimensions.map((d) => {
                 const dim = analysis?.[d.key as keyof typeof analysis];
-                const info = (dimensionInfo as any)[d.key];
+                const info = dimensionInfo[d.key];
                 if (!dim) return null;
                 return (
                   <div class="group cursor-default">

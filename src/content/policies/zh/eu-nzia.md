@@ -70,9 +70,7 @@
     "permitting_lead_time": "",
     "pore_space_rights": "成员国主权所有"
   },
-  "relatedFacilities": [
-    "678"
-  ],
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "European Commission",
   "status": "现行",

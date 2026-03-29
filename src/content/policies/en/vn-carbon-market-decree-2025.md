@@ -57,7 +57,9 @@
     "permitting_lead_time": "2-3 years for combined EIA/CCS permit. [Evidence: One-stop-shop initiative]",
     "pore_space_rights": "State-owned (Decree 119/2025/ND-CP). [Evidence: Art 5.1] [URL: https://monre.gov.vn/]"
   },
-  "relatedFacilities": [],
+  "relatedFacilities": [
+    "1508"
+  ],
   "reviewStatus": "verified",
   "source": "Ministry of Natural Resources and Environment (MONRE)",
   "status": "Active",

@@ -70,9 +70,7 @@
     "permitting_lead_time": "取决于成员国",
     "pore_space_rights": "成员国管辖权"
   },
-  "relatedFacilities": [
-    "678"
-  ],
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "European Parliament",
   "status": "现行",

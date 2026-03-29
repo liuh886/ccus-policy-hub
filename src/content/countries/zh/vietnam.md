@@ -9,7 +9,7 @@
   "name": "越南",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
     "pore_space_rights": "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]"
   },
-  "summary": "Profile for 越南"
+  "summary": "越南的 CCUS 监管画像嵌入新环境法与碳市场制度，整体仍处早期形成阶段。"
 }
 ---
 
-Profile for 越南
+越南的 CCUS 监管画像嵌入新环境法与碳市场制度，整体仍处早期形成阶段。

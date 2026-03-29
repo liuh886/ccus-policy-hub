@@ -3,13 +3,13 @@
   "id": "Brazil",
   "lang": "en",
   "maturity": {
-    "x": 10.6,
+    "x": 14.2,
     "y": 425
   },
   "name": "Brazil",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

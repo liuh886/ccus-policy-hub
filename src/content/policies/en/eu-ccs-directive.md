@@ -70,9 +70,7 @@
     "permitting_lead_time": "Member State dependent",
     "pore_space_rights": "Member State Jurisdiction"
   },
-  "relatedFacilities": [
-    "678"
-  ],
+  "relatedFacilities": [],
   "reviewStatus": "verified",
   "source": "European Parliament",
   "status": "Active",

@@ -9,7 +9,7 @@
   "name": "菲律宾",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-03-19",
+    "lastAuditDate": "2026-03-29",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",
@@ -22,8 +22,8 @@
     "permitting_lead_time": "2-4 年 (多机构 ECC 流程)。[证据: DENR/DOE 路线图]",
     "pore_space_rights": "国家所有 (1987 年宪法)。[证据: 2025 年 DOE 通告] [URL: https://www.doe.gov.ph/]"
   },
-  "summary": "Profile for 菲律宾"
+  "summary": "菲律宾的 CCUS 监管画像正在政策起步阶段，重点放在能源部门框架和市场化路径。"
 }
 ---
 
-Profile for 菲律宾
+菲律宾的 CCUS 监管画像正在政策起步阶段，重点放在能源部门框架和市场化路径。
