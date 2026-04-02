@@ -120,32 +120,44 @@ const mapDataJson = JSON.stringify(mapData);
 <script>
   // @ts-nocheck
 
-  const mapDataEl = document.getElementById('facility-map-data');
-  const mapData = mapDataEl?.textContent
-    ? JSON.parse(mapDataEl.textContent)
-    : { mapFacilities: [], isEn: false };
-  const mapFacilities = mapData.mapFacilities || [];
-  const isEn = mapData.isEn || false;
-
   const escapeHtml = (value) =>
     String(value ?? '').replace(
       /[&<>"']/g,
       (char) =>
-        (
-          {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;',
-          }[char] || char
-        )
+        ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        })[char] || char
     );
+
+  function getMapPayload() {
+    const mapDataEl = document.getElementById('facility-map-data');
+    const mapData = mapDataEl?.textContent
+      ? JSON.parse(mapDataEl.textContent)
+      : { mapFacilities: [], isEn: false };
+
+    return {
+      mapFacilities: Array.isArray(mapData.mapFacilities)
+        ? mapData.mapFacilities
+        : [],
+      isEn: Boolean(mapData.isEn),
+    };
+  }
 
   async function initMap() {
     const mapShell = document.querySelector('.facility-map-container');
     const mapNode = document.getElementById('map');
     if (!mapShell || !mapNode || mapNode.dataset.mapReady === '1') return;
+
+    if (mapNode._leaflet_id && !mapNode.dataset.mapReady) {
+      delete mapNode._leaflet_id;
+      mapNode.innerHTML = '';
+    }
+
+    const { mapFacilities, isEn } = getMapPayload();
 
     try {
       const leafletModule = await import('leaflet');
@@ -155,7 +167,10 @@ const mapDataJson = JSON.stringify(mapData);
       try {
         await import('leaflet.markercluster');
       } catch (pluginError) {
-        console.warn('Leaflet markercluster failed to load; falling back to plain markers.', pluginError);
+        console.warn(
+          'Leaflet markercluster failed to load; falling back to plain markers.',
+          pluginError
+        );
       }
 
       const map = L.map(mapNode, {
@@ -191,6 +206,8 @@ const mapDataJson = JSON.stringify(mapData);
                 }),
             })
           : L.layerGroup();
+
+      const markerBounds = [];
 
       mapFacilities.forEach((f) => {
         const {
@@ -232,9 +249,19 @@ const mapDataJson = JSON.stringify(mapData);
         </div>
       `);
         markers.addLayer(marker);
+        markerBounds.push(latLng);
       });
 
       map.addLayer(markers);
+      requestAnimationFrame(() => {
+        map.invalidateSize();
+        if (markerBounds.length > 0) {
+          map.fitBounds(markerBounds, {
+            padding: [32, 32],
+            maxZoom: 6,
+          });
+        }
+      });
       const loader = document.getElementById('map-loader');
       if (loader) {
         loader.style.opacity = '0';
