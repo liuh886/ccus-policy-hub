@@ -314,6 +314,7 @@ import countryData from '../../../data/countries.json';
   ];
   const clampDimensionScore = (score: unknown) =>
     Math.min(100, Math.max(0, Number(score || 0)));
+  const formatCap = (value: unknown) => Number(value || 0).toFixed(2);
 
   function renderCompareView() {
     const selectedSlugs = JSON.parse(
@@ -388,41 +389,43 @@ import countryData from '../../../data/countries.json';
       const peakAnalysis = {
         incentive: clampDimensionScore(
           Math.max(
-          ...countryPolicies.map(
-            (p: any) => p.data.analysis?.incentive?.score || 0
-          ),
-          0
-        )
+            ...countryPolicies.map(
+              (p: any) => p.data.analysis?.incentive?.score || 0
+            ),
+            0
+          )
         ),
         statutory: clampDimensionScore(
           Math.max(
-          ...countryPolicies.map(
-            (p: any) => p.data.analysis?.statutory?.score || 0
-          ),
-          0
-        )
+            ...countryPolicies.map(
+              (p: any) => p.data.analysis?.statutory?.score || 0
+            ),
+            0
+          )
         ),
         market: clampDimensionScore(
           Math.max(
-          ...countryPolicies.map(
-            (p: any) => p.data.analysis?.market?.score || 0
-          ),
-          0
-        )
+            ...countryPolicies.map(
+              (p: any) => p.data.analysis?.market?.score || 0
+            ),
+            0
+          )
         ),
         strategic: clampDimensionScore(
           Math.max(
-          ...countryPolicies.map(
-            (p: any) => p.data.analysis?.strategic?.score || 0
-          ),
-          0
-        )
+            ...countryPolicies.map(
+              (p: any) => p.data.analysis?.strategic?.score || 0
+            ),
+            0
+          )
         ),
         mrv: clampDimensionScore(
           Math.max(
-          ...countryPolicies.map((p: any) => p.data.analysis?.mrv?.score || 0),
-          0
-        )
+            ...countryPolicies.map(
+              (p: any) => p.data.analysis?.mrv?.score || 0
+            ),
+            0
+          )
         ),
       };
 
@@ -470,7 +473,8 @@ import countryData from '../../../data/countries.json';
           ),
       };
       const governanceScoreTotal = governanceDimensions.reduce(
-        (total, dim) => total + (peakAnalysis[dim as keyof typeof peakAnalysis] || 0),
+        (total, dim) =>
+          total + (peakAnalysis[dim as keyof typeof peakAnalysis] || 0),
         0
       );
       const maturity = {
@@ -584,7 +588,7 @@ import countryData from '../../../data/countries.json';
               callbacks: {
                 label: (ctx) => {
                   const point = ctx.raw as { x: number; y: number };
-                  return `${ctx.dataset.label}: Cap=${point.x}Mt/yr, Gov=${point.y}/500`;
+                  return `${ctx.dataset.label}: Cap=${formatCap(point.x)}Mt/yr, Gov=${point.y}/500`;
                 },
               },
             },
@@ -599,6 +603,9 @@ import countryData from '../../../data/countries.json';
               grid: { color: 'rgba(148, 163, 184, 0.1)' },
               suggestedMin: 0,
               suggestedMax: Math.max(1, Math.ceil(suggestedXMax * 1.1)),
+              ticks: {
+                callback: (value) => formatCap(value),
+              },
             },
             y: {
               suggestedMin: 0,
