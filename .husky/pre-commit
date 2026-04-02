@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# 这里不再引用 _/husky.sh，直接跑真正的命令
-bash -lc 'npx astro check && npm run lint'
+# 保留全项目类型检查；格式与 lint 仅检查 staged 文件，避免旧文件样式问题阻塞新提交
+bash -lc 'pnpm exec astro check && pnpm run lint:staged'

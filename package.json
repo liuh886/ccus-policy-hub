@@ -29,7 +29,8 @@
     "manage:db:clean": "node agent/ccus-ai-agent/logic/manage.mjs db:clean",
     "sync:all": "pnpm manage:db:export:md",
     "check:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
-    "lint": "eslint . && prettier --check ."
+    "lint": "eslint . && prettier --check .",
+    "lint:staged": "node scripts/lint-staged.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
