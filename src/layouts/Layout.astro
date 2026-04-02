@@ -9,6 +9,14 @@ import { ui, defaultLang } from '../i18n/ui';
 const lang = Astro.currentLocale || defaultLang;
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const normalizedPath = Astro.url.pathname
+  .replace(/^\/ccus-policy-hub/, '')
+  .replace(/\/$/, '') || '/';
+const hideCompareDrawer =
+  normalizedPath === '/' ||
+  normalizedPath === '/en' ||
+  normalizedPath === '/facilities' ||
+  normalizedPath === '/en/facilities';
 
 const { title, description, keywords } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -74,7 +82,7 @@ import '../styles/global.css';
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />
     </main>
-    <CompareDrawer lang={lang as 'zh' | 'en'} />
+    {!hideCompareDrawer && <CompareDrawer lang={lang as 'zh' | 'en'} />}
     <Footer lang={lang as string} />
   </body>
 </html>

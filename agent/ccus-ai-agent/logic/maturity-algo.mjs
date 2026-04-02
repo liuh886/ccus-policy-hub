@@ -17,6 +17,17 @@ async function compute() {
   if (countries.length === 0) return;
 
   db.run("BEGIN TRANSACTION");
+  const peakQuery = db.prepare(`
+    SELECT
+      COALESCE(MAX(CASE WHEN a.dimension = 'incentive' THEN a.score END), 0) AS incentive,
+      COALESCE(MAX(CASE WHEN a.dimension = 'statutory' THEN a.score END), 0) AS statutory,
+      COALESCE(MAX(CASE WHEN a.dimension = 'market' THEN a.score END), 0) AS market,
+      COALESCE(MAX(CASE WHEN a.dimension = 'strategic' THEN a.score END), 0) AS strategic,
+      COALESCE(MAX(CASE WHEN a.dimension = 'mrv' THEN a.score END), 0) AS mrv
+    FROM policy_analysis a
+    JOIN policies p ON a.policy_id = p.id
+    WHERE p.country = ? AND p.status IN ('Active', '运行中', '现行')
+  `);
   
   for (const row of countries[0].values) {
     const countryId = row[0];
@@ -31,24 +42,26 @@ async function compute() {
     const totalCap = capStmt.get()[0] || 0;
     capStmt.free();
 
-    // Y-Axis: Sum of all governance scores across active policies
-    const scoreStmt = db.prepare(`
-      SELECT SUM(a.score)
-      FROM policy_analysis a
-      JOIN policies p ON a.policy_id = p.id
-      WHERE p.country = ? AND p.status IN ('Active', '运行中', '现行')
-    `);
-    scoreStmt.bind([countryId]);
-    scoreStmt.step();
-    const governanceScoreSum = scoreStmt.get()[0] || 0;
-    scoreStmt.free();
+    // Y-Axis: Peak governance score across the 5 dimensions.
+    peakQuery.bind([countryId]);
+    peakQuery.step();
+    const peakScores = peakQuery.get();
+    peakQuery.reset();
+    const governanceScorePeak = Math.min(
+      500,
+      peakScores.reduce(
+        (sum, score) => sum + Math.min(100, Math.max(0, Number(score || 0))),
+        0
+      )
+    );
 
     // Update DB
-    db.run("UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?", [totalCap, governanceScoreSum, countryId]);
-    console.log(`  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (Gov Sum): ${governanceScoreSum}`);
+    db.run("UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?", [totalCap, governanceScorePeak, countryId]);
+    console.log(`  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (Gov Peak): ${governanceScorePeak}`);
   }
 
   db.run("COMMIT");
+  peakQuery.free();
   const data = db.export();
   fs.writeFileSync(DB_PATH, new Uint8Array(data));
   db.close();

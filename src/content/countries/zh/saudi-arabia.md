@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 15.8,
-    "y": 1135
+    "y": 445
   },
   "name": "沙特阿拉伯",
   "provenance": {

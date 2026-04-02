@@ -4,12 +4,12 @@
   "lang": "zh",
   "maturity": {
     "x": 14.2,
-    "y": 940
+    "y": 425
   },
   "name": "巴西",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-04-01",
+    "lastAuditDate": "2026-04-02",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

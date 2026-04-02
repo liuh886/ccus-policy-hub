@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 755
+    "y": 400
   },
   "name": "泰国",
   "provenance": {

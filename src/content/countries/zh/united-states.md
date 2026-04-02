@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 55.608,
-    "y": 3615
+    "y": 490
   },
   "name": "美国",
   "provenance": {

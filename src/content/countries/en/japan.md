@@ -4,7 +4,7 @@
   "lang": "en",
   "maturity": {
     "x": 0.18,
-    "y": 1655
+    "y": 455
   },
   "name": "Japan",
   "provenance": {

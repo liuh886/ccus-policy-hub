@@ -149,8 +149,14 @@ const mapDataJson = JSON.stringify(mapData);
 
     try {
       const leafletModule = await import('leaflet');
-      await import('leaflet.markercluster');
       const L = leafletModule.default;
+      window.L = L;
+
+      try {
+        await import('leaflet.markercluster');
+      } catch (pluginError) {
+        console.warn('Leaflet markercluster failed to load; falling back to plain markers.', pluginError);
+      }
 
       const map = L.map(mapNode, {
         center: [30, 10],
@@ -169,19 +175,22 @@ const mapDataJson = JSON.stringify(mapData);
 
       L.tileLayer(esriUrl, { maxZoom: 16, minZoom: 2 }).addTo(map);
 
-      const markers = L.markerClusterGroup({
-        showCoverageOnHover: false,
-        maxClusterRadius: 40,
-        chunkedLoading: true,
-        chunkDelay: 40,
-        chunkInterval: 200,
-        iconCreateFunction: (cluster) =>
-          L.divIcon({
-            html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
-            className: 'custom-cluster-icon',
-            iconSize: [32, 32],
-          }),
-      });
+      const markers =
+        typeof L.markerClusterGroup === 'function'
+          ? L.markerClusterGroup({
+              showCoverageOnHover: false,
+              maxClusterRadius: 40,
+              chunkedLoading: true,
+              chunkDelay: 40,
+              chunkInterval: 200,
+              iconCreateFunction: (cluster) =>
+                L.divIcon({
+                  html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
+                  className: 'custom-cluster-icon',
+                  iconSize: [32, 32],
+                }),
+            })
+          : L.layerGroup();
 
       mapFacilities.forEach((f) => {
         const {
@@ -195,7 +204,10 @@ const mapDataJson = JSON.stringify(mapData);
         if (!Array.isArray(coordinates) || coordinates.length < 2) return;
         const isOperational = status === '运行中' || status === 'Operational';
         const color = isOperational ? '#10b981' : '#3b82f6';
-        const latLng = [coordinates[0], coordinates[1]];
+        const lat = Number(coordinates[0]);
+        const lng = Number(coordinates[1]);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+        const latLng = [lat, lng];
 
         const displayCap = estimatedCapacity || announcedCapacityMax || 0;
         const safeName = escapeHtml(name);

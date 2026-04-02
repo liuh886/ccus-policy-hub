@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0.04,
-    "y": 1015
+    "y": 475
   },
   "name": "冰岛",
   "provenance": {

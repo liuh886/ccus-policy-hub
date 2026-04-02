@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0.11,
-    "y": 610
+    "y": 420
   },
   "name": "法国",
   "provenance": {

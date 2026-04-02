@@ -4,7 +4,7 @@
   "lang": "en",
   "maturity": {
     "x": 0.2,
-    "y": 610
+    "y": 420
   },
   "name": "Germany",
   "provenance": {

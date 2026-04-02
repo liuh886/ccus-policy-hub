@@ -7,7 +7,7 @@
   "legalWeight": "Strategic Guidance",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-04-01",
+    "lastAuditDate": "2026-04-02",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {

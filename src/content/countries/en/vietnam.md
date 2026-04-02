@@ -4,12 +4,12 @@
   "lang": "en",
   "maturity": {
     "x": 0,
-    "y": 760
+    "y": 430
   },
   "name": "Vietnam",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-04-01",
+    "lastAuditDate": "2026-04-02",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 755
+    "y": 420
   },
   "name": "哥伦比亚",
   "provenance": {

@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 12.08,
-    "y": 1360
+    "y": 470
   },
   "name": "英国",
   "provenance": {

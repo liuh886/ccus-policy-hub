@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 0,
-    "y": 2290
+    "y": 485
   },
   "name": "欧盟",
   "provenance": {

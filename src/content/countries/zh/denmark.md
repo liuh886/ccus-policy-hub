@@ -4,7 +4,7 @@
   "lang": "zh",
   "maturity": {
     "x": 15.961,
-    "y": 915
+    "y": 460
   },
   "name": "丹麦",
   "provenance": {
