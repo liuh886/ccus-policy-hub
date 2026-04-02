@@ -31,24 +31,21 @@ async function compute() {
     const totalCap = capStmt.get()[0] || 0;
     capStmt.free();
 
-    // Y-Axis: FSRTM Sum of Peaks
-    const dims = ['incentive', 'statutory', 'market', 'strategic', 'mrv'];
-    let fsrtmSum = 0;
-    for (const dim of dims) {
-      const scoreStmt = db.prepare(`
-        SELECT MAX(score) FROM policy_analysis a
-        JOIN policies p ON a.policy_id = p.id
-        WHERE p.country = ? AND a.dimension = ? AND p.status IN ('Active', '运行中', '现行')
-      `);
-      scoreStmt.bind([countryId, dim]);
-      scoreStmt.step();
-      fsrtmSum += (scoreStmt.get()[0] || 0);
-      scoreStmt.free();
-    }
+    // Y-Axis: Sum of all governance scores across active policies
+    const scoreStmt = db.prepare(`
+      SELECT SUM(a.score)
+      FROM policy_analysis a
+      JOIN policies p ON a.policy_id = p.id
+      WHERE p.country = ? AND p.status IN ('Active', '运行中', '现行')
+    `);
+    scoreStmt.bind([countryId]);
+    scoreStmt.step();
+    const governanceScoreSum = scoreStmt.get()[0] || 0;
+    scoreStmt.free();
 
     // Update DB
-    db.run("UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?", [totalCap, fsrtmSum, countryId]);
-    console.log(`  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (FSRTM): ${fsrtmSum}`);
+    db.run("UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?", [totalCap, governanceScoreSum, countryId]);
+    console.log(`  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (Gov Sum): ${governanceScoreSum}`);
   }
 
   db.run("COMMIT");

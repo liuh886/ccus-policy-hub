@@ -11,6 +11,66 @@ const isEn = lang === 'en';
 const facilities = await getCollection(
   isEn ? 'facilities_en' : 'facilities_zh'
 );
+
+const countryPrecisionTotals = new Map<
+  string,
+  { lat: number; lng: number; count: number }
+>();
+
+for (const facility of facilities) {
+  const { precision, country, coordinates } = facility.data;
+  if (
+    precision !== 'country' ||
+    !Array.isArray(coordinates) ||
+    coordinates.length < 2
+  ) {
+    continue;
+  }
+
+  const key = String(country || '');
+  const current = countryPrecisionTotals.get(key) || {
+    lat: 0,
+    lng: 0,
+    count: 0,
+  };
+
+  current.lat += coordinates[0];
+  current.lng += coordinates[1];
+  current.count += 1;
+  countryPrecisionTotals.set(key, current);
+}
+
+const canonicalCountryCoordinates = new Map(
+  [...countryPrecisionTotals.entries()].map(([country, totals]) => [
+    country,
+    [
+      Number((totals.lat / totals.count).toFixed(4)),
+      Number((totals.lng / totals.count).toFixed(4)),
+    ] as [number, number],
+  ])
+);
+
+const mapFacilities = facilities.map((facility) => {
+  const { id, data } = facility;
+  const isCountryPrecision = data.precision === 'country';
+  const coordinates =
+    isCountryPrecision && canonicalCountryCoordinates.has(String(data.country))
+      ? canonicalCountryCoordinates.get(String(data.country))
+      : data.coordinates;
+
+  return {
+    id,
+    name: data.name,
+    coordinates,
+    status: data.status,
+    estimatedCapacity: data.estimatedCapacity,
+    announcedCapacityMax: data.announcedCapacityMax,
+    type: data.type,
+  };
+});
+
+const mapData = { mapFacilities, isEn };
+const mapDataJson = JSON.stringify(mapData);
 ---
 
 <div
@@ -55,16 +115,18 @@ const facilities = await getCollection(
   </div>
 </div>
 
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"
-/>
+<template id="facility-map-data">{mapDataJson}</template>
 
-<script define:vars={{ facilities, isEn }}>
+<script>
+  // @ts-nocheck
+
+  const mapDataEl = document.getElementById('facility-map-data');
+  const mapData = mapDataEl?.textContent
+    ? JSON.parse(mapDataEl.textContent)
+    : { mapFacilities: [], isEn: false };
+  const mapFacilities = mapData.mapFacilities || [];
+  const isEn = mapData.isEn || false;
+
   const escapeHtml = (value) =>
     String(value ?? '').replace(
       /[&<>"']/g,
@@ -81,56 +143,75 @@ const facilities = await getCollection(
     );
 
   async function initMap() {
-    if (typeof L === 'undefined') return;
+    const mapShell = document.querySelector('.facility-map-container');
+    const mapNode = document.getElementById('map');
+    if (!mapShell || !mapNode || mapNode.dataset.mapReady === '1') return;
 
-    const map = L.map('map', {
-      center: [30, 10],
-      zoom: 3,
-      zoomControl: false,
-      attributionControl: false,
-      preferCanvas: true,
-    });
+    try {
+      const leafletModule = await import('leaflet');
+      await import('leaflet.markercluster');
+      const L = leafletModule.default;
 
-    L.control.zoom({ position: 'topleft' }).addTo(map);
-
-    const isDark = document.documentElement.classList.contains('dark');
-    const esriUrl = isDark
-      ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-      : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
-
-    L.tileLayer(esriUrl, { maxZoom: 16, minZoom: 2 }).addTo(map);
-
-    const markers = L.markerClusterGroup({
-      showCoverageOnHover: false,
-      maxClusterRadius: 40,
-      iconCreateFunction: (cluster) =>
-        L.divIcon({
-          html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
-          className: 'custom-cluster-icon',
-          iconSize: [32, 32],
-        }),
-    });
-
-    facilities.forEach((f) => {
-      const { name, coordinates, status, estimatedCapacity, announcedCapacityMax, type } = f.data;
-      const isOperational = status === '运行中' || status === 'Operational';
-      const color = isOperational ? '#10b981' : '#3b82f6';
-      
-      const displayCap = estimatedCapacity || announcedCapacityMax || 0;
-      const safeName = escapeHtml(name);
-      const safeType = escapeHtml(type);
-      const safeStatus = escapeHtml(status);
-      const safeId = encodeURIComponent(String(f.id));
-
-      const marker = L.marker(coordinates, {
-        icon: L.divIcon({
-          html: `<div class="w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg" style="background-color: ${color}"></div>`,
-          className: 'custom-marker',
-          iconSize: [14, 14],
-        }),
+      const map = L.map(mapNode, {
+        center: [30, 10],
+        zoom: 3,
+        zoomControl: false,
+        attributionControl: false,
+        preferCanvas: true,
       });
 
-      marker.bindPopup(`
+      L.control.zoom({ position: 'topleft' }).addTo(map);
+
+      const isDark = document.documentElement.classList.contains('dark');
+      const esriUrl = isDark
+        ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+        : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+
+      L.tileLayer(esriUrl, { maxZoom: 16, minZoom: 2 }).addTo(map);
+
+      const markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 40,
+        chunkedLoading: true,
+        chunkDelay: 40,
+        chunkInterval: 200,
+        iconCreateFunction: (cluster) =>
+          L.divIcon({
+            html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
+            className: 'custom-cluster-icon',
+            iconSize: [32, 32],
+          }),
+      });
+
+      mapFacilities.forEach((f) => {
+        const {
+          name,
+          coordinates,
+          status,
+          estimatedCapacity,
+          announcedCapacityMax,
+          type,
+        } = f;
+        if (!Array.isArray(coordinates) || coordinates.length < 2) return;
+        const isOperational = status === '运行中' || status === 'Operational';
+        const color = isOperational ? '#10b981' : '#3b82f6';
+        const latLng = [coordinates[0], coordinates[1]];
+
+        const displayCap = estimatedCapacity || announcedCapacityMax || 0;
+        const safeName = escapeHtml(name);
+        const safeType = escapeHtml(type);
+        const safeStatus = escapeHtml(status);
+        const safeId = encodeURIComponent(String(f.id));
+
+        const marker = L.marker(latLng, {
+          icon: L.divIcon({
+            html: `<div class="w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg" style="background-color: ${color}"></div>`,
+            className: 'custom-marker',
+            iconSize: [14, 14],
+          }),
+        });
+
+        marker.bindPopup(`
         <div class="p-1 min-w-[180px]">
           <div class="text-[9px] font-black text-blue-600 uppercase mb-1">${safeType}</div>
           <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${safeName}</div>
@@ -138,33 +219,52 @@ const facilities = await getCollection(
           <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">Details</a>
         </div>
       `);
-      markers.addLayer(marker);
-    });
+        markers.addLayer(marker);
+      });
 
-    map.addLayer(markers);
-    const loader = document.getElementById('map-loader');
-    if (loader) {
-      loader.style.opacity = '0';
-      setTimeout(() => (loader.style.display = 'none'), 500);
+      map.addLayer(markers);
+      const loader = document.getElementById('map-loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => (loader.style.display = 'none'), 500);
+      }
+      mapNode.dataset.mapReady = '1';
+    } catch (error) {
+      mapNode.dataset.mapReady = '';
+      throw error;
     }
   }
 
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      document.head.appendChild(s);
-    });
+  function setupMap() {
+    const mapShell = document.querySelector('.facility-map-container');
+    if (!mapShell || mapShell.getAttribute('data-map-observed') === '1') {
+      return;
+    }
+
+    mapShell.setAttribute('data-map-observed', '1');
+
+    const start = () => {
+      void initMap();
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      start();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          start();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+
+    observer.observe(mapShell);
   }
 
-  (async () => {
-    if (typeof L === 'undefined') {
-      await loadScript('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
-      await loadScript(
-        'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js'
-      );
-    }
-    initMap();
-  })();
+  document.addEventListener('astro:page-load', setupMap);
+  setupMap();
 </script>

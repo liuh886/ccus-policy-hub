@@ -77,3 +77,20 @@ export function normalizeCoordinates(lat, lng, fallback = DEFAULT_COORDINATE_FAL
 
   return [latNum, lngNum];
 }
+
+export function resolveFacilityCoordinates({
+  country,
+  precision,
+  lat,
+  lng,
+  defaultFallback = DEFAULT_COORDINATE_FALLBACK,
+}) {
+  const fallback = getCountryCoordinateFallback(country, defaultFallback);
+
+  // Country-precision facilities should always share a single canonical anchor.
+  if (precision === 'country' || precision === 'approximate' || !precision) {
+    return fallback;
+  }
+
+  return normalizeCoordinates(lat, lng, fallback);
+}

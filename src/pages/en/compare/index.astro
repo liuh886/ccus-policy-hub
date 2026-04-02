@@ -118,6 +118,53 @@ import countryData from '../../../data/countries.json';
             <canvas id="compare-radar-canvas"></canvas>
           </div>
 
+          <!-- Maturity Matrix Quadrant Chart -->
+          <div class="pt-8 border-t border-slate-200 dark:border-slate-800">
+            <h4
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                ><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"
+                ></path><path d="M2 12h20"></path></svg
+              >
+              Global Governance Maturity Matrix
+            </h4>
+            <div class="h-64 w-full mb-4">
+              <canvas id="maturity-matrix-canvas"></canvas>
+            </div>
+            <div
+              class="grid grid-cols-2 gap-2 text-[8px] font-bold uppercase tracking-tighter text-slate-400"
+            >
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Top-Left: Policy First
+              </div>
+              <div
+                class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center text-blue-600"
+              >
+                Top-Right: Leaders
+              </div>
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Bottom-Left: Early Stage
+              </div>
+              <div
+                class="p-2 bg-slate-100/50 dark:bg-slate-800/30 rounded-lg text-center"
+              >
+                Bottom-Right: Project Led
+              </div>
+            </div>
+          </div>
+
           <!-- Facility Stats Comparison -->
           <div
             id="facility-stats-compare"
@@ -236,6 +283,14 @@ import countryData from '../../../data/countries.json';
   import Chart from 'chart.js/auto';
 
   let currentChart: any = null;
+  let maturityChart: any = null;
+  const governanceDimensions = [
+    'incentive',
+    'statutory',
+    'market',
+    'strategic',
+    'mrv',
+  ];
   const escapeHtml = (value: unknown) =>
     String(value ?? '').replace(
       /[&<>"']/g,
@@ -402,6 +457,20 @@ import countryData from '../../../data/countries.json';
             0
           ),
       };
+      const governanceScoreTotal = governanceDimensions.reduce(
+        (total, dim) =>
+          total +
+          countryPolicies.reduce(
+            (policyTotal: number, policy: any) =>
+              policyTotal + (policy.data.analysis?.[dim]?.score || 0),
+            0
+          ),
+        0
+      );
+      const maturity = {
+        x: stats.operationalCap + stats.constructionCap,
+        y: governanceScoreTotal,
+      };
 
       const canonName = countryMap[c as string]?.en || c;
       const profile = countriesProfiles.find(
@@ -424,6 +493,7 @@ import countryData from '../../../data/countries.json';
         peakAnalysis,
         contributors,
         stats,
+        maturity,
         regulatory,
       };
     });
@@ -468,6 +538,71 @@ import countryData from '../../../data/countries.json';
               suggestedMin: 0,
               suggestedMax: 100,
               ticks: { display: false },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+            },
+          },
+        },
+      });
+    }
+
+    // 2.5 Render Maturity Matrix Chart
+    const mCtx = document.getElementById(
+      'maturity-matrix-canvas'
+    ) as HTMLCanvasElement | null;
+    if (mCtx) {
+      if (maturityChart) maturityChart.destroy();
+      const mData = countryData.map((cd) => ({
+        label: cd.displayCountry,
+        x: cd.maturity.x,
+        y: cd.maturity.y,
+        color: cd.color.border,
+      }));
+      const suggestedXMax = Math.max(...mData.map((d) => d.x), 0);
+      const suggestedYMax = Math.max(...mData.map((d) => d.y), 0);
+      maturityChart = new Chart(mCtx, {
+        type: 'scatter',
+        data: {
+          datasets: mData.map((d) => ({
+            label: d.label,
+            data: [{ x: d.x, y: d.y }],
+            backgroundColor: d.color,
+            pointRadius: 8,
+            pointHoverRadius: 12,
+          })),
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  const point = ctx.raw as { x: number; y: number };
+                  return `${ctx.dataset.label}: Cap=${point.x}Mt/yr, Gov=${point.y}`;
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Deployment Capacity (operational + under construction)',
+                font: { size: 10, weight: 'bold' },
+              },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
+              suggestedMin: 0,
+              suggestedMax: Math.max(1, Math.ceil(suggestedXMax * 1.1)),
+            },
+            y: {
+              suggestedMin: 0,
+              suggestedMax: Math.max(1, Math.ceil(suggestedYMax * 1.1)),
+              title: {
+                display: true,
+                text: 'Governance Score Sum',
+                font: { size: 10, weight: 'bold' },
+              },
               grid: { color: 'rgba(148, 163, 184, 0.1)' },
             },
           },

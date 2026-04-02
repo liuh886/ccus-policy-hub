@@ -313,6 +313,13 @@ import countryData from '../../data/countries.json';
 
   let currentChart: any = null;
   let maturityChart: any = null;
+  const governanceDimensions = [
+    'incentive',
+    'statutory',
+    'market',
+    'strategic',
+    'mrv',
+  ];
   const escapeHtml = (value: unknown) =>
     String(value ?? '').replace(
       /[&<>"']/g,
@@ -485,6 +492,20 @@ import countryData from '../../data/countries.json';
             0
           ),
       };
+      const governanceScoreTotal = countryPolicies.reduce(
+        (total: number, policy: any) =>
+          total +
+          governanceDimensions.reduce(
+            (scoreTotal, dim) =>
+              scoreTotal + (policy.data.analysis?.[dim]?.score || 0),
+            0
+          ),
+        0
+      );
+      const maturity = {
+        x: stats.operationalCap + stats.constructionCap,
+        y: governanceScoreTotal,
+      };
 
       // NEW: Get Regulatory Data from Country Profile SSOT
       const canonName = countryMap[c as string]?.en || c;
@@ -508,6 +529,7 @@ import countryData from '../../data/countries.json';
         peakAnalysis,
         contributors,
         stats,
+        maturity,
         regulatory,
       };
     });
@@ -554,21 +576,19 @@ import countryData from '../../data/countries.json';
     }
 
     // 2.5 Render Maturity Matrix Chart
-    const mCtx = document.getElementById('maturity-matrix-canvas');
+    const mCtx = document.getElementById(
+      'maturity-matrix-canvas'
+    ) as HTMLCanvasElement | null;
     if (mCtx) {
       if (maturityChart) maturityChart.destroy();
-      const mData = countryData.map((cd) => {
-        const canonName = countryMap[cd.country]?.en || cd.country;
-        const profile = countriesProfiles.find(
-          (cp) => cp.data.id === canonName
-        );
-        return {
-          label: cd.displayCountry,
-          x: profile?.data.maturity?.x || 0,
-          y: profile?.data.maturity?.y || 0,
-          color: cd.color.border,
-        };
-      });
+      const mData = countryData.map((cd) => ({
+        label: cd.displayCountry,
+        x: cd.maturity.x,
+        y: cd.maturity.y,
+        color: cd.color.border,
+      }));
+      const suggestedXMax = Math.max(...mData.map((d) => d.x), 0);
+      const suggestedYMax = Math.max(...mData.map((d) => d.y), 0);
       maturityChart = new Chart(mCtx, {
         type: 'scatter',
         data: {
@@ -587,8 +607,10 @@ import countryData from '../../data/countries.json';
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (ctx) =>
-                  `${ctx.dataset.label}: Cap=${ctx.raw.x}Mt, Gov=${ctx.raw.y}`,
+                label: (ctx) => {
+                  const point = ctx.raw as { x: number; y: number };
+                  return `${ctx.dataset.label}: Cap=${point.x}Mt/yr, Gov=${point.y}`;
+                },
               },
             },
           },
@@ -596,17 +618,19 @@ import countryData from '../../data/countries.json';
             x: {
               title: {
                 display: true,
-                text: '落地规模 (Mt/yr)',
+                text: '落地规模 (运行中 + 建设中, Mt/yr)',
                 font: { size: 10, weight: 'bold' },
               },
               grid: { color: 'rgba(148, 163, 184, 0.1)' },
+              suggestedMin: 0,
+              suggestedMax: Math.max(1, Math.ceil(suggestedXMax * 1.1)),
             },
             y: {
-              min: 0,
-              max: 500,
+              suggestedMin: 0,
+              suggestedMax: Math.max(1, Math.ceil(suggestedYMax * 1.1)),
               title: {
                 display: true,
-                text: '治理强度 (FSRTM)',
+                text: '治理强度 (治理评分总和)',
                 font: { size: 10, weight: 'bold' },
               },
               grid: { color: 'rgba(148, 163, 184, 0.1)' },

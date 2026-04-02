@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
 import matter from 'gray-matter';
-import { getCountryCoordinateFallback, normalizeCoordinates } from '../../../scripts/content-export-utils.mjs';
+import { resolveFacilityCoordinates } from '../../../scripts/content-export-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
@@ -395,7 +395,12 @@ async function dbExportMd(SQL) {
         announcedCapacityMax: f.announced_capacity_max,
         announcedCapacityRaw: f.announced_capacity_raw,
         estimatedCapacity: f.estimated_capacity,
-        coordinates: normalizeCoordinates(f.lat, f.lng, getCountryCoordinateFallback(f.country)),
+        coordinates: resolveFacilityCoordinates({
+          country: f.country,
+          precision: f.precision || 'country',
+          lat: f.lat,
+          lng: f.lng,
+        }),
         precision: f.precision || "country",
         sector: i.sector,
         fateOfCarbon: i.fate_of_carbon,

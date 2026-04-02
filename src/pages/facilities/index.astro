@@ -6,17 +6,18 @@ import FacilityCard from '../../components/FacilityCard.astro';
 import countryData from '../../data/countries.json';
 
 const facilities = await getCollection('facilities_zh');
-const policies = await getCollection('policies_zh');
 
 // Country name mapping logic
 const countryMap: Record<string, any> = countryData;
 
 const countries = Array.from(
   new Set(facilities.map((f) => f.data.country))
-).sort().map(canon => ({
-  canon,
-  display: countryMap[canon]?.zh || canon
-}));
+)
+  .sort()
+  .map((canon) => ({
+    canon,
+    display: countryMap[canon]?.zh || canon,
+  }));
 const sectors = Array.from(new Set(facilities.map((f) => f.data.sector)))
   .filter(Boolean)
   .sort();
@@ -33,6 +34,35 @@ const types = Array.from(
 const statuses = Array.from(
   new Set(facilities.map((f) => f.data.status))
 ).sort();
+
+const specialCountryLabels: Record<string, string> = {
+  Unknown: '未知',
+  'Multiple Europe': '欧洲多国',
+  'Chinese Taipei': '中国台湾',
+  International: '国际',
+  Transnational: '跨国',
+};
+
+const translateCountryLabel = (country: string) => {
+  const direct = countryMap[country]?.zh || specialCountryLabels[country];
+  if (direct) return direct;
+
+  if (!/[,\-/&，、]/.test(country)) return country;
+
+  return country
+    .split(/(\s*[-/,&，、]\s*)/)
+    .map((part) => {
+      if (/^\s*[-/,&，、]\s*$/.test(part)) return part;
+      const trimmed = part.trim();
+      return countryMap[trimmed]?.zh || specialCountryLabels[trimmed] || trimmed;
+    })
+    .join('');
+};
+
+const zhCountries = countries.map((country) => ({
+  ...country,
+  display: translateCountryLabel(country.canon),
+}));
 ---
 
 <Layout
@@ -169,7 +199,7 @@ const statuses = Array.from(
           class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold"
         >
           <option value="">所有国家</option>
-          {countries.map((c) => <option value={c.canon}>{c.display}</option>)}
+          {zhCountries.map((c) => <option value={c.canon}>{c.display}</option>)}
         </select>
         <select
           id="status-filter"

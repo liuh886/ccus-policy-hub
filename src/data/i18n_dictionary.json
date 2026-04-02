@@ -263,6 +263,58 @@
         "zh": "即将实施",
         "en": "Upcoming"
       }
+    },
+    "dimensions": {
+      "incentive": {
+        "label": {
+          "zh": "经济激励",
+          "en": "Incentive"
+        },
+        "desc": {
+          "zh": "财政补贴、税收抵免、合同差价等经济激励工具。",
+          "en": "Economic support instruments such as grants, tax credits, and contracts for difference."
+        }
+      },
+      "statutory": {
+        "label": {
+          "zh": "法律监管",
+          "en": "Regulatory"
+        },
+        "desc": {
+          "zh": "许可、责任、储层权属与监管合规框架。",
+          "en": "Licensing, liability, pore-space ownership, and overall legal-regulatory framework."
+        }
+      },
+      "market": {
+        "label": {
+          "zh": "市场机制",
+          "en": "Market"
+        },
+        "desc": {
+          "zh": "碳市场、交易规则和市场化价格传导机制。",
+          "en": "Carbon markets, trading rules, and market-based price signals."
+        }
+      },
+      "strategic": {
+        "label": {
+          "zh": "战略引导",
+          "en": "Strategic"
+        },
+        "desc": {
+          "zh": "国家战略、路线图、产业集群与部署规划。",
+          "en": "National strategies, roadmaps, cluster planning, and deployment guidance."
+        }
+      },
+      "mrv": {
+        "label": {
+          "zh": "技术规范",
+          "en": "Technical"
+        },
+        "desc": {
+          "zh": "监测、报告、核证及相关技术标准体系。",
+          "en": "Monitoring, reporting, verification, and related technical standards."
+        }
+      }
     }
   }
 }
