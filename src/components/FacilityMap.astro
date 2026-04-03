@@ -12,6 +12,24 @@ const facilities = await getCollection(
   isEn ? 'facilities_en' : 'facilities_zh'
 );
 
+const hasRenderableCoordinates = (
+  coordinates: unknown
+): coordinates is [number, number] => {
+  if (!Array.isArray(coordinates) || coordinates.length < 2) {
+    return false;
+  }
+
+  const lat = Number(coordinates[0]);
+  const lng = Number(coordinates[1]);
+
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+    return false;
+  }
+
+  // `0.001, 0.001` is used in the dataset as a placeholder for missing coordinates.
+  return !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01);
+};
+
 const countryPrecisionTotals = new Map<
   string,
   { lat: number; lng: number; count: number }
@@ -19,11 +37,7 @@ const countryPrecisionTotals = new Map<
 
 for (const facility of facilities) {
   const { precision, country, coordinates } = facility.data;
-  if (
-    precision !== 'country' ||
-    !Array.isArray(coordinates) ||
-    coordinates.length < 2
-  ) {
+  if (precision !== 'country' || !hasRenderableCoordinates(coordinates)) {
     continue;
   }
 
@@ -56,7 +70,9 @@ const mapFacilities = facilities.map((facility) => {
   const coordinates =
     isCountryPrecision && canonicalCountryCoordinates.has(String(data.country))
       ? canonicalCountryCoordinates.get(String(data.country))
-      : data.coordinates;
+      : hasRenderableCoordinates(data.coordinates)
+        ? data.coordinates
+        : null;
 
   return {
     id,
@@ -187,6 +203,21 @@ const mapDataJson = JSON.stringify(mapData);
     };
   }
 
+  function hasRenderableCoordinates(coordinates) {
+    if (!Array.isArray(coordinates) || coordinates.length < 2) {
+      return false;
+    }
+
+    const lat = Number(coordinates[0]);
+    const lng = Number(coordinates[1]);
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+      return false;
+    }
+
+    return !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01);
+  }
+
   async function initMap() {
     const mapShell = document.querySelector('.facility-map-container');
     const mapNode = document.getElementById('map');
@@ -259,12 +290,11 @@ const mapDataJson = JSON.stringify(mapData);
           announcedCapacityMax,
           type,
         } = f;
-        if (!Array.isArray(coordinates) || coordinates.length < 2) return;
+        if (!hasRenderableCoordinates(coordinates)) return;
         const isOperational = status === '运行中' || status === 'Operational';
         const color = isOperational ? '#10b981' : '#3b82f6';
         const lat = Number(coordinates[0]);
         const lng = Number(coordinates[1]);
-        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
         const latLng = [lat, lng];
 
         const displayCap = estimatedCapacity || announcedCapacityMax || 0;
