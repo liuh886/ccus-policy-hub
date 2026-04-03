@@ -115,7 +115,43 @@ const mapDataJson = JSON.stringify(mapData);
   </div>
 </div>
 
-<template id="facility-map-data">{mapDataJson}</template>
+<script
+  is:inline
+  type="application/json"
+  id="facility-map-data"
+  set:html={mapDataJson}
+/>
+
+<style is:global>
+  .facility-map-marker {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    border-radius: 9999px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+  }
+
+  .facility-map-cluster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.28);
+  }
+
+  .leaflet-div-icon.custom-marker,
+  .leaflet-div-icon.custom-cluster-icon {
+    background: transparent;
+    border: 0;
+  }
+</style>
 
 <script>
   // @ts-nocheck
@@ -135,9 +171,13 @@ const mapDataJson = JSON.stringify(mapData);
 
   function getMapPayload() {
     const mapDataEl = document.getElementById('facility-map-data');
-    const mapData = mapDataEl?.textContent
-      ? JSON.parse(mapDataEl.textContent)
-      : { mapFacilities: [], isEn: false };
+    const rawPayload = mapDataEl?.textContent?.trim() || '';
+
+    if (!rawPayload) {
+      return { mapFacilities: [], isEn: false };
+    }
+
+    const mapData = JSON.parse(rawPayload);
 
     return {
       mapFacilities: Array.isArray(mapData.mapFacilities)
@@ -200,9 +240,10 @@ const mapDataJson = JSON.stringify(mapData);
               chunkInterval: 200,
               iconCreateFunction: (cluster) =>
                 L.divIcon({
-                  html: `<div class="bg-slate-900 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-[10px] border border-white/20">${cluster.getChildCount()}</div>`,
+                  html: `<div class="facility-map-cluster">${cluster.getChildCount()}</div>`,
                   className: 'custom-cluster-icon',
                   iconSize: [32, 32],
+                  iconAnchor: [16, 16],
                 }),
             })
           : L.layerGroup();
@@ -234,9 +275,10 @@ const mapDataJson = JSON.stringify(mapData);
 
         const marker = L.marker(latLng, {
           icon: L.divIcon({
-            html: `<div class="w-3.5 h-3.5 rounded-full border-2 border-white shadow-lg" style="background-color: ${color}"></div>`,
+            html: `<div class="facility-map-marker" style="background-color: ${color}"></div>`,
             className: 'custom-marker',
             iconSize: [14, 14],
+            iconAnchor: [7, 7],
           }),
         });
 
