@@ -7,7 +7,7 @@
   "legalWeight": "Administrative Regulation",
   "provenance": {
     "author": "Gemini Governance Agent",
-    "lastAuditDate": "2026-04-02",
+    "lastAuditDate": "2026-04-03",
     "reviewer": "Human Audit Pending"
   },
   "regulatory": {

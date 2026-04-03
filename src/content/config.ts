@@ -67,10 +67,20 @@ const facilitySchema = z.object({
   announcedCapacityMax: z.number().optional().default(0),
   announcedCapacityRaw: z.string().optional().default(""),
   estimatedCapacity: z.number().optional().default(0),
-  coordinates: z.array(z.number()).length(2).refine((coords) => {
-    const [lat, lng] = coords;
-    return (lat !== 0 || lng !== 0) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
-  }, { message: "Invalid coordinates" }).optional().default([0.001, 0.001]),
+  coordinates: z
+    .array(z.number())
+    .length(2)
+    .refine((coords) => {
+      const [lat, lng] = coords;
+      return (
+        !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01) &&
+        lat >= -90 &&
+        lat <= 90 &&
+        lng >= -180 &&
+        lng <= 180
+      );
+    }, { message: "Invalid coordinates" })
+    .optional(),
   precision: z.string().optional().default("country"),
   sector: z.string().optional().default(""),
   fateOfCarbon: z.string().optional().default(""),

@@ -3,11 +3,28 @@ import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import matter from 'gray-matter';
 import initSqlJs from 'sql.js';
+import {
+  hasMeaningfulCoordinates,
+  isMeaningfulCoordinatePair,
+  resolveFacilityCoordinates,
+} from '../../../scripts/content-export-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.join(__dirname, '..');
-const DB_PATH = path.join(ROOT, 'governance', 'db', 'ccus_master.sqlite');
-const REPORT_DIR = path.join(ROOT, 'governance', 'reports');
+const REPO_ROOT = path.join(__dirname, '..', '..', '..');
+const DB_PATH = path.join(
+  REPO_ROOT,
+  'agent',
+  'ccus-ai-agent',
+  'db',
+  'ccus_master.sqlite'
+);
+const REPORT_DIR = path.join(
+  REPO_ROOT,
+  'agent',
+  'ccus-ai-agent',
+  'governance',
+  'reports'
+);
 const REPORT_JSON = path.join(REPORT_DIR, 'facilities_parity_report.json');
 const REPORT_MD = path.join(REPORT_DIR, 'facilities_parity_report.md');
 const REPAIR_JSON = path.join(
@@ -18,7 +35,12 @@ const REPAIR_MD = path.join(
   REPORT_DIR,
   'facilities_db_repair_from_md.md'
 );
-const FACILITY_MD_DIR = path.join(ROOT, 'src', 'content', 'facilities');
+const FACILITY_MD_DIR = path.join(
+  REPO_ROOT,
+  'src',
+  'content',
+  'facilities'
+);
 
 const CJK_RE = /[\u4e00-\u9fff]/;
 const FLOAT_EPSILON = 1e-9;
@@ -158,9 +180,13 @@ export function projectFacilityForLang({
   const displayCountry = f.country ?? '';
   const displayStatus = f.status ?? '';
   const coordinates =
-    (Number(f.lat) !== 0 || Number(f.lng) !== 0)
-      ? [Number(f.lat), Number(f.lng)]
-      : [0.001, 0.001];
+    resolveFacilityCoordinates({
+      country: f.country,
+      precision: f.precision,
+      lat: f.lat,
+      lng: f.lng,
+      defaultFallback: null,
+    }) ?? undefined;
   const description =
     i.description && String(i.description).trim()
       ? i.description
@@ -265,16 +291,19 @@ function compareScalarField({
 }
 
 function compareCoordinates({ mismatches, id, lang, expected, actual }) {
-  const exp = Array.isArray(expected) ? expected : [];
-  const act = Array.isArray(actual) ? actual : [];
-  if (exp.length !== 2 || act.length !== 2) {
+  const exp = isMeaningfulCoordinatePair(expected) ? expected : null;
+  const act = isMeaningfulCoordinatePair(actual) ? actual : null;
+  if (!exp && !act) {
+    return;
+  }
+  if (!exp || !act) {
     pushMismatch(mismatches, {
       id,
       lang,
       field: 'coordinates',
       db: exp,
       md: act,
-      note: 'invalid coordinate array shape',
+      note: 'coordinate presence mismatch',
     });
     return;
   }
@@ -425,7 +454,7 @@ function buildFacilitiesDbRepairList({
 
   return {
     generatedAt: new Date().toISOString(),
-    dbPath: path.relative(ROOT, DB_PATH).replace(/\\/g, '/'),
+    dbPath: path.relative(REPO_ROOT, DB_PATH).replace(/\\/g, '/'),
     summary: {
       totalActions: actions.length,
       totalWarnings: warnings.length,
@@ -595,6 +624,27 @@ async function runAudit() {
     for (const facilityId of dbIds) {
       const f = facilityMap.get(facilityId);
       if (!f) continue;
+
+      const hasRawCoordinates = hasMeaningfulCoordinates(f.lat, f.lng);
+      const resolvedCoordinates = resolveFacilityCoordinates({
+        country: f.country,
+        precision: f.precision,
+        lat: f.lat,
+        lng: f.lng,
+        defaultFallback: null,
+      });
+
+      if (!hasRawCoordinates && !resolvedCoordinates) {
+        errors.push({
+          type: 'missing_coordinate_anchor',
+          id: facilityId,
+          field: 'coordinates',
+          severity: 'error',
+          note: `No country centroid available for ${String(f.country ?? '') || 'unknown country'}`,
+          db: { country: f.country, precision: f.precision, lat: f.lat, lng: f.lng },
+          md: null,
+        });
+      }
 
       if (CJK_RE.test(String(f.country ?? ''))) {
         warnings.push({
@@ -853,7 +903,7 @@ async function runAudit() {
     const summary = {
       pass: errors.length === 0,
       generatedAt: new Date().toISOString(),
-      dbPath: path.relative(ROOT, DB_PATH).replace(/\\/g, '/'),
+      dbPath: path.relative(REPO_ROOT, DB_PATH).replace(/\\/g, '/'),
       exitCode: errors.length === 0 ? 0 : 2,
     };
 
@@ -894,10 +944,10 @@ export async function main() {
     console.log(
       `Facilities parity audit ${summary.pass ? 'PASSED' : 'FAILED'} | db=${counts.db_facilities} | en=${counts.md_facilities_en} | zh=${counts.md_facilities_zh} | errors=${errors.length} | warnings=${warnings.length}`
     );
-    console.log(`JSON report: ${path.relative(ROOT, REPORT_JSON)}`);
-    console.log(`MD report: ${path.relative(ROOT, REPORT_MD)}`);
-    console.log(`Repair JSON: ${path.relative(ROOT, REPAIR_JSON)}`);
-    console.log(`Repair MD: ${path.relative(ROOT, REPAIR_MD)}`);
+    console.log(`JSON report: ${path.relative(REPO_ROOT, REPORT_JSON)}`);
+    console.log(`MD report: ${path.relative(REPO_ROOT, REPORT_MD)}`);
+    console.log(`Repair JSON: ${path.relative(REPO_ROOT, REPAIR_JSON)}`);
+    console.log(`Repair MD: ${path.relative(REPO_ROOT, REPAIR_MD)}`);
     if (!summary.pass) process.exit(2);
   } catch (error) {
     console.error(`Facilities parity audit error: ${error.message}`);

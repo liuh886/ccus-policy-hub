@@ -4,7 +4,10 @@ import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
 import matter from 'gray-matter';
-import { resolveFacilityCoordinates } from '../../../scripts/content-export-utils.mjs';
+import {
+  hasMeaningfulCoordinates,
+  resolveFacilityCoordinates,
+} from '../../../scripts/content-export-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
@@ -14,6 +17,14 @@ const REPORTS_DIR = path.join(__dirname, '../governance/reports');
 const LOCK_PATH = path.join(__dirname, '../db/.lock');
 const THRESHOLDS_PATH = path.join(__dirname, '../governance/audit_thresholds.json');
 const GOVERNANCE_ROOT = path.join(__dirname, '../governance');
+const FACILITY_COORD_REPORT_JSON = path.join(
+  REPORTS_DIR,
+  'facility_coordinate_governance_report.json'
+);
+const FACILITY_COORD_REPORT_MD = path.join(
+  REPORTS_DIR,
+  'facility_coordinate_governance_report.md'
+);
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -88,6 +99,7 @@ async function main() {
       case 'db:standardize:region-zh': await dbStandardizeRegionZh(SQL); break;
       case 'db:standardize:policy-source': await dbStandardizePolicySource(SQL); break;
       case 'db:geocode:facilities': await dbGeocodeFacilities(SQL); break;
+      case 'db:govern:facility-coordinates': await dbGeocodeFacilities(SQL); break;
       case 'db:seed:countries': await dbSeedCountries(SQL); break;
       case 'db:sync:country-profiles': await dbSyncCountryProfiles(SQL); break;
       case 'db:fix-relationships': await dbFixRelationships(SQL); break;
@@ -202,17 +214,111 @@ async function dbStandardize(SQL) {
 async function dbStandardizeRegionZh(SQL) { console.log('STANDARDIZE REGION DONE.'); }
 async function dbStandardizePolicySource(SQL) { console.log('STANDARDIZE SOURCE DONE.'); }
 
+function coordinatesEqual(a, b, epsilon = 1e-9) {
+  if (!Array.isArray(a) || !Array.isArray(b) || a.length < 2 || b.length < 2) {
+    return false;
+  }
+  return (
+    Math.abs(Number(a[0]) - Number(b[0])) <= epsilon &&
+    Math.abs(Number(a[1]) - Number(b[1])) <= epsilon
+  );
+}
+
 async function dbGeocodeFacilities(SQL) {
   const db = loadDb(SQL);
-  const centroids = { 'United States': [37.09, -95.71], 'China': [35.86, 104.19], 'Norway': [60.47, 8.46], 'Canada': [56.13, -106.34], 'United Kingdom': [55.37, -3.43], 'European Union': [50.0, 10.0] };
+  const report = {
+    generatedAt: new Date().toISOString(),
+    resolvedMissingToCountryAnchor: [],
+    normalizedToCountryAnchor: [],
+    unresolved: [],
+  };
   db.transaction(() => {
-    db.all("SELECT id, country FROM facilities WHERE lat IS NULL OR lat = 0").forEach(f => {
-      const c = centroids[f.country];
-      if (c) db.run("UPDATE facilities SET lat = ?, lng = ?, precision = 'country' WHERE id = ?", [c[0], c[1], f.id]);
+    db.all('SELECT id, country, precision, lat, lng FROM facilities').forEach((f) => {
+      const expectedCoordinates = resolveFacilityCoordinates({
+        country: f.country,
+        precision: 'country',
+        lat: null,
+        lng: null,
+        defaultFallback: null,
+      });
+      const hasValidCoordinates = hasMeaningfulCoordinates(f.lat, f.lng);
+      const shouldUseCountryAnchor =
+        f.precision === 'country' ||
+        f.precision === 'approximate' ||
+        !hasValidCoordinates;
+
+      if (!shouldUseCountryAnchor) return;
+
+      if (!expectedCoordinates) {
+        report.unresolved.push({
+          id: String(f.id),
+          country: f.country,
+          precision: f.precision || null,
+        });
+        return;
+      }
+
+      if (
+        hasValidCoordinates &&
+        coordinatesEqual([f.lat, f.lng], expectedCoordinates) &&
+        (f.precision === 'country' || f.precision === 'approximate')
+      ) {
+        return;
+      }
+
+      const targetPrecision =
+        f.precision === 'approximate'
+          ? 'approximate'
+          : 'country';
+
+      db.run(
+        'UPDATE facilities SET lat = ?, lng = ?, precision = ? WHERE id = ?',
+        [expectedCoordinates[0], expectedCoordinates[1], targetPrecision, f.id]
+      );
+
+      const bucket = hasValidCoordinates
+        ? report.normalizedToCountryAnchor
+        : report.resolvedMissingToCountryAnchor;
+
+      bucket.push({
+        id: String(f.id),
+        country: f.country,
+        previousCoordinates: hasValidCoordinates ? [Number(f.lat), Number(f.lng)] : null,
+        previousPrecision: f.precision || null,
+        coordinates: expectedCoordinates,
+        precision: targetPrecision,
+      });
     });
   });
   db.save();
-  console.log('GEOCODE DONE.');
+
+  fs.mkdirSync(REPORTS_DIR, { recursive: true });
+  fs.writeFileSync(FACILITY_COORD_REPORT_JSON, JSON.stringify(report, null, 2));
+  fs.writeFileSync(
+    FACILITY_COORD_REPORT_MD,
+    [
+      '# Facility Coordinate Governance Report',
+      '',
+      `- Generated At: ${report.generatedAt}`,
+      `- Resolved Missing To Country Anchor: ${report.resolvedMissingToCountryAnchor.length}`,
+      `- Normalized Existing Country Anchors: ${report.normalizedToCountryAnchor.length}`,
+      `- Unresolved: ${report.unresolved.length}`,
+      '',
+      '## Unresolved',
+      '',
+      ...(report.unresolved.length
+        ? report.unresolved.map(
+            (item) =>
+              `- id=${item.id} country=${item.country || 'N/A'} precision=${item.precision || 'N/A'}`
+          )
+        : ['- None']),
+      '',
+    ].join('\n')
+  );
+
+  console.log(
+    `GEOCODE DONE. resolved_missing=${report.resolvedMissingToCountryAnchor.length} normalized=${report.normalizedToCountryAnchor.length} unresolved=${report.unresolved.length}`
+  );
 }
 
 async function dbSeedCountries(SQL) {
@@ -282,11 +388,42 @@ async function dbAuditDeep(SQL) {
     regFields.forEach(f => { if (row[f] && !["Pending", "---", "待定", ""].includes(row[f])) filledCells++; });
   });
   const regFillRate = totalCells > 0 ? filledCells / totalCells : 0;
+  const unresolvedFacilityCoordinates = db
+    .all('SELECT id, country, precision, lat, lng FROM facilities')
+    .filter((facility) => {
+      if (hasMeaningfulCoordinates(facility.lat, facility.lng)) return false;
+      return !resolveFacilityCoordinates({
+        country: facility.country,
+        precision: facility.precision || 'country',
+        lat: facility.lat,
+        lng: facility.lng,
+        defaultFallback: null,
+      });
+    }).length;
+  const countryAnchorDrift = db
+    .all("SELECT id, country, precision, lat, lng FROM facilities WHERE precision IN ('country', 'approximate')")
+    .filter((facility) => {
+      if (!hasMeaningfulCoordinates(facility.lat, facility.lng)) return false;
+      const expectedCoordinates = resolveFacilityCoordinates({
+        country: facility.country,
+        precision: 'country',
+        lat: null,
+        lng: null,
+        defaultFallback: null,
+      });
+      if (!expectedCoordinates) return false;
+      return !coordinatesEqual([facility.lat, facility.lng], expectedCoordinates);
+    }).length;
 
-  const pass = pCount >= thresholds.min_policy_count && fCount >= thresholds.min_facility_count && regFillRate >= (thresholds.min_regulatory_fill_rate || 0);
+  const pass =
+    pCount >= thresholds.min_policy_count &&
+    fCount >= thresholds.min_facility_count &&
+    regFillRate >= (thresholds.min_regulatory_fill_rate || 0) &&
+    unresolvedFacilityCoordinates === 0 &&
+    countryAnchorDrift === 0;
   db.run("INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)", [pass ? 'true' : 'false']);
   db.save();
-  console.log(`AUDIT ${pass ? 'PASSED' : 'FAILED'} (Fill Rate: ${(regFillRate * 100).toFixed(1)}%)`);
+  console.log(`AUDIT ${pass ? 'PASSED' : 'FAILED'} (Fill Rate: ${(regFillRate * 100).toFixed(1)}%, unresolved facility coordinates: ${unresolvedFacilityCoordinates}, country anchor drift: ${countryAnchorDrift})`);
   if (!pass) throw new Error("Audit FAILED");
 }
 
@@ -383,6 +520,14 @@ async function dbExportMd(SQL) {
         }
       }
 
+      const coordinates = resolveFacilityCoordinates({
+        country: f.country,
+        precision: f.precision || 'country',
+        lat: f.lat,
+        lng: f.lng,
+        defaultFallback: null,
+      });
+
       const fm = deepClean({
         id: f.id,
         name: i.name,
@@ -395,12 +540,7 @@ async function dbExportMd(SQL) {
         announcedCapacityMax: f.announced_capacity_max,
         announcedCapacityRaw: f.announced_capacity_raw,
         estimatedCapacity: f.estimated_capacity,
-        coordinates: resolveFacilityCoordinates({
-          country: f.country,
-          precision: f.precision || 'country',
-          lat: f.lat,
-          lng: f.lng,
-        }),
+        coordinates,
         precision: f.precision || "country",
         sector: i.sector,
         fateOfCarbon: i.fate_of_carbon,
