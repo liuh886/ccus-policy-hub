@@ -161,6 +161,13 @@ const mapDataJson = JSON.stringify(mapData);
   </div>
 </div>
 
+<script
+  is:inline
+  type="application/json"
+  id="facility-map-data"
+  set:html={mapDataJson}
+/>
+
 <style is:global>
   .legend-item.disabled {
     opacity: 0.3;
