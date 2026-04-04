@@ -90,7 +90,7 @@ const statuses = Array.from(
     <!-- Filters -->
     <div class="sticky top-20 z-40 mb-12">
       <div
-        class="grid grid-cols-1 md:grid-cols-5 gap-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
+        class="grid grid-cols-1 md:grid-cols-6 gap-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-4 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl"
       >
         <div class="md:col-span-1 relative">
           <input
@@ -145,6 +145,14 @@ const statuses = Array.from(
           <option value="">Types</option>
           {types.map((t) => <option value={t}>{t}</option>)}
         </select>
+        <select
+          id="sort-select"
+          class="px-3 py-2.5 bg-blue-50 dark:bg-blue-900/30 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-blue-600"
+        >
+          <option value="default">Default Sort</option>
+          <option value="capacity-desc">Capacity (High to Low)</option>
+          <option value="year-asc">Year (Oldest to Newest)</option>
+        </select>
       </div>
     </div>
 
@@ -164,6 +172,7 @@ const statuses = Array.from(
             data-type={f.data.type}
             data-status={f.data.status}
             data-capacity={f.data.estimatedCapacity || f.data.announcedCapacityMax || 0}
+            data-year={f.data.announcement || ''}
             data-hub={f.data.hub || ''}
             data-partners={f.data.partners?.join(' ') || ''}
             data-operator={f.data.operator || ''}
@@ -204,7 +213,11 @@ const statuses = Array.from(
     const typeFilter = document.getElementById(
       'type-filter'
     ) as HTMLSelectElement;
-    const items = document.querySelectorAll('.facility-item');
+    const sortSelect = document.getElementById(
+      'sort-select'
+    ) as HTMLSelectElement;
+    const items = Array.from(document.querySelectorAll('.facility-item'));
+    const grid = document.getElementById('facility-grid');
     const noResults = document.getElementById('no-results');
 
     const statCount = document.getElementById('stat-count');
@@ -217,6 +230,7 @@ const statuses = Array.from(
       const status = statusFilter?.value || '';
       const sector = sectorFilter?.value || '';
       const type = typeFilter?.value || '';
+      const sortValue = sortSelect?.value || 'default';
 
       let count = 0;
       let capacity = 0;
@@ -247,6 +261,23 @@ const statuses = Array.from(
         }
       });
 
+      // Sort
+      const sortedItems = [...items].sort((a: any, b: any) => {
+        if (sortValue === 'capacity-desc') {
+          return (
+            parseFloat(b.dataset.capacity || 0) -
+            parseFloat(a.dataset.capacity || 0)
+          );
+        } else if (sortValue === 'year-asc') {
+          const yearA = parseInt(a.dataset.year) || 9999;
+          const yearB = parseInt(b.dataset.year) || 9999;
+          return yearA - yearB;
+        }
+        return items.indexOf(a) - items.indexOf(b);
+      });
+
+      sortedItems.forEach((item) => grid?.appendChild(item));
+
       if (statCount) statCount.textContent = count.toString();
       if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
       if (statOperational) statOperational.textContent = operational.toString();
@@ -260,6 +291,7 @@ const statuses = Array.from(
       statusFilter,
       sectorFilter,
       typeFilter,
+      sortSelect,
     ].forEach((el) => {
       el?.addEventListener('input', filterAndStats);
       el?.addEventListener('change', filterAndStats);
