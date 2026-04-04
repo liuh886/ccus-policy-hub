@@ -328,6 +328,14 @@ const mapDataJson = JSON.stringify(mapData);
         inactive: [],
       };
 
+      const allMarkers = [];
+      const categoryToMarkers = {
+        operational: [],
+        construction: [],
+        planned: [],
+        inactive: [],
+      };
+
       mapFacilities.forEach((f) => {
         const {
           name,
@@ -393,10 +401,16 @@ const mapDataJson = JSON.stringify(mapData);
         </div>
       `);
         
-        markers.addLayer(marker);
+        allMarkers.push(marker);
         categoryToMarkers[filterCat].push(marker);
         markerBounds.push(latLng);
       });
+
+      if (typeof markers.addLayers === 'function') {
+        markers.addLayers(allMarkers);
+      } else {
+        allMarkers.forEach(m => markers.addLayer(m));
+      }
 
       // Filter Logic
       document.querySelectorAll('.legend-item').forEach(button => {
@@ -410,9 +424,17 @@ const mapDataJson = JSON.stringify(mapData);
           // Marker Update
           const targetMarkers = categoryToMarkers[category];
           if (filterState[category]) {
-            targetMarkers.forEach(m => markers.addLayer(m));
+            if (typeof markers.addLayers === 'function') {
+              markers.addLayers(targetMarkers);
+            } else {
+              targetMarkers.forEach(m => markers.addLayer(m));
+            }
           } else {
-            targetMarkers.forEach(m => markers.removeLayer(m));
+            if (typeof markers.removeLayers === 'function') {
+              markers.removeLayers(targetMarkers);
+            } else {
+              targetMarkers.forEach(m => markers.removeLayer(m));
+            }
           }
         });
       });
@@ -427,12 +449,17 @@ const mapDataJson = JSON.stringify(mapData);
           });
         }
       });
+    } catch (error) {
+      console.error('Map Init Error:', error);
+      mapNode.dataset.mapReady = '';
+    } finally {
       const loader = document.getElementById('map-loader');
       if (loader) {
         loader.style.opacity = '0';
         setTimeout(() => (loader.style.display = 'none'), 500);
       }
       mapNode.dataset.mapReady = '1';
+    }
     } catch (error) {
       mapNode.dataset.mapReady = '';
       throw error;
