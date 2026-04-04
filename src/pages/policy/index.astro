@@ -85,7 +85,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         id="country-filter"
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
-        <option value="">所有国家</option>
+        <option value="">所有国家和地区</option>
         {uniqueCountries.map((c) => <option value={c.canon}>{c.display}</option>)}
       </select>
 

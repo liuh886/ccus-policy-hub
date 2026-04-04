@@ -38,7 +38,7 @@ const statuses = Array.from(
 const specialCountryLabels: Record<string, string> = {
   Unknown: '未知',
   'Multiple Europe': '欧洲多国',
-  'Chinese Taipei': '中国台湾',
+  'Chinese Taipei': '中国台北',
   International: '国际',
   Transnational: '跨国',
 };
@@ -79,7 +79,7 @@ const zhCountries = countries.map((country) => ({
       </h1>
       <p class="text-slate-500 text-lg leading-relaxed font-medium">
         集成全球在运及计划中的 CCUS
-        设施数据，支持按国家、行业、状态及设施类型进行多维筛选。
+        设施数据，支持按国家/地区、行业、状态及设施类型进行多维筛选。
       </p>
     </div>
 
@@ -198,7 +198,7 @@ const zhCountries = countries.map((country) => ({
           id="country-filter"
           class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold"
         >
-          <option value="">所有国家</option>
+          <option value="">所有国家和地区</option>
           {zhCountries.map((c) => <option value={c.canon}>{c.display}</option>)}
         </select>
         <select
