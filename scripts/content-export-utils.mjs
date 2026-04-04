@@ -121,12 +121,13 @@ export function getCountryCoordinateFallback(
     return [...COUNTRY_CENTROIDS[country]];
   }
 
-  const partCoordinates = splitCompositeCountry(country)
-    .map((part) => COUNTRY_CENTROIDS[part])
-    .filter(Boolean);
-
-  if (partCoordinates.length > 0) {
-    return averageCoordinatePairs(partCoordinates);
+  // Use the first part of a composite country string (e.g., "South Korea-Malaysia" -> "South Korea")
+  // instead of averaging them, to ensure the marker stays within a lead country boundary.
+  const parts = splitCompositeCountry(country);
+  for (const part of parts) {
+    if (COUNTRY_CENTROIDS[part]) {
+      return [...COUNTRY_CENTROIDS[part]];
+    }
   }
 
   return cloneCoordinatePair(defaultFallback);
