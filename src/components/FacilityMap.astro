@@ -106,7 +106,7 @@ const mapDataJson = JSON.stringify(mapData);
     </div>
   </div>
 
-  <!-- Legend (Only) -->
+  <!-- Legend -->
   <div
     class="absolute bottom-6 right-6 z-[500] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-5 rounded-3xl border border-slate-200/50 dark:border-slate-800/50 shadow-2xl"
   >
@@ -114,32 +114,58 @@ const mapDataJson = JSON.stringify(mapData);
       <div
         class="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2"
       >
-        {isEn ? 'Legend' : '地图图例'}
+        {isEn ? 'Status Filter' : '状态筛选'}
       </div>
-      <div class="flex items-center gap-3">
-        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300"
+      <button 
+        data-filter="operational" 
+        class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
+      >
+        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-600 transition-colors"
           >{isEn ? 'Operational' : '运行中'}</span
         >
-      </div>
-      <div class="flex items-center gap-3">
-        <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300"
-          >{isEn ? 'Planned' : '计划/开发中'}</span
+      </button>
+      <button 
+        data-filter="construction" 
+        class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
+      >
+        <div class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-orange-600 transition-colors"
+          >{isEn ? 'Under Construction' : '建设中'}</span
         >
+      </button>
+      <button 
+        data-filter="planned" 
+        class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
+      >
+        <div class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-blue-600 transition-colors"
+          >{isEn ? 'Planned' : '计划中'}</span
+        >
+      </button>
+      <button 
+        data-filter="inactive" 
+        class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
+      >
+        <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>
+        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-slate-500 transition-colors"
+          >{isEn ? 'Inactive / Other' : '其他 / 已取消'}</span
+        >
+      </button>
+      <div class="pt-1 mt-1 border-t border-slate-100 dark:border-slate-800">
+        <p class="text-[8px] text-slate-400 italic">
+          {isEn ? 'Click to toggle visibility' : '点击切换可见性'}
+        </p>
       </div>
     </div>
   </div>
 </div>
 
-<script
-  is:inline
-  type="application/json"
-  id="facility-map-data"
-  set:html={mapDataJson}
-/>
-
 <style is:global>
+  .legend-item.disabled {
+    opacity: 0.3;
+  }
+  /* ... existing styles ... */
   .facility-map-marker {
     width: 14px;
     height: 14px;
@@ -281,7 +307,19 @@ const mapDataJson = JSON.stringify(mapData);
             })
           : L.layerGroup();
 
-      const markerBounds = [];
+      const filterState = {
+        operational: true,
+        construction: true,
+        planned: true,
+        inactive: true,
+      };
+
+      const categoryToMarkers = {
+        operational: [],
+        construction: [],
+        planned: [],
+        inactive: [],
+      };
 
       mapFacilities.forEach((f) => {
         const {
@@ -294,8 +332,25 @@ const mapDataJson = JSON.stringify(mapData);
           type,
         } = f;
         if (!hasRenderableCoordinates(coordinates)) return;
+
         const isOperational = status === '运行中' || status === 'Operational';
-        const color = isOperational ? '#10b981' : '#3b82f6';
+        const isConstruction = status === '建设中' || status === 'Under construction';
+        const isPlanned = status === '计划中' || status === 'Planned';
+        
+        let color = '#94a3b8'; // default grey
+        let filterCat = 'inactive';
+
+        if (isOperational) {
+          color = '#10b981'; // emerald
+          filterCat = 'operational';
+        } else if (isConstruction) {
+          color = '#f97316'; // orange
+          filterCat = 'construction';
+        } else if (isPlanned) {
+          color = '#3b82f6'; // blue
+          filterCat = 'planned';
+        }
+
         const opacity = precision === 'exact' ? 1.0 : precision === 'state' ? 0.7 : 0.4;
         const lat = Number(coordinates[0]);
         const lng = Number(coordinates[1]);
@@ -330,8 +385,29 @@ const mapDataJson = JSON.stringify(mapData);
           <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">Details</a>
         </div>
       `);
+        
         markers.addLayer(marker);
+        categoryToMarkers[filterCat].push(marker);
         markerBounds.push(latLng);
+      });
+
+      // Filter Logic
+      document.querySelectorAll('.legend-item').forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.dataset.filter;
+          filterState[category] = !filterState[category];
+          
+          // UI Feedback
+          button.classList.toggle('disabled', !filterState[category]);
+          
+          // Marker Update
+          const targetMarkers = categoryToMarkers[category];
+          if (filterState[category]) {
+            targetMarkers.forEach(m => markers.addLayer(m));
+          } else {
+            targetMarkers.forEach(m => markers.removeLayer(m));
+          }
+        });
       });
 
       map.addLayer(markers);
