@@ -116,39 +116,52 @@ const mapDataJson = JSON.stringify(mapData);
       >
         {isEn ? 'Status Filter' : '状态筛选'}
       </div>
-      <button 
-        data-filter="operational" 
+      <button
+        data-filter="operational"
         class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
       >
-        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-600 transition-colors"
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
+        >
+        </div>
+        <span
+          class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-emerald-600 transition-colors"
           >{isEn ? 'Operational' : '运行中'}</span
         >
       </button>
-      <button 
-        data-filter="construction" 
+      <button
+        data-filter="construction"
         class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
       >
-        <div class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-orange-600 transition-colors"
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.4)]"
+        >
+        </div>
+        <span
+          class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-orange-600 transition-colors"
           >{isEn ? 'Under Construction' : '建设中'}</span
         >
       </button>
-      <button 
-        data-filter="planned" 
+      <button
+        data-filter="planned"
         class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
       >
-        <div class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-blue-600 transition-colors"
+        <div
+          class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]"
+        >
+        </div>
+        <span
+          class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-blue-600 transition-colors"
           >{isEn ? 'Planned' : '计划中'}</span
         >
       </button>
-      <button 
-        data-filter="inactive" 
+      <button
+        data-filter="inactive"
         class="legend-item flex items-center gap-3 w-full group cursor-pointer transition-opacity"
       >
         <div class="w-2.5 h-2.5 rounded-full bg-slate-400"></div>
-        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-slate-500 transition-colors"
+        <span
+          class="text-[11px] font-bold text-slate-600 dark:text-slate-300 group-hover:text-slate-500 transition-colors"
           >{isEn ? 'Inactive / Other' : '其他 / 已取消'}</span
         >
       </button>
@@ -321,14 +334,8 @@ const mapDataJson = JSON.stringify(mapData);
         inactive: true,
       };
 
-      const categoryToMarkers = {
-        operational: [],
-        construction: [],
-        planned: [],
-        inactive: [],
-      };
-
       const allMarkers = [];
+      const markerBounds = [];
       const categoryToMarkers = {
         operational: [],
         construction: [],
@@ -349,9 +356,10 @@ const mapDataJson = JSON.stringify(mapData);
         if (!hasRenderableCoordinates(coordinates)) return;
 
         const isOperational = status === '运行中' || status === 'Operational';
-        const isConstruction = status === '建设中' || status === 'Under construction';
+        const isConstruction =
+          status === '建设中' || status === 'Under construction';
         const isPlanned = status === '计划中' || status === 'Planned';
-        
+
         let color = '#94a3b8'; // default grey
         let filterCat = 'inactive';
 
@@ -366,7 +374,8 @@ const mapDataJson = JSON.stringify(mapData);
           filterCat = 'planned';
         }
 
-        const opacity = precision === 'exact' ? 1.0 : precision === 'state' ? 0.7 : 0.4;
+        const opacity =
+          precision === 'exact' ? 1.0 : precision === 'state' ? 0.7 : 0.4;
         const lat = Number(coordinates[0]);
         const lng = Number(coordinates[1]);
         const latLng = [lat, lng];
@@ -378,7 +387,9 @@ const mapDataJson = JSON.stringify(mapData);
         const safeId = encodeURIComponent(String(f.id));
 
         const safePrecision = escapeHtml(precision);
-        const precisionLabel = isEn ? `Precision: ${safePrecision}` : `定位精度: ${safePrecision === 'exact' ? '精确' : safePrecision === 'state' ? '省级/区域' : '国家级'}`;
+        const precisionLabel = isEn
+          ? `Precision: ${safePrecision}`
+          : `定位精度: ${safePrecision === 'exact' ? '精确' : safePrecision === 'state' ? '省级/区域' : '国家级'}`;
 
         const marker = L.marker(latLng, {
           icon: L.divIcon({
@@ -400,7 +411,7 @@ const mapDataJson = JSON.stringify(mapData);
           <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">Details</a>
         </div>
       `);
-        
+
         allMarkers.push(marker);
         categoryToMarkers[filterCat].push(marker);
         markerBounds.push(latLng);
@@ -409,31 +420,31 @@ const mapDataJson = JSON.stringify(mapData);
       if (typeof markers.addLayers === 'function') {
         markers.addLayers(allMarkers);
       } else {
-        allMarkers.forEach(m => markers.addLayer(m));
+        allMarkers.forEach((m) => markers.addLayer(m));
       }
 
       // Filter Logic
-      document.querySelectorAll('.legend-item').forEach(button => {
+      document.querySelectorAll('.legend-item').forEach((button) => {
         button.addEventListener('click', () => {
           const category = button.dataset.filter;
           filterState[category] = !filterState[category];
-          
+
           // UI Feedback
           button.classList.toggle('disabled', !filterState[category]);
-          
+
           // Marker Update
           const targetMarkers = categoryToMarkers[category];
           if (filterState[category]) {
             if (typeof markers.addLayers === 'function') {
               markers.addLayers(targetMarkers);
             } else {
-              targetMarkers.forEach(m => markers.addLayer(m));
+              targetMarkers.forEach((m) => markers.addLayer(m));
             }
           } else {
             if (typeof markers.removeLayers === 'function') {
               markers.removeLayers(targetMarkers);
             } else {
-              targetMarkers.forEach(m => markers.removeLayer(m));
+              targetMarkers.forEach((m) => markers.removeLayer(m));
             }
           }
         });
@@ -459,10 +470,6 @@ const mapDataJson = JSON.stringify(mapData);
         setTimeout(() => (loader.style.display = 'none'), 500);
       }
       mapNode.dataset.mapReady = '1';
-    }
-    } catch (error) {
-      mapNode.dataset.mapReady = '';
-      throw error;
     }
   }
 
