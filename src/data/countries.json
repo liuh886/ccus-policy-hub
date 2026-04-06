@@ -1,63 +1,350 @@
 {
-  "Algeria": { "zh": "阿尔及利亚", "en": "Algeria" },
-  "Argentina": { "zh": "阿根廷", "en": "Argentina" },
-  "Australia": { "zh": "澳大利亚", "en": "Australia" },
-  "Austria": { "zh": "奥地利", "en": "Austria" },
-  "Bahrain": { "zh": "巴林", "en": "Bahrain" },
-  "Belgium": { "zh": "比利时", "en": "Belgium" },
-  "Brazil": { "zh": "巴西", "en": "Brazil" },
-  "Bulgaria": { "zh": "保加利亚", "en": "Bulgaria" },
-  "Canada": { "zh": "加拿大", "en": "Canada" },
-  "Chile": { "zh": "智利", "en": "Chile" },
-  "China": { "zh": "中国", "en": "China" },
-  "Colombia": { "zh": "哥伦比亚", "en": "Colombia" },
-  "Croatia": { "zh": "克罗地亚", "en": "Croatia" },
-  "Denmark": { "zh": "丹麦", "en": "Denmark" },
-  "European Union": { "zh": "欧盟", "en": "European Union" },
-  "Finland": { "zh": "芬兰", "en": "Finland" },
-  "France": { "zh": "法国", "en": "France" },
-  "Georgia": { "zh": "格鲁吉亚", "en": "Georgia" },
-  "Germany": { "zh": "德国", "en": "Germany" },
-  "Greece": { "zh": "希腊", "en": "Greece" },
-  "Hungary": { "zh": "匈牙利", "en": "Hungary" },
-  "Iceland": { "zh": "冰岛", "en": "Iceland" },
-  "India": { "zh": "印度", "en": "India" },
-  "Indonesia": { "zh": "印度尼西亚", "en": "Indonesia" },
-  "Ireland": { "zh": "爱尔兰", "en": "Ireland" },
-  "Italy": { "zh": "意大利", "en": "Italy" },
-  "Japan": { "zh": "日本", "en": "Japan" },
-  "Kenya": { "zh": "肯尼亚", "en": "Kenya" },
-  "Latvia": { "zh": "拉脱维亚", "en": "Latvia" },
-  "Libya": { "zh": "利比亚", "en": "Libya" },
-  "Lithuania": { "zh": "立陶宛", "en": "Lithuania" },
-  "Luxembourg": { "zh": "卢森堡", "en": "Luxembourg" },
-  "Malaysia": { "zh": "马来西亚", "en": "Malaysia" },
-  "Mexico": { "zh": "墨西哥", "en": "Mexico" },
-  "Netherlands": { "zh": "荷兰", "en": "Netherlands" },
-  "New Zealand": { "zh": "新西兰", "en": "New Zealand" },
-  "Nigeria": { "zh": "尼日利亚", "en": "Nigeria" },
-  "Norway": { "zh": "挪威", "en": "Norway" },
-  "Oman": { "zh": "阿曼", "en": "Oman" },
-  "Other": { "zh": "其他", "en": "Other" },
-  "Papua New Guinea": { "zh": "巴布亚新几内亚", "en": "Papua New Guinea" },
-  "Poland": { "zh": "波兰", "en": "Poland" },
-  "Portugal": { "zh": "葡萄牙", "en": "Portugal" },
-  "Qatar": { "zh": "卡塔尔", "en": "Qatar" },
-  "Romania": { "zh": "罗马尼亚", "en": "Romania" },
-  "Russia": { "zh": "俄罗斯", "en": "Russia" },
-  "Saudi Arabia": { "zh": "沙特阿拉伯", "en": "Saudi Arabia" },
-  "Singapore": { "zh": "新加坡", "en": "Singapore" },
-  "South Africa": { "zh": "南非", "en": "South Africa" },
-  "South Korea": { "zh": "韩国", "en": "South Korea" },
-  "Spain": { "zh": "西班牙", "en": "Spain" },
-  "Sweden": { "zh": "瑞典", "en": "Sweden" },
-  "Switzerland": { "zh": "瑞士", "en": "Switzerland" },
-  "Thailand": { "zh": "泰国", "en": "Thailand" },
-  "Turkey": { "zh": "土耳其", "en": "Turkey" },
-  "United Arab Emirates": { "zh": "阿联酋", "en": "United Arab Emirates" },
-  "United Kingdom": { "zh": "英国", "en": "United Kingdom" },
-  "United States": { "zh": "美国", "en": "United States" },
-  "Uruguay": { "zh": "乌拉圭", "en": "Uruguay" },
-  "Vietnam": { "zh": "越南", "en": "Vietnam" },
-  "International": { "zh": "国际", "en": "International" }
+  "Algeria": {
+    "zh": "阿尔及利亚",
+    "en": "Algeria"
+  },
+  "Argentina": {
+    "zh": "阿根廷",
+    "en": "Argentina"
+  },
+  "Australia": {
+    "zh": "澳大利亚",
+    "en": "Australia"
+  },
+  "Austria": {
+    "zh": "奥地利",
+    "en": "Austria"
+  },
+  "Bahrain": {
+    "zh": "巴林",
+    "en": "Bahrain"
+  },
+  "Belgium": {
+    "zh": "比利时",
+    "en": "Belgium"
+  },
+  "Brazil": {
+    "zh": "巴西",
+    "en": "Brazil"
+  },
+  "Bulgaria": {
+    "zh": "保加利亚",
+    "en": "Bulgaria"
+  },
+  "Canada": {
+    "zh": "加拿大",
+    "en": "Canada"
+  },
+  "Chile": {
+    "zh": "智利",
+    "en": "Chile"
+  },
+  "China": {
+    "zh": "中国",
+    "en": "China"
+  },
+  "Colombia": {
+    "zh": "哥伦比亚",
+    "en": "Colombia"
+  },
+  "Croatia": {
+    "zh": "克罗地亚",
+    "en": "Croatia"
+  },
+  "Denmark": {
+    "zh": "丹麦",
+    "en": "Denmark"
+  },
+  "European Union": {
+    "zh": "欧盟",
+    "en": "European Union"
+  },
+  "Finland": {
+    "zh": "芬兰",
+    "en": "Finland"
+  },
+  "France": {
+    "zh": "法国",
+    "en": "France"
+  },
+  "Georgia": {
+    "zh": "格鲁吉亚",
+    "en": "Georgia"
+  },
+  "Germany": {
+    "zh": "德国",
+    "en": "Germany"
+  },
+  "Greece": {
+    "zh": "希腊",
+    "en": "Greece"
+  },
+  "Hungary": {
+    "zh": "匈牙利",
+    "en": "Hungary"
+  },
+  "Iceland": {
+    "zh": "冰岛",
+    "en": "Iceland"
+  },
+  "India": {
+    "zh": "印度",
+    "en": "India"
+  },
+  "Indonesia": {
+    "zh": "印度尼西亚",
+    "en": "Indonesia"
+  },
+  "Ireland": {
+    "zh": "爱尔兰",
+    "en": "Ireland"
+  },
+  "Italy": {
+    "zh": "意大利",
+    "en": "Italy"
+  },
+  "Japan": {
+    "zh": "日本",
+    "en": "Japan"
+  },
+  "Kenya": {
+    "zh": "肯尼亚",
+    "en": "Kenya"
+  },
+  "Latvia": {
+    "zh": "拉脱维亚",
+    "en": "Latvia"
+  },
+  "Libya": {
+    "zh": "利比亚",
+    "en": "Libya"
+  },
+  "Lithuania": {
+    "zh": "立陶宛",
+    "en": "Lithuania"
+  },
+  "Luxembourg": {
+    "zh": "卢森堡",
+    "en": "Luxembourg"
+  },
+  "Malaysia": {
+    "zh": "马来西亚",
+    "en": "Malaysia"
+  },
+  "Mexico": {
+    "zh": "墨西哥",
+    "en": "Mexico"
+  },
+  "Netherlands": {
+    "zh": "荷兰",
+    "en": "Netherlands"
+  },
+  "New Zealand": {
+    "zh": "新西兰",
+    "en": "New Zealand"
+  },
+  "Nigeria": {
+    "zh": "尼日利亚",
+    "en": "Nigeria"
+  },
+  "Norway": {
+    "zh": "挪威",
+    "en": "Norway"
+  },
+  "Oman": {
+    "zh": "阿曼",
+    "en": "Oman"
+  },
+  "Other": {
+    "zh": "其他",
+    "en": "Other"
+  },
+  "Papua New Guinea": {
+    "zh": "巴布亚新几内亚",
+    "en": "Papua New Guinea"
+  },
+  "Poland": {
+    "zh": "波兰",
+    "en": "Poland"
+  },
+  "Portugal": {
+    "zh": "葡萄牙",
+    "en": "Portugal"
+  },
+  "Qatar": {
+    "zh": "卡塔尔",
+    "en": "Qatar"
+  },
+  "Romania": {
+    "zh": "罗马尼亚",
+    "en": "Romania"
+  },
+  "Russia": {
+    "zh": "俄罗斯",
+    "en": "Russia"
+  },
+  "Saudi Arabia": {
+    "zh": "沙特阿拉伯",
+    "en": "Saudi Arabia"
+  },
+  "Singapore": {
+    "zh": "新加坡",
+    "en": "Singapore"
+  },
+  "South Africa": {
+    "zh": "南非",
+    "en": "South Africa"
+  },
+  "South Korea": {
+    "zh": "韩国",
+    "en": "South Korea"
+  },
+  "Spain": {
+    "zh": "西班牙",
+    "en": "Spain"
+  },
+  "Sweden": {
+    "zh": "瑞典",
+    "en": "Sweden"
+  },
+  "Switzerland": {
+    "zh": "瑞士",
+    "en": "Switzerland"
+  },
+  "Thailand": {
+    "zh": "泰国",
+    "en": "Thailand"
+  },
+  "Turkey": {
+    "zh": "土耳其",
+    "en": "Turkey"
+  },
+  "United Arab Emirates": {
+    "zh": "阿联酋",
+    "en": "United Arab Emirates"
+  },
+  "United Kingdom": {
+    "zh": "英国",
+    "en": "United Kingdom"
+  },
+  "United States": {
+    "zh": "美国",
+    "en": "United States"
+  },
+  "Uruguay": {
+    "zh": "乌拉圭",
+    "en": "Uruguay"
+  },
+  "Vietnam": {
+    "zh": "越南",
+    "en": "Vietnam"
+  },
+  "International": {
+    "zh": "国际",
+    "en": "International"
+  },
+  "Australia-Japan": {
+    "zh": "澳大利亚-日本",
+    "region": "International"
+  },
+  "Australia-Timor Leste": {
+    "zh": "澳大利亚-东帝汶",
+    "region": "International"
+  },
+  "Belgium-Germany": {
+    "zh": "比利时-德国",
+    "region": "International"
+  },
+  "Belgium-Netherlands": {
+    "zh": "比利时-荷兰",
+    "region": "International"
+  },
+  "Belgium-United Kingdom": {
+    "zh": "比利时-英国",
+    "region": "International"
+  },
+  "Chinese Taipei": {
+    "zh": "中国台北",
+    "region": "International"
+  },
+  "France-Belgium-Norway": {
+    "zh": "法国-比利时-挪威",
+    "region": "International"
+  },
+  "France-Italy": {
+    "zh": "法国-意大利",
+    "region": "International"
+  },
+  "France-Spain": {
+    "zh": "法国-西班牙",
+    "region": "International"
+  },
+  "Germany-Netherlands": {
+    "zh": "德国-荷兰",
+    "region": "International"
+  },
+  "Italy-Greece": {
+    "zh": "意大利-希腊",
+    "region": "International"
+  },
+  "Japan-Australia": {
+    "zh": "日本-澳大利亚",
+    "region": "International"
+  },
+  "Japan-Indonesia": {
+    "zh": "日本-印度尼西亚",
+    "region": "International"
+  },
+  "Japan-Malaysia": {
+    "zh": "日本-马来西亚",
+    "region": "International"
+  },
+  "Japan-United States": {
+    "zh": "日本-美国",
+    "region": "International"
+  },
+  "Latvia-Lithuania": {
+    "zh": "拉脱维亚-立陶宛",
+    "region": "International"
+  },
+  "Multiple Europe": {
+    "zh": "欧洲多国",
+    "region": "International"
+  },
+  "Netherlands-Belgium": {
+    "zh": "荷兰-比利时",
+    "region": "International"
+  },
+  "Netherlands-Norway": {
+    "zh": "荷兰-挪威",
+    "region": "International"
+  },
+  "Oman-United Arab Emirates": {
+    "zh": "阿曼-阿联酋",
+    "region": "International"
+  },
+  "Poland, Latvia, Lithuania": {
+    "zh": "波兰-拉脱维亚-立陶宛",
+    "region": "International"
+  },
+  "Singapore-Australia": {
+    "zh": "新加坡-澳大利亚",
+    "region": "International"
+  },
+  "Slovakia": {
+    "zh": "斯洛伐克",
+    "region": "International"
+  },
+  "South Korea-Malaysia": {
+    "zh": "韩国-马来西亚",
+    "region": "International"
+  },
+  "Sweden-Finland": {
+    "zh": "瑞典-芬兰",
+    "region": "International"
+  },
+  "United States-Canada": {
+    "zh": "美国-加拿大",
+    "region": "International"
+  }
 }

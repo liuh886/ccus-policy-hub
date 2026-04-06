@@ -6,9 +6,7 @@ node_modules/
 .env.production
 .env.local
 .env.*.local
-FINDINGS.md
-TASKS.md
-PROGRESS.md
+
 # --- OS & IDE Junk ---
 .DS_Store
 Thumbs.db
@@ -20,66 +18,44 @@ pnpm-debug.log*
 *.tmp
 
 # --- Lean Architecture: Archive & Tests ---
-# 这些是历史遗留和开发调试文件，不属于运行环境
 /archive/
 !governance/archive/
 !governance/archive/**
-
-# --- Lean Architecture: Governance ---
-# 仅保留数据库主文件和结构定义，排除原始 Excel 和所有生成的审计报告
-governance/*
-!governance/0_GOVERNANCE.md
-!governance/OPERATING_RULES_AGENT.md
-!governance/SKILL_MASTER.md
-!governance/field_mapping_sqlite.md
-!governance/audit_thresholds.json
-!governance/README.md
-!governance/IEA CCUS Projects Database 2025.xlsx
-!governance/db/
-!governance/db/ccus_master.sqlite
-!governance/db/schema.sql
-!governance/archive/
-!governance/archive/**
-
-# --- Lean Architecture: Scripts ---
-# 禁止临时脚本；允许受控 mjs 工具链
-scripts/*
-!scripts/**/*.mjs
 
 # --- Internal AI Context ---
 .gemini/
 .codex/
 skills/
 *.skill
-ccus-db-governance.skill
 .worktrees/
 
-# --- CCUS AI Agent Governance ---
-agent/*
+# --- CCUS AI Agent Governance (Workspace) ---
+# Ignore the agent directory by default
+agent/
+
+# Un-ignore the core skill code and constitution
 !agent/ccus-ai-agent/
 !agent/ccus-ai-agent/SKILL.md
-!agent/ccus-ai-agent/governance/
-!agent/ccus-ai-agent/governance/*.md
-!agent/ccus-ai-agent/governance/audit_thresholds.json
-!agent/ccus-ai-agent/db/
-!agent/ccus-ai-agent/db/ccus_master.sqlite
-!agent/ccus-ai-agent/db/schema.sql
+!agent/ccus-ai-agent/DESIGN.md
+!agent/ccus-ai-agent/TASKS.md
+!agent/ccus-ai-agent/AGENTS.md
 !agent/ccus-ai-agent/logic/
 !agent/ccus-ai-agent/logic/*.mjs
-agent/ccus-ai-agent/governance/reports/*
-agent/ccus-ai-agent/governance/archive/*
+
+# Keep the schema but ignore the actual master database and locks
+!agent/ccus-ai-agent/db/
+!agent/ccus-ai-agent/db/schema.sql
+agent/ccus-ai-agent/db/*.sqlite
 agent/ccus-ai-agent/db/.lock
 
-# --- Consolidated Governance Ignoring ---
-DESIGN.md
-TASKS.md
-agent/
+# Ignore transient governance reports and archives
+agent/ccus-ai-agent/governance/reports/*
+agent/ccus-ai-agent/governance/archive/*
+
+# --- Background Tasks ---
 tasks/
 
-
-# --- Absolute Governance Ignore ---
-DESIGN.md
-TASKS.md
-agent.md
-agent/
-tasks/
+# --- Absolute Entry Points (Must be tracked) ---
+!agent.md
+!README.md
+!README.zh.md

@@ -1,22 +1,29 @@
 # CCUS Policy Hub | Agent Entry
 
-This project is governed by the **DFTD (Design-First, Todo-Driven)** advancement model with **SQLite Sovereignty**.
+This project is governed by the **Sovereign Governance** model with **SQLite Sovereignty**.
 
-## 🤖 Agent Role & Governance Logic
-You are the **Global Governance Architect** for the CCUS Policy Hub. Your mission is to maintain the high-fidelity link between regulatory text and actionable data.
+## 🧠 Agent Skills & Workspace
+All development, maintenance, and governance intelligence is now centralized in the agent directory:
 
-## ⚙️ Development & Advancement Mode (DFTD)
-1. **Design Anchor (DESIGN.md)**: 
-   - All architectural shifts (e.g., adding new PLR indicators) must first be recorded in `DESIGN.md`.
-2. **SQLite Sovereign Implementation**:
-   - For data changes, the only path is: `Update DESIGN.md` -> `Update SQLite DB` -> `Export to Markdown`.
-3. **TodoList Translation (TASKS.md)**:
-   - Dynamic tracker for governance batches and feature releases.
-4. **Step-by-Step Implementation**:
-   - Atomic execution of database updates and site builds.
+- **Primary Skill & Workspace**: `agent/ccus-ai-agent/`
+- **Core Protocol (The Skill)**: `agent/ccus-ai-agent/SKILL.md`
 
-## 📂 Core Workspace
-- **Logic Anchor**: `DESIGN.md`
-- **SSOT Database**: `agent/ccus-ai-agent/db/ccus_master.sqlite`
-- **Execution Tracker**: `TASKS.md`
-- **Primary Logic**: `agent/ccus-ai-agent/logic/manage.mjs`
+## 📜 Sovereign Documentation
+The "Brain" of the project lives inside the agent skill folder:
+- **Supreme Constitution**: `agent/ccus-ai-agent/DESIGN.md` (SSOT)
+- **Execution Tracker**: `agent/ccus-ai-agent/TASKS.md`
+- **Knowledge Archive**: `agent/ccus-ai-agent/AGENTS.md`
+- **Audit Reports**: `agent/ccus-ai-agent/governance/reports/`
+
+## ⚙️ Operating Instructions
+To interact with this project as an agent:
+1.  **Read the Skill**: Start with `agent/ccus-ai-agent/SKILL.md`.
+2.  **Follow the Constitution**: All changes must align with `agent/ccus-ai-agent/DESIGN.md`.
+3.  **Execute via SSOT**: Database updates are the only path to content modification.
+    - Path: `agent/ccus-ai-agent/db/ccus_master.sqlite`
+    - Logic: `agent/ccus-ai-agent/logic/manage.mjs`
+
+## 📂 Core Structure
+- **Root**: Clean entry for users and builds.
+- **`agent/`**: Development and governance hub.
+- **`src/content/`**: Transient exports (Generated).

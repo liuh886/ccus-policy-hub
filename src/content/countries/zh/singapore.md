@@ -9,7 +9,7 @@
   "name": "新加坡",
   "provenance": {
     "author": "System",
-    "lastAuditDate": "2026-04-04",
+    "lastAuditDate": "2026-04-06",
     "reviewer": "Human Audit Pending"
   },
   "region": "Global",

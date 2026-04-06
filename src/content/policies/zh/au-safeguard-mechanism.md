@@ -39,22 +39,8 @@
   },
   "category": "法律监管",
   "country": "澳大利亚",
-  "description": "## 政策概览\r \r 澳大利亚保障机制 (Safeguard Mechanism) 在 2023 年进行了重大改革，将其从一个单纯的排放基准机制转型为驱动工业脱碳的强制性约束工具。改革后的机制要求澳大利亚最大的 215 家工业设施每年的排放强度必须强制降低 4.9%。这一政策为 CCUS 技术在澳大利亚液化天然气 (LNG) 和采矿业的大规模应用创造了强烈的市场需求。法律允许企业通过部署 CCUS 或购买“保障机制信贷 (SMCs)”来履行合规义务，极大提升了诸如桑托斯 (Santos) 姆巴 (Moomba) 等大型 CCS 枢纽项目的商业吸引力，是澳大利亚实现 2050 净零排放的关键支柱。",
-  "evolution": {
-    "clusters": [
-      "Australia Net Zero Strategy",
-      "ACCU Carbon Market"
-    ],
-    "supersedes": [
-      "safeguard-mechanism-legacy-2016"
-    ]
-  },
+  "description": "针对澳大利亚最大排放源的强制减排工具，要求碳强度每年下降 4.9%，驱动工业 CCUS 需求。",
   "id": "au-safeguard-mechanism",
-  "impactAnalysis": {
-    "economic": "通过每年 4.9% 的基准线递减率，强制推高高排放设施的碳成本，并将 CCS 转化为具备经济竞争力的合规工具。",
-    "environmental": "作为澳洲 2030 减排 43% 目标的核心引擎，覆盖超过 200 家大型工业设施，占全国总排放的 28%。",
-    "technical": "强制要求所有新建 LNG 项目实现 100% 伴生 CO2 减排，直接锁定了大规模离岸/在岸封存技术路径的刚需。"
-  },
   "legalWeight": "Guideline/Policy",
   "provenance": {
     "author": "Gemini Intelligence",
@@ -62,15 +48,6 @@
     "reviewer": "Human Audit Pending"
   },
   "pubDate": "2023-03-30",
-  "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
-  },
   "relatedFacilities": [
     "11",
     "1103",
@@ -120,11 +97,9 @@
   "reviewStatus": "verified",
   "source": "DCCEEW",
   "status": "现行",
-  "title": "澳大利亚保障机制 (Safeguard Mechanism) 2023 修订版",
+  "title": "澳大利亚保障机制 2023",
   "year": 2023
 }
 ---
 
-## 政策概览
-
-澳大利亚保障机制 (Safeguard Mechanism) 在 2023 年进行了重大改革，将其从一个单纯的排放基准机制转型为驱动工业脱碳的强制性约束工具。改革后的机制要求澳大利亚最大的 215 家工业设施每年的排放强度必须强制降低 4.9%。这一政策为 CCUS 技术在澳大利亚液化天然气 (LNG) 和采矿业的大规模应用创造了强烈的市场需求。法律允许企业通过部署 CCUS 或购买“保障机制信贷 (SMCs)”来履行合规义务，极大提升了诸如桑托斯 (Santos) 姆巴 (Moomba) 等大型 CCS 枢纽项目的商业吸引力，是澳大利亚实现 2050 净零排放的关键支柱。
+针对澳大利亚最大排放源的强制减排工具，要求碳强度每年下降 4.9%，驱动工业 CCUS 需求。
