@@ -35,9 +35,9 @@ test('getCountryCoordinateFallback returns centroids for known countries', () =>
   assert.deepEqual(getCountryCoordinateFallback('Chinese Taipei'), [23.7, 121.0]);
 });
 
-test('getCountryCoordinateFallback averages resolvable composite countries', () => {
-  assert.deepEqual(getCountryCoordinateFallback('South Korea-Malaysia'), [20.355, 114.89]);
-  assert.deepEqual(getCountryCoordinateFallback('Latvia-Lithuania'), [56.025, 24.24]);
+test('getCountryCoordinateFallback returns the first resolvable part for composite countries', () => {
+  assert.deepEqual(getCountryCoordinateFallback('South Korea-Malaysia'), [36.5, 127.8]);
+  assert.deepEqual(getCountryCoordinateFallback('Latvia-Lithuania'), [56.88, 24.6]);
 });
 
 test('resolveFacilityCoordinates uses country anchors for country-precision facilities', () => {
