@@ -32,7 +32,9 @@ function checkTargetBlankRel() {
     for (const tag of tagMatches) {
       if (!tag.includes('target="_blank"')) continue;
       if (!tag.includes('rel="noopener noreferrer"')) {
-        fail(`${path.relative(ROOT, file)} has target="_blank" without rel="noopener noreferrer"`);
+        fail(
+          `${path.relative(ROOT, file)} has target="_blank" without rel="noopener noreferrer"`
+        );
       }
     }
   }
@@ -43,13 +45,19 @@ function checkApiExportGuards() {
   const json = read('src/pages/api/policies.json.ts');
 
   if (csv.includes('incentive_type') || csv.includes('incentive_value')) {
-    fail('src/pages/api/policies.csv.ts still references legacy incentive_* fields');
+    fail(
+      'src/pages/api/policies.csv.ts still references legacy incentive_* fields'
+    );
   }
   if (!csv.includes("'legal_weight'") || !csv.includes("'pub_date'")) {
-    fail('src/pages/api/policies.csv.ts is missing legal_weight/pub_date CSV headers');
+    fail(
+      'src/pages/api/policies.csv.ts is missing legal_weight/pub_date CSV headers'
+    );
   }
   if (!json.includes("lang: 'zh'") || !json.includes("lang: 'en'")) {
-    fail('src/pages/api/policies.json.ts must include lang markers for merged zh/en payloads');
+    fail(
+      'src/pages/api/policies.json.ts must include lang markers for merged zh/en payloads'
+    );
   }
 }
 
@@ -69,7 +77,9 @@ function checkListenerGuards() {
   for (const [file, marker] of expectations) {
     const content = read(file);
     if (!content.includes(marker)) {
-      fail(`${file} is missing listener/initialization guard marker: ${marker}`);
+      fail(
+        `${file} is missing listener/initialization guard marker: ${marker}`
+      );
     }
   }
 }

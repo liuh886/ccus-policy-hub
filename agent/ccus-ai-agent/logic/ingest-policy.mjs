@@ -21,7 +21,9 @@ async function ingest() {
   } else if (fileArgIdx !== -1 && args[fileArgIdx + 1]) {
     policy = JSON.parse(fs.readFileSync(args[fileArgIdx + 1], 'utf8'));
   } else {
-    console.error("Usage: node logic/ingest-policy.mjs --json '<json_string>' OR --file <path>");
+    console.error(
+      "Usage: node logic/ingest-policy.mjs --json '<json_string>' OR --file <path>"
+    );
     process.exit(1);
   }
   const SQL = await initSqlJs();
@@ -30,78 +32,102 @@ async function ingest() {
 
   const lastAuditDate = new Date().toISOString().split('T')[0];
 
-  db.run("BEGIN TRANSACTION");
+  db.run('BEGIN TRANSACTION');
   try {
     // 1. Ingest into policies table
-    db.run(`INSERT OR REPLACE INTO policies (
+    db.run(
+      `INSERT OR REPLACE INTO policies (
       id, country, year, status, category, review_status, 
       legal_weight, source, url, pub_date, 
       provenance_author, provenance_last_audit_date
-    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`, [
-      policy.id,
-      policy.country || 'Unknown',
-      policy.year || null,
-      policy.status || 'Active',
-      policy.category || 'Regulatory',
-      policy.review_status || 'draft',
-      policy.legal_weight || null,
-      policy.source || null,
-      policy.url || null,
-      policy.pub_date || lastAuditDate,
-      policy.provenance_author || 'CCUS AI Agent',
-      lastAuditDate
-    ]);
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`,
+      [
+        policy.id,
+        policy.country || 'Unknown',
+        policy.year || null,
+        policy.status || 'Active',
+        policy.category || 'Regulatory',
+        policy.review_status || 'draft',
+        policy.legal_weight || null,
+        policy.source || null,
+        policy.url || null,
+        policy.pub_date || lastAuditDate,
+        policy.provenance_author || 'CCUS AI Agent',
+        lastAuditDate,
+      ]
+    );
 
     // 2. Ingest into policy_i18n (English)
-    db.run(`INSERT OR REPLACE INTO policy_i18n (
+    db.run(
+      `INSERT OR REPLACE INTO policy_i18n (
       policy_id, lang, title, description, scope, 
       tags_json, impact_analysis_json, interpretation, 
       evolution_json, regulatory_json
-    ) VALUES (?,?,?,?,?,?,?,?,?,?)`, [
-      policy.id, 'en',
-      policy.en?.title || policy.id,
-      policy.en?.description || null,
-      policy.en?.scope || 'National',
-      JSON.stringify(policy.en?.tags || []),
-      JSON.stringify(policy.en?.impact_analysis || {}),
-      policy.en?.interpretation || null,
-      JSON.stringify(policy.en?.evolution || {}),
-      JSON.stringify(policy.en?.regulatory_json || {})
-    ]);
+    ) VALUES (?,?,?,?,?,?,?,?,?,?)`,
+      [
+        policy.id,
+        'en',
+        policy.en?.title || policy.id,
+        policy.en?.description || null,
+        policy.en?.scope || 'National',
+        JSON.stringify(policy.en?.tags || []),
+        JSON.stringify(policy.en?.impact_analysis || {}),
+        policy.en?.interpretation || null,
+        JSON.stringify(policy.en?.evolution || {}),
+        JSON.stringify(policy.en?.regulatory_json || {}),
+      ]
+    );
 
     // 3. Ingest into policy_i18n (Chinese)
-    db.run(`INSERT OR REPLACE INTO policy_i18n (
+    db.run(
+      `INSERT OR REPLACE INTO policy_i18n (
       policy_id, lang, title, description, scope, 
       tags_json, impact_analysis_json, interpretation, 
       evolution_json, regulatory_json
-    ) VALUES (?,?,?,?,?,?,?,?,?,?)`, [
-      policy.id, 'zh',
-      policy.zh?.title || policy.en?.title || policy.id,
-      policy.zh?.description || policy.en?.description || null,
-      policy.zh?.scope || policy.en?.scope || 'National',
-      JSON.stringify(policy.zh?.tags || policy.en?.tags || []),
-      JSON.stringify(policy.zh?.impact_analysis || policy.en?.impact_analysis || {}),
-      policy.zh?.interpretation || policy.en?.interpretation || null,
-      JSON.stringify(policy.zh?.evolution || policy.en?.evolution || {}),
-      JSON.stringify(policy.zh?.regulatory_json || policy.en?.regulatory_json || {})
-    ]);
+    ) VALUES (?,?,?,?,?,?,?,?,?,?)`,
+      [
+        policy.id,
+        'zh',
+        policy.zh?.title || policy.en?.title || policy.id,
+        policy.zh?.description || policy.en?.description || null,
+        policy.zh?.scope || policy.en?.scope || 'National',
+        JSON.stringify(policy.zh?.tags || policy.en?.tags || []),
+        JSON.stringify(
+          policy.zh?.impact_analysis || policy.en?.impact_analysis || {}
+        ),
+        policy.zh?.interpretation || policy.en?.interpretation || null,
+        JSON.stringify(policy.zh?.evolution || policy.en?.evolution || {}),
+        JSON.stringify(
+          policy.zh?.regulatory_json || policy.en?.regulatory_json || {}
+        ),
+      ]
+    );
 
     // 4. Analysis Scores
     if (policy.analysis) {
-      db.run("DELETE FROM policy_analysis WHERE policy_id = ?", [policy.id]);
+      db.run('DELETE FROM policy_analysis WHERE policy_id = ?', [policy.id]);
       for (const [dim, v] of Object.entries(policy.analysis)) {
-        db.run(`INSERT INTO policy_analysis (
+        db.run(
+          `INSERT INTO policy_analysis (
           policy_id, dimension, score, label, evidence, citation, audit_note
-        ) VALUES (?,?,?,?,?,?,?)`, [
-          policy.id, dim, v.score || 0, v.label || null, v.evidence || null, v.citation || null, v.audit_note || null
-        ]);
+        ) VALUES (?,?,?,?,?,?,?)`,
+          [
+            policy.id,
+            dim,
+            v.score || 0,
+            v.label || null,
+            v.evidence || null,
+            v.citation || null,
+            v.audit_note || null,
+          ]
+        );
       }
     }
 
-    db.run("COMMIT");
+    db.run('COMMIT');
     console.log(`Policy '${policy.id}' ingested successfully.`);
   } catch (e) {
-    db.run("ROLLBACK");
+    db.run('ROLLBACK');
     console.error(`Failed to ingest policy '${policy.id}':`, e);
     process.exit(1);
   }
@@ -111,4 +137,4 @@ async function ingest() {
   db.close();
 }
 
-ingest().catch(err => console.error(err));
+ingest().catch((err) => console.error(err));

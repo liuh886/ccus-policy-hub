@@ -11,16 +11,25 @@ async function fix() {
   const buffer = fs.readFileSync(DB_PATH);
   const db = new SQL.Database(buffer);
 
-  db.run("BEGIN TRANSACTION");
+  db.run('BEGIN TRANSACTION');
   try {
     const id = 'Republic of Korea';
-    db.run("INSERT OR IGNORE INTO country_profiles (id, region) VALUES (?,?)", [id, 'East Asia']);
-    db.run("INSERT OR IGNORE INTO country_i18n (country_id, lang, name) VALUES (?,'en',?)", [id, 'South Korea']);
-    db.run("INSERT OR IGNORE INTO country_i18n (country_id, lang, name) VALUES (?,'zh',?)", [id, '韩国']);
-    db.run("COMMIT");
-    console.log("Korea i18n initialized.");
+    db.run('INSERT OR IGNORE INTO country_profiles (id, region) VALUES (?,?)', [
+      id,
+      'East Asia',
+    ]);
+    db.run(
+      "INSERT OR IGNORE INTO country_i18n (country_id, lang, name) VALUES (?,'en',?)",
+      [id, 'South Korea']
+    );
+    db.run(
+      "INSERT OR IGNORE INTO country_i18n (country_id, lang, name) VALUES (?,'zh',?)",
+      [id, '韩国']
+    );
+    db.run('COMMIT');
+    console.log('Korea i18n initialized.');
   } catch (e) {
-    db.run("ROLLBACK");
+    db.run('ROLLBACK');
     throw e;
   }
 
@@ -29,4 +38,4 @@ async function fix() {
   db.close();
 }
 
-fix().catch(err => console.error(err));
+fix().catch((err) => console.error(err));

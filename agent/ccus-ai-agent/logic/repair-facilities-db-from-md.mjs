@@ -91,10 +91,10 @@ async function applyRepairPlan({ dryRun = false } = {}) {
         if (!tableMeta) {
           throw new Error(`Unsupported ordered row table: ${table}`);
         }
-        db.run(
-          `DELETE FROM ${table} WHERE facility_id = ? AND lang = ?`,
-          [String(id), String(lang)]
-        );
+        db.run(`DELETE FROM ${table} WHERE facility_id = ? AND lang = ?`, [
+          String(id),
+          String(lang),
+        ]);
         (Array.isArray(values) ? values : []).forEach((rawValue, index) => {
           db.run(
             `INSERT INTO ${table} (facility_id, lang, order_index, ${tableMeta.valueColumn}) VALUES (?, ?, ?, ?)`,
@@ -174,7 +174,9 @@ export async function main() {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   await main();
 }
-

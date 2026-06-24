@@ -1,119 +1,127 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "Global benchmark for BECCS incentives.",
-      "citation": "DEA NECCS Fund 2024",
-      "evidence": "Implements pioneering Carbon Contracts for Difference (CCfD) providing a 20-year fixed price guarantee for BECCS/CCS.",
-      "label": "DKK 28.7B CCfD",
-      "score": 100
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': 'Global benchmark for BECCS incentives.',
+          'citation': 'DEA NECCS Fund 2024',
+          'evidence': 'Implements pioneering Carbon Contracts for Difference (CCfD) providing a 20-year fixed price guarantee for BECCS/CCS.',
+          'label': 'DKK 28.7B CCfD',
+          'score': 100,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'Orsted Kalundborg Hub',
+          'evidence': 'Successfully established the capture-to-storage loop via cross-border contracts with Northern Lights.',
+          'label': 'Cross-border Loop',
+          'score': 85,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'DEA Tech Requirements',
+          'evidence': 'Strict monitoring required for both capture and the cross-border storage loop with Norway.',
+          'label': 'Full Value-Chain MRV',
+          'score': 90,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'Danish Climate Act',
+          'evidence': 'Legal framework for competitive bidding and onshore/offshore storage exploration permits.',
+          'label': 'DEA Tendering Rules',
+          'score': 85,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'Danish CCS Strategy',
+          'evidence': 'Sets a concrete national target for CCS/BECCS as a primary vehicle for achieving 2045 Net Zero.',
+          'label': '3.2 Mtpa Target',
+          'score': 95,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "Orsted Kalundborg Hub",
-      "evidence": "Successfully established the capture-to-storage loop via cross-border contracts with Northern Lights.",
-      "label": "Cross-border Loop",
-      "score": 85
+  'category': 'Regulatory',
+  'country': 'Denmark',
+  'description': "## Policy Core\r \r The Denmark CCfD Program is a 20-year subsidy scheme based on competitive tendering, designed to kickstart large-scale CCS deployment.",
+  'evolution':
+    {
+      'clusters': ['Denmark CCS Strategy 2030', 'European Storage Hubs'],
+      'supersedes': [],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "DEA Tech Requirements",
-      "evidence": "Strict monitoring required for both capture and the cross-border storage loop with Norway.",
-      "label": "Full Value-Chain MRV",
-      "score": 90
+  'id': 'denmark-ccfd',
+  'impactAnalysis':
+    {
+      'economic': 'Provides approx. 1000 DKK/t subsidy via 20-year long-term Carbon Contracts for Difference (CCfD), securing bankability for BECCS projects.',
+      'environmental': 'Targets 2.3 Mtpa of annual emissions reduction via CCS by 2030, focusing on carbon removals from bioenergy and waste-to-energy.',
+      'technical': "Drives the development of the 'Ørsted Kalundborg' multi-point capture hub, integrating biomass capture with cross-border shipping to Norway.",
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "Danish Climate Act",
-      "evidence": "Legal framework for competitive bidding and onshore/offshore storage exploration permits.",
-      "label": "DEA Tendering Rules",
-      "score": 85
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-08',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "Danish CCS Strategy",
-      "evidence": "Sets a concrete national target for CCS/BECCS as a primary vehicle for achieving 2045 Net Zero.",
-      "label": "3.2 Mtpa Target",
-      "score": 95
-    }
-  },
-  "category": "Regulatory",
-  "country": "Denmark",
-  "description": "## Policy Core\r \r The Denmark CCfD Program is a 20-year subsidy scheme based on competitive tendering, designed to kickstart large-scale CCS deployment.",
-  "evolution": {
-    "clusters": [
-      "Denmark CCS Strategy 2030",
-      "European Storage Hubs"
+  'pubDate': '2024-05-01',
+  'regulatory':
+    {
+      'co2_definition': '',
+      'cross_border_rules': '',
+      'financial_assurance': '',
+      'liability_period': '',
+      'liability_transfer': '',
+      'permitting_lead_time': '',
+      'pore_space_rights': '',
+    },
+  'relatedFacilities':
+    [
+      '1069',
+      '1079',
+      '1080',
+      '1153',
+      '1169',
+      '1288',
+      '1291',
+      '1305',
+      '1306',
+      '1378',
+      '1403',
+      '1404',
+      '1503',
+      '1504',
+      '1505',
+      '331',
+      '335',
+      '336',
+      '401',
+      '42',
+      '670',
+      '671',
+      '672',
+      '673',
+      '674',
+      '682',
+      '727',
+      '728',
+      '729',
+      '730',
+      '756',
+      '757',
+      '779',
+      '784',
+      '785',
+      '786',
+      '89',
     ],
-    "supersedes": []
-  },
-  "id": "denmark-ccfd",
-  "impactAnalysis": {
-    "economic": "Provides approx. 1000 DKK/t subsidy via 20-year long-term Carbon Contracts for Difference (CCfD), securing bankability for BECCS projects.",
-    "environmental": "Targets 2.3 Mtpa of annual emissions reduction via CCS by 2030, focusing on carbon removals from bioenergy and waste-to-energy.",
-    "technical": "Drives the development of the 'Ørsted Kalundborg' multi-point capture hub, integrating biomass capture with cross-border shipping to Norway."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-08",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-05-01",
-  "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
-  },
-  "relatedFacilities": [
-    "1069",
-    "1079",
-    "1080",
-    "1153",
-    "1169",
-    "1288",
-    "1291",
-    "1305",
-    "1306",
-    "1378",
-    "1403",
-    "1404",
-    "1503",
-    "1504",
-    "1505",
-    "331",
-    "335",
-    "336",
-    "401",
-    "42",
-    "670",
-    "671",
-    "672",
-    "673",
-    "674",
-    "682",
-    "727",
-    "728",
-    "729",
-    "730",
-    "756",
-    "757",
-    "779",
-    "784",
-    "785",
-    "786",
-    "89"
-  ],
-  "reviewStatus": "verified",
-  "source": "丹麦能源署",
-  "status": "Active",
-  "title": "Denmark Negative Emission Carbon Capture and Storage (NECCS) Fund & CCfD",
-  "url": "https://ens.dk/en/our-responsibilities/ccs",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': '丹麦能源署',
+  'status': 'Active',
+  'title': 'Denmark Negative Emission Carbon Capture and Storage (NECCS) Fund & CCfD',
+  'url': 'https://ens.dk/en/our-responsibilities/ccs',
+  'year': 2024,
 }
 ---
 

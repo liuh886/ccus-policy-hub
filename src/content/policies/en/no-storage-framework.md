@@ -1,136 +1,145 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "",
-      "citation": "Longship (Langskip) Budget 2020/2024",
-      "evidence": "Provides legal certainty and infrastructure grants via the Longship project to support commercial storage.",
-      "label": "Indirect Support",
-      "score": 60
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': '',
+          'citation': 'Longship (Langskip) Budget 2020/2024',
+          'evidence': 'Provides legal certainty and infrastructure grants via the Longship project to support commercial storage.',
+          'label': 'Indirect Support',
+          'score': 60,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'London Protocol Article 6 Update',
+          'evidence': 'Enabled cross-border CO2 intake by ratifying the London Protocol amendment.',
+          'label': 'European Hub Vision',
+          'score': 90,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'Petroleum Act Annex',
+          'evidence': 'Enforces the highest environmental and monitoring standards for offshore storage integrity.',
+          'label': 'Arctic-grade Rigor',
+          'score': 95,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'Regulation No. 1517 (CO2 Storage)',
+          'evidence': "Norway has the world's most mature offshore storage regulatory framework, based on decades of oil & gas law expansion.",
+          'label': 'Global Offshore Leader',
+          'score': 100,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'Norway Energy Strategy 2024',
+          'evidence': "Positions Norway as the primary storage provider for Europe's industrial emissions.",
+          'label': 'Continental Anchor',
+          'score': 95,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "London Protocol Article 6 Update",
-      "evidence": "Enabled cross-border CO2 intake by ratifying the London Protocol amendment.",
-      "label": "European Hub Vision",
-      "score": 90
+  'category': 'Regulatory',
+  'country': 'Norway',
+  'description': "## Policy Overview\r \r Norway’s legal framework for carbon storage is anchored in Regulation No. 1517, originally established in 2014 and updated in 2020. Built upon the EU CCS Directive and integrated with Norwegian petroleum law, it provides the definitive regulatory structure for offshore storage on the Norwegian Continental Shelf (NCS). The regulation asserts state ownership over all subsea reservoirs and mandates a rigorous permitting system for exploration, development, and operation.\r \r A ",
+  'evolution':
+    {
+      'clusters':
+        ['Norway Longship / Langskip', 'EU CCS Directive Integration'],
+      'supersedes': [],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "Petroleum Act Annex",
-      "evidence": "Enforces the highest environmental and monitoring standards for offshore storage integrity.",
-      "label": "Arctic-grade Rigor",
-      "score": 95
+  'id': 'no-storage-framework',
+  'impactAnalysis':
+    {
+      'economic': 'Dramatically reduces long-term risk premiums and insurance costs for project developers by providing a clear exit path for legal liability.',
+      'environmental': 'Ensures the highest fidelity for permanent geological isolation of European industrial CO2, maintaining the integrity of the broader EU carbon market.',
+      'technical': 'Sets global benchmarks for subsea reservoir monitoring and integrity verification, driving innovation in 4D seismic and plume modeling technologies.',
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "Regulation No. 1517 (CO2 Storage)",
-      "evidence": "Norway has the world's most mature offshore storage regulatory framework, based on decades of oil & gas law expansion.",
-      "label": "Global Offshore Leader",
-      "score": 100
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-07',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "Norway Energy Strategy 2024",
-      "evidence": "Positions Norway as the primary storage provider for Europe's industrial emissions.",
-      "label": "Continental Anchor",
-      "score": 95
-    }
-  },
-  "category": "Regulatory",
-  "country": "Norway",
-  "description": "## Policy Overview\r \r Norway’s legal framework for carbon storage is anchored in Regulation No. 1517, originally established in 2014 and updated in 2020. Built upon the EU CCS Directive and integrated with Norwegian petroleum law, it provides the definitive regulatory structure for offshore storage on the Norwegian Continental Shelf (NCS). The regulation asserts state ownership over all subsea reservoirs and mandates a rigorous permitting system for exploration, development, and operation.\r \r A ",
-  "evolution": {
-    "clusters": [
-      "Norway Longship / Langskip",
-      "EU CCS Directive Integration"
+  'pubDate': '2024-04-01',
+  'regulatory':
+    {
+      'co2_definition': 'Industrial Gas',
+      'cross_border_rules': 'Permitted (Northern Lights precedent)',
+      'financial_assurance': 'Mandatory',
+      'liability_period': 'Agreed in Plan for Development (PDO)',
+      'liability_transfer': 'Transfer to State allowed',
+      'permitting_lead_time': '1-3 years (Mature regulatory)',
+      'pore_space_rights': 'State Owned (NCS)',
+    },
+  'relatedFacilities':
+    [
+      '101',
+      '1082',
+      '1088',
+      '1111',
+      '1112',
+      '1113',
+      '1156',
+      '1166',
+      '1167',
+      '1201',
+      '1269',
+      '1270',
+      '1271',
+      '1272',
+      '1349',
+      '1350',
+      '1397',
+      '1480',
+      '1485',
+      '1487',
+      '1488',
+      '1492',
+      '1493',
+      '155',
+      '201',
+      '246',
+      '271',
+      '28',
+      '290',
+      '295',
+      '296',
+      '302',
+      '322',
+      '374',
+      '375',
+      '41',
+      '44',
+      '45',
+      '454',
+      '46',
+      '526',
+      '530',
+      '56',
+      '645',
+      '661',
+      '676',
+      '710',
+      '772',
+      '775',
+      '841',
+      '91',
+      '917',
+      '92',
+      '93',
     ],
-    "supersedes": []
-  },
-  "id": "no-storage-framework",
-  "impactAnalysis": {
-    "economic": "Dramatically reduces long-term risk premiums and insurance costs for project developers by providing a clear exit path for legal liability.",
-    "environmental": "Ensures the highest fidelity for permanent geological isolation of European industrial CO2, maintaining the integrity of the broader EU carbon market.",
-    "technical": "Sets global benchmarks for subsea reservoir monitoring and integrity verification, driving innovation in 4D seismic and plume modeling technologies."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-07",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-04-01",
-  "regulatory": {
-    "co2_definition": "Industrial Gas",
-    "cross_border_rules": "Permitted (Northern Lights precedent)",
-    "financial_assurance": "Mandatory",
-    "liability_period": "Agreed in Plan for Development (PDO)",
-    "liability_transfer": "Transfer to State allowed",
-    "permitting_lead_time": "1-3 years (Mature regulatory)",
-    "pore_space_rights": "State Owned (NCS)"
-  },
-  "relatedFacilities": [
-    "101",
-    "1082",
-    "1088",
-    "1111",
-    "1112",
-    "1113",
-    "1156",
-    "1166",
-    "1167",
-    "1201",
-    "1269",
-    "1270",
-    "1271",
-    "1272",
-    "1349",
-    "1350",
-    "1397",
-    "1480",
-    "1485",
-    "1487",
-    "1488",
-    "1492",
-    "1493",
-    "155",
-    "201",
-    "246",
-    "271",
-    "28",
-    "290",
-    "295",
-    "296",
-    "302",
-    "322",
-    "374",
-    "375",
-    "41",
-    "44",
-    "45",
-    "454",
-    "46",
-    "526",
-    "530",
-    "56",
-    "645",
-    "661",
-    "676",
-    "710",
-    "772",
-    "775",
-    "841",
-    "91",
-    "917",
-    "92",
-    "93"
-  ],
-  "reviewStatus": "verified",
-  "source": "Norwegian Offshore Directorate",
-  "status": "Active",
-  "title": "Norway CO2 Storage & Transport Regulations (Offshore)",
-  "url": "https://www.offshoredirectorate.no/en/",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': 'Norwegian Offshore Directorate',
+  'status': 'Active',
+  'title': 'Norway CO2 Storage & Transport Regulations (Offshore)',
+  'url': 'https://www.offshoredirectorate.no/en/',
+  'year': 2024,
 }
 ---
 

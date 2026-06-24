@@ -19,7 +19,9 @@ async function query() {
   }
 
   console.log('--- POLICIES FOR CHINA ---');
-  const policies = all("SELECT id, country, year, status, category FROM policies WHERE country = 'China'");
+  const policies = all(
+    "SELECT id, country, year, status, category FROM policies WHERE country = 'China'"
+  );
   console.log(JSON.stringify(policies, null, 2));
   console.log(`Count: ${policies.length}`);
 

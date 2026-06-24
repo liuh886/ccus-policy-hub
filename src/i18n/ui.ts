@@ -38,6 +38,11 @@ export const ui = {
     'home.console.legend.financial': '直接财政激励',
     'home.console.legend.regulatory': '合规监管框架',
     'home.console.node.active': '监管框架活跃',
+    'dimensions.incentive': '财政激励',
+    'dimensions.statutory': '法规框架',
+    'dimensions.market': '市场机制',
+    'dimensions.strategic': '战略规划',
+    'dimensions.mrv': 'MRV/技术标准',
   },
   en: {
     'nav.home': 'Home',
@@ -71,5 +76,10 @@ export const ui = {
     'home.console.legend.financial': 'Direct Financial Incentives',
     'home.console.legend.regulatory': 'Regulatory Compliance',
     'home.console.node.active': 'Framework Active',
+    'dimensions.incentive': 'Financial Incentive',
+    'dimensions.statutory': 'Regulatory Framework',
+    'dimensions.market': 'Market Mechanism',
+    'dimensions.strategic': 'Strategic Planning',
+    'dimensions.mrv': 'MRV/Technical Standard',
   },
 } as const;

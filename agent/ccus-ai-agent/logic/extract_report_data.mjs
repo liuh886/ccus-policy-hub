@@ -50,14 +50,18 @@ async function main() {
 
   console.log('\n--- FID YEARLY DATA (Year, Count, Capacity Mtpa) ---');
   if (fidRes.length > 0) {
-    fidRes[0].values.forEach(row => console.log(`${row[0]}, ${row[1]}, ${row[2].toFixed(2)}`));
+    fidRes[0].values.forEach((row) =>
+      console.log(`${row[0]}, ${row[1]}, ${row[2].toFixed(2)}`)
+    );
   } else {
     console.log('No data found for FID years.');
   }
 
   console.log('\n--- STRUCTURAL COMPOSITION (Year, Category, Count) ---');
   if (typeRes.length > 0) {
-    typeRes[0].values.forEach(row => console.log(`${row[0]}, ${row[1]}, ${row[2]}`));
+    typeRes[0].values.forEach((row) =>
+      console.log(`${row[0]}, ${row[1]}, ${row[2]}`)
+    );
   }
 }
 

@@ -11,12 +11,12 @@ async function compute() {
   const buffer = fs.readFileSync(DB_PATH);
   const db = new SQL.Database(buffer);
 
-  console.log("Computing Global Maturity Matrix (XY)...");
+  console.log('Computing Global Maturity Matrix (XY)...');
 
-  const countries = db.exec("SELECT id FROM country_profiles");
+  const countries = db.exec('SELECT id FROM country_profiles');
   if (countries.length === 0) return;
 
-  db.run("BEGIN TRANSACTION");
+  db.run('BEGIN TRANSACTION');
   const peakQuery = db.prepare(`
     SELECT
       COALESCE(MAX(CASE WHEN a.dimension = 'incentive' THEN a.score END), 0) AS incentive,
@@ -28,7 +28,7 @@ async function compute() {
     JOIN policies p ON a.policy_id = p.id
     WHERE p.country = ? AND p.status IN ('Active', '运行中', '现行')
   `);
-  
+
   for (const row of countries[0].values) {
     const countryId = row[0];
 
@@ -56,16 +56,21 @@ async function compute() {
     );
 
     // Update DB
-    db.run("UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?", [totalCap, governanceScorePeak, countryId]);
-    console.log(`  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (Gov Peak): ${governanceScorePeak}`);
+    db.run(
+      'UPDATE country_profiles SET maturity_x = ?, maturity_y = ? WHERE id = ?',
+      [totalCap, governanceScorePeak, countryId]
+    );
+    console.log(
+      `  - ${countryId.padEnd(15)} | X (Cap): ${totalCap.toFixed(2)} | Y (Gov Peak): ${governanceScorePeak}`
+    );
   }
 
-  db.run("COMMIT");
+  db.run('COMMIT');
   peakQuery.free();
   const data = db.export();
   fs.writeFileSync(DB_PATH, new Uint8Array(data));
   db.close();
-  console.log("Maturity Computation DONE.");
+  console.log('Maturity Computation DONE.');
 }
 
-compute().catch(err => console.error(err));
+compute().catch((err) => console.error(err));

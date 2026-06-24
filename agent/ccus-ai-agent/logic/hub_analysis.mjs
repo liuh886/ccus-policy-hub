@@ -22,9 +22,11 @@ async function main() {
   `);
 
   console.log('--- HUB AFFILIATION TRENDS (FID Year) ---');
-  hubAffiliation[0].values.forEach(row => {
-    const percent = (row[2] / row[1] * 100).toFixed(1);
-    console.log(`Year ${row[0]}: Total=${row[1]}, Hub-Affiliated=${row[2]} (${percent}%), Avg Cap=${row[3]?.toFixed(2)} Mtpa`);
+  hubAffiliation[0].values.forEach((row) => {
+    const percent = ((row[2] / row[1]) * 100).toFixed(1);
+    console.log(
+      `Year ${row[0]}: Total=${row[1]}, Hub-Affiliated=${row[2]} (${percent}%), Avg Cap=${row[3]?.toFixed(2)} Mtpa`
+    );
   });
 
   // 2. 泛基建 (Infrastructure/T&S) 的爆发
@@ -39,8 +41,10 @@ async function main() {
   `);
 
   console.log('\n--- VERTICAL INTEGRATION VS HUB BACKBONES ---');
-  specialization[0].values.forEach(row => {
-    console.log(`Year ${row[0]}: Full Chain=${row[1]}, Infrastructure (Hubs)=${row[2]}`);
+  specialization[0].values.forEach((row) => {
+    console.log(
+      `Year ${row[0]}: Full Chain=${row[1]}, Infrastructure (Hubs)=${row[2]}`
+    );
   });
 
   // 3. 2026 审计中的 Hub 巨头
@@ -55,7 +59,7 @@ async function main() {
   `);
 
   console.log('\n--- 2026 REFRESH: TOP HUB PROJECTS ---');
-  giants[0].values.forEach(row => {
+  giants[0].values.forEach((row) => {
     console.log(`- ${row[0]} (${row[2]}): ${row[1]} Mtpa`);
   });
 }

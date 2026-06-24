@@ -1,132 +1,139 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "",
-      "citation": "MEE CCER Management Measures 2024",
-      "evidence": "CCUS officially included in the first batch of 4 national methodologies (2024/01). Direct revenue via CCER offset trading.",
-      "label": "Primary Market Integration",
-      "score": 90
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': '',
+          'citation': 'MEE CCER Management Measures 2024',
+          'evidence': 'CCUS officially included in the first batch of 4 national methodologies (2024/01). Direct revenue via CCER offset trading.',
+          'label': 'Primary Market Integration',
+          'score': 90,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'Trading and Settlement Rules for Voluntary GHG Emission Reduction (2023)',
+          'evidence': '[AI-Generated] Fully operational national voluntary market integrated with the mandatory ETS. Clear 5% offset limit for compliance entities.',
+          'label': 'Unified National VCM',
+          'score': 85,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'CCUS CCER Methodology V1.0',
+          'evidence': 'Specific MRV guidelines for CCUS projects released by MEE, ensuring high-fidelity emission credits.',
+          'label': 'Standardized Methodology',
+          'score': 85,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'State Council Carbon Trading Regulation 2024',
+          'evidence': 'Administrative regulation with direct legal force in carbon market compliance cycles.',
+          'label': 'National Trial Status',
+          'score': 80,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'China CCUS Technology Development Roadmap (2024 Edition)',
+          'evidence': '[AI-Generated] Positioned CCUS as a core strategic technology for carbon neutrality. 2030 and 2050 deployment targets legalized via national planning.',
+          'label': '2024 CCUS Roadmap Pillar',
+          'score': 95,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "Trading and Settlement Rules for Voluntary GHG Emission Reduction (2023)",
-      "evidence": "[AI-Generated] Fully operational national voluntary market integrated with the mandatory ETS. Clear 5% offset limit for compliance entities.",
-      "label": "Unified National VCM",
-      "score": 85
+  'category': 'Regulatory',
+  'country': 'China',
+  'description': 'The CCER restart in 2024 explicitly includes CCUS as one of the first four supported methodologies. Projects can generate certified emission reductions for trade in the national carbon market, providing a clear revenue stream for CCS projects in the power and industrial sectors.',
+  'evolution':
+    {
+      'clusters': ['China National Carbon Market'],
+      'supersedes': ['cn-ccer-legacy-2012'],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "CCUS CCER Methodology V1.0",
-      "evidence": "Specific MRV guidelines for CCUS projects released by MEE, ensuring high-fidelity emission credits.",
-      "label": "Standardized Methodology",
-      "score": 85
+  'id': 'cn-ccer',
+  'impactAnalysis':
+    {
+      'economic': 'Projected market size of 73.5B CNY by 2030; CEA prices >100 RMB/t.',
+      'environmental': 'First 9.48M tons certified in 2025.',
+      'technical': 'CCUS methodologies for steel/cement expedited in 2025.',
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "State Council Carbon Trading Regulation 2024",
-      "evidence": "Administrative regulation with direct legal force in carbon market compliance cycles.",
-      "label": "National Trial Status",
-      "score": 80
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-08',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "China CCUS Technology Development Roadmap (2024 Edition)",
-      "evidence": "[AI-Generated] Positioned CCUS as a core strategic technology for carbon neutrality. 2030 and 2050 deployment targets legalized via national planning.",
-      "label": "2024 CCUS Roadmap Pillar",
-      "score": 95
-    }
-  },
-  "category": "Regulatory",
-  "country": "China",
-  "description": "The CCER restart in 2024 explicitly includes CCUS as one of the first four supported methodologies. Projects can generate certified emission reductions for trade in the national carbon market, providing a clear revenue stream for CCS projects in the power and industrial sectors.",
-  "evolution": {
-    "clusters": [
-      "China National Carbon Market"
+  'pubDate': '2024-01-22',
+  'regulatory':
+    {
+      'co2_definition': '',
+      'cross_border_rules': '',
+      'financial_assurance': '',
+      'liability_period': '',
+      'liability_transfer': '',
+      'permitting_lead_time': '',
+      'pore_space_rights': '',
+    },
+  'relatedFacilities':
+    [
+      '1053',
+      '1054',
+      '112',
+      '1192',
+      '1208',
+      '1209',
+      '1298',
+      '1299',
+      '1309',
+      '1310',
+      '1313',
+      '1314',
+      '1315',
+      '1363',
+      '1414',
+      '1415',
+      '1416',
+      '1472',
+      '1473',
+      '186',
+      '233',
+      '238',
+      '369',
+      '370',
+      '371',
+      '411',
+      '442',
+      '443',
+      '444',
+      '541',
+      '591',
+      '592',
+      '593',
+      '642',
+      '643',
+      '813',
+      '83',
+      '85',
+      '86',
+      '924',
+      '925',
+      '926',
+      '929',
+      '930',
+      '931',
+      '95',
+      '96',
+      '97',
+      '99',
     ],
-    "supersedes": [
-      "cn-ccer-legacy-2012"
-    ]
-  },
-  "id": "cn-ccer",
-  "impactAnalysis": {
-    "economic": "Projected market size of 73.5B CNY by 2030; CEA prices >100 RMB/t.",
-    "environmental": "First 9.48M tons certified in 2025.",
-    "technical": "CCUS methodologies for steel/cement expedited in 2025."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-08",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-01-22",
-  "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
-  },
-  "relatedFacilities": [
-    "1053",
-    "1054",
-    "112",
-    "1192",
-    "1208",
-    "1209",
-    "1298",
-    "1299",
-    "1309",
-    "1310",
-    "1313",
-    "1314",
-    "1315",
-    "1363",
-    "1414",
-    "1415",
-    "1416",
-    "1472",
-    "1473",
-    "186",
-    "233",
-    "238",
-    "369",
-    "370",
-    "371",
-    "411",
-    "442",
-    "443",
-    "444",
-    "541",
-    "591",
-    "592",
-    "593",
-    "642",
-    "643",
-    "813",
-    "83",
-    "85",
-    "86",
-    "924",
-    "925",
-    "926",
-    "929",
-    "930",
-    "931",
-    "95",
-    "96",
-    "97",
-    "99"
-  ],
-  "reviewStatus": "verified",
-  "source": "Ministry of Ecology and Environment",
-  "status": "Active",
-  "title": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)",
-  "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': 'Ministry of Ecology and Environment',
+  'status': 'Active',
+  'title': 'Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)',
+  'url': 'https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml',
+  'year': 2024,
 }
 ---
 

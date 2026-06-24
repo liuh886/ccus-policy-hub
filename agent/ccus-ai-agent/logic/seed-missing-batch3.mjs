@@ -11,24 +11,55 @@ async function seed() {
   const buffer = fs.readFileSync(DB_PATH);
   const db = new SQL.Database(buffer);
 
-  db.run("BEGIN TRANSACTION");
+  db.run('BEGIN TRANSACTION');
   try {
     const missing = [
       { id: 'Kazakhstan', en: 'Kazakhstan', zh: '哈萨克斯坦' },
-      { id: 'Kuwait', en: 'Kuwait', zh: '科威特' }
+      { id: 'Kuwait', en: 'Kuwait', zh: '科威特' },
     ];
 
     for (const c of missing) {
-      db.run("INSERT OR IGNORE INTO country_profiles (id, region) VALUES (?, ?)", [c.id, 'Global']);
-      db.run(`INSERT OR IGNORE INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
-        [c.id, 'en', c.en, `Profile for ${c.en}`, 'Pending', 'Pending', 'Pending', 'Pending', 'Pending', 'Pending', 'Pending']);
-      db.run(`INSERT OR IGNORE INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
-        [c.id, 'zh', c.zh, `Profile for ${c.zh}`, '待定', '待定', '待定', '待定', '待定', '待定', '待定']);
+      db.run(
+        'INSERT OR IGNORE INTO country_profiles (id, region) VALUES (?, ?)',
+        [c.id, 'Global']
+      );
+      db.run(
+        `INSERT OR IGNORE INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
+        [
+          c.id,
+          'en',
+          c.en,
+          `Profile for ${c.en}`,
+          'Pending',
+          'Pending',
+          'Pending',
+          'Pending',
+          'Pending',
+          'Pending',
+          'Pending',
+        ]
+      );
+      db.run(
+        `INSERT OR IGNORE INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
+        [
+          c.id,
+          'zh',
+          c.zh,
+          `Profile for ${c.zh}`,
+          '待定',
+          '待定',
+          '待定',
+          '待定',
+          '待定',
+          '待定',
+          '待定',
+        ]
+      );
     }
 
-    db.run("COMMIT");
+    db.run('COMMIT');
   } catch (e) {
-    db.run("ROLLBACK");
+    db.run('ROLLBACK');
     throw e;
   }
 
@@ -37,4 +68,4 @@ async function seed() {
   db.close();
 }
 
-seed().catch(err => console.error(err));
+seed().catch((err) => console.error(err));

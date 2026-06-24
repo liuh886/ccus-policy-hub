@@ -19,8 +19,12 @@ async function query() {
   }
 
   console.log('--- POLICY DETAILS: cn-ccer ---');
-  const ccer_en = all("SELECT * FROM policy_i18n WHERE policy_id = 'cn-ccer' AND lang = 'en'");
-  const ccer_zh = all("SELECT * FROM policy_i18n WHERE policy_id = 'cn-ccer' AND lang = 'zh'");
+  const ccer_en = all(
+    "SELECT * FROM policy_i18n WHERE policy_id = 'cn-ccer' AND lang = 'en'"
+  );
+  const ccer_zh = all(
+    "SELECT * FROM policy_i18n WHERE policy_id = 'cn-ccer' AND lang = 'zh'"
+  );
   console.log('EN:', JSON.stringify(ccer_en, null, 2));
   console.log('ZH:', JSON.stringify(ccer_zh, null, 2));
 

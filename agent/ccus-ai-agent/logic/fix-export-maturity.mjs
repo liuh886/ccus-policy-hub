@@ -14,7 +14,7 @@ const replacement = `maturity: {
 if (!content.includes('maturity: {')) {
   content = content.replace(target, replacement);
   fs.writeFileSync(MANAGE_PATH, content);
-  console.log("Fixed manage.mjs export template.");
+  console.log('Fixed manage.mjs export template.');
 } else {
-  console.log("Export template already contains maturity.");
+  console.log('Export template already contains maturity.');
 }

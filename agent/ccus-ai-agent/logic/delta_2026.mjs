@@ -30,10 +30,14 @@ async function main() {
   `);
 
   console.log('--- STATUS DISTRIBUTION ---');
-  statusRes[0].values.forEach(row => console.log(`${row[0]}: ${row[1]} projects, ${row[2].toFixed(2)} Mtpa`));
+  statusRes[0].values.forEach((row) =>
+    console.log(`${row[0]}: ${row[1]} projects, ${row[2].toFixed(2)} Mtpa`)
+  );
 
   console.log('\n--- 2026 REFRESH REGIONAL CONTRIBUTORS (Top 6) ---');
-  regionDeltaRes[0].values.forEach(row => console.log(`${row[0]}: ${row[1]} projects, ${row[2].toFixed(2)} Mtpa`));
+  regionDeltaRes[0].values.forEach((row) =>
+    console.log(`${row[0]}: ${row[1]} projects, ${row[2].toFixed(2)} Mtpa`)
+  );
 }
 
 main().catch(console.error);
