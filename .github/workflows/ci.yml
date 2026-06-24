@@ -38,5 +38,8 @@ jobs:
       - name: Generate Quality Metrics
         run: pnpm manage:db:quality:export
 
+      - name: Generate Public Data
+        run: pnpm manage:db:data:export
+
       - name: Build
         run: pnpm run build

@@ -23,7 +23,7 @@ SQLite SSOT → JSON Export → Public Data Endpoints
 ### manifest.json
 The manifest provides an index of all available datasets, schemas, and documentation.
 
-**Location**: `/data/manifest.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/manifest.json
 
 **Key fields**:
 - `generated_at`: ISO 8601 timestamp
@@ -34,7 +34,7 @@ The manifest provides an index of all available datasets, schemas, and documenta
 ### policies.json
 Global CCUS policies with FSRTM dimension analysis scores.
 
-**Location**: `/data/policies.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/policies.json
 
 **Record structure**:
 ```json
@@ -71,7 +71,7 @@ Global CCUS policies with FSRTM dimension analysis scores.
 ### facilities.json
 Global CCUS facilities with capacity, location, and linked policies.
 
-**Location**: `/data/facilities.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/facilities.json
 
 **Record structure**:
 ```json
@@ -104,7 +104,7 @@ Global CCUS facilities with capacity, location, and linked policies.
 ### countries.json
 Country governance profiles with 7 regulatory pillars.
 
-**Location**: `/data/countries.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/countries.json
 
 **Record structure**:
 ```json
@@ -147,7 +147,7 @@ Country governance profiles with 7 regulatory pillars.
 ### quality.json
 Data quality metrics and audit status.
 
-**Location**: `/data/quality.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/quality.json
 
 **Key fields**:
 ```json
@@ -197,7 +197,7 @@ Data quality metrics and audit status.
 ### dataset-versions.json
 Dataset version and provenance metadata.
 
-**Location**: `/data/dataset-versions.json`
+**Location**: https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json
 
 ```json
 {
@@ -212,12 +212,12 @@ Dataset version and provenance metadata.
 
 ## JSON Schemas
 
-JSON Schema definitions are available at `/data/schemas/`:
+JSON Schema definitions are available at:
 
-- `policy.schema.json`: Schema for policy records
-- `facility.schema.json`: Schema for facility records
-- `country.schema.json`: Schema for country profile records
-- `manifest.schema.json`: Schema for the manifest file
+- [policy.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json): Schema for policy records
+- [facility.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json): Schema for facility records
+- [country.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json): Schema for country profile records
+- [manifest.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/manifest.schema.json): Schema for the manifest file
 
 Use these schemas to validate data before processing.
 

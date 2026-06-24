@@ -207,6 +207,34 @@ describe('Policy Record Fields', () => {
       assert.ok(policy.i18n, `Policy ${policy.id} should have i18n`);
     }
   });
+
+  it('at least one policy has i18n title', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'policies.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: policies.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const hasTitle = content.records.some(
+      (p) => p.i18n?.zh?.title || p.i18n?.en?.title
+    );
+    assert.ok(hasTitle, 'At least one policy should have i18n title');
+  });
+
+  it('at least one policy has non-empty analysis', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'policies.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: policies.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const hasAnalysis = content.records.some(
+      (p) => p.analysis && Object.keys(p.analysis).length > 0
+    );
+    assert.ok(hasAnalysis, 'At least one policy should have analysis');
+  });
 });
 
 describe('Facility Record Fields', () => {
@@ -233,6 +261,85 @@ describe('Facility Record Fields', () => {
         `Facility ${facility.id} should have linked_policies array`
       );
     }
+  });
+
+  it('at least one facility has i18n name', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'facilities.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: facilities.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const hasName = content.records.some(
+      (f) => f.i18n?.zh?.name || f.i18n?.en?.name
+    );
+    assert.ok(hasName, 'At least one facility should have i18n name');
+  });
+
+  it('total linked_policies count > 0', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'facilities.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: facilities.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const totalLinks = content.records.reduce(
+      (sum, f) => sum + (f.linked_policies?.length || 0),
+      0
+    );
+    assert.ok(totalLinks > 0, 'Total linked_policies should be > 0');
+  });
+});
+
+describe('Country Record Fields', () => {
+  it('countries.json records include required fields', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'countries.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: countries.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const requiredFields = ['id'];
+
+    for (const country of content.records.slice(0, 10)) {
+      for (const field of requiredFields) {
+        assert.ok(
+          field in country,
+          `Country ${country.id} should have ${field}`
+        );
+      }
+      assert.ok(country.i18n, `Country ${country.id} should have i18n`);
+    }
+  });
+
+  it('at least one country has policy_count > 0', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'countries.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: countries.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const hasPolicies = content.records.some((c) => c.policy_count > 0);
+    assert.ok(hasPolicies, 'At least one country should have policy_count > 0');
+  });
+
+  it('at least one country has facility_count > 0', () => {
+    const filePath = path.join(PUBLIC_DATA_DIR, 'countries.json');
+    if (!fs.existsSync(filePath)) {
+      console.log('Skipping: countries.json not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const hasFacilities = content.records.some((c) => c.facility_count > 0);
+    assert.ok(
+      hasFacilities,
+      'At least one country should have facility_count > 0'
+    );
   });
 });
 
@@ -273,5 +380,25 @@ describe('llms.txt Validation', () => {
       content.includes('country-level'),
       'llms-full.txt should mention country-level link limitation'
     );
+  });
+});
+
+describe('Data Quality Checks', () => {
+  it('no generated dataset has all-empty i18n objects', () => {
+    const datasets = ['policies.json', 'facilities.json', 'countries.json'];
+
+    for (const dataset of datasets) {
+      const filePath = path.join(PUBLIC_DATA_DIR, dataset);
+      if (!fs.existsSync(filePath)) {
+        console.log(`Skipping: ${dataset} not found`);
+        continue;
+      }
+
+      const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      const allEmpty = content.records.every(
+        (record) => !record.i18n || Object.keys(record.i18n).length === 0
+      );
+      assert.ok(!allEmpty, `${dataset} should not have all-empty i18n objects`);
+    }
   });
 });

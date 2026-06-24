@@ -34,26 +34,42 @@ const DATASET_VERSIONS_PATH = path.join(
 /**
  * Helper: run a query that returns a single scalar value
  */
-function queryScalar(db, sql) {
-  const result = db.exec(sql);
-  if (result.length === 0 || result[0].values.length === 0) return 0;
-  return result[0].values[0][0];
+function queryScalar(db, sql, params = []) {
+  const stmt = db.prepare(sql);
+  if (params.length > 0) {
+    stmt.bind(params);
+  }
+  let result = 0;
+  if (stmt.step()) {
+    result = stmt.get()[0];
+  }
+  stmt.free();
+  return result;
 }
 
 /**
  * Helper: run a query that returns rows as objects
  */
-function queryRows(db, sql) {
-  const result = db.exec(sql);
-  if (result.length === 0) return [];
-  const columns = result[0].columns;
-  return result[0].values.map((row) => {
-    const obj = {};
-    columns.forEach((col, i) => {
-      obj[col] = row[i];
+function queryRows(db, sql, params = []) {
+  const stmt = db.prepare(sql);
+  if (params.length > 0) {
+    stmt.bind(params);
+  }
+  const rows = [];
+  let columnNames = null;
+  while (stmt.step()) {
+    if (!columnNames) {
+      columnNames = stmt.getColumnNames();
+    }
+    const values = stmt.get();
+    const row = {};
+    columnNames.forEach((col, i) => {
+      row[col] = values[i];
     });
-    return obj;
-  });
+    rows.push(row);
+  }
+  stmt.free();
+  return rows;
 }
 
 /**
@@ -334,46 +350,48 @@ async function generatePublicData() {
 
   // --- Generate manifest.json ---
   console.log('Generating manifest.json...');
+  const BASE_URL = 'https://liuh886.github.io/ccus-policy-hub';
   const manifest = {
     generated_at: generatedAt,
     project: 'CCUS Policy Hub',
     description: 'Global CCUS Policy Database & Analysis Platform',
     version: '1.0.0',
+    base_url: BASE_URL,
     source_db: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
     datasets: {
       policies: {
-        file: '/data/policies.json',
+        file: `${BASE_URL}/data/policies.json`,
         count: policies.length,
         description: 'Global CCUS policies with analysis scores',
       },
       facilities: {
-        file: '/data/facilities.json',
+        file: `${BASE_URL}/data/facilities.json`,
         count: facilities.length,
         description: 'Global CCUS facilities with capacity and location data',
       },
       countries: {
-        file: '/data/countries.json',
+        file: `${BASE_URL}/data/countries.json`,
         count: countries.length,
         description: 'Country governance profiles with regulatory pillars',
       },
       quality: {
-        file: '/data/quality.json',
+        file: `${BASE_URL}/data/quality.json`,
         description: 'Data quality metrics and audit status',
       },
       'dataset-versions': {
-        file: '/data/dataset-versions.json',
+        file: `${BASE_URL}/data/dataset-versions.json`,
         description: 'Dataset version metadata',
       },
     },
     schemas: {
-      policy: '/data/schemas/policy.schema.json',
-      facility: '/data/schemas/facility.schema.json',
-      country: '/data/schemas/country.schema.json',
-      manifest: '/data/schemas/manifest.schema.json',
+      policy: `${BASE_URL}/data/schemas/policy.schema.json`,
+      facility: `${BASE_URL}/data/schemas/facility.schema.json`,
+      country: `${BASE_URL}/data/schemas/country.schema.json`,
+      manifest: `${BASE_URL}/data/schemas/manifest.schema.json`,
     },
     documentation: {
-      llms: '/llms.txt',
-      'llms-full': '/llms-full.txt',
+      llms: `${BASE_URL}/llms.txt`,
+      'llms-full': `${BASE_URL}/llms-full.txt`,
     },
     known_limitations: [
       'Facility-policy links are currently country-level only (low confidence)',

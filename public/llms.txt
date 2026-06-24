@@ -6,24 +6,24 @@ CCUS Policy Hub is a global intelligence infrastructure for Carbon Capture, Util
 
 ## Machine-Readable Data Files
 
-All data endpoints are available at `/data/`:
+Base URL: https://liuh886.github.io/ccus-policy-hub
 
 | File | Description |
 |------|-------------|
-| `/data/manifest.json` | Index of all available datasets, schemas, and documentation |
-| `/data/policies.json` | 130 global CCUS policies with analysis scores |
-| `/data/facilities.json` | 1,110 CCUS facilities with capacity and location data |
-| `/data/countries.json` | 66 country governance profiles with regulatory pillars |
-| `/data/quality.json` | Data quality metrics and audit status |
-| `/data/dataset-versions.json` | Dataset version metadata |
+| [manifest.json](https://liuh886.github.io/ccus-policy-hub/data/manifest.json) | Index of all available datasets, schemas, and documentation |
+| [policies.json](https://liuh886.github.io/ccus-policy-hub/data/policies.json) | 130 global CCUS policies with analysis scores |
+| [facilities.json](https://liuh886.github.io/ccus-policy-hub/data/facilities.json) | 1,110 CCUS facilities with capacity and location data |
+| [countries.json](https://liuh886.github.io/ccus-policy-hub/data/countries.json) | 66 country governance profiles with regulatory pillars |
+| [quality.json](https://liuh886.github.io/ccus-policy-hub/data/quality.json) | Data quality metrics and audit status |
+| [dataset-versions.json](https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json) | Dataset version metadata |
 
 ## JSON Schemas
 
-Schemas are available at `/data/schemas/`:
-- `policy.schema.json`
-- `facility.schema.json`
-- `country.schema.json`
-- `manifest.schema.json`
+Schemas are available at:
+- [policy.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json)
+- [facility.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json)
+- [country.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json)
+- [manifest.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/manifest.schema.json)
 
 ## Known Limitations
 
@@ -40,14 +40,14 @@ Schemas are available at `/data/schemas/`:
 
 ## Before Using This Data
 
-1. Check `/data/quality.json` for current data quality metrics
-2. Review `/data/dataset-versions.json` for dataset version and last update date
+1. Check [quality.json](https://liuh886.github.io/ccus-policy-hub/data/quality.json) for current data quality metrics
+2. Review [dataset-versions.json](https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json) for dataset version and last update date
 3. Be aware that facility-policy links are country-level only (low confidence)
 4. Verify audit status in quality.json before making decisions based on this data
 
 ## Full Documentation
 
-For complete documentation including all fields and relationships, see `/llms-full.txt`
+For complete documentation including all fields and relationships, see [llms-full.txt](https://liuh886.github.io/ccus-policy-hub/llms-full.txt)
 
 ## Source
 
