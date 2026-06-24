@@ -4,7 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const docs = await getCollection('docs_zh');
-  const sortedDocs = [...docs].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+  const sortedDocs = [...docs].sort(
+    (a, b) => (a.data.order || 0) - (b.data.order || 0)
+  );
   return docs.map((entry) => {
     return {
       params: { slug: entry.id },
@@ -21,36 +23,57 @@ const wordCount = entry.body?.split(/\s+/).length || 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 ---
 
-<Layout title={`${entry.data.title} - 文档中心`} description={entry.data.description}>
+<Layout
+  title={`${entry.data.title} - 文档中心`}
+  description={entry.data.description}
+>
   <div class="max-w-7xl mx-auto py-12 px-4">
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- Sidebar Navigation -->
-      <aside class="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 h-fit order-2 lg:order-1">
-        <div class="bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-6 border border-slate-100 dark:border-slate-800">
-          <h3 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 px-2">
+      <aside
+        class="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 h-fit order-2 lg:order-1"
+      >
+        <div
+          class="bg-slate-50 dark:bg-slate-900/50 rounded-3xl p-6 border border-slate-100 dark:border-slate-800"
+        >
+          <h3
+            class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6 px-2"
+          >
             文档目录
           </h3>
           <nav class="space-y-1">
-            {allDocs.map((doc) => (
-              <a
-                href={`/ccus-policy-hub/docs/${doc.id}/`}
-                class={`block px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                  doc.id === entry.id
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-600'
-                }`}
-              >
-                {doc.data.title}
-              </a>
-            ))}
+            {
+              allDocs.map((doc) => (
+                <a
+                  href={`/ccus-policy-hub/docs/${doc.id}/`}
+                  class={`block px-4 py-2.5 rounded-xl text-sm font-bold transition-all ${
+                    doc.id === entry.id
+                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:text-blue-600'
+                  }`}
+                >
+                  {doc.data.title}
+                </a>
+              ))
+            }
           </nav>
 
-          <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+          <div
+            class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800"
+          >
             <a
               href="/ccus-policy-hub/docs/"
               class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"></path></svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"><path d="m15 18-6-6 6-6"></path></svg
+              >
               返回中心
             </a>
           </div>
@@ -60,61 +83,134 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
       <!-- Main Content -->
       <main class="flex-grow min-w-0 order-1 lg:order-2">
         <!-- Breadcrumbs -->
-        <nav class="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">
-          <a href="/ccus-policy-hub/" class="hover:text-blue-600 transition-colors">HOME</a>
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg>
-          <a href="/ccus-policy-hub/docs/" class="hover:text-blue-600 transition-colors">DOCS</a>
-          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg>
-          <span class="text-blue-600 truncate max-w-[200px]">{entry.data.title.toUpperCase()}</span>
+        <nav
+          class="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8"
+        >
+          <a
+            href="/ccus-policy-hub/"
+            class="hover:text-blue-600 transition-colors">HOME</a
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg
+          >
+          <a
+            href="/ccus-policy-hub/docs/"
+            class="hover:text-blue-600 transition-colors">DOCS</a
+          >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"><path d="m9 18 6-6-6-6"></path></svg
+          >
+          <span class="text-blue-600 truncate max-w-[200px]"
+            >{entry.data.title.toUpperCase()}</span
+          >
         </nav>
 
         <header class="mb-12 px-4">
-          <h1 class="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1] text-balance">
+          <h1
+            class="text-4xl md:text-6xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1] text-balance"
+          >
             {entry.data.title}
           </h1>
-          
-          <div class="flex flex-wrap items-center gap-4 text-[11px] font-black uppercase tracking-widest">
-            <div class="flex items-center gap-2 text-slate-500 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+
+          <div
+            class="flex flex-wrap items-center gap-4 text-[11px] font-black uppercase tracking-widest"
+          >
+            <div
+              class="flex items-center gap-2 text-slate-500 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                ><circle cx="12" cy="12" r="10"></circle><polyline
+                  points="12 6 12 12 16 14"></polyline></svg
+              >
               阅读时间: {readingTime} MIN
             </div>
-            <div class="flex items-center gap-2 text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            <div
+              class="flex items-center gap-2 text-blue-600 bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-full"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                ><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                ></path></svg
+              >
               DOC-ID: {entry.data.order?.toString().padStart(2, '0') || '00'}
             </div>
           </div>
         </header>
 
-        <div class="bg-white dark:bg-slate-950 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none overflow-hidden transition-colors">
+        <div
+          class="bg-white dark:bg-slate-950 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none overflow-hidden transition-colors"
+        >
           <div class="p-8 md:p-16 lg:p-20">
-            {entry.data.description && (
-              <div class="mb-16">
-                <p class="text-2xl md:text-3xl text-slate-400 dark:text-slate-500 font-medium leading-tight tracking-tighter mb-4 text-balance italic">
-                  {entry.data.description}
-                </p>
-                <div class="h-1.5 w-24 bg-blue-600 rounded-full"></div>
-              </div>
-            )}
+            {
+              entry.data.description && (
+                <div class="mb-16">
+                  <p class="text-2xl md:text-3xl text-slate-400 dark:text-slate-500 font-medium leading-tight tracking-tighter mb-4 text-balance italic">
+                    {entry.data.description}
+                  </p>
+                  <div class="h-1.5 w-24 bg-blue-600 rounded-full" />
+                </div>
+              )
+            }
 
-            <article class="prose-container prose prose-slate prose-lg lg:prose-xl dark:prose-invert max-w-none">
+            <article
+              class="prose-container prose prose-slate prose-lg lg:prose-xl dark:prose-invert max-w-none"
+            >
               <Content />
             </article>
           </div>
         </div>
 
         <!-- Footer Action (Slim Version) -->
-        <div class="mt-12 bg-slate-50 dark:bg-slate-900/40 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div
+          class="mt-12 bg-slate-50 dark:bg-slate-900/40 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div class="text-left">
-            <h2 class="text-lg font-black text-slate-900 dark:text-white mb-1">发现错误或有改进建议？</h2>
+            <h2 class="text-lg font-black text-slate-900 dark:text-white mb-1">
+              发现错误或有改进建议？
+            </h2>
             <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
               我们的文档由社区驱动。如果您发现任何不准确之处，请参与共建。
             </p>
           </div>
           <div class="flex gap-3 shrink-0">
-            <a href="/ccus-policy-hub/about/" class="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/10">
+            <a
+              href="/ccus-policy-hub/about/"
+              class="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/10"
+            >
               提交反馈
             </a>
-            <a href="https://github.com/liuh886/ccus-policy-hub" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+            <a
+              href="https://github.com/liuh886/ccus-policy-hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
+            >
               GitHub
             </a>
           </div>
@@ -138,7 +234,7 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 200));
     color: #0f172a;
     display: block;
   }
-  
+
   .dark .prose-container h2 {
     color: #f8fafc;
     border-bottom-color: #1e293b;

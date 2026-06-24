@@ -17,7 +17,8 @@ export const ui = {
       '全球 CCUS 政策数据库与分析平台，助力全球净零排放目标。',
     'footer.links': '快速链接',
     'footer.contact': '联系我们',
-    'footer.contact_info': '如有建议或反馈，请通过文档中心的反馈渠道与我们联系。',
+    'footer.contact_info':
+      '如有建议或反馈，请通过文档中心的反馈渠道与我们联系。',
     'policy.filter.country': '所有国家',
     'policy.filter.type': '所有类型',
     'policy.search.placeholder': '搜索政策标题、内容或标签...',
@@ -32,7 +33,8 @@ export const ui = {
     'stats.of': '/',
     'home.console.title': '全球政策准入控制台',
     'home.console.subtitle': '全球政策情报矩阵',
-    'home.console.description': '实时多维度跟踪全球 CCS/CCUS 监管框架、激励机制与市场准入要求。',
+    'home.console.description':
+      '实时多维度跟踪全球 CCS/CCUS 监管框架、激励机制与市场准入要求。',
     'home.console.legend.financial': '直接财政激励',
     'home.console.legend.regulatory': '合规监管框架',
     'home.console.node.active': '监管框架活跃',
@@ -48,7 +50,8 @@ export const ui = {
       'Global CCUS Policy Database & Analysis Platform, supporting global net-zero goals.',
     'footer.links': 'Quick Links',
     'footer.contact': 'Contact Us',
-    'footer.contact_info': 'For suggestions or feedback, please contact us through the feedback channel in the Documentation Center.',
+    'footer.contact_info':
+      'For suggestions or feedback, please contact us through the feedback channel in the Documentation Center.',
     'policy.filter.country': 'All Countries',
     'policy.filter.type': 'All Types',
     'policy.search.placeholder': 'Search titles, content or tags...',
@@ -63,7 +66,8 @@ export const ui = {
     'stats.of': 'of',
     'home.console.title': 'Policy Access Console',
     'home.console.subtitle': 'Global Policy Intelligence Matrix',
-    'home.console.description': 'Real-time multi-dimensional tracking of CCS/CCUS regulatory frameworks and incentives.',
+    'home.console.description':
+      'Real-time multi-dimensional tracking of CCS/CCUS regulatory frameworks and incentives.',
     'home.console.legend.financial': 'Direct Financial Incentives',
     'home.console.legend.regulatory': 'Regulatory Compliance',
     'home.console.node.active': 'Framework Active',

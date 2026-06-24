@@ -161,7 +161,7 @@ const statuses = Array.from(
       id="facility-grid"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
     >
-        {
+      {
         facilities.map((f) => (
           <div
             class="facility-item"
@@ -171,7 +171,9 @@ const statuses = Array.from(
             data-sector={f.data.sector}
             data-type={f.data.type}
             data-status={f.data.status}
-            data-capacity={f.data.estimatedCapacity || f.data.announcedCapacityMax || 0}
+            data-capacity={
+              f.data.estimatedCapacity || f.data.announcedCapacityMax || 0
+            }
             data-year={f.data.announcement || ''}
             data-hub={f.data.hub || ''}
             data-partners={f.data.partners?.join(' ') || ''}
@@ -240,11 +242,11 @@ const statuses = Array.from(
         const d = item.dataset;
         const matches =
           (d.name.toLowerCase().includes(search) ||
-           d.hub.toLowerCase().includes(search) ||
-           d.partners.toLowerCase().includes(search) ||
-           d.operator.toLowerCase().includes(search) ||
-           d.country.toLowerCase().includes(search) ||
-           d.region.toLowerCase().includes(search)) &&
+            d.hub.toLowerCase().includes(search) ||
+            d.partners.toLowerCase().includes(search) ||
+            d.operator.toLowerCase().includes(search) ||
+            d.country.toLowerCase().includes(search) ||
+            d.region.toLowerCase().includes(search)) &&
           (!country || d.country === country) &&
           (!status || d.status === status) &&
           (!sector || d.sector === sector) &&

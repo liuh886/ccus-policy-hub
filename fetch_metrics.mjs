@@ -66,7 +66,7 @@ async function fetchMetrics() {
         AVG(estimated_capacity) as avg_cap
       FROM facilities
       WHERE status = 'Cancelled'
-    `
+    `,
   };
 
   const results = {};

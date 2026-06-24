@@ -112,7 +112,10 @@ const SECTOR_MAP = new Map([
   ['Fuel transformation|Coal-to-liquids', 'Coal-to-liquids'],
   ['Fuel transformation|Gas-to-liquids', 'Gas-to-liquids'],
   ['Fuel transformation|Hydrogen or ammonia', 'Hydrogen or ammonia'],
-  ['Fuel transformation|Natural gas processing/LNG', 'Natural gas processing/LNG'],
+  [
+    'Fuel transformation|Natural gas processing/LNG',
+    'Natural gas processing/LNG',
+  ],
   ['Fuel transformation|Oil and gas extraction', 'Oil and gas extraction'],
   ['Fuel transformation|Refining', 'Refining'],
   ['Industry|Aluminium', 'Aluminium'],
@@ -218,7 +221,9 @@ function parseOptionalNumber(value) {
 
 function numericText(value) {
   const number = parseOptionalNumber(value);
-  return number === null ? '' : String(Number.isInteger(number) ? number : number);
+  return number === null
+    ? ''
+    : String(Number.isInteger(number) ? number : number);
 }
 
 function normalizeCountry(rawCountry) {
@@ -332,18 +337,24 @@ function buildEnglishDescription(record) {
   lines.push(
     `This ${record.type.toLowerCase() || 'ccus'} project is located in ${record.country}${record.region ? ` (${record.region})` : ''} and is currently ${record.status}.`
   );
-  if (record.sector) lines.push(`The primary sector classification is ${record.sector}.`);
-  if (record.fate) lines.push(`The reported fate of captured carbon is ${record.fate}.`);
-  if (record.hub) lines.push(`The project is associated with the ${record.hub} hub.`);
-  if (record.announcement) lines.push(`Announcement year: ${record.announcement}.`);
+  if (record.sector)
+    lines.push(`The primary sector classification is ${record.sector}.`);
+  if (record.fate)
+    lines.push(`The reported fate of captured carbon is ${record.fate}.`);
+  if (record.hub)
+    lines.push(`The project is associated with the ${record.hub} hub.`);
+  if (record.announcement)
+    lines.push(`Announcement year: ${record.announcement}.`);
   if (record.fid) lines.push(`Final investment decision year: ${record.fid}.`);
-  if (record.operation) lines.push(`Planned or actual operation year: ${record.operation}.`);
+  if (record.operation)
+    lines.push(`Planned or actual operation year: ${record.operation}.`);
   if (record.suspension) {
     lines.push(
       `Suspension, decommissioning, or cancellation year: ${record.suspension}.`
     );
   }
-  if (record.partners.length) lines.push(`Reported partners: ${record.partners.join(', ')}.`);
+  if (record.partners.length)
+    lines.push(`Reported partners: ${record.partners.join(', ')}.`);
   return lines.join('\n');
 }
 
@@ -360,8 +371,10 @@ function buildChineseDescription(record) {
   if (record.announcement) lines.push(`首次公开年份：${record.announcement}。`);
   if (record.fid) lines.push(`最终投资决策年份：${record.fid}。`);
   if (record.operation) lines.push(`投运或计划投运年份：${record.operation}。`);
-  if (record.suspension) lines.push(`暂停、退役或取消年份：${record.suspension}。`);
-  if (record.partners.length) lines.push(`已披露合作方：${record.partners.join('、')}。`);
+  if (record.suspension)
+    lines.push(`暂停、退役或取消年份：${record.suspension}。`);
+  if (record.partners.length)
+    lines.push(`已披露合作方：${record.partners.join('、')}。`);
   return lines.join('\n');
 }
 
@@ -419,14 +432,21 @@ async function run() {
     const hasMrvJson = tableHasColumn(db, 'facilities', 'mrv_json');
 
     const existingFacilities = new Map(
-      rowsFromQuery(db, 'SELECT * FROM facilities').map((row) => [String(row.id), row])
+      rowsFromQuery(db, 'SELECT * FROM facilities').map((row) => [
+        String(row.id),
+        row,
+      ])
     );
     const existingI18n = rowsFromQuery(db, 'SELECT * FROM facility_i18n');
     const existingEn = new Map(
-      existingI18n.filter((row) => row.lang === 'en').map((row) => [String(row.facility_id), row])
+      existingI18n
+        .filter((row) => row.lang === 'en')
+        .map((row) => [String(row.facility_id), row])
     );
     const existingZh = new Map(
-      existingI18n.filter((row) => row.lang === 'zh').map((row) => [String(row.facility_id), row])
+      existingI18n
+        .filter((row) => row.lang === 'zh')
+        .map((row) => [String(row.facility_id), row])
     );
 
     const workbook = XLSX.readFile(excelPath, { raw: true });
@@ -464,19 +484,32 @@ async function run() {
       if (!FATE_EN_MAP.has(cleanString(row['Fate of carbon'])) && fateEn) {
         fateWarnings.add(cleanString(row['Fate of carbon']));
       }
-      if (!SECTOR_MAP.has(`${cleanString(row.Sector)}|${cleanString(row.Subsector)}`) && sectorEn) {
-        sectorWarnings.add(`${cleanString(row.Sector)}|${cleanString(row.Subsector)}`);
+      if (
+        !SECTOR_MAP.has(
+          `${cleanString(row.Sector)}|${cleanString(row.Subsector)}`
+        ) &&
+        sectorEn
+      ) {
+        sectorWarnings.add(
+          `${cleanString(row.Sector)}|${cleanString(row.Subsector)}`
+        );
       }
       if (country !== cleanString(row['Country or economy'])) {
-        countryWarnings.add(`${cleanString(row['Country or economy'])} -> ${country}`);
+        countryWarnings.add(
+          `${cleanString(row['Country or economy'])} -> ${country}`
+        );
       }
 
       const existingFacility = existingFacilities.get(id) || {};
       const existingFacilityEn = existingEn.get(id) || {};
       const existingFacilityZh = existingZh.get(id) || {};
 
-      const announcedCapacity = parseOptionalNumber(row['Announced capacity (Mt CO2/yr)']);
-      const estimatedCapacity = parseOptionalNumber(row['Estimated capacity by IEA (Mt CO2/yr)']);
+      const announcedCapacity = parseOptionalNumber(
+        row['Announced capacity (Mt CO2/yr)']
+      );
+      const estimatedCapacity = parseOptionalNumber(
+        row['Estimated capacity by IEA (Mt CO2/yr)']
+      );
       const region = cleanString(row.Region);
       const phase = numericText(row['Project phase']);
       const announcement = numericText(row.Announcement);
@@ -587,9 +620,15 @@ async function run() {
 
     const importedIds = new Set(imported.map((row) => row.id));
     const previousIds = new Set(existingFacilities.keys());
-    const addedIds = [...importedIds].filter((id) => !previousIds.has(id)).sort();
-    const removedIds = [...previousIds].filter((id) => !importedIds.has(id)).sort();
-    const persistedIds = [...importedIds].filter((id) => previousIds.has(id)).sort();
+    const addedIds = [...importedIds]
+      .filter((id) => !previousIds.has(id))
+      .sort();
+    const removedIds = [...previousIds]
+      .filter((id) => !importedIds.has(id))
+      .sort();
+    const persistedIds = [...importedIds]
+      .filter((id) => previousIds.has(id))
+      .sort();
 
     let statusChanges = 0;
     let countryChanges = 0;
@@ -779,7 +818,9 @@ async function run() {
           );
         }
 
-        db.run('DELETE FROM facility_partners WHERE facility_id = ?', [record.id]);
+        db.run('DELETE FROM facility_partners WHERE facility_id = ?', [
+          record.id,
+        ]);
         record.partners.forEach((partner, index) => {
           db.run(
             'INSERT INTO facility_partners (facility_id, lang, order_index, partner) VALUES (?,?,?,?)',

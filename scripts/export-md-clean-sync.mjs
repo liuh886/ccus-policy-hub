@@ -140,10 +140,14 @@ export async function runCleanExportSync() {
     });
   }
 
-  execFileSync('node', ['agent/ccus-ai-agent/logic/manage.mjs', 'db:export:md'], {
-    cwd: ROOT,
-    stdio: 'inherit',
-  });
+  execFileSync(
+    'node',
+    ['agent/ccus-ai-agent/logic/manage.mjs', 'db:export:md'],
+    {
+      cwd: ROOT,
+      stdio: 'inherit',
+    }
+  );
 
   const summary = {
     generated_at: new Date().toISOString(),
@@ -156,7 +160,10 @@ export async function runCleanExportSync() {
   return summary;
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
   runCleanExportSync().catch((error) => {
     console.error(`Error: ${error.message}`);
     process.exit(1);

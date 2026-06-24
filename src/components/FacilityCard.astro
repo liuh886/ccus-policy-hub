@@ -16,7 +16,7 @@ const {
   sector,
   precision,
   phase,
-  region
+  region,
 } = facility.data;
 
 const isEn = facility.data.lang === 'en';
@@ -36,7 +36,7 @@ const statusColors: Record<string, string> = {
   开发中: 'bg-blue-400',
   'Under Development': 'bg-blue-400',
   'Under construction': 'bg-amber-500',
-  '建设中': 'bg-amber-500',
+  建设中: 'bg-amber-500',
 };
 
 const statusColor = statusColors[status] || 'bg-slate-400';
@@ -61,11 +61,13 @@ const statusColor = statusColors[status] || 'bg-slate-400';
             >{status}</span
           >
         </div>
-        {phase && (
-          <span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-800">
-            {phase}
-          </span>
-        )}
+        {
+          phase && (
+            <span class="px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest border border-blue-100 dark:border-blue-800">
+              {phase}
+            </span>
+          )
+        }
       </div>
       <div class="flex items-center gap-3">
         {
@@ -103,12 +105,14 @@ const statusColor = statusColors[status] || 'bg-slate-400';
       class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-6"
     >
       <span>{country}</span>
-      {region && (
-        <>
-          <span>•</span>
-          <span class="truncate">{region}</span>
-        </>
-      )}
+      {
+        region && (
+          <>
+            <span>•</span>
+            <span class="truncate">{region}</span>
+          </>
+        )
+      }
     </div>
 
     <div
@@ -119,7 +123,14 @@ const statusColor = statusColors[status] || 'bg-slate-400';
           class="flex items-center gap-1.5 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1"
         >
           {isEn ? 'Capacity' : '年捕集规模'}
-          {isAnnounced && <span class="w-1 h-1 rounded-full bg-emerald-500" title="Announced Value"></span>}
+          {
+            isAnnounced && (
+              <span
+                class="w-1 h-1 rounded-full bg-emerald-500"
+                title="Announced Value"
+              />
+            )
+          }
         </div>
         <div class="text-lg font-black text-slate-900 dark:text-white">
           {displayCapacity}
