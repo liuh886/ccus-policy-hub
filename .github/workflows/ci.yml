@@ -22,6 +22,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+
       - name: Lint
         run: pnpm lint
 
@@ -30,6 +31,12 @@ jobs:
 
       - name: Astro Check
         run: pnpm astro check
+
+      - name: Deep Audit (blocking)
+        run: pnpm manage:db:audit:deep
+
+      - name: Generate Quality Metrics
+        run: pnpm manage:db:quality:export
 
       - name: Build
         run: pnpm run build

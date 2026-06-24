@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import WorldMapNav from '../components/WorldMapNav.astro';
 import CapacityTrend from '../components/CapacityTrend.astro';
+import DatasetVersion from '../components/DatasetVersion.astro';
 import { getCollection } from 'astro:content';
 
 const policies = await getCollection('policies_zh');
@@ -267,5 +268,10 @@ const policyCount = policies.length;
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Dataset Version Metadata -->
+  <div class="max-w-6xl mx-auto px-4 pb-8">
+    <DatasetVersion lang="zh" />
   </div>
 </Layout>
