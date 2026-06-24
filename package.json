@@ -45,9 +45,7 @@
     "leaflet.markercluster": "^1.5.3",
     "pagefind": "^1.4.0",
     "sql.js": "^1.13.0",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
-    "xlsx": "^0.18.5"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
@@ -63,6 +61,8 @@
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^17.1.1",
-    "stylelint-config-standard": "^40.0.0"
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^5.9.3",
+    "xlsx": "^0.18.5"
   }
 }

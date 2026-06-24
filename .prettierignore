@@ -1,0 +1,31 @@
+# --- Build Output ---
+dist/
+
+# --- Astro Cache ---
+.astro/
+
+# --- Dependencies ---
+node_modules/
+
+# --- Lock Files ---
+pnpm-lock.yaml
+
+# --- Agent Workspace (maintenance scripts, not part of site build) ---
+agent/
+
+# --- Internal AI Context ---
+.gemini/
+.codex/
+.worktrees/
+
+# --- Generated Data ---
+src/data/*.json
+scripts/*.test.mjs
+
+# --- OS & IDE ---
+.DS_Store
+Thumbs.db
+
+# --- Other ---
+*.md
+LICENSE

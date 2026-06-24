@@ -44,12 +44,6 @@ importers:
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-      xlsx:
-        specifier: ^0.18.5
-        version: 0.18.5
     devDependencies:
       '@commitlint/cli':
         specifier: ^20.4.1
@@ -93,6 +87,12 @@ importers:
       stylelint-config-standard:
         specifier: ^40.0.0
         version: 40.0.0(stylelint@17.1.1(typescript@5.9.3))
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      xlsx:
+        specifier: ^0.18.5
+        version: 0.18.5
 
 packages:
 
