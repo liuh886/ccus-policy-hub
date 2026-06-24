@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-06-24T05:28:52.682Z",
+  "project": "CCUS Policy Hub",
+  "description": "Global CCUS Policy Database & Analysis Platform",
+  "version": "1.0.0",
+  "source_db": "agent/ccus-ai-agent/db/ccus_master.sqlite",
+  "datasets": {
+    "policies": {
+      "file": "/data/policies.json",
+      "count": 130,
+      "description": "Global CCUS policies with analysis scores"
+    },
+    "facilities": {
+      "file": "/data/facilities.json",
+      "count": 1110,
+      "description": "Global CCUS facilities with capacity and location data"
+    },
+    "countries": {
+      "file": "/data/countries.json",
+      "count": 66,
+      "description": "Country governance profiles with regulatory pillars"
+    },
+    "quality": {
+      "file": "/data/quality.json",
+      "description": "Data quality metrics and audit status"
+    },
+    "dataset-versions": {
+      "file": "/data/dataset-versions.json",
+      "description": "Dataset version metadata"
+    }
+  },
+  "schemas": {
+    "policy": "/data/schemas/policy.schema.json",
+    "facility": "/data/schemas/facility.schema.json",
+    "country": "/data/schemas/country.schema.json",
+    "manifest": "/data/schemas/manifest.schema.json"
+  },
+  "documentation": {
+    "llms": "/llms.txt",
+    "llms-full": "/llms-full.txt"
+  },
+  "known_limitations": [
+    "Facility-policy links are currently country-level only (low confidence)",
+    "Coordinate precision varies: exact, state, or country-level",
+    "Some policies may be missing source or URL",
+    "Chinese translations may not cover all fields"
+  ]
+}

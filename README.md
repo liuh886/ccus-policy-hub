@@ -145,6 +145,35 @@ Current links are **country-level only** (low confidence). The relationship mode
 
 See [Facility-Policy Relationship Model](docs/facility-policy-relationship-model.md) for the full design.
 
+### AI-readable Data Interface
+
+Static JSON data endpoints are available for AI agents, researchers, and scripts:
+
+| Endpoint                      | Description                                            |
+| ----------------------------- | ------------------------------------------------------ |
+| `/data/manifest.json`         | Index of all datasets, schemas, and documentation      |
+| `/data/policies.json`         | 130 global CCUS policies with analysis scores          |
+| `/data/facilities.json`       | 1,110 CCUS facilities with capacity and location data  |
+| `/data/countries.json`        | 66 country governance profiles with regulatory pillars |
+| `/data/quality.json`          | Data quality metrics and audit status                  |
+| `/data/dataset-versions.json` | Dataset version metadata                               |
+| `/llms.txt`                   | Brief documentation for AI agents                      |
+| `/llms-full.txt`              | Complete documentation with all fields                 |
+
+**JSON Schemas**: Available at `/data/schemas/` for validation.
+
+**Intended Usage**:
+
+- AI agents can fetch `/data/manifest.json` to discover available data
+- Use schemas to validate data before processing
+- Check `/data/quality.json` for data completeness and audit status
+
+**Limitations**:
+
+- Facility-policy links are country-level only (low confidence)
+- Coordinate precision varies (exact, state, country)
+- Some policies may be missing source or URL
+
 ### CI Trust Checks
 
 The CI pipeline runs (all must pass):

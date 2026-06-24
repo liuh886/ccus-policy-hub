@@ -1,0 +1,58 @@
+# CCUS Policy Hub - AI-Readable Data Interface
+
+## What is CCUS Policy Hub?
+
+CCUS Policy Hub is a global intelligence infrastructure for Carbon Capture, Utilization, and Storage (CCUS) policies and facilities. It provides structured, machine-readable data on CCUS regulations, projects, and country governance profiles across 66+ countries.
+
+## Machine-Readable Data Files
+
+All data endpoints are available at `/data/`:
+
+| File | Description |
+|------|-------------|
+| `/data/manifest.json` | Index of all available datasets, schemas, and documentation |
+| `/data/policies.json` | 130 global CCUS policies with analysis scores |
+| `/data/facilities.json` | 1,110 CCUS facilities with capacity and location data |
+| `/data/countries.json` | 66 country governance profiles with regulatory pillars |
+| `/data/quality.json` | Data quality metrics and audit status |
+| `/data/dataset-versions.json` | Dataset version metadata |
+
+## JSON Schemas
+
+Schemas are available at `/data/schemas/`:
+- `policy.schema.json`
+- `facility.schema.json`
+- `country.schema.json`
+- `manifest.schema.json`
+
+## Known Limitations
+
+1. **Facility-Policy Links**: Currently country-level only (low confidence). A facility in Norway is linked to all Norwegian policies, not specific ones.
+
+2. **Coordinate Precision**: Varies by facility:
+   - `exact`: Precise location (200 facilities)
+   - `state`: State/province level (712 facilities)
+   - `country`: Country centroid (198 facilities)
+
+3. **Data Completeness**: Some policies may be missing source URLs or descriptions.
+
+4. **Language Coverage**: Chinese and English are available, but some fields may only be populated in one language.
+
+## Before Using This Data
+
+1. Check `/data/quality.json` for current data quality metrics
+2. Review `/data/dataset-versions.json` for dataset version and last update date
+3. Be aware that facility-policy links are country-level only (low confidence)
+4. Verify audit status in quality.json before making decisions based on this data
+
+## Full Documentation
+
+For complete documentation including all fields and relationships, see `/llms-full.txt`
+
+## Source
+
+This data is maintained in SQLite (`agent/ccus-ai-agent/db/ccus_master.sqlite`) as the single source of truth. Markdown files in `src/content/` are generated publication layers.
+
+## Contact
+
+GitHub: https://github.com/liuh886/ccus-policy-hub

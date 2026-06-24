@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json",
+  "title": "Country Governance Profile",
+  "description": "A country governance profile from the CCUS Policy Hub database",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Canonical English country name"
+    },
+    "region": {
+      "type": ["string", "null"],
+      "description": "Geographic region"
+    },
+    "net_zero_year": {
+      "type": ["integer", "null"],
+      "description": "Target year for net zero emissions"
+    },
+    "capture_2030": {
+      "type": ["string", "null"],
+      "description": "2030 capture target"
+    },
+    "storage_2050": {
+      "type": ["string", "null"],
+      "description": "2050 storage target"
+    },
+    "provenance_author": {
+      "type": ["string", "null"],
+      "description": "Author who created the record"
+    },
+    "provenance_reviewer": {
+      "type": ["string", "null"],
+      "description": "Reviewer who verified the record"
+    },
+    "provenance_last_audit_date": {
+      "type": ["string", "null"],
+      "description": "Date of last audit"
+    },
+    "policy_count": {
+      "type": "integer",
+      "description": "Number of policies for this country"
+    },
+    "facility_count": {
+      "type": "integer",
+      "description": "Number of facilities in this country"
+    },
+    "i18n": {
+      "type": "object",
+      "description": "Internationalized content by language code",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "summary": { "type": ["string", "null"] },
+          "regulatory_pillars": {
+            "type": "object",
+            "properties": {
+              "pore_space_rights": { "type": ["string", "null"] },
+              "liability_transfer": { "type": ["string", "null"] },
+              "liability_period": { "type": ["string", "null"] },
+              "financial_assurance": { "type": ["string", "null"] },
+              "permitting_lead_time": { "type": ["string", "null"] },
+              "co2_definition": { "type": ["string", "null"] },
+              "cross_border_rules": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}
