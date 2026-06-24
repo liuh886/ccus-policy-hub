@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-06-24T03:28:22.026Z",
+  "source_db_path": "agent/ccus-ai-agent/db/ccus_master.sqlite",
+  "audit_status": {
+    "last_audit_pass": true,
+    "last_audit_date": null,
+    "last_audit_summary": null
+  },
+  "counts": {
+    "policies": 130,
+    "facilities": 1110,
+    "country_profiles": 66,
+    "policies_reviewed": 116,
+    "policies_draft": 14
+  },
+  "quality_gaps": {
+    "policies_missing_source": 11,
+    "policies_missing_url": 31,
+    "facilities_missing_estimated_capacity": 248
+  },
+  "bilingual_parity": {
+    "policies_zh": 130,
+    "policies_en": 130,
+    "facilities_zh": 1110,
+    "facilities_en": 1110,
+    "countries_zh": 66,
+    "countries_en": 66
+  },
+  "coordinate_precision": {
+    "country": 198,
+    "exact": 200,
+    "state": 712
+  },
+  "facility_policy_links": {
+    "total": 6992,
+    "country_level": 6992,
+    "sector_level": 0,
+    "evidence_level": 0,
+    "high_risk_warning": true,
+    "country_level_pct": 100
+  }
+}

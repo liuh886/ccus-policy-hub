@@ -31,5 +31,8 @@ jobs:
       - name: Astro Check
         run: pnpm astro check
 
+      - name: Generate Quality Metrics
+        run: pnpm manage:db:quality:export
+
       - name: Build
         run: pnpm run build

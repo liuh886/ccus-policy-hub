@@ -97,6 +97,64 @@ We maintain a strict **Database Governance Protocol** to prevent encoding issues
 
 ---
 
+## 🔒 Data Trust & Governance
+
+This project follows a **trust-first** approach to data management. Here's how we ensure data quality and reliability:
+
+### SQLite is SSOT
+
+- **Single Source of Truth**: All data originates from `agent/ccus-ai-agent/db/ccus_master.sqlite`
+- **Markdown is Generated**: `src/content/**/*.md` is the publication layer, not the source
+- **No Hand-Editing**: Content changes should be made in SQLite and exported
+
+### Audit-Required Exports
+
+- Exports require a passing audit (`last_audit_pass = true` in `db_meta`)
+- Use `pnpm manage:db:export:md` to export (blocks if audit fails)
+- Use `pnpm manage:db:export:md --force-export` as an explicit escape hatch
+
+### Quality Dashboard
+
+Visit [/quality/](https://liuh886.github.io/ccus-policy-hub/quality/) to see:
+
+- Total policies, facilities, and country profiles
+- Review status (verified vs draft)
+- Data quality gaps (missing sources, URLs, capacity estimates)
+- Bilingual parity (zh/en balance)
+- Coordinate precision distribution
+- Facility-policy link confidence levels
+
+### Dataset Version Metadata
+
+Dataset version and last-checked date are displayed on:
+
+- Homepage
+- Facilities page
+- Quality dashboard
+
+### Facility-Policy Link Confidence
+
+Current links are **country-level only** (low confidence). The relationship model supports three levels:
+
+| Level    | Confidence   | Description                                     |
+| -------- | ------------ | ----------------------------------------------- |
+| Country  | Low (0.3)    | Facility and policy share the same country      |
+| Sector   | Medium (0.6) | Facility's sector matches policy scope          |
+| Evidence | High (0.9)   | Direct evidence of policy-facility relationship |
+
+See [Facility-Policy Relationship Model](docs/facility-policy-relationship-model.md) for the full design.
+
+### CI Trust Checks
+
+The CI pipeline runs:
+
+- `pnpm lint` - Code quality
+- `pnpm test` - Unit tests (including quality metrics validation)
+- `pnpm astro check` - TypeScript validation
+- `pnpm build` - Full site build
+
+---
+
 <div align="center">
   <sub>Built with ❤️ for the Global Climate Community by <b>liuh886</b></sub>
 </div>

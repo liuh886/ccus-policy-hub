@@ -1,0 +1,403 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import metrics from '../../data/quality_metrics.generated.json';
+
+const lang = 'zh';
+const t = (zh: string, en: string) => (lang === 'zh' ? zh : en);
+
+const totalPolicies = metrics.counts.policies;
+const totalFacilities = metrics.counts.facilities;
+const totalCountries = metrics.counts.country_profiles;
+
+const reviewedPct =
+  totalPolicies > 0
+    ? Math.round((metrics.counts.policies_reviewed / totalPolicies) * 100)
+    : 0;
+
+const bp = metrics.bilingual_parity;
+const coordPrecision = metrics.coordinate_precision as Record<string, number>;
+const links = metrics.facility_policy_links;
+---
+
+<Layout
+  title="数据质量仪表盘 | CCUS Policy Hub"
+  description="CCUS 数据库质量指标和治理状态概览"
+>
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-2 text-slate-900 dark:text-white">
+      {t('数据质量仪表盘', 'Data Quality Dashboard')}
+    </h1>
+    <p class="text-sm text-slate-500 mb-8">
+      {
+        t(
+          '基于 SQLite 单一数据源生成的质量指标',
+          'Quality metrics generated from the SQLite SSOT'
+        )
+      }
+      <span class="ml-2 text-xs text-slate-400">
+        {t('生成时间', 'Generated')}: {metrics.generated_at}
+      </span>
+    </p>
+
+    <!-- Core Counts -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5"
+      >
+        <div class="text-sm text-slate-500 mb-1">
+          {t('政策总数', 'Total Policies')}
+        </div>
+        <div class="text-3xl font-black text-slate-900 dark:text-white">
+          {totalPolicies}
+        </div>
+        <div class="text-xs text-slate-400 mt-1">
+          {t('已审核', 'Reviewed')}: {metrics.counts.policies_reviewed} ({
+            reviewedPct
+          }%) &middot;
+          {t('草稿', 'Draft')}: {metrics.counts.policies_draft}
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5"
+      >
+        <div class="text-sm text-slate-500 mb-1">
+          {t('设施总数', 'Total Facilities')}
+        </div>
+        <div class="text-3xl font-black text-slate-900 dark:text-white">
+          {totalFacilities}
+        </div>
+      </div>
+      <div
+        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5"
+      >
+        <div class="text-sm text-slate-500 mb-1">
+          {t('国家档案', 'Country Profiles')}
+        </div>
+        <div class="text-3xl font-black text-slate-900 dark:text-white">
+          {totalCountries}
+        </div>
+      </div>
+    </section>
+
+    <!-- Audit Status -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3 text-slate-900 dark:text-white">
+        {t('审计状态', 'Audit Status')}
+      </h2>
+      <div class="flex items-center gap-3">
+        {
+          metrics.audit_status.last_audit_pass ? (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              {t('最近审计通过', 'Last Audit Passed')}
+            </span>
+          ) : (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+              {t('最近审计未通过', 'Last Audit Failed')}
+            </span>
+          )
+        }
+        {
+          metrics.audit_status.last_audit_date && (
+            <span class="text-sm text-slate-500">
+              {metrics.audit_status.last_audit_date}
+            </span>
+          )
+        }
+      </div>
+      {
+        metrics.audit_status.last_audit_summary && (
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+            {metrics.audit_status.last_audit_summary}
+          </p>
+        )
+      }
+    </section>
+
+    <!-- Quality Gaps -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3 text-slate-900 dark:text-white">
+        {t('数据质量缺口', 'Data Quality Gaps')}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">
+            {t('政策缺少来源', 'Policies Missing Source')}
+          </div>
+          <div
+            class={`text-2xl font-bold ${metrics.quality_gaps.policies_missing_source > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400'}`}
+          >
+            {metrics.quality_gaps.policies_missing_source}
+          </div>
+        </div>
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">
+            {t('政策缺少 URL', 'Policies Missing URL')}
+          </div>
+          <div
+            class={`text-2xl font-bold ${metrics.quality_gaps.policies_missing_url > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400'}`}
+          >
+            {metrics.quality_gaps.policies_missing_url}
+          </div>
+        </div>
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">
+            {t('设施缺少产能估算', 'Facilities Missing Capacity')}
+          </div>
+          <div
+            class={`text-2xl font-bold ${metrics.quality_gaps.facilities_missing_estimated_capacity > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400'}`}
+          >
+            {metrics.quality_gaps.facilities_missing_estimated_capacity}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bilingual Parity -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3 text-slate-900 dark:text-white">
+        {t('双语对等性', 'Bilingual Parity')}
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-700">
+              <th class="text-left py-2 text-slate-500"
+                >{t('数据集', 'Dataset')}</th
+              >
+              <th class="text-right py-2 text-slate-500">中文</th>
+              <th class="text-right py-2 text-slate-500">English</th>
+              <th class="text-right py-2 text-slate-500"
+                >{t('状态', 'Status')}</th
+              >
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-100 dark:border-slate-800">
+              <td class="py-2">{t('政策', 'Policies')}</td>
+              <td class="text-right py-2 font-mono">{bp.policies_zh}</td>
+              <td class="text-right py-2 font-mono">{bp.policies_en}</td>
+              <td class="text-right py-2">
+                {
+                  bp.policies_zh === bp.policies_en ? (
+                    <span class="text-emerald-600 dark:text-emerald-400">
+                      ✓
+                    </span>
+                  ) : (
+                    <span class="text-red-600 dark:text-red-400">✗</span>
+                  )
+                }
+              </td>
+            </tr>
+            <tr class="border-b border-slate-100 dark:border-slate-800">
+              <td class="py-2">{t('设施', 'Facilities')}</td>
+              <td class="text-right py-2 font-mono">{bp.facilities_zh}</td>
+              <td class="text-right py-2 font-mono">{bp.facilities_en}</td>
+              <td class="text-right py-2">
+                {
+                  bp.facilities_zh === bp.facilities_en ? (
+                    <span class="text-emerald-600 dark:text-emerald-400">
+                      ✓
+                    </span>
+                  ) : (
+                    <span class="text-red-600 dark:text-red-400">✗</span>
+                  )
+                }
+              </td>
+            </tr>
+            <tr>
+              <td class="py-2">{t('国家档案', 'Country Profiles')}</td>
+              <td class="text-right py-2 font-mono">{bp.countries_zh}</td>
+              <td class="text-right py-2 font-mono">{bp.countries_en}</td>
+              <td class="text-right py-2">
+                {
+                  bp.countries_zh === bp.countries_en ? (
+                    <span class="text-emerald-600 dark:text-emerald-400">
+                      ✓
+                    </span>
+                  ) : (
+                    <span class="text-red-600 dark:text-red-400">✗</span>
+                  )
+                }
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Coordinate Precision -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3 text-slate-900 dark:text-white">
+        {t('设施坐标精度分布', 'Facility Coordinate Precision')}
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">{t('精确', 'Exact')}</div>
+          <div
+            class="text-2xl font-bold text-emerald-600 dark:text-emerald-400"
+          >
+            {coordPrecision.exact || 0}
+          </div>
+        </div>
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">{t('州/省', 'State')}</div>
+          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+            {coordPrecision.state || 0}
+          </div>
+        </div>
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">{t('国家', 'Country')}</div>
+          <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">
+            {coordPrecision.country || 0}
+          </div>
+        </div>
+        <div
+          class="border border-slate-100 dark:border-slate-800 rounded-lg p-4"
+        >
+          <div class="text-sm text-slate-500 mb-1">{t('缺失', 'Missing')}</div>
+          <div class="text-2xl font-bold text-red-600 dark:text-red-400">
+            {coordPrecision.missing || 0}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facility-Policy Links -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3 text-slate-900 dark:text-white">
+        {t('设施-政策关联', 'Facility-Policy Links')}
+      </h2>
+      <div class="flex items-center gap-4 mb-3">
+        <div class="text-3xl font-black text-slate-900 dark:text-white">
+          {links.total.toLocaleString()}
+        </div>
+        <div class="text-sm text-slate-500">{t('总关联数', 'Total Links')}</div>
+      </div>
+      {
+        links.high_risk_warning && (
+          <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"
+                />
+              </svg>
+              <div>
+                <div class="font-medium text-amber-800 dark:text-amber-300">
+                  {t('高风险警告', 'High Risk Warning')}
+                </div>
+                <div class="text-sm text-amber-700 dark:text-amber-400 mt-1">
+                  {t(
+                    `${links.country_level_pct}% 的关联仅为国家级别（低置信度）。建议逐步引入行业级和证据级关联以提高数据质量。`,
+                    `${links.country_level_pct}% of links are country-level only (low confidence). Consider introducing sector-level and evidence-level links to improve data quality.`
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+      <div class="grid grid-cols-3 gap-4 mt-4">
+        <div class="text-center">
+          <div class="text-sm text-slate-500 mb-1">
+            {t('国家级', 'Country-Level')}
+          </div>
+          <div class="text-lg font-bold text-amber-600 dark:text-amber-400">
+            {links.country_level}
+          </div>
+          <div class="text-xs text-slate-400">
+            {t('低置信度', 'Low Confidence')}
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-sm text-slate-500 mb-1">
+            {t('行业级', 'Sector-Level')}
+          </div>
+          <div class="text-lg font-bold text-blue-600 dark:text-blue-400">
+            {links.sector_level}
+          </div>
+          <div class="text-xs text-slate-400">
+            {t('中置信度', 'Medium Confidence')}
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-sm text-slate-500 mb-1">
+            {t('证据级', 'Evidence-Level')}
+          </div>
+          <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400">
+            {links.evidence_level}
+          </div>
+          <div class="text-xs text-slate-400">
+            {t('高置信度', 'High Confidence')}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back link -->
+    <div class="text-center">
+      <a
+        href="/ccus-policy-hub/"
+        class="text-blue-600 dark:text-blue-400 hover:underline text-sm"
+      >
+        &larr; {t('返回首页', 'Back to Home')}
+      </a>
+    </div>
+  </main>
+</Layout>
