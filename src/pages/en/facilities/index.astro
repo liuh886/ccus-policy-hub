@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import FacilityMap from '../../../components/FacilityMap.astro';
 import FacilityCard from '../../../components/FacilityCard.astro';
+import DatasetVersion from '../../../components/DatasetVersion.astro';
 
 const facilities = await getCollection('facilities_en');
 
@@ -191,6 +192,9 @@ const statuses = Array.from(
     >
       <p class="text-slate-500 font-bold">No facilities found.</p>
     </div>
+
+    <!-- Dataset Version Metadata -->
+    <DatasetVersion lang="en" compact />
   </div>
 </Layout>
 

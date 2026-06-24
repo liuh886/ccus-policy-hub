@@ -1,0 +1,52 @@
+---
+import datasetVersions from '../data/dataset_versions.json';
+
+interface Props {
+  lang?: 'zh' | 'en';
+  compact?: boolean;
+}
+
+const { lang = 'zh', compact = false } = Astro.props;
+
+const t = (zh: string, en: string) => (lang === 'zh' ? zh : en);
+---
+
+<div
+  class="text-xs text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-800 pt-3 mt-4"
+>
+  {
+    compact ? (
+      <span>
+        {t('数据集', 'Dataset')}: {datasetVersions.facility_dataset_version}
+        &middot; {t('更新于', 'Updated')}: {datasetVersions.last_checked_date}
+      </span>
+    ) : (
+      <div class="flex flex-wrap gap-x-4 gap-y-1">
+        <span>
+          {t('设施数据集', 'Facility Dataset')}:{' '}
+          <span class="font-medium text-slate-500 dark:text-slate-400">
+            {datasetVersions.facility_dataset_name}
+          </span>
+        </span>
+        <span>
+          {t('版本', 'Version')}:{' '}
+          <span class="font-medium text-slate-500 dark:text-slate-400">
+            {datasetVersions.facility_dataset_version}
+          </span>
+        </span>
+        <span>
+          {t('最后检查', 'Last Checked')}:{' '}
+          <span class="font-medium text-slate-500 dark:text-slate-400">
+            {datasetVersions.last_checked_date}
+          </span>
+        </span>
+        <span>
+          {t('政策审核状态', 'Policy Review')}:{' '}
+          <span class="font-medium text-slate-500 dark:text-slate-400">
+            {datasetVersions.policy_dataset_review_status}
+          </span>
+        </span>
+      </div>
+    )
+  }
+</div>

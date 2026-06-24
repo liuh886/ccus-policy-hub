@@ -151,7 +151,7 @@ describe('Quality Metrics Generation', () => {
   });
 });
 
-describe('Export Blocking Behavior', () => {
+describe('Audit Status Tracking', () => {
   it('has audit_status in generated metrics', () => {
     if (!fs.existsSync(OUTPUT_PATH)) {
       console.log('Skipping: metrics file not found');
@@ -163,6 +163,24 @@ describe('Export Blocking Behavior', () => {
     assert.ok(
       'last_audit_pass' in content.audit_status,
       'Should have last_audit_pass field'
+    );
+  });
+
+  it('audit_status reflects database state', () => {
+    if (!fs.existsSync(OUTPUT_PATH)) {
+      console.log('Skipping: metrics file not found');
+      return;
+    }
+
+    const content = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
+    assert.ok(
+      'last_audit_pass' in content.audit_status,
+      'Should have last_audit_pass'
+    );
+    assert.strictEqual(
+      typeof content.audit_status.last_audit_pass,
+      'boolean',
+      'last_audit_pass should be boolean'
     );
   });
 });

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import DatasetVersion from '../../../components/DatasetVersion.astro';
 import metrics from '../../../data/quality_metrics.generated.json';
 
 const lang: string = 'en';
@@ -400,4 +401,9 @@ const links = metrics.facility_policy_links;
       </a>
     </div>
   </main>
+
+  <!-- Dataset Version Metadata -->
+  <div class="max-w-6xl mx-auto px-4 pb-8">
+    <DatasetVersion lang="en" />
+  </div>
 </Layout>

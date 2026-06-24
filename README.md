@@ -69,7 +69,7 @@ graph LR
     E --> F
 ```
 
-- **SSOT (Single Source of Truth)**: `governance/db/ccus_master.sqlite` is the governance source of truth.
+- **SSOT (Single Source of Truth)**: `agent/ccus-ai-agent/db/ccus_master.sqlite` is the governance source of truth.
 - **Published Content Layer**: `src/content/policies/{en,zh}` and `src/content/facilities/{en,zh}` are exported build inputs.
 - **Astro 5**: Leverages the latest content layer API for high-performance rendering.
 - **Pagefind**: Provides ultra-fast full-text search without a backend server.
@@ -91,7 +91,7 @@ pnpm dev
 
 We maintain a strict **Database Governance Protocol** to prevent encoding issues and ensure bilingual consistency.
 
-- Governance edits should be made in `SQLite` (`governance/db/ccus_master.sqlite`) and exported to Markdown.
+- Governance edits should be made in `SQLite` (`agent/ccus-ai-agent/db/ccus_master.sqlite`) and exported to Markdown.
 - `src/content/.../*.md` is treated as generated/published content for the site build.
 - Reverse sync (`Markdown -> SQLite`) is migration-only and requires explicit acknowledgement.
 
@@ -109,9 +109,10 @@ This project follows a **trust-first** approach to data management. Here's how w
 
 ### Audit-Required Exports
 
-- Exports require a passing audit (`last_audit_pass = true` in `db_meta`)
-- Use `pnpm manage:db:export:md` to export (blocks if audit fails)
-- Use `pnpm manage:db:export:md --force-export` as an explicit escape hatch
+- Exports check `last_audit_pass` in `db_meta` table
+- `pnpm manage:db:export:md` warns if audit has not passed (Gate B2)
+- Currently in development mode: exports proceed with warning
+- Production mode will block exports without passing audit
 
 ### Quality Dashboard
 
@@ -146,11 +147,13 @@ See [Facility-Policy Relationship Model](docs/facility-policy-relationship-model
 
 ### CI Trust Checks
 
-The CI pipeline runs:
+The CI pipeline runs (all must pass):
 
 - `pnpm lint` - Code quality
 - `pnpm test` - Unit tests (including quality metrics validation)
 - `pnpm astro check` - TypeScript validation
+- `pnpm manage:db:audit:deep` - Deep data audit (blocking)
+- `pnpm manage:db:quality:export` - Generate quality metrics
 - `pnpm build` - Full site build
 
 ---

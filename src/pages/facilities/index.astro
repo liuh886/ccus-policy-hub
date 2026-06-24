@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import FacilityMap from '../../components/FacilityMap.astro';
 import FacilityCard from '../../components/FacilityCard.astro';
+import DatasetVersion from '../../components/DatasetVersion.astro';
 import countryData from '../../data/countries.json';
 
 const facilities = await getCollection('facilities_zh');
@@ -281,6 +282,9 @@ const zhCountries = countries.map((country) => ({
     >
       <p class="text-slate-500 font-bold">未找到符合条件的设施。</p>
     </div>
+
+    <!-- Dataset Version Metadata -->
+    <DatasetVersion lang="zh" compact />
   </div>
 </Layout>
 
