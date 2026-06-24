@@ -1,0 +1,2646 @@
+{
+  "generated_at": "2026-06-24T08:11:33.690Z",
+  "count": 66,
+  "records": [
+    {
+      "id": "Algeria",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Algeria",
+          "summary": "Regulatory profile for Algeria",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Hydrocarbon Law 19-13). ALNAFT issues mining titles.",
+            "liability_transfer": "Transfer to State (Sonatrach) after stability period (10-30y).",
+            "liability_period": "10-30 years post-injection monitoring.",
+            "financial_assurance": "Mandatory; incentives via reduced royalties (5%) and tax breaks.",
+            "permitting_lead_time": "2-3 years (Managed by ALNAFT and ARH).",
+            "co2_definition": "Industrial CO2 resource / gas; treatment differs between utilization and storage contexts.",
+            "cross_border_rules": "Aligning with EU CBAM; third-party access rules in development."
+          }
+        },
+        "zh": {
+          "name": "阿尔及利亚",
+          "summary": "阿尔及利亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (19-13 号油气法)。ALNAFT 颁发矿业权。",
+            "liability_transfer": "在稳定期 (10-30年) 后转移至国家 (Sonatrach)。",
+            "liability_period": "注入后需监测 10-30 年。",
+            "financial_assurance": "强制性；通过降低特许权使用费 (5%) 和税收减免提供激励。",
+            "permitting_lead_time": "2-3 年 (由 ALNAFT 和 ARH 管理)。",
+            "co2_definition": "工业 CO2 资源 / 气体；在利用与封存场景中的监管定位不同。",
+            "cross_border_rules": "对齐欧盟 CBAM；第三方准入规则正在制定中。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Argentina",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Argentina",
+          "summary": "Profile for Argentina",
+          "regulatory_pillars": {
+            "pore_space_rights": "Provincial jurisdiction; integrated into hydrocarbon mitigation programs (e.g., Neuquén Res. 21/2025).",
+            "liability_transfer": "TBD; likely state-centric following hydrocarbon patterns.",
+            "liability_period": "Not specified.",
+            "financial_assurance": "Massive 30-year tax, customs, and FX incentives via RIGI (Law 27.742).",
+            "permitting_lead_time": "Provincial mitigation programs (Neuquén/Mendoza 2025) as precursors.",
+            "co2_definition": "Residual industrial CO2 emissions stream for utilization or storage; no standalone national CCS legal class yet.",
+            "cross_border_rules": "Under development via National Strategy for Carbon Markets (ENUMeC)."
+          }
+        },
+        "zh": {
+          "name": "阿根廷",
+          "summary": "阿根廷的 CCUS 监管画像以省级资源管辖、投资激励和早期 CCUS 制度探索为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "省级管辖权；已纳入碳氢化合物减排计划（如内乌肯第 21/2025 号决议）。",
+            "liability_transfer": "待定；可能遵循碳氢化合物模式，以国家为中心。",
+            "liability_period": "未具体说明。",
+            "financial_assurance": "通过 RIGI（第 27.742 号法律）提供长达 30 年的巨额税收、海关和外汇激励。",
+            "permitting_lead_time": "省级减排计划（内乌肯/门多萨 2025）作为先导。",
+            "co2_definition": "工业残余 CO2 排放流，可用于利用或封存；尚无独立全国性 CCS 法定分类。",
+            "cross_border_rules": "通过国家碳市场战略 (ENUMeC) 制定中。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "Australia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Australia",
+          "summary": "Profile for Australia",
+          "regulatory_pillars": {
+            "pore_space_rights": "Commonwealth (Offshore) / State (Onshore)",
+            "liability_transfer": "Yes, to Commonwealth after closure",
+            "liability_period": "Min. 15 years post-closure",
+            "financial_assurance": "Mandatory (Full lifecycle)",
+            "permitting_lead_time": "3-5 years (Offshore)",
+            "co2_definition": "Greenhouse gas substance / greenhouse gas stream under offshore storage law.",
+            "cross_border_rules": "Permitted (London Protocol amended)"
+          }
+        },
+        "zh": {
+          "name": "澳大利亚",
+          "summary": "澳大利亚的 CCUS 监管画像建立在成熟的海上温室气体封存法制和州联邦并行治理结构之上。",
+          "regulatory_pillars": {
+            "pore_space_rights": "联邦（离岸）/ 州（陆上）",
+            "liability_transfer": "是，闭坑后转移给联邦",
+            "liability_period": "闭坑后至少 15 年",
+            "financial_assurance": "强制性（全生命周期）",
+            "permitting_lead_time": "3-5 年（离岸）",
+            "co2_definition": "海上封存法框架下的温室气体物质 / 温室气体流。",
+            "cross_border_rules": "允许（伦敦议定书已修订）"
+          }
+        }
+      },
+      "policy_count": 4,
+      "facility_count": 44
+    },
+    {
+      "id": "Austria",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Austria",
+          "summary": "Profile for Austria",
+          "regulatory_pillars": {
+            "pore_space_rights": "State Owned",
+            "liability_transfer": "EU Compliant",
+            "liability_period": "20 years",
+            "financial_assurance": "Bank Guarantee",
+            "permitting_lead_time": "2 years",
+            "co2_definition": "EU-style CO2 stream for geological storage; dedicated national storage regime remains limited.",
+            "cross_border_rules": "EU Internal"
+          }
+        },
+        "zh": {
+          "name": "奥地利",
+          "summary": "奥地利的 CCUS 监管画像总体遵循欧盟框架，但国内专门封存制度与项目实践仍较有限。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有",
+            "liability_transfer": "符合欧盟规则",
+            "liability_period": "20 年",
+            "financial_assurance": "银行担保",
+            "permitting_lead_time": "约 2 年",
+            "co2_definition": "遵循欧盟口径的地质封存 CO2 流；国家层面的专门封存制度仍有限。",
+            "cross_border_rules": "欧盟内部规则适用"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Bahrain",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Bahrain",
+          "summary": "Regulatory profile for Bahrain",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (NOGA/Bapco Energies); concession-based model.",
+            "liability_transfer": "Two-stage: Operator liable during injection; State after stability.",
+            "liability_period": "10-20 years post-injection monitoring (proposed).",
+            "financial_assurance": "Exploring Carbon Fund / Tipping fee per tonne for monitoring.",
+            "permitting_lead_time": "2-4 years (Pilot and research phase).",
+            "co2_definition": "Hybrid/CCE Asset (Resource for industrial use vs Sequestration).",
+            "cross_border_rules": "International collaboration with SLB; safety standards focus."
+          }
+        },
+        "zh": {
+          "name": "巴林",
+          "summary": "巴林 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (NOGA/Bapco Energies)；基于特许经营的模式。",
+            "liability_transfer": "两个阶段：运营商在注入期间承担责任；稳定后由国家承担。",
+            "liability_period": "注入后需监测 10-20 年 (提议中)。",
+            "financial_assurance": "正在探索碳基金/每吨处理费用于监测。",
+            "permitting_lead_time": "2-4 年 (试点和研究阶段)。",
+            "co2_definition": "混合/CCE 资产 (工业用途资源 vs 封存)。",
+            "cross_border_rules": "与 SLB 的国际合作；侧重于安全标准。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Belgium",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Belgium",
+          "summary": "Profile for Belgium",
+          "regulatory_pillars": {
+            "pore_space_rights": "Not applicable (Transit focus); North Sea storage via bilateral treaties. [Evidence: Federal Energy Law] [URL: https://economie.fgov.be/]",
+            "liability_transfer": "Operator responsible for transport safety; storage liability via treaties. [Evidence: EU CCS Directive Alignment]",
+            "liability_period": "Transport pipeline monitoring (Life-of-asset). [Evidence: Fluxys CO2 Protocol]",
+            "financial_assurance": "Federal guarantee for critical transport infrastructure. [Evidence: Port of Antwerp-Bruges Strategy]",
+            "permitting_lead_time": "18-24 months for export terminal pipelines. [Evidence: North Sea Port Roadmap]",
+            "co2_definition": "Industrial commodity / Regulated emission stream. [Evidence: Flemish Energy Decree]",
+            "cross_border_rules": "London Protocol Amendment operationalized for export. [Evidence: Belgium-Norway MoU 2024]"
+          }
+        },
+        "zh": {
+          "name": "比利时",
+          "summary": "比利时的 CCUS 监管画像以港口集群、区域政府权限和跨境运输协同为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "不适用（侧重转运）；通过双边条约进行北海封存。[证据: 联邦能源法] [URL: https://economie.fgov.be/]",
+            "liability_transfer": "运营商负责运输安全；封存责任通过条约规定。[证据: 对齐欧盟 CCS 指令]",
+            "liability_period": "输送管道监测（资产寿命期内）。[证据: Fluxys CO2 协议]",
+            "financial_assurance": "联邦为关键运输基础设施提供担保。[证据: 安特卫普-布鲁日港战略]",
+            "permitting_lead_time": "出口终端管道需 18-24 个月。[证据: 北海港路线图]",
+            "co2_definition": "工业商品 / 受控排放流。[证据: 弗拉芒能源法令]",
+            "cross_border_rules": "伦敦议定书修正案已落实出口应用。[证据: 2024 年比挪谅解备忘录]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 15
+    },
+    {
+      "id": "Brazil",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Brazil",
+          "summary": "Profile for Brazil",
+          "regulatory_pillars": {
+            "pore_space_rights": "Union (State) Owned",
+            "liability_transfer": "Transfer to Union allowed",
+            "liability_period": "Permanent monitoring required until transfer",
+            "financial_assurance": "Mandatory",
+            "permitting_lead_time": "ANP Bidding Rounds",
+            "co2_definition": "Greenhouse Gas",
+            "cross_border_rules": "Pending regulation"
+          }
+        },
+        "zh": {
+          "name": "巴西",
+          "summary": "巴西的 CCUS 监管画像正围绕海上封存、油气监管和国家气候政策逐步成形。",
+          "regulatory_pillars": {
+            "pore_space_rights": "属于联盟（联邦政府）",
+            "liability_transfer": "场址关闭 30 年后责任转移",
+            "liability_period": "转移前需要永久监测",
+            "financial_assurance": "强制性",
+            "permitting_lead_time": "ANP 招标轮次",
+            "co2_definition": "温室气体",
+            "cross_border_rules": "法规待定"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 5
+    },
+    {
+      "id": "Bulgaria",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Bulgaria",
+          "summary": "Profile for Bulgaria",
+          "regulatory_pillars": {
+            "pore_space_rights": "State Owned",
+            "liability_transfer": "EU Compliant (20y)",
+            "liability_period": "20 years",
+            "financial_assurance": "Bank Guarantee",
+            "permitting_lead_time": "12-24 months",
+            "co2_definition": "EU-style CO2 stream for geological storage; dedicated national storage regime remains limited.",
+            "cross_border_rules": "EU Internal"
+          }
+        },
+        "zh": {
+          "name": "保加利亚",
+          "summary": "保加利亚的 CCUS 监管画像总体沿用欧盟制度框架，国内实施仍处于早期阶段。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有",
+            "liability_transfer": "符合欧盟规则（约 20 年后可转移）",
+            "liability_period": "20 年",
+            "financial_assurance": "银行担保",
+            "permitting_lead_time": "12-24 个月",
+            "co2_definition": "遵循欧盟口径的地质封存 CO2 流；国家层面的专门封存制度仍有限。",
+            "cross_border_rules": "欧盟内部规则适用"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 2
+    },
+    {
+      "id": "Canada",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Canada",
+          "summary": "Profile for Canada",
+          "regulatory_pillars": {
+            "pore_space_rights": "Crown (Provincial)",
+            "liability_transfer": "Yes, to Province (PICS Fund)",
+            "liability_period": "Provincial responsibility; varies",
+            "financial_assurance": "Mandatory payments to Fund",
+            "permitting_lead_time": "3-5 years",
+            "co2_definition": "Provincially regulated CO2 stream / sequestered substance for storage; exact classification varies by province.",
+            "cross_border_rules": "Provincial/Federal regulated"
+          }
+        },
+        "zh": {
+          "name": "加拿大",
+          "summary": "加拿大的 CCUS 监管画像以省级立法、税收激励和成熟封存项目并行为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "官方所有（省级）",
+            "liability_transfer": "是，转移给省（PICS 基金）",
+            "liability_period": "闭坑后管理基金",
+            "financial_assurance": "强制向基金支付",
+            "permitting_lead_time": "高（竞争性枢纽选择）",
+            "co2_definition": "由各省监管的封存用 CO2 流 / 封存物质；具体分类因省而异。",
+            "cross_border_rules": "省/联邦监管"
+          }
+        }
+      },
+      "policy_count": 5,
+      "facility_count": 89
+    },
+    {
+      "id": "Chile",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Chile",
+          "summary": "Profile for Chile",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Mining Code). [Evidence: Ministry of Energy Decree] [URL: https://www.energia.gob.cl/]",
+            "liability_transfer": "Pending framework for Hydrogen/CCS clusters. [Evidence: National Green Hydrogen Action Plan]",
+            "liability_period": "TBD (Target: 20 years monitoring). [Evidence: Draft CCS Regulation 2025]",
+            "financial_assurance": "Environmental Impact Assessment (SEIA) bonds. [Evidence: Law 19.300]",
+            "permitting_lead_time": "2-4 years (Multi-agency approval). [Evidence: Magallanes Cluster Roadmap]",
+            "co2_definition": "Managed emissions stream that can support mitigation outcomes; not framed solely as waste.",
+            "cross_border_rules": "Framework for Article 6 carbon credit exports. [Evidence: Chile-Singapore MOU]"
+          }
+        },
+        "zh": {
+          "name": "智利",
+          "summary": "智利的 CCUS 监管画像仍处早期阶段，主要依托气候法与减排政策框架推进。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (采矿法)。[证据: 能源部指令] [URL: https://www.energia.gob.cl/]",
+            "liability_transfer": "氢能/CCS 集群框架待定。[证据: 国家绿氢行动计划]",
+            "liability_period": "待定 (目标：20 年监测)。[证据: 2025 年 CCS 条例草案]",
+            "financial_assurance": "环境影响评估 (SEIA) 保证金。[证据: 第 19.300 号法律]",
+            "permitting_lead_time": "2-4 年 (多机构审批)。[证据: 麦哲伦集群路线图]",
+            "co2_definition": "受监管的排放流，可用于减排成果安排；并非单纯按废物定位。",
+            "cross_border_rules": "第 6 条碳信用出口框架。[证据: 智利-新加坡谅解备忘录]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 1
+    },
+    {
+      "id": "China",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "China",
+          "summary": "China is rapidly scaling CCUS via industrial clusters and CCER market integration, with a new legal framework maturing in 2025.",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Constitutional)",
+            "liability_transfer": "Operator-led; State reserve mechanism under research",
+            "liability_period": "Not explicitly defined",
+            "financial_assurance": "No mandatory financial assurance mechanism yet",
+            "permitting_lead_time": "2-3 years",
+            "co2_definition": "No unified statutory definition yet; treated functionally as an industrial resource for use and as a regulated emissions/storage stream for CCS.",
+            "cross_border_rules": "Domestic focus; no cross-border framework yet"
+          }
+        },
+        "zh": {
+          "name": "中国",
+          "summary": "中国正通过工业集群和CCER碳市场整合快速规模化CCUS，2025年监管法律框架正趋于成熟。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有（宪法规定地下资源归国家所有）",
+            "liability_transfer": "目前由运营商承担，国家储备金机制研究中",
+            "liability_period": "尚未明确规定",
+            "financial_assurance": "暂无强制性财务保证机制",
+            "permitting_lead_time": "2-3 年 (审批链条优化中)",
+            "co2_definition": "尚无统一法定定义；利用环节多按工业资源处理，CCS 环节按受控排放流 / 封存活动监管。",
+            "cross_border_rules": "目前仅限境内，暂无跨境封存实例"
+          }
+        }
+      },
+      "policy_count": 14,
+      "facility_count": 49
+    },
+    {
+      "id": "Colombia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Colombia",
+          "summary": "Profile for Colombia",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Constitution Art 332). [Evidence: Decree 2025 Art 8] [URL: https://www.minenergia.gov.co/]",
+            "liability_transfer": "To the State (ANH) after a 20-year verified period. [Evidence: Decree 2025]",
+            "liability_period": "20 years monitoring post-injection. [Evidence: ANH Technical Manual]",
+            "financial_assurance": "Financial guarantee for environmental remediation. [Evidence: Law 2099]",
+            "permitting_lead_time": "2-3 years (ANH/ANLA joint review). [Evidence: Energy Transition Roadmap]",
+            "co2_definition": "Emissions stream / mitigation outcome within climate-law framework; no standalone CCS substance class yet.",
+            "cross_border_rules": "Bilateral agreements for Caribbean regional storage. [Evidence: South America CCUS Hub Plan]"
+          }
+        },
+        "zh": {
+          "name": "哥伦比亚",
+          "summary": "哥伦比亚的 CCUS 监管画像主要嵌入能源转型与气候治理法制，独立 CCS 制度仍在发展。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (宪法第 332 条)。[证据: 2025 年法令第 8 条] [URL: https://www.minenergia.gov.co/]",
+            "liability_transfer": "经过 20 年验证期后，转移至国家 (ANH)。[证据: 2025 年法令]",
+            "liability_period": "注入后 20 年监测期。[证据: ANH 技术手册]",
+            "financial_assurance": "环境修复财务担保。[证据: 第 2099 号法律]",
+            "permitting_lead_time": "2-3 年 (ANH/ANLA 联合审查)。[证据: 能源转型路线图]",
+            "co2_definition": "气候法框架下的排放流 / 减缓成果；尚无独立 CCS 物质类别。",
+            "cross_border_rules": "加勒比区域封存双边协议。[证据: 南美 CCUS 枢纽计划]"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 0
+    },
+    {
+      "id": "Croatia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Croatia",
+          "summary": "Regulatory profile for Croatia",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Hydrocarbons Act); operators obtain concessions.",
+            "liability_transfer": "Follows EU CCS Directive; transfer to State after min. 20 years.",
+            "liability_period": "Minimum 20 years post-closure (performance-based).",
+            "financial_assurance": "Mandatory; includes contribution to post-transfer monitoring (30y).",
+            "permitting_lead_time": "2-5 years (Croatian Hydrocarbon Agency - CHA).",
+            "co2_definition": "High-purity Stream (>95% CO2); regulated under Hydrocarbons Act.",
+            "cross_border_rules": "TEN-E Regulation / London Protocol; part of EU industrial clusters."
+          }
+        },
+        "zh": {
+          "name": "克罗地亚",
+          "summary": "克罗地亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (油气法)；运营商获得特许权。",
+            "liability_transfer": "遵循欧盟 CCS 指令；至少 20 年后转移至国家。",
+            "liability_period": "闭坑后至少 20 年 (基于表现)。",
+            "financial_assurance": "强制性；包括对转移后监测 (30年) 的贡献。",
+            "permitting_lead_time": "2-5 年 (克罗地亚油气局 - CHA)。",
+            "co2_definition": "高纯度流 (>95% CO2)；受油气法监管。",
+            "cross_border_rules": "TEN-E 条例 / 伦敦议定书；欧盟工业集群的一部分。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 6
+    },
+    {
+      "id": "Denmark",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Denmark",
+          "summary": "Profile for Denmark",
+          "regulatory_pillars": {
+            "pore_space_rights": "Streamlined licensing for offshore storage areas (e.g., Greensand, Bifrost).",
+            "liability_transfer": "Aligned with EU CCS Directive 2009/31/EC; state assumption of liability.",
+            "liability_period": "Standard 20-year period post-closure before state transfer (EU baseline).",
+            "financial_assurance": "€3.8 billion in NECCS and CCS funds; mandatory operator guarantees.",
+            "permitting_lead_time": "Consolidated permitting for subsidy-awarded strategic projects.",
+            "co2_definition": "CO2 stream for storage; current policy gives special priority to biogenic CO2 and removals.",
+            "cross_border_rules": "Pioneer in operationalizing cross-border CO2 transport from Belgium (2023)."
+          }
+        },
+        "zh": {
+          "name": "丹麦",
+          "summary": "丹麦的 CCUS 监管画像以国家主导的封存许可、补贴机制和生物源移除导向为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "离岸封存区域（如 Greensand、Bifrost）的简化许可。",
+            "liability_transfer": "符合欧盟 CCS 指令 2009/31/EC；国家承担责任。",
+            "liability_period": "闭坑后 20 年的标准期限，之后移交给国家（欧盟基准）。",
+            "financial_assurance": "38 亿欧元的 NECCS 和 CCS 基金；强制性的运营商担保。",
+            "permitting_lead_time": "为获得补贴的战略项目提供统一许可。",
+            "co2_definition": "用于封存的 CO2 流；现行政策对生物源 CO2 与碳移除给予特别优先。",
+            "cross_border_rules": "在落实来自比利时的跨境二氧化碳运输方面处于领先地位 (2023)。"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 37
+    },
+    {
+      "id": "Egypt",
+      "region": "Middle East & Africa",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Egypt",
+          "summary": "Regulatory profile for Egypt",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Petroleum Law 66/1953). [Evidence: EGAS Directives] [URL: https://fra.gov.eg/]",
+            "liability_transfer": "To EGAS/EGPC after 15 years monitoring. [Evidence: FRA Directive 2024]",
+            "liability_period": "15 years post-injection monitoring. [Evidence: FRA/EGPC Guidelines]",
+            "financial_assurance": "Financial guarantee required for offshore storage. [Evidence: Law 202/2020]",
+            "permitting_lead_time": "18-24 months via FRA/Petroleum Ministry. [Evidence: National CCUS Roadmap]",
+            "co2_definition": "Pollutant subject to carbon market offsets. [Evidence: Law 4/1994]",
+            "cross_border_rules": "Med-Hub strategy; EU-alignment for CO2 export. [Evidence: Suez Canal Decarb Plan]"
+          }
+        },
+        "zh": {
+          "name": "埃及",
+          "summary": "埃及 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (1953 年第 66 号石油法)。[证据: EGAS 指令] [URL: https://fra.gov.eg/]",
+            "liability_transfer": "监测 15 年后转移给 EGAS/EGPC。[证据: 2024 年 FRA 指令]",
+            "liability_period": "注入后 15 年监测期。[证据: FRA/EGPC 指南]",
+            "financial_assurance": "离岸封存需要财务担保。[证据: 2020 年第 202 号法律]",
+            "permitting_lead_time": "通过 FRA/石油部需 18-24 个月。[证据: 国家 CCUS 路线图]",
+            "co2_definition": "受碳市场抵消约束的污染物。[证据: 1994 年第 4 号法律]",
+            "cross_border_rules": "地中海枢纽战略；CO2 出口对齐欧盟。[证据: 苏伊士运河脱碳计划]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "European Union",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "European Union",
+          "summary": "Profile for European Union",
+          "regulatory_pillars": {
+            "pore_space_rights": "Member State sovereignty",
+            "liability_transfer": "Mandates 50Mtpa injection capacity by 2030; clarifies responsibility boundaries",
+            "liability_period": "Min. 20 years post-closure",
+            "financial_assurance": "Mandatory (EU Directive Art. 19)",
+            "permitting_lead_time": "Member State dependent",
+            "co2_definition": "CO2 stream for geological storage; must consist overwhelmingly of carbon dioxide.",
+            "cross_border_rules": "Fully integrated within EU single market"
+          }
+        },
+        "zh": {
+          "name": "欧盟",
+          "summary": "欧盟的 CCUS 监管画像以 CCS 指令为核心，并通过 ETS、NZIA 和 CRCF 等制度持续扩展。",
+          "regulatory_pillars": {
+            "pore_space_rights": "成员国主权所有",
+            "liability_transfer": "通过强制注容量义务 (50Mt by 2030) 明确成员国与运营商的法律责任界限",
+            "liability_period": "闭坑后至少 20 年",
+            "financial_assurance": "强制性（欧盟指令第 19 条）",
+            "permitting_lead_time": "取决于成员国",
+            "co2_definition": "用于地质封存的 CO2 流；必须绝大部分由二氧化碳构成。",
+            "cross_border_rules": "欧盟内部完全打通，支持跨境输送网络"
+          }
+        }
+      },
+      "policy_count": 7,
+      "facility_count": 0
+    },
+    {
+      "id": "Finland",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Finland",
+          "summary": "Regulatory profile for Finland",
+          "regulatory_pillars": {
+            "pore_space_rights": "Domestic geological storage prohibited (Act 416/2012) due to bedrock.",
+            "liability_transfer": "Follows EU Directive; focus on export to North Sea hubs.",
+            "liability_period": "20 years post-closure (EU benchmark).",
+            "financial_assurance": "Mandatory; support via reverse auctions for biogenic CO2 (BECCS).",
+            "permitting_lead_time": "Streamlined focus on e-fuel (CCU) and transport infrastructure.",
+            "co2_definition": "Substance/Feedstock (not waste) for CCS/CCU purposes.",
+            "cross_border_rules": "Active MoUs with Denmark/Norway for CO2 export; London Protocol."
+          }
+        },
+        "zh": {
+          "name": "芬兰",
+          "summary": "芬兰 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "因基岩原因，国内禁止地质封存 (416/2012 号法案)。",
+            "liability_transfer": "遵循欧盟指令；侧重于出口至北海枢纽。",
+            "liability_period": "闭坑后 20 年 (欧盟基准)。",
+            "financial_assurance": "强制性；通过生物质二氧化碳 (BECCS) 逆向拍卖提供支持。",
+            "permitting_lead_time": "精简，侧重于电子燃料 (CCU) 和运输基础设施。",
+            "co2_definition": "用于 CCS/CCU 目的的物质/原料 (非废物)。",
+            "cross_border_rules": "与丹麦/挪威签署二氧化碳出口谅解备忘录；伦敦议定书。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 9
+    },
+    {
+      "id": "France",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "France",
+          "summary": "Profile for France",
+          "regulatory_pillars": {
+            "pore_space_rights": "Strong State control; streamlined site conversion via Green Industry Act.",
+            "liability_transfer": "Responsibility transfers to State after stability confirmation (post-closure).",
+            "liability_period": "Approx. 20-30 years (aligned with EU Directive 2009/31/EC).",
+            "financial_assurance": "15-year Carbon Contract for Difference (CCfD) mechanism.",
+            "permitting_lead_time": "Streamlined via 4 primary industrial hubs (Dunkirk, Le Havre, etc.).",
+            "co2_definition": "Residual industrial CO2 stream eligible for storage; framed around unavoidable emissions.",
+            "cross_border_rules": "Leading advocate for London Protocol compliance; 2024 bilateral export agreement with Norway."
+          }
+        },
+        "zh": {
+          "name": "法国",
+          "summary": "法国的 CCUS 监管画像强调不可避免工业排放、国家规划引导和欧盟规则衔接。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家特许经营",
+            "liability_transfer": "遵循欧盟指令",
+            "liability_period": "约 20-30 年（与欧盟指令 2009/31/EC 保持一致）。",
+            "financial_assurance": "15 年期碳差价合约 (CCfD) 机制。",
+            "permitting_lead_time": "通过 4 个主要工业枢纽（敦刻尔克、勒阿弗尔等）进行简化。",
+            "co2_definition": "可用于封存的工业残余 CO2 流；制度上聚焦不可避免排放。",
+            "cross_border_rules": "伦敦议定书合规的主要倡导者；2024 年与挪威签署双边出口协议。"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 30
+    },
+    {
+      "id": "Georgia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Georgia",
+          "summary": "Regulatory profile for Georgia",
+          "regulatory_pillars": {
+            "pore_space_rights": "Surface property interest model; state coordinates large clusters.",
+            "liability_transfer": "Aligning with EU standards; transfer after stability period.",
+            "liability_period": "20+ years post-injection (proposed in 2026 regulations).",
+            "financial_assurance": "閉坑和修复的强制性财务担保。",
+            "permitting_lead_time": "2-4 years (Updated Law on Environmental Protection).",
+            "co2_definition": "Regulated as a Greenhouse Gas (GHG); distinct from waste.",
+            "cross_border_rules": "EU Association Agreement alignment; EU ETS compatibility focus."
+          }
+        },
+        "zh": {
+          "name": "格鲁吉亚",
+          "summary": "格鲁吉亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "地表财产权益模式；国家协调大型集群。",
+            "liability_transfer": "对齐欧盟标准；在稳定期后转移。",
+            "liability_period": "注入后 20 年以上 (2026 年条例中提议)。",
+            "financial_assurance": "闭坑和修复的强制性财务担保。",
+            "permitting_lead_time": "2-4 年 (更新后的环境保护法)。",
+            "co2_definition": "受温室气体 (GHG) 监管；与废物区分开来。",
+            "cross_border_rules": "对齐欧盟联系国协定；侧重于欧盟 ETS 兼容性。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Germany",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Germany",
+          "summary": "Profile for Germany",
+          "regulatory_pillars": {
+            "pore_space_rights": "Offshore storage permitted in EEZ; Onshore is 'Opt-in' by Federal States.",
+            "liability_transfer": "Standardized 40-year monitoring period post-closure before state transfer.",
+            "liability_period": "Approx. 40 years (aligned with EU Directive 2009/31/EC).",
+            "financial_assurance": "EUR 3.3 billion KTF funding; mandatory operator security for site closure.",
+            "permitting_lead_time": "Accelerated via 'Overriding Public Interest' status.",
+            "co2_definition": "High-purity CO2 stream for transport and storage; access is policy-limited to hard-to-abate sectors and removals.",
+            "cross_border_rules": "Ratifying London Protocol amendment to enable CO2 export."
+          }
+        },
+        "zh": {
+          "name": "德国",
+          "summary": "德国的 CCUS 监管画像以难减排行业准入限制、联邦战略转向和跨境运输准备为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "受监管准入",
+            "liability_transfer": "机制研究中",
+            "liability_period": "约 40 年（与欧盟指令 2009/31/EC 保持一致）。",
+            "financial_assurance": "33 亿欧元 KTF 资金；强制性的运营商场址关闭担保。",
+            "permitting_lead_time": "通过“高于公共利益”状态加速。",
+            "co2_definition": "用于运输与封存的高纯度 CO2 流；政策适用范围限于难减排行业和碳移除。",
+            "cross_border_rules": "批准伦敦议定书修正案以允许二氧化碳出口。"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 21
+    },
+    {
+      "id": "Greece",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Greece",
+          "summary": "Profile for Greece",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; managed by HEREMA. [Evidence: Law 4001/2011 update] [URL: https://ypen.gov.gr/]",
+            "liability_transfer": "Transfer to HEREMA after verified monitoring period. [Evidence: EU CCS Directive Alignment]",
+            "liability_period": "Min. 20 years post-closure monitoring. [Evidence: Prinos Project License]",
+            "financial_assurance": "Mandatory bank guarantees for offshore projects. [Evidence: HEREMA Guidelines]",
+            "permitting_lead_time": "2-4 years (Strategic Investment status). [Evidence: National Energy & Climate Plan]",
+            "co2_definition": "Industrial stream for permanent storage. [Evidence: Environmental Law]",
+            "cross_border_rules": "Mediterranean CCS Hub (London Protocol aligned). [Evidence: Greece-Bulgaria-Romania MOU]"
+          }
+        },
+        "zh": {
+          "name": "希腊",
+          "summary": "希腊的 CCUS 监管画像依托欧盟框架和海上封存开发推进，重点聚焦区域枢纽建设。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；由 HEREMA 管理。[证据: 第 4001/2011 号法律更新] [URL: https://ypen.gov.gr/]",
+            "liability_transfer": "经过验证的监测期后转移至 HEREMA。[证据: 对齐欧盟 CCS 指令]",
+            "liability_period": "闭坑后至少 20 年监测期。[证据: Prinos 项目许可]",
+            "financial_assurance": "离岸项目强制性银行担保。[证据: HEREMA 指南]",
+            "permitting_lead_time": "2-4 年 (战略投资地位)。[证据: 国家能源与气候计划]",
+            "co2_definition": "永久封存的工业流。[证据: 环境法]",
+            "cross_border_rules": "地中海 CCUS 枢纽（对齐伦敦议定书）。[证据: 希保罗谅解备忘录]"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 12
+    },
+    {
+      "id": "Hungary",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Hungary",
+          "summary": "Regulatory profile for Hungary",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Mining Act); accessed via mining-type permits.",
+            "liability_transfer": "Follows EU Directive; transfer to State after stability proof.",
+            "liability_period": "20 years post-closure monitoring required.",
+            "financial_assurance": "Mandatory; includes operators contributions to Stewardship Fund.",
+            "permitting_lead_time": "2-5 years; centralized via Mining Authority (SARA).",
+            "co2_definition": "High-purity Stream (>95% CO2); excluded from waste legislation.",
+            "cross_border_rules": "EU CCS Directive alignment; planning for regional transport pipelines."
+          }
+        },
+        "zh": {
+          "name": "匈牙利",
+          "summary": "匈牙利 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (矿业法)；通过类矿业许可获得。",
+            "liability_transfer": "遵循欧盟指令；在证明稳定性后转移至国家。",
+            "liability_period": "需进行 20 年闭坑后监测。",
+            "financial_assurance": "强制性；包括运营商对管理基金的贡献。",
+            "permitting_lead_time": "2-5 年；通过矿业局 (SARA) 集中管理。",
+            "co2_definition": "高纯度流 (>95% CO2)；不属于废物立法。",
+            "cross_border_rules": "对齐欧盟 CCS 指令；规划区域运输管道。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 3
+    },
+    {
+      "id": "Iceland",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Iceland",
+          "summary": "Profile for Iceland",
+          "regulatory_pillars": {
+            "pore_space_rights": "Specific governance for onshore mineralization (basaltic) via Carbfix technology.",
+            "liability_transfer": "Aligned with EU Directive 2009/31/EC; state assumption of liability post-monitoring.",
+            "liability_period": "Approx. 20-30 years post-closure; accelerated by fast mineralization physics.",
+            "financial_assurance": "€115M EU grant for Coda Terminal; mandatory operator closure security.",
+            "permitting_lead_time": "First onshore permit granted in 2025 establishes a clear path for mineralization projects.",
+            "co2_definition": "CO2 stream for mineral storage; regulated as a storage feed stream rather than as a waste category.",
+            "cross_border_rules": "Coda Terminal enables large-scale CO2 import from Europe for storage in Iceland."
+          }
+        },
+        "zh": {
+          "name": "冰岛",
+          "summary": "冰岛的 CCUS 监管画像以矿化封存和碳移除应用见长，制度与项目耦合度较高。",
+          "regulatory_pillars": {
+            "pore_space_rights": "通过 Carbfix 技术对陆上矿化（玄武岩）封存进行专门治理。",
+            "liability_transfer": "符合欧盟指令 2009/31/EC；在监测后由国家承担责任。",
+            "liability_period": "闭坑后约 20-30 年；由于快速矿化的物理特性，该过程可能加速。",
+            "financial_assurance": "Coda 终端获得 1.15 亿欧元欧盟赠款；强制性的运营商闭坑担保。",
+            "permitting_lead_time": "2025 年获得首个陆上许可，为矿化项目建立了清晰的路径。",
+            "co2_definition": "用于矿化封存的 CO2 流；监管上更接近封存进料流，而非单独废物类别。",
+            "cross_border_rules": "Coda 终端使从欧洲大规模进口二氧化碳到冰岛进行封存成为可能。"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 10
+    },
+    {
+      "id": "India",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "India",
+          "summary": "Profile for India",
+          "regulatory_pillars": {
+            "pore_space_rights": "Leaning towards State Ownership; unified federal policy under draft.",
+            "liability_transfer": "Proposed transfer to State after 20-year post-closure monitoring.",
+            "liability_period": "Approx. 20 years (Proposed).",
+            "financial_assurance": "Viability Gap Funding (VGF) and Production Linked Incentives (PLI).",
+            "permitting_lead_time": "Streamlined via National Mission testbeds (Estimated 3-4 years).",
+            "co2_definition": "Industrial CO2 / carbon asset within the emerging CCTS framework; no dedicated CCS legal class yet.",
+            "cross_border_rules": "Focus on domestic market; London Protocol alignment pending."
+          }
+        },
+        "zh": {
+          "name": "印度",
+          "summary": "印度的 CCUS 监管画像仍处政策培育阶段，重点落在工业脱碳和碳市场衔接。",
+          "regulatory_pillars": {
+            "pore_space_rights": "倾向于国家所有；统一的联邦政策正在起草中。",
+            "liability_transfer": "提议在 20 年闭坑后监测后转移给国家。",
+            "liability_period": "约 20 年（建议）。",
+            "financial_assurance": "可行性缺口资金 (VGF) 和生产挂钩激励 (PLI)。",
+            "permitting_lead_time": "通过国家使命试验平台进行简化（预计 3-4 年）。",
+            "co2_definition": "新兴 CCTS 框架下的工业 CO2 / 碳资产；尚无专门 CCS 法定类别。",
+            "cross_border_rules": "侧重于国内市场；伦敦议定书一致性待定。"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 4
+    },
+    {
+      "id": "Indonesia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Indonesia",
+          "summary": "Profile for Indonesia",
+          "regulatory_pillars": {
+            "pore_space_rights": "State Owned",
+            "liability_transfer": "To Government after monitoring period",
+            "liability_period": "10 years (Proposed)",
+            "financial_assurance": "Mandatory (Performance Bond)",
+            "permitting_lead_time": "Developing (PSC amendment)",
+            "co2_definition": "Carbon Emission",
+            "cross_border_rules": "Allowed (30% Capacity Cap allocated)"
+          }
+        },
+        "zh": {
+          "name": "印度尼西亚",
+          "summary": "印度尼西亚的 CCUS 监管画像以油气法制为基础，正向独立 CCUS 监管框架过渡。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有",
+            "liability_transfer": "监测期后移交给政府",
+            "liability_period": "10 年（建议）",
+            "financial_assurance": "强制性（履约保证金）",
+            "permitting_lead_time": "开发中（PSC 修订）",
+            "co2_definition": "碳排放",
+            "cross_border_rules": "允许（分配 30% 的容量上限）"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 20
+    },
+    {
+      "id": "International",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "International",
+          "summary": "Profile for International",
+          "regulatory_pillars": {
+            "pore_space_rights": "Pending",
+            "liability_transfer": "Pending",
+            "liability_period": "Pending",
+            "financial_assurance": "Pending",
+            "permitting_lead_time": "Pending",
+            "co2_definition": "Pending",
+            "cross_border_rules": "Pending"
+          }
+        },
+        "zh": {
+          "name": "国际",
+          "summary": "国际层面的 CCUS 监管画像主要由伦敦议定书、巴黎协定和 MRV 标准共同塑造。",
+          "regulatory_pillars": {
+            "pore_space_rights": "待定",
+            "liability_transfer": "待定",
+            "liability_period": "待定",
+            "financial_assurance": "待定",
+            "permitting_lead_time": "待定",
+            "co2_definition": "待定",
+            "cross_border_rules": "待定"
+          }
+        }
+      },
+      "policy_count": 10,
+      "facility_count": 0
+    },
+    {
+      "id": "Ireland",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Ireland",
+          "summary": "Regulatory profile for Ireland",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Minerals Dev. Acts); exclusive Storage Permits issued.",
+            "liability_transfer": "Follows EU Directive; transfer to State after min. 20 years.",
+            "liability_period": "Minimum 20 years post-closure monitoring.",
+            "financial_assurance": "Mandatory Bonds/Escrow for remediation and future costs.",
+            "permitting_lead_time": "3-6 years (EPA/MARA oversight).",
+            "co2_definition": "High-purity CO2 stream for permanent storage; generally positioned outside waste treatment when stored under CCS rules.",
+            "cross_border_rules": "National CCUS Policy Framework focus on Cork/Shannon clusters."
+          }
+        },
+        "zh": {
+          "name": "爱尔兰",
+          "summary": "爱尔兰 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (矿产开发法)；颁发独占封存许可。",
+            "liability_transfer": "遵循欧盟指令；至少 20 年后转移至国家。",
+            "liability_period": "至少 20 年闭坑后监测。",
+            "financial_assurance": "用于修复和未来成本的强制性债券/代管。",
+            "permitting_lead_time": "3-6 年 (EPA/MARA 监管)。",
+            "co2_definition": "用于永久封存的高纯度 CO2 流；在 CCS 规则下通常不按废物处置定位。",
+            "cross_border_rules": "国家 CCUS 政策框架侧重于 Cork/Shannon 集群。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 3
+    },
+    {
+      "id": "Italy",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Italy",
+          "summary": "Profile for Italy",
+          "regulatory_pillars": {
+            "pore_space_rights": "Depleted offshore hydrocarbon reservoirs legally designated as suitable sites (Law 11/2024).",
+            "liability_transfer": "Responsibility transfers to State (MASE) after confirmation of CO2 stability.",
+            "liability_period": "Minimum 20 years post-closure (competitive compared to EU standard).",
+            "financial_assurance": "Mandatory operator security for closure and long-term monitoring.",
+            "permitting_lead_time": "Exemption from EIA for pilots <100kt; streamlined industrial licensing.",
+            "co2_definition": "CO2 stream for transport and storage within the CCS framework; access rules are still evolving.",
+            "cross_border_rules": "Developing Mediterranean export/import hub via Callisto Project of Common Interest (PCI)."
+          }
+        },
+        "zh": {
+          "name": "意大利",
+          "summary": "意大利的 CCUS 监管画像建立在欧盟规则基础上，并以 Ravenna 等集群推动商业化落地。",
+          "regulatory_pillars": {
+            "pore_space_rights": "枯竭的离岸碳氢化合物储层在法律上被指定为合适场址（第 11/2024 号法律）。",
+            "liability_transfer": "确认二氧化碳稳定性后，责任转移给国家 (MASE)。",
+            "liability_period": "闭坑后至少 20 年（与欧盟标准相比具有竞争力）。",
+            "financial_assurance": "场址关闭和长期监测需要强制性的运营商担保。",
+            "permitting_lead_time": "小于 10 万吨的试点项目免除环境影响评价 (EIA)；简化工业许可。",
+            "co2_definition": "CCS 框架下用于运输与封存的 CO2 流；准入规则仍在演进。",
+            "cross_border_rules": "通过 Callisto 共同利益项目 (PCI) 开发地中海进出口枢纽。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 7
+    },
+    {
+      "id": "Japan",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Japan",
+          "summary": "Profile for Japan",
+          "regulatory_pillars": {
+            "pore_space_rights": "拟制物权 (Quasi-real Rights / Mina-shi Bukken).",
+            "liability_transfer": "Monitoring/Management responsibility transfers to JOGMEC after stability confirmation.",
+            "liability_period": "Phase-in from 2024-2026; monitoring contribution required during operation.",
+            "financial_assurance": "Mandatory Monitoring Reserves (Contributions) paid to JOGMEC.",
+            "permitting_lead_time": "Approx. 2-3 years via METI Specified Area licensing.",
+            "co2_definition": "Licensed CO2 stream / industrial gas for transport and storage under the CCS Business Act.",
+            "cross_border_rules": "Aligned with London Protocol (Art 6) to enable Asia-Pacific hubs."
+          }
+        },
+        "zh": {
+          "name": "日本",
+          "summary": "日本的 CCUS 监管画像以《CCS 事业法》、指定海域许可和国家主导长期管理机制为核心。",
+          "regulatory_pillars": {
+            "pore_space_rights": "拟制物权（准物权）",
+            "liability_transfer": "稳定性确认后，监测和管理责任转移至 JOGMEC。",
+            "liability_period": "2024-2026 年分阶段实施；运营期间需持续缴纳监测负担金。",
+            "financial_assurance": "须向 JOGMEC 缴纳强制性监测准备金（分担金）。",
+            "permitting_lead_time": "通过 METI 指定海域许可，通常约 2-3 年。",
+            "co2_definition": "《CCS 事业法》下获许可用于运输与封存的 CO2 流 / 工业气体。",
+            "cross_border_rules": "与《伦敦议定书》第 6 条修正方向保持一致，以支持亚太跨境枢纽。"
+          }
+        }
+      },
+      "policy_count": 4,
+      "facility_count": 21
+    },
+    {
+      "id": "Kazakhstan",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Kazakhstan",
+          "summary": "Profile for Kazakhstan",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Subsurface Use Code). [Evidence: Art 14.2 Ecology Code] [URL: https://www.gov.kz/]",
+            "liability_transfer": "Long-term liability transfer to the state after verified stability. [Evidence: Subsurface Use Law]",
+            "liability_period": "20 years monitoring post-closure. [Evidence: Ecology Code 2024 Amendment]",
+            "financial_assurance": "Mandatory Liquidation Fund for subsurface users. [Evidence: Ecology Code Art 54]",
+            "permitting_lead_time": "2-3 years (EIA + Subsurface permit). [Evidence: Simplified Pilot Procedure]",
+            "co2_definition": "Technogenic greenhouse gas subject to ETS regulation. [Evidence: Zhasyl Damu Rules]",
+            "cross_border_rules": "Aligned with EAEU and Paris Agreement Article 6. [Evidence: COP28 Roadmap]"
+          }
+        },
+        "zh": {
+          "name": "哈萨克斯坦",
+          "summary": "哈萨克斯坦的 CCUS 监管画像主要嵌入生态法典与 ETS 体系，制度仍在早期发展。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (地下资源利用法)。[证据: 生态法第 14.2 条] [URL: https://www.gov.kz/]",
+            "liability_transfer": "验证稳定性后长期责任转移至国家。[证据: 地下资源利用法]",
+            "liability_period": "闭坑后 20 年监测期。[证据: 2024 年生态法修正案]",
+            "financial_assurance": "地下资源利用者的强制性清算基金。[证据: 生态法第 54 条]",
+            "permitting_lead_time": "2-3 年 (EIA + 地下资源许可)。[证据: 简化试点程序]",
+            "co2_definition": "受 ETS 监管的人为温室气体。[证据: Zhasyl Damu 规则]",
+            "cross_border_rules": "对齐欧亚经济联盟和巴黎协定第 6 条。[证据: COP28 路线图]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "Kenya",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Kenya",
+          "summary": "Regulatory profile for Kenya",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Constitution/Mining Acts); Sequestration Lease model.",
+            "liability_transfer": "Stewardship model; potential transfer to State after stability.",
+            "liability_period": "20-50 years post-injection monitoring (proposed).",
+            "financial_assurance": "Mandatory Rehabilitation Fund and insurance requirements.",
+            "permitting_lead_time": "2-4 years (Designated National Authority oversight).",
+            "co2_definition": "Mitigation outcome/Commodity (Climate Change Act 2023).",
+            "cross_border_rules": "Paris Agreement Art. 6 alignment for international trading."
+          }
+        },
+        "zh": {
+          "name": "肯尼亚",
+          "summary": "肯尼亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (宪法/矿业法)；封存租赁模式。",
+            "liability_transfer": "管理模式；在稳定后可能转移至国家。",
+            "liability_period": "注入后需监测 20-50 年 (提议中)。",
+            "financial_assurance": "强制性修复基金和保险要求。",
+            "permitting_lead_time": "2-4 年 (指定国家当局监管)。",
+            "co2_definition": "减排成果/商品 (2023 年气候变化法)。",
+            "cross_border_rules": "对齐巴黎协定第 6 条进行国际贸易。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 9
+    },
+    {
+      "id": "Kuwait",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Kuwait",
+          "summary": "Profile for Kuwait",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; managed by KPC/KOC under the Ministry of Oil. [Evidence: KPC Sustainability Report] [URL: https://www.kpc.com.kw/]",
+            "liability_transfer": "Long-term liability currently remains with KPC/State entities. [Evidence: National Energy Plan]",
+            "liability_period": "Not specified; aligning with GCC regional practices. [Evidence: KPC Decarbonization Roadmap]",
+            "financial_assurance": "Project-level funding through KPC capital expenditure. [Evidence: KPC 2040 Strategy]",
+            "permitting_lead_time": "Developing (Integrated with KOC upstream protocols). [Evidence: KOC CCUS Pilot Case]",
+            "co2_definition": "Industrial CO2 resource for EOR and potential storage; no dedicated CCS legal class yet.",
+            "cross_border_rules": "Bilateral agreements focused on regional energy security. [Evidence: GCC Climate Ministerial]"
+          }
+        },
+        "zh": {
+          "name": "科威特",
+          "summary": "科威特的 CCUS 监管画像以油气行业应用和 EOR 导向为主，独立 CCS 法制仍有限。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；在石油部领导下由 KPC/KOC 管理。[证据: KPC 可持续发展报告] [URL: https://www.kpc.com.kw/]",
+            "liability_transfer": "长期责任目前由 KPC/国家实体承担。[证据: 国家能源计划]",
+            "liability_period": "未具体说明；对齐海合会区域惯例。[证据: KPC 脱碳路线图]",
+            "financial_assurance": "通过 KPC 资本支出进行的项目级融资。[证据: KPC 2040 战略]",
+            "permitting_lead_time": "开发中 (与 KOC 上游协议整合)。[证据: KOC CCUS 试点案例]",
+            "co2_definition": "用于 EOR 和潜在封存的工业 CO2 资源；尚无专门 CCS 法定类别。",
+            "cross_border_rules": "侧重于区域能源安全的双边协议。[证据: 海合会气候部长级会议]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "Latvia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Latvia",
+          "summary": "Regulatory profile for Latvia",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Law on Subterranean Depths); storage ban lifted 2025.",
+            "liability_transfer": "Follows EU Directive; transfer after stability proof (20y).",
+            "liability_period": "20 years post-closure monitoring.",
+            "financial_assurance": "Mandatory contribution to future monitoring costs.",
+            "permitting_lead_time": "3-5 years (Integrated into Climate Law 2025).",
+            "co2_definition": "High-purity Stream (>95% CO2); distinct from industrial waste.",
+            "cross_border_rules": "CCS Baltic Consortium for cross-border value chains."
+          }
+        },
+        "zh": {
+          "name": "拉脱维亚",
+          "summary": "拉脱维亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (地下深度法)；2025 年取消封存禁令。",
+            "liability_transfer": "遵循欧盟指令；证明稳定性 (20年) 后转移。",
+            "liability_period": "闭坑后 20 年监测期。",
+            "financial_assurance": "未来监测成本的强制性贡献。",
+            "permitting_lead_time": "3-5 年 (集成到 2025 年气候法中)。",
+            "co2_definition": "高纯度流 (>95% CO2)；与工业废物区分开来。",
+            "cross_border_rules": "用于跨境价值链的 CCS 波罗的海联盟。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Libya",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Libya",
+          "summary": "Regulatory profile for Libya",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Petroleum Law 1955); managed via NOC concessions.",
+            "liability_transfer": "Contract-by-contract basis (EPSA); no formal State transfer yet.",
+            "liability_period": "Undefined in statute; follows Good Oilfield Practices.",
+            "financial_assurance": "Expected requirements for EIAs and pollution control.",
+            "permitting_lead_time": "3-5 years (Negotiated project phase).",
+            "co2_definition": "Emission/Pollutant (Env. Law) or EOR Commodity.",
+            "cross_border_rules": "Structures A & E offshore project as regulatory laboratory."
+          }
+        },
+        "zh": {
+          "name": "利比亚",
+          "summary": "利比亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (1955 年石油法)；通过 NOC 特许权管理。",
+            "liability_transfer": "基于合同 (EPSA)；目前尚无正式的国家转移机制。",
+            "liability_period": "法规未界定；遵循良好油田规范。",
+            "financial_assurance": "对 EIA 和污染控制的预期要求。",
+            "permitting_lead_time": "3-5 年 (协商项目阶段)。",
+            "co2_definition": "排放/污染物 (环境法) 或 EOR 商品。",
+            "cross_border_rules": "Structures A & E 离岸项目作为监管实验室。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Lithuania",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Lithuania",
+          "summary": "Regulatory profile for Lithuania",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Law on Depths of the Earth); prohibition being amended.",
+            "liability_transfer": "Follows EU Directive; transfer to State after stability proof.",
+            "liability_period": "20 years post-closure monitoring.",
+            "financial_assurance": "Mandatory bank guarantees/insurance for leakage and closure.",
+            "permitting_lead_time": "3-5 years (Integrated into updated NECP).",
+            "co2_definition": "CO2 stream / industrial feedstock for CCU-oriented use; dedicated storage classification remains limited.",
+            "cross_border_rules": "CCS Baltic Consortium; open-access infrastructure criteria."
+          }
+        },
+        "zh": {
+          "name": "立陶宛",
+          "summary": "立陶宛 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (地层深度法)；正在修订禁令。",
+            "liability_transfer": "遵循欧盟指令；在证明稳定性后转移至国家。",
+            "liability_period": "闭坑后 20 年监测期。",
+            "financial_assurance": "针对泄漏和闭坑的强制性银行担保/保险。",
+            "permitting_lead_time": "3-5 年 (集成到更新后的 NECP 中)。",
+            "co2_definition": "面向 CCU 的 CO2 流 / 工业原料；专门封存分类仍有限。",
+            "cross_border_rules": "CCS 波罗的海联盟；基础设施开放准入标准。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Luxembourg",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Luxembourg",
+          "summary": "Regulatory profile for Luxembourg",
+          "regulatory_pillars": {
+            "pore_space_rights": "Geological storage prohibited domestically (Law 2012).",
+            "liability_transfer": "Follows EU Directive; focus on transport infrastructure liability.",
+            "liability_period": "20 years post-closure (EU benchmark).",
+            "financial_assurance": "Mandatory aid schemes revision to cover transport liability.",
+            "permitting_lead_time": "2-4 years (Focus on industrial capture projects).",
+            "co2_definition": "Resource for CCU or Sequestered Asset for CDR credits.",
+            "cross_border_rules": "European Backbone integration; BeNeLux pipeline networks."
+          }
+        },
+        "zh": {
+          "name": "卢森堡",
+          "summary": "卢森堡 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国内禁止地质封存 (2012 年法律)。",
+            "liability_transfer": "遵循欧盟指令；侧重于运输基础设施责任。",
+            "liability_period": "闭坑后 20 年 (欧盟基准)。",
+            "financial_assurance": "修订强制性援助计划以涵盖运输责任。",
+            "permitting_lead_time": "2-4 年 (侧重于工业捕集项目)。",
+            "co2_definition": "用于 CCU 的资源或用于 CDR 额度的封存资产。",
+            "cross_border_rules": "欧洲骨干网集成；BeNeLux 管道网络。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Malaysia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Malaysia",
+          "summary": "Profile for Malaysia",
+          "regulatory_pillars": {
+            "pore_space_rights": "Two-phased authorization: Assessment Permits (geological study) and Storage Permits (operation).",
+            "liability_transfer": "Post-Closure Stewardship Fund manages long-term monitoring and risk transfer.",
+            "liability_period": "Managed via Post-Closure Stewardship Fund with injection levy.",
+            "financial_assurance": "Mandatory contribution to Post-Closure Stewardship Fund; operational security required.",
+            "permitting_lead_time": "One-stop regulatory center via Malaysia CCUS Agency (MyCCUS).",
+            "co2_definition": "Regulated CO2 stream across capture, transport, utilization, and permanent storage under the CCUS framework.",
+            "cross_border_rules": "Permits CO2 import for storage; prohibits utilization of imported CO2."
+          }
+        },
+        "zh": {
+          "name": "马来西亚",
+          "summary": "马来西亚的 CCUS 监管画像正从政策文件转向专门立法，覆盖全价值链监管。",
+          "regulatory_pillars": {
+            "pore_space_rights": "分两个阶段授权：评估许可（地质研究）和封存许可（运营）。",
+            "liability_transfer": "闭坑后管理基金负责长期监测和风险转移。",
+            "liability_period": "通过注入征费建立的闭坑后管理基金进行管理。",
+            "financial_assurance": "强制缴纳闭坑后管理基金；需要运营担保。",
+            "permitting_lead_time": "通过马来西亚 CCUS 机构 (MyCCUS) 实现一站式监管。",
+            "co2_definition": "CCUS 框架下贯穿捕集、运输、利用和永久封存全链条的受监管 CO2 流。",
+            "cross_border_rules": "允许进口二氧化碳进行封存；禁止利用进口二氧化碳。"
+          }
+        }
+      },
+      "policy_count": 6,
+      "facility_count": 4
+    },
+    {
+      "id": "Mexico",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Mexico",
+          "summary": "Profile for Mexico",
+          "regulatory_pillars": {
+            "pore_space_rights": "Currently under national hydrocarbon law; new state-led framework to clarify specific storage rights.",
+            "liability_transfer": "TBD by 2025 SENER Legal Framework.",
+            "liability_period": "TBD.",
+            "financial_assurance": "State-level carbon tax offsets (e.g., Querétaro 50% offset limit).",
+            "permitting_lead_time": "Targeting cluster-based permitting by 2027.",
+            "co2_definition": "Industrial emissions stream for CCUS use or storage; dedicated legal classification is still developing.",
+            "cross_border_rules": "Proposed regional cooperation via Tamaulipas hub."
+          }
+        },
+        "zh": {
+          "name": "墨西哥",
+          "summary": "墨西哥的 CCUS 监管画像主要由国家能源与工业脱碳战略驱动，法律框架仍在形成。",
+          "regulatory_pillars": {
+            "pore_space_rights": "目前根据国家碳氢化合物法律管理；新的国家主导框架将明确具体的封存权。",
+            "liability_transfer": "由 2025 年 SENER 法律框架待定。",
+            "liability_period": "待定。",
+            "financial_assurance": "州级碳税抵消（如克雷塔罗 50% 的抵消限额）。",
+            "permitting_lead_time": "目标到 2027 年实现基于集群的许可。",
+            "co2_definition": "用于 CCUS 利用或封存的工业排放流；专门法律分类仍在形成中。",
+            "cross_border_rules": "提议通过塔毛利帕斯枢纽开展区域合作。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 1
+    },
+    {
+      "id": "Netherlands",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Netherlands",
+          "summary": "Profile for Netherlands",
+          "regulatory_pillars": {
+            "pore_space_rights": "Regulated offshore via Mining Act; priority given to Porthos and Aramis hubs.",
+            "liability_transfer": "Compliant with EU CCS Directive; state management after closure verification.",
+            "liability_period": "Standard EU-aligned 20-year post-closure monitoring.",
+            "financial_assurance": "SDE++ subsidy mechanism (carbon contract for difference); CO2 levy for greenhouse horticulture.",
+            "permitting_lead_time": "Cluster-based permitting via industrial hub coordinators.",
+            "co2_definition": "CO2 stream for permanent storage, with a separate policy track for carbon-removal projects.",
+            "cross_border_rules": "MoU with Norway and UK for cross-border storage and hub connectivity."
+          }
+        },
+        "zh": {
+          "name": "荷兰",
+          "summary": "荷兰的 CCUS 监管画像以永久封存、港口基础设施和碳移除政策并行推进为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "通过《采矿法》对离岸进行监管；优先考虑 Porthos 和 Aramis 枢纽。",
+            "liability_transfer": "符合欧盟 CCS 指令；闭坑核实后由国家管理。",
+            "liability_period": "符合欧盟标准的 20 年闭坑后监测。",
+            "financial_assurance": "SDE++ 补贴机制（碳差价合约）；对温室园艺征收二氧化碳税。",
+            "permitting_lead_time": "通过工业枢纽协调员进行基于集群的许可。",
+            "co2_definition": "用于永久封存的 CO2 流，并为碳移除项目设置独立政策轨道。",
+            "cross_border_rules": "与挪威和英国签署跨境封存和枢纽互联备忘录。"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 30
+    },
+    {
+      "id": "New Zealand",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "New Zealand",
+          "summary": "Regulatory profile for New Zealand",
+          "regulatory_pillars": {
+            "pore_space_rights": "Proposed Crown management of deep formations (CCUS Bill 2026).",
+            "liability_transfer": "Phased model: Operator (injection) $\rightarrow$ Crown (after 15y closure).",
+            "liability_period": "15 years closure assurance period (proposed).",
+            "financial_assurance": "Mandatory Trust/Bond for remediation and leakage costs.",
+            "permitting_lead_time": "3-5 years (Integration into 2026 CCUS legislation).",
+            "co2_definition": "Industrial Gas (not waste) if meeting purity standards.",
+            "cross_border_rules": "One-for-one ETS mechanism; international credit potential."
+          }
+        },
+        "zh": {
+          "name": "新西兰",
+          "summary": "新西兰 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "提议由政府管理深层地层 (2026 CCUS 法案)。",
+            "liability_transfer": "分阶段模式：运营商 (注入) $\rightarrow$ 政府 (闭坑 15 年后)。",
+            "liability_period": "闭坑后需监测 15 年 (提议中)。",
+            "financial_assurance": "用于修复和泄漏成本的强制性信托/债券。",
+            "permitting_lead_time": "3-5 年 (集成到 2026 年 CCUS 立法中)。",
+            "co2_definition": "如果满足纯度标准，则为工业气体 (非废物)。",
+            "cross_border_rules": "一对一 ETS 机制；国际额度潜力。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Nigeria",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Nigeria",
+          "summary": "Profile for Nigeria",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; managed by NUPRC for upstream assets. [Evidence: NUPRC Reg 2024] [URL: https://nuprc.gov.ng/]",
+            "liability_transfer": "Long-term liability to be managed by the Federal Government after decommissioning. [Evidence: Petroleum Industry Act]",
+            "liability_period": "Expected 15-20 years post-closure monitoring. [Evidence: Draft CCUS Protocol]",
+            "financial_assurance": "Mandatory remediation fund contributions for offshore operations. [Evidence: PIA Section 232]",
+            "permitting_lead_time": "18-24 months for upstream CCS integration. [Evidence: NUPRC One-stop licensing]",
+            "co2_definition": "Regulated industrial waste substance. [Evidence: Environmental Impact Assessment Act]",
+            "cross_border_rules": "Framework for regional African energy hubs under AfCFTA. [Evidence: NUPRC Strategic Plan]"
+          }
+        },
+        "zh": {
+          "name": "尼日利亚",
+          "summary": "尼日利亚的 CCUS 监管画像主要依附油气与环境制度，独立封存规则仍较有限。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；由 NUPRC 管理上游资产。[证据: NUPRC 2024 年条例] [URL: https://nuprc.gov.ng/]",
+            "liability_transfer": "退役后长期责任由联邦政府管理。[证据: 石油工业法]",
+            "liability_period": "预计闭坑后 15-20 年监测期。[证据: CCUS 协议草案]",
+            "financial_assurance": "离岸作业必须缴纳强制性修复基金。[证据: PIA 第 232 条]",
+            "permitting_lead_time": "上游 CCS 整合需 18-24 个月。[证据: NUPRC 一站式许可]",
+            "co2_definition": "受控工业废物。[证据: 环境影响评估法]",
+            "cross_border_rules": "AfCFTA 下区域非洲能源枢纽的框架。[证据: NUPRC 战略计划]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "Norway",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Norway",
+          "summary": "Profile for Norway",
+          "regulatory_pillars": {
+            "pore_space_rights": "11 storage permits granted by Ministry of Energy under CO2 Storage Regulations.",
+            "liability_transfer": "Long-term liability managed under CO2 Storage Regulations (Lagringsforskriften).",
+            "liability_period": "Site-specific monitoring period post-closure; standard EU-aligned risk transfer.",
+            "financial_assurance": "Massive state investment (Longship project); mandatory operator financial security.",
+            "permitting_lead_time": "Mature regulatory environment under Norwegian Offshore Directorate.",
+            "co2_definition": "CO2 stream for transport and offshore geological storage under a licensed CCS regime.",
+            "cross_border_rules": "Active bilateral MoUs with EU partners to bypass London Protocol export restrictions."
+          }
+        },
+        "zh": {
+          "name": "挪威",
+          "summary": "挪威的 CCUS 监管画像以成熟海上封存许可制度、国家主导项目和跨境接收能力见长。",
+          "regulatory_pillars": {
+            "pore_space_rights": "能源部根据《二氧化碳封存条例》批准了 11 份封存许可。",
+            "liability_transfer": "长期责任根据《二氧化碳封存条例》(Lagringsforskriften) 进行管理。",
+            "liability_period": "闭坑后的特定场地监测期；与欧盟一致的标准风险转移。",
+            "financial_assurance": "大规模国家投资（“长船”项目）；强制性的运营商财务担保。",
+            "permitting_lead_time": "在挪威离岸管理局监管下的成熟监管环境。",
+            "co2_definition": "许可制 CCS 体系下用于运输和海上地质封存的 CO2 流。",
+            "cross_border_rules": "与欧盟合作伙伴签署活跃的双边备忘录，以规避伦敦议定书的出口限制。"
+          }
+        }
+      },
+      "policy_count": 5,
+      "facility_count": 54
+    },
+    {
+      "id": "Oman",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Oman",
+          "summary": "Profile for Oman",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; administered via Royal Decree 96/2020. [Evidence: MEM Guidelines 2024] [URL: https://mem.gov.om/]",
+            "liability_transfer": "Long-term liability managed by PDO under MEM supervision. [Evidence: MEM Strategy]",
+            "liability_period": "TBD (Standard 20 years proposed for salt/depleted fields). [Evidence: Draft CCUS Law 2025]",
+            "financial_assurance": "Incentives through Green Hydrogen Oman (HYROM) credits. [Evidence: Royal Decree 10/2023]",
+            "permitting_lead_time": "2-3 years (Integrated with upstream oil & gas permits). [Evidence: PDO CCUS Project Plan]",
+            "co2_definition": "Industrial CO2 resource for EOR and low-carbon industry; dedicated storage classification remains policy-led.",
+            "cross_border_rules": "Framework for Blue Ammonia export certification. [Evidence: Oman-Japan Hydrogen MOU]"
+          }
+        },
+        "zh": {
+          "name": "阿曼",
+          "summary": "阿曼的 CCUS 监管画像以油气增产和低碳工业资源化利用为主，专门封存制度仍较早期。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；通过第 96/2020 号皇家法令进行管理。[证据: 2024 年 MEM 指南] [URL: https://mem.gov.om/]",
+            "liability_transfer": "在 MEM 监督下由 PDO 管理长期责任。[证据: MEM 战略]",
+            "liability_period": "待定 (盐层/枯竭油气田建议标准为 20 年)。[证据: 2025 年 CCUS 法案草案]",
+            "financial_assurance": "通过阿曼绿氢 (HYROM) 信用额度提供激励措施。[证据: 第 10/2023 号皇家法令]",
+            "permitting_lead_time": "2-3 年 (与上游油气许可整合)。[证据: PDO CCUS 项目计划]",
+            "co2_definition": "用于 EOR 和低碳工业的工业 CO2 资源；专门封存分类仍以政策推动为主。",
+            "cross_border_rules": "蓝氨出口认证框架。[证据: 阿曼-日本氢能谅解备忘录]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 2
+    },
+    {
+      "id": "Other",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Other",
+          "summary": "Profile for Other",
+          "regulatory_pillars": {
+            "pore_space_rights": "Pending",
+            "liability_transfer": "Pending",
+            "liability_period": "Pending",
+            "financial_assurance": "Pending",
+            "permitting_lead_time": "Pending",
+            "co2_definition": "Pending",
+            "cross_border_rules": "Pending"
+          }
+        },
+        "zh": {
+          "name": "其他",
+          "summary": "该条目用于承接尚未归入主要法域的国家或地区，其监管画像需结合具体国家另行判断。",
+          "regulatory_pillars": {
+            "pore_space_rights": "待定",
+            "liability_transfer": "待定",
+            "liability_period": "待定",
+            "financial_assurance": "待定",
+            "permitting_lead_time": "待定",
+            "co2_definition": "待定",
+            "cross_border_rules": "待定"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 0
+    },
+    {
+      "id": "Papua New Guinea",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Papua New Guinea",
+          "summary": "Regulatory profile for Papua New Guinea",
+          "regulatory_pillars": {
+            "pore_space_rights": "Derived from customary ownership of surface land (97% land).",
+            "liability_transfer": "Proposed transfer to State/Crown after stability proof.",
+            "liability_period": "10-20 years post-injection monitoring (proposed).",
+            "financial_assurance": "Exploring Post-Closure Stewardship Fund via operator levies.",
+            "permitting_lead_time": "3-6 years (CCDA as primary regulator).",
+            "co2_definition": "Defined under Climate Change Management Regulation 2023.",
+            "cross_border_rules": "Paris Agreement Art. 6 alignment for carbon monetization."
+          }
+        },
+        "zh": {
+          "name": "巴布亚新几内亚",
+          "summary": "巴布亚新几内亚 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "源自地表土地的习惯所有权 (97% 的土地)。",
+            "liability_transfer": "提议在证明稳定性后转移至国家/政府。",
+            "liability_period": "注入后需监测 10-20 年 (提议中)。",
+            "financial_assurance": "探索通过向运营商征收费用建立闭坑后管理基金。",
+            "permitting_lead_time": "3-6 年 (CCDA 作为主要监管机构)。",
+            "co2_definition": "根据 2023 年气候变化管理条例定义。",
+            "cross_border_rules": "对齐巴黎协定第 6 条以实现碳货币化。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Philippines",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Philippines",
+          "summary": "Profile for Philippines",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (1987 Constitution). [Evidence: DOE Circular 2025] [URL: https://www.doe.gov.ph/]",
+            "liability_transfer": "Long-term liability transfer to the State after 15 years. [Evidence: Draft CCS Rules 2025]",
+            "liability_period": "15 years post-closure monitoring. [Evidence: DOE Technical Standards]",
+            "financial_assurance": "Mandatory performance bond for CO2 injection projects. [Evidence: Energy Reform Act]",
+            "permitting_lead_time": "2-4 years (Multi-agency ECC process). [Evidence: DENR/DOE Roadmap]",
+            "co2_definition": "Regulated emission / Industrial resource for EOR. [Evidence: Clean Air Act]",
+            "cross_border_rules": "Framework for regional collaboration in ASEAN. [Evidence: COP29 Philippines Update]"
+          }
+        },
+        "zh": {
+          "name": "菲律宾",
+          "summary": "菲律宾的 CCUS 监管画像正在政策起步阶段，重点放在能源部门框架和市场化路径。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (1987 年宪法)。[证据: 2025 年 DOE 通告] [URL: https://www.doe.gov.ph/]",
+            "liability_transfer": "15 年后，长期责任转移至国家。[证据: 2025 年 CCS 规则草案]",
+            "liability_period": "闭坑后 15 年监测期。[证据: DOE 技术标准]",
+            "financial_assurance": "二氧化碳注入项目强制性履约保证金。[证据: 能源改革法]",
+            "permitting_lead_time": "2-4 年 (多机构 ECC 流程)。[证据: DENR/DOE 路线图]",
+            "co2_definition": "受控排放物 / 用于 EOR 的工业资源。[证据: 清洁空气法]",
+            "cross_border_rules": "东盟区域合作框架。[证据: COP29 菲律宾更新]"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 0
+    },
+    {
+      "id": "Poland",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Poland",
+          "summary": "Profile for Poland",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Treasury). [Evidence: Art 10 Mining Law] [URL: https://www.gov.pl/web/klimat]",
+            "liability_transfer": "Transfer to State (Competent Authority) after 20 years. [Evidence: EU CCS Directive Alignment]",
+            "liability_period": "Min. 20 years post-closure monitoring. [Evidence: Geological and Mining Law Art 127]",
+            "financial_assurance": "Mandatory security for decommissioning and site care. [Evidence: Art 127 Mining Law]",
+            "permitting_lead_time": "3-5 years (Ministry approval process). [Evidence: EU Project of Mutual Interest (PMI) status]",
+            "co2_definition": "Substance for geological storage (95%+ purity). [Evidence: Waste Act Amendment]",
+            "cross_border_rules": "London Protocol / TEN-E Cross-border clusters. [Evidence: ECO2CEE Project Roadmap]"
+          }
+        },
+        "zh": {
+          "name": "波兰",
+          "summary": "波兰的 CCUS 监管画像以欧盟合规、高纯度 CO2 流要求和国家主导矿业治理为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (国库)。[证据: 采矿法第 10 条] [URL: https://www.gov.pl/web/klimat]",
+            "liability_transfer": "20 年后转移至国家 (主管部门)。[证据: 对齐欧盟 CCS 指令]",
+            "liability_period": "闭坑后至少 20 年监测期。[证据: 地质和采矿法第 127 条]",
+            "financial_assurance": "退役和场地维护的强制性担保。[证据: 采矿法第 127 条]",
+            "permitting_lead_time": "3-5 年 (部级审批流程)。[证据: 欧盟共同利益项目 (PMI) 状态]",
+            "co2_definition": "用于地质封存的物质 (纯度 95% 以上)。[证据: 废物法修正案]",
+            "cross_border_rules": "伦敦议定书 / TEN-E 跨境集群。[证据: ECO2CEE 项目路线图]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 3
+    },
+    {
+      "id": "Portugal",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Portugal",
+          "summary": "Profile for Portugal",
+          "regulatory_pillars": {
+            "pore_space_rights": "State Owned",
+            "liability_transfer": "Permitted",
+            "liability_period": "20 years",
+            "financial_assurance": "Environmental Guarantee",
+            "permitting_lead_time": "2-3 years",
+            "co2_definition": "CO2 stream for geological storage under the EU CCS framework.",
+            "cross_border_rules": "EU ETS compliant"
+          }
+        },
+        "zh": {
+          "name": "葡萄牙",
+          "summary": "葡萄牙的 CCUS 监管画像总体沿用欧盟 CCS 规则，国内制度和项目推进仍较谨慎。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有",
+            "liability_transfer": "允许转移",
+            "liability_period": "20 年",
+            "financial_assurance": "环境保证金",
+            "permitting_lead_time": "2-3 年",
+            "co2_definition": "欧盟 CCS 框架下用于地质封存的 CO2 流。",
+            "cross_border_rules": "符合欧盟 ETS / CCS 规则"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Qatar",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Qatar",
+          "summary": "Profile for Qatar",
+          "regulatory_pillars": {
+            "pore_space_rights": "Managed by the State via QatarEnergy and the Ministry of Environment.",
+            "liability_transfer": "Long-term liability for permanent storage overseen by state-led QatarEnergy framework.",
+            "liability_period": "Aligned with project lifecycle (typically 25+ years) with state oversight.",
+            "financial_assurance": "Investment largely driven by state-owned QatarEnergy North Field expansion.",
+            "permitting_lead_time": "Streamlined integration with large-scale LNG infrastructure permits.",
+            "co2_definition": "Industrial CO2 emissions stream for sequestration and EOR; dedicated CCS legal class remains limited.",
+            "cross_border_rules": "Focus on Article 6 international credit trading for national decarbonization."
+          }
+        },
+        "zh": {
+          "name": "卡塔尔",
+          "summary": "卡塔尔的 CCUS 监管画像围绕 LNG、工业排放和 EOR 应用展开，国家战略驱动较强。",
+          "regulatory_pillars": {
+            "pore_space_rights": "由国家通过卡塔尔能源公司 (QatarEnergy) 和环境部进行管理。",
+            "liability_transfer": "永久封存的长期责任由国家主导的卡塔尔能源框架监督。",
+            "liability_period": "与项目生命周期（通常为 25 年以上）保持一致，受国家监督。",
+            "financial_assurance": "投资主要由国有的卡塔尔能源公司北场 (North Field) 扩建项目推动。",
+            "permitting_lead_time": "与大型 LNG 基础设施许可流程简化整合。",
+            "co2_definition": "用于封存和 EOR 的工业 CO2 排放流；专门 CCS 法定类别仍有限。",
+            "cross_border_rules": "侧重于利用第 6 条国际信用交易来实现国家脱碳。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 3
+    },
+    {
+      "id": "Republic of Korea",
+      "region": "East Asia",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "South Korea",
+          "summary": null,
+          "regulatory_pillars": {
+            "pore_space_rights": "Exclusive Storage Licenses granted by MOTIE in designated areas.",
+            "liability_transfer": "Responsibility transfers to state-designated entity after stability monitoring.",
+            "liability_period": "Performance-based period until stabilization is verified.",
+            "financial_assurance": "CCUS Industry Promotion Fund; mandatory bonds for closure/leakage.",
+            "permitting_lead_time": "Streamlined via 'One-stop Shop' mechanism (Target 1-2 years reduction).",
+            "co2_definition": "Non-waste CO2 stream; treated as an industrial resource for use and as a regulated storage substance for CCS.",
+            "cross_border_rules": "Legal basis for international CCS partnerships and CO2 export (e.g., to SE Asia)."
+          }
+        },
+        "zh": {
+          "name": "韩国",
+          "summary": null,
+          "regulatory_pillars": {
+            "pore_space_rights": "MOTIE 在指定区域授予的独占封存许可。",
+            "liability_transfer": "在稳定性监测后，责任转移给国家指定的实体。",
+            "liability_period": "基于表现的监测期，直到验证稳定性为止。",
+            "financial_assurance": "CCUS 产业振兴基金；强制性的闭坑/泄漏保证金。",
+            "permitting_lead_time": "通过“一站式”机制简化（目标缩短 1-2 年）。",
+            "co2_definition": "非废物属性的 CO2 流；利用时可作为工业资源，封存时作为受监管封存物质。",
+            "cross_border_rules": "国际 CCS 伙伴关系和二氧化碳出口（如出口至东南亚）的法律基础。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "Romania",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Romania",
+          "summary": "Profile for Romania",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; managed by NAMR. [Evidence: Law 114/2013 update] [URL: https://namr.ro/]",
+            "liability_transfer": "Transfers to Competent Authority after 20 years. [Evidence: EU CCS Directive Alignment]",
+            "liability_period": "Min. 20 years post-closure. [Evidence: Law 2025 Art 15]",
+            "financial_assurance": "Mandatory operator security for site care. [Evidence: NAMR Technical Code]",
+            "permitting_lead_time": "3-5 years (EU Projects of Mutual Interest). [Evidence: Black Sea CCS Roadmap]",
+            "co2_definition": "Waste for storage / Industrial gas. [Evidence: Environmental Law]",
+            "cross_border_rules": "London Protocol / Balkan CCUS regional hub. [Evidence: Romania-Greece MOU 2025]"
+          }
+        },
+        "zh": {
+          "name": "罗马尼亚",
+          "summary": "罗马尼亚的 CCUS 监管画像以欧盟 CCS 转置框架为基础，封存与工业气体属性并存。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；由 NAMR 管理。[证据: 第 114/2013 号法律更新] [URL: https://namr.ro/]",
+            "liability_transfer": "20 年后转移至主管部门。[证据: 对齐欧盟 CCS 指令]",
+            "liability_period": "闭坑后至少 20 年。[证据: 2025 年法律第 15 条]",
+            "financial_assurance": "场地维护强制性运营商担保。[证据: NAMR 技术规范]",
+            "permitting_lead_time": "3-5 年 (欧盟共同利益项目)。[证据: 黑海 CCS 路线图]",
+            "co2_definition": "封存废物 / 工业气体。[证据: 环境法]",
+            "cross_border_rules": "伦敦议定书 / 巴尔干 CCUS 区域枢纽。[证据: 2025 年罗希谅解备忘录]"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 3
+    },
+    {
+      "id": "Russia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Russia",
+          "summary": "Profile for Russia",
+          "regulatory_pillars": {
+            "pore_space_rights": "Federal ownership of subsurface resources; utilization of depleted reservoirs by state firms (Rosneft/Gazprom Neft).",
+            "liability_transfer": "State-centric model; TBD specifics in new regulatory framework.",
+            "liability_period": "Not specified.",
+            "financial_assurance": "Penalties for exceeding quotas (Sakhalin: 1,000 RUB/ton); focus on domestic R&D funding.",
+            "permitting_lead_time": "Mandatory reporting thresholds (>50k tons by 2025) and quota compliance by July 2025.",
+            "co2_definition": "Industrial CO2 emissions stream used in low-carbon industry policy; no mature standalone CCS legal class yet.",
+            "cross_border_rules": "Mutual recognition of carbon units within BRICS and EAEU frameworks."
+          }
+        },
+        "zh": {
+          "name": "俄罗斯",
+          "summary": "俄罗斯的 CCUS 监管画像主要服务于蓝氢和工业减排政策，独立 CCS 法制仍不成熟。",
+          "regulatory_pillars": {
+            "pore_space_rights": "地下资源归联邦所有；国有企业（俄罗斯石油公司/俄罗斯天然气工业石油公司）利用枯竭储层。",
+            "liability_transfer": "以国家为中心的模式；新监管框架中的具体细节待定。",
+            "liability_period": "未具体说明。",
+            "financial_assurance": "超过配额的处罚（萨哈林：1,000 卢布/吨）；侧重于国内研发资金。",
+            "permitting_lead_time": "强制性报告阈值（到 2025 年 >5 万吨）和 2025 年 7 月前的配额合规。",
+            "co2_definition": "低碳产业政策语境下的工业 CO2 排放流；尚无成熟独立的 CCS 法定类别。",
+            "cross_border_rules": "在金砖国家和欧亚经济联盟框架内互认碳单位。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 1
+    },
+    {
+      "id": "Saudi Arabia",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Saudi Arabia",
+          "summary": "Profile for Saudi Arabia",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned subsurface; concessions granted by Ministry of Energy.",
+            "liability_transfer": "Responsibility transfers to State after stability monitoring period.",
+            "liability_period": "Performance-based period (Estimated 20-30 years post-injection).",
+            "financial_assurance": "Green Financing Framework (2024); Green Bonds/Sukuk; Project-level guarantees.",
+            "permitting_lead_time": "Streamlined via Multi-user Hub infrastructure planning.",
+            "co2_definition": "Industrial carbon resource under circular-carbon-economy policy; dedicated CCS legal classification remains limited.",
+            "cross_border_rules": "Leading international producer forums; focused on Blue Hydrogen and export standards."
+          }
+        },
+        "zh": {
+          "name": "沙特阿拉伯",
+          "summary": "沙特阿拉伯的 CCUS 监管画像以循环碳经济和大型工业项目为核心驱动力。",
+          "regulatory_pillars": {
+            "pore_space_rights": "地下资源归国家所有；特许权由能源部授予。",
+            "liability_transfer": "在稳定性监测期后，责任转移给国家。",
+            "liability_period": "基于表现的监测期（预计注入后 20-30 年）。",
+            "financial_assurance": "绿色融资框架 (2024)；绿色债券/伊斯兰债券；项目级担保。",
+            "permitting_lead_time": "通过多用户枢纽基础设施规划进行简化。",
+            "co2_definition": "循环碳经济政策下的工业碳资源；专门 CCS 法律分类仍有限。",
+            "cross_border_rules": "领先的国际生产商论坛；侧重于蓝氢和出口标准。"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 7
+    },
+    {
+      "id": "Singapore",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Singapore",
+          "summary": "Profile for Singapore",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (State Lands Act). [Evidence: MTI/EMA Guidelines] [URL: https://www.nea.gov.sg/]",
+            "liability_transfer": "Limited; focuses on cross-border export liability. [Evidence: Carbon Tax (Amendment) Bill]",
+            "liability_period": "Aligned with international standard (20+ years). [Evidence: NEA MRV Framework]",
+            "financial_assurance": "Price stabilization via Carbon Tax (S$25-45/t). [Evidence: Budget 2024]",
+            "permitting_lead_time": "1-2 years for export terminal approval. [Evidence: Jurong Island Roadmap]",
+            "co2_definition": "Taxable Greenhouse Gas / Commodity. [Evidence: Carbon Pricing Act]",
+            "cross_border_rules": "Active Article 6.2 bilateral agreements. [Evidence: NEA International Links]"
+          }
+        },
+        "zh": {
+          "name": "新加坡",
+          "summary": "新加坡的 CCUS 监管画像以碳定价、跨境合作和区域运输枢纽角色为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (土地法)。[证据: MTI/EMA 指南] [URL: https://www.nea.gov.sg/]",
+            "liability_transfer": "有限责任；侧重于跨境出口责任。[证据: 碳定价(修订)法案]",
+            "liability_period": "对齐国际标准（20 年以上）。[证据: NEA MRV 框架]",
+            "financial_assurance": "通过碳税稳定价格（25-45 新元/吨）。[证据: 2024 年预算]",
+            "permitting_lead_time": "出口终端审批需 1-2 年。[证据: 裕廊岛路线图]",
+            "co2_definition": "应税温室气体/商品。[证据: 碳定价法]",
+            "cross_border_rules": "活跃的第 6.2 条双边协议。[证据: NEA 国际联系]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 2
+    },
+    {
+      "id": "South Africa",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "South Africa",
+          "summary": "Profile for South Africa",
+          "regulatory_pillars": {
+            "pore_space_rights": "Governed by MPRDA; 34Gt capacity confirmed at Leandra pilot site via Council for Geoscience (CGS).",
+            "liability_transfer": "Post-closure transfer to state under evaluation via national pilot project.",
+            "liability_period": "TBD based on Phase 2 pilot injection results (2025/26).",
+            "financial_assurance": "Transitioning Carbon Tax (R236/t in 2025, R308/t in 2026) with increased offset allowances.",
+            "permitting_lead_time": "Mandatory Carbon Budgets replacing voluntary systems (Commenced March 2025).",
+            "co2_definition": "Emissions stream within climate and environmental regulation; no standalone CCS legal definition yet.",
+            "cross_border_rules": "Not yet defined; focus on domestic mitigation."
+          }
+        },
+        "zh": {
+          "name": "南非",
+          "summary": "南非的 CCUS 监管画像主要嵌入气候法与能源转型政策，独立法律分类仍有限。",
+          "regulatory_pillars": {
+            "pore_space_rights": "由 MPRDA 管理；地球科学委员会 (CGS) 在 Leandra 试点场址确认了 340 亿吨的容量。",
+            "liability_transfer": "闭坑后向国家的转移正通过国家试点项目进行评估。",
+            "liability_period": "待定，基于第二阶段试点注入结果 (2025/26)。",
+            "financial_assurance": "过渡性碳税（2025 年 236 兰特/吨，2026 年 308 兰特/吨），并增加了抵消额度。",
+            "permitting_lead_time": "强制性碳预算取代自愿系统（于 2025 年 3 月开始）。",
+            "co2_definition": "气候与环境监管框架下的排放流；尚无独立 CCS 法律定义。",
+            "cross_border_rules": "尚未定义；侧重于国内减排。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "South Korea",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "South Korea",
+          "summary": "Regulatory profile for South Korea",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-managed (CCUS Act 2025); granted via exclusive permits.",
+            "liability_transfer": "Transfer to State after stability proof post-closure.",
+            "liability_period": "20-50 years monitoring (to be detailed in Decree).",
+            "financial_assurance": "Mandatory Closure/Restoration Plan and security bonds.",
+            "permitting_lead_time": "2-4 years (MOTIE and MOF coordination).",
+            "co2_definition": "Non-waste; Industrial Resource/Greenhouse Gas (CCUS Act).",
+            "cross_border_rules": "Facilitating export for storage (e.g. to SE Asia/Australia)."
+          }
+        },
+        "zh": {
+          "name": "韩国",
+          "summary": "韩国 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家管理 (2025 CCUS 法案)；通过独占许可授予。",
+            "liability_transfer": "闭坑证明稳定性后转移至国家。",
+            "liability_period": "需监测 20-50 年 (将在法令中详述)。",
+            "financial_assurance": "强制性闭坑/恢复计划及保证金。",
+            "permitting_lead_time": "2-4 年 (MOTIE 和 MOF 协调)。",
+            "co2_definition": "非废物；工业资源/温室气体 (CCUS 法案)。",
+            "cross_border_rules": "促进出口封存 (如出口至东南亚/澳大利亚)。"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 7
+    },
+    {
+      "id": "Spain",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Spain",
+          "summary": "Profile for Spain",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Mining Law). [Evidence: Law 7/2021 Art 12] [URL: https://www.miteco.gob.es/]",
+            "liability_transfer": "Transfers to State after 20 years (EU Directive). [Evidence: RD 1085/2010]",
+            "liability_period": "Min. 20 years post-closure. [Evidence: EU CCS Directive Alignment]",
+            "financial_assurance": "Mandatory financial guarantee (Art 19 Directive). [Evidence: Spanish CCS Regulation]",
+            "permitting_lead_time": "3-5 years (MITECO approval process). [Evidence: PNIECC 2023-2030]",
+            "co2_definition": "Waste stream / Geological storage substance. [Evidence: Law 40/2010]",
+            "cross_border_rules": "London Protocol / TEN-E Cross-border clusters. [Evidence: Call for Pyrenees Cluster]"
+          }
+        },
+        "zh": {
+          "name": "西班牙",
+          "summary": "西班牙的 CCUS 监管画像建立在欧盟制度基础上，并通过国家气候法和工业脱碳政策推进。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (矿业法)。[证据: 第 7/2021 号法律第 12 条] [URL: https://www.miteco.gob.es/]",
+            "liability_transfer": "20 年后转移至国家 (欧盟指令)。[证据: RD 1085/2010]",
+            "liability_period": "闭坑后至少 20 年。[证据: 欧盟 CCS 指令对齐]",
+            "financial_assurance": "强制性财务担保 (指令第 19 条)。[证据: 西班牙 CCS 条例]",
+            "permitting_lead_time": "3-5 年 (MITECO 审批流程)。[证据: PNIECC 2023-2030]",
+            "co2_definition": "废弃流/地质封存物质。[证据: 第 40/2010 号法律]",
+            "cross_border_rules": "伦敦议定书 / TEN-E 跨境集群。[证据: 比利牛斯集群呼吁]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 9
+    },
+    {
+      "id": "Sweden",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Sweden",
+          "summary": "Regulatory profile for Sweden",
+          "regulatory_pillars": {
+            "pore_space_rights": "State control offshore (Continental Shelf Act); EEZ storage focus.",
+            "liability_transfer": "Follows EU Directive; transfer to State after stability (20y).",
+            "liability_period": "20 years post-closure monitoring required.",
+            "financial_assurance": "Mandatory bank guarantees/insurance for site care.",
+            "permitting_lead_time": "3-6 years (SGU and Env. Courts review).",
+            "co2_definition": "Managed high-purity CO2 stream for storage, with specific support for bio-CO2 and BECCS.",
+            "cross_border_rules": "Active bilateral agreements (NO/DK) for North Sea storage."
+          }
+        },
+        "zh": {
+          "name": "瑞典",
+          "summary": "瑞典 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "离岸由国家控制 (大陆架法)；侧重于 EEZ 封存。",
+            "liability_transfer": "遵循欧盟指令；证明稳定性 (20年) 后转移。",
+            "liability_period": "需监测 20 年。",
+            "financial_assurance": "针对场地维护的强制性银行担保/保险。",
+            "permitting_lead_time": "3-6 年 (SGU 和环境法院审查)。",
+            "co2_definition": "用于封存的受监管高纯度 CO2 流，并对生物源 CO2 与 BECCS 提供专项支持。",
+            "cross_border_rules": "针对北海封存的活跃双边协议 (挪/丹)。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 35
+    },
+    {
+      "id": "Switzerland",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Switzerland",
+          "summary": "Profile for Switzerland",
+          "regulatory_pillars": {
+            "pore_space_rights": "Cantonal jurisdiction; governed by Cantonal Subsurface Laws. [Evidence: FOEN CCS Guidelines] [URL: https://www.bafu.admin.ch/]",
+            "liability_transfer": "Private-sector responsibility with potential federal backup for long-term storage. [Evidence: CO2 Act Revision]",
+            "liability_period": "Risk-based; 30-50 years monitoring proposed. [Evidence: BAFU Technical Standards]",
+            "financial_assurance": "Mandatory contributions to the climate fund and operator insurance. [Evidence: CO2 Act Art 39]",
+            "permitting_lead_time": "2-4 years (Cantonal + Federal coordination). [Evidence: Demo-Up Storage Project]",
+            "co2_definition": "Climatic gas subject to national reduction targets. [Evidence: CO2 Ordinance]",
+            "cross_border_rules": "Bilateral agreements (e.g., with Iceland/Norway) for CO2 export. [Evidence: London Protocol Ratification]"
+          }
+        },
+        "zh": {
+          "name": "瑞士",
+          "summary": "瑞士的 CCUS 监管画像以减排法和国际合作为核心，国内封存空间与规则仍较有限。",
+          "regulatory_pillars": {
+            "pore_space_rights": "州级管辖权；受州地下资源法管辖。[证据: FOEN CCS 指南] [URL: https://www.bafu.admin.ch/]",
+            "liability_transfer": "私营部门责任，长期封存可能由联邦提供支持。[证据: 二氧化碳法修订案]",
+            "liability_period": "基于风险；建议监测 30-50 年。[证据: BAFU 技术标准]",
+            "financial_assurance": "强制向气候基金缴纳费用并办理运营商保险。[证据: 二氧化碳法第 39 条]",
+            "permitting_lead_time": "2-4 年 (州级 + 联邦协调)。[证据: Demo-Up 封存项目]",
+            "co2_definition": "受国家减排目标约束的气候气体。[证据: 二氧化碳条例]",
+            "cross_border_rules": "出口二氧化碳的双边协议（例如与冰岛/挪威）。[证据: 伦敦议定书批准]"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 4
+    },
+    {
+      "id": "Thailand",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Thailand",
+          "summary": "Profile for Thailand",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned; managed by the Department of Mineral Fuels (DMF) for offshore storage.",
+            "liability_transfer": "Draft framework suggests state assumption after a verified monitoring period.",
+            "liability_period": "Under discussion; expected to align with international standards (20-50 years).",
+            "financial_assurance": "Preliminary carbon tax (THB 200/ton) implemented on petroleum products.",
+            "permitting_lead_time": "DMF designated as the technical lead to streamline CCUS project permitting.",
+            "co2_definition": "Managed substance / emissions stream under emerging climate legislation; dedicated CCS class is still forming.",
+            "cross_border_rules": "Aligning with EU CBAM by 2026; bilateral cooperation on regional storage."
+          }
+        },
+        "zh": {
+          "name": "泰国",
+          "summary": "泰国的 CCUS 监管画像正围绕新兴气候立法、投资促进和工业试点逐步形成。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有；由矿产燃料部 (DMF) 负责离岸封存管理。",
+            "liability_transfer": "草案框架建议在经过验证的监测期后由国家承担。",
+            "liability_period": "讨论中；预计将与国际标准（20-50 年）保持一致。",
+            "financial_assurance": "对石油产品实施初步碳税（200 泰铢/吨）。",
+            "permitting_lead_time": "DMF 被指定为技术牵头机构，以简化 CCUS 项目的许可。",
+            "co2_definition": "新兴气候立法框架下的受控物质 / 排放流；专门 CCS 类别仍在形成中。",
+            "cross_border_rules": "到 2026 年与欧盟 CBAM 对齐；开展区域封存方面的双边合作。"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 2
+    },
+    {
+      "id": "Turkey",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "Turkey",
+          "summary": "Profile for Turkey",
+          "regulatory_pillars": {
+            "pore_space_rights": "Identified in LTS 2053 for industrial clusters; detailed storage rights to be defined via Green Taxonomy 2025.",
+            "liability_transfer": "TBD under ETS regulatory framework.",
+            "liability_period": "TBD.",
+            "financial_assurance": "Administrative penalties (up to 50m TRY); TR ETS cap-and-trade system (Pilot 2026).",
+            "permitting_lead_time": "Mandatory ETS permits for installations >50k tons CO2/year.",
+            "co2_definition": "Industrial emissions stream for potential CCS deployment; dedicated legal classification remains under development.",
+            "cross_border_rules": "Strong alignment with EU CBAM definitive period (2026) for export protection."
+          }
+        },
+        "zh": {
+          "name": "土耳其",
+          "summary": "土耳其的 CCUS 监管画像仍处政策规划阶段，重点服务水泥和钢铁等高排放行业。",
+          "regulatory_pillars": {
+            "pore_space_rights": "在 2053 年长期战略 (LTS) 中为工业集群确定；具体封存权将通过 2025 年绿色分类法定义。",
+            "liability_transfer": "在 ETS 监管框架下待定。",
+            "liability_period": "待定。",
+            "financial_assurance": "行政处罚（高达 5,000 万土耳其里拉）；土耳其 ETS 限额与交易系统（2026 年试点）。",
+            "permitting_lead_time": "排放量 >5 万吨二氧化碳/年的设施必须获得 ETS 许可。",
+            "co2_definition": "面向潜在 CCS 部署的工业排放流；专门法律分类仍在完善中。",
+            "cross_border_rules": "与欧盟 CBAM 确定期（2026 年）高度一致，以保护出口。"
+          }
+        }
+      },
+      "policy_count": 1,
+      "facility_count": 0
+    },
+    {
+      "id": "United Arab Emirates",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "United Arab Emirates",
+          "summary": "Profile for United Arab Emirates",
+          "regulatory_pillars": {
+            "pore_space_rights": "Managed at Federal and Emirate level (Abu Dhabi SCFEA).",
+            "liability_transfer": "Federal mandate for emission reporting and liability for GHG accuracy.",
+            "liability_period": "MRV mandated starting May 2025 with annual reporting cycles.",
+            "financial_assurance": "National Register for Carbon Credits (NRCC) and credit-based incentives.",
+            "permitting_lead_time": "Mandatory registration for emitters exceeding 0.5M tons CO2e.",
+            "co2_definition": "GHG emissions stream within the federal climate framework; dedicated CCS legal classification remains limited.",
+            "cross_border_rules": "Aligned with Paris Agreement Article 6 for international credit trading."
+          }
+        },
+        "zh": {
+          "name": "阿联酋",
+          "summary": "阿联酋的 CCUS 监管画像以联邦气候框架、国有能源企业和工业减排项目为核心。",
+          "regulatory_pillars": {
+            "pore_space_rights": "在联邦和酋长国层面（阿布扎比 SCFEA）进行管理。",
+            "liability_transfer": "联邦授权进行排放报告，并对温室气体数据的准确性负责。",
+            "liability_period": "从2025年5月开始强制执行 MRV，并设有年度报告周期。",
+            "financial_assurance": "国家碳信用登记簿 (NRCC) 和基于信用的激励措施。",
+            "permitting_lead_time": "排放量超过 50 万吨二氧化碳当量的实体必须进行强制登记。",
+            "co2_definition": "联邦气候框架下的温室气体排放流；专门 CCS 法律分类仍有限。",
+            "cross_border_rules": "符合《巴黎协定》第六条，支持国际信用交易。"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 10
+    },
+    {
+      "id": "United Kingdom",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "United Kingdom",
+          "summary": "Profile for United Kingdom",
+          "regulatory_pillars": {
+            "pore_space_rights": "Crown Estate (Offshore)",
+            "liability_transfer": "Transfer to State (conditions apply)",
+            "liability_period": "Risk-based assessment",
+            "financial_assurance": "Mandatory (Decommissioning Fund)",
+            "permitting_lead_time": "Track-1 / Track-2 Clusters process",
+            "co2_definition": "CO2 stream for transport and geological storage under the CCS licensing regime.",
+            "cross_border_rules": "London Protocol / Bilateral Treaties"
+          }
+        },
+        "zh": {
+          "name": "英国",
+          "summary": "英国的 CCUS 监管画像以运输封存许可、集群模式和合同化支持机制为特征。",
+          "regulatory_pillars": {
+            "pore_space_rights": "官方地产（离岸）",
+            "liability_transfer": "转移给国家（适用相关条件）",
+            "liability_period": "基于风险的评估",
+            "financial_assurance": "强制性（退役基金）",
+            "permitting_lead_time": "第一轨 / 第二轨集群流程",
+            "co2_definition": "CCS 许可制度下用于运输和地质封存的 CO2 流。",
+            "cross_border_rules": "伦敦议定书 / 双边条约"
+          }
+        }
+      },
+      "policy_count": 3,
+      "facility_count": 106
+    },
+    {
+      "id": "United States",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": "CCUS AI Agent",
+      "provenance_last_audit_date": "2026-03-29",
+      "i18n": {
+        "en": {
+          "name": "United States",
+          "summary": "US leader in CCUS...",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-level management increasing through Class VI primacy.",
+            "liability_transfer": "Supported by state-level frameworks in primacy states.",
+            "liability_period": "Streamlined permitting reduces lead times to <12 months in some states.",
+            "financial_assurance": "Enhanced tax credits (up to $180/t) provide financial base.",
+            "permitting_lead_time": "Reduced significantly in LA/WV due to EPA primacy.",
+            "co2_definition": "Federal CO2 stream for geologic sequestration; commodity or waste treatment can vary by use case and state law.",
+            "cross_border_rules": "FEOC rules restrict foreign adversarial participation."
+          }
+        },
+        "zh": {
+          "name": "美国",
+          "summary": "美国领先...",
+          "regulatory_pillars": {
+            "pore_space_rights": "通过 Class VI 主权，州级管理力度加大。",
+            "liability_transfer": "受主权州州级框架支持。",
+            "liability_period": "精简许可在某些州将提前期缩短至 <12 个月。",
+            "financial_assurance": "增强的税收抵免（高达 $180/t）提供了财务基础。",
+            "permitting_lead_time": "由于 EPA 主权，LA/WV 的许可时间显著缩短。",
+            "co2_definition": "联邦层面按地质封存用 CO2 流监管；在不同用途和州法下也可能呈现商品或废弃物的混合定位。",
+            "cross_border_rules": "FEOC 规则限制外国对手参与。"
+          }
+        }
+      },
+      "policy_count": 12,
+      "facility_count": 374
+    },
+    {
+      "id": "Uruguay",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": "2026-03-19",
+      "i18n": {
+        "en": {
+          "name": "Uruguay",
+          "summary": "Regulatory profile for Uruguay",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Mining Code); access similar to concessions.",
+            "liability_transfer": "Transfer to State after stability proof post-closure.",
+            "liability_period": "20-30 years post-closure (proposed).",
+            "financial_assurance": "Mandatory; incentives via Investment Promotion Regime.",
+            "permitting_lead_time": "3-5 years (Ministry of Environment oversight).",
+            "co2_definition": "Resource for utilization or Sequestered Substance.",
+            "cross_border_rules": "Focus on Green Hydrogen Roadmap and biogenic CO2 (BECCS)."
+          }
+        },
+        "zh": {
+          "name": "乌拉圭",
+          "summary": "乌拉圭 的监管概况",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (矿业法)；获得准入类似于特许经营。",
+            "liability_transfer": "闭坑证明稳定性后转移至国家。",
+            "liability_period": "闭坑后需监测 20-30 年 (提议中)。",
+            "financial_assurance": "强制性；通过投资促进计划提供激励。",
+            "permitting_lead_time": "3-5 年 (环境保护部监管)。",
+            "co2_definition": "利用资源或封存物质。",
+            "cross_border_rules": "侧重于绿色氢能路线图和生物质二氧化碳 (BECCS)。"
+          }
+        }
+      },
+      "policy_count": 0,
+      "facility_count": 1
+    },
+    {
+      "id": "Vietnam",
+      "region": "Global",
+      "net_zero_year": null,
+      "capture_2030": null,
+      "storage_2050": null,
+      "provenance_author": null,
+      "provenance_reviewer": null,
+      "provenance_last_audit_date": null,
+      "i18n": {
+        "en": {
+          "name": "Vietnam",
+          "summary": "Profile for Vietnam",
+          "regulatory_pillars": {
+            "pore_space_rights": "State-owned (Decree 119/2025/ND-CP). [Evidence: Art 5.1] [URL: https://monre.gov.vn/]",
+            "liability_transfer": "Transfers to MONRE after monitoring. [Evidence: Decree 29/2026/ND-CP] [URL: https://netzero.vn/]",
+            "liability_period": "10 years post-closure monitoring. [Evidence: MRV Protocol 2026]",
+            "financial_assurance": "Mandatory Performance Bond for operators. [Evidence: Decree 119 Art 12]",
+            "permitting_lead_time": "2-3 years for combined EIA/CCS permit. [Evidence: One-stop-shop initiative]",
+            "co2_definition": "Managed Emission Factor / Industrial Gas. [Evidence: Environmental Law 2024]",
+            "cross_border_rules": "Article 6 aligned; Bilateral MOUs required. [Evidence: COP29 Commitment]"
+          }
+        },
+        "zh": {
+          "name": "越南",
+          "summary": "越南的 CCUS 监管画像嵌入新环境法与碳市场制度，整体仍处早期形成阶段。",
+          "regulatory_pillars": {
+            "pore_space_rights": "国家所有 (119/2025/ND-CP 号法令)。[证据: 第 5.1 条] [URL: https://monre.gov.vn/]",
+            "liability_transfer": "监测期后转移至自然资源与环境部 (MONRE)。[证据: 29/2026/ND-CP 号法令] [URL: https://netzero.vn/]",
+            "liability_period": "闭坑后 10 年监测期。[证据: 2026 年 MRV 协议]",
+            "financial_assurance": "运营商强制性履约保证金。[证据: 第 119 号法令第 12 条]",
+            "permitting_lead_time": "EIA/CCS 联合许可需 2-3 年。[证据: 一站式服务倡议]",
+            "co2_definition": "受控排放因子/工业气体。[证据: 2024 年环境法]",
+            "cross_border_rules": "对齐第 6 条；需要双边谅解备忘录。[证据: COP29 承诺]"
+          }
+        }
+      },
+      "policy_count": 2,
+      "facility_count": 1
+    }
+  ]
+}

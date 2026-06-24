@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-06-24T08:11:33.690Z",
+  "project": "CCUS Policy Hub",
+  "description": "Global CCUS Policy Database & Analysis Platform",
+  "version": "1.0.0",
+  "base_url": "https://liuh886.github.io/ccus-policy-hub",
+  "source_db": "agent/ccus-ai-agent/db/ccus_master.sqlite",
+  "datasets": {
+    "policies": {
+      "file": "https://liuh886.github.io/ccus-policy-hub/data/policies.json",
+      "count": 130,
+      "description": "Global CCUS policies with analysis scores"
+    },
+    "facilities": {
+      "file": "https://liuh886.github.io/ccus-policy-hub/data/facilities.json",
+      "count": 1110,
+      "description": "Global CCUS facilities with capacity and location data"
+    },
+    "countries": {
+      "file": "https://liuh886.github.io/ccus-policy-hub/data/countries.json",
+      "count": 66,
+      "description": "Country governance profiles with regulatory pillars"
+    },
+    "quality": {
+      "file": "https://liuh886.github.io/ccus-policy-hub/data/quality.json",
+      "description": "Data quality metrics and audit status"
+    },
+    "dataset-versions": {
+      "file": "https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json",
+      "description": "Dataset version metadata"
+    }
+  },
+  "schemas": {
+    "policy": "https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json",
+    "facility": "https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json",
+    "country": "https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json",
+    "manifest": "https://liuh886.github.io/ccus-policy-hub/data/schemas/manifest.schema.json"
+  },
+  "documentation": {
+    "llms": "https://liuh886.github.io/ccus-policy-hub/llms.txt",
+    "llms-full": "https://liuh886.github.io/ccus-policy-hub/llms-full.txt"
+  },
+  "known_limitations": [
+    "Facility-policy links are currently country-level only (low confidence)",
+    "Coordinate precision varies: exact, state, or country-level",
+    "Some policies may be missing source or URL",
+    "Chinese translations may not cover all fields"
+  ]
+}

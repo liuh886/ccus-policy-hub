@@ -28,6 +28,7 @@
     "manage:db:optimize": "node agent/ccus-ai-agent/logic/manage.mjs db:optimize",
     "manage:db:clean": "node agent/ccus-ai-agent/logic/manage.mjs db:clean",
     "manage:db:quality:export": "node scripts/generate-quality-metrics.mjs",
+    "manage:db:data:export": "node scripts/generate-public-data.mjs",
     "sync:all": "pnpm manage:db:export:md",
     "check:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "lint": "eslint . && prettier --check .",
