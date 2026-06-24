@@ -27,20 +27,9 @@ const REPORT_DIR = path.join(
 );
 const REPORT_JSON = path.join(REPORT_DIR, 'facilities_parity_report.json');
 const REPORT_MD = path.join(REPORT_DIR, 'facilities_parity_report.md');
-const REPAIR_JSON = path.join(
-  REPORT_DIR,
-  'facilities_db_repair_from_md.json'
-);
-const REPAIR_MD = path.join(
-  REPORT_DIR,
-  'facilities_db_repair_from_md.md'
-);
-const FACILITY_MD_DIR = path.join(
-  REPO_ROOT,
-  'src',
-  'content',
-  'facilities'
-);
+const REPAIR_JSON = path.join(REPORT_DIR, 'facilities_db_repair_from_md.json');
+const REPAIR_MD = path.join(REPORT_DIR, 'facilities_db_repair_from_md.md');
+const FACILITY_MD_DIR = path.join(REPO_ROOT, 'src', 'content', 'facilities');
 
 const CJK_RE = /[\u4e00-\u9fff]/;
 const FLOAT_EPSILON = 1e-9;
@@ -156,7 +145,12 @@ function buildArrayMap(rows, keyFn) {
   return map;
 }
 
-function fallbackFacilityDescription({ lang, displayCountry, displayStatus, i }) {
+function fallbackFacilityDescription({
+  lang,
+  displayCountry,
+  displayStatus,
+  i,
+}) {
   if (lang === 'zh') {
     return `### 项目概览
 
@@ -239,7 +233,11 @@ export function projectFacilityForLang({
   };
 }
 
-export function resolveSharedMdValue(field, enFrontmatter = {}, zhFrontmatter = {}) {
+export function resolveSharedMdValue(
+  field,
+  enFrontmatter = {},
+  zhFrontmatter = {}
+) {
   const enVal = normalizeValueForCompare(enFrontmatter?.[field]);
   const zhVal = normalizeValueForCompare(zhFrontmatter?.[field]);
   const enPresent = String(enVal) !== '';
@@ -429,8 +427,8 @@ function buildFacilitiesDbRepairList({
     for (const lang of ['en', 'zh']) {
       const mdRec = lang === 'en' ? mdEnRec : mdZhRec;
       const mdFm = mdRec.frontmatter ?? {};
-      const dbPartners = (partnersMap.get(`${facilityId}::${lang}`) ?? []).map((r) =>
-        String(r.partner)
+      const dbPartners = (partnersMap.get(`${facilityId}::${lang}`) ?? []).map(
+        (r) => String(r.partner)
       );
       const dbLinks = (linksMap.get(`${facilityId}::${lang}`) ?? []).map((r) =>
         String(r.link)
@@ -594,8 +592,13 @@ async function runAudit() {
       partnersRows,
       (r) => `${r.facility_id}::${r.lang}`
     );
-    const linksMap = buildArrayMap(linksRows, (r) => `${r.facility_id}::${r.lang}`);
-    const relatedPoliciesMap = buildArrayMap(relRows, (r) => String(r.facility_id));
+    const linksMap = buildArrayMap(
+      linksRows,
+      (r) => `${r.facility_id}::${r.lang}`
+    );
+    const relatedPoliciesMap = buildArrayMap(relRows, (r) =>
+      String(r.facility_id)
+    );
 
     const errors = [];
     const warnings = [];
@@ -610,15 +613,27 @@ async function runAudit() {
       const inEn = mdEnIds.has(id);
       const inZh = mdZhIds.has(id);
       if (!inDb) errors.push({ type: 'missing_in_db', id, severity: 'error' });
-      if (!inEn) errors.push({ type: 'missing_in_md_en', id, severity: 'error' });
-      if (!inZh) errors.push({ type: 'missing_in_md_zh', id, severity: 'error' });
+      if (!inEn)
+        errors.push({ type: 'missing_in_md_en', id, severity: 'error' });
+      if (!inZh)
+        errors.push({ type: 'missing_in_md_zh', id, severity: 'error' });
     }
 
     for (const id of mdEnDup) {
-      errors.push({ type: 'duplicate_md_id', id, lang: 'en', severity: 'error' });
+      errors.push({
+        type: 'duplicate_md_id',
+        id,
+        lang: 'en',
+        severity: 'error',
+      });
     }
     for (const id of mdZhDup) {
-      errors.push({ type: 'duplicate_md_id', id, lang: 'zh', severity: 'error' });
+      errors.push({
+        type: 'duplicate_md_id',
+        id,
+        lang: 'zh',
+        severity: 'error',
+      });
     }
 
     for (const facilityId of dbIds) {
@@ -641,7 +656,12 @@ async function runAudit() {
           field: 'coordinates',
           severity: 'error',
           note: `No country centroid available for ${String(f.country ?? '') || 'unknown country'}`,
-          db: { country: f.country, precision: f.precision, lat: f.lat, lng: f.lng },
+          db: {
+            country: f.country,
+            precision: f.precision,
+            lat: f.lat,
+            lng: f.lng,
+          },
           md: null,
         });
       }
@@ -670,7 +690,9 @@ async function runAudit() {
       }
 
       const relatedPolicyRows = relatedPoliciesMap.get(facilityId) ?? [];
-      const relatedPoliciesRaw = relatedPolicyRows.map((r) => String(r.policy_id));
+      const relatedPoliciesRaw = relatedPolicyRows.map((r) =>
+        String(r.policy_id)
+      );
       for (const pid of relatedPoliciesRaw) {
         if (!policyIds.has(pid)) {
           errors.push({
@@ -686,7 +708,8 @@ async function runAudit() {
       }
 
       for (const lang of ['en', 'zh']) {
-        const mdRec = lang === 'en' ? mdEn.get(facilityId) : mdZh.get(facilityId);
+        const mdRec =
+          lang === 'en' ? mdEn.get(facilityId) : mdZh.get(facilityId);
         if (!mdRec) continue;
 
         const i = facilityI18nMap.get(`${facilityId}::${lang}`);
@@ -700,8 +723,8 @@ async function runAudit() {
           continue;
         }
 
-        const partners = (partnersMap.get(`${facilityId}::${lang}`) ?? []).map((r) =>
-          String(r.partner)
+        const partners = (partnersMap.get(`${facilityId}::${lang}`) ?? []).map(
+          (r) => String(r.partner)
         );
         const links = (linksMap.get(`${facilityId}::${lang}`) ?? []).map((r) =>
           String(r.link)
@@ -955,6 +978,9 @@ export async function main() {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   await main();
 }

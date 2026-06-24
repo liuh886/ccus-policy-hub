@@ -6,7 +6,10 @@ let content = fs.readFileSync(PAGE_PATH, 'utf8');
 
 // 1. Add maturityChart variable
 if (!content.includes('let maturityChart')) {
-  content = content.replace('let currentChart: any = null;', 'let currentChart: any = null;\n  let maturityChart: any = null;');
+  content = content.replace(
+    'let currentChart: any = null;',
+    'let currentChart: any = null;\n  let maturityChart: any = null;'
+  );
 }
 
 // 2. Insert Maturity Matrix Logic before bundles
@@ -65,8 +68,11 @@ const maturityLogic = `
 `;
 
 if (!content.includes('maturityChart = new Chart(mCtx')) {
-  content = content.replace('// 3. Render Bundles', maturityLogic + '\n    // 3. Render Bundles');
+  content = content.replace(
+    '// 3. Render Bundles',
+    maturityLogic + '\n    // 3. Render Bundles'
+  );
 }
 
 fs.writeFileSync(PAGE_PATH, content);
-console.log("Updated compare page logic.");
+console.log('Updated compare page logic.');

@@ -89,8 +89,7 @@ function averageCoordinatePairs(pairs) {
   if (!pairs.length) return null;
   if (pairs.length === 1) return [...pairs[0]];
 
-  const lat =
-    pairs.reduce((sum, [pairLat]) => sum + pairLat, 0) / pairs.length;
+  const lat = pairs.reduce((sum, [pairLat]) => sum + pairLat, 0) / pairs.length;
   const lng =
     pairs.reduce((sum, [, pairLng]) => sum + pairLng, 0) / pairs.length;
 

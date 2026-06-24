@@ -1,0 +1,28 @@
+# --- Build Output ---
+dist/
+
+# --- Astro Cache ---
+.astro/
+
+# --- Dependencies ---
+node_modules/
+
+# --- Lock Files ---
+pnpm-lock.yaml
+
+# --- Internal AI Context ---
+.gemini/
+.codex/
+.worktrees/
+
+# --- Generated Data (auto-generated, do not hand-edit) ---
+src/data/quality_metrics.generated.json
+src/data/dataset_versions.generated.json
+src/content/enums.generated.ts
+
+# --- OS & IDE ---
+.DS_Store
+Thumbs.db
+
+# --- Other ---
+LICENSE

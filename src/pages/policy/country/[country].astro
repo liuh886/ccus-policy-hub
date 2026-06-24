@@ -8,18 +8,22 @@ export async function getStaticPaths() {
   const allPolicies = await getCollection('policies_zh');
   const dictCountries: Record<string, string> = i18nDict.countries;
 
-  const validPolicies = allPolicies.filter(p => {
-    const c = p.data.country;
-    return c && !c.includes('*') && !c.includes('?') && c.length > 1;
-  }).map(p => ({
-    ...p,
-    data: {
-      ...p.data,
-      country: dictCountries[p.data.country] || p.data.country
-    }
-  }));
+  const validPolicies = allPolicies
+    .filter((p) => {
+      const c = p.data.country;
+      return c && !c.includes('*') && !c.includes('?') && c.length > 1;
+    })
+    .map((p) => ({
+      ...p,
+      data: {
+        ...p.data,
+        country: dictCountries[p.data.country] || p.data.country,
+      },
+    }));
 
-  const uniqueCountries = [...new Set(validPolicies.map((p) => p.data.country))];
+  const uniqueCountries = [
+    ...new Set(validPolicies.map((p) => p.data.country)),
+  ];
 
   return uniqueCountries.map((country) => {
     const countryPolicies = validPolicies.filter(

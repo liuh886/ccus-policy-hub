@@ -1,113 +1,125 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "Global benchmark for I dimension (Incentive).",
-      "citation": "RVO SDE++ 2024 Guidelines",
-      "evidence": "Provides 15-year contracts compensating the difference between CCS cost and EU ETS price, up to €400/t.",
-      "label": "Gold Standard CfD",
-      "score": 100
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': 'Global benchmark for I dimension (Incentive).',
+          'citation': 'RVO SDE++ 2024 Guidelines',
+          'evidence': 'Provides 15-year contracts compensating the difference between CCS cost and EU ETS price, up to €400/t.',
+          'label': 'Gold Standard CfD',
+          'score': 100,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'Rotterdam Hub Strategy',
+          'evidence': 'Enables multi-user hub infrastructure (Porthos, Aramis) via state-backed funding.',
+          'label': 'Open Access Hubs',
+          'score': 95,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'SDE++ Monitoring Protocol',
+          'evidence': 'Subsidy payments are strictly linked to verified stored CO2 volumes via ETS-compliant monitoring.',
+          'label': 'Strict Fiscal MRV',
+          'score': 90,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'Dutch Mining Act',
+          'evidence': 'Fully aligned with the EU CCS Directive and Porthos-specific regulatory frameworks.',
+          'label': 'Integrated Licensing',
+          'score': 85,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'National Climate Agreement',
+          'evidence': "Primary fiscal instrument for achieving the Netherlands' 2030 industrial decarb targets.",
+          'label': 'Climate Heart',
+          'score': 90,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "Rotterdam Hub Strategy",
-      "evidence": "Enables multi-user hub infrastructure (Porthos, Aramis) via state-backed funding.",
-      "label": "Open Access Hubs",
-      "score": 95
+  'category': 'Regulatory',
+  'country': 'Netherlands',
+  'description': "## Policy Overview\r \r The Netherlands' SDE++ scheme is a premier global example of the Carbon Contract for Difference (CCfD) model, designed to bridge the 'unprofitable component' of decarbonization technologies. For CCS and CCU, the scheme provides a 15-year operating subsidy that covers the gap between the full project cost (Base Price) and the market value of avoided emissions (EU ETS Price).\r \r In 2024, the scheme was significantly updated with a maximum subsidy intensity of **€400 per tonne",
+  'evolution':
+    {
+      'clusters':
+        [
+          'Netherlands National Climate Agreement',
+          'EU ETS Decarbonization',
+          'Porthos Hub',
+        ],
+      'supersedes': [],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "SDE++ Monitoring Protocol",
-      "evidence": "Subsidy payments are strictly linked to verified stored CO2 volumes via ETS-compliant monitoring.",
-      "label": "Strict Fiscal MRV",
-      "score": 90
+  'id': 'netherlands-sde',
+  'impactAnalysis':
+    {
+      'economic': 'Internalizes the carbon price through a stable 15-year payout, turning volatile ETS signals into bankable cash flows for multi-billion euro infrastructures.',
+      'environmental': 'The financial backbone of the Dutch industrial transition, targeting over 10 Mtpa of storage by 2030 to meet Paris Agreement commitments.',
+      'technical': 'Drives the development of open-access Hub-and-Spoke transport networks (Porthos/Aramis), enabling multi-sector industrial capture at scale.',
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "Dutch Mining Act",
-      "evidence": "Fully aligned with the EU CCS Directive and Porthos-specific regulatory frameworks.",
-      "label": "Integrated Licensing",
-      "score": 85
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-07',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "National Climate Agreement",
-      "evidence": "Primary fiscal instrument for achieving the Netherlands' 2030 industrial decarb targets.",
-      "label": "Climate Heart",
-      "score": 90
-    }
-  },
-  "category": "Regulatory",
-  "country": "Netherlands",
-  "description": "## Policy Overview\r \r The Netherlands' SDE++ scheme is a premier global example of the Carbon Contract for Difference (CCfD) model, designed to bridge the 'unprofitable component' of decarbonization technologies. For CCS and CCU, the scheme provides a 15-year operating subsidy that covers the gap between the full project cost (Base Price) and the market value of avoided emissions (EU ETS Price).\r \r In 2024, the scheme was significantly updated with a maximum subsidy intensity of **€400 per tonne",
-  "evolution": {
-    "clusters": [
-      "Netherlands National Climate Agreement",
-      "EU ETS Decarbonization",
-      "Porthos Hub"
+  'pubDate': '2024-01-01',
+  'regulatory':
+    {
+      'co2_definition': '',
+      'cross_border_rules': '',
+      'financial_assurance': '',
+      'liability_period': '',
+      'liability_transfer': '',
+      'permitting_lead_time': '',
+      'pore_space_rights': '',
+    },
+  'relatedFacilities':
+    [
+      '1096',
+      '1144',
+      '1173',
+      '1327',
+      '1330',
+      '1361',
+      '1483',
+      '150',
+      '18',
+      '19',
+      '215',
+      '216',
+      '217',
+      '249',
+      '285',
+      '286',
+      '32',
+      '325',
+      '33',
+      '364',
+      '365',
+      '394',
+      '412',
+      '465',
+      '679',
+      '680',
+      '681',
+      '819',
+      '950',
+      '951',
     ],
-    "supersedes": []
-  },
-  "id": "netherlands-sde",
-  "impactAnalysis": {
-    "economic": "Internalizes the carbon price through a stable 15-year payout, turning volatile ETS signals into bankable cash flows for multi-billion euro infrastructures.",
-    "environmental": "The financial backbone of the Dutch industrial transition, targeting over 10 Mtpa of storage by 2030 to meet Paris Agreement commitments.",
-    "technical": "Drives the development of open-access Hub-and-Spoke transport networks (Porthos/Aramis), enabling multi-sector industrial capture at scale."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-07",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-01-01",
-  "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
-  },
-  "relatedFacilities": [
-    "1096",
-    "1144",
-    "1173",
-    "1327",
-    "1330",
-    "1361",
-    "1483",
-    "150",
-    "18",
-    "19",
-    "215",
-    "216",
-    "217",
-    "249",
-    "285",
-    "286",
-    "32",
-    "325",
-    "33",
-    "364",
-    "365",
-    "394",
-    "412",
-    "465",
-    "679",
-    "680",
-    "681",
-    "819",
-    "950",
-    "951"
-  ],
-  "reviewStatus": "verified",
-  "source": "荷兰经济部",
-  "status": "Active",
-  "title": "Netherlands SDE++ Climate Transition Incentive Scheme",
-  "url": "https://english.rvo.nl/subsidies-programmes/sde",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': '荷兰经济部',
+  'status': 'Active',
+  'title': 'Netherlands SDE++ Climate Transition Incentive Scheme',
+  'url': 'https://english.rvo.nl/subsidies-programmes/sde',
+  'year': 2024,
 }
 ---
 

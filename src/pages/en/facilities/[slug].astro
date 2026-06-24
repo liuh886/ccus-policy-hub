@@ -5,7 +5,7 @@ import i18nDict from '../../../data/i18n_dictionary.json';
 
 export async function getStaticPaths() {
   const facilities = await getCollection('facilities_en');
-  return facilities.map(entry => {
+  return facilities.map((entry) => {
     return { params: { slug: entry.id }, props: { entry } };
   });
 }
@@ -13,39 +13,59 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const {
-  name, country, type, status, estimatedCapacity,
-  sector, relatedPolicies = [],
-  url, announcedCapacityMax, announcedCapacityMin, announcedCapacityRaw,
-  phase, hub, partners = [],
-  announcement, fid, operation, suspensionDate, links = [],
-  provenance, fateOfCarbon
+  name,
+  country,
+  type,
+  status,
+  estimatedCapacity,
+  sector,
+  relatedPolicies = [],
+  url,
+  announcedCapacityMax,
+  announcedCapacityMin,
+  announcedCapacityRaw,
+  phase,
+  hub,
+  partners = [],
+  announcement,
+  fid,
+  operation,
+  suspensionDate,
+  links = [],
+  provenance,
+  fateOfCarbon,
 } = entry.data;
 
 const allPolicies = await getCollection('policies_en');
 const dictCountries: Record<string, string> = i18nDict.countries;
 
 // Applicable Policies: Direct links from facility data
-const applicablePolicies = allPolicies.filter(p =>
+const applicablePolicies = allPolicies.filter((p) =>
   relatedPolicies.includes(p.id)
 );
 
 // Auto-suggested Policies: Same country or international
-const suggestedPolicies = allPolicies.filter(p => {
+const suggestedPolicies = allPolicies.filter((p) => {
   if (relatedPolicies.includes(p.id)) return false;
-  
+
   const pCountry = dictCountries[p.data.country] || p.data.country;
   const fCountry = dictCountries[country] || country;
-  
+
   const isSameCountry = pCountry === fCountry;
   return isSameCountry || pCountry === 'International';
 });
 
 const statusColors: Record<string, string> = {
-  'Operational': 'bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800',
-  'Planned': 'bg-blue-50 text-blue-700 border-blue-100 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800',
-  'Under construction': 'bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800', 
-  'Suspended': 'bg-rose-50 text-rose-700 border-rose-100 dark:bg-rose-900/20 dark:text-rose-400 dark:border-rose-800',
-  'Decommissioned': 'bg-slate-50 text-slate-700 border-slate-100 dark:bg-slate-900/20 dark:text-slate-400 dark:border-slate-800',
+  Operational:
+    'bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800',
+  Planned:
+    'bg-blue-50 text-blue-700 border-blue-100 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800',
+  'Under construction':
+    'bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800',
+  Suspended:
+    'bg-rose-50 text-rose-700 border-rose-100 dark:bg-rose-900/20 dark:text-rose-400 dark:border-rose-800',
+  Decommissioned:
+    'bg-slate-50 text-slate-700 border-slate-100 dark:bg-slate-900/20 dark:text-slate-400 dark:border-slate-800',
 };
 
 // Capacity Logic
@@ -59,186 +79,315 @@ const timeline = [
   { label: 'FID', date: fid, active: !!fid },
   { label: 'Operation Start', date: operation, active: !!operation },
   { label: 'Suspension/End', date: suspensionDate, active: !!suspensionDate },
-].filter(t => t.active);
+].filter((t) => t.active);
 ---
 
 <Layout title={`${name} | CCUS Asset Map`}>
-  <div class="bg-white dark:bg-slate-950 min-h-screen font-sans selection:bg-emerald-500 selection:text-white pb-20">
-
+  <div
+    class="bg-white dark:bg-slate-950 min-h-screen font-sans selection:bg-emerald-500 selection:text-white pb-20"
+  >
     <main class="max-w-7xl mx-auto px-6 py-24">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-
         <!-- Left Column: Narrative & Context -->
         <div class="lg:col-span-8">
-
           <div class="mb-12">
-            <div class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest">
-              <a href="/ccus-policy-hub/en/facilities" class="hover:text-slate-900 dark:hover:text-white transition-colors">Facilities</a>
+            <div
+              class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest"
+            >
+              <a
+                href="/ccus-policy-hub/en/facilities"
+                class="hover:text-slate-900 dark:hover:text-white transition-colors"
+                >Facilities</a
+              >
               <span class="text-slate-200 dark:text-slate-800">/</span>
               <span>{country}</span>
               <span class="text-slate-200 dark:text-slate-800">/</span>
               <span>{sector}</span>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-8">
+            <h1
+              class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-8"
+            >
               {name}
             </h1>
 
             <div class="flex flex-wrap gap-3">
-              <span class={`px-3 py-1 border text-[10px] font-black uppercase rounded ${statusColors[status] || 'border-slate-200 text-slate-600'}`}>
+              <span
+                class={`px-3 py-1 border text-[10px] font-black uppercase rounded ${statusColors[status] || 'border-slate-200 text-slate-600'}`}
+              >
                 {status}
               </span>
-              {phase && (
-                <span class="px-3 py-1 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase rounded">
-                  Phase: {phase}
-                </span>
-              )}
-              {hub && (
-                <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase rounded border border-blue-100 dark:border-blue-800">
-                  Hub: {hub}
-                </span>
-              )}
+              {
+                phase && (
+                  <span class="px-3 py-1 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase rounded">
+                    Phase: {phase}
+                  </span>
+                )
+              }
+              {
+                hub && (
+                  <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase rounded border border-blue-100 dark:border-blue-800">
+                    Hub: {hub}
+                  </span>
+                )
+              }
             </div>
 
-            {partners.length > 0 && (
-              <div class="flex flex-wrap gap-2 mt-6">
-                <span class="text-[9px] font-black text-slate-400 uppercase self-center mr-2">Consortium Partners:</span>
-                {partners.map(p => (
-                  <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-900/50 text-[10px] font-bold text-slate-600 dark:text-slate-400 rounded border border-slate-100 dark:border-slate-800">{p}</span>
-                ))}
-              </div>
-            )}
+            {
+              partners.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-6">
+                  <span class="text-[9px] font-black text-slate-400 uppercase self-center mr-2">
+                    Consortium Partners:
+                  </span>
+                  {partners.map((p) => (
+                    <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-900/50 text-[10px] font-bold text-slate-600 dark:text-slate-400 rounded border border-slate-100 dark:border-slate-800">
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              )
+            }
           </div>
 
           <!-- Engineering Narrative -->
           <section class="mb-16">
-            <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-3">
+            <h2
+              class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-3"
+            >
               Asset Description
             </h2>
-            <article class="prose prose-slate dark:prose-invert max-w-none
-              prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-600 dark:prose-p:text-slate-400">
+            <article
+              class="prose prose-slate dark:prose-invert max-w-none
+              prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-600 dark:prose-p:text-slate-400"
+            >
               <Content />
             </article>
           </section>
 
           <!-- Policy Ecosystem -->
-          {(applicablePolicies.length > 0 || suggestedPolicies.length > 0) && (
-            <section class="pt-12 border-t border-slate-100 dark:border-slate-900">
-              <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">Governing Policy Ecosystem</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {applicablePolicies.map(p => (
-                  <a href={`/ccus-policy-hub/en/policy/${p.id}/`} class="p-6 border border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/10 rounded-2xl hover:border-emerald-500 transition-all group">
-                    <div class="flex justify-between items-start mb-2">
-                      <span class="text-[9px] font-black text-emerald-600 uppercase">Direct Link {p.data.category}</span>
-                      <span class="text-[10px] font-mono text-slate-300">{p.data.year}</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">{p.data.title}</h3>
-                  </a>
-                ))}
-                {suggestedPolicies.slice(0, 2).map(p => (
-                  <a href={`/ccus-policy-hub/en/policy/${p.id}/`} class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group">
-                    <div class="flex justify-between items-start mb-2">
-                      <span class="text-[9px] font-black text-blue-600 uppercase">Reference {p.data.category}</span>
-                      <span class="text-[10px] font-mono text-slate-300">{p.data.year}</span>
-                    </div>
-                    <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">{p.data.title}</h3>
-                  </a>
-                ))}
-              </div>
-            </section>
-          )}
+          {
+            (applicablePolicies.length > 0 || suggestedPolicies.length > 0) && (
+              <section class="pt-12 border-t border-slate-100 dark:border-slate-900">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">
+                  Governing Policy Ecosystem
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {applicablePolicies.map((p) => (
+                    <a
+                      href={`/ccus-policy-hub/en/policy/${p.id}/`}
+                      class="p-6 border border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/10 rounded-2xl hover:border-emerald-500 transition-all group"
+                    >
+                      <div class="flex justify-between items-start mb-2">
+                        <span class="text-[9px] font-black text-emerald-600 uppercase">
+                          Direct Link {p.data.category}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-300">
+                          {p.data.year}
+                        </span>
+                      </div>
+                      <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                        {p.data.title}
+                      </h3>
+                    </a>
+                  ))}
+                  {suggestedPolicies.slice(0, 2).map((p) => (
+                    <a
+                      href={`/ccus-policy-hub/en/policy/${p.id}/`}
+                      class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group"
+                    >
+                      <div class="flex justify-between items-start mb-2">
+                        <span class="text-[9px] font-black text-blue-600 uppercase">
+                          Reference {p.data.category}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-300">
+                          {p.data.year}
+                        </span>
+                      </div>
+                      <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                        {p.data.title}
+                      </h3>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )
+          }
         </div>
 
         <!-- Right Column: Parameters & Metadata -->
         <aside class="lg:col-span-4 space-y-12">
-
           <!-- Capacity & Lifecycle Dashboard -->
-          <section class="bg-slate-900 dark:bg-black rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500"></div>
-            <h3 class="text-[10px] font-black tracking-[0.2em] opacity-40 mb-8 uppercase text-center">Capture Performance & Lifecycle</h3>
+          <section
+            class="bg-slate-900 dark:bg-black rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-indigo-500"
+            >
+            </div>
+            <h3
+              class="text-[10px] font-black tracking-[0.2em] opacity-40 mb-8 uppercase text-center"
+            >
+              Capture Performance & Lifecycle
+            </h3>
 
             <div class="space-y-8 mb-10 pb-8 border-b border-white/5">
-              {displayCapacity > 0 && (
-                <div>
-                  <div class="flex justify-between items-baseline mb-2">
-                    <span class="text-[10px] font-black uppercase text-emerald-400 tracking-wider">Estimated Capacity</span>
-                    <span class="text-3xl font-black tracking-tighter">{displayCapacity} <span class="text-xs opacity-40">Mtpa</span></span>
+              {
+                displayCapacity > 0 && (
+                  <div>
+                    <div class="flex justify-between items-baseline mb-2">
+                      <span class="text-[10px] font-black uppercase text-emerald-400 tracking-wider">
+                        Estimated Capacity
+                      </span>
+                      <span class="text-3xl font-black tracking-tighter">
+                        {displayCapacity}{' '}
+                        <span class="text-xs opacity-40">Mtpa</span>
+                      </span>
+                    </div>
+                    <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+                      <div
+                        class="h-full bg-emerald-500 transition-all duration-1000"
+                        style={`width: 100%`}
+                      />
+                    </div>
                   </div>
-                  <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div class="h-full bg-emerald-500 transition-all duration-1000" style={`width: 100%`}></div>
-                  </div>
-                </div>
-              )}
-              
-              {announcedCapacityRaw && (
-                <p class="text-[10px] text-slate-400 italic">Announced: {announcedCapacityRaw} Mtpa</p>
-              )}
+                )
+              }
+
+              {
+                announcedCapacityRaw && (
+                  <p class="text-[10px] text-slate-400 italic">
+                    Announced: {announcedCapacityRaw} Mtpa
+                  </p>
+                )
+              }
             </div>
 
             {/* Lifecycle Milestones */}
             <div class="grid grid-cols-2 gap-y-6 gap-x-4">
-              {timeline.map(item => (
-                <div>
-                  <span class="block text-[9px] font-black text-white/30 uppercase mb-1 tracking-tighter">{item.label}</span>
-                  <span class="text-xs font-bold text-white/80 font-mono">{item.date}</span>
-                </div>
-              ))}
+              {
+                timeline.map((item) => (
+                  <div>
+                    <span class="block text-[9px] font-black text-white/30 uppercase mb-1 tracking-tighter">
+                      {item.label}
+                    </span>
+                    <span class="text-xs font-bold text-white/80 font-mono">
+                      {item.date}
+                    </span>
+                  </div>
+                ))
+              }
             </div>
           </section>
 
           <!-- Core Parameters -->
-          <section class="p-8 border border-slate-100 dark:border-slate-900 rounded-3xl space-y-8 bg-white dark:bg-slate-950 shadow-sm">
-            <h2 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Technical Parameters</h2>
+          <section
+            class="p-8 border border-slate-100 dark:border-slate-900 rounded-3xl space-y-8 bg-white dark:bg-slate-950 shadow-sm"
+          >
+            <h2
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >
+              Technical Parameters
+            </h2>
 
             <div class="space-y-6 text-sm">
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Asset Type</span>
-                  <span class="font-bold text-slate-900 dark:text-white">{type}</span>
+                  <span
+                    class="block text-[10px] font-black text-slate-400 uppercase mb-1"
+                    >Asset Type</span
+                  >
+                  <span class="font-bold text-slate-900 dark:text-white"
+                    >{type}</span
+                  >
                 </div>
                 <div>
-                  <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Industrial Sector</span>
-                  <span class="font-bold text-slate-900 dark:text-white">{sector}</span>
+                  <span
+                    class="block text-[10px] font-black text-slate-400 uppercase mb-1"
+                    >Industrial Sector</span
+                  >
+                  <span class="font-bold text-slate-900 dark:text-white"
+                    >{sector}</span
+                  >
                 </div>
               </div>
 
               <div>
-                <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Fate of Carbon</span>
-                <span class="font-bold text-blue-600">{fateOfCarbon || 'N/A'}</span>
+                <span
+                  class="block text-[10px] font-black text-slate-400 uppercase mb-1"
+                  >Fate of Carbon</span
+                >
+                <span class="font-bold text-blue-600"
+                  >{fateOfCarbon || 'N/A'}</span
+                >
               </div>
 
               <div class="pt-4 border-t border-slate-50 dark:border-slate-900">
-                <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">Investment Status</span>
+                <span
+                  class="block text-[10px] font-black text-slate-400 uppercase mb-1"
+                  >Investment Status</span
+                >
                 <span class="font-bold text-emerald-600">{status}</span>
               </div>
             </div>
           </section>
 
           <!-- Reference Matrix -->
-          <section class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800">
-            <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Reference Matrix</h3>
+          <section
+            class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800"
+          >
+            <h3
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6"
+            >
+              Reference Matrix
+            </h3>
             <div class="space-y-3">
-              {url && (
-                <a href={url} target="_blank" rel="noopener noreferrer" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
-                  <p class="text-[9px] font-black uppercase text-slate-400 mb-1">Primary Source</p>
-                  <p class="text-xs font-bold text-slate-900 dark:text-white truncate">Project Portal &nearr;</p>
-                </a>
-              )}
-              {links.filter(l => l && l.startsWith('http')).slice(0, 3).map((link, i) => (
-                <a href={link} target="_blank" rel="noopener noreferrer" class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors">
-                  <p class="text-[9px] font-black uppercase text-slate-400 mb-1">Link {i + 1}</p>
-                  <p class="text-xs font-bold text-slate-500 truncate">{link}</p>
-                </a>
-              ))}
+              {
+                url && (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
+                  >
+                    <p class="text-[9px] font-black uppercase text-slate-400 mb-1">
+                      Primary Source
+                    </p>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white truncate">
+                      Project Portal &nearr;
+                    </p>
+                  </a>
+                )
+              }
+              {
+                links
+                  .filter((l) => l && l.startsWith('http'))
+                  .slice(0, 3)
+                  .map((link, i) => (
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
+                    >
+                      <p class="text-[9px] font-black uppercase text-slate-400 mb-1">
+                        Link {i + 1}
+                      </p>
+                      <p class="text-xs font-bold text-slate-500 truncate">
+                        {link}
+                      </p>
+                    </a>
+                  ))
+              }
             </div>
           </section>
 
-          <div class="flex justify-between items-center px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest">
+          <div
+            class="flex justify-between items-center px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest"
+          >
             <span>Verified Asset</span>
             <span>{provenance?.lastAuditDate || '2026-02-08'}</span>
           </div>
         </aside>
-
       </div>
     </main>
   </div>

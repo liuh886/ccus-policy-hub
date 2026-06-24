@@ -1,19 +1,24 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { POLICY_CATEGORIES, POLICY_STATUSES, ANALYSIS_DIMENSIONS, FACILITY_STATUSES } from './enums.generated';
+import {
+  POLICY_CATEGORIES,
+  POLICY_STATUSES,
+  ANALYSIS_DIMENSIONS,
+  FACILITY_STATUSES,
+} from './enums.generated';
 
 const provenanceSchema = z.object({
   author: z.string(),
-  reviewer: z.string().optional().default(""),
+  reviewer: z.string().optional().default(''),
   lastAuditDate: z.string(),
 });
 
 const analysisDimensionSchema = z.object({
   score: z.number().min(0).max(100).optional().default(0),
-  label: z.string().optional().default("Pending"),
-  evidence: z.string().optional().default(""),
-  citation: z.string().optional().default(""),
-  auditNote: z.string().optional().default(""),
+  label: z.string().optional().default('Pending'),
+  evidence: z.string().optional().default(''),
+  citation: z.string().optional().default(''),
+  auditNote: z.string().optional().default(''),
 });
 
 const policySchema = z.object({
@@ -21,36 +26,45 @@ const policySchema = z.object({
   title: z.string(),
   country: z.string(),
   year: z.number().optional().default(2024),
-  status: z.string().optional().default("Active"),
-  category: z.string().optional().default("Regulatory"),
-  reviewStatus: z.string().optional().default("draft"),
-  pubDate: z.string().optional().default("2024-01-01"),
-  legalWeight: z.string().optional().default(""),
-  source: z.string().optional().default(""),
-  url: z.string().optional().default(""),
+  status: z.string().optional().default('Active'),
+  category: z.string().optional().default('Regulatory'),
+  reviewStatus: z.string().optional().default('draft'),
+  pubDate: z.string().optional().default('2024-01-01'),
+  legalWeight: z.string().optional().default(''),
+  source: z.string().optional().default(''),
+  url: z.string().optional().default(''),
   sectors: z.array(z.string()).default([]),
-  description: z.string().optional().default(""),
+  description: z.string().optional().default(''),
   interpretation: z.string().optional(),
-  evolution: z.object({
-    supersedes: z.array(z.string()).optional(),
-    supersededBy: z.string().optional(),
-    clusters: z.array(z.string()).optional(),
-  }).optional(),
-  impactAnalysis: z.object({
-    economic: z.string().optional(),
-    technical: z.string().optional(),
-    environmental: z.string().optional(),
-  }).optional(),
-  regulatory: z.object({
-    pore_space_rights: z.string().optional().nullable(),
-    liability_transfer: z.string().optional().nullable(),
-    liability_period: z.string().optional().nullable(),
-    financial_assurance: z.string().optional().nullable(),
-    permitting_lead_time: z.string().optional().nullable(),
-    co2_definition: z.string().optional().nullable(),
-    cross_border_rules: z.string().optional().nullable(),
-  }).optional(),
-  analysis: z.record(z.string(), analysisDimensionSchema).optional().default({}),
+  evolution: z
+    .object({
+      supersedes: z.array(z.string()).optional(),
+      supersededBy: z.string().optional(),
+      clusters: z.array(z.string()).optional(),
+    })
+    .optional(),
+  impactAnalysis: z
+    .object({
+      economic: z.string().optional(),
+      technical: z.string().optional(),
+      environmental: z.string().optional(),
+    })
+    .optional(),
+  regulatory: z
+    .object({
+      pore_space_rights: z.string().optional().nullable(),
+      liability_transfer: z.string().optional().nullable(),
+      liability_period: z.string().optional().nullable(),
+      financial_assurance: z.string().optional().nullable(),
+      permitting_lead_time: z.string().optional().nullable(),
+      co2_definition: z.string().optional().nullable(),
+      cross_border_rules: z.string().optional().nullable(),
+    })
+    .optional(),
+  analysis: z
+    .record(z.string(), analysisDimensionSchema)
+    .optional()
+    .default({}),
   relatedFacilities: z.array(z.string()).default([]),
   provenance: provenanceSchema.optional(),
 });
@@ -60,44 +74,47 @@ const facilitySchema = z.object({
   name: z.string(),
   lang: z.string(),
   country: z.string(),
-  region: z.string().optional().default(""),
-  type: z.string().optional().default(""),
-  status: z.string().optional().default("Planned"),
+  region: z.string().optional().default(''),
+  type: z.string().optional().default(''),
+  status: z.string().optional().default('Planned'),
   announcedCapacityMin: z.number().optional().default(0),
   announcedCapacityMax: z.number().optional().default(0),
-  announcedCapacityRaw: z.string().optional().default(""),
+  announcedCapacityRaw: z.string().optional().default(''),
   estimatedCapacity: z.number().optional().default(0),
   coordinates: z
     .array(z.number())
     .length(2)
-    .refine((coords) => {
-      const [lat, lng] = coords;
-      return (
-        !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01) &&
-        lat >= -90 &&
-        lat <= 90 &&
-        lng >= -180 &&
-        lng <= 180
-      );
-    }, { message: "Invalid coordinates" })
+    .refine(
+      (coords) => {
+        const [lat, lng] = coords;
+        return (
+          !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01) &&
+          lat >= -90 &&
+          lat <= 90 &&
+          lng >= -180 &&
+          lng <= 180
+        );
+      },
+      { message: 'Invalid coordinates' }
+    )
     .optional(),
-  precision: z.string().optional().default("country"),
-  sector: z.string().optional().default(""),
-  fateOfCarbon: z.string().optional().default(""),
-  hub: z.string().optional().default(""),
+  precision: z.string().optional().default('country'),
+  sector: z.string().optional().default(''),
+  fateOfCarbon: z.string().optional().default(''),
+  hub: z.string().optional().default(''),
   operator: z.string().optional(),
   captureTechnology: z.string().optional(),
   storageTechnology: z.string().optional(),
   storageType: z.string().optional(),
   investmentScale: z.string().optional(),
-  phase: z.string().optional().default(""),
-  announcement: z.string().optional().default(""),
-  fid: z.string().optional().default(""),
-  operation: z.string().optional().default(""),
-  suspensionDate: z.string().optional().default(""),
+  phase: z.string().optional().default(''),
+  announcement: z.string().optional().default(''),
+  fid: z.string().optional().default(''),
+  operation: z.string().optional().default(''),
+  suspensionDate: z.string().optional().default(''),
   partners: z.array(z.string()).default([]),
   links: z.array(z.string()).default([]),
-  url: z.string().optional().default(""),
+  url: z.string().optional().default(''),
   relatedPolicies: z.array(z.string()).default([]),
   provenance: provenanceSchema.optional(),
 });
@@ -157,20 +174,23 @@ const countrySchema = z.object({
   summary: z.string().optional(),
   // The 7 Regulatory Pillars
   regulatory: z.object({
-    pore_space_rights: z.string().default("Pending"),
-    liability_transfer: z.string().default("Pending"),
-    liability_period: z.string().default("Pending"),
-    financial_assurance: z.string().default("Pending"),
-    permitting_lead_time: z.string().default("Pending"),
-    co2_definition: z.string().default("Pending"),
-    cross_border_rules: z.string().default("Pending"),
+    pore_space_rights: z.string().default('Pending'),
+    liability_transfer: z.string().default('Pending'),
+    liability_period: z.string().default('Pending'),
+    financial_assurance: z.string().default('Pending'),
+    permitting_lead_time: z.string().default('Pending'),
+    co2_definition: z.string().default('Pending'),
+    cross_border_rules: z.string().default('Pending'),
   }),
   // Strategic Outlook
-  strategicTargets: z.object({
-    capture2030: z.string().optional().nullable(),
-    storage2050: z.string().optional().nullable(),
-    netZeroYear: z.coerce.number().optional().nullable(),
-  }).optional().nullable(),
+  strategicTargets: z
+    .object({
+      capture2030: z.string().optional().nullable(),
+      storage2050: z.string().optional().nullable(),
+      netZeroYear: z.coerce.number().optional().nullable(),
+    })
+    .optional()
+    .nullable(),
   provenance: provenanceSchema.optional(),
 });
 

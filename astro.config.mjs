@@ -14,10 +14,6 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 30000,
   },
-  preview: {
-    host: '127.0.0.1',
-    port: 30001,
-  },
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],

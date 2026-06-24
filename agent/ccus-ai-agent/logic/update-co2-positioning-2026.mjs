@@ -160,51 +160,93 @@ const updates = {
 };
 
 const zhSummaryOverrides = {
-  Argentina: '阿根廷的 CCUS 监管画像以省级资源管辖、投资激励和早期 CCUS 制度探索为特征。',
-  Australia: '澳大利亚的 CCUS 监管画像建立在成熟的海上温室气体封存法制和州联邦并行治理结构之上。',
-  Austria: '奥地利的 CCUS 监管画像总体遵循欧盟框架，但国内专门封存制度与项目实践仍较有限。',
-  Belgium: '比利时的 CCUS 监管画像以港口集群、区域政府权限和跨境运输协同为特征。',
-  Brazil: '巴西的 CCUS 监管画像正围绕海上封存、油气监管和国家气候政策逐步成形。',
-  Bulgaria: '保加利亚的 CCUS 监管画像总体沿用欧盟制度框架，国内实施仍处于早期阶段。',
-  Canada: '加拿大的 CCUS 监管画像以省级立法、税收激励和成熟封存项目并行为特征。',
+  Argentina:
+    '阿根廷的 CCUS 监管画像以省级资源管辖、投资激励和早期 CCUS 制度探索为特征。',
+  Australia:
+    '澳大利亚的 CCUS 监管画像建立在成熟的海上温室气体封存法制和州联邦并行治理结构之上。',
+  Austria:
+    '奥地利的 CCUS 监管画像总体遵循欧盟框架，但国内专门封存制度与项目实践仍较有限。',
+  Belgium:
+    '比利时的 CCUS 监管画像以港口集群、区域政府权限和跨境运输协同为特征。',
+  Brazil:
+    '巴西的 CCUS 监管画像正围绕海上封存、油气监管和国家气候政策逐步成形。',
+  Bulgaria:
+    '保加利亚的 CCUS 监管画像总体沿用欧盟制度框架，国内实施仍处于早期阶段。',
+  Canada:
+    '加拿大的 CCUS 监管画像以省级立法、税收激励和成熟封存项目并行为特征。',
   Chile: '智利的 CCUS 监管画像仍处早期阶段，主要依托气候法与减排政策框架推进。',
-  Colombia: '哥伦比亚的 CCUS 监管画像主要嵌入能源转型与气候治理法制，独立 CCS 制度仍在发展。',
-  Denmark: '丹麦的 CCUS 监管画像以国家主导的封存许可、补贴机制和生物源移除导向为特征。',
-  'European Union': '欧盟的 CCUS 监管画像以 CCS 指令为核心，并通过 ETS、NZIA 和 CRCF 等制度持续扩展。',
-  France: '法国的 CCUS 监管画像强调不可避免工业排放、国家规划引导和欧盟规则衔接。',
-  Germany: '德国的 CCUS 监管画像以难减排行业准入限制、联邦战略转向和跨境运输准备为特征。',
-  Greece: '希腊的 CCUS 监管画像依托欧盟框架和海上封存开发推进，重点聚焦区域枢纽建设。',
-  Iceland: '冰岛的 CCUS 监管画像以矿化封存和碳移除应用见长，制度与项目耦合度较高。',
+  Colombia:
+    '哥伦比亚的 CCUS 监管画像主要嵌入能源转型与气候治理法制，独立 CCS 制度仍在发展。',
+  Denmark:
+    '丹麦的 CCUS 监管画像以国家主导的封存许可、补贴机制和生物源移除导向为特征。',
+  'European Union':
+    '欧盟的 CCUS 监管画像以 CCS 指令为核心，并通过 ETS、NZIA 和 CRCF 等制度持续扩展。',
+  France:
+    '法国的 CCUS 监管画像强调不可避免工业排放、国家规划引导和欧盟规则衔接。',
+  Germany:
+    '德国的 CCUS 监管画像以难减排行业准入限制、联邦战略转向和跨境运输准备为特征。',
+  Greece:
+    '希腊的 CCUS 监管画像依托欧盟框架和海上封存开发推进，重点聚焦区域枢纽建设。',
+  Iceland:
+    '冰岛的 CCUS 监管画像以矿化封存和碳移除应用见长，制度与项目耦合度较高。',
   India: '印度的 CCUS 监管画像仍处政策培育阶段，重点落在工业脱碳和碳市场衔接。',
-  Indonesia: '印度尼西亚的 CCUS 监管画像以油气法制为基础，正向独立 CCUS 监管框架过渡。',
-  International: '国际层面的 CCUS 监管画像主要由伦敦议定书、巴黎协定和 MRV 标准共同塑造。',
-  Italy: '意大利的 CCUS 监管画像建立在欧盟规则基础上，并以 Ravenna 等集群推动商业化落地。',
-  Japan: '日本的 CCUS 监管画像以《CCS 事业法》、指定海域许可和国家主导长期管理机制为核心。',
-  Kazakhstan: '哈萨克斯坦的 CCUS 监管画像主要嵌入生态法典与 ETS 体系，制度仍在早期发展。',
-  Kuwait: '科威特的 CCUS 监管画像以油气行业应用和 EOR 导向为主，独立 CCS 法制仍有限。',
-  Malaysia: '马来西亚的 CCUS 监管画像正从政策文件转向专门立法，覆盖全价值链监管。',
-  Mexico: '墨西哥的 CCUS 监管画像主要由国家能源与工业脱碳战略驱动，法律框架仍在形成。',
-  Netherlands: '荷兰的 CCUS 监管画像以永久封存、港口基础设施和碳移除政策并行推进为特征。',
-  Nigeria: '尼日利亚的 CCUS 监管画像主要依附油气与环境制度，独立封存规则仍较有限。',
-  Norway: '挪威的 CCUS 监管画像以成熟海上封存许可制度、国家主导项目和跨境接收能力见长。',
+  Indonesia:
+    '印度尼西亚的 CCUS 监管画像以油气法制为基础，正向独立 CCUS 监管框架过渡。',
+  International:
+    '国际层面的 CCUS 监管画像主要由伦敦议定书、巴黎协定和 MRV 标准共同塑造。',
+  Italy:
+    '意大利的 CCUS 监管画像建立在欧盟规则基础上，并以 Ravenna 等集群推动商业化落地。',
+  Japan:
+    '日本的 CCUS 监管画像以《CCS 事业法》、指定海域许可和国家主导长期管理机制为核心。',
+  Kazakhstan:
+    '哈萨克斯坦的 CCUS 监管画像主要嵌入生态法典与 ETS 体系，制度仍在早期发展。',
+  Kuwait:
+    '科威特的 CCUS 监管画像以油气行业应用和 EOR 导向为主，独立 CCS 法制仍有限。',
+  Malaysia:
+    '马来西亚的 CCUS 监管画像正从政策文件转向专门立法，覆盖全价值链监管。',
+  Mexico:
+    '墨西哥的 CCUS 监管画像主要由国家能源与工业脱碳战略驱动，法律框架仍在形成。',
+  Netherlands:
+    '荷兰的 CCUS 监管画像以永久封存、港口基础设施和碳移除政策并行推进为特征。',
+  Nigeria:
+    '尼日利亚的 CCUS 监管画像主要依附油气与环境制度，独立封存规则仍较有限。',
+  Norway:
+    '挪威的 CCUS 监管画像以成熟海上封存许可制度、国家主导项目和跨境接收能力见长。',
   Oman: '阿曼的 CCUS 监管画像以油气增产和低碳工业资源化利用为主，专门封存制度仍较早期。',
-  Other: '该条目用于承接尚未归入主要法域的国家或地区，其监管画像需结合具体国家另行判断。',
-  Philippines: '菲律宾的 CCUS 监管画像正在政策起步阶段，重点放在能源部门框架和市场化路径。',
-  Poland: '波兰的 CCUS 监管画像以欧盟合规、高纯度 CO2 流要求和国家主导矿业治理为特征。',
-  Portugal: '葡萄牙的 CCUS 监管画像总体沿用欧盟 CCS 规则，国内制度和项目推进仍较谨慎。',
-  Qatar: '卡塔尔的 CCUS 监管画像围绕 LNG、工业排放和 EOR 应用展开，国家战略驱动较强。',
-  Romania: '罗马尼亚的 CCUS 监管画像以欧盟 CCS 转置框架为基础，封存与工业气体属性并存。',
-  Russia: '俄罗斯的 CCUS 监管画像主要服务于蓝氢和工业减排政策，独立 CCS 法制仍不成熟。',
-  'Saudi Arabia': '沙特阿拉伯的 CCUS 监管画像以循环碳经济和大型工业项目为核心驱动力。',
-  Singapore: '新加坡的 CCUS 监管画像以碳定价、跨境合作和区域运输枢纽角色为特征。',
-  'South Africa': '南非的 CCUS 监管画像主要嵌入气候法与能源转型政策，独立法律分类仍有限。',
-  Spain: '西班牙的 CCUS 监管画像建立在欧盟制度基础上，并通过国家气候法和工业脱碳政策推进。',
-  Switzerland: '瑞士的 CCUS 监管画像以减排法和国际合作为核心，国内封存空间与规则仍较有限。',
-  Thailand: '泰国的 CCUS 监管画像正围绕新兴气候立法、投资促进和工业试点逐步形成。',
-  Turkey: '土耳其的 CCUS 监管画像仍处政策规划阶段，重点服务水泥和钢铁等高排放行业。',
-  'United Arab Emirates': '阿联酋的 CCUS 监管画像以联邦气候框架、国有能源企业和工业减排项目为核心。',
-  'United Kingdom': '英国的 CCUS 监管画像以运输封存许可、集群模式和合同化支持机制为特征。',
-  Vietnam: '越南的 CCUS 监管画像嵌入新环境法与碳市场制度，整体仍处早期形成阶段。',
+  Other:
+    '该条目用于承接尚未归入主要法域的国家或地区，其监管画像需结合具体国家另行判断。',
+  Philippines:
+    '菲律宾的 CCUS 监管画像正在政策起步阶段，重点放在能源部门框架和市场化路径。',
+  Poland:
+    '波兰的 CCUS 监管画像以欧盟合规、高纯度 CO2 流要求和国家主导矿业治理为特征。',
+  Portugal:
+    '葡萄牙的 CCUS 监管画像总体沿用欧盟 CCS 规则，国内制度和项目推进仍较谨慎。',
+  Qatar:
+    '卡塔尔的 CCUS 监管画像围绕 LNG、工业排放和 EOR 应用展开，国家战略驱动较强。',
+  Romania:
+    '罗马尼亚的 CCUS 监管画像以欧盟 CCS 转置框架为基础，封存与工业气体属性并存。',
+  Russia:
+    '俄罗斯的 CCUS 监管画像主要服务于蓝氢和工业减排政策，独立 CCS 法制仍不成熟。',
+  'Saudi Arabia':
+    '沙特阿拉伯的 CCUS 监管画像以循环碳经济和大型工业项目为核心驱动力。',
+  Singapore:
+    '新加坡的 CCUS 监管画像以碳定价、跨境合作和区域运输枢纽角色为特征。',
+  'South Africa':
+    '南非的 CCUS 监管画像主要嵌入气候法与能源转型政策，独立法律分类仍有限。',
+  Spain:
+    '西班牙的 CCUS 监管画像建立在欧盟制度基础上，并通过国家气候法和工业脱碳政策推进。',
+  Switzerland:
+    '瑞士的 CCUS 监管画像以减排法和国际合作为核心，国内封存空间与规则仍较有限。',
+  Thailand:
+    '泰国的 CCUS 监管画像正围绕新兴气候立法、投资促进和工业试点逐步形成。',
+  Turkey:
+    '土耳其的 CCUS 监管画像仍处政策规划阶段，重点服务水泥和钢铁等高排放行业。',
+  'United Arab Emirates':
+    '阿联酋的 CCUS 监管画像以联邦气候框架、国有能源企业和工业减排项目为核心。',
+  'United Kingdom':
+    '英国的 CCUS 监管画像以运输封存许可、集群模式和合同化支持机制为特征。',
+  Vietnam:
+    '越南的 CCUS 监管画像嵌入新环境法与碳市场制度，整体仍处早期形成阶段。',
 };
 
 const zhFieldOverrides = {
@@ -230,7 +272,8 @@ const zhFieldOverrides = {
     liability_period: '2024-2026 年分阶段实施；运营期间需持续缴纳监测负担金。',
     financial_assurance: '须向 JOGMEC 缴纳强制性监测准备金（分担金）。',
     permitting_lead_time: '通过 METI 指定海域许可，通常约 2-3 年。',
-    cross_border_rules: '与《伦敦议定书》第 6 条修正方向保持一致，以支持亚太跨境枢纽。',
+    cross_border_rules:
+      '与《伦敦议定书》第 6 条修正方向保持一致，以支持亚太跨境枢纽。',
   },
   Portugal: {
     pore_space_rights: '国家所有',
@@ -313,7 +356,9 @@ async function main() {
 
     db.run('COMMIT');
     fs.writeFileSync(DB_PATH, Buffer.from(db.export()));
-    console.log(`Updated CO2 regulatory positioning for ${countryCount} countries (${rowCount} i18n rows).`);
+    console.log(
+      `Updated CO2 regulatory positioning for ${countryCount} countries (${rowCount} i18n rows).`
+    );
   } catch (error) {
     db.run('ROLLBACK');
     throw error;

@@ -1,110 +1,116 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "Global gold standard for F-dimension (Incentive).",
-      "citation": "SDE++ CCS Round 2021",
-      "evidence": "Covers the full delta between project LCOE and ETS price, ensuring bankability.",
-      "label": "Gap-filling CfD (SDE++)",
-      "score": 100
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': 'Global gold standard for F-dimension (Incentive).',
+          'citation': 'SDE++ CCS Round 2021',
+          'evidence': 'Covers the full delta between project LCOE and ETS price, ensuring bankability.',
+          'label': 'Gap-filling CfD (SDE++)',
+          'score': 100,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'Porthos Business Model',
+          'evidence': 'De-risks the full chain by guaranteeing revenue for capture plants.',
+          'label': 'Infrastructure De-risking',
+          'score': 85,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'Article 49 compliance',
+          'evidence': 'Leverages the EU ETS MRV infrastructure to verify subsidy claims.',
+          'label': 'ETS Integrated',
+          'score': 90,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'Climate Fund Act',
+          'evidence': 'Binding 15-year subsidy agreements between government and project operators.',
+          'label': 'Contractual Mandate',
+          'score': 80,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': '',
+          'evidence': 'Baseline strategic alignment under V5.0 migration.',
+          'label': 'Initial Assessment',
+          'score': 30,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "Porthos Business Model",
-      "evidence": "De-risks the full chain by guaranteeing revenue for capture plants.",
-      "label": "Infrastructure De-risking",
-      "score": 85
+  'category': 'Incentive',
+  'country': 'Netherlands',
+  'description': "The Dutch SDE++ (Stimulation of Sustainable Energy Production) is the global gold standard for supporting CCUS OPEX. It operates on a **'Viability Gap Funding'** model, covering the deficit between carbon capture costs and the prevailing market carbon price for 15 years. For the 2024-2025 rounds, the budget was expanded to €8 billion with a subsidy intensity cap of **€400 per tonne of CO2**. The Porthos project in the Port of Rotterdam is the flagship beneficiary, securing a €2.1 billion grant r",
+  'evolution': { 'clusters': [], 'supersededBy': '', 'supersedes': [] },
+  'id': 'nl-porthos-sde-subsidy',
+  'impactAnalysis':
+    {
+      'economic': 'Eliminates financial volatility linked to EU ETS price swings, providing capture projects with an 15-year floor price that ensures stable IRR and institutional bankability.',
+      'environmental': 'Anchors the Dutch 2030 climate inventory, delivering a verified 2.5 Mtpa in physical reductions while preventing industrial carbon leakage to less regulated markets.',
+      'technical': "Catalyzes the economic regulation of shared CO2 networks, standardizing 'Common Carrier' protocols for high-pressure industrial grids in maritime settings.",
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "Article 49 compliance",
-      "evidence": "Leverages the EU ETS MRV infrastructure to verify subsidy claims.",
-      "label": "ETS Integrated",
-      "score": 90
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-08',
+      'reviewer': 'Human Audit Pending',
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "Climate Fund Act",
-      "evidence": "Binding 15-year subsidy agreements between government and project operators.",
-      "label": "Contractual Mandate",
-      "score": 80
+  'pubDate': '2021-04-01',
+  'regulatory':
+    {
+      'co2_definition': '',
+      'cross_border_rules': '',
+      'financial_assurance': '',
+      'liability_period': '',
+      'liability_transfer': '',
+      'permitting_lead_time': '',
+      'pore_space_rights': '',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "",
-      "evidence": "Baseline strategic alignment under V5.0 migration.",
-      "label": "Initial Assessment",
-      "score": 30
-    }
-  },
-  "category": "Incentive",
-  "country": "Netherlands",
-  "description": "The Dutch SDE++ (Stimulation of Sustainable Energy Production) is the global gold standard for supporting CCUS OPEX. It operates on a **'Viability Gap Funding'** model, covering the deficit between carbon capture costs and the prevailing market carbon price for 15 years. For the 2024-2025 rounds, the budget was expanded to €8 billion with a subsidy intensity cap of **€400 per tonne of CO2**. The Porthos project in the Port of Rotterdam is the flagship beneficiary, securing a €2.1 billion grant r",
-  "evolution": {
-    "clusters": [],
-    "supersededBy": "",
-    "supersedes": []
-  },
-  "id": "nl-porthos-sde-subsidy",
-  "impactAnalysis": {
-    "economic": "Eliminates financial volatility linked to EU ETS price swings, providing capture projects with an 15-year floor price that ensures stable IRR and institutional bankability.",
-    "environmental": "Anchors the Dutch 2030 climate inventory, delivering a verified 2.5 Mtpa in physical reductions while preventing industrial carbon leakage to less regulated markets.",
-    "technical": "Catalyzes the economic regulation of shared CO2 networks, standardizing 'Common Carrier' protocols for high-pressure industrial grids in maritime settings."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-08",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2021-04-01",
-  "regulatory": {
-    "co2_definition": "",
-    "cross_border_rules": "",
-    "financial_assurance": "",
-    "liability_period": "",
-    "liability_transfer": "",
-    "permitting_lead_time": "",
-    "pore_space_rights": ""
-  },
-  "relatedFacilities": [
-    "1096",
-    "1144",
-    "1173",
-    "1327",
-    "1330",
-    "1361",
-    "1483",
-    "150",
-    "18",
-    "19",
-    "215",
-    "216",
-    "217",
-    "249",
-    "285",
-    "286",
-    "32",
-    "325",
-    "33",
-    "364",
-    "365",
-    "394",
-    "412",
-    "465",
-    "679",
-    "680",
-    "681",
-    "819",
-    "950",
-    "951"
-  ],
-  "reviewStatus": "verified",
-  "source": "RVO Netherlands",
-  "status": "Active",
-  "title": "Netherlands Porthos SDE++ Operational Subsidy",
-  "url": "https://www.rvo.nl/subsidies-financiering/sde",
-  "year": 2021
+  'relatedFacilities':
+    [
+      '1096',
+      '1144',
+      '1173',
+      '1327',
+      '1330',
+      '1361',
+      '1483',
+      '150',
+      '18',
+      '19',
+      '215',
+      '216',
+      '217',
+      '249',
+      '285',
+      '286',
+      '32',
+      '325',
+      '33',
+      '364',
+      '365',
+      '394',
+      '412',
+      '465',
+      '679',
+      '680',
+      '681',
+      '819',
+      '950',
+      '951',
+    ],
+  'reviewStatus': 'verified',
+  'source': 'RVO Netherlands',
+  'status': 'Active',
+  'title': 'Netherlands Porthos SDE++ Operational Subsidy',
+  'url': 'https://www.rvo.nl/subsidies-financiering/sde',
+  'year': 2021,
 }
 ---
 

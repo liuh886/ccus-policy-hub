@@ -11,6 +11,7 @@ Our evaluation framework is built upon the FSRTM scoring model and Digital MRV (
 ## FSRTM Scoring Model
 
 We evaluate policies across five dimensions:
+
 - **Incentive**: Financial and non-financial support.
 - **Statutory**: Legal and regulatory framework.
 - **Market**: Market-based mechanisms.

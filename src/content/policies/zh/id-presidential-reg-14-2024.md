@@ -1,102 +1,110 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Implementing Rules",
-      "evidence": "Streamlines inter-agency permitting and establishes royalties/tax incentives for CCS.",
-      "label": "Process Fast-tracking",
-      "score": 60
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Implementing Rules',
+          'evidence': 'Streamlines inter-agency permitting and establishes royalties/tax incentives for CCS.',
+          'label': 'Process Fast-tracking',
+          'score': 60,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Art. 18',
+          'evidence': 'Officially enables international CO2 intake with a defined 30% capacity allocation rule.',
+          'label': 'Cross-border Access',
+          'score': 85,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'MEMR Regulation 16/2024',
+          'evidence': 'Mandatory storage capacity certification and leakage monitoring under MEMR oversight.',
+          'label': 'Capacity Verification',
+          'score': 75,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Art. 5',
+          'evidence': 'Formalizes CCS as a legally recognized industrial activity with a stable permitting framework.',
+          'label': 'Presidential Mandate',
+          'score': 90,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'Indonesia NDCs 2024 Update',
+          'evidence': 'Strategically positions Indonesia as the ASEAN center for carbon storage infrastructure.',
+          'label': 'Regional Hub Positioning',
+          'score': 80,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Art. 18",
-      "evidence": "Officially enables international CO2 intake with a defined 30% capacity allocation rule.",
-      "label": "Cross-border Access",
-      "score": 85
+  'category': '法律监管',
+  'country': '印度尼西亚',
+  'description': "## 政策概览\r \r 印度尼西亚 2024 年第 14 号总统令（PR 14/2024）于 2024 年 1 月 30 日生效，标志着印尼正式建立了东南亚首个针对碳捕集与封存（CCS）的全面法律框架。该法规不仅旨在填补此前的监管真空，更将印尼定位为区域性的碳管理中心。核心机制包括两大运营模式：首先是在现有的石油和天然气特许经营区（Working Areas）内由承包商开展 CCS，这通常通过修订原有的分成合同实现；其次是建立独立的‘碳存储许可区 (WIPK)’，允许专门的实体申请勘探和运营许可。\r \r PR 14/2024 最具战略意义的创新是其**跨境封存条款**。法规明确允许印尼境内 CCS 运营商分配最多 30% 的存储容量给来自国外的二氧化碳，前提是外国实体在印尼有投资背景，且双方国家已签署双边协议。此外，该令还确立了政府特许权使用费、税收与非税激励机制，并明确了由能源与矿产资源部 (MEMR) 及 SKK Migas 构成的多级审批体系。这一法案为 BP 旗下的 Tangguh 等重大 CCS 枢纽的商业化运作奠定了法律基石。",
+  'evolution':
+    {
+      'clusters': ['ASEAN CCS Hub Strategy', 'Indonesia 2060 Roadmap'],
+      'supersedes': [],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "MEMR Regulation 16/2024",
-      "evidence": "Mandatory storage capacity certification and leakage monitoring under MEMR oversight.",
-      "label": "Capacity Verification",
-      "score": 75
+  'id': 'id-presidential-reg-14-2024',
+  'impactAnalysis':
+    {
+      'economic': '通过 30% 的跨境封存配额，印尼旨在通过‘服务费’模式吸收新加坡等区域邻国的减排资本，为国内大规模基础设施建设提供直接资金支撑。',
+      'environmental': '作为印尼 2060 碳中和路径的关键法制支柱，旨在每年抵消数千万吨的工业二氧化碳排放。',
+      'technical': '重点聚焦于枯竭油气田的大规模安全回注与监测，推动了印尼上游产业的技术升级与 CCUS 商业闭环试点。',
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Art. 5",
-      "evidence": "Formalizes CCS as a legally recognized industrial activity with a stable permitting framework.",
-      "label": "Presidential Mandate",
-      "score": 90
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-07',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "Indonesia NDCs 2024 Update",
-      "evidence": "Strategically positions Indonesia as the ASEAN center for carbon storage infrastructure.",
-      "label": "Regional Hub Positioning",
-      "score": 80
-    }
-  },
-  "category": "法律监管",
-  "country": "印度尼西亚",
-  "description": "## 政策概览\r \r 印度尼西亚 2024 年第 14 号总统令（PR 14/2024）于 2024 年 1 月 30 日生效，标志着印尼正式建立了东南亚首个针对碳捕集与封存（CCS）的全面法律框架。该法规不仅旨在填补此前的监管真空，更将印尼定位为区域性的碳管理中心。核心机制包括两大运营模式：首先是在现有的石油和天然气特许经营区（Working Areas）内由承包商开展 CCS，这通常通过修订原有的分成合同实现；其次是建立独立的‘碳存储许可区 (WIPK)’，允许专门的实体申请勘探和运营许可。\r \r PR 14/2024 最具战略意义的创新是其**跨境封存条款**。法规明确允许印尼境内 CCS 运营商分配最多 30% 的存储容量给来自国外的二氧化碳，前提是外国实体在印尼有投资背景，且双方国家已签署双边协议。此外，该令还确立了政府特许权使用费、税收与非税激励机制，并明确了由能源与矿产资源部 (MEMR) 及 SKK Migas 构成的多级审批体系。这一法案为 BP 旗下的 Tangguh 等重大 CCS 枢纽的商业化运作奠定了法律基石。",
-  "evolution": {
-    "clusters": [
-      "ASEAN CCS Hub Strategy",
-      "Indonesia 2060 Roadmap"
+  'pubDate': '2024-01-30',
+  'regulatory':
+    {
+      'co2_definition': '碳排放',
+      'cross_border_rules': '允许（分配 30% 的容量上限）',
+      'financial_assurance': '强制性（履约保证金）',
+      'liability_period': '10 年（建议）',
+      'liability_transfer': '监测期后移交给政府',
+      'permitting_lead_time': '开发中（PSC 修订）',
+      'pore_space_rights': '国家所有',
+    },
+  'relatedFacilities':
+    [
+      '1022',
+      '1329',
+      '187',
+      '227',
+      '230',
+      '342',
+      '353',
+      '37',
+      '388',
+      '43',
+      '760',
+      '761',
+      '762',
+      '764',
+      '765',
+      '857',
+      '860',
+      '947',
+      '948',
+      '998',
     ],
-    "supersedes": []
-  },
-  "id": "id-presidential-reg-14-2024",
-  "impactAnalysis": {
-    "economic": "通过 30% 的跨境封存配额，印尼旨在通过‘服务费’模式吸收新加坡等区域邻国的减排资本，为国内大规模基础设施建设提供直接资金支撑。",
-    "environmental": "作为印尼 2060 碳中和路径的关键法制支柱，旨在每年抵消数千万吨的工业二氧化碳排放。",
-    "technical": "重点聚焦于枯竭油气田的大规模安全回注与监测，推动了印尼上游产业的技术升级与 CCUS 商业闭环试点。"
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-07",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-01-30",
-  "regulatory": {
-    "co2_definition": "碳排放",
-    "cross_border_rules": "允许（分配 30% 的容量上限）",
-    "financial_assurance": "强制性（履约保证金）",
-    "liability_period": "10 年（建议）",
-    "liability_transfer": "监测期后移交给政府",
-    "permitting_lead_time": "开发中（PSC 修订）",
-    "pore_space_rights": "国家所有"
-  },
-  "relatedFacilities": [
-    "1022",
-    "1329",
-    "187",
-    "227",
-    "230",
-    "342",
-    "353",
-    "37",
-    "388",
-    "43",
-    "760",
-    "761",
-    "762",
-    "764",
-    "765",
-    "857",
-    "860",
-    "947",
-    "948",
-    "998"
-  ],
-  "reviewStatus": "verified",
-  "source": "印度尼西亚内阁秘书处",
-  "status": "现行",
-  "title": "印尼 2024 年第 14 号总统令 (CCS 框架)",
-  "url": "https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': '印度尼西亚内阁秘书处',
+  'status': '现行',
+  'title': '印尼 2024 年第 14 号总统令 (CCS 框架)',
+  'url': 'https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf',
+  'year': 2024,
 }
 ---
 

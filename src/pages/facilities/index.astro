@@ -10,9 +10,7 @@ const facilities = await getCollection('facilities_zh');
 // Country name mapping logic
 const countryMap: Record<string, any> = countryData;
 
-const countries = Array.from(
-  new Set(facilities.map((f) => f.data.country))
-)
+const countries = Array.from(new Set(facilities.map((f) => f.data.country)))
   .sort()
   .map((canon) => ({
     canon,
@@ -25,8 +23,7 @@ const types = Array.from(
   new Set(
     facilities.map((f) => {
       const t = f.data.type;
-      if (t === 'Full chain' || t === 'fullchain')
-        return '全产业链';
+      if (t === 'Full chain' || t === 'fullchain') return '全产业链';
       return t;
     })
   )
@@ -54,7 +51,9 @@ const translateCountryLabel = (country: string) => {
     .map((part) => {
       if (/^\s*[-/,&，、]\s*$/.test(part)) return part;
       const trimmed = part.trim();
-      return countryMap[trimmed]?.zh || specialCountryLabels[trimmed] || trimmed;
+      return (
+        countryMap[trimmed]?.zh || specialCountryLabels[trimmed] || trimmed
+      );
     })
     .join('');
 };
@@ -208,7 +207,10 @@ const zhCountries = countries.map((country) => ({
           <option value="">所有状态</option>
           {
             statuses.map((s) => (
-              <option value={s} selected={s === '运行中' || s === 'Operational'}>
+              <option
+                value={s}
+                selected={s === '运行中' || s === 'Operational'}
+              >
                 {s}
               </option>
             ))
@@ -246,8 +248,7 @@ const zhCountries = countries.map((country) => ({
       {
         facilities.map((f) => {
           const normalizedType =
-            f.data.type === 'Full chain' ||
-            f.data.type === 'fullchain'
+            f.data.type === 'Full chain' || f.data.type === 'fullchain'
               ? '全产业链'
               : f.data.type;
 
@@ -315,7 +316,9 @@ const zhCountries = countries.map((country) => ({
     const statCapacity = document.getElementById('stat-capacity');
     const statOperational = document.getElementById('stat-operational');
     const statOperationalCap = document.getElementById('stat-operational-cap');
-    const statConstructionCap = document.getElementById('stat-construction-cap');
+    const statConstructionCap = document.getElementById(
+      'stat-construction-cap'
+    );
 
     function filterAndStats() {
       const search = searchInput?.value.toLowerCase() || '';
@@ -384,8 +387,10 @@ const zhCountries = countries.map((country) => ({
       if (statCount) statCount.textContent = count.toString();
       if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
       if (statOperational) statOperational.textContent = operational.toString();
-      if (statOperationalCap) statOperationalCap.textContent = operationalCap.toFixed(1);
-      if (statConstructionCap) statConstructionCap.textContent = constructionCap.toFixed(1);
+      if (statOperationalCap)
+        statOperationalCap.textContent = operationalCap.toFixed(1);
+      if (statConstructionCap)
+        statConstructionCap.textContent = constructionCap.toFixed(1);
 
       if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
     }

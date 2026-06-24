@@ -21,7 +21,10 @@ test('normalizeCoordinates preserves valid numeric coordinate pairs', () => {
   assert.deepEqual(normalizeCoordinates(1.23, 4.56), [1.23, 4.56]);
   assert.deepEqual(normalizeCoordinates('1.23', '4.56'), [1.23, 4.56]);
   assert.deepEqual(normalizeCoordinates(0, 103.8198), [0, 103.8198]);
-  assert.deepEqual(normalizeCoordinates(-6.2088, 106.8456), [-6.2088, 106.8456]);
+  assert.deepEqual(
+    normalizeCoordinates(-6.2088, 106.8456),
+    [-6.2088, 106.8456]
+  );
 });
 
 test('normalizeCoordinates returns null when no fallback is available', () => {
@@ -31,13 +34,25 @@ test('normalizeCoordinates returns null when no fallback is available', () => {
 
 test('getCountryCoordinateFallback returns centroids for known countries', () => {
   assert.deepEqual(getCountryCoordinateFallback('Sweden'), [62.0, 15.0]);
-  assert.deepEqual(getCountryCoordinateFallback('United States'), [37.09, -95.71]);
-  assert.deepEqual(getCountryCoordinateFallback('Chinese Taipei'), [23.7, 121.0]);
+  assert.deepEqual(
+    getCountryCoordinateFallback('United States'),
+    [37.09, -95.71]
+  );
+  assert.deepEqual(
+    getCountryCoordinateFallback('Chinese Taipei'),
+    [23.7, 121.0]
+  );
 });
 
 test('getCountryCoordinateFallback returns the first resolvable part for composite countries', () => {
-  assert.deepEqual(getCountryCoordinateFallback('South Korea-Malaysia'), [36.5, 127.8]);
-  assert.deepEqual(getCountryCoordinateFallback('Latvia-Lithuania'), [56.88, 24.6]);
+  assert.deepEqual(
+    getCountryCoordinateFallback('South Korea-Malaysia'),
+    [36.5, 127.8]
+  );
+  assert.deepEqual(
+    getCountryCoordinateFallback('Latvia-Lithuania'),
+    [56.88, 24.6]
+  );
 });
 
 test('resolveFacilityCoordinates uses country anchors for country-precision facilities', () => {

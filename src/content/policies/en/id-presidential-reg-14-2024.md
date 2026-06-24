@@ -1,102 +1,110 @@
 ---
 {
-  "analysis": {
-    "incentive": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Implementing Rules",
-      "evidence": "Streamlines inter-agency permitting and establishes royalties/tax incentives for CCS.",
-      "label": "Process Fast-tracking",
-      "score": 60
+  'analysis':
+    {
+      'incentive':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Implementing Rules',
+          'evidence': 'Streamlines inter-agency permitting and establishes royalties/tax incentives for CCS.',
+          'label': 'Process Fast-tracking',
+          'score': 60,
+        },
+      'market':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Art. 18',
+          'evidence': 'Officially enables international CO2 intake with a defined 30% capacity allocation rule.',
+          'label': 'Cross-border Access',
+          'score': 85,
+        },
+      'mrv':
+        {
+          'auditNote': '',
+          'citation': 'MEMR Regulation 16/2024',
+          'evidence': 'Mandatory storage capacity certification and leakage monitoring under MEMR oversight.',
+          'label': 'Capacity Verification',
+          'score': 75,
+        },
+      'statutory':
+        {
+          'auditNote': '',
+          'citation': 'PR 14/2024 Art. 5',
+          'evidence': 'Formalizes CCS as a legally recognized industrial activity with a stable permitting framework.',
+          'label': 'Presidential Mandate',
+          'score': 90,
+        },
+      'strategic':
+        {
+          'auditNote': '',
+          'citation': 'Indonesia NDCs 2024 Update',
+          'evidence': 'Strategically positions Indonesia as the ASEAN center for carbon storage infrastructure.',
+          'label': 'Regional Hub Positioning',
+          'score': 80,
+        },
     },
-    "market": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Art. 18",
-      "evidence": "Officially enables international CO2 intake with a defined 30% capacity allocation rule.",
-      "label": "Cross-border Access",
-      "score": 85
+  'category': 'Regulatory',
+  'country': 'Indonesia',
+  'description': "## Policy Overview\r \r Enacted on January 30, 2024, Indonesia’s Presidential Regulation No. 14 of 2024 (PR 14/2024) provides the first comprehensive legal architecture for Carbon Capture and Storage (CCS) in Southeast Asia. Designed to turn Indonesia into a premier carbon management hub, the regulation establishes two primary operating models: CCS within existing upstream Oil & Gas Working Areas (conducted by PSC contractors via contract amendments) and independent Carbon Storage Permit Areas (WI",
+  'evolution':
+    {
+      'clusters': ['ASEAN CCS Hub Strategy', 'Indonesia 2060 Roadmap'],
+      'supersedes': [],
     },
-    "mrv": {
-      "auditNote": "",
-      "citation": "MEMR Regulation 16/2024",
-      "evidence": "Mandatory storage capacity certification and leakage monitoring under MEMR oversight.",
-      "label": "Capacity Verification",
-      "score": 75
+  'id': 'id-presidential-reg-14-2024',
+  'impactAnalysis':
+    {
+      'economic': 'By enabling a 30% cross-border cap, Indonesia aims to absorb regional decarbonization capital (e.g., from Singapore) via a service-fee model to offset massive infrastructure costs.',
+      'environmental': 'Legal backbone for Indonesia’s 2060 Net Zero ambition, designed to enable the mitigation of tens of millions of tonnes from the industrial and power sectors annually.',
+      'technical': "Prioritizes large-scale injection in depleted reservoirs, accelerating the technical pivot of Indonesia's oil and gas sector towards carbon management engineering.",
     },
-    "statutory": {
-      "auditNote": "",
-      "citation": "PR 14/2024 Art. 5",
-      "evidence": "Formalizes CCS as a legally recognized industrial activity with a stable permitting framework.",
-      "label": "Presidential Mandate",
-      "score": 90
+  'legalWeight': 'Administrative Regulation',
+  'provenance':
+    {
+      'author': 'Gemini Intelligence',
+      'lastAuditDate': '2026-02-07',
+      'reviewer': 'Human Audit Pending',
     },
-    "strategic": {
-      "auditNote": "",
-      "citation": "Indonesia NDCs 2024 Update",
-      "evidence": "Strategically positions Indonesia as the ASEAN center for carbon storage infrastructure.",
-      "label": "Regional Hub Positioning",
-      "score": 80
-    }
-  },
-  "category": "Regulatory",
-  "country": "Indonesia",
-  "description": "## Policy Overview\r \r Enacted on January 30, 2024, Indonesia’s Presidential Regulation No. 14 of 2024 (PR 14/2024) provides the first comprehensive legal architecture for Carbon Capture and Storage (CCS) in Southeast Asia. Designed to turn Indonesia into a premier carbon management hub, the regulation establishes two primary operating models: CCS within existing upstream Oil & Gas Working Areas (conducted by PSC contractors via contract amendments) and independent Carbon Storage Permit Areas (WI",
-  "evolution": {
-    "clusters": [
-      "ASEAN CCS Hub Strategy",
-      "Indonesia 2060 Roadmap"
+  'pubDate': '2024-01-30',
+  'regulatory':
+    {
+      'co2_definition': 'Carbon Emission',
+      'cross_border_rules': 'Allowed (30% Capacity Cap allocated)',
+      'financial_assurance': 'Mandatory (Performance Bond)',
+      'liability_period': '10 years (Proposed)',
+      'liability_transfer': 'To Government after monitoring period',
+      'permitting_lead_time': 'Developing (PSC amendment)',
+      'pore_space_rights': 'State Owned',
+    },
+  'relatedFacilities':
+    [
+      '1022',
+      '1329',
+      '187',
+      '227',
+      '230',
+      '342',
+      '353',
+      '37',
+      '388',
+      '43',
+      '760',
+      '761',
+      '762',
+      '764',
+      '765',
+      '857',
+      '860',
+      '947',
+      '948',
+      '998',
     ],
-    "supersedes": []
-  },
-  "id": "id-presidential-reg-14-2024",
-  "impactAnalysis": {
-    "economic": "By enabling a 30% cross-border cap, Indonesia aims to absorb regional decarbonization capital (e.g., from Singapore) via a service-fee model to offset massive infrastructure costs.",
-    "environmental": "Legal backbone for Indonesia’s 2060 Net Zero ambition, designed to enable the mitigation of tens of millions of tonnes from the industrial and power sectors annually.",
-    "technical": "Prioritizes large-scale injection in depleted reservoirs, accelerating the technical pivot of Indonesia's oil and gas sector towards carbon management engineering."
-  },
-  "legalWeight": "Administrative Regulation",
-  "provenance": {
-    "author": "Gemini Intelligence",
-    "lastAuditDate": "2026-02-07",
-    "reviewer": "Human Audit Pending"
-  },
-  "pubDate": "2024-01-30",
-  "regulatory": {
-    "co2_definition": "Carbon Emission",
-    "cross_border_rules": "Allowed (30% Capacity Cap allocated)",
-    "financial_assurance": "Mandatory (Performance Bond)",
-    "liability_period": "10 years (Proposed)",
-    "liability_transfer": "To Government after monitoring period",
-    "permitting_lead_time": "Developing (PSC amendment)",
-    "pore_space_rights": "State Owned"
-  },
-  "relatedFacilities": [
-    "1022",
-    "1329",
-    "187",
-    "227",
-    "230",
-    "342",
-    "353",
-    "37",
-    "388",
-    "43",
-    "760",
-    "761",
-    "762",
-    "764",
-    "765",
-    "857",
-    "860",
-    "947",
-    "948",
-    "998"
-  ],
-  "reviewStatus": "verified",
-  "source": "印度尼西亚内阁秘书处",
-  "status": "Active",
-  "title": "Indonesia Presidential Regulation No. 14/2024 (CCS Framework)",
-  "url": "https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf",
-  "year": 2024
+  'reviewStatus': 'verified',
+  'source': '印度尼西亚内阁秘书处',
+  'status': 'Active',
+  'title': 'Indonesia Presidential Regulation No. 14/2024 (CCS Framework)',
+  'url': 'https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf',
+  'year': 2024,
 }
 ---
 

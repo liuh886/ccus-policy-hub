@@ -6,5 +6,6 @@ These Markdown files are automatically projected from the SQLite Single Source o
 Manual changes will be OVERWRITTEN during the next synchronization.
 
 To update content:
+
 1. Modify the SQLite database.
 2. Run `pnpm manage db:export:md`.

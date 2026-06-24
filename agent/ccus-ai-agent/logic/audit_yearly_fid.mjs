@@ -8,7 +8,7 @@ async function main() {
   const db = new SQL.Database(buffer);
 
   console.log('--- 2015-2025 FID DETAILED AUDIT ---');
-  
+
   for (let year = 2015; year <= 2025; year++) {
     const query = `
       SELECT 
@@ -25,16 +25,20 @@ async function main() {
       ORDER BY f.estimated_capacity DESC
     `;
     const res = db.exec(query);
-    
+
     if (res.length > 0 && res[0].values.length > 0) {
       const rows = res[0].values;
       const count = rows.length;
       const totalCapacity = rows.reduce((sum, r) => sum + (r[3] || 0), 0);
-      
-      console.log(`\n[YEAR ${year}] Count: ${count}, Total Capacity: ${totalCapacity.toFixed(2)} Mtpa`);
+
+      console.log(
+        `\n[YEAR ${year}] Count: ${count}, Total Capacity: ${totalCapacity.toFixed(2)} Mtpa`
+      );
       // 列出该年份排名前 3 的项目作为证据
-      rows.slice(0, 3).forEach(r => {
-        console.log(`  - ID: ${r[0]}, Name: ${r[1]}, Type: ${r[2]}, Cap: ${r[3]} Mtpa, FID: ${r[4]}`);
+      rows.slice(0, 3).forEach((r) => {
+        console.log(
+          `  - ID: ${r[0]}, Name: ${r[1]}, Type: ${r[2]}, Cap: ${r[3]} Mtpa, FID: ${r[4]}`
+        );
       });
       if (count > 3) console.log(`  ... and ${count - 3} more projects.`);
     } else {

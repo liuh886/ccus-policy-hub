@@ -18,7 +18,12 @@ interface Props {
   };
 }
 
-const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'] } = Astro.props;
+const {
+  data,
+  details,
+  id = 'fsrtmChart',
+  labels = ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'],
+} = Astro.props;
 ---
 
 <div class="relative w-full h-full min-h-[200px]">
@@ -26,7 +31,15 @@ const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', '
 </div>
 
 <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script is:inline define:vars={{ chartData: data, chartDetails: details, canvasId: id, chartLabels: labels }}>
+<script
+  is:inline
+  define:vars={{
+    chartData: data,
+    chartDetails: details,
+    canvasId: id,
+    chartLabels: labels,
+  }}
+>
   const ctx = document.getElementById(canvasId);
   if (ctx) {
     const labelMapping = {
@@ -34,38 +47,50 @@ const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', '
       [chartLabels[1]]: 'statutory',
       [chartLabels[2]]: 'market',
       [chartLabels[3]]: 'strategic',
-      [chartLabels[4]]: 'mrv'
+      [chartLabels[4]]: 'mrv',
     };
 
     // Calculate dynamic color based on average score
-    const avgScore = (chartData.incentive + chartData.statutory + chartData.market + chartData.strategic + chartData.mrv) / 5;
+    const avgScore =
+      (chartData.incentive +
+        chartData.statutory +
+        chartData.market +
+        chartData.strategic +
+        chartData.mrv) /
+      5;
     const isHighMaturity = avgScore > 70;
-    const themeColor = isHighMaturity ? 'rgb(37, 99, 235)' : 'rgb(245, 158, 11)';
-    const bgColor = isHighMaturity ? 'rgba(37, 99, 235, 0.1)' : 'rgba(245, 158, 11, 0.1)';
+    const themeColor = isHighMaturity
+      ? 'rgb(37, 99, 235)'
+      : 'rgb(245, 158, 11)';
+    const bgColor = isHighMaturity
+      ? 'rgba(37, 99, 235, 0.1)'
+      : 'rgba(245, 158, 11, 0.1)';
 
     new Chart(ctx, {
       type: 'radar',
       data: {
         labels: chartLabels,
-        datasets: [{
-          data: [
-            chartData.incentive,
-            chartData.statutory,
-            chartData.market,
-            chartData.strategic,
-            chartData.mrv
-          ],
-          fill: true,
-          backgroundColor: bgColor,
-          borderColor: themeColor,
-          borderWidth: 3,
-          pointRadius: 4,
-          pointBackgroundColor: themeColor,
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointHitRadius: 15,
-          lineTension: 0.15
-        }]
+        datasets: [
+          {
+            data: [
+              chartData.incentive,
+              chartData.statutory,
+              chartData.market,
+              chartData.strategic,
+              chartData.mrv,
+            ],
+            fill: true,
+            backgroundColor: bgColor,
+            borderColor: themeColor,
+            borderWidth: 3,
+            pointRadius: 4,
+            pointBackgroundColor: themeColor,
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointHitRadius: 15,
+            lineTension: 0.15,
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -74,18 +99,18 @@ const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', '
           r: {
             angleLines: { color: 'rgba(148, 163, 184, 0.1)' },
             grid: { color: 'rgba(148, 163, 184, 0.1)' },
-            pointLabels: { 
+            pointLabels: {
               display: true,
               font: { size: 11, weight: '900' },
-              color: '#64748b'
+              color: '#64748b',
             },
-            ticks: { 
+            ticks: {
               display: false,
-              stepSize: 25
+              stepSize: 25,
             },
             suggestedMin: 0,
-            suggestedMax: 100
-          }
+            suggestedMax: 100,
+          },
         },
         plugins: {
           legend: { display: false },
@@ -98,37 +123,38 @@ const { data, details, id = 'fsrtmChart', labels = ['Incentive', 'Regulatory', '
             cornerRadius: 16,
             displayColors: false,
             callbacks: {
-              label: function(context) {
+              label: function (context) {
                 const label = context.label;
                 const value = context.formattedValue;
                 const key = labelMapping[label];
                 const evidence = chartDetails ? chartDetails[key] : null;
-                
+
                 let result = [`Score: ${value}/100`];
-                
-                if (evidence && evidence !== "No evidence provided yet.") {
+
+                if (evidence && evidence !== 'No evidence provided yet.') {
                   result.push('');
                   // Improved wrapping logic
                   const words = evidence.split(' ');
                   let currentLine = 'Evidence: ';
-                  
-                  words.forEach(word => {
+
+                  words.forEach((word) => {
                     if ((currentLine + word).length > 35) {
                       result.push(currentLine);
                       currentLine = '  ' + word;
                     } else {
-                      currentLine += (currentLine === 'Evidence: ' ? '' : ' ') + word;
+                      currentLine +=
+                        (currentLine === 'Evidence: ' ? '' : ' ') + word;
                     }
                   });
                   result.push(currentLine);
                 }
-                
+
                 return result;
-              }
-            }
-          }
-        }
-      }
+              },
+            },
+          },
+        },
+      },
     });
   }
 </script>

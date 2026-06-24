@@ -12,12 +12,12 @@ const allPolicies = await getCollection('policies_en');
 const countryMap: Record<string, any> = countryData;
 const dictCountries: Record<string, string> = i18nDict.countries;
 
-const policies = allPolicies.map(p => ({
+const policies = allPolicies.map((p) => ({
   ...p,
   data: {
     ...p.data,
-    country: dictCountries[p.data.country] || p.data.country
-  }
+    country: dictCountries[p.data.country] || p.data.country,
+  },
 }));
 
 // Category mapping logic
@@ -27,21 +27,25 @@ const categoryMap: Record<string, string> = {
   'Market Mechanism': 'Market Mechanism',
   'Strategic Guidance': 'Strategic Guidance',
   'Technical Standard': 'Technical Standard',
-  '经济激励': 'Economic Incentive',
-  '法律监管': 'Regulatory Framework',
-  '市场机制': 'Market Mechanism',
-  '战略引导': 'Strategic Guidance',
-  '技术规范': 'Technical Standard',
+  经济激励: 'Economic Incentive',
+  法律监管: 'Regulatory Framework',
+  市场机制: 'Market Mechanism',
+  战略引导: 'Strategic Guidance',
+  技术规范: 'Technical Standard',
 };
 
 const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country)))
   .sort()
-  .map(canon => ({
+  .map((canon) => ({
     canon,
-    display: countryMap[canon]?.en || canon
+    display: countryMap[canon]?.en || canon,
   }));
-const uniqueSectors = Array.from(new Set(policies.flatMap((p) => p.data.sectors || []))).sort();
-const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))).sort();
+const uniqueSectors = Array.from(
+  new Set(policies.flatMap((p) => p.data.sectors || []))
+).sort();
+const uniqueCategories = Array.from(
+  new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))
+).sort();
 ---
 
 <Layout
@@ -54,7 +58,8 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
       <h1 class="text-4xl font-black mb-4 dark:text-white">Policy Database</h1>
       <p class="text-slate-600 dark:text-slate-400">
         Global CCUS policy repository covering Legal & Regulatory, Economic
-        Incentives, Market Mechanisms, Strategic Guidance, and Technical Standards.
+        Incentives, Market Mechanisms, Strategic Guidance, and Technical
+        Standards.
       </p>
     </div>
 
@@ -87,7 +92,11 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
         <option value="">All Countries</option>
-        {uniqueCountries.map((c) => <option value={c.canon}>{c.display}</option>)}
+        {
+          uniqueCountries.map((c) => (
+            <option value={c.canon}>{c.display}</option>
+          ))
+        }
       </select>
 
       <select
@@ -95,7 +104,11 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         class="px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
       >
         <option value="">All Sectors</option>
-        {uniqueSectors.map((sector) => <option value={sector}>{sector}</option>)}
+        {
+          uniqueSectors.map((sector) => (
+            <option value={sector}>{sector}</option>
+          ))
+        }
       </select>
 
       <select
@@ -108,9 +121,24 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
 
       <button
         id="ranking-toggle"
-        class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2"        
+        class="px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all flex items-center gap-2"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="12" y1="20" x2="12" y2="10"></line><line
+            x1="18"
+            y1="20"
+            x2="18"
+            y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg
+        >
         <span>Weighted Ranking</span>
       </button>
     </div>
@@ -121,34 +149,77 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
       class="hidden mt-4 p-6 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-800 animate-in fade-in slide-in-from-top-4 duration-300"
     >
       <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xs font-black uppercase tracking-widest text-blue-600">Custom Evaluation Weights (FSRTM 5.0)</h3>
-        <button id="reset-weights" class="text-[10px] font-black uppercase text-slate-400 hover:text-blue-600">Reset Ratio</button>      
+        <h3 class="text-xs font-black uppercase tracking-widest text-blue-600">
+          Custom Evaluation Weights (FSRTM 5.0)
+        </h3>
+        <button
+          id="reset-weights"
+          class="text-[10px] font-black uppercase text-slate-400 hover:text-blue-600"
+          >Reset Ratio</button
+        >
       </div>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-        {[
-          { id: 'weight-incentive', label: 'Incentive', color: 'bg-emerald-500', key: 'incentive' },
-          { id: 'weight-statutory', label: 'Regulatory', color: 'bg-blue-500', key: 'statutory' },
-          { id: 'weight-market', label: 'Market', color: 'bg-amber-500', key: 'market' },
-          { id: 'weight-strategic', label: 'Strategic', color: 'bg-purple-500', key: 'strategic' },
-          { id: 'weight-mrv', label: 'Technical', color: 'bg-slate-500', key: 'mrv' }
-        ].map(w => (
-          <div class="space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-[10px] font-bold text-slate-500 uppercase">{w.label}</span>
-              <span class={`weight-val text-[10px] font-mono font-black ${w.color.replace('bg-', 'text-')}`} id={`${w.id}-val`}>20%</span>
+        {
+          [
+            {
+              id: 'weight-incentive',
+              label: 'Incentive',
+              color: 'bg-emerald-500',
+              key: 'incentive',
+            },
+            {
+              id: 'weight-statutory',
+              label: 'Regulatory',
+              color: 'bg-blue-500',
+              key: 'statutory',
+            },
+            {
+              id: 'weight-market',
+              label: 'Market',
+              color: 'bg-amber-500',
+              key: 'market',
+            },
+            {
+              id: 'weight-strategic',
+              label: 'Strategic',
+              color: 'bg-purple-500',
+              key: 'strategic',
+            },
+            {
+              id: 'weight-mrv',
+              label: 'Technical',
+              color: 'bg-slate-500',
+              key: 'mrv',
+            },
+          ].map((w) => (
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-[10px] font-bold text-slate-500 uppercase">
+                  {w.label}
+                </span>
+                <span
+                  class={`weight-val text-[10px] font-mono font-black ${w.color.replace('bg-', 'text-')}`}
+                  id={`${w.id}-val`}
+                >
+                  20%
+                </span>
+              </div>
+              <input
+                type="range"
+                id={w.id}
+                min="0"
+                max="100"
+                value="20"
+                class={`w-full h-1.5 ${w.color} rounded-lg appearance-none cursor-pointer accent-blue-600`}
+              />
             </div>
-            <input
-              type="range"
-              id={w.id}
-              min="0"
-              max="100"
-              value="20"
-              class={`w-full h-1.5 ${w.color} rounded-lg appearance-none cursor-pointer accent-blue-600`}
-            />
-          </div>
-        ))}
+          ))
+        }
       </div>
-      <p class="mt-6 text-[9px] font-medium text-slate-400 italic text-center">The system will calculate the comprehensive score of each policy in real-time based on the weights you set and re-sort them.</p>
+      <p class="mt-6 text-[9px] font-medium text-slate-400 italic text-center">
+        The system will calculate the comprehensive score of each policy in
+        real-time based on the weights you set and re-sort them.
+      </p>
     </div>
   </div>
 
@@ -160,7 +231,8 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
       policies
         .sort((a, b) => b.data.year - a.data.year)
         .map((policy) => {
-          const displayCategory = categoryMap[policy.data.category] || policy.data.category;
+          const displayCategory =
+            categoryMap[policy.data.category] || policy.data.category;
           return (
             <div
               class="policy-item"
@@ -174,12 +246,12 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
                 statutory: policy.data.analysis?.statutory?.score || 0,
                 market: policy.data.analysis?.market?.score || 0,
                 strategic: policy.data.analysis?.strategic?.score || 0,
-                mrv: policy.data.analysis?.mrv?.score || 0
+                mrv: policy.data.analysis?.mrv?.score || 0,
               })}
             >
               <PolicyCard policy={policy} lang="en" />
             </div>
-          )
+          );
         })
     }
   </div>
@@ -195,19 +267,33 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
     if (policyGridEl?.getAttribute('data-filter-bound') === '1') return;
     policyGridEl?.setAttribute('data-filter-bound', '1');
 
-    const searchInput = document.getElementById('search-input') as HTMLInputElement;
-    const countryFilter = document.getElementById('country-filter') as HTMLSelectElement;
-    const industryFilter = document.getElementById('industry-filter') as HTMLSelectElement;
-    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+    const searchInput = document.getElementById(
+      'search-input'
+    ) as HTMLInputElement;
+    const countryFilter = document.getElementById(
+      'country-filter'
+    ) as HTMLSelectElement;
+    const industryFilter = document.getElementById(
+      'industry-filter'
+    ) as HTMLSelectElement;
+    const categoryFilter = document.getElementById(
+      'category-filter'
+    ) as HTMLSelectElement;
     const rankingToggle = document.getElementById('ranking-toggle');
     const rankingControls = document.getElementById('ranking-controls');
     const resetWeights = document.getElementById('reset-weights');
     const noResults = document.getElementById('no-results');
 
-    const weightSliders = ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(k => ({
+    const weightSliders = [
+      'incentive',
+      'statutory',
+      'market',
+      'strategic',
+      'mrv',
+    ].map((k) => ({
       key: k,
       slider: document.getElementById(`weight-${k}`) as HTMLInputElement,
-      val: document.getElementById(`weight-${k}-val`) as HTMLElement
+      val: document.getElementById(`weight-${k}-val`) as HTMLElement,
     }));
 
     let isRankingMode = false;
@@ -215,19 +301,19 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
     function getWeights() {
       const weights: Record<string, number> = {};
       let total = 0;
-      weightSliders.forEach(w => {
+      weightSliders.forEach((w) => {
         const v = parseInt(w.slider.value);
         weights[w.key] = v;
         total += v;
       });
       if (total === 0) return weights;
-      Object.keys(weights).forEach(k => weights[k] = weights[k] / total);
+      Object.keys(weights).forEach((k) => (weights[k] = weights[k] / total));
       return weights;
     }
 
     function updateWeightLabels() {
       const weights = getWeights();
-      weightSliders.forEach(w => {
+      weightSliders.forEach((w) => {
         const pct = Math.round((weights[w.key] || 0) * 100);
         w.val.innerText = `${pct}%`;
       });
@@ -244,7 +330,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
       const grid = document.getElementById('policy-grid');
       let visibleCount = 0;
 
-      const scoredItems = items.map(item => {
+      const scoredItems = items.map((item) => {
         const htmlItem = item as HTMLElement;
         const title = htmlItem.dataset.title?.toLowerCase() || '';
         const itemCountry = htmlItem.dataset.country || '';
@@ -256,9 +342,11 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
         const matchesSearch = title.includes(searchTerm);
         const matchesCountry = !country || itemCountry === country;
         const matchesCategory = !category || itemCategory === category;
-        const matchesIndustry = !industry || itemSectors.split(',').includes(industry);
+        const matchesIndustry =
+          !industry || itemSectors.split(',').includes(industry);
 
-        const isVisible = matchesSearch && matchesCountry && matchesCategory && matchesIndustry;
+        const isVisible =
+          matchesSearch && matchesCountry && matchesCategory && matchesIndustry;
 
         let weightedScore = 0;
         if (isRankingMode) {
@@ -287,7 +375,8 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
           if (isRankingMode) {
             if (!badge) {
               badge = document.createElement('div');
-              badge.className = 'weighted-score-badge absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-black w-8 h-8 flex items-center justify-center rounded-full border-2 border-white shadow-lg z-10 animate-in zoom-in duration-300';
+              badge.className =
+                'weighted-score-badge absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-black w-8 h-8 flex items-center justify-center rounded-full border-2 border-white shadow-lg z-10 animate-in zoom-in duration-300';
               si.item.style.position = 'relative';
               si.item.appendChild(badge);
             }
@@ -316,7 +405,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
       filterAndSortPolicies();
     });
 
-    weightSliders.forEach(w => {
+    weightSliders.forEach((w) => {
       w.slider.addEventListener('input', () => {
         updateWeightLabels();
         filterAndSortPolicies();
@@ -324,7 +413,7 @@ const uniqueCategories = Array.from(new Set(policies.map((p) => categoryMap[p.da
     });
 
     resetWeights?.addEventListener('click', () => {
-      weightSliders.forEach(w => w.slider.value = '20');
+      weightSliders.forEach((w) => (w.slider.value = '20'));
       updateWeightLabels();
       filterAndSortPolicies();
     });
