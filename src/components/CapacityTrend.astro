@@ -9,15 +9,15 @@ const facilities = await getCollection(
 const startYear = 1970;
 const endYear = 2040;
 
-const parseYear = (value: unknown): number | null => {
+const parseYear = (value) => {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
   if (typeof value !== 'string') return null;
 
   const match = value.match(/\d{4}/);
-  return match ? Number.parseInt(match[0], 10) : null;
+  return match ? parseInt(match[0], 10) : null;
 };
 
-const normalizeStatus = (status: string | undefined) => {
+const normalizeStatus = (status) => {
   const value = (status || '').trim().toLowerCase();
 
   if (value === 'operational' || value === '运行中') return 'operational';
@@ -38,7 +38,7 @@ const normalizeStatus = (status: string | undefined) => {
   return value;
 };
 
-const capacity = (f: (typeof facilities)[number]) => {
+const capacity = (f) => {
   const estimatedCapacity = f.data.estimatedCapacity || 0;
   if (estimatedCapacity > 0) return estimatedCapacity;
 
@@ -49,14 +49,14 @@ const capacity = (f: (typeof facilities)[number]) => {
   return minCapacity || maxCapacity || 0;
 };
 
-const projectRecordYear = (f: (typeof facilities)[number]) =>
+const projectRecordYear = (f) =>
   parseYear(f.data.operation) ??
   parseYear(f.data.fid) ??
   parseYear(f.data.announcement);
 
-const isPipeline = (status: string) =>
+const isPipeline = (status) =>
   ['planned', 'operational', 'under-construction'].includes(status);
-const isCommitted = (status: string) =>
+const isCommitted = (status) =>
   ['operational', 'under-construction'].includes(status);
 
 const pipelineMap = new Map<number, number>();
