@@ -9,6 +9,7 @@
 [![Deploy Status](https://github.com/liuh886/ccus-policy-hub/actions/workflows/deploy.yml/badge.svg)](https://github.com/liuh886/ccus-policy-hub/actions)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-ff5a03.svg)](https://astro.build)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21110615.svg)](https://doi.org/10.5281/zenodo.21110615)
 
 [**English**] | [**简体中文 (Chinese Version)**](./README.zh.md) | [**Live Demo**](https://liuh886.github.io/ccus-policy-hub/)
 
@@ -29,6 +30,24 @@
 Our mission is to provide researchers, policymakers, and investors with a high-fidelity tool for benchmarking CCUS incentives and regulatory frameworks worldwide.
 
 > **AI-Ready Infrastructure**: Beyond human researchers, the Hub serves as a high-fidelity grounding source for **AI Agents** specializing in climate policy, enabling precise reasoning across complex regulatory landscapes.
+
+---
+
+## 📌 Citation
+
+If you use **CCUS Policy Hub** in research, policy analysis, or derivative datasets, please cite the archived Zenodo record:
+
+> Liu, Z. **CCUS Policy Hub: Global Intelligence Infrastructure for Carbon Capture, Utilization, and Storage**. Zenodo. https://doi.org/10.5281/zenodo.21110615
+
+```bibtex
+@software{liu_ccus_policy_hub,
+  author = {Liu, Zhihao},
+  title = {CCUS Policy Hub: Global Intelligence Infrastructure for Carbon Capture, Utilization, and Storage},
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.21110615},
+  url = {https://doi.org/10.5281/zenodo.21110615}
+}
+```
 
 ---
 
