@@ -15,6 +15,22 @@ const pipelineStatuses = new Set<string>([
   'under-construction',
 ]);
 const committedStatuses = new Set<string>(['operational', 'under-construction']);
+const typeOptions = [
+  { id: 'capture', labelZh: 'Capture / 捕集', labelEn: 'Capture' },
+  { id: 'transport', labelZh: 'Transport / 运输', labelEn: 'Transport' },
+  { id: 'ts', labelZh: 'T&S / 运输+封存', labelEn: 'T&S' },
+  { id: 'storage', labelZh: 'Storage / 封存', labelEn: 'Storage' },
+  { id: 'full-chain', labelZh: 'Full chain / 全链条', labelEn: 'Full chain' },
+  { id: 'ccu', labelZh: 'CCU / 利用', labelEn: 'CCU' },
+] as const;
+
+type TypeId = (typeof typeOptions)[number]['id'];
+
+type ChartPoint = {
+  year: number;
+  operational: string;
+  pipeline: string;
+};
 
 const text = {
   totalTitle:
@@ -37,10 +53,15 @@ const text = {
     lang === 'zh'
       ? '公开管线（规划+在运+在建）'
       : 'Pipeline (Planned + Operational + Under construction)',
+  typeFilterTitle: lang === 'zh' ? '类型筛选' : 'Type filter',
+  typeFilterNote:
+    lang === 'zh'
+      ? '默认全选；取消任一类型后，折线将从两条累计序列中扣减对应 project-record capacity。'
+      : 'All selected by default; unchecking a type subtracts its project-record capacity from both cumulative series.',
   chartNote:
     lang === 'zh'
-      ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。数值为跨 capture、transport、T&S、storage、full-chain、CCU 的项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
-      : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. Values aggregate project-record capacity across capture, transport, T&S, storage, full-chain and CCU records and should not be interpreted as net deliverable capture or storage capacity.',
+      ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。筛选项覆盖 capture、transport、T&S、storage、full-chain、CCU。数值为跨类型项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
+      : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. The type filter covers capture, transport, T&S, storage, full-chain and CCU. Values aggregate project-record capacity across selected types and should not be interpreted as net deliverable capture or storage capacity.',
 };
 
 const parseYear = (value: unknown): number | null => {
@@ -72,6 +93,38 @@ const normalizeStatus = (status: string | undefined): string => {
   return value;
 };
 
+const normalizeType = (type: string | undefined): TypeId | null => {
+  const value = (type || '').trim().toLowerCase();
+
+  if (value === 'capture' || value === '捕集') return 'capture';
+  if (value === 'transport' || value === 'transportation' || value === '运输') {
+    return 'transport';
+  }
+  if (
+    value === 't&s' ||
+    value === 'transport & storage' ||
+    value === 'transport and storage' ||
+    value === '运输与封存' ||
+    value === '运输和封存'
+  ) {
+    return 'ts';
+  }
+  if (value === 'storage' || value === '封存' || value === '储存') {
+    return 'storage';
+  }
+  if (
+    value === 'full chain' ||
+    value === 'full-chain' ||
+    value === '全链条' ||
+    value === '全链'
+  ) {
+    return 'full-chain';
+  }
+  if (value === 'ccu' || value === '利用') return 'ccu';
+
+  return null;
+};
+
 const capacity = (f: Facility): number => {
   const estimatedCapacity = f.data.estimatedCapacity || 0;
   if (estimatedCapacity > 0) return estimatedCapacity;
@@ -88,23 +141,30 @@ const projectRecordYear = (f: Facility): number | null =>
   parseYear(f.data.fid) ??
   parseYear(f.data.announcement);
 
-const pipelineMap = new Map<number, number>();
-const committedMap = new Map<number, number>();
+const pipelineByType = new Map<TypeId, Map<number, number>>();
+const committedByType = new Map<TypeId, Map<number, number>>();
+typeOptions.forEach((option) => {
+  pipelineByType.set(option.id, new Map<number, number>());
+  committedByType.set(option.id, new Map<number, number>());
+});
 
 facilities.forEach((f: Facility) => {
   const numYear = projectRecordYear(f);
+  const typeId = normalizeType(f.data.type);
 
-  if (numYear && numYear >= startYear && numYear <= endYear) {
-    const cap = capacity(f);
-    const status = normalizeStatus(f.data.status);
+  if (!numYear || !typeId || numYear < startYear || numYear > endYear) return;
 
-    if (pipelineStatuses.has(status)) {
-      pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
-    }
+  const cap = capacity(f);
+  const status = normalizeStatus(f.data.status);
+  const pipelineMap = pipelineByType.get(typeId);
+  const committedMap = committedByType.get(typeId);
 
-    if (committedStatuses.has(status)) {
-      committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
-    }
+  if (pipelineStatuses.has(status) && pipelineMap) {
+    pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
+  }
+
+  if (committedStatuses.has(status) && committedMap) {
+    committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
   }
 });
 
@@ -114,20 +174,43 @@ for (let y = startYear; y <= endYear; y++) {
   trendYears.push(y);
 }
 
-let cumulativeCommitted = 0;
-let cumulativePipeline = 0;
+const typeChartData: Record<string, ChartPoint[]> = {};
+typeOptions.forEach((option) => {
+  let cumulativeCommitted = 0;
+  let cumulativePipeline = 0;
+  const pipelineMap = pipelineByType.get(option.id);
+  const committedMap = committedByType.get(option.id);
 
-const chartData = trendYears.map((year) => {
-  cumulativeCommitted += committedMap.get(year) || 0;
-  cumulativePipeline += pipelineMap.get(year) || 0;
+  typeChartData[option.id] = trendYears.map((year) => {
+    cumulativeCommitted += committedMap?.get(year) || 0;
+    cumulativePipeline += pipelineMap?.get(year) || 0;
+
+    return {
+      year,
+      operational: cumulativeCommitted.toFixed(1),
+      pipeline: cumulativePipeline.toFixed(1),
+    };
+  });
+});
+
+const chartData = trendYears.map((year, index) => {
+  const operational = typeOptions.reduce(
+    (sum, option) => sum + Number(typeChartData[option.id][index].operational),
+    0
+  );
+  const pipeline = typeOptions.reduce(
+    (sum, option) => sum + Number(typeChartData[option.id][index].pipeline),
+    0
+  );
+
   return {
     year,
-    operational: cumulativeCommitted.toFixed(1),
-    pipeline: cumulativePipeline.toFixed(1),
+    operational: operational.toFixed(1),
+    pipeline: pipeline.toFixed(1),
   };
 });
 
-const totalCapacity = cumulativePipeline.toFixed(1);
+const totalCapacity = chartData.at(-1)?.pipeline || '0.0';
 const operationalFacilities = facilities.filter(
   (f: Facility) => normalizeStatus(f.data.status) === 'operational'
 );
@@ -158,7 +241,7 @@ const constructionCapacity = constructionFacilities
       <div
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
-        CAP_MONITOR_v3.0
+        CAP_MONITOR_v3.1
       </div>
       <div class="absolute -right-4 -bottom-4 opacity-5 text-emerald-600">
         <svg
@@ -272,7 +355,7 @@ const constructionCapacity = constructionFacilities
         <p
           class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
         >
-          Project-record capacity across CCUS value chain (Mtpa) <span
+          Project-record capacity across selected CCUS types (Mtpa) <span
             class="text-blue-500">1970</span
           > - <span class="text-emerald-500">2040</span>
         </p>
@@ -313,20 +396,15 @@ const constructionCapacity = constructionFacilities
       </div>
 
       <div class="relative w-full h-6 flex items-center group/slider">
-        <!-- Main Track -->
         <div
           class="absolute w-full h-[3px] bg-slate-100 dark:bg-slate-800/50 rounded-full shadow-inner"
         >
         </div>
-
-        <!-- Active Range Highlight -->
         <div
           id="sliderTrackHighlight"
           class="absolute h-[3px] bg-gradient-to-r from-blue-500 to-emerald-500 shadow-[0_0_10px_rgba(37,99,235,0.4)] z-10 rounded-full transition-all duration-300"
         >
         </div>
-
-        <!-- Native Range Inputs -->
         <input
           type="range"
           id="minYearSlider"
@@ -350,17 +428,54 @@ const constructionCapacity = constructionFacilities
       </div>
     </div>
 
-    <div class="h-[300px] w-full relative z-10">
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover/chart:opacity-100 transition-opacity duration-1000 pointer-events-none rounded-xl"
+    <div class="grid grid-cols-1 md:grid-cols-[190px_1fr] gap-5 relative z-10">
+      <aside
+        id="capacityTypeFilter"
+        class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/30 p-4"
       >
+        <div
+          class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3"
+        >
+          {text.typeFilterTitle}
+        </div>
+        <div class="space-y-2">
+          {
+            typeOptions.map((option) => (
+              <label
+                for={`capacity-type-${option.id}`}
+                class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none"
+              >
+                <input
+                  id={`capacity-type-${option.id}`}
+                  type="checkbox"
+                  value={option.id}
+                  checked
+                  data-capacity-type
+                  class="h-3.5 w-3.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                />
+                <span>{lang === 'zh' ? option.labelZh : option.labelEn}</span>
+              </label>
+            ))
+          }
+        </div>
+        <p class="mt-4 text-[9px] leading-relaxed text-slate-400">
+          {text.typeFilterNote}
+        </p>
+      </aside>
+
+      <div class="h-[300px] w-full relative">
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover/chart:opacity-100 transition-opacity duration-1000 pointer-events-none rounded-xl"
+        >
+        </div>
+        <canvas
+          id="capacityChart"
+          data-values={JSON.stringify(chartData)}
+          data-type-series={JSON.stringify(typeChartData)}
+          data-label-op={text.committedLabel}
+          data-label-pipe={text.pipelineLabel}
+        ></canvas>
       </div>
-      <canvas
-        id="capacityChart"
-        data-values={JSON.stringify(chartData)}
-        data-label-op={text.committedLabel}
-        data-label-pipe={text.pipelineLabel}
-      ></canvas>
     </div>
     <p
       class="mt-4 relative z-10 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
@@ -381,8 +496,10 @@ const constructionCapacity = constructionFacilities
     const trackHighlight = document.getElementById('sliderTrackHighlight');
     const yearMinVal = document.getElementById('yearMinVal');
     const yearMaxVal = document.getElementById('yearMaxVal');
+    const typeCheckboxes = Array.from(
+      document.querySelectorAll('[data-capacity-type]')
+    );
 
-    // Clear previous instance if exists
     const existingChart = Chart.getChart(canvas);
     if (existingChart) {
       existingChart.destroy();
@@ -390,12 +507,35 @@ const constructionCapacity = constructionFacilities
 
     try {
       const rawData = JSON.parse(canvas.dataset.values || '[]');
+      const typeSeries = JSON.parse(canvas.dataset.typeSeries || '{}');
       if (rawData.length === 0) return;
 
       const labels = rawData.map((d) => d.year);
-      const opData = rawData.map((d) => parseFloat(d.operational));
-      const pipeData = rawData.map((d) => parseFloat(d.pipeline));
 
+      function combineSelectedSeries() {
+        const selectedTypes = typeCheckboxes
+          .filter((checkbox) => checkbox.checked)
+          .map((checkbox) => checkbox.value);
+
+        return labels.reduce(
+          (series, _year, index) => {
+            selectedTypes.forEach((typeId) => {
+              const point = typeSeries[typeId]?.[index];
+              if (!point) return;
+
+              series.operational[index] += parseFloat(point.operational || 0);
+              series.pipeline[index] += parseFloat(point.pipeline || 0);
+            });
+            return series;
+          },
+          {
+            operational: labels.map(() => 0),
+            pipeline: labels.map(() => 0),
+          }
+        );
+      }
+
+      const initialSeries = combineSelectedSeries();
       const chart = new Chart(canvas, {
         type: 'line',
         data: {
@@ -403,7 +543,7 @@ const constructionCapacity = constructionFacilities
           datasets: [
             {
               label: canvas.dataset.labelOp,
-              data: opData,
+              data: initialSeries.operational,
               borderColor: '#2563eb',
               backgroundColor: 'rgba(37, 99, 235, 0.1)',
               fill: true,
@@ -417,7 +557,7 @@ const constructionCapacity = constructionFacilities
             },
             {
               label: canvas.dataset.labelPipe,
-              data: pipeData,
+              data: initialSeries.pipeline,
               borderColor: '#10b981',
               backgroundColor: 'rgba(16, 185, 129, 0.05)',
               fill: true,
@@ -451,6 +591,12 @@ const constructionCapacity = constructionFacilities
             tooltip: {
               padding: 10,
               backgroundColor: '#0f172a',
+              callbacks: {
+                label: function (context) {
+                  const value = Number(context.parsed.y || 0).toFixed(1);
+                  return context.dataset.label + ': ' + value + ' Mtpa';
+                },
+              },
             },
           },
           scales: {
@@ -473,11 +619,17 @@ const constructionCapacity = constructionFacilities
         },
       });
 
-      function updateSliderUI(e) {
-        let min = parseInt(minSlider.value);
-        let max = parseInt(maxSlider.value);
+      function updateFilteredSeries() {
+        const nextSeries = combineSelectedSeries();
+        chart.data.datasets[0].data = nextSeries.operational;
+        chart.data.datasets[1].data = nextSeries.pipeline;
+        chart.update('none');
+      }
 
-        // Ensure handles don't cross and have a minimum gap
+      function updateSliderUI(e) {
+        let min = parseInt(minSlider.value, 10);
+        let max = parseInt(maxSlider.value, 10);
+
         if (min >= max) {
           if (e && e.target === minSlider) {
             min = max - 1;
@@ -499,17 +651,18 @@ const constructionCapacity = constructionFacilities
         if (yearMinVal) yearMinVal.textContent = min;
         if (yearMaxVal) yearMaxVal.textContent = max;
 
-        // Update chart axes
         chart.options.scales.x.min = min;
         chart.options.scales.x.max = max;
         chart.update('none');
       }
 
+      typeCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', updateFilteredSeries);
+      });
+
       if (minSlider && maxSlider) {
         minSlider.addEventListener('input', updateSliderUI);
         maxSlider.addEventListener('input', updateSliderUI);
-
-        // Initial sync
         updateSliderUI();
       }
     } catch (e) {
@@ -517,9 +670,7 @@ const constructionCapacity = constructionFacilities
     }
   }
 
-  // Astro page-load support
   document.addEventListener('astro:page-load', initCapacityChart);
-  // Initial load
   if (document.readyState === 'complete') {
     initCapacityChart();
   } else {
