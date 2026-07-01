@@ -20,6 +20,9 @@ src/data/quality_metrics.generated.json
 src/data/dataset_versions.generated.json
 src/content/enums.generated.ts
 
+# --- Complex Interactive Components ---
+src/components/CapacityTrend.astro
+
 # --- OS & IDE ---
 .DS_Store
 Thumbs.db

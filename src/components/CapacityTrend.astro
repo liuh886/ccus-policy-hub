@@ -1,68 +1,147 @@
-﻿---
+---
 import { getCollection } from 'astro:content';
 
 const lang = Astro.currentLocale || 'zh';
 const facilities = await getCollection(
   lang === 'en' ? 'facilities_en' : 'facilities_zh'
 );
+type Facility = (typeof facilities)[number];
 
-// Aggregate data by year
-const operationalMap = new Map<number, number>(); // For operational facilities only
-const pipelineMap = new Map<number, number>(); // For all projects
+const startYear = 1970;
+const endYear = 2040;
+const pipelineStatuses = new Set<string>([
+  'planned',
+  'operational',
+  'under-construction',
+]);
+const committedStatuses = new Set<string>(['operational', 'under-construction']);
 
-facilities.forEach((f) => {
-  const year = f.data.operation;
-  const numYear = typeof year === 'string' ? parseInt(year) : year;
+const text = {
+  totalTitle:
+    lang === 'zh'
+      ? '全球项目记录能力 (2040估)'
+      : 'Global Project-Record Capacity (2040 Est.)',
+  totalNote:
+    lang === 'zh'
+      ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
+      : 'Cumulative project-record capacity for Planned, Operational and Under construction records; Cancelled / Decommissioned / Suspended excluded.',
+  chartTitle:
+    lang === 'zh'
+      ? '全球 CCUS 项目记录能力增长趋势'
+      : 'CCUS Project-Record Capacity Growth',
+  committedLabel:
+    lang === 'zh'
+      ? '确定性能力（在运+在建）'
+      : 'Committed (Operational + Under construction)',
+  pipelineLabel:
+    lang === 'zh'
+      ? '公开管线（规划+在运+在建）'
+      : 'Pipeline (Planned + Operational + Under construction)',
+  chartNote:
+    lang === 'zh'
+      ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。数值为跨 capture、transport、T&S、storage、full-chain、CCU 的项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
+      : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. Values aggregate project-record capacity across capture, transport, T&S, storage, full-chain and CCU records and should not be interpreted as net deliverable capture or storage capacity.',
+};
 
-  if (numYear && numYear >= 1970 && numYear <= 2040) {
-    const cap = f.data.estimatedCapacity || 0;
-    const status = f.data.status;
-    const isOperational = status === '运行中' || status === 'Operational';
+const parseYear = (value: unknown): number | null => {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value !== 'string') return null;
 
-    if (isOperational) {
-      operationalMap.set(numYear, (operationalMap.get(numYear) || 0) + cap);
+  const match = value.match(/\d{4}/);
+  return match ? Number.parseInt(match[0], 10) : null;
+};
+
+const normalizeStatus = (status: string | undefined): string => {
+  const value = (status || '').trim().toLowerCase();
+
+  if (value === 'operational' || value === '运行中') return 'operational';
+  if (value === 'under construction' || value === '建设中') {
+    return 'under-construction';
+  }
+  if (value === 'planned' || value === '计划中' || value === '规划中') {
+    return 'planned';
+  }
+  if (value === 'cancelled' || value === '已取消') return 'cancelled';
+  if (value === 'decommissioned' || value === '已退役') {
+    return 'decommissioned';
+  }
+  if (value === 'suspended' || value === '暂停' || value === '已暂停') {
+    return 'suspended';
+  }
+
+  return value;
+};
+
+const capacity = (f: Facility): number => {
+  const estimatedCapacity = f.data.estimatedCapacity || 0;
+  if (estimatedCapacity > 0) return estimatedCapacity;
+
+  const minCapacity = f.data.announcedCapacityMin || 0;
+  const maxCapacity = f.data.announcedCapacityMax || 0;
+
+  if (minCapacity && maxCapacity) return (minCapacity + maxCapacity) / 2;
+  return minCapacity || maxCapacity || 0;
+};
+
+const projectRecordYear = (f: Facility): number | null =>
+  parseYear(f.data.operation) ??
+  parseYear(f.data.fid) ??
+  parseYear(f.data.announcement);
+
+const pipelineMap = new Map<number, number>();
+const committedMap = new Map<number, number>();
+
+facilities.forEach((f: Facility) => {
+  const numYear = projectRecordYear(f);
+
+  if (numYear && numYear >= startYear && numYear <= endYear) {
+    const cap = capacity(f);
+    const status = normalizeStatus(f.data.status);
+
+    if (pipelineStatuses.has(status)) {
+      pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
     }
-    pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
+
+    if (committedStatuses.has(status)) {
+      committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
+    }
   }
 });
 
 // Generate continuous year range for smoother chart
-const startYear = 1970;
-const endYear = 2040;
-const currentYear = new Date().getFullYear();
-const trendYears = [];
+const trendYears: number[] = [];
 for (let y = startYear; y <= endYear; y++) {
   trendYears.push(y);
 }
 
-let cumulativeOperational = 0;
+let cumulativeCommitted = 0;
 let cumulativePipeline = 0;
 
 const chartData = trendYears.map((year) => {
-  cumulativeOperational += operationalMap.get(year) || 0;
+  cumulativeCommitted += committedMap.get(year) || 0;
   cumulativePipeline += pipelineMap.get(year) || 0;
   return {
     year,
-    operational: year <= currentYear ? cumulativeOperational.toFixed(1) : null,
+    operational: cumulativeCommitted.toFixed(1),
     pipeline: cumulativePipeline.toFixed(1),
   };
 });
 
 const totalCapacity = cumulativePipeline.toFixed(1);
 const operationalFacilities = facilities.filter(
-  (f) => f.data.status === '运行中' || f.data.status === 'Operational'
+  (f: Facility) => normalizeStatus(f.data.status) === 'operational'
 );
 const operationalCount = operationalFacilities.length;
 const operationalCapacity = operationalFacilities
-  .reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0)
+  .reduce((acc: number, f: Facility) => acc + capacity(f), 0)
   .toFixed(1);
 
 const constructionFacilities = facilities.filter(
-  (f) => f.data.status === '建设中' || f.data.status === 'Under construction'
+  (f: Facility) => normalizeStatus(f.data.status) === 'under-construction'
 );
 const constructionCount = constructionFacilities.length;
 const constructionCapacity = constructionFacilities
-  .reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0)
+  .reduce((acc: number, f: Facility) => acc + capacity(f), 0)
   .toFixed(1);
 ---
 
@@ -79,7 +158,7 @@ const constructionCapacity = constructionFacilities
       <div
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
-        CAP_MONITOR_v2.5
+        CAP_MONITOR_v3.0
       </div>
       <div class="absolute -right-4 -bottom-4 opacity-5 text-emerald-600">
         <svg
@@ -96,22 +175,14 @@ const constructionCapacity = constructionFacilities
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
       >
-        {
-          lang === 'zh'
-            ? '全球累计产能 (2040估)'
-            : 'Global Capacity (2040 Est.)'
-        }
+        {text.totalTitle}
       </h3>
       <div class="text-5xl font-black text-emerald-600 mb-2 tracking-tighter">
         {totalCapacity}
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
       <p class="text-xs text-slate-500 font-medium">
-        {
-          lang === 'zh'
-            ? '基于 IEA 2026 项目库的各阶段产能预测加总。'
-            : 'Projected cumulative capacity based on IEA 2026 pipeline data.'
-        }
+        {text.totalNote}
       </p>
     </div>
 
@@ -196,17 +267,13 @@ const constructionCapacity = constructionFacilities
         <h3
           class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight"
         >
-          {
-            lang === 'zh'
-              ? '全球捕集能力增长趋势'
-              : 'Capture Capacity Growth Trend'
-          }
+          {text.chartTitle}
         </h3>
         <p
           class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
         >
-          Global Cumulative Capacity (Mtpa) <span class="text-blue-500"
-            >1970</span
+          Project-record capacity across CCUS value chain (Mtpa) <span
+            class="text-blue-500">1970</span
           > - <span class="text-emerald-500">2040</span>
         </p>
       </div>
@@ -291,10 +358,15 @@ const constructionCapacity = constructionFacilities
       <canvas
         id="capacityChart"
         data-values={JSON.stringify(chartData)}
-        data-label-op={lang === 'zh' ? '在运设施' : 'Operational'}
-        data-label-pipe={lang === 'zh' ? '总规划 (含计划中)' : 'Total Pipeline'}
+        data-label-op={text.committedLabel}
+        data-label-pipe={text.pipelineLabel}
       ></canvas>
     </div>
+    <p
+      class="mt-4 relative z-10 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
+    >
+      {text.chartNote}
+    </p>
   </div>
 </div>
 
@@ -321,9 +393,7 @@ const constructionCapacity = constructionFacilities
       if (rawData.length === 0) return;
 
       const labels = rawData.map((d) => d.year);
-      const opData = rawData.map((d) =>
-        d.operational === null ? null : parseFloat(d.operational)
-      );
+      const opData = rawData.map((d) => parseFloat(d.operational));
       const pipeData = rawData.map((d) => parseFloat(d.pipeline));
 
       const chart = new Chart(canvas, {
