@@ -6,11 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -22,6 +27,18 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+
+      - name: Auto-format CapacityTrend
+        if: github.event_name == 'pull_request'
+        run: |
+          pnpm prettier --write src/components/CapacityTrend.astro
+          if ! git diff --quiet src/components/CapacityTrend.astro; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src/components/CapacityTrend.astro
+            git commit -m "style: format capacity trend"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
 
       - name: Lint
         run: pnpm lint
