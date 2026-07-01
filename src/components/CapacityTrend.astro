@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
+type Facility = (typeof facilities)[number];
+
 const lang = Astro.currentLocale || 'zh';
 const facilities = await getCollection(
   lang === 'en' ? 'facilities_en' : 'facilities_zh'
@@ -8,8 +10,12 @@ const facilities = await getCollection(
 
 const startYear = 1970;
 const endYear = 2040;
-const pipelineStatuses = new Set(['planned', 'operational', 'under-construction']);
-const committedStatuses = new Set(['operational', 'under-construction']);
+const pipelineStatuses = new Set<string>([
+  'planned',
+  'operational',
+  'under-construction',
+]);
+const committedStatuses = new Set<string>(['operational', 'under-construction']);
 
 const text = {
   totalTitle:
@@ -38,7 +44,7 @@ const text = {
       : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. Values aggregate project-record capacity across capture, transport, T&S, storage, full-chain and CCU records and should not be interpreted as net deliverable capture or storage capacity.',
 };
 
-const parseYear = (value) => {
+const parseYear = (value: unknown): number | null => {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
   if (typeof value !== 'string') return null;
 
@@ -46,7 +52,7 @@ const parseYear = (value) => {
   return match ? Number.parseInt(match[0], 10) : null;
 };
 
-const normalizeStatus = (status) => {
+const normalizeStatus = (status: string | undefined): string => {
   const value = (status || '').trim().toLowerCase();
 
   if (value === 'operational' || value === '运行中') return 'operational';
@@ -67,7 +73,7 @@ const normalizeStatus = (status) => {
   return value;
 };
 
-const capacity = (f) => {
+const capacity = (f: Facility): number => {
   const estimatedCapacity = f.data.estimatedCapacity || 0;
   if (estimatedCapacity > 0) return estimatedCapacity;
 
@@ -78,15 +84,15 @@ const capacity = (f) => {
   return minCapacity || maxCapacity || 0;
 };
 
-const projectRecordYear = (f) =>
+const projectRecordYear = (f: Facility): number | null =>
   parseYear(f.data.operation) ??
   parseYear(f.data.fid) ??
   parseYear(f.data.announcement);
 
-const pipelineMap = new Map();
-const committedMap = new Map();
+const pipelineMap = new Map<number, number>();
+const committedMap = new Map<number, number>();
 
-facilities.forEach((f) => {
+facilities.forEach((f: Facility) => {
   const numYear = projectRecordYear(f);
 
   if (numYear && numYear >= startYear && numYear <= endYear) {
@@ -104,7 +110,7 @@ facilities.forEach((f) => {
 });
 
 // Generate continuous year range for smoother chart
-const trendYears = [];
+const trendYears: number[] = [];
 for (let y = startYear; y <= endYear; y++) {
   trendYears.push(y);
 }
@@ -124,19 +130,19 @@ const chartData = trendYears.map((year) => {
 
 const totalCapacity = cumulativePipeline.toFixed(1);
 const operationalFacilities = facilities.filter(
-  (f) => normalizeStatus(f.data.status) === 'operational'
+  (f: Facility) => normalizeStatus(f.data.status) === 'operational'
 );
 const operationalCount = operationalFacilities.length;
 const operationalCapacity = operationalFacilities
-  .reduce((acc, f) => acc + capacity(f), 0)
+  .reduce((acc: number, f: Facility) => acc + capacity(f), 0)
   .toFixed(1);
 
 const constructionFacilities = facilities.filter(
-  (f) => normalizeStatus(f.data.status) === 'under-construction'
+  (f: Facility) => normalizeStatus(f.data.status) === 'under-construction'
 );
 const constructionCount = constructionFacilities.length;
 const constructionCapacity = constructionFacilities
-  .reduce((acc, f) => acc + capacity(f), 0)
+  .reduce((acc: number, f: Facility) => acc + capacity(f), 0)
   .toFixed(1);
 ---
 
