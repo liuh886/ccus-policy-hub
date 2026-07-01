@@ -16,12 +16,12 @@ const pipelineStatuses = new Set<string>([
 ]);
 const committedStatuses = new Set<string>(['operational', 'under-construction']);
 const typeOptions = [
-  { id: 'capture', labelZh: 'Capture / 捕集', labelEn: 'Capture' },
-  { id: 'transport', labelZh: 'Transport / 运输', labelEn: 'Transport' },
-  { id: 'ts', labelZh: 'T&S / 运输+封存', labelEn: 'T&S' },
-  { id: 'storage', labelZh: 'Storage / 封存', labelEn: 'Storage' },
-  { id: 'full-chain', labelZh: 'Full chain / 全链条', labelEn: 'Full chain' },
-  { id: 'ccu', labelZh: 'CCU / 利用', labelEn: 'CCU' },
+  { id: 'capture', label: 'Capture' },
+  { id: 'transport', label: 'Transport' },
+  { id: 'ts', label: 'T&S' },
+  { id: 'storage', label: 'Storage' },
+  { id: 'full-chain', label: 'Full chain' },
+  { id: 'ccu', label: 'CCU' },
 ] as const;
 
 type TypeId = (typeof typeOptions)[number]['id'];
@@ -53,11 +53,7 @@ const text = {
     lang === 'zh'
       ? '公开管线（规划+在运+在建）'
       : 'Pipeline (Planned + Operational + Under construction)',
-  typeFilterTitle: lang === 'zh' ? '类型筛选' : 'Type filter',
-  typeFilterNote:
-    lang === 'zh'
-      ? '默认全选；取消任一类型后，折线将从两条累计序列中扣减对应 project-record capacity。'
-      : 'All selected by default; unchecking a type subtracts its project-record capacity from both cumulative series.',
+  typeFilterTitle: lang === 'zh' ? '类型' : 'Types',
   chartNote:
     lang === 'zh'
       ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。筛选项覆盖 capture、transport、T&S、storage、full-chain、CCU。数值为跨类型项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
@@ -168,7 +164,6 @@ facilities.forEach((f: Facility) => {
   }
 });
 
-// Generate continuous year range for smoother chart
 const trendYears: number[] = [];
 for (let y = startYear; y <= endYear; y++) {
   trendYears.push(y);
@@ -229,7 +224,6 @@ const constructionCapacity = constructionFacilities
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-  <!-- Stats Counter -->
   <div class="lg:col-span-1 space-y-6">
     <div
       class="group p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden transition-all duration-500 hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]"
@@ -242,18 +236,6 @@ const constructionCapacity = constructionFacilities
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
         CAP_MONITOR_v3.1
-      </div>
-      <div class="absolute -right-4 -bottom-4 opacity-5 text-emerald-600">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="120"
-          height="120"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
-        >
       </div>
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
@@ -272,25 +254,6 @@ const constructionCapacity = constructionFacilities
     <div
       class="group p-8 bg-slate-900 rounded-3xl text-white shadow-2xl relative overflow-hidden transition-all duration-500 hover:shadow-blue-500/20 border border-slate-800 hover:border-blue-500/30"
     >
-      <div class="absolute top-0 right-0 p-3 opacity-40">
-        <div class="text-[8px] font-mono tracking-widest animate-pulse">
-          SYSTEM_ACTIVE
-        </div>
-      </div>
-      <div class="absolute -right-4 -bottom-4 opacity-10">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="120"
-          height="120"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          ><path
-            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-          ></path></svg
-        >
-      </div>
       <h3
         class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4"
       >
@@ -330,19 +293,19 @@ const constructionCapacity = constructionFacilities
     </div>
   </div>
 
-  <!-- Chart Card -->
   <div
     class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group/chart transition-all duration-500 hover:border-blue-500/30 hover:shadow-[0_0_40px_rgba(37,99,235,0.05)]"
   >
-    <!-- Tech Accents -->
     <div
       class="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 blur-3xl group-hover/chart:bg-blue-500/10 transition-colors"
     >
     </div>
     <div class="absolute top-6 right-8 flex gap-1.5 opacity-30">
       <div class="w-1 h-6 bg-blue-500 animate-[bounce_2s_infinite]"></div>
-      <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]"></div>
-      <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]"></div>
+      <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]">
+      </div>
+      <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]">
+      </div>
     </div>
 
     <div class="flex justify-between items-start mb-4 relative z-10">
@@ -367,7 +330,6 @@ const constructionCapacity = constructionFacilities
       </div>
     </div>
 
-    <!-- Time Range Slider UI -->
     <div class="mt-2 mb-6 px-2 relative z-10 flex flex-col gap-3">
       <div class="flex justify-between items-center">
         <div
@@ -428,22 +390,22 @@ const constructionCapacity = constructionFacilities
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-[190px_1fr] gap-5 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 relative z-10">
       <aside
         id="capacityTypeFilter"
-        class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/30 p-4"
+        class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/30 px-3 py-3"
       >
         <div
-          class="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3"
+          class="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2"
         >
           {text.typeFilterTitle}
         </div>
-        <div class="space-y-2">
+        <div class="space-y-1.5">
           {
             typeOptions.map((option) => (
               <label
                 for={`capacity-type-${option.id}`}
-                class="flex items-center gap-2 text-[11px] font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none"
+                class="flex items-center gap-1.5 text-[10px] font-bold text-slate-600 dark:text-slate-300 cursor-pointer select-none"
               >
                 <input
                   id={`capacity-type-${option.id}`}
@@ -451,16 +413,13 @@ const constructionCapacity = constructionFacilities
                   value={option.id}
                   checked
                   data-capacity-type
-                  class="h-3.5 w-3.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                  class="h-3 w-3 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>{lang === 'zh' ? option.labelZh : option.labelEn}</span>
+                <span>{option.label}</span>
               </label>
             ))
           }
         </div>
-        <p class="mt-4 text-[9px] leading-relaxed text-slate-400">
-          {text.typeFilterNote}
-        </p>
       </aside>
 
       <div class="h-[300px] w-full relative">
