@@ -8,13 +8,46 @@ const facilities = await getCollection(
 
 const startYear = 1970;
 const endYear = 2040;
+const pipelineStatuses = new Set([
+  'planned',
+  'operational',
+  'under-construction',
+]);
+const committedStatuses = new Set(['operational', 'under-construction']);
+
+const text = {
+  totalTitle:
+    lang === 'zh'
+      ? '全球项目记录能力 (2040估)'
+      : 'Global Project-Record Capacity (2040 Est.)',
+  totalNote:
+    lang === 'zh'
+      ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
+      : 'Cumulative project-record capacity for Planned, Operational and Under construction records; Cancelled / Decommissioned / Suspended excluded.',
+  chartTitle:
+    lang === 'zh'
+      ? '全球 CCUS 项目记录能力增长趋势'
+      : 'CCUS Project-Record Capacity Growth',
+  committedLabel:
+    lang === 'zh'
+      ? '确定性能力（在运+在建）'
+      : 'Committed (Operational + Under construction)',
+  pipelineLabel:
+    lang === 'zh'
+      ? '公开管线（规划+在运+在建）'
+      : 'Pipeline (Planned + Operational + Under construction)',
+  chartNote:
+    lang === 'zh'
+      ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。数值为跨 capture、transport、T&S、storage、full-chain、CCU 的项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
+      : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. Values aggregate project-record capacity across capture, transport, T&S, storage, full-chain and CCU records and should not be interpreted as net deliverable capture or storage capacity.',
+};
 
 const parseYear = (value) => {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
   if (typeof value !== 'string') return null;
 
   const match = value.match(/\d{4}/);
-  return match ? parseInt(match[0], 10) : null;
+  return match ? Number.parseInt(match[0], 10) : null;
 };
 
 const normalizeStatus = (status) => {
@@ -54,13 +87,8 @@ const projectRecordYear = (f) =>
   parseYear(f.data.fid) ??
   parseYear(f.data.announcement);
 
-const isPipeline = (status) =>
-  ['planned', 'operational', 'under-construction'].includes(status);
-const isCommitted = (status) =>
-  ['operational', 'under-construction'].includes(status);
-
-const pipelineMap = new Map<number, number>();
-const committedMap = new Map<number, number>();
+const pipelineMap = new Map();
+const committedMap = new Map();
 
 facilities.forEach((f) => {
   const numYear = projectRecordYear(f);
@@ -69,11 +97,11 @@ facilities.forEach((f) => {
     const cap = capacity(f);
     const status = normalizeStatus(f.data.status);
 
-    if (isPipeline(status)) {
+    if (pipelineStatuses.has(status)) {
       pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
     }
 
-    if (isCommitted(status)) {
+    if (committedStatuses.has(status)) {
       committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
     }
   }
@@ -146,22 +174,14 @@ const constructionCapacity = constructionFacilities
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
       >
-        {
-          lang === 'zh'
-            ? '全球项目记录能力 (2040估)'
-            : 'Global Project-Record Capacity (2040 Est.)'
-        }
+        {text.totalTitle}
       </h3>
       <div class="text-5xl font-black text-emerald-600 mb-2 tracking-tighter">
         {totalCapacity}
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
       <p class="text-xs text-slate-500 font-medium">
-        {
-          lang === 'zh'
-            ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
-            : 'Cumulative project-record capacity for Planned, Operational and Under construction records; Cancelled / Decommissioned / Suspended excluded.'
-        }
+        {text.totalNote}
       </p>
     </div>
 
@@ -246,11 +266,7 @@ const constructionCapacity = constructionFacilities
         <h3
           class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight"
         >
-          {
-            lang === 'zh'
-              ? '全球 CCUS 项目记录能力增长趋势'
-              : 'CCUS Project-Record Capacity Growth'
-          }
+          {text.chartTitle}
         </h3>
         <p
           class="text-[10px] text-slate-400 font-bold uppercase tracking-widest"
@@ -341,26 +357,14 @@ const constructionCapacity = constructionFacilities
       <canvas
         id="capacityChart"
         data-values={JSON.stringify(chartData)}
-        data-label-op={
-          lang === 'zh'
-            ? '确定性能力（在运+在建）'
-            : 'Committed (Operational + Under construction)'
-        }
-        data-label-pipe={
-          lang === 'zh'
-            ? '公开管线（规划+在运+在建）'
-            : 'Pipeline (Planned + Operational + Under construction)'
-        }
+        data-label-op={text.committedLabel}
+        data-label-pipe={text.pipelineLabel}
       ></canvas>
     </div>
     <p
       class="mt-4 relative z-10 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
     >
-      {
-        lang === 'zh'
-          ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。数值为跨 capture、transport、T&S、storage、full-chain、CCU 的项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
-          : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. Values aggregate project-record capacity across capture, transport, T&S, storage, full-chain and CCU records and should not be interpreted as net deliverable capture or storage capacity.'
-      }
+      {text.chartNote}
     </p>
   </div>
 </div>
