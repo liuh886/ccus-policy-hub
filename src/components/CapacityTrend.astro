@@ -59,35 +59,42 @@ const isPipeline = (status: string) =>
 const isCommitted = (status: string) =>
   ['operational', 'under-construction'].includes(status);
 
-const pipelineByYear = new Map<number, number>();
-const committedByYear = new Map<number, number>();
+const pipelineMap = new Map<number, number>();
+const committedMap = new Map<number, number>();
 
-for (const f of facilities) {
-  const year = projectRecordYear(f);
-  if (!year || year < startYear || year > endYear) continue;
+facilities.forEach((f) => {
+  const numYear = projectRecordYear(f);
 
-  const status = normalizeStatus(f.data.status);
-  if (!isPipeline(status)) continue;
+  if (numYear && numYear >= startYear && numYear <= endYear) {
+    const cap = capacity(f);
+    const status = normalizeStatus(f.data.status);
 
-  const cap = capacity(f);
-  pipelineByYear.set(year, (pipelineByYear.get(year) || 0) + cap);
+    if (isPipeline(status)) {
+      pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
+    }
 
-  if (isCommitted(status)) {
-    committedByYear.set(year, (committedByYear.get(year) || 0) + cap);
+    if (isCommitted(status)) {
+      committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
+    }
   }
+});
+
+// Generate continuous year range for smoother chart
+const trendYears = [];
+for (let y = startYear; y <= endYear; y++) {
+  trendYears.push(y);
 }
 
-let cumulativePipeline = 0;
 let cumulativeCommitted = 0;
-const chartData = Array.from({ length: endYear - startYear + 1 }, (_, i) => {
-  const year = startYear + i;
-  cumulativePipeline += pipelineByYear.get(year) || 0;
-  cumulativeCommitted += committedByYear.get(year) || 0;
+let cumulativePipeline = 0;
 
+const chartData = trendYears.map((year) => {
+  cumulativeCommitted += committedMap.get(year) || 0;
+  cumulativePipeline += pipelineMap.get(year) || 0;
   return {
     year,
+    operational: cumulativeCommitted.toFixed(1),
     pipeline: cumulativePipeline.toFixed(1),
-    committed: cumulativeCommitted.toFixed(1),
   };
 });
 
@@ -95,26 +102,46 @@ const totalCapacity = cumulativePipeline.toFixed(1);
 const operationalFacilities = facilities.filter(
   (f) => normalizeStatus(f.data.status) === 'operational'
 );
+const operationalCount = operationalFacilities.length;
+const operationalCapacity = operationalFacilities
+  .reduce((acc, f) => acc + capacity(f), 0)
+  .toFixed(1);
+
 const constructionFacilities = facilities.filter(
   (f) => normalizeStatus(f.data.status) === 'under-construction'
 );
-const operationalCapacity = operationalFacilities
-  .reduce((sum, f) => sum + capacity(f), 0)
-  .toFixed(1);
+const constructionCount = constructionFacilities.length;
 const constructionCapacity = constructionFacilities
-  .reduce((sum, f) => sum + capacity(f), 0)
+  .reduce((acc, f) => acc + capacity(f), 0)
   .toFixed(1);
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+  <!-- Stats Counter -->
   <div class="lg:col-span-1 space-y-6">
     <div
-      class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+      class="group p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden transition-all duration-500 hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]"
     >
       <div
-        class="text-[8px] font-mono text-slate-300 dark:text-slate-700 text-right"
+        class="absolute top-0 left-0 w-1.5 h-full bg-emerald-500/0 group-hover:bg-emerald-500/50 transition-all"
+      >
+      </div>
+      <div
+        class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
         CAP_MONITOR_v3.0
+      </div>
+      <div class="absolute -right-4 -bottom-4 opacity-5 text-emerald-600">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg
+        >
       </div>
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
@@ -129,7 +156,7 @@ const constructionCapacity = constructionFacilities
         {totalCapacity}
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
-      <p class="text-xs text-slate-500 font-medium leading-relaxed">
+      <p class="text-xs text-slate-500 font-medium">
         {
           lang === 'zh'
             ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
@@ -139,21 +166,44 @@ const constructionCapacity = constructionFacilities
     </div>
 
     <div
-      class="p-8 bg-slate-900 rounded-3xl text-white shadow-2xl border border-slate-800"
+      class="group p-8 bg-slate-900 rounded-3xl text-white shadow-2xl relative overflow-hidden transition-all duration-500 hover:shadow-blue-500/20 border border-slate-800 hover:border-blue-500/30"
     >
-      <h3 class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4">
+      <div class="absolute top-0 right-0 p-3 opacity-40">
+        <div class="text-[8px] font-mono tracking-widest animate-pulse">
+          SYSTEM_ACTIVE
+        </div>
+      </div>
+      <div class="absolute -right-4 -bottom-4 opacity-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path
+            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+          ></path></svg
+        >
+      </div>
+      <h3
+        class="text-xs font-black text-blue-400 uppercase tracking-widest mb-4"
+      >
         {lang === 'zh' ? '在运设施 / 规模' : 'Operational Facilities / Cap'}
       </h3>
-      <div class="flex items-baseline gap-2 mb-4">
+      <div class="flex items-baseline gap-2 mb-2">
         <div class="text-5xl font-black tracking-tighter">
-          {operationalFacilities.length}<span
-            class="text-xs ml-1 opacity-40 font-bold">{lang === 'zh' ? '个' : ''}</span
+          {operationalCount}<span class="text-xs ml-1 opacity-40 font-bold"
+            >{lang === 'zh' ? '个' : ''}</span
           >
         </div>
         <div class="text-xl font-bold text-blue-400">
-          / {operationalCapacity}<span class="text-[10px] uppercase">Mtpa</span>
+          / {operationalCapacity}
+          <span class="text-[10px] uppercase">Mtpa</span>
         </div>
       </div>
+
       <div class="pt-4 border-t border-white/10">
         <h3
           class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1"
@@ -162,25 +212,40 @@ const constructionCapacity = constructionFacilities
         </h3>
         <div class="flex items-baseline gap-2">
           <div class="text-2xl font-black text-emerald-400">
-            {constructionFacilities.length}<span
+            {constructionCount}<span
               class="text-[9px] ml-0.5 opacity-40 font-bold"
               >{lang === 'zh' ? '个' : ''}</span
             >
           </div>
           <div class="text-sm font-bold text-emerald-600">
-            / {constructionCapacity}<span class="text-[10px] uppercase">Mtpa</span>
+            / {constructionCapacity}
+            <span class="text-[10px] uppercase">Mtpa</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Chart Card -->
   <div
-    class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden"
+    class="lg:col-span-2 p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group/chart transition-all duration-500 hover:border-blue-500/30 hover:shadow-[0_0_40px_rgba(37,99,235,0.05)]"
   >
+    <!-- Tech Accents -->
+    <div
+      class="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 blur-3xl group-hover/chart:bg-blue-500/10 transition-colors"
+    >
+    </div>
+    <div class="absolute top-6 right-8 flex gap-1.5 opacity-30">
+      <div class="w-1 h-6 bg-blue-500 animate-[bounce_2s_infinite]"></div>
+      <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]"></div>
+      <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]"></div>
+    </div>
+
     <div class="flex justify-between items-start mb-4 relative z-10">
       <div>
-        <h3 class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight">
+        <h3
+          class="text-lg font-black dark:text-white mb-1 uppercase tracking-tight"
+        >
           {
             lang === 'zh'
               ? '全球 CCUS 项目记录能力增长趋势'
@@ -202,46 +267,58 @@ const constructionCapacity = constructionFacilities
       </div>
     </div>
 
+    <!-- Time Range Slider UI -->
     <div class="mt-2 mb-6 px-2 relative z-10 flex flex-col gap-3">
       <div class="flex justify-between items-center">
         <div
           id="timeRangeIndicator"
-          class="font-mono text-[10px] px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full"
+          class="font-mono text-[10px] px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.05)] backdrop-blur-sm transition-all duration-300"
         >
-          <span class="opacity-40">[</span><span
-            id="yearMinVal"
-            class="font-bold">1990</span
-          > - <span id="yearMaxVal" class="font-bold">2030</span><span
-            class="opacity-40">]</span
+          <span class="opacity-40">[</span>
+          <span id="yearMinVal" class="font-bold">1990</span> - <span
+            id="yearMaxVal"
+            class="font-bold">2030</span
           >
+          <span class="opacity-40">]</span>
           <span
             class="ml-1.5 text-[9px] text-emerald-500 font-black animate-pulse tracking-tighter"
             >{lang === 'zh' ? '视图激活' : 'ACTIVE_VIEW'}</span
           >
         </div>
-        <div
-          class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]"
-        >
-          Timeline_Viewport
+        <div class="flex items-center gap-1.5">
+          <div class="w-1.5 h-1.5 rounded-full bg-blue-500/50"></div>
+          <div
+            class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]"
+          >
+            Timeline_Viewport
+          </div>
         </div>
       </div>
+
       <div class="relative w-full h-6 flex items-center group/slider">
+        <!-- Main Track -->
         <div
           class="absolute w-full h-[3px] bg-slate-100 dark:bg-slate-800/50 rounded-full shadow-inner"
         >
         </div>
+
+        <!-- Active Range Highlight -->
         <div
           id="sliderTrackHighlight"
           class="absolute h-[3px] bg-gradient-to-r from-blue-500 to-emerald-500 shadow-[0_0_10px_rgba(37,99,235,0.4)] z-10 rounded-full transition-all duration-300"
         >
         </div>
+
+        <!-- Native Range Inputs -->
         <input
           type="range"
           id="minYearSlider"
           min="1970"
           max="2040"
           value="1990"
-          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto"
+          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
+                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
+                 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
         />
         <input
           type="range"
@@ -249,16 +326,22 @@ const constructionCapacity = constructionFacilities
           min="1970"
           max="2040"
           value="2030"
-          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto"
+          class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
+                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
+                 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
         />
       </div>
     </div>
 
     <div class="h-[300px] w-full relative z-10">
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent opacity-0 group-hover/chart:opacity-100 transition-opacity duration-1000 pointer-events-none rounded-xl"
+      >
+      </div>
       <canvas
         id="capacityChart"
         data-values={JSON.stringify(chartData)}
-        data-label-committed={
+        data-label-op={
           lang === 'zh'
             ? '确定性能力（在运+在建）'
             : 'Committed (Operational + Under construction)'
@@ -270,7 +353,6 @@ const constructionCapacity = constructionFacilities
         }
       ></canvas>
     </div>
-
     <p
       class="mt-4 relative z-10 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
     >
@@ -294,39 +376,52 @@ const constructionCapacity = constructionFacilities
     const trackHighlight = document.getElementById('sliderTrackHighlight');
     const yearMinVal = document.getElementById('yearMinVal');
     const yearMaxVal = document.getElementById('yearMaxVal');
+
+    // Clear previous instance if exists
     const existingChart = Chart.getChart(canvas);
-    if (existingChart) existingChart.destroy();
+    if (existingChart) {
+      existingChart.destroy();
+    }
 
     try {
       const rawData = JSON.parse(canvas.dataset.values || '[]');
       if (rawData.length === 0) return;
 
+      const labels = rawData.map((d) => d.year);
+      const opData = rawData.map((d) => parseFloat(d.operational));
+      const pipeData = rawData.map((d) => parseFloat(d.pipeline));
+
       const chart = new Chart(canvas, {
         type: 'line',
         data: {
-          labels: rawData.map((d) => d.year),
+          labels: labels,
           datasets: [
             {
-              label: canvas.dataset.labelCommitted,
-              data: rawData.map((d) => parseFloat(d.committed)),
+              label: canvas.dataset.labelOp,
+              data: opData,
               borderColor: '#2563eb',
-              backgroundColor: 'rgba(37,99,235,0.1)',
+              backgroundColor: 'rgba(37, 99, 235, 0.1)',
               fill: true,
               tension: 0.3,
               borderWidth: 4,
               pointRadius: 0,
               pointHoverRadius: 6,
+              spanGaps: false,
+              shadowBlur: 15,
+              shadowColor: 'rgba(37, 99, 235, 0.5)',
             },
             {
               label: canvas.dataset.labelPipe,
-              data: rawData.map((d) => parseFloat(d.pipeline)),
+              data: pipeData,
               borderColor: '#10b981',
-              backgroundColor: 'rgba(16,185,129,0.05)',
+              backgroundColor: 'rgba(16, 185, 129, 0.05)',
               fill: true,
               tension: 0.3,
               borderWidth: 4,
               pointRadius: 0,
               pointHoverRadius: 6,
+              shadowBlur: 15,
+              shadowColor: 'rgba(16, 185, 129, 0.5)',
             },
           ],
         },
@@ -366,7 +461,7 @@ const constructionCapacity = constructionFacilities
             },
             y: {
               beginAtZero: true,
-              grid: { color: 'rgba(148,163,184,0.1)' },
+              grid: { color: 'rgba(148, 163, 184, 0.1)' },
               ticks: { font: { size: 10 }, color: '#94a3b8' },
             },
           },
@@ -377,6 +472,7 @@ const constructionCapacity = constructionFacilities
         let min = parseInt(minSlider.value);
         let max = parseInt(maxSlider.value);
 
+        // Ensure handles don't cross and have a minimum gap
         if (min >= max) {
           if (e && e.target === minSlider) {
             min = max - 1;
@@ -398,6 +494,7 @@ const constructionCapacity = constructionFacilities
         if (yearMinVal) yearMinVal.textContent = min;
         if (yearMaxVal) yearMaxVal.textContent = max;
 
+        // Update chart axes
         chart.options.scales.x.min = min;
         chart.options.scales.x.max = max;
         chart.update('none');
@@ -406,6 +503,8 @@ const constructionCapacity = constructionFacilities
       if (minSlider && maxSlider) {
         minSlider.addEventListener('input', updateSliderUI);
         maxSlider.addEventListener('input', updateSliderUI);
+
+        // Initial sync
         updateSliderUI();
       }
     } catch (e) {
@@ -413,7 +512,12 @@ const constructionCapacity = constructionFacilities
     }
   }
 
+  // Astro page-load support
   document.addEventListener('astro:page-load', initCapacityChart);
-  if (document.readyState === 'complete') initCapacityChart();
-  else window.addEventListener('load', initCapacityChart);
+  // Initial load
+  if (document.readyState === 'complete') {
+    initCapacityChart();
+  } else {
+    window.addEventListener('load', initCapacityChart);
+  }
 </script>
