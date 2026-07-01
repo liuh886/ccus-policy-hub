@@ -1,12 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
-type Facility = (typeof facilities)[number];
-
 const lang = Astro.currentLocale || 'zh';
 const facilities = await getCollection(
   lang === 'en' ? 'facilities_en' : 'facilities_zh'
 );
+type Facility = (typeof facilities)[number];
 
 const startYear = 1970;
 const endYear = 2040;
