@@ -28,8 +28,8 @@ type TypeId = (typeof typeOptions)[number]['id'];
 
 type ChartPoint = {
   year: number;
-  operational: string;
-  pipeline: string;
+  operational: number;
+  pipeline: number;
 };
 
 const text = {
@@ -72,19 +72,11 @@ const normalizeStatus = (status: string | undefined): string => {
   const value = (status || '').trim().toLowerCase();
 
   if (value === 'operational' || value === '运行中') return 'operational';
-  if (value === 'under construction' || value === '建设中') {
-    return 'under-construction';
-  }
-  if (value === 'planned' || value === '计划中' || value === '规划中') {
-    return 'planned';
-  }
+  if (value === 'under construction' || value === '建设中') return 'under-construction';
+  if (value === 'planned' || value === '计划中' || value === '规划中') return 'planned';
   if (value === 'cancelled' || value === '已取消') return 'cancelled';
-  if (value === 'decommissioned' || value === '已退役') {
-    return 'decommissioned';
-  }
-  if (value === 'suspended' || value === '暂停' || value === '已暂停') {
-    return 'suspended';
-  }
+  if (value === 'decommissioned' || value === '已退役') return 'decommissioned';
+  if (value === 'suspended' || value === '暂停' || value === '已暂停') return 'suspended';
 
   return value;
 };
@@ -105,9 +97,7 @@ const normalizeType = (type: string | undefined): TypeId | null => {
   ) {
     return 'ts';
   }
-  if (value === 'storage' || value === '封存' || value === '储存') {
-    return 'storage';
-  }
+  if (value === 'storage' || value === '封存' || value === '储存') return 'storage';
   if (
     value === 'full chain' ||
     value === 'full-chain' ||
@@ -137,6 +127,10 @@ const projectRecordYear = (f: Facility): number | null =>
   parseYear(f.data.fid) ??
   parseYear(f.data.announcement);
 
+const trendYears = Array.from(
+  { length: endYear - startYear + 1 },
+  (_, index) => startYear + index
+);
 const pipelineByType = new Map<TypeId, Map<number, number>>();
 const committedByType = new Map<TypeId, Map<number, number>>();
 typeOptions.forEach((option) => {
@@ -164,11 +158,6 @@ facilities.forEach((f: Facility) => {
   }
 });
 
-const trendYears: number[] = [];
-for (let y = startYear; y <= endYear; y++) {
-  trendYears.push(y);
-}
-
 const typeChartData: Record<string, ChartPoint[]> = {};
 typeOptions.forEach((option) => {
   let cumulativeCommitted = 0;
@@ -182,30 +171,30 @@ typeOptions.forEach((option) => {
 
     return {
       year,
-      operational: cumulativeCommitted.toFixed(1),
-      pipeline: cumulativePipeline.toFixed(1),
+      operational: cumulativeCommitted,
+      pipeline: cumulativePipeline,
     };
   });
 });
 
 const chartData = trendYears.map((year, index) => {
   const operational = typeOptions.reduce(
-    (sum, option) => sum + Number(typeChartData[option.id][index].operational),
+    (sum, option) => sum + typeChartData[option.id][index].operational,
     0
   );
   const pipeline = typeOptions.reduce(
-    (sum, option) => sum + Number(typeChartData[option.id][index].pipeline),
+    (sum, option) => sum + typeChartData[option.id][index].pipeline,
     0
   );
 
   return {
     year,
-    operational: operational.toFixed(1),
-    pipeline: pipeline.toFixed(1),
+    operational,
+    pipeline,
   };
 });
 
-const totalCapacity = chartData.at(-1)?.pipeline || '0.0';
+const totalCapacity = (chartData.at(-1)?.pipeline || 0).toFixed(1);
 const operationalFacilities = facilities.filter(
   (f: Facility) => normalizeStatus(f.data.status) === 'operational'
 );
@@ -235,7 +224,7 @@ const constructionCapacity = constructionFacilities
       <div
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
-        CAP_MONITOR_v3.1
+        CAP_MONITOR_v3.2
       </div>
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
@@ -302,10 +291,8 @@ const constructionCapacity = constructionFacilities
     </div>
     <div class="absolute top-6 right-8 flex gap-1.5 opacity-30">
       <div class="w-1 h-6 bg-blue-500 animate-[bounce_2s_infinite]"></div>
-      <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]">
-      </div>
-      <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]">
-      </div>
+      <div class="w-1 h-3 bg-blue-500 animate-[bounce_2s_infinite_0.2s]"></div>
+      <div class="w-1 h-4 bg-blue-500 animate-[bounce_2s_infinite_0.4s]"></div>
     </div>
 
     <div class="flex justify-between items-start mb-4 relative z-10">
@@ -482,8 +469,8 @@ const constructionCapacity = constructionFacilities
               const point = typeSeries[typeId]?.[index];
               if (!point) return;
 
-              series.operational[index] += parseFloat(point.operational || 0);
-              series.pipeline[index] += parseFloat(point.pipeline || 0);
+              series.operational[index] += Number(point.operational || 0);
+              series.pipeline[index] += Number(point.pipeline || 0);
             });
             return series;
           },
@@ -572,7 +559,13 @@ const constructionCapacity = constructionFacilities
             y: {
               beginAtZero: true,
               grid: { color: 'rgba(148, 163, 184, 0.1)' },
-              ticks: { font: { size: 10 }, color: '#94a3b8' },
+              ticks: {
+                font: { size: 10 },
+                color: '#94a3b8',
+                callback: function (value) {
+                  return Number(value).toFixed(0);
+                },
+              },
             },
           },
         },
