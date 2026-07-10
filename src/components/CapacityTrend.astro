@@ -32,6 +32,14 @@ type ChartPoint = {
   pipeline: number;
 };
 
+type CapacityRecord = {
+  year: number;
+  typeId: TypeId | null;
+  capacity: number;
+  committed: boolean;
+  pipeline: boolean;
+};
+
 const text = {
   totalTitle:
     lang === 'zh'
@@ -76,7 +84,14 @@ const normalizeStatus = (status: string | undefined): string => {
   if (value === 'planned' || value === '计划中' || value === '规划中') return 'planned';
   if (value === 'cancelled' || value === '已取消') return 'cancelled';
   if (value === 'decommissioned' || value === '已退役') return 'decommissioned';
-  if (value === 'suspended' || value === '暂停' || value === '已暂停') return 'suspended';
+  if (
+    value === 'suspended' ||
+    value === '暂停' ||
+    value === '已暂停' ||
+    value === '已中止'
+  ) {
+    return 'suspended';
+  }
 
   return value;
 };
@@ -84,8 +99,15 @@ const normalizeStatus = (status: string | undefined): string => {
 const normalizeType = (type: string | undefined): TypeId | null => {
   const value = (type || '').trim().toLowerCase();
 
-  if (value === 'capture' || value === '捕集') return 'capture';
-  if (value === 'transport' || value === 'transportation' || value === '运输') {
+  if (value === 'capture' || value === '捕集' || value === '碳捕集') {
+    return 'capture';
+  }
+  if (
+    value === 'transport' ||
+    value === 'transportation' ||
+    value === '运输' ||
+    value === '碳运输'
+  ) {
     return 'transport';
   }
   if (
@@ -97,16 +119,24 @@ const normalizeType = (type: string | undefined): TypeId | null => {
   ) {
     return 'ts';
   }
-  if (value === 'storage' || value === '封存' || value === '储存') return 'storage';
+  if (
+    value === 'storage' ||
+    value === '封存' ||
+    value === '储存' ||
+    value === '碳封存'
+  ) {
+    return 'storage';
+  }
   if (
     value === 'full chain' ||
     value === 'full-chain' ||
     value === '全链条' ||
-    value === '全链'
+    value === '全链' ||
+    value === '全流程项目'
   ) {
     return 'full-chain';
   }
-  if (value === 'ccu' || value === '利用') return 'ccu';
+  if (value === 'ccu' || value === '利用' || value === '碳利用') return 'ccu';
 
   return null;
 };
@@ -131,43 +161,36 @@ const trendYears = Array.from(
   { length: endYear - startYear + 1 },
   (_, index) => startYear + index
 );
-const pipelineByType = new Map<TypeId, Map<number, number>>();
-const committedByType = new Map<TypeId, Map<number, number>>();
-typeOptions.forEach((option) => {
-  pipelineByType.set(option.id, new Map<number, number>());
-  committedByType.set(option.id, new Map<number, number>());
-});
 
-facilities.forEach((f: Facility) => {
-  const numYear = projectRecordYear(f);
-  const typeId = normalizeType(f.data.type);
-
-  if (!numYear || !typeId || numYear < startYear || numYear > endYear) return;
-
-  const cap = capacity(f);
+const capacityRecords: CapacityRecord[] = facilities.flatMap((f: Facility) => {
+  const year = projectRecordYear(f);
   const status = normalizeStatus(f.data.status);
-  const pipelineMap = pipelineByType.get(typeId);
-  const committedMap = committedByType.get(typeId);
 
-  if (pipelineStatuses.has(status) && pipelineMap) {
-    pipelineMap.set(numYear, (pipelineMap.get(numYear) || 0) + cap);
+  if (!year || year < startYear || year > endYear || !pipelineStatuses.has(status)) {
+    return [];
   }
 
-  if (committedStatuses.has(status) && committedMap) {
-    committedMap.set(numYear, (committedMap.get(numYear) || 0) + cap);
-  }
+  return [
+    {
+      year,
+      typeId: normalizeType(f.data.type),
+      capacity: capacity(f),
+      committed: committedStatuses.has(status),
+      pipeline: true,
+    },
+  ];
 });
 
-const typeChartData: Record<string, ChartPoint[]> = {};
-typeOptions.forEach((option) => {
+const buildSeries = (records: CapacityRecord[]): ChartPoint[] => {
   let cumulativeCommitted = 0;
   let cumulativePipeline = 0;
-  const pipelineMap = pipelineByType.get(option.id);
-  const committedMap = committedByType.get(option.id);
 
-  typeChartData[option.id] = trendYears.map((year) => {
-    cumulativeCommitted += committedMap?.get(year) || 0;
-    cumulativePipeline += pipelineMap?.get(year) || 0;
+  return trendYears.map((year) => {
+    records.forEach((record) => {
+      if (record.year !== year) return;
+      if (record.committed) cumulativeCommitted += record.capacity;
+      if (record.pipeline) cumulativePipeline += record.capacity;
+    });
 
     return {
       year,
@@ -175,23 +198,14 @@ typeOptions.forEach((option) => {
       pipeline: cumulativePipeline,
     };
   });
-});
+};
 
-const chartData = trendYears.map((year, index) => {
-  const operational = typeOptions.reduce(
-    (sum, option) => sum + typeChartData[option.id][index].operational,
-    0
+const chartData = buildSeries(capacityRecords);
+const typeChartData: Record<string, ChartPoint[]> = {};
+typeOptions.forEach((option) => {
+  typeChartData[option.id] = buildSeries(
+    capacityRecords.filter((record) => record.typeId === option.id)
   );
-  const pipeline = typeOptions.reduce(
-    (sum, option) => sum + typeChartData[option.id][index].pipeline,
-    0
-  );
-
-  return {
-    year,
-    operational,
-    pipeline,
-  };
 });
 
 const totalCapacity = (chartData.at(-1)?.pipeline || 0).toFixed(1);
@@ -212,7 +226,7 @@ const constructionCapacity = constructionFacilities
   .toFixed(1);
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+<div data-capacity-trend class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
   <div class="lg:col-span-1 space-y-6">
     <div
       class="group p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden transition-all duration-500 hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]"
@@ -224,7 +238,7 @@ const constructionCapacity = constructionFacilities
       <div
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
-        CAP_MONITOR_v3.2
+        CAP_MONITOR_v3.3
       </div>
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
@@ -232,7 +246,7 @@ const constructionCapacity = constructionFacilities
         {text.totalTitle}
       </h3>
       <div class="text-5xl font-black text-emerald-600 mb-2 tracking-tighter">
-        {totalCapacity}
+        <span data-capacity-total>{totalCapacity}</span>
         <span class="text-sm text-slate-400 font-bold uppercase">Mtpa</span>
       </div>
       <p class="text-xs text-slate-500 font-medium">
@@ -435,15 +449,17 @@ const constructionCapacity = constructionFacilities
 <script is:inline>
   function initCapacityChart() {
     const canvas = document.getElementById('capacityChart');
-    if (!canvas) return;
+    if (!canvas || typeof Chart === 'undefined') return;
 
-    const minSlider = document.getElementById('minYearSlider');
-    const maxSlider = document.getElementById('maxYearSlider');
-    const trackHighlight = document.getElementById('sliderTrackHighlight');
-    const yearMinVal = document.getElementById('yearMinVal');
-    const yearMaxVal = document.getElementById('yearMaxVal');
+    const root = canvas.closest('[data-capacity-trend]') || document;
+    const minSlider = root.querySelector('#minYearSlider');
+    const maxSlider = root.querySelector('#maxYearSlider');
+    const trackHighlight = root.querySelector('#sliderTrackHighlight');
+    const yearMinVal = root.querySelector('#yearMinVal');
+    const yearMaxVal = root.querySelector('#yearMaxVal');
+    const totalValue = root.querySelector('[data-capacity-total]');
     const typeCheckboxes = Array.from(
-      document.querySelectorAll('[data-capacity-type]')
+      root.querySelectorAll('[data-capacity-type]')
     );
 
     const existingChart = Chart.getChart(canvas);
@@ -452,33 +468,42 @@ const constructionCapacity = constructionFacilities
     }
 
     try {
-      const rawData = JSON.parse(canvas.dataset.values || '[]');
+      const allSeries = JSON.parse(canvas.dataset.values || '[]');
       const typeSeries = JSON.parse(canvas.dataset.typeSeries || '{}');
-      if (rawData.length === 0) return;
+      if (allSeries.length === 0) return;
 
-      const labels = rawData.map((d) => d.year);
+      const labels = allSeries.map((d) => d.year);
 
-      function combineSelectedSeries() {
-        const selectedTypes = typeCheckboxes
+      function zeroSeries() {
+        return {
+          operational: labels.map(() => 0),
+          pipeline: labels.map(() => 0),
+        };
+      }
+
+      function selectedTypeIds() {
+        return typeCheckboxes
           .filter((checkbox) => checkbox.checked)
           .map((checkbox) => checkbox.value);
+      }
 
-        return labels.reduce(
-          (series, _year, index) => {
-            selectedTypes.forEach((typeId) => {
-              const point = typeSeries[typeId]?.[index];
-              if (!point) return;
+      function combineSelectedSeries() {
+        const selectedTypes = selectedTypeIds();
+        if (selectedTypes.length === typeCheckboxes.length) {
+          return {
+            operational: allSeries.map((point) => Number(point.operational || 0)),
+            pipeline: allSeries.map((point) => Number(point.pipeline || 0)),
+          };
+        }
 
-              series.operational[index] += Number(point.operational || 0);
-              series.pipeline[index] += Number(point.pipeline || 0);
-            });
-            return series;
-          },
-          {
-            operational: labels.map(() => 0),
-            pipeline: labels.map(() => 0),
-          }
-        );
+        return selectedTypes.reduce((series, typeId) => {
+          const points = typeSeries[typeId] || [];
+          points.forEach((point, index) => {
+            series.operational[index] += Number(point.operational || 0);
+            series.pipeline[index] += Number(point.pipeline || 0);
+          });
+          return series;
+        }, zeroSeries());
       }
 
       const initialSeries = combineSelectedSeries();
@@ -575,10 +600,16 @@ const constructionCapacity = constructionFacilities
         const nextSeries = combineSelectedSeries();
         chart.data.datasets[0].data = nextSeries.operational;
         chart.data.datasets[1].data = nextSeries.pipeline;
-        chart.update('none');
+        if (totalValue) {
+          const latestPipeline = nextSeries.pipeline[nextSeries.pipeline.length - 1] || 0;
+          totalValue.textContent = Number(latestPipeline).toFixed(1);
+        }
+        chart.update();
       }
 
       function updateSliderUI(e) {
+        if (!minSlider || !maxSlider) return;
+
         let min = parseInt(minSlider.value, 10);
         let max = parseInt(maxSlider.value, 10);
 
@@ -610,6 +641,9 @@ const constructionCapacity = constructionFacilities
 
       typeCheckboxes.forEach((checkbox) => {
         checkbox.addEventListener('change', updateFilteredSeries);
+        checkbox.addEventListener('click', function () {
+          window.setTimeout(updateFilteredSeries, 0);
+        });
       });
 
       if (minSlider && maxSlider) {
