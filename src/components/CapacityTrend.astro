@@ -9,6 +9,8 @@ type Facility = (typeof facilities)[number];
 
 const startYear = 1970;
 const endYear = 2040;
+const defaultMinYear = 1990;
+const defaultMaxYear = 2030;
 const pipelineStatuses = new Set<string>([
   'planned',
   'operational',
@@ -41,10 +43,8 @@ type CapacityRecord = {
 };
 
 const text = {
-  totalTitle:
-    lang === 'zh'
-      ? '全球项目记录能力 (2040估)'
-      : 'Global Project-Record Capacity (2040 Est.)',
+  totalTitle: lang === 'zh' ? '全球项目记录能力' : 'Global Project-Record Capacity',
+  totalYearSuffix: lang === 'zh' ? '估' : ' Est.',
   totalNote:
     lang === 'zh'
       ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
@@ -208,7 +208,10 @@ typeOptions.forEach((option) => {
   );
 });
 
-const totalCapacity = (chartData.at(-1)?.pipeline || 0).toFixed(1);
+const capacityAtYear = (series: ChartPoint[], year: number): number =>
+  series.find((point) => point.year === year)?.pipeline || 0;
+
+const totalCapacity = capacityAtYear(chartData, defaultMaxYear).toFixed(1);
 const operationalFacilities = facilities.filter(
   (f: Facility) => normalizeStatus(f.data.status) === 'operational'
 );
@@ -238,12 +241,13 @@ const constructionCapacity = constructionFacilities
       <div
         class="absolute top-2 right-4 text-[8px] font-mono text-slate-300 dark:text-slate-700"
       >
-        CAP_MONITOR_v3.3
+        CAP_MONITOR_v3.4
       </div>
       <h3
         class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4"
       >
         {text.totalTitle}
+        <span data-capacity-total-year>({defaultMaxYear}{text.totalYearSuffix})</span>
       </h3>
       <div class="text-5xl font-black text-emerald-600 mb-2 tracking-tighter">
         <span data-capacity-total>{totalCapacity}</span>
@@ -321,7 +325,9 @@ const constructionCapacity = constructionFacilities
         >
           Project-record capacity across selected CCUS types (Mtpa) <span
             class="text-blue-500">1970</span
-          > - <span class="text-emerald-500">2040</span>
+          > - <span class="text-emerald-500" data-capacity-subtitle-max
+            >{defaultMaxYear}</span
+          >
         </p>
       </div>
       <div
@@ -338,9 +344,9 @@ const constructionCapacity = constructionFacilities
           class="font-mono text-[10px] px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.05)] backdrop-blur-sm transition-all duration-300"
         >
           <span class="opacity-40">[</span>
-          <span id="yearMinVal" class="font-bold">1990</span> - <span
+          <span id="yearMinVal" class="font-bold">{defaultMinYear}</span> - <span
             id="yearMaxVal"
-            class="font-bold">2030</span
+            class="font-bold">{defaultMaxYear}</span
           >
           <span class="opacity-40">]</span>
           <span
@@ -373,7 +379,7 @@ const constructionCapacity = constructionFacilities
           id="minYearSlider"
           min="1970"
           max="2040"
-          value="1990"
+          value={defaultMinYear}
           class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
                  [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
@@ -383,7 +389,7 @@ const constructionCapacity = constructionFacilities
           id="maxYearSlider"
           min="1970"
           max="2040"
-          value="2030"
+          value={defaultMaxYear}
           class="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-2 cursor-pointer
                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-blue-500 [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-125
                  [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-blue-500 [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(37,99,235,0.4)] [&::-moz-range-thumb]:transition-transform [&::-moz-range-thumb]:hover:scale-125"
@@ -434,6 +440,9 @@ const constructionCapacity = constructionFacilities
           data-type-series={JSON.stringify(typeChartData)}
           data-label-op={text.committedLabel}
           data-label-pipe={text.pipelineLabel}
+          data-default-min-year={defaultMinYear}
+          data-default-max-year={defaultMaxYear}
+          data-year-suffix={text.totalYearSuffix}
         ></canvas>
       </div>
     </div>
@@ -457,7 +466,9 @@ const constructionCapacity = constructionFacilities
     const trackHighlight = root.querySelector('#sliderTrackHighlight');
     const yearMinVal = root.querySelector('#yearMinVal');
     const yearMaxVal = root.querySelector('#yearMaxVal');
+    const subtitleMaxYear = root.querySelector('[data-capacity-subtitle-max]');
     const totalValue = root.querySelector('[data-capacity-total]');
+    const totalYear = root.querySelector('[data-capacity-total-year]');
     const typeCheckboxes = Array.from(
       root.querySelectorAll('[data-capacity-type]')
     );
@@ -473,6 +484,9 @@ const constructionCapacity = constructionFacilities
       if (allSeries.length === 0) return;
 
       const labels = allSeries.map((d) => d.year);
+      const defaultMinYear = Number(canvas.dataset.defaultMinYear || 1990);
+      const defaultMaxYear = Number(canvas.dataset.defaultMaxYear || 2030);
+      const yearSuffix = canvas.dataset.yearSuffix || ' Est.';
 
       function zeroSeries() {
         return {
@@ -504,6 +518,32 @@ const constructionCapacity = constructionFacilities
           });
           return series;
         }, zeroSeries());
+      }
+
+      function yearIndex(year) {
+        const index = labels.findIndex((label) => Number(label) === Number(year));
+        return index >= 0 ? index : labels.length - 1;
+      }
+
+      function currentMaxYear() {
+        if (!maxSlider) return defaultMaxYear;
+        return parseInt(maxSlider.value, 10);
+      }
+
+      function updateTotalDisplay(series, maxYear) {
+        const activeYear = maxYear || currentMaxYear();
+        const index = yearIndex(activeYear);
+        const activePipeline = series.pipeline[index] || 0;
+
+        if (totalValue) {
+          totalValue.textContent = Number(activePipeline).toFixed(1);
+        }
+        if (totalYear) {
+          totalYear.textContent = '(' + activeYear + yearSuffix + ')';
+        }
+        if (subtitleMaxYear) {
+          subtitleMaxYear.textContent = activeYear;
+        }
       }
 
       const initialSeries = combineSelectedSeries();
@@ -572,8 +612,8 @@ const constructionCapacity = constructionFacilities
           },
           scales: {
             x: {
-              min: 1990,
-              max: 2030,
+              min: defaultMinYear,
+              max: defaultMaxYear,
               grid: { display: false },
               ticks: {
                 font: { size: 10 },
@@ -600,10 +640,7 @@ const constructionCapacity = constructionFacilities
         const nextSeries = combineSelectedSeries();
         chart.data.datasets[0].data = nextSeries.operational;
         chart.data.datasets[1].data = nextSeries.pipeline;
-        if (totalValue) {
-          const latestPipeline = nextSeries.pipeline[nextSeries.pipeline.length - 1] || 0;
-          totalValue.textContent = Number(latestPipeline).toFixed(1);
-        }
+        updateTotalDisplay(nextSeries);
         chart.update();
       }
 
@@ -636,6 +673,7 @@ const constructionCapacity = constructionFacilities
 
         chart.options.scales.x.min = min;
         chart.options.scales.x.max = max;
+        updateTotalDisplay(combineSelectedSeries(), max);
         chart.update('none');
       }
 
@@ -650,6 +688,8 @@ const constructionCapacity = constructionFacilities
         minSlider.addEventListener('input', updateSliderUI);
         maxSlider.addEventListener('input', updateSliderUI);
         updateSliderUI();
+      } else {
+        updateTotalDisplay(initialSeries, defaultMaxYear);
       }
     } catch (e) {
       console.error('Failed to init capacity chart:', e);
