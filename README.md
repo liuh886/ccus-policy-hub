@@ -78,11 +78,11 @@ Facilities are associated with policies through the current relationship model. 
 
 The relationship model supports a future progression from:
 
-| Level | Confidence | Meaning |
-| --- | --- | --- |
-| Country | Low (0.3) | Facility and policy share a jurisdiction |
-| Sector | Medium (0.6) | Policy scope matches the facility sector or value-chain role |
-| Evidence | High (0.9) | A source directly connects the policy and facility |
+| Level    | Confidence   | Meaning                                                      |
+| -------- | ------------ | ------------------------------------------------------------ |
+| Country  | Low (0.3)    | Facility and policy share a jurisdiction                     |
+| Sector   | Medium (0.6) | Policy scope matches the facility sector or value-chain role |
+| Evidence | High (0.9)   | A source directly connects the policy and facility           |
 
 See [Facility-Policy Relationship Model](docs/facility-policy-relationship-model.md).
 
@@ -120,16 +120,16 @@ graph LR
 
 ## Machine-readable data interface
 
-| Endpoint | Description |
-| --- | --- |
-| `/data/manifest.json` | Dataset, schema, and documentation index |
-| `/data/policies.json` | Structured CCUS policy records and analysis fields |
-| `/data/facilities.json` | Facility records, locations, status, and capacity fields |
-| `/data/countries.json` | Country governance profiles and regulatory pillars |
-| `/data/quality.json` | Quality metrics and audit status |
-| `/data/dataset-versions.json` | Dataset version metadata |
-| `/llms.txt` | Concise orientation for AI systems |
-| `/llms-full.txt` | Extended field and limitation documentation |
+| Endpoint                      | Description                                              |
+| ----------------------------- | -------------------------------------------------------- |
+| `/data/manifest.json`         | Dataset, schema, and documentation index                 |
+| `/data/policies.json`         | Structured CCUS policy records and analysis fields       |
+| `/data/facilities.json`       | Facility records, locations, status, and capacity fields |
+| `/data/countries.json`        | Country governance profiles and regulatory pillars       |
+| `/data/quality.json`          | Quality metrics and audit status                         |
+| `/data/dataset-versions.json` | Dataset version metadata                                 |
+| `/llms.txt`                   | Concise orientation for AI systems                       |
+| `/llms-full.txt`              | Extended field and limitation documentation              |
 
 JSON Schemas are published under `/data/schemas/`.
 
