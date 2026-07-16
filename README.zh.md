@@ -2,13 +2,14 @@
 
 <img src="https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/favicon.svg" width="120" height="120" alt="CCUS Policy Hub Logo" />
 
-# CCUS Policy Hub | 全球 CCUS 政策与设施数据库
+# CCUS Policy Hub｜全球 CCUS 政策与设施知识基础设施
 
-### 全球碳捕集、利用与封存领域的智能化知识基础设施
+### 面向碳捕集、利用与封存的可信政策情报与决策支持
 
 [![Deploy Status](https://github.com/liuh886/ccus-policy-hub/actions/workflows/deploy.yml/badge.svg)](https://github.com/liuh886/ccus-policy-hub/actions)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-ff5a03.svg)](https://astro.build)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21110615.svg)](https://doi.org/10.5281/zenodo.21110615)
 
 [**English Version**](./README.md) | [**简体中文**] | [**在线预览**](https://liuh886.github.io/ccus-policy-hub/)
 
@@ -16,63 +17,135 @@
 
 ---
 
-## 🌟 项目概览
+## 项目概览
 
-**CCUS Policy Hub** 是一个面向全球 CCUS（碳捕集、利用与封存）领域的专业级开源知识基础设施。本项目旨在解决行业核心痛点：监管文本碎片化、数据难以结构化对比。
+**CCUS Policy Hub** 是一个面向全球碳捕集、利用与封存领域的开源知识与决策支持基础设施。项目将分散的监管文本、国家治理条件与设施记录转化为结构化、双语、可审计的数据，为研究者、政策制定者、项目开发者、投资者和 AI 系统提供可信的事实基础。
 
-> **核心价值**：在过去，跨地区、跨国别的政策比较研究是一项极具挑战的任务，研究者必须深入理解两国的产业现状与政策环境。而现在，通过本平台，即使是刚入行的实习生也能轻松对比中国与日本治理体系的异同，并直观查看各自治理体系覆盖的设施数量与规模。
+项目遵循“可信优先”原则：结构化数据、来源和审计状态界定事实边界；可视化分析与后续 AI Agent 在该边界内开展推理，而不是用流畅文本替代证据。
 
-通过集成 **IEA 全球设施数据库** 与 **GCCSI 政策与法律就绪度 (PLR) 指标**，我们将复杂的法律条文转化为可量化、可对标的数字化洞察，为研究者、政策制定者及投资者提供决策支持。
+### 当前治理数据快照
 
-> **AI 原生基础设施**：除了服务于人类研究者，本平台还为专注于气候政策的 **AI Agent** 提供结构化、高保真的知识源（Grounding Source），确保其在复杂法规环境下的推理准确性。
+- **130 项政策记录**，其中 **116 项已验证**、**14 项为草稿**；
+- **1,110 个设施记录**，对应 2026-Q2 设施数据版本及人工治理补充；
+- **66 个国家治理画像**；
+- 治理数据具备中英文发布层；
+- 提供 JSON 数据接口、Schema、质量指标与数据版本信息。
 
----
+以上数字描述完整治理数据集。网站中的具体页面可能因审核状态、发布范围、项目状态或分析筛选而显示更小的子集。
 
-## ✨ 核心特性
-
-### 1. 全球政策准入控制台 (Access Console)
-
-通过交互式世界地图，实时透视各区域政策强度。目前已覆盖 **35+ 个核心经济体**，提供从激励规模到准入要求的全方位信息。
-
-> **亮点**：首页集成实时政策数量统计，动态展示全球版图扩张。
-
-### 2. PLR 3.0 对比矩阵
-
-支持超越单纯财务维度的深度法律对标：
-
-- **孔隙使用权 (Pore Space Rights)**：明确地下封存空间的法律权属。
-- **长期责任转移**：量化场址关闭后责任移交政府的时间线。
-- **CO2 监管属性 / 法律定位**：描述捕集后的 CO2 在利用、运输、封存等场景中的监管属性与法律定位。
-- **审批周期 (Lead Times)**：对比各国从申请到获批的预估时间。
-
-### 3. 设施-政策智能图谱
-
-全球 800+ 个 CCUS 项目自动挂载所属法域的法律条款。点击“北极光 (Northern Lights)”或“大庆敖南”等具体设施，即可查看其背后的核心激励机制与监管依据。
+> **AI 原生基础设施**：项目通过结构化数据接口、Schema、质量指标和已知限制，为气候政策 Agent 提供可审计的 Grounding Source。
 
 ---
 
-## 🏗️ 技术架构
+## OpenAI Build Week
 
-本项目采用 **"数据驱动型 SSG" (Static Site Generation)** 架构，确保极致的访问性能与数据保真度。
+本项目的 Build Week 产品方向为：
+
+### CCUS Policy Hub: Project Readiness Agent
+
+> An evidence-backed AI agent that turns fragmented CCUS regulations into project-ready decisions, comparing jurisdictions, incentives, permits, liabilities and policy gaps with traceable sources.
+
+该 Agent 将作为现有 CCUS Policy Hub 的能力延伸，而不是一个与数据治理体系脱节的通用聊天框。用户描述拟议 CCUS 项目后，系统将生成包含证据引用、置信度标记和待核实缺口的结构化项目就绪度简报。
+
+参赛定位、开发拆分和可信度底线见 [BUILD_WEEK.md](BUILD_WEEK.md)。
+
+---
+
+## 核心能力
+
+### 1. 全球政策检索与比较
+
+通过地图、全文检索与比较页面浏览政策记录和国家治理画像，并对激励、法定要求、市场机制、战略部署、技术治理及七项监管支柱进行结构化比较。
+
+### 2. 设施与产能情报
+
+按地区、状态、价值链类型、时间和记录产能探索 **1,110 个 CCUS 设施记录**。项目对产能趋势明确采用“项目记录聚合”口径，不应将其直接理解为可交付的净捕集能力或净封存能力。
+
+### 3. 国家治理画像
+
+对比各法域的关键治理条件，包括：
+
+- 孔隙空间权属；
+- 长期责任转移与责任期限；
+- 财务担保；
+- 审批周期；
+- CO₂ 的监管属性与法律定位；
+- 跨境运输规则。
+
+### 4. 带置信度的设施—政策关联
+
+当前设施与政策之间的公开关联均属于**国家层面的背景关联**，置信度较低。它只能说明某个设施与某项政策处于同一法域，不能单独证明某条法律条款直接支持、资助或约束了某个具体设施。
+
+关系模型支持后续逐步升级：
+
+| 层级 | 置信度 | 含义 |
+| --- | --- | --- |
+| 国家 | 低（0.3） | 设施与政策位于同一法域 |
+| 行业 | 中（0.6） | 政策适用范围与设施行业或价值链环节匹配 |
+| 证据 | 高（0.9） | 原始来源明确连接该政策与具体设施 |
+
+详见 [设施—政策关系模型](docs/facility-policy-relationship-model.md)。
+
+### 5. 数据可信度与审计
+
+质量层主动披露而非隐藏数据缺口，包括来源和 URL 缺失、坐标精度、审核状态、产能完整度以及设施—政策关联置信度。
+
+可访问 [数据质量面板](https://liuh886.github.io/ccus-policy-hub/quality/) 查看当前快照。
+
+---
+
+## 技术架构
+
+平台采用数据驱动的静态站点架构，以保证发布流程可复现、访问性能稳定，并为机器读取提供静态接口。
 
 ```mermaid
 graph LR
-    A[(JSON 数据库 SSOT)] --> B{Astro 构建}
-    B --> C[静态 HTML 页面]
-    B --> D[Pagefind 搜索索引]
-    C --> E[全球边缘加速交付]
-    D --> E
+    A[(SQLite 单一事实源)] --> B[治理后导出]
+    B --> C{Astro 构建}
+    C --> D[静态 HTML 页面]
+    C --> E[Pagefind 搜索索引]
+    B --> F[JSON 数据集与 Schema]
+    D --> G[GitHub Pages]
+    E --> G
+    F --> G
 ```
 
-- **SSOT (单源真相)**：所有元数据统一由 `src/data/policy_database.json` 管理。
-- **Astro 5**: 使用最新的内容层 (Content Layer) API 进行高性能渲染。
-- **Pagefind**: 毫秒级的全文检索，无需后端服务器。
+- **单一事实源**：`agent/ccus-ai-agent/db/ccus_master.sqlite`；
+- **单向发布**：SQLite → 受治理的 Markdown 与 JSON 导出；
+- **Astro 5**：生成静态内容与分析页面；
+- **Pagefind**：无需运行时搜索后端的全文检索；
+- **质量门禁**：代码检查、测试、类型检查、数据库深度审计、治理数据导出及完整构建。
 
 ---
 
-## 🛠️ 维护与治理
+## 机器可读数据接口
 
-### 开发环境
+| 接口 | 说明 |
+| --- | --- |
+| `/data/manifest.json` | 数据集、Schema 与文档索引 |
+| `/data/policies.json` | 结构化 CCUS 政策与分析字段 |
+| `/data/facilities.json` | 设施、位置、状态与产能字段 |
+| `/data/countries.json` | 国家治理画像与监管支柱 |
+| `/data/quality.json` | 数据质量指标与审计状态 |
+| `/data/dataset-versions.json` | 数据版本信息 |
+| `/llms.txt` | 面向 AI 系统的简要说明 |
+| `/llms-full.txt` | 完整字段和限制说明 |
+
+JSON Schema 发布于 `/data/schemas/`。
+
+### 已知限制
+
+- 设施—政策关联目前均为国家层面的背景关联；
+- 坐标精度分为精确、州/省级和国家级锚点；
+- 部分政策记录仍缺少原始来源或 URL；
+- 部分设施记录缺少可用的估算产能；
+- 政策状态和适用性可能在记录的审计日期后发生变化。
+
+使用数据前应检查 `/data/quality.json` 与 `/data/dataset-versions.json`。
+
+---
+
+## 开发与治理
 
 ```bash
 git clone https://github.com/liuh886/ccus-policy-hub.git
@@ -81,12 +154,32 @@ pnpm install
 pnpm dev
 ```
 
-### 数据治理规约
+数据治理修改应首先进入 SQLite，并通过维护脚本导出。`src/content/` 和 `public/data/` 下的文件属于发布产物，不是独立事实源。
 
-我们遵循严格的 **数据库治理技能 (ccus-db-governance)**，确保双语内容 1:1 对齐，并强制使用 Node.js 写入规范以彻底杜绝乱码问题。
+核心检查命令：
+
+```bash
+pnpm lint
+pnpm test
+pnpm astro check
+pnpm manage:db:audit:deep
+pnpm manage:db:quality:export
+pnpm manage:db:data:export
+pnpm build
+```
+
+GitHub Pages 部署将在发布前运行同一组阻断式可信度检查。
+
+---
+
+## 引用
+
+如在研究、政策分析或衍生数据集中使用本项目，请引用 Zenodo 归档记录：
+
+> Liu, Z. **CCUS Policy Hub: Global Intelligence Infrastructure for Carbon Capture, Utilization, and Storage**. Zenodo. https://doi.org/10.5281/zenodo.21110615
 
 ---
 
 <div align="center">
-  <sub>liuh886 为全球气候社区倾力打造</sub>
+  <sub>liuh886 为全球气候与 CCUS 社区打造</sub>
 </div>
