@@ -78,11 +78,11 @@
 
 关系模型支持后续逐步升级：
 
-| 层级 | 置信度 | 含义 |
-| --- | --- | --- |
-| 国家 | 低（0.3） | 设施与政策位于同一法域 |
+| 层级 | 置信度    | 含义                                   |
+| ---- | --------- | -------------------------------------- |
+| 国家 | 低（0.3） | 设施与政策位于同一法域                 |
 | 行业 | 中（0.6） | 政策适用范围与设施行业或价值链环节匹配 |
-| 证据 | 高（0.9） | 原始来源明确连接该政策与具体设施 |
+| 证据 | 高（0.9） | 原始来源明确连接该政策与具体设施       |
 
 详见 [设施—政策关系模型](docs/facility-policy-relationship-model.md)。
 
@@ -120,16 +120,16 @@ graph LR
 
 ## 机器可读数据接口
 
-| 接口 | 说明 |
-| --- | --- |
-| `/data/manifest.json` | 数据集、Schema 与文档索引 |
-| `/data/policies.json` | 结构化 CCUS 政策与分析字段 |
-| `/data/facilities.json` | 设施、位置、状态与产能字段 |
-| `/data/countries.json` | 国家治理画像与监管支柱 |
-| `/data/quality.json` | 数据质量指标与审计状态 |
-| `/data/dataset-versions.json` | 数据版本信息 |
-| `/llms.txt` | 面向 AI 系统的简要说明 |
-| `/llms-full.txt` | 完整字段和限制说明 |
+| 接口                          | 说明                       |
+| ----------------------------- | -------------------------- |
+| `/data/manifest.json`         | 数据集、Schema 与文档索引  |
+| `/data/policies.json`         | 结构化 CCUS 政策与分析字段 |
+| `/data/facilities.json`       | 设施、位置、状态与产能字段 |
+| `/data/countries.json`        | 国家治理画像与监管支柱     |
+| `/data/quality.json`          | 数据质量指标与审计状态     |
+| `/data/dataset-versions.json` | 数据版本信息               |
+| `/llms.txt`                   | 面向 AI 系统的简要说明     |
+| `/llms-full.txt`              | 完整字段和限制说明         |
 
 JSON Schema 发布于 `/data/schemas/`。
 
