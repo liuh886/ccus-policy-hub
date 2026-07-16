@@ -10,34 +10,13 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run Lint
-        run: pnpm lint
-        continue-on-error: true
-
   build:
     runs-on: ubuntu-latest
-    needs: lint
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,12 +30,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build Project
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Astro check
+        run: pnpm astro check
+
+      - name: Deep database audit
+        run: pnpm manage:db:audit:deep
+
+      - name: Generate quality metrics
+        run: pnpm manage:db:quality:export
+
+      - name: Generate public data
+        run: pnpm manage:db:data:export
+
+      - name: Format generated data
+        run: pnpm prettier --write public/data/*.json
+
+      - name: Build project
         run: pnpm build
 
       - name: Upload artifact
