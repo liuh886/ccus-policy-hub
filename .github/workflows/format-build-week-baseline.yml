@@ -1,0 +1,50 @@
+name: Format Build Week Baseline
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - README.md
+      - README.zh.md
+      - BUILD_WEEK.md
+      - .github/workflows/deploy.yml
+      - .github/workflows/format-build-week-baseline.yml
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format changed files
+        run: >-
+          pnpm prettier --write README.md README.zh.md BUILD_WEEK.md
+          .github/workflows/deploy.yml
+
+      - name: Upload formatted files
+        uses: actions/upload-artifact@v4
+        with:
+          name: formatted-build-week-baseline
+          path: |
+            README.md
+            README.zh.md
+            BUILD_WEEK.md
+            .github/workflows/deploy.yml
