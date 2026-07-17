@@ -4,7 +4,8 @@ import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 
 type PolicyEntry =
-  CollectionEntry<'policies_zh'> | CollectionEntry<'policies_en'>;
+  | CollectionEntry<'policies_zh'>
+  | CollectionEntry<'policies_en'>;
 
 interface Props {
   policy: PolicyEntry;
