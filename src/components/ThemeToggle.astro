@@ -90,33 +90,101 @@ const labels =
 
   <div class="theme-menu" data-appearance-menu role="menu" hidden>
     <div class="theme-menu-title">{labels.title}</div>
-    <button class="theme-option" type="button" role="menuitemradio" data-theme-option="system">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="system"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
         <rect width="18" height="12" x="3" y="4" rx="2"></rect>
         <path d="M8 20h8"></path>
         <path d="M12 16v4"></path>
       </svg>
       <span>{labels.system}</span>
-      <svg class="theme-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
         <path d="m5 12 4 4L19 6"></path>
       </svg>
     </button>
-    <button class="theme-option" type="button" role="menuitemradio" data-theme-option="light">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="light"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
         <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        ></path>
       </svg>
       <span>{labels.light}</span>
-      <svg class="theme-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
         <path d="m5 12 4 4L19 6"></path>
       </svg>
     </button>
-    <button class="theme-option" type="button" role="menuitemradio" data-theme-option="dark">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="dark"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
       </svg>
       <span>{labels.dark}</span>
-      <svg class="theme-option-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
         <path d="m5 12 4 4L19 6"></path>
       </svg>
     </button>
@@ -127,30 +195,44 @@ const labels =
   type ThemePreference = 'system' | 'light' | 'dark';
 
   const closeAppearanceMenus = (except?: Element | null) => {
-    document.querySelectorAll('[data-appearance-control]').forEach((control) => {
-      if (control === except) return;
-      const menu = control.querySelector<HTMLElement>('[data-appearance-menu]');
-      const toggle = control.querySelector<HTMLElement>('[data-appearance-toggle]');
-      if (menu) menu.hidden = true;
-      toggle?.setAttribute('aria-expanded', 'false');
-    });
+    document
+      .querySelectorAll('[data-appearance-control]')
+      .forEach((control) => {
+        if (control === except) return;
+        const menu = control.querySelector<HTMLElement>(
+          '[data-appearance-menu]'
+        );
+        const toggle = control.querySelector<HTMLElement>(
+          '[data-appearance-toggle]'
+        );
+        if (menu) menu.hidden = true;
+        toggle?.setAttribute('aria-expanded', 'false');
+      });
   };
 
   const updateAppearanceControls = () => {
     const manager = (window as any).__ccusThemeManager;
     const preference: ThemePreference = manager?.getPreference?.() || 'system';
 
-    document.querySelectorAll('[data-appearance-control]').forEach((control) => {
-      control.querySelectorAll<HTMLElement>('[data-theme-trigger-icon]').forEach((icon) => {
-        icon.dataset.active = String(icon.dataset.themeTriggerIcon === preference);
-      });
+    document
+      .querySelectorAll('[data-appearance-control]')
+      .forEach((control) => {
+        control
+          .querySelectorAll<HTMLElement>('[data-theme-trigger-icon]')
+          .forEach((icon) => {
+            icon.dataset.active = String(
+              icon.dataset.themeTriggerIcon === preference
+            );
+          });
 
-      control.querySelectorAll<HTMLElement>('[data-theme-option]').forEach((option) => {
-        const selected = option.dataset.themeOption === preference;
-        option.dataset.selected = String(selected);
-        option.setAttribute('aria-checked', String(selected));
+        control
+          .querySelectorAll<HTMLElement>('[data-theme-option]')
+          .forEach((option) => {
+            const selected = option.dataset.themeOption === preference;
+            option.dataset.selected = String(selected);
+            option.setAttribute('aria-checked', String(selected));
+          });
       });
-    });
   };
 
   if (!(window as any).__ccusAppearanceBound) {
@@ -170,7 +252,9 @@ const labels =
       const toggle = target?.closest<HTMLElement>('[data-appearance-toggle]');
       if (toggle) {
         const control = toggle.closest('[data-appearance-control]');
-        const menu = control?.querySelector<HTMLElement>('[data-appearance-menu]');
+        const menu = control?.querySelector<HTMLElement>(
+          '[data-appearance-menu]'
+        );
         if (!menu) return;
 
         const willOpen = menu.hidden;
