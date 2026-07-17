@@ -1,0 +1,36 @@
+name: Format Preview
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Format changed UI files
+        run: >-
+          pnpm exec prettier --write
+          src/components/ThemeToggle.astro
+          src/layouts/Layout.astro
+          src/styles/interaction-controls.css
+          src/styles/light-editorial.css
+      - uses: actions/upload-artifact@v4
+        with:
+          name: formatted-editorial-files
+          path: |
+            src/components/ThemeToggle.astro
+            src/layouts/Layout.astro
+            src/styles/interaction-controls.css
+            src/styles/light-editorial.css
