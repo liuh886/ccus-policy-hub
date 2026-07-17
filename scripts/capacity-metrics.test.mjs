@@ -10,7 +10,10 @@ import {
 
 test('normalizes bilingual facility statuses and types', () => {
   assert.equal(normalizeFacilityStatus('运行中'), 'operational');
-  assert.equal(normalizeFacilityStatus('Under Construction'), 'under-construction');
+  assert.equal(
+    normalizeFacilityStatus('Under Construction'),
+    'under-construction'
+  );
   assert.equal(normalizeFacilityType('运输与封存'), 'ts');
   assert.equal(normalizeFacilityType('全流程项目'), 'full-chain');
   assert.equal(normalizeFacilityType('碳利用'), 'ccu');
@@ -29,10 +32,14 @@ test('uses estimated capacity first and falls back to announced range', () => {
 test('summarizes storage-related project records without capture, transport or CCU', () => {
   const facilities = [
     { data: { status: 'Operational', type: 'Capture', estimatedCapacity: 1 } },
-    { data: { status: 'Operational', type: 'Transport', estimatedCapacity: 2 } },
+    {
+      data: { status: 'Operational', type: 'Transport', estimatedCapacity: 2 },
+    },
     { data: { status: 'Operational', type: 'T&S', estimatedCapacity: 3 } },
     { data: { status: 'Operational', type: 'Storage', estimatedCapacity: 4 } },
-    { data: { status: 'Operational', type: 'Full chain', estimatedCapacity: 5 } },
+    {
+      data: { status: 'Operational', type: 'Full chain', estimatedCapacity: 5 },
+    },
     { data: { status: 'Operational', type: 'CCU', estimatedCapacity: 6 } },
     { data: { status: 'Operational', type: 'Unknown', estimatedCapacity: 7 } },
     {

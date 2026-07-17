@@ -90,7 +90,8 @@ export function facilityCapacity(data = {}) {
 
 export function summarizeFacilities(facilities, expectedStatus) {
   const matching = facilities.filter(
-    (facility) => normalizeFacilityStatus(facility.data?.status) === expectedStatus
+    (facility) =>
+      normalizeFacilityStatus(facility.data?.status) === expectedStatus
   );
   const storageRelated = matching.filter((facility) =>
     STORAGE_RELATED_TYPES.has(normalizeFacilityType(facility.data?.type))
