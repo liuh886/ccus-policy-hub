@@ -32,6 +32,8 @@ import '../styles/global.css';
   <head>
     <SEO title={title} description={description} keywords={keywords} />
     <ClientRouter />
+    <meta name="theme-color" content="#f4f7f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#071724" media="(prefers-color-scheme: dark)" />
     <script is:inline>
       const getTheme = () => {
         if (
@@ -78,30 +80,12 @@ import '../styles/global.css';
       href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
     />
   </head>
-  <body
-    class="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-['Inter',_sans-serif] transition-colors"
-  >
+  <body class="site-shell min-h-screen flex flex-col font-['Inter',_sans-serif] transition-colors">
     <NavBar />
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="site-main flex-grow">
       <slot />
     </main>
     {!hideCompareDrawer && <CompareDrawer lang={lang as 'zh' | 'en'} />}
     <Footer lang={lang as string} />
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-  }
-</style>
