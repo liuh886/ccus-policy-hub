@@ -1,0 +1,153 @@
+/* Capacity workspace refinements for the semantic section-based markup from PR #26. */
+
+/*
+ * The light editorial stylesheet is loaded after the global design system.
+ * Restore the established dark tokens here so its light-only :root values do
+ * not leak into dark mode through equal-specificity custom properties.
+ */
+.dark {
+  --brand-navy-950: #041f33;
+  --brand-navy-900: #062a49;
+  --brand-navy-800: #083b66;
+  --brand-navy-700: #0b527d;
+  --brand-teal-700: #0a716d;
+  --brand-teal-600: #0f8f88;
+  --brand-teal-500: #18a59c;
+  --brand-teal-100: #dff4f1;
+  --surface-page: #071724;
+  --surface-panel: #0b2030;
+  --surface-subtle: #102a3b;
+  --border-subtle: #1f3a4b;
+  --border-strong: #315063;
+  --text-primary: #eef7fa;
+  --text-secondary: #b2c4cd;
+  --text-muted: #8197a3;
+  --radius-control: 10px;
+  --radius-card: 14px;
+  --radius-panel: 18px;
+  --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.24), 0 16px 40px rgb(0 0 0 / 0.2);
+  --shadow-hover: 0 2px 5px rgb(0 0 0 / 0.28), 0 22px 50px rgb(0 0 0 / 0.28);
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > section,
+html:not(.dark) [data-capacity-trend] > section:last-child {
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-panel) !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > section:first-child {
+  border-left: 4px solid var(--brand-teal-600) !important;
+  background: var(--surface-panel) !important;
+}
+
+html:not(.dark)
+  [data-capacity-trend]
+  > div:first-child
+  > section:first-child
+  > div.absolute {
+  opacity: 0.12 !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > section:nth-child(2) {
+  border-color: #cbd9dd !important;
+  background: linear-gradient(
+    145deg,
+    #0a3958 0%,
+    #0b4b66 58%,
+    #0c656d 135%
+  ) !important;
+}
+
+html:not(.dark)
+  [data-capacity-trend]
+  > div:first-child
+  > section:nth-child(2)
+  h3 {
+  color: #a9d9dc !important;
+  text-transform: none !important;
+  letter-spacing: 0.035em !important;
+}
+
+html:not(.dark)
+  [data-capacity-trend]
+  > div:first-child
+  > section:nth-child(2)
+  p {
+  text-wrap: pretty;
+}
+
+html:not(.dark) [data-capacity-trend] > section:last-child {
+  padding: 2rem !important;
+  background: var(--surface-panel) !important;
+}
+
+html:not(.dark) [data-capacity-trend] > section:last-child h3 {
+  color: var(--text-primary) !important;
+  text-transform: none !important;
+  letter-spacing: -0.025em !important;
+}
+
+html:not(.dark)
+  [data-capacity-trend]
+  > section:last-child
+  > div:first-child
+  > div:last-child {
+  border-color: var(--border-subtle) !important;
+  background: #f4f7f5 !important;
+  color: var(--brand-navy-700) !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) [data-capacity-trend] #sliderTrackHighlight {
+  background: linear-gradient(
+    90deg,
+    var(--brand-navy-700),
+    var(--brand-teal-500)
+  ) !important;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter {
+  border-color: var(--border-subtle) !important;
+  background: #f7f9f7 !important;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter label {
+  box-shadow: 0 1px 0 rgb(16 42 58 / 0.025);
+}
+
+html:not(.dark)
+  [data-capacity-trend]
+  #capacityTypeFilter
+  label:has(input:checked) {
+  border-color: color-mix(in srgb, var(--brand-teal-600) 46%, white);
+  background: var(--brand-teal-100);
+  color: var(--brand-teal-700);
+}
+
+html:not(.dark) [data-capacity-trend] > section:last-child > p:last-child {
+  max-width: 72rem;
+  color: #718087;
+  line-height: 1.65;
+}
+
+@media (max-width: 1023px) {
+  html:not(.dark) [data-capacity-trend] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  html:not(.dark) [data-capacity-trend] > div:first-child > section,
+  html:not(.dark) [data-capacity-trend] > section:last-child {
+    padding: 1.25rem !important;
+  }
+
+  html:not(.dark) [data-capacity-trend] > section:last-child > div:first-child {
+    flex-direction: column;
+  }
+
+  html:not(.dark) [data-capacity-trend] #capacityTypeFilter {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
