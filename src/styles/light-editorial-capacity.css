@@ -11,7 +11,11 @@ html:not(.dark) [data-capacity-trend] > div:first-child > section:first-child {
   background: var(--surface-panel) !important;
 }
 
-html:not(.dark) [data-capacity-trend] > div:first-child > section:first-child > div.absolute {
+html:not(.dark)
+  [data-capacity-trend]
+  > div:first-child
+  > section:first-child
+  > div.absolute {
   opacity: 0.12 !important;
 }
 
@@ -82,7 +86,10 @@ html:not(.dark) [data-capacity-trend] #capacityTypeFilter label {
   box-shadow: 0 1px 0 rgb(16 42 58 / 0.025);
 }
 
-html:not(.dark) [data-capacity-trend] #capacityTypeFilter label:has(input:checked) {
+html:not(.dark)
+  [data-capacity-trend]
+  #capacityTypeFilter
+  label:has(input:checked) {
   border-color: color-mix(in srgb, var(--brand-teal-600) 46%, white);
   background: var(--brand-teal-100);
   color: var(--brand-teal-700);
