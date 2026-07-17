@@ -1,55 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" aria-labelledby="logoTitle logoDesc" role="img">
-  <title id="logoTitle">CCUS Policy Hub Logo</title>
-  <desc id="logoDesc">A professional logo with a pulsing blue CCUS badge and Policy Hub text.</desc>
-  <defs>
-    <!-- Premium Gradient -->
-    <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
-    </linearGradient>
-    
-    <!-- Professional Glow Filter -->
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="1.2" result="blur" />
-      <feFlood flood-color="#60a5fa" flood-opacity="0.6" result="glowColor" />
-      <feComposite in="glowColor" in2="blur" operator="in" result="softGlow" />
-      <feMerge>
-        <feMergeNode in="softGlow" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">CCUS Policy Hub</title>
+  <desc id="logoDesc">A simplified carbon pathway entering geological storage layers beside the CCUS Policy Hub wordmark.</desc>
+  <style>
+    .word-primary { fill: #082f49; }
+    .word-secondary { fill: #0f8f88; }
+    @media (prefers-color-scheme: dark) {
+      .word-primary { fill: #f8fafc; }
+      .word-secondary { fill: #5eead4; }
+    }
+  </style>
 
-    <style>
-      @keyframes pulseGlow {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 0.6; transform: scale(1.08); }
-      }
-      .pulse-layer {
-        animation: pulseGlow 3s ease-in-out infinite;
-        transform-origin: 27px 20px;
-      }
-      .logo-text {
-        fill: #0f172a; /* Slate 900 default */
-      }
-      @media (prefers-color-scheme: dark) {
-        .logo-text {
-          fill: #f8fafc; /* Slate 50 for dark mode */
-        }
-      }
-    </style>
-  </defs>
-  
-  <!-- Pulse Effect (Animated Layer) -->
-  <rect class="pulse-layer" x="4" y="7.5" width="48" height="25" rx="5" fill="#60a5fa" opacity="0.3" filter="url(#glow)" />
-  
-  <!-- Badge Group -->
-  <g>
-    <!-- Main Badge Body -->
-    <rect x="5" y="8" width="46" height="24" rx="4" fill="url(#badgeGradient)" />
-    <!-- CCUS Text: Increased font size for better balance -->
-    <text x="28" y="24.5" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13.5" font-weight="900" fill="white" style="letter-spacing: 0.02em;">CCUS</text>
+  <g transform="translate(1 1)">
+    <path d="M5 23.5c8-4.2 17-4.2 25 0s17 4.2 25 0v7.2c-8 4.2-17 4.2-25 0s-17-4.2-25 0z" fill="#0f8f88"/>
+    <path d="M5 32.2c8-4.2 17-4.2 25 0s17 4.2 25 0v3.1C55 42.1 44 46 30 46S5 42.1 5 35.3z" fill="#083b66"/>
+    <circle cx="10" cy="10" r="8.5" fill="#083b66"/>
+    <text x="10" y="13" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7.4" font-weight="800" fill="#fff">CO₂</text>
+    <path d="M18.5 10h8.8a5.2 5.2 0 0 1 5.2 5.2v18.3" fill="none" stroke="#0f8f88" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m27.8 31.1 4.7 4.7 4.7-4.7" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="32.5" cy="39.4" rx="7" ry="2.6" fill="none" stroke="#fff" stroke-width="2.4"/>
   </g>
-  
-  <!-- Policy Hub Text: Slightly reduced font size to not overpower CCUS -->
-  <text x="60" y="25.5" class="logo-text" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="17.5" font-weight="900" style="letter-spacing: -0.03em;">Policy Hub</text>
+
+  <text x="67" y="23" class="word-primary" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="22" font-weight="850" letter-spacing="-0.7">CCUS</text>
+  <text x="67" y="39.5" class="word-secondary" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" letter-spacing="1.25">POLICY HUB</text>
 </svg>
