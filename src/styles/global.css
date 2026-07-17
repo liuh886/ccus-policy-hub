@@ -26,8 +26,10 @@
   --radius-control: 10px;
   --radius-card: 14px;
   --radius-panel: 18px;
-  --shadow-panel: 0 1px 2px rgb(4 31 51 / 0.04), 0 12px 30px rgb(4 31 51 / 0.07);
-  --shadow-hover: 0 2px 4px rgb(4 31 51 / 0.05), 0 18px 42px rgb(4 31 51 / 0.11);
+  --shadow-panel:
+    0 1px 2px rgb(4 31 51 / 0.04), 0 12px 30px rgb(4 31 51 / 0.07);
+  --shadow-hover:
+    0 2px 4px rgb(4 31 51 / 0.05), 0 18px 42px rgb(4 31 51 / 0.11);
   --content-standard: 1280px;
   --content-wide: 1440px;
 }
@@ -49,7 +51,14 @@
 html {
   scroll-behavior: smooth;
   background: var(--surface-page);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -57,7 +66,11 @@ html {
 body.site-shell {
   min-width: 320px;
   background:
-    radial-gradient(circle at 8% -12%, rgb(15 143 136 / 0.09), transparent 30rem),
+    radial-gradient(
+      circle at 8% -12%,
+      rgb(15 143 136 / 0.09),
+      transparent 30rem
+    ),
     radial-gradient(circle at 92% 4%, rgb(8 59 102 / 0.08), transparent 34rem),
     var(--surface-page);
   color: var(--text-primary);
@@ -109,7 +122,8 @@ textarea {
 
 a,
 button {
-  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-property:
+    color, background-color, border-color, box-shadow, transform, opacity;
   transition-duration: 180ms;
   transition-timing-function: ease;
 }
@@ -282,7 +296,9 @@ textarea:hover {
 
 .site-main .shadow-md,
 .site-main .shadow-sm {
-  box-shadow: 0 1px 2px rgb(4 31 51 / 0.05), 0 5px 16px rgb(4 31 51 / 0.045) !important;
+  box-shadow:
+    0 1px 2px rgb(4 31 51 / 0.05),
+    0 5px 16px rgb(4 31 51 / 0.045) !important;
 }
 
 .site-main .hover\:-translate-y-3:hover,
@@ -365,7 +381,11 @@ body:has(#facility-grid) .sticky.top-20 > div,
 body:has(#policy-grid) .site-main > div:first-child > div:has(#search-input) {
   border: 1px solid var(--border-subtle) !important;
   border-radius: var(--radius-panel) !important;
-  background: color-mix(in srgb, var(--surface-panel) 92%, transparent) !important;
+  background: color-mix(
+    in srgb,
+    var(--surface-panel) 92%,
+    transparent
+  ) !important;
   box-shadow: var(--shadow-panel) !important;
   backdrop-filter: blur(16px);
 }
@@ -380,24 +400,49 @@ body:has(#facility-grid) .group\/map-container {
 }
 
 /* Homepage hierarchy: preserve all data and interactions, reduce decorative excess. */
-body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(:has(#compare-container)) .site-main > div > header {
+body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
+    :has(#compare-container)
+  )
+  .site-main
+  > div
+  > header {
   max-width: 940px;
   margin-inline: auto;
   margin-bottom: 4.5rem !important;
 }
 
-body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(:has(#compare-container)) .site-main > div > header h1 {
+body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
+    :has(#compare-container)
+  )
+  .site-main
+  > div
+  > header
+  h1 {
   font-size: clamp(2.75rem, 6vw, 4.75rem) !important;
   font-weight: 800 !important;
 }
 
-body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(:has(#compare-container)) .site-main > div > header p {
+body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
+    :has(#compare-container)
+  )
+  .site-main
+  > div
+  > header
+  p {
   max-width: 48rem;
   font-size: clamp(1rem, 2vw, 1.2rem) !important;
 }
 
-body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(:has(#compare-container)) .site-main [class*='blur-[120px]'],
-body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(:has(#compare-container)) .site-main [class*='blur-3xl'] {
+body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
+    :has(#compare-container)
+  )
+  .site-main
+  [class*='blur-[120px]'],
+body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
+    :has(#compare-container)
+  )
+  .site-main
+  [class*='blur-3xl'] {
   opacity: 0.35;
 }
 
