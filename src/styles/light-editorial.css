@@ -1,0 +1,431 @@
+/*
+ * Light-first editorial direction.
+ * Dark mode remains intentionally close to the established intelligence UI.
+ */
+:root {
+  --surface-page: #f6f7f4;
+  --surface-panel: #ffffff;
+  --surface-subtle: #eef2ef;
+  --border-subtle: #dce4e3;
+  --border-strong: #c7d3d2;
+  --text-primary: #102a3a;
+  --text-secondary: #5f7078;
+  --text-muted: #839198;
+  --brand-navy-950: #052439;
+  --brand-navy-900: #07324f;
+  --brand-navy-800: #083f63;
+  --brand-navy-700: #0b5578;
+  --brand-teal-700: #086d68;
+  --brand-teal-600: #087f79;
+  --brand-teal-500: #16958d;
+  --brand-teal-100: #e5f3f0;
+  --radius-control: 9px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --shadow-panel:
+    0 1px 2px rgb(16 42 58 / 0.035), 0 8px 24px rgb(16 42 58 / 0.055);
+  --shadow-hover:
+    0 2px 4px rgb(16 42 58 / 0.045), 0 14px 34px rgb(16 42 58 / 0.085);
+}
+
+html:not(.dark) body.site-shell {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.72), transparent 28rem),
+    var(--surface-page);
+}
+
+html:not(.dark) .site-header {
+  border-bottom-color: rgb(199 211 210 / 0.8);
+  background: rgb(255 255 255 / 0.94);
+  box-shadow: 0 1px 0 rgb(16 42 58 / 0.025);
+  backdrop-filter: blur(14px) saturate(125%);
+}
+
+html:not(.dark) .site-nav-link {
+  border-radius: 0;
+  background: transparent;
+}
+
+html:not(.dark) .site-nav-link:hover {
+  background: transparent;
+  color: var(--brand-teal-700);
+}
+
+html:not(.dark) .site-nav-link[aria-current='page'] {
+  background: transparent;
+  color: var(--brand-navy-900);
+}
+
+html:not(.dark) .site-nav-link[aria-current='page']::after {
+  right: 0.75rem;
+  bottom: -0.05rem;
+  left: 0.75rem;
+  height: 2px;
+}
+
+html:not(.dark) .site-icon-button:hover {
+  border-color: var(--border-subtle);
+  background: #f4f7f5;
+}
+
+html:not(.dark) .site-main {
+  padding-top: 2.75rem;
+}
+
+html:not(.dark) .site-main h1,
+html:not(.dark) .site-main h2,
+html:not(.dark) .site-main h3 {
+  color: var(--text-primary);
+}
+
+/* Homepage hero: editorial, left aligned, and less promotional. */
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div.py-12 {
+  padding-top: 1.25rem;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header {
+  max-width: 68rem;
+  margin-right: auto;
+  margin-bottom: 4.75rem !important;
+  margin-left: 0;
+  text-align: left;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:first-child {
+  margin-right: 0;
+  margin-bottom: 1.5rem;
+  margin-left: 0;
+  border: 0;
+  border-left: 3px solid var(--brand-teal-600);
+  border-radius: 0;
+  padding: 0.2rem 0 0.2rem 0.75rem;
+  background: transparent;
+  box-shadow: none;
+  color: var(--brand-navy-700);
+  letter-spacing: 0.11em;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:first-child span {
+  display: none;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header h1 {
+  max-width: 64rem;
+  margin-bottom: 1.75rem !important;
+  font-size: clamp(3rem, 6.2vw, 5.65rem) !important;
+  font-weight: 760 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 1.01 !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header h1 span {
+  color: var(--brand-teal-700) !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header p {
+  max-width: 46rem;
+  margin-right: 0;
+  margin-bottom: 2.15rem !important;
+  margin-left: 0;
+  color: var(--text-secondary);
+  font-size: 1.075rem !important;
+  font-weight: 450;
+  line-height: 1.8;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:last-child {
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a {
+  border-radius: 10px !important;
+  padding: 0.85rem 1.2rem !important;
+  box-shadow: none !important;
+  font-size: 0.875rem;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a:first-child {
+  border: 1px solid var(--brand-navy-900);
+  background: var(--brand-navy-900) !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a:last-child {
+  border-color: var(--border-strong) !important;
+}
+
+/* Homepage capacity intelligence workspace. */
+html:not(.dark) [data-capacity-trend] {
+  margin-bottom: 6.5rem !important;
+  grid-template-columns: minmax(15rem, 0.82fr) minmax(0, 2.18fr) !important;
+  gap: 1.25rem !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child {
+  gap: 1rem;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > div,
+html:not(.dark) [data-capacity-trend] > div:last-child {
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-panel) !important;
+  background: var(--surface-panel) !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > div:first-child {
+  border-left: 4px solid var(--brand-teal-600) !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > div:first-child > div.absolute,
+html:not(.dark) [data-capacity-trend] > div:last-child > div.absolute {
+  opacity: 0.12 !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:first-child > div:nth-child(2) {
+  border-color: #cbd9dd !important;
+  background:
+    linear-gradient(145deg, #0a3958 0%, #0b4b66 58%, #0c656d 135%) !important;
+  color: white;
+}
+
+html:not(.dark) [data-capacity-trend] > div:last-child {
+  padding: 2rem !important;
+}
+
+html:not(.dark) [data-capacity-trend] > div:last-child > div:first-of-type {
+  align-items: flex-start;
+}
+
+html:not(.dark) [data-capacity-trend] > div:last-child h3 {
+  text-transform: none !important;
+  letter-spacing: -0.025em !important;
+}
+
+html:not(.dark) [data-capacity-trend] #timeRangeIndicator {
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: #f7f9f7;
+  box-shadow: none;
+  color: var(--brand-navy-800);
+}
+
+html:not(.dark) [data-capacity-trend] #timeRangeIndicator .animate-pulse {
+  animation: none;
+  color: var(--brand-teal-700);
+}
+
+html:not(.dark) [data-capacity-trend] .grid:has(#capacityTypeFilter) {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0.9rem !important;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.8rem;
+  border-color: var(--border-subtle) !important;
+  border-radius: 10px !important;
+  padding: 0.6rem 0.7rem !important;
+  background: #f7f9f7 !important;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter > div:first-child {
+  margin: 0;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter > .space-y-1\.5 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter label {
+  min-height: 30px;
+  gap: 0.4rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.32rem 0.65rem;
+  background: #ffffff;
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  font-weight: 650;
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter label:hover {
+  border-color: var(--brand-teal-500);
+  color: var(--brand-teal-700);
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter input {
+  width: 0.75rem;
+  height: 0.75rem;
+  accent-color: var(--brand-teal-600);
+}
+
+html:not(.dark) [data-capacity-trend] #capacityTypeFilter + div {
+  height: 340px !important;
+}
+
+html:not(.dark) [data-capacity-trend] p:last-child {
+  max-width: 72rem;
+  color: #718087;
+  line-height: 1.65;
+}
+
+/* Policy landscape section. */
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 {
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-panel) !important;
+  padding: 4rem 2.25rem !important;
+  background: #ffffff !important;
+  box-shadow: none;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > div:first-child {
+  max-width: 46rem;
+  margin-right: auto;
+  margin-bottom: 3rem !important;
+  margin-left: 0;
+  text-align: left;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > div:first-child > div {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 .animate-ping,
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 .animate-pulse {
+  animation: none;
+}
+
+/* Three value cards: remove HUD styling and use restrained editorial panels. */
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid {
+  gap: 1rem !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 4rem !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group {
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-card) !important;
+  padding: 2rem !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group:hover {
+  border-color: var(--border-strong) !important;
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group > div.absolute,
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > div:first-child {
+  display: none;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='mb-8'][class*='p-4'] {
+  margin-bottom: 1.5rem !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  padding: 0.7rem !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group h3 {
+  font-size: 1.25rem !important;
+  font-weight: 730 !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group p {
+  font-weight: 450 !important;
+  line-height: 1.75 !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='mt-8'][class*='pt-6'] {
+  margin-top: 1.75rem !important;
+  padding-top: 1rem !important;
+}
+
+html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='animate-pulse'] {
+  animation: none;
+}
+
+/* Research workspaces. */
+html:not(.dark) #policy-grid > .policy-item > div > a > article,
+html:not(.dark) #facility-grid > .facility-item > div > div {
+  border-color: var(--border-subtle) !important;
+  box-shadow: none !important;
+}
+
+html:not(.dark) #policy-grid > .policy-item > div > a > article:hover,
+html:not(.dark) #facility-grid > .facility-item > div > div:hover {
+  border-color: var(--brand-teal-500) !important;
+  box-shadow: var(--shadow-hover) !important;
+}
+
+html:not(.dark) body:has(#facility-grid) .sticky.top-20 > div,
+html:not(.dark) body:has(#policy-grid) .site-main > div:first-child > div:has(#search-input) {
+  background: rgb(255 255 255 / 0.96) !important;
+  box-shadow: 0 1px 2px rgb(16 42 58 / 0.04) !important;
+  backdrop-filter: blur(10px);
+}
+
+html:not(.dark) .site-footer {
+  background: #f0f3ef;
+}
+
+@media (max-width: 1023px) {
+  html:not(.dark) [data-capacity-trend] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html:not(.dark) [data-capacity-trend] > div:first-child {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header h1 {
+    font-size: clamp(2.75rem, 14vw, 4rem) !important;
+  }
+
+  html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:last-child {
+    align-items: stretch;
+  }
+
+  html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a {
+    width: 100%;
+    text-align: center;
+  }
+
+  html:not(.dark) [data-capacity-trend] > div:first-child {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  html:not(.dark) [data-capacity-trend] > div:last-child {
+    padding: 1.25rem !important;
+  }
+
+  html:not(.dark) [data-capacity-trend] #capacityTypeFilter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  html:not(.dark) [data-capacity-trend] #capacityTypeFilter + div {
+    height: 300px !important;
+  }
+
+  html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 {
+    padding: 2.5rem 1rem !important;
+  }
+}
