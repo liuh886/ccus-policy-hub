@@ -91,7 +91,12 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header {
   text-align: left;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:first-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  > div:first-child {
   margin-right: 0;
   margin-bottom: 1.5rem;
   margin-left: 0;
@@ -105,7 +110,13 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:
   letter-spacing: 0.11em;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:first-child span {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  > div:first-child
+  span {
   display: none;
 }
 
@@ -118,7 +129,13 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header h1 {
   line-height: 1.01 !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header h1 span {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  h1
+  span {
   color: var(--brand-teal-700) !important;
 }
 
@@ -133,7 +150,12 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header p {
   line-height: 1.8;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:last-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  > div:last-child {
   justify-content: flex-start;
   gap: 0.75rem;
 }
@@ -145,12 +167,22 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a {
   font-size: 0.875rem;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a:first-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  a:first-child {
   border: 1px solid var(--brand-navy-900);
   background: var(--brand-navy-900) !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header a:last-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > header
+  a:last-child {
   border-color: var(--border-strong) !important;
 }
 
@@ -177,15 +209,23 @@ html:not(.dark) [data-capacity-trend] > div:first-child > div:first-child {
   border-left: 4px solid var(--brand-teal-600) !important;
 }
 
-html:not(.dark) [data-capacity-trend] > div:first-child > div:first-child > div.absolute,
+html:not(.dark)
+  [data-capacity-trend]
+  > div:first-child
+  > div:first-child
+  > div.absolute,
 html:not(.dark) [data-capacity-trend] > div:last-child > div.absolute {
   opacity: 0.12 !important;
 }
 
 html:not(.dark) [data-capacity-trend] > div:first-child > div:nth-child(2) {
   border-color: #cbd9dd !important;
-  background:
-    linear-gradient(145deg, #0a3958 0%, #0b4b66 58%, #0c656d 135%) !important;
+  background: linear-gradient(
+    145deg,
+    #0a3958 0%,
+    #0b4b66 58%,
+    #0c656d 135%
+  ) !important;
   color: white;
 }
 
@@ -285,7 +325,12 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 {
   box-shadow: none;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > div:first-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.mb-24
+  > div:first-child {
   max-width: 46rem;
   margin-right: auto;
   margin-bottom: 3rem !important;
@@ -293,7 +338,13 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > d
   text-align: left;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > div:first-child > div {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.mb-24
+  > div:first-child
+  > div {
   border: 0;
   border-radius: 0;
   padding: 0;
@@ -301,19 +352,38 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 > d
   box-shadow: none;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 .animate-ping,
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.mb-24 .animate-pulse {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.mb-24
+  .animate-ping,
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.mb-24
+  .animate-pulse {
   animation: none;
 }
 
 /* Three value cards: remove HUD styling and use restrained editorial panels. */
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid {
   gap: 1rem !important;
   padding-top: 1.5rem !important;
   padding-bottom: 4rem !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group {
   border: 1px solid var(--border-subtle) !important;
   border-radius: var(--radius-card) !important;
   padding: 2rem !important;
@@ -322,18 +392,40 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.gri
   backdrop-filter: none;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group:hover {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group:hover {
   border-color: var(--border-strong) !important;
   box-shadow: var(--shadow-hover) !important;
   transform: translateY(-2px) !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group > div.absolute,
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > div:first-child {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  > div.absolute,
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > div:first-child {
   display: none;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='mb-8'][class*='p-4'] {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  [class*='mb-8'][class*='p-4'] {
   margin-bottom: 1.5rem !important;
   border: 0 !important;
   border-radius: 10px !important;
@@ -341,22 +433,46 @@ html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.gri
   box-shadow: none !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group h3 {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  h3 {
   font-size: 1.25rem !important;
   font-weight: 730 !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group p {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  p {
   font-weight: 450 !important;
   line-height: 1.75 !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='mt-8'][class*='pt-6'] {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  [class*='mt-8'][class*='pt-6'] {
   margin-top: 1.75rem !important;
   padding-top: 1rem !important;
 }
 
-html:not(.dark) body:has([data-capacity-trend]) .site-main > div > div.py-24.grid > .group [class*='animate-pulse'] {
+html:not(.dark)
+  body:has([data-capacity-trend])
+  .site-main
+  > div
+  > div.py-24.grid
+  > .group
+  [class*='animate-pulse'] {
   animation: none;
 }
 
@@ -374,7 +490,11 @@ html:not(.dark) #facility-grid > .facility-item > div > div:hover {
 }
 
 html:not(.dark) body:has(#facility-grid) .sticky.top-20 > div,
-html:not(.dark) body:has(#policy-grid) .site-main > div:first-child > div:has(#search-input) {
+html:not(.dark)
+  body:has(#policy-grid)
+  .site-main
+  > div:first-child
+  > div:has(#search-input) {
   background: rgb(255 255 255 / 0.96) !important;
   box-shadow: 0 1px 2px rgb(16 42 58 / 0.04) !important;
   backdrop-filter: blur(10px);
@@ -400,7 +520,12 @@ html:not(.dark) .site-footer {
     font-size: clamp(2.75rem, 14vw, 4rem) !important;
   }
 
-  html:not(.dark) body:has([data-capacity-trend]) .site-main > div > header > div:last-child {
+  html:not(.dark)
+    body:has([data-capacity-trend])
+    .site-main
+    > div
+    > header
+    > div:last-child {
     align-items: stretch;
   }
 
