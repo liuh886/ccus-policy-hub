@@ -1,25 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" role="img" aria-labelledby="logoTitle logoDesc">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 220 48"
+  role="img"
+  aria-labelledby="logoTitle logoDesc"
+>
   <title id="logoTitle">CCUS Policy Hub</title>
-  <desc id="logoDesc">A simplified carbon pathway entering geological storage layers beside the CCUS Policy Hub wordmark.</desc>
+  <desc id="logoDesc">
+    A simplified carbon pathway entering geological storage layers beside the
+    CCUS Policy Hub wordmark.
+  </desc>
   <style>
-    .word-primary { fill: #082f49; }
-    .word-secondary { fill: #0f8f88; }
+    .word-primary {
+      fill: #082f49;
+    }
+    .word-secondary {
+      fill: #0f8f88;
+    }
     @media (prefers-color-scheme: dark) {
-      .word-primary { fill: #f8fafc; }
-      .word-secondary { fill: #5eead4; }
+      .word-primary {
+        fill: #f8fafc;
+      }
+      .word-secondary {
+        fill: #5eead4;
+      }
     }
   </style>
 
   <g transform="translate(1 1)">
-    <path d="M5 23.5c8-4.2 17-4.2 25 0s17 4.2 25 0v7.2c-8 4.2-17 4.2-25 0s-17-4.2-25 0z" fill="#0f8f88"/>
-    <path d="M5 32.2c8-4.2 17-4.2 25 0s17 4.2 25 0v3.1C55 42.1 44 46 30 46S5 42.1 5 35.3z" fill="#083b66"/>
-    <circle cx="10" cy="10" r="8.5" fill="#083b66"/>
-    <text x="10" y="13" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="7.4" font-weight="800" fill="#fff">CO₂</text>
-    <path d="M18.5 10h8.8a5.2 5.2 0 0 1 5.2 5.2v18.3" fill="none" stroke="#0f8f88" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="m27.8 31.1 4.7 4.7 4.7-4.7" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-    <ellipse cx="32.5" cy="39.4" rx="7" ry="2.6" fill="none" stroke="#fff" stroke-width="2.4"/>
+    <path
+      d="M5 23.5c8-4.2 17-4.2 25 0s17 4.2 25 0v7.2c-8 4.2-17 4.2-25 0s-17-4.2-25 0z"
+      fill="#0f8f88"
+    />
+    <path
+      d="M5 32.2c8-4.2 17-4.2 25 0s17 4.2 25 0v3.1C55 42.1 44 46 30 46S5 42.1 5 35.3z"
+      fill="#083b66"
+    />
+    <circle cx="10" cy="10" r="8.5" fill="#083b66" />
+    <text
+      x="10"
+      y="13"
+      text-anchor="middle"
+      font-family="Inter, system-ui, sans-serif"
+      font-size="7.4"
+      font-weight="800"
+      fill="#fff"
+    >
+      CO₂
+    </text>
+    <path
+      d="M18.5 10h8.8a5.2 5.2 0 0 1 5.2 5.2v18.3"
+      fill="none"
+      stroke="#0f8f88"
+      stroke-width="3.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="m27.8 31.1 4.7 4.7 4.7-4.7"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <ellipse
+      cx="32.5"
+      cy="39.4"
+      rx="7"
+      ry="2.6"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2.4"
+    />
   </g>
 
-  <text x="67" y="23" class="word-primary" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="22" font-weight="850" letter-spacing="-0.7">CCUS</text>
-  <text x="67" y="39.5" class="word-secondary" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" letter-spacing="1.25">POLICY HUB</text>
+  <text
+    x="67"
+    y="23"
+    class="word-primary"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-size="22"
+    font-weight="850"
+    letter-spacing="-0.7"
+  >
+    CCUS
+  </text>
+  <text
+    x="67"
+    y="39.5"
+    class="word-secondary"
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-size="14"
+    font-weight="800"
+    letter-spacing="1.25"
+  >
+    POLICY HUB
+  </text>
 </svg>
