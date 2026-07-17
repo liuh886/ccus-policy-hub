@@ -1,18 +1,16 @@
 ---
 import { languages } from '../i18n/ui';
 const currentLang = Astro.currentLocale || 'zh';
-
-// 动态计算当前页面的路径，以便切换时保留
 const pathname = Astro.url.pathname;
 const BASE = '/ccus-policy-hub';
 ---
 
 <div
-  class="flex items-center gap-1 bg-slate-50 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700"
+  class="flex h-10 items-center gap-0.5 rounded-[10px] border border-slate-200 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-800"
+  aria-label="Language selector"
 >
   {
     Object.entries(languages).map(([lang, label]) => {
-      // 计算跳转路径
       let href = pathname;
       const pathWithoutBase =
         (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname) ||
@@ -21,26 +19,25 @@ const BASE = '/ccus-policy-hub';
       if (lang === 'en') {
         if (!pathWithoutBase.startsWith('/en')) {
           href = `${BASE}/en${pathWithoutBase === '/' ? '/' : pathWithoutBase}`;
-          // Ensure ends with slash
           if (!href.endsWith('/')) href += '/';
         }
+      } else if (pathWithoutBase.startsWith('/en')) {
+        href = `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`;
+        if (!href.endsWith('/')) href += '/';
       } else {
-        if (pathWithoutBase.startsWith('/en')) {
-          href = `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`;
-          if (!href.endsWith('/')) href += '/';
-        } else {
-          href = `${BASE}${pathWithoutBase}`;
-          if (!href.endsWith('/')) href += '/';
-        }
+        href = `${BASE}${pathWithoutBase}`;
+        if (!href.endsWith('/')) href += '/';
       }
 
       return (
         <a
           href={href}
-          class={`text-[10px] font-bold px-2 py-1 rounded-lg transition-all ${
+          lang={lang}
+          aria-current={currentLang === lang ? 'true' : undefined}
+          class={`inline-flex h-8 min-w-8 items-center justify-center rounded-md px-2 text-[10px] font-bold uppercase tracking-[0.08em] transition-all ${
             currentLang === lang
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-500 hover:text-blue-600'
+              ? 'bg-white text-teal-700 shadow-sm dark:bg-slate-700 dark:text-teal-300'
+              : 'text-slate-500 hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300'
           }`}
         >
           {label}
