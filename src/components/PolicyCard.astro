@@ -26,15 +26,12 @@ const {
   analysis,
 } = policy.data;
 
-// Normalize and translate country
 const dictCountries: Record<string, string> = i18nDict.countries;
 const canonicalCountry = dictCountries[rawCountry] || rawCountry;
 const country =
   (countryData as any)[canonicalCountry]?.[lang] || canonicalCountry;
 
-// implementationDetails might be in legacy data
 const implementationDetails = (policy.data as any).implementationDetails;
-
 const isEn = lang === 'en';
 const isVerified = reviewStatus === 'verified';
 const pureSlug = policy.id;
@@ -51,7 +48,6 @@ const t = (key: string) => {
   return dict[key] || key;
 };
 
-// FSRTM Dimension Config
 const dimensions = [
   { key: 'incentive', icon: 'I', color: 'bg-emerald-500' },
   { key: 'statutory', icon: 'R', color: 'bg-blue-500' },
@@ -65,21 +61,20 @@ const activeDimensions = dimensions.filter(
 );
 ---
 
-<div class="relative group h-full">
+<div class="group relative h-full">
   <a href={href} class="block h-full">
-    <article
-      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 transition-all h-full flex flex-col relative overflow-hidden shadow-sm hover:shadow-md"
-    >
-      <div class="flex justify-between items-start mb-3">
-        <div class="flex gap-2 items-center">
-          <span
-            class="text-[10px] font-black uppercase tracking-wider text-slate-500 border border-slate-200 dark:border-slate-800 px-2 py-0.5 rounded"
-          >
+    <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-teal-500/60 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+      <div class="mb-4 flex items-start justify-between gap-4 pr-8">
+        <div class="flex min-w-0 flex-wrap items-center gap-2">
+          <span class="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
             {displayCategory}
           </span>
           {
             isVerified && (
-              <span class="text-emerald-600 dark:text-emerald-500">
+              <span
+                class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                title={isEn ? 'Verified record' : '已核验记录'}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="12"
@@ -93,98 +88,103 @@ const activeDimensions = dimensions.filter(
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
+                {isEn ? 'Verified' : '已核验'}
               </span>
             )
           }
         </div>
-        <span class="text-[10px] font-medium text-slate-400 mr-8">{status}</span
-        >
+        <span class="shrink-0 text-[11px] font-medium text-slate-400">{status}</span>
       </div>
 
-      <h3
-        class="text-lg font-bold text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-blue-600 transition-colors"
-      >
+      <h3 class="mb-3 text-lg font-bold leading-snug text-slate-900 transition-colors group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
         {title}
       </h3>
 
-      <div class="flex items-center gap-3 text-xs text-slate-500 mb-4">
-        <span class="font-bold text-slate-700 dark:text-slate-300"
-          >{country}</span
-        >
-        <span class="text-slate-300">•</span>
+      <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+        <span class="font-semibold text-slate-700 dark:text-slate-300">{country}</span>
+        <span aria-hidden="true" class="text-slate-300 dark:text-slate-700">/</span>
         <span>{year}</span>
+        {
+          sectors.length > 0 && (
+            <>
+              <span aria-hidden="true" class="text-slate-300 dark:text-slate-700">/</span>
+              <span class="truncate">{sectors.slice(0, 2).join(', ')}</span>
+            </>
+          )
+        }
       </div>
 
-      <p
-        class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-6 leading-relaxed"
-      >
+      <p class="mb-6 line-clamp-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
         {description}
       </p>
 
-      <div class="flex-1"></div>
+      <div class="mt-auto border-t border-slate-100 pt-4 dark:border-slate-800">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <div class="mb-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400">
+              FSRTM dimensions
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              {
+                activeDimensions.map((d) => (
+                  <span
+                    class="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-slate-200 bg-slate-50 px-1.5 text-[9px] font-black text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                    title={t(`dimensions.${d.key}`)}
+                  >
+                    <span class={`mr-1 h-1.5 w-1.5 rounded-full ${d.color}`} />
+                    {d.icon}
+                  </span>
+                ))
+              }
+              {
+                activeDimensions.length === 0 && (
+                  <span class="text-[10px] italic text-slate-400">Core baseline</span>
+                )
+              }
+            </div>
+          </div>
 
-      <!-- Integrated Classification Badges -->
-      <div
-        class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800"
-      >
-        <div class="flex gap-1.5">
           {
-            activeDimensions.map((d) => (
-              <div
-                class={`w-5 h-5 rounded flex items-center justify-center text-[9px] font-black text-white ${d.color} shadow-sm`}
-                title={t(`dimensions.${d.key}`)}
-              >
-                {d.icon}
+            implementationDetails?.fundingScale && (
+              <div class="max-w-[42%] text-right">
+                <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                  {isEn ? 'Funding scale' : '资金规模'}
+                </div>
+                <div class="mt-1 truncate text-[11px] font-semibold text-teal-700 dark:text-teal-300">
+                  {implementationDetails.fundingScale}
+                </div>
               </div>
-            ))
-          }
-          {
-            activeDimensions.length === 0 && (
-              <span class="text-[10px] text-slate-400 italic">
-                Core baseline
-              </span>
             )
-          }
-        </div>
-
-        <div
-          class="text-[10px] font-bold text-slate-400 uppercase tracking-widest"
-        >
-          {
-            implementationDetails?.fundingScale
-              ? 'Scale: ' + implementationDetails.fundingScale
-              : ''
           }
         </div>
       </div>
     </article>
   </a>
 
-  <!-- Compare Checkbox -->
-  <div class="absolute top-5 right-5 z-10">
-    <label class="relative inline-flex items-center cursor-pointer group/cb">
+  <div class="absolute right-5 top-5 z-10">
+    <label class="group/cb relative inline-flex cursor-pointer items-center">
       <input
         type="checkbox"
-        class="sr-only peer compare-checkbox"
+        class="peer sr-only compare-checkbox"
         data-id={policy.id}
+        aria-label={isEn ? `Compare ${title}` : `对比 ${title}`}
       />
-      <div
-        class="w-5 h-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded peer peer-checked:bg-blue-600 peer-checked:border-blue-600 transition-all shadow-sm flex items-center justify-center overflow-hidden"
-      >
+      <span class="flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border-2 border-slate-200 bg-white shadow-sm transition-all peer-checked:border-teal-700 peer-checked:bg-teal-700 dark:border-slate-700 dark:bg-slate-800">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="12"
-          height="12"
+          width="13"
+          height="13"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"
           stroke-width="4"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="opacity-0 peer-checked:opacity-100 transition-opacity"
-          ><polyline points="20 6 9 17 4 12"></polyline></svg
+          class="opacity-0 transition-opacity peer-checked:opacity-100"
         >
-      </div>
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </span>
     </label>
   </div>
 </div>
