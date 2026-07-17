@@ -25,10 +25,8 @@
   --radius-control: 10px;
   --radius-card: 14px;
   --radius-panel: 18px;
-  --shadow-panel:
-    0 1px 2px rgb(0 0 0 / 0.24), 0 16px 40px rgb(0 0 0 / 0.2);
-  --shadow-hover:
-    0 2px 5px rgb(0 0 0 / 0.28), 0 22px 50px rgb(0 0 0 / 0.28);
+  --shadow-panel: 0 1px 2px rgb(0 0 0 / 0.24), 0 16px 40px rgb(0 0 0 / 0.2);
+  --shadow-hover: 0 2px 5px rgb(0 0 0 / 0.28), 0 22px 50px rgb(0 0 0 / 0.28);
 }
 
 html:not(.dark) [data-capacity-trend] > div:first-child > section,
