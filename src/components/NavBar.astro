@@ -9,6 +9,7 @@ const t = (key: keyof (typeof ui)['zh']) =>
 
 const BASE = '/ccus-policy-hub';
 const prefix = lang === 'zh' ? BASE : `${BASE}/${lang}`;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const navItems = [
   { name: t('nav.home'), href: `${prefix}/` },
@@ -16,122 +17,119 @@ const navItems = [
   { name: t('nav.map'), href: `${prefix}/facilities/` },
   { name: t('nav.compare'), href: `${prefix}/compare/` },
   { name: t('nav.docs'), href: `${prefix}/docs/` },
-];
+].map((item) => {
+  const normalizedHref = item.href.replace(/\/$/, '');
+  const homePath = prefix.replace(/\/$/, '');
+  const active =
+    normalizedHref === homePath
+      ? currentPath === homePath
+      : currentPath === normalizedHref || currentPath.startsWith(`${normalizedHref}/`);
+  return { ...item, active };
+});
 ---
 
-<header
-  class="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-md dark:border-slate-800 transition-colors"
->
-  <div class="container mx-auto flex h-16 items-center justify-between px-4">
-    <div class="flex items-center gap-2">
-      <a
-        href={`${prefix}/`}
-        class="flex items-center group overflow-hidden h-10 w-[55px] md:w-[220px] transition-all duration-300 hover:scale-[1.02] active:scale-95"
-      >
-        <img
-          src={`${BASE}/logo_optimized.svg`}
-          alt="CCUS Policy Hub"
-          class="h-10 max-w-none"
-        />
-      </a>
-    </div>
+<header class="site-header">
+  <div class="site-nav-shell flex items-center justify-between gap-5">
+    <a href={`${prefix}/`} class="site-logo" aria-label="CCUS Policy Hub home">
+      <img src={`${BASE}/logo_optimized.svg`} alt="CCUS Policy Hub" />
+    </a>
 
-    <nav class="hidden md:flex items-center gap-6">
+    <nav class="hidden md:flex items-center gap-1" aria-label="Primary navigation">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="site-nav-link"
+            aria-current={item.active ? 'page' : undefined}
           >
             {item.name}
           </a>
         ))
       }
-      <div
-        class="flex items-center gap-2 border-l pl-4 ml-4 dark:border-slate-700"
-      >
+      <div class="ml-3 flex items-center gap-1 border-l border-slate-200 pl-3 dark:border-slate-700">
         <a
           href={`${prefix}/search/`}
-          class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors dark:text-slate-300"
+          class="site-icon-button"
+          aria-label={t('nav.search')}
+          title={t('nav.search')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="19"
+            height="19"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
-            ></path></svg
           >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
         </a>
         <LanguagePicker />
         <ThemeToggle />
       </div>
     </nav>
 
-    <button id="mobile-menu-toggle" class="md:hidden p-2 dark:text-white">
+    <button
+      id="mobile-menu-toggle"
+      class="site-icon-button md:hidden"
+      type="button"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="23"
+        height="23"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        ><line x1="3" x2="21" y1="6" y2="6"></line><line
-          x1="3"
-          x2="21"
-          y1="12"
-          y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
       >
+        <line x1="4" x2="20" y1="7" y2="7"></line>
+        <line x1="4" x2="20" y1="12" y2="12"></line>
+        <line x1="4" x2="20" y1="17" y2="17"></line>
+      </svg>
     </button>
   </div>
 
-  <!-- Mobile Menu Overlay -->
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden absolute top-16 left-0 w-full bg-white dark:bg-slate-900 border-b dark:border-slate-800 shadow-lg"
-  >
-    <nav class="flex flex-col p-4 gap-4">
+  <div id="mobile-menu" class="site-mobile-menu hidden md:hidden">
+    <nav class="mx-auto flex max-w-screen-xl flex-col gap-1 p-4" aria-label="Mobile navigation">
       {
         navItems.map((item) => (
           <a
             href={item.href}
-            class="text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 px-2 py-1"
+            class="site-nav-link w-full justify-between"
+            aria-current={item.active ? 'page' : undefined}
           >
             {item.name}
+            {item.active && <span class="h-1.5 w-1.5 rounded-full bg-teal-600" />}
           </a>
         ))
       }
-      <div
-        class="flex items-center justify-between border-t pt-4 dark:border-slate-800"
-      >
-        <a
-          href={`${prefix}/search/`}
-          class="flex items-center gap-2 text-slate-600 dark:text-slate-300"
-        >
+      <div class="mt-3 flex items-center justify-between border-t border-slate-200 pt-4 dark:border-slate-700">
+        <a href={`${prefix}/search/`} class="site-nav-link gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="19"
+            height="19"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
-            ></path></svg
           >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
           {t('nav.search')}
         </a>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
           <LanguagePicker />
           <ThemeToggle />
         </div>
@@ -142,11 +140,34 @@ const navItems = [
 
 <script>
   if (!(window as any).__ccusNavBarBound) {
+    const closeMobileMenu = () => {
+      const menu = document.getElementById('mobile-menu');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      menu?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    };
+
     document.addEventListener('click', (event) => {
       const target = event.target as HTMLElement | null;
-      if (!target?.closest('#mobile-menu-toggle')) return;
-      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      const toggle = target?.closest('#mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const button = document.getElementById('mobile-menu-toggle');
+
+      if (toggle) {
+        const willOpen = menu?.classList.contains('hidden') ?? true;
+        menu?.classList.toggle('hidden');
+        button?.setAttribute('aria-expanded', String(willOpen));
+        return;
+      }
+
+      if (target?.closest('#mobile-menu a')) closeMobileMenu();
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    });
+
+    document.addEventListener('astro:after-swap', closeMobileMenu);
     (window as any).__ccusNavBarBound = true;
   }
 </script>
