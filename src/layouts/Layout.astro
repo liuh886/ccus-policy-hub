@@ -25,6 +25,7 @@ import SEO from '../components/SEO.astro';
 import CompareDrawer from '../components/CompareDrawer.astro';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
+import '../styles/interaction-controls.css';
 ---
 
 <!doctype html>
@@ -32,42 +33,66 @@ import '../styles/global.css';
   <head>
     <SEO title={title} description={description} keywords={keywords} />
     <ClientRouter />
-    <meta
-      name="theme-color"
-      content="#f4f7f9"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#071724"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta id="site-theme-color" name="theme-color" content="#f6f7f4" />
     <script is:inline>
-      const getTheme = () => {
-        if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
-        ) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      };
+      (() => {
+        const STORAGE_KEY = 'theme';
+        const preferences = new Set(['system', 'light', 'dark']);
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
 
-      const setTheme = () => {
-        const theme = getTheme();
-        if (theme === 'light') {
-          document.documentElement.classList.remove('dark');
-        } else {
-          document.documentElement.classList.add('dark');
-        }
-        window.localStorage.setItem('theme', theme);
-      };
+        const getPreference = () => {
+          const stored = window.localStorage.getItem(STORAGE_KEY);
+          return preferences.has(stored) ? stored : 'system';
+        };
 
-      setTheme();
-      document.addEventListener('astro:after-swap', setTheme);
+        const resolveTheme = (preference) =>
+          preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+
+        const applyPreference = (preference, notify = true) => {
+          const normalized = preferences.has(preference) ? preference : 'system';
+          const resolved = resolveTheme(normalized);
+          document.documentElement.classList.toggle('dark', resolved === 'dark');
+          document.documentElement.dataset.themePreference = normalized;
+          document.documentElement.dataset.themeResolved = resolved;
+
+          const meta = document.getElementById('site-theme-color');
+          if (meta) meta.setAttribute('content', resolved === 'dark' ? '#071724' : '#f6f7f4');
+
+          if (notify) {
+            window.dispatchEvent(
+              new CustomEvent('ccus:themechange', {
+                detail: { preference: normalized, resolved },
+              })
+            );
+          }
+          return resolved;
+        };
+
+        const setPreference = (preference) => {
+          const normalized = preferences.has(preference) ? preference : 'system';
+          window.localStorage.setItem(STORAGE_KEY, normalized);
+          applyPreference(normalized);
+        };
+
+        window.__ccusThemeManager = {
+          getPreference,
+          resolveTheme,
+          applyPreference,
+          setPreference,
+        };
+
+        applyPreference(getPreference(), false);
+
+        if (!window.__ccusThemeManagerBound) {
+          media.addEventListener('change', () => {
+            if (getPreference() === 'system') applyPreference('system');
+          });
+          document.addEventListener('astro:after-swap', () => {
+            applyPreference(getPreference());
+          });
+          window.__ccusThemeManagerBound = true;
+        }
+      })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -97,5 +122,50 @@ import '../styles/global.css';
     </main>
     {!hideCompareDrawer && <CompareDrawer lang={lang as 'zh' | 'en'} />}
     <Footer lang={lang as string} />
+
+    <script is:inline>
+      (() => {
+        const configureRangeControls = () => {
+          const minSlider = document.getElementById('minYearSlider');
+          const maxSlider = document.getElementById('maxYearSlider');
+          const isEnglish = document.documentElement.lang === 'en';
+
+          minSlider?.setAttribute(
+            'aria-label',
+            isEnglish ? 'Minimum year in active range' : '有效时间范围起始年份'
+          );
+          maxSlider?.setAttribute(
+            'aria-label',
+            isEnglish ? 'Maximum year in active range' : '有效时间范围结束年份'
+          );
+        };
+
+        if (!window.__ccusRangeLayerBound) {
+          const activateRangeThumb = (target) => {
+            if (!(target instanceof HTMLElement)) return;
+            if (target.id !== 'minYearSlider' && target.id !== 'maxYearSlider') return;
+
+            const root = target.closest('[data-capacity-trend]') || document;
+            const minSlider = root.querySelector('#minYearSlider');
+            const maxSlider = root.querySelector('#maxYearSlider');
+            if (!(minSlider instanceof HTMLElement) || !(maxSlider instanceof HTMLElement)) return;
+
+            minSlider.style.zIndex = target === minSlider ? '34' : '31';
+            maxSlider.style.zIndex = target === maxSlider ? '34' : '32';
+          };
+
+          document.addEventListener('pointerdown', (event) => {
+            activateRangeThumb(event.target);
+          });
+          document.addEventListener('focusin', (event) => {
+            activateRangeThumb(event.target);
+          });
+          document.addEventListener('astro:page-load', configureRangeControls);
+          window.__ccusRangeLayerBound = true;
+        }
+
+        configureRangeControls();
+      })();
+    </script>
   </body>
 </html>
