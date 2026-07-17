@@ -1,105 +1,279 @@
 ---
-
+const lang = Astro.currentLocale === 'en' ? 'en' : 'zh';
+const labels =
+  lang === 'en'
+    ? {
+        trigger: 'Appearance',
+        title: 'Appearance',
+        system: 'Use system setting',
+        light: 'Light',
+        dark: 'Dark',
+      }
+    : {
+        trigger: '外观设置',
+        title: '外观',
+        system: '跟随系统',
+        light: '浅色',
+        dark: '深色',
+      };
 ---
 
-<button
-  type="button"
-  data-theme-toggle
-  class="site-icon-button"
-  aria-label="Toggle dark mode"
-  title="Toggle dark mode"
->
-  <svg
-    data-theme-icon="sun"
-    class="hidden"
-    xmlns="http://www.w3.org/2000/svg"
-    width="19"
-    height="19"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+<div class="theme-control" data-appearance-control>
+  <button
+    type="button"
+    class="site-icon-button"
+    data-appearance-toggle
+    aria-label={labels.trigger}
+    title={labels.trigger}
+    aria-haspopup="menu"
+    aria-expanded="false"
   >
-    <circle cx="12" cy="12" r="4"></circle>
-    <path d="M12 2v2"></path>
-    <path d="M12 20v2"></path>
-    <path d="m4.93 4.93 1.41 1.41"></path>
-    <path d="m17.66 17.66 1.41 1.41"></path>
-    <path d="M2 12h2"></path>
-    <path d="M20 12h2"></path>
-    <path d="m6.34 17.66-1.41 1.41"></path>
-    <path d="m19.07 4.93-1.41 1.41"></path>
-  </svg>
-  <svg
-    data-theme-icon="moon"
-    class="hidden"
-    xmlns="http://www.w3.org/2000/svg"
-    width="19"
-    height="19"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-  </svg>
-</button>
+    <svg
+      class="theme-trigger-icon"
+      data-theme-trigger-icon="system"
+      xmlns="http://www.w3.org/2000/svg"
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <rect width="18" height="12" x="3" y="4" rx="2"></rect>
+      <path d="M8 20h8"></path>
+      <path d="M12 16v4"></path>
+    </svg>
+    <svg
+      class="theme-trigger-icon"
+      data-theme-trigger-icon="light"
+      xmlns="http://www.w3.org/2000/svg"
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2"></path>
+      <path d="M12 20v2"></path>
+      <path d="m4.93 4.93 1.41 1.41"></path>
+      <path d="m17.66 17.66 1.41 1.41"></path>
+      <path d="M2 12h2"></path>
+      <path d="M20 12h2"></path>
+      <path d="m6.34 17.66-1.41 1.41"></path>
+      <path d="m19.07 4.93-1.41 1.41"></path>
+    </svg>
+    <svg
+      class="theme-trigger-icon"
+      data-theme-trigger-icon="dark"
+      xmlns="http://www.w3.org/2000/svg"
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>
+  </button>
+
+  <div class="theme-menu" data-appearance-menu role="menu" hidden>
+    <div class="theme-menu-title">{labels.title}</div>
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="system"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <rect width="18" height="12" x="3" y="4" rx="2"></rect>
+        <path d="M8 20h8"></path>
+        <path d="M12 16v4"></path>
+      </svg>
+      <span>{labels.system}</span>
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
+        <path d="m5 12 4 4L19 6"></path>
+      </svg>
+    </button>
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="light"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        ></path>
+      </svg>
+      <span>{labels.light}</span>
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
+        <path d="m5 12 4 4L19 6"></path>
+      </svg>
+    </button>
+    <button
+      class="theme-option"
+      type="button"
+      role="menuitemradio"
+      data-theme-option="dark"
+    >
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+      </svg>
+      <span>{labels.dark}</span>
+      <svg
+        class="theme-option-check"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        aria-hidden="true"
+      >
+        <path d="m5 12 4 4L19 6"></path>
+      </svg>
+    </button>
+  </div>
+</div>
 
 <script>
-  const STORAGE_KEY = 'theme';
+  type ThemePreference = 'system' | 'light' | 'dark';
 
-  const getPreferredTheme = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') as string;
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+  const closeAppearanceMenus = (except?: Element | null) => {
+    document
+      .querySelectorAll('[data-appearance-control]')
+      .forEach((control) => {
+        if (control === except) return;
+        const menu = control.querySelector<HTMLElement>(
+          '[data-appearance-menu]'
+        );
+        const toggle = control.querySelector<HTMLElement>(
+          '[data-appearance-toggle]'
+        );
+        if (menu) menu.hidden = true;
+        toggle?.setAttribute('aria-expanded', 'false');
+      });
   };
 
-  const applyTheme = (theme: string) => {
-    document.documentElement.classList.toggle('dark', theme !== 'light');
-    window.localStorage.setItem(STORAGE_KEY, theme);
+  const updateAppearanceControls = () => {
+    const manager = (window as any).__ccusThemeManager;
+    const preference: ThemePreference = manager?.getPreference?.() || 'system';
+
+    document
+      .querySelectorAll('[data-appearance-control]')
+      .forEach((control) => {
+        control
+          .querySelectorAll<HTMLElement>('[data-theme-trigger-icon]')
+          .forEach((icon) => {
+            icon.dataset.active = String(
+              icon.dataset.themeTriggerIcon === preference
+            );
+          });
+
+        control
+          .querySelectorAll<HTMLElement>('[data-theme-option]')
+          .forEach((option) => {
+            const selected = option.dataset.themeOption === preference;
+            option.dataset.selected = String(selected);
+            option.setAttribute('aria-checked', String(selected));
+          });
+      });
   };
 
-  const updateIcons = () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    document.querySelectorAll('[data-theme-toggle]').forEach((toggle) => {
-      toggle
-        .querySelector('[data-theme-icon="sun"]')
-        ?.classList.toggle('hidden', !isDark);
-      toggle
-        .querySelector('[data-theme-icon="moon"]')
-        ?.classList.toggle('hidden', isDark);
-    });
-  };
-
-  const handleToggleClick = () => {
-    const element = document.documentElement;
-    element.classList.toggle('dark');
-
-    const isDark = element.classList.contains('dark');
-    localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
-    updateIcons();
-  };
-
-  const theme = getPreferredTheme();
-  applyTheme(theme);
-
-  if (!(window as any).__ccusThemeToggleBound) {
+  if (!(window as any).__ccusAppearanceBound) {
     document.addEventListener('click', (event) => {
       const target = event.target as HTMLElement | null;
-      if (!target?.closest('[data-theme-toggle]')) return;
-      handleToggleClick();
+      const option = target?.closest<HTMLElement>('[data-theme-option]');
+
+      if (option) {
+        const preference = option.dataset.themeOption as ThemePreference;
+        const manager = (window as any).__ccusThemeManager;
+        manager?.setPreference?.(preference);
+        closeAppearanceMenus();
+        updateAppearanceControls();
+        return;
+      }
+
+      const toggle = target?.closest<HTMLElement>('[data-appearance-toggle]');
+      if (toggle) {
+        const control = toggle.closest('[data-appearance-control]');
+        const menu = control?.querySelector<HTMLElement>(
+          '[data-appearance-menu]'
+        );
+        if (!menu) return;
+
+        const willOpen = menu.hidden;
+        closeAppearanceMenus(control);
+        menu.hidden = !willOpen;
+        toggle.setAttribute('aria-expanded', String(willOpen));
+        return;
+      }
+
+      if (!target?.closest('[data-appearance-control]')) closeAppearanceMenus();
     });
-    document.addEventListener('astro:page-load', updateIcons);
-    (window as any).__ccusThemeToggleBound = true;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeAppearanceMenus();
+    });
+    document.addEventListener('astro:page-load', updateAppearanceControls);
+    window.addEventListener('ccus:themechange', updateAppearanceControls);
+    (window as any).__ccusAppearanceBound = true;
   }
 
-  updateIcons();
+  updateAppearanceControls();
 </script>
