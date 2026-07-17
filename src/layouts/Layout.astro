@@ -47,17 +47,30 @@ import '../styles/light-editorial.css';
         };
 
         const resolveTheme = (preference) =>
-          preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+          preference === 'system'
+            ? media.matches
+              ? 'dark'
+              : 'light'
+            : preference;
 
         const applyPreference = (preference, notify = true) => {
-          const normalized = preferences.has(preference) ? preference : 'system';
+          const normalized = preferences.has(preference)
+            ? preference
+            : 'system';
           const resolved = resolveTheme(normalized);
-          document.documentElement.classList.toggle('dark', resolved === 'dark');
+          document.documentElement.classList.toggle(
+            'dark',
+            resolved === 'dark'
+          );
           document.documentElement.dataset.themePreference = normalized;
           document.documentElement.dataset.themeResolved = resolved;
 
           const meta = document.getElementById('site-theme-color');
-          if (meta) meta.setAttribute('content', resolved === 'dark' ? '#071724' : '#f6f7f4');
+          if (meta)
+            meta.setAttribute(
+              'content',
+              resolved === 'dark' ? '#071724' : '#f6f7f4'
+            );
 
           if (notify) {
             window.dispatchEvent(
@@ -70,7 +83,9 @@ import '../styles/light-editorial.css';
         };
 
         const setPreference = (preference) => {
-          const normalized = preferences.has(preference) ? preference : 'system';
+          const normalized = preferences.has(preference)
+            ? preference
+            : 'system';
           window.localStorage.setItem(STORAGE_KEY, normalized);
           applyPreference(normalized);
         };
@@ -144,12 +159,17 @@ import '../styles/light-editorial.css';
         if (!window.__ccusRangeLayerBound) {
           const activateRangeThumb = (target) => {
             if (!(target instanceof HTMLElement)) return;
-            if (target.id !== 'minYearSlider' && target.id !== 'maxYearSlider') return;
+            if (target.id !== 'minYearSlider' && target.id !== 'maxYearSlider')
+              return;
 
             const root = target.closest('[data-capacity-trend]') || document;
             const minSlider = root.querySelector('#minYearSlider');
             const maxSlider = root.querySelector('#maxYearSlider');
-            if (!(minSlider instanceof HTMLElement) || !(maxSlider instanceof HTMLElement)) return;
+            if (
+              !(minSlider instanceof HTMLElement) ||
+              !(maxSlider instanceof HTMLElement)
+            )
+              return;
 
             minSlider.style.zIndex = target === minSlider ? '34' : '31';
             maxSlider.style.zIndex = target === maxSlider ? '34' : '32';
