@@ -41,10 +41,14 @@ const statusColor = statusColors[status] || 'bg-slate-400';
 ---
 
 <div class="group relative h-full">
-  <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-teal-500/60 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+  <article
+    class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-teal-500/60 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+  >
     <div class="mb-5 flex items-start justify-between gap-3">
       <div class="flex min-w-0 flex-wrap items-center gap-2">
-        <span class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+        <span
+          class="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+        >
           <span class={`h-2 w-2 rounded-full ${statusColor}`}></span>
           {status}
         </span>
@@ -80,51 +84,79 @@ const statusColor = statusColors[status] || 'bg-slate-400';
       }
     </div>
 
-    <h3 class="mb-2 line-clamp-2 text-xl font-bold leading-snug text-slate-900 transition-colors group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300">
+    <h3
+      class="mb-2 line-clamp-2 text-xl font-bold leading-snug text-slate-900 transition-colors group-hover:text-teal-700 dark:text-white dark:group-hover:text-teal-300"
+    >
       <a href={detailHref}>{name}</a>
     </h3>
 
-    <div class="mb-5 flex min-h-5 items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-      <span class="font-semibold text-slate-700 dark:text-slate-300">{country}</span>
+    <div
+      class="mb-5 flex min-h-5 items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
+    >
+      <span class="font-semibold text-slate-700 dark:text-slate-300"
+        >{country}</span
+      >
       {
         region && (
           <>
-            <span aria-hidden="true" class="text-slate-300 dark:text-slate-700">/</span>
+            <span aria-hidden="true" class="text-slate-300 dark:text-slate-700">
+              /
+            </span>
             <span class="truncate">{region}</span>
           </>
         )
       }
     </div>
 
-    <div class="mb-5 grid grid-cols-2 gap-3 border-y border-slate-100 py-4 dark:border-slate-800">
+    <div
+      class="mb-5 grid grid-cols-2 gap-3 border-y border-slate-100 py-4 dark:border-slate-800"
+    >
       <div>
-        <div class="mb-1 flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+        <div
+          class="mb-1 flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
+        >
           {isEn ? 'Capacity' : '年捕集规模'}
           {
             isAnnounced && (
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" title="Announced Value" />
+              <span
+                class="h-1.5 w-1.5 rounded-full bg-emerald-500"
+                title="Announced Value"
+              />
             )
           }
         </div>
-        <div class="text-xl font-bold tabular-nums text-slate-900 dark:text-white">
+        <div
+          class="text-xl font-bold tabular-nums text-slate-900 dark:text-white"
+        >
           {displayCapacity}
-          <span class="ml-1 text-[10px] font-semibold text-slate-400">Mtpa</span>
+          <span class="ml-1 text-[10px] font-semibold text-slate-400">Mtpa</span
+          >
         </div>
       </div>
       <div>
-        <div class="mb-1 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+        <div
+          class="mb-1 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
+        >
           {isEn ? 'Type' : '设施类型'}
         </div>
-        <div class="truncate text-xs font-semibold text-teal-700 dark:text-teal-300">{type}</div>
+        <div
+          class="truncate text-xs font-semibold text-teal-700 dark:text-teal-300"
+        >
+          {type}
+        </div>
       </div>
     </div>
 
     <div class="mt-auto flex items-end justify-between gap-4">
       <div class="min-w-0">
-        <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
+        <div
+          class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
+        >
           {isEn ? 'Industry' : '所属行业'}
         </div>
-        <div class="mt-1 truncate text-xs font-semibold text-slate-700 dark:text-slate-300">
+        <div
+          class="mt-1 truncate text-xs font-semibold text-slate-700 dark:text-slate-300"
+        >
           {sector || 'General'}
         </div>
       </div>
