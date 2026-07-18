@@ -6,6 +6,7 @@ import CapacityTrend from '../components/CapacityTrend.astro';
 import DatasetVersion from '../components/DatasetVersion.astro';
 import { getCollection } from 'astro:content';
 import '../styles/home-refinement.css';
+import '../styles/home-final-qa.css';
 
 const policies = await getCollection('policies_zh');
 const policyCount = policies.length;
@@ -24,9 +25,9 @@ const policyCount = policies.length;
     <section class="home-map-section" aria-labelledby="home-map-title">
       <header class="home-section-head">
         <div class="home-section-copy">
-          <p class="home-section-kicker">Policy Access Console</p>
+          <p class="home-section-kicker">全球政策导航</p>
           <h2 id="home-map-title" class="home-section-title">
-            全球政策准入控制台
+            政策准入控制台
           </h2>
           <p class="home-section-description">
             点击高亮活跃区域，快速查看关键政策框架、准入要求、激励机制与项目部署状态。
@@ -62,7 +63,7 @@ const policyCount = policies.length;
             整合 IEA CCUS Projects Database 2025、GCCSI
             与各国政府公开信息，并通过统一数据治理流程维护来源、口径与更新状态。
           </p>
-          <div class="home-feature-meta">Verified source governance</div>
+          <div class="home-feature-meta">已核验来源治理</div>
         </div>
       </article>
 
@@ -85,7 +86,7 @@ const policyCount = policies.length;
           <p class="home-feature-description">
             通过交互式地图、项目能力趋势与多维政策对比，识别治理强度、设施规模和区域部署之间的结构性关系。
           </p>
-          <div class="home-feature-meta">Interactive intelligence</div>
+          <div class="home-feature-meta">交互式情报分析</div>
         </div>
       </article>
 
@@ -110,7 +111,7 @@ const policyCount = policies.length;
           <p class="home-feature-description">
             面向制氢、电力、钢铁等重点行业，关联政策工具与设施记录，为区域准入、投资判断和治理机制设计提供结构化参照。
           </p>
-          <div class="home-feature-meta">Sector-specific benchmarking</div>
+          <div class="home-feature-meta">行业专项对标</div>
         </div>
       </article>
     </section>
