@@ -1,0 +1,63 @@
+name: Apply PR29 Frontmatter Fix
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event.pull_request.head.ref == 'refactor/compare-governance-methodology'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refactor/compare-governance-methodology
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Simplify server-side collection bridge
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('src/components/GovernanceComparisonWorkspace.astro')
+          content = path.read_text(encoding='utf-8')
+          start = content.index("// Normalize free-form country names")
+          end_marker = "const text ="
+          end = content.index(end_marker)
+          replacement = """const sourcePolicies = await getCollection(
+            lang === 'en' ? 'policies_en' : 'policies_zh'
+          );
+          const sourceFacilities = await getCollection(
+            lang === 'en' ? 'facilities_en' : 'facilities_zh'
+          );
+          const sourceProfiles = await getCollection(
+            lang === 'en' ? 'countries_en' : 'countries_zh'
+          );
+
+          // Country canonicalization is performed once in the shared client model.
+          const policies = sourcePolicies;
+          const facilities = sourceFacilities;
+          const profiles = sourceProfiles;
+
+          """
+          content = content[:start] + replacement + content[end:]
+          content = content.replace("import i18nDict from '../data/i18n_dictionary.json';\n", '')
+          path.write_text(content, encoding='utf-8')
+          PY
+          pnpm exec prettier --write src/components/GovernanceComparisonWorkspace.astro
+          pnpm astro check
+          pnpm build
+          git add src/components/GovernanceComparisonWorkspace.astro
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -c core.hooksPath=/dev/null commit -m 'fix(compare): simplify Astro collection frontmatter'
+          git push origin HEAD:refactor/compare-governance-methodology
