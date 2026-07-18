@@ -4,110 +4,124 @@ import HomepageHero from '../../components/HomepageHero.astro';
 import WorldMapNav from '../../components/WorldMapNav.astro';
 import CapacityTrend from '../../components/CapacityTrend.astro';
 import DatasetVersion from '../../components/DatasetVersion.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/home-refinement.css';
 import '../../styles/home-en-refinement.css';
+
+const policies = await getCollection('policies_en');
+const policyCount = policies.length;
 ---
 
-<Layout title="Global CCUS Policy & Facility Database">
-  <div class="py-12">
+<Layout
+  title="Global CCUS Policy & Facility Database"
+  pageClass="home-page-shell home-page--en"
+>
+  <div class="home-page-content py-8 sm:py-10">
     <HomepageHero lang="en" />
 
-    <!-- Data Insights Section -->
     <CapacityTrend />
 
-    <div
-      class="mb-24 rounded-[3rem] border border-slate-100 bg-slate-50 px-4 py-16 dark:border-slate-800 dark:bg-slate-900/50"
-    >
-      <div class="mb-16 text-center">
-        <h2 class="home-en-section-title mb-4 text-3xl dark:text-white">
-          Policy Access Console
-        </h2>
-        <p class="text-balance text-slate-500">
-          Select an active region to scan for sectoral incentives, regulatory
-          requirements, and deployment status.
-        </p>
-      </div>
+    <section class="home-map-section" aria-labelledby="home-map-title">
+      <header class="home-section-head">
+        <div class="home-section-copy">
+          <p class="home-section-kicker">Policy Access Console</p>
+          <h2 id="home-map-title" class="home-section-title">
+            Global Policy Access Console
+          </h2>
+          <p class="home-section-description">
+            Select an active region to review policy frameworks, market-access
+            requirements, incentive mechanisms and project deployment status.
+          </p>
+        </div>
+        <div
+          class="home-policy-count"
+          aria-label={`${policyCount} curated policies currently included`}
+        >
+          <strong>{policyCount}</strong> curated policies
+        </div>
+      </header>
       <WorldMapNav lang="en" />
-    </div>
+    </section>
 
-    <div class="grid grid-cols-1 gap-8 py-20 md:grid-cols-3">
-      <div
-        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-      >
-        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
+    <section class="home-feature-grid" aria-label="Core platform capabilities">
+      <article class="home-feature-card" data-accent="teal">
+        <div class="home-feature-icon" aria-hidden="true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.1"
-            ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+          </svg>
         </div>
-        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
-          Authoritative Data
-        </h3>
-        <p class="text-sm leading-relaxed text-slate-500">
-          Synced with IEA CCUS Projects Database 2025, GCCSI, and official
-          government announcements.
-        </p>
-      </div>
-      <div
-        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-      >
-        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
+        <div>
+          <h3 class="home-feature-title">Authoritative Data</h3>
+          <p class="home-feature-description">
+            Integrates IEA CCUS Projects Database 2025, GCCSI and official
+            government sources through a governed workflow for provenance,
+            definitions and update status.
+          </p>
+          <div class="home-feature-meta">Verified source governance</div>
+        </div>
+      </article>
+
+      <article class="home-feature-card" data-accent="blue">
+        <div class="home-feature-icon" aria-hidden="true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.1"
-            ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
-              d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+          </svg>
         </div>
-        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
-          Visual Analytics
-        </h3>
-        <p class="text-sm leading-relaxed text-slate-500">
-          In-depth insights into global incentives through interactive maps and
-          multi-dimensional comparison matrices.
-        </p>
-      </div>
-      <div
-        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-      >
-        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
+        <div>
+          <h3 class="home-feature-title">Visual Analytics</h3>
+          <p class="home-feature-description">
+            Uses interactive maps, project-capacity trends and multidimensional
+            policy comparison to reveal structural relationships between
+            governance, scale and deployment.
+          </p>
+          <div class="home-feature-meta">Interactive intelligence</div>
+        </div>
+      </article>
+
+      <article class="home-feature-card" data-accent="indigo">
+        <div class="home-feature-icon" aria-hidden="true">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.1"
-            ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
-              cx="9"
-              cy="7"
-              r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path
-              d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
         </div>
-        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
-          Sectoral Benchmarking
-        </h3>
-        <p class="text-sm leading-relaxed text-slate-500">
-          Automated policy linkage engine providing specific benchmarks for
-          Hydrogen, Power, and Industrial sectors.
-        </p>
-      </div>
-    </div>
+        <div>
+          <h3 class="home-feature-title">Sectoral Benchmarking</h3>
+          <p class="home-feature-description">
+            Links policy instruments with facility records across hydrogen,
+            power, steel and other priority sectors to support market-entry,
+            investment and governance decisions.
+          </p>
+          <div class="home-feature-meta">Sector-specific benchmarking</div>
+        </div>
+      </article>
+    </section>
   </div>
 
-  <!-- Dataset Version Metadata -->
   <div class="mx-auto max-w-6xl px-4 pb-8">
     <DatasetVersion lang="en" />
   </div>

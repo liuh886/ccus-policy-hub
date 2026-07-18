@@ -3,6 +3,7 @@ interface Props {
   title: string;
   description?: string;
   keywords?: string;
+  pageClass?: string;
 }
 
 import { ui, defaultLang } from '../i18n/ui';
@@ -18,7 +19,7 @@ const hideCompareDrawer =
   normalizedPath === '/facilities' ||
   normalizedPath === '/en/facilities';
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, pageClass = '' } = Astro.props;
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
@@ -131,7 +132,7 @@ import '../styles/light-editorial-capacity.css';
     />
   </head>
   <body
-    class="site-shell min-h-screen flex flex-col font-['Inter',_sans-serif] transition-colors"
+    class={`site-shell min-h-screen flex flex-col font-['Inter',_sans-serif] transition-colors ${pageClass}`.trim()}
   >
     <NavBar />
     <main class="site-main flex-grow">
