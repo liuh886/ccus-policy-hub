@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "bash -o pipefail -c 'astro build 2>&1 | tail -120' && pagefind --site dist --output-path dist/pagefind",
+    "build": "astro build && pagefind --site dist --output-path dist/pagefind",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",

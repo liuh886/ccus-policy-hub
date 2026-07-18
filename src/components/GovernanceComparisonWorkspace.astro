@@ -3,12 +3,8 @@ import { getCollection } from 'astro:content';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 
-interface Props {
-  lang?: 'zh' | 'en';
-}
-
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
-const dictCountries: Record<string, string> = i18nDict.countries;
+const dictCountries = i18nDict.countries;
 const sourcePolicies = await getCollection(
   lang === 'en' ? 'policies_en' : 'policies_zh'
 );
