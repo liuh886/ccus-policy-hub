@@ -1,0 +1,41 @@
+name: Format homepage art direction
+
+on:
+  push:
+    branches:
+      - style/homepage-art-direction
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: style/homepage-art-direction
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Format changed files
+        run: |
+          pnpm exec prettier --write \
+            src/layouts/Layout.astro \
+            src/pages/index.astro \
+            src/pages/en/index.astro \
+            src/styles/home-en-refinement.css \
+            src/styles/home-refinement.css
+      - name: Commit formatting
+        run: |
+          git rm .github/workflows/format-homepage-art-direction.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git -c core.hooksPath=/dev/null commit -m 'style(home): format homepage art direction'
+          git push origin HEAD:style/homepage-art-direction
