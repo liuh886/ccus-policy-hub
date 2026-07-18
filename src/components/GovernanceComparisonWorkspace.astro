@@ -1,0 +1,271 @@
+---
+import { getCollection } from 'astro:content';
+import i18nDict from '../data/i18n_dictionary.json';
+import countryData from '../data/countries.json';
+
+interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
+const dictCountries: Record<string, string> = i18nDict.countries;
+const sourcePolicies = await getCollection(
+  lang === 'en' ? 'policies_en' : 'policies_zh'
+);
+const sourceFacilities = await getCollection(
+  lang === 'en' ? 'facilities_en' : 'facilities_zh'
+);
+const sourceProfiles = await getCollection(
+  lang === 'en' ? 'countries_en' : 'countries_zh'
+);
+
+const policies = sourcePolicies.map((policy) => ({
+  ...policy,
+  data: {
+    ...policy.data,
+    country: dictCountries[policy.data.country] || policy.data.country,
+  },
+}));
+const facilities = sourceFacilities.map((facility) => ({
+  ...facility,
+  data: {
+    ...facility.data,
+    country: dictCountries[facility.data.country] || facility.data.country,
+  },
+}));
+const profiles = sourceProfiles.map((profile) => ({
+  ...profile,
+  data: {
+    ...profile.data,
+    id:
+      lang === 'zh'
+        ? dictCountries[profile.data.id] || profile.data.id
+        : profile.data.id,
+  },
+}));
+
+const text =
+  lang === 'zh'
+    ? {
+        pageTitle: '政策对比分析',
+        pageDescription:
+          '以所选政策所属国家为入口，对现行治理体系、项目落地和关键监管机制进行横向分析。',
+        clear: '清空选择',
+        export: '导出分析报告 (PDF)',
+        reportTitle: 'CCUS 政策对比分析简报',
+        generated: '生成日期',
+        capabilityEyebrow: 'Governance Capability Profile',
+        capabilityTitle: '治理能力画像',
+        capabilitySubtitle: '峰值政策强度 · Peak Policy Strength',
+        scopeTitle: '分析范围',
+        scopeNote: '默认比较所选政策所属国家的全部现行政策体系。',
+        scopeSystem: '国家现行政策体系',
+        scopeSelected: '仅所选政策',
+        matrixTitle: '治理—部署矩阵',
+        matrixSubtitle: 'Governance–Deployment Matrix',
+        benchmarkPrefix: '全球基准',
+        benchmarkGovernance: '治理能力指数中位数',
+        benchmarkDeployment: '有已承诺项目国家的项目记录规模中位数',
+        benchmarkMethod: '治理能力指数为五个峰值维度的平均值。',
+        qPolicy: '左上：制度先行',
+        qLeader: '右上：协同领先',
+        qFoundation: '左下：基础培育',
+        qDeployment: '右下：工程先行',
+        facilityTitle: '设施规模对标',
+        contributors: '治理核心贡献政策',
+        regulatory: '关键制度要素对标',
+        emptyTitle: '暂未选择对比政策',
+        emptyDescription:
+          '请从政策数据库中选择多项政策（最多 5 项），再进入国家治理能力与项目落地对比。',
+        emptyAction: '前往政策数据库',
+        emptyHref: '/ccus-policy-hub/policy/',
+      }
+    : {
+        pageTitle: 'Policy Comparison Analysis',
+        pageDescription:
+          'Use selected policies as entry points to compare active national governance systems, project deployment and critical regulatory mechanisms.',
+        clear: 'Clear all',
+        export: 'Export report (PDF)',
+        reportTitle: 'CCUS Policy Comparison Brief',
+        generated: 'Generated',
+        capabilityEyebrow: 'Governance Capability Profile',
+        capabilityTitle: 'Governance Capability Profile',
+        capabilitySubtitle: 'Peak Policy Strength',
+        scopeTitle: 'Analysis scope',
+        scopeNote:
+          'The default view benchmarks the active national policy systems behind the selected policies.',
+        scopeSystem: 'Active national policy system',
+        scopeSelected: 'Selected policies only',
+        matrixTitle: 'Governance–Deployment Matrix',
+        matrixSubtitle: 'Governance capability versus committed project-record scale',
+        benchmarkPrefix: 'Global benchmark',
+        benchmarkGovernance: 'median governance capability',
+        benchmarkDeployment:
+          'median committed project-record scale among countries with committed projects',
+        benchmarkMethod:
+          'The governance capability index is the mean of five peak dimensions.',
+        qPolicy: 'Top-left: Policy-led',
+        qLeader: 'Top-right: Integrated leaders',
+        qFoundation: 'Bottom-left: Foundation building',
+        qDeployment: 'Bottom-right: Deployment-led',
+        facilityTitle: 'Facility benchmarking',
+        contributors: 'Governance peak contributors',
+        regulatory: 'Critical regulatory benchmarking',
+        emptyTitle: 'No policies selected',
+        emptyDescription:
+          'Select up to five policies from the database to compare national governance capability and project deployment.',
+        emptyAction: 'Go to policy database',
+        emptyHref: '/ccus-policy-hub/en/policy/',
+      };
+---
+
+<div class="mx-auto max-w-7xl px-4 py-8">
+  <header class="print:hidden mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div>
+      <h1 class="mb-4 text-4xl font-black text-slate-900 dark:text-white">
+        {text.pageTitle}
+      </h1>
+      <p class="max-w-3xl text-slate-500 dark:text-slate-400">
+        {text.pageDescription}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <button id="clear-all" class="px-4 py-2 text-sm font-bold text-slate-500 transition-colors hover:text-red-500">
+        {text.clear}
+      </button>
+      <button id="print-report" class="rounded-xl bg-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-blue-500/20 transition-colors hover:bg-blue-700">
+        {text.export}
+      </button>
+    </div>
+  </header>
+
+  <div class="hidden print:block mb-12 border-b-4 border-slate-900 pb-8">
+    <h1 class="mb-2 text-4xl font-black text-slate-900">{text.reportTitle}</h1>
+    <p class="text-slate-500">
+      {text.generated}: {new Date().toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-GB')} | CCUS Policy Hub
+    </p>
+  </div>
+
+  <div id="compare-container" class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+    <aside class="space-y-8 lg:col-span-5">
+      <section class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+        <header class="mb-6">
+          <p class="mb-2 text-xs font-black uppercase tracking-[0.18em] text-blue-600">
+            {text.capabilityEyebrow}
+          </p>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            {text.capabilityTitle}
+          </h2>
+          <p class="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+            {text.capabilitySubtitle}
+          </p>
+        </header>
+
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/30">
+          <div>
+            <div class="text-[10px] font-black uppercase tracking-widest text-slate-500">
+              {text.scopeTitle}
+            </div>
+            <div class="mt-1 max-w-xs text-xs text-slate-500">
+              {text.scopeNote}
+            </div>
+          </div>
+          <select id="analysis-scope" class="min-w-44 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            <option value="system">{text.scopeSystem}</option>
+            <option value="selected">{text.scopeSelected}</option>
+          </select>
+        </div>
+
+        <div class="mb-8 h-80 w-full">
+          <canvas id="compare-radar-canvas"></canvas>
+        </div>
+
+        <section class="border-t border-slate-200 pt-8 dark:border-slate-800">
+          <div class="mb-4">
+            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              {text.matrixSubtitle}
+            </p>
+            <h3 class="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+              {text.matrixTitle}
+            </h3>
+          </div>
+          <div class="mb-4 h-72 w-full">
+            <canvas id="maturity-matrix-canvas"></canvas>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-[9px] font-bold text-slate-500">
+            <div class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40">{text.qPolicy}</div>
+            <div class="rounded-lg bg-blue-50 p-2 text-center text-blue-700 dark:bg-blue-900/20 dark:text-blue-300">{text.qLeader}</div>
+            <div class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40">{text.qFoundation}</div>
+            <div class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40">{text.qDeployment}</div>
+          </div>
+          <p class="mt-4 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400">
+            {text.benchmarkPrefix}: {text.benchmarkGovernance}
+            <strong data-governance-benchmark>—</strong>; {text.benchmarkDeployment}
+            <strong data-deployment-benchmark>—</strong>. {text.benchmarkMethod}
+          </p>
+        </section>
+
+        <section id="facility-stats-compare" class="mt-8 space-y-6 border-t border-slate-200 pt-8 dark:border-slate-800">
+          <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            {text.facilityTitle}
+          </h3>
+          <div id="stats-grid" class="space-y-4"></div>
+        </section>
+      </section>
+    </aside>
+
+    <main class="space-y-12 lg:col-span-7">
+      <section>
+        <div class="mb-8 flex items-center gap-3">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400">
+            {text.contributors}
+          </h2>
+          <div class="h-px flex-1 bg-slate-100 dark:bg-slate-800"></div>
+        </div>
+        <div id="policy-bundles-container" class="space-y-10"></div>
+      </section>
+
+      <section class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+        <div class="border-b border-slate-100 bg-slate-50 p-7 dark:border-slate-800 dark:bg-slate-900/50">
+          <h2 class="text-xs font-black uppercase tracking-widest text-slate-500">
+            {text.regulatory}
+          </h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left">
+            <thead id="reg-matrix-header"></thead>
+            <tbody id="reg-matrix-body" class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="empty-state" class="hidden rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50 py-28 text-center dark:border-slate-800 dark:bg-slate-900/50">
+    <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+      {text.emptyTitle}
+    </h2>
+    <p class="mx-auto mb-8 max-w-lg text-slate-500 dark:text-slate-400">
+      {text.emptyDescription}
+    </p>
+    <a href={text.emptyHref} class="inline-flex rounded-xl bg-blue-600 px-8 py-3 font-bold text-white hover:bg-blue-700">
+      {text.emptyAction}
+    </a>
+  </div>
+</div>
+
+<div id="all-facilities-data" data-facilities={JSON.stringify(facilities)} class="hidden"></div>
+<div id="all-policies-data" data-policies={JSON.stringify(policies)} class="hidden"></div>
+<div id="country-data" data-countries={JSON.stringify(countryData)} class="hidden"></div>
+<div id="countries-profiles-data" data-profiles={JSON.stringify(profiles)} class="hidden"></div>
+
+<script>
+  import { initGovernanceComparison } from '../lib/governanceComparisonClient.mjs';
+
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'zh';
+  const init = () => initGovernanceComparison(lang);
+
+  document.addEventListener('astro:page-load', init);
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init, { once: true });
+</script>
