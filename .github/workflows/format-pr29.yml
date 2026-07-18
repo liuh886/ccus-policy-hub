@@ -27,7 +27,6 @@ jobs:
       - name: Format changed source files
         run: |
           pnpm exec prettier --write \
-            agent/ccus-ai-agent/db/schema.sql \
             agent/ccus-ai-agent/logic/fix-export-maturity.mjs \
             agent/ccus-ai-agent/logic/governance-deployment-algo.mjs \
             agent/ccus-ai-agent/logic/maturity-algo.mjs \
