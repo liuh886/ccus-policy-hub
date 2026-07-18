@@ -1,0 +1,447 @@
+---
+import { getCollection } from 'astro:content';
+import {
+  facilityCapacity,
+  normalizeFacilityStatus,
+  summarizeFacilities,
+} from '../lib/capacityMetrics.mjs';
+
+interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
+const facilities = await getCollection(
+  lang === 'en' ? 'facilities_en' : 'facilities_zh'
+);
+const defaultMaxYear = 2030;
+const pipelineStatuses = new Set([
+  'planned',
+  'operational',
+  'under-construction',
+]);
+
+const parseYear = (value: unknown): number | null => {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value !== 'string') return null;
+  const match = value.match(/\d{4}/);
+  return match ? Number.parseInt(match[0], 10) : null;
+};
+
+const projectRecordYear = (facility: (typeof facilities)[number]): number | null =>
+  parseYear(facility.data.operation) ??
+  parseYear(facility.data.fid) ??
+  parseYear(facility.data.announcement);
+
+const totalCapacity = facilities.reduce((sum, facility) => {
+  const status = normalizeFacilityStatus(facility.data.status);
+  const year = projectRecordYear(facility);
+  if (!year || year > defaultMaxYear || !pipelineStatuses.has(status)) return sum;
+  return sum + facilityCapacity(facility.data);
+}, 0);
+
+const operational = summarizeFacilities(facilities, 'operational');
+const construction = summarizeFacilities(facilities, 'under-construction');
+const formatCapacity = (value: number): string => value.toFixed(1);
+
+const text =
+  lang === 'zh'
+    ? {
+        eyebrow: 'Global CCUS Intelligence Hub 2026',
+        titleLead: '全球 CCUS 政策与设施',
+        titleAccent: '知识基础设施',
+        description:
+          '集成 IEA 全球设施数据库与核心激励机制，提供多维度政策对比、地理空间分布及行业趋势分析。',
+        primaryAction: '探索全球设施地图',
+        secondaryAction: '查阅政策数据库',
+        primaryHref: '/ccus-policy-hub/facilities/',
+        secondaryHref: '/ccus-policy-hub/policy/',
+        totalLabel: '全球项目记录能力',
+        yearSuffix: '估',
+        totalScope: '规划 + 在运 + 在建',
+        operational: '在运',
+        construction: '在建',
+        storageRelated: '封存相关',
+        itemUnit: '项',
+        note: '项目记录口径；排除取消、退役与暂停项目。',
+      }
+    : {
+        eyebrow: 'Global CCUS Intelligence Hub 2026',
+        titleLead: 'Global CCUS Policy & Facility',
+        titleAccent: 'Knowledge Infrastructure',
+        description:
+          'Integrating IEA global project data with key incentive mechanisms for policy comparison, spatial mapping and deployment-trend analysis.',
+        primaryAction: 'Explore Facility Map',
+        secondaryAction: 'Browse Policy Database',
+        primaryHref: '/ccus-policy-hub/en/facilities/',
+        secondaryHref: '/ccus-policy-hub/en/policy/',
+        totalLabel: 'Global project-record capacity',
+        yearSuffix: ' Est.',
+        totalScope: 'Planned + operational + under construction',
+        operational: 'Operational',
+        construction: 'Under construction',
+        storageRelated: 'Storage-related',
+        itemUnit: '',
+        note: 'Project-record basis; cancelled, decommissioned and suspended records excluded.',
+      };
+---
+
+<section class="home-hero" data-home-hero aria-labelledby="home-hero-title">
+  <div class="home-hero-copy">
+    <p class="home-hero-eyebrow">{text.eyebrow}</p>
+    <h1 id="home-hero-title">
+      {text.titleLead}<br />
+      <strong>{text.titleAccent}</strong>
+    </h1>
+    <p class="home-hero-description">{text.description}</p>
+    <div class="home-hero-actions">
+      <a class="home-hero-action home-hero-action-primary" href={text.primaryHref}>
+        {text.primaryAction}
+      </a>
+      <a class="home-hero-action home-hero-action-secondary" href={text.secondaryHref}>
+        {text.secondaryAction}
+      </a>
+    </div>
+  </div>
+
+  <aside class="home-hero-summary" aria-label={text.totalLabel}>
+    <div class="home-hero-total">
+      <div class="home-hero-total-heading">
+        <span>{text.totalLabel}</span>
+        <span data-home-capacity-year>({defaultMaxYear}{text.yearSuffix})</span>
+      </div>
+      <div class="home-hero-total-value">
+        <span data-home-capacity-total>{formatCapacity(totalCapacity)}</span>
+        <small>Mtpa</small>
+      </div>
+      <p>{text.totalScope}</p>
+    </div>
+
+    <div class="home-hero-metric-grid">
+      <article class="home-hero-metric">
+        <div class="home-hero-metric-label">{text.operational}</div>
+        <div class="home-hero-metric-value">
+          {operational.totalCount}{text.itemUnit}
+          <span>· {formatCapacity(operational.totalCapacity)} Mtpa</span>
+        </div>
+        <div class="home-hero-metric-subline">
+          {text.storageRelated}
+          {operational.storageRelatedCount}{text.itemUnit}
+          · {formatCapacity(operational.storageRelatedCapacity)} Mtpa
+        </div>
+      </article>
+
+      <article class="home-hero-metric">
+        <div class="home-hero-metric-label">{text.construction}</div>
+        <div class="home-hero-metric-value">
+          {construction.totalCount}{text.itemUnit}
+          <span>· {formatCapacity(construction.totalCapacity)} Mtpa</span>
+        </div>
+        <div class="home-hero-metric-subline">
+          {text.storageRelated}
+          {construction.storageRelatedCount}{text.itemUnit}
+          · {formatCapacity(construction.storageRelatedCapacity)} Mtpa
+        </div>
+      </article>
+    </div>
+
+    <p class="home-hero-summary-note">{text.note}</p>
+  </aside>
+</section>
+
+<script is:inline>
+  (() => {
+    const initHeroCapacitySync = () => {
+      const sourceValue = document.querySelector(
+        '[data-capacity-trend] [data-capacity-total]'
+      );
+      const sourceYear = document.querySelector(
+        '[data-capacity-trend] [data-capacity-total-year]'
+      );
+      const targetValue = document.querySelector('[data-home-capacity-total]');
+      const targetYear = document.querySelector('[data-home-capacity-year]');
+
+      if (!sourceValue || !sourceYear || !targetValue || !targetYear) return;
+
+      const sync = () => {
+        targetValue.textContent = sourceValue.textContent;
+        targetYear.textContent = sourceYear.textContent;
+      };
+
+      sync();
+
+      const observer = new MutationObserver(sync);
+      observer.observe(sourceValue, { childList: true, characterData: true, subtree: true });
+      observer.observe(sourceYear, { childList: true, characterData: true, subtree: true });
+      document.addEventListener('astro:before-swap', () => observer.disconnect(), {
+        once: true,
+      });
+    };
+
+    document.addEventListener('astro:page-load', initHeroCapacitySync);
+    if (document.readyState !== 'loading') initHeroCapacitySync();
+  })();
+</script>
+
+<style>
+  .home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    margin-bottom: clamp(3.5rem, 7vw, 6rem);
+    padding: clamp(1.25rem, 3vw, 2.5rem) 0 clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .home-hero-copy {
+    min-width: 0;
+  }
+
+  .home-hero-eyebrow {
+    margin: 0 0 1.25rem;
+    border-left: 3px solid var(--brand-teal-600);
+    padding-left: 0.75rem;
+    color: var(--brand-navy-700) !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em;
+    line-height: 1.5 !important;
+    text-transform: uppercase;
+  }
+
+  .home-hero h1 {
+    max-width: 46rem;
+    margin: 0;
+    color: var(--text-primary);
+    font-size: clamp(3rem, 5.6vw, 5.25rem);
+    font-weight: 780;
+    letter-spacing: -0.055em;
+    line-height: 1.02;
+  }
+
+  .home-hero h1 strong {
+    color: var(--brand-teal-700);
+    font-weight: inherit;
+  }
+
+  .home-hero-description {
+    max-width: 42rem !important;
+    margin: 1.6rem 0 0 !important;
+    color: var(--text-secondary) !important;
+    font-size: 1.05rem !important;
+    font-weight: 450 !important;
+    line-height: 1.75 !important;
+  }
+
+  .home-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .home-hero-action {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0.82rem 1.15rem;
+    font-size: 0.875rem;
+    font-weight: 750;
+  }
+
+  .home-hero-action-primary {
+    border: 1px solid var(--brand-navy-900);
+    background: var(--brand-navy-900);
+    color: #ffffff;
+  }
+
+  .home-hero-action-primary:hover {
+    border-color: var(--brand-teal-700);
+    background: var(--brand-teal-700);
+  }
+
+  .home-hero-action-secondary {
+    border: 1px solid var(--border-strong);
+    background: var(--surface-panel);
+    color: var(--text-primary);
+  }
+
+  .home-hero-action-secondary:hover {
+    border-color: var(--brand-teal-500);
+    color: var(--brand-teal-700);
+  }
+
+  .home-hero-summary {
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(155deg, rgb(255 255 255 / 0.98), rgb(238 245 243 / 0.92)),
+      var(--surface-panel);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .home-hero-total {
+    padding: 1.6rem 1.7rem 1.35rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .home-hero-total-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.4rem 0.8rem;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .home-hero-total-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    margin-top: 0.55rem;
+    color: var(--brand-teal-700);
+    font-size: clamp(2.5rem, 4.4vw, 4.2rem);
+    font-weight: 820;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .home-hero-total-value small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .home-hero-total p {
+    margin: 0.65rem 0 0 !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+  }
+
+  .home-hero-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-hero-metric {
+    min-width: 0;
+    padding: 1.2rem 1.35rem 1.15rem;
+  }
+
+  .home-hero-metric + .home-hero-metric {
+    border-left: 1px solid var(--border-subtle);
+  }
+
+  .home-hero-metric-label {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .home-hero-metric-value {
+    margin-top: 0.4rem;
+    color: var(--text-primary);
+    font-size: 1.08rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.35;
+  }
+
+  .home-hero-metric-value span {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 650;
+  }
+
+  .home-hero-metric-subline {
+    margin-top: 0.45rem;
+    color: var(--brand-teal-700);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  .home-hero-summary-note {
+    margin: 0 !important;
+    border-top: 1px solid var(--border-subtle);
+    padding: 0.72rem 1.35rem 0.8rem;
+    color: var(--text-muted) !important;
+    font-size: 0.65rem !important;
+    font-weight: 550 !important;
+    line-height: 1.45 !important;
+  }
+
+  :global([data-capacity-trend]) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  :global([data-capacity-trend] > div:first-child) {
+    display: none !important;
+  }
+
+  :global([data-capacity-trend] > section:last-child) {
+    grid-column: 1 / -1 !important;
+  }
+
+  :global(.dark) .home-hero-summary {
+    background:
+      linear-gradient(155deg, rgb(11 32 48 / 0.98), rgb(8 44 55 / 0.95)),
+      var(--surface-panel);
+  }
+
+  :global(.dark) .home-hero-action-secondary {
+    background: var(--surface-panel);
+  }
+
+  @media (max-width: 1023px) {
+    .home-hero {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+
+    .home-hero-copy {
+      max-width: 52rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .home-hero {
+      padding-top: 0.5rem;
+    }
+
+    .home-hero h1 {
+      font-size: clamp(2.65rem, 13vw, 3.7rem);
+    }
+
+    .home-hero-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-hero-summary {
+      border-radius: 14px;
+    }
+
+    .home-hero-metric-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-hero-metric + .home-hero-metric {
+      border-top: 1px solid var(--border-subtle);
+      border-left: 0;
+    }
+  }
+</style>
