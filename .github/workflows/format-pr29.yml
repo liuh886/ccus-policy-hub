@@ -1,0 +1,54 @@
+name: Format PR29
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.event.pull_request.head.ref == 'refactor/compare-governance-methodology'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refactor/compare-governance-methodology
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Format changed source files
+        run: |
+          pnpm exec prettier --write \
+            agent/ccus-ai-agent/db/schema.sql \
+            agent/ccus-ai-agent/logic/fix-export-maturity.mjs \
+            agent/ccus-ai-agent/logic/governance-deployment-algo.mjs \
+            agent/ccus-ai-agent/logic/maturity-algo.mjs \
+            package.json \
+            public/data/schemas/country.schema.json \
+            scripts/governance-benchmarking.test.mjs \
+            scripts/governance-deployment-migration.test.mjs \
+            src/components/GovernanceComparisonWorkspace.astro \
+            src/content/config.ts \
+            src/lib/governanceBenchmarking.mjs \
+            src/lib/governanceComparisonClient.mjs \
+            src/pages/compare/index.astro \
+            src/pages/en/compare/index.astro
+      - name: Commit formatting
+        run: |
+          if git diff --quiet; then
+            echo 'No formatting changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'style(compare): format governance methodology changes'
+          git push origin HEAD:refactor/compare-governance-methodology
