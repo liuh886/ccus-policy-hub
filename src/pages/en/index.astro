@@ -4,6 +4,7 @@ import HomepageHero from '../../components/HomepageHero.astro';
 import WorldMapNav from '../../components/WorldMapNav.astro';
 import CapacityTrend from '../../components/CapacityTrend.astro';
 import DatasetVersion from '../../components/DatasetVersion.astro';
+import '../../styles/home-en-refinement.css';
 ---
 
 <Layout title="Global CCUS Policy & Facility Database">
@@ -14,13 +15,15 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
     <CapacityTrend />
 
     <div
-      class="mb-24 px-4 py-16 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-100 dark:border-slate-800"
+      class="mb-24 rounded-[3rem] border border-slate-100 bg-slate-50 px-4 py-16 dark:border-slate-800 dark:bg-slate-900/50"
     >
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-black mb-4 dark:text-white">
+      <div class="mb-16 text-center">
+        <h2
+          class="home-en-section-title mb-4 text-3xl dark:text-white"
+        >
           Policy Access Console
         </h2>
-        <p class="text-slate-500 text-balance">
+        <p class="text-balance text-slate-500">
           Select an active region to scan for sectoral incentives, regulatory
           requirements, and deployment status.
         </p>
@@ -28,11 +31,11 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
       <WorldMapNav lang="en" />
     </div>
 
-    <div class="py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 gap-8 py-20 md:grid-cols-3">
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -40,22 +43,22 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
+            stroke-width="2.1"
             ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg
           >
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">
+        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
           Authoritative Data
         </h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
+        <p class="text-sm leading-relaxed text-slate-500">
           Synced with IEA CCUS Projects Database 2025, GCCSI, and official
           government announcements.
         </p>
       </div>
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -63,21 +66,23 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
+            stroke-width="2.1"
             ><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path
               d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
           >
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">Visual Analytics</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
+        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
+          Visual Analytics
+        </h3>
+        <p class="text-sm leading-relaxed text-slate-500">
           In-depth insights into global incentives through interactive maps and
           multi-dimensional comparison matrices.
         </p>
       </div>
       <div
-        class="p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm"
+        class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
       >
-        <div class="text-blue-600 mb-6 p-3 bg-blue-50 rounded-2xl w-fit">
+        <div class="mb-6 w-fit rounded-2xl bg-blue-50 p-3 text-blue-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -85,7 +90,7 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2.5"
+            stroke-width="2.1"
             ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle
               cx="9"
               cy="7"
@@ -93,10 +98,10 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
               d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg
           >
         </div>
-        <h3 class="text-xl font-bold mb-3 dark:text-white">
+        <h3 class="home-en-card-title mb-3 text-xl dark:text-white">
           Sectoral Benchmarking
         </h3>
-        <p class="text-sm text-slate-500 leading-relaxed">
+        <p class="text-sm leading-relaxed text-slate-500">
           Automated policy linkage engine providing specific benchmarks for
           Hydrogen, Power, and Industrial sectors.
         </p>
@@ -105,7 +110,7 @@ import DatasetVersion from '../../components/DatasetVersion.astro';
   </div>
 
   <!-- Dataset Version Metadata -->
-  <div class="max-w-6xl mx-auto px-4 pb-8">
+  <div class="mx-auto max-w-6xl px-4 pb-8">
     <DatasetVersion lang="en" />
   </div>
 </Layout>
