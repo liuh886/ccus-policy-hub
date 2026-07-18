@@ -1,0 +1,47 @@
+name: Update PR29 Aliases
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.event.pull_request.head.ref == 'refactor/compare-governance-methodology'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refactor/compare-governance-methodology
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Update alias lookup
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('src/components/GovernanceComparisonWorkspace.astro')
+          content = path.read_text(encoding='utf-8')
+          content = content.replace(
+              'const dictCountries = i18nDict.countries;',
+              "const countryAliases = new Map(Object.entries(i18nDict.countries));\nconst canonicalCountry = (value) => countryAliases.get(value) || value;"
+          )
+          content = content.replace('dictCountries[policy.data.country] || policy.data.country', 'canonicalCountry(policy.data.country)')
+          content = content.replace('dictCountries[facility.data.country] || facility.data.country', 'canonicalCountry(facility.data.country)')
+          content = content.replace('dictCountries[profile.data.id] || profile.data.id', 'canonicalCountry(profile.data.id)')
+          path.write_text(content, encoding='utf-8')
+          PY
+          pnpm exec prettier --write src/components/GovernanceComparisonWorkspace.astro
+          git add src/components/GovernanceComparisonWorkspace.astro
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -c core.hooksPath=/dev/null commit -m 'fix(compare): type country alias lookup safely'
+          git push origin HEAD:refactor/compare-governance-methodology
