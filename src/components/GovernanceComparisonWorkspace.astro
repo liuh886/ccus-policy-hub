@@ -1,12 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
-// Normalize free-form country names without relying on a JSON index signature.
-const countryAliases = new Map(Object.entries(i18nDict.countries));
-const canonicalCountry = (value = '') => countryAliases.get(value) || value;
 const sourcePolicies = await getCollection(
   lang === 'en' ? 'policies_en' : 'policies_zh'
 );
@@ -17,27 +13,10 @@ const sourceProfiles = await getCollection(
   lang === 'en' ? 'countries_en' : 'countries_zh'
 );
 
-const policies = sourcePolicies.map((policy) => ({
-  ...policy,
-  data: {
-    ...policy.data,
-    country: canonicalCountry(policy.data.country),
-  },
-}));
-const facilities = sourceFacilities.map((facility) => ({
-  ...facility,
-  data: {
-    ...facility.data,
-    country: canonicalCountry(facility.data.country),
-  },
-}));
-const profiles = sourceProfiles.map((profile) => ({
-  ...profile,
-  data: {
-    ...profile.data,
-    id: lang === 'zh' ? canonicalCountry(profile.data.id) : profile.data.id,
-  },
-}));
+// Country canonicalization is performed once in the shared client model.
+const policies = sourcePolicies;
+const facilities = sourceFacilities;
+const profiles = sourceProfiles;
 
 const text =
   lang === 'zh'
