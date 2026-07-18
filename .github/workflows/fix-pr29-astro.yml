@@ -48,10 +48,8 @@ jobs:
       - name: Format and commit
         run: |
           pnpm exec prettier --write src/components/GovernanceComparisonWorkspace.astro package.json
-          git rm .github/workflows/fix-pr29-astro.yml
-          git rm .github/workflows/pr29-build-diagnostics.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
+          git add src/components/GovernanceComparisonWorkspace.astro package.json
           git commit -m 'fix(compare): remove unsupported Astro frontmatter annotations'
           git push origin HEAD:refactor/compare-governance-methodology
