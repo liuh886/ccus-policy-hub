@@ -1,13 +1,14 @@
-import Chart from 'chart.js/auto';
-
 import {
   GOVERNANCE_DIMENSIONS,
   calculateDeploymentMetrics,
   calculateGlobalBenchmarks,
   calculateGovernanceCapability,
-  classifyGovernanceDeployment,
   isActivePolicy,
 } from './governanceBenchmarking.mjs';
+import {
+  clearGovernanceAnalytics,
+  renderGovernanceAnalytics,
+} from './governanceWorkspaceVisuals.mjs';
 
 const colors = [
   { border: 'rgb(37, 99, 235)', bg: 'rgba(37, 99, 235, 0.1)' },
@@ -95,22 +96,17 @@ const copy = {
   },
 };
 
-const charts = {
-  radar: null,
-  deployment: null,
-};
-
 const escapeHtml = (value) =>
   String(value ?? '').replace(
     /[&<>"']/g,
-    (char) =>
+    (character) =>
       ({
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
         '"': '&quot;',
         "'": '&#39;',
-      })[char] || char
+      })[character] || character
   );
 
 const formatCapacity = (value) => Number(value || 0).toFixed(1);
@@ -122,8 +118,9 @@ const countryDisplayName = (country, countryMap, lang) => {
   if (lang === 'en') return canonicalCountry(country, countryMap);
   if (countryMap[country]?.zh) return countryMap[country].zh;
   for (const [key, translations] of Object.entries(countryMap)) {
-    if (translations?.en === country || key === country)
+    if (translations?.en === country || key === country) {
       return translations?.zh || country;
+    }
   }
   return country;
 };
@@ -155,12 +152,14 @@ const buildCountrySystem = ({
       governance.dimensions[dimension].score,
     ])
   );
-  const canonName = canonicalCountry(country, countryMap);
-  const profile = profiles.find((item) => item?.data?.id === canonName);
+  const canonicalName = canonicalCountry(country, countryMap);
+  const profile = profiles.find(
+    (item) => canonicalCountry(item?.data?.id, countryMap) === canonicalName
+  );
 
   return {
     country,
-    canonicalCountry: canonName,
+    canonicalCountry: canonicalName,
     displayCountry: countryDisplayName(country, countryMap, lang),
     color: colors[index % colors.length],
     governance,
@@ -208,177 +207,6 @@ const buildGlobalSystems = (allPolicies, allFacilities, countryMap) => {
   );
 };
 
-const drawRadar = (countrySystems, labels) => {
-  const canvas = document.getElementById('compare-radar-canvas');
-  if (!canvas) return;
-  charts.radar?.destroy();
-  charts.radar = new Chart(canvas, {
-    type: 'radar',
-    data: {
-      labels,
-      datasets: countrySystems.map((country) => ({
-        label: `${country.displayCountry} · ${country.governance.policyCount}`,
-        data: country.governance.scores,
-        borderColor: country.color.border,
-        backgroundColor: country.color.bg,
-        borderWidth: 2.5,
-        pointRadius: 3.5,
-        pointHoverRadius: 6,
-        fill: true,
-      })),
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label(context) {
-              return `${context.dataset.label}: ${Number(context.raw || 0).toFixed(0)}/100`;
-            },
-          },
-        },
-      },
-      scales: {
-        r: {
-          min: 0,
-          max: 100,
-          ticks: { display: false, stepSize: 20 },
-          grid: { color: 'rgba(148, 163, 184, 0.14)' },
-          angleLines: { color: 'rgba(148, 163, 184, 0.14)' },
-          pointLabels: { font: { size: 10, weight: 600 } },
-        },
-      },
-    },
-  });
-};
-
-const drawDeploymentMatrix = (countrySystems, benchmarks, text) => {
-  const canvas = document.getElementById('maturity-matrix-canvas');
-  if (!canvas) return;
-  charts.deployment?.destroy();
-
-  const maxCapacity = Math.max(
-    benchmarks.deployment * 1.35,
-    ...countrySystems.map((country) => country.deployment.committedCapacity),
-    1
-  );
-  const xMax = Math.ceil(maxCapacity * 1.12);
-  const pointDatasets = countrySystems.map((country) => {
-    const quadrant = classifyGovernanceDeployment(
-      country.governance.index,
-      country.deployment.committedCapacity,
-      benchmarks
-    );
-    return {
-      label: country.displayCountry,
-      data: [
-        {
-          x: country.deployment.committedCapacity,
-          y: country.governance.index,
-          quadrant,
-          policyCount: country.governance.policyCount,
-          operational: country.deployment.operationalCapacity,
-          construction: country.deployment.constructionCapacity,
-        },
-      ],
-      backgroundColor: country.color.border,
-      borderColor: '#ffffff',
-      borderWidth: 2,
-      pointRadius: 8,
-      pointHoverRadius: 11,
-    };
-  });
-
-  const guideDatasets = [
-    {
-      label: 'deployment-benchmark',
-      data: [
-        { x: benchmarks.deployment, y: 0 },
-        { x: benchmarks.deployment, y: 100 },
-      ],
-      borderColor: 'rgba(71, 85, 105, 0.55)',
-      borderDash: [6, 5],
-      borderWidth: 1,
-      pointRadius: 0,
-      showLine: true,
-    },
-    {
-      label: 'governance-benchmark',
-      data: [
-        { x: 0, y: benchmarks.governance },
-        { x: xMax, y: benchmarks.governance },
-      ],
-      borderColor: 'rgba(71, 85, 105, 0.55)',
-      borderDash: [6, 5],
-      borderWidth: 1,
-      pointRadius: 0,
-      showLine: true,
-    },
-  ];
-
-  charts.deployment = new Chart(canvas, {
-    type: 'scatter',
-    data: { datasets: [...guideDatasets, ...pointDatasets] },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'nearest', intersect: true },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          filter: (item) => !String(item.dataset.label).includes('benchmark'),
-          callbacks: {
-            title(items) {
-              return items[0]?.dataset?.label || '';
-            },
-            label(context) {
-              const point = context.raw || {};
-              return [
-                `${text.quadrant[point.quadrant]}`,
-                `${text.governance}: ${Number(point.y || 0).toFixed(1)}/100`,
-                `${text.deployment}: ${formatCapacity(point.x)} Mtpa`,
-                `${text.policyCount}: ${point.policyCount}${text.items}`,
-              ];
-            },
-          },
-        },
-      },
-      scales: {
-        x: {
-          min: 0,
-          suggestedMax: xMax,
-          title: {
-            display: true,
-            text: text.xAxis,
-            font: { size: 10, weight: 700 },
-          },
-          grid: { color: 'rgba(148, 163, 184, 0.1)' },
-          ticks: { callback: (value) => Number(value).toFixed(0) },
-        },
-        y: {
-          min: 0,
-          max: 100,
-          title: {
-            display: true,
-            text: text.yAxis,
-            font: { size: 10, weight: 700 },
-          },
-          grid: { color: 'rgba(148, 163, 184, 0.1)' },
-          ticks: { stepSize: 20 },
-        },
-      },
-    },
-  });
-
-  const governanceNode = document.querySelector('[data-governance-benchmark]');
-  const deploymentNode = document.querySelector('[data-deployment-benchmark]');
-  if (governanceNode)
-    governanceNode.textContent = `${benchmarks.governance.toFixed(1)}/100`;
-  if (deploymentNode)
-    deploymentNode.textContent = `${formatCapacity(benchmarks.deployment)} Mtpa`;
-};
-
 const renderContributors = (countrySystems, text) => {
   const container = document.getElementById('policy-bundles-container');
   if (!container) return;
@@ -391,54 +219,41 @@ const renderContributors = (countrySystems, text) => {
   };
 
   container.innerHTML = countrySystems
-    .map(
-      (country) => `
-        <div class="space-y-6">
-          <div class="flex items-center gap-4">
-            <div class="h-3 w-3 rounded-full" style="background-color:${country.color.border}"></div>
-            <h3 class="text-xl font-bold dark:text-white">${escapeHtml(country.displayCountry)} · ${text.contributorHeading}</h3>
-            <span class="text-xs font-semibold text-slate-400">${text.policyCount} ${country.governance.policyCount}${text.items}</span>
-          </div>
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            ${country.contributors
-              .map(
-                (policy) => `
-                <article class="relative rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-blue-500 dark:border-slate-800 dark:bg-slate-900">
-                  <div class="mb-3 flex items-start justify-between">
-                    <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}</span>
-                    <div class="flex gap-1">
-                      ${GOVERNANCE_DIMENSIONS.map((dimension) => {
-                        const score = Number(
-                          policy.data.analysis?.[dimension]?.score || 0
-                        );
-                        const peak = country.peakAnalysis[dimension];
-                        return score > 0 && score === peak
-                          ? `<span class="h-1.5 w-1.5 rounded-full ${dimensionColors[dimension]}"></span>`
-                          : '';
-                      }).join('')}
-                    </div>
-                  </div>
-                  <h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4>
-                  <div class="flex gap-1.5">
-                    ${GOVERNANCE_DIMENSIONS.map((dimension) => {
-                      const score = Number(
-                        policy.data.analysis?.[dimension]?.score || 0
-                      );
-                      const peak = country.peakAnalysis[dimension];
-                      const active = score > 0 && score === peak;
-                      const barColor = active
-                        ? dimensionColors[dimension]
-                        : 'bg-slate-200 dark:bg-slate-800';
-                      return `<div class="flex-1"><div class="mb-1 h-1 overflow-hidden rounded-full bg-slate-50 dark:bg-slate-950"><div class="h-full ${barColor}" style="width:${Math.min(100, Math.max(0, score))}%"></div></div><div class="text-center text-[7px] font-black ${active ? 'text-slate-900 dark:text-white' : 'text-slate-400 opacity-50'}">${dimension.slice(0, 3).toUpperCase()}</div></div>`;
-                    }).join('')}
-                  </div>
-                  <a class="absolute inset-0" href="${text.policyPath}${encodeURIComponent(String(policy.id))}/" aria-label="${escapeHtml(policy.data.title)}"></a>
-                </article>`
-              )
-              .join('')}
-          </div>
-        </div>`
-    )
+    .map((country) => {
+      const key = escapeHtml(country.canonicalCountry);
+      return `<section class="space-y-6" data-country-key="${key}"><div class="flex items-center gap-4"><div class="h-3 w-3 rounded-full" style="background-color:${country.color.border}"></div><h3 class="text-xl font-bold dark:text-white">${escapeHtml(country.displayCountry)} · ${text.contributorHeading}</h3><span class="text-xs font-semibold text-slate-400">${text.policyCount} ${country.governance.policyCount}${text.items}</span></div><div class="grid grid-cols-1 gap-4 md:grid-cols-2">${country.contributors
+        .map(
+          (policy) =>
+            `<article class="relative rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-blue-500 dark:border-slate-800 dark:bg-slate-900"><div class="mb-3 flex items-start justify-between"><span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}</span><div class="flex gap-1">${GOVERNANCE_DIMENSIONS.map(
+              (dimension) => {
+                const score = Number(
+                  policy.data.analysis?.[dimension]?.score || 0
+                );
+                const peak = country.peakAnalysis[dimension];
+                return score > 0 && score === peak
+                  ? `<span class="h-1.5 w-1.5 rounded-full ${dimensionColors[dimension]}"></span>`
+                  : '';
+              }
+            ).join(
+              ''
+            )}</div></div><h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4><div class="flex gap-1.5">${GOVERNANCE_DIMENSIONS.map(
+              (dimension) => {
+                const score = Number(
+                  policy.data.analysis?.[dimension]?.score || 0
+                );
+                const peak = country.peakAnalysis[dimension];
+                const active = score > 0 && score === peak;
+                const barColor = active
+                  ? dimensionColors[dimension]
+                  : 'bg-slate-200 dark:bg-slate-800';
+                return `<div class="flex-1"><div class="mb-1 h-1 overflow-hidden rounded-full bg-slate-50 dark:bg-slate-950"><div class="h-full ${barColor}" style="width:${Math.min(100, Math.max(0, score))}%"></div></div><div class="text-center text-[7px] font-black ${active ? 'text-slate-900 dark:text-white' : 'text-slate-400 opacity-50'}">${dimension.slice(0, 3).toUpperCase()}</div></div>`;
+              }
+            ).join(
+              ''
+            )}</div><a class="absolute inset-0" href="${text.policyPath}${encodeURIComponent(String(policy.id))}/" aria-label="${escapeHtml(policy.data.title)}"></a></article>`
+        )
+        .join('')}</div></section>`;
+    })
     .join('<div class="my-8 h-px bg-slate-100 dark:bg-slate-800"></div>');
 };
 
@@ -447,33 +262,25 @@ const renderFacilityStats = (countrySystems, text) => {
   if (!container) return;
   container.innerHTML = countrySystems
     .map(
-      (country) => `
-      <article class="rounded-3xl border border-slate-100 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/50">
-        <div class="mb-4 flex items-center justify-between gap-3">
-          <span class="font-bold text-slate-900 dark:text-white">${escapeHtml(country.displayCountry)}</span>
-          <span class="text-[10px] font-black text-blue-600">${country.deployment.operationalCount} ${text.operationalProjects}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-2">
-          ${[
-            [
-              text.operational,
-              country.deployment.operationalCapacity,
-              'text-emerald-500',
-            ],
-            [
-              text.construction,
-              country.deployment.constructionCapacity,
-              'text-amber-500',
-            ],
-            [text.planned, country.deployment.plannedCapacity, 'text-blue-500'],
-          ]
-            .map(
-              ([label, value, className]) =>
-                `<div class="rounded-xl bg-slate-50 p-2 text-center dark:bg-slate-800/50"><p class="text-[8px] font-black uppercase ${className}">${label}</p><p class="text-xs font-bold dark:text-white">${formatCapacity(value)}</p></div>`
-            )
-            .join('')}
-        </div>
-      </article>`
+      (country) =>
+        `<article class="rounded-2xl border border-slate-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/50" data-country-key="${escapeHtml(country.canonicalCountry)}"><div class="mb-4 flex items-center justify-between gap-3"><span class="font-bold text-slate-900 dark:text-white">${escapeHtml(country.displayCountry)}</span><span class="text-[10px] font-black text-blue-600">${country.deployment.operationalCount} ${text.operationalProjects}</span></div><div class="grid grid-cols-3 gap-2">${[
+          [
+            text.operational,
+            country.deployment.operationalCapacity,
+            'text-emerald-500',
+          ],
+          [
+            text.construction,
+            country.deployment.constructionCapacity,
+            'text-amber-500',
+          ],
+          [text.planned, country.deployment.plannedCapacity, 'text-blue-500'],
+        ]
+          .map(
+            ([label, value, className]) =>
+              `<div class="rounded-xl bg-slate-50 p-2 text-center dark:bg-slate-800/50"><p class="text-[8px] font-black uppercase ${className}">${label}</p><p class="text-xs font-bold dark:text-white">${formatCapacity(value)}</p></div>`
+          )
+          .join('')}</div></article>`
     )
     .join('');
 };
@@ -487,7 +294,7 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
       countrySystems
         .map(
           (country) =>
-            `<th class="border-l border-slate-100 p-6 font-bold text-slate-900 dark:border-slate-800 dark:text-white">${escapeHtml(country.displayCountry)}</th>`
+            `<th data-country-key="${escapeHtml(country.canonicalCountry)}" class="border-l border-slate-100 p-6 font-bold text-slate-900 dark:border-slate-800 dark:text-white">${escapeHtml(country.displayCountry)}</th>`
         )
         .join('') +
       '</tr>';
@@ -499,7 +306,7 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
           `<tr class="group transition-colors hover:bg-slate-50 dark:hover:bg-slate-900/50"><td class="bg-slate-50/30 p-6 text-xs font-bold text-slate-500 dark:bg-slate-900/20 dark:text-slate-400">${label}</td>${countrySystems
             .map(
               (country) =>
-                `<td class="border-l border-slate-100 p-6 text-xs font-medium text-slate-600 dark:border-slate-800 dark:text-slate-400">${escapeHtml(country.regulatory[key] || '---')}</td>`
+                `<td data-country-key="${escapeHtml(country.canonicalCountry)}" class="border-l border-slate-100 p-6 text-xs font-medium text-slate-600 dark:border-slate-800 dark:text-slate-400">${escapeHtml(country.regulatory[key] || '---')}</td>`
             )
             .join('')}</tr>`
       )
@@ -533,8 +340,7 @@ export function initGovernanceComparison(lang = 'zh') {
     if (!selectedCountries.length) {
       emptyState?.classList.remove('hidden');
       container?.classList.add('hidden');
-      charts.radar?.destroy();
-      charts.deployment?.destroy();
+      clearGovernanceAnalytics();
       return;
     }
 
@@ -559,7 +365,6 @@ export function initGovernanceComparison(lang = 'zh') {
         index,
       })
     );
-
     const globalSystems = buildGlobalSystems(
       allPolicies,
       allFacilities,
@@ -567,11 +372,10 @@ export function initGovernanceComparison(lang = 'zh') {
     );
     const benchmarks = calculateGlobalBenchmarks(globalSystems);
 
-    drawRadar(countrySystems, text.dimensionLabels);
-    drawDeploymentMatrix(countrySystems, benchmarks, text);
     renderContributors(countrySystems, text);
     renderFacilityStats(countrySystems, text);
     renderRegulatoryMatrix(countrySystems, text);
+    renderGovernanceAnalytics({ countrySystems, benchmarks, text, lang });
   };
 
   const clearButton = document.getElementById('clear-all');

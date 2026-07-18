@@ -1,0 +1,162 @@
+---
+import { governanceComparisonCopy } from '../lib/governanceComparisonCopy.mjs';
+import '../styles/governance-workspace.css';
+
+const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
+const copy = governanceComparisonCopy[lang];
+const ui =
+  lang === 'zh'
+    ? {
+        profileView: '画像视图',
+        radar: '雷达图',
+        heatmap: '热力矩阵',
+        profileTab: '治理画像',
+        deploymentTab: '治理—部署',
+        evidenceTitle: '评分证据',
+        evidenceEmpty:
+          '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
+        insightsTitle: '对比洞察',
+        insightsSubtitle: '优势、短板与治理—部署位置',
+      }
+    : {
+        profileView: 'Profile view',
+        radar: 'Radar',
+        heatmap: 'Heatmap',
+        profileTab: 'Governance profile',
+        deploymentTab: 'Governance–deployment',
+        evidenceTitle: 'Scoring evidence',
+        evidenceEmpty:
+          'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
+        insightsTitle: 'Comparison insights',
+        insightsSubtitle: 'Strengths, gaps and governance–deployment position',
+      };
+---
+
+<section class="governance-analytics" data-governance-analytics>
+  <div
+    class="governance-mobile-tabs print:hidden"
+    role="tablist"
+    aria-label={copy.matrixTitle}
+  >
+    <button
+      type="button"
+      class="is-active"
+      data-governance-tab="profile"
+      role="tab"
+      aria-selected="true"
+    >
+      {ui.profileTab}
+    </button>
+    <button
+      type="button"
+      data-governance-tab="deployment"
+      role="tab"
+      aria-selected="false"
+    >
+      {ui.deploymentTab}
+    </button>
+  </div>
+
+  <div class="governance-primary-grid">
+    <article
+      class="governance-panel governance-profile-panel"
+      data-governance-panel="profile"
+    >
+      <header class="governance-panel-header">
+        <div>
+          <p class="governance-eyebrow">{copy.capabilityEyebrow}</p>
+          <h2>{copy.capabilityTitle}</h2>
+          <p class="governance-panel-subtitle">{copy.capabilitySubtitle}</p>
+        </div>
+        <div
+          class="governance-profile-toggle print:hidden"
+          aria-label={ui.profileView}
+        >
+          <button type="button" data-profile-view="radar">{ui.radar}</button>
+          <button type="button" data-profile-view="heatmap">{ui.heatmap}</button
+          >
+        </div>
+      </header>
+
+      <div class="governance-scope-row print:hidden">
+        <div>
+          <strong>{copy.scopeTitle}</strong>
+          <span>{copy.scopeNote}</span>
+        </div>
+        <select id="analysis-scope">
+          <option value="system">{copy.scopeSystem}</option>
+          <option value="selected">{copy.scopeSelected}</option>
+        </select>
+      </div>
+
+      <div class="governance-profile-visual" data-profile-visual="radar">
+        <canvas id="compare-radar-canvas"></canvas>
+      </div>
+      <div
+        id="governance-heatmap"
+        class="governance-heatmap hidden"
+        data-profile-visual="heatmap"
+      >
+      </div>
+    </article>
+
+    <article
+      class="governance-panel governance-deployment-panel"
+      data-governance-panel="deployment"
+    >
+      <header class="governance-panel-header">
+        <div>
+          <p class="governance-eyebrow">{copy.matrixSubtitle}</p>
+          <h2>{copy.matrixTitle}</h2>
+        </div>
+        <div class="governance-benchmark-chip">
+          <span data-governance-benchmark>—</span>
+          <small>/100</small>
+          <span class="governance-benchmark-divider"></span>
+          <span data-deployment-benchmark>—</span>
+        </div>
+      </header>
+
+      <div class="governance-matrix-wrap">
+        <canvas id="maturity-matrix-canvas"></canvas>
+      </div>
+
+      <div class="governance-quadrant-legend" aria-label={copy.matrixTitle}>
+        <span data-quadrant="policy-led">{copy.qPolicy}</span>
+        <span data-quadrant="integrated-leaders">{copy.qLeader}</span>
+        <span data-quadrant="foundation-building">{copy.qFoundation}</span>
+        <span data-quadrant="deployment-led">{copy.qDeployment}</span>
+      </div>
+      <p class="governance-method-note">
+        {copy.benchmarkPrefix}: {copy.benchmarkGovernance}; {
+          copy.benchmarkDeployment
+        }.
+        {copy.benchmarkMethod}
+      </p>
+    </article>
+  </div>
+
+  <div class="governance-secondary-grid">
+    <section class="governance-insights-panel">
+      <header>
+        <p class="governance-eyebrow">{ui.insightsSubtitle}</p>
+        <h2>{ui.insightsTitle}</h2>
+      </header>
+      <div id="governance-insights" class="governance-insights-grid"></div>
+    </section>
+
+    <aside
+      id="governance-evidence-panel"
+      class="governance-evidence-panel"
+      aria-live="polite"
+    >
+      <header>
+        <p class="governance-eyebrow">Evidence & provenance</p>
+        <h2>{ui.evidenceTitle}</h2>
+      </header>
+      <div data-evidence-content>
+        <p class="governance-evidence-empty">{ui.evidenceEmpty}</p>
+      </div>
+    </aside>
+  </div>
+</section>
