@@ -4,7 +4,8 @@ import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
-const dictCountries = i18nDict.countries;
+const countryAliases = new Map(Object.entries(i18nDict.countries));
+const canonicalCountry = (value) => countryAliases.get(value) || value;
 const sourcePolicies = await getCollection(
   lang === 'en' ? 'policies_en' : 'policies_zh'
 );
@@ -19,24 +20,21 @@ const policies = sourcePolicies.map((policy) => ({
   ...policy,
   data: {
     ...policy.data,
-    country: dictCountries[policy.data.country] || policy.data.country,
+    country: canonicalCountry(policy.data.country),
   },
 }));
 const facilities = sourceFacilities.map((facility) => ({
   ...facility,
   data: {
     ...facility.data,
-    country: dictCountries[facility.data.country] || facility.data.country,
+    country: canonicalCountry(facility.data.country),
   },
 }));
 const profiles = sourceProfiles.map((profile) => ({
   ...profile,
   data: {
     ...profile.data,
-    id:
-      lang === 'zh'
-        ? dictCountries[profile.data.id] || profile.data.id
-        : profile.data.id,
+    id: lang === 'zh' ? canonicalCountry(profile.data.id) : profile.data.id,
   },
 }));
 
