@@ -1,0 +1,297 @@
+/*
+ * Homepage banner composition.
+ * On desktop, the existing live capacity metrics are visually promoted into
+ * the hero's right column while the chart remains a full-width second row.
+ */
+@media (min-width: 1024px) {
+  body:has([data-capacity-trend]) .site-main > div.py-12 {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+    column-gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  body:has([data-capacity-trend]) .site-main > div.py-12 > header {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 48rem;
+    margin: 0 !important;
+    padding: clamp(1.25rem, 3vw, 2.5rem) 0 clamp(2rem, 4vw, 3.5rem);
+    text-align: left;
+  }
+
+  body:has([data-capacity-trend])
+    .site-main
+    > div.py-12
+    > header
+    > div:first-child {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  body:has([data-capacity-trend])
+    .site-main
+    > div.py-12
+    > header
+    > div:last-child {
+    justify-content: flex-start;
+  }
+
+  body:has([data-capacity-trend]) .site-main > div.py-12 > [data-capacity-trend] {
+    display: contents !important;
+  }
+
+  body:has([data-capacity-trend])
+    .site-main
+    > div.py-12
+    > [data-capacity-trend]
+    > div:first-child {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    gap: 0.75rem !important;
+    min-width: 0;
+  }
+
+  body:has([data-capacity-trend])
+    .site-main
+    > div.py-12
+    > [data-capacity-trend]
+    > section:last-child {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 6.5rem;
+  }
+
+  body:has([data-capacity-trend])
+    .site-main
+    > div.py-12
+    > :not(header):not([data-capacity-trend]) {
+    grid-column: 1 / -1;
+  }
+
+  /* Primary, live project-record total. */
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:first-child {
+    min-height: 0;
+    padding: 1.35rem 1.45rem !important;
+    border-radius: 14px !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:first-child
+    h3 {
+    margin-bottom: 0.55rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.07em !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:first-child
+    > div:nth-of-type(3) {
+    margin-bottom: 0 !important;
+    font-size: clamp(2.65rem, 4.2vw, 4rem) !important;
+    line-height: 1 !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:first-child
+    > p:last-child {
+    display: none;
+  }
+
+  /* Operational and construction metrics become one compact two-column panel. */
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2) {
+    padding: 1.15rem 1.35rem !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div {
+    min-width: 0;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:first-child {
+    padding-right: 1rem;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:last-child {
+    padding-top: 0 !important;
+    padding-left: 1rem;
+    border-top: 0 !important;
+    border-left: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    h3 {
+    margin-bottom: 0.35rem !important;
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+  }
+
+  html[lang='zh']
+    body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:first-child
+    h3::after {
+    content: '在运';
+  }
+
+  html[lang='zh']
+    body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:last-child
+    h3::after {
+    content: '在建';
+  }
+
+  html[lang='en']
+    body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:first-child
+    h3::after {
+    content: 'Operational';
+  }
+
+  html[lang='en']
+    body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:last-child
+    h3::after {
+    content: 'Under construction';
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    h3::after {
+    color: #a9d9dc;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    .text-3xl {
+    font-size: 1.28rem !important;
+    line-height: 1.35 !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    .text-lg {
+    font-size: 0.74rem !important;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    .text-sm {
+    margin-top: 0.35rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.45 !important;
+  }
+
+  body:has([data-capacity-trend]) #storage-related-method-note {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  body:has([data-capacity-trend]) .site-main > div.py-12 {
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.78fr);
+    column-gap: 2rem;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:first-child {
+    padding-right: 0;
+    padding-bottom: 0.85rem;
+  }
+
+  body:has([data-capacity-trend])
+    [data-capacity-trend]
+    > div:first-child
+    > section:nth-child(2)
+    > .space-y-5
+    > div:last-child {
+    padding-top: 0.85rem !important;
+    padding-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 0.12) !important;
+    border-left: 0;
+  }
+}
