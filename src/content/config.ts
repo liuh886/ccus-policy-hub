@@ -191,6 +191,19 @@ const countrySchema = z.object({
     })
     .optional()
     .nullable(),
+  governanceDeployment: z
+    .object({
+      deploymentCapacityMtpa: z.number().min(0).default(0),
+      governanceCapabilityIndex: z.number().min(0).max(100).default(0),
+    })
+    .optional(),
+  // Deprecated compatibility alias for pre-migration exports.
+  maturity: z
+    .object({
+      x: z.number().min(0).default(0),
+      y: z.number().min(0).max(500).default(0),
+    })
+    .optional(),
   provenance: provenanceSchema.optional(),
 });
 

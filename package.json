@@ -24,6 +24,8 @@
     "manage:db:export:md": "node agent/ccus-ai-agent/logic/manage.mjs db:export:md",
     "manage:db:export:md:clean": "node scripts/export-md-clean-sync.mjs",
     "manage:db:pipeline": "node agent/ccus-ai-agent/logic/manage.mjs db:pipeline",
+    "manage:db:compute:governance-deployment": "node agent/ccus-ai-agent/logic/governance-deployment-algo.mjs",
+    "manage:db:compute:maturity": "node agent/ccus-ai-agent/logic/maturity-algo.mjs",
     "manage:db:lint-governance": "node agent/ccus-ai-agent/logic/manage.mjs db:governance:lint-files",
     "manage:db:optimize": "node agent/ccus-ai-agent/logic/manage.mjs db:optimize",
     "manage:db:clean": "node agent/ccus-ai-agent/logic/manage.mjs db:clean",

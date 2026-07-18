@@ -1,0 +1,265 @@
+---
+import { getCollection } from 'astro:content';
+import countryData from '../data/countries.json';
+import { governanceComparisonCopy } from '../lib/governanceComparisonCopy.mjs';
+
+const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
+const sourcePolicies = await getCollection(
+  lang === 'en' ? 'policies_en' : 'policies_zh'
+);
+const sourceFacilities = await getCollection(
+  lang === 'en' ? 'facilities_en' : 'facilities_zh'
+);
+const sourceProfiles = await getCollection(
+  lang === 'en' ? 'countries_en' : 'countries_zh'
+);
+
+// Country canonicalization is performed once in the shared client model.
+const policies = sourcePolicies;
+const facilities = sourceFacilities;
+const profiles = sourceProfiles;
+
+const text = governanceComparisonCopy[lang];
+---
+
+<div class="mx-auto max-w-7xl px-4 py-8">
+  <header
+    class="print:hidden mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+  >
+    <div>
+      <h1 class="mb-4 text-4xl font-black text-slate-900 dark:text-white">
+        {text.pageTitle}
+      </h1>
+      <p class="max-w-3xl text-slate-500 dark:text-slate-400">
+        {text.pageDescription}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <button
+        id="clear-all"
+        class="px-4 py-2 text-sm font-bold text-slate-500 transition-colors hover:text-red-500"
+      >
+        {text.clear}
+      </button>
+      <button
+        id="print-report"
+        class="rounded-xl bg-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-blue-500/20 transition-colors hover:bg-blue-700"
+      >
+        {text.export}
+      </button>
+    </div>
+  </header>
+
+  <div class="hidden print:block mb-12 border-b-4 border-slate-900 pb-8">
+    <h1 class="mb-2 text-4xl font-black text-slate-900">{text.reportTitle}</h1>
+    <p class="text-slate-500">
+      {text.generated}: {
+        new Date().toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-GB')
+      } | CCUS Policy Hub
+    </p>
+  </div>
+
+  <div
+    id="compare-container"
+    class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
+  >
+    <aside class="space-y-8 lg:col-span-5">
+      <section
+        class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 shadow-sm dark:border-slate-800 dark:bg-slate-900/50"
+      >
+        <header class="mb-6">
+          <p
+            class="mb-2 text-xs font-black uppercase tracking-[0.18em] text-blue-600"
+          >
+            {text.capabilityEyebrow}
+          </p>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            {text.capabilityTitle}
+          </h2>
+          <p
+            class="mt-2 text-xs font-bold uppercase tracking-widest text-slate-400"
+          >
+            {text.capabilitySubtitle}
+          </p>
+        </header>
+
+        <div
+          class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/30"
+        >
+          <div>
+            <div
+              class="text-[10px] font-black uppercase tracking-widest text-slate-500"
+            >
+              {text.scopeTitle}
+            </div>
+            <div class="mt-1 max-w-xs text-xs text-slate-500">
+              {text.scopeNote}
+            </div>
+          </div>
+          <select
+            id="analysis-scope"
+            class="min-w-44 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          >
+            <option value="system">{text.scopeSystem}</option>
+            <option value="selected">{text.scopeSelected}</option>
+          </select>
+        </div>
+
+        <div class="mb-8 h-80 w-full">
+          <canvas id="compare-radar-canvas"></canvas>
+        </div>
+
+        <section class="border-t border-slate-200 pt-8 dark:border-slate-800">
+          <div class="mb-4">
+            <p
+              class="text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >
+              {text.matrixSubtitle}
+            </p>
+            <h3 class="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+              {text.matrixTitle}
+            </h3>
+          </div>
+          <div class="mb-4 h-72 w-full">
+            <canvas id="maturity-matrix-canvas"></canvas>
+          </div>
+          <div
+            class="grid grid-cols-2 gap-2 text-[9px] font-bold text-slate-500"
+          >
+            <div
+              class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40"
+            >
+              {text.qPolicy}
+            </div>
+            <div
+              class="rounded-lg bg-blue-50 p-2 text-center text-blue-700 dark:bg-blue-900/20 dark:text-blue-300"
+            >
+              {text.qLeader}
+            </div>
+            <div
+              class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40"
+            >
+              {text.qFoundation}
+            </div>
+            <div
+              class="rounded-lg bg-slate-100/70 p-2 text-center dark:bg-slate-800/40"
+            >
+              {text.qDeployment}
+            </div>
+          </div>
+          <p
+            class="mt-4 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
+          >
+            {text.benchmarkPrefix}: {text.benchmarkGovernance}
+            <strong data-governance-benchmark>—</strong>; {
+              text.benchmarkDeployment
+            }
+            <strong data-deployment-benchmark>—</strong>. {text.benchmarkMethod}
+          </p>
+        </section>
+
+        <section
+          id="facility-stats-compare"
+          class="mt-8 space-y-6 border-t border-slate-200 pt-8 dark:border-slate-800"
+        >
+          <h3
+            class="text-[10px] font-black uppercase tracking-widest text-slate-400"
+          >
+            {text.facilityTitle}
+          </h3>
+          <div id="stats-grid" class="space-y-4"></div>
+        </section>
+      </section>
+    </aside>
+
+    <main class="space-y-12 lg:col-span-7">
+      <section>
+        <div class="mb-8 flex items-center gap-3">
+          <h2
+            class="text-sm font-bold uppercase tracking-widest text-slate-400"
+          >
+            {text.contributors}
+          </h2>
+          <div class="h-px flex-1 bg-slate-100 dark:bg-slate-800"></div>
+        </div>
+        <div id="policy-bundles-container" class="space-y-10"></div>
+      </section>
+
+      <section
+        class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
+      >
+        <div
+          class="border-b border-slate-100 bg-slate-50 p-7 dark:border-slate-800 dark:bg-slate-900/50"
+        >
+          <h2
+            class="text-xs font-black uppercase tracking-widest text-slate-500"
+          >
+            {text.regulatory}
+          </h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left">
+            <thead id="reg-matrix-header"></thead>
+            <tbody
+              id="reg-matrix-body"
+              class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div
+    id="empty-state"
+    class="hidden rounded-[2rem] border-2 border-dashed border-slate-200 bg-slate-50 py-28 text-center dark:border-slate-800 dark:bg-slate-900/50"
+  >
+    <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+      {text.emptyTitle}
+    </h2>
+    <p class="mx-auto mb-8 max-w-lg text-slate-500 dark:text-slate-400">
+      {text.emptyDescription}
+    </p>
+    <a
+      href={text.emptyHref}
+      class="inline-flex rounded-xl bg-blue-600 px-8 py-3 font-bold text-white hover:bg-blue-700"
+    >
+      {text.emptyAction}
+    </a>
+  </div>
+</div>
+
+<div
+  id="all-facilities-data"
+  data-facilities={JSON.stringify(facilities)}
+  class="hidden"
+>
+</div>
+<div
+  id="all-policies-data"
+  data-policies={JSON.stringify(policies)}
+  class="hidden"
+>
+</div>
+<div
+  id="country-data"
+  data-countries={JSON.stringify(countryData)}
+  class="hidden"
+>
+</div>
+<div
+  id="countries-profiles-data"
+  data-profiles={JSON.stringify(profiles)}
+  class="hidden"
+>
+</div>
+
+<script>
+  import { initGovernanceComparison } from '../lib/governanceComparisonClient.mjs';
+
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'zh';
+  const init = () => initGovernanceComparison(lang);
+
+  document.addEventListener('astro:page-load', init);
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init, { once: true });
+</script>

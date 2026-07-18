@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS facilities (
   lat REAL,
   lng REAL,
   precision TEXT,
-  
+
   investment_scale TEXT,
 
   provenance_author TEXT,
@@ -199,7 +199,15 @@ CREATE TABLE IF NOT EXISTS country_profiles (
   net_zero_year INTEGER,
   capture_2030 TEXT,
   storage_2050 TEXT,
-  
+
+  -- Explicit governance–deployment metrics.
+  deployment_capacity_mtpa REAL NOT NULL DEFAULT 0,
+  governance_capability_index REAL NOT NULL DEFAULT 0,
+
+  -- Deprecated compatibility aliases. New code must use the explicit fields.
+  maturity_x REAL NOT NULL DEFAULT 0,
+  maturity_y REAL NOT NULL DEFAULT 0,
+
   provenance_author TEXT,
   provenance_reviewer TEXT,
   provenance_last_audit_date TEXT
@@ -210,7 +218,7 @@ CREATE TABLE IF NOT EXISTS country_i18n (
   lang TEXT NOT NULL CHECK(lang IN ('en','zh')),
   name TEXT NOT NULL,
   summary TEXT,
-  
+
   -- The 7 Regulatory Pillars
   pore_space_rights TEXT DEFAULT 'Pending',
   liability_transfer TEXT DEFAULT 'Pending',
@@ -219,7 +227,7 @@ CREATE TABLE IF NOT EXISTS country_i18n (
   permitting_lead_time TEXT DEFAULT 'Pending',
   co2_definition TEXT DEFAULT 'Pending',
   cross_border_rules TEXT DEFAULT 'Pending',
-  
+
   PRIMARY KEY(country_id, lang),
   FOREIGN KEY(country_id) REFERENCES country_profiles(id) ON DELETE CASCADE
 );

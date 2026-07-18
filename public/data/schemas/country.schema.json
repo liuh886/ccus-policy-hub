@@ -26,6 +26,17 @@
       "type": ["string", "null"],
       "description": "2050 storage target"
     },
+    "deployment_capacity_mtpa": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Committed project-record capacity for operational and under-construction facilities (Mtpa)"
+    },
+    "governance_capability_index": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Mean of the five peak governance-dimension scores"
+    },
     "provenance_author": {
       "type": ["string", "null"],
       "description": "Author who created the record"
