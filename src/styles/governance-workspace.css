@@ -484,3 +484,55 @@
     height: 19rem;
   }
 }
+
+/* Compare workspace semantic refinements */
+.governance-benchmark-chip {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: stretch;
+  gap: 0.7rem;
+  border-radius: 12px;
+  padding: 0.5rem 0.7rem;
+}
+
+.governance-benchmark-item {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.governance-benchmark-item + .governance-benchmark-item {
+  border-left: 1px solid var(--border-subtle);
+  padding-left: 0.7rem;
+}
+
+.governance-benchmark-item small {
+  color: var(--text-muted);
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.governance-benchmark-item strong {
+  color: var(--brand-navy-800);
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.governance-benchmark-item em {
+  margin-left: 0.12rem;
+  color: var(--text-muted);
+  font-size: 0.58rem;
+  font-style: normal;
+}
+
+.governance-quadrant-legend {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .governance-benchmark-chip {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+}

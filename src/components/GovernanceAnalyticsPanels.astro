@@ -109,11 +109,20 @@ const ui =
           <p class="governance-eyebrow">{copy.matrixSubtitle}</p>
           <h2>{copy.matrixTitle}</h2>
         </div>
-        <div class="governance-benchmark-chip">
-          <span data-governance-benchmark>—</span>
-          <small>/100</small>
-          <span class="governance-benchmark-divider"></span>
-          <span data-deployment-benchmark>—</span>
+        <div
+          class="governance-benchmark-chip"
+          aria-label={copy.benchmarkPrefix}
+        >
+          <div class="governance-benchmark-item">
+            <small>{copy.benchmarkGovernanceLabel}</small>
+            <strong
+              ><span data-governance-benchmark>—</span><em>/100</em></strong
+            >
+          </div>
+          <div class="governance-benchmark-item">
+            <small>{copy.benchmarkDeploymentLabel}</small>
+            <strong><span data-deployment-benchmark>—</span></strong>
+          </div>
         </div>
       </header>
 
@@ -151,7 +160,7 @@ const ui =
       aria-live="polite"
     >
       <header>
-        <p class="governance-eyebrow">Evidence & provenance</p>
+        <p class="governance-eyebrow">{copy.evidenceEyebrow}</p>
         <h2>{ui.evidenceTitle}</h2>
       </header>
       <div data-evidence-content>
