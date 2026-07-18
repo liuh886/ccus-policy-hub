@@ -56,7 +56,15 @@ jobs:
 
       - name: Validate implementation
         run: |
-          pnpm lint
+          pnpm exec eslint .
+          pnpm exec prettier --check \
+            src/components/GovernanceAnalyticsPanels.astro \
+            src/components/GovernanceComparisonWorkspace.astro \
+            src/lib/governanceComparisonCopy.mjs \
+            src/lib/governanceComparisonClient.mjs \
+            src/lib/governanceWorkspaceVisuals.mjs \
+            src/styles/governance-workspace.css \
+            scripts/governance-workspace-visuals.test.mjs
           pnpm test
           pnpm astro check
           pnpm build
