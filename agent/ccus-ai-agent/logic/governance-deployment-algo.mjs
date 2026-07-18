@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
+const DEFAULT_DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
 const DIMENSIONS = ['incentive', 'statutory', 'market', 'strategic', 'mrv'];
 
 const hasColumn = (db, table, column) => {
@@ -39,33 +39,32 @@ const capacityExpression = `
   END
 `;
 
-export async function computeGovernanceDeployment() {
+export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
   const SQL = await initSqlJs();
-  const buffer = fs.readFileSync(DB_PATH);
+  const buffer = fs.readFileSync(dbPath);
   const db = new SQL.Database(buffer);
 
   ensureColumn(db, 'deployment_capacity_mtpa', 'REAL NOT NULL DEFAULT 0');
   ensureColumn(db, 'governance_capability_index', 'REAL NOT NULL DEFAULT 0');
 
-  const legacyX = hasColumn(db, 'country_profiles', 'maturity_x');
-  const legacyY = hasColumn(db, 'country_profiles', 'maturity_y');
+  // Keep the previous fields as one-release compatibility aliases. They are
+  // written from the explicit fields and should no longer be used by new code.
+  ensureColumn(db, 'maturity_x', 'REAL NOT NULL DEFAULT 0');
+  ensureColumn(db, 'maturity_y', 'REAL NOT NULL DEFAULT 0');
 
-  if (legacyX) {
-    db.run(`
-      UPDATE country_profiles
-      SET deployment_capacity_mtpa = COALESCE(NULLIF(deployment_capacity_mtpa, 0), maturity_x, 0)
-    `);
-  }
-  if (legacyY) {
-    db.run(`
-      UPDATE country_profiles
-      SET governance_capability_index = COALESCE(
-        NULLIF(governance_capability_index, 0),
-        maturity_y / ${DIMENSIONS.length}.0,
-        0
-      )
-    `);
-  }
+  db.run(`
+    UPDATE country_profiles
+    SET deployment_capacity_mtpa = COALESCE(
+      NULLIF(deployment_capacity_mtpa, 0),
+      maturity_x,
+      0
+    ),
+    governance_capability_index = COALESCE(
+      NULLIF(governance_capability_index, 0),
+      maturity_y / ${DIMENSIONS.length}.0,
+      0
+    )
+  `);
 
   const countries = db.exec('SELECT id FROM country_profiles ORDER BY id');
   if (!countries.length) {
@@ -92,7 +91,10 @@ export async function computeGovernanceDeployment() {
   `);
   const update = db.prepare(`
     UPDATE country_profiles
-    SET deployment_capacity_mtpa = ?, governance_capability_index = ?
+    SET deployment_capacity_mtpa = ?,
+        governance_capability_index = ?,
+        maturity_x = ?,
+        maturity_y = ?
     WHERE id = ?
   `);
 
@@ -113,7 +115,13 @@ export async function computeGovernanceDeployment() {
       const capacity = Number(rowObject(capacityQuery)?.committed_capacity || 0);
       capacityQuery.reset();
 
-      update.run([capacity, governanceIndex, countryId]);
+      update.run([
+        capacity,
+        governanceIndex,
+        capacity,
+        governanceIndex * DIMENSIONS.length,
+        countryId,
+      ]);
       update.reset();
       console.log(
         `${String(countryId).padEnd(24)} deployment=${capacity.toFixed(2)} Mtpa governance=${governanceIndex.toFixed(1)}/100`
@@ -130,12 +138,12 @@ export async function computeGovernanceDeployment() {
   }
 
   const data = db.export();
-  fs.writeFileSync(DB_PATH, new Uint8Array(data));
+  fs.writeFileSync(dbPath, new Uint8Array(data));
   db.close();
   console.log('Governance–deployment metrics updated.');
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
   computeGovernanceDeployment().catch((error) => {
     console.error(error);
     process.exitCode = 1;
