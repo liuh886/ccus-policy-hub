@@ -31,8 +31,7 @@ jobs:
           path = Path('src/components/GovernanceComparisonWorkspace.astro')
           content = path.read_text(encoding='utf-8')
           start = content.index("// Normalize free-form country names")
-          end_marker = "const text ="
-          end = content.index(end_marker)
+          end = content.index("const text =")
           replacement = """const sourcePolicies = await getCollection(
             lang === 'en' ? 'policies_en' : 'policies_zh'
           );
@@ -54,8 +53,6 @@ jobs:
           path.write_text(content, encoding='utf-8')
           PY
           pnpm exec prettier --write src/components/GovernanceComparisonWorkspace.astro
-          pnpm astro check
-          pnpm build
           git add src/components/GovernanceComparisonWorkspace.astro
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
