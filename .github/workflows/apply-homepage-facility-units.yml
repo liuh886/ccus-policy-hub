@@ -1,0 +1,64 @@
+name: Apply homepage facility unit clarification
+
+on:
+  push:
+    branches:
+      - fix/homepage-facility-metric-units-final
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/homepage-facility-metric-units-final
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Clarify facility counts and capacity values
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('src/components/HomepageHero.astro')
+          content = path.read_text(encoding='utf-8')
+
+          replacements = [
+            ("storageRelated: '封存相关',\n        itemUnit: '项',", "storageRelated: '其中封存相关：',\n        facilityUnit: '个',"),
+            ("storageRelated: 'Storage-related',\n        itemUnit: '',", "storageRelated: 'Storage-related:',\n        facilityUnit: ' facilities',"),
+            ("""        <div class=\"home-hero-metric-value\">\n          {operational.totalCount}{text.itemUnit}\n          <span>· {formatCapacity(operational.totalCapacity)} Mtpa</span>\n        </div>\n        <div class=\"home-hero-metric-subline\">\n          {text.storageRelated}\n          {operational.storageRelatedCount}{text.itemUnit}\n          · {formatCapacity(operational.storageRelatedCapacity)} Mtpa\n        </div>""", """        <div class=\"home-hero-metric-value\">\n          <span class=\"home-hero-metric-count\">\n            {operational.totalCount}<small>{text.facilityUnit}</small>\n          </span>\n          <span class=\"home-hero-metric-capacity\">\n            · {formatCapacity(operational.totalCapacity)} Mtpa\n          </span>\n        </div>\n        <div class=\"home-hero-metric-subline\">\n          {text.storageRelated}\n          <strong>\n            {operational.storageRelatedCount}{text.facilityUnit}\n          </strong>\n          · {formatCapacity(operational.storageRelatedCapacity)} Mtpa\n        </div>"""),
+            ("""        <div class=\"home-hero-metric-value\">\n          {construction.totalCount}{text.itemUnit}\n          <span>· {formatCapacity(construction.totalCapacity)} Mtpa</span>\n        </div>\n        <div class=\"home-hero-metric-subline\">\n          {text.storageRelated}\n          {construction.storageRelatedCount}{text.itemUnit}\n          · {formatCapacity(construction.storageRelatedCapacity)} Mtpa\n        </div>""", """        <div class=\"home-hero-metric-value\">\n          <span class=\"home-hero-metric-count\">\n            {construction.totalCount}<small>{text.facilityUnit}</small>\n          </span>\n          <span class=\"home-hero-metric-capacity\">\n            · {formatCapacity(construction.totalCapacity)} Mtpa\n          </span>\n        </div>\n        <div class=\"home-hero-metric-subline\">\n          {text.storageRelated}\n          <strong>\n            {construction.storageRelatedCount}{text.facilityUnit}\n          </strong>\n          · {formatCapacity(construction.storageRelatedCapacity)} Mtpa\n        </div>"""),
+            ("""  .home-hero-metric-value span {\n    color: var(--text-secondary);\n    font-size: 0.78rem;\n    font-weight: 650;\n  }""", """  .home-hero-metric-value {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: baseline;\n    gap: 0.15rem 0.35rem;\n  }\n\n  .home-hero-metric-count {\n    color: var(--text-primary);\n    font-size: 1.08rem;\n    font-weight: 800;\n  }\n\n  .home-hero-metric-count small {\n    margin-left: 0.18rem;\n    color: var(--text-secondary);\n    font-size: 0.72rem;\n    font-weight: 650;\n  }\n\n  .home-hero-metric-capacity {\n    color: var(--text-secondary);\n    font-size: 0.78rem;\n    font-weight: 650;\n  }"""),
+            ("""  .home-hero-metric-subline {\n    margin-top: 0.45rem;\n    color: var(--brand-teal-700);\n    font-size: 0.7rem;\n    font-weight: 700;\n    line-height: 1.5;\n  }""", """  .home-hero-metric-subline {\n    margin-top: 0.45rem;\n    color: var(--brand-teal-700);\n    font-size: 0.7rem;\n    font-weight: 650;\n    line-height: 1.5;\n  }\n\n  .home-hero-metric-subline strong {\n    color: inherit;\n    font-weight: 780;\n  }"""),
+          ]
+
+          for old, new in replacements:
+            if old not in content:
+              raise RuntimeError(f'Missing expected block: {old[:90]}')
+            content = content.replace(old, new, 1)
+
+          path.write_text(content, encoding='utf-8')
+          PY
+      - name: Format and validate
+        run: |
+          pnpm exec prettier --write src/components/HomepageHero.astro
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm build
+      - name: Commit implementation and remove temporary workflow
+        run: |
+          git rm .github/workflows/apply-homepage-facility-units.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/components/HomepageHero.astro
+          git -c core.hooksPath=/dev/null commit -m 'fix(home): clarify facility count and capacity units'
+          git push origin HEAD:fix/homepage-facility-metric-units-final
