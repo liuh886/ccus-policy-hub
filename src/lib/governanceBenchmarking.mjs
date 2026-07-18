@@ -76,8 +76,8 @@ export function calculateGovernanceCapability(policies = []) {
   const index = scores.length
     ? scores.reduce((sum, score) => sum + score, 0) / scores.length
     : 0;
-  const maxScore = Math.max(...scores, 0);
-  const minScore = Math.min(...scores, 0);
+  const maxScore = scores.length ? Math.max(...scores) : 0;
+  const minScore = scores.length ? Math.min(...scores) : 0;
   const strongestDimension =
     GOVERNANCE_DIMENSIONS[scores.indexOf(maxScore)] || GOVERNANCE_DIMENSIONS[0];
   const weakestDimension =
