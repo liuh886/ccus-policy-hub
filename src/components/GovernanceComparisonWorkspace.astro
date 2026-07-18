@@ -4,6 +4,7 @@ import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
+// Normalize free-form country names without relying on a JSON index signature.
 const countryAliases = new Map(Object.entries(i18nDict.countries));
 const canonicalCountry = (value) => countryAliases.get(value) || value;
 const sourcePolicies = await getCollection(
