@@ -23,5 +23,8 @@ jobs:
         run: pnpm build > pr29-build.log 2>&1 || true
       - uses: actions/upload-artifact@v4
         with:
-          name: pr29-build-log
-          path: pr29-build.log
+          name: pr29-diagnostics
+          path: |
+            pr29-build.log
+            src/components/GovernanceComparisonWorkspace.astro
+            package.json
