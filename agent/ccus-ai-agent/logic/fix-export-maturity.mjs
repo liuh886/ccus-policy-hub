@@ -1,20 +1,14 @@
 import fs from 'fs';
 
-const MANAGE_PATH = 'agent/ccus-ai-agent/logic/manage.mjs';
-let content = fs.readFileSync(MANAGE_PATH, 'utf8');
-
-// Use a more robust regex to insert maturity into the export template
-const target = 'strategicTargets: {';
-const replacement = `maturity: {
-          x: c.maturity_x || 0,
-          y: c.maturity_y || 0
-        },
-        strategicTargets: {`;
+const managePath = 'agent/ccus-ai-agent/logic/manage.mjs';
+const content = fs.readFileSync(managePath, 'utf8');
 
 if (!content.includes('maturity: {')) {
-  content = content.replace(target, replacement);
-  fs.writeFileSync(MANAGE_PATH, content);
-  console.log('Fixed manage.mjs export template.');
-} else {
-  console.log('Export template already contains maturity.');
+  throw new Error(
+    'Legacy maturity export is missing. Keep it temporarily until country exports migrate to governanceDeployment.'
+  );
 }
+
+console.warn(
+  'fix-export-maturity.mjs is deprecated. New code uses deployment_capacity_mtpa and governance_capability_index.'
+);
