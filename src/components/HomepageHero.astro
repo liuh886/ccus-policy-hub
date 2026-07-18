@@ -64,8 +64,8 @@ const text =
         totalScope: '规划 + 在运 + 在建',
         operational: '在运',
         construction: '在建',
-        storageRelated: '封存相关',
-        itemUnit: '项',
+        storageRelated: '其中封存相关：',
+        facilityUnit: '个',
         note: '项目记录口径；排除取消、退役与暂停项目。',
       }
     : {
@@ -83,8 +83,8 @@ const text =
         totalScope: 'Planned + operational + under construction',
         operational: 'Operational',
         construction: 'Under construction',
-        storageRelated: 'Storage-related',
-        itemUnit: '',
+        storageRelated: 'Storage-related:',
+        facilityUnit: ' facilities',
         note: 'Project-record basis; cancelled, decommissioned and suspended records excluded.',
       };
 ---
@@ -130,12 +130,18 @@ const text =
       <article class="home-hero-metric">
         <div class="home-hero-metric-label">{text.operational}</div>
         <div class="home-hero-metric-value">
-          {operational.totalCount}{text.itemUnit}
-          <span>· {formatCapacity(operational.totalCapacity)} Mtpa</span>
+          <span class="home-hero-metric-count">
+            {operational.totalCount}<small>{text.facilityUnit}</small>
+          </span>
+          <span class="home-hero-metric-capacity">
+            · {formatCapacity(operational.totalCapacity)} Mtpa
+          </span>
         </div>
         <div class="home-hero-metric-subline">
           {text.storageRelated}
-          {operational.storageRelatedCount}{text.itemUnit}
+          <strong>
+            {operational.storageRelatedCount}{text.facilityUnit}
+          </strong>
           · {formatCapacity(operational.storageRelatedCapacity)} Mtpa
         </div>
       </article>
@@ -143,12 +149,18 @@ const text =
       <article class="home-hero-metric">
         <div class="home-hero-metric-label">{text.construction}</div>
         <div class="home-hero-metric-value">
-          {construction.totalCount}{text.itemUnit}
-          <span>· {formatCapacity(construction.totalCapacity)} Mtpa</span>
+          <span class="home-hero-metric-count">
+            {construction.totalCount}<small>{text.facilityUnit}</small>
+          </span>
+          <span class="home-hero-metric-capacity">
+            · {formatCapacity(construction.totalCapacity)} Mtpa
+          </span>
         </div>
         <div class="home-hero-metric-subline">
           {text.storageRelated}
-          {construction.storageRelatedCount}{text.itemUnit}
+          <strong>
+            {construction.storageRelatedCount}{text.facilityUnit}
+          </strong>
           · {formatCapacity(construction.storageRelatedCapacity)} Mtpa
         </div>
       </article>
@@ -380,7 +392,27 @@ const text =
     line-height: 1.35;
   }
 
-  .home-hero-metric-value span {
+  .home-hero-metric-value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.35rem;
+  }
+
+  .home-hero-metric-count {
+    color: var(--text-primary);
+    font-size: 1.08rem;
+    font-weight: 800;
+  }
+
+  .home-hero-metric-count small {
+    margin-left: 0.18rem;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 650;
+  }
+
+  .home-hero-metric-capacity {
     color: var(--text-secondary);
     font-size: 0.78rem;
     font-weight: 650;
@@ -390,8 +422,13 @@ const text =
     margin-top: 0.45rem;
     color: var(--brand-teal-700);
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 650;
     line-height: 1.5;
+  }
+
+  .home-hero-metric-subline strong {
+    color: inherit;
+    font-weight: 780;
   }
 
   .home-hero-summary-note {
