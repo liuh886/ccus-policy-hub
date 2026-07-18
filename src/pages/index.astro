@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HomepageHero from '../components/HomepageHero.astro';
 import WorldMapNav from '../components/WorldMapNav.astro';
 import CapacityTrend from '../components/CapacityTrend.astro';
 import DatasetVersion from '../components/DatasetVersion.astro';
@@ -11,43 +12,7 @@ const policyCount = policies.length;
 
 <Layout title="CCUS 政策与设施全球数据库">
   <div class="py-12">
-    <!-- Hero Section -->
-    <header class="text-center mb-20">
-      <div
-        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm mx-auto"
-      >
-        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-        Global CCUS Intelligence Hub 2026
-      </div>
-      <h1
-        class="text-6xl md:text-7xl font-black mb-8 tracking-tighter text-slate-900 dark:text-white leading-[1.1]"
-      >
-        全球 CCUS 政策与设施<br /><span class="text-blue-600">知识基础设施</span
-        >
-      </h1>
-      <p
-        class="text-xl text-slate-500 dark:text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
-      >
-        集成 IEA
-        全球设施数据库与核心激励机制，提供多维度政策对比、地理空间分布及行业趋势
-        分析。
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href="/ccus-policy-hub/facilities/"
-          class="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 dark:shadow-none hover:-translate-y-1"
-        >
-          探索全球设施地图
-        </a>
-        <a
-          href="/ccus-policy-hub/policy/"
-          class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-2xl font-bold hover:bg-slate-50 transition-all hover:-translate-y-1 shadow-sm"
-        >
-          查阅政策数据库
-        </a>
-      </div>
-    </header>
+    <HomepageHero lang="zh" />
 
     <!-- Data Insights Section -->
     <CapacityTrend />

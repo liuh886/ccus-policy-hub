@@ -28,7 +28,9 @@ const parseYear = (value: unknown): number | null => {
   return match ? Number.parseInt(match[0], 10) : null;
 };
 
-const projectRecordYear = (facility: (typeof facilities)[number]): number | null =>
+const projectRecordYear = (
+  facility: (typeof facilities)[number]
+): number | null =>
   parseYear(facility.data.operation) ??
   parseYear(facility.data.fid) ??
   parseYear(facility.data.announcement);
@@ -36,7 +38,8 @@ const projectRecordYear = (facility: (typeof facilities)[number]): number | null
 const totalCapacity = facilities.reduce((sum, facility) => {
   const status = normalizeFacilityStatus(facility.data.status);
   const year = projectRecordYear(facility);
-  if (!year || year > defaultMaxYear || !pipelineStatuses.has(status)) return sum;
+  if (!year || year > defaultMaxYear || !pipelineStatuses.has(status))
+    return sum;
   return sum + facilityCapacity(facility.data);
 }, 0);
 
@@ -95,10 +98,16 @@ const text =
     </h1>
     <p class="home-hero-description">{text.description}</p>
     <div class="home-hero-actions">
-      <a class="home-hero-action home-hero-action-primary" href={text.primaryHref}>
+      <a
+        class="home-hero-action home-hero-action-primary"
+        href={text.primaryHref}
+      >
         {text.primaryAction}
       </a>
-      <a class="home-hero-action home-hero-action-secondary" href={text.secondaryHref}>
+      <a
+        class="home-hero-action home-hero-action-secondary"
+        href={text.secondaryHref}
+      >
         {text.secondaryAction}
       </a>
     </div>
@@ -171,11 +180,23 @@ const text =
       sync();
 
       const observer = new MutationObserver(sync);
-      observer.observe(sourceValue, { childList: true, characterData: true, subtree: true });
-      observer.observe(sourceYear, { childList: true, characterData: true, subtree: true });
-      document.addEventListener('astro:before-swap', () => observer.disconnect(), {
-        once: true,
+      observer.observe(sourceValue, {
+        childList: true,
+        characterData: true,
+        subtree: true,
       });
+      observer.observe(sourceYear, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+      document.addEventListener(
+        'astro:before-swap',
+        () => observer.disconnect(),
+        {
+          once: true,
+        }
+      );
     };
 
     document.addEventListener('astro:page-load', initHeroCapacitySync);
