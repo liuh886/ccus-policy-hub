@@ -50,8 +50,12 @@ test('migration creates explicit fields, recomputes values and preserves legacy 
       announced_capacity_max REAL
     );
   `);
-  db.run("INSERT INTO country_profiles (id, maturity_x, maturity_y) VALUES ('Testland', 1, 5)");
-  db.run("INSERT INTO policies (id, country, status) VALUES ('p1', 'Testland', 'Active')");
+  db.run(
+    "INSERT INTO country_profiles (id, maturity_x, maturity_y) VALUES ('Testland', 1, 5)"
+  );
+  db.run(
+    "INSERT INTO policies (id, country, status) VALUES ('p1', 'Testland', 'Active')"
+  );
   for (const [dimension, score] of [
     ['incentive', 90],
     ['statutory', 80],
@@ -83,9 +87,9 @@ test('migration creates explicit fields, recomputes values and preserves legacy 
     `SELECT deployment_capacity_mtpa, governance_capability_index, maturity_x, maturity_y
      FROM country_profiles WHERE id = 'Testland'`
   );
-  const columns = migrated.exec('PRAGMA table_info(country_profiles)')[0].values.map(
-    (item) => item[1]
-  );
+  const columns = migrated
+    .exec('PRAGMA table_info(country_profiles)')[0]
+    .values.map((item) => item[1]);
 
   assert.ok(columns.includes('deployment_capacity_mtpa'));
   assert.ok(columns.includes('governance_capability_index'));

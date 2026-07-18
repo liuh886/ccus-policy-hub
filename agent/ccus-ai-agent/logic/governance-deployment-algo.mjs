@@ -24,7 +24,9 @@ const rowObject = (statement) => {
   if (!statement.step()) return null;
   const columns = statement.getColumnNames();
   const values = statement.get();
-  return Object.fromEntries(columns.map((column, index) => [column, values[index]]));
+  return Object.fromEntries(
+    columns.map((column, index) => [column, values[index]])
+  );
 };
 
 const capacityExpression = `
@@ -112,7 +114,9 @@ export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
         scores.reduce((sum, score) => sum + score, 0) / DIMENSIONS.length;
 
       capacityQuery.bind([countryId]);
-      const capacity = Number(rowObject(capacityQuery)?.committed_capacity || 0);
+      const capacity = Number(
+        rowObject(capacityQuery)?.committed_capacity || 0
+      );
       capacityQuery.reset();
 
       update.run([

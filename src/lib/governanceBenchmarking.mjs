@@ -171,7 +171,8 @@ export function classifyGovernanceDeployment(
   committedCapacity,
   benchmarks
 ) {
-  const governanceHigh = Number(governanceIndex) >= Number(benchmarks.governance);
+  const governanceHigh =
+    Number(governanceIndex) >= Number(benchmarks.governance);
   const deploymentHigh =
     Number(committedCapacity) >= Number(benchmarks.deployment);
 

@@ -15,10 +15,7 @@ const policy = (id, status, scores, year = 2025) => ({
     status,
     year,
     analysis: Object.fromEntries(
-      Object.entries(scores).map(([dimension, score]) => [
-        dimension,
-        { score },
-      ])
+      Object.entries(scores).map(([dimension, score]) => [dimension, { score }])
     ),
   },
 });

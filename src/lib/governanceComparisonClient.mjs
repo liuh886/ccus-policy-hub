@@ -19,7 +19,13 @@ const colors = [
 
 const copy = {
   zh: {
-    dimensionLabels: ['经济激励', '法规制度', '市场机制', '战略规划', 'MRV 与数据治理'],
+    dimensionLabels: [
+      '经济激励',
+      '法规制度',
+      '市场机制',
+      '战略规划',
+      'MRV 与数据治理',
+    ],
     contributorHeading: '治理核心贡献政策',
     operationalProjects: '在运项目',
     operational: '在运',
@@ -72,7 +78,8 @@ const copy = {
       ['CO₂ legal classification', 'co2_definition'],
       ['Cross-border rules', 'cross_border_rules'],
     ],
-    xAxis: 'Committed project-record scale (operational + under construction, Mtpa)',
+    xAxis:
+      'Committed project-record scale (operational + under construction, Mtpa)',
     yAxis: 'Governance capability index (0–100)',
     governance: 'Governance capability index',
     deployment: 'Committed project-record scale',
@@ -115,7 +122,8 @@ const countryDisplayName = (country, countryMap, lang) => {
   if (lang === 'en') return canonicalCountry(country, countryMap);
   if (countryMap[country]?.zh) return countryMap[country].zh;
   for (const [key, translations] of Object.entries(countryMap)) {
-    if (translations?.en === country || key === country) return translations?.zh || country;
+    if (translations?.en === country || key === country)
+      return translations?.zh || country;
   }
   return country;
 };
@@ -340,14 +348,22 @@ const drawDeploymentMatrix = (countrySystems, benchmarks, text) => {
         x: {
           min: 0,
           suggestedMax: xMax,
-          title: { display: true, text: text.xAxis, font: { size: 10, weight: 700 } },
+          title: {
+            display: true,
+            text: text.xAxis,
+            font: { size: 10, weight: 700 },
+          },
           grid: { color: 'rgba(148, 163, 184, 0.1)' },
           ticks: { callback: (value) => Number(value).toFixed(0) },
         },
         y: {
           min: 0,
           max: 100,
-          title: { display: true, text: text.yAxis, font: { size: 10, weight: 700 } },
+          title: {
+            display: true,
+            text: text.yAxis,
+            font: { size: 10, weight: 700 },
+          },
           grid: { color: 'rgba(148, 163, 184, 0.1)' },
           ticks: { stepSize: 20 },
         },
@@ -392,7 +408,9 @@ const renderContributors = (countrySystems, text) => {
                     <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}</span>
                     <div class="flex gap-1">
                       ${GOVERNANCE_DIMENSIONS.map((dimension) => {
-                        const score = Number(policy.data.analysis?.[dimension]?.score || 0);
+                        const score = Number(
+                          policy.data.analysis?.[dimension]?.score || 0
+                        );
                         const peak = country.peakAnalysis[dimension];
                         return score > 0 && score === peak
                           ? `<span class="h-1.5 w-1.5 rounded-full ${dimensionColors[dimension]}"></span>`
@@ -403,7 +421,9 @@ const renderContributors = (countrySystems, text) => {
                   <h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4>
                   <div class="flex gap-1.5">
                     ${GOVERNANCE_DIMENSIONS.map((dimension) => {
-                      const score = Number(policy.data.analysis?.[dimension]?.score || 0);
+                      const score = Number(
+                        policy.data.analysis?.[dimension]?.score || 0
+                      );
                       const peak = country.peakAnalysis[dimension];
                       const active = score > 0 && score === peak;
                       const barColor = active
@@ -435,12 +455,21 @@ const renderFacilityStats = (countrySystems, text) => {
         </div>
         <div class="grid grid-cols-3 gap-2">
           ${[
-            [text.operational, country.deployment.operationalCapacity, 'text-emerald-500'],
-            [text.construction, country.deployment.constructionCapacity, 'text-amber-500'],
+            [
+              text.operational,
+              country.deployment.operationalCapacity,
+              'text-emerald-500',
+            ],
+            [
+              text.construction,
+              country.deployment.constructionCapacity,
+              'text-amber-500',
+            ],
             [text.planned, country.deployment.plannedCapacity, 'text-blue-500'],
           ]
             .map(
-              ([label, value, className]) => `<div class="rounded-xl bg-slate-50 p-2 text-center dark:bg-slate-800/50"><p class="text-[8px] font-black uppercase ${className}">${label}</p><p class="text-xs font-bold dark:text-white">${formatCapacity(value)}</p></div>`
+              ([label, value, className]) =>
+                `<div class="rounded-xl bg-slate-50 p-2 text-center dark:bg-slate-800/50"><p class="text-[8px] font-black uppercase ${className}">${label}</p><p class="text-xs font-bold dark:text-white">${formatCapacity(value)}</p></div>`
             )
             .join('')}
         </div>
@@ -457,7 +486,8 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
       `<tr><th class="p-6 text-[10px] font-black uppercase text-slate-400">${text.dimension}</th>` +
       countrySystems
         .map(
-          (country) => `<th class="border-l border-slate-100 p-6 font-bold text-slate-900 dark:border-slate-800 dark:text-white">${escapeHtml(country.displayCountry)}</th>`
+          (country) =>
+            `<th class="border-l border-slate-100 p-6 font-bold text-slate-900 dark:border-slate-800 dark:text-white">${escapeHtml(country.displayCountry)}</th>`
         )
         .join('') +
       '</tr>';
@@ -465,11 +495,13 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
   if (body) {
     body.innerHTML = text.regKeys
       .map(
-        ([label, key]) => `<tr class="group transition-colors hover:bg-slate-50 dark:hover:bg-slate-900/50"><td class="bg-slate-50/30 p-6 text-xs font-bold text-slate-500 dark:bg-slate-900/20 dark:text-slate-400">${label}</td>${countrySystems
-          .map(
-            (country) => `<td class="border-l border-slate-100 p-6 text-xs font-medium text-slate-600 dark:border-slate-800 dark:text-slate-400">${escapeHtml(country.regulatory[key] || '---')}</td>`
-          )
-          .join('')}</tr>`
+        ([label, key]) =>
+          `<tr class="group transition-colors hover:bg-slate-50 dark:hover:bg-slate-900/50"><td class="bg-slate-50/30 p-6 text-xs font-bold text-slate-500 dark:bg-slate-900/20 dark:text-slate-400">${label}</td>${countrySystems
+            .map(
+              (country) =>
+                `<td class="border-l border-slate-100 p-6 text-xs font-medium text-slate-600 dark:border-slate-800 dark:text-slate-400">${escapeHtml(country.regulatory[key] || '---')}</td>`
+            )
+            .join('')}</tr>`
       )
       .join('');
   }
@@ -483,10 +515,16 @@ export function initGovernanceComparison(lang = 'zh') {
     const allFacilities = getData('all-facilities-data', 'facilities');
     const countryMap = getData('country-data', 'countries');
     const profiles = getData('countries-profiles-data', 'profiles');
-    const selectedIds = JSON.parse(localStorage.getItem('compare-list') || '[]');
-    const selectedPolicies = allPolicies.filter((policy) => selectedIds.includes(policy.id));
+    const selectedIds = JSON.parse(
+      localStorage.getItem('compare-list') || '[]'
+    );
+    const selectedPolicies = allPolicies.filter((policy) =>
+      selectedIds.includes(policy.id)
+    );
     const selectedCountries = [
-      ...new Set(selectedPolicies.map((policy) => policy?.data?.country).filter(Boolean)),
+      ...new Set(
+        selectedPolicies.map((policy) => policy?.data?.country).filter(Boolean)
+      ),
     ];
     const scope = document.getElementById('analysis-scope')?.value || 'system';
     const container = document.getElementById('compare-container');
@@ -522,7 +560,11 @@ export function initGovernanceComparison(lang = 'zh') {
       })
     );
 
-    const globalSystems = buildGlobalSystems(allPolicies, allFacilities, countryMap);
+    const globalSystems = buildGlobalSystems(
+      allPolicies,
+      allFacilities,
+      countryMap
+    );
     const benchmarks = calculateGlobalBenchmarks(globalSystems);
 
     drawRadar(countrySystems, text.dimensionLabels);
