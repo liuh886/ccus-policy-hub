@@ -1,15 +1,17 @@
 name: Apply homepage facility unit clarification
 
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
     branches:
-      - fix/homepage-facility-metric-units-final
+      - main
 
 permissions:
   contents: write
 
 jobs:
   apply:
+    if: github.event.pull_request.head.ref == 'fix/homepage-facility-metric-units-final'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
