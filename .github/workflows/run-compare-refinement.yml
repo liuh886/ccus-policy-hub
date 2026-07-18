@@ -35,8 +35,10 @@ jobs:
             capture { sub(/^          /, ""); print }
           ' .github/workflows/apply-compare-refinement.yml > /tmp/apply_compare.py
           python /tmp/apply_compare.py
-          rm -f .github/workflows/run-compare-refinement.yml
+          git checkout HEAD -- .github/workflows/apply-compare-refinement.yml
+          git checkout HEAD -- .github/workflows/run-compare-refinement.yml
           rm -f .github/compare-refinement.trigger
+          rm -f .github/refinement-pr-ready
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
