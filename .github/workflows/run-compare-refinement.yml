@@ -1,0 +1,68 @@
+name: Run compare refinement
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ github.head_ref == 'refine/compare-governance-matrix' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Apply the reviewed refinement patch
+        run: |
+          awk '
+            /python - <<'"'"'PY'"'"'/ { capture = 1; next }
+            capture && /^[[:space:]]+PY$/ { exit }
+            capture { sub(/^          /, ""); print }
+          ' .github/workflows/apply-compare-refinement.yml > /tmp/apply_compare.py
+          python /tmp/apply_compare.py
+          rm -f .github/workflows/run-compare-refinement.yml
+          rm -f .github/compare-refinement.trigger
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format changed files
+        run: >-
+          pnpm exec prettier --write
+          src/components/GovernanceAnalyticsPanels.astro
+          src/components/GovernanceComparisonWorkspace.astro
+          src/lib/governanceComparisonCopy.mjs
+          src/lib/governanceComparisonClient.mjs
+          src/lib/governanceWorkspaceVisuals.mjs
+          src/styles/governance-workspace.css
+          scripts/governance-workspace-visuals.test.mjs
+
+      - name: Validate implementation
+        run: |
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm build
+
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "refine(compare): polish governance matrix semantics"
+          git push origin HEAD:${{ github.head_ref }}
