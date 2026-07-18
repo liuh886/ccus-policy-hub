@@ -1,0 +1,189 @@
+name: Apply compare refinement
+
+on:
+  push:
+    branches:
+      - refine/compare-governance-matrix
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, 'refine(compare): polish governance matrix semantics') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Apply focused compare-page refinements
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              file = Path(path)
+              text = file.read_text()
+              if old not in text:
+                  raise SystemExit(f"Expected snippet not found in {path}: {old[:80]!r}")
+              file.write_text(text.replace(old, new, 1))
+
+          copy_path = 'src/lib/governanceComparisonCopy.mjs'
+          replacements = [
+              ("capabilityEyebrow: 'Governance Capability Profile'", "capabilityEyebrow: '治理体系对标'"),
+              ("capabilitySubtitle: '峰值政策强度 · Peak Policy Strength'", "capabilitySubtitle: '峰值政策强度'"),
+              ("scopeSelected: '仅所选政策'", "scopeSelected: '仅所选现行政策'"),
+              ("matrixSubtitle: 'Governance–Deployment Matrix'", "matrixSubtitle: '治理能力 × 已承诺项目规模'"),
+              ("benchmarkPrefix: '全球基准',", "benchmarkPrefix: '全球基准',\n    benchmarkGovernanceLabel: '治理基准',\n    benchmarkDeploymentLabel: '部署基准',"),
+              ("qPolicy: '左上：制度先行'", "qPolicy: '制度先行'"),
+              ("qLeader: '右上：协同领先'", "qLeader: '协同领先'"),
+              ("qFoundation: '左下：基础培育'", "qFoundation: '基础培育'"),
+              ("qDeployment: '右下：工程先行'", "qDeployment: '工程先行'"),
+              ("facilityTitle: '设施规模对标',", "facilityTitle: '设施规模对标',\n    facilityNote: '矩阵部署规模仅包括在运与在建设施；规划规模不计入横轴。',\n    evidenceEyebrow: '证据与来源',"),
+              ("scopeSelected: 'Selected policies only'", "scopeSelected: 'Selected active policies only'"),
+              ("benchmarkPrefix: 'Global benchmark',", "benchmarkPrefix: 'Global benchmark',\n    benchmarkGovernanceLabel: 'Governance benchmark',\n    benchmarkDeploymentLabel: 'Deployment benchmark',"),
+              ("qPolicy: 'Top-left: Policy-led'", "qPolicy: 'Policy-led'"),
+              ("qLeader: 'Top-right: Integrated leaders'", "qLeader: 'Integrated leaders'"),
+              ("qFoundation: 'Bottom-left: Foundation building'", "qFoundation: 'Foundation building'"),
+              ("qDeployment: 'Bottom-right: Deployment-led'", "qDeployment: 'Deployment-led'"),
+              ("facilityTitle: 'Facility benchmarking',", "facilityTitle: 'Facility benchmarking',\n    facilityNote:\n      'The matrix deployment scale includes operational and under-construction facilities only; planned scale is excluded from the x-axis.',\n    evidenceEyebrow: 'Evidence & provenance',"),
+          ]
+          for old, new in replacements:
+              replace_once(copy_path, old, new)
+
+          panels_path = 'src/components/GovernanceAnalyticsPanels.astro'
+          replace_once(
+              panels_path,
+              '''        <div class="governance-benchmark-chip">\n          <span data-governance-benchmark>—</span>\n          <small>/100</small>\n          <span class="governance-benchmark-divider"></span>\n          <span data-deployment-benchmark>—</span>\n        </div>''',
+              '''        <div class="governance-benchmark-chip" aria-label={copy.benchmarkPrefix}>\n          <div class="governance-benchmark-item">\n            <small>{copy.benchmarkGovernanceLabel}</small>\n            <strong><span data-governance-benchmark>—</span><em>/100</em></strong>\n          </div>\n          <div class="governance-benchmark-item">\n            <small>{copy.benchmarkDeploymentLabel}</small>\n            <strong><span data-deployment-benchmark>—</span></strong>\n          </div>\n        </div>'''
+          )
+          replace_once(
+              panels_path,
+              '<p class="governance-eyebrow">Evidence & provenance</p>',
+              '<p class="governance-eyebrow">{copy.evidenceEyebrow}</p>'
+          )
+
+          client_path = 'src/lib/governanceComparisonClient.mjs'
+          for old, new in [
+              ("operationalProjects: '在运项目'", "operationalProjects: '在运设施'"),
+              ("planned: '规划'", "planned: '规划（未计入矩阵）'"),
+              ("yAxis: '治理能力指数（0–100）'", "yAxis: '治理能力指数（满分 100）'"),
+              ("operationalProjects: 'operational projects'", "operationalProjects: 'operational facilities'"),
+              ("planned: 'Planned'", "planned: 'Planned (excluded from matrix)'"),
+              ("yAxis: 'Governance capability index (0–100)'", "yAxis: 'Governance capability index (/100)'"),
+          ]:
+              replace_once(client_path, old, new)
+
+          workspace_path = 'src/components/GovernanceComparisonWorkspace.astro'
+          replace_once(
+              workspace_path,
+              '''          <div class="mb-6 flex items-center gap-3">\n            <h2\n              class="text-xs font-black uppercase tracking-widest text-slate-500"\n            >\n              {text.facilityTitle}\n            </h2>\n            <div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>\n          </div>''',
+              '''          <div class="mb-6">\n            <div class="flex items-center gap-3">\n              <h2\n                class="text-xs font-black uppercase tracking-widest text-slate-500"\n              >\n                {text.facilityTitle}\n              </h2>\n              <div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>\n            </div>\n            <p class="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">\n              {text.facilityNote}\n            </p>\n          </div>'''
+          )
+
+          visuals_path = 'src/lib/governanceWorkspaceVisuals.mjs'
+          replace_once(
+              visuals_path,
+              '''export function heatmapOpacity(score) {\n  const normalized = Math.min(100, Math.max(0, Number(score || 0)));\n  return Number((0.08 + normalized * 0.0072).toFixed(3));\n}\n''',
+              '''export function heatmapOpacity(score) {\n  const normalized = Math.min(100, Math.max(0, Number(score || 0)));\n  return Number((0.08 + normalized * 0.0072).toFixed(3));\n}\n\nexport function governanceAxisMinimum(countrySystems = [], benchmarks = {}) {\n  const values = [\n    Number(benchmarks.governance),\n    ...countrySystems.map((country) => Number(country?.governance?.index)),\n  ].filter(Number.isFinite);\n  if (!values.length) return 30;\n  const lowest = Math.min(...values);\n  if (lowest >= 30) return 30;\n  return Math.max(0, Math.floor(lowest / 10) * 10);\n}\n'''
+          )
+          replace_once(
+              visuals_path,
+              "    openPolicy: '查看政策记录',\n    policyPath: '/ccus-policy-hub/policy/',",
+              "    openPolicy: '查看政策记录',\n    evidencePrompt:\n      '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',\n    policyPath: '/ccus-policy-hub/policy/',"
+          )
+          replace_once(
+              visuals_path,
+              "    openPolicy: 'Open policy record',\n    policyPath: '/ccus-policy-hub/en/policy/',",
+              "    openPolicy: 'Open policy record',\n    evidencePrompt:\n      'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',\n    policyPath: '/ccus-policy-hub/en/policy/',"
+          )
+          replace_once(
+              visuals_path,
+              '''const renderEvidence = (country, dimension) => {\n  if (!currentState || !country) return;\n  const container = document.querySelector(\n    '#governance-evidence-panel [data-evidence-content]'\n  );\n  if (!container) return;\n  container.innerHTML = evidenceForCountry(\n    country,\n    dimension,\n    currentState.text,\n    currentState.lang\n  );\n};\n''',
+              '''const renderEvidence = (country, dimension) => {\n  if (!currentState || !country) return;\n  const container = document.querySelector(\n    '#governance-evidence-panel [data-evidence-content]'\n  );\n  if (!container) return;\n  container.innerHTML = evidenceForCountry(\n    country,\n    dimension,\n    currentState.text,\n    currentState.lang\n  );\n};\n\nconst resetEvidence = () => {\n  if (!currentState) return;\n  const container = document.querySelector(\n    '#governance-evidence-panel [data-evidence-content]'\n  );\n  if (!container) return;\n  const ui = copy[currentState.lang] || copy.zh;\n  container.innerHTML = `<p class="governance-evidence-empty">${escapeHtml(ui.evidencePrompt)}</p>`;\n};\n'''
+          )
+          replace_once(
+              visuals_path,
+              '''function selectCountry(key, dimension) {\n  if (!currentState) return;\n  selectedCountryKey = key || null;\n  const country = currentState.countrySystems.find(\n    (item) => countryKey(item) === selectedCountryKey\n  );\n  if (country) renderEvidence(country, dimension);\n  applyCrossSelection();\n}\n''',
+              '''function selectCountry(key, dimension) {\n  if (!currentState) return;\n  const nextKey = key || null;\n  const shouldClear = selectedCountryKey === nextKey && !dimension;\n  selectedCountryKey = shouldClear ? null : nextKey;\n  const country = currentState.countrySystems.find(\n    (item) => countryKey(item) === selectedCountryKey\n  );\n  if (country) renderEvidence(country, dimension);\n  else resetEvidence();\n  applyCrossSelection();\n}\n'''
+          )
+          replace_once(
+              visuals_path,
+              '''    ctx.stroke();\n    ctx.restore();\n  },''',
+              '''    ctx.stroke();\n\n    const labels = options.labels || {};\n    ctx.setLineDash([]);\n    ctx.fillStyle = document.documentElement.classList.contains('dark')\n      ? 'rgba(226,232,240,0.58)'\n      : 'rgba(51,65,85,0.62)';\n    ctx.font = '700 10px Inter, sans-serif';\n    ctx.textBaseline = 'top';\n    ctx.textAlign = 'left';\n    ctx.fillText(labels['policy-led'] || '', left + 10, top + 10);\n    ctx.textAlign = 'right';\n    ctx.fillText(labels['integrated-leaders'] || '', right - 10, top + 10);\n    ctx.textBaseline = 'bottom';\n    ctx.textAlign = 'left';\n    ctx.fillText(labels['foundation-building'] || '', left + 10, bottom - 10);\n    ctx.textAlign = 'right';\n    ctx.fillText(labels['deployment-led'] || '', right - 10, bottom - 10);\n    ctx.restore();\n  },'''
+          )
+          replace_once(
+              visuals_path,
+              '''  afterDatasetsDraw(chart) {\n    const { ctx, chartArea } = chart;\n    ctx.save();\n    ctx.font = '700 10px Inter, sans-serif';\n    ctx.textBaseline = 'middle';\n    chart.data.datasets.forEach((dataset, index) => {\n      const meta = chart.getDatasetMeta(index);\n      const point = meta.data[0];\n      if (!point) return;\n      const label = String(dataset.label || '');\n      const width = ctx.measureText(label).width;\n      let x = point.x + 11;\n      let align = 'left';\n      if (x + width > chartArea.right) {\n        x = point.x - 11;\n        align = 'right';\n      }\n      ctx.textAlign = align;\n      ctx.fillStyle = dataset.backgroundColor || '#334155';\n      ctx.fillText(label, x, point.y);\n    });\n    ctx.restore();\n  },''',
+              '''  afterDatasetsDraw(chart) {\n    const { ctx, chartArea } = chart;\n    const occupied = [];\n    const offsets = [\n      [12, -10],\n      [12, 10],\n      [-12, -10],\n      [-12, 10],\n      [0, -18],\n    ];\n    const overlaps = (left, right, top, bottom) =>\n      occupied.some(\n        (box) =>\n          left < box.right &&\n          right > box.left &&\n          top < box.bottom &&\n          bottom > box.top\n      );\n\n    ctx.save();\n    ctx.font = '700 10px Inter, sans-serif';\n    ctx.textBaseline = 'middle';\n    chart.data.datasets.forEach((dataset, index) => {\n      const meta = chart.getDatasetMeta(index);\n      const point = meta.data[0];\n      if (!point) return;\n      const label = String(dataset.label || '');\n      const width = ctx.measureText(label).width;\n      let placement = offsets[0];\n\n      for (const candidate of offsets) {\n        const [dx, dy] = candidate;\n        const align = dx < 0 ? 'right' : dx > 0 ? 'left' : 'center';\n        const x = point.x + dx;\n        const left = align === 'right' ? x - width : align === 'center' ? x - width / 2 : x;\n        const right = left + width;\n        const top = point.y + dy - 7;\n        const bottom = point.y + dy + 7;\n        const inside =\n          left >= chartArea.left &&\n          right <= chartArea.right &&\n          top >= chartArea.top &&\n          bottom <= chartArea.bottom;\n        if (inside && !overlaps(left, right, top, bottom)) {\n          placement = candidate;\n          break;\n        }\n      }\n\n      const [dx, dy] = placement;\n      const align = dx < 0 ? 'right' : dx > 0 ? 'left' : 'center';\n      const x = point.x + dx;\n      const y = point.y + dy;\n      const left = align === 'right' ? x - width : align === 'center' ? x - width / 2 : x;\n      occupied.push({ left, right: left + width, top: y - 7, bottom: y + 7 });\n\n      if (dy !== 0) {\n        ctx.beginPath();\n        ctx.moveTo(point.x, point.y);\n        ctx.lineTo(point.x + dx * 0.72, point.y + dy * 0.72);\n        ctx.strokeStyle = dataset.backgroundColor || '#64748b';\n        ctx.globalAlpha = 0.45;\n        ctx.lineWidth = 1;\n        ctx.stroke();\n        ctx.globalAlpha = 1;\n      }\n\n      ctx.textAlign = align;\n      ctx.fillStyle = document.documentElement.classList.contains('dark')\n        ? '#cbd5e1'\n        : '#334155';\n      ctx.fillText(label, x, y);\n    });\n    ctx.restore();\n  },'''
+          )
+          replace_once(
+              visuals_path,
+              '''  const maxCapacity = Math.max(\n    Number(benchmarks.deployment || 0) * 1.35,\n    ...countrySystems.map((country) => country.deployment.committedCapacity),\n    1\n  );\n''',
+              '''  const maxCapacity = Math.max(\n    Number(benchmarks.deployment || 0) * 1.35,\n    ...countrySystems.map((country) => country.deployment.committedCapacity),\n    1\n  );\n  const governanceMin = governanceAxisMinimum(countrySystems, benchmarks);\n'''
+          )
+          replace_once(
+              visuals_path,
+              'governanceQuadrants: { benchmarks },',
+              'governanceQuadrants: { benchmarks, labels: text.quadrant },'
+          )
+          replace_once(
+              visuals_path,
+              '''        y: {\n          min: 0,\n          max: 100,''',
+              '''        y: {\n          min: governanceMin,\n          max: 100,'''
+          )
+          replace_once(
+              visuals_path,
+              '          ticks: { stepSize: 20 },',
+              '          ticks: { stepSize: 10 },'
+          )
+
+          css_path = Path('src/styles/governance-workspace.css')
+          css = css_path.read_text()
+          css += '''\n\n/* Compare workspace semantic refinements */\n.governance-benchmark-chip {\n  display: grid;\n  grid-template-columns: repeat(2, max-content);\n  align-items: stretch;\n  gap: 0.7rem;\n  border-radius: 12px;\n  padding: 0.5rem 0.7rem;\n}\n\n.governance-benchmark-item {\n  display: grid;\n  gap: 0.12rem;\n}\n\n.governance-benchmark-item + .governance-benchmark-item {\n  border-left: 1px solid var(--border-subtle);\n  padding-left: 0.7rem;\n}\n\n.governance-benchmark-item small {\n  color: var(--text-muted);\n  font-size: 0.56rem;\n  font-weight: 800;\n  letter-spacing: 0.06em;\n  text-transform: uppercase;\n}\n\n.governance-benchmark-item strong {\n  color: var(--brand-navy-800);\n  font-size: 0.75rem;\n  line-height: 1.2;\n}\n\n.governance-benchmark-item em {\n  margin-left: 0.12rem;\n  color: var(--text-muted);\n  font-size: 0.58rem;\n  font-style: normal;\n}\n\n.governance-quadrant-legend {\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n}\n\n@media (max-width: 640px) {\n  .governance-benchmark-chip {\n    width: 100%;\n    grid-template-columns: 1fr 1fr;\n  }\n}\n'''
+          css_path.write_text(css)
+
+          test_path = Path('scripts/governance-workspace-visuals.test.mjs')
+          test_path.write_text('''import assert from 'node:assert/strict';\nimport test from 'node:test';\n\nimport {\n  governanceAxisMinimum,\n  heatmapOpacity,\n  preferredProfileView,\n} from '../src/lib/governanceWorkspaceVisuals.mjs';\n\ntest('governance workspace selects readable profile views', () => {\n  assert.equal(preferredProfileView(3), 'radar');\n  assert.equal(preferredProfileView(4), 'heatmap');\n  assert.equal(heatmapOpacity(0), 0.08);\n  assert.equal(heatmapOpacity(100), 0.8);\n});\n\ntest('governance matrix starts at 30 when all relevant scores are at least 30', () => {\n  const countries = [\n    { governance: { index: 42 } },\n    { governance: { index: 76 } },\n  ];\n  assert.equal(governanceAxisMinimum(countries, { governance: 54 }), 30);\n});\n\ntest('governance matrix safely expands below 30 for low scores or benchmarks', () => {\n  assert.equal(\n    governanceAxisMinimum([{ governance: { index: 24 } }], { governance: 51 }),\n    20\n  );\n  assert.equal(\n    governanceAxisMinimum([{ governance: { index: 8 } }], { governance: 40 }),\n    0\n  );\n});\n''')
+
+          Path('.github/workflows/apply-compare-refinement.yml').unlink()
+          PY
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format changed files
+        run: >-
+          pnpm exec prettier --write
+          src/components/GovernanceAnalyticsPanels.astro
+          src/components/GovernanceComparisonWorkspace.astro
+          src/lib/governanceComparisonCopy.mjs
+          src/lib/governanceComparisonClient.mjs
+          src/lib/governanceWorkspaceVisuals.mjs
+          src/styles/governance-workspace.css
+          scripts/governance-workspace-visuals.test.mjs
+
+      - name: Validate
+        run: |
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm build
+
+      - name: Commit implementation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "refine(compare): polish governance matrix semantics"
+          git push
