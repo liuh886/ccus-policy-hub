@@ -20,6 +20,17 @@ export function heatmapOpacity(score) {
   return Number((0.08 + normalized * 0.0072).toFixed(3));
 }
 
+export function governanceAxisMinimum(countrySystems = [], benchmarks = {}) {
+  const values = [
+    Number(benchmarks.governance),
+    ...countrySystems.map((country) => Number(country?.governance?.index)),
+  ].filter(Number.isFinite);
+  if (!values.length) return 30;
+  const lowest = Math.min(...values);
+  if (lowest >= 30) return 30;
+  return Math.max(0, Math.floor(lowest / 10) * 10);
+}
+
 const escapeHtml = (value) =>
   String(value ?? '').replace(
     /[&<>"']/g,
@@ -48,6 +59,8 @@ const copy = {
     evidenceMissing: '该记录暂未提供结构化评分依据。',
     citation: '证据来源',
     openPolicy: '查看政策记录',
+    evidencePrompt:
+      '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
     policyPath: '/ccus-policy-hub/policy/',
   },
   en: {
@@ -65,6 +78,8 @@ const copy = {
       'No structured scoring evidence is available for this record.',
     citation: 'Evidence source',
     openPolicy: 'Open policy record',
+    evidencePrompt:
+      'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
     policyPath: '/ccus-policy-hub/en/policy/',
   },
 };
@@ -187,6 +202,16 @@ const renderEvidence = (country, dimension) => {
   );
 };
 
+const resetEvidence = () => {
+  if (!currentState) return;
+  const container = document.querySelector(
+    '#governance-evidence-panel [data-evidence-content]'
+  );
+  if (!container) return;
+  const ui = copy[currentState.lang] || copy.zh;
+  container.innerHTML = `<p class="governance-evidence-empty">${escapeHtml(ui.evidencePrompt)}</p>`;
+};
+
 const applyCrossSelection = () => {
   document.querySelectorAll('[data-country-key]').forEach((node) => {
     const matches = node.dataset.countryKey === selectedCountryKey;
@@ -218,11 +243,14 @@ const applyCrossSelection = () => {
 
 function selectCountry(key, dimension) {
   if (!currentState) return;
-  selectedCountryKey = key || null;
+  const nextKey = key || null;
+  const shouldClear = selectedCountryKey === nextKey && !dimension;
+  selectedCountryKey = shouldClear ? null : nextKey;
   const country = currentState.countrySystems.find(
     (item) => countryKey(item) === selectedCountryKey
   );
   if (country) renderEvidence(country, dimension);
+  else resetEvidence();
   applyCrossSelection();
 }
 
@@ -333,10 +361,44 @@ const matrixBackdropPlugin = {
     ctx.moveTo(left, splitY);
     ctx.lineTo(right, splitY);
     ctx.stroke();
+
+    const labels = options.labels || {};
+    ctx.setLineDash([]);
+    ctx.fillStyle = document.documentElement.classList.contains('dark')
+      ? 'rgba(226,232,240,0.58)'
+      : 'rgba(51,65,85,0.62)';
+    ctx.font = '700 10px Inter, sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText(labels['policy-led'] || '', left + 10, top + 10);
+    ctx.textAlign = 'right';
+    ctx.fillText(labels['integrated-leaders'] || '', right - 10, top + 10);
+    ctx.textBaseline = 'bottom';
+    ctx.textAlign = 'left';
+    ctx.fillText(labels['foundation-building'] || '', left + 10, bottom - 10);
+    ctx.textAlign = 'right';
+    ctx.fillText(labels['deployment-led'] || '', right - 10, bottom - 10);
     ctx.restore();
   },
   afterDatasetsDraw(chart) {
     const { ctx, chartArea } = chart;
+    const occupied = [];
+    const offsets = [
+      [12, -10],
+      [12, 10],
+      [-12, -10],
+      [-12, 10],
+      [0, -18],
+    ];
+    const overlaps = (left, right, top, bottom) =>
+      occupied.some(
+        (box) =>
+          left < box.right &&
+          right > box.left &&
+          top < box.bottom &&
+          bottom > box.top
+      );
+
     ctx.save();
     ctx.font = '700 10px Inter, sans-serif';
     ctx.textBaseline = 'middle';
@@ -346,15 +408,56 @@ const matrixBackdropPlugin = {
       if (!point) return;
       const label = String(dataset.label || '');
       const width = ctx.measureText(label).width;
-      let x = point.x + 11;
-      let align = 'left';
-      if (x + width > chartArea.right) {
-        x = point.x - 11;
-        align = 'right';
+      let placement = offsets[0];
+
+      for (const candidate of offsets) {
+        const [dx, dy] = candidate;
+        const align = dx < 0 ? 'right' : dx > 0 ? 'left' : 'center';
+        const x = point.x + dx;
+        const left =
+          align === 'right'
+            ? x - width
+            : align === 'center'
+              ? x - width / 2
+              : x;
+        const right = left + width;
+        const top = point.y + dy - 7;
+        const bottom = point.y + dy + 7;
+        const inside =
+          left >= chartArea.left &&
+          right <= chartArea.right &&
+          top >= chartArea.top &&
+          bottom <= chartArea.bottom;
+        if (inside && !overlaps(left, right, top, bottom)) {
+          placement = candidate;
+          break;
+        }
       }
+
+      const [dx, dy] = placement;
+      const align = dx < 0 ? 'right' : dx > 0 ? 'left' : 'center';
+      const x = point.x + dx;
+      const y = point.y + dy;
+      const left =
+        align === 'right' ? x - width : align === 'center' ? x - width / 2 : x;
+      occupied.push({ left, right: left + width, top: y - 7, bottom: y + 7 });
+
+      if (dy !== 0) {
+        ctx.beginPath();
+        ctx.moveTo(point.x, point.y);
+        ctx.lineTo(point.x + dx * 0.72, point.y + dy * 0.72);
+        ctx.strokeStyle = dataset.backgroundColor || '#64748b';
+        ctx.globalAlpha = 0.45;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+
       ctx.textAlign = align;
-      ctx.fillStyle = dataset.backgroundColor || '#334155';
-      ctx.fillText(label, x, point.y);
+      ctx.fillStyle = document.documentElement.classList.contains('dark')
+        ? '#cbd5e1'
+        : '#334155';
+      ctx.fillText(label, x, y);
     });
     ctx.restore();
   },
@@ -370,6 +473,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
     ...countrySystems.map((country) => country.deployment.committedCapacity),
     1
   );
+  const governanceMin = governanceAxisMinimum(countrySystems, benchmarks);
 
   deploymentChart = new Chart(canvas, {
     type: 'scatter',
@@ -407,7 +511,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
         selectCountry(countryKey(countrySystems[element.datasetIndex]));
       },
       plugins: {
-        governanceQuadrants: { benchmarks },
+        governanceQuadrants: { benchmarks, labels: text.quadrant },
         legend: { display: false },
         tooltip: {
           callbacks: {
@@ -439,7 +543,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
           ticks: { callback: (value) => Number(value).toFixed(0) },
         },
         y: {
-          min: 0,
+          min: governanceMin,
           max: 100,
           title: {
             display: true,
@@ -447,7 +551,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
             font: { size: 10, weight: 700 },
           },
           grid: { color: 'rgba(148,163,184,0.12)' },
-          ticks: { stepSize: 20 },
+          ticks: { stepSize: 10 },
         },
       },
     },
