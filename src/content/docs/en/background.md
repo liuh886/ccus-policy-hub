@@ -6,7 +6,11 @@ order: 1
 
 # Project Background & Mission
 
+![CCUS Value Chain](../../assets/ccus-value-chain.png)
+
 In an era of rapid advancement in Carbon Capture, Utilization, and Storage (CCUS) technologies, we identified one of the industry's greatest barriers: the fragmented, decentralized, and often inaccessible nature of global regulatory data. The CCUS Policy Hub was established to break these information silos.
+
+CCUS is not only a technology challenge. It is a system challenge connecting **capture, transport, utilization, storage, policy frameworks, infrastructure, finance, and monitoring, reporting and verification (MRV)**. Understanding this value chain is essential for evaluating how carbon management systems scale globally.
 
 ## Our Vision
 
@@ -20,6 +24,6 @@ Our platform addresses this by integrating the **IEA Global Facilities Database*
 
 ## Core Capabilities
 
-1.  **Advanced Benchmarking Tools**: Enabling side-by-side comparisons of regional incentives, liability transfers, and permitting lead times.
-2.  **Facility-Policy Intelligence**: Mapping over 800+ global projects directly to their governing national regulations and financial incentives.
-3.  **Digital Standards & Verification**: Providing structured guidelines for digital monitoring, reporting, and verification (DMRV) based on hub initiatives.
+1. **Advanced Benchmarking Tools**: Enabling side-by-side comparisons of regional incentives, liability transfers, and permitting lead times.
+2. **Facility-Policy Intelligence**: Mapping global projects directly to their governing national regulations and financial incentives.
+3. **Digital Standards & Verification**: Providing structured guidelines for digital monitoring, reporting, and verification (DMRV) based on hub initiatives.
