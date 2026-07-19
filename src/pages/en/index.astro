@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HomepageHero from '../../components/HomepageHero.astro';
 import WorldMapNav from '../../components/WorldMapNav.astro';
 import CapacityTrend from '../../components/CapacityTrend.astro';
+import ProjectLandscape from '../../components/ProjectLandscape.astro';
 import DatasetVersion from '../../components/DatasetVersion.astro';
 import { getCollection } from 'astro:content';
 import '../../styles/home-refinement.css';
@@ -21,6 +22,8 @@ const policyCount = policies.length;
     <HomepageHero lang="en" />
 
     <CapacityTrend />
+
+    <ProjectLandscape lang="en" />
 
     <section class="home-map-section" aria-labelledby="home-map-title">
       <header class="home-section-head">
