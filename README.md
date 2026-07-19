@@ -31,14 +31,14 @@ The platform is designed for researchers, policymakers, market analysts, investo
 
 ## Dataset Snapshot
 
-| Dataset | Current snapshot |
-| --- | ---: |
-| Policies | **130** |
-| Facility records | **1,110** |
-| Country governance profiles | **66** |
-| Facility dataset version | **2026-Q2** |
-| Policy review status | **Active** |
-| Last checked | **2026-06-24** |
+| Dataset                     | Current snapshot |
+| --------------------------- | ---------------: |
+| Policies                    |          **130** |
+| Facility records            |        **1,110** |
+| Country governance profiles |           **66** |
+| Facility dataset version    |      **2026-Q2** |
+| Policy review status        |       **Active** |
+| Last checked                |   **2026-06-24** |
 
 > Counts describe records in the published dataset. A facility record is not always equivalent to one unique real-world project, especially where capture, transport, storage, and full-chain components are represented separately.
 
@@ -142,11 +142,11 @@ The platform treats data governance as a product capability, not a back-office p
 
 Facility records are linked to relevant jurisdiction-level policy frameworks to provide governance context. These links should not be interpreted as verified project-specific legal applicability unless direct evidence is available.
 
-| Relationship level | Indicative confidence | Meaning |
-| --- | ---: | --- |
-| Country | Low | Facility and policy share the same jurisdiction |
-| Sector | Medium | Facility sector matches the documented policy scope |
-| Direct evidence | High | A source explicitly connects the policy and facility |
+| Relationship level | Indicative confidence | Meaning                                              |
+| ------------------ | --------------------: | ---------------------------------------------------- |
+| Country            |                   Low | Facility and policy share the same jurisdiction      |
+| Sector             |                Medium | Facility sector matches the documented policy scope  |
+| Direct evidence    |                  High | A source explicitly connects the policy and facility |
 
 See the [Facility-Policy Relationship Model](docs/facility-policy-relationship-model.md) for the full design.
 
@@ -185,17 +185,17 @@ graph LR
 
 Static endpoints are available for AI agents, researchers, and scripts:
 
-| Endpoint | Description |
-| --- | --- |
-| `/data/manifest.json` | Dataset, schema, and documentation index |
-| `/data/policies.json` | 130 policy records with analysis data |
-| `/data/facilities.json` | 1,110 facility records with capacity and location data |
-| `/data/countries.json` | 66 governance profiles with regulatory pillars |
-| `/data/quality.json` | Quality metrics and audit status |
-| `/data/dataset-versions.json` | Dataset version and last-checked metadata |
-| `/data/schemas/` | JSON Schemas for validation |
-| `/llms.txt` | Concise AI-agent documentation |
-| `/llms-full.txt` | Extended data and field documentation |
+| Endpoint                      | Description                                            |
+| ----------------------------- | ------------------------------------------------------ |
+| `/data/manifest.json`         | Dataset, schema, and documentation index               |
+| `/data/policies.json`         | 130 policy records with analysis data                  |
+| `/data/facilities.json`       | 1,110 facility records with capacity and location data |
+| `/data/countries.json`        | 66 governance profiles with regulatory pillars         |
+| `/data/quality.json`          | Quality metrics and audit status                       |
+| `/data/dataset-versions.json` | Dataset version and last-checked metadata              |
+| `/data/schemas/`              | JSON Schemas for validation                            |
+| `/llms.txt`                   | Concise AI-agent documentation                         |
+| `/llms-full.txt`              | Extended data and field documentation                  |
 
 Recommended usage:
 
