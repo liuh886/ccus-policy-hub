@@ -38,8 +38,8 @@ jobs:
               "README.zh.md": (
                   'https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/favicon.svg',
                   'https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/logo_optimized.svg',
-                  '  <sub>为全球气候与 CCUS 研究社区而构建 · <b>liuh886</b></sub>',
-                  '  <p><a href="https://ko-fi.com/F1F7WYJ6B">☕ 在 Ko-fi 支持 CCUS Policy Hub</a></p>\n  <sub>为全球气候与 CCUS 研究社区而构建 · <b>liuh886</b></sub>',
+                  '  <sub>由 <b>liuh886</b> 为全球气候与 CCUS 研究社区构建</sub>',
+                  '  <p><a href="https://ko-fi.com/F1F7WYJ6B">☕ 在 Ko-fi 支持 CCUS Policy Hub</a></p>\n  <sub>由 <b>liuh886</b> 为全球气候与 CCUS 研究社区构建</sub>',
               ),
           }
 
@@ -60,5 +60,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md README.zh.md
-          git commit -m "docs: update README logo and Ko-fi link"
+          git commit -m "docs: finalize README branding and support link"
           git push
