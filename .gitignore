@@ -62,6 +62,9 @@ agent/ccus-ai-agent/governance/archive/*
 # --- Background Tasks ---
 tasks/
 
+# --- Media ---
+video/
+
 # --- Absolute Entry Points (Must be tracked) ---
 !agent.md
 !README.md
