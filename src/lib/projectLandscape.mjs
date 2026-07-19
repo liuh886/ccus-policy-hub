@@ -79,6 +79,8 @@ export function collapseRegions(
   });
 }
 
+// This is a current dataset snapshot, not a reconstructed historical status view.
+// Pipeline and Committed deliberately match the definitions used by CapacityTrend.
 export function buildProjectLandscape(
   facilities,
   { topRegions = 6, otherLabel = 'Other regions' } = {}
