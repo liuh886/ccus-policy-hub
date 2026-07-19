@@ -1,0 +1,55 @@
+name: Apply homepage metric snapshot labels
+
+on:
+  push:
+    branches:
+      - fix/home-metric-snapshot-year
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/home-metric-snapshot-year
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Add 2026 snapshot year to current-status labels
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('src/components/HomepageHero.astro')
+          text = path.read_text(encoding='utf-8')
+          replacements = {
+              "operational: '在运',": "operational: '在运 (2026)',",
+              "construction: '在建',": "construction: '在建 (2026)',",
+              "operational: 'Operational',": "operational: 'Operational (2026)',",
+              "construction: 'Under construction',": "construction: 'Under construction (2026)',",
+          }
+          for old, new in replacements.items():
+              if text.count(old) != 1:
+                  raise SystemExit(f'Expected exactly one occurrence of {old!r}')
+              text = text.replace(old, new)
+          path.write_text(text, encoding='utf-8')
+          PY
+      - run: pnpm exec prettier --write src/components/HomepageHero.astro
+      - name: Commit change
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/HomepageHero.astro
+          git commit -m "fix(home): label current facility metrics as 2026 snapshot"
+          git push
