@@ -31,7 +31,9 @@ function printHelp() {
     console.log(`  ${command}`);
   }
   console.log('');
-  console.log('High-risk migration and recovery operations use explicit package scripts.');
+  console.log(
+    'High-risk migration and recovery operations use explicit package scripts.'
+  );
 }
 
 const args = process.argv.slice(2);
