@@ -27,9 +27,7 @@ const emptyRegion = (name) => ({
 });
 
 const regionMetric = (region, mode, field) =>
-  mode === 'projects'
-    ? region[`${field}Count`]
-    : region[`${field}Capacity`];
+  mode === 'projects' ? region[`${field}Count`] : region[`${field}Capacity`];
 
 export function collapseRegions(
   regions,
@@ -53,7 +51,8 @@ export function collapseRegions(
       summary.pipelineCapacity += region.pipelineCapacity;
       summary.committedCapacity += region.committedCapacity;
       summary.capacityRecordCount += region.capacityRecordCount;
-      summary.committedCapacityRecordCount += region.committedCapacityRecordCount;
+      summary.committedCapacityRecordCount +=
+        region.committedCapacityRecordCount;
       return summary;
     }, emptyRegion(otherLabel));
     visible.push(other);
@@ -131,17 +130,19 @@ export function buildProjectLandscape(
   const committedCapacity =
     status.operational.capacity + status['under-construction'].capacity;
 
-  const largestPipelineRegion = [...regions].sort(
-    (a, b) =>
-      b.pipelineCapacity - a.pipelineCapacity ||
-      b.pipelineCount - a.pipelineCount
-  )[0] || emptyRegion('—');
+  const largestPipelineRegion =
+    [...regions].sort(
+      (a, b) =>
+        b.pipelineCapacity - a.pipelineCapacity ||
+        b.pipelineCount - a.pipelineCount
+    )[0] || emptyRegion('—');
 
-  const largestCommittedRegion = [...regions].sort(
-    (a, b) =>
-      b.committedCapacity - a.committedCapacity ||
-      b.committedCount - a.committedCount
-  )[0] || emptyRegion('—');
+  const largestCommittedRegion =
+    [...regions].sort(
+      (a, b) =>
+        b.committedCapacity - a.committedCapacity ||
+        b.committedCount - a.committedCount
+    )[0] || emptyRegion('—');
 
   return {
     status,

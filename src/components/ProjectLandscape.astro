@@ -10,7 +10,6 @@ const { lang } = Astro.props;
 const facilities = await getCollection(
   lang === 'zh' ? 'facilities_zh' : 'facilities_en'
 );
-const snapshotYear = 2026;
 const text =
   lang === 'zh'
     ? {
@@ -40,8 +39,7 @@ const text =
         insightCommittedRegion: '最大确定性能力区域',
         capacityCoverage: '能力数据覆盖',
         coverageSuffix: '个有效项目具有记录能力',
-        note:
-          '口径：Pipeline = Planned + Under construction + Operational；Committed = Under construction + Operational。状态图按项目记录数量统计。容量视图仅汇总具有已披露或估算项目记录能力的记录，不代表净可交付捕集能力或净封存能力。',
+        note: '口径：Pipeline = Planned + Under construction + Operational；Committed = Under construction + Operational。状态图按项目记录数量统计。容量视图仅汇总具有已披露或估算项目记录能力的记录，不代表净可交付捕集能力或净封存能力。',
         otherRegions: '其他区域',
       }
     : {
@@ -59,7 +57,8 @@ const text =
         excluded: 'Outside active portfolio',
         excludedSuffix: 'cancelled, suspended or decommissioned records',
         regionTitle: 'Pipeline vs Committed by Region',
-        regionDescription: 'Committed is a subset of Pipeline, not a separate portfolio',
+        regionDescription:
+          'Committed is a subset of Pipeline, not a separate portfolio',
         capacityMode: 'Recorded capacity',
         projectMode: 'Projects',
         pipeline: 'Pipeline',
@@ -71,8 +70,7 @@ const text =
         insightCommittedRegion: 'Largest committed region',
         capacityCoverage: 'Capacity-data coverage',
         coverageSuffix: 'active projects report recorded capacity',
-        note:
-          'Method: Pipeline = Planned + Under construction + Operational; Committed = Under construction + Operational. The status view uses project-record counts. The capacity view includes only disclosed or estimated project-record capacity and should not be read as net deliverable capture or storage capacity.',
+        note: 'Method: Pipeline = Planned + Under construction + Operational; Committed = Under construction + Operational. The status view uses project-record counts. The capacity view includes only disclosed or estimated project-record capacity and should not be read as net deliverable capture or storage capacity.',
         otherRegions: 'Other regions',
       };
 
@@ -105,7 +103,8 @@ const statusItems = [
 let statusCursor = 0;
 const statusStops = statusItems.map((item) => {
   const start = statusCursor;
-  const share = landscape.activeCount > 0 ? (item.count / landscape.activeCount) * 100 : 0;
+  const share =
+    landscape.activeCount > 0 ? (item.count / landscape.activeCount) * 100 : 0;
   statusCursor += share;
   return `${
     item.key === 'operational'
@@ -169,7 +168,10 @@ const regionViews = [
           {
             statusItems.map((item) => (
               <div class="project-status-item">
-                <span class={`project-status-dot ${item.className}`} aria-hidden="true" />
+                <span
+                  class={`project-status-dot ${item.className}`}
+                  aria-hidden="true"
+                />
                 <span class="project-status-label">{item.label}</span>
                 <strong>{item.count}</strong>
                 <small>
@@ -198,11 +200,23 @@ const regionViews = [
           <h3>{text.regionTitle}</h3>
           <p>{text.regionDescription}</p>
         </div>
-        <div class="project-landscape-toggle" role="group" aria-label={text.regionTitle}>
-          <button type="button" data-landscape-mode="capacity" aria-pressed="true">
+        <div
+          class="project-landscape-toggle"
+          role="group"
+          aria-label={text.regionTitle}
+        >
+          <button
+            type="button"
+            data-landscape-mode="capacity"
+            aria-pressed="true"
+          >
             {text.capacityMode}
           </button>
-          <button type="button" data-landscape-mode="projects" aria-pressed="false">
+          <button
+            type="button"
+            data-landscape-mode="projects"
+            aria-pressed="false"
+          >
             {text.projectMode}
           </button>
         </div>
@@ -236,9 +250,7 @@ const regionViews = [
                   <span class="project-region-committed" />
                 </div>
                 <div class="project-region-values">
-                  <span>
-                    {formatRegionValue(row.pipelineValue, view.id)}
-                  </span>
+                  <span>{formatRegionValue(row.pipelineValue, view.id)}</span>
                   <strong>
                     {formatRegionValue(row.committedValue, view.id)}
                   </strong>
@@ -256,14 +268,17 @@ const regionViews = [
       <span>{text.insightCommitted}</span>
       <strong>{formatPercent(landscape.committedCapacityShare)}</strong>
       <small>
-        {formatCapacity(landscape.committedCapacity)} / {formatCapacity(landscape.activeCapacity)}
+        {formatCapacity(landscape.committedCapacity)} / {
+          formatCapacity(landscape.activeCapacity)
+        }
       </small>
     </article>
     <article>
       <span>{text.insightPipeline}</span>
       <strong>{landscape.largestPipelineRegion.name}</strong>
       <small>
-        {landscape.largestPipelineRegion.pipelineCount} {text.projectUnit} · {
+        {landscape.largestPipelineRegion.pipelineCount}
+        {text.projectUnit} · {
           formatCapacity(landscape.largestPipelineRegion.pipelineCapacity)
         }
       </small>
@@ -272,7 +287,8 @@ const regionViews = [
       <span>{text.insightCommittedRegion}</span>
       <strong>{landscape.largestCommittedRegion.name}</strong>
       <small>
-        {landscape.largestCommittedRegion.committedCount} {text.projectUnit} · {
+        {landscape.largestCommittedRegion.committedCount}
+        {text.projectUnit} · {
           formatCapacity(landscape.largestCommittedRegion.committedCapacity)
         }
       </small>
@@ -281,9 +297,8 @@ const regionViews = [
       <span>{text.capacityCoverage}</span>
       <strong>{formatPercent(landscape.capacityCoverage.share)}</strong>
       <small>
-        {landscape.capacityCoverage.count} / {landscape.capacityCoverage.total} {
-          text.coverageSuffix
-        }
+        {landscape.capacityCoverage.count} / {landscape.capacityCoverage.total}
+        {text.coverageSuffix}
       </small>
     </article>
   </div>
@@ -297,8 +312,12 @@ const regionViews = [
       if (root.dataset.landscapeBound === 'true') return;
       root.dataset.landscapeBound = 'true';
 
-      const buttons = Array.from(root.querySelectorAll('[data-landscape-mode]'));
-      const panels = Array.from(root.querySelectorAll('[data-landscape-panel]'));
+      const buttons = Array.from(
+        root.querySelectorAll('[data-landscape-mode]')
+      );
+      const panels = Array.from(
+        root.querySelectorAll('[data-landscape-panel]')
+      );
 
       buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -591,7 +610,10 @@ const regionViews = [
 
   .project-region-row {
     display: grid;
-    grid-template-columns: minmax(7rem, 0.9fr) minmax(9rem, 1.6fr) minmax(8.5rem, auto);
+    grid-template-columns: minmax(7rem, 0.9fr) minmax(9rem, 1.6fr) minmax(
+        8.5rem,
+        auto
+      );
     align-items: center;
     gap: 0.8rem;
   }
