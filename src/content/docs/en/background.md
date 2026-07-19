@@ -6,7 +6,7 @@ order: 1
 
 # Project Background & Mission
 
-![CCUS Value Chain](../../assets/ccus-value-chain.png)
+![CCUS Value Chain](/images/ccus-value-chain-infographic.png)
 
 In an era of rapid advancement in Carbon Capture, Utilization, and Storage (CCUS) technologies, we identified one of the industry's greatest barriers: the fragmented, decentralized, and often inaccessible nature of global regulatory data. The CCUS Policy Hub was established to break these information silos.
 
