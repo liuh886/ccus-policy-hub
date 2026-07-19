@@ -8,7 +8,21 @@ order: 1
 
 CCUS 不仅是一项单一技术，而是一套连接**碳捕集、运输、利用、封存以及支撑其发展的政策体系**的综合性碳管理系统。
 
-![CCUS Value Chain](/images/ccus-value-chain-infographic.png)
+<figure class="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
+  <img
+    src="../../images/ccus-value-chain-infographic.png"
+    alt="连接碳捕集、运输、利用与永久地质封存的 CCUS 完整价值链"
+    width="1536"
+    height="1024"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    class="block h-auto w-full"
+  />
+  <figcaption class="border-t border-slate-200 px-4 py-3 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">
+    CCUS 一体化价值链概念示意图。
+  </figcaption>
+</figure>
 
 在碳捕集、利用与封存（CCUS）技术快速发展的时代，我们发现行业最大的障碍之一并非技术本身，而是全球政策、法规和项目数据高度分散、碎片化且难以获取。CCUS Policy Hub 致力于打破这些信息孤岛。
 

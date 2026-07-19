@@ -8,7 +8,21 @@ order: 1
 
 CCUS is more than a single technology. It is an integrated carbon management system connecting **capture, transport, utilization, storage, and the policy frameworks that enable deployment**.
 
-![CCUS Value Chain](/images/ccus-value-chain-infographic.png)
+<figure class="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
+  <img
+    src="../../../images/ccus-value-chain-infographic.png"
+    alt="CCUS value chain connecting carbon capture, transport, utilization, and permanent geological storage"
+    width="1536"
+    height="1024"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    class="block h-auto w-full"
+  />
+  <figcaption class="border-t border-slate-200 px-4 py-3 text-center text-sm text-slate-600 dark:border-slate-700 dark:text-slate-300">
+    A conceptual overview of the integrated CCUS value chain.
+  </figcaption>
+</figure>
 
 In an era of rapid advancement in Carbon Capture, Utilization, and Storage (CCUS) technologies, we identified one of the industry's greatest barriers: the fragmented, decentralized, and often inaccessible nature of global regulatory data. The CCUS Policy Hub was established to break these information silos.
 
