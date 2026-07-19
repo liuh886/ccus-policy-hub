@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/favicon.svg" width="120" height="120" alt="CCUS Policy Hub Logo" />
+<img src="https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/logo_optimized.svg" width="120" height="120" alt="CCUS Policy Hub Logo" />
 
 # CCUS Policy Hub
 
@@ -303,5 +303,6 @@ Code is released under the [MIT License](LICENSE). Dataset records retain their 
 ---
 
 <div align="center">
+  <p><a href="https://ko-fi.com/F1F7WYJ6B">☕ Support CCUS Policy Hub on Ko-fi</a></p>
   <sub>Built for the global climate and CCUS research community by <b>liuh886</b></sub>
 </div>

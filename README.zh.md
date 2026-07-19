@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/favicon.svg" width="120" height="120" alt="CCUS Policy Hub Logo" />
+<img src="https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/public/logo_optimized.svg" width="120" height="120" alt="CCUS Policy Hub Logo" />
 
 # CCUS Policy Hub｜全球 CCUS 政策与设施数据库
 
