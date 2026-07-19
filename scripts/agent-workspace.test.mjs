@@ -61,7 +61,9 @@ test('unknown maintenance commands fail instead of succeeding silently', () => {
 });
 
 test('package scripts expose the validated CLI and remove retired no-op commands', () => {
-  const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+  const pkg = JSON.parse(
+    fs.readFileSync(path.join(root, 'package.json'), 'utf8')
+  );
   assert.match(pkg.scripts.manage, /logic\/cli\.mjs/);
   assert.match(pkg.scripts['manage:help'], /logic\/cli\.mjs/);
   assert.equal('manage:db:lint-governance' in pkg.scripts, false);
