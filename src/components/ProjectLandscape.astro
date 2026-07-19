@@ -1,0 +1,812 @@
+---
+import { getCollection } from 'astro:content';
+import { buildProjectLandscape } from '../lib/projectLandscape.mjs';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const facilities = await getCollection(
+  lang === 'zh' ? 'facilities_zh' : 'facilities_en'
+);
+const text =
+  lang === 'zh'
+    ? {
+        kicker: '2026 全球项目格局',
+        title: '项目状态、区域管线与兑现度',
+        description:
+          '在增长趋势之外，进一步观察当前有效项目组合的成熟阶段、区域分布，以及公开管线中已经进入在建或在运阶段的比例。',
+        snapshot: '2026 数据快照',
+        statusTitle: '项目状态构成',
+        statusDescription: '按当前有效项目记录数量统计',
+        activePortfolio: '有效项目组合',
+        operational: '在运',
+        construction: '在建',
+        planned: '规划',
+        excluded: '未纳入有效组合',
+        excludedSuffix: '条取消、暂停或退役记录',
+        regionTitle: '各区域公开管线与确定性项目',
+        regionDescription: 'Committed 为 Pipeline 的子集，而非独立项目组',
+        capacityMode: '项目记录能力',
+        projectMode: '项目数量',
+        pipeline: '公开管线',
+        committed: '确定性项目',
+        committedShare: '兑现度',
+        projectUnit: '个项目',
+        insightCommitted: '全球能力兑现度',
+        insightPipeline: '最大公开管线区域',
+        insightCommittedRegion: '最大确定性能力区域',
+        capacityCoverage: '能力数据覆盖',
+        coverageSuffix: '个有效项目具有记录能力',
+        note: '口径：Pipeline = Planned + Under construction + Operational；Committed = Under construction + Operational。状态图按项目记录数量统计。容量视图仅汇总具有已披露或估算项目记录能力的记录，不代表净可交付捕集能力或净封存能力。',
+        otherRegions: '其他区域',
+      }
+    : {
+        kicker: '2026 Global Project Landscape',
+        title: 'Project status, regional pipeline and delivery confidence',
+        description:
+          'Beyond cumulative growth, this snapshot shows the maturity, regional concentration and committed share of the current active project portfolio.',
+        snapshot: '2026 Dataset Snapshot',
+        statusTitle: 'Projects by Status',
+        statusDescription: 'Current active project records by count',
+        activePortfolio: 'Active portfolio',
+        operational: 'Operational',
+        construction: 'Under construction',
+        planned: 'Planned',
+        excluded: 'Outside active portfolio',
+        excludedSuffix: 'cancelled, suspended or decommissioned records',
+        regionTitle: 'Pipeline vs Committed by Region',
+        regionDescription:
+          'Committed is a subset of Pipeline, not a separate portfolio',
+        capacityMode: 'Recorded capacity',
+        projectMode: 'Projects',
+        pipeline: 'Pipeline',
+        committed: 'Committed',
+        committedShare: 'Committed share',
+        projectUnit: 'projects',
+        insightCommitted: 'Global committed share',
+        insightPipeline: 'Largest pipeline region',
+        insightCommittedRegion: 'Largest committed region',
+        capacityCoverage: 'Capacity-data coverage',
+        coverageSuffix: 'active projects report recorded capacity',
+        note: 'Method: Pipeline = Planned + Under construction + Operational; Committed = Under construction + Operational. The status view uses project-record counts. The capacity view includes only disclosed or estimated project-record capacity and should not be read as net deliverable capture or storage capacity.',
+        otherRegions: 'Other regions',
+      };
+
+const landscape = buildProjectLandscape(facilities, {
+  topRegions: 6,
+  otherLabel: text.otherRegions,
+});
+
+const statusItems = [
+  {
+    key: 'operational',
+    label: text.operational,
+    count: landscape.status.operational.count,
+    className: 'is-operational',
+  },
+  {
+    key: 'under-construction',
+    label: text.construction,
+    count: landscape.status['under-construction'].count,
+    className: 'is-construction',
+  },
+  {
+    key: 'planned',
+    label: text.planned,
+    count: landscape.status.planned.count,
+    className: 'is-planned',
+  },
+];
+
+let statusCursor = 0;
+const statusStops = statusItems.map((item) => {
+  const start = statusCursor;
+  const share =
+    landscape.activeCount > 0 ? (item.count / landscape.activeCount) * 100 : 0;
+  statusCursor += share;
+  return `${
+    item.key === 'operational'
+      ? 'var(--landscape-operational)'
+      : item.key === 'under-construction'
+        ? 'var(--landscape-construction)'
+        : 'var(--landscape-planned)'
+  } ${start.toFixed(2)}% ${statusCursor.toFixed(2)}%`;
+});
+const donutStyle = `background: conic-gradient(${statusStops.join(', ')});`;
+
+const formatCapacity = (value: number) => `${value.toFixed(1)} Mtpa`;
+const formatProjects = (value: number) =>
+  `${Math.round(value)} ${text.projectUnit}`;
+const formatRegionValue = (value: number, mode: 'capacity' | 'projects') =>
+  mode === 'capacity' ? formatCapacity(value) : formatProjects(value);
+const formatPercent = (value: number) => `${value.toFixed(0)}%`;
+const regionViews = [
+  { id: 'capacity', rows: landscape.regionViews.capacity },
+  { id: 'projects', rows: landscape.regionViews.projects },
+] as const;
+---
+
+<section
+  class="project-landscape"
+  data-project-landscape
+  aria-labelledby="project-landscape-title"
+>
+  <header class="project-landscape-head">
+    <div>
+      <p class="project-landscape-kicker">{text.kicker}</p>
+      <h2 id="project-landscape-title">{text.title}</h2>
+      <p class="project-landscape-description">{text.description}</p>
+    </div>
+    <span class="project-landscape-snapshot">{text.snapshot}</span>
+  </header>
+
+  <div class="project-landscape-grid">
+    <article class="project-landscape-panel project-status-panel">
+      <div class="project-landscape-panel-head">
+        <div>
+          <h3>{text.statusTitle}</h3>
+          <p>{text.statusDescription}</p>
+        </div>
+      </div>
+
+      <div class="project-status-layout">
+        <div
+          class="project-status-donut"
+          style={donutStyle}
+          role="img"
+          aria-label={`${text.activePortfolio}: ${landscape.activeCount} ${text.projectUnit}`}
+        >
+          <div class="project-status-donut-core">
+            <strong>{landscape.activeCount}</strong>
+            <span>{text.activePortfolio}</span>
+          </div>
+        </div>
+
+        <div class="project-status-legend">
+          {
+            statusItems.map((item) => (
+              <div class="project-status-item">
+                <span
+                  class={`project-status-dot ${item.className}`}
+                  aria-hidden="true"
+                />
+                <span class="project-status-label">{item.label}</span>
+                <strong>{item.count}</strong>
+                <small>
+                  {formatPercent(
+                    landscape.activeCount > 0
+                      ? (item.count / landscape.activeCount) * 100
+                      : 0
+                  )}
+                </small>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <p class="project-status-excluded">
+        <span>{text.excluded}</span>
+        <strong>{landscape.excludedCount}</strong>
+        {text.excludedSuffix}
+      </p>
+    </article>
+
+    <article class="project-landscape-panel project-region-panel">
+      <div class="project-landscape-panel-head project-region-head">
+        <div>
+          <h3>{text.regionTitle}</h3>
+          <p>{text.regionDescription}</p>
+        </div>
+        <div
+          class="project-landscape-toggle"
+          role="group"
+          aria-label={text.regionTitle}
+        >
+          <button
+            type="button"
+            data-landscape-mode="capacity"
+            aria-pressed="true"
+          >
+            {text.capacityMode}
+          </button>
+          <button
+            type="button"
+            data-landscape-mode="projects"
+            aria-pressed="false"
+          >
+            {text.projectMode}
+          </button>
+        </div>
+      </div>
+
+      <div class="project-region-key" aria-hidden="true">
+        <span class="is-pipeline">{text.pipeline}</span>
+        <span class="is-committed">{text.committed}</span>
+      </div>
+
+      {
+        regionViews.map((view) => (
+          <div
+            class="project-region-list"
+            data-landscape-panel={view.id}
+            hidden={view.id !== 'capacity'}
+          >
+            {view.rows.map((row) => (
+              <div
+                class="project-region-row"
+                style={`--pipeline-width: ${row.pipelinePercent.toFixed(2)}%; --committed-width: ${row.committedPercent.toFixed(2)}%;`}
+              >
+                <div class="project-region-label">
+                  <strong>{row.name}</strong>
+                  <span>
+                    {text.committedShare} {formatPercent(row.committedShare)}
+                  </span>
+                </div>
+                <div class="project-region-bars" aria-hidden="true">
+                  <span class="project-region-pipeline" />
+                  <span class="project-region-committed" />
+                </div>
+                <div class="project-region-values">
+                  <span>{formatRegionValue(row.pipelineValue, view.id)}</span>
+                  <strong>
+                    {formatRegionValue(row.committedValue, view.id)}
+                  </strong>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </article>
+  </div>
+
+  <div class="project-landscape-insights">
+    <article>
+      <span>{text.insightCommitted}</span>
+      <strong>{formatPercent(landscape.committedCapacityShare)}</strong>
+      <small>
+        {formatCapacity(landscape.committedCapacity)} / {
+          formatCapacity(landscape.activeCapacity)
+        }
+      </small>
+    </article>
+    <article>
+      <span>{text.insightPipeline}</span>
+      <strong>{landscape.largestPipelineRegion.name}</strong>
+      <small>
+        {landscape.largestPipelineRegion.pipelineCount}
+        {text.projectUnit} · {
+          formatCapacity(landscape.largestPipelineRegion.pipelineCapacity)
+        }
+      </small>
+    </article>
+    <article>
+      <span>{text.insightCommittedRegion}</span>
+      <strong>{landscape.largestCommittedRegion.name}</strong>
+      <small>
+        {landscape.largestCommittedRegion.committedCount}
+        {text.projectUnit} · {
+          formatCapacity(landscape.largestCommittedRegion.committedCapacity)
+        }
+      </small>
+    </article>
+    <article>
+      <span>{text.capacityCoverage}</span>
+      <strong>{formatPercent(landscape.capacityCoverage.share)}</strong>
+      <small>
+        {landscape.capacityCoverage.count} / {landscape.capacityCoverage.total}
+        {text.coverageSuffix}
+      </small>
+    </article>
+  </div>
+
+  <p class="project-landscape-note">{text.note}</p>
+</section>
+
+<script is:inline>
+  function initProjectLandscape() {
+    document.querySelectorAll('[data-project-landscape]').forEach((root) => {
+      if (root.dataset.landscapeBound === 'true') return;
+      root.dataset.landscapeBound = 'true';
+
+      const buttons = Array.from(
+        root.querySelectorAll('[data-landscape-mode]')
+      );
+      const panels = Array.from(
+        root.querySelectorAll('[data-landscape-panel]')
+      );
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const mode = button.dataset.landscapeMode;
+          buttons.forEach((candidate) => {
+            candidate.setAttribute(
+              'aria-pressed',
+              candidate.dataset.landscapeMode === mode ? 'true' : 'false'
+            );
+          });
+          panels.forEach((panel) => {
+            panel.hidden = panel.dataset.landscapePanel !== mode;
+          });
+        });
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initProjectLandscape);
+  initProjectLandscape();
+</script>
+
+<style>
+  .project-landscape {
+    --landscape-operational: #0b3558;
+    --landscape-construction: #118b84;
+    --landscape-planned: #a9c9cd;
+    margin: 0 0 clamp(4rem, 8vw, 6.5rem);
+    border: 1px solid rgb(197 211 218 / 0.7);
+    border-radius: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    background: rgb(255 255 255 / 0.94);
+    box-shadow: 0 12px 36px rgb(4 31 51 / 0.045);
+  }
+
+  .project-landscape-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgb(197 211 218 / 0.62);
+  }
+
+  .project-landscape-kicker {
+    margin: 0 0 0.45rem;
+    color: var(--brand-teal-700);
+    font-size: 0.68rem;
+    font-weight: 760;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .project-landscape h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: clamp(1.55rem, 3vw, 2.2rem);
+    font-weight: 720;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+  }
+
+  .project-landscape-description {
+    max-width: 48rem;
+    margin: 0.7rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .project-landscape-snapshot {
+    flex: 0 0 auto;
+    border: 1px solid rgb(15 143 136 / 0.2);
+    border-radius: 999px;
+    padding: 0.5rem 0.75rem;
+    background: rgb(15 143 136 / 0.07);
+    color: var(--brand-teal-700);
+    font-size: 0.68rem;
+    font-weight: 720;
+    white-space: nowrap;
+  }
+
+  .project-landscape-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.55fr);
+    gap: 1rem;
+  }
+
+  .project-landscape-panel {
+    min-width: 0;
+    border: 1px solid rgb(197 211 218 / 0.66);
+    border-radius: 1rem;
+    padding: clamp(1.1rem, 2.4vw, 1.55rem);
+    background: #f9fbfa;
+  }
+
+  .project-landscape-panel-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-landscape-panel h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 720;
+    letter-spacing: -0.02em;
+  }
+
+  .project-landscape-panel-head p {
+    margin: 0.35rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .project-status-layout {
+    display: grid;
+    grid-template-columns: minmax(8.5rem, 0.9fr) minmax(8.5rem, 1fr);
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .project-status-donut {
+    display: grid;
+    width: min(100%, 12rem);
+    aspect-ratio: 1;
+    place-items: center;
+    margin: 0 auto;
+    border-radius: 999px;
+  }
+
+  .project-status-donut-core {
+    display: grid;
+    width: 64%;
+    aspect-ratio: 1;
+    place-content: center;
+    border: 1px solid rgb(197 211 218 / 0.58);
+    border-radius: 999px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .project-status-donut-core strong {
+    color: var(--brand-navy-800);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 780;
+    letter-spacing: -0.055em;
+    line-height: 1;
+  }
+
+  .project-status-donut-core span {
+    max-width: 6rem;
+    margin-top: 0.35rem;
+    color: var(--text-secondary);
+    font-size: 0.62rem;
+    font-weight: 650;
+    line-height: 1.25;
+  }
+
+  .project-status-legend {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .project-status-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+  }
+
+  .project-status-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+  }
+
+  .project-status-dot.is-operational {
+    background: var(--landscape-operational);
+  }
+
+  .project-status-dot.is-construction {
+    background: var(--landscape-construction);
+  }
+
+  .project-status-dot.is-planned {
+    background: var(--landscape-planned);
+  }
+
+  .project-status-item strong {
+    color: var(--text-primary);
+    font-size: 0.82rem;
+  }
+
+  .project-status-item small {
+    width: 2.25rem;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+
+  .project-status-excluded {
+    margin: 1.15rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgb(197 211 218 / 0.55);
+    color: var(--text-tertiary);
+    font-size: 0.65rem;
+    line-height: 1.5;
+  }
+
+  .project-status-excluded span {
+    margin-right: 0.35rem;
+    font-weight: 650;
+  }
+
+  .project-status-excluded strong {
+    margin-right: 0.25rem;
+    color: var(--text-secondary);
+  }
+
+  .project-region-head {
+    align-items: flex-start;
+  }
+
+  .project-landscape-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+    border: 1px solid rgb(197 211 218 / 0.72);
+    border-radius: 0.65rem;
+    padding: 0.2rem;
+    background: #fff;
+  }
+
+  .project-landscape-toggle button {
+    border: 0;
+    border-radius: 0.48rem;
+    padding: 0.42rem 0.65rem;
+    background: transparent;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.65rem;
+    font-weight: 680;
+    cursor: pointer;
+  }
+
+  .project-landscape-toggle button[aria-pressed='true'] {
+    background: var(--brand-navy-800);
+    color: #fff;
+  }
+
+  .project-region-key {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: -0.35rem 0 0.9rem;
+    color: var(--text-tertiary);
+    font-size: 0.62rem;
+  }
+
+  .project-region-key span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .project-region-key span::before {
+    width: 0.75rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    content: '';
+  }
+
+  .project-region-key .is-pipeline::before {
+    background: rgb(169 201 205 / 0.8);
+  }
+
+  .project-region-key .is-committed::before {
+    background: var(--landscape-construction);
+  }
+
+  .project-region-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .project-region-row {
+    display: grid;
+    grid-template-columns: minmax(7rem, 0.9fr) minmax(9rem, 1.6fr) minmax(
+        8.5rem,
+        auto
+      );
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .project-region-label {
+    min-width: 0;
+  }
+
+  .project-region-label strong {
+    display: block;
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 690;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-region-label span {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--text-tertiary);
+    font-size: 0.58rem;
+  }
+
+  .project-region-bars {
+    position: relative;
+    height: 0.78rem;
+    border-radius: 999px;
+    background: rgb(226 235 235 / 0.7);
+  }
+
+  .project-region-pipeline,
+  .project-region-committed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 999px;
+  }
+
+  .project-region-pipeline {
+    width: var(--pipeline-width);
+    background: rgb(169 201 205 / 0.82);
+  }
+
+  .project-region-committed {
+    width: var(--committed-width);
+    background: var(--landscape-construction);
+  }
+
+  .project-region-values {
+    display: grid;
+    justify-items: end;
+    gap: 0.1rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .project-region-values span {
+    color: var(--text-tertiary);
+    font-size: 0.58rem;
+  }
+
+  .project-region-values strong {
+    color: var(--brand-teal-700);
+    font-size: 0.68rem;
+  }
+
+  .project-landscape-insights {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .project-landscape-insights article {
+    min-width: 0;
+    border-left: 2px solid rgb(15 143 136 / 0.42);
+    padding: 0.75rem 0.8rem;
+    background: #f7faf9;
+  }
+
+  .project-landscape-insights span,
+  .project-landscape-insights small {
+    display: block;
+    color: var(--text-tertiary);
+    font-size: 0.6rem;
+    line-height: 1.45;
+  }
+
+  .project-landscape-insights strong {
+    display: block;
+    overflow: hidden;
+    margin: 0.25rem 0 0.2rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 730;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .project-landscape-note {
+    margin: 0.85rem 0 0;
+    color: var(--text-tertiary);
+    font-size: 0.62rem;
+    line-height: 1.65;
+  }
+
+  :global(.dark) .project-landscape {
+    --landscape-operational: #8fc9e8;
+    --landscape-construction: #48b1a8;
+    --landscape-planned: #456b77;
+    border-color: rgb(49 80 99 / 0.76);
+    background: rgb(8 27 39 / 0.95);
+    box-shadow: 0 12px 36px rgb(0 0 0 / 0.16);
+  }
+
+  :global(.dark) .project-landscape-head,
+  :global(.dark) .project-status-excluded {
+    border-color: rgb(49 80 99 / 0.62);
+  }
+
+  :global(.dark) .project-landscape-panel,
+  :global(.dark) .project-landscape-insights article {
+    border-color: rgb(49 80 99 / 0.7);
+    background: rgb(11 32 48 / 0.92);
+  }
+
+  :global(.dark) .project-status-donut-core,
+  :global(.dark) .project-landscape-toggle {
+    border-color: rgb(49 80 99 / 0.72);
+    background: #0a2232;
+  }
+
+  :global(.dark) .project-status-donut-core strong {
+    color: #dcecf4;
+  }
+
+  :global(.dark) .project-region-bars {
+    background: rgb(49 80 99 / 0.42);
+  }
+
+  @media (max-width: 1023px) {
+    .project-landscape-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-landscape-insights {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 639px) {
+    .project-landscape-head,
+    .project-region-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .project-status-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .project-status-donut {
+      width: min(70vw, 11rem);
+    }
+
+    .project-landscape-toggle {
+      width: 100%;
+    }
+
+    .project-landscape-toggle button {
+      flex: 1;
+    }
+
+    .project-region-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.35rem 0.75rem;
+    }
+
+    .project-region-bars {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+
+    .project-region-values {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .project-landscape-insights {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
