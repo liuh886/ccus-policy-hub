@@ -18,14 +18,14 @@ Read these files before editing the repository:
 
 ## 2. Task classification
 
-| Task | Primary files | Typical risk |
-| --- | --- | --- |
-| Policy or regulatory update | SQLite, provenance, policy analysis | Medium |
-| Facility refresh or correction | SQLite, facility import pipeline | Medium to high |
-| Governance scoring or methodology | Algorithm, tests, methodology docs | High |
-| Homepage, Compare, facility UI | `src/`, tests, visual QA | Low to medium |
-| Documentation or AI-readable interface | Markdown, public-data generators | Low to medium |
-| Schema, reverse sync, bulk overwrite | Database schema or migration tooling | High |
+| Task                                   | Primary files                        | Typical risk   |
+| -------------------------------------- | ------------------------------------ | -------------- |
+| Policy or regulatory update            | SQLite, provenance, policy analysis  | Medium         |
+| Facility refresh or correction         | SQLite, facility import pipeline     | Medium to high |
+| Governance scoring or methodology      | Algorithm, tests, methodology docs   | High           |
+| Homepage, Compare, facility UI         | `src/`, tests, visual QA             | Low to medium  |
+| Documentation or AI-readable interface | Markdown, public-data generators     | Low to medium  |
+| Schema, reverse sync, bulk overwrite   | Database schema or migration tooling | High           |
 
 ## 3. Authority hierarchy
 
