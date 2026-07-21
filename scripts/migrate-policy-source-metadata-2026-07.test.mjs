@@ -139,7 +139,10 @@ async function createFixture() {
 
 test('repairs all audited source and URL gaps without changing policy count', async () => {
   const db = await createFixture();
-  const beforeCount = firstRow(db, 'SELECT COUNT(*) AS count FROM policies').count;
+  const beforeCount = firstRow(
+    db,
+    'SELECT COUNT(*) AS count FROM policies'
+  ).count;
 
   const summary = applyPolicySourceMetadataMigration(db, {
     auditDate: '2026-07-21',

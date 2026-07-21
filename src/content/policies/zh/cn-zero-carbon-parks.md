@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': '战略引导',
   'country': '中国',
-  'description': '将零碳园区提升至国家战略高度的指南，规定 CCS 为局部工业脱碳的核心路径。',
+  'description': '国家发展改革委、工业和信息化部、国家能源局于2025年6月印发国家级零碳园区建设通知，建立园区申报、建设、指标评价和验收安排，重点包括用能结构转型、产业降碳、碳排放核算、产品碳足迹管理及金融支持。该通知并未要求所有园区将CCS作为统一的核心路径。',
   'id': 'cn-zero-carbon-parks',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'National Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-15',
+  'pubDate': '2025-06-30',
   'relatedFacilities':
     [
       '1053',
@@ -108,11 +108,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': '工业和信息化部',
+  'source': 'National Development and Reform Commission / MIIT / National Energy Administration',
   'status': '现行',
-  'title': '中国零碳工业园区建设指南',
-  'year': 2024,
+  'title': '《关于开展零碳园区建设的通知》（2025）',
+  'url': 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523',
+  'year': 2025,
 }
 ---
 
-将零碳园区提升至国家战略高度的指南，规定 CCS 为局部工业脱碳的核心路径。
+国家发展改革委、工业和信息化部、国家能源局于2025年6月印发国家级零碳园区建设通知，建立园区申报、建设、指标评价和验收安排，重点包括用能结构转型、产业降碳、碳排放核算、产品碳足迹管理及金融支持。该通知并未要求所有园区将CCS作为统一的核心路径。

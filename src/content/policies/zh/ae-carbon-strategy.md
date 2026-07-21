@@ -43,26 +43,27 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': '战略引导',
   'country': '阿联酋',
-  'description': '阿联酋实现气候中和的战略蓝图，包括 2024 年建立的国家碳信用注册登记簿 (NRCC)。重点利用 ADNOC 的基础设施进行碳管理。',
+  'description': '《阿联酋2050净零战略》将国家净零倡议和实施路径细化为覆盖六个部门的25项以上计划，并将碳捕集技术、气候融资、研发、能力建设和部门效率提升列为转型的重要支撑条件。',
   'id': 'ae-carbon-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'National Strategy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2023-11-01',
   'relatedFacilities':
     ['1496', '161', '387', '4', '463', '5', '6', '906', '921', '928'],
   'reviewStatus': 'verified',
-  'source': '',
+  'source': 'Official Portal of the UAE Government / Ministry of Climate Change and Environment',
   'status': '现行',
-  'title': '阿联酋国家净零 2050 战略',
+  'title': '阿联酋2050净零战略',
+  'url': 'https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/environment-and-energy/the-uae-net-zero-2050-strategy',
   'year': 2023,
 }
 ---
 
-阿联酋实现气候中和的战略蓝图，包括 2024 年建立的国家碳信用注册登记簿 (NRCC)。重点利用 ADNOC 的基础设施进行碳管理。
+《阿联酋2050净零战略》将国家净零倡议和实施路径细化为覆盖六个部门的25项以上计划，并将碳捕集技术、气候融资、研发、能力建设和部门效率提升列为转型的重要支撑条件。

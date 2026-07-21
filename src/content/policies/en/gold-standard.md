@@ -43,25 +43,26 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Methodology',
   'country': 'International',
-  'description': 'Strict certification framework for high-integrity CCS and engineered carbon removals, aligned with Article 6 of the Paris Agreement.',
+  'description': 'Gold Standard published its Engineered Removals Activity Requirements on 22 July 2025. The framework sets high-level requirements for engineered carbon dioxide removal activities seeking Gold Standard certification and provides the basis for subsequent methodology and project development. The prior 2023 date in the database was not supported by the official publication record.',
   'id': 'gold-standard',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Voluntary Standard',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2025-07-22',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
   'source': 'Gold Standard',
-  'status': '现行',
-  'title': 'Gold Standard Engineering CDR Requirements',
-  'year': 2023,
+  'status': 'Active',
+  'title': 'Gold Standard Engineered Removals Activity Requirements (2025)',
+  'url': 'https://www.goldstandard.org/news/gold-standard-publishes-engineered-removals-activity-requirements',
+  'year': 2025,
 }
 ---
 
-Strict certification framework for high-integrity CCS and engineered carbon removals, aligned with Article 6 of the Paris Agreement.
+Gold Standard published its Engineered Removals Activity Requirements on 22 July 2025. The framework sets high-level requirements for engineered carbon dioxide removal activities seeking Gold Standard certification and provides the basis for subsequent methodology and project development. The prior 2023 date in the database was not supported by the official publication record.

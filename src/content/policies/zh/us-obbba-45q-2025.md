@@ -5,17 +5,17 @@
       'incentive':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'OBBBA 2025, Section 45Q(b)(1)(A)(ii)',
-          'evidence': "The 2025 OBBBA (One Big Beautiful Bill Act) landmark legislation has fundamentally redefined the U.S. CCUS incentive landscape by equalizing and enhancing Section 45Q tax credits. Specifically, the act provides up to $180 per tonne for Direct Air Capture (DAC) with dedicated geologic storage and $85 per tonne for point-source industrial capture. These credits are now fully refundable for a specified period, significantly improving project bankability and reducing the reliance on complex tax equity markets. Furthermore, the act includes provisions for 'stacking' with state-level incentives, such as California's LCFS or Texas's tax abatements, creating a multi-layered financial framework that supports a wide array of carbon management technologies across the value chain. This represents the highest and most stable carbon capture incentive globally in 2025, providing the necessary 'price floor' for long-term project financing.",
-          'label': '$180/t DAC',
+          'citation': 'Public Law 119-21, section 70522; IRS Notice 2026-1 discussion of the 2025 Section 45Q amendments.',
+          'evidence': 'Section 70522 establishes parity between qualified utilisation or enhanced-recovery credit amounts and secure-geological-storage amounts for qualifying facilities or equipment placed in service after 4 July 2025.',
+          'label': '45Q parity after 4 July 2025',
           'score': 100,
         },
       'market':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'OBBBA 2025, Market Security Provisions',
-          'evidence': "The U.S. market for CCUS has matured through the implementation of the 2025 Foreign Entity of Concern (FEOC) rules, which ensure domestic energy security and protect the integrity of federal subsidies. These rules provide clear investment signals by restricting participation from entities with disqualifying foreign adversarial ties, thereby fostering a secure and transparent domestic market. Additionally, the emergence of liquid markets for '45Q-compliant' credits and the integration of CCUS with the broader hydrogen and sustainable aviation fuel (SAF) markets have increased the monetizability of captured CO2. The market is also bolstered by the development of shared-user infrastructure, such as the Gulf Coast and Midwest transport hubs, which are reducing unit costs and enabling participation from smaller industrial emitters, effectively creating a multi-sectoral carbon management ecosystem.",
-          'label': 'FEOC Rules',
+          'citation': 'Public Law 119-21, section 70522; IRS Notice 2026-1.',
+          'evidence': 'The 2025 amendments restrict Section 45Q eligibility for specified foreign entities and foreign-influenced entities for applicable tax years.',
+          'label': 'PFE restrictions',
           'score': 95,
         },
       'mrv':
@@ -53,15 +53,16 @@
     },
   'category': 'Tax Incentives',
   'country': '美国',
-  'description': '2025 年 7 月 4 日，随着《一个伟大美丽的法案》(OBBBA) 的通过，美国 CCUS 的格局发生了变革性转变。这项具有里程碑意义的立法不仅保留了现有的第 45Q 条税收抵免，还显著增强并统一了这些抵免，以加速工业脱碳。其中最关键的更新之一是统一了直接空气捕集 (DAC) 和点源捕集的抵免水平，专用地质封存现在为 DAC 提供每吨高达 180 美元的抵免，为点源捕集提供每吨 85 美元的抵免。OBBBA 还引入了新的“受关注外国实体”(FEOC) 规则，旨在确保 45Q 的财务收益不会流向与特定外国对手有取消资格联系的项目，从而加强国内能源安全。除了财务激励外，2025 年还在许可效率方面取得了重大里程碑。路易斯安那州和西弗吉尼亚州正式加入北达科他州和怀俄明州的行列，获得了 EPA 的 Class VI 监管主权。这允许这些州管理自己的二氧化碳注入井许可流程，显著绕过了联邦积压，并将许可提前期从几年缩短到可能不到 12 个月。德克萨斯州和亚利桑那州也处于主权申请程序的最后阶段，预计到 2025 年底获得批准。这种权力的下放预计将触发墨西哥湾沿岸和阿巴拉契亚盆地项目 FID（最终',
+  'description': '美国第119-21号公法于2025年7月4日生效，其中第70522节修订45Q。对于2025年7月4日后投入使用的合格设施或设备，法律将利用或强化采收情形的抵免水平与安全地质封存情形对齐，并新增针对特定外国实体和受外国影响实体的限制。该法延续并调整IRA形成的较高抵免框架，而不是新设原有的DAC封存180美元/吨和点源封存85美元/吨标准。',
   'id': 'us-obbba-45q-2025',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2026-03-18',
+  'pubDate': '2025-07-04',
   'regulatory':
     {
       'co2_definition': '被定义为符合抵免条件的温室气体。',
@@ -450,10 +451,12 @@
       '999',
     ],
   'reviewStatus': 'verified',
+  'source': 'U.S. Government Publishing Office / Internal Revenue Service',
   'status': '现行',
-  'title': '美国 OBBBA 法案与 45Q 增强计划 2025',
+  'title': '美国第119-21号公法：2025年45Q修订',
+  'url': 'https://www.govinfo.gov/app/details/PLAW-119publ21',
   'year': 2025,
 }
 ---
 
-2025 年 7 月 4 日，随着《一个伟大美丽的法案》(OBBBA) 的通过，美国 CCUS 的格局发生了变革性转变。这项具有里程碑意义的立法不仅保留了现有的第 45Q 条税收抵免，还显著增强并统一了这些抵免，以加速工业脱碳。其中最关键的更新之一是统一了直接空气捕集 (DAC) 和点源捕集的抵免水平，专用地质封存现在为 DAC 提供每吨高达 180 美元的抵免，为点源捕集提供每吨 85 美元的抵免。OBBBA 还引入了新的“受关注外国实体”(FEOC) 规则，旨在确保 45Q 的财务收益不会流向与特定外国对手有取消资格联系的项目，从而加强国内能源安全。除了财务激励外，2025 年还在许可效率方面取得了重大里程碑。路易斯安那州和西弗吉尼亚州正式加入北达科他州和怀俄明州的行列，获得了 EPA 的 Class VI 监管主权。这允许这些州管理自己的二氧化碳注入井许可流程，显著绕过了联邦积压，并将许可提前期从几年缩短到可能不到 12 个月。德克萨斯州和亚利桑那州也处于主权申请程序的最后阶段，预计到 2025 年底获得批准。这种权力的下放预计将触发墨西哥湾沿岸和阿巴拉契亚盆地项目 FID（最终投资决定）的激增，那里的地质封存潜力巨大。稳定的高价值税收抵免和精简的许可相结合，使美国成为 2025 年全球 CCUS 开发商最具吸引力的市场。
+美国第119-21号公法于2025年7月4日生效，其中第70522节修订45Q。对于2025年7月4日后投入使用的合格设施或设备，法律将利用或强化采收情形的抵免水平与安全地质封存情形对齐，并新增针对特定外国实体和受外国影响实体的限制。该法延续并调整IRA形成的较高抵免框架，而不是新设原有的DAC封存180美元/吨和点源封存85美元/吨标准。

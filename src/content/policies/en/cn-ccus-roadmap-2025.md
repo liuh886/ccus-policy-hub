@@ -8,10 +8,10 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2025-10-15',
+  'pubDate': '2025-10-23',
   'relatedFacilities':
     [
       '1053',
@@ -65,9 +65,10 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': 'NDRC/ACCA21',
+  'source': 'Administrative Centre for China’s Agenda 21 (ACCA21)',
   'status': 'Active',
   'title': 'China CCUS Technology Development Roadmap (2025)',
+  'url': 'https://www.acca21.org.cn/trs/00010004/17430.html',
   'year': 2025,
 }
 ---

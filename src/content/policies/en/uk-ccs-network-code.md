@@ -43,18 +43,18 @@
           'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'United Kingdom',
-  'description': 'Established by Ofgem to regulate third-party access to the national carbon backbone, preventing monopolies in the T&S market.',
+  'description': 'The UK’s December 2023 CCUS market vision proposes a single CCS Network Code to govern commercial, operational and technical arrangements for use and growth of CO2 transport and storage systems. The code is a planned market-governance component linked to economic licences and third-party access; the government publication should not be represented as a final standalone code already in force.',
   'id': 'uk-ccs-network-code',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Proposed Market Rule',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2023-12-20',
   'relatedFacilities':
     [
       '10',
@@ -165,11 +165,12 @@
       '916',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'UK CO2 T&S Network Code',
-  'year': 2024,
+  'source': 'UK Department for Energy Security and Net Zero',
+  'status': 'Planned',
+  'title': 'UK CCS Network Code Framework (Planned)',
+  'url': 'https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market',
+  'year': 2023,
 }
 ---
 
-Established by Ofgem to regulate third-party access to the national carbon backbone, preventing monopolies in the T&S market.
+The UK’s December 2023 CCUS market vision proposes a single CCS Network Code to govern commercial, operational and technical arrangements for use and growth of CO2 transport and storage systems. The code is a planned market-governance component linked to economic licences and third-party access; the government publication should not be represented as a final standalone code already in force.

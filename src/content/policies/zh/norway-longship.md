@@ -45,16 +45,16 @@
     },
   'category': '法律监管',
   'country': '挪威',
-  'description': '连接工业捕集与 Northern Lights 跨国封存枢纽的大型国家级工程。',
+  'description': '挪威于2020年9月21日启动“长船”国家支持型全规模CCS示范，覆盖工业捕集、船舶运输、中转储存以及通过Northern Lights开展海上永久地质封存。政府项目说明于2024年更新，但政策决策和项目启动时间应记为2020年。',
   'id': 'norway-longship',
   'legalWeight': 'Guideline/Policy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2020-09-21',
   'relatedFacilities':
     [
       '101',
@@ -113,11 +113,12 @@
       '93',
     ],
   'reviewStatus': 'verified',
-  'source': '挪威政府 / Gassnova',
+  'source': 'Norwegian Ministry of Energy',
   'status': '现行',
-  'title': '挪威“长船”CCS 项目',
-  'year': 2024,
+  'title': '挪威“长船”全规模CCS项目',
+  'url': 'https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/',
+  'year': 2020,
 }
 ---
 
-连接工业捕集与 Northern Lights 跨国封存枢纽的大型国家级工程。
+挪威于2020年9月21日启动“长船”国家支持型全规模CCS示范，覆盖工业捕集、船舶运输、中转储存以及通过Northern Lights开展海上永久地质封存。政府项目说明于2024年更新，但政策决策和项目启动时间应记为2020年。

@@ -51,10 +51,10 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-03-30',
+  'pubDate': '2023-07-01',
   'relatedFacilities':
     [
       '11',
@@ -103,9 +103,10 @@
       '790',
     ],
   'reviewStatus': 'verified',
-  'source': 'DCCEEW',
+  'source': 'Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)',
   'status': '现行',
   'title': '澳大利亚保障机制 2023',
+  'url': 'https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism',
   'year': 2023,
 }
 ---

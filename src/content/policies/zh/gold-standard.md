@@ -43,25 +43,26 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Methodology',
   'country': '国际',
-  'description': '针对高诚信度 CCS 和工程化碳移除的严格核证框架，对齐《巴黎协定》第 6 条。',
+  'description': '黄金标准于2025年7月22日发布《工程化碳移除活动要求》，为寻求黄金标准认证的工程化二氧化碳移除活动规定高层级完整性要求，并作为后续方法学和项目开发的基础。数据库原记录的2023年发布日期缺乏官方依据，现予纠正。',
   'id': 'gold-standard',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Voluntary Standard',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2025-07-22',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
   'source': 'Gold Standard',
   'status': '现行',
-  'title': '黄金标准工程化 CDR 要求',
-  'year': 2023,
+  'title': '黄金标准工程化碳移除活动要求（2025）',
+  'url': 'https://www.goldstandard.org/news/gold-standard-publishes-engineered-removals-activity-requirements',
+  'year': 2025,
 }
 ---
 
-针对高诚信度 CCS 和工程化碳移除的严格核证框架，对齐《巴黎协定》第 6 条。
+黄金标准于2025年7月22日发布《工程化碳移除活动要求》，为寻求黄金标准认证的工程化二氧化碳移除活动规定高层级完整性要求，并作为后续方法学和项目开发的基础。数据库原记录的2023年发布日期缺乏官方依据，现予纠正。

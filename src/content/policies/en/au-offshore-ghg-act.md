@@ -1,17 +1,17 @@
 ---
 {
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'Australia',
-  'description': 'Legislation enabling offshore carbon storage and transboundary CO2 transport, aligned with the 2023 London Protocol amendments to support projects like Bayu-Undan.',
+  'description': 'The Offshore Petroleum and Greenhouse Gas Storage Act 2006 is the principal Commonwealth legislation governing offshore petroleum and greenhouse-gas storage activities. As amended, it provides the title, declaration, licensing, site-plan, monitoring, closure and regulatory architecture for geological storage in Commonwealth offshore areas. Dedicated injection-and-storage regulations made in 2023 prescribe site-plan, containment-risk, monitoring and closure requirements under the Act.',
   'id': 'au-offshore-ghg-act',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2006-03-29',
   'relatedFacilities':
     [
       '11',
@@ -60,11 +60,12 @@
       '790',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'Australia Offshore GHG Storage Act',
-  'year': 2023,
+  'source': 'Australian Federal Register of Legislation',
+  'status': 'Active',
+  'title': 'Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006',
+  'url': 'https://www.legislation.gov.au/C2006A00014/latest',
+  'year': 2006,
 }
 ---
 
-Legislation enabling offshore carbon storage and transboundary CO2 transport, aligned with the 2023 London Protocol amendments to support projects like Bayu-Undan.
+The Offshore Petroleum and Greenhouse Gas Storage Act 2006 is the principal Commonwealth legislation governing offshore petroleum and greenhouse-gas storage activities. As amended, it provides the title, declaration, licensing, site-plan, monitoring, closure and regulatory architecture for geological storage in Commonwealth offshore areas. Dedicated injection-and-storage regulations made in 2023 prescribe site-plan, containment-risk, monitoring and closure requirements under the Act.

@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Strategic',
   'country': 'China',
-  'description': 'National guidelines elevating zero-carbon parks to a strategic level, mandating CCS as a core path for localized industrial decarbonization.',
+  'description': 'NDRC, MIIT and the National Energy Administration issued the national zero-carbon park construction notice in June 2025. It establishes application, construction and evaluation arrangements for national demonstration parks, with priorities including energy-system transformation, industrial decarbonisation, carbon accounting, product carbon-footprint management and financial support. The notice does not mandate CCS as a universal or core pathway for every park.',
   'id': 'cn-zero-carbon-parks',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'National Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-15',
+  'pubDate': '2025-06-30',
   'relatedFacilities':
     [
       '1053',
@@ -108,11 +108,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': '工业和信息化部',
-  'status': '现行',
-  'title': 'China Zero-Carbon Industrial Park Guidelines',
-  'year': 2024,
+  'source': 'National Development and Reform Commission / MIIT / National Energy Administration',
+  'status': 'Active',
+  'title': 'China National Zero-Carbon Park Construction Notice (2025)',
+  'url': 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523',
+  'year': 2025,
 }
 ---
 
-National guidelines elevating zero-carbon parks to a strategic level, mandating CCS as a core path for localized industrial decarbonization.
+NDRC, MIIT and the National Energy Administration issued the national zero-carbon park construction notice in June 2025. It establishes application, construction and evaluation arrangements for national demonstration parks, with priorities including energy-system transformation, industrial decarbonisation, carbon accounting, product carbon-footprint management and financial support. The notice does not mandate CCS as a universal or core pathway for every park.

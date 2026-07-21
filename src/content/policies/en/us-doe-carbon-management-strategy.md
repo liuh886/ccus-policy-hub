@@ -1,17 +1,17 @@
 ---
 {
-  'category': '战略引导',
+  'category': 'Strategic',
   'country': 'United States',
-  'description': 'Top-level blueprint for achieving net-zero by 2050, prioritizing hard-to-abate sectors and Justice40 compliance.',
+  'description': 'The U.S. Department of Energy published its Carbon Management Strategy as a draft for public comment in October 2024. It outlines DOE’s near-term programme priorities through 2030 across research, demonstration and deployment, CO2 transport and storage infrastructure, policy coordination, community and workforce engagement, and international cooperation. The official DOE page continues to identify the document as a draft rather than a final binding strategy.',
   'id': 'us-doe-carbon-management-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Draft Strategy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2024-10-10',
   'relatedFacilities':
     [
       '100',
@@ -390,11 +390,12 @@
       '999',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'US DOE Carbon Management Strategy',
+  'source': 'U.S. Department of Energy',
+  'status': 'Draft for public comment',
+  'title': 'Draft U.S. DOE Carbon Management Strategy (2024)',
+  'url': 'https://www.energy.gov/hgeo/does-carbon-management-strategy',
   'year': 2024,
 }
 ---
 
-Top-level blueprint for achieving net-zero by 2050, prioritizing hard-to-abate sectors and Justice40 compliance.
+The U.S. Department of Energy published its Carbon Management Strategy as a draft for public comment in October 2024. It outlines DOE’s near-term programme priorities through 2030 across research, demonstration and deployment, CO2 transport and storage infrastructure, policy coordination, community and workforce engagement, and international cooperation. The official DOE page continues to identify the document as a draft rather than a final binding strategy.

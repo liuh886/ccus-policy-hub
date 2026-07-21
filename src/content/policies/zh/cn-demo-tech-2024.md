@@ -2,7 +2,7 @@
 {
   'category': '战略引导',
   'country': '中国',
-  'description': '## 政策核心 由国家发改委和生态环境部发布，旨在遴选大规模 CCUS 示范项目并提供资金和资源支持。规模要求：石化/火电/油气行业年捕集量 >50 万吨，电力/钢铁/水泥行业 >10 万吨。首批 47 个项目于 2024 年 4 月发布，第二批 101 个项目于 2025 年 4 月发布。',
+  'description': '国家发展改革委等十部门于2023年8月印发《绿色低碳先进技术示范工程实施方案》，并同步启动首批项目申报。方案将碳捕集利用与封存纳入可开展工程示范的先进绿色低碳技术范围，首批项目清单随后于2024年公布。',
   'id': 'cn-demo-tech-2024',
   'impactAnalysis':
     {
@@ -13,10 +13,10 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-08-01',
+  'pubDate': '2023-08-04',
   'relatedFacilities':
     [
       '1053',
@@ -70,13 +70,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': 'NDRC/MEE',
+  'source': 'National Development and Reform Commission and nine other departments',
   'status': '现行',
-  'title': '绿色低碳先进技术示范项目实施方案',
-  'year': 2024,
+  'title': '《绿色低碳先进技术示范工程实施方案》（2023）',
+  'url': 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266',
+  'year': 2023,
 }
 ---
 
-## 政策核心
-
-由国家发改委和生态环境部发布，旨在遴选大规模 CCUS 示范项目并提供资金和资源支持。规模要求：石化/火电/油气行业年捕集量 >50 万吨，电力/钢铁/水泥行业 >10 万吨。首批 47 个项目于 2024 年 4 月发布，第二批 101 个项目于 2025 年 4 月发布。
+国家发展改革委等十部门于2023年8月印发《绿色低碳先进技术示范工程实施方案》，并同步启动首批项目申报。方案将碳捕集利用与封存纳入可开展工程示范的先进绿色低碳技术范围，首批项目清单随后于2024年公布。

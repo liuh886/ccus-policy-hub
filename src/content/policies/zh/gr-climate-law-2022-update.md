@@ -8,7 +8,7 @@
   'provenance':
     {
       'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
+      'lastAuditDate': '2026-07-21',
       'reviewer': 'Human Audit Pending',
     },
   'regulatory':

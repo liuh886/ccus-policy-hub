@@ -34,7 +34,8 @@ export const POLICY_UPDATES = [
     },
     i18n: {
       en: {
-        title: 'Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006',
+        title:
+          'Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006',
         description:
           'The Offshore Petroleum and Greenhouse Gas Storage Act 2006 is the principal Commonwealth legislation governing offshore petroleum and greenhouse-gas storage activities. As amended, it provides the title, declaration, licensing, site-plan, monitoring, closure and regulatory architecture for geological storage in Commonwealth offshore areas. Dedicated injection-and-storage regulations made in 2023 prescribe site-plan, containment-risk, monitoring and closure requirements under the Act.',
       },
@@ -57,7 +58,8 @@ export const POLICY_UPDATES = [
   {
     id: 'au-safeguard-mechanism',
     core: {
-      source: 'Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)',
+      source:
+        'Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)',
       url: 'https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism',
       pubDate: '2023-07-01',
     },
@@ -92,7 +94,8 @@ export const POLICY_UPDATES = [
         label: 'Bill under consideration',
         evidence:
           'PL 1425/2022 was approved in the Federal Senate committee process and transmitted to the Chamber of Deputies; it is not enacted law.',
-        citation: 'Brazilian Federal Senate legislative record for PL 1425/2022.',
+        citation:
+          'Brazilian Federal Senate legislative record for PL 1425/2022.',
       },
     },
   },
@@ -115,13 +118,15 @@ export const POLICY_UPDATES = [
     id: 'cn-demo-tech-2024',
     core: {
       year: 2023,
-      source: 'National Development and Reform Commission and nine other departments',
+      source:
+        'National Development and Reform Commission and nine other departments',
       url: 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266',
       pubDate: '2023-08-04',
     },
     i18n: {
       en: {
-        title: 'Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)',
+        title:
+          'Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)',
         description:
           'NDRC and nine other departments issued the Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects in August 2023. The plan launched the first application round and includes carbon capture, utilisation and storage among the advanced technologies eligible for demonstration support. The first project list was subsequently published in 2024.',
       },
@@ -140,7 +145,8 @@ export const POLICY_UPDATES = [
       category: 'Regulatory',
       reviewStatus: 'verified',
       legalWeight: 'National Standards',
-      source: 'State Administration for Market Regulation / Standardization Administration of China',
+      source:
+        'State Administration for Market Regulation / Standardization Administration of China',
       url: 'https://www.samr.gov.cn/xw/sj/art/2026/art_c4ebd8a52d154378b28595b96823b843.html',
       pubDate: '2025-12-31',
     },
@@ -165,7 +171,8 @@ export const POLICY_UPDATES = [
       category: 'Strategic',
       reviewStatus: 'verified',
       legalWeight: 'National Guidance',
-      source: 'National Development and Reform Commission / MIIT / National Energy Administration',
+      source:
+        'National Development and Reform Commission / MIIT / National Energy Administration',
       url: 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523',
       pubDate: '2025-06-30',
     },
@@ -269,7 +276,8 @@ export const POLICY_UPDATES = [
     },
     i18n: {
       en: {
-        title: 'Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)',
+        title:
+          'Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)',
         description:
           'Iceland’s Law No. 67/2022 amended environmental-health, environmental-assessment and climate legislation to implement the EU geological-storage framework and expressly regulate underground CO2 storage, including mineralisation. It provides the legal basis used for permitting storage projects such as Carbfix. This replaces the unsupported database description of a separate 2024 “CDR framework”.',
       },
@@ -370,7 +378,8 @@ export const POLICY_UPDATES = [
     },
     i18n: {
       en: {
-        title: 'South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation',
+        title:
+          'South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation',
         description:
           'South Korea enacted Act No. 20203 on 6 February 2024. The law took effect on 7 February 2025 and establishes the national framework for technology development and industrialisation of carbon dioxide capture, transport, storage and utilisation, including storage-business and marine-storage provisions.',
       },
@@ -389,7 +398,8 @@ export const POLICY_UPDATES = [
       category: 'Strategic',
       reviewStatus: 'verified',
       legalWeight: 'National Strategy',
-      source: 'Official Portal of the UAE Government / Ministry of Climate Change and Environment',
+      source:
+        'Official Portal of the UAE Government / Ministry of Climate Change and Environment',
       url: 'https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/environment-and-energy/the-uae-net-zero-2050-strategy',
       pubDate: '2023-11-01',
     },
@@ -562,7 +572,9 @@ function scalar(db, sql, params = []) {
 }
 
 function policyExists(db, id) {
-  return Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0;
+  return (
+    Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0
+  );
 }
 
 function updatePolicy(db, update, auditDate) {

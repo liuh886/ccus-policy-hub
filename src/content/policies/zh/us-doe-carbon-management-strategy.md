@@ -2,16 +2,16 @@
 {
   'category': '战略引导',
   'country': '美国',
-  'description': '到 2050 年实现净零排放的顶层蓝图，优先考虑难减排行业及 Justice40 合规。',
+  'description': '美国能源部于2024年10月发布碳管理战略草案并公开征求意见，提出至2030年的近期工作重点，包括研发示范与部署、二氧化碳运输和封存基础设施、跨部门政策协调、社区与劳动力参与以及国际合作。能源部官方页面仍将其标识为草案，而非最终具有约束力的战略。',
   'id': 'us-doe-carbon-management-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Draft Strategy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2024-10-10',
   'relatedFacilities':
     [
       '100',
@@ -390,11 +390,12 @@
       '999',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': '美国能源部碳管理战略',
+  'source': 'U.S. Department of Energy',
+  'status': 'Draft for public comment',
+  'title': '美国能源部碳管理战略草案（2024）',
+  'url': 'https://www.energy.gov/hgeo/does-carbon-management-strategy',
   'year': 2024,
 }
 ---
 
-到 2050 年实现净零排放的顶层蓝图，优先考虑难减排行业及 Justice40 合规。
+美国能源部于2024年10月发布碳管理战略草案并公开征求意见，提出至2030年的近期工作重点，包括研发示范与部署、二氧化碳运输和封存基础设施、跨部门政策协调、社区与劳动力参与以及国际合作。能源部官方页面仍将其标识为草案，而非最终具有约束力的战略。

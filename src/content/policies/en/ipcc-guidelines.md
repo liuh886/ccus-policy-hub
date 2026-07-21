@@ -51,15 +51,16 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2019-05-01',
+  'pubDate': '2019-05-12',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'IPCC',
+  'source': 'IPCC Task Force on National Greenhouse Gas Inventories',
   'status': '现行',
   'title': 'IPCC GHG Inventory Guidelines (2019 Refinement)',
+  'url': 'https://www.ipcc-nggip.iges.or.jp/public/2019rf/',
   'year': 2019,
 }
 ---

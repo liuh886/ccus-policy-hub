@@ -5,17 +5,17 @@
       'incentive':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'OBBBA 2025, Section 45Q(b)(1)(A)(ii)',
-          'evidence': "The 2025 OBBBA (One Big Beautiful Bill Act) landmark legislation has fundamentally redefined the U.S. CCUS incentive landscape by equalizing and enhancing Section 45Q tax credits. Specifically, the act provides up to $180 per tonne for Direct Air Capture (DAC) with dedicated geologic storage and $85 per tonne for point-source industrial capture. These credits are now fully refundable for a specified period, significantly improving project bankability and reducing the reliance on complex tax equity markets. Furthermore, the act includes provisions for 'stacking' with state-level incentives, such as California's LCFS or Texas's tax abatements, creating a multi-layered financial framework that supports a wide array of carbon management technologies across the value chain. This represents the highest and most stable carbon capture incentive globally in 2025, providing the necessary 'price floor' for long-term project financing.",
-          'label': '$180/t DAC',
+          'citation': 'Public Law 119-21, section 70522; IRS Notice 2026-1 discussion of the 2025 Section 45Q amendments.',
+          'evidence': 'Section 70522 establishes parity between qualified utilisation or enhanced-recovery credit amounts and secure-geological-storage amounts for qualifying facilities or equipment placed in service after 4 July 2025.',
+          'label': '45Q parity after 4 July 2025',
           'score': 100,
         },
       'market':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'OBBBA 2025, Market Security Provisions',
-          'evidence': "The U.S. market for CCUS has matured through the implementation of the 2025 Foreign Entity of Concern (FEOC) rules, which ensure domestic energy security and protect the integrity of federal subsidies. These rules provide clear investment signals by restricting participation from entities with disqualifying foreign adversarial ties, thereby fostering a secure and transparent domestic market. Additionally, the emergence of liquid markets for '45Q-compliant' credits and the integration of CCUS with the broader hydrogen and sustainable aviation fuel (SAF) markets have increased the monetizability of captured CO2. The market is also bolstered by the development of shared-user infrastructure, such as the Gulf Coast and Midwest transport hubs, which are reducing unit costs and enabling participation from smaller industrial emitters, effectively creating a multi-sectoral carbon management ecosystem.",
-          'label': 'FEOC Rules',
+          'citation': 'Public Law 119-21, section 70522; IRS Notice 2026-1.',
+          'evidence': 'The 2025 amendments restrict Section 45Q eligibility for specified foreign entities and foreign-influenced entities for applicable tax years.',
+          'label': 'PFE restrictions',
           'score': 95,
         },
       'mrv':
@@ -53,15 +53,16 @@
     },
   'category': 'Tax Incentives',
   'country': 'United States',
-  'description': "The landscape for CCUS in the United States underwent a transformative shift in 2025 with the passage of the 'One Big Beautiful Bill Act' (OBBBA) on July 4th. This landmark legislation not only preserved the existing Section 45Q tax credits but significantly enhanced and equalized them to accelerate industrial decarbonization. One of the most critical updates was the equalization of credit levels for Direct Air Capture (DAC) and point-source capture, with dedicated geologic storage now receiving",
+  'description': 'Public Law 119-21, enacted on 4 July 2025, amended Section 45Q through section 70522. For qualifying facilities or equipment placed in service after 4 July 2025, it establishes parity between credit amounts for utilisation or enhanced recovery and those for secure geological storage. It also adds restrictions for specified foreign entities and foreign-influenced entities. The law preserved the higher IRA credit architecture; it did not newly create the existing $180-per-tonne DAC storage and $85',
   'id': 'us-obbba-45q-2025',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2026-03-18',
+  'pubDate': '2025-07-04',
   'regulatory':
     {
       'co2_definition': 'Defined as a credit-eligible greenhouse gas.',
@@ -450,10 +451,12 @@
       '999',
     ],
   'reviewStatus': 'verified',
+  'source': 'U.S. Government Publishing Office / Internal Revenue Service',
   'status': 'Active',
-  'title': 'USA One Big Beautiful Bill Act (OBBBA) and 45Q Enhancement 2025',
+  'title': 'U.S. Public Law 119-21: 2025 Amendments to Section 45Q',
+  'url': 'https://www.govinfo.gov/app/details/PLAW-119publ21',
   'year': 2025,
 }
 ---
 
-The landscape for CCUS in the United States underwent a transformative shift in 2025 with the passage of the 'One Big Beautiful Bill Act' (OBBBA) on July 4th. This landmark legislation not only preserved the existing Section 45Q tax credits but significantly enhanced and equalized them to accelerate industrial decarbonization. One of the most critical updates was the equalization of credit levels for Direct Air Capture (DAC) and point-source capture, with dedicated geologic storage now receiving up to $180 per tonne for DAC and $85 per tonne for point-source capture. The OBBBA also introduced new 'Foreign Entity of Concern' (FEOC) rules, which are designed to ensure that the financial benefits of 45Q are not accessible to projects with disqualifying connections to specific foreign adversaries, thereby strengthening domestic energy security. In addition to financial incentives, 2025 marked a significant milestone in permitting efficiency. Louisiana and West Virginia officially joined North Dakota and Wyoming in receiving Class VI primacy from the EPA. This allows these states to manage their own CO2 injection well permitting processes, significantly bypassing federal backlogs and reducing permitting lead times from several years to potentially under 12 months. Texas and Arizona are also in the final stages of the primacy application process, with approvals expected by the end of 2025. This decentralization of authority is expected to trigger a surge in project FID (Final Investment Decisions) across the Gulf Coast and the Appalachian basin, where geological storage potential is vast. The combination of stabilized high-value tax credits and streamlined permitting makes the US the most attractive global market for CCUS developers in 2025.
+Public Law 119-21, enacted on 4 July 2025, amended Section 45Q through section 70522. For qualifying facilities or equipment placed in service after 4 July 2025, it establishes parity between credit amounts for utilisation or enhanced recovery and those for secure geological storage. It also adds restrictions for specified foreign entities and foreign-influenced entities. The law preserved the higher IRA credit architecture; it did not newly create the existing $180-per-tonne DAC storage and $85-per-tonne point-source storage levels.

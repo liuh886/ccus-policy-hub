@@ -59,8 +59,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2023-01-01',
   'relatedFacilities':
@@ -156,9 +156,10 @@
       '952',
     ],
   'reviewStatus': 'verified',
-  'source': '阿尔伯塔省政府',
+  'source': 'Government of Alberta',
   'status': '现行',
   'title': '阿尔伯塔省 TIER 体系与 CCS 激励',
+  'url': 'https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation',
   'year': 2023,
 }
 ---

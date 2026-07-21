@@ -59,15 +59,16 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2024-01-01',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': '欧盟委员会',
+  'source': 'European Commission, DG Climate Action',
   'status': '现行',
   'title': 'EU Innovation Fund',
+  'url': 'https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en',
   'year': 2024,
 }
 ---

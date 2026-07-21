@@ -43,17 +43,18 @@
           'score': 98,
         },
     },
-  'category': 'Offshore Storage Licensing',
+  'category': 'Regulatory',
   'country': 'Norway',
-  'description': "In 2025, Norway further solidified its position as a global leader in offshore CO2 storage by awarding its 14th offshore storage license in June. This move is part of the Norwegian government's strategic ambition to provide large-scale storage capacity for European industrial emitters. The Ministry of Energy has continued its 'predictable and flexible' licensing process, which is designed to attract commercial interest while ensuring rigorous environmental and safety standards. A key update in N",
+  'description': 'Norway announced one North Sea area for CO2 storage licensing on 5 March 2025 under the CO2 Storage Regulations. Following evaluation, Equinor Low Carbon Solution was offered exploration licence EXL014, valid from 24 June 2025. The official source describes this as “Announcement 2025, round 1” and the eighth award process, not a fourteenth licensing round; the legacy database ID is retained only for compatibility.',
   'id': 'no-14th-licensing-round-2025',
+  'legalWeight': 'Licensing Round',
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2026-03-18',
+  'pubDate': '2025-03-05',
   'regulatory':
     {
       'co2_definition': 'Industrial emission for large-scale storage.',
@@ -121,11 +122,13 @@
       '92',
       '93',
     ],
-  'reviewStatus': 'draft',
-  'status': 'Active',
-  'title': 'Norway 14th Offshore Storage Licensing Round and 2025 Regulatory Guidelines',
+  'reviewStatus': 'verified',
+  'source': 'Norwegian Offshore Directorate',
+  'status': 'Awarded',
+  'title': 'Norway 2025 CO2 Storage Licensing Round 1',
+  'url': 'https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/',
   'year': 2025,
 }
 ---
 
-In 2025, Norway further solidified its position as a global leader in offshore CO2 storage by awarding its 14th offshore storage license in June. This move is part of the Norwegian government's strategic ambition to provide large-scale storage capacity for European industrial emitters. The Ministry of Energy has continued its 'predictable and flexible' licensing process, which is designed to attract commercial interest while ensuring rigorous environmental and safety standards. A key update in November 2025 involved the release of new guidelines by the Norwegian Offshore Directorate (Sodir). These guidelines specifically clarify the documentation requirements for storage complex status reports, a critical step for operators as they move from exploration to active injection phases. The updated framework emphasizes the need for high-resolution seismic monitoring and detailed pressure management data to ensure the long-term containment of CO2. Furthermore, Norway's regulatory environment in 2025 has focused on streamlining the transition of liability, although the state maintains a cautious approach to long-term stewardship. The licensing round also saw an increase in international collaboration, with several European energy majors participating in joint ventures to develop the 'Smeaheia' and 'Northern Lights' expansions. These projects are essential for meeting the EU's broader storage targets under the Net-Zero Industry Act. The 2025 updates reflect a maturing market where the focus has shifted from geological feasibility to operational excellence and regulatory clarity, providing a stable investment climate for the burgeoning CCUS industry in the North Sea.
+Norway announced one North Sea area for CO2 storage licensing on 5 March 2025 under the CO2 Storage Regulations. Following evaluation, Equinor Low Carbon Solution was offered exploration licence EXL014, valid from 24 June 2025. The official source describes this as “Announcement 2025, round 1” and the eighth award process, not a fourteenth licensing round; the legacy database ID is retained only for compatibility.
