@@ -6,11 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -25,6 +30,13 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Format Relationship Controls
+        run: |
+          pnpm prettier --write \
+            scripts/sync-policy-link-projections.mjs \
+            scripts/sync-policy-link-projections.test.mjs \
+            .github/workflows/ci.yml
 
       - name: ESLint
         run: pnpm eslint .
@@ -64,3 +76,96 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Reset Unrelated Generated Outputs
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/lifecycle-link-projection-cleanup' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          git restore \
+            public/data/countries.json \
+            public/data/dataset-versions.json \
+            public/data/facilities.json \
+            public/data/manifest.json \
+            public/data/policies.json \
+            public/data/quality.json \
+            src/data/quality_metrics.generated.json \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+
+      - name: Synchronize Canonical Policy Links
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/lifecycle-link-projection-cleanup' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          node scripts/sync-policy-link-projections.mjs --write \
+            | tee policy-link-projection-write.json
+          mapfile -t changed < <(
+            git diff --name-only -- \
+              src/content/facilities \
+              public/data/facilities.json
+          )
+          if (( ${#changed[@]} > 0 )); then
+            pnpm prettier --write "${changed[@]}"
+          fi
+          node scripts/sync-policy-link-projections.mjs \
+            | tee policy-link-projection-audit.json
+          pnpm run build
+
+      - name: Enforce Relationship-Only Boundary
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/lifecycle-link-projection-cleanup' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          {
+            git diff --name-only
+            git ls-files --others --exclude-standard
+          } | sort -u | tee policy-link-projection-diff.txt
+          forbidden=0
+          while IFS= read -r file; do
+            case "$file" in
+              .github/workflows/ci.yml|scripts/sync-policy-link-projections.mjs|scripts/sync-policy-link-projections.test.mjs|public/data/facilities.json|src/content/facilities/en/*.md|src/content/facilities/zh/*.md|policy-link-projection-write.json|policy-link-projection-audit.json|policy-link-projection-diff.txt)
+                ;;
+              *)
+                echo "Forbidden non-relationship change: $file"
+                forbidden=1
+                ;;
+            esac
+          done < policy-link-projection-diff.txt
+          git diff --quiet -- agent/ccus-ai-agent/db/ccus_master.sqlite || {
+            echo 'SQLite changed unexpectedly'
+            forbidden=1
+          }
+          exit "$forbidden"
+
+      - name: Upload Relationship Diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-link-projection-diagnostics
+          path: |
+            policy-link-projection-write.json
+            policy-link-projection-audit.json
+            policy-link-projection-diff.txt
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Commit Canonical Policy Links
+        if: >-
+          success() &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/lifecycle-link-projection-cleanup' &&
+          github.actor != 'github-actions[bot]'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'fix(data): synchronize canonical policy-link projections'
+          branch: policy/lifecycle-link-projection-cleanup
+          file_pattern: >-
+            .github/workflows/ci.yml
+            scripts/sync-policy-link-projections.mjs
+            scripts/sync-policy-link-projections.test.mjs
+            public/data/facilities.json
+            src/content/facilities
