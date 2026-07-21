@@ -53,12 +53,16 @@ jobs:
         run: pnpm manage:db:audit:policy-consistency
 
       - name: Format Policy Consistency Report
+        if: always()
         run: |
-          pnpm prettier --write \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
+          if [[ -f docs/policy-db-consistency-report.json ]]; then
+            pnpm prettier --write \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+          fi
 
       - name: Upload Policy Projection Artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: policy-db-projections
