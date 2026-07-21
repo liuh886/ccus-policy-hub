@@ -59,40 +59,58 @@ jobs:
 
           const file = 'agent/ccus-ai-agent/logic/manage.mjs';
           let source = fs.readFileSync(file, 'utf8');
+          const replacements = [
+            ["score: a.score || 0,", "score: a.score,"],
+            ["label: a.label || 'Pending',", "label: a.label,"],
+            [
+              "evidence: a.evidence || 'No evidence provided.',",
+              "evidence: a.evidence,",
+            ],
+            ["citation: a.citation || '',", "citation: a.citation,"],
+            ["auditNote: a.audit_note || '',", "auditNote: a.audit_note,"],
+            [
+              "author: p.provenance_author || 'System',",
+              "author: p.provenance_author,",
+            ],
+          ];
 
-          const analysisBefore = `          score: a.score || 0,
-                    label: a.label || 'Pending',
-                    evidence: a.evidence || 'No evidence provided.',
-                    citation: a.citation || '',
-                    auditNote: a.audit_note || '',`;
-          const analysisAfter = `          score: a.score,
-                    label: a.label,
-                    evidence: a.evidence,
-                    citation: a.citation,
-                    auditNote: a.audit_note,`;
-
-          const provenanceBefore = `          author: p.provenance_author || 'System',
-                    reviewer:
-                      p.provenance_reviewer && p.provenance_reviewer.trim() !== ''
-                        ? p.provenance_reviewer
-                        : 'Human Audit Pending',
-                    lastAuditDate:
-                      p.provenance_last_audit_date ||
-                      new Date().toISOString().split('T')[0],`;
-          const provenanceAfter = `          author: p.provenance_author,
-                    reviewer: p.provenance_reviewer,
-                    lastAuditDate: p.provenance_last_audit_date,`;
-
-          if (!source.includes(analysisBefore)) {
-            throw new Error('Policy analysis exporter block was not found.');
+          for (const [before, after] of replacements) {
+            if (!source.includes(before)) {
+              throw new Error(`Policy exporter token was not found: ${before}`);
+            }
+            source = source.replace(before, after);
           }
-          if (!source.includes(provenanceBefore)) {
-            throw new Error('Policy provenance exporter block was not found.');
+
+          const reviewerPattern = /reviewer:\s*\n\s*p\.provenance_reviewer && p\.provenance_reviewer\.trim\(\) !== ''\s*\n\s*\? p\.provenance_reviewer\s*\n\s*:\s*'Human Audit Pending',/;
+          const auditDatePattern = /lastAuditDate:\s*\n\s*p\.provenance_last_audit_date \|\|\s*\n\s*new Date\(\)\.toISOString\(\)\.split\('T'\)\[0\],/;
+
+          if (!reviewerPattern.test(source)) {
+            throw new Error('Policy reviewer fallback block was not found.');
+          }
+          if (!auditDatePattern.test(source)) {
+            throw new Error('Policy audit-date fallback block was not found.');
           }
 
           source = source
-            .replace(analysisBefore, analysisAfter)
-            .replace(provenanceBefore, provenanceAfter);
+            .replace(reviewerPattern, 'reviewer: p.provenance_reviewer,')
+            .replace(
+              auditDatePattern,
+              'lastAuditDate: p.provenance_last_audit_date,'
+            );
+
+          for (const forbidden of [
+            "score: a.score || 0,",
+            "label: a.label || 'Pending',",
+            "evidence: a.evidence || 'No evidence provided.',",
+            "author: p.provenance_author || 'System',",
+            "'Human Audit Pending'",
+            "new Date().toISOString().split('T')[0]",
+          ]) {
+            if (source.includes(forbidden)) {
+              throw new Error(`Policy exporter still contains fallback: ${forbidden}`);
+            }
+          }
+
           fs.writeFileSync(file, source);
           NODE
           pnpm prettier --write agent/ccus-ai-agent/logic/manage.mjs
