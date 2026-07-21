@@ -5,9 +5,6 @@ on:
     branches:
       - agent/policy-lifecycle-cleanup
     paths:
-      - scripts/migrate-policy-lifecycle-2026-07.mjs
-      - scripts/migrate-policy-lifecycle-2026-07.test.mjs
-      - package.json
       - .github/workflows/materialize-policy-lifecycle-cleanup.yml
   workflow_dispatch:
 
@@ -15,10 +12,10 @@ permissions:
   contents: write
 
 jobs:
-  migrate-sqlite:
+  regenerate-outputs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - name: Checkout migration branch
         uses: actions/checkout@v4
@@ -40,38 +37,55 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Apply SQLite migration and capture result
-        id: migrate
+      - name: Regenerate governed outputs and capture result
+        id: regenerate
         shell: bash
         run: |
           mkdir -p docs
           set +e
-          pnpm manage:db:migrate:policy-lifecycle 2>&1 | tee /tmp/policy-lifecycle-migration.log
+          (
+            set -e
+            pnpm manage:db:audit:deep
+            pnpm manage:db:export:md:clean
+            pnpm manage:db:quality:export
+            pnpm manage:db:data:export
+            pnpm prettier --write \
+              "src/content/policies/**/*.md" \
+              "public/data/*.json" \
+              src/data/quality_metrics.generated.json
+            pnpm lint
+            pnpm test
+            pnpm astro check
+            pnpm build
+          ) 2>&1 | tee /tmp/policy-lifecycle-materialization.log
           status=${PIPESTATUS[0]}
           set -e
           {
-            echo "# Policy lifecycle migration run"
+            echo "# Policy lifecycle materialization run"
             echo
             echo "- Date: 2026-07-21"
             echo "- Commit: ${GITHUB_SHA}"
             echo "- Exit status: ${status}"
             echo
             echo '```text'
-            cat /tmp/policy-lifecycle-migration.log
+            cat /tmp/policy-lifecycle-materialization.log
             echo '```'
-          } > docs/policy-lifecycle-migration-run.md
+          } > docs/policy-lifecycle-materialization-run.md
           echo "status=${status}" >> "$GITHUB_OUTPUT"
 
-      - name: Commit SQLite result and migration log
+      - name: Commit regenerated outputs and run log
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
-            docs/policy-lifecycle-migration-run.md
-          git commit -m "chore(data): apply policy lifecycle SQLite migration"
+            src/content/policies \
+            src/data/quality_metrics.generated.json \
+            public/data \
+            docs/policy-lifecycle-materialization-run.md
+          git commit -m "chore(data): regenerate policy lifecycle outputs"
           git push origin HEAD:agent/policy-lifecycle-cleanup
 
-      - name: Fail when migration failed
-        if: steps.migrate.outputs.status != '0'
+      - name: Fail when materialization failed
+        if: steps.regenerate.outputs.status != '0'
         run: exit 1
