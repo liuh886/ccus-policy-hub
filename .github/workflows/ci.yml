@@ -2,9 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, agent/policy-db-consistency]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -72,6 +75,26 @@ jobs:
           status=${PIPESTATUS[0]}
           exit "$status"
 
+      - name: Commit Verified Policy Projections
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/agent/policy-db-consistency' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/content/policies \
+            public/data/policies.json \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+          if git diff --cached --quiet; then
+            echo "Policy projections already match SQLite."
+            exit 0
+          fi
+          git commit -m "fix(data): materialize DB-faithful policy projections"
+          git push origin HEAD:agent/policy-db-consistency
+
       - name: Upload Policy Projection Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -83,14 +106,5 @@ jobs:
             docs/policy-db-consistency-report.json
             docs/policy-db-consistency-report.md
             docs/policy-post-export-build.log
-            .github/workflows/ci.yml
-            .github/workflows/deploy.yml
-            agent/ccus-ai-agent/logic/manage.mjs
-            package.json
-            scripts/audit-policy-artifact-consistency.mjs
-            scripts/audit-policy-artifact-consistency.test.mjs
-            scripts/export-policy-markdown.mjs
-            scripts/run-policy-consistency-audit.mjs
-            scripts/run-policy-consistency-audit.test.mjs
           if-no-files-found: error
           retention-days: 7
