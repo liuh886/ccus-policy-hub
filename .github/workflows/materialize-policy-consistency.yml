@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/audit-policy-artifact-consistency.mjs
       - scripts/audit-policy-artifact-consistency.test.mjs
+      - scripts/export-policy-markdown.mjs
       - package.json
       - .github/workflows/ci.yml
       - .github/workflows/deploy.yml
@@ -42,111 +43,41 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Format consistency inputs
+      - name: Format policy consistency inputs
         run: |
           pnpm prettier --write \
             scripts/audit-policy-artifact-consistency.mjs \
             scripts/audit-policy-artifact-consistency.test.mjs \
+            scripts/export-policy-markdown.mjs \
             package.json \
             .github/workflows/ci.yml \
             .github/workflows/deploy.yml \
             .github/workflows/materialize-policy-consistency.yml
-
-      - name: Make policy exporter DB-faithful
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from 'fs';
-
-          const file = 'agent/ccus-ai-agent/logic/manage.mjs';
-          let source = fs.readFileSync(file, 'utf8');
-          const replacements = [
-            ["score: a.score || 0,", "score: a.score,"],
-            ["label: a.label || 'Pending',", "label: a.label,"],
-            [
-              "evidence: a.evidence || 'No evidence provided.',",
-              "evidence: a.evidence,",
-            ],
-            ["citation: a.citation || '',", "citation: a.citation,"],
-            ["auditNote: a.audit_note || '',", "auditNote: a.audit_note,"],
-            [
-              "author: p.provenance_author || 'System',",
-              "author: p.provenance_author,",
-            ],
-          ];
-
-          for (const [before, after] of replacements) {
-            if (!source.includes(before)) {
-              throw new Error(`Policy exporter token was not found: ${before}`);
-            }
-            source = source.replace(before, after);
-          }
-
-          const reviewerPattern = /reviewer:\s*\n\s*p\.provenance_reviewer && p\.provenance_reviewer\.trim\(\) !== ''\s*\n\s*\? p\.provenance_reviewer\s*\n\s*:\s*'Human Audit Pending',/;
-          const auditDatePattern = /lastAuditDate:\s*\n\s*p\.provenance_last_audit_date \|\|\s*\n\s*new Date\(\)\.toISOString\(\)\.split\('T'\)\[0\],/;
-
-          if (!reviewerPattern.test(source)) {
-            throw new Error('Policy reviewer fallback block was not found.');
-          }
-          if (!auditDatePattern.test(source)) {
-            throw new Error('Policy audit-date fallback block was not found.');
-          }
-
-          source = source
-            .replace(reviewerPattern, 'reviewer: p.provenance_reviewer,')
-            .replace(
-              auditDatePattern,
-              'lastAuditDate: p.provenance_last_audit_date,'
-            );
-
-          const policyStart = source.indexOf("db.all('SELECT * FROM policies')");
-          const facilityStart = source.indexOf("db.all('SELECT * FROM facilities')");
-          if (policyStart < 0 || facilityStart <= policyStart) {
-            throw new Error('Could not isolate the active policy exporter section.');
-          }
-          const policySection = source.slice(policyStart, facilityStart);
-          for (const forbidden of [
-            "score: a.score || 0,",
-            "label: a.label || 'Pending',",
-            "evidence: a.evidence || 'No evidence provided.',",
-            "author: p.provenance_author || 'System',",
-            "'Human Audit Pending'",
-            "new Date().toISOString().split('T')[0]",
-          ]) {
-            if (policySection.includes(forbidden)) {
-              throw new Error(`Policy exporter still contains fallback: ${forbidden}`);
-            }
-          }
-
-          fs.writeFileSync(file, source);
-          NODE
-          pnpm prettier --write agent/ccus-ai-agent/logic/manage.mjs
 
       - name: Persist exporter and audit inputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            agent/ccus-ai-agent/logic/manage.mjs \
             scripts/audit-policy-artifact-consistency.mjs \
             scripts/audit-policy-artifact-consistency.test.mjs \
+            scripts/export-policy-markdown.mjs \
             package.json \
             .github/workflows/ci.yml \
             .github/workflows/deploy.yml \
             .github/workflows/materialize-policy-consistency.yml
           if git diff --cached --quiet; then
-            echo "Exporter and audit inputs already materialized."
+            echo "Policy exporter and audit inputs already formatted."
           else
-            git commit -m "fix(data): make policy exporter DB-faithful"
+            git commit -m "style(data): format policy projection controls"
             git push origin HEAD:agent/policy-db-consistency
           fi
 
-      - name: Validate audit tests
+      - name: Validate policy projection tests
         run: pnpm test
 
-      - name: Export policy Markdown from SQLite
-        run: |
-          pnpm manage:db:export:md
-          git restore src/content/facilities src/content/countries
+      - name: Export policy Markdown from SQLite only
+        run: pnpm manage:db:export:policies
 
       - name: Regenerate public policy projection
         run: |
