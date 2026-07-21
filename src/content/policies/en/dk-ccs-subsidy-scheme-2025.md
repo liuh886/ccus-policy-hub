@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 100,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': 'In 2025, Denmark secured EU approval for a €3.8 billion CCS subsidy scheme to support massive capture and storage. The framework focuses on biogenic CO2 (NECCS) and large-scale fossil capture, positioning Denmark as a central European storage hub with projects like Greensand.',
   'id': 'dk-ccs-subsidy-scheme-2025',
   'legalWeight': 'State Aid Scheme',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-12-01',
   'regulatory':
     {

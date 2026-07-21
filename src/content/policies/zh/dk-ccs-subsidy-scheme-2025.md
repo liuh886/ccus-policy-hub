@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 100,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive state aid and biogenic carbon focus.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '2025年，丹麦获得欧盟批准的一项价值 38 亿欧元的 CCS 补贴计划，以支持大规模的捕集与封存。该框架侧重于生物源二氧化碳 (NECCS) 和大规模化石捕集，使丹麦通过 Greensand 等项目成为中欧封存枢纽。',
   'id': 'dk-ccs-subsidy-scheme-2025',
   'legalWeight': 'State Aid Scheme',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-12-01',
   'regulatory':
     {

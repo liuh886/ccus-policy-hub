@@ -20,7 +20,6 @@
         },
       'mrv':
         {
-          'auditNote': '',
           'citation': 'METI Act on Carbon Dioxide Storage Businesses and 2026 implementing Cabinet Orders.',
           'evidence': 'The statutory and implementing framework requires regulated site operation, monitoring, closure and post-closure controls; detailed implementing rules were completed for full enforcement on 22 May 2026.',
           'label': 'High',

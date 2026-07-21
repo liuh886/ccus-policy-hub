@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
@@ -48,12 +38,7 @@
   'description': "Egypt's Financial Regulatory Authority (FRA) launched the first voluntary carbon market in 2024. The framework includes CCUS as a valid methodology for generating carbon credits, focusing on industrial decarbonization and Mediterranean storage hubs.",
   'id': 'eg-carbon-market-framework-2024',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-08-01',
   'regulatory':
     {

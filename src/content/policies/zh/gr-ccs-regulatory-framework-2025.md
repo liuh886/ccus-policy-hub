@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '希腊 2025 年框架重点关注 Prinos 离岸封存枢纽以及“Eni-Hellas”地中海走廊的发展。它将欧盟 NZIA 目标纳入了国家气候立法。',
   'id': 'gr-ccs-regulatory-framework-2025',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '阿曼能源和矿产部 (MEM) 主导的 2024 年 CCUS 路线图确定，到 2050 年每年二氧化碳封存潜力达 2500 万吨。该框架侧重于 PDO 运营的封存枢纽以及橄榄岩地层碳矿化技术的整合。',
   'id': 'om-ccus-roadmap-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

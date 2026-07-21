@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Unified legislation covering promotion and safety.',
           'label': 'High',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Unified legislation covering promotion and safety.',
           'label': 'High',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Unified legislation covering promotion and safety.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Unified legislation covering promotion and safety.',
           'label': 'High',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Unified legislation covering promotion and safety.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "The 2024 CCUS Promotion Act (Act on the Promotion of Carbon Capture, Utilization, and Storage and Safety Management) provides the first unified legal framework for CCUS in Korea. It introduces a 'One-stop Shop' for permitting, establishes subsurface storage rights, and creates a liability transfer mechanism to the state after stability is confirmed. It explicitly supports international CCS projects for CO2 export.",
   'id': 'kr-ccus-promotion-act-2024',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-09',
   'regulatory':
     {

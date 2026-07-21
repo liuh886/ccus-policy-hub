@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'Medium',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '2024年第22号气候变化法案确立了强制性碳预算和部门排放目标。它将 CCUS 作为难减排部门的关键技术，并得到了姆普马兰加省国家试点项目（确认了340亿吨封存能力）和正在转型的碳税制度的支持（到2026年达到308兰特/吨）。',
   'id': 'za-climate-change-act-2024',
   'legalWeight': 'Act of Parliament',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-23',
   'regulatory':
     {

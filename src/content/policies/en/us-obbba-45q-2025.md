@@ -20,8 +20,6 @@
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Decentralized but strict environmental oversight.',
           'label': 'EPA Standards',
           'score': 90,

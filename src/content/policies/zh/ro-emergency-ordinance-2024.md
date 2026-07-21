@@ -5,12 +5,7 @@
   'description': '专门针对二氧化碳运输和封存的法律框架，与欧盟指令保持一致，支持 Hope 和 Constanta 集群。',
   'id': 'ro-emergency-ordinance-2024',
   'legalWeight': 'Administrative Regulation',
-  'provenance':
-    {
-      'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'Gemini Governance Agent' },
   'regulatory':
     {
       'co2_definition': '管理的工业产品',

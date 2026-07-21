@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'High carbon tax and strong international links.',
           'label': 'Excellent',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'High carbon tax and strong international links.',
           'label': 'Excellent',
           'score': 90,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'High carbon tax and strong international links.',
           'label': 'Excellent',
           'score': 95,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'High carbon tax and strong international links.',
           'label': 'Excellent',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'High carbon tax and strong international links.',
           'label': 'Excellent',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "Singapore's Carbon Pricing Act was amended in 2024 to raise carbon tax and include CCUS as an eligibility for carbon credits. The focus is on cross-border transport and Article 6 integration for regional hubs.",
   'id': 'sg-carbon-tax-ccus-2025',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '荷兰于2025年发布了碳消除 (CDR) 路线图，目标到2040年实现 2000-2500 万吨的二氧化碳消除。CCUS 框架与 Porthos 项目（2026年运营）相结合，并利用工业二氧化碳征税，与欧盟的工业碳管理目标保持一致。',
   'id': 'nl-cdr-roadmap-2025',
   'legalWeight': 'Policy Roadmap',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-03-01',
   'regulatory':
     {

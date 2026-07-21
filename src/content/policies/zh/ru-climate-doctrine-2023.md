@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 60,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 65,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '更新后的2023年俄罗斯联邦气候条约重申了到2060年实现碳中和的目标，并优先发展 CCUS。该条约得到了大型排放源强制性碳报告（从2023年开始）和萨哈林碳实验的支持，后者旨在通过配额制度和国内技术自主实现2025年区域碳中和。',
   'id': 'ru-climate-doctrine-2023',
   'legalWeight': 'Presidential Decree',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-10-26',
   'regulatory':
     {

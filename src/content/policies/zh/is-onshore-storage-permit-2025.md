@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 100,
@@ -48,12 +38,7 @@
   'description': '2025 年 4 月，Carbfix 获得了冰岛有史以来首个欧盟陆上二氧化碳矿化封存许可。这一里程碑在陆上玄武岩矿化方面落实了欧盟 CCS 指令。冰岛还正在建设 Coda 终端，这是一个耗资 1.15 亿欧元的欧盟资助的二氧化碳进口与永久封存跨境枢纽。',
   'id': 'is-onshore-storage-permit-2025',
   'legalWeight': 'Storage Permit',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-04-01',
   'regulatory':
     {

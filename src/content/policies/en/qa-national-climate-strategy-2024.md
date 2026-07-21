@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "Qatar's refreshed National Environment and Climate Change Strategy (2024) focuses on integrating CCUS into its LNG expansion. It targets a 25% GHG reduction by 2030 and aims to capture 11 Mt CO2/year by 2035, supported by new MRV systems and regulatory standards for carbon management.",
   'id': 'qa-national-climate-strategy-2024',
   'legalWeight': 'National Strategy',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-05-01',
   'regulatory':
     {

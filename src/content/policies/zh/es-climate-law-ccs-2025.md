@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 70,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '西班牙第 7/2021 号《气候变化法》进行了更新，以促进二氧化碳的地质封存。重点在于巴斯克地区和比利牛斯地区的工业集群，对齐欧盟关于跨境基础设施的 TEN-E 法规。',
   'id': 'es-climate-law-ccs-2025',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

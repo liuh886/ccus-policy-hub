@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '罗马尼亚 2025 年法律更新了 2013 年的框架，落实了特兰西瓦尼亚枯竭气田和黑海离岸的大规模封存。该法对齐欧盟 NZIA，并建立了国家 CCS 监测机构。',
   'id': 'ro-ccs-operational-law-2025',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

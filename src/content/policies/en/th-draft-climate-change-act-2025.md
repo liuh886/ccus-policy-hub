@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': "Thailand's draft Climate Change Act, approved in Dec 2025, establishes a centralized governance framework under the National Climate Change Policy Committee (NCCPC). It introduces a preliminary carbon tax (THB 200/ton) and designates the Department of Mineral Fuels (DMF) as the lead for CCS, focusing on the Upper Gulf of Thailand.",
   'id': 'th-draft-climate-change-act-2025',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-12-01',
   'regulatory':
     {

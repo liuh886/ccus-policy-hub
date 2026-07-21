@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'High',
           'score': 95,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 60,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '2024年大型投资激励机制 (RIGI，第27.742号法律) 为超过2亿美元的项目提供了巨大的税收、海关和外汇激励。CCUS被明确列为能源部门的一项合格活动，支持二氧化碳的捕集、运输和封存，特别是针对 Vaca Muerta 页岩盆地和“蓝氢”生产。',
   'id': 'ar-rigi-ccus-2024',
   'legalWeight': 'Law (RIGI)',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-08',
   'regulatory':
     {

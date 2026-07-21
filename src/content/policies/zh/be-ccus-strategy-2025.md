@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '比利时更新后的战略侧重于其作为西欧二氧化碳转运枢纽的角色。该框架监管通过安特卫普-布鲁日和北海港集群的运输，并与挪威和丹麦建立了跨境封存协议。',
   'id': 'be-ccus-strategy-2025',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

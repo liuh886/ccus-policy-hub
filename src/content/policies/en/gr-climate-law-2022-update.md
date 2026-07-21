@@ -5,12 +5,7 @@
   'description': 'Updated framework providing legal clarity for offshore storage concessions, specifically supporting the Prinos industrial storage hub.',
   'id': 'gr-climate-law-2022-update',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'Gemini Governance Agent' },
   'regulatory':
     {
       'co2_definition': 'Waste (for storage) / Resource (for CCU)',

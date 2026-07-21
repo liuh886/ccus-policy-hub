@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '瑞士修订后的《二氧化碳法》（2024 年后）将 CCS 和负排放技术 (NETs) 作为其气候战略的核心组成部分。该框架建立了大规模 CCS 补贴计划，并侧重于开展跨境二氧化碳运输和封存的国际合作。',
   'id': 'ch-co2-act-ccs-2024',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

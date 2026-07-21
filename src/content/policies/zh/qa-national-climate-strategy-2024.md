@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated into massive national LNG infrastructure.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '卡塔尔 2024 年更新的国家环境与气候变化战略侧重于将 CCUS 纳入其液化天然气 (LNG) 扩张中。该战略目标到 2030 年减少 25% 的温室气体排放，并计划到 2035 年每年捕集 1100 万吨二氧化碳，并辅之以新的 MRV 系统和碳管理监管标准。',
   'id': 'qa-national-climate-strategy-2024',
   'legalWeight': 'National Strategy',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-05-01',
   'regulatory':
     {

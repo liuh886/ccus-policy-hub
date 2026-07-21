@@ -5,12 +5,7 @@
   'description': '该路线图概述了菲律宾实施 CCUS 的监管和技术路径，重点关注西菲律宾海的近海封存潜力。',
   'id': 'ph-doe-ccus-roadmap-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'Gemini Governance Agent' },
   'regulatory':
     {
       'co2_definition': '受控物质',

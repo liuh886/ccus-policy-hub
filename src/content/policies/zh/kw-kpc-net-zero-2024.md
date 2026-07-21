@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 60,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 65,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 70,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '科威特石油公司 (KPC) 于 2023/2024 年发布了其能源转型战略，目标是到 2050 年实现国内业务的净零排放。CCUS 被确定为工业脱碳的核心支柱，特别是在炼油和石化领域。',
   'id': 'kw-kpc-net-zero-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Aligned with 2045 Climate Neutrality target.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Aligned with 2045 Climate Neutrality target.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Aligned with 2045 Climate Neutrality target.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Aligned with 2045 Climate Neutrality target.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Aligned with 2045 Climate Neutrality target.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "The 2024 Carbon Management Strategy (CMS) and the KSpG amendment mark Germany's pivotal shift towards proactive CCUS implementation. It permits offshore storage in the EEZ, grants federal states 'opt-in' powers for onshore storage, and defines CCUS as being in the 'overriding public interest' to accelerate permitting. Coal-fired power is excluded.",
   'id': 'de-carbon-management-strategy-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-08-01',
   'regulatory':
     {

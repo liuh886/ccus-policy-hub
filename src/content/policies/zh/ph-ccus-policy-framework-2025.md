@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '菲律宾能源部 (DOE) 2025 年通告确立了在枯竭油气田（如 Malampaya）进行碳捕集与封存的初步指南。它将 CCUS 纳入了《2020-2040 年菲律宾能源计划》(PEP)。',
   'id': 'ph-ccus-policy-framework-2025',
   'legalWeight': 'Departmental Circular',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

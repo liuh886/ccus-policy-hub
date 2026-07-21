@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 60,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 65,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'Medium',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Formalization of carbon reporting and regional pilot experiments with quota-based compliance.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': 'The updated 2023 Climate Doctrine of the Russian Federation reaffirms carbon neutrality by 2060 and prioritizes CCUS development. It is supported by mandatory carbon reporting for large emitters (starting 2023) and the Sakhalin Carbon Experiment, which aims for regional neutrality by 2025 through a quota-based system and domestic technological sovereignty.',
   'id': 'ru-climate-doctrine-2023',
   'legalWeight': 'Presidential Decree',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-10-26',
   'regulatory':
     {

@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 65,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 60,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 70,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': "The 2025 SENER CCUS Legal Framework re-integrates carbon capture into Mexico's national climate strategy, aiming for a 35% emissions reduction by 2030. It plans the development of CCS clusters by 2027 and prioritizes state-led initiatives via PEMEX (CO2-EOR) and CFE (Plan México) while leveraging subnational leadership in states like Tamaulipas and Querétaro.",
   'id': 'mx-sener-ccus-2025',
   'legalWeight': 'Executive Order/Framework',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-05-15',
   'regulatory':
     {

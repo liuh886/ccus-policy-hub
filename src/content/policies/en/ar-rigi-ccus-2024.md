@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'High',
           'score': 95,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 60,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'Medium',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Massive financial incentives via Law 27.742 with explicit CCUS eligibility.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': "The 2024 Incentive Regime for Large Investments (RIGI, Law 27.742) establishes massive tax, customs, and foreign exchange incentives for projects exceeding $200M. CCUS is explicitly listed as an eligible activity within the energy sector, supporting the capture, transport, and storage of CO2, particularly for the Vaca Muerta shale basin and 'Blue Hydrogen' production.",
   'id': 'ar-rigi-ccus-2024',
   'legalWeight': 'Law (RIGI)',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-08',
   'regulatory':
     {

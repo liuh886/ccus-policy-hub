@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 70,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': 'The Nigeria Upstream Petroleum Regulatory Commission (NUPRC) Decarbonization Rules 2024 establish a framework for carbon capture, storage, and utilization in the upstream sector. It mandates annual carbon reporting and establishes penalties for non-compliance with the new emission reduction targets.',
   'id': 'ng-nuprc-decarb-2024',
   'legalWeight': 'Departmental Rules',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-12-01',
   'regulatory':
     {

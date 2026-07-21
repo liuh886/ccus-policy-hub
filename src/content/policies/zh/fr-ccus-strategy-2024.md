@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap with financial instruments and international agreements.',
           'label': 'High',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap with financial instruments and international agreements.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap with financial instruments and international agreements.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap with financial instruments and international agreements.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap with financial instruments and international agreements.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': '2024年法国 CCUS 战略确立了到2030年每年捕集 400-800 万吨二氧化碳的综合路线图。该战略优先考虑难减排行业，实施碳差价合约 (CCfD) 补贴机制，并于2024年通过与挪威签署双边协议，建立了跨境二氧化碳运输的法律基础。它还通过《绿色工业法》简化了地下资源开发的审批。',
   'id': 'fr-ccus-strategy-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-01',
   'regulatory':
     {

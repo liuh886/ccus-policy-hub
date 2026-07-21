@@ -5,12 +5,7 @@
   'description': '更新后的法律框架为近海封存特许权提供了法律依据，特别支持 Prinos 工业封存枢纽。',
   'id': 'gr-climate-law-2022-update',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'Gemini Governance Agent' },
   'regulatory':
     {
       'co2_definition': '废物（用于封存）/ 资源（用于利用）',

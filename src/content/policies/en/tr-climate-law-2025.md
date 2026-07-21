@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'New framework law establishes TR ETS and mandatory compliance for industrial sectors.',
           'label': 'Medium',
           'score': 70,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'New framework law establishes TR ETS and mandatory compliance for industrial sectors.',
           'label': 'High',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'New framework law establishes TR ETS and mandatory compliance for industrial sectors.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'New framework law establishes TR ETS and mandatory compliance for industrial sectors.',
           'label': 'High',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'New framework law establishes TR ETS and mandatory compliance for industrial sectors.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': "Climate Law No. 7552 (2025) provides the legal foundation for a national Emissions Trading System (TR ETS) and a 2053 Net-Zero target. It targets carbon-intensive sectors (Cement, Steel, Electricity) for CBAM alignment and introduces 'Green Taxonomy' regulations to unlock CCUS infrastructure financing.",
   'id': 'tr-climate-law-2025',
   'legalWeight': 'Law No. 7552',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-07-09',
   'regulatory':
     {

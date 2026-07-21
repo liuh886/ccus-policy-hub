@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong mandatory MRV and federal climate legislation.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong mandatory MRV and federal climate legislation.',
           'label': 'High',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong mandatory MRV and federal climate legislation.',
           'label': 'High',
           'score': 95,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong mandatory MRV and federal climate legislation.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong mandatory MRV and federal climate legislation.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': 'Federal Decree-Law No. (11) of 2024 mandates GHG MRV for all entities starting May 2025. In early 2026, Abu Dhabi launched a dedicated Carbon Capture Policy to support its 2050 Net Zero goal, establishing a regulatory framework and a National Register for Carbon Credits (NRCC).',
   'id': 'ae-federal-climate-law-2024',
   'legalWeight': 'Federal Decree',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-05-30',
   'regulatory':
     {

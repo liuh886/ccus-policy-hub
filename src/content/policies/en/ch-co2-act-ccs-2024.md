@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Comprehensive integration of NETs and CCS into climate law.',
           'label': 'Excellent',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "Switzerland's revised CO2 Act (post-2024) integrates CCS and Negative Emission Technologies (NETs) as core components of its climate strategy. The framework establishes a subsidy scheme for large-scale CCS and focuses on international cooperation for cross-border CO2 transport and storage.",
   'id': 'ch-co2-act-ccs-2024',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

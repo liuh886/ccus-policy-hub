@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Batch 4 Offshore Focus update.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': "Belgium's updated strategy focuses on its role as a CO2 transit hub for Western Europe. The framework regulates the transport via the Antwerp-Bruges and North Sea Port clusters, and establishes cross-border storage agreements with Norway and Denmark.",
   'id': 'be-ccus-strategy-2025',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

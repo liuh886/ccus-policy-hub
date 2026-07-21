@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 70,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': "Chile's Green Hydrogen Action Plan 2023-2030 includes CCUS as a critical technology for the development of synthetic fuels. The regulatory framework is being expanded to cover carbon capture and storage in the Magallanes and Antofagasta regions.",
   'id': 'cl-green-hydrogen-ccs-2025',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {
