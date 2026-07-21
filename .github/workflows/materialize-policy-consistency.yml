@@ -121,6 +121,25 @@ jobs:
           NODE
           pnpm prettier --write agent/ccus-ai-agent/logic/manage.mjs
 
+      - name: Persist exporter and audit inputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            agent/ccus-ai-agent/logic/manage.mjs \
+            scripts/audit-policy-artifact-consistency.mjs \
+            scripts/audit-policy-artifact-consistency.test.mjs \
+            package.json \
+            .github/workflows/ci.yml \
+            .github/workflows/deploy.yml \
+            .github/workflows/materialize-policy-consistency.yml
+          if git diff --cached --quiet; then
+            echo "Exporter and audit inputs already materialized."
+          else
+            git commit -m "fix(data): make policy exporter DB-faithful"
+            git push origin HEAD:agent/policy-db-consistency
+          fi
+
       - name: Validate audit tests
         run: pnpm test
 
@@ -155,16 +174,7 @@ jobs:
 
       - name: Commit governed policy projections
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            agent/ccus-ai-agent/logic/manage.mjs \
-            scripts/audit-policy-artifact-consistency.mjs \
-            scripts/audit-policy-artifact-consistency.test.mjs \
-            package.json \
-            .github/workflows/ci.yml \
-            .github/workflows/deploy.yml \
-            .github/workflows/materialize-policy-consistency.yml \
             src/content/policies \
             public/data/policies.json \
             docs/policy-db-consistency-report.json \
