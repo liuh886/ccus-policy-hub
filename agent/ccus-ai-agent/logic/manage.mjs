@@ -736,11 +736,11 @@ async function dbExportMd(SQL) {
     db.all('SELECT * FROM policy_analysis WHERE policy_id=?', [p.id]).forEach(
       (a) => {
         analysis[a.dimension] = {
-          score: a.score || 0,
-          label: a.label || 'Pending',
-          evidence: a.evidence || 'No evidence provided.',
-          citation: a.citation || '',
-          auditNote: a.audit_note || '',
+          score: a.score,
+          label: a.label,
+          evidence: a.evidence,
+          citation: a.citation,
+          auditNote: a.audit_note,
         };
       }
     );
@@ -778,14 +778,9 @@ async function dbExportMd(SQL) {
         regulatory: JSON.parse(i.regulatory_json || '{}'),
         relatedFacilities,
         provenance: {
-          author: p.provenance_author || 'System',
-          reviewer:
-            p.provenance_reviewer && p.provenance_reviewer.trim() !== ''
-              ? p.provenance_reviewer
-              : 'Human Audit Pending',
-          lastAuditDate:
-            p.provenance_last_audit_date ||
-            new Date().toISOString().split('T')[0],
+          author: p.provenance_author,
+          reviewer: p.provenance_reviewer,
+          lastAuditDate: p.provenance_last_audit_date,
         },
       });
       const dir = path.join(__dirname, '../../../src/content/policies', lang);

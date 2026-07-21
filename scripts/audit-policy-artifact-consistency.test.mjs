@@ -241,10 +241,7 @@ test('passes when Markdown and public JSON are exact SQLite projections', async 
       fixture.en.frontmatter.analysis.strategic.evidence,
       'Official evidence'
     );
-    assert.equal(
-      fixture.en.frontmatter.analysis.strategic.label,
-      undefined
-    );
+    assert.equal(fixture.en.frontmatter.analysis.strategic.label, undefined);
 
     const report = await auditPolicyArtifactConsistency(fixture.paths);
     assert.equal(report.pass, true);

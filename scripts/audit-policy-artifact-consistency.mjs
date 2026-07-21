@@ -36,7 +36,11 @@ function queryRows(db, sql, params = []) {
   const columns = stmt.getColumnNames();
   while (stmt.step()) {
     const values = stmt.get();
-    rows.push(Object.fromEntries(columns.map((column, index) => [column, values[index]])));
+    rows.push(
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
+    );
   }
   stmt.free();
   return rows;
@@ -83,7 +87,9 @@ function equalValues(left, right) {
 function translate(dictionary, key, domain, lang) {
   if (lang === 'en' || !key) return key;
   if (domain === 'country') {
-    for (const [alias, canonical] of Object.entries(dictionary.countries || {})) {
+    for (const [alias, canonical] of Object.entries(
+      dictionary.countries || {}
+    )) {
       if (canonical === key && /[\u4e00-\u9fa5]/.test(alias)) return alias;
     }
   }
@@ -331,12 +337,18 @@ export async function auditPolicyArtifactConsistency(paths = {}) {
     resolved.publicPath,
   ]) {
     if (!fs.existsSync(requiredPath)) {
-      throw new Error(`Required consistency-audit input is missing: ${requiredPath}`);
+      throw new Error(
+        `Required consistency-audit input is missing: ${requiredPath}`
+      );
     }
   }
 
-  const dictionary = JSON.parse(fs.readFileSync(resolved.dictionaryPath, 'utf8'));
-  const publicPayload = JSON.parse(fs.readFileSync(resolved.publicPath, 'utf8'));
+  const dictionary = JSON.parse(
+    fs.readFileSync(resolved.dictionaryPath, 'utf8')
+  );
+  const publicPayload = JSON.parse(
+    fs.readFileSync(resolved.publicPath, 'utf8')
+  );
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(resolved.dbPath)));
   const policies = loadPolicySnapshot(db);
@@ -433,12 +445,17 @@ export async function auditPolicyArtifactConsistency(paths = {}) {
   };
 
   fs.mkdirSync(path.dirname(resolved.reportJsonPath), { recursive: true });
-  fs.writeFileSync(resolved.reportJsonPath, `${JSON.stringify(report, null, 2)}\n`);
+  fs.writeFileSync(
+    resolved.reportJsonPath,
+    `${JSON.stringify(report, null, 2)}\n`
+  );
   fs.writeFileSync(resolved.reportMarkdownPath, renderMarkdownReport(report));
 
   console.log(JSON.stringify(report.summary, null, 2));
   if (!report.pass) {
-    throw new Error(`Policy artifact consistency audit failed with ${mismatches.length} mismatch(es).`);
+    throw new Error(
+      `Policy artifact consistency audit failed with ${mismatches.length} mismatch(es).`
+    );
   }
 
   return report;
@@ -446,7 +463,8 @@ export async function auditPolicyArtifactConsistency(paths = {}) {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   auditPolicyArtifactConsistency().catch((error) => {
