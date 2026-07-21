@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  lint:
+  validate-and-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,30 +31,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Lint
+      - name: Lint
         run: pnpm lint
-        continue-on-error: true
 
-  build:
-    runs-on: ubuntu-latest
-    needs: lint
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Test
+        run: pnpm test
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+      - name: Astro Check
+        run: pnpm astro check
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
+      - name: Deep Audit and Metadata Stamp
+        run: pnpm manage:db:audit:deep
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Generate Quality Metrics
+        run: pnpm manage:db:quality:export
+
+      - name: Generate Public Data
+        run: pnpm manage:db:data:export
+
+      - name: Format Generated Data
+        run: pnpm prettier --write public/data/*.json
 
       - name: Build Project
         run: pnpm build
@@ -68,7 +64,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: validate-and-build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
