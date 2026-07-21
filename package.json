@@ -18,6 +18,7 @@
     "manage:db:fix-relationships": "node agent/ccus-ai-agent/logic/manage.mjs db:fix-relationships",
     "manage:db:migrate:policy-lifecycle": "node scripts/migrate-policy-lifecycle-2026-07.mjs",
     "manage:db:migrate:policy-sources": "node scripts/migrate-policy-source-metadata-2026-07.mjs",
+    "manage:db:migrate:official-policy-gaps": "node scripts/migrate-official-policy-gaps-2026-07.mjs",
     "manage:db:audit:policy-sources": "node scripts/report-policy-source-gaps.mjs",
     "manage:db:audit:policy-consistency": "node scripts/run-policy-consistency-audit.mjs",
     "manage:db:audit:deep": "node agent/ccus-ai-agent/logic/manage.mjs db:audit:deep && node scripts/stamp-audit-metadata.mjs",
