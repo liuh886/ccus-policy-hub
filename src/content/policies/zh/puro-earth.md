@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2019-05-01',
   'relatedFacilities': [],
@@ -60,6 +60,7 @@
   'source': 'Puro.earth',
   'status': '现行',
   'title': 'Puro.earth CDR 核证 (CORC)',
+  'url': 'https://puro.earth/cdr-infrastructure/methodologies/puro-standard/',
   'year': 2019,
 }
 ---

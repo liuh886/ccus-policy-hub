@@ -51,10 +51,10 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2021-11-08',
+  'pubDate': '2021-11-12',
   'relatedFacilities':
     [
       '1053',
@@ -108,9 +108,10 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': '中国人民银行',
+  'source': 'People’s Bank of China',
   'status': '现行',
   'title': 'PBOC Carbon Emission Reduction Facility (CERF)',
+  'url': 'https://www.pbc.gov.cn/zhengcehuobisi/125207/125227/125963/dd1c12d33cab49bd8895c7a5d100aa4f/index.html',
   'year': 2021,
 }
 ---

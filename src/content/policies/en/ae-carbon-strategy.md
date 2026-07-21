@@ -43,26 +43,27 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Strategic',
   'country': 'United Arab Emirates',
-  'description': "The UAE's strategic roadmap for achieving climate neutrality, including the establishment of the National Registry for Carbon Credits (NRCC) in 2024. Focuses on leveraging ADNOC's infrastructure for carbon management.",
+  'description': 'The UAE Net Zero 2050 Strategy translates the country’s net-zero initiative and national pathway into more than 25 programmes across six sectors. The official strategy identifies carbon capture technologies, climate finance, research and development, skills and sectoral efficiency measures as enabling components of the transition.',
   'id': 'ae-carbon-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'National Strategy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2023-11-01',
   'relatedFacilities':
     ['1496', '161', '387', '4', '463', '5', '6', '906', '921', '928'],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'UAE National Net Zero 2050 Strategy',
+  'source': 'Official Portal of the UAE Government / Ministry of Climate Change and Environment',
+  'status': 'Active',
+  'title': 'UAE Net Zero 2050 Strategy',
+  'url': 'https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/environment-and-energy/the-uae-net-zero-2050-strategy',
   'year': 2023,
 }
 ---
 
-The UAE's strategic roadmap for achieving climate neutrality, including the establishment of the National Registry for Carbon Credits (NRCC) in 2024. Focuses on leveraging ADNOC's infrastructure for carbon management.
+The UAE Net Zero 2050 Strategy translates the country’s net-zero initiative and national pathway into more than 25 programmes across six sectors. The official strategy identifies carbon capture technologies, climate finance, research and development, skills and sectoral efficiency measures as enabling components of the transition.

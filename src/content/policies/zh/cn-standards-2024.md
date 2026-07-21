@@ -2,16 +2,16 @@
 {
   'category': '法律监管',
   'country': '中国',
-  'description': '国家发改委和国家标准委发布了 12+ 项国家标准，涵盖碳核算、封存安全和泄漏监测，为责任转移提供了技术依据。',
+  'description': '市场监管总局、国家标准委于2025年12月31日批准发布12项CCUS国家标准，覆盖共性术语、捕集系统、二氧化碳介质质量与输送、地质封存、驱油封存以及温室气体减排量核算等环节，并于2026年7月1日起实施。此前数据库将该批标准记为2024年发布，现予纠正。',
   'id': 'cn-standards-2024',
   'legalWeight': 'National Standards',
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-12-01',
+  'pubDate': '2025-12-31',
   'relatedFacilities':
     [
       '1053',
@@ -65,11 +65,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': 'NDRC/SAMR',
+  'source': 'State Administration for Market Regulation / Standardization Administration of China',
   'status': '现行',
-  'title': 'CCUS 国家标准批量发布 (2024)',
-  'year': 2024,
+  'title': '中国12项CCUS国家标准（2025）',
+  'url': 'https://www.samr.gov.cn/xw/sj/art/2026/art_c4ebd8a52d154378b28595b96823b843.html',
+  'year': 2025,
 }
 ---
 
-国家发改委和国家标准委发布了 12+ 项国家标准，涵盖碳核算、封存安全和泄漏监测，为责任转移提供了技术依据。
+市场监管总局、国家标准委于2025年12月31日批准发布12项CCUS国家标准，覆盖共性术语、捕集系统、二氧化碳介质质量与输送、地质封存、驱油封存以及温室气体减排量核算等环节，并于2026年7月1日起实施。此前数据库将该批标准记为2024年发布，现予纠正。

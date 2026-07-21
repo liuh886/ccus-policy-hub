@@ -43,26 +43,27 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'Iceland',
-  'description': 'Regulatory framework for basaltic mineralization led by Carbfix, providing legal pathways for Mammoth-scale DAC projects.',
+  'description': 'Iceland’s Law No. 67/2022 amended environmental-health, environmental-assessment and climate legislation to implement the EU geological-storage framework and expressly regulate underground CO2 storage, including mineralisation. It provides the legal basis used for permitting storage projects such as Carbfix. This replaces the unsupported database description of a separate 2024 “CDR framework”.',
   'id': 'is-cdr-framework',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2022-06-27',
   'relatedFacilities':
     ['102', '103', '104', '1172', '1199', '434', '441', '536', '803', '939'],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'Iceland CDR & Mineralization Framework',
-  'year': 2024,
+  'source': 'Althingi, Parliament of Iceland',
+  'status': 'Active',
+  'title': 'Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)',
+  'url': 'https://www.althingi.is/altext/stjt/2022.067.html',
+  'year': 2022,
 }
 ---
 
-Regulatory framework for basaltic mineralization led by Carbfix, providing legal pathways for Mammoth-scale DAC projects.
+Iceland’s Law No. 67/2022 amended environmental-health, environmental-assessment and climate legislation to implement the EU geological-storage framework and expressly regulate underground CO2 storage, including mineralisation. It provides the legal basis used for permitting storage projects such as Carbfix. This replaces the unsupported database description of a separate 2024 “CDR framework”.

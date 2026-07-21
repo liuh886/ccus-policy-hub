@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2022-08-16',
   'relatedFacilities':
@@ -433,9 +433,10 @@
       '999',
     ],
   'reviewStatus': 'verified',
-  'source': 'IRS / EPA',
+  'source': 'U.S. Department of the Treasury / Internal Revenue Service',
   'status': '现行',
   'title': '美国 45Q 税收抵免 (IRA 增强版)',
+  'url': 'https://www.irs.gov/irb/2022-47_IRB',
   'year': 2022,
 }
 ---

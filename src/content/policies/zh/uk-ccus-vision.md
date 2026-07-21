@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2023-12-20',
   'relatedFacilities':
@@ -165,9 +165,10 @@
       '916',
     ],
   'reviewStatus': 'verified',
-  'source': '英国能源安全与净零部',
+  'source': 'UK Department for Energy Security and Net Zero',
   'status': '现行',
   'title': '英国 CCUS 愿景 (2035 战略)',
+  'url': 'https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market',
   'year': 2023,
 }
 ---

@@ -45,23 +45,24 @@
     },
   'category': '法律监管',
   'country': '韩国',
-  'description': 'CCUS 全产业链综合法律框架，引入了具体的集群指定激励措施及资源化规则。',
+  'description': '韩国于2024年2月6日公布第20203号法律，并于2025年2月7日施行。该法建立二氧化碳捕集、运输、封存与利用技术开发和产业化的国家框架，并涵盖封存业务及海洋地质封存等制度。',
   'id': 'kr-ccus-act',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-09',
+  'pubDate': '2024-02-06',
   'relatedFacilities': ['1066', '1325', '1326', '247', '373', '57', '919'],
   'reviewStatus': 'verified',
-  'source': '韩国产业通商资源部 (MOTIE)',
+  'source': 'Korean National Law Information Center',
   'status': '现行',
-  'title': '韩国 CCUS 法案',
+  'title': '韩国《二氧化碳捕集、运输、封存及利用法》',
+  'url': 'https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=259701',
   'year': 2024,
 }
 ---
 
-CCUS 全产业链综合法律框架，引入了具体的集群指定激励措施及资源化规则。
+韩国于2024年2月6日公布第20203号法律，并于2025年2月7日施行。该法建立二氧化碳捕集、运输、封存与利用技术开发和产业化的国家框架，并涵盖封存业务及海洋地质封存等制度。

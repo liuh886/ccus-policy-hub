@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Strategic',
   'country': 'France',
-  'description': 'Targeting 4-8 Mtpa by 2030 through Carbon Contracts for Difference (CCfDs) and strategic North Sea storage agreements.',
+  'description': 'France published its state-of-play and deployment outlook for carbon capture, utilisation and storage on 4 July 2024. It prioritises CCUS for major industrial sites and sectors with limited alternative abatement options, building on the strategic orientations consulted on in 2023.',
   'id': 'fr-ccus-roadmap',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Strategic Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2024-07-04',
   'relatedFacilities':
     [
       '1',
@@ -89,11 +89,12 @@
       '940',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'France National CCUS Roadmap 2024',
+  'source': 'French Directorate General for Enterprise (DGE)',
+  'status': 'Active',
+  'title': 'France CCUS Deployment Outlook (2024)',
+  'url': 'https://www.entreprises.gouv.fr/la-dge/actualites/deploiement-de-la-capture-du-stockage-et-de-la-valorisation-du-carbone-ccus-en',
   'year': 2024,
 }
 ---
 
-Targeting 4-8 Mtpa by 2030 through Carbon Contracts for Difference (CCfDs) and strategic North Sea storage agreements.
+France published its state-of-play and deployment outlook for carbon capture, utilisation and storage on 4 July 2024. It prioritises CCUS for major industrial sites and sectors with limited alternative abatement options, building on the strategic orientations consulted on in 2023.

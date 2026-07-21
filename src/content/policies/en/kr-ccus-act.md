@@ -43,25 +43,26 @@
           'score': 95,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'South Korea',
-  'description': 'Consolidated legal framework for the CCUS value chain, introducing specific cluster designation incentives and resource-recovery rules.',
+  'description': 'South Korea enacted Act No. 20203 on 6 February 2024. The law took effect on 7 February 2025 and establishes the national framework for technology development and industrialisation of carbon dioxide capture, transport, storage and utilisation, including storage-business and marine-storage provisions.',
   'id': 'kr-ccus-act',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-09',
+  'pubDate': '2024-02-06',
   'relatedFacilities': ['1066', '1325', '1326', '247', '373', '57', '919'],
   'reviewStatus': 'verified',
-  'source': '韩国产业通商资源部 (MOTIE)',
-  'status': '现行',
-  'title': 'South Korea CCUS Act',
+  'source': 'Korean National Law Information Center',
+  'status': 'Active',
+  'title': 'South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation',
+  'url': 'https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=259701',
   'year': 2024,
 }
 ---
 
-Consolidated legal framework for the CCUS value chain, introducing specific cluster designation incentives and resource-recovery rules.
+South Korea enacted Act No. 20203 on 6 February 2024. The law took effect on 7 February 2025 and establishes the national framework for technology development and industrialisation of carbon dioxide capture, transport, storage and utilisation, including storage-business and marine-storage provisions.

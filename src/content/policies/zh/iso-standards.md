@@ -51,15 +51,16 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2019-01-01',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'ISO TC265',
+  'source': 'International Organization for Standardization, ISO/TC 265',
   'status': '现行',
   'title': 'ISO CCUS 标准体系 (TC 265)',
+  'url': 'https://www.iso.org/committee/648607.html',
   'year': 2019,
 }
 ---

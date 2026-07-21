@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-07-21T12:05:17.419Z",
+  "source_db_path": "agent/ccus-ai-agent/db/ccus_master.sqlite",
+  "summary": {
+    "total_gap_records": 0,
+    "missing_source": 0,
+    "missing_url": 0,
+    "missing_source_and_url": 0,
+    "verified_records_with_gaps": 0,
+    "draft_records_with_gaps": 0
+  },
+  "records": []
+}

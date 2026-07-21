@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': '战略引导',
   'country': '德国',
-  'description': '2024 年发布的战略，授权离岸封存及跨国二氧化碳出口，标志着德国气候政策的历史性转折。',
+  'description': '德国于2024年2月发布碳管理战略要点及《二氧化碳封存法》修订草案，联邦内阁于同年5月通过战略要点。其重点是为难以避免的排放应用CCS和CCU，并拟开放二氧化碳运输和海上封存，同时排除海洋保护区。',
   'id': 'de-icm-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Strategic Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-05-29',
+  'pubDate': '2024-02-26',
   'relatedFacilities':
     [
       '1012',
@@ -80,11 +80,12 @@
       '994',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': '德国工业碳管理战略',
+  'source': 'German Federal Ministry for Economic Affairs and Climate Action',
+  'status': 'Policy principles adopted',
+  'title': '德国碳管理战略要点（2024）',
+  'url': 'https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html',
   'year': 2024,
 }
 ---
 
-2024 年发布的战略，授权离岸封存及跨国二氧化碳出口，标志着德国气候政策的历史性转折。
+德国于2024年2月发布碳管理战略要点及《二氧化碳封存法》修订草案，联邦内阁于同年5月通过战略要点。其重点是为难以避免的排放应用CCS和CCU，并拟开放二氧化碳运输和海上封存，同时排除海洋保护区。

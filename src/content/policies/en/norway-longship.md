@@ -45,16 +45,16 @@
     },
   'category': '法律监管',
   'country': 'Norway',
-  'description': 'A full-scale national project connecting industrial capture to the Northern Lights transboundary storage hub.',
+  'description': 'Norway launched Longship on 21 September 2020 as a state-supported full-scale CCS demonstration covering industrial capture, ship transport, intermediate storage and permanent offshore geological storage through Northern Lights. Government project information was updated in 2024, but the underlying policy decision and launch date are from 2020.',
   'id': 'norway-longship',
   'legalWeight': 'Guideline/Policy',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2020-09-21',
   'relatedFacilities':
     [
       '101',
@@ -113,11 +113,12 @@
       '93',
     ],
   'reviewStatus': 'verified',
-  'source': '挪威政府 / Gassnova',
+  'source': 'Norwegian Ministry of Energy',
   'status': '现行',
-  'title': "Norway 'Longship' CCS Project",
-  'year': 2024,
+  'title': 'Norway Longship Full-Scale CCS Project',
+  'url': 'https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/',
+  'year': 2020,
 }
 ---
 
-A full-scale national project connecting industrial capture to the Northern Lights transboundary storage hub.
+Norway launched Longship on 21 September 2020 as a state-supported full-scale CCS demonstration covering industrial capture, ship transport, intermediate storage and permanent offshore geological storage through Northern Lights. Government project information was updated in 2024, but the underlying policy decision and launch date are from 2020.

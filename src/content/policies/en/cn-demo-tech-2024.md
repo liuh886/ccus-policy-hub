@@ -2,7 +2,7 @@
 {
   'category': 'Strategic',
   'country': 'China',
-  'description': '## Policy Core Issued by NDRC and MEE, this plan selects large-scale CCUS demonstration projects for financial and resource support. Requirements include >500k t/y for petrochemical/oil and >100k t/y for power/steel/cement. First batch (47 projects) released in April 2024, second batch (101 projects) in April 2025.',
+  'description': 'NDRC and nine other departments issued the Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects in August 2023. The plan launched the first application round and includes carbon capture, utilisation and storage among the advanced technologies eligible for demonstration support. The first project list was subsequently published in 2024.',
   'id': 'cn-demo-tech-2024',
   'impactAnalysis':
     {
@@ -13,10 +13,10 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-08-01',
+  'pubDate': '2023-08-04',
   'relatedFacilities':
     [
       '1053',
@@ -70,13 +70,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': 'NDRC/MEE',
+  'source': 'National Development and Reform Commission and nine other departments',
   'status': 'Active',
-  'title': 'Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects',
-  'year': 2024,
+  'title': 'Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)',
+  'url': 'https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266',
+  'year': 2023,
 }
 ---
 
-## Policy Core
-
-Issued by NDRC and MEE, this plan selects large-scale CCUS demonstration projects for financial and resource support. Requirements include >500k t/y for petrochemical/oil and >100k t/y for power/steel/cement. First batch (47 projects) released in April 2024, second batch (101 projects) in April 2025.
+NDRC and nine other departments issued the Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects in August 2023. The plan launched the first application round and includes carbon capture, utilisation and storage among the advanced technologies eligible for demonstration support. The first project list was subsequently published in 2024.

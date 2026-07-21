@@ -2,16 +2,16 @@
 {
   'category': '法律监管',
   'country': '澳大利亚',
-  'description': '支持离岸碳封存及跨国二氧化碳运输的法律，对齐 2023 年伦敦议定书修正案以支持 Bayu-Undan 等项目。',
+  'description': '《2006年海上石油和温室气体封存法》是澳大利亚联邦管理海上石油和温室气体地质封存活动的核心法律。经后续修订，该法建立了联邦海域封存地层认定、权利与许可、场地计划、监测、关闭及监管框架。2023年配套的温室气体注入与封存条例进一步规定了场地计划、封存风险、监测和关闭要求。',
   'id': 'au-offshore-ghg-act',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Primary Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2023-01-01',
+  'pubDate': '2006-03-29',
   'relatedFacilities':
     [
       '11',
@@ -60,11 +60,12 @@
       '790',
     ],
   'reviewStatus': 'verified',
-  'source': '',
+  'source': 'Australian Federal Register of Legislation',
   'status': '现行',
-  'title': '澳大利亚离岸温室气体存储法案',
-  'year': 2023,
+  'title': '澳大利亚《2006年海上石油和温室气体封存法》',
+  'url': 'https://www.legislation.gov.au/C2006A00014/latest',
+  'year': 2006,
 }
 ---
 
-支持离岸碳封存及跨国二氧化碳运输的法律，对齐 2023 年伦敦议定书修正案以支持 Bayu-Undan 等项目。
+《2006年海上石油和温室气体封存法》是澳大利亚联邦管理海上石油和温室气体地质封存活动的核心法律。经后续修订，该法建立了联邦海域封存地层认定、权利与许可、场地计划、监测、关闭及监管框架。2023年配套的温室气体注入与封存条例进一步规定了场地计划、封存风险、监测和关闭要求。

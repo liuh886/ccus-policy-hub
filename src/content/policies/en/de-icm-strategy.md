@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Strategic',
   'country': 'Germany',
-  'description': '2024 strategy enabling offshore storage and transboundary CO2 export, marking a historic pivot in German climate policy.',
+  'description': 'Germany published key principles for a Carbon Management Strategy and a draft amendment to the Carbon Dioxide Storage Act in February 2024. The federal cabinet adopted the key principles in May 2024. They prioritise CCS and CCU for hard-to-abate emissions and propose enabling CO2 transport and offshore storage while excluding marine protected areas.',
   'id': 'de-icm-strategy',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Strategic Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-05-29',
+  'pubDate': '2024-02-26',
   'relatedFacilities':
     [
       '1012',
@@ -80,11 +80,12 @@
       '994',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'Germany Industrial Carbon Management Strategy',
+  'source': 'German Federal Ministry for Economic Affairs and Climate Action',
+  'status': 'Policy principles adopted',
+  'title': 'Germany Carbon Management Strategy Key Principles (2024)',
+  'url': 'https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html',
   'year': 2024,
 }
 ---
 
-2024 strategy enabling offshore storage and transboundary CO2 export, marking a historic pivot in German climate policy.
+Germany published key principles for a Carbon Management Strategy and a draft amendment to the Carbon Dioxide Storage Act in February 2024. The federal cabinet adopted the key principles in May 2024. They prioritise CCS and CCU for hard-to-abate emissions and propose enabling CO2 transport and offshore storage while excluding marine protected areas.

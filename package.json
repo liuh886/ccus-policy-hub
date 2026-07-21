@@ -17,6 +17,8 @@
     "manage:db:standardize": "node agent/ccus-ai-agent/logic/manage.mjs db:standardize",
     "manage:db:fix-relationships": "node agent/ccus-ai-agent/logic/manage.mjs db:fix-relationships",
     "manage:db:migrate:policy-lifecycle": "node scripts/migrate-policy-lifecycle-2026-07.mjs",
+    "manage:db:migrate:policy-sources": "node scripts/migrate-policy-source-metadata-2026-07.mjs",
+    "manage:db:audit:policy-sources": "node scripts/report-policy-source-gaps.mjs",
     "manage:db:audit:deep": "node agent/ccus-ai-agent/logic/manage.mjs db:audit:deep && node scripts/stamp-audit-metadata.mjs",
     "manage:db:audit:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "manage:db:repair:facilities-from-md": "node agent/ccus-ai-agent/logic/repair-facilities-db-from-md.mjs",

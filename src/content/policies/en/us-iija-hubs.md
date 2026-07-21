@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2021-11-15',
   'relatedFacilities':
@@ -433,9 +433,10 @@
       '999',
     ],
   'reviewStatus': 'verified',
-  'source': '美国能源部 (DOE)',
+  'source': 'U.S. Department of Energy',
   'status': '现行',
   'title': 'US IIJA CCS Hubs Program',
+  'url': 'https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program',
   'year': 2021,
 }
 ---

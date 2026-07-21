@@ -51,15 +51,16 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
   'pubDate': '2023-05-16',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'European Parliament',
+  'source': 'European Union (EUR-Lex)',
   'status': '现行',
   'title': 'EU Carbon Border Adjustment Mechanism (CBAM)',
+  'url': 'https://eur-lex.europa.eu/eli/reg/2023/956/oj',
   'year': 2023,
 }
 ---

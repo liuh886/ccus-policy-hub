@@ -51,15 +51,16 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-03-01',
+  'pubDate': '2024-06-27',
   'relatedFacilities': [],
   'reviewStatus': 'verified',
   'source': 'Verra',
   'status': '现行',
   'title': 'Verra CCS Methodology (VM0049)',
+  'url': 'https://verra.org/methodologies/vm0049-carbon-capture-and-storage/',
   'year': 2024,
 }
 ---

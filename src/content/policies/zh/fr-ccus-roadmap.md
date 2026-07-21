@@ -43,18 +43,18 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': '战略引导',
   'country': '法国',
-  'description': '目标通过碳差价合约 (CCfDs) 和北海战略封存协议，到 2030 年实现每年 400-800 万吨封存。',
+  'description': '法国于2024年7月4日发布碳捕集、利用与封存的部署现状与前景文件，在2023年战略方向及公众咨询基础上，优先面向缺少替代减排路径的大型工业排放源和重点行业推进CCUS。',
   'id': 'fr-ccus-roadmap',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Strategic Guidance',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2024-07-04',
   'relatedFacilities':
     [
       '1',
@@ -89,11 +89,12 @@
       '940',
     ],
   'reviewStatus': 'verified',
-  'source': '',
+  'source': 'French Directorate General for Enterprise (DGE)',
   'status': '现行',
-  'title': '法国国家 CCUS 路线图 2024',
+  'title': '法国CCUS部署现状与展望（2024）',
+  'url': 'https://www.entreprises.gouv.fr/la-dge/actualites/deploiement-de-la-capture-du-stockage-et-de-la-valorisation-du-carbone-ccus-en',
   'year': 2024,
 }
 ---
 
-目标通过碳差价合约 (CCfDs) 和北海战略封存协议，到 2030 年实现每年 400-800 万吨封存。
+法国于2024年7月4日发布碳捕集、利用与封存的部署现状与前景文件，在2023年战略方向及公众咨询基础上，优先面向缺少替代减排路径的大型工业排放源和重点行业推进CCUS。

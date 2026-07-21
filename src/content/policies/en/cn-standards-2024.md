@@ -2,16 +2,16 @@
 {
   'category': 'Regulatory',
   'country': 'China',
-  'description': 'NDRC and SAMR released 12+ national standards covering carbon accounting, storage safety, and leakage monitoring, providing the technical basis for liability transfer.',
+  'description': 'China approved and published 12 national CCUS standards on 31 December 2025, covering common terminology, capture systems, CO2 stream quality and transport, geological storage, CO2-EOR storage and greenhouse-gas reduction accounting. The standards took effect on 1 July 2026. This corrects the earlier database description that placed the 12-standard batch in 2024.',
   'id': 'cn-standards-2024',
   'legalWeight': 'National Standards',
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-12-01',
+  'pubDate': '2025-12-31',
   'relatedFacilities':
     [
       '1053',
@@ -65,11 +65,12 @@
       '99',
     ],
   'reviewStatus': 'verified',
-  'source': 'NDRC/SAMR',
+  'source': 'State Administration for Market Regulation / Standardization Administration of China',
   'status': 'Active',
-  'title': 'Batch Release of CCUS National Standards (2024)',
-  'year': 2024,
+  'title': 'China Batch of 12 CCUS National Standards (2025)',
+  'url': 'https://www.samr.gov.cn/xw/sj/art/2026/art_c4ebd8a52d154378b28595b96823b843.html',
+  'year': 2025,
 }
 ---
 
-NDRC and SAMR released 12+ national standards covering carbon accounting, storage safety, and leakage monitoring, providing the technical basis for liability transfer.
+China approved and published 12 national CCUS standards on 31 December 2025, covering common terminology, capture systems, CO2 stream quality and transport, geological storage, CO2-EOR storage and greenhouse-gas reduction accounting. The standards took effect on 1 July 2026. This corrects the earlier database description that placed the 12-standard batch in 2024.

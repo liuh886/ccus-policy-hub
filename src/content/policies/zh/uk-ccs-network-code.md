@@ -45,16 +45,16 @@
     },
   'category': '法律监管',
   'country': '英国',
-  'description': '由 Ofgem 建立，旨在监管第三方准入国家碳骨干网，防止 T&S 市场垄断。',
+  'description': '英国2023年12月发布的CCUS市场愿景提出建立统一的CCS Network Code，用于规范二氧化碳运输与封存系统的商业、运行和技术安排，并与经济许可证和第三方接入制度衔接。该代码仍是规划中的市场治理组件，不应表述为已经生效的独立规则文本。',
   'id': 'uk-ccs-network-code',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Proposed Market Rule',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source metadata audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2023-12-20',
   'relatedFacilities':
     [
       '10',
@@ -165,11 +165,12 @@
       '916',
     ],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': '英国二氧化碳运输与存储网络准则',
-  'year': 2024,
+  'source': 'UK Department for Energy Security and Net Zero',
+  'status': '计划中',
+  'title': '英国CCS网络代码框架（规划中）',
+  'url': 'https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market',
+  'year': 2023,
 }
 ---
 
-由 Ofgem 建立，旨在监管第三方准入国家碳骨干网，防止 T&S 市场垄断。
+英国2023年12月发布的CCUS市场愿景提出建立统一的CCS Network Code，用于规范二氧化碳运输与封存系统的商业、运行和技术安排，并与经济许可证和第三方接入制度衔接。该代码仍是规划中的市场治理组件，不应表述为已经生效的独立规则文本。

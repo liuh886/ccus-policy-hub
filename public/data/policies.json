@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T10:45:40.773Z",
+  "generated_at": "2026-07-21T12:05:15.864Z",
   "count": 124,
   "records": [
     {
@@ -186,36 +186,6 @@
       }
     },
     {
-      "id": "au-offshore-ghg-act",
-      "country": "Australia",
-      "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2023-01-01",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Australia Offshore GHG Storage Act",
-          "description": "Legislation enabling offshore carbon storage and transboundary CO2 transport, aligned with the 2023 London Protocol amendments to support projects like Bayu-Undan.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "澳大利亚离岸温室气体存储法案",
-          "description": "支持离岸碳封存及跨国二氧化碳运输的法律，对齐 2023 年伦敦议定书修正案以支持 Bayu-Undan 等项目。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {}
-    },
-    {
       "id": "au-safeguard-mechanism",
       "country": "Australia",
       "year": 2023,
@@ -223,12 +193,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "DCCEEW",
-      "url": null,
-      "pub_date": "2023-03-30",
+      "source": "Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)",
+      "url": "https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism",
+      "pub_date": "2023-07-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "Australia Safeguard Mechanism 2023",
@@ -275,6 +245,36 @@
           "citation": "Safeguard Mechanism Reform"
         }
       }
+    },
+    {
+      "id": "au-offshore-ghg-act",
+      "country": "Australia",
+      "year": 2006,
+      "status": "Active",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "Primary Legislation",
+      "source": "Australian Federal Register of Legislation",
+      "url": "https://www.legislation.gov.au/C2006A00014/latest",
+      "pub_date": "2006-03-29",
+      "provenance_author": "Gemini Intelligence",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006",
+          "description": "The Offshore Petroleum and Greenhouse Gas Storage Act 2006 is the principal Commonwealth legislation governing offshore petroleum and greenhouse-gas storage activities. As amended, it provides the title, declaration, licensing, site-plan, monitoring, closure and regulatory architecture for geological storage in Commonwealth offshore areas. Dedicated injection-and-storage regulations made in 2023 prescribe site-plan, containment-risk, monitoring and closure requirements under the Act.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "澳大利亚《2006年海上石油和温室气体封存法》",
+          "description": "《2006年海上石油和温室气体封存法》是澳大利亚联邦管理海上石油和温室气体地质封存活动的核心法律。经后续修订，该法建立了联邦海域封存地层认定、权利与许可、场地计划、监测、关闭及监管框架。2023年配套的温室气体注入与封存条例进一步规定了场地计划、封存风险、监测和关闭要求。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {}
     },
     {
       "id": "be-ccus-strategy-2025",
@@ -334,67 +334,6 @@
           "label": "High",
           "evidence": "Batch 4 Offshore Focus update.",
           "citation": null
-        }
-      }
-    },
-    {
-      "id": "br-bill-1425-2022",
-      "country": "Brazil",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Brazil Bill 1425/2022 (CCS Framework)",
-          "description": "The foundational legal framework for CCS in Brazil, establishing storage concession rules and long-term liability management under the ANP.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "巴西 1425/2022 号法案 (CCS 框架)",
-          "description": "巴西 CCS 的基石性法律框架，确立了封存特许权规则及 ANP 监管下的长期责任管理。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 40,
-          "label": "Not specified",
-          "evidence": "No direct incentive found.",
-          "citation": ""
-        },
-        "market": {
-          "score": 40,
-          "label": "Market Integration",
-          "evidence": "No specific market rules.",
-          "citation": ""
-        },
-        "mrv": {
-          "score": 40,
-          "label": "Standard",
-          "evidence": "Standard reporting required.",
-          "citation": ""
-        },
-        "statutory": {
-          "score": 40,
-          "label": "Defined",
-          "evidence": "属于联盟（联邦政府）",
-          "citation": ""
-        },
-        "strategic": {
-          "score": 30,
-          "label": "Initial Assessment",
-          "evidence": "Baseline strategic alignment under V5.0 migration.",
-          "citation": ""
         }
       }
     },
@@ -521,6 +460,67 @@
       }
     },
     {
+      "id": "br-bill-1425-2022",
+      "country": "Brazil",
+      "year": 2022,
+      "status": "Proposed",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "Proposed Legislation",
+      "source": "Brazilian Federal Senate",
+      "url": "https://www25.senado.leg.br/web/atividade/materias/-/materia/153342",
+      "pub_date": "2022-05-31",
+      "provenance_author": "Gemini Intelligence",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Brazil Bill PL 1425/2022 on CO2 Storage",
+          "description": "PL 1425/2022 proposes rules for permanent or temporary storage of carbon dioxide and its subsequent use. The Federal Senate approved the proposal in committee and sent it to the Chamber of Deputies in September 2023. It is a legislative proposal, not an enacted or currently operative CCS framework.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "巴西二氧化碳封存法案 PL 1425/2022",
+          "description": "PL 1425/2022 拟规范二氧化碳永久或临时封存及其后续利用。巴西联邦参议院委员会通过该提案，并于2023年9月送交众议院。该文件仍属于立法提案，不能表述为已经生效的巴西CCS法律框架。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 40,
+          "label": "Not specified",
+          "evidence": "No direct incentive found.",
+          "citation": ""
+        },
+        "market": {
+          "score": 40,
+          "label": "Market Integration",
+          "evidence": "No specific market rules.",
+          "citation": ""
+        },
+        "mrv": {
+          "score": 40,
+          "label": "Standard",
+          "evidence": "Standard reporting required.",
+          "citation": ""
+        },
+        "statutory": {
+          "score": 20,
+          "label": "Bill under consideration",
+          "evidence": "PL 1425/2022 was approved in the Federal Senate committee process and transmitted to the Chamber of Deputies; it is not enacted law.",
+          "citation": "Brazilian Federal Senate legislative record for PL 1425/2022."
+        },
+        "strategic": {
+          "score": 30,
+          "label": "Initial Assessment",
+          "evidence": "Baseline strategic alignment under V5.0 migration.",
+          "citation": ""
+        }
+      }
+    },
+    {
       "id": "alberta-tier",
       "country": "Canada",
       "year": 2023,
@@ -528,12 +528,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "阿尔伯塔省政府",
-      "url": null,
+      "source": "Government of Alberta",
+      "url": "https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation",
       "pub_date": "2023-01-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-03-19",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "Alberta TIER System & CCS Incentives",
@@ -960,59 +960,29 @@
       }
     },
     {
-      "id": "cn-ccus-roadmap-2025",
+      "id": "cn-zero-carbon-parks",
       "country": "China",
       "year": 2025,
       "status": "Active",
       "category": "Strategic",
       "review_status": "verified",
-      "legal_weight": "Strategic Roadmap",
-      "source": "NDRC/ACCA21",
-      "url": null,
-      "pub_date": "2025-10-15",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-19",
-      "i18n": {
-        "en": {
-          "title": "China CCUS Technology Development Roadmap (2025)",
-          "description": "Official 2025 update shifting strategic focus from technical verification to large-scale commercial application and hub-based clusters.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "中国 CCUS 技术发展路线图 (2025)",
-          "description": "2025 年官方路线图更新，战略重点从技术验证转向大规模商业化应用和基于枢纽的集群化发展。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {}
-    },
-    {
-      "id": "cn-zero-carbon-parks",
-      "country": "China",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "工业和信息化部",
-      "url": null,
-      "pub_date": "2024-01-15",
+      "legal_weight": "National Guidance",
+      "source": "National Development and Reform Commission / MIIT / National Energy Administration",
+      "url": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523",
+      "pub_date": "2025-06-30",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "China Zero-Carbon Industrial Park Guidelines",
-          "description": "National guidelines elevating zero-carbon parks to a strategic level, mandating CCS as a core path for localized industrial decarbonization.",
+          "title": "China National Zero-Carbon Park Construction Notice (2025)",
+          "description": "NDRC, MIIT and the National Energy Administration issued the national zero-carbon park construction notice in June 2025. It establishes application, construction and evaluation arrangements for national demonstration parks, with priorities including energy-system transformation, industrial decarbonisation, carbon accounting, product carbon-footprint management and financial support. The notice does not mandate CCS as a universal or core pathway for every park.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "中国零碳工业园区建设指南",
-          "description": "将零碳园区提升至国家战略高度的指南，规定 CCS 为局部工业脱碳的核心路径。",
+          "title": "《关于开展零碳园区建设的通知》（2025）",
+          "description": "国家发展改革委、工业和信息化部、国家能源局于2025年6月印发国家级零碳园区建设通知，建立园区申报、建设、指标评价和验收安排，重点包括用能结构转型、产业降碳、碳排放核算、产品碳足迹管理及金融支持。该通知并未要求所有园区将CCS作为统一的核心路径。",
           "scope": null,
           "tags": null
         }
@@ -1049,6 +1019,66 @@
           "citation": ""
         }
       }
+    },
+    {
+      "id": "cn-ccus-roadmap-2025",
+      "country": "China",
+      "year": 2025,
+      "status": "Active",
+      "category": "Strategic",
+      "review_status": "verified",
+      "legal_weight": "Strategic Roadmap",
+      "source": "Administrative Centre for China’s Agenda 21 (ACCA21)",
+      "url": "https://www.acca21.org.cn/trs/00010004/17430.html",
+      "pub_date": "2025-10-23",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "China CCUS Technology Development Roadmap (2025)",
+          "description": "Official 2025 update shifting strategic focus from technical verification to large-scale commercial application and hub-based clusters.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "中国 CCUS 技术发展路线图 (2025)",
+          "description": "2025 年官方路线图更新，战略重点从技术验证转向大规模商业化应用和基于枢纽的集群化发展。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {}
+    },
+    {
+      "id": "cn-standards-2024",
+      "country": "China",
+      "year": 2025,
+      "status": "Active",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "National Standards",
+      "source": "State Administration for Market Regulation / Standardization Administration of China",
+      "url": "https://www.samr.gov.cn/xw/sj/art/2026/art_c4ebd8a52d154378b28595b96823b843.html",
+      "pub_date": "2025-12-31",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "China Batch of 12 CCUS National Standards (2025)",
+          "description": "China approved and published 12 national CCUS standards on 31 December 2025, covering common terminology, capture systems, CO2 stream quality and transport, geological storage, CO2-EOR storage and greenhouse-gas reduction accounting. The standards took effect on 1 July 2026. This corrects the earlier database description that placed the 12-standard batch in 2024.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "中国12项CCUS国家标准（2025）",
+          "description": "市场监管总局、国家标准委于2025年12月31日批准发布12项CCUS国家标准，覆盖共性术语、捕集系统、二氧化碳介质质量与输送、地质封存、驱油封存以及温室气体减排量核算等环节，并于2026年7月1日起实施。此前数据库将该批标准记为2024年发布，现予纠正。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {}
     },
     {
       "id": "cn-ccer",
@@ -1295,66 +1325,6 @@
       }
     },
     {
-      "id": "cn-demo-tech-2024",
-      "country": "China",
-      "year": 2024,
-      "status": "Active",
-      "category": "Strategic",
-      "review_status": "verified",
-      "legal_weight": "Guideline",
-      "source": "NDRC/MEE",
-      "url": null,
-      "pub_date": "2023-08-01",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-19",
-      "i18n": {
-        "en": {
-          "title": "Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects",
-          "description": "## Policy Core\nIssued by NDRC and MEE, this plan selects large-scale CCUS demonstration projects for financial and resource support. Requirements include >500k t/y for petrochemical/oil and >100k t/y for power/steel/cement. First batch (47 projects) released in April 2024, second batch (101 projects) in April 2025.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "绿色低碳先进技术示范项目实施方案",
-          "description": "## 政策核心\n由国家发改委和生态环境部发布，旨在遴选大规模 CCUS 示范项目并提供资金和资源支持。规模要求：石化/火电/油气行业年捕集量 >50 万吨，电力/钢铁/水泥行业 >10 万吨。首批 47 个项目于 2024 年 4 月发布，第二批 101 个项目于 2025 年 4 月发布。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {}
-    },
-    {
-      "id": "cn-standards-2024",
-      "country": "China",
-      "year": 2024,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "verified",
-      "legal_weight": "National Standards",
-      "source": "NDRC/SAMR",
-      "url": null,
-      "pub_date": "2024-12-01",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-19",
-      "i18n": {
-        "en": {
-          "title": "Batch Release of CCUS National Standards (2024)",
-          "description": "NDRC and SAMR released 12+ national standards covering carbon accounting, storage safety, and leakage monitoring, providing the technical basis for liability transfer.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "CCUS 国家标准批量发布 (2024)",
-          "description": "国家发改委和国家标准委发布了 12+ 项国家标准，涵盖碳核算、封存安全和泄漏监测，为责任转移提供了技术依据。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {}
-    },
-    {
       "id": "cn-hb-ets-offset",
       "country": "China",
       "year": 2023,
@@ -1414,6 +1384,36 @@
           "citation": ""
         }
       }
+    },
+    {
+      "id": "cn-demo-tech-2024",
+      "country": "China",
+      "year": 2023,
+      "status": "Active",
+      "category": "Strategic",
+      "review_status": "verified",
+      "legal_weight": "Guideline",
+      "source": "National Development and Reform Commission and nine other departments",
+      "url": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266",
+      "pub_date": "2023-08-04",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)",
+          "description": "NDRC and nine other departments issued the Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects in August 2023. The plan launched the first application round and includes carbon capture, utilisation and storage among the advanced technologies eligible for demonstration support. The first project list was subsequently published in 2024.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "《绿色低碳先进技术示范工程实施方案》（2023）",
+          "description": "国家发展改革委等十部门于2023年8月印发《绿色低碳先进技术示范工程实施方案》，并同步启动首批项目申报。方案将碳捕集利用与封存纳入可开展工程示范的先进绿色低碳技术范围，首批项目清单随后于2024年公布。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {}
     },
     {
       "id": "cn-js-industrial-decarb-2022",
@@ -1606,12 +1606,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "中国人民银行",
-      "url": null,
-      "pub_date": "2021-11-08",
+      "source": "People’s Bank of China",
+      "url": "https://www.pbc.gov.cn/zhengcehuobisi/125207/125227/125963/dd1c12d33cab49bd8895c7a5d100aa4f/index.html",
+      "pub_date": "2021-11-12",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "PBOC Carbon Emission Reduction Facility (CERF)",
@@ -2033,12 +2033,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "欧盟委员会",
-      "url": null,
+      "source": "European Commission, DG Climate Action",
+      "url": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en",
       "pub_date": "2024-01-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-03-19",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "EU Innovation Fund",
@@ -2222,12 +2222,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "European Parliament",
-      "url": null,
+      "source": "European Union (EUR-Lex)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2023/956/oj",
       "pub_date": "2023-05-16",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "EU Carbon Border Adjustment Mechanism (CBAM)",
@@ -2401,26 +2401,26 @@
       "id": "fr-ccus-roadmap",
       "country": "France",
       "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Strategic",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
+      "legal_weight": "Strategic Guidance",
+      "source": "French Directorate General for Enterprise (DGE)",
+      "url": "https://www.entreprises.gouv.fr/la-dge/actualites/deploiement-de-la-capture-du-stockage-et-de-la-valorisation-du-carbone-ccus-en",
+      "pub_date": "2024-07-04",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "France National CCUS Roadmap 2024",
-          "description": "Targeting 4-8 Mtpa by 2030 through Carbon Contracts for Difference (CCfDs) and strategic North Sea storage agreements.",
+          "title": "France CCUS Deployment Outlook (2024)",
+          "description": "France published its state-of-play and deployment outlook for carbon capture, utilisation and storage on 4 July 2024. It prioritises CCUS for major industrial sites and sectors with limited alternative abatement options, building on the strategic orientations consulted on in 2023.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "法国国家 CCUS 路线图 2024",
-          "description": "目标通过碳差价合约 (CCfDs) 和北海战略封存协议，到 2030 年实现每年 400-800 万吨封存。",
+          "title": "法国CCUS部署现状与展望（2024）",
+          "description": "法国于2024年7月4日发布碳捕集、利用与封存的部署现状与前景文件，在2023年战略方向及公众咨询基础上，优先面向缺少替代减排路径的大型工业排放源和重点行业推进CCUS。",
           "scope": null,
           "tags": null
         }
@@ -2523,26 +2523,26 @@
       "id": "de-icm-strategy",
       "country": "Germany",
       "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Policy principles adopted",
+      "category": "Strategic",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-05-29",
+      "legal_weight": "Strategic Guidance",
+      "source": "German Federal Ministry for Economic Affairs and Climate Action",
+      "url": "https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html",
+      "pub_date": "2024-02-26",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Germany Industrial Carbon Management Strategy",
-          "description": "2024 strategy enabling offshore storage and transboundary CO2 export, marking a historic pivot in German climate policy.",
+          "title": "Germany Carbon Management Strategy Key Principles (2024)",
+          "description": "Germany published key principles for a Carbon Management Strategy and a draft amendment to the Carbon Dioxide Storage Act in February 2024. The federal cabinet adopted the key principles in May 2024. They prioritise CCS and CCU for hard-to-abate emissions and propose enabling CO2 transport and offshore storage while excluding marine protected areas.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "德国工业碳管理战略",
-          "description": "2024 年发布的战略，授权离岸封存及跨国二氧化碳出口，标志着德国气候政策的历史性转折。",
+          "title": "德国碳管理战略要点（2024）",
+          "description": "德国于2024年2月发布碳管理战略要点及《二氧化碳封存法》修订草案，联邦内阁于同年5月通过战略要点。其重点是为难以避免的排放应用CCS和CCU，并拟开放二氧化碳运输和海上封存，同时排除海洋保护区。",
           "scope": null,
           "tags": null
         }
@@ -2796,27 +2796,27 @@
     {
       "id": "is-cdr-framework",
       "country": "Iceland",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "year": 2022,
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
+      "legal_weight": "Primary Legislation",
+      "source": "Althingi, Parliament of Iceland",
+      "url": "https://www.althingi.is/altext/stjt/2022.067.html",
+      "pub_date": "2022-06-27",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Iceland CDR & Mineralization Framework",
-          "description": "Regulatory framework for basaltic mineralization led by Carbfix, providing legal pathways for Mammoth-scale DAC projects.",
+          "title": "Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)",
+          "description": "Iceland’s Law No. 67/2022 amended environmental-health, environmental-assessment and climate legislation to implement the EU geological-storage framework and expressly regulate underground CO2 storage, including mineralisation. It provides the legal basis used for permitting storage projects such as Carbfix. This replaces the unsupported database description of a separate 2024 “CDR framework”.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "冰岛 CDR 与矿化封存框架",
-          "description": "由 Carbfix 领衔的玄武岩矿化封存监管框架，为 Mammoth 规模的 DAC 项目提供法律路径。",
+          "title": "冰岛二氧化碳封存与矿化法律框架（第67/2022号法律）",
+          "description": "冰岛第67/2022号法律修订环境卫生、环境影响评价和气候相关法律，落实欧盟二氧化碳地质封存制度，并明确规范地下二氧化碳封存及矿化，为Carbfix等项目的许可提供法律基础。此前数据库所称独立的“2024年CDR框架”缺乏依据，现予替换。",
           "scope": null,
           "tags": null
         }
@@ -3129,6 +3129,67 @@
       }
     },
     {
+      "id": "gold-standard",
+      "country": "International",
+      "year": 2025,
+      "status": "Active",
+      "category": "Methodology",
+      "review_status": "verified",
+      "legal_weight": "Voluntary Standard",
+      "source": "Gold Standard",
+      "url": "https://www.goldstandard.org/news/gold-standard-publishes-engineered-removals-activity-requirements",
+      "pub_date": "2025-07-22",
+      "provenance_author": "Gemini Intelligence",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Gold Standard Engineered Removals Activity Requirements (2025)",
+          "description": "Gold Standard published its Engineered Removals Activity Requirements on 22 July 2025. The framework sets high-level requirements for engineered carbon dioxide removal activities seeking Gold Standard certification and provides the basis for subsequent methodology and project development. The prior 2023 date in the database was not supported by the official publication record.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "黄金标准工程化碳移除活动要求（2025）",
+          "description": "黄金标准于2025年7月22日发布《工程化碳移除活动要求》，为寻求黄金标准认证的工程化二氧化碳移除活动规定高层级完整性要求，并作为后续方法学和项目开发的基础。数据库原记录的2023年发布日期缺乏官方依据，现予纠正。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 40,
+          "label": "Not specified",
+          "evidence": "No direct incentive found.",
+          "citation": ""
+        },
+        "market": {
+          "score": 40,
+          "label": "Market Integration",
+          "evidence": "No specific market rules.",
+          "citation": ""
+        },
+        "mrv": {
+          "score": 40,
+          "label": "Standard",
+          "evidence": "Standard reporting required.",
+          "citation": ""
+        },
+        "statutory": {
+          "score": 40,
+          "label": "Undefined",
+          "evidence": "Pore space rights not explicitly defined.",
+          "citation": ""
+        },
+        "strategic": {
+          "score": 30,
+          "label": "Initial Assessment",
+          "evidence": "Baseline strategic alignment under V5.0 migration.",
+          "citation": ""
+        }
+      }
+    },
+    {
       "id": "verra-vm0049",
       "country": "International",
       "year": 2024,
@@ -3137,11 +3198,11 @@
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Verra",
-      "url": null,
-      "pub_date": "2024-03-01",
+      "url": "https://verra.org/methodologies/vm0049-carbon-capture-and-storage/",
+      "pub_date": "2024-06-27",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "Verra CCS Methodology (VM0049)",
@@ -3373,67 +3434,6 @@
       }
     },
     {
-      "id": "gold-standard",
-      "country": "International",
-      "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "Gold Standard",
-      "url": null,
-      "pub_date": "2023-01-01",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Gold Standard Engineering CDR Requirements",
-          "description": "Strict certification framework for high-integrity CCS and engineered carbon removals, aligned with Article 6 of the Paris Agreement.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "黄金标准工程化 CDR 要求",
-          "description": "针对高诚信度 CCS 和工程化碳移除的严格核证框架，对齐《巴黎协定》第 6 条。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 40,
-          "label": "Not specified",
-          "evidence": "No direct incentive found.",
-          "citation": ""
-        },
-        "market": {
-          "score": 40,
-          "label": "Market Integration",
-          "evidence": "No specific market rules.",
-          "citation": ""
-        },
-        "mrv": {
-          "score": 40,
-          "label": "Standard",
-          "evidence": "Standard reporting required.",
-          "citation": ""
-        },
-        "statutory": {
-          "score": 40,
-          "label": "Undefined",
-          "evidence": "Pore space rights not explicitly defined.",
-          "citation": ""
-        },
-        "strategic": {
-          "score": 30,
-          "label": "Initial Assessment",
-          "evidence": "Baseline strategic alignment under V5.0 migration.",
-          "citation": ""
-        }
-      }
-    },
-    {
       "id": "intl-ccs-plus-framework",
       "country": "International",
       "year": 2021,
@@ -3563,12 +3563,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "IPCC",
-      "url": null,
-      "pub_date": "2019-05-01",
+      "source": "IPCC Task Force on National Greenhouse Gas Inventories",
+      "url": "https://www.ipcc-nggip.iges.or.jp/public/2019rf/",
+      "pub_date": "2019-05-12",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "IPCC GHG Inventory Guidelines (2019 Refinement)",
@@ -3624,12 +3624,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "ISO TC265",
-      "url": null,
+      "source": "International Organization for Standardization, ISO/TC 265",
+      "url": "https://www.iso.org/committee/648607.html",
       "pub_date": "2019-01-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-07",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "ISO CCUS Standards (TC 265)",
@@ -3686,11 +3686,11 @@
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Puro.earth",
-      "url": null,
+      "url": "https://puro.earth/cdr-infrastructure/methodologies/puro-standard/",
       "pub_date": "2019-05-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "Puro.earth CDR Certification (CORC)",
@@ -4608,26 +4608,26 @@
       "id": "no-14th-licensing-round-2025",
       "country": "Norway",
       "year": 2025,
-      "status": "Active",
-      "category": "Offshore Storage Licensing",
-      "review_status": "draft",
-      "legal_weight": null,
-      "source": null,
-      "url": null,
-      "pub_date": "2026-03-18",
+      "status": "Awarded",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "Licensing Round",
+      "source": "Norwegian Offshore Directorate",
+      "url": "https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/",
+      "pub_date": "2025-03-05",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Norway 14th Offshore Storage Licensing Round and 2025 Regulatory Guidelines",
-          "description": "In 2025, Norway further solidified its position as a global leader in offshore CO2 storage by awarding its 14th offshore storage license in June. This move is part of the Norwegian government's strategic ambition to provide large-scale storage capacity for European industrial emitters. The Ministry of Energy has continued its 'predictable and flexible' licensing process, which is designed to attract commercial interest while ensuring rigorous environmental and safety standards. A key update in November 2025 involved the release of new guidelines by the Norwegian Offshore Directorate (Sodir). These guidelines specifically clarify the documentation requirements for storage complex status reports, a critical step for operators as they move from exploration to active injection phases. The updated framework emphasizes the need for high-resolution seismic monitoring and detailed pressure management data to ensure the long-term containment of CO2. Furthermore, Norway's regulatory environment in 2025 has focused on streamlining the transition of liability, although the state maintains a cautious approach to long-term stewardship. The licensing round also saw an increase in international collaboration, with several European energy majors participating in joint ventures to develop the 'Smeaheia' and 'Northern Lights' expansions. These projects are essential for meeting the EU's broader storage targets under the Net-Zero Industry Act. The 2025 updates reflect a maturing market where the focus has shifted from geological feasibility to operational excellence and regulatory clarity, providing a stable investment climate for the burgeoning CCUS industry in the North Sea.",
+          "title": "Norway 2025 CO2 Storage Licensing Round 1",
+          "description": "Norway announced one North Sea area for CO2 storage licensing on 5 March 2025 under the CO2 Storage Regulations. Following evaluation, Equinor Low Carbon Solution was offered exploration licence EXL014, valid from 24 June 2025. The official source describes this as “Announcement 2025, round 1” and the eighth award process, not a fourteenth licensing round; the legacy database ID is retained only for compatibility.",
           "scope": "National",
           "tags": []
         },
         "zh": {
-          "title": "挪威第 14 轮离岸封存许可与 2025 监管指南",
-          "description": "2025 年，挪威通过在 6 月份授予第 14 轮离岸封存许可，进一步巩固了其在离岸二氧化碳封存领域的全球领导地位。此举是挪威政府战略雄心的一部分，旨在为欧洲工业排放者提供大规模封存能力。能源部继续其“可预测且灵活”的许可流程，旨在吸引商业兴趣，同时确保严苛的环境和安全标准。2025 年 11 月的一个关键更新是挪威离岸管理局 (Sodir) 发布了新指南。这些指南专门明确了封存综合体状态报告的记录要求，这是运营商从勘探阶段转向活跃注入阶段的关键一步。更新后的框架强调了对高分辨率地震监测和详细压力管理数据的需求，以确保二氧化碳的长期遏制。此外，挪威 2025 年的监管环境重点在于精简责任过渡，尽管国家在长期监管方面仍保持谨慎态度。本轮许可还见证了国际合作的增加，几家欧洲能源巨头参与了开发“Smeaheia”和“Northern Lights”扩建项目的合资企业。这些项目对于根据《净零工业法案》实现欧盟更广泛的封存目标至关重要。2025 年的更新反映了一个成熟的市场，焦点已从地质可行性转向运营卓越和监管清晰度，为北海蓬勃发展的 CCUS 行业提供了稳定的投资环境。",
+          "title": "挪威2025年二氧化碳封存许可第1轮",
+          "description": "挪威于2025年3月5日依据《二氧化碳封存条例》公布一个北海封存许可区块。经评估，Equinor Low Carbon Solution获得EXL014勘探许可，许可自2025年6月24日起生效。官方将其称为“2025年第1轮”，并说明这是第八次封存区块授予流程，而非第十四轮；旧数据库ID仅为兼容性保留。",
           "scope": "National",
           "tags": []
         }
@@ -4662,67 +4662,6 @@
           "label": "Sovereign Enforcement",
           "evidence": "The 14th licensing round (2025) is backed by the Norwegian Petroleum Act, providing absolute legal certainty for offshore CO2 storage concessions.",
           "citation": "MPE Announcement 2025"
-        }
-      }
-    },
-    {
-      "id": "norway-longship",
-      "country": "Norway",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "挪威政府 / Gassnova",
-      "url": null,
-      "pub_date": "2024-01-01",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Norway 'Longship' CCS Project",
-          "description": "A full-scale national project connecting industrial capture to the Northern Lights transboundary storage hub.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "挪威“长船”CCS 项目",
-          "description": "连接工业捕集与 Northern Lights 跨国封存枢纽的大型国家级工程。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 90,
-          "label": "NOK 22 Billion Grant",
-          "evidence": "[AI-Generated] Norwegian state provided 80% funding (~$2B) for construction and 10 years of operation. Direct financial de-risking at unprecedented scale.",
-          "citation": "Norway State Budget 2025"
-        },
-        "market": {
-          "score": 80,
-          "label": "Commercial Hub Success",
-          "evidence": "[AI-Generated] Northern Lights Phase 1 capacity fully booked. Phase 2 FID announced in March 2025. Created world's first merchant storage market.",
-          "citation": "Northern Lights JV Announcements (2025)"
-        },
-        "mrv": {
-          "score": 95,
-          "label": "Global Tech Standard",
-          "evidence": "[AI-Generated] Real-time precision monitoring for sub-seabed storage. Sets global benchmark for ship-based CO2 logistics.",
-          "citation": "Northern Lights MRV Standards"
-        },
-        "statutory": {
-          "score": 95,
-          "label": "Cross-border Framework",
-          "evidence": "[AI-Generated] Pioneered bilateral agreements under the London Protocol. Legally enables CO2 export/import from multiple EU nations.",
-          "citation": "Norway-France Agreement (2025)"
-        },
-        "strategic": {
-          "score": 100,
-          "label": "2025 Operational",
-          "evidence": "[AI-Generated] Core pillar of Norway's 2050 Net Zero goal. Project is >80% complete and on-track for full-scale operation in June 2025.",
-          "citation": "MPE Longship Roadmap"
         }
       }
     },
@@ -4845,6 +4784,67 @@
           "label": "Initial Assessment",
           "evidence": "Baseline strategic alignment under V5.0 migration.",
           "citation": ""
+        }
+      }
+    },
+    {
+      "id": "norway-longship",
+      "country": "Norway",
+      "year": 2020,
+      "status": "现行",
+      "category": "法律监管",
+      "review_status": "verified",
+      "legal_weight": "Guideline/Policy",
+      "source": "Norwegian Ministry of Energy",
+      "url": "https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/",
+      "pub_date": "2020-09-21",
+      "provenance_author": "Gemini Intelligence",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Norway Longship Full-Scale CCS Project",
+          "description": "Norway launched Longship on 21 September 2020 as a state-supported full-scale CCS demonstration covering industrial capture, ship transport, intermediate storage and permanent offshore geological storage through Northern Lights. Government project information was updated in 2024, but the underlying policy decision and launch date are from 2020.",
+          "scope": null,
+          "tags": null
+        },
+        "zh": {
+          "title": "挪威“长船”全规模CCS项目",
+          "description": "挪威于2020年9月21日启动“长船”国家支持型全规模CCS示范，覆盖工业捕集、船舶运输、中转储存以及通过Northern Lights开展海上永久地质封存。政府项目说明于2024年更新，但政策决策和项目启动时间应记为2020年。",
+          "scope": null,
+          "tags": null
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 90,
+          "label": "NOK 22 Billion Grant",
+          "evidence": "[AI-Generated] Norwegian state provided 80% funding (~$2B) for construction and 10 years of operation. Direct financial de-risking at unprecedented scale.",
+          "citation": "Norway State Budget 2025"
+        },
+        "market": {
+          "score": 80,
+          "label": "Commercial Hub Success",
+          "evidence": "[AI-Generated] Northern Lights Phase 1 capacity fully booked. Phase 2 FID announced in March 2025. Created world's first merchant storage market.",
+          "citation": "Northern Lights JV Announcements (2025)"
+        },
+        "mrv": {
+          "score": 95,
+          "label": "Global Tech Standard",
+          "evidence": "[AI-Generated] Real-time precision monitoring for sub-seabed storage. Sets global benchmark for ship-based CO2 logistics.",
+          "citation": "Northern Lights MRV Standards"
+        },
+        "statutory": {
+          "score": 95,
+          "label": "Cross-border Framework",
+          "evidence": "[AI-Generated] Pioneered bilateral agreements under the London Protocol. Legally enables CO2 export/import from multiple EU nations.",
+          "citation": "Norway-France Agreement (2025)"
+        },
+        "strategic": {
+          "score": 100,
+          "label": "2025 Operational",
+          "evidence": "[AI-Generated] Core pillar of Norway's 2050 Net Zero goal. Project is >80% complete and on-track for full-scale operation in June 2025.",
+          "citation": "MPE Longship Roadmap"
         }
       }
     },
@@ -5766,26 +5766,26 @@
       "id": "kr-ccus-act",
       "country": "South Korea",
       "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "韩国产业通商资源部 (MOTIE)",
-      "url": null,
-      "pub_date": "2024-01-09",
+      "legal_weight": "Primary Legislation",
+      "source": "Korean National Law Information Center",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=259701",
+      "pub_date": "2024-02-06",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-07",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "South Korea CCUS Act",
-          "description": "Consolidated legal framework for the CCUS value chain, introducing specific cluster designation incentives and resource-recovery rules.",
+          "title": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
+          "description": "South Korea enacted Act No. 20203 on 6 February 2024. The law took effect on 7 February 2025 and establishes the national framework for technology development and industrialisation of carbon dioxide capture, transport, storage and utilisation, including storage-business and marine-storage provisions.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "韩国 CCUS 法案",
-          "description": "CCUS 全产业链综合法律框架，引入了具体的集群指定激励措施及资源化规则。",
+          "title": "韩国《二氧化碳捕集、运输、封存及利用法》",
+          "description": "韩国于2024年2月6日公布第20203号法律，并于2025年2月7日施行。该法建立二氧化碳捕集、运输、封存与利用技术开发和产业化的国家框架，并涵盖封存业务及海洋地质封存等制度。",
           "scope": null,
           "tags": null
         }
@@ -6254,26 +6254,26 @@
       "id": "ae-carbon-strategy",
       "country": "United Arab Emirates",
       "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Strategic",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2023-01-01",
+      "legal_weight": "National Strategy",
+      "source": "Official Portal of the UAE Government / Ministry of Climate Change and Environment",
+      "url": "https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/environment-and-energy/the-uae-net-zero-2050-strategy",
+      "pub_date": "2023-11-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "UAE National Net Zero 2050 Strategy",
-          "description": "The UAE's strategic roadmap for achieving climate neutrality, including the establishment of the National Registry for Carbon Credits (NRCC) in 2024. Focuses on leveraging ADNOC's infrastructure for carbon management.",
+          "title": "UAE Net Zero 2050 Strategy",
+          "description": "The UAE Net Zero 2050 Strategy translates the country’s net-zero initiative and national pathway into more than 25 programmes across six sectors. The official strategy identifies carbon capture technologies, climate finance, research and development, skills and sectoral efficiency measures as enabling components of the transition.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "阿联酋国家净零 2050 战略",
-          "description": "阿联酋实现气候中和的战略蓝图，包括 2024 年建立的国家碳信用注册登记簿 (NRCC)。重点利用 ADNOC 的基础设施进行碳管理。",
+          "title": "阿联酋2050净零战略",
+          "description": "《阿联酋2050净零战略》将国家净零倡议和实施路径细化为覆盖六个部门的25项以上计划，并将碳捕集技术、气候融资、研发、能力建设和部门效率提升列为转型的重要支撑条件。",
           "scope": null,
           "tags": null
         }
@@ -6314,27 +6314,27 @@
     {
       "id": "uk-ccs-network-code",
       "country": "United Kingdom",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "year": 2023,
+      "status": "Planned",
+      "category": "Regulatory",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
+      "legal_weight": "Proposed Market Rule",
+      "source": "UK Department for Energy Security and Net Zero",
+      "url": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
+      "pub_date": "2023-12-20",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-03-19",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "UK CO2 T&S Network Code",
-          "description": "Established by Ofgem to regulate third-party access to the national carbon backbone, preventing monopolies in the T&S market.",
+          "title": "UK CCS Network Code Framework (Planned)",
+          "description": "The UK’s December 2023 CCUS market vision proposes a single CCS Network Code to govern commercial, operational and technical arrangements for use and growth of CO2 transport and storage systems. The code is a planned market-governance component linked to economic licences and third-party access; the government publication should not be represented as a final standalone code already in force.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "英国二氧化碳运输与存储网络准则",
-          "description": "由 Ofgem 建立，旨在监管第三方准入国家碳骨干网，防止 T&S 市场垄断。",
+          "title": "英国CCS网络代码框架（规划中）",
+          "description": "英国2023年12月发布的CCUS市场愿景提出建立统一的CCS Network Code，用于规范二氧化碳运输与封存系统的商业、运行和技术安排，并与经济许可证和第三方接入制度衔接。该代码仍是规划中的市场治理组件，不应表述为已经生效的独立规则文本。",
           "scope": null,
           "tags": null
         }
@@ -6380,12 +6380,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "英国能源安全与净零部",
-      "url": null,
+      "source": "UK Department for Energy Security and Net Zero",
+      "url": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
       "pub_date": "2023-12-20",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "UK CCUS Vision (2035 Strategy)",
@@ -6501,23 +6501,23 @@
       "status": "Active",
       "category": "Tax Incentives",
       "review_status": "verified",
-      "legal_weight": null,
-      "source": null,
-      "url": null,
-      "pub_date": "2026-03-18",
+      "legal_weight": "Primary Legislation",
+      "source": "U.S. Government Publishing Office / Internal Revenue Service",
+      "url": "https://www.govinfo.gov/app/details/PLAW-119publ21",
+      "pub_date": "2025-07-04",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-19",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "USA One Big Beautiful Bill Act (OBBBA) and 45Q Enhancement 2025",
-          "description": "The landscape for CCUS in the United States underwent a transformative shift in 2025 with the passage of the 'One Big Beautiful Bill Act' (OBBBA) on July 4th. This landmark legislation not only preserved the existing Section 45Q tax credits but significantly enhanced and equalized them to accelerate industrial decarbonization. One of the most critical updates was the equalization of credit levels for Direct Air Capture (DAC) and point-source capture, with dedicated geologic storage now receiving up to $180 per tonne for DAC and $85 per tonne for point-source capture. The OBBBA also introduced new 'Foreign Entity of Concern' (FEOC) rules, which are designed to ensure that the financial benefits of 45Q are not accessible to projects with disqualifying connections to specific foreign adversaries, thereby strengthening domestic energy security. In addition to financial incentives, 2025 marked a significant milestone in permitting efficiency. Louisiana and West Virginia officially joined North Dakota and Wyoming in receiving Class VI primacy from the EPA. This allows these states to manage their own CO2 injection well permitting processes, significantly bypassing federal backlogs and reducing permitting lead times from several years to potentially under 12 months. Texas and Arizona are also in the final stages of the primacy application process, with approvals expected by the end of 2025. This decentralization of authority is expected to trigger a surge in project FID (Final Investment Decisions) across the Gulf Coast and the Appalachian basin, where geological storage potential is vast. The combination of stabilized high-value tax credits and streamlined permitting makes the US the most attractive global market for CCUS developers in 2025.",
+          "title": "U.S. Public Law 119-21: 2025 Amendments to Section 45Q",
+          "description": "Public Law 119-21, enacted on 4 July 2025, amended Section 45Q through section 70522. For qualifying facilities or equipment placed in service after 4 July 2025, it establishes parity between credit amounts for utilisation or enhanced recovery and those for secure geological storage. It also adds restrictions for specified foreign entities and foreign-influenced entities. The law preserved the higher IRA credit architecture; it did not newly create the existing $180-per-tonne DAC storage and $85-per-tonne point-source storage levels.",
           "scope": "National",
           "tags": []
         },
         "zh": {
-          "title": "美国 OBBBA 法案与 45Q 增强计划 2025",
-          "description": "2025 年 7 月 4 日，随着《一个伟大美丽的法案》(OBBBA) 的通过，美国 CCUS 的格局发生了变革性转变。这项具有里程碑意义的立法不仅保留了现有的第 45Q 条税收抵免，还显著增强并统一了这些抵免，以加速工业脱碳。其中最关键的更新之一是统一了直接空气捕集 (DAC) 和点源捕集的抵免水平，专用地质封存现在为 DAC 提供每吨高达 180 美元的抵免，为点源捕集提供每吨 85 美元的抵免。OBBBA 还引入了新的“受关注外国实体”(FEOC) 规则，旨在确保 45Q 的财务收益不会流向与特定外国对手有取消资格联系的项目，从而加强国内能源安全。除了财务激励外，2025 年还在许可效率方面取得了重大里程碑。路易斯安那州和西弗吉尼亚州正式加入北达科他州和怀俄明州的行列，获得了 EPA 的 Class VI 监管主权。这允许这些州管理自己的二氧化碳注入井许可流程，显著绕过了联邦积压，并将许可提前期从几年缩短到可能不到 12 个月。德克萨斯州和亚利桑那州也处于主权申请程序的最后阶段，预计到 2025 年底获得批准。这种权力的下放预计将触发墨西哥湾沿岸和阿巴拉契亚盆地项目 FID（最终投资决定）的激增，那里的地质封存潜力巨大。稳定的高价值税收抵免和精简的许可相结合，使美国成为 2025 年全球 CCUS 开发商最具吸引力的市场。",
+          "title": "美国第119-21号公法：2025年45Q修订",
+          "description": "美国第119-21号公法于2025年7月4日生效，其中第70522节修订45Q。对于2025年7月4日后投入使用的合格设施或设备，法律将利用或强化采收情形的抵免水平与安全地质封存情形对齐，并新增针对特定外国实体和受外国影响实体的限制。该法延续并调整IRA形成的较高抵免框架，而不是新设原有的DAC封存180美元/吨和点源封存85美元/吨标准。",
           "scope": "National",
           "tags": []
         }
@@ -6525,15 +6525,15 @@
       "analysis": {
         "incentive": {
           "score": 100,
-          "label": "$180/t DAC",
-          "evidence": "The 2025 OBBBA (One Big Beautiful Bill Act) landmark legislation has fundamentally redefined the U.S. CCUS incentive landscape by equalizing and enhancing Section 45Q tax credits. Specifically, the act provides up to $180 per tonne for Direct Air Capture (DAC) with dedicated geologic storage and $85 per tonne for point-source industrial capture. These credits are now fully refundable for a specified period, significantly improving project bankability and reducing the reliance on complex tax equity markets. Furthermore, the act includes provisions for 'stacking' with state-level incentives, such as California's LCFS or Texas's tax abatements, creating a multi-layered financial framework that supports a wide array of carbon management technologies across the value chain. This represents the highest and most stable carbon capture incentive globally in 2025, providing the necessary 'price floor' for long-term project financing.",
-          "citation": "OBBBA 2025, Section 45Q(b)(1)(A)(ii)"
+          "label": "45Q parity after 4 July 2025",
+          "evidence": "Section 70522 establishes parity between qualified utilisation or enhanced-recovery credit amounts and secure-geological-storage amounts for qualifying facilities or equipment placed in service after 4 July 2025.",
+          "citation": "Public Law 119-21, section 70522; IRS Notice 2026-1 discussion of the 2025 Section 45Q amendments."
         },
         "market": {
           "score": 95,
-          "label": "FEOC Rules",
-          "evidence": "The U.S. market for CCUS has matured through the implementation of the 2025 Foreign Entity of Concern (FEOC) rules, which ensure domestic energy security and protect the integrity of federal subsidies. These rules provide clear investment signals by restricting participation from entities with disqualifying foreign adversarial ties, thereby fostering a secure and transparent domestic market. Additionally, the emergence of liquid markets for '45Q-compliant' credits and the integration of CCUS with the broader hydrogen and sustainable aviation fuel (SAF) markets have increased the monetizability of captured CO2. The market is also bolstered by the development of shared-user infrastructure, such as the Gulf Coast and Midwest transport hubs, which are reducing unit costs and enabling participation from smaller industrial emitters, effectively creating a multi-sectoral carbon management ecosystem.",
-          "citation": "OBBBA 2025, Market Security Provisions"
+          "label": "PFE restrictions",
+          "evidence": "The 2025 amendments restrict Section 45Q eligibility for specified foreign entities and foreign-influenced entities for applicable tax years.",
+          "citation": "Public Law 119-21, section 70522; IRS Notice 2026-1."
         },
         "mrv": {
           "score": 90,
@@ -6565,26 +6565,26 @@
       "id": "us-doe-carbon-management-strategy",
       "country": "United States",
       "year": 2024,
-      "status": "现行",
-      "category": "战略引导",
+      "status": "Draft for public comment",
+      "category": "Strategic",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
+      "legal_weight": "Draft Strategy",
+      "source": "U.S. Department of Energy",
+      "url": "https://www.energy.gov/hgeo/does-carbon-management-strategy",
+      "pub_date": "2024-10-10",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "US DOE Carbon Management Strategy",
-          "description": "Top-level blueprint for achieving net-zero by 2050, prioritizing hard-to-abate sectors and Justice40 compliance.",
+          "title": "Draft U.S. DOE Carbon Management Strategy (2024)",
+          "description": "The U.S. Department of Energy published its Carbon Management Strategy as a draft for public comment in October 2024. It outlines DOE’s near-term programme priorities through 2030 across research, demonstration and deployment, CO2 transport and storage infrastructure, policy coordination, community and workforce engagement, and international cooperation. The official DOE page continues to identify the document as a draft rather than a final binding strategy.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "美国能源部碳管理战略",
-          "description": "到 2050 年实现净零排放的顶层蓝图，优先考虑难减排行业及 Justice40 合规。",
+          "title": "美国能源部碳管理战略草案（2024）",
+          "description": "美国能源部于2024年10月发布碳管理战略草案并公开征求意见，提出至2030年的近期工作重点，包括研发示范与部署、二氧化碳运输和封存基础设施、跨部门政策协调、社区与劳动力参与以及国际合作。能源部官方页面仍将其标识为草案，而非最终具有约束力的战略。",
           "scope": null,
           "tags": null
         }
@@ -6721,12 +6721,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "IRS / EPA",
-      "url": null,
+      "source": "U.S. Department of the Treasury / Internal Revenue Service",
+      "url": "https://www.irs.gov/irb/2022-47_IRB",
       "pub_date": "2022-08-16",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-07",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "US 45Q Tax Credit (IRA Enhanced)",
@@ -6782,12 +6782,12 @@
       "category": "法律监管",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
-      "source": "美国能源部 (DOE)",
-      "url": null,
+      "source": "U.S. Department of Energy",
+      "url": "https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program",
       "pub_date": "2021-11-15",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source metadata audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "US IIJA CCS Hubs Program",
