@@ -2,27 +2,27 @@ name: CI
 
 on:
   push:
-    branches: [main, agent/policy-db-consistency]
+    branches: [main]
   pull_request:
     branches: [main]
-
-permissions:
-  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 9
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
 
@@ -41,6 +41,15 @@ jobs:
       - name: Deep Audit (blocking)
         run: pnpm manage:db:audit:deep
 
+      - name: Verify Committed Policy Projections
+        run: |
+          pnpm manage:db:audit:policy-consistency
+          git diff --exit-code -- \
+            src/content/policies \
+            public/data/policies.json \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+
       - name: Generate Quality Metrics
         run: pnpm manage:db:quality:export
 
@@ -50,61 +59,8 @@ jobs:
       - name: Format Generated Data
         run: pnpm prettier --write public/data/*.json
 
-      - name: Export Policy Markdown from SQLite
-        run: |
-          pnpm manage:db:export:policies
-          pnpm prettier --write "src/content/policies/**/*.md"
-
-      - name: Policy DB Consistency Audit
+      - name: Verify Generated Public Policy Data
         run: pnpm manage:db:audit:policy-consistency
 
-      - name: Format Policy Consistency Report
-        if: always()
-        run: |
-          if [[ -f docs/policy-db-consistency-report.json ]]; then
-            pnpm prettier --write \
-              docs/policy-db-consistency-report.json \
-              docs/policy-db-consistency-report.md
-          fi
-
       - name: Build
-        run: |
-          mkdir -p docs
-          set +e
-          pnpm run build 2>&1 | tee docs/policy-post-export-build.log
-          status=${PIPESTATUS[0]}
-          exit "$status"
-
-      - name: Commit Verified Policy Projections
-        if: >-
-          github.event_name == 'push' &&
-          github.ref == 'refs/heads/agent/policy-db-consistency' &&
-          github.actor != 'github-actions[bot]'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            src/content/policies \
-            public/data/policies.json \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
-          if git diff --cached --quiet; then
-            echo "Policy projections already match SQLite."
-            exit 0
-          fi
-          git commit -m "fix(data): materialize DB-faithful policy projections"
-          git push origin HEAD:agent/policy-db-consistency
-
-      - name: Upload Policy Projection Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: policy-db-projections
-          path: |
-            src/content/policies
-            public/data/policies.json
-            docs/policy-db-consistency-report.json
-            docs/policy-db-consistency-report.md
-            docs/policy-post-export-build.log
-          if-no-files-found: error
-          retention-days: 7
+        run: pnpm run build
