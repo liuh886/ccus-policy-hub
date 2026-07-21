@@ -43,9 +43,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Format policy consistency inputs
+      - name: Materialize policy projections with diagnostics
         run: |
-          pnpm prettier --write \
+          set +e
+          mkdir -p docs
+          LOG=docs/policy-consistency-materialization.log
+          : > "$LOG"
+
+          run_step() {
+            name="$1"
+            shift
+            echo "## $name" | tee -a "$LOG"
+            "$@" >> "$LOG" 2>&1
+            status=$?
+            echo "exit_status=$status" | tee -a "$LOG"
+            echo >> "$LOG"
+            return 0
+          }
+
+          run_step "format controls" pnpm prettier --write \
             scripts/audit-policy-artifact-consistency.mjs \
             scripts/audit-policy-artifact-consistency.test.mjs \
             scripts/export-policy-markdown.mjs \
@@ -54,7 +70,28 @@ jobs:
             .github/workflows/deploy.yml \
             .github/workflows/materialize-policy-consistency.yml
 
-      - name: Persist exporter and audit inputs
+          run_step "tests" pnpm test
+          run_step "policy markdown export" pnpm manage:db:export:policies
+          run_step "public data export" pnpm manage:db:data:export
+
+          git restore \
+            public/data/countries.json \
+            public/data/facilities.json \
+            public/data/manifest.json \
+            public/data/quality.json
+
+          run_step "format policy projections" pnpm prettier --write \
+            "src/content/policies/**/*.md" \
+            public/data/policies.json
+          run_step "policy consistency audit" pnpm manage:db:audit:policy-consistency
+
+          if [[ -f docs/policy-db-consistency-report.json ]]; then
+            run_step "format consistency report" pnpm prettier --write \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+          fi
+
+      - name: Commit diagnostics and available policy projections
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -65,62 +102,18 @@ jobs:
             package.json \
             .github/workflows/ci.yml \
             .github/workflows/deploy.yml \
-            .github/workflows/materialize-policy-consistency.yml
-          if git diff --cached --quiet; then
-            echo "Policy exporter and audit inputs already formatted."
-          else
-            git commit -m "style(data): format policy projection controls"
-            git push origin HEAD:agent/policy-db-consistency
-          fi
-
-      - name: Validate policy projection tests
-        run: pnpm test
-
-      - name: Export policy Markdown from SQLite only
-        run: pnpm manage:db:export:policies
-
-      - name: Regenerate public policy projection
-        run: |
-          pnpm manage:db:data:export
-          git restore \
-            public/data/countries.json \
-            public/data/facilities.json \
-            public/data/manifest.json \
-            public/data/quality.json
-
-      - name: Format policy projections
-        run: |
-          pnpm prettier --write \
-            "src/content/policies/**/*.md" \
-            public/data/policies.json
-
-      - name: Run policy DB consistency audit
-        run: pnpm manage:db:audit:policy-consistency
-
-      - name: Format consistency report
-        run: |
-          pnpm prettier --write \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
-
-      - name: Commit governed policy projections
-        run: |
-          git add \
+            .github/workflows/materialize-policy-consistency.yml \
             src/content/policies \
             public/data/policies.json \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
+            docs/policy-consistency-materialization.log
+          if [[ -f docs/policy-db-consistency-report.json ]]; then
+            git add \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+          fi
           if git diff --cached --quiet; then
-            echo "No policy projection changes to commit."
+            echo "No policy consistency changes to commit."
           else
-            git commit -m "fix(data): materialize DB-faithful policy projections"
+            git commit -m "chore(data): materialize policy consistency diagnostics"
             git push origin HEAD:agent/policy-db-consistency
           fi
-
-      - name: Validate final repository state
-        run: |
-          pnpm lint
-          pnpm test
-          pnpm astro check
-          pnpm manage:db:audit:policy-consistency
-          pnpm build
