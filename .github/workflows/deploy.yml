@@ -52,6 +52,9 @@ jobs:
       - name: Format Generated Data
         run: pnpm prettier --write public/data/*.json
 
+      - name: Policy DB Consistency Audit
+        run: pnpm manage:db:audit:policy-consistency
+
       - name: Build Project
         run: pnpm build
 
