@@ -64,7 +64,7 @@
     "gray-matter": "^4.0.3",
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
-    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-astro": "^0.14.1",
     "stylelint": "^17.1.1",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^5.9.3",
