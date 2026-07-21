@@ -26,6 +26,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Format Policy Gap Controls
+        run: |
+          pnpm prettier --write \
+            docs/policy-gap-pass-2026-07.md \
+            scripts/migrate-official-policy-gaps-2026-07.mjs \
+            scripts/migrate-official-policy-gaps-2026-07.test.mjs \
+            package.json
+
       - name: ESLint
         run: pnpm eslint .
 
@@ -64,3 +72,16 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Upload Formatted Policy Gap Controls
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: formatted-policy-gap-controls
+          path: |
+            docs/policy-gap-pass-2026-07.md
+            scripts/migrate-official-policy-gaps-2026-07.mjs
+            scripts/migrate-official-policy-gaps-2026-07.test.mjs
+            package.json
+          if-no-files-found: error
+          retention-days: 7
