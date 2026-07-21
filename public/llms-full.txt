@@ -1,271 +1,294 @@
-# CCUS Policy Hub - Complete AI Data Documentation
+# CCUS Policy Hub - Extended AI Data Documentation
 
-## Overview
+## 1. Purpose
 
-CCUS Policy Hub is a professional-grade, open-source knowledge infrastructure dedicated to the global Carbon Capture, Utilization, and Storage (CCUS) sector. It integrates the IEA Global Facilities Database with GCCSI Policy & Legal Readiness (PLR) indicators.
+CCUS Policy Hub is an open-source, bilingual knowledge and data platform for analysing carbon capture, utilisation and storage policy, facility deployment, country governance capability, project-record capacity, and data quality.
 
-## Data Architecture
+It is designed as a grounding source for research and AI-assisted analysis. It is not a substitute for legal advice, engineering due diligence, project permitting review, or direct verification with the relevant authority or project operator.
 
-### Single Source of Truth (SSOT)
-- **Database**: `agent/ccus-ai-agent/db/ccus_master.sqlite`
-- **Schema**: `agent/ccus-ai-agent/db/schema.sql`
-- **Generated Content**: `src/content/**/*.md` is the publication layer
+## 2. Authoritative discovery workflow
 
-### Data Flow
+Base URL: https://liuh886.github.io/ccus-policy-hub
+
+Use this sequence:
+
+1. Fetch `/data/manifest.json`.
+2. Read the current dataset counts, file locations, schemas, and known limitations from the manifest.
+3. Fetch `/data/quality.json` and check the latest generated audit metadata and quality gaps.
+4. Fetch `/data/dataset-versions.json` and check source descriptions, dataset version, and last-checked metadata.
+5. Retrieve the required dataset.
+6. Validate records against the published JSON Schema.
+7. Preserve the evidence, capacity, relationship, and geographic limitations in any answer or derivative dataset.
+
+Do not treat values written in examples or narrative documentation as the current dataset state when a generated endpoint is available.
+
+## 3. Data architecture
+
+### Repository source of truth
+
+- Database: `agent/ccus-ai-agent/db/ccus_master.sqlite`
+- Schema: `agent/ccus-ai-agent/db/schema.sql`
+- Publication content: `src/content/**/*.md`
+- Public data: `public/data/*.json`
+- Public schemas: `public/data/schemas/*.json`
+
+### Governed flow
+
+```text
+SQLite source of truth
+  -> blocking deep audit
+  -> audit metadata stamp
+  -> bilingual Markdown export
+  -> quality and public-data generation
+  -> Astro and Pagefind build
+  -> static deployment
 ```
-SQLite SSOT → JSON Export → Public Data Endpoints
-          ↓
-    Markdown Export → Astro Build → Static Site
-```
 
-## Available Data Endpoints
+Generated Markdown and JSON are publication layers. Authoritative record changes should be made through the governed SQLite workflow rather than by silently editing generated outputs.
 
-### manifest.json
-The manifest provides an index of all available datasets, schemas, and documentation.
+## 4. Public endpoints
 
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/manifest.json
+### `/data/manifest.json`
 
-**Key fields**:
-- `generated_at`: ISO 8601 timestamp
-- `datasets`: Object with dataset metadata (file path, count, description)
-- `schemas`: Object mapping schema names to file paths
-- `known_limitations`: Array of known data limitations
+The current index of datasets, schemas, documentation, counts, and known limitations.
 
-### policies.json
-Global CCUS policies with FSRTM dimension analysis scores.
+Important fields:
 
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/policies.json
+- `generated_at`
+- `version`
+- `datasets`
+- `schemas`
+- `documentation`
+- `known_limitations`
 
-**Record structure**:
+### `/data/policies.json`
+
+Policy and regulatory records with bilingual content, source metadata, review status, provenance, and analytical dimensions.
+
+Typical fields:
+
 ```json
 {
   "id": "unique-policy-id",
   "country": "Country Name",
-  "year": 2024,
+  "year": 2025,
   "status": "Active",
   "category": "Regulatory",
   "review_status": "verified",
-  "source": "Source document",
-  "url": "https://...",
-  "i18n": {
-    "en": { "title": "...", "description": "...", "scope": "...", "tags": [...] },
-    "zh": { "title": "...", "description": "...", "scope": "...", "tags": [...] }
-  },
-  "analysis": {
-    "incentive": { "score": 75, "label": "Strong", "evidence": "...", "citation": "..." },
-    "statutory": { "score": 60, "label": "Moderate", "evidence": "...", "citation": "..." },
-    "market": { "score": 45, "label": "Developing", "evidence": "...", "citation": "..." },
-    "strategic": { "score": 80, "label": "Strong", "evidence": "...", "citation": "..." },
-    "mrv": { "score": 55, "label": "Moderate", "evidence": "...", "citation": "..." }
-  }
-}
-```
-
-**Analysis dimensions**:
-- `incentive`: Financial incentives (tax credits, grants, subsidies)
-- `statutory`: Regulatory framework (laws, regulations, standards)
-- `market`: Market mechanisms (carbon pricing, trading schemes)
-- `strategic`: Strategic planning (national targets, roadmaps)
-- `mrv`: Monitoring, Reporting, and Verification standards
-
-### facilities.json
-Global CCUS facilities with capacity, location, and linked policies.
-
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/facilities.json
-
-**Record structure**:
-```json
-{
-  "id": "123",
-  "country": "Norway",
-  "status": "Operational",
-  "review_status": "verified",
-  "announced_capacity_min": 1.5,
-  "announced_capacity_max": 2.0,
-  "estimated_capacity": 1.5,
-  "lat": 60.472,
-  "lng": 8.468,
-  "precision": "exact",
-  "i18n": {
-    "en": { "name": "Northern Lights", "sector": "Industrial", "type": "Storage", ... },
-    "zh": { "name": "北极光", "sector": "工业", "type": "封存", ... }
-  },
-  "linked_policies": ["no-ccs-act", "no-climate-change-act"]
-}
-```
-
-**Important**: `linked_policies` are currently country-level links (low confidence). A facility in Norway is linked to ALL Norwegian policies, not specifically ones that apply to it.
-
-**Coordinate precision levels**:
-- `exact`: Precise facility location (lat/lng from source data)
-- `state`: State/province centroid (used when exact location unavailable)
-- `country`: Country centroid (used when only country is known)
-
-### countries.json
-Country governance profiles with 7 regulatory pillars.
-
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/countries.json
-
-**Record structure**:
-```json
-{
-  "id": "Norway",
-  "region": "Europe",
-  "net_zero_year": 2050,
-  "capture_2030": "1.5 MtCO2/yr",
-  "storage_2050": "5 MtCO2/yr",
-  "policy_count": 5,
-  "facility_count": 3,
+  "legal_weight": "Primary Legislation",
+  "source": "Issuing authority or source document",
+  "url": "https://official-source.example/",
+  "pub_date": "2025-01-01",
+  "provenance_author": "...",
+  "provenance_reviewer": "...",
+  "provenance_last_audit_date": "2026-01-01",
   "i18n": {
     "en": {
-      "name": "Norway",
-      "summary": "Norway has a comprehensive CCS framework...",
-      "regulatory_pillars": {
-        "pore_space_rights": "State ownership",
-        "liability_transfer": "After 20 years",
-        "liability_period": "20 years post-closure",
-        "financial_assurance": "Required",
-        "permitting_lead_time": "2-3 years",
-        "co2_definition": "Waste after capture",
-        "cross_border_rules": "London Protocol"
-      }
+      "title": "...",
+      "description": "...",
+      "scope": "...",
+      "tags": []
     },
-    "zh": { ... }
+    "zh": {
+      "title": "...",
+      "description": "...",
+      "scope": "...",
+      "tags": []
+    }
+  },
+  "analysis": {
+    "incentive": {
+      "score": 0,
+      "label": "...",
+      "evidence": "...",
+      "citation": "..."
+    }
   }
 }
 ```
 
-**Regulatory pillars**:
-1. `pore_space_rights`: Ownership of underground storage volumes
-2. `liability_transfer`: Timeline for long-term stewardship handover
-3. `liability_period`: Duration of operator liability
-4. `financial_assurance`: Financial security requirements
-5. `permitting_lead_time`: Estimated approval timeline
-6. `co2_definition`: How captured CO2 is legally classified
-7. `cross_border_rules`: International transport regulations
+The five governance-analysis dimensions currently used by the comparison workflow are:
 
-### quality.json
-Data quality metrics and audit status.
+- `incentive`
+- `statutory`
+- `market`
+- `strategic`
+- `mrv`
 
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/quality.json
+Scores are structured analytical judgements, not legal determinations. Read the evidence and citation fields before using a score.
 
-**Key fields**:
-```json
-{
-  "generated_at": "2026-06-24T...",
-  "audit_status": {
-    "last_audit_pass": true,
-    "last_audit_date": "2026-06-24",
-    "last_audit_summary": "AUDIT PASSED (Fill Rate: 97.0%)"
-  },
-  "counts": {
-    "policies": 130,
-    "facilities": 1110,
-    "country_profiles": 66,
-    "policies_reviewed": 116,
-    "policies_draft": 14
-  },
-  "quality_gaps": {
-    "policies_missing_source": 11,
-    "policies_missing_url": 31,
-    "facilities_missing_estimated_capacity": 248
-  },
-  "bilingual_parity": {
-    "policies_zh": 130,
-    "policies_en": 130,
-    "facilities_zh": 1110,
-    "facilities_en": 1110,
-    "countries_zh": 66,
-    "countries_en": 66
-  },
-  "coordinate_precision": {
-    "exact": 200,
-    "state": 712,
-    "country": 198
-  },
-  "facility_policy_links": {
-    "total": 6992,
-    "country_level": 6992,
-    "sector_level": 0,
-    "evidence_level": 0,
-    "high_risk_warning": true,
-    "country_level_pct": 100
-  }
-}
-```
+### `/data/facilities.json`
 
-### dataset-versions.json
-Dataset version and provenance metadata.
+Facility and project-component records with bilingual descriptive fields, status, project-record capacity, dates, operators, partners, location, coordinate precision, and related-policy context.
 
-**Location**: https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json
+Typical fields include:
 
-```json
-{
-  "facility_dataset_name": "IEA CCUS Facilities & Custom Ingestion",
-  "facility_dataset_version": "2026-Q2",
-  "facility_dataset_source": "IEA CCUS Projects Database + manual curation",
-  "last_checked_date": "2026-06-24",
-  "policy_dataset_review_status": "active",
-  "country_profile_dataset_version": "2026-Q2"
-}
-```
+- `id`
+- `country`
+- `status`
+- `announced_capacity_min`
+- `announced_capacity_max`
+- `estimated_capacity`
+- `lat`
+- `lng`
+- `precision`
+- `announcement`
+- `fid`
+- `operation`
+- bilingual `name`, `sector`, `type`, `hub`, and technology fields
+- `linked_policies`
 
-## JSON Schemas
+### `/data/countries.json`
 
-JSON Schema definitions are available at:
+Country governance profiles with bilingual summaries, strategic targets, and seven regulatory pillars:
 
-- [policy.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json): Schema for policy records
-- [facility.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json): Schema for facility records
-- [country.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json): Schema for country profile records
-- [manifest.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/manifest.schema.json): Schema for the manifest file
+1. `pore_space_rights`
+2. `liability_transfer`
+3. `liability_period`
+4. `financial_assurance`
+5. `permitting_lead_time`
+6. `co2_definition`
+7. `cross_border_rules`
 
-Use these schemas to validate data before processing.
+The current comparison product also uses explicit governance-deployment fields where available:
 
-## Known Limitations
+- `deployment_capacity_mtpa`
+- `governance_capability_index`
 
-### 1. Facility-Policy Link Confidence
-**Current state**: All facility-policy links are country-level only.
-**Implication**: A facility in Norway is linked to ALL Norwegian policies, not just the ones that specifically apply to it.
-**Confidence level**: Low (0.3)
-**Future**: Higher-confidence links (sector-level, evidence-level) will be added in future versions.
+Legacy maturity aliases may remain for compatibility. Prefer the explicit governance-deployment fields.
 
-### 2. Coordinate Precision
-Facilities have varying coordinate precision:
-- `exact` (200 facilities): Precise location from source data
-- `state` (712 facilities): State/province centroid
-- `country` (198 facilities): Country centroid
+### `/data/quality.json`
 
-When mapping facilities, check the `precision` field to understand location accuracy.
+Generated quality and audit information. This endpoint is authoritative for the current generated quality state.
 
-### 3. Data Completeness
-Some records may have missing fields:
-- 11 policies missing source
-- 31 policies missing URL
-- 248 facilities missing estimated capacity
+Key sections:
 
-Check `quality.json` for current completeness metrics.
+- `generated_at`
+- `audit_status`
+- `counts`
+- `quality_gaps`
+- `bilingual_parity`
+- `coordinate_precision`
+- `facility_policy_links`
 
-### 4. Language Coverage
-Data is available in English and Chinese. Most fields are populated in both languages, but some may only be available in one.
+`audit_status.last_audit_date` is the date on which the repository's governed audit gates were run. It is not automatically the date on which every underlying policy or facility source was rechecked.
 
-## Usage Guidelines
+### `/data/dataset-versions.json`
 
-1. **Always check quality.json** before using the data for analysis
-2. **Verify audit status** - `last_audit_pass` should be true
-3. **Check dataset-versions.json** for data freshness
-4. **Be aware of link confidence** - facility-policy links are country-level only
-5. **Use schemas** to validate data before processing
-6. **Attribute source** - Data comes from IEA CCUS database and manual curation
+Dataset name, version, source description, policy review state, and last-checked metadata.
 
-## Regenerating Data
+The dataset last-checked date and the software audit date describe different things:
 
-To regenerate the public data endpoints:
-```bash
-pnpm manage:db:quality:export  # Generate quality metrics
-pnpm manage:db:data:export     # Generate public data endpoints
-```
+- dataset last checked: source-content review or dataset refresh boundary;
+- audit date: execution of repository consistency and quality gates.
 
-## Source Code
+## 5. Evidence model
+
+### Source hierarchy
+
+Use record-level sources in this order:
+
+1. legislation, regulations, government gazettes, regulator decisions, permits, and formal programme documents;
+2. official government, regulator, multilateral, and project-operator publications;
+3. recognised research institutes and structured industry databases;
+4. reputable secondary reporting used as a discovery lead.
+
+A secondary article can reveal a missing development. It should not replace an available official source in the record.
+
+### Review status
+
+- `verified`: the record has passed the repository's review-state threshold, but users must still inspect its source, URL, provenance, and evidence.
+- `draft`: the record remains incomplete, provisional, or awaiting human review.
+
+A verified label does not convert an empty source field or a country-level relationship into direct evidence.
+
+## 6. Facility-policy relationship confidence
+
+Most current facility-policy relationships are jurisdiction-level context.
+
+Interpretation:
+
+- **Country level**: the facility and policy share a jurisdiction. Low confidence for project-specific applicability.
+- **Sector level**: the facility sector matches the documented policy scope. Medium confidence and still requires verification.
+- **Direct evidence**: an official or project source explicitly connects the policy and facility. High confidence.
+
+Do not claim that a linked policy funds, permits, governs, or caused a project unless the record contains direct supporting evidence.
+
+## 7. Project-record capacity methodology
+
+Project-record capacity is derived from the maintained estimated value when available, otherwise from the announced range according to repository rules.
+
+Important limitations:
+
+- records without usable capacity remain in project-count views but contribute zero to capacity aggregation;
+- capture, transport, storage, utilisation, and full-chain records can represent different components of one wider value chain;
+- adding different project-record types can double count physical system capacity;
+- project-record capacity is not net deliverable capture capacity;
+- project-record capacity is not net geological storage capacity;
+- announced or planned capacity is not equivalent to operational delivery.
+
+The homepage uses:
+
+- `Pipeline` = Planned + Under construction + Operational
+- `Committed` = Under construction + Operational
+
+These are analytical status groupings, not financial or legal definitions of commitment.
+
+## 8. Time and status limitations
+
+The 2026 project landscape is a snapshot of the dataset version, not a statement that every project was announced, built, or commissioned in 2026.
+
+Current status fields should not be used alone to reconstruct historical project status. A historical reconstruction requires dated source evidence or a versioned status history.
+
+The capacity trend uses available project dates and repository date-priority rules. It is not a complete historical census of every status transition.
+
+## 9. Geographic precision
+
+Always inspect `precision`:
+
+- `exact`: intended to represent a sourced project location;
+- `state`: state, province, or subnational approximation;
+- `country`: country-level visualization anchor;
+- other approximate values should be treated conservatively.
+
+Do not infer local geology, proximity, infrastructure access, environmental exposure, or community impacts from state-level or country-level anchors.
+
+## 10. Bilingual data
+
+English and Chinese record counts are checked for parity, but count parity does not guarantee that every field has equivalent detail, terminology, or source-language fidelity.
+
+For legal interpretation, prefer the official source language and verify translated summaries against the primary text.
+
+## 11. Governance-deployment analysis
+
+The Governance Capability Profile uses structured policy evidence across five dimensions. The Governance-Deployment Matrix combines governance capability with committed project-record deployment scale.
+
+These views are comparative research tools. They should not be described as a universal national maturity ranking or as proof that one jurisdiction is legally or commercially suitable for a specific project.
+
+## 12. Recommended AI answer pattern
+
+When answering from this dataset:
+
+1. identify the relevant record and dataset version;
+2. distinguish direct evidence from jurisdiction context;
+3. state whether the record is verified or draft;
+4. cite the source URL when present;
+5. state any missing source, URL, capacity, or coordinate precision limitation;
+6. preserve the project-record capacity caveat;
+7. avoid project-specific legal conclusions without direct evidence;
+8. suggest primary-source verification for high-stakes decisions.
+
+## 13. External strategic sources
+
+The following sources can be used to identify global developments requiring record-level verification:
+
+- Global CCS Institute, Global Status of CCS 2025: https://www.globalccsinstitute.com/global-status-of-ccs/
+- Global CCS Institute, CCS Policy, Legal and Regulatory Snapshot for 2025 trends: https://www.globalccsinstitute.com/ccsplrsnapshot/
+
+These are strategic and secondary analytical sources. Where an official law, regulation, permit, funding decision, or government publication exists, use the primary source for the database record.
+
+## 14. Repository
 
 GitHub: https://github.com/liuh886/ccus-policy-hub
-License: MIT
+
+Citation and DOI information are available in the repository README and Zenodo record.
