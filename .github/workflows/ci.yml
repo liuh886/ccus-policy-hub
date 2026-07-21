@@ -64,6 +64,14 @@ jobs:
               docs/policy-db-consistency-report.md
           fi
 
+      - name: Build
+        run: |
+          mkdir -p docs
+          set +e
+          pnpm run build 2>&1 | tee docs/policy-post-export-build.log
+          status=${PIPESTATUS[0]}
+          exit "$status"
+
       - name: Upload Policy Projection Artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -74,6 +82,7 @@ jobs:
             public/data/policies.json
             docs/policy-db-consistency-report.json
             docs/policy-db-consistency-report.md
+            docs/policy-post-export-build.log
             .github/workflows/ci.yml
             .github/workflows/deploy.yml
             agent/ccus-ai-agent/logic/manage.mjs
@@ -85,6 +94,3 @@ jobs:
             scripts/run-policy-consistency-audit.test.mjs
           if-no-files-found: error
           retention-days: 7
-
-      - name: Build
-        run: pnpm run build
