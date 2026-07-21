@@ -1,0 +1,90 @@
+name: Materialize policy lifecycle cleanup
+
+on:
+  push:
+    branches:
+      - agent/policy-lifecycle-cleanup
+    paths:
+      - scripts/migrate-policy-lifecycle-2026-07.mjs
+      - scripts/migrate-policy-lifecycle-2026-07.test.mjs
+      - package.json
+      - .github/workflows/materialize-policy-lifecycle-cleanup.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/policy-lifecycle-cleanup
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Apply governed SQLite migration
+        run: pnpm manage:db:migrate:policy-lifecycle
+
+      - name: Clean and regenerate Markdown
+        run: pnpm manage:db:export:md:clean
+
+      - name: Run deep audit and stamp metadata
+        run: pnpm manage:db:audit:deep
+
+      - name: Regenerate quality and public data
+        run: |
+          pnpm manage:db:quality:export
+          pnpm manage:db:data:export
+
+      - name: Format migrated outputs
+        run: |
+          pnpm prettier --write \
+            scripts/migrate-policy-lifecycle-2026-07.mjs \
+            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
+            package.json \
+            "src/content/policies/**/*.md" \
+            "public/data/*.json" \
+            src/data/quality_metrics.generated.json
+
+      - name: Validate repository
+        run: |
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm build
+
+      - name: Commit governed data outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            agent/ccus-ai-agent/db/ccus_master.sqlite \
+            src/content/policies \
+            src/data/quality_metrics.generated.json \
+            public/data \
+            scripts/migrate-policy-lifecycle-2026-07.mjs \
+            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
+            package.json
+          if git diff --cached --quiet; then
+            echo "No materialized changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): materialize policy lifecycle cleanup"
+          git push origin HEAD:agent/policy-lifecycle-cleanup
