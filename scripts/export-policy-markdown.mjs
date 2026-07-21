@@ -27,7 +27,11 @@ function queryRows(db, sql, params = []) {
   const columns = stmt.getColumnNames();
   while (stmt.step()) {
     const values = stmt.get();
-    rows.push(Object.fromEntries(columns.map((column, index) => [column, values[index]])));
+    rows.push(
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
+    );
   }
   stmt.free();
   return rows;
@@ -147,7 +151,8 @@ export async function exportPolicyMarkdown({
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   exportPolicyMarkdown().catch((error) => {
