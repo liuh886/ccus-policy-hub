@@ -2,9 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, policy/official-gap-pass-2026-07]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -32,7 +35,8 @@ jobs:
             docs/policy-gap-pass-2026-07.md \
             scripts/migrate-official-policy-gaps-2026-07.mjs \
             scripts/migrate-official-policy-gaps-2026-07.test.mjs \
-            package.json
+            package.json \
+            .github/workflows/ci.yml
 
       - name: ESLint
         run: pnpm eslint .
@@ -73,15 +77,67 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Upload Formatted Policy Gap Controls
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Materialize Official Policy Gap Migration
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          pnpm manage:db:migrate:official-policy-gaps
+          pnpm manage:db:export:policies
+          pnpm manage:db:data:export
+          git restore \
+            public/data/countries.json \
+            public/data/facilities.json \
+            public/data/manifest.json \
+            public/data/quality.json
+          pnpm prettier --write \
+            "src/content/policies/**/*.md" \
+            public/data/policies.json
+          pnpm manage:db:audit:policy-consistency
+          pnpm prettier --write \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+          pnpm manage:db:audit:deep
+          pnpm test
+          pnpm astro check
+          pnpm run build
+
+      - name: Enforce Policy-Only Change Boundary
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          forbidden=0
+          while IFS= read -r file; do
+            case "$file" in
+              .github/workflows/ci.yml|package.json|agent/ccus-ai-agent/db/ccus_master.sqlite|docs/policy-gap-pass-2026-07.md|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md|public/data/policies.json|scripts/migrate-official-policy-gaps-2026-07.mjs|scripts/migrate-official-policy-gaps-2026-07.test.mjs|src/content/policies/*)
+                ;;
+              *)
+                echo "Forbidden non-policy change: $file"
+                forbidden=1
+                ;;
+            esac
+          done < <(git diff --name-only)
+          exit "$forbidden"
+
+      - name: Commit Verified Policy Migration
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          name: formatted-policy-gap-controls
-          path: |
+          commit_message: 'feat(data): materialize verified official policy gaps'
+          file_pattern: >-
+            .github/workflows/ci.yml
+            package.json
+            agent/ccus-ai-agent/db/ccus_master.sqlite
             docs/policy-gap-pass-2026-07.md
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
+            public/data/policies.json
             scripts/migrate-official-policy-gaps-2026-07.mjs
             scripts/migrate-official-policy-gaps-2026-07.test.mjs
-            package.json
-          if-no-files-found: error
-          retention-days: 7
+            src/content/policies
