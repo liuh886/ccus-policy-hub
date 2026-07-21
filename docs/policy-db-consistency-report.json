@@ -3,12 +3,12 @@
   "scope": "policies-only",
   "pass": true,
   "summary": {
-    "db_policies": 124,
-    "en_markdown_files": 124,
-    "zh_markdown_files": 124,
-    "public_records": 124,
+    "db_policies": 127,
+    "en_markdown_files": 127,
+    "zh_markdown_files": 127,
+    "public_records": 127,
     "mismatches": 0,
-    "formatting_equivalents_ignored": 49
+    "formatting_equivalents_ignored": 48
   },
   "mismatches": []
 }

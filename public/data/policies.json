@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-21T14:17:13.253Z",
-  "count": 124,
+  "generated_at": "2026-07-21T16:20:19.944Z",
+  "count": 127,
   "records": [
     {
       "id": "ar-rigi-ccus-2024",
@@ -406,56 +406,117 @@
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "巴西联邦政府",
-      "url": "https://www.in.gov.br/web/dou/-/lei-n-14.993-de-8-de-outubro-de-2024-589111445",
+      "source": "Presidency of the Republic of Brazil / ANP",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14993.htm",
       "pub_date": "2024-10-08",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-07",
+      "provenance_reviewer": "Primary-source policy gap audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Brazil 'Fuels of the Future' Act (Law 14,993/2024)",
-          "description": "Brazil's Law No. 14,933/2024 established the first legal framework for CCS in South America, integrated with a regulated carbon market (SBCE).",
+          "title": "Brazil 'Fuels of the Future' Act (Law No. 14,993/2024)",
+          "description": "Law No. 14,993/2024 establishes Brazil’s federal legal basis for the capture, transport and permanent geological storage of CO2 outside contracted oil-and-gas enhanced-recovery operations. It assigns ANP responsibility for regulating and authorising the CCS industry, provides for authorisations of 30 years renewable for a further 30 years, and requires storage plans, monitoring, validated data, storage and leakage inventories, contingency action and regulatory audits. The law does not establish the Brazilian Emissions Trading System; the SBCE was created separately by Law No. 15,042/2024.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "巴西“未来燃料”法案 (Law 14,993/2024)",
-          "description": "## 政策概览\r\n\r\n巴西第 14,993/2024 号法律（Law on Fuels of the Future）于 2024 年 10 月 8 日签署成法，确立了南美洲首个针对碳捕集与封存（CCS）的专门法律框架。该法案的核心在于通过 30 年期的特许经营权制度规范二氧化碳的地质封存，并指定巴西国家石油、天然气和生物燃料管理局 (ANP) 作为中央监管机构。\r\n\r\n该法律将 CCS 与巴西庞大的生物燃料产业（特别是生物乙醇）深度整合。通过确立 CCS 产生的碳减排额度可用于履行全国受规管碳市场 (SBCE) 的义务，并为可持续航空燃料 (SAF) 设定了强制混合配额，为生物质碳捕集与封存 (BECCS) 提供了稳健的商业化路径。此外，法律明确排除了 CO2-EOR（提高石油采收率）路径在纯 CCS 授权下的适用性，确保了技术资金流向永久性地质隔离，标志着巴西从资源依赖型增长向低碳管理枢纽的战略转向。",
+          "title": "巴西《未来燃料法》（第14,993/2024号法律）",
+          "description": "巴西第14,993/2024号法律建立联邦层面的二氧化碳捕集、运输和永久地质封存法律基础，但不适用于已签油气合同区内为提高采收率实施的二氧化碳注入。该法授权ANP监管和批准CCS行业活动，授权期为30年并可再延长30年，同时要求运营方制定封存、监测和应急方案，校准设备，记录并验证封存数据，编制封存量和泄漏清单，并接受检查与审计。该法并未设立巴西排放交易体系；SBCE由第15,042/2024号法律另行建立。",
           "scope": null,
           "tags": null
         }
       },
       "analysis": {
         "incentive": {
-          "score": 75,
-          "label": "SAF Mandates",
-          "evidence": "Integrates CCS with Sustainable Aviation Fuel (SAF) mandates, providing a guaranteed market for BECCS.",
-          "citation": "Law 14,993/2024 Chapter III"
+          "score": 55,
+          "label": "Legal-certainty enabler",
+          "evidence": "The law enables long-duration CCS authorisations and related services but does not itself provide a dedicated CCS subsidy or SBCE crediting entitlement.",
+          "citation": "Law No. 14,993/2024, Articles 26-30."
         },
         "market": {
-          "score": 85,
-          "label": "Biofuel Synergies",
-          "evidence": "Strongly leverages Brazil's ethanol industry to create a competitive bio-CCS market.",
-          "citation": "RenovaBio Alignment"
+          "score": 75,
+          "label": "Basis for commercial CCS services",
+          "evidence": "The authorisation regime creates a legal basis for commercial capture, transport and storage services, but carbon-market asset treatment is governed separately.",
+          "citation": "Law No. 14,993/2024; Law No. 15,042/2024."
         },
         "mrv": {
-          "score": 80,
-          "label": "SBCE Integration",
-          "evidence": "Monitoring rules are linked to the Brazilian Emissions Trading System (SBCE) for carbon credit generation.",
-          "citation": "SBCE Guidelines"
+          "score": 90,
+          "label": "Storage monitoring and audit duties",
+          "evidence": "Operators must maintain monitoring and contingency plans, validate storage data, compile storage and leakage inventories, respond to undesirable events and permit audits and inspections.",
+          "citation": "Law No. 14,993/2024, Article 29."
+        },
+        "statutory": {
+          "score": 95,
+          "label": "Federal CCS authorisation law",
+          "evidence": "The law assigns ANP authority to regulate and authorise capture for geological storage and the geological storage industry.",
+          "citation": "Law No. 14,993/2024, Articles 26-30."
+        },
+        "strategic": {
+          "score": 85,
+          "label": "National CCS legal foundation",
+          "evidence": "The Act establishes the national statutory foundation required for non-EOR geological storage projects and subsequent ANP regulation.",
+          "citation": "Law No. 14,993/2024, Articles 26-30; ANP CCS overview."
+        }
+      }
+    },
+    {
+      "id": "br-sbce-law-15042-2024",
+      "country": "Brazil",
+      "year": 2024,
+      "status": "Active",
+      "category": "Market",
+      "review_status": "verified",
+      "legal_weight": "Primary Legislation",
+      "source": "Presidency of the Republic of Brazil / Ministry of Finance",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l15042.htm",
+      "pub_date": "2024-12-11",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source policy gap audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "Brazilian Emissions Trading System (SBCE) — Law No. 15,042/2024",
+          "description": "Law No. 15,042/2024 establishes the Brazilian Emissions Trading System (SBCE) as a regulated environment for limiting greenhouse-gas emissions and trading assets representing emissions, verified reductions or verified removals. The law expressly includes direct air capture and storage among possible removal technologies and establishes phased implementation, registry, reporting, verification and compliance architecture. It does not authorise geological CO2 storage projects; the CCS operating and authorisation framework remains governed separately by Law No. 14,993/2024 and ANP regulation.",
+          "scope": "Brazilian national regulated carbon market and its phased implementation.",
+          "tags": ["ETS", "carbon pricing", "MRV", "carbon removals"]
+        },
+        "zh": {
+          "title": "巴西排放交易体系（SBCE）——第15,042/2024号法律",
+          "description": "巴西第15,042/2024号法律设立巴西温室气体排放交易体系（SBCE），通过排放约束以及排放、经核证减排和经核证移除资产交易构建全国受监管碳市场。该法将直接空气捕集与封存明确列入可能的温室气体移除技术，并规定分阶段实施、中央登记、监测、报告、核证和履约制度。该法不负责批准地质封存项目；二氧化碳地质封存的运营与授权框架仍由第14,993/2024号法律及ANP配套监管另行规范。",
+          "scope": "巴西全国受监管碳市场及其分阶段实施安排。",
+          "tags": ["排放交易体系", "碳定价", "MRV", "碳移除"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 65,
+          "label": "Phased carbon-asset incentive",
+          "evidence": "The law creates tradable compliance and verified reduction or removal assets, but economic incentives depend on phased implementation and later allocation and methodology rules.",
+          "citation": "Law No. 15,042/2024, Articles 3, 10-15 and 50."
+        },
+        "market": {
+          "score": 95,
+          "label": "National regulated carbon market",
+          "evidence": "The SBCE is a regulated cap-and-trade environment for allowances and verified reduction or removal assets.",
+          "citation": "Law No. 15,042/2024, Articles 3 and 10-15."
+        },
+        "mrv": {
+          "score": 90,
+          "label": "Statutory MRV and registry",
+          "evidence": "Operators are subject to monitoring plans, emissions and removals reporting, verification, registry and compliance procedures developed through the statutory implementation phases.",
+          "citation": "Law No. 15,042/2024, Chapters II-IV and Article 50."
         },
         "statutory": {
           "score": 90,
-          "label": "ANP Central Regulator",
-          "evidence": "Designates the National Petroleum Agency (ANP) as the primary regulator for CCS licensing in Brazil.",
-          "citation": "Law 14,993 Art. 5"
+          "label": "Primary national ETS law",
+          "evidence": "Law No. 15,042/2024 establishes the SBCE, its governance, regulated entities, assets, compliance duties and implementation phases.",
+          "citation": "Law No. 15,042/2024."
         },
         "strategic": {
-          "score": 90,
-          "label": "COP30 Blueprint",
-          "evidence": "Key legal pillar for Brazil's updated NDC and hosting of COP30.",
-          "citation": "Ministry of Mines and Energy Roadmap"
+          "score": 85,
+          "label": "Economy-wide carbon-pricing framework",
+          "evidence": "The law creates the national architecture intended to translate Brazilian climate commitments into regulated carbon-market obligations.",
+          "citation": "Law No. 15,042/2024, Articles 3-5 and 50."
         }
       }
     },
@@ -1079,6 +1140,67 @@
         }
       },
       "analysis": {}
+    },
+    {
+      "id": "cn-national-ets-expansion-2025",
+      "country": "China",
+      "year": 2025,
+      "status": "Active",
+      "category": "Market",
+      "review_status": "verified",
+      "legal_weight": "Ministerial Work Plan approved by the State Council",
+      "source": "Ministry of Ecology and Environment of China",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202503/t20250326_1104736.html",
+      "pub_date": "2025-03-20",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source policy gap audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "China National ETS Expansion to Steel, Cement and Aluminium (2025)",
+          "description": "The Ministry of Ecology and Environment work plan, approved by the State Council and issued in March 2025, brought steel, cement and aluminium smelting into China’s national emissions trading system. It is the first operational expansion beyond the power sector and introduces sector-specific greenhouse-gas accounting, reporting, verification, allocation and compliance arrangements. The start-up phase covers 2024-2026, followed by a deepening phase from 2027. The policy creates an indirect carbon-price and MRV driver for industrial decarbonisation, including potential CCUS investment, but it does not establish a CCUS offset methodology or guarantee that captured and stored CO2 generates tradable credits.",
+          "scope": "National ETS coverage and MRV for steel, cement and aluminium smelting.",
+          "tags": ["ETS", "steel", "cement", "aluminium", "MRV"]
+        },
+        "zh": {
+          "title": "全国碳市场纳入钢铁、水泥、铝冶炼行业工作方案（2025）",
+          "description": "经国务院批准，生态环境部于2025年3月印发工作方案，将钢铁、水泥和铝冶炼行业纳入全国碳排放权交易市场。这是全国碳市场在发电行业之外首次进入操作实施阶段的扩围，并建立分行业的温室气体核算、报告、核查、配额分配和履约安排。启动实施阶段为2024—2026年度，2027年度起进入深化完善阶段。该政策通过碳价和MRV要求间接推动工业深度减排及潜在CCUS投资，但并未建立CCUS抵销方法学，也不能据此认定捕集封存量可以直接生成可交易信用。",
+          "scope": "钢铁、水泥、铝冶炼行业的全国碳市场覆盖及MRV制度。",
+          "tags": ["碳市场", "钢铁", "水泥", "铝冶炼", "MRV"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 60,
+          "label": "Gradual carbon-price incentive",
+          "evidence": "Allowance allocation and trading introduce a carbon-price signal, but the 2024-2026 start-up phase deliberately limits overall allowance deficits and compliance pressure.",
+          "citation": "MEE 2025 work plan and official Q&A on the steel, cement and aluminium expansion."
+        },
+        "market": {
+          "score": 95,
+          "label": "First national ETS expansion",
+          "evidence": "Steel, cement and aluminium smelting became covered sectors in the national compliance market, adding around 1,500 entities according to MEE.",
+          "citation": "MEE official Q&A, 26 March 2025."
+        },
+        "mrv": {
+          "score": 95,
+          "label": "Sector-specific accounting and verification",
+          "evidence": "MEE issued six sector accounting/reporting and verification technical documents and deployed dedicated data-management modules for the three sectors.",
+          "citation": "MEE official Q&A, 26 March 2025."
+        },
+        "statutory": {
+          "score": 80,
+          "label": "State-Council-approved implementation plan",
+          "evidence": "The MEE work plan was approved by the State Council and implements the Interim Regulations on Carbon Emissions Trading.",
+          "citation": "MEE Circular Huan Qihou [2025] No. 23."
+        },
+        "strategic": {
+          "score": 85,
+          "label": "Industrial carbon-pricing expansion",
+          "evidence": "The expansion moves the national ETS beyond power into major hard-to-abate industrial sectors and both energy and process emissions.",
+          "citation": "MEE 2025 work plan and official Q&A."
+        }
+      }
     },
     {
       "id": "cn-ccer",
@@ -2211,6 +2333,67 @@
           "label": "50 Mtpa by 2030",
           "evidence": "The legally defined 2030 objective requires at least 50 million tonnes of annual operational CO2 injection capacity in qualifying EU storage sites.",
           "citation": "Regulation (EU) 2024/1735, Article 20."
+        }
+      }
+    },
+    {
+      "id": "eu-industrial-carbon-management-strategy-2024",
+      "country": "European Union",
+      "year": 2024,
+      "status": "Active",
+      "category": "Strategic",
+      "review_status": "verified",
+      "legal_weight": "European Commission Communication",
+      "source": "European Union (EUR-Lex)",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52024DC0062",
+      "pub_date": "2024-02-06",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source policy gap audit",
+      "provenance_last_audit_date": "2026-07-21",
+      "i18n": {
+        "en": {
+          "title": "EU Industrial Carbon Management Strategy (COM(2024) 62)",
+          "description": "The European Commission communication COM(2024) 62 is the EU’s dedicated roadmap for industrial carbon management. It organises the policy around three pathways—CCS, permanent industrial carbon removals and CCU—and calls for integrated CO2 capture, transport, utilisation and storage value chains. It supports the strategic objective of at least 50 Mt per year of operational CO2 injection capacity by 2030, coordinated transport infrastructure, cross-border interoperability and the development of an EU market for CO2 transport and storage services. The communication is strategic guidance rather than directly binding legislation.",
+          "scope": "EU-wide industrial carbon management, including CCS, CCU, removals, transport and storage markets.",
+          "tags": ["CCS", "CCU", "carbon removals", "CO2 infrastructure"]
+        },
+        "zh": {
+          "title": "欧盟工业碳管理战略（COM(2024) 62）",
+          "description": "欧盟委员会COM(2024) 62号文件是欧盟面向工业碳管理的专项路线图，围绕碳捕集与封存、永久性工业碳移除和碳捕集利用三条路径，推动捕集、运输、利用和封存一体化价值链。战略支持到2030年至少形成每年5000万吨可运行二氧化碳注入能力，并推动运输基础设施协同规划、跨境互操作以及欧盟二氧化碳运输和封存服务市场建设。该文件属于战略性委员会通告，本身并非直接具有约束力的立法。",
+          "scope": "欧盟范围内的CCS、CCU、工业碳移除、运输和封存市场。",
+          "tags": ["CCS", "CCU", "碳移除", "二氧化碳基础设施"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 70,
+          "label": "Investment-framework roadmap",
+          "evidence": "The strategy coordinates EU and national funding, risk reduction and market-building measures but does not itself appropriate a new dedicated subsidy.",
+          "citation": "COM(2024) 62, Sections 4 and 5."
+        },
+        "market": {
+          "score": 85,
+          "label": "EU CO2-services market roadmap",
+          "evidence": "The strategy seeks a single market for industrial carbon management and competitive CO2 transport and storage services, including demand-supply coordination.",
+          "citation": "COM(2024) 62, Sections 3 and 4."
+        },
+        "mrv": {
+          "score": 70,
+          "label": "Coordinated accounting agenda",
+          "evidence": "The strategy calls for robust accounting and certification across CCS, CCU and removals, while detailed MRV obligations remain in separate legal instruments and methodologies.",
+          "citation": "COM(2024) 62, Sections 4.3 and 5."
+        },
+        "statutory": {
+          "score": 45,
+          "label": "Non-binding Commission communication",
+          "evidence": "COM(2024) 62 is a strategic Commission communication; binding obligations arise from separate instruments such as the EU ETS, CCS Directive and Net-Zero Industry Act.",
+          "citation": "COM(2024) 62 final."
+        },
+        "strategic": {
+          "score": 100,
+          "label": "Dedicated EU carbon-management strategy",
+          "evidence": "The communication establishes the EU-wide roadmap for CCS, CCU and permanent removals and links it to the 2030 storage-capacity objective and climate neutrality.",
+          "citation": "COM(2024) 62, Sections 1-3."
         }
       }
     },
