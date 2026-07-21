@@ -32,7 +32,11 @@ function rowsFromQuery(db, sql, params = []) {
 
   while (stmt.step()) {
     const values = stmt.get();
-    rows.push(Object.fromEntries(columns.map((column, index) => [column, values[index]])));
+    rows.push(
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
+    );
   }
 
   stmt.free();

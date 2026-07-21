@@ -24,7 +24,8 @@ test('classifies missing source and URL combinations', () => {
   );
 
   assert.equal(
-    classifyPolicySourceGap({ source: '', url: 'https://example.com' }).gap_type,
+    classifyPolicySourceGap({ source: '', url: 'https://example.com' })
+      .gap_type,
     'missing_source'
   );
   assert.equal(
