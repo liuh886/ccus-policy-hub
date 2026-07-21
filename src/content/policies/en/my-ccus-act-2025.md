@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Section 32: Technical Requirements',
-          'evidence': 'Adopts international standards (ISO 27914) for CO2 accounting and injection monitoring.',
+          'citation': 'MyCCUS official activities record, including the 22 June 2026 subsidiary-regulation workshop.',
+          'evidence': 'The Act provides the legal basis for risk, liability, registration and post-closure controls; detailed import-permit and registration regulations remained under development in 2026.',
           'label': 'ISO-aligned MRV',
           'score': 85,
         },
       'statutory':
         {
           'auditNote': 'Highest statutory score in ASEAN.',
-          'citation': 'Malaysia CCUS Act 2025',
-          'evidence': 'A comprehensive federal act (Act 859) covering capture, transport, and storage jurisdiction.',
+          'citation': 'Malaysia CCUS Act 2025 [Act 870]; MyCCUS official implementation record, 9 October 2025.',
+          'evidence': 'Act 870 establishes the Malaysian CCUS Agency and a national licensing, permitting and compliance framework for CCUS activities.',
           'label': 'Dedicated Federal Act',
           'score': 100,
         },
@@ -45,15 +45,22 @@
     },
   'category': 'Regulatory',
   'country': 'Malaysia',
-  'description': "## Policy Overview\r \r Gazetted in August 2025, Malaysia’s standalone CCUS Act (Act 859) provides the robust legal architecture needed to position the nation as a premier carbon management hub in the Asia Pacific. The Act mandates the creation of the Malaysia CCUS Agency (MyCCUS), which serves as a one-stop regulatory body for the entire value chain. Covering Peninsular Malaysia and Labuan, the legislation focuses on streamlining offshore exploration and storage permits.\r \r At its core, the Act a",
+  'description': 'Malaysia’s Carbon Capture, Utilisation and Storage Act 2025 is Act 870, not Act 859. It was gazetted on 1 August 2025 and came into force on 1 October 2025. The Act establishes the Malaysian Carbon Capture, Utilisation and Storage Agency under section 6 and provides the federal framework for administering and supervising CCUS activities. MyCCUS and designated competent technical entities implement the licensing, permitting, technical and compliance functions, while subsidiary regulations and ope',
   'evolution':
     {
-      'clusters':
+      'consolidatedFrom':
+        ['my-ccus-bill-2025', 'my-offshore-ccs-reg-2025', 'my-ccs-framework'],
+      'milestones':
         [
-          'Malaysia National Energy Transition Roadmap (NETR)',
-          'ASEAN CCUS Hub Strategy',
+          {
+            'date': '2025-08-01',
+            'event': 'CCUS Act 2025 [Act 870] gazetted.',
+          },
+          {
+            'date': '2025-10-01',
+            'event': 'Act entered into force and the Malaysian CCUS Agency was established.',
+          },
         ],
-      'supersedes': [],
     },
   'id': 'my-ccus-act-2025',
   'impactAnalysis':
@@ -66,10 +73,10 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
-  'pubDate': '2025-01-01',
+  'pubDate': '2025-08-01',
   'regulatory':
     {
       'co2_definition': '',
@@ -82,16 +89,12 @@
     },
   'relatedFacilities': ['1242', '1243', '311', '598'],
   'reviewStatus': 'verified',
-  'source': '马来西亚议会',
+  'source': 'Ministry of Economy / Malaysian CCUS Agency (MyCCUS)',
   'status': 'Active',
-  'title': 'Malaysia Carbon Capture, Utilisation, and Storage (CCUS) Act 2025',
-  'url': 'https://www.parlimen.gov.my/',
+  'title': 'Malaysia Carbon Capture, Utilisation and Storage Act 2025 (Act 870)',
+  'url': 'https://myccus.ekonomi.gov.my/activities/',
   'year': 2025,
 }
 ---
 
-## Policy Overview
-
-Gazetted in August 2025, Malaysia’s standalone CCUS Act (Act 859) provides the robust legal architecture needed to position the nation as a premier carbon management hub in the Asia Pacific. The Act mandates the creation of the Malaysia CCUS Agency (MyCCUS), which serves as a one-stop regulatory body for the entire value chain. Covering Peninsular Malaysia and Labuan, the legislation focuses on streamlining offshore exploration and storage permits.
-
-At its core, the Act aims to **monetize Malaysia's vast offshore geological storage capacity**. By providing a clear legal framework for cross-border CO2 transport and permanent storage, it enables PETRONAS and its international partners to develop large-scale regional hubs. This policy is a central engine of the National Energy Transition Roadmap (NETR), designed to transform carbon storage from an environmental necessity into a new pillar of economic growth.
+Malaysia’s Carbon Capture, Utilisation and Storage Act 2025 is Act 870, not Act 859. It was gazetted on 1 August 2025 and came into force on 1 October 2025. The Act establishes the Malaysian Carbon Capture, Utilisation and Storage Agency under section 6 and provides the federal framework for administering and supervising CCUS activities. MyCCUS and designated competent technical entities implement the licensing, permitting, technical and compliance functions, while subsidiary regulations and operational guidance continue to be developed.

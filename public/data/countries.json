@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T08:11:33.690Z",
+  "generated_at": "2026-07-21T10:45:40.773Z",
   "count": 66,
   "records": [
     {
@@ -639,7 +639,7 @@
           }
         }
       },
-      "policy_count": 7,
+      "policy_count": 6,
       "facility_count": 0
     },
     {
@@ -1159,7 +1159,7 @@
           }
         }
       },
-      "policy_count": 4,
+      "policy_count": 2,
       "facility_count": 21
     },
     {
@@ -1479,7 +1479,7 @@
           }
         }
       },
-      "policy_count": 6,
+      "policy_count": 3,
       "facility_count": 4
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T08:11:33.690Z",
+  "generated_at": "2026-07-21T10:45:40.773Z",
   "project": "CCUS Policy Hub",
   "description": "Global CCUS Policy Database & Analysis Platform",
   "version": "1.0.0",
@@ -8,7 +8,7 @@
   "datasets": {
     "policies": {
       "file": "https://liuh886.github.io/ccus-policy-hub/data/policies.json",
-      "count": 130,
+      "count": 124,
       "description": "Global CCUS policies with analysis scores"
     },
     "facilities": {

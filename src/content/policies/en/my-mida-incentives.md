@@ -5,10 +5,10 @@
       'incentive':
         {
           'auditNote': 'Upgraded from baseline to verified regional status during Final Audit.',
-          'citation': '',
-          'evidence': 'No direct incentive found.',
-          'label': 'Not specified',
-          'score': 40,
+          'citation': 'MIDA official CCS incentive summary, 31 May 2023.',
+          'evidence': 'Official MIDA guidance provides a 100% Investment Tax Allowance on qualifying capital expenditure for ten years, plus equipment-duty exemptions and service-fee deductions, subject to eligibility and application windows.',
+          'label': '100% ITA / 10 years',
+          'score': 95,
         },
       'market':
         {
@@ -43,25 +43,31 @@
           'score': 30,
         },
     },
-  'category': '法律监管',
+  'category': 'Incentive',
   'country': 'Malaysia',
-  'description': 'Providing 100% Investment Tax Allowance (ITA) for CCS activities to attract global carbon management capital.',
+  'description': 'Malaysia introduced dedicated CCS tax incentives for applications from 25 February 2023 to 31 December 2027. In-house CCS projects and CCS service providers may receive an Investment Tax Allowance equal to 100% of qualifying capital expenditure for ten years, offset against up to 100% of statutory income. CCS service providers may alternatively receive a 70% statutory-income tax exemption for ten years. Eligible equipment receives import-duty and sales-tax exemptions, and users of CCS services m',
+  'evolution':
+    {
+      'effectiveApplicationWindow': '2023-02-25/2027-12-31',
+      'sourcePublicationDate': '2023-05-31',
+    },
   'id': 'my-mida-incentives',
-  'legalWeight': 'Guideline/Policy',
+  'legalWeight': 'Fiscal Incentive',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
-  'pubDate': '2024-01-01',
+  'pubDate': '2023-05-31',
   'relatedFacilities': ['1242', '1243', '311', '598'],
   'reviewStatus': 'verified',
-  'source': '',
-  'status': '现行',
-  'title': 'Malaysia MIDA CCUS Tax Incentives',
-  'year': 2024,
+  'source': 'Malaysian Investment Development Authority (MIDA)',
+  'status': 'Active',
+  'title': 'Malaysia CCS Tax Incentives (Budget 2023)',
+  'url': 'https://www.mida.gov.my/equilibrium-through-carbon-capture-malaysias-path-to-net-zero-emissions/',
+  'year': 2023,
 }
 ---
 
-Providing 100% Investment Tax Allowance (ITA) for CCS activities to attract global carbon management capital.
+Malaysia introduced dedicated CCS tax incentives for applications from 25 February 2023 to 31 December 2027. In-house CCS projects and CCS service providers may receive an Investment Tax Allowance equal to 100% of qualifying capital expenditure for ten years, offset against up to 100% of statutory income. CCS service providers may alternatively receive a 70% statutory-income tax exemption for ten years. Eligible equipment receives import-duty and sales-tax exemptions, and users of CCS services may deduct qualifying service fees.
