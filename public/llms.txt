@@ -1,58 +1,73 @@
 # CCUS Policy Hub - AI-Readable Data Interface
 
-## What is CCUS Policy Hub?
+## Purpose
 
-CCUS Policy Hub is a global intelligence infrastructure for Carbon Capture, Utilization, and Storage (CCUS) policies and facilities. It provides structured, machine-readable data on CCUS regulations, projects, and country governance profiles across 66+ countries.
+CCUS Policy Hub is a bilingual, structured research platform for CCUS policy, facility, country-governance, deployment, and data-quality analysis.
 
-## Machine-Readable Data Files
+The platform connects several evidence layers, but they must not be treated as interchangeable:
+
+- policy and regulation records;
+- facility and project-component records;
+- country governance profiles;
+- derived project-record capacity and governance-deployment analytics;
+- data-quality and provenance metadata.
+
+## Start Here
 
 Base URL: https://liuh886.github.io/ccus-policy-hub
 
-| File | Description |
-|------|-------------|
-| [manifest.json](https://liuh886.github.io/ccus-policy-hub/data/manifest.json) | Index of all available datasets, schemas, and documentation |
-| [policies.json](https://liuh886.github.io/ccus-policy-hub/data/policies.json) | 130 global CCUS policies with analysis scores |
-| [facilities.json](https://liuh886.github.io/ccus-policy-hub/data/facilities.json) | 1,110 CCUS facilities with capacity and location data |
-| [countries.json](https://liuh886.github.io/ccus-policy-hub/data/countries.json) | 66 country governance profiles with regulatory pillars |
-| [quality.json](https://liuh886.github.io/ccus-policy-hub/data/quality.json) | Data quality metrics and audit status |
-| [dataset-versions.json](https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json) | Dataset version metadata |
+1. Fetch `/data/manifest.json` to discover current datasets, counts, schemas, and documentation.
+2. Check `/data/quality.json` before using the records.
+3. Check `/data/dataset-versions.json` for dataset version and last-checked metadata.
+4. Validate records against the schemas in `/data/schemas/`.
+5. Preserve the methodology and confidence limitations in downstream outputs.
 
-## JSON Schemas
+## Machine-Readable Files
 
-Schemas are available at:
-- [policy.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json)
-- [facility.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json)
-- [country.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/country.schema.json)
-- [manifest.schema.json](https://liuh886.github.io/ccus-policy-hub/data/schemas/manifest.schema.json)
+| File | Purpose |
+|---|---|
+| `/data/manifest.json` | Authoritative index of current public datasets and schemas |
+| `/data/policies.json` | Policy records, bilingual content, analysis dimensions, sources, and provenance |
+| `/data/facilities.json` | Facility records, project-record capacity, status, location, and related-policy context |
+| `/data/countries.json` | Country governance profiles and regulatory pillars |
+| `/data/quality.json` | Current generated quality metrics and audit metadata |
+| `/data/dataset-versions.json` | Dataset versions, source descriptions, and last-checked metadata |
+| `/data/schemas/` | JSON Schemas for validation |
+| `/llms-full.txt` | Extended field, evidence, and usage documentation |
 
-## Known Limitations
+Do not hard-code record counts from this file. Use the current manifest.
 
-1. **Facility-Policy Links**: Currently country-level only (low confidence). A facility in Norway is linked to all Norwegian policies, not specific ones.
+## Critical Evidence Boundaries
 
-2. **Coordinate Precision**: Varies by facility:
-   - `exact`: Precise location (200 facilities)
-   - `state`: State/province level (712 facilities)
-   - `country`: Country centroid (198 facilities)
+### Facility-policy relationships
 
-3. **Data Completeness**: Some policies may be missing source URLs or descriptions.
+Most current facility-policy links are country-level context. A facility in a country may be linked to policies from that jurisdiction, but this does not prove that every policy directly applies to, funds, permits, or caused the project.
 
-4. **Language Coverage**: Chinese and English are available, but some fields may only be populated in one language.
+Treat a relationship as direct evidence only when a source explicitly connects the policy and facility.
 
-## Before Using This Data
+### Project-record capacity
 
-1. Check [quality.json](https://liuh886.github.io/ccus-policy-hub/data/quality.json) for current data quality metrics
-2. Review [dataset-versions.json](https://liuh886.github.io/ccus-policy-hub/data/dataset-versions.json) for dataset version and last update date
-3. Be aware that facility-policy links are country-level only (low confidence)
-4. Verify audit status in quality.json before making decisions based on this data
+Facility records can represent separate capture, transport, storage, utilization, or full-chain components of a wider project. Aggregated project-record capacity is an analytical indicator, not net deliverable capture capacity or net geological storage capacity.
 
-## Full Documentation
+### Coordinates
 
-For complete documentation including all fields and relationships, see [llms-full.txt](https://liuh886.github.io/ccus-policy-hub/llms-full.txt)
+Check each facility's `precision` field. Country and state/province coordinates may be visualization anchors rather than verified project sites.
 
-## Source
+### Current status versus history
 
-This data is maintained in SQLite (`agent/ccus-ai-agent/db/ccus_master.sqlite`) as the single source of truth. Markdown files in `src/content/` are generated publication layers.
+A current dataset snapshot does not reconstruct the historical status of every project. Do not use current status fields alone to claim what a project's status was in an earlier year.
 
-## Contact
+## Source Hierarchy
+
+Prefer sources in this order:
+
+1. legislation, regulations, official gazettes, permits, regulator decisions, and formal programme documents;
+2. official government, regulator, multilateral, and project-operator publications;
+3. recognised research institutes and structured industry databases;
+4. reputable secondary reporting as a discovery lead only.
+
+## Source of Truth
+
+The maintained SQLite database at `agent/ccus-ai-agent/db/ccus_master.sqlite` is the repository source of truth. Markdown and public JSON files are generated publication layers.
 
 GitHub: https://github.com/liuh886/ccus-policy-hub
