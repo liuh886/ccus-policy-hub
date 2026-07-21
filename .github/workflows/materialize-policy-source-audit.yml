@@ -1,0 +1,75 @@
+name: Materialize policy source audit
+
+on:
+  push:
+    branches:
+      - agent/policy-source-url-audit
+    paths:
+      - scripts/report-policy-source-gaps.mjs
+      - scripts/report-policy-source-gaps.test.mjs
+      - package.json
+      - .github/workflows/materialize-policy-source-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit-policy-sources:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/policy-source-url-audit
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format audit inputs
+        run: |
+          pnpm prettier --write \
+            scripts/report-policy-source-gaps.mjs \
+            scripts/report-policy-source-gaps.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-source-audit.yml
+
+      - name: Validate audit logic
+        run: |
+          pnpm test
+          pnpm manage:db:audit:policy-sources
+          pnpm prettier --write \
+            docs/policy-source-url-gaps.md \
+            docs/policy-source-url-gaps.json
+
+      - name: Commit audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            scripts/report-policy-source-gaps.mjs \
+            scripts/report-policy-source-gaps.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-source-audit.yml \
+            docs/policy-source-url-gaps.md \
+            docs/policy-source-url-gaps.json
+          if git diff --cached --quiet; then
+            echo "No audit changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): materialize policy source gap audit"
+          git push origin HEAD:agent/policy-source-url-audit
