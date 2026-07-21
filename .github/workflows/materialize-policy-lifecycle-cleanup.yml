@@ -39,6 +39,30 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Format migration inputs
+        run: |
+          pnpm prettier --write \
+            scripts/migrate-policy-lifecycle-2026-07.mjs \
+            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-lifecycle-cleanup.yml
+
+      - name: Persist formatting before migration
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            scripts/migrate-policy-lifecycle-2026-07.mjs \
+            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-lifecycle-cleanup.yml
+          if git diff --cached --quiet; then
+            echo "Migration inputs already formatted."
+          else
+            git commit -m "style(data): format policy lifecycle migration"
+            git push origin HEAD:agent/policy-lifecycle-cleanup
+          fi
+
       - name: Apply governed SQLite migration
         run: pnpm manage:db:migrate:policy-lifecycle
 
@@ -56,9 +80,6 @@ jobs:
       - name: Format migrated outputs
         run: |
           pnpm prettier --write \
-            scripts/migrate-policy-lifecycle-2026-07.mjs \
-            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
-            package.json \
             "src/content/policies/**/*.md" \
             "public/data/*.json" \
             src/data/quality_metrics.generated.json
@@ -72,16 +93,11 @@ jobs:
 
       - name: Commit governed data outputs
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
             src/content/policies \
             src/data/quality_metrics.generated.json \
-            public/data \
-            scripts/migrate-policy-lifecycle-2026-07.mjs \
-            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
-            package.json
+            public/data
           if git diff --cached --quiet; then
             echo "No materialized changes to commit."
             exit 0
