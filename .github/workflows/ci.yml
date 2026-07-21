@@ -111,21 +111,36 @@ jobs:
           github.head_ref == 'policy/official-gap-pass-2026-07' &&
           github.actor != 'github-actions[bot]'
         run: |
+          mkdir -p docs
+          git diff --name-only | tee docs/policy-materialization-diff.txt
           forbidden=0
           while IFS= read -r file; do
             case "$file" in
-              .github/workflows/ci.yml|package.json|agent/ccus-ai-agent/db/ccus_master.sqlite|docs/policy-gap-pass-2026-07.md|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md|public/data/policies.json|scripts/migrate-official-policy-gaps-2026-07.mjs|scripts/migrate-official-policy-gaps-2026-07.test.mjs|src/content/policies/*)
+              .github/workflows/ci.yml|package.json|agent/ccus-ai-agent/db/ccus_master.sqlite|docs/policy-gap-pass-2026-07.md|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md|docs/policy-materialization-diff.txt|public/data/policies.json|scripts/migrate-official-policy-gaps-2026-07.mjs|scripts/migrate-official-policy-gaps-2026-07.test.mjs|src/content/policies/*)
                 ;;
               *)
                 echo "Forbidden non-policy change: $file"
                 forbidden=1
                 ;;
             esac
-          done < <(git diff --name-only)
+          done < docs/policy-materialization-diff.txt
           exit "$forbidden"
+
+      - name: Upload Policy Migration Diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-migration-diagnostics
+          path: |
+            docs/policy-materialization-diff.txt
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Commit Verified Policy Migration
         if: >-
+          success() &&
           github.event_name == 'pull_request' &&
           github.head_ref == 'policy/official-gap-pass-2026-07' &&
           github.actor != 'github-actions[bot]'
