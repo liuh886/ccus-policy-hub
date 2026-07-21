@@ -16,7 +16,7 @@
     "manage:db:import:md:migration": "node agent/ccus-ai-agent/logic/manage.mjs db:import:md:migration --allow-reverse-sync-migration",
     "manage:db:standardize": "node agent/ccus-ai-agent/logic/manage.mjs db:standardize",
     "manage:db:fix-relationships": "node agent/ccus-ai-agent/logic/manage.mjs db:fix-relationships",
-    "manage:db:audit:deep": "node agent/ccus-ai-agent/logic/manage.mjs db:audit:deep",
+    "manage:db:audit:deep": "node agent/ccus-ai-agent/logic/manage.mjs db:audit:deep && node scripts/stamp-audit-metadata.mjs",
     "manage:db:audit:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "manage:db:repair:facilities-from-md": "node agent/ccus-ai-agent/logic/repair-facilities-db-from-md.mjs",
     "manage:db:repair:facilities-from-md:dry-run": "node agent/ccus-ai-agent/logic/repair-facilities-db-from-md.mjs --dry-run",
