@@ -16,10 +16,7 @@ import initSqlJs from 'sql.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const DB_PATH = path.join(
-  ROOT,
-  'agent/ccus-ai-agent/db/ccus_master.sqlite'
-);
+const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 
 export const MIGRATION_ID = 'policy-lifecycle-cleanup-2026-07';
 
@@ -87,10 +84,7 @@ export const CANONICAL_UPDATES = [
             event: 'Full CCS Business Act enforcement date.',
           },
         ],
-        consolidatedFrom: [
-          'japan-ccs-act',
-          'jp-meti-specified-zones-2024',
-        ],
+        consolidatedFrom: ['japan-ccs-act', 'jp-meti-specified-zones-2024'],
       },
     },
     analysis: {
@@ -141,7 +135,8 @@ export const CANONICAL_UPDATES = [
           },
           {
             date: '2025-10-01',
-            event: 'Act entered into force and the Malaysian CCUS Agency was established.',
+            event:
+              'Act entered into force and the Malaysian CCUS Agency was established.',
           },
         ],
         consolidatedFrom: [
@@ -299,7 +294,9 @@ function scalar(db, sql, params = []) {
 }
 
 function policyExists(db, id) {
-  return Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0;
+  return (
+    Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0
+  );
 }
 
 function mergeAlias(db, canonicalId, aliasId) {
@@ -416,11 +413,10 @@ export function applyPolicyLifecycleMigration(
       updateCanonicalPolicy(db, update, auditDate);
     }
 
-    execute(
-      db,
-      'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)',
-      [`migration:${MIGRATION_ID}`, auditDate]
-    );
+    execute(db, 'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)', [
+      `migration:${MIGRATION_ID}`,
+      auditDate,
+    ]);
     db.run('COMMIT');
   } catch (error) {
     db.run('ROLLBACK');
@@ -454,7 +450,8 @@ async function main() {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   main().catch((error) => {

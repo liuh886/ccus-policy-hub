@@ -133,11 +133,10 @@ async function createFixture() {
 
   for (const family of POLICY_FAMILIES) {
     for (const alias of family.aliases) {
-      execute(
-        db,
-        'INSERT INTO policies (id, country) VALUES (?, ?)',
-        [alias, 'Legacy']
-      );
+      execute(db, 'INSERT INTO policies (id, country) VALUES (?, ?)', [
+        alias,
+        'Legacy',
+      ]);
       execute(
         db,
         `INSERT INTO policy_facility_links (policy_id, facility_id)
