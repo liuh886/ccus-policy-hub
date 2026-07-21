@@ -15,10 +15,10 @@ permissions:
   contents: write
 
 jobs:
-  materialize:
+  migrate-sqlite:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - name: Checkout migration branch
         uses: actions/checkout@v4
@@ -40,68 +40,38 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Format migration inputs
+      - name: Apply SQLite migration and capture result
+        id: migrate
+        shell: bash
         run: |
-          pnpm prettier --write \
-            scripts/migrate-policy-lifecycle-2026-07.mjs \
-            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
-            package.json \
-            .github/workflows/materialize-policy-lifecycle-cleanup.yml
+          mkdir -p docs
+          set +e
+          pnpm manage:db:migrate:policy-lifecycle 2>&1 | tee /tmp/policy-lifecycle-migration.log
+          status=${PIPESTATUS[0]}
+          set -e
+          {
+            echo "# Policy lifecycle migration run"
+            echo
+            echo "- Date: 2026-07-21"
+            echo "- Commit: ${GITHUB_SHA}"
+            echo "- Exit status: ${status}"
+            echo
+            echo '```text'
+            cat /tmp/policy-lifecycle-migration.log
+            echo '```'
+          } > docs/policy-lifecycle-migration-run.md
+          echo "status=${status}" >> "$GITHUB_OUTPUT"
 
-      - name: Persist formatting before migration
+      - name: Commit SQLite result and migration log
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            scripts/migrate-policy-lifecycle-2026-07.mjs \
-            scripts/migrate-policy-lifecycle-2026-07.test.mjs \
-            package.json \
-            .github/workflows/materialize-policy-lifecycle-cleanup.yml
-          if git diff --cached --quiet; then
-            echo "Migration inputs already formatted."
-          else
-            git commit -m "style(data): format policy lifecycle migration"
-            git push origin HEAD:agent/policy-lifecycle-cleanup
-          fi
-
-      - name: Apply governed SQLite migration
-        run: pnpm manage:db:migrate:policy-lifecycle
-
-      - name: Clean and regenerate Markdown
-        run: pnpm manage:db:export:md:clean
-
-      - name: Run deep audit and stamp metadata
-        run: pnpm manage:db:audit:deep
-
-      - name: Regenerate quality and public data
-        run: |
-          pnpm manage:db:quality:export
-          pnpm manage:db:data:export
-
-      - name: Format migrated outputs
-        run: |
-          pnpm prettier --write \
-            "src/content/policies/**/*.md" \
-            "public/data/*.json" \
-            src/data/quality_metrics.generated.json
-
-      - name: Validate repository
-        run: |
-          pnpm lint
-          pnpm test
-          pnpm astro check
-          pnpm build
-
-      - name: Commit governed data outputs
-        run: |
-          git add \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
-            src/content/policies \
-            src/data/quality_metrics.generated.json \
-            public/data
-          if git diff --cached --quiet; then
-            echo "No materialized changes to commit."
-            exit 0
-          fi
-          git commit -m "chore(data): materialize policy lifecycle cleanup"
+            docs/policy-lifecycle-migration-run.md
+          git commit -m "chore(data): apply policy lifecycle SQLite migration"
           git push origin HEAD:agent/policy-lifecycle-cleanup
+
+      - name: Fail when migration failed
+        if: steps.migrate.outputs.status != '0'
+        run: exit 1
