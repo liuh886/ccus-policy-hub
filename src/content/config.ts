@@ -13,12 +13,18 @@ const provenanceSchema = z.object({
   lastAuditDate: z.string(),
 });
 
-const analysisDimensionSchema = z.object({
-  score: z.number().min(0).max(100).optional().default(0),
-  label: z.string().optional().default('Pending'),
-  evidence: z.string().optional().default(''),
-  citation: z.string().optional().default(''),
-  auditNote: z.string().optional().default(''),
+const policyProvenanceSchema = z.object({
+  author: z.string().optional(),
+  reviewer: z.string().optional(),
+  lastAuditDate: z.string().optional(),
+});
+
+const policyAnalysisDimensionSchema = z.object({
+  score: z.number().min(0).max(100).optional(),
+  label: z.string().optional(),
+  evidence: z.string().optional(),
+  citation: z.string().optional(),
+  auditNote: z.string().optional(),
 });
 
 const evolutionMilestoneSchema = z.object({
@@ -72,11 +78,11 @@ const policySchema = z.object({
     })
     .optional(),
   analysis: z
-    .record(z.string(), analysisDimensionSchema)
+    .record(z.string(), policyAnalysisDimensionSchema)
     .optional()
     .default({}),
   relatedFacilities: z.array(z.string()).default([]),
-  provenance: provenanceSchema.optional(),
+  provenance: policyProvenanceSchema.optional(),
 });
 
 const facilitySchema = z.object({
