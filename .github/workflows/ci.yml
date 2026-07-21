@@ -87,20 +87,21 @@ jobs:
         run: |
           pnpm manage:db:migrate:official-policy-gaps
           pnpm manage:db:export:policies
+          pnpm manage:db:audit:deep
+          pnpm manage:db:quality:export
           pnpm manage:db:data:export
-          git restore \
-            public/data/countries.json \
-            public/data/facilities.json \
-            public/data/manifest.json \
-            public/data/quality.json
+          git restore public/data/facilities.json
           pnpm prettier --write \
             "src/content/policies/**/*.md" \
-            public/data/policies.json
+            public/data/policies.json \
+            public/data/countries.json \
+            public/data/quality.json \
+            public/data/manifest.json \
+            src/data/quality_metrics.generated.json
           pnpm manage:db:audit:policy-consistency
           pnpm prettier --write \
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md
-          pnpm manage:db:audit:deep
           pnpm test
           pnpm astro check
           pnpm run build
@@ -112,11 +113,14 @@ jobs:
           github.actor != 'github-actions[bot]'
         run: |
           mkdir -p docs
-          git diff --name-only | tee docs/policy-materialization-diff.txt
+          {
+            git diff --name-only
+            git ls-files --others --exclude-standard
+          } | sort -u | tee docs/policy-materialization-diff.txt
           forbidden=0
           while IFS= read -r file; do
             case "$file" in
-              .github/workflows/ci.yml|package.json|agent/ccus-ai-agent/db/ccus_master.sqlite|docs/policy-gap-pass-2026-07.md|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md|docs/policy-materialization-diff.txt|public/data/policies.json|scripts/migrate-official-policy-gaps-2026-07.mjs|scripts/migrate-official-policy-gaps-2026-07.test.mjs|src/content/policies/*)
+              .github/workflows/ci.yml|package.json|agent/ccus-ai-agent/db/ccus_master.sqlite|docs/policy-gap-pass-2026-07.md|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md|docs/policy-materialization-diff.txt|public/data/policies.json|public/data/countries.json|public/data/quality.json|public/data/manifest.json|src/data/quality_metrics.generated.json|scripts/migrate-official-policy-gaps-2026-07.mjs|scripts/migrate-official-policy-gaps-2026-07.test.mjs|src/content/policies/*)
                 ;;
               *)
                 echo "Forbidden non-policy change: $file"
@@ -156,6 +160,10 @@ jobs:
             docs/policy-db-consistency-report.json
             docs/policy-db-consistency-report.md
             public/data/policies.json
+            public/data/countries.json
+            public/data/quality.json
+            public/data/manifest.json
+            src/data/quality_metrics.generated.json
             scripts/migrate-official-policy-gaps-2026-07.mjs
             scripts/migrate-official-policy-gaps-2026-07.test.mjs
             src/content/policies
