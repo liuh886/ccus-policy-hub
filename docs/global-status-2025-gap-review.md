@@ -19,13 +19,13 @@ Authoritative strategic sources:
 
 The current policy dataset already contains records for several major developments highlighted by the 2025 review:
 
-| Development | Existing record | Initial judgement |
-|---|---|---|
-| Japan CCS Business Act | `jp-ccs-business-act-2024` | Covered; source, effective dates, and phased implementation should be checked against METI primary material |
-| Indonesia Presidential Regulation No. 14/2024 | `id-presidential-reg-14-2024` | Covered; cross-border and storage-capacity provisions require primary-source citation checks |
-| Malaysia CCUS Act 2025 | `my-ccus-act-2025` | Covered; compare with bill and offshore-framework records for duplication |
-| EU Net-Zero Industry Act | `eu-nzia` | Covered; retain the 50 Mtpa injection objective and producer-contribution mechanism with official EU citations |
-| EU CCS Directive | `eu-ccs-directive` and `eu-ccs-directive-2009` | Potential duplicate family; review whether both records represent distinct analytical purposes |
+| Development                                   | Existing record                                | Initial judgement                                                                                              |
+| --------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Japan CCS Business Act                        | `jp-ccs-business-act-2024`                     | Covered; source, effective dates, and phased implementation should be checked against METI primary material    |
+| Indonesia Presidential Regulation No. 14/2024 | `id-presidential-reg-14-2024`                  | Covered; cross-border and storage-capacity provisions require primary-source citation checks                   |
+| Malaysia CCUS Act 2025                        | `my-ccus-act-2025`                             | Covered; compare with bill and offshore-framework records for duplication                                      |
+| EU Net-Zero Industry Act                      | `eu-nzia`                                      | Covered; retain the 50 Mtpa injection objective and producer-contribution mechanism with official EU citations |
+| EU CCS Directive                              | `eu-ccs-directive` and `eu-ccs-directive-2009` | Potential duplicate family; review whether both records represent distinct analytical purposes                 |
 
 ## Duplicate and lifecycle review
 
@@ -59,14 +59,14 @@ Review the two CCS Directive records and ensure that 2024-2025 guidance or imple
 
 These developments are material enough for primary-source review but should not be inserted solely from the secondary article.
 
-| Candidate | Required verification | Likely action |
-|---|---|---|
-| EU Clean Industrial Deal | European Commission communication and implementing measures | Add a strategic-policy record only if CCUS provisions are sufficiently specific; otherwise link it as context to existing EU records |
-| Brazil SBCE and CCS/BECCS consultation | Brazilian legislation, regulator consultation, and official implementation documents | Add or refresh Brazil records after confirming direct CCS relevance |
-| United States 45Q parity and 2025 changes | IRS legislation, guidance, and enacted federal text | Refresh the existing 45Q record rather than create a generic new record |
-| London Protocol cross-border amendment status | IMO depositary records and country notifications | Update country cross-border pillars and add country-specific records only where legal effect is clear |
-| China sector transition policies and national ETS expansion | State Council, NDRC, MEE, MIIT, and official plan texts | Review existing China records for exact CCUS language and avoid relying on forward-looking statements about the 15th Five-Year Plan |
-| Korea, Singapore, Australia, Indonesia, Malaysia and Japan bilateral arrangements | Official memoranda, treaties, and government releases | Record bilateral arrangements separately from domestic storage legislation when their legal status is clear |
+| Candidate                                                                         | Required verification                                                                | Likely action                                                                                                                        |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| EU Clean Industrial Deal                                                          | European Commission communication and implementing measures                          | Add a strategic-policy record only if CCUS provisions are sufficiently specific; otherwise link it as context to existing EU records |
+| Brazil SBCE and CCS/BECCS consultation                                            | Brazilian legislation, regulator consultation, and official implementation documents | Add or refresh Brazil records after confirming direct CCS relevance                                                                  |
+| United States 45Q parity and 2025 changes                                         | IRS legislation, guidance, and enacted federal text                                  | Refresh the existing 45Q record rather than create a generic new record                                                              |
+| London Protocol cross-border amendment status                                     | IMO depositary records and country notifications                                     | Update country cross-border pillars and add country-specific records only where legal effect is clear                                |
+| China sector transition policies and national ETS expansion                       | State Council, NDRC, MEE, MIIT, and official plan texts                              | Review existing China records for exact CCUS language and avoid relying on forward-looking statements about the 15th Five-Year Plan  |
+| Korea, Singapore, Australia, Indonesia, Malaysia and Japan bilateral arrangements | Official memoranda, treaties, and government releases                                | Record bilateral arrangements separately from domestic storage legislation when their legal status is clear                          |
 
 ## Data-trust implications
 
