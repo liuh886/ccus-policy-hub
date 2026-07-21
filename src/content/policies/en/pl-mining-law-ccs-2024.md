@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 65,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': "Poland's amendment to the Geological and Mining Law in 2023 removes the prohibition of large-scale CO2 storage and implements the EU CCS Directive. The framework enables offshore and onshore CO2 storage and integrates with the national energy transition strategy (PEP2040).",
   'id': 'pl-mining-law-ccs-2024',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-10-01',
   'regulatory':
     {

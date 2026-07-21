@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 70,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Alignment with EU CCS Directive and industrial strategy.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': "Spain's Law 7/2021 on Climate Change was updated to facilitate the geological storage of CO2. The focus is on industrial clusters in the Basque Country and Pyrenees region, aligning with EU TEN-E regulations for cross-border infrastructure.",
   'id': 'es-climate-law-ccs-2025',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

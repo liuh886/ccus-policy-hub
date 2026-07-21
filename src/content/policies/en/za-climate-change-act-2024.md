@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'Medium',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Enactment of Climate Change Act provides solid statutory basis with mandatory carbon budgets.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': 'The Climate Change Act No. 22 of 2024 establishes mandatory carbon budgets and sectoral emission targets. It integrates CCUS as a key technology for hard-to-abate sectors, supported by the national pilot project in Mpumalanga (confirming 34Gt storage capacity) and a transitioning carbon tax regime reaching R308/t by 2026.',
   'id': 'za-climate-change-act-2024',
   'legalWeight': 'Act of Parliament',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-23',
   'regulatory':
     {

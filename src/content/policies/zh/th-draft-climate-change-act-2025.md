@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Significant legislative progress with draft Act approval.',
           'label': 'Medium-High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '泰国 2025 年 12 月批准的《气候变化法》草案在国家气候变化政策委员会 (NCCPC) 下建立了集中治理框架。该法案引入了初步的碳税（200 泰铢/吨），并指定矿产燃料部 (DMF) 为 CCS 的牵头机构，重点关注泰国湾上部。',
   'id': 'th-draft-climate-change-act-2025',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-12-01',
   'regulatory':
     {

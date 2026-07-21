@@ -20,8 +20,6 @@
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Global leader with operational full-chain CCS.',
           'label': 'Excellent',
           'score': 95,
@@ -56,12 +54,7 @@
   'description': '挪威的‘长船’项目将于2025年进入全面运营阶段。监管重点已转向通过与丹麦、荷兰等国签署双边协议（MoUs）来实现二氧化碳的跨国运输和封存，有效落实了伦敦议定书关于 CCS 的修正案。',
   'id': 'no-longship-operational-2025',
   'legalWeight': 'Operational Framework',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-19' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

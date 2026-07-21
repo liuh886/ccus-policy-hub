@@ -4,7 +4,6 @@
     {
       'incentive':
         {
-          'auditNote': '',
           'citation': 'Langskip Project Agreement',
           'evidence': 'State direct investment and long-term liability handover to the state after monitoring make Norway the most attractive CCUS investment destination globally.',
           'label': 'State Risk-Sharing',
@@ -12,31 +11,24 @@
         },
       'liability':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Streamlined process for shifting from exploration to injection.',
           'label': 'Liability Transition',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Increased participation from European energy majors.',
           'label': 'International JV',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Mandatory high-resolution seismic monitoring and pressure data.',
           'label': 'High-Res Seismic',
           'score': 95,
         },
       'statutory':
         {
-          'auditNote': '',
           'citation': 'MPE Announcement 2025',
           'evidence': 'The 14th licensing round (2025) is backed by the Norwegian Petroleum Act, providing absolute legal certainty for offshore CO2 storage concessions.',
           'label': 'Sovereign Enforcement',

@@ -4,7 +4,6 @@
     {
       'incentive':
         {
-          'auditNote': '',
           'citation': 'MEE CCER Management Measures 2024',
           'evidence': 'CCUS officially included in the first batch of 4 national methodologies (2024/01). Direct revenue via CCER offset trading.',
           'label': 'Primary Market Integration',
@@ -20,7 +19,6 @@
         },
       'mrv':
         {
-          'auditNote': '',
           'citation': 'CCUS CCER Methodology V1.0',
           'evidence': 'Specific MRV guidelines for CCUS projects released by MEE, ensuring high-fidelity emission credits.',
           'label': 'Standardized Methodology',
@@ -28,7 +26,6 @@
         },
       'statutory':
         {
-          'auditNote': '',
           'citation': 'State Council Carbon Trading Regulation 2024',
           'evidence': 'Administrative regulation with direct legal force in carbon market compliance cycles.',
           'label': 'National Trial Status',
@@ -63,7 +60,7 @@
     {
       'author': 'Gemini Intelligence',
       'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'reviewer': '',
     },
   'pubDate': '2024-01-22',
   'regulatory':

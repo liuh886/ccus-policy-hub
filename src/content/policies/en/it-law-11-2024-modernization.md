@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Project-driven legislative update with focus on Mediterranean hubs.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Project-driven legislative update with focus on Mediterranean hubs.',
           'label': 'High',
           'score': 80,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Project-driven legislative update with focus on Mediterranean hubs.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Project-driven legislative update with focus on Mediterranean hubs.',
           'label': 'High',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Project-driven legislative update with focus on Mediterranean hubs.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': "Law 11/2024 modernizes Italy's CCUS framework by amending Legislative Decree 162/2011. It designates offshore depleted reservoirs as legally suitable for storage, introduces a 20-year minimum liability transfer window, and exempts small-scale pilot projects (<100kt) from Environmental Impact Assessments. It supports the development of the Ravenna CCS hub and the Callisto Mediterranean Network.",
   'id': 'it-law-11-2024-modernization',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-02-02',
   'regulatory':
     {

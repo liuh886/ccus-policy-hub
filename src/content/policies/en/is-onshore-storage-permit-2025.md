@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 95,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'World leader in mineralization and onshore EU-aligned storage.',
           'label': 'Excellent',
           'score': 100,
@@ -48,12 +38,7 @@
   'description': 'In April 2025, Carbfix received the first-ever EU onshore CO2 storage permit for mineralization in Iceland. This milestone operationalizes the EU CCS Directive for onshore basaltic mineralization. Iceland is also developing the Coda Terminal, an €115M EU-funded cross-border hub for CO2 import and permanent storage.',
   'id': 'is-onshore-storage-permit-2025',
   'legalWeight': 'Storage Permit',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-04-01',
   'regulatory':
     {

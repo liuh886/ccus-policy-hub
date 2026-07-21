@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 85,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Established FRA carbon credit framework.',
           'label': 'High',
           'score': 80,
@@ -48,12 +38,7 @@
   'description': '埃及金融监管局 (FRA) 于 2024 年启动了首个自愿碳市场。该框架将 CCUS 纳入生成碳信用的有效方法，重点关注工业脱碳和地中海封存枢纽。',
   'id': 'eg-carbon-market-framework-2024',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-08-01',
   'regulatory':
     {

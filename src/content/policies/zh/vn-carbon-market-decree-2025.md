@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Operational pilot carbon exchange and quota system.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Operational pilot carbon exchange and quota system.',
           'label': 'High',
           'score': 90,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Operational pilot carbon exchange and quota system.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Operational pilot carbon exchange and quota system.',
           'label': 'High',
           'score': 85,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Operational pilot carbon exchange and quota system.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '越南 119/2025 号和 29/2026 号法令为国内碳市场建立了法律框架。2026 年，政府批准为 110 家大型设施发放温室气体配额试点，共计 2.43 亿吨二氧化碳当量。全规模碳排放交易系统 (ETS) 计划于 2029 年正式运行。',
   'id': 'vn-carbon-market-decree-2025',
   'legalWeight': 'Decree',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-10-01',
   'regulatory':
     {

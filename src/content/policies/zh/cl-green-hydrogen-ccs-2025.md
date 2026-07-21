@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 75,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 70,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic focus on green hydrogen integration.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '智利《2023-2030 年绿氢行动计划》将 CCUS 视为开发合成燃料的关键技术。监管框架正在扩大，以涵盖麦哲伦和安托法加斯塔地区的碳捕集与封存。',
   'id': 'cl-green-hydrogen-ccs-2025',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

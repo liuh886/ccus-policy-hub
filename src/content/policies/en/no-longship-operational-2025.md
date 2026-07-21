@@ -20,8 +20,6 @@
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Global leader with operational full-chain CCS.',
           'label': 'Excellent',
           'score': 95,
@@ -56,12 +54,7 @@
   'description': "Norway's 'Longship' project enters full operational phase in 2025. The regulatory focus has shifted to cross-border CO2 transport and storage through bilateral agreements (MoUs) with Denmark, Netherlands, and others, effectively operationalizing the London Protocol amendment for CCS.",
   'id': 'no-longship-operational-2025',
   'legalWeight': 'Operational Framework',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-19' },
   'pubDate': '2025-01-01',
   'regulatory':
     {

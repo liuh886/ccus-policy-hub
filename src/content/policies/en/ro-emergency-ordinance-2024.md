@@ -5,12 +5,7 @@
   'description': 'A specific legal framework for the transport and storage of CO2, aligned with EU directives and supporting the Hope and Constanta clusters.',
   'id': 'ro-emergency-ordinance-2024',
   'legalWeight': 'Administrative Regulation',
-  'provenance':
-    {
-      'author': 'Gemini Governance Agent',
-      'lastAuditDate': '2026-04-06',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'Gemini Governance Agent' },
   'regulatory':
     {
       'co2_definition': 'Managed Industrial Product',

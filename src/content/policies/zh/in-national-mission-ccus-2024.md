@@ -5,12 +5,7 @@
   'description': '由 NITI Aayog 领导的 2024 年“国家 CCUS 任务”建立了一个综合框架，包括可行性缺口资金 (VGF)、区域枢纽开发以及孔隙权和责任转移的监管路线图。它与印度碳市场 (CCTS) 集成，以实现减排量的商业化。',
   'id': 'in-national-mission-ccus-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-07-01',
   'regulatory':
     {

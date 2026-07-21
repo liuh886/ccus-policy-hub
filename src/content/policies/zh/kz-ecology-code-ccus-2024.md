@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Ecology Code provides robust legal basis for CCUS.',
           'label': 'High',
           'score': 65,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Ecology Code provides robust legal basis for CCUS.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Ecology Code provides robust legal basis for CCUS.',
           'label': 'High',
           'score': 80,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Ecology Code provides robust legal basis for CCUS.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Ecology Code provides robust legal basis for CCUS.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '哈萨克斯坦《生态法》于 2023/2024 年修订，正式将 CCUS 技术确认为气候减缓措施。该框架为地质二氧化碳封存许可提供了法律依据，并与国家排放交易系统 (Zhasyl Damu) 相结合。',
   'id': 'kz-ecology-code-ccus-2024',
   'legalWeight': 'Primary Legislation',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

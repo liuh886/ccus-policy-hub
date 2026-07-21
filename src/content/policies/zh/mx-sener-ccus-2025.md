@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 65,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 60,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 70,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'Medium',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Renewed strategic focus under Sheinbaum administration with specific cluster targets.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': '2025年 SENER CCUS 法律框架将碳捕集重新纳入墨西哥的国家气候战略，目标是到2030年减排35%。它计划在2027年之前开发 CCS 集群，并优先考虑通过 PEMEX (CO2-EOR) 和 CFE (Plan México) 实施的国家主导举措，同时利用塔毛利帕斯州和克雷塔罗州等地方政府的领导力。',
   'id': 'mx-sener-ccus-2025',
   'legalWeight': 'Executive Order/Framework',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-05-15',
   'regulatory':
     {

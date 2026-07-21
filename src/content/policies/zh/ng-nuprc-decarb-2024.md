@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 70,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 80,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'First comprehensive upstream decarbonization framework in Africa.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '尼日利亚上游石油监管委员会 (NUPRC) 2024 年脱碳规则为上游部门的碳捕集、封存和利用建立了框架。它强制执行年度碳报告，并对不遵守新减排目标的行为设定了处罚。',
   'id': 'ng-nuprc-decarb-2024',
   'legalWeight': 'Departmental Rules',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-12-01',
   'regulatory':
     {

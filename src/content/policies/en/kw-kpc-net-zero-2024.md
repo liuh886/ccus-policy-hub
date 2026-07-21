@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 60,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 65,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 75,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 70,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strategic roadmap for KPC decarbonization.',
           'label': 'High',
           'score': 90,
@@ -48,12 +38,7 @@
   'description': 'Kuwait Petroleum Corporation (KPC) released its Energy Transition Strategy in 2023/2024, targeting Net Zero by 2050 for domestic operations. CCUS is identified as a core pillar for industrial decarbonization, particularly in the refinery and petrochemical sectors.',
   'id': 'kw-kpc-net-zero-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

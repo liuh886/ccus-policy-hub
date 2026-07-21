@@ -54,7 +54,7 @@
     {
       'author': 'Legacy System',
       'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'reviewer': '',
     },
   'pubDate': '1998-01-01',
   'regulatory':

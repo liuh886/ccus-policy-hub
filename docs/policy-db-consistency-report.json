@@ -1,0 +1,14 @@
+{
+  "audit_version": "2026-07-v1",
+  "scope": "policies-only",
+  "pass": true,
+  "summary": {
+    "db_policies": 124,
+    "en_markdown_files": 124,
+    "zh_markdown_files": 124,
+    "public_records": 124,
+    "mismatches": 0,
+    "formatting_equivalents_ignored": 49
+  },
+  "mismatches": []
+}

@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 65,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 70,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'EU Directive alignment provides strong statutory basis.',
           'label': 'High',
           'score': 85,
@@ -48,12 +38,7 @@
   'description': '波兰 2023 年对《地质和采矿法》的修订取消了对大规模二氧化碳封存的禁令，并落实了欧盟 CCS 指令。该框架允许开展离岸和陆上二氧化碳封存，并与国家能源转型战略 (PEP2040) 相结合。',
   'id': 'pl-mining-law-ccs-2024',
   'legalWeight': 'Regulatory Directive',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2023-10-01',
   'regulatory':
     {

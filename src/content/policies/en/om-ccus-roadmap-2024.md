@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 80,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 75,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 85,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 75,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Strong alignment with National Net Zero 2050 target.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "Oman's CCUS Roadmap 2024, led by the Ministry of Energy and Minerals (MEM), identifies 25 Mt CO2/yr storage potential by 2050. The framework focuses on PDO-operated storage hubs and the integration of carbon mineralization in peridotite formations.",
   'id': 'om-ccus-roadmap-2024',
   'legalWeight': 'Strategic Guidance',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2024-01-01',
   'regulatory':
     {

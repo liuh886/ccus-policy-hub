@@ -4,40 +4,30 @@
     {
       'incentive':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 85,
         },
       'market':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'mrv':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 90,
         },
       'strategic':
         {
-          'auditNote': '',
-          'citation': '',
           'evidence': 'Highly integrated industrial hub approach and CDR strategy.',
           'label': 'High',
           'score': 95,
@@ -48,12 +38,7 @@
   'description': "The Netherlands published its CDR Roadmap in 2025, targeting 20-25 Mt of CO2 removals by 2040. The CCUS framework integrates with the Porthos project (operational 2026) and utilizes a CO2 levy for industry, aligned with EU's industrial carbon management goals.",
   'id': 'nl-cdr-roadmap-2025',
   'legalWeight': 'Policy Roadmap',
-  'provenance':
-    {
-      'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-03-18',
-      'reviewer': 'Human Audit Pending',
-    },
+  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
   'pubDate': '2025-03-01',
   'regulatory':
     {
