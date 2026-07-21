@@ -74,9 +74,15 @@ jobs:
             public/data/policies.json
             docs/policy-db-consistency-report.json
             docs/policy-db-consistency-report.md
+            .github/workflows/ci.yml
+            .github/workflows/deploy.yml
+            agent/ccus-ai-agent/logic/manage.mjs
+            package.json
             scripts/audit-policy-artifact-consistency.mjs
             scripts/audit-policy-artifact-consistency.test.mjs
             scripts/export-policy-markdown.mjs
+            scripts/run-policy-consistency-audit.mjs
+            scripts/run-policy-consistency-audit.test.mjs
           if-no-files-found: error
           retention-days: 7
 
