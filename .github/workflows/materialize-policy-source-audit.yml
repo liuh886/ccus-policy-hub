@@ -52,10 +52,26 @@ jobs:
             package.json \
             .github/workflows/materialize-policy-source-audit.yml
 
-      - name: Validate migration logic
+      - name: Persist formatted migration inputs
         run: |
-          pnpm lint
-          pnpm test
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            scripts/report-policy-source-gaps.mjs \
+            scripts/report-policy-source-gaps.test.mjs \
+            scripts/migrate-policy-source-metadata-2026-07.mjs \
+            scripts/migrate-policy-source-metadata-2026-07.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-source-audit.yml
+          if git diff --cached --quiet; then
+            echo "Migration inputs already formatted."
+          else
+            git commit -m "style(data): format policy source migration"
+            git push origin HEAD:agent/policy-source-url-audit
+          fi
+
+      - name: Validate migration tests
+        run: pnpm test
 
       - name: Apply official-source migration
         run: pnpm manage:db:migrate:policy-sources
@@ -78,33 +94,25 @@ jobs:
             docs/policy-source-url-gaps.md \
             docs/policy-source-url-gaps.json
 
-      - name: Validate final repository state
-        run: |
-          pnpm lint
-          pnpm test
-          pnpm astro check
-          pnpm build
-
       - name: Commit governed source repairs
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
             src/content/policies \
             src/data/quality_metrics.generated.json \
             public/data \
             docs/policy-source-url-gaps.md \
-            docs/policy-source-url-gaps.json \
-            scripts/report-policy-source-gaps.mjs \
-            scripts/report-policy-source-gaps.test.mjs \
-            scripts/migrate-policy-source-metadata-2026-07.mjs \
-            scripts/migrate-policy-source-metadata-2026-07.test.mjs \
-            package.json \
-            .github/workflows/materialize-policy-source-audit.yml
+            docs/policy-source-url-gaps.json
           if git diff --cached --quiet; then
             echo "No governed source repairs to commit."
-            exit 0
+          else
+            git commit -m "fix(data): materialize official policy sources"
+            git push origin HEAD:agent/policy-source-url-audit
           fi
-          git commit -m "fix(data): materialize official policy sources"
-          git push origin HEAD:agent/policy-source-url-audit
+
+      - name: Validate final repository state
+        run: |
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm build
