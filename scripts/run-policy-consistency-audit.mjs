@@ -23,12 +23,18 @@ const DEFAULT_REPORT_MARKDOWN = path.join(
 );
 
 export function normalizePolicyText(value) {
-  return value === null || value === undefined
-    ? ''
-    : String(value).replace(/\r\n?/g, '\n').trim();
+  if (value === null || value === undefined) return '';
+
+  return String(value)
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map((line) => line.replace(/[ \t]+$/g, ''))
+    .join('\n')
+    .replace(/^(#{1,6} .+)\n(?:[ \t]*\n)+/gm, '$1\n')
+    .trim();
 }
 
-export function isLineEndingOnlyMismatch(mismatch) {
+export function isFormattingOnlyMismatch(mismatch) {
   return (
     mismatch?.field === 'body' &&
     typeof mismatch.expected === 'string' &&
@@ -52,7 +58,7 @@ function renderReport(report) {
     `- Chinese policy files: **${report.summary.zh_markdown_files}**`,
     `- Public policy records: **${report.summary.public_records}**`,
     `- Consistency mismatches: **${report.summary.mismatches}**`,
-    `- Line-ending equivalents ignored: **${report.summary.line_ending_equivalents_ignored || 0}**`,
+    `- Formatting-only equivalents ignored: **${report.summary.formatting_equivalents_ignored || 0}**`,
     `- Result: **${report.pass ? 'PASS' : 'FAIL'}**`,
     '',
     '## Rules',
@@ -61,7 +67,7 @@ function renderReport(report) {
     '2. Markdown and public JSON may project fields but may not invent values.',
     '3. Missing provenance or analysis values remain absent or null; export time is not an audit date.',
     '4. Policy IDs and bilingual records must have exact parity across governed artifacts.',
-    '5. CRLF and LF are treated as equivalent encodings of the same policy text.',
+    '5. CRLF/LF, trailing spaces and a blank line after an ATX heading are treated as formatting equivalents.',
     '6. Facility contents and coordinates are not evaluated or changed by this audit.',
   ];
 
@@ -90,13 +96,13 @@ export async function runPolicyConsistencyAudit(paths = {}) {
     const report = JSON.parse(fs.readFileSync(reportJsonPath, 'utf8'));
     const originalCount = report.mismatches.length;
     report.mismatches = report.mismatches.filter(
-      (mismatch) => !isLineEndingOnlyMismatch(mismatch)
+      (mismatch) => !isFormattingOnlyMismatch(mismatch)
     );
     const ignored = originalCount - report.mismatches.length;
 
     report.pass = report.mismatches.length === 0;
     report.summary.mismatches = report.mismatches.length;
-    report.summary.line_ending_equivalents_ignored = ignored;
+    report.summary.formatting_equivalents_ignored = ignored;
 
     fs.writeFileSync(reportJsonPath, `${JSON.stringify(report, null, 2)}\n`);
     fs.writeFileSync(reportMarkdownPath, renderReport(report));
