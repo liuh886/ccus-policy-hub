@@ -89,7 +89,9 @@ export function replaceRelatedPolicies(text, expectedIds) {
   const firstMarker = text.indexOf('---');
   const secondMarker = text.indexOf('\n---', firstMarker + 3);
   if (firstMarker !== 0 || secondMarker < 0) {
-    throw new Error('Facility Markdown does not contain a valid frontmatter block');
+    throw new Error(
+      'Facility Markdown does not contain a valid frontmatter block'
+    );
   }
 
   const frontmatterStart = firstMarker + 3;
@@ -110,7 +112,8 @@ export function replaceRelatedPolicies(text, expectedIds) {
       frontmatter.slice(bounds.end);
   } else {
     const closingBrace = frontmatter.lastIndexOf('}');
-    if (closingBrace < 0) throw new Error('Facility frontmatter is not an object');
+    if (closingBrace < 0)
+      throw new Error('Facility frontmatter is not an object');
     nextFrontmatter =
       frontmatter.slice(0, closingBrace) +
       `  'relatedPolicies': ${rendered},\n` +
@@ -163,7 +166,9 @@ function inspectMarkdown(expectedLinks, { write = false } = {}) {
   const changedFiles = [];
   for (const lang of ['en', 'zh']) {
     const dir = path.join(FACILITY_ROOT, lang);
-    for (const file of fs.readdirSync(dir).filter((name) => name.endsWith('.md'))) {
+    for (const file of fs
+      .readdirSync(dir)
+      .filter((name) => name.endsWith('.md'))) {
       const filePath = path.join(dir, file);
       const facilityId = file.replace(/\.md$/i, '');
       const expected = expectedLinks.get(facilityId) || [];
@@ -221,7 +226,8 @@ function inspectPublicJson(expectedLinks, { write = false } = {}) {
 }
 
 export async function syncPolicyLinkProjections({ write = false } = {}) {
-  if (!fs.existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
+  if (!fs.existsSync(DB_PATH))
+    throw new Error(`Database not found: ${DB_PATH}`);
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
   try {
@@ -252,7 +258,8 @@ async function main() {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   main().catch((error) => {

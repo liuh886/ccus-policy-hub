@@ -35,7 +35,9 @@ test('relationship replacement preserves unrelated content', () => {
 
 test('relationship replacement is idempotent', () => {
   const first = replaceRelatedPolicies(sample, ['jp-ccs-business-act-2024']);
-  const second = replaceRelatedPolicies(first.text, ['jp-ccs-business-act-2024']);
+  const second = replaceRelatedPolicies(first.text, [
+    'jp-ccs-business-act-2024',
+  ]);
   assert.equal(second.changed, false);
   assert.equal(second.text, first.text);
 });
