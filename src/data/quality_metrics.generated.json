@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-07-21T12:05:15.243Z",
+  "generated_at": "2026-07-21T16:20:27.543Z",
   "source_db_path": "agent/ccus-ai-agent/db/ccus_master.sqlite",
   "audit_status": {
     "last_audit_pass": true,
     "last_audit_date": "2026-07-21",
-    "last_audit_summary": "Deep audit passed under 2026-07-v1; policy, facility, regulatory-fill and coordinate-governance gates satisfied; source revision ae05a000ea41e6288b69d02abbb5a8571511854c."
+    "last_audit_summary": "Deep audit passed under 2026-07-v1; policy, facility, regulatory-fill and coordinate-governance gates satisfied; source revision 918cca1583934f113096e28bee10494c7b76aa40."
   },
   "counts": {
-    "policies": 124,
+    "policies": 127,
     "facilities": 1110,
     "country_profiles": 66,
-    "policies_reviewed": 112,
+    "policies_reviewed": 115,
     "policies_draft": 12
   },
   "quality_gaps": {
@@ -19,8 +19,8 @@
     "facilities_missing_estimated_capacity": 248
   },
   "bilingual_parity": {
-    "policies_zh": 124,
-    "policies_en": 124,
+    "policies_zh": 127,
+    "policies_en": 127,
     "facilities_zh": 1110,
     "facilities_en": 1110,
     "countries_zh": 66,

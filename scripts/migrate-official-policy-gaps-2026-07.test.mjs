@@ -33,24 +33,65 @@ function createSchema(db) {
 }
 
 function seed(db) {
-  db.run(`INSERT INTO policies VALUES ('br-law-14993-2024','Brazil',2024,'Active','Regulatory','verified','Primary Legislation','Legacy','https://example.com','2024-10-08','Legacy','Pending','2026-02-07')`);
+  db.run(
+    `INSERT INTO policies VALUES ('br-law-14993-2024','Brazil',2024,'Active','Regulatory','verified','Primary Legislation','Legacy','https://example.com','2024-10-08','Legacy','Pending','2026-02-07')`
+  );
   for (const lang of ['en', 'zh']) {
-    const stmt = db.prepare(`INSERT INTO policy_i18n VALUES (?,?,?,?,?,?,?,?,?,?)`);
-    stmt.run(['br-law-14993-2024', lang, 'Legacy', 'Law 14,933/2024 integrated the CCS framework with SBCE.', null, null, '{}', null, '{}', '{}']);
+    const stmt = db.prepare(
+      `INSERT INTO policy_i18n VALUES (?,?,?,?,?,?,?,?,?,?)`
+    );
+    stmt.run([
+      'br-law-14993-2024',
+      lang,
+      'Legacy',
+      'Law 14,933/2024 integrated the CCS framework with SBCE.',
+      null,
+      null,
+      '{}',
+      null,
+      '{}',
+      '{}',
+    ]);
     stmt.free();
   }
-  for (const dimension of ['incentive','statutory','market','strategic','mrv']) {
-    const stmt = db.prepare(`INSERT INTO policy_analysis VALUES (?,?,?,?,?,?,?)`);
-    stmt.run(['br-law-14993-2024', dimension, 50, 'Legacy', 'Legacy evidence', 'Legacy citation', '']);
+  for (const dimension of [
+    'incentive',
+    'statutory',
+    'market',
+    'strategic',
+    'mrv',
+  ]) {
+    const stmt = db.prepare(
+      `INSERT INTO policy_analysis VALUES (?,?,?,?,?,?,?)`
+    );
+    stmt.run([
+      'br-law-14993-2024',
+      dimension,
+      50,
+      'Legacy',
+      'Legacy evidence',
+      'Legacy citation',
+      '',
+    ]);
     stmt.free();
   }
-  db.run(`INSERT INTO facilities (id,country,estimated_capacity,lat,lng,precision) VALUES ('f1','Brazil',1.25,-22.9,-43.2,'site')`);
-  db.run(`INSERT INTO facility_i18n (facility_id,lang,name) VALUES ('f1','en','Frozen facility')`);
+  db.run(
+    `INSERT INTO facilities (id,country,estimated_capacity,lat,lng,precision) VALUES ('f1','Brazil',1.25,-22.9,-43.2,'site')`
+  );
+  db.run(
+    `INSERT INTO facility_i18n (facility_id,lang,name) VALUES ('f1','en','Frozen facility')`
+  );
   db.run(`INSERT INTO facility_partners VALUES ('f1','en',0,'Frozen partner')`);
-  db.run(`INSERT INTO facility_links VALUES ('f1','en',0,'https://example.com/f1')`);
+  db.run(
+    `INSERT INTO facility_links VALUES ('f1','en',0,'https://example.com/f1')`
+  );
   db.run(`INSERT INTO policy_facility_links VALUES ('br-law-14993-2024','f1')`);
-  db.run(`INSERT INTO country_profiles (id,region) VALUES ('Brazil','Latin America')`);
-  db.run(`INSERT INTO country_i18n (country_id,lang,name) VALUES ('Brazil','en','Brazil')`);
+  db.run(
+    `INSERT INTO country_profiles (id,region) VALUES ('Brazil','Latin America')`
+  );
+  db.run(
+    `INSERT INTO country_i18n (country_id,lang,name) VALUES ('Brazil','en','Brazil')`
+  );
 }
 
 test('adds three policies, corrects Brazil, and preserves frozen tables', async () => {
@@ -59,25 +100,64 @@ test('adds three policies, corrects Brazil, and preserves frozen tables', async 
   createSchema(db);
   seed(db);
   const facilityBefore = JSON.stringify(db.exec('SELECT * FROM facilities'));
-  const linksBefore = JSON.stringify(db.exec('SELECT * FROM policy_facility_links'));
+  const linksBefore = JSON.stringify(
+    db.exec('SELECT * FROM policy_facility_links')
+  );
 
-  const summary = applyOfficialPolicyGapMigration(db, { expectedPolicyCount: 1 });
+  const summary = applyOfficialPolicyGapMigration(db, {
+    expectedPolicyCount: 1,
+  });
   assert.equal(summary.addedPolicies, 3);
   assert.equal(summary.afterPolicyCount, 4);
 
   for (const policy of NEW_POLICIES) {
-    assert.equal(Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id=?', [policy.core.id])), 1);
-    assert.equal(Number(scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id=?', [policy.core.id])), 2);
-    assert.equal(Number(scalar(db, 'SELECT COUNT(*) FROM policy_analysis WHERE policy_id=?', [policy.core.id])), 5);
+    assert.equal(
+      Number(
+        scalar(db, 'SELECT COUNT(*) FROM policies WHERE id=?', [policy.core.id])
+      ),
+      1
+    );
+    assert.equal(
+      Number(
+        scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id=?', [
+          policy.core.id,
+        ])
+      ),
+      2
+    );
+    assert.equal(
+      Number(
+        scalar(db, 'SELECT COUNT(*) FROM policy_analysis WHERE policy_id=?', [
+          policy.core.id,
+        ])
+      ),
+      5
+    );
   }
 
-  const description = String(scalar(db, `SELECT description FROM policy_i18n WHERE policy_id='br-law-14993-2024' AND lang='en'`));
+  const description = String(
+    scalar(
+      db,
+      `SELECT description FROM policy_i18n WHERE policy_id='br-law-14993-2024' AND lang='en'`
+    )
+  );
   assert.match(description, /14,993\/2024/);
   assert.doesNotMatch(description, /14,933\/2024/);
   assert.doesNotMatch(description, /integrated the CCS framework with SBCE/i);
-  assert.equal(JSON.stringify(db.exec('SELECT * FROM facilities')), facilityBefore);
-  assert.equal(JSON.stringify(db.exec('SELECT * FROM policy_facility_links')), linksBefore);
-  assert.equal(scalar(db, 'SELECT value FROM db_meta WHERE key=?', [`migration:${MIGRATION_ID}`]), '2026-07-21');
+  assert.equal(
+    JSON.stringify(db.exec('SELECT * FROM facilities')),
+    facilityBefore
+  );
+  assert.equal(
+    JSON.stringify(db.exec('SELECT * FROM policy_facility_links')),
+    linksBefore
+  );
+  assert.equal(
+    scalar(db, 'SELECT value FROM db_meta WHERE key=?', [
+      `migration:${MIGRATION_ID}`,
+    ]),
+    '2026-07-21'
+  );
 
   const rerun = applyOfficialPolicyGapMigration(db, { expectedPolicyCount: 1 });
   assert.equal(rerun.alreadyApplied, true);
@@ -91,7 +171,10 @@ test('rejects an unexpected baseline before mutation', async () => {
   const db = new SQL.Database();
   createSchema(db);
   seed(db);
-  assert.throws(() => applyOfficialPolicyGapMigration(db), /Unexpected policy baseline/);
+  assert.throws(
+    () => applyOfficialPolicyGapMigration(db),
+    /Unexpected policy baseline/
+  );
   assert.equal(Number(scalar(db, 'SELECT COUNT(*) FROM policies')), 1);
   assert.equal(Number(scalar(db, 'SELECT COUNT(*) FROM facilities')), 1);
   db.close();

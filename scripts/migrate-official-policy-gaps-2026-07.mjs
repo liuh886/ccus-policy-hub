@@ -51,7 +51,7 @@ export const NEW_POLICIES = [
         title:
           'Brazilian Emissions Trading System (SBCE) — Law No. 15,042/2024',
         description:
-          "Law No. 15,042/2024 establishes the Brazilian Emissions Trading System (SBCE) as a regulated environment for limiting greenhouse-gas emissions and trading assets representing emissions, verified reductions or verified removals. The law expressly includes direct air capture and storage among possible removal technologies and establishes phased implementation, registry, reporting, verification and compliance architecture. It does not authorise geological CO2 storage projects; the CCS operating and authorisation framework remains governed separately by Law No. 14,993/2024 and ANP regulation.",
+          'Law No. 15,042/2024 establishes the Brazilian Emissions Trading System (SBCE) as a regulated environment for limiting greenhouse-gas emissions and trading assets representing emissions, verified reductions or verified removals. The law expressly includes direct air capture and storage among possible removal technologies and establishes phased implementation, registry, reporting, verification and compliance architecture. It does not authorise geological CO2 storage projects; the CCS operating and authorisation framework remains governed separately by Law No. 14,993/2024 and ANP regulation.',
         scope:
           'Brazilian national regulated carbon market and its phased implementation.',
         tags: ['ETS', 'carbon pricing', 'MRV', 'carbon removals'],
@@ -128,8 +128,7 @@ export const NEW_POLICIES = [
         regulatory: {
           co2_definition:
             '排放与移除统一以吨二氧化碳当量计量，移除定义明确包括直接空气捕集与封存技术。',
-          cross_border_rules:
-            '国际转移减缓成果须取得正式授权并进行相应调整。',
+          cross_border_rules: '国际转移减缓成果须取得正式授权并进行相应调整。',
         },
       },
     },
@@ -245,7 +244,11 @@ export const NEW_POLICIES = [
             '将CCS和永久性碳移除定位为直接减排的补充，用于处理难减排工业过程排放和净零路径中的剩余排放。',
         },
         evolution: {
-          clusters: ['欧盟工业碳管理', '欧盟二氧化碳运输与封存市场', '欧洲绿色协议'],
+          clusters: [
+            '欧盟工业碳管理',
+            '欧盟二氧化碳运输与封存市场',
+            '欧洲绿色协议',
+          ],
           milestones: [
             {
               date: '2024-02-06',
@@ -356,7 +359,8 @@ export const NEW_POLICIES = [
                 'MEE issued the annual market-management notice covering entity lists, data quality, allocation and compliance for 2025.',
             },
           ],
-          effectiveApplicationWindow: 'Start-up: 2024-2026; deepening: 2027 onward.',
+          effectiveApplicationWindow:
+            'Start-up: 2024-2026; deepening: 2027 onward.',
         },
         regulatory: {},
       },
@@ -387,7 +391,8 @@ export const NEW_POLICIES = [
                 '生态环境部印发2025年度碳市场工作通知，部署名录、数据质量、配额和履约管理。',
             },
           ],
-          effectiveApplicationWindow: '启动实施：2024—2026年度；深化完善：2027年度起。',
+          effectiveApplicationWindow:
+            '启动实施：2024—2026年度；深化完善：2027年度起。',
         },
         regulatory: {},
       },
@@ -506,8 +511,7 @@ export const POLICY_UPDATES = [
             },
             {
               date: '2024-12-19',
-              event:
-                'ANP批准在专项法规制定期间评估CCS项目的临时行政安排。',
+              event: 'ANP批准在专项法规制定期间评估CCS项目的临时行政安排。',
             },
             {
               date: '2025-11-17',
@@ -607,7 +611,9 @@ function assertFrozenTablesUnchanged(before, after) {
 }
 
 function policyExists(db, id) {
-  return Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0;
+  return (
+    Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0
+  );
 }
 
 function upsertPolicyCore(db, core, auditDate) {
