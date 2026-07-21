@@ -44,8 +44,31 @@ jobs:
       - name: Format Generated Data
         run: pnpm prettier --write public/data/*.json
 
+      - name: Export Policy Markdown from SQLite
+        run: |
+          pnpm manage:db:export:policies
+          pnpm prettier --write "src/content/policies/**/*.md"
+
       - name: Policy DB Consistency Audit
         run: pnpm manage:db:audit:policy-consistency
+
+      - name: Format Policy Consistency Report
+        run: |
+          pnpm prettier --write \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+
+      - name: Upload Policy Projection Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-db-projections
+          path: |
+            src/content/policies
+            public/data/policies.json
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Build
         run: pnpm run build
