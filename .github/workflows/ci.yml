@@ -71,6 +71,9 @@ jobs:
             public/data/policies.json
             docs/policy-db-consistency-report.json
             docs/policy-db-consistency-report.md
+            scripts/audit-policy-artifact-consistency.mjs
+            scripts/audit-policy-artifact-consistency.test.mjs
+            scripts/export-policy-markdown.mjs
           if-no-files-found: error
           retention-days: 7
 
