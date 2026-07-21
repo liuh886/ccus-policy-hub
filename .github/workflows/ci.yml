@@ -84,6 +84,7 @@ jobs:
           github.actor != 'github-actions[bot]'
         run: |
           git restore \
+            agent/ccus-ai-agent/db/ccus_master.sqlite \
             public/data/countries.json \
             public/data/dataset-versions.json \
             public/data/facilities.json \
