@@ -1,0 +1,161 @@
+name: Materialize policy DB consistency
+
+on:
+  push:
+    branches:
+      - agent/policy-db-consistency
+    paths:
+      - scripts/audit-policy-artifact-consistency.mjs
+      - scripts/audit-policy-artifact-consistency.test.mjs
+      - package.json
+      - .github/workflows/ci.yml
+      - .github/workflows/deploy.yml
+      - .github/workflows/materialize-policy-consistency.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize-policy-projections:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout policy consistency branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/policy-db-consistency
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format consistency inputs
+        run: |
+          pnpm prettier --write \
+            scripts/audit-policy-artifact-consistency.mjs \
+            scripts/audit-policy-artifact-consistency.test.mjs \
+            package.json \
+            .github/workflows/ci.yml \
+            .github/workflows/deploy.yml \
+            .github/workflows/materialize-policy-consistency.yml
+
+      - name: Make policy exporter DB-faithful
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'fs';
+
+          const file = 'agent/ccus-ai-agent/logic/manage.mjs';
+          let source = fs.readFileSync(file, 'utf8');
+
+          const analysisBefore = `          score: a.score || 0,
+                    label: a.label || 'Pending',
+                    evidence: a.evidence || 'No evidence provided.',
+                    citation: a.citation || '',
+                    auditNote: a.audit_note || '',`;
+          const analysisAfter = `          score: a.score,
+                    label: a.label,
+                    evidence: a.evidence,
+                    citation: a.citation,
+                    auditNote: a.audit_note,`;
+
+          const provenanceBefore = `          author: p.provenance_author || 'System',
+                    reviewer:
+                      p.provenance_reviewer && p.provenance_reviewer.trim() !== ''
+                        ? p.provenance_reviewer
+                        : 'Human Audit Pending',
+                    lastAuditDate:
+                      p.provenance_last_audit_date ||
+                      new Date().toISOString().split('T')[0],`;
+          const provenanceAfter = `          author: p.provenance_author,
+                    reviewer: p.provenance_reviewer,
+                    lastAuditDate: p.provenance_last_audit_date,`;
+
+          if (!source.includes(analysisBefore)) {
+            throw new Error('Policy analysis exporter block was not found.');
+          }
+          if (!source.includes(provenanceBefore)) {
+            throw new Error('Policy provenance exporter block was not found.');
+          }
+
+          source = source
+            .replace(analysisBefore, analysisAfter)
+            .replace(provenanceBefore, provenanceAfter);
+          fs.writeFileSync(file, source);
+          NODE
+          pnpm prettier --write agent/ccus-ai-agent/logic/manage.mjs
+
+      - name: Validate audit tests
+        run: pnpm test
+
+      - name: Export policy Markdown from SQLite
+        run: |
+          pnpm manage:db:export:md
+          git restore src/content/facilities src/content/countries
+
+      - name: Regenerate public policy projection
+        run: |
+          pnpm manage:db:data:export
+          git restore \
+            public/data/countries.json \
+            public/data/facilities.json \
+            public/data/manifest.json \
+            public/data/quality.json
+
+      - name: Format policy projections
+        run: |
+          pnpm prettier --write \
+            "src/content/policies/**/*.md" \
+            public/data/policies.json
+
+      - name: Run policy DB consistency audit
+        run: pnpm manage:db:audit:policy-consistency
+
+      - name: Format consistency report
+        run: |
+          pnpm prettier --write \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+
+      - name: Commit governed policy projections
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            agent/ccus-ai-agent/logic/manage.mjs \
+            scripts/audit-policy-artifact-consistency.mjs \
+            scripts/audit-policy-artifact-consistency.test.mjs \
+            package.json \
+            .github/workflows/ci.yml \
+            .github/workflows/deploy.yml \
+            .github/workflows/materialize-policy-consistency.yml \
+            src/content/policies \
+            public/data/policies.json \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+          if git diff --cached --quiet; then
+            echo "No policy projection changes to commit."
+          else
+            git commit -m "fix(data): materialize DB-faithful policy projections"
+            git push origin HEAD:agent/policy-db-consistency
+          fi
+
+      - name: Validate final repository state
+        run: |
+          pnpm lint
+          pnpm test
+          pnpm astro check
+          pnpm manage:db:audit:policy-consistency
+          pnpm build
