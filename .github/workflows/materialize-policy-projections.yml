@@ -1,0 +1,79 @@
+name: Materialize verified policy projections
+
+on:
+  push:
+    branches:
+      - agent/policy-db-consistency
+    paths:
+      - .github/workflows/materialize-policy-projections.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout policy branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/policy-db-consistency
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Export policies from SQLite
+        run: |
+          pnpm manage:db:data:export
+          git restore \
+            public/data/countries.json \
+            public/data/facilities.json \
+            public/data/manifest.json \
+            public/data/quality.json
+          pnpm manage:db:export:policies
+          pnpm prettier --write \
+            "src/content/policies/**/*.md" \
+            public/data/policies.json
+
+      - name: Verify policy consistency
+        run: |
+          pnpm manage:db:audit:policy-consistency
+          pnpm prettier --write \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+
+      - name: Confirm frozen non-policy data
+        run: |
+          test -z "$(git status --short -- src/content/facilities src/content/countries)"
+          test -z "$(git status --short -- public/data/facilities.json public/data/countries.json)"
+
+      - name: Commit verified projections
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            src/content/policies \
+            public/data/policies.json \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md
+          if git diff --cached --quiet; then
+            echo "Policy projections already match SQLite."
+            exit 0
+          fi
+          git commit -m "fix(data): materialize DB-faithful policy projections"
+          git push origin HEAD:agent/policy-db-consistency
