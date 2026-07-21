@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Section 5',
-          'evidence': 'Clear legal definition of "Stability" for JOGMEC transfer.',
+          'citation': 'METI Act on Carbon Dioxide Storage Businesses and 2026 implementing Cabinet Orders.',
+          'evidence': 'The statutory and implementing framework requires regulated site operation, monitoring, closure and post-closure controls; detailed implementing rules were completed for full enforcement on 22 May 2026.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'Japan CCS Business Act 2024; METI Ordinances 2025',
-          'evidence': "Japan achieved high regulatory maturity with the enactment of the CCS Business Act in May 2024, which became partially effective in August 2024 and enters full enforcement by 2025-2026. The Act replaces a fragmented legal landscape with a unified 'Permit System' for CO2 storage and transport. Crucially, it defines 'Storage Rights' as a new form of real right, allowing them to be mortgaged and protected. The Act also clarifies pipeline access and safety standards. This legal certainty, combined with the government's role in designating 'Specified Areas' for storage, provides a robust statutory foundation that is among the most comprehensive in Asia.",
+          'citation': 'METI CCS Business Act overview; METI Cabinet Orders of 23 July 2024, 29 October 2024 and 24 April 2026.',
+          'evidence': 'The Act establishes storage-business and exploratory-drilling licences, registrable storage and exploratory-drilling rights, and business and safety rules for storage and pipeline CO2 transport.',
           'label': 'CCS Business Act',
           'score': 95,
         },
@@ -53,7 +53,30 @@
     },
   'category': 'Regulatory',
   'country': 'Japan',
-  'description': "The Act on Carbon Dioxide Storage Business (CCS Business Act) established a comprehensive legal framework for the entire CCS value chain in Japan. Passed in May 2024, the Act follows a phased implementation: prospecting rights became effective in Nov 2024, with full enforcement (including storage rights and liability transfer) mandated by May 2026. 2025 serves as the critical window for FEED implementation of JOGMEC-supported projects. The Act creates 'Quasi-real Rights' (Mina-shi Bukken) for st",
+  'description': 'Japan enacted the CCS Business Act in May 2024 to establish licensing systems for carbon dioxide storage businesses and exploratory drilling, create legally protected storage and exploratory-drilling rights, and regulate storage operations and pipeline transport of carbon dioxide. Exploration-related provisions entered into force in stages on 5 August and 18 November 2024. METI set 22 May 2026 as the full enforcement date and completed the associated Cabinet Orders, including registration rules ',
+  'evolution':
+    {
+      'consolidatedFrom': ['japan-ccs-act', 'jp-meti-specified-zones-2024'],
+      'milestones':
+        [
+          {
+            'date': '2024-05',
+            'event': 'CCS Business Act enacted by the Japanese Diet.',
+          },
+          {
+            'date': '2024-08-05',
+            'event': 'Initial exploration-related provisions entered into force.',
+          },
+          {
+            'date': '2024-11-18',
+            'event': 'Exploratory-drilling provisions entered into force.',
+          },
+          {
+            'date': '2026-05-22',
+            'event': 'Full CCS Business Act enforcement date.',
+          },
+        ],
+    },
   'id': 'jp-ccs-business-act-2024',
   'impactAnalysis':
     {
@@ -65,8 +88,8 @@
   'provenance':
     {
       'author': 'CCUS AI Agent (DV Update)',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
   'pubDate': '2024-05-17',
   'regulatory':
@@ -104,12 +127,12 @@
       '938',
     ],
   'reviewStatus': 'verified',
-  'source': 'METI',
+  'source': 'Ministry of Economy, Trade and Industry (METI), Japan',
   'status': 'Active',
-  'title': 'Act on Carbon Dioxide Storage Business (2025 Phase-in)',
-  'url': 'https://www.meti.go.jp/english/press/2024/0517_001.html',
+  'title': 'Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)',
+  'url': 'https://www.meti.go.jp/english/press/2026/0424_002.html',
   'year': 2024,
 }
 ---
 
-The Act on Carbon Dioxide Storage Business (CCS Business Act) established a comprehensive legal framework for the entire CCS value chain in Japan. Passed in May 2024, the Act follows a phased implementation: prospecting rights became effective in Nov 2024, with full enforcement (including storage rights and liability transfer) mandated by May 2026. 2025 serves as the critical window for FEED implementation of JOGMEC-supported projects. The Act creates 'Quasi-real Rights' (Mina-shi Bukken) for storage, allowing for registration and mortgage/financing. It provides for the transfer of monitoring responsibilities to JOGMEC after CO2 stabilization, while maintaining a strict liability (no-fault) regime for operators.
+Japan enacted the CCS Business Act in May 2024 to establish licensing systems for carbon dioxide storage businesses and exploratory drilling, create legally protected storage and exploratory-drilling rights, and regulate storage operations and pipeline transport of carbon dioxide. Exploration-related provisions entered into force in stages on 5 August and 18 November 2024. METI set 22 May 2026 as the full enforcement date and completed the associated Cabinet Orders, including registration rules for storage rights and technical provisions for offshore storage.

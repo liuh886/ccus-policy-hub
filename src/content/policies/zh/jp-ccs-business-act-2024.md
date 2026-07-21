@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Section 5',
-          'evidence': 'Clear legal definition of "Stability" for JOGMEC transfer.',
+          'citation': 'METI Act on Carbon Dioxide Storage Businesses and 2026 implementing Cabinet Orders.',
+          'evidence': 'The statutory and implementing framework requires regulated site operation, monitoring, closure and post-closure controls; detailed implementing rules were completed for full enforcement on 22 May 2026.',
           'label': 'High',
           'score': 90,
         },
       'statutory':
         {
           'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'Japan CCS Business Act 2024; METI Ordinances 2025',
-          'evidence': "Japan achieved high regulatory maturity with the enactment of the CCS Business Act in May 2024, which became partially effective in August 2024 and enters full enforcement by 2025-2026. The Act replaces a fragmented legal landscape with a unified 'Permit System' for CO2 storage and transport. Crucially, it defines 'Storage Rights' as a new form of real right, allowing them to be mortgaged and protected. The Act also clarifies pipeline access and safety standards. This legal certainty, combined with the government's role in designating 'Specified Areas' for storage, provides a robust statutory foundation that is among the most comprehensive in Asia.",
+          'citation': 'METI CCS Business Act overview; METI Cabinet Orders of 23 July 2024, 29 October 2024 and 24 April 2026.',
+          'evidence': 'The Act establishes storage-business and exploratory-drilling licences, registrable storage and exploratory-drilling rights, and business and safety rules for storage and pipeline CO2 transport.',
           'label': 'CCS Business Act',
           'score': 95,
         },
@@ -53,7 +53,30 @@
     },
   'category': '法律监管',
   'country': '日本',
-  'description': '日本《二氧化碳存储业务法》（CCS 业务法）为全产业链建立了首个综合性法律框架。该法案于 2024 年 5 月颁布，采取分阶段生效模式：试掘权于 2024 年 11 月生效，全部条款（包括储集权、责任移交）将于 2026 年 5 月前全面施行。2025 年是 JOGMEC 支持的示范项目进入基础工程设计 (FEED) 的关键年。法案将“储集权”定义为“拟制物权”，受法律保护且可用于抵押融资。二氧化碳达到稳定状态后，监测职责可移交给 JOGMEC，但运营商需承担无过错责任。',
+  'description': '日本于 2024 年 5 月制定《二氧化碳储存业务法》，建立二氧化碳封存业务与试掘许可制度，确立受法律保护的储集权和试掘权，并对封存业务及管道二氧化碳运输实施经营与安全监管。与勘探和试掘有关的部分条款分别于 2024 年 8 月 5 日和 11 月 18 日分阶段施行。经济产业省随后将 2026 年 5 月 22 日确定为该法全面施行日期，并完成储集权登记、海域封存技术要求等配套政令。',
+  'evolution':
+    {
+      'consolidatedFrom': ['japan-ccs-act', 'jp-meti-specified-zones-2024'],
+      'milestones':
+        [
+          {
+            'date': '2024-05',
+            'event': 'CCS Business Act enacted by the Japanese Diet.',
+          },
+          {
+            'date': '2024-08-05',
+            'event': 'Initial exploration-related provisions entered into force.',
+          },
+          {
+            'date': '2024-11-18',
+            'event': 'Exploratory-drilling provisions entered into force.',
+          },
+          {
+            'date': '2026-05-22',
+            'event': 'Full CCS Business Act enforcement date.',
+          },
+        ],
+    },
   'id': 'jp-ccs-business-act-2024',
   'impactAnalysis':
     {
@@ -65,8 +88,8 @@
   'provenance':
     {
       'author': 'CCUS AI Agent (DV Update)',
-      'lastAuditDate': '2026-03-19',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
   'pubDate': '2024-05-17',
   'regulatory':
@@ -104,12 +127,12 @@
       '938',
     ],
   'reviewStatus': 'verified',
-  'source': 'METI',
+  'source': 'Ministry of Economy, Trade and Industry (METI), Japan',
   'status': '现行',
-  'title': '二氧化碳存储业务法 (2025年生效)',
-  'url': 'https://www.meti.go.jp/english/press/2024/0517_001.html',
+  'title': '日本《二氧化碳储存业务法》（CCS 业务法）',
+  'url': 'https://www.meti.go.jp/english/press/2026/0424_002.html',
   'year': 2024,
 }
 ---
 
-日本《二氧化碳存储业务法》（CCS 业务法）为全产业链建立了首个综合性法律框架。该法案于 2024 年 5 月颁布，采取分阶段生效模式：试掘权于 2024 年 11 月生效，全部条款（包括储集权、责任移交）将于 2026 年 5 月前全面施行。2025 年是 JOGMEC 支持的示范项目进入基础工程设计 (FEED) 的关键年。法案将“储集权”定义为“拟制物权”，受法律保护且可用于抵押融资。二氧化碳达到稳定状态后，监测职责可移交给 JOGMEC，但运营商需承担无过错责任。
+日本于 2024 年 5 月制定《二氧化碳储存业务法》，建立二氧化碳封存业务与试掘许可制度，确立受法律保护的储集权和试掘权，并对封存业务及管道二氧化碳运输实施经营与安全监管。与勘探和试掘有关的部分条款分别于 2024 年 8 月 5 日和 11 月 18 日分阶段施行。经济产业省随后将 2026 年 5 月 22 日确定为该法全面施行日期，并完成储集权登记、海域封存技术要求等配套政令。

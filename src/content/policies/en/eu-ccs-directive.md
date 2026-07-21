@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Annex II',
-          'evidence': 'Mandates continuous monitoring and corrective measures for leakages.',
+          'citation': 'Directive 2009/31/EC, Article 13 and Annex II.',
+          'evidence': 'Operators must monitor the injection facilities, storage complex and surrounding environment and implement corrective measures where required.',
           'label': 'Standardized Monitoring',
           'score': 80,
         },
       'statutory':
         {
           'auditNote': 'Identified as the highest legal anchor for Europe.',
-          'citation': 'Chapter 3: Storage Permits',
-          'evidence': 'Establishes a mandatory legal framework for storage permits across EU.',
+          'citation': 'Directive 2009/31/EC, Chapters 2-5; Article 18 on transfer of responsibility.',
+          'evidence': 'Directive 2009/31/EC creates the EU-wide permitting and lifecycle-liability framework for geological CO2 storage.',
           'label': 'Permitting Regime',
           'score': 90,
         },
@@ -45,16 +45,11 @@
     },
   'category': 'Regulatory',
   'country': 'European Union',
-  'description': "## Policy Overview\r \r The EU CCS Directive (Directive 2009/31/EC) is the constitutional foundation of Europe's carbon management legal system. It establishes the highest regulatory standards for the safe geological sequestration of CO2 across the EU, ensuring environmental integrity and public safety. Its most celebrated provision is the **Long-term Liability Transfer mechanism**, which allows operators to hand over monitoring and remediation responsibilities to Member State governments after a ",
+  'description': 'Directive 2009/31/EC establishes the European Union legal framework for environmentally safe geological storage of carbon dioxide. It governs storage-site selection, exploration and storage permits, operation, monitoring, corrective measures, closure, post-closure obligations, financial security and transfer of responsibility to the competent authority. EUR-Lex identifies the Directive as in force and provides a consolidated version current to 24 December 2018. Later EU industrial-carbon-managem',
   'evolution':
     {
-      'clusters':
-        [
-          'European Green Deal',
-          'Net-Zero Industry Act (NZIA)',
-          'TEN-E Regulation',
-        ],
-      'supersedes': [],
+      'consolidatedFrom': ['eu-ccs-directive-2009'],
+      'currentConsolidatedVersion': '2018-12-24',
     },
   'id': 'eu-ccs-directive',
   'impactAnalysis':
@@ -67,8 +62,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
   'pubDate': '2009-04-23',
   'regulatory':
@@ -83,16 +78,12 @@
     },
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'European Parliament',
+  'source': 'European Union (EUR-Lex)',
   'status': 'Active',
-  'title': 'EU Directive on the Geological Storage of CO2 (CCS Directive)',
-  'url': 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031',
+  'title': 'EU Directive 2009/31/EC on the Geological Storage of Carbon Dioxide',
+  'url': 'https://eur-lex.europa.eu/eli/dir/2009/31/oj',
   'year': 2009,
 }
 ---
 
-## Policy Overview
-
-The EU CCS Directive (Directive 2009/31/EC) is the constitutional foundation of Europe's carbon management legal system. It establishes the highest regulatory standards for the safe geological sequestration of CO2 across the EU, ensuring environmental integrity and public safety. Its most celebrated provision is the **Long-term Liability Transfer mechanism**, which allows operators to hand over monitoring and remediation responsibilities to Member State governments after a minimum of 20 years post-closure, provided storage permanence is verified.
-
-In 2024-2025, the Directive was significantly bolstered to align with the Net-Zero Industry Act (NZIA) target of 50 Mtpa injection capacity by 2030. The Commission published updated guidance in July 2024 to streamline permitting and introduce more flexible, risk-based financial security requirements. By integrating with the TEN-E regulation for cross-border infrastructure, the Directive serves as the legal backbone for a unified European carbon management market, setting the global benchmark for CCS safety and liability management.
+Directive 2009/31/EC establishes the European Union legal framework for environmentally safe geological storage of carbon dioxide. It governs storage-site selection, exploration and storage permits, operation, monitoring, corrective measures, closure, post-closure obligations, financial security and transfer of responsibility to the competent authority. EUR-Lex identifies the Directive as in force and provides a consolidated version current to 24 December 2018. Later EU industrial-carbon-management measures complement the Directive but should not be described as amendments unless supported by a formal legal act.

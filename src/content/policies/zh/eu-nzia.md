@@ -13,8 +13,8 @@
       'market':
         {
           'auditNote': '',
-          'citation': 'NZIA Market Provisions',
-          'evidence': 'Aims to create an open, competitive EU-wide CO2 storage market.',
+          'citation': 'Regulation (EU) 2024/1735, Article 23; Delegated Regulation (EU) 2025/1477.',
+          'evidence': 'Authorised oil and gas producers are assigned individual pro-rata contributions to available injection capacity, supporting a market for CO2 storage services.',
           'label': 'Single Storage Market',
           'score': 85,
         },
@@ -29,16 +29,16 @@
       'statutory':
         {
           'auditNote': '',
-          'citation': 'NZIA Article 18',
-          'evidence': 'First law to mandate oil & gas producers to contribute to a collective 50Mtpa storage target by 2030.',
+          'citation': 'Regulation (EU) 2024/1735, Articles 20 and 23; Commission Delegated Regulation (EU) 2025/1477.',
+          'evidence': 'Regulation (EU) 2024/1735 sets a Union objective of at least 50 Mtpa of available CO2 injection capacity by 2030 and imposes pro-rata contribution obligations on authorised oil and gas producers.',
           'label': 'Mandatory Storage',
           'score': 100,
         },
       'strategic':
         {
           'auditNote': '',
-          'citation': 'NZIA Recital 34',
-          'evidence': 'Sets a legally binding target of 50 million tonnes of annual CO2 injection capacity within the EU by 2030.',
+          'citation': 'Regulation (EU) 2024/1735, Article 20.',
+          'evidence': 'The legally defined 2030 objective requires at least 50 million tonnes of annual operational CO2 injection capacity in qualifying EU storage sites.',
           'label': '50 Mtpa by 2030',
           'score': 100,
         },
@@ -67,10 +67,10 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
-  'pubDate': '2024-02-06',
+  'pubDate': '2024-06-28',
   'regulatory':
     {
       'co2_definition': '',
@@ -83,10 +83,10 @@
     },
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'European Commission',
+  'source': 'European Union (EUR-Lex)',
   'status': '现行',
   'title': '欧盟净零工业法案 (Net-Zero Industry Act - NZIA)',
-  'url': 'https://eur-lex.europa.eu/',
+  'url': 'https://eur-lex.europa.eu/eli/reg/2024/1735/oj',
   'year': 2024,
 }
 ---

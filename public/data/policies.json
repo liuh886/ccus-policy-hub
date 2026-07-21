@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-24T08:11:33.690Z",
-  "count": 130,
+  "generated_at": "2026-07-21T10:45:40.773Z",
+  "count": 124,
   "records": [
     {
       "id": "ar-rigi-ccus-2024",
@@ -2161,12 +2161,12 @@
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "European Commission",
-      "url": "https://eur-lex.europa.eu/",
-      "pub_date": "2024-02-06",
+      "source": "European Union (EUR-Lex)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1735/oj",
+      "pub_date": "2024-06-28",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
           "title": "EU Net-Zero Industry Act (NZIA)",
@@ -2191,8 +2191,8 @@
         "market": {
           "score": 85,
           "label": "Single Storage Market",
-          "evidence": "Aims to create an open, competitive EU-wide CO2 storage market.",
-          "citation": "NZIA Market Provisions"
+          "evidence": "Authorised oil and gas producers are assigned individual pro-rata contributions to available injection capacity, supporting a market for CO2 storage services.",
+          "citation": "Regulation (EU) 2024/1735, Article 23; Delegated Regulation (EU) 2025/1477."
         },
         "mrv": {
           "score": 90,
@@ -2203,14 +2203,14 @@
         "statutory": {
           "score": 100,
           "label": "Mandatory Storage",
-          "evidence": "First law to mandate oil & gas producers to contribute to a collective 50Mtpa storage target by 2030.",
-          "citation": "NZIA Article 18"
+          "evidence": "Regulation (EU) 2024/1735 sets a Union objective of at least 50 Mtpa of available CO2 injection capacity by 2030 and imposes pro-rata contribution obligations on authorised oil and gas producers.",
+          "citation": "Regulation (EU) 2024/1735, Articles 20 and 23; Commission Delegated Regulation (EU) 2025/1477."
         },
         "strategic": {
           "score": 100,
           "label": "50 Mtpa by 2030",
-          "evidence": "Sets a legally binding target of 50 million tonnes of annual CO2 injection capacity within the EU by 2030.",
-          "citation": "NZIA Recital 34"
+          "evidence": "The legally defined 2030 objective requires at least 50 million tonnes of annual operational CO2 injection capacity in qualifying EU storage sites.",
+          "citation": "Regulation (EU) 2024/1735, Article 20."
         }
       }
     },
@@ -2344,22 +2344,22 @@
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "European Parliament",
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031",
+      "source": "European Union (EUR-Lex)",
+      "url": "https://eur-lex.europa.eu/eli/dir/2009/31/oj",
       "pub_date": "2009-04-23",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "EU Directive on the Geological Storage of CO2 (CCS Directive)",
-          "description": "## Policy Overview\r\n\r\nThe EU CCS Directive (Directive 2009/31/EC) is the constitutional foundation of Europe's carbon management legal system. It establishes the highest regulatory standards for the safe geological sequestration of CO2 across the EU, ensuring environmental integrity and public safety. Its most celebrated provision is the **Long-term Liability Transfer mechanism**, which allows operators to hand over monitoring and remediation responsibilities to Member State governments after a minimum of 20 years post-closure, provided storage permanence is verified.\r\n\r\nIn 2024-2025, the Directive was significantly bolstered to align with the Net-Zero Industry Act (NZIA) target of 50 Mtpa injection capacity by 2030. The Commission published updated guidance in July 2024 to streamline permitting and introduce more flexible, risk-based financial security requirements. By integrating with the TEN-E regulation for cross-border infrastructure, the Directive serves as the legal backbone for a unified European carbon management market, setting the global benchmark for CCS safety and liability management.",
+          "title": "EU Directive 2009/31/EC on the Geological Storage of Carbon Dioxide",
+          "description": "Directive 2009/31/EC establishes the European Union legal framework for environmentally safe geological storage of carbon dioxide. It governs storage-site selection, exploration and storage permits, operation, monitoring, corrective measures, closure, post-closure obligations, financial security and transfer of responsibility to the competent authority. EUR-Lex identifies the Directive as in force and provides a consolidated version current to 24 December 2018. Later EU industrial-carbon-management measures complement the Directive but should not be described as amendments unless supported by a formal legal act.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "欧盟二氧化碳地质封存指令 (CCS Directive)",
-          "description": "## 政策概览\r\n\r\n欧盟 CCS 指令（Directive 2009/31/EC）是欧洲碳捕集与封存法律体系的母法，确立了在欧盟境内进行二氧化碳地质封存的最高监管框架。该指令的核心目标是确保封存作业的安全性，防止对环境和人类健康产生负面影响。其最具里程碑意义的规定是建立了 **“长期责任转移”** 机制：在封存场地关闭至少 20 年后，若证明 CO2 已被永久且完全固定，运营商可将后续监测与修复责任移交给所在成员国政府。\r\n\r\n2024-2025 年间，该指令经历了实质性的执行强化。为了对齐‘净零工业法案 (NZIA)’中 50Mtpa 的封存目标，欧盟委员会于 2024 年 7 月发布了修订后的实施指引，旨在简化成员国的许可审批流程并引入基于风险的财务担保方法。此外，该指令还通过 TEN-E 条例支持跨境 CO2 管网建设，为打造全欧洲统一的碳管理市场奠定了法制底座。尽管面临脱欧后的跨境法律障碍，该指令依然是全球 CCS 安全监管与责任划定的黄金基准。",
+          "title": "欧盟《二氧化碳地质封存指令》（2009/31/EC）",
+          "description": "欧盟 2009/31/EC 指令建立了环境安全型二氧化碳地质封存的法律框架，涵盖封存场选址、勘探与封存许可、运行监测、纠正措施、关闭与关闭后义务、财务担保，以及在满足条件后向主管机关移交责任。EUR-Lex 显示该指令仍然有效，当前公开的合并文本更新至 2018 年 12 月 24 日。后续欧盟工业碳管理政策对该指令形成补充，但除非存在正式法律修订，不应表述为对指令本身的修订。",
           "scope": null,
           "tags": null
         }
@@ -2380,14 +2380,14 @@
         "mrv": {
           "score": 80,
           "label": "Standardized Monitoring",
-          "evidence": "Mandates continuous monitoring and corrective measures for leakages.",
-          "citation": "Annex II"
+          "evidence": "Operators must monitor the injection facilities, storage complex and surrounding environment and implement corrective measures where required.",
+          "citation": "Directive 2009/31/EC, Article 13 and Annex II."
         },
         "statutory": {
           "score": 90,
           "label": "Permitting Regime",
-          "evidence": "Establishes a mandatory legal framework for storage permits across EU.",
-          "citation": "Chapter 3: Storage Permits"
+          "evidence": "Directive 2009/31/EC creates the EU-wide permitting and lifecycle-liability framework for geological CO2 storage.",
+          "citation": "Directive 2009/31/EC, Chapters 2-5; Article 18 on transfer of responsibility."
         },
         "strategic": {
           "score": 30,
@@ -2396,36 +2396,6 @@
           "citation": ""
         }
       }
-    },
-    {
-      "id": "eu-ccs-directive-2009",
-      "country": "European Union",
-      "year": 2009,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "verified",
-      "legal_weight": "Primary Legislation",
-      "source": "EU Commission",
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32009L0031",
-      "pub_date": "2009-04-23",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
-      "i18n": {
-        "en": {
-          "title": "EU CCS Directive (2009/31/EC)",
-          "description": "Foundational legal framework for safe geological storage of CO2 in the EU.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "欧盟 CCS 指令 (2009/31/EC)",
-          "description": "欧盟内部二氧化碳地质封存环境安全管理的基石性法律框架。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {}
     },
     {
       "id": "fr-ccus-roadmap",
@@ -3830,67 +3800,6 @@
       }
     },
     {
-      "id": "japan-ccs-act",
-      "country": "Japan",
-      "year": 2024,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "verified",
-      "legal_weight": "Primary Legislation",
-      "source": "日本经济产业省 (METI)",
-      "url": "https://www.meti.go.jp/english/press/2024/0213_001.html",
-      "pub_date": "2024-05-20",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Act on Carbon Dioxide Storage Business (CCS Business Act)",
-          "description": "Legislation passed in May 2024 decoupling CCS storage rights from oil/gas laws, enabling saline aquifer storage permits and defining a state-backed liability transfer mechanism.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "二氧化碳存储业务法 (CCS 事业法)",
-          "description": "## 政策概览\r\n\r\n日本于 2024 年 5 月正式颁布了《二氧化碳存储业务法》（CCS 事业法），这是日本实现 2030 年 CCS 商业化目标的核心法律基石。该法案确立了全球领先的许可与确权制度，允许专业运营商在指定的咸水层区域获得排他性的封存权。法案最显著的特征是引入了“无过错责任”原则，明确了运营商在钻探与封存活动中的损害赔偿义务，同时建立了向日本能源和金属矿物资源机构 (JOGMEC) 转移长期责任的法律路径。这一立法不仅支撑了苫小牧等示范项目的扩大，也为日本企业参与“亚洲 CCUS 网络”提供了制度保障。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 75,
-          "label": "JOGMEC Funding",
-          "evidence": "Provides financial and technical backing through JOGMEC for advanced CCS project implementation.",
-          "citation": "METI CCS Roadmap"
-        },
-        "market": {
-          "score": 75,
-          "label": "GX Integration",
-          "evidence": "Integrated into the Green Transformation (GX) economy to create market-based demand.",
-          "citation": "GX Promotion Act"
-        },
-        "mrv": {
-          "score": 80,
-          "label": "Seismic Monitoring",
-          "evidence": "Mandates high-precision pressure and seismic monitoring standard suitable for Japan's geology.",
-          "citation": "METI Technical Standards"
-        },
-        "statutory": {
-          "score": 100,
-          "label": "Exclusive Storage Rights",
-          "evidence": "Legally establishes CO2 storage as an independent business with exclusive 'quasi-property' rights.",
-          "citation": "Act on CO2 Storage Business (2024)"
-        },
-        "strategic": {
-          "score": 95,
-          "label": "2030 Commercialization",
-          "evidence": "Legally anchors Japan's 2030 commercial CCS target within the GX framework.",
-          "citation": "GX Basic Policy"
-        }
-      }
-    },
-    {
       "id": "jp-jogmec-advanced-ccs-2024",
       "country": "Japan",
       "year": 2024,
@@ -3952,67 +3861,6 @@
       }
     },
     {
-      "id": "jp-meti-specified-zones-2024",
-      "country": "Japan",
-      "year": 2024,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "draft",
-      "legal_weight": "Guideline/Policy",
-      "source": "METI Japan",
-      "url": "https://www.meti.go.jp/english/press/2024/1118_001.html",
-      "pub_date": "2024-11-18",
-      "provenance_author": "Legacy System",
-      "provenance_reviewer": "",
-      "provenance_last_audit_date": "2026-02-07",
-      "i18n": {
-        "en": {
-          "title": "Japan METI Specified Zones & CCS Tender Guidelines (2024)",
-          "description": "METI guidelines for designating CCS zones and conducting tenders for exploration and business permits.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "日本 METI CCS 指定区域与招标指南 (2024)",
-          "description": "经济产业省 (METI) 发布的指南，规定了如何划定 CCS “指定区域”并进行公开招标，以授予勘探和商业运营权。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 65,
-          "label": "Auctioned Support",
-          "evidence": "Tenders include integrated subsidies for exploratory drilling.",
-          "citation": "JOGMEC FY2024 Tender Rules"
-        },
-        "market": {
-          "score": 75,
-          "label": "Competitive Entry",
-          "evidence": "Uses a public tender system to select most efficient operators.",
-          "citation": "METI Bidding Guidelines"
-        },
-        "mrv": {
-          "score": 85,
-          "label": "Zone-specific MRV",
-          "evidence": "Mandatory monitoring standards specific to the geological characteristics of designated zones.",
-          "citation": "Safety Regulations Annex"
-        },
-        "statutory": {
-          "score": 95,
-          "label": "Designated Area Law",
-          "evidence": "METI has the power to designate and tender exclusive storage zones.",
-          "citation": "Act No. 38 of 2024, Art. 3"
-        },
-        "strategic": {
-          "score": 30,
-          "label": "Initial Assessment",
-          "evidence": "Baseline strategic alignment under V5.0 migration.",
-          "citation": ""
-        }
-      }
-    },
-    {
       "id": "jp-ccs-business-act-2024",
       "country": "Japan",
       "year": 2024,
@@ -4020,22 +3868,22 @@
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "METI",
-      "url": "https://www.meti.go.jp/english/press/2024/0517_001.html",
+      "source": "Ministry of Economy, Trade and Industry (METI), Japan",
+      "url": "https://www.meti.go.jp/english/press/2026/0424_002.html",
       "pub_date": "2024-05-17",
       "provenance_author": "CCUS AI Agent (DV Update)",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-19",
+      "provenance_reviewer": "Primary-source audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Act on Carbon Dioxide Storage Business (2025 Phase-in)",
-          "description": "The Act on Carbon Dioxide Storage Business (CCS Business Act) established a comprehensive legal framework for the entire CCS value chain in Japan. Passed in May 2024, the Act follows a phased implementation: prospecting rights became effective in Nov 2024, with full enforcement (including storage rights and liability transfer) mandated by May 2026. 2025 serves as the critical window for FEED implementation of JOGMEC-supported projects. The Act creates 'Quasi-real Rights' (Mina-shi Bukken) for storage, allowing for registration and mortgage/financing. It provides for the transfer of monitoring responsibilities to JOGMEC after CO2 stabilization, while maintaining a strict liability (no-fault) regime for operators.",
+          "title": "Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)",
+          "description": "Japan enacted the CCS Business Act in May 2024 to establish licensing systems for carbon dioxide storage businesses and exploratory drilling, create legally protected storage and exploratory-drilling rights, and regulate storage operations and pipeline transport of carbon dioxide. Exploration-related provisions entered into force in stages on 5 August and 18 November 2024. METI set 22 May 2026 as the full enforcement date and completed the associated Cabinet Orders, including registration rules for storage rights and technical provisions for offshore storage.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "二氧化碳存储业务法 (2025年生效)",
-          "description": "日本《二氧化碳存储业务法》（CCS 业务法）为全产业链建立了首个综合性法律框架。该法案于 2024 年 5 月颁布，采取分阶段生效模式：试掘权于 2024 年 11 月生效，全部条款（包括储集权、责任移交）将于 2026 年 5 月前全面施行。2025 年是 JOGMEC 支持的示范项目进入基础工程设计 (FEED) 的关键年。法案将“储集权”定义为“拟制物权”，受法律保护且可用于抵押融资。二氧化碳达到稳定状态后，监测职责可移交给 JOGMEC，但运营商需承担无过错责任。",
+          "title": "日本《二氧化碳储存业务法》（CCS 业务法）",
+          "description": "日本于 2024 年 5 月制定《二氧化碳储存业务法》，建立二氧化碳封存业务与试掘许可制度，确立受法律保护的储集权和试掘权，并对封存业务及管道二氧化碳运输实施经营与安全监管。与勘探和试掘有关的部分条款分别于 2024 年 8 月 5 日和 11 月 18 日分阶段施行。经济产业省随后将 2026 年 5 月 22 日确定为该法全面施行日期，并完成储集权登记、海域封存技术要求等配套政令。",
           "scope": null,
           "tags": null
         }
@@ -4056,14 +3904,14 @@
         "mrv": {
           "score": 90,
           "label": "High",
-          "evidence": "Clear legal definition of \"Stability\" for JOGMEC transfer.",
-          "citation": "Section 5"
+          "evidence": "The statutory and implementing framework requires regulated site operation, monitoring, closure and post-closure controls; detailed implementing rules were completed for full enforcement on 22 May 2026.",
+          "citation": "METI Act on Carbon Dioxide Storage Businesses and 2026 implementing Cabinet Orders."
         },
         "statutory": {
           "score": 95,
           "label": "CCS Business Act",
-          "evidence": "Japan achieved high regulatory maturity with the enactment of the CCS Business Act in May 2024, which became partially effective in August 2024 and enters full enforcement by 2025-2026. The Act replaces a fragmented legal landscape with a unified 'Permit System' for CO2 storage and transport. Crucially, it defines 'Storage Rights' as a new form of real right, allowing them to be mortgaged and protected. The Act also clarifies pipeline access and safety standards. This legal certainty, combined with the government's role in designating 'Specified Areas' for storage, provides a robust statutory foundation that is among the most comprehensive in Asia.",
-          "citation": "Japan CCS Business Act 2024; METI Ordinances 2025"
+          "evidence": "The Act establishes storage-business and exploratory-drilling licences, registrable storage and exploratory-drilling rights, and business and safety rules for storage and pipeline CO2 transport.",
+          "citation": "METI CCS Business Act overview; METI Cabinet Orders of 23 July 2024, 29 October 2024 and 24 April 2026."
         },
         "strategic": {
           "score": 95,
@@ -4209,22 +4057,22 @@
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
-      "source": "马来西亚议会",
-      "url": "https://www.parlimen.gov.my/",
-      "pub_date": "2025-01-01",
+      "source": "Ministry of Economy / Malaysian CCUS Agency (MyCCUS)",
+      "url": "https://myccus.ekonomi.gov.my/activities/",
+      "pub_date": "2025-08-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-07",
+      "provenance_reviewer": "Primary-source audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Malaysia Carbon Capture, Utilisation, and Storage (CCUS) Act 2025",
-          "description": "## Policy Overview\r\n\r\nGazetted in August 2025, Malaysia’s standalone CCUS Act (Act 859) provides the robust legal architecture needed to position the nation as a premier carbon management hub in the Asia Pacific. The Act mandates the creation of the Malaysia CCUS Agency (MyCCUS), which serves as a one-stop regulatory body for the entire value chain. Covering Peninsular Malaysia and Labuan, the legislation focuses on streamlining offshore exploration and storage permits.\r\n\r\nAt its core, the Act aims to **monetize Malaysia's vast offshore geological storage capacity**. By providing a clear legal framework for cross-border CO2 transport and permanent storage, it enables PETRONAS and its international partners to develop large-scale regional hubs. This policy is a central engine of the National Energy Transition Roadmap (NETR), designed to transform carbon storage from an environmental necessity into a new pillar of economic growth.",
+          "title": "Malaysia Carbon Capture, Utilisation and Storage Act 2025 (Act 870)",
+          "description": "Malaysia’s Carbon Capture, Utilisation and Storage Act 2025 is Act 870, not Act 859. It was gazetted on 1 August 2025 and came into force on 1 October 2025. The Act establishes the Malaysian Carbon Capture, Utilisation and Storage Agency under section 6 and provides the federal framework for administering and supervising CCUS activities. MyCCUS and designated competent technical entities implement the licensing, permitting, technical and compliance functions, while subsidiary regulations and operational guidance continue to be developed.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "马来西亚二氧化碳捕集、利用与封存法 (CCUS 法案 2025)",
-          "description": "## 政策概览\r\n\r\n马来西亚《CCUS 法案 2025》于 2025 年 8 月正式签署成法，是该国确立亚太地区 CCUS 枢纽地位的里程碑式立法。该法案设立了专门的监管机构——马来西亚 CCUS 管理局 (MyCCUS)，负责全产业链的许可发放与合规监管。法案的法律效力目前覆盖马来西亚半岛及纳闽联邦直辖区，重点规范了离岸封存场的勘探、建设与运营。\r\n\r\n该法案的核心战略目标是**利用马来西亚丰富的离岸枯竭油气田资源吸引国际碳封存业务**。通过建立明确的跨境 CO2 运输与封存法律框架，法案为国家石油公司 (PETRONAS) 及其国际合作伙伴（如 ADNOC）在马来西亚水域开发区域性存储枢纽扫清了确权障碍。这一立法不仅是马来西亚能源转型的重要工具，更是其‘国家能源转型路线图 (NETR)’中将 CCUS 转化为新型经济增长点的关键法制保障。",
+          "title": "马来西亚《2025 年碳捕集、利用与封存法》（第 870 号法令）",
+          "description": "马来西亚《2025 年碳捕集、利用与封存法》的正式编号为第 870 号法令，而非第 859 号法令。该法于 2025 年 8 月 1 日刊宪，并于 2025 年 10 月 1 日正式生效。法案第 6 条设立马来西亚碳捕集、利用与封存管理局，为联邦层面的 CCUS 活动管理和监督提供法律框架。MyCCUS 与指定的技术主管机构承担许可、技术与合规职能，相关附属法规和操作指引仍在持续完善。",
           "scope": null,
           "tags": null
         }
@@ -4245,14 +4093,14 @@
         "mrv": {
           "score": 85,
           "label": "ISO-aligned MRV",
-          "evidence": "Adopts international standards (ISO 27914) for CO2 accounting and injection monitoring.",
-          "citation": "Section 32: Technical Requirements"
+          "evidence": "The Act provides the legal basis for risk, liability, registration and post-closure controls; detailed import-permit and registration regulations remained under development in 2026.",
+          "citation": "MyCCUS official activities record, including the 22 June 2026 subsidiary-regulation workshop."
         },
         "statutory": {
           "score": 100,
           "label": "Dedicated Federal Act",
-          "evidence": "A comprehensive federal act (Act 859) covering capture, transport, and storage jurisdiction.",
-          "citation": "Malaysia CCUS Act 2025"
+          "evidence": "Act 870 establishes the Malaysian CCUS Agency and a national licensing, permitting and compliance framework for CCUS activities.",
+          "citation": "Malaysia CCUS Act 2025 [Act 870]; MyCCUS official implementation record, 9 October 2025."
         },
         "strategic": {
           "score": 90,
@@ -4263,222 +4111,39 @@
       }
     },
     {
-      "id": "my-ccus-bill-2025",
-      "country": "Malaysia",
-      "year": 2025,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "verified",
-      "legal_weight": "Primary Legislation",
-      "source": "Ministry of Economy",
-      "url": "https://www.ekonomi.gov.my/",
-      "pub_date": "2025-03-01",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
-      "i18n": {
-        "en": {
-          "title": "Malaysia CCUS Bill 2025",
-          "description": "The Malaysia CCUS Bill 2025 provides a comprehensive regulatory framework for the entire CCUS value chain. It establishes MyCCUS as a one-stop agency and introduces a Post-Closure Stewardship Fund via an injection levy. The bill permits CO2 import for storage but prohibits utilization of imported CO2.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "2025年马来西亚 CCUS 法案",
-          "description": "2025年马来西亚 CCUS 法案为整个 CCUS 价值链提供了全面的监管框架。该法案设立了 MyCCUS 作为一站式机构，并通过注入征费引入了闭坑后管理基金。该法案允许进口二氧化碳进行封存，但禁止利用进口的二氧化碳。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 85,
-          "label": "High",
-          "evidence": "Comprehensive national legislation established in 2025.",
-          "citation": null
-        },
-        "market": {
-          "score": 75,
-          "label": "High",
-          "evidence": "Comprehensive national legislation established in 2025.",
-          "citation": null
-        },
-        "mrv": {
-          "score": 80,
-          "label": "High",
-          "evidence": "Comprehensive national legislation established in 2025.",
-          "citation": null
-        },
-        "statutory": {
-          "score": 95,
-          "label": "High",
-          "evidence": "Comprehensive national legislation established in 2025.",
-          "citation": null
-        },
-        "strategic": {
-          "score": 90,
-          "label": "High",
-          "evidence": "Comprehensive national legislation established in 2025.",
-          "citation": null
-        }
-      }
-    },
-    {
-      "id": "my-offshore-ccs-reg-2025",
-      "country": "Malaysia",
-      "year": 2025,
-      "status": "Active",
-      "category": "Regulatory",
-      "review_status": "verified",
-      "legal_weight": "Primary Legislation",
-      "source": "Ministry of Economy / PETRONAS",
-      "url": "https://www.petronas.com/sustainability/ccus",
-      "pub_date": "2025-01-01",
-      "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
-      "i18n": {
-        "en": {
-          "title": "Malaysia Offshore CCUS Regulatory Framework 2025",
-          "description": "Malaysia's comprehensive CCUS legislation enacted in 2025, specifically addressing offshore CO2 storage. It establishes PETRONAS as the technical manager and defines the fiscal incentives for cross-border storage hubs (e.g., Kasawari).",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "2025年马来西亚离岸 CCUS 监管框架",
-          "description": "马来西亚于 2025 年颁布了全面的 CCUS 立法，专门针对离岸二氧化碳封存。该法指定马石油 (PETRONAS) 为技术管理者，并规定了跨境封存枢纽（如 Kasawari）的财政激励措施。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 80,
-          "label": "High",
-          "evidence": "Batch 4 Offshore Focus update.",
-          "citation": null
-        },
-        "market": {
-          "score": 85,
-          "label": "Regional Storage Hub",
-          "evidence": "Enabling Third-Party Access (TPA) for ASEAN industrial emitters via the Kasawari and upcoming clusters.",
-          "citation": "2024/2025 National Registry"
-        },
-        "mrv": {
-          "score": 85,
-          "label": "High",
-          "evidence": "Batch 4 Offshore Focus update.",
-          "citation": null
-        },
-        "statutory": {
-          "score": 90,
-          "label": "Petronas-Led Mandate",
-          "evidence": "Specific offshore CCS regulations enacted in 2025, providing legal certainty for cross-border storage agreements.",
-          "citation": "2024/2025 National Registry"
-        },
-        "strategic": {
-          "score": 90,
-          "label": "High",
-          "evidence": "Batch 4 Offshore Focus update.",
-          "citation": null
-        }
-      }
-    },
-    {
-      "id": "my-ccs-framework",
-      "country": "Malaysia",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
-      "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "MIDA / 马来西亚财政部",
-      "url": null,
-      "pub_date": "2024-01-01",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
-      "i18n": {
-        "en": {
-          "title": "Malaysia CCUS Act 2025",
-          "description": "Southeast Asia's first standalone CCUS law, establishing MyCCUS as the regulator and enabling transboundary storage services.",
-          "scope": null,
-          "tags": null
-        },
-        "zh": {
-          "title": "马来西亚 2025 年 CCUS 法案",
-          "description": "东南亚首部独立 CCUS 法律，成立 MyCCUS 监管机构并授权跨国封存服务。",
-          "scope": null,
-          "tags": null
-        }
-      },
-      "analysis": {
-        "incentive": {
-          "score": 40,
-          "label": "Not specified",
-          "evidence": "No direct incentive found.",
-          "citation": ""
-        },
-        "market": {
-          "score": 40,
-          "label": "Market Integration",
-          "evidence": "No specific market rules.",
-          "citation": ""
-        },
-        "mrv": {
-          "score": 40,
-          "label": "Standard",
-          "evidence": "Standard reporting required.",
-          "citation": ""
-        },
-        "statutory": {
-          "score": 40,
-          "label": "Undefined",
-          "evidence": "Pore space rights not explicitly defined.",
-          "citation": ""
-        },
-        "strategic": {
-          "score": 30,
-          "label": "Initial Assessment",
-          "evidence": "Baseline strategic alignment under V5.0 migration.",
-          "citation": ""
-        }
-      }
-    },
-    {
       "id": "my-mida-incentives",
       "country": "Malaysia",
-      "year": 2024,
-      "status": "现行",
-      "category": "法律监管",
+      "year": 2023,
+      "status": "Active",
+      "category": "Incentive",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
-      "source": "",
-      "url": null,
-      "pub_date": "2024-01-01",
+      "legal_weight": "Fiscal Incentive",
+      "source": "Malaysian Investment Development Authority (MIDA)",
+      "url": "https://www.mida.gov.my/equilibrium-through-carbon-capture-malaysias-path-to-net-zero-emissions/",
+      "pub_date": "2023-05-31",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Human Audit Pending",
-      "provenance_last_audit_date": "2026-02-08",
+      "provenance_reviewer": "Primary-source audit",
+      "provenance_last_audit_date": "2026-07-21",
       "i18n": {
         "en": {
-          "title": "Malaysia MIDA CCUS Tax Incentives",
-          "description": "Providing 100% Investment Tax Allowance (ITA) for CCS activities to attract global carbon management capital.",
+          "title": "Malaysia CCS Tax Incentives (Budget 2023)",
+          "description": "Malaysia introduced dedicated CCS tax incentives for applications from 25 February 2023 to 31 December 2027. In-house CCS projects and CCS service providers may receive an Investment Tax Allowance equal to 100% of qualifying capital expenditure for ten years, offset against up to 100% of statutory income. CCS service providers may alternatively receive a 70% statutory-income tax exemption for ten years. Eligible equipment receives import-duty and sales-tax exemptions, and users of CCS services may deduct qualifying service fees.",
           "scope": null,
           "tags": null
         },
         "zh": {
-          "title": "马来西亚 MIDA CCUS 税收激励",
-          "description": "为 CCS 活动提供 100% 的投资税收抵免 (ITA)，以吸引全球碳管理资本。",
+          "title": "马来西亚 CCS 税收激励（2023 年预算）",
+          "description": "马来西亚为 2023 年 2 月 25 日至 2027 年 12 月 31 日期间提交的申请设置了专项 CCS 税收激励。企业自建 CCS 项目和 CCS 服务提供商可在十年内获得相当于合格资本支出 100% 的投资税收抵免，并最高抵扣 100% 的法定收入；CCS 服务提供商也可选择十年期、70% 法定收入免税。符合条件的 CCS 设备可享进口税和销售税豁免，使用 CCS 服务的企业还可扣除相关服务费用。",
           "scope": null,
           "tags": null
         }
       },
       "analysis": {
         "incentive": {
-          "score": 40,
-          "label": "Not specified",
-          "evidence": "No direct incentive found.",
-          "citation": ""
+          "score": 95,
+          "label": "100% ITA / 10 years",
+          "evidence": "Official MIDA guidance provides a 100% Investment Tax Allowance on qualifying capital expenditure for ten years, plus equipment-duty exemptions and service-fee deductions, subject to eligibility and application windows.",
+          "citation": "MIDA official CCS incentive summary, 31 May 2023."
         },
         "market": {
           "score": 40,

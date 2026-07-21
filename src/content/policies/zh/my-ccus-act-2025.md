@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Section 32: Technical Requirements',
-          'evidence': 'Adopts international standards (ISO 27914) for CO2 accounting and injection monitoring.',
+          'citation': 'MyCCUS official activities record, including the 22 June 2026 subsidiary-regulation workshop.',
+          'evidence': 'The Act provides the legal basis for risk, liability, registration and post-closure controls; detailed import-permit and registration regulations remained under development in 2026.',
           'label': 'ISO-aligned MRV',
           'score': 85,
         },
       'statutory':
         {
           'auditNote': 'Highest statutory score in ASEAN.',
-          'citation': 'Malaysia CCUS Act 2025',
-          'evidence': 'A comprehensive federal act (Act 859) covering capture, transport, and storage jurisdiction.',
+          'citation': 'Malaysia CCUS Act 2025 [Act 870]; MyCCUS official implementation record, 9 October 2025.',
+          'evidence': 'Act 870 establishes the Malaysian CCUS Agency and a national licensing, permitting and compliance framework for CCUS activities.',
           'label': 'Dedicated Federal Act',
           'score': 100,
         },
@@ -45,15 +45,22 @@
     },
   'category': '法律监管',
   'country': '马来西亚',
-  'description': "## 政策概览\r \r 马来西亚《CCUS 法案 2025》于 2025 年 8 月正式签署成法，是该国确立亚太地区 CCUS 枢纽地位的里程碑式立法。该法案设立了专门的监管机构——马来西亚 CCUS 管理局 (MyCCUS)，负责全产业链的许可发放与合规监管。法案的法律效力目前覆盖马来西亚半岛及纳闽联邦直辖区，重点规范了离岸封存场的勘探、建设与运营。\r \r 该法案的核心战略目标是**利用马来西亚丰富的离岸枯竭油气田资源吸引国际碳封存业务**。通过建立明确的跨境 CO2 运输与封存法律框架，法案为国家石油公司 (PETRONAS) 及其国际合作伙伴（如 ADNOC）在马来西亚水域开发区域性存储枢纽扫清了确权障碍。这一立法不仅是马来西亚能源转型的重要工具，更是其‘国家能源转型路线图 (NETR)’中将 CCUS 转化为新型经济增长点的关键法制保障。",
+  'description': '马来西亚《2025 年碳捕集、利用与封存法》的正式编号为第 870 号法令，而非第 859 号法令。该法于 2025 年 8 月 1 日刊宪，并于 2025 年 10 月 1 日正式生效。法案第 6 条设立马来西亚碳捕集、利用与封存管理局，为联邦层面的 CCUS 活动管理和监督提供法律框架。MyCCUS 与指定的技术主管机构承担许可、技术与合规职能，相关附属法规和操作指引仍在持续完善。',
   'evolution':
     {
-      'clusters':
+      'consolidatedFrom':
+        ['my-ccus-bill-2025', 'my-offshore-ccs-reg-2025', 'my-ccs-framework'],
+      'milestones':
         [
-          'Malaysia National Energy Transition Roadmap (NETR)',
-          'ASEAN CCUS Hub Strategy',
+          {
+            'date': '2025-08-01',
+            'event': 'CCUS Act 2025 [Act 870] gazetted.',
+          },
+          {
+            'date': '2025-10-01',
+            'event': 'Act entered into force and the Malaysian CCUS Agency was established.',
+          },
         ],
-      'supersedes': [],
     },
   'id': 'my-ccus-act-2025',
   'impactAnalysis':
@@ -66,10 +73,10 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-07',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
-  'pubDate': '2025-01-01',
+  'pubDate': '2025-08-01',
   'regulatory':
     {
       'co2_definition': '',
@@ -82,16 +89,12 @@
     },
   'relatedFacilities': ['1242', '1243', '311', '598'],
   'reviewStatus': 'verified',
-  'source': '马来西亚议会',
+  'source': 'Ministry of Economy / Malaysian CCUS Agency (MyCCUS)',
   'status': '现行',
-  'title': '马来西亚二氧化碳捕集、利用与封存法 (CCUS 法案 2025)',
-  'url': 'https://www.parlimen.gov.my/',
+  'title': '马来西亚《2025 年碳捕集、利用与封存法》（第 870 号法令）',
+  'url': 'https://myccus.ekonomi.gov.my/activities/',
   'year': 2025,
 }
 ---
 
-## 政策概览
-
-马来西亚《CCUS 法案 2025》于 2025 年 8 月正式签署成法，是该国确立亚太地区 CCUS 枢纽地位的里程碑式立法。该法案设立了专门的监管机构——马来西亚 CCUS 管理局 (MyCCUS)，负责全产业链的许可发放与合规监管。法案的法律效力目前覆盖马来西亚半岛及纳闽联邦直辖区，重点规范了离岸封存场的勘探、建设与运营。
-
-该法案的核心战略目标是**利用马来西亚丰富的离岸枯竭油气田资源吸引国际碳封存业务**。通过建立明确的跨境 CO2 运输与封存法律框架，法案为国家石油公司 (PETRONAS) 及其国际合作伙伴（如 ADNOC）在马来西亚水域开发区域性存储枢纽扫清了确权障碍。这一立法不仅是马来西亚能源转型的重要工具，更是其‘国家能源转型路线图 (NETR)’中将 CCUS 转化为新型经济增长点的关键法制保障。
+马来西亚《2025 年碳捕集、利用与封存法》的正式编号为第 870 号法令，而非第 859 号法令。该法于 2025 年 8 月 1 日刊宪，并于 2025 年 10 月 1 日正式生效。法案第 6 条设立马来西亚碳捕集、利用与封存管理局，为联邦层面的 CCUS 活动管理和监督提供法律框架。MyCCUS 与指定的技术主管机构承担许可、技术与合规职能，相关附属法规和操作指引仍在持续完善。

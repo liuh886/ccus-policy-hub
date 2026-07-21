@@ -21,16 +21,16 @@
       'mrv':
         {
           'auditNote': '',
-          'citation': 'Annex II',
-          'evidence': 'Mandates continuous monitoring and corrective measures for leakages.',
+          'citation': 'Directive 2009/31/EC, Article 13 and Annex II.',
+          'evidence': 'Operators must monitor the injection facilities, storage complex and surrounding environment and implement corrective measures where required.',
           'label': 'Standardized Monitoring',
           'score': 80,
         },
       'statutory':
         {
           'auditNote': 'Identified as the highest legal anchor for Europe.',
-          'citation': 'Chapter 3: Storage Permits',
-          'evidence': 'Establishes a mandatory legal framework for storage permits across EU.',
+          'citation': 'Directive 2009/31/EC, Chapters 2-5; Article 18 on transfer of responsibility.',
+          'evidence': 'Directive 2009/31/EC creates the EU-wide permitting and lifecycle-liability framework for geological CO2 storage.',
           'label': 'Permitting Regime',
           'score': 90,
         },
@@ -45,16 +45,11 @@
     },
   'category': '法律监管',
   'country': '欧盟',
-  'description': "## 政策概览\r \r 欧盟 CCS 指令（Directive 2009/31/EC）是欧洲碳捕集与封存法律体系的母法，确立了在欧盟境内进行二氧化碳地质封存的最高监管框架。该指令的核心目标是确保封存作业的安全性，防止对环境和人类健康产生负面影响。其最具里程碑意义的规定是建立了 **“长期责任转移”** 机制：在封存场地关闭至少 20 年后，若证明 CO2 已被永久且完全固定，运营商可将后续监测与修复责任移交给所在成员国政府。\r \r 2024-2025 年间，该指令经历了实质性的执行强化。为了对齐‘净零工业法案 (NZIA)’中 50Mtpa 的封存目标，欧盟委员会于 2024 年 7 月发布了修订后的实施指引，旨在简化成员国的许可审批流程并引入基于风险的财务担保方法。此外，该指令还通过 TEN-E 条例支持跨境 CO2 管网建设，为打造全欧洲统一的碳管理市场奠定了法制底座。尽管面临脱欧后的跨境法律障碍，该指令依然是全球 CCS 安全监管与责任划定的黄金基准。",
+  'description': '欧盟 2009/31/EC 指令建立了环境安全型二氧化碳地质封存的法律框架，涵盖封存场选址、勘探与封存许可、运行监测、纠正措施、关闭与关闭后义务、财务担保，以及在满足条件后向主管机关移交责任。EUR-Lex 显示该指令仍然有效，当前公开的合并文本更新至 2018 年 12 月 24 日。后续欧盟工业碳管理政策对该指令形成补充，但除非存在正式法律修订，不应表述为对指令本身的修订。',
   'evolution':
     {
-      'clusters':
-        [
-          'European Green Deal',
-          'EU Net-Zero Industry Act (NZIA)',
-          'TEN-E Regulation',
-        ],
-      'supersedes': [],
+      'consolidatedFrom': ['eu-ccs-directive-2009'],
+      'currentConsolidatedVersion': '2018-12-24',
     },
   'id': 'eu-ccs-directive',
   'impactAnalysis':
@@ -67,8 +62,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-02-08',
-      'reviewer': 'Human Audit Pending',
+      'lastAuditDate': '2026-07-21',
+      'reviewer': 'Primary-source audit',
     },
   'pubDate': '2009-04-23',
   'regulatory':
@@ -83,16 +78,12 @@
     },
   'relatedFacilities': [],
   'reviewStatus': 'verified',
-  'source': 'European Parliament',
+  'source': 'European Union (EUR-Lex)',
   'status': '现行',
-  'title': '欧盟二氧化碳地质封存指令 (CCS Directive)',
-  'url': 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031',
+  'title': '欧盟《二氧化碳地质封存指令》（2009/31/EC）',
+  'url': 'https://eur-lex.europa.eu/eli/dir/2009/31/oj',
   'year': 2009,
 }
 ---
 
-## 政策概览
-
-欧盟 CCS 指令（Directive 2009/31/EC）是欧洲碳捕集与封存法律体系的母法，确立了在欧盟境内进行二氧化碳地质封存的最高监管框架。该指令的核心目标是确保封存作业的安全性，防止对环境和人类健康产生负面影响。其最具里程碑意义的规定是建立了 **“长期责任转移”** 机制：在封存场地关闭至少 20 年后，若证明 CO2 已被永久且完全固定，运营商可将后续监测与修复责任移交给所在成员国政府。
-
-2024-2025 年间，该指令经历了实质性的执行强化。为了对齐‘净零工业法案 (NZIA)’中 50Mtpa 的封存目标，欧盟委员会于 2024 年 7 月发布了修订后的实施指引，旨在简化成员国的许可审批流程并引入基于风险的财务担保方法。此外，该指令还通过 TEN-E 条例支持跨境 CO2 管网建设，为打造全欧洲统一的碳管理市场奠定了法制底座。尽管面临脱欧后的跨境法律障碍，该指令依然是全球 CCS 安全监管与责任划定的黄金基准。
+欧盟 2009/31/EC 指令建立了环境安全型二氧化碳地质封存的法律框架，涵盖封存场选址、勘探与封存许可、运行监测、纠正措施、关闭与关闭后义务、财务担保，以及在满足条件后向主管机关移交责任。EUR-Lex 显示该指令仍然有效，当前公开的合并文本更新至 2018 年 12 月 24 日。后续欧盟工业碳管理政策对该指令形成补充，但除非存在正式法律修订，不应表述为对指令本身的修订。
