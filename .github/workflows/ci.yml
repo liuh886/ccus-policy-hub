@@ -50,6 +50,9 @@ jobs:
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md
 
+      - name: Verify Committed Policy Links
+        run: node scripts/sync-policy-link-projections.mjs
+
       - name: Generate Quality Metrics
         run: pnpm manage:db:quality:export
 
@@ -61,6 +64,9 @@ jobs:
 
       - name: Verify Generated Public Policy Data
         run: pnpm manage:db:audit:policy-consistency
+
+      - name: Verify Generated Policy Links
+        run: node scripts/sync-policy-link-projections.mjs
 
       - name: Build
         run: pnpm run build
