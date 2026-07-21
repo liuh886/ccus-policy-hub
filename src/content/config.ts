@@ -21,6 +21,11 @@ const analysisDimensionSchema = z.object({
   auditNote: z.string().optional().default(''),
 });
 
+const evolutionMilestoneSchema = z.object({
+  date: z.string(),
+  event: z.string(),
+});
+
 const policySchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -41,6 +46,11 @@ const policySchema = z.object({
       supersedes: z.array(z.string()).optional(),
       supersededBy: z.string().optional(),
       clusters: z.array(z.string()).optional(),
+      consolidatedFrom: z.array(z.string()).optional(),
+      milestones: z.array(evolutionMilestoneSchema).optional(),
+      currentConsolidatedVersion: z.string().optional(),
+      effectiveApplicationWindow: z.string().optional(),
+      sourcePublicationDate: z.string().optional(),
     })
     .optional(),
   impactAnalysis: z
