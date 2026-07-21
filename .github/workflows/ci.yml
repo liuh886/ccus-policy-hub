@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, policy/official-gap-pass-2026-07]
+    branches: [main]
   pull_request:
     branches: [main]
 
@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -79,8 +81,8 @@ jobs:
 
       - name: Materialize Official Policy Gap Migration
         if: >-
-          github.event_name == 'push' &&
-          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/official-gap-pass-2026-07' &&
           github.actor != 'github-actions[bot]'
         run: |
           pnpm manage:db:migrate:official-policy-gaps
@@ -105,8 +107,8 @@ jobs:
 
       - name: Enforce Policy-Only Change Boundary
         if: >-
-          github.event_name == 'push' &&
-          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/official-gap-pass-2026-07' &&
           github.actor != 'github-actions[bot]'
         run: |
           forbidden=0
@@ -124,12 +126,13 @@ jobs:
 
       - name: Commit Verified Policy Migration
         if: >-
-          github.event_name == 'push' &&
-          github.ref == 'refs/heads/policy/official-gap-pass-2026-07' &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'policy/official-gap-pass-2026-07' &&
           github.actor != 'github-actions[bot]'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'feat(data): materialize verified official policy gaps'
+          branch: policy/official-gap-pass-2026-07
           file_pattern: >-
             .github/workflows/ci.yml
             package.json
