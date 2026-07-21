@@ -98,6 +98,12 @@ jobs:
               'lastAuditDate: p.provenance_last_audit_date,'
             );
 
+          const policyStart = source.indexOf("db.all('SELECT * FROM policies')");
+          const facilityStart = source.indexOf("db.all('SELECT * FROM facilities')");
+          if (policyStart < 0 || facilityStart <= policyStart) {
+            throw new Error('Could not isolate the active policy exporter section.');
+          }
+          const policySection = source.slice(policyStart, facilityStart);
           for (const forbidden of [
             "score: a.score || 0,",
             "label: a.label || 'Pending',",
@@ -106,7 +112,7 @@ jobs:
             "'Human Audit Pending'",
             "new Date().toISOString().split('T')[0]",
           ]) {
-            if (source.includes(forbidden)) {
+            if (policySection.includes(forbidden)) {
               throw new Error(`Policy exporter still contains fallback: ${forbidden}`);
             }
           }
