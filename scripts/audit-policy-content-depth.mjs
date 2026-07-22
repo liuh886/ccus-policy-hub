@@ -91,13 +91,13 @@ export function assessPolicyContent(policy) {
   score += Math.min(zhDescriptionLength / 260, 1) * 18;
   score += textLength(en.scope) >= 50 ? 6 : 0;
   score += textLength(zh.scope) >= 25 ? 6 : 0;
-  score += Math.min(tagsCount(en.tags_json), 4) / 4 * 4;
-  score += Math.min(tagsCount(zh.tags_json), 4) / 4 * 4;
+  score += (Math.min(tagsCount(en.tags_json), 4) / 4) * 4;
+  score += (Math.min(tagsCount(zh.tags_json), 4) / 4) * 4;
   score += (enImpactFields / 3) * 8;
   score += (zhImpactFields / 3) * 8;
-  score += Math.min(milestoneCount(en.evolution_json), 2) / 2 * 4;
-  score += Math.min(milestoneCount(zh.evolution_json), 2) / 2 * 4;
-  score += Math.min(specificAnalysisCount, 5) / 5 * 12;
+  score += (Math.min(milestoneCount(en.evolution_json), 2) / 2) * 4;
+  score += (Math.min(milestoneCount(zh.evolution_json), 2) / 2) * 4;
+  score += (Math.min(specificAnalysisCount, 5) / 5) * 12;
   score += policy.analysis.length === 5 ? 8 : 0;
 
   const flags = [];
@@ -109,7 +109,10 @@ export function assessPolicyContent(policy) {
   if (enImpactFields < 3 || zhImpactFields < 3) {
     flags.push('incomplete-impact-analysis');
   }
-  if (milestoneCount(en.evolution_json) === 0 || milestoneCount(zh.evolution_json) === 0) {
+  if (
+    milestoneCount(en.evolution_json) === 0 ||
+    milestoneCount(zh.evolution_json) === 0
+  ) {
     flags.push('missing-evolution');
   }
   if (placeholderAnalysisCount > 0) flags.push('placeholder-analysis');
@@ -161,19 +164,32 @@ export function assessPolicyContent(policy) {
   };
 }
 
-function queryRows(db, sql) {
+function queryRows(db, sql, params = []) {
   const statement = db.prepare(sql);
+  statement.bind(params);
   const columns = statement.getColumnNames();
   const rows = [];
   while (statement.step()) {
     const values = statement.get();
-    rows.push(Object.fromEntries(columns.map((column, index) => [column, values[index]])));
+    rows.push(
+      Object.fromEntries(columns.map((column, index) => [column, values[index]]))
+    );
   }
   statement.free();
   return rows;
 }
 
-export function buildReport(db, asOf = new Date().toISOString().slice(0, 10)) {
+function scalar(db, sql, params = []) {
+  const statement = db.prepare(sql);
+  statement.bind(params);
+  const value = statement.step() ? statement.get()[0] : null;
+  statement.free();
+  return value;
+}
+
+export function buildReport(db, asOf) {
+  if (!asOf) throw new Error('A deterministic as-of date is required');
+
   const policies = queryRows(
     db,
     `SELECT id, country, year, status, category, review_status
@@ -261,7 +277,9 @@ export function renderMarkdown(report) {
     '| ---: | --- | --- | --- | --- | --- |',
   ];
 
-  for (const entry of report.assessments.filter((item) => item.severity !== 'healthy').slice(0, 40)) {
+  for (const entry of report.assessments
+    .filter((item) => item.severity !== 'healthy')
+    .slice(0, 40)) {
     lines.push(
       `| ${entry.score} | ${entry.severity} | \`${entry.id}\` — ${entry.titles.en || entry.titles.zh} | ${entry.country} | ${entry.reviewStatus} | ${entry.flags.join(', ')} |`
     );
@@ -286,13 +304,19 @@ async function main() {
   if (!fs.existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
-  const report = buildReport(db);
+  const asOf =
+    process.env.POLICY_CONTENT_AS_OF ||
+    scalar(db, 'SELECT MAX(provenance_last_audit_date) FROM policies') ||
+    scalar(db, "SELECT value FROM db_meta WHERE key = 'last_audit_date'");
+  if (!asOf) throw new Error('Unable to resolve policy content audit date from SQLite');
+  const report = buildReport(db, asOf);
   db.close();
   fs.writeFileSync(JSON_OUTPUT, `${JSON.stringify(report, null, 2)}\n`);
   fs.writeFileSync(MARKDOWN_OUTPUT, renderMarkdown(report));
   console.log(
     JSON.stringify(
       {
+        asOf: report.asOf,
         totalPolicies: report.totalPolicies,
         severityCounts: report.severityCounts,
         verifiedNeedsWork: report.verifiedNeedsWork,
