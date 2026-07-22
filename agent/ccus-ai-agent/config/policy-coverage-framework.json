@@ -63,7 +63,7 @@
           "status": "partial",
           "priority": "high",
           "policy_ids": ["us-iija-hubs"],
-          "rationale": "Federal infrastructure funding supports CO2 transport, but the database does not yet isolate the CIFIA programme as a dedicated transport-finance policy."
+          "rationale": "CIFIA supplies dedicated federal finance for shared common-carrier CO2 transport infrastructure, while broader tariff, access and market-governance rules are not represented as a single national framework."
         },
         "mrv_accounting": {
           "status": "covered",
@@ -85,10 +85,10 @@
           "rationale": "The Energy Act 2023 establishes the economic licensing and regulatory architecture for CO2 transport and storage."
         },
         "incentives_finance": {
-          "status": "missing",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": [],
-          "rationale": "The database lacks a dedicated record for the Industrial Carbon Capture business model and related contractual support."
+          "policy_ids": ["uk-industrial-carbon-capture-business-model-2025"],
+          "rationale": "The Industrial Carbon Capture business model provides selected projects with long-term contractual revenue support and capital co-funding."
         },
         "storage_permitting": {
           "status": "covered",
@@ -105,8 +105,11 @@
         "mrv_accounting": {
           "status": "partial",
           "priority": "medium",
-          "policy_ids": ["uk-energy-act-2023"],
-          "rationale": "The legal framework supports regulated operations, but a dedicated cross-chain accounting and verification record is not separately captured."
+          "policy_ids": [
+            "uk-energy-act-2023",
+            "uk-industrial-carbon-capture-business-model-2025"
+          ],
+          "rationale": "The legal and contractual frameworks require metering and verified storage, while a dedicated cross-chain accounting record is not separately captured."
         }
       }
     },
@@ -118,32 +121,32 @@
         "legal_regulatory": {
           "status": "covered",
           "priority": "high",
-          "policy_ids": ["kr-ccus-act"],
-          "rationale": "The 2024 CCUS Act establishes the national statutory framework for capture, transport, storage and utilization."
+          "policy_ids": ["kr-ccus-act", "kr-ccus-act-enforcement-decree-2025"],
+          "rationale": "The 2024 CCUS Act and its enforcement decree establish and operationalize the national framework for capture, transport, storage and utilization."
         },
         "incentives_finance": {
           "status": "missing",
           "priority": "medium",
           "policy_ids": [],
-          "rationale": "No dedicated, verified CCUS incentive or regulated-revenue policy is currently recorded."
+          "rationale": "The decree details enterprise and project-support procedures, but no dedicated verified regulated-revenue or universal CCUS incentive is currently recorded."
         },
         "storage_permitting": {
-          "status": "partial",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": ["kr-ccus-act"],
-          "rationale": "The Act creates the framework, while detailed implementation and permitting rules require further policy-level review."
+          "policy_ids": ["kr-ccus-act", "kr-ccus-act-enforcement-decree-2025"],
+          "rationale": "The Act and decree provide the framework and detailed procedures for storage exploration, business approvals, safety management and monitoring."
         },
         "transport_market": {
           "status": "partial",
           "priority": "medium",
-          "policy_ids": ["kr-ccus-act"],
-          "rationale": "Transport is within the Act's scope, but dedicated network-access and tariff rules are not separately recorded."
+          "policy_ids": ["kr-ccus-act", "kr-ccus-act-enforcement-decree-2025"],
+          "rationale": "Transport approvals, pipeline safety and inspections are operationalized, but dedicated network-access and tariff rules are not separately recorded."
         },
         "mrv_accounting": {
-          "status": "partial",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": ["kr-ccus-act"],
-          "rationale": "The statutory framework recognizes CCUS operations, but detailed accounting and verification rules need further review."
+          "policy_ids": ["kr-ccus-act", "kr-ccus-act-enforcement-decree-2025"],
+          "rationale": "The decree operationalizes storage monitoring, safety inspection, evaluation and reporting requirements under the framework Act."
         }
       }
     },
@@ -153,10 +156,10 @@
       "allowed_policy_countries": ["Netherlands", "European Union"],
       "coverage": {
         "legal_regulatory": {
-          "status": "partial",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": ["eu-ccs-directive"],
-          "rationale": "The EU CCS Directive supplies the supranational legal basis, but Dutch implementing and permitting law is not separately represented."
+          "policy_ids": ["eu-ccs-directive", "nl-mining-act-co2-storage-2011"],
+          "rationale": "The EU CCS Directive and its Dutch Mining Act implementation provide the supranational and national legal basis for geological storage."
         },
         "incentives_finance": {
           "status": "covered",
@@ -165,10 +168,10 @@
           "rationale": "SDE++ is the principal Dutch operating-support mechanism for industrial decarbonization, including CCS."
         },
         "storage_permitting": {
-          "status": "partial",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": ["eu-ccs-directive"],
-          "rationale": "EU storage requirements are covered, while the Dutch Mining Act implementation is not separately recorded."
+          "policy_ids": ["eu-ccs-directive", "nl-mining-act-co2-storage-2011"],
+          "rationale": "EU storage requirements are implemented through the Dutch Mining Act exploration, storage-permit and supervision framework."
         },
         "transport_market": {
           "status": "missing",
@@ -179,8 +182,8 @@
         "mrv_accounting": {
           "status": "covered",
           "priority": "medium",
-          "policy_ids": ["eu-ccs-directive"],
-          "rationale": "EU storage monitoring, reporting and emissions-accounting requirements apply to Dutch storage projects."
+          "policy_ids": ["eu-ccs-directive", "nl-mining-act-co2-storage-2011"],
+          "rationale": "EU monitoring and accounting requirements apply through the Dutch storage-permitting and supervision framework."
         }
       }
     },
@@ -223,7 +226,7 @@
     }
   ],
   "guardrails": {
-    "maximum_high_priority_missing": 4,
+    "maximum_high_priority_missing": 2,
     "require_verified_policy_ids_for_covered": true,
     "fail_on_unknown_policy_id": true,
     "fail_on_country_mismatch": true
