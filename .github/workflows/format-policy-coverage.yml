@@ -1,0 +1,50 @@
+name: Format policy coverage files
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  format:
+    if: github.head_ref == 'agent/policy-coverage-audit-framework'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/policy-coverage-audit-framework
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Format files
+        run: |
+          pnpm prettier --write \
+            .github/workflows/ci.yml \
+            .github/workflows/format-policy-coverage.yml \
+            agent/ccus-ai-agent/config/policy-coverage-framework.json \
+            docs/policy-coverage-matrix.md \
+            package.json \
+            scripts/audit-policy-coverage.mjs \
+            scripts/audit-policy-coverage.test.mjs
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: formatted-policy-coverage-files
+          path: |
+            .github/workflows/ci.yml
+            .github/workflows/format-policy-coverage.yml
+            agent/ccus-ai-agent/config/policy-coverage-framework.json
+            docs/policy-coverage-matrix.md
+            package.json
+            scripts/audit-policy-coverage.mjs
+            scripts/audit-policy-coverage.test.mjs
+          if-no-files-found: error
+          retention-days: 7
