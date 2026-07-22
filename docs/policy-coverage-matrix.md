@@ -14,13 +14,13 @@ As of **2026-07-22**. This matrix is a curated research control backed by policy
 
 ## Matrix
 
-| Jurisdiction | Legal and regulatory basis | Incentives and finance | Storage and permitting | CO2 transport and market access | MRV and accounting |
-|---|---|---|---|---|---|
-| United States | ✅ Covered | ✅ Covered | ✅ Covered | ⚠️ Partial | ✅ Covered |
-| United Kingdom | ✅ Covered | ❌ Missing | ✅ Covered | ⚠️ Partial | ⚠️ Partial |
-| South Korea | ✅ Covered | ❌ Missing | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial |
-| Netherlands | ⚠️ Partial | ✅ Covered | ⚠️ Partial | ❌ Missing | ✅ Covered |
-| China | ⚠️ Partial | ⚠️ Partial | ❌ Missing | ❌ Missing | ⚠️ Partial |
+| Jurisdiction    | Legal and regulatory basis | Incentives and finance | Storage and permitting | CO2 transport and market access | MRV and accounting |
+| --------------- | -------------------------- | ---------------------- | ---------------------- | ------------------------------ | ------------------ |
+| United States   | ✅ Covered                  | ✅ Covered              | ✅ Covered              | ⚠️ Partial                     | ✅ Covered         |
+| United Kingdom  | ✅ Covered                  | ❌ Missing              | ✅ Covered              | ⚠️ Partial                     | ⚠️ Partial         |
+| South Korea     | ✅ Covered                  | ❌ Missing              | ⚠️ Partial             | ⚠️ Partial                     | ⚠️ Partial         |
+| Netherlands     | ⚠️ Partial                 | ✅ Covered              | ⚠️ Partial             | ❌ Missing                     | ✅ Covered         |
+| China           | ⚠️ Partial                 | ⚠️ Partial             | ❌ Missing             | ❌ Missing                     | ⚠️ Partial         |
 
 ## Research gaps and partial coverage
 
