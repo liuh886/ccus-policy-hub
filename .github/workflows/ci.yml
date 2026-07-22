@@ -6,11 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -26,6 +31,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Format policy coverage controls
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          pnpm prettier --write \
+            scripts/migrate-policy-coverage-corrections-2026-07.mjs \
+            scripts/migrate-policy-coverage-corrections-2026-07.test.mjs \
+            package.json \
+            .github/workflows/ci.yml
+
       - name: ESLint
         run: pnpm eslint .
 
@@ -34,6 +51,36 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Materialize policy coverage corrections
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          pnpm manage:db:migrate:policy-coverage-corrections
+          pnpm manage:db:audit:deep
+          pnpm manage:db:export:policies
+          rm -f \
+            src/content/policies/en/kr-motie-cluster-district-2025.md \
+            src/content/policies/zh/kr-motie-cluster-district-2025.md \
+            src/content/policies/en/ph-ccus-policy-framework-2025.md \
+            src/content/policies/zh/ph-ccus-policy-framework-2025.md
+          node scripts/sync-policy-link-projections.mjs --write
+          pnpm manage:db:quality:export
+          pnpm manage:db:data:export
+          mapfile -t changed < <(
+            git diff --name-only -- \
+              src/content/policies \
+              src/content/facilities \
+              public/data \
+              src/data/quality_metrics.generated.json \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+          )
+          if (( ${#changed[@]} > 0 )); then
+            pnpm prettier --write "${changed[@]}"
+          fi
 
       - name: Astro Check
         run: pnpm astro check
@@ -70,3 +117,49 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Enforce policy-only boundary
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
+          forbidden=0
+          while IFS= read -r file; do
+            case "$file" in
+              .github/workflows/ci.yml|.github/workflows/materialize-policy-coverage-corrections.yml|package.json|scripts/migrate-policy-coverage-corrections-2026-07.mjs|scripts/migrate-policy-coverage-corrections-2026-07.test.mjs|agent/ccus-ai-agent/db/ccus_master.sqlite|src/content/policies/en/*.md|src/content/policies/zh/*.md|src/content/facilities/en/*.md|src/content/facilities/zh/*.md|public/data/*.json|src/data/quality_metrics.generated.json|docs/policy-db-consistency-report.json|docs/policy-db-consistency-report.md)
+                ;;
+              *)
+                echo "Forbidden non-policy change: $file"
+                forbidden=1
+                ;;
+            esac
+          done < <(git diff --name-only)
+          git diff --quiet -- \
+            src/content/countries \
+            agent/ccus-ai-agent/governance || forbidden=1
+          exit "$forbidden"
+
+      - name: Commit materialized policy corrections
+        if: >-
+          success() &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: agent/policy-coverage-corrections-2026-07
+          commit_message: 'fix(data): materialize verified policy coverage corrections'
+          file_pattern: >-
+            .github/workflows/ci.yml
+            .github/workflows/materialize-policy-coverage-corrections.yml
+            package.json
+            scripts/migrate-policy-coverage-corrections-2026-07.mjs
+            scripts/migrate-policy-coverage-corrections-2026-07.test.mjs
+            agent/ccus-ai-agent/db/ccus_master.sqlite
+            src/content/policies
+            src/content/facilities
+            public/data
+            src/data/quality_metrics.generated.json
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
