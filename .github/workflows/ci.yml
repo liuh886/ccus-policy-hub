@@ -95,13 +95,22 @@ jobs:
           pnpm manage:db:quality:export
           pnpm manage:db:data:export
           mapfile -t candidates < <(
-            git diff --name-only -- \
-              src/content/policies \
-              src/content/facilities \
-              public/data \
-              src/data/quality_metrics.generated.json \
-              docs/policy-db-consistency-report.json \
-              docs/policy-db-consistency-report.md
+            {
+              git diff --name-only -- \
+                src/content/policies \
+                src/content/facilities \
+                public/data \
+                src/data/quality_metrics.generated.json \
+                docs/policy-db-consistency-report.json \
+                docs/policy-db-consistency-report.md
+              git ls-files --others --exclude-standard -- \
+                src/content/policies \
+                src/content/facilities \
+                public/data \
+                src/data/quality_metrics.generated.json \
+                docs/policy-db-consistency-report.json \
+                docs/policy-db-consistency-report.md
+            } | sort -u
           )
           changed=()
           for file in "${candidates[@]}"; do
@@ -167,7 +176,12 @@ jobs:
                 forbidden=1
                 ;;
             esac
-          done < <(git diff --name-only)
+          done < <(
+            {
+              git diff --name-only
+              git ls-files --others --exclude-standard
+            } | sort -u
+          )
           git diff --quiet -- \
             src/content/countries \
             agent/ccus-ai-agent/governance || forbidden=1
@@ -182,15 +196,24 @@ jobs:
         run: |
           rm -rf materialized-policy-corrections
           mkdir -p materialized-policy-corrections/files
-          git diff --name-only -- \
-            agent/ccus-ai-agent/db/ccus_master.sqlite \
-            src/content/policies \
-            src/content/facilities \
-            public/data \
-            src/data/quality_metrics.generated.json \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md \
-            > materialized-policy-corrections/changed-files.txt
+          {
+            git diff --name-only -- \
+              agent/ccus-ai-agent/db/ccus_master.sqlite \
+              src/content/policies \
+              src/content/facilities \
+              public/data \
+              src/data/quality_metrics.generated.json \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+            git ls-files --others --exclude-standard -- \
+              agent/ccus-ai-agent/db/ccus_master.sqlite \
+              src/content/policies \
+              src/content/facilities \
+              public/data \
+              src/data/quality_metrics.generated.json \
+              docs/policy-db-consistency-report.json \
+              docs/policy-db-consistency-report.md
+          } | sort -u > materialized-policy-corrections/changed-files.txt
           : > materialized-policy-corrections/deleted-files.txt
           while IFS= read -r file; do
             [[ -z "$file" ]] && continue
