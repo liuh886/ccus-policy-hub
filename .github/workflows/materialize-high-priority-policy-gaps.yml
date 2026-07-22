@@ -103,21 +103,10 @@ jobs:
           }
           exit "$forbidden"
 
-      - name: Upload diagnostics
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: high-priority-policy-gap-diagnostics
-          path: |
-            policy-gap-materialization-diff.txt
-            docs/policy-coverage-matrix.md
-            docs/policy-db-consistency-report.json
-            docs/policy-db-consistency-report.md
-          if-no-files-found: warn
-          retention-days: 7
-
       - name: Commit verified migration
+        id: commit_migration
         if: success()
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -137,8 +126,33 @@ jobs:
             scripts/migrate-high-priority-policy-gaps-2026-07.test.mjs \
             src/content/policies
           if git diff --cached --quiet; then
-            echo "No verified migration changes to commit."
+            echo "No verified migration changes to commit." | tee commit-output.txt
             exit 0
           fi
-          git commit --no-verify -m "feat(data): materialize high-priority policy gaps"
-          git push origin HEAD:agent/high-priority-policy-gaps
+          set +e
+          git commit --no-verify -m "feat(data): materialize high-priority policy gaps" 2>&1 | tee commit-output.txt
+          commit_status=${PIPESTATUS[0]}
+          if (( commit_status != 0 )); then
+            exit "$commit_status"
+          fi
+          git push origin HEAD:agent/high-priority-policy-gaps 2>&1 | tee push-output.txt
+          exit ${PIPESTATUS[0]}
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: high-priority-policy-gap-diagnostics
+          path: |
+            policy-gap-materialization-diff.txt
+            commit-output.txt
+            push-output.txt
+            docs/policy-coverage-matrix.md
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Fail on commit error
+        if: steps.commit_migration.outcome == 'failure'
+        run: exit 1
