@@ -1,0 +1,80 @@
+name: Materialize policy coverage matrix
+
+on:
+  push:
+    branches:
+      - agent/policy-coverage-audit-framework
+    paths:
+      - agent/ccus-ai-agent/config/policy-coverage-framework.json
+      - scripts/audit-policy-coverage.mjs
+      - scripts/audit-policy-coverage.test.mjs
+      - package.json
+      - .github/workflows/materialize-policy-coverage.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/policy-coverage-audit-framework
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Format controls
+        run: |
+          pnpm prettier --write \
+            agent/ccus-ai-agent/config/policy-coverage-framework.json \
+            scripts/audit-policy-coverage.mjs \
+            scripts/audit-policy-coverage.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-coverage.yml
+
+      - name: Validate and generate
+        run: |
+          pnpm eslint .
+          pnpm test
+          pnpm manage:db:audit:policy-coverage
+          pnpm prettier --write \
+            docs/policy-coverage-matrix.json \
+            docs/policy-coverage-matrix.md
+          pnpm manage:db:audit:policy-coverage
+          git diff --exit-code -- \
+            agent/ccus-ai-agent/db/ccus_master.sqlite \
+            src/content/facilities \
+            public/data/facilities.json
+
+      - name: Commit matrix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            agent/ccus-ai-agent/config/policy-coverage-framework.json \
+            scripts/audit-policy-coverage.mjs \
+            scripts/audit-policy-coverage.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-coverage.yml \
+            docs/policy-coverage-matrix.json \
+            docs/policy-coverage-matrix.md
+          if git diff --cached --quiet; then
+            echo "No coverage changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): materialize policy coverage matrix"
+          git push origin HEAD:agent/policy-coverage-audit-framework
