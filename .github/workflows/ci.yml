@@ -94,7 +94,7 @@ jobs:
         run: |
           pnpm manage:db:quality:export
           pnpm manage:db:data:export
-          mapfile -t changed < <(
+          mapfile -t candidates < <(
             git diff --name-only -- \
               src/content/policies \
               src/content/facilities \
@@ -103,6 +103,12 @@ jobs:
               docs/policy-db-consistency-report.json \
               docs/policy-db-consistency-report.md
           )
+          changed=()
+          for file in "${candidates[@]}"; do
+            if [[ -f "$file" ]]; then
+              changed+=("$file")
+            fi
+          done
           if (( ${#changed[@]} > 0 )); then
             pnpm prettier --write "${changed[@]}"
           fi
