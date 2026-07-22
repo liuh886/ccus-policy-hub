@@ -4,57 +4,97 @@
     {
       'incentive':
         {
-          'auditNote': 'Re-scored from 0 to 95 after deep dive into IRA 2022 legal text. Replaced placeholder with benchmark data.',
-          'citation': '26 U.S. Code § 45Q(b)',
-          'evidence': 'IRA 2022 increased credits to $85/t for dedicated storage. Direct pay and transferability added.',
-          'label': '$85/t (Saline) / $180/t (DAC)',
+          'auditNote': '',
+          'citation': 'Internal Revenue Code Section 45Q; IRS Credit for Carbon Oxide Sequestration guidance.',
+          'evidence': 'IRA-enhanced 45Q provides full-value credits of $85/t for industrial or power-sector secure storage and $180/t for DAC secure storage, subject to labour and eligibility rules.',
+          'label': 'Per-tonne federal tax credit',
           'score': 95,
         },
       'market':
         {
-          'auditNote': 'Market score increased due to the creation of a monetizable credit market.',
-          'citation': 'Section 6417 & 6418 of the Internal Revenue Code',
-          'evidence': 'New provisions allow non-taxable entities to receive direct payments and taxable entities to sell credits.',
-          'label': 'Direct Pay & Transferability',
-          'score': 75,
+          'auditNote': '',
+          'citation': 'Internal Revenue Code Sections 6417 and 6418; IRS elective pay and transferability guidance.',
+          'evidence': 'The IRA allows eligible taxpayers to monetise 45Q through elective payment or transfer to third-party buyers, subject to registration and tax requirements.',
+          'label': 'Elective pay and transferable credit',
+          'score': 90,
         },
       'mrv':
         {
-          'auditNote': 'Verified MRV rigor aligns with global gold standards.',
-          'citation': '40 CFR Part 98 Subpart RR',
-          'evidence': 'Mandatory Greenhouse Gas Reporting Program (Subpart RR) requires high-precision mass balance.',
-          'label': 'EPA Subpart RR',
-          'score': 100,
+          'auditNote': '',
+          'citation': 'Treasury Regulations Sections 1.45Q-1 through 1.45Q-5; IRS Form 8933 instructions.',
+          'evidence': 'Claims require measured qualified carbon oxide, Form 8933 and secure-storage or utilisation evidence, with recapture provisions if stored carbon later leaks.',
+          'label': 'Tax-grade capture and storage substantiation',
+          'score': 95,
         },
       'statutory':
         {
-          'auditNote': 'Identified specific EPA regulation as the statutory pillar.',
-          'citation': '40 CFR Part 146',
-          'evidence': 'Established federal Class VI injection well regulatory framework via EPA.',
-          'label': 'Class VI Permitting System',
-          'score': 85,
+          'auditNote': '',
+          'citation': '26 U.S.C. Section 45Q; Treasury Decision 9944.',
+          'evidence': 'The credit is established in federal tax law and implemented through Treasury regulations defining qualified capture, storage, utilisation and recapture.',
+          'label': 'Federal tax statute and regulations',
+          'score': 90,
         },
       'strategic':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Baseline strategic alignment under V5.0 migration.',
-          'label': 'Initial Assessment',
-          'score': 30,
+          'citation': 'IRS Section 45Q guidance; Inflation Reduction Act of 2022.',
+          'evidence': '45Q is the principal federal operating incentive supporting capture, transport and storage project economics across industrial, power and DAC applications.',
+          'label': 'Central U.S. carbon-management incentive',
+          'score': 95,
         },
     },
-  'category': '法律监管',
+  'category': 'Incentive',
   'country': 'United States',
-  'description': 'Enhanced federal tax credits of $85/t for sequestration and $180/t for DAC, with direct pay and transferability features.',
+  'description': 'Section 45Q of the U.S. Internal Revenue Code provides a federal tax credit for qualified carbon oxide captured at eligible industrial, power or direct-air-capture facilities and then securely stored, used as a tertiary injectant with secure storage, or utilised in an approved manner. The Inflation Reduction Act of 2022 substantially expanded the mechanism by increasing the full-value credit to $85 per metric ton for secure geological storage from industrial and power facilities and $180 per met',
+  'evolution':
+    {
+      'clusters':
+        [
+          'US Section 45Q',
+          'Inflation Reduction Act',
+          'US Carbon Management Finance',
+        ],
+      'milestones':
+        [
+          {
+            'date': '2008-10-03',
+            'event': 'Congress first enacted the Section 45Q carbon oxide sequestration credit.',
+          },
+          {
+            'date': '2018-02-09',
+            'event': 'The Bipartisan Budget Act expanded and restructured the credit.',
+          },
+          {
+            'date': '2021-01-13',
+            'event': 'Treasury and IRS final regulations for capture, secure storage, utilisation and recapture took effect.',
+          },
+          {
+            'date': '2022-08-16',
+            'event': 'The Inflation Reduction Act increased credit values, lowered thresholds, extended eligibility and added monetisation options.',
+          },
+        ],
+    },
   'id': 'us-45q-ira',
-  'legalWeight': 'Primary Legislation',
+  'impactAnalysis':
+    {
+      'economic': 'Creates a per-tonne revenue stream for up to 12 years and broadens monetisation through elective pay and credit transfer, materially improving project bankability where compliance conditions are met.',
+      'environmental': 'Links the credit to captured quantities that are securely stored or otherwise meet approved utilisation and lifecycle requirements, with recapture rules for leakage from storage.',
+      'technical': 'Requires eligible capture equipment and facilities, minimum capture thresholds, secure-storage or approved-utilisation pathways, measurement and tax documentation.',
+    },
+  'legalWeight': 'Federal Tax Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-07-22',
+      'reviewer': 'Primary-source content-depth audit',
     },
   'pubDate': '2022-08-16',
+  'regulatory':
+    {
+      'credit_period': 'Generally 12 years from the date qualifying capture equipment is placed in service.',
+      'monetisation': 'Section 45Q is eligible for elective payment and transferability subject to pre-filing registration and tax rules.',
+      'storage_evidence': 'Secure geological storage and related quantities must be documented under applicable Treasury, IRS, EPA or recognised ISO requirements.',
+    },
   'relatedFacilities':
     [
       '100',
@@ -434,11 +474,11 @@
     ],
   'reviewStatus': 'verified',
   'source': 'U.S. Department of the Treasury / Internal Revenue Service',
-  'status': '现行',
+  'status': 'Active',
   'title': 'US 45Q Tax Credit (IRA Enhanced)',
   'url': 'https://www.irs.gov/irb/2022-47_IRB',
   'year': 2022,
 }
 ---
 
-Enhanced federal tax credits of $85/t for sequestration and $180/t for DAC, with direct pay and transferability features.
+Section 45Q of the U.S. Internal Revenue Code provides a federal tax credit for qualified carbon oxide captured at eligible industrial, power or direct-air-capture facilities and then securely stored, used as a tertiary injectant with secure storage, or utilised in an approved manner. The Inflation Reduction Act of 2022 substantially expanded the mechanism by increasing the full-value credit to $85 per metric ton for secure geological storage from industrial and power facilities and $180 per metric ton for direct air capture with secure storage; lower full-value rates apply to utilisation and enhanced recovery under the 2022 structure. It also reduced annual capture thresholds, extended the construction-start deadline to before 2033, and made 45Q eligible for elective payment and transferability, subject to registration and tax rules. Credits generally run for 12 years after qualifying capture equipment is placed in service. Eligibility depends on detailed capture, storage, utilisation, monitoring and filing requirements, including Form 8933 and applicable EPA or ISO-based storage documentation. Later 2025 amendments are recorded separately in the database and should not be conflated with the IRA changes described here.

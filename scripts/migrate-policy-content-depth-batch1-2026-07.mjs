@@ -59,19 +59,23 @@ export const POLICY_CONTENT_UPDATES = [
           milestones: [
             {
               date: '2011-01-01',
-              event: 'China issued its first national CCUS technology development roadmap.',
+              event:
+                'China issued its first national CCUS technology development roadmap.',
             },
             {
               date: '2019-01-01',
-              event: 'The second roadmap updated technology pathways and deployment prospects.',
+              event:
+                'The second roadmap updated technology pathways and deployment prospects.',
             },
             {
               date: '2025-10-23',
-              event: 'The 2025 roadmap and annual CCUS report were formally released at the International Energy Transformation Forum in Suzhou.',
+              event:
+                'The 2025 roadmap and annual CCUS report were formally released at the International Energy Transformation Forum in Suzhou.',
             },
             {
               date: '2026-01-08',
-              event: 'ACCA21 announced formal publication of the third-edition roadmap.',
+              event:
+                'ACCA21 announced formal publication of the third-edition roadmap.',
             },
           ],
         },
@@ -92,15 +96,28 @@ export const POLICY_CONTENT_UPDATES = [
             '将CCUS定位为能源系统转型、难减排工业深度减排和负排放的重要支撑，同时强调生命周期和可持续性评价。',
         },
         evolution: {
-          clusters: ['中国CCUS技术路线图', '中国碳中和技术规划', '中国CCUS示范与集群'],
+          clusters: [
+            '中国CCUS技术路线图',
+            '中国碳中和技术规划',
+            '中国CCUS示范与集群',
+          ],
           milestones: [
-            { date: '2011-01-01', event: '中国发布首版国家CCUS技术发展路线图。' },
-            { date: '2019-01-01', event: '第二版路线图更新技术路径与部署前景。' },
+            {
+              date: '2011-01-01',
+              event: '中国发布首版国家CCUS技术发展路线图。',
+            },
+            {
+              date: '2019-01-01',
+              event: '第二版路线图更新技术路径与部署前景。',
+            },
             {
               date: '2025-10-23',
               event: '2025版路线图及年度报告在苏州国际能源变革论坛正式发布。',
             },
-            { date: '2026-01-08', event: '21世纪中心宣布第三版路线图正式出版。' },
+            {
+              date: '2026-01-08',
+              event: '21世纪中心宣布第三版路线图正式出版。',
+            },
           ],
         },
         regulatory: {},
@@ -180,15 +197,18 @@ export const POLICY_CONTENT_UPDATES = [
           milestones: [
             {
               date: '2021-11-12',
-              event: 'PBOC issued the notice establishing the Carbon Emission Reduction Facility.',
+              event:
+                'PBOC issued the notice establishing the Carbon Emission Reduction Facility.',
             },
             {
               date: '2024-06-30',
-              event: 'PBOC’s official tool description reported broader participation by national, foreign-funded and local incorporated financial institutions.',
+              event:
+                'PBOC’s official tool description reported broader participation by national, foreign-funded and local incorporated financial institutions.',
             },
             {
               date: '2024-10-12',
-              event: 'The green-finance opinion for the Beautiful China initiative called for continued improvement of carbon-reduction support tools and stronger project carbon-accounting standards.',
+              event:
+                'The green-finance opinion for the Beautiful China initiative called for continued improvement of carbon-reduction support tools and stronger project carbon-accounting standards.',
             },
           ],
         },
@@ -214,16 +234,25 @@ export const POLICY_CONTENT_UPDATES = [
             '通过减排效果测算和信息披露，将信贷资源引导至预期具有真实碳减排贡献的项目。',
         },
         evolution: {
-          clusters: ['人民银行结构性货币政策工具', '中国绿色金融', '碳减排信贷'],
+          clusters: [
+            '人民银行结构性货币政策工具',
+            '中国绿色金融',
+            '碳减排信贷',
+          ],
           milestones: [
-            { date: '2021-11-12', event: '人民银行印发通知，正式设立碳减排支持工具。' },
+            {
+              date: '2021-11-12',
+              event: '人民银行印发通知，正式设立碳减排支持工具。',
+            },
             {
               date: '2024-06-30',
-              event: '人民银行工具介绍显示，参与机构已覆盖全国性银行、部分外资银行和地方法人金融机构。',
+              event:
+                '人民银行工具介绍显示，参与机构已覆盖全国性银行、部分外资银行和地方法人金融机构。',
             },
             {
               date: '2024-10-12',
-              event: '服务美丽中国建设的绿色金融意见提出继续完善碳减排支持工具，并强化项目减排核算基础。',
+              event:
+                '服务美丽中国建设的绿色金融意见提出继续完善碳减排支持工具，并强化项目减排核算基础。',
             },
           ],
         },
@@ -241,14 +270,16 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Low-cost central-bank re-lending',
         evidence:
           'PBOC funding covers 60% of qualifying preferential loan principal at a 1.75% funding cost, creating a material financing incentive transmitted through participating banks.',
-        citation: 'PBOC official structural monetary-policy tool description; PBOC Notice Yinfa [2021] No. 278.',
+        citation:
+          'PBOC official structural monetary-policy tool description; PBOC Notice Yinfa [2021] No. 278.',
       },
       statutory: {
         score: 65,
         label: 'Central-bank policy instrument',
         evidence:
           'The facility is established and administered through PBOC policy notices and operating requirements rather than primary CCS legislation.',
-        citation: 'PBOC Notice on Establishing the Carbon Emission Reduction Facility, 12 November 2021.',
+        citation:
+          'PBOC Notice on Establishing the Carbon Emission Reduction Facility, 12 November 2021.',
       },
       market: {
         score: 75,
@@ -269,7 +300,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Project reduction estimation and disclosure',
         evidence:
           'Supported lending is linked to project eligibility, estimated carbon-reduction effects and disclosure by participating financial institutions, although it is not a full CCUS chain-of-custody method.',
-        citation: 'PBOC Carbon Emission Reduction Facility operating requirements.',
+        citation:
+          'PBOC Carbon Emission Reduction Facility operating requirements.',
       },
     },
   },
@@ -310,11 +342,13 @@ export const POLICY_CONTENT_UPDATES = [
           milestones: [
             {
               date: '2025-12-31',
-              event: 'SAMR and SAC approved and published the coordinated batch of 12 national CCUS standards.',
+              event:
+                'SAMR and SAC approved and published the coordinated batch of 12 national CCUS standards.',
             },
             {
               date: '2026-07-01',
-              event: 'The principal standards in the batch entered into implementation.',
+              event:
+                'The principal standards in the batch entered into implementation.',
             },
           ],
         },
@@ -344,15 +378,20 @@ export const POLICY_CONTENT_UPDATES = [
         evolution: {
           clusters: ['中国CCUS标准化', '碳中和国家标准', 'CCUS工程接口'],
           milestones: [
-            { date: '2025-12-31', event: '市场监管总局和国家标准委发布12项CCUS国家标准。' },
+            {
+              date: '2025-12-31',
+              event: '市场监管总局和国家标准委发布12项CCUS国家标准。',
+            },
             { date: '2026-07-01', event: '该批主要标准正式实施。' },
           ],
         },
         regulatory: {
-          legal_character: '该批标准以GB/T推荐性国家标准为主，并非独立的强制性CCS许可法典。',
+          legal_character:
+            '该批标准以GB/T推荐性国家标准为主，并非独立的强制性CCS许可法典。',
           permitting_boundary:
             '满足技术标准不等同于取得环境、安全、注入、土地利用或地质封存许可。',
-          accounting_scope: '标准体系包含与CCUS绩效认定相关的温室气体减排核算和技术监测接口。',
+          accounting_scope:
+            '标准体系包含与CCUS绩效认定相关的温室气体减排核算和技术监测接口。',
         },
       },
     },
@@ -362,14 +401,16 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Indirect cost-reduction effect',
         evidence:
           'The standards reduce engineering and contracting friction but do not provide grants, tax credits or regulated project revenue.',
-        citation: 'SAMR/SAC national standard records published 31 December 2025.',
+        citation:
+          'SAMR/SAC national standard records published 31 December 2025.',
       },
       statutory: {
         score: 75,
         label: 'National recommended technical standards',
         evidence:
           'The GB/T standards establish nationally recognised technical requirements and methods, but they do not replace project permitting or primary liability law.',
-        citation: 'SAMR/SAC GB/T 46877-2025, GB/T 46870.2-2025 and related standards.',
+        citation:
+          'SAMR/SAC GB/T 46877-2025, GB/T 46870.2-2025 and related standards.',
       },
       market: {
         score: 70,
@@ -423,14 +464,29 @@ export const POLICY_CONTENT_UPDATES = [
             'Aims to reduce carbon leakage and encourage cleaner production outside the EU while preserving the environmental integrity of embedded-emissions calculations.',
         },
         evolution: {
-          clusters: ['EU CBAM', 'EU ETS Reform', 'Industrial Trade Decarbonisation'],
+          clusters: [
+            'EU CBAM',
+            'EU ETS Reform',
+            'Industrial Trade Decarbonisation',
+          ],
           milestones: [
-            { date: '2023-05-16', event: 'Regulation (EU) 2023/956 was published in the Official Journal.' },
-            { date: '2023-10-01', event: 'The reporting-only transitional phase began.' },
-            { date: '2026-01-01', event: 'The definitive CBAM regime began for covered imports.' },
+            {
+              date: '2023-05-16',
+              event:
+                'Regulation (EU) 2023/956 was published in the Official Journal.',
+            },
+            {
+              date: '2023-10-01',
+              event: 'The reporting-only transitional phase began.',
+            },
+            {
+              date: '2026-01-01',
+              event: 'The definitive CBAM regime began for covered imports.',
+            },
             {
               date: '2026-04-07',
-              event: 'The Commission published the first quarterly 2026 CBAM certificate price reference.',
+              event:
+                'The Commission published the first quarterly 2026 CBAM certificate price reference.',
             },
           ],
         },
@@ -460,10 +516,16 @@ export const POLICY_CONTENT_UPDATES = [
         evolution: {
           clusters: ['欧盟CBAM', '欧盟碳市场改革', '工业贸易脱碳'],
           milestones: [
-            { date: '2023-05-16', event: '欧盟第2023/956号条例在《欧盟官方公报》发布。' },
+            {
+              date: '2023-05-16',
+              event: '欧盟第2023/956号条例在《欧盟官方公报》发布。',
+            },
             { date: '2023-10-01', event: 'CBAM仅报告过渡期开始。' },
             { date: '2026-01-01', event: 'CBAM正式机制开始适用于覆盖产品。' },
-            { date: '2026-04-07', event: '欧盟委员会发布首个2026年季度CBAM证书价格。' },
+            {
+              date: '2026-04-07',
+              event: '欧盟委员会发布首个2026年季度CBAM证书价格。',
+            },
           ],
         },
         regulatory: {
@@ -471,7 +533,8 @@ export const POLICY_CONTENT_UPDATES = [
             '授权申报人需申报覆盖产品隐含排放并承担证书义务，符合条件的境外已付碳价可按规则扣除。',
           ccus_accounting:
             '只有具备捕集、运输和封存全链条监测证据的长期地质封存二氧化碳，才能按规则视为未排放。',
-          verification: '实际隐含排放须按照条例及实施规则接受核证并保存详细记录。',
+          verification:
+            '实际隐含排放须按照条例及实施规则接受核证并保存详细记录。',
         },
       },
     },
@@ -502,14 +565,16 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Carbon-leakage and industrial-policy instrument',
         evidence:
           'CBAM aligns the treatment of covered imports with the phase-out of free EU ETS allocation and encourages cleaner industrial production outside the EU.',
-        citation: 'European Commission CBAM overview; Regulation (EU) 2023/956.',
+        citation:
+          'European Commission CBAM overview; Regulation (EU) 2023/956.',
       },
       mrv: {
         score: 95,
         label: 'Verified embedded-emissions accounting',
         evidence:
           'The framework requires detailed installation data and verification; CO2 sent to long-term geological storage is deductible only with monitored chain-of-custody evidence.',
-        citation: 'Commission Implementing Regulation (EU) 2023/1773, Annex III, Sections B.8.2-B.8.3.',
+        citation:
+          'Commission Implementing Regulation (EU) 2023/1773, Annex III, Sections B.8.2-B.8.3.',
       },
     },
   },
@@ -542,20 +607,31 @@ export const POLICY_CONTENT_UPDATES = [
             'Directs EU ETS revenues toward projects expected to deliver large and verifiable emissions avoidance or removals while retaining project-specific monitoring obligations.',
         },
         evolution: {
-          clusters: ['EU Innovation Fund', 'EU ETS Revenue Recycling', 'EU Net-Zero Technology Deployment'],
+          clusters: [
+            'EU Innovation Fund',
+            'EU ETS Revenue Recycling',
+            'EU Net-Zero Technology Deployment',
+          ],
           milestones: [
             {
               date: '2019-01-01',
-              event: 'The revised EU ETS framework established the legal basis for the Innovation Fund.',
+              event:
+                'The revised EU ETS framework established the legal basis for the Innovation Fund.',
             },
-            { date: '2020-07-03', event: 'The Commission launched the first large-scale project call.' },
+            {
+              date: '2020-07-03',
+              event:
+                'The Commission launched the first large-scale project call.',
+            },
             {
               date: '2024-11-25',
-              event: 'The Commission adopted the financing decision launching the 2024 calls and auctions.',
+              event:
+                'The Commission adopted the financing decision launching the 2024 calls and auctions.',
             },
             {
               date: '2025-01-01',
-              event: 'The programme continued with large net-zero technology calls and competitive auctions under the updated funding framework.',
+              event:
+                'The programme continued with large net-zero technology calls and competitive auctions under the updated funding framework.',
             },
           ],
         },
@@ -583,10 +659,19 @@ export const POLICY_CONTENT_UPDATES = [
         evolution: {
           clusters: ['欧盟创新基金', '欧盟碳市场收入再投入', '净零技术部署'],
           milestones: [
-            { date: '2019-01-01', event: '修订后的欧盟碳市场框架确立创新基金法律基础。' },
+            {
+              date: '2019-01-01',
+              event: '修订后的欧盟碳市场框架确立创新基金法律基础。',
+            },
             { date: '2020-07-03', event: '欧盟委员会启动首轮大型项目申报。' },
-            { date: '2024-11-25', event: '欧盟委员会通过启动2024年申报和拍卖的融资决定。' },
-            { date: '2025-01-01', event: '更新后的计划继续开展净零技术申报和竞争性拍卖。' },
+            {
+              date: '2024-11-25',
+              event: '欧盟委员会通过启动2024年申报和拍卖的融资决定。',
+            },
+            {
+              date: '2025-01-01',
+              event: '更新后的计划继续开展净零技术申报和竞争性拍卖。',
+            },
           ],
         },
         regulatory: {
@@ -603,21 +688,24 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Large-scale competitive EU funding',
         evidence:
           'The Fund recycles EU ETS auction revenues into grants, auctions and development assistance for selected innovative net-zero projects, including eligible CCUS projects.',
-        citation: 'EU ETS Directive Article 10a(8); European Commission Innovation Fund overview.',
+        citation:
+          'EU ETS Directive Article 10a(8); European Commission Innovation Fund overview.',
       },
       statutory: {
         score: 80,
         label: 'EU-ETS-based funding framework',
         evidence:
           'The programme has a binding legal and implementing framework, while individual support is created through call decisions and project-specific grant agreements.',
-        citation: 'Directive 2003/87/EC Article 10a(8); Innovation Fund legal framework.',
+        citation:
+          'Directive 2003/87/EC Article 10a(8); Innovation Fund legal framework.',
       },
       market: {
         score: 75,
         label: 'ETS revenue recycling and competitive allocation',
         evidence:
           'Auction revenues from the EU carbon market are competitively recycled into technology deployment, but the Fund is not itself an operating carbon price or universal CCfD.',
-        citation: 'European Commission Innovation Fund overview and calls for proposals.',
+        citation:
+          'European Commission Innovation Fund overview and calls for proposals.',
       },
       strategic: {
         score: 90,
@@ -665,22 +753,37 @@ export const POLICY_CONTENT_UPDATES = [
             'Links the credit to captured quantities that are securely stored or otherwise meet approved utilisation and lifecycle requirements, with recapture rules for leakage from storage.',
         },
         evolution: {
-          clusters: ['US Section 45Q', 'Inflation Reduction Act', 'US Carbon Management Finance'],
+          clusters: [
+            'US Section 45Q',
+            'Inflation Reduction Act',
+            'US Carbon Management Finance',
+          ],
           milestones: [
-            { date: '2008-10-03', event: 'Congress first enacted the Section 45Q carbon oxide sequestration credit.' },
-            { date: '2018-02-09', event: 'The Bipartisan Budget Act expanded and restructured the credit.' },
+            {
+              date: '2008-10-03',
+              event:
+                'Congress first enacted the Section 45Q carbon oxide sequestration credit.',
+            },
+            {
+              date: '2018-02-09',
+              event:
+                'The Bipartisan Budget Act expanded and restructured the credit.',
+            },
             {
               date: '2021-01-13',
-              event: 'Treasury and IRS final regulations for capture, secure storage, utilisation and recapture took effect.',
+              event:
+                'Treasury and IRS final regulations for capture, secure storage, utilisation and recapture took effect.',
             },
             {
               date: '2022-08-16',
-              event: 'The Inflation Reduction Act increased credit values, lowered thresholds, extended eligibility and added monetisation options.',
+              event:
+                'The Inflation Reduction Act increased credit values, lowered thresholds, extended eligibility and added monetisation options.',
             },
           ],
         },
         regulatory: {
-          credit_period: 'Generally 12 years from the date qualifying capture equipment is placed in service.',
+          credit_period:
+            'Generally 12 years from the date qualifying capture equipment is placed in service.',
           storage_evidence:
             'Secure geological storage and related quantities must be documented under applicable Treasury, IRS, EPA or recognised ISO requirements.',
           monetisation:
@@ -692,7 +795,14 @@ export const POLICY_CONTENT_UPDATES = [
           '美国《国内税收法典》第45Q条对在符合条件的工业设施、发电设施或直接空气捕集设施中捕集的合格碳氧化物提供联邦税收抵免，前提是相关碳氧化物被安全地质封存、作为提高油气采收率的注入剂并实现安全封存，或按照获认可方式加以利用。2022年《通胀削减法案》显著强化45Q：工业和发电设施捕集并安全地质封存的足额抵免提高至每吨85美元，直接空气捕集并安全封存提高至每吨180美元；按照2022年制度，利用和提高采收率路径适用较低足额标准。法案同时降低年度捕集门槛，将开工期限延长至2033年以前，并允许45Q在满足注册和税务规则时采用选择性支付或信用转让。抵免通常自合格捕集设备投入使用起持续12年。项目还必须满足捕集、封存、利用、监测和报税要求，包括提交Form 8933以及适用的EPA或ISO封存证明。2025年的后续修法已在数据库中单独建档，不应与本条目的IRA改革内容混同。',
         scope:
           '面向美国境内合格碳氧化物捕集、安全地质封存、符合条件的驱油封存或经认可利用活动的联邦税收抵免。',
-        tags: ['45Q', '税收抵免', '地质封存', '直接空气捕集', '选择性支付', '信用转让'],
+        tags: [
+          '45Q',
+          '税收抵免',
+          '地质封存',
+          '直接空气捕集',
+          '选择性支付',
+          '信用转让',
+        ],
         impactAnalysis: {
           economic:
             '形成最长通常为12年的按吨收入，并通过选择性支付和信用转让扩大变现能力，在满足合规条件时显著改善项目融资可行性。',
@@ -704,17 +814,32 @@ export const POLICY_CONTENT_UPDATES = [
         evolution: {
           clusters: ['美国45Q', '通胀削减法案', '美国碳管理融资'],
           milestones: [
-            { date: '2008-10-03', event: '美国首次设立第45Q条碳氧化物封存税收抵免。' },
-            { date: '2018-02-09', event: '《两党预算法案》扩大并重构45Q机制。' },
-            { date: '2021-01-13', event: '财政部和国税局关于捕集、安全封存、利用和追缴的最终规则生效。' },
-            { date: '2022-08-16', event: '《通胀削减法案》提高抵免、降低门槛、延长期限并增加变现方式。' },
+            {
+              date: '2008-10-03',
+              event: '美国首次设立第45Q条碳氧化物封存税收抵免。',
+            },
+            {
+              date: '2018-02-09',
+              event: '《两党预算法案》扩大并重构45Q机制。',
+            },
+            {
+              date: '2021-01-13',
+              event:
+                '财政部和国税局关于捕集、安全封存、利用和追缴的最终规则生效。',
+            },
+            {
+              date: '2022-08-16',
+              event:
+                '《通胀削减法案》提高抵免、降低门槛、延长期限并增加变现方式。',
+            },
           ],
         },
         regulatory: {
           credit_period: '抵免通常自合格捕集设备投入使用起计算12年。',
           storage_evidence:
             '安全地质封存及相关数量须按照适用的财政部、国税局、环保署或认可ISO要求提供证明。',
-          monetisation: '45Q可在完成预先注册并满足税务规则时采用选择性支付或信用转让。',
+          monetisation:
+            '45Q可在完成预先注册并满足税务规则时采用选择性支付或信用转让。',
         },
       },
     },
@@ -724,7 +849,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Per-tonne federal tax credit',
         evidence:
           'IRA-enhanced 45Q provides full-value credits of $85/t for industrial or power-sector secure storage and $180/t for DAC secure storage, subject to labour and eligibility rules.',
-        citation: 'Internal Revenue Code Section 45Q; IRS Credit for Carbon Oxide Sequestration guidance.',
+        citation:
+          'Internal Revenue Code Section 45Q; IRS Credit for Carbon Oxide Sequestration guidance.',
       },
       statutory: {
         score: 90,
@@ -738,7 +864,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Elective pay and transferable credit',
         evidence:
           'The IRA allows eligible taxpayers to monetise 45Q through elective payment or transfer to third-party buyers, subject to registration and tax requirements.',
-        citation: 'Internal Revenue Code Sections 6417 and 6418; IRS elective pay and transferability guidance.',
+        citation:
+          'Internal Revenue Code Sections 6417 and 6418; IRS elective pay and transferability guidance.',
       },
       strategic: {
         score: 95,
@@ -752,7 +879,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Tax-grade capture and storage substantiation',
         evidence:
           'Claims require measured qualified carbon oxide, Form 8933 and secure-storage or utilisation evidence, with recapture provisions if stored carbon later leaks.',
-        citation: 'Treasury Regulations Sections 1.45Q-1 through 1.45Q-5; IRS Form 8933 instructions.',
+        citation:
+          'Treasury Regulations Sections 1.45Q-1 through 1.45Q-5; IRS Form 8933 instructions.',
       },
     },
   },
@@ -785,19 +913,26 @@ export const POLICY_CONTENT_UPDATES = [
             'Requires storage leakage and associated transport and injection emissions to be reflected rather than assuming all captured CO2 is permanently retained.',
         },
         evolution: {
-          clusters: ['IPCC National Inventory Guidelines', 'CCS Inventory Accounting', 'International Climate Reporting'],
+          clusters: [
+            'IPCC National Inventory Guidelines',
+            'CCS Inventory Accounting',
+            'International Climate Reporting',
+          ],
           milestones: [
             {
               date: '2006-01-01',
-              event: 'The 2006 IPCC Guidelines introduced the dedicated chapter on CO2 transport, injection and geological storage.',
+              event:
+                'The 2006 IPCC Guidelines introduced the dedicated chapter on CO2 transport, injection and geological storage.',
             },
             {
               date: '2019-05-12',
-              event: 'The IPCC adopted the 2019 Refinement to update and supplement the 2006 inventory framework.',
+              event:
+                'The IPCC adopted the 2019 Refinement to update and supplement the 2006 inventory framework.',
             },
             {
               date: '2023-07-01',
-              event: 'The IPCC published further corrigenda to the inventory guidelines while the CCS chapter remained based on the 2006 methodology.',
+              event:
+                'The IPCC published further corrigenda to the inventory guidelines while the CCS chapter remained based on the 2006 methodology.',
             },
           ],
         },
@@ -827,16 +962,28 @@ export const POLICY_CONTENT_UPDATES = [
         evolution: {
           clusters: ['IPCC国家清单指南', 'CCS清单核算', '国际气候报告'],
           milestones: [
-            { date: '2006-01-01', event: '2006年IPCC指南设立二氧化碳运输、注入与地质封存专章。' },
-            { date: '2019-05-12', event: 'IPCC通过2019年精细化指南，对2006年清单框架进行更新和补充。' },
-            { date: '2023-07-01', event: 'IPCC发布进一步勘误，CCS专章仍以2006年方法为基础。' },
+            {
+              date: '2006-01-01',
+              event: '2006年IPCC指南设立二氧化碳运输、注入与地质封存专章。',
+            },
+            {
+              date: '2019-05-12',
+              event:
+                'IPCC通过2019年精细化指南，对2006年清单框架进行更新和补充。',
+            },
+            {
+              date: '2023-07-01',
+              event: 'IPCC发布进一步勘误，CCS专章仍以2006年方法为基础。',
+            },
           ],
         },
         regulatory: {
           inventory_category:
             '运输、注入和地质封存排放计入1C类别，捕集影响计入捕集发生的相应部门。',
-          storage_method: '地质封存采用场址特定Tier 3方法，并要求监测和泄漏核算。',
-          legal_boundary: '该指南属于国家清单方法，不设立封存许可、责任转移或碳信用资格。',
+          storage_method:
+            '地质封存采用场址特定Tier 3方法，并要求监测和泄漏核算。',
+          legal_boundary:
+            '该指南属于国家清单方法，不设立封存许可、责任转移或碳信用资格。',
         },
       },
     },
@@ -908,14 +1055,25 @@ export const POLICY_CONTENT_UPDATES = [
             'Requires additionality, monitoring, leakage treatment, permanence safeguards and double-counting controls intended to protect the integrity of credited reductions or removals.',
         },
         evolution: {
-          clusters: ['Verra VM0049', 'CCS+ Initiative', 'Voluntary Carbon Market CCS'],
+          clusters: [
+            'Verra VM0049',
+            'CCS+ Initiative',
+            'Voluntary Carbon Market CCS',
+          ],
           milestones: [
-            { date: '2024-06-27', event: 'Verra approved and released VM0049, version 1.0.' },
+            {
+              date: '2024-06-27',
+              event: 'Verra approved and released VM0049, version 1.0.',
+            },
             {
               date: '2024-10-24',
-              event: 'Verra activated the first DAC, CO2 transport and geological-storage modules.',
+              event:
+                'Verra activated the first DAC, CO2 transport and geological-storage modules.',
             },
-            { date: '2025-04-22', event: 'The bioenergy carbon-capture module became active.' },
+            {
+              date: '2025-04-22',
+              event: 'The bioenergy carbon-capture module became active.',
+            },
             {
               date: '2025-12-22',
               event: 'The natural-gas-processing capture module became active.',
@@ -949,9 +1107,15 @@ export const POLICY_CONTENT_UPDATES = [
           clusters: ['Verra VM0049', 'CCS+倡议', '自愿碳市场CCS'],
           milestones: [
             { date: '2024-06-27', event: 'Verra批准并发布VM0049第1.0版。' },
-            { date: '2024-10-24', event: '直接空气捕集、二氧化碳运输和地质封存首批模块生效。' },
+            {
+              date: '2024-10-24',
+              event: '直接空气捕集、二氧化碳运输和地质封存首批模块生效。',
+            },
             { date: '2025-04-22', event: '生物能源碳捕集模块生效。' },
-            { date: '2025-12-22', event: '天然气处理过程二氧化碳捕集模块生效。' },
+            {
+              date: '2025-12-22',
+              event: '天然气处理过程二氧化碳捕集模块生效。',
+            },
           ],
         },
         regulatory: {
@@ -970,7 +1134,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Potential voluntary carbon-credit revenue',
         evidence:
           'VM0049 can enable eligible CCS reductions or removals to generate VCUs, but only after validation, verification, registration and issuance.',
-        citation: 'Verra VM0049, v1.0 and VCS registration and issuance requirements.',
+        citation:
+          'Verra VM0049, v1.0 and VCS registration and issuance requirements.',
       },
       statutory: {
         score: 35,
@@ -984,7 +1149,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Modular VCS crediting framework',
         evidence:
           'The methodology links eligible modular CCS activities to the VCS crediting system and supports shared infrastructure and hub configurations.',
-        citation: 'Verra VM0049 and first CCS modules release, 24 October 2024.',
+        citation:
+          'Verra VM0049 and first CCS modules release, 24 October 2024.',
       },
       strategic: {
         score: 80,
@@ -998,7 +1164,8 @@ export const POLICY_CONTENT_UPDATES = [
         label: 'Modular project quantification and verification',
         evidence:
           'Active modules define project boundaries, baseline and project emissions, leakage and monitoring for DAC, transport, storage, BECCS and natural-gas-processing capture.',
-        citation: 'VM0049 and active VMD0056, VMD0057, VMD0058, VMD0059 and VMD0062 modules.',
+        citation:
+          'VM0049 and active VMD0056, VMD0057, VMD0058, VMD0059 and VMD0062 modules.',
       },
     },
   },
@@ -1024,7 +1191,11 @@ function queryRows(db, sql) {
   const rows = [];
   while (statement.step()) {
     const values = statement.get();
-    rows.push(Object.fromEntries(columns.map((column, index) => [column, values[index]])));
+    rows.push(
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
+    );
   }
   statement.free();
   return rows;
@@ -1048,7 +1219,9 @@ function assertFrozenTablesUnchanged(before, after) {
 }
 
 function policyExists(db, id) {
-  return Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) === 1;
+  return (
+    Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) === 1
+  );
 }
 
 function updateCore(db, update, auditDate) {
@@ -1112,10 +1285,14 @@ function replaceAnalysis(db, policyId, analysis) {
 
 function verifyUpdate(db, update) {
   const localeCount = Number(
-    scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id = ?', [update.id])
+    scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id = ?', [
+      update.id,
+    ])
   );
   const analysisCount = Number(
-    scalar(db, 'SELECT COUNT(*) FROM policy_analysis WHERE policy_id = ?', [update.id])
+    scalar(db, 'SELECT COUNT(*) FROM policy_analysis WHERE policy_id = ?', [
+      update.id,
+    ])
   );
   const minimumDescription = Number(
     scalar(
@@ -1124,10 +1301,14 @@ function verifyUpdate(db, update) {
       [update.id]
     )
   );
-  if (localeCount !== 2) throw new Error(`Policy ${update.id} lacks bilingual parity`);
-  if (analysisCount !== 5) throw new Error(`Policy ${update.id} lacks five analysis dimensions`);
+  if (localeCount !== 2)
+    throw new Error(`Policy ${update.id} lacks bilingual parity`);
+  if (analysisCount !== 5)
+    throw new Error(`Policy ${update.id} lacks five analysis dimensions`);
   if (minimumDescription < 250) {
-    throw new Error(`Policy ${update.id} still has an underdeveloped description`);
+    throw new Error(
+      `Policy ${update.id} still has an underdeveloped description`
+    );
   }
 }
 
@@ -1150,7 +1331,8 @@ export function applyPolicyContentDepthMigration(
   }
 
   for (const update of POLICY_CONTENT_UPDATES) {
-    if (!policyExists(db, update.id)) throw new Error(`Policy is missing: ${update.id}`);
+    if (!policyExists(db, update.id))
+      throw new Error(`Policy is missing: ${update.id}`);
   }
 
   const frozenBefore = snapshotFrozenTables(db);
@@ -1192,7 +1374,8 @@ export function applyPolicyContentDepthMigration(
 }
 
 async function main() {
-  if (!fs.existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
+  if (!fs.existsSync(DB_PATH))
+    throw new Error(`Database not found: ${DB_PATH}`);
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
   const summary = applyPolicyContentDepthMigration(db);
@@ -1204,7 +1387,8 @@ async function main() {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   main().catch((error) => {

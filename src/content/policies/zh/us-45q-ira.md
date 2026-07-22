@@ -4,57 +4,92 @@
     {
       'incentive':
         {
-          'auditNote': 'Re-scored from 0 to 95 after deep dive into IRA 2022 legal text. Replaced placeholder with benchmark data.',
-          'citation': '26 U.S. Code § 45Q(b)',
-          'evidence': 'IRA 2022 increased credits to $85/t for dedicated storage. Direct pay and transferability added.',
-          'label': '$85/t (Saline) / $180/t (DAC)',
+          'auditNote': '',
+          'citation': 'Internal Revenue Code Section 45Q; IRS Credit for Carbon Oxide Sequestration guidance.',
+          'evidence': 'IRA-enhanced 45Q provides full-value credits of $85/t for industrial or power-sector secure storage and $180/t for DAC secure storage, subject to labour and eligibility rules.',
+          'label': 'Per-tonne federal tax credit',
           'score': 95,
         },
       'market':
         {
-          'auditNote': 'Market score increased due to the creation of a monetizable credit market.',
-          'citation': 'Section 6417 & 6418 of the Internal Revenue Code',
-          'evidence': 'New provisions allow non-taxable entities to receive direct payments and taxable entities to sell credits.',
-          'label': 'Direct Pay & Transferability',
-          'score': 75,
+          'auditNote': '',
+          'citation': 'Internal Revenue Code Sections 6417 and 6418; IRS elective pay and transferability guidance.',
+          'evidence': 'The IRA allows eligible taxpayers to monetise 45Q through elective payment or transfer to third-party buyers, subject to registration and tax requirements.',
+          'label': 'Elective pay and transferable credit',
+          'score': 90,
         },
       'mrv':
         {
-          'auditNote': 'Verified MRV rigor aligns with global gold standards.',
-          'citation': '40 CFR Part 98 Subpart RR',
-          'evidence': 'Mandatory Greenhouse Gas Reporting Program (Subpart RR) requires high-precision mass balance.',
-          'label': 'EPA Subpart RR',
-          'score': 100,
+          'auditNote': '',
+          'citation': 'Treasury Regulations Sections 1.45Q-1 through 1.45Q-5; IRS Form 8933 instructions.',
+          'evidence': 'Claims require measured qualified carbon oxide, Form 8933 and secure-storage or utilisation evidence, with recapture provisions if stored carbon later leaks.',
+          'label': 'Tax-grade capture and storage substantiation',
+          'score': 95,
         },
       'statutory':
         {
-          'auditNote': 'Identified specific EPA regulation as the statutory pillar.',
-          'citation': '40 CFR Part 146',
-          'evidence': 'Established federal Class VI injection well regulatory framework via EPA.',
-          'label': 'Class VI Permitting System',
-          'score': 85,
+          'auditNote': '',
+          'citation': '26 U.S.C. Section 45Q; Treasury Decision 9944.',
+          'evidence': 'The credit is established in federal tax law and implemented through Treasury regulations defining qualified capture, storage, utilisation and recapture.',
+          'label': 'Federal tax statute and regulations',
+          'score': 90,
         },
       'strategic':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Baseline strategic alignment under V5.0 migration.',
-          'label': 'Initial Assessment',
-          'score': 30,
+          'citation': 'IRS Section 45Q guidance; Inflation Reduction Act of 2022.',
+          'evidence': '45Q is the principal federal operating incentive supporting capture, transport and storage project economics across industrial, power and DAC applications.',
+          'label': 'Central U.S. carbon-management incentive',
+          'score': 95,
         },
     },
-  'category': '法律监管',
+  'category': '经济激励',
   'country': '美国',
-  'description': '增强型联邦税收抵免，封存补贴 $85/吨，DAC 补贴 $180/吨，具备直接支付与转让功能。',
+  'description': '美国《国内税收法典》第45Q条对在符合条件的工业设施、发电设施或直接空气捕集设施中捕集的合格碳氧化物提供联邦税收抵免，前提是相关碳氧化物被安全地质封存、作为提高油气采收率的注入剂并实现安全封存，或按照获认可方式加以利用。2022年《通胀削减法案》显著强化45Q：工业和发电设施捕集并安全地质封存的足额抵免提高至每吨85美元，直接空气捕集并安全封存提高至每吨180美元；按照2022年制度，利用和提高采收率路径适用较低足额标准。法案同时降低年度捕集门槛，将开工期限延长至2033年以前，并允许45Q在满足注册和税务规则时采用选择性支付或信用转让。抵免通常自合格捕集设备投入使用起持续12年。项目还必须满足捕集、封存、利用、监测和报税要求，包括提交Form 8933以及适用的EPA或ISO封存证明。2025年的后续修法已在数据库中单独建档，不应与本条目的IRA改革内容混同。',
+  'evolution':
+    {
+      'clusters': ['美国45Q', '通胀削减法案', '美国碳管理融资'],
+      'milestones':
+        [
+          {
+            'date': '2008-10-03',
+            'event': '美国首次设立第45Q条碳氧化物封存税收抵免。',
+          },
+          {
+            'date': '2018-02-09',
+            'event': '《两党预算法案》扩大并重构45Q机制。',
+          },
+          {
+            'date': '2021-01-13',
+            'event': '财政部和国税局关于捕集、安全封存、利用和追缴的最终规则生效。',
+          },
+          {
+            'date': '2022-08-16',
+            'event': '《通胀削减法案》提高抵免、降低门槛、延长期限并增加变现方式。',
+          },
+        ],
+    },
   'id': 'us-45q-ira',
-  'legalWeight': 'Primary Legislation',
+  'impactAnalysis':
+    {
+      'economic': '形成最长通常为12年的按吨收入，并通过选择性支付和信用转让扩大变现能力，在满足合规条件时显著改善项目融资可行性。',
+      'environmental': '将抵免与安全封存量或符合利用和生命周期要求的数量挂钩，并通过泄漏追缴规则维护封存环境完整性。',
+      'technical': '要求设施和捕集设备符合资格、达到最低捕集门槛，并满足安全封存或获认可利用路径的计量和税务证明要求。',
+    },
+  'legalWeight': 'Federal Tax Legislation',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-07-22',
+      'reviewer': 'Primary-source content-depth audit',
     },
   'pubDate': '2022-08-16',
+  'regulatory':
+    {
+      'credit_period': '抵免通常自合格捕集设备投入使用起计算12年。',
+      'monetisation': '45Q可在完成预先注册并满足税务规则时采用选择性支付或信用转让。',
+      'storage_evidence': '安全地质封存及相关数量须按照适用的财政部、国税局、环保署或认可ISO要求提供证明。',
+    },
   'relatedFacilities':
     [
       '100',
@@ -441,4 +476,4 @@
 }
 ---
 
-增强型联邦税收抵免，封存补贴 $85/吨，DAC 补贴 $180/吨，具备直接支付与转让功能。
+美国《国内税收法典》第45Q条对在符合条件的工业设施、发电设施或直接空气捕集设施中捕集的合格碳氧化物提供联邦税收抵免，前提是相关碳氧化物被安全地质封存、作为提高油气采收率的注入剂并实现安全封存，或按照获认可方式加以利用。2022年《通胀削减法案》显著强化45Q：工业和发电设施捕集并安全地质封存的足额抵免提高至每吨85美元，直接空气捕集并安全封存提高至每吨180美元；按照2022年制度，利用和提高采收率路径适用较低足额标准。法案同时降低年度捕集门槛，将开工期限延长至2033年以前，并允许45Q在满足注册和税务规则时采用选择性支付或信用转让。抵免通常自合格捕集设备投入使用起持续12年。项目还必须满足捕集、封存、利用、监测和报税要求，包括提交Form 8933以及适用的EPA或ISO封存证明。2025年的后续修法已在数据库中单独建档，不应与本条目的IRA改革内容混同。

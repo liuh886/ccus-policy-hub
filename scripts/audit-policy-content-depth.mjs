@@ -52,7 +52,8 @@ function milestoneCount(value) {
 
 function regulatoryFieldCount(value) {
   const object = parseJson(value, {});
-  return Object.values(object).filter((entry) => textLength(entry) >= 20).length;
+  return Object.values(object).filter((entry) => textLength(entry) >= 20)
+    .length;
 }
 
 function tagsCount(value) {
@@ -81,7 +82,8 @@ export function assessPolicyContent(policy) {
     'environmental',
   ]);
   const analysisEvidence = policy.analysis.map((entry) => entry.evidence ?? '');
-  const placeholderAnalysisCount = analysisEvidence.filter(hasPlaceholder).length;
+  const placeholderAnalysisCount =
+    analysisEvidence.filter(hasPlaceholder).length;
   const specificAnalysisCount = analysisEvidence.filter(
     (entry) => textLength(entry) >= 60 && !hasPlaceholder(entry)
   ).length;
@@ -172,7 +174,9 @@ function queryRows(db, sql, params = []) {
   while (statement.step()) {
     const values = statement.get();
     rows.push(
-      Object.fromEntries(columns.map((column, index) => [column, values[index]]))
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
     );
   }
   statement.free();
@@ -301,14 +305,16 @@ export function renderMarkdown(report) {
 }
 
 async function main() {
-  if (!fs.existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
+  if (!fs.existsSync(DB_PATH))
+    throw new Error(`Database not found: ${DB_PATH}`);
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
   const asOf =
     process.env.POLICY_CONTENT_AS_OF ||
     scalar(db, 'SELECT MAX(provenance_last_audit_date) FROM policies') ||
     scalar(db, "SELECT value FROM db_meta WHERE key = 'last_audit_date'");
-  if (!asOf) throw new Error('Unable to resolve policy content audit date from SQLite');
+  if (!asOf)
+    throw new Error('Unable to resolve policy content audit date from SQLite');
   const report = buildReport(db, asOf);
   db.close();
   fs.writeFileSync(JSON_OUTPUT, `${JSON.stringify(report, null, 2)}\n`);
@@ -330,7 +336,8 @@ async function main() {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   main().catch((error) => {

@@ -1,13 +1,18 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { assessPolicyContent, renderMarkdown } from './audit-policy-content-depth.mjs';
+import {
+  assessPolicyContent,
+  renderMarkdown,
+} from './audit-policy-content-depth.mjs';
 
 function localized(overrides = {}) {
   return {
     title: 'Policy title',
     description:
-      'A sufficiently detailed policy description explaining the instrument, implementation mechanism, policy boundary, responsible authority, project relevance and limitations. '.repeat(5),
+      'A sufficiently detailed policy description explaining the instrument, implementation mechanism, policy boundary, responsible authority, project relevance and limitations. '.repeat(
+        5
+      ),
     scope:
       'National policy scope covering the relevant CCUS value-chain activity and regulated participants.',
     tags_json: JSON.stringify(['CCS', 'permitting', 'MRV', 'infrastructure']),
@@ -33,10 +38,12 @@ function localized(overrides = {}) {
 }
 
 function analysis(evidence) {
-  return ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map((dimension) => ({
-    dimension,
-    evidence,
-  }));
+  return ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(
+    (dimension) => ({
+      dimension,
+      evidence,
+    })
+  );
 }
 
 test('well-developed bilingual policy content is healthy', () => {
@@ -51,7 +58,9 @@ test('well-developed bilingual policy content is healthy', () => {
       zh: localized({
         title: '政策标题',
         description:
-          '该政策说明了政策工具、实施机制、适用边界、主管部门、项目相关性及其限制条件，并对捕集、运输、封存和核算环节的影响作出具体解释。'.repeat(5),
+          '该政策说明了政策工具、实施机制、适用边界、主管部门、项目相关性及其限制条件，并对捕集、运输、封存和核算环节的影响作出具体解释。'.repeat(
+            5
+          ),
         scope: '适用于国家层面的CCUS价值链活动及相关受监管主体。',
       }),
     },

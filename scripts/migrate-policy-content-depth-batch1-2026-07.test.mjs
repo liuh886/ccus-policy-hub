@@ -37,7 +37,9 @@ function rows(db, sql, params = []) {
   while (statement.step()) {
     const values = statement.get();
     result.push(
-      Object.fromEntries(columns.map((column, index) => [column, values[index]]))
+      Object.fromEntries(
+        columns.map((column, index) => [column, values[index]])
+      )
     );
   }
   statement.free();
@@ -49,7 +51,9 @@ function parse(value) {
 }
 
 function clearMigrationMarker(db) {
-  execute(db, 'DELETE FROM db_meta WHERE key = ?', [`migration:${MIGRATION_ID}`]);
+  execute(db, 'DELETE FROM db_meta WHERE key = ?', [
+    `migration:${MIGRATION_ID}`,
+  ]);
 }
 
 const PLACEHOLDER_PATTERNS = [
@@ -98,8 +102,14 @@ test('content-depth migration enriches eight policies without changing policy co
 
     const en = locales.find((entry) => entry.lang === 'en');
     const zh = locales.find((entry) => entry.lang === 'zh');
-    assert.ok(en.description.length >= 400, `${update.id} English description is thin`);
-    assert.ok(zh.description.length >= 180, `${update.id} Chinese description is thin`);
+    assert.ok(
+      en.description.length >= 400,
+      `${update.id} English description is thin`
+    );
+    assert.ok(
+      zh.description.length >= 180,
+      `${update.id} Chinese description is thin`
+    );
     assert.ok(en.scope.length >= 50, `${update.id} English scope is thin`);
     assert.ok(zh.scope.length >= 25, `${update.id} Chinese scope is thin`);
 
@@ -107,9 +117,18 @@ test('content-depth migration enriches eight policies without changing policy co
       const tags = parse(locale.tags_json);
       const impact = parse(locale.impact_analysis_json);
       const evolution = parse(locale.evolution_json);
-      assert.ok(Array.isArray(tags) && tags.length >= 4, `${update.id} needs useful tags`);
-      assert.ok(impact.economic?.length >= 35, `${update.id} needs economic analysis`);
-      assert.ok(impact.technical?.length >= 35, `${update.id} needs technical analysis`);
+      assert.ok(
+        Array.isArray(tags) && tags.length >= 4,
+        `${update.id} needs useful tags`
+      );
+      assert.ok(
+        impact.economic?.length >= 35,
+        `${update.id} needs economic analysis`
+      );
+      assert.ok(
+        impact.technical?.length >= 35,
+        `${update.id} needs technical analysis`
+      );
       assert.ok(
         impact.environmental?.length >= 35,
         `${update.id} needs environmental analysis`
@@ -128,14 +147,24 @@ test('content-depth migration enriches eight policies without changing policy co
         ORDER BY dimension`,
       [update.id]
     );
-    assert.equal(analysis.length, 5, `${update.id} needs five governance dimensions`);
+    assert.equal(
+      analysis.length,
+      5,
+      `${update.id} needs five governance dimensions`
+    );
     assert.deepEqual(
       new Set(analysis.map((entry) => entry.dimension)),
       new Set(['incentive', 'statutory', 'market', 'strategic', 'mrv'])
     );
     for (const entry of analysis) {
-      assert.ok(entry.evidence.length >= 60, `${update.id} analysis evidence is thin`);
-      assert.ok(entry.citation.length >= 15, `${update.id} analysis citation is thin`);
+      assert.ok(
+        entry.evidence.length >= 60,
+        `${update.id} analysis evidence is thin`
+      );
+      assert.ok(
+        entry.citation.length >= 15,
+        `${update.id} analysis citation is thin`
+      );
       assert.equal(
         PLACEHOLDER_PATTERNS.some((pattern) => pattern.test(entry.evidence)),
         false,
