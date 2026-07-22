@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-07-22",
+  "purpose": "Evaluate whether priority jurisdictions have policy records covering the core governance functions required for CCUS deployment. Coverage status is curated from official-source review; SQLite policy IDs provide the evidence anchor.",
+  "status_definitions": {
+    "covered": "At least one current policy record directly and materially covers the governance function.",
+    "partial": "Policy support exists, but the function is incomplete, indirect, planned, or dependent on broader legislation.",
+    "missing": "No current policy record directly covers the governance function. This is a research gap, not evidence that no policy exists.",
+    "not_applicable": "The function is not assessed separately for this jurisdiction."
+  },
+  "dimensions": [
+    {
+      "id": "legal_regulatory",
+      "label": "Legal and regulatory basis",
+      "definition": "Primary legislation or equivalent rules that authorize and govern capture, transport, utilization or geological storage."
+    },
+    {
+      "id": "incentives_finance",
+      "label": "Incentives and finance",
+      "definition": "Tax credits, contracts, grants, regulated revenue or financing programmes that materially improve project bankability."
+    },
+    {
+      "id": "storage_permitting",
+      "label": "Storage and permitting",
+      "definition": "Site selection, pore-space access, injection permits, monitoring, closure, financial assurance and long-term liability."
+    },
+    {
+      "id": "transport_market",
+      "label": "CO2 transport and market access",
+      "definition": "Pipeline, shipping, network access, tariff, interoperability or shared-infrastructure market arrangements."
+    },
+    {
+      "id": "mrv_accounting",
+      "label": "MRV and accounting",
+      "definition": "Measurement, reporting, verification, emissions accounting, crediting or compliance rules that recognize captured and stored CO2."
+    }
+  ],
+  "jurisdictions": [
+    {
+      "id": "US",
+      "name": "United States",
+      "allowed_policy_countries": ["United States"],
+      "coverage": {
+        "legal_regulatory": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["us-epa-class-vi-primacy"],
+          "rationale": "The federal Class VI UIC framework and delegated state primacy provide the core injection-well regulatory basis."
+        },
+        "incentives_finance": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["us-45q-ira", "us-obbba-45q-2025"],
+          "rationale": "Section 45Q provides the principal federal operating incentive, with the 2025 amendments changing parity and entity restrictions."
+        },
+        "storage_permitting": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["us-epa-class-vi-primacy"],
+          "rationale": "Class VI governs permitting, construction, testing, monitoring, financial responsibility, closure and post-injection site care."
+        },
+        "transport_market": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["us-iija-hubs"],
+          "rationale": "Federal infrastructure funding supports CO2 transport, but the database does not yet isolate the CIFIA programme as a dedicated transport-finance policy."
+        },
+        "mrv_accounting": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["us-epa-class-vi-primacy", "us-45q-ira"],
+          "rationale": "Class VI monitoring and federal greenhouse-gas reporting interact with 45Q substantiation requirements."
+        }
+      }
+    },
+    {
+      "id": "UK",
+      "name": "United Kingdom",
+      "allowed_policy_countries": ["United Kingdom"],
+      "coverage": {
+        "legal_regulatory": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["uk-energy-act-2023"],
+          "rationale": "The Energy Act 2023 establishes the economic licensing and regulatory architecture for CO2 transport and storage."
+        },
+        "incentives_finance": {
+          "status": "missing",
+          "priority": "high",
+          "policy_ids": [],
+          "rationale": "The database lacks a dedicated record for the Industrial Carbon Capture business model and related contractual support."
+        },
+        "storage_permitting": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["uk-energy-act-2023"],
+          "rationale": "Existing legislation and licensing arrangements provide the core storage and transport regulatory basis."
+        },
+        "transport_market": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["uk-ccs-network-code", "uk-ccus-vision"],
+          "rationale": "The market vision proposes a network code, but the code remains a planned governance component rather than a final rule."
+        },
+        "mrv_accounting": {
+          "status": "partial",
+          "priority": "medium",
+          "policy_ids": ["uk-energy-act-2023"],
+          "rationale": "The legal framework supports regulated operations, but a dedicated cross-chain accounting and verification record is not separately captured."
+        }
+      }
+    },
+    {
+      "id": "KR",
+      "name": "South Korea",
+      "allowed_policy_countries": ["South Korea"],
+      "coverage": {
+        "legal_regulatory": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["kr-ccus-act"],
+          "rationale": "The 2024 CCUS Act establishes the national statutory framework for capture, transport, storage and utilization."
+        },
+        "incentives_finance": {
+          "status": "missing",
+          "priority": "medium",
+          "policy_ids": [],
+          "rationale": "No dedicated, verified CCUS incentive or regulated-revenue policy is currently recorded."
+        },
+        "storage_permitting": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["kr-ccus-act"],
+          "rationale": "The Act creates the framework, while detailed implementation and permitting rules require further policy-level review."
+        },
+        "transport_market": {
+          "status": "partial",
+          "priority": "medium",
+          "policy_ids": ["kr-ccus-act"],
+          "rationale": "Transport is within the Act's scope, but dedicated network-access and tariff rules are not separately recorded."
+        },
+        "mrv_accounting": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["kr-ccus-act"],
+          "rationale": "The statutory framework recognizes CCUS operations, but detailed accounting and verification rules need further review."
+        }
+      }
+    },
+    {
+      "id": "NL",
+      "name": "Netherlands",
+      "allowed_policy_countries": ["Netherlands", "European Union"],
+      "coverage": {
+        "legal_regulatory": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["eu-ccs-directive"],
+          "rationale": "The EU CCS Directive supplies the supranational legal basis, but Dutch implementing and permitting law is not separately represented."
+        },
+        "incentives_finance": {
+          "status": "covered",
+          "priority": "high",
+          "policy_ids": ["netherlands-sde"],
+          "rationale": "SDE++ is the principal Dutch operating-support mechanism for industrial decarbonization, including CCS."
+        },
+        "storage_permitting": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["eu-ccs-directive"],
+          "rationale": "EU storage requirements are covered, while the Dutch Mining Act implementation is not separately recorded."
+        },
+        "transport_market": {
+          "status": "missing",
+          "priority": "medium",
+          "policy_ids": [],
+          "rationale": "No dedicated Dutch CO2 transport, network-access or tariff policy record is currently mapped."
+        },
+        "mrv_accounting": {
+          "status": "covered",
+          "priority": "medium",
+          "policy_ids": ["eu-ccs-directive"],
+          "rationale": "EU storage monitoring, reporting and emissions-accounting requirements apply to Dutch storage projects."
+        }
+      }
+    },
+    {
+      "id": "CN",
+      "name": "China",
+      "allowed_policy_countries": ["China"],
+      "coverage": {
+        "legal_regulatory": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025"],
+          "rationale": "National standards and sectoral carbon-market rules provide components, but China does not yet have a dedicated national CCS permitting and liability law."
+        },
+        "incentives_finance": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["cn-pboc-cerf", "cn-demo-tech-2024"],
+          "rationale": "Central-bank and demonstration support can finance eligible low-carbon projects, but a dedicated CCUS revenue mechanism is not established."
+        },
+        "storage_permitting": {
+          "status": "missing",
+          "priority": "high",
+          "policy_ids": [],
+          "rationale": "No dedicated national policy record currently governs pore-space rights, injection licensing, closure and long-term storage liability."
+        },
+        "transport_market": {
+          "status": "missing",
+          "priority": "high",
+          "policy_ids": [],
+          "rationale": "No dedicated national CO2 pipeline, shipping, third-party access or tariff framework is currently recorded."
+        },
+        "mrv_accounting": {
+          "status": "partial",
+          "priority": "high",
+          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025"],
+          "rationale": "Standards and ETS MRV capacity are developing, but a complete cross-chain CCUS accounting framework is not yet recorded."
+        }
+      }
+    }
+  ],
+  "guardrails": {
+    "maximum_high_priority_missing": 4,
+    "require_verified_policy_ids_for_covered": true,
+    "fail_on_unknown_policy_id": true,
+    "fail_on_country_mismatch": true
+  }
+}
