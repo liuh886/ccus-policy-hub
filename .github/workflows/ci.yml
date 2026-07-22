@@ -57,6 +57,9 @@ jobs:
       - name: Verify Policy Coverage Matrix
         run: |
           pnpm manage:db:audit:policy-coverage
+          pnpm prettier --write \
+            docs/policy-coverage-matrix.md \
+            docs/policy-coverage-matrix.json
           git diff --exit-code -- docs/policy-coverage-matrix.md
           rm -f docs/policy-coverage-matrix.json
 
