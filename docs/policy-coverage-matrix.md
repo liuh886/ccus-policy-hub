@@ -6,10 +6,10 @@ As of **2026-07-22**. This matrix is a curated research control backed by policy
 
 - Jurisdictions: **5**
 - Governance dimensions: **5**
-- Covered cells: **9**
-- Partial cells: **11**
-- Missing cells: **5**
-- High-priority missing cells: **3**
+- Covered cells: **14**
+- Partial cells: **7**
+- Missing cells: **4**
+- High-priority missing cells: **2**
 - Audit result: **PASS**
 
 ## Matrix
@@ -17,23 +17,18 @@ As of **2026-07-22**. This matrix is a curated research control backed by policy
 | Jurisdiction   | Legal and regulatory basis | Incentives and finance | Storage and permitting | CO2 transport and market access | MRV and accounting |
 | -------------- | -------------------------- | ---------------------- | ---------------------- | ------------------------------- | ------------------ |
 | United States  | ✅ Covered                 | ✅ Covered             | ✅ Covered             | ⚠️ Partial                      | ✅ Covered         |
-| United Kingdom | ✅ Covered                 | ❌ Missing             | ✅ Covered             | ⚠️ Partial                      | ⚠️ Partial         |
-| South Korea    | ✅ Covered                 | ❌ Missing             | ⚠️ Partial             | ⚠️ Partial                      | ⚠️ Partial         |
-| Netherlands    | ⚠️ Partial                 | ✅ Covered             | ⚠️ Partial             | ❌ Missing                      | ✅ Covered         |
+| United Kingdom | ✅ Covered                 | ✅ Covered             | ✅ Covered             | ⚠️ Partial                      | ⚠️ Partial         |
+| South Korea    | ✅ Covered                 | ❌ Missing             | ✅ Covered             | ⚠️ Partial                      | ✅ Covered         |
+| Netherlands    | ✅ Covered                 | ✅ Covered             | ✅ Covered             | ❌ Missing                      | ✅ Covered         |
 | China          | ⚠️ Partial                 | ⚠️ Partial             | ❌ Missing             | ❌ Missing                      | ⚠️ Partial         |
 
 ## Research gaps and partial coverage
 
-- **United States — CO2 transport and market access** · high priority · partial. Federal infrastructure funding supports CO2 transport, but the database does not yet isolate the CIFIA programme as a dedicated transport-finance policy. Evidence: `us-iija-hubs`.
-- **United Kingdom — Incentives and finance** · high priority · missing. The database lacks a dedicated record for the Industrial Carbon Capture business model and related contractual support.
+- **United States — CO2 transport and market access** · high priority · partial. CIFIA supplies dedicated federal finance for shared common-carrier CO2 transport infrastructure, while broader tariff, access and market-governance rules are not represented as a single national framework. Evidence: `us-iija-hubs`.
 - **United Kingdom — CO2 transport and market access** · high priority · partial. The market vision proposes a network code, but the code remains a planned governance component rather than a final rule. Evidence: `uk-ccs-network-code`, `uk-ccus-vision`.
-- **United Kingdom — MRV and accounting** · medium priority · partial. The legal framework supports regulated operations, but a dedicated cross-chain accounting and verification record is not separately captured. Evidence: `uk-energy-act-2023`.
-- **South Korea — Incentives and finance** · medium priority · missing. No dedicated, verified CCUS incentive or regulated-revenue policy is currently recorded.
-- **South Korea — Storage and permitting** · high priority · partial. The Act creates the framework, while detailed implementation and permitting rules require further policy-level review. Evidence: `kr-ccus-act`.
-- **South Korea — CO2 transport and market access** · medium priority · partial. Transport is within the Act's scope, but dedicated network-access and tariff rules are not separately recorded. Evidence: `kr-ccus-act`.
-- **South Korea — MRV and accounting** · high priority · partial. The statutory framework recognizes CCUS operations, but detailed accounting and verification rules need further review. Evidence: `kr-ccus-act`.
-- **Netherlands — Legal and regulatory basis** · high priority · partial. The EU CCS Directive supplies the supranational legal basis, but Dutch implementing and permitting law is not separately represented. Evidence: `eu-ccs-directive`.
-- **Netherlands — Storage and permitting** · high priority · partial. EU storage requirements are covered, while the Dutch Mining Act implementation is not separately recorded. Evidence: `eu-ccs-directive`.
+- **United Kingdom — MRV and accounting** · medium priority · partial. The legal and contractual frameworks require metering and verified storage, while a dedicated cross-chain accounting record is not separately captured. Evidence: `uk-energy-act-2023`, `uk-industrial-carbon-capture-business-model-2025`.
+- **South Korea — Incentives and finance** · medium priority · missing. The decree details enterprise and project-support procedures, but no dedicated verified regulated-revenue or universal CCUS incentive is currently recorded.
+- **South Korea — CO2 transport and market access** · medium priority · partial. Transport approvals, pipeline safety and inspections are operationalized, but dedicated network-access and tariff rules are not separately recorded. Evidence: `kr-ccus-act`, `kr-ccus-act-enforcement-decree-2025`.
 - **Netherlands — CO2 transport and market access** · medium priority · missing. No dedicated Dutch CO2 transport, network-access or tariff policy record is currently mapped.
 - **China — Legal and regulatory basis** · high priority · partial. National standards and sectoral carbon-market rules provide components, but China does not yet have a dedicated national CCS permitting and liability law. Evidence: `cn-standards-2024`, `cn-national-ets-expansion-2025`.
 - **China — Incentives and finance** · high priority · partial. Central-bank and demonstration support can finance eligible low-carbon projects, but a dedicated CCUS revenue mechanism is not established. Evidence: `cn-pboc-cerf`, `cn-demo-tech-2024`.

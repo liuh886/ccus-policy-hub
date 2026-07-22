@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-21T16:20:19.944Z",
-  "count": 127,
+  "generated_at": "2026-07-22T03:33:46.966Z",
+  "count": 130,
   "records": [
     {
       "id": "ar-rigi-ccus-2024",
@@ -4660,6 +4660,72 @@
       }
     },
     {
+      "id": "nl-mining-act-co2-storage-2011",
+      "country": "Netherlands",
+      "year": 2011,
+      "status": "Active",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "Primary Legislation",
+      "source": "Government of the Netherlands, Laws and Regulations Database",
+      "url": "https://wetten.overheid.nl/BWBR0014168/",
+      "pub_date": "2011-06-06",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source coverage gap audit",
+      "provenance_last_audit_date": "2026-07-22",
+      "i18n": {
+        "en": {
+          "title": "Netherlands Mining Act CO2 Storage Framework (2011)",
+          "description": "The Netherlands implemented the EU CCS Directive through amendments to the Mining Act and related legislation in 2011. The current Mining Act defines CO2 storage complexes and permanent geological storage, establishes exploration and storage permits, and provides the national legal basis for authorising and supervising offshore CO2 storage. It operates together with the Mining Decree, Mining Regulation, environmental permitting and EU emissions-accounting rules. This record represents the Dutch implementation layer and should not be confused with the separate SDE++ operating subsidy.",
+          "scope": "Dutch national exploration, permitting and supervision framework for permanent geological CO2 storage.",
+          "tags": [
+            "Mining Act",
+            "storage permit",
+            "offshore storage",
+            "EU CCS Directive"
+          ]
+        },
+        "zh": {
+          "title": "荷兰《矿业法》二氧化碳封存框架（2011）",
+          "description": "荷兰于2011年通过修订《矿业法》及相关法律落实欧盟CCS指令。现行《矿业法》定义二氧化碳封存复合体和永久地质封存，建立封存复合体勘探许可和封存许可制度，并为荷兰海上二氧化碳封存的批准与监管提供国家法律基础。该法与《矿业法令》《矿业条例》、环境许可及欧盟排放核算规则共同适用。本记录代表荷兰国内监管实施层，不应与SDE++运营补贴混为一项政策。",
+          "scope": "荷兰永久地质封存的勘探、许可和监管框架。",
+          "tags": ["矿业法", "封存许可", "海上封存", "欧盟CCS指令"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 45,
+          "label": "Legal enabler, not subsidy",
+          "evidence": "The Mining Act enables licensed storage but does not provide the operating subsidy available under SDE++.",
+          "citation": "Dutch Mining Act; SDE++ is recorded separately."
+        },
+        "market": {
+          "score": 70,
+          "label": "Storage-market legal foundation",
+          "evidence": "The licensing framework enables commercial offshore storage services but does not by itself establish transport tariffs or third-party network rules.",
+          "citation": "Dutch Mining Act and implementing legislation."
+        },
+        "mrv": {
+          "score": 85,
+          "label": "Storage monitoring under national and EU rules",
+          "evidence": "Dutch storage permits operate within the Mining Act and EU monitoring, reporting and emissions-accounting framework.",
+          "citation": "Dutch Mining Act; Directive 2009/31/EC; EU ETS rules."
+        },
+        "statutory": {
+          "score": 95,
+          "label": "Primary Dutch storage law",
+          "evidence": "The Mining Act defines permanent CO2 storage and establishes exploration and storage permitting under Dutch law.",
+          "citation": "Mijnbouwwet, including provisions implementing Directive 2009/31/EC."
+        },
+        "strategic": {
+          "score": 85,
+          "label": "National implementation of EU CCS law",
+          "evidence": "The framework provides the domestic legal foundation used by Dutch North Sea CO2 storage projects.",
+          "citation": "Dutch implementation of Directive 2009/31/EC."
+        }
+      }
+    },
+    {
       "id": "ng-nuprc-decarb-2024",
       "country": "Nigeria",
       "year": 2024,
@@ -5946,6 +6012,72 @@
       }
     },
     {
+      "id": "kr-ccus-act-enforcement-decree-2025",
+      "country": "South Korea",
+      "year": 2025,
+      "status": "Active",
+      "category": "Regulatory",
+      "review_status": "verified",
+      "legal_weight": "Presidential Decree",
+      "source": "Korean National Law Information Center",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&lsId=014834",
+      "pub_date": "2025-02-07",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source coverage gap audit",
+      "provenance_last_audit_date": "2026-07-22",
+      "i18n": {
+        "en": {
+          "title": "South Korea CCUS Act Enforcement Decree (2025)",
+          "description": "The Enforcement Decree implements South Korea’s Act on Carbon Dioxide Capture, Transport, Storage and Utilisation from 7 February 2025. It specifies procedures and criteria for capture-facility plans, transport-business approvals, pipeline safety management and inspection, storage-site exploration approvals, storage-business approvals, safety management, monitoring and performance evaluation. It also details certification and support arrangements for CO2 utilisation technologies, products and specialised enterprises. The decree operationalises the framework Act; it does not create a general regulated tariff or automatic project-revenue guarantee.",
+          "scope": "Detailed national implementation rules for CO2 capture facilities, transport, storage approvals, safety, monitoring and utilisation support.",
+          "tags": [
+            "enforcement decree",
+            "storage permit",
+            "transport safety",
+            "monitoring"
+          ]
+        },
+        "zh": {
+          "title": "韩国《二氧化碳捕集、运输、封存及利用法》实施令（2025）",
+          "description": "韩国《二氧化碳捕集、运输、封存及利用法》实施令自2025年2月7日起实施，细化捕集设施安装计划、运输业务批准、管道安全管理与检查、封存候选地勘探批准、封存业务批准、安全管理、监测和绩效评价程序，并规定二氧化碳利用技术、产品及专业企业的认证与支持安排。该实施令将框架法转化为可操作制度，但并未建立统一受监管运输费率或自动项目收入保障。",
+          "scope": "韩国捕集设施、运输、封存许可、安全、监测及利用支持的国家实施规则。",
+          "tags": ["实施令", "封存许可", "运输安全", "监测"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 65,
+          "label": "Implementation and enterprise support",
+          "evidence": "The decree details support, certification and specialised-enterprise arrangements but does not establish a universal project revenue mechanism.",
+          "citation": "CCUS Act Enforcement Decree, Chapters VII-VIII."
+        },
+        "market": {
+          "score": 75,
+          "label": "Approved transport and storage operations",
+          "evidence": "The decree operationalises transport and storage business approvals and safety requirements, but not a general network tariff or third-party-access regime.",
+          "citation": "CCUS Act Enforcement Decree, transport and storage chapters."
+        },
+        "mrv": {
+          "score": 90,
+          "label": "Operational monitoring and evaluation rules",
+          "evidence": "The decree specifies storage monitoring, safety management, inspection, evaluation and reporting procedures.",
+          "citation": "CCUS Act Enforcement Decree, storage and monitoring provisions."
+        },
+        "statutory": {
+          "score": 95,
+          "label": "Operational presidential decree",
+          "evidence": "The decree supplies detailed procedures and criteria required to implement the national CCUS framework Act.",
+          "citation": "CCUS Act Enforcement Decree, effective 7 February 2025."
+        },
+        "strategic": {
+          "score": 90,
+          "label": "Full-chain implementation framework",
+          "evidence": "The decree converts the 2024 framework Act into operational rules across capture, transport, storage and utilisation.",
+          "citation": "Korean government implementation announcement, 6 February 2025."
+        }
+      }
+    },
+    {
       "id": "kr-ccus-act",
       "country": "South Korea",
       "year": 2024,
@@ -6495,6 +6627,72 @@
       }
     },
     {
+      "id": "uk-industrial-carbon-capture-business-model-2025",
+      "country": "United Kingdom",
+      "year": 2025,
+      "status": "Active",
+      "category": "Incentive",
+      "review_status": "verified",
+      "legal_weight": "Government Contractual Support Framework",
+      "source": "UK Department for Energy Security and Net Zero",
+      "url": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-ccus-business-models",
+      "pub_date": "2025-11-21",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source coverage gap audit",
+      "provenance_last_audit_date": "2026-07-22",
+      "i18n": {
+        "en": {
+          "title": "UK Industrial Carbon Capture Business Model (2025)",
+          "description": "The UK Industrial Carbon Capture (ICC) Business Model is the government contractual support framework for industrial and waste-sector carbon capture projects. The November 2025 package includes updated business-model terms, Front End Agreements and standard terms and conditions. The model combines an up-to-15-year payment per tonne of captured and permanently stored CO2 with capital grant co-funding for eligible initial projects. Revenue support is intended to cover efficient operating costs, CO2 transport and storage charges, repayment of capital investment and an allowed return. Support is allocated through government project-selection and contracting processes; publication of the model does not create an automatic subsidy entitlement.",
+          "scope": "Contractual capital and revenue support for eligible UK industrial and waste carbon capture projects.",
+          "tags": [
+            "industrial CCS",
+            "contract",
+            "revenue support",
+            "capital grant"
+          ]
+        },
+        "zh": {
+          "title": "英国工业碳捕集商业模式（2025）",
+          "description": "英国工业碳捕集（ICC）商业模式是政府面向工业及废弃物处理行业碳捕集项目建立的合同支持框架。2025年11月发布的文件包包括更新后的商业模式、前端协议以及标准条款。该模式通过最长15年的按捕集并永久封存二氧化碳吨数支付机制，并对符合条件的早期项目提供部分资本金补助，用于覆盖合理运营成本、二氧化碳运输与封存费用、捕集设备资本投入回收及允许收益。支持须通过政府项目遴选和签约程序获得，商业模式文件的发布并不产生自动补贴权利。",
+          "scope": "英国符合条件的工业及废弃物碳捕集项目的资本与长期收入支持。",
+          "tags": ["工业CCS", "合同机制", "收入支持", "资本补助"]
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "score": 95,
+          "label": "Long-term capture contract",
+          "evidence": "The model combines an up-to-15-year per-tonne revenue contract with capital grant co-funding for eligible initial projects.",
+          "citation": "DESNZ, Industrial Carbon Capture business models update and contract package, November 2025."
+        },
+        "market": {
+          "score": 85,
+          "label": "Bankable cluster-anchor support",
+          "evidence": "The contract is designed to make selected industrial capture projects financeable while connecting them to regulated transport and storage networks.",
+          "citation": "DESNZ ICC Business Model Update, November 2025."
+        },
+        "mrv": {
+          "score": 80,
+          "label": "Contractual metering and storage verification",
+          "evidence": "Payments depend on measured captured CO2 delivered to transport and storage and permanently stored under the contractual and regulatory chain.",
+          "citation": "DESNZ ICC Standard Terms and Conditions, November 2025."
+        },
+        "statutory": {
+          "score": 80,
+          "label": "Statutory contracting powers implemented",
+          "evidence": "Energy Act powers and revenue-support regulations enable the Secretary of State to direct a counterparty to offer contracts to eligible carbon-capture entities.",
+          "citation": "Energy Act 2023; Hydrogen Production and Industrial Carbon Capture Revenue Support Regulations."
+        },
+        "strategic": {
+          "score": 90,
+          "label": "Core UK industrial CCS deployment mechanism",
+          "evidence": "The ICC model is the principal government mechanism for deploying capture at hard-to-abate industrial and waste facilities in CCUS clusters.",
+          "citation": "UK Carbon Budget and Growth Delivery Plan; DESNZ CCUS business-model publications."
+        }
+      }
+    },
+    {
       "id": "uk-ccs-network-code",
       "country": "United Kingdom",
       "year": 2023,
@@ -6961,60 +7159,65 @@
       "id": "us-iija-hubs",
       "country": "United States",
       "year": 2021,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Incentive",
       "review_status": "verified",
-      "legal_weight": "Guideline/Policy",
+      "legal_weight": "Federal Statutory Finance Program",
       "source": "U.S. Department of Energy",
       "url": "https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program",
       "pub_date": "2021-11-15",
-      "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_author": "CCUS AI Agent",
+      "provenance_reviewer": "Primary-source coverage gap audit",
+      "provenance_last_audit_date": "2026-07-22",
       "i18n": {
         "en": {
-          "title": "US IIJA CCS Hubs Program",
-          "description": "$12 billion federal investment program for regional DAC hubs and large-scale CO2 transport/storage infrastructure.",
-          "scope": null,
-          "tags": null
+          "title": "U.S. CIFIA CO2 Transportation Infrastructure Finance Program",
+          "description": "The Infrastructure Investment and Jobs Act established the Carbon Dioxide Transportation Infrastructure Finance and Innovation Act (CIFIA) programme with $2.1 billion available for loans and grants supporting large-capacity, common-carrier CO2 transportation infrastructure. Eligible projects must demonstrate demand from associated anthropogenic or direct-air-capture projects, support geographic diversity and minimise siting impacts, including through existing infrastructure corridors. The existing database record previously combined the broader $12 billion federal carbon-management package, regional direct-air-capture hubs and transport infrastructure under one title. This corrected record follows its official DOE URL and represents CIFIA specifically; other IIJA programmes should be recorded separately when needed.",
+          "scope": "Federal loans and grants for large-capacity common-carrier CO2 transportation infrastructure.",
+          "tags": [
+            "CIFIA",
+            "CO2 transport",
+            "common carrier",
+            "infrastructure finance"
+          ]
         },
         "zh": {
-          "title": "美国 IIJA CCS 枢纽计划",
-          "description": "120 亿美元的联邦投资计划，用于区域性 DAC 枢纽及大规模二氧化碳运输/封存基础设施。",
-          "scope": null,
-          "tags": null
+          "title": "美国CIFIA二氧化碳运输基础设施融资计划",
+          "description": "美国《基础设施投资与就业法》设立二氧化碳运输基础设施融资与创新法（CIFIA）计划，安排21亿美元贷款和补助资金，用于支持大容量、公共承运性质的二氧化碳运输基础设施。合格项目须证明相关人为源或直接空气捕集项目的运输需求，促进地区多样性，并通过利用既有基础设施走廊等方式降低选址影响。数据库原记录将更广泛的120亿美元联邦碳管理投资、区域直接空气捕集中心和运输基础设施混为同一标题；现根据其DOE官方URL将记录校正为CIFIA专项，其它IIJA项目应在确有需要时分别建档。",
+          "scope": "面向大容量公共承运二氧化碳运输基础设施的联邦贷款和补助。",
+          "tags": ["CIFIA", "二氧化碳运输", "公共承运", "基础设施融资"]
         }
       },
       "analysis": {
         "incentive": {
-          "score": 40,
-          "label": "Not specified",
-          "evidence": "No direct incentive found.",
-          "citation": ""
+          "score": 95,
+          "label": "$2.1 billion transport-finance programme",
+          "evidence": "CIFIA provides federal loans and grants for eligible large-capacity common-carrier CO2 transportation projects.",
+          "citation": "Infrastructure Investment and Jobs Act; DOE CIFIA programme page."
         },
         "market": {
-          "score": 40,
-          "label": "Market Integration",
-          "evidence": "No specific market rules.",
-          "citation": ""
+          "score": 85,
+          "label": "Shared common-carrier infrastructure",
+          "evidence": "Eligibility prioritises large-capacity common-carrier infrastructure with demonstrated demand from associated capture projects.",
+          "citation": "DOE CIFIA eligible-use criteria."
         },
         "mrv": {
-          "score": 40,
-          "label": "Standard",
-          "evidence": "Standard reporting required.",
-          "citation": ""
+          "score": 60,
+          "label": "Project finance and reporting controls",
+          "evidence": "Projects must document eligibility, demand and use of federal funds, while emissions-accounting and storage MRV are governed by separate regimes.",
+          "citation": "DOE CIFIA programme requirements."
         },
         "statutory": {
-          "score": 40,
-          "label": "Undefined",
-          "evidence": "Pore space rights not explicitly defined.",
-          "citation": ""
+          "score": 85,
+          "label": "Federal statutory finance authority",
+          "evidence": "The programme was authorised by the Infrastructure Investment and Jobs Act and implemented by DOE.",
+          "citation": "Infrastructure Investment and Jobs Act, CIFIA provisions."
         },
         "strategic": {
-          "score": 30,
-          "label": "Initial Assessment",
-          "evidence": "Baseline strategic alignment under V5.0 migration.",
-          "citation": ""
+          "score": 90,
+          "label": "National CO2 transport build-out",
+          "evidence": "CIFIA is the dedicated federal financing mechanism for expanding shared CO2 transportation infrastructure across emitting regions.",
+          "citation": "DOE CIFIA programme overview."
         }
       }
     },
