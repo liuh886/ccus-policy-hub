@@ -1,0 +1,52 @@
+name: Audit policy content depth
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  audit:
+    if: github.head_ref == 'agent/policy-content-depth'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/policy-content-depth
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Format audit controls
+        run: |
+          pnpm prettier --write \
+            scripts/audit-policy-content-depth.mjs \
+            scripts/audit-policy-content-depth.test.mjs \
+            package.json
+
+      - name: Validate audit logic
+        run: |
+          pnpm eslint .
+          pnpm test
+
+      - name: Generate content-depth report
+        run: pnpm manage:db:audit:policy-content-depth
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: policy-content-depth-report
+          path: |
+            docs/policy-content-depth-report.json
+            docs/policy-content-depth-report.md
+            scripts/audit-policy-content-depth.mjs
+            scripts/audit-policy-content-depth.test.mjs
+            package.json
+          if-no-files-found: error
+          retention-days: 7
