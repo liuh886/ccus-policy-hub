@@ -110,7 +110,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
+          set +e
+          git add -f \
             package.json \
             agent/ccus-ai-agent/config/policy-coverage-framework.json \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
@@ -124,12 +125,15 @@ jobs:
             src/data/quality_metrics.generated.json \
             scripts/migrate-high-priority-policy-gaps-2026-07.mjs \
             scripts/migrate-high-priority-policy-gaps-2026-07.test.mjs \
-            src/content/policies
+            src/content/policies 2>&1 | tee add-output.txt
+          add_status=${PIPESTATUS[0]}
+          if (( add_status != 0 )); then
+            exit "$add_status"
+          fi
           if git diff --cached --quiet; then
             echo "No verified migration changes to commit." | tee commit-output.txt
             exit 0
           fi
-          set +e
           git commit --no-verify -m "feat(data): materialize high-priority policy gaps" 2>&1 | tee commit-output.txt
           commit_status=${PIPESTATUS[0]}
           if (( commit_status != 0 )); then
@@ -145,6 +149,7 @@ jobs:
           name: high-priority-policy-gap-diagnostics
           path: |
             policy-gap-materialization-diff.txt
+            add-output.txt
             commit-output.txt
             push-output.txt
             docs/policy-coverage-matrix.md
