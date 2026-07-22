@@ -37,8 +37,7 @@ jobs:
             agent/ccus-ai-agent/config/policy-coverage-framework.json \
             scripts/audit-policy-coverage.mjs \
             scripts/audit-policy-coverage.test.mjs \
-            package.json \
-            .github/workflows/materialize-policy-coverage.yml
+            package.json
 
       - name: Validate and generate
         run: |
@@ -63,7 +62,6 @@ jobs:
             scripts/audit-policy-coverage.mjs \
             scripts/audit-policy-coverage.test.mjs \
             package.json \
-            .github/workflows/materialize-policy-coverage.yml \
             docs/policy-coverage-matrix.json \
             docs/policy-coverage-matrix.md
           if git diff --cached --quiet; then
