@@ -70,7 +70,9 @@ function validateFrameworkShape(framework) {
 
   for (const dimension of framework.dimensions || []) {
     if (!dimension.id || dimensionIds.has(dimension.id)) {
-      errors.push(`Invalid or duplicate dimension ID: ${dimension.id || '(blank)'}`);
+      errors.push(
+        `Invalid or duplicate dimension ID: ${dimension.id || '(blank)'}`
+      );
     }
     dimensionIds.add(dimension.id);
   }
@@ -109,7 +111,9 @@ export function evaluateCoverage(framework, policies) {
   const cells = [];
 
   for (const jurisdiction of framework.jurisdictions || []) {
-    const allowedCountries = new Set(jurisdiction.allowed_policy_countries || []);
+    const allowedCountries = new Set(
+      jurisdiction.allowed_policy_countries || []
+    );
 
     for (const dimension of framework.dimensions || []) {
       const entry = jurisdiction.coverage[dimension.id];
@@ -132,10 +136,7 @@ export function evaluateCoverage(framework, policies) {
           `${jurisdiction.id}/${dimension.id} is missing but references policy IDs`
         );
       }
-      if (
-        ['covered', 'partial'].includes(status) &&
-        policyIds.length === 0
-      ) {
+      if (['covered', 'partial'].includes(status) && policyIds.length === 0) {
         errors.push(
           `${jurisdiction.id}/${dimension.id} is ${status} without evidence policy IDs`
         );
@@ -299,13 +300,13 @@ export async function auditPolicyCoverage(paths = {}) {
   const resolved = { ...DEFAULT_PATHS, ...paths };
   for (const inputPath of [resolved.dbPath, resolved.frameworkPath]) {
     if (!fs.existsSync(inputPath)) {
-      throw new Error(`Required policy coverage input is missing: ${inputPath}`);
+      throw new Error(
+        `Required policy coverage input is missing: ${inputPath}`
+      );
     }
   }
 
-  const framework = JSON.parse(
-    fs.readFileSync(resolved.frameworkPath, 'utf8')
-  );
+  const framework = JSON.parse(fs.readFileSync(resolved.frameworkPath, 'utf8'));
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(resolved.dbPath)));
   const policies = loadPolicies(db);
@@ -353,7 +354,8 @@ export async function auditPolicyCoverage(paths = {}) {
 
   console.log(JSON.stringify(report.summary, null, 2));
   if (!report.pass) {
-    for (const error of report.errors) console.error(`Coverage error: ${error}`);
+    for (const error of report.errors)
+      console.error(`Coverage error: ${error}`);
     process.exitCode = 1;
   }
   return report;
@@ -361,7 +363,8 @@ export async function auditPolicyCoverage(paths = {}) {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   auditPolicyCoverage().catch((error) => {
