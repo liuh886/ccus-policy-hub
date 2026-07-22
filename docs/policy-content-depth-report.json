@@ -1,0 +1,4594 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-07-22",
+  "totalPolicies": 130,
+  "severityCounts": {
+    "critical": 69,
+    "high": 6,
+    "medium": 40,
+    "healthy": 15
+  },
+  "verifiedNeedsWork": 103,
+  "lowestScore": 8,
+  "medianScore": 44,
+  "assessments": [
+    {
+      "id": "gr-climate-law-2022-update",
+      "country": "Greece",
+      "year": 2022,
+      "reviewStatus": null,
+      "category": "Regulatory",
+      "score": 8,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 134,
+        "zhDescriptionLength": 43,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 5,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Greece National Climate Law - CCUS Update",
+        "zh": "希腊国家气候法 - CCUS 更新版"
+      }
+    },
+    {
+      "id": "ph-doe-ccus-roadmap-2024",
+      "country": "Philippines",
+      "year": 2024,
+      "reviewStatus": null,
+      "category": "Strategic",
+      "score": 9,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 169,
+        "zhDescriptionLength": 44,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 5,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Philippines CCUS Strategic Roadmap",
+        "zh": "菲律宾 CCUS 战略路线图"
+      }
+    },
+    {
+      "id": "ro-emergency-ordinance-2024",
+      "country": "Romania",
+      "year": 2024,
+      "reviewStatus": null,
+      "category": "Regulatory",
+      "score": 9,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 139,
+        "zhDescriptionLength": 52,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Romania CCUS Regulatory Framework 2024",
+        "zh": "罗马尼亚 CCUS 监管框架 2024"
+      }
+    },
+    {
+      "id": "puro-earth",
+      "country": "International",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 15,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 122,
+        "zhDescriptionLength": 40,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "Puro.earth CDR Certification (CORC)",
+        "zh": "Puro.earth CDR 核证 (CORC)"
+      }
+    },
+    {
+      "id": "iso-standards",
+      "country": "International",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 16,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 136,
+        "zhDescriptionLength": 49,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "ISO CCUS Standards (TC 265)",
+        "zh": "ISO CCUS 标准体系 (TC 265)"
+      }
+    },
+    {
+      "id": "my-netr-ccus-2023",
+      "country": "Malaysia",
+      "year": 2023,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 18,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 101,
+        "zhDescriptionLength": 63,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 1,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar",
+        "zh": "马来西亚国家能源转型路线图 (NETR) - CCUS 支柱"
+      }
+    },
+    {
+      "id": "in-national-mission-ccus-2024",
+      "country": "India",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 19,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 297,
+        "zhDescriptionLength": 113,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "National Mission for CCUS & Regulatory Roadmap",
+        "zh": "国家 CCUS 任务与监管路线图"
+      }
+    },
+    {
+      "id": "gr-ccs-regulatory-framework-2025",
+      "country": "Greece",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 20,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 195,
+        "zhDescriptionLength": 74,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Greece Strategic Framework for CCS Development 2025",
+        "zh": "2025年希腊 CCS 发展战略框架"
+      }
+    },
+    {
+      "id": "sg-carbon-tax-ccus-2025",
+      "country": "Singapore",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 20,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 209,
+        "zhDescriptionLength": 66,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Singapore Carbon Pricing (CCUS) Framework 2025",
+        "zh": "新加坡碳定价 (CCUS) 框架 2025"
+      }
+    },
+    {
+      "id": "co-ccus-regulatory-decree-2025",
+      "country": "Colombia",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 21,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 202,
+        "zhDescriptionLength": 84,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Colombia Regulatory Decree for CCUS 2025",
+        "zh": "2025年哥伦比亚 CCUS 监管法令"
+      }
+    },
+    {
+      "id": "be-ccus-strategy-2025",
+      "country": "Belgium",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 250,
+        "zhDescriptionLength": 71,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Belgium Federal CCUS and Hydrogen Strategy 2025",
+        "zh": "2025年比利时联邦 CCUS 与氢能战略"
+      }
+    },
+    {
+      "id": "br-anp-ccs-resolution",
+      "country": "Brazil",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 122,
+        "zhDescriptionLength": 68,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 2,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Brazil ANP Resolution on CCS Authorization (Law 14.993)",
+        "zh": "巴西 ANP CCS 授权与监管决议 (基于 14.993 号法)"
+      }
+    },
+    {
+      "id": "cl-green-hydrogen-ccs-2025",
+      "country": "Chile",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 245,
+        "zhDescriptionLength": 74,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Chile Green Hydrogen and CCUS Roadmap 2025",
+        "zh": "智利绿氢与 CCUS 路线图 2025"
+      }
+    },
+    {
+      "id": "eg-carbon-market-framework-2024",
+      "country": "Egypt",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 249,
+        "zhDescriptionLength": 73,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Egypt Carbon Market Framework 2024",
+        "zh": "埃及碳市场框架 2024"
+      }
+    },
+    {
+      "id": "es-climate-law-ccs-2025",
+      "country": "Spain",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 240,
+        "zhDescriptionLength": 84,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Spain Climate Change and CCS Framework 2025",
+        "zh": "西班牙气候变化与 CCS 框架 2025"
+      }
+    },
+    {
+      "id": "is-carbfix-act",
+      "country": "Iceland",
+      "year": 1998,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 116,
+        "zhDescriptionLength": 68,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 2,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Iceland Geologic Storage Act (Carbfix Mineralization)",
+        "zh": "冰岛地质封存法案 (Carbfix 矿化许可)"
+      }
+    },
+    {
+      "id": "ph-ccus-policy-framework-2025",
+      "country": "Philippines",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 216,
+        "zhDescriptionLength": 94,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Philippines CCUS Development Framework 2025",
+        "zh": "2025年菲律宾 CCUS 发展框架"
+      }
+    },
+    {
+      "id": "ro-ccs-operational-law-2025",
+      "country": "Romania",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 22,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 232,
+        "zhDescriptionLength": 80,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Romania Operational Law for Geological CO2 Storage 2025",
+        "zh": "2025年罗马尼亚地质二氧化碳封存运营法"
+      }
+    },
+    {
+      "id": "alberta-tier",
+      "country": "Canada",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 23,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 186,
+        "zhDescriptionLength": 57,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 6,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Alberta TIER System & CCS Incentives",
+        "zh": "阿尔伯塔省 TIER 体系与 CCS 激励"
+      }
+    },
+    {
+      "id": "co-law-2099-energy-transition",
+      "country": "Colombia",
+      "year": 2021,
+      "reviewStatus": "draft",
+      "category": "Incentive",
+      "score": 23,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 105,
+        "zhDescriptionLength": 59,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Colombia Law 2099 of 2021 (CCS Income Tax Incentives)",
+        "zh": "哥伦比亚第 2099/2021 号能源法 (CCS 所得税减免)"
+      }
+    },
+    {
+      "id": "us-tx-natural-resources-121",
+      "country": "United States",
+      "year": 2009,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 23,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 116,
+        "zhDescriptionLength": 54,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Texas Natural Resources Code Chapter 121 (CO2 Stewardship)",
+        "zh": "德克萨斯州自然资源法第 121 章 (人为 CO2 管理)"
+      }
+    },
+    {
+      "id": "fr-ccus-roadmap",
+      "country": "France",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 24,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 281,
+        "zhDescriptionLength": 85,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "France CCUS Deployment Outlook (2024)",
+        "zh": "法国CCUS部署现状与展望（2024）"
+      }
+    },
+    {
+      "id": "kw-kpc-net-zero-2024",
+      "country": "Kuwait",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 24,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 264,
+        "zhDescriptionLength": 92,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Kuwait KPC Net Zero Strategy 2024",
+        "zh": "科威特 KPC 2050 净零战略 2024"
+      }
+    },
+    {
+      "id": "kz-ecology-code-ccus-2024",
+      "country": "Kazakhstan",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 24,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 248,
+        "zhDescriptionLength": 98,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Kazakhstan Ecology Code (CCUS) Framework 2024",
+        "zh": "哈萨克斯坦生态法 (CCUS) 框架 2024"
+      }
+    },
+    {
+      "id": "om-ccus-roadmap-2024",
+      "country": "Oman",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 24,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 248,
+        "zhDescriptionLength": 99,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Oman CCUS Strategic Roadmap 2024",
+        "zh": "阿曼 CCUS 战略路线图 2024"
+      }
+    },
+    {
+      "id": "pl-mining-law-ccs-2024",
+      "country": "Poland",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 24,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 273,
+        "zhDescriptionLength": 96,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Poland Geological and Mining Law (CCS) 2024",
+        "zh": "波兰地质和采矿法 (CCS) 2024"
+      }
+    },
+    {
+      "id": "ch-co2-act-ccs-2024",
+      "country": "Switzerland",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 25,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 290,
+        "zhDescriptionLength": 99,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Switzerland Revised CO2 Act (CCS/NETs) 2024",
+        "zh": "瑞士修订版二氧化碳法 (CCS/NETs) 2024"
+      }
+    },
+    {
+      "id": "dk-ccs-subsidy-scheme-2025",
+      "country": "Denmark",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 25,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 276,
+        "zhDescriptionLength": 109,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Danish CCS Subsidy Scheme 2025",
+        "zh": "2025年丹麦 CCS 补贴计划"
+      }
+    },
+    {
+      "id": "nl-cdr-roadmap-2025",
+      "country": "Netherlands",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 25,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 260,
+        "zhDescriptionLength": 116,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Netherlands Carbon Dioxide Removal (CDR) Roadmap 2025",
+        "zh": "荷兰 2025 年二氧化碳消除 (CDR) 路线图"
+      }
+    },
+    {
+      "id": "us-doe-carbon-management-strategy",
+      "country": "United States",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 25,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 462,
+        "zhDescriptionLength": 123,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Draft U.S. DOE Carbon Management Strategy (2024)",
+        "zh": "美国能源部碳管理战略草案（2024）"
+      }
+    },
+    {
+      "id": "vn-carbon-market-decree-2025",
+      "country": "Vietnam",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 25,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 244,
+        "zhDescriptionLength": 122,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Vietnam Domestic Carbon Market Framework 2025",
+        "zh": "越南国内碳市场框架 2025"
+      }
+    },
+    {
+      "id": "ae-carbon-strategy",
+      "country": "United Arab Emirates",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 332,
+        "zhDescriptionLength": 82,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 3
+      },
+      "titles": {
+        "en": "UAE Net Zero 2050 Strategy",
+        "zh": "阿联酋2050净零战略"
+      }
+    },
+    {
+      "id": "ae-federal-climate-law-2024",
+      "country": "United Arab Emirates",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 278,
+        "zhDescriptionLength": 117,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Federal Decree-Law No. (11) of 2024 & Abu Dhabi Carbon Capture Policy",
+        "zh": "2024年第 (11) 号联邦法令及阿布扎比碳捕集政策"
+      }
+    },
+    {
+      "id": "au-wa-petroleum-amendment-2024",
+      "country": "Australia",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 130,
+        "zhDescriptionLength": 53,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Western Australia Petroleum Legislation Amendment Act 2024",
+        "zh": "西澳大利亚州 2024 石油立法修正案 (GHG 封存)"
+      }
+    },
+    {
+      "id": "cn-demo-tech-2024",
+      "country": "China",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 372,
+        "zhDescriptionLength": 101,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 2,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)",
+        "zh": "《绿色低碳先进技术示范工程实施方案》（2023）"
+      }
+    },
+    {
+      "id": "cn-ordos-pilot-2024",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 130,
+        "zhDescriptionLength": 53,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
+        "zh": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)"
+      }
+    },
+    {
+      "id": "us-wy-hb-0200",
+      "country": "United States",
+      "year": 2020,
+      "reviewStatus": "draft",
+      "category": "Incentive",
+      "score": 26,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 114,
+        "zhDescriptionLength": 60,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Wyoming House Bill 0200 (Low-Carbon Reliable Energy Standard)",
+        "zh": "美国怀俄明州 HB 0200 号法案 (低碳可靠能源标准)"
+      }
+    },
+    {
+      "id": "au-offshore-ghg-act",
+      "country": "Australia",
+      "year": 2006,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 27,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 488,
+        "zhDescriptionLength": 136,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 0,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006",
+        "zh": "澳大利亚《2006年海上石油和温室气体封存法》"
+      }
+    },
+    {
+      "id": "de-icm-strategy",
+      "country": "Germany",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 27,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 351,
+        "zhDescriptionLength": 98,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 3
+      },
+      "titles": {
+        "en": "Germany Carbon Management Strategy Key Principles (2024)",
+        "zh": "德国碳管理战略要点（2024）"
+      }
+    },
+    {
+      "id": "kr-motie-cluster-district-2025",
+      "country": "South Korea",
+      "year": 2025,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 27,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 123,
+        "zhDescriptionLength": 68,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
+        "zh": "韩国 MOTIE CCUS 专项产业集群认定标准"
+      }
+    },
+    {
+      "id": "qa-national-climate-strategy-2024",
+      "country": "Qatar",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 27,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 285,
+        "zhDescriptionLength": 131,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Qatar National Environment and Climate Change Strategy 2024",
+        "zh": "卡塔尔国家环境与气候变化战略 2024"
+      }
+    },
+    {
+      "id": "uk-ccus-vision",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 27,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 110,
+        "zhDescriptionLength": 46,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK CCUS Vision (2035 Strategy)",
+        "zh": "英国 CCUS 愿景 (2035 战略)"
+      }
+    },
+    {
+      "id": "br-bill-1425-2022",
+      "country": "Brazil",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 28,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 299,
+        "zhDescriptionLength": 96,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 1,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "Brazil Bill PL 1425/2022 on CO2 Storage",
+        "zh": "巴西二氧化碳封存法案 PL 1425/2022"
+      }
+    },
+    {
+      "id": "th-draft-climate-change-act-2025",
+      "country": "Thailand",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 28,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 332,
+        "zhDescriptionLength": 117,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Thailand Draft Climate Change Act 2025",
+        "zh": "泰国气候变化法草案 2025"
+      }
+    },
+    {
+      "id": "au-safeguard-mechanism",
+      "country": "Australia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 29,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 156,
+        "zhDescriptionLength": 47,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Australia Safeguard Mechanism 2023",
+        "zh": "澳大利亚保障机制 2023"
+      }
+    },
+    {
+      "id": "gold-standard",
+      "country": "International",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Methodology",
+      "score": 29,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 379,
+        "zhDescriptionLength": 107,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "Gold Standard Engineered Removals Activity Requirements (2025)",
+        "zh": "黄金标准工程化碳移除活动要求（2025）"
+      }
+    },
+    {
+      "id": "no-longship-operational-2025",
+      "country": "Norway",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 29,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 284,
+        "zhDescriptionLength": 92,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 6,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway Longship Operational Framework 2025",
+        "zh": "2025年挪威“长船”项目运营框架"
+      }
+    },
+    {
+      "id": "de-carbon-management-strategy-2024",
+      "country": "Germany",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 30,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 349,
+        "zhDescriptionLength": 137,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Carbon Management Strategy (CMS) & KSpG Amendment",
+        "zh": "碳管理战略 (CMS) 与二氧化碳封存法修订案"
+      }
+    },
+    {
+      "id": "is-cdr-framework",
+      "country": "Iceland",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 30,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 396,
+        "zhDescriptionLength": 119,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)",
+        "zh": "冰岛二氧化碳封存与矿化法律框架（第67/2022号法律）"
+      }
+    },
+    {
+      "id": "kr-ccus-promotion-act-2024",
+      "country": "Republic of Korea",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 32,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 417,
+        "zhDescriptionLength": 137,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Act on the Promotion of CCUS and Safety Management",
+        "zh": "二氧化碳捕集、利用与封存培育及安全管理法 (CCUS 培育法)"
+      }
+    },
+    {
+      "id": "cn-zero-carbon-parks",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 33,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 464,
+        "zhDescriptionLength": 123,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "China National Zero-Carbon Park Construction Notice (2025)",
+        "zh": "《关于开展零碳园区建设的通知》（2025）"
+      }
+    },
+    {
+      "id": "kr-ccus-act",
+      "country": "South Korea",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 37,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 301,
+        "zhDescriptionLength": 89,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
+        "zh": "韩国《二氧化碳捕集、运输、封存及利用法》"
+      }
+    },
+    {
+      "id": "ng-nuprc-decarb-2024",
+      "country": "Nigeria",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 37,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 300,
+        "zhDescriptionLength": 83,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Nigeria NUPRC Upstream Decarbonization Rules 2024",
+        "zh": "尼日利亚 NUPRC 上游脱碳规则 2024"
+      }
+    },
+    {
+      "id": "tr-climate-law-2025",
+      "country": "Turkey",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Statutory",
+      "score": 39,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 303,
+        "zhDescriptionLength": 112,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Law (No. 7552 of 2025)",
+        "zh": "气候法 (2025年第7552号)"
+      }
+    },
+    {
+      "id": "is-onshore-storage-permit-2025",
+      "country": "Iceland",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 40,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 316,
+        "zhDescriptionLength": 126,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Iceland Onshore Mineralization Storage Framework 2025",
+        "zh": "冰岛陆上矿化封存框架 2025"
+      }
+    },
+    {
+      "id": "norway-longship",
+      "country": "Norway",
+      "year": 2020,
+      "reviewStatus": "verified",
+      "category": "法律监管",
+      "score": 40,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 346,
+        "zhDescriptionLength": 115,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway Longship Full-Scale CCS Project",
+        "zh": "挪威“长船”全规模CCS项目"
+      }
+    },
+    {
+      "id": "za-climate-change-act-2024",
+      "country": "South Africa",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Statutory",
+      "score": 40,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 323,
+        "zhDescriptionLength": 114,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Change Act (No. 22 of 2024)",
+        "zh": "气候变化法案 (2024年第22号)"
+      }
+    },
+    {
+      "id": "ru-climate-doctrine-2023",
+      "country": "Russia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 41,
+      "severity": "critical",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 358,
+        "zhDescriptionLength": 115,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Doctrine of the Russian Federation (2023 Update)",
+        "zh": "俄罗斯联邦气候条约 (2023年更新)"
+      }
+    },
+    {
+      "id": "ar-rigi-ccus-2024",
+      "country": "Argentina",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 42,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 370,
+        "zhDescriptionLength": 126,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Incentive Regime for Large Investments (RIGI - CCUS 2024)",
+        "zh": "大型投资激励机制 (RIGI - 2024 CCUS)"
+      }
+    },
+    {
+      "id": "sa-circular-carbon-economy-2024",
+      "country": "Saudi Arabia",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 42,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 371,
+        "zhDescriptionLength": 129,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Circular Carbon Economy (CCE) National Program",
+        "zh": "循环碳经济 (CCE) 国家计划"
+      }
+    },
+    {
+      "id": "us-obbba-45q-2025",
+      "country": "United States",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Tax Incentives",
+      "score": 42,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 539,
+        "zhDescriptionLength": 171,
+        "enScopeLength": 8,
+        "zhScopeLength": 8,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 6,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "U.S. Public Law 119-21: 2025 Amendments to Section 45Q",
+        "zh": "美国第119-21号公法：2025年45Q修订"
+      }
+    },
+    {
+      "id": "my-mida-incentives",
+      "country": "Malaysia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 43,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 534,
+        "zhDescriptionLength": 205,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 1,
+        "placeholderAnalysisCount": 3
+      },
+      "titles": {
+        "en": "Malaysia CCS Tax Incentives (Budget 2023)",
+        "zh": "马来西亚 CCS 税收激励（2023 年预算）"
+      }
+    },
+    {
+      "id": "no-14th-licensing-round-2025",
+      "country": "Norway",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 43,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 417,
+        "zhDescriptionLength": 153,
+        "enScopeLength": 8,
+        "zhScopeLength": 8,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway 2025 CO2 Storage Licensing Round 1",
+        "zh": "挪威2025年二氧化碳封存许可第1轮"
+      }
+    },
+    {
+      "id": "uk-ccs-network-code",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 43,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 394,
+        "zhDescriptionLength": 123,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK CCS Network Code Framework (Planned)",
+        "zh": "英国CCS网络代码框架（规划中）"
+      }
+    },
+    {
+      "id": "fr-ccus-strategy-2024",
+      "country": "France",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 44,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 390,
+        "zhDescriptionLength": 143,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Strategy for Decarbonising Industry (CCUS Roadmap 2024)",
+        "zh": "工业脱碳战略 (2024 CCUS 路线图)"
+      }
+    },
+    {
+      "id": "mx-sener-ccus-2025",
+      "country": "Mexico",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 44,
+      "severity": "critical",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 361,
+        "zhDescriptionLength": 156,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "SENER CCUS Legal Framework & CCS Cluster Strategy (2025)",
+        "zh": "SENER CCUS 法律框架与 CCS 集群战略 (2025)"
+      }
+    },
+    {
+      "id": "cn-ccer",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 45,
+      "severity": "high",
+      "flags": [
+        "short-zh-description",
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 279,
+        "zhDescriptionLength": 102,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)",
+        "zh": "温室气体自愿减排交易管理办法（试行）"
+      }
+    },
+    {
+      "id": "it-law-11-2024-modernization",
+      "country": "Italy",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 45,
+      "severity": "high",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 396,
+        "zhDescriptionLength": 161,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 0,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Law 11/2024 - CCUS Regulatory Modernization",
+        "zh": "第11/2024号法律 - CCUS 监管现代化"
+      }
+    },
+    {
+      "id": "california-lcfs",
+      "country": "United States",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 46,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 183,
+        "zhDescriptionLength": 227,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 0,
+        "placeholderAnalysisCount": 4
+      },
+      "titles": {
+        "en": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
+        "zh": "加州低碳燃料标准 (LCFS) 2024/2025 修订版"
+      }
+    },
+    {
+      "id": "cn-national-standards",
+      "country": "China",
+      "year": 2026,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 50,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "missing-or-thin-scope",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 98,
+        "zhDescriptionLength": 269,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 6,
+        "specificAnalysisCount": 6,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China National Standards for CCUS (GB Series)",
+        "zh": "中国 CCUS 国家标准体系 (GB/T)"
+      }
+    },
+    {
+      "id": "ca-ccus-itc",
+      "country": "Canada",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 58,
+      "severity": "critical",
+      "flags": [
+        "short-en-description",
+        "missing-or-thin-scope",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 107,
+        "zhDescriptionLength": 285,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 1,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Canada CCUS Investment Tax Credit (ITC)",
+        "zh": "加拿大 CCUS 投资税务抵免 (ITC)"
+      }
+    },
+    {
+      "id": "denmark-ccfd",
+      "country": "Denmark",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 59,
+      "severity": "high",
+      "flags": [
+        "short-en-description",
+        "missing-or-thin-scope",
+        "missing-evolution"
+      ],
+      "metrics": {
+        "enDescriptionLength": 152,
+        "zhDescriptionLength": 275,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Denmark Negative Emission Carbon Capture and Storage (NECCS) Fund & CCfD",
+        "zh": "丹麦负排放碳捕集与封存 (NECCS) 基金与差价合约"
+      }
+    },
+    {
+      "id": "ca-sk-ccs-directives",
+      "country": "Canada",
+      "year": 2015,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 62,
+      "severity": "high",
+      "flags": [
+        "missing-or-thin-scope",
+        "incomplete-impact-analysis",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 735,
+        "zhDescriptionLength": 263,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 0,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Saskatchewan CCS Regulatory Directives",
+        "zh": "萨斯喀彻温省 CCS 监管指令集 (Directives)"
+      }
+    },
+    {
+      "id": "ro-law-114-2013-ccs",
+      "country": "Romania",
+      "year": 2013,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 62,
+      "severity": "high",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 673,
+        "zhDescriptionLength": 190,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Romania Law 114/2013 on CO2 Storage",
+        "zh": "罗马尼亚第 114/2013 号法律 (CCS 监管法)"
+      }
+    },
+    {
+      "id": "hr-hydrocarbon-act-ccs",
+      "country": "Croatia",
+      "year": 2018,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 64,
+      "severity": "high",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 693,
+        "zhDescriptionLength": 213,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Croatia Hydrocarbon Act (CCS Amendments)",
+        "zh": "克罗地亚碳氢化合物勘探与开采法案 (CCS 修正案)"
+      }
+    },
+    {
+      "id": "cn-mee-env-guidance-2024",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 65,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1176,
+        "zhDescriptionLength": 405,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 2,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "China MEE Guidance on CCUS Environmental Oversight (2024 Update)",
+        "zh": "生态环境部 CCUS 项目环境监管指引 (2024 更新版)"
+      }
+    },
+    {
+      "id": "eu-ccs-directive",
+      "country": "European Union",
+      "year": 2009,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 65,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 619,
+        "zhDescriptionLength": 190,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "EU Directive 2009/31/EC on the Geological Storage of Carbon Dioxide",
+        "zh": "欧盟《二氧化碳地质封存指令》（2009/31/EC）"
+      }
+    },
+    {
+      "id": "imo-marpol-occs-2024",
+      "country": "International",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Technical",
+      "score": 65,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 690,
+        "zhDescriptionLength": 234,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "IMO Onboard Carbon Capture & Storage (OCCS) Framework",
+        "zh": "IMO 船载碳捕集 (OCCS) 监管与认证框架"
+      }
+    },
+    {
+      "id": "vn-decree-119-2025",
+      "country": "Vietnam",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 65,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 703,
+        "zhDescriptionLength": 228,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Vietnam Decree 119/2025: GHG & Carbon Management",
+        "zh": "越南第 119/2025 号政令 - 温室气体与碳管理框架"
+      }
+    },
+    {
+      "id": "cn-miit-industrial-plan-2022",
+      "country": "China",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 67,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 681,
+        "zhDescriptionLength": 222,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "China MIIT Action Plan for Industrial Carbon Peaking",
+        "zh": "中国工信部工业领域碳达峰实施方案"
+      }
+    },
+    {
+      "id": "eu-crcf-2024",
+      "country": "European Union",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Technical",
+      "score": 67,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1063,
+        "zhDescriptionLength": 486,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "EU Carbon Removal Certification Framework (CRCF)",
+        "zh": "欧盟碳移除认证框架 (CRCF)"
+      }
+    },
+    {
+      "id": "jp-ccs-business-act-2024",
+      "country": "Japan",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 67,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope"],
+      "metrics": {
+        "enDescriptionLength": 565,
+        "zhDescriptionLength": 194,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 6,
+        "specificAnalysisCount": 6,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)",
+        "zh": "日本《二氧化碳储存业务法》（CCS 业务法）"
+      }
+    },
+    {
+      "id": "no-tax-deduction-ccs",
+      "country": "Norway",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 67,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 942,
+        "zhDescriptionLength": 436,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Norway Petroleum Tax Act: CCS Deduction & Exemptions",
+        "zh": "挪威石油税收法案 - CCS 税务抵扣与豁免规则"
+      }
+    },
+    {
+      "id": "us-la-primacy-rules",
+      "country": "United States",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 67,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 757,
+        "zhDescriptionLength": 281,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Louisiana Class VI Primacy Administrative Rules",
+        "zh": "路易斯安那州 Class VI 井州级行政执行细则"
+      }
+    },
+    {
+      "id": "us-nd-century-code-38-22",
+      "country": "United States",
+      "year": 2009,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 67,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis",
+        "thin-analysis-evidence"
+      ],
+      "metrics": {
+        "enDescriptionLength": 649,
+        "zhDescriptionLength": 263,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 3,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "North Dakota Century Code Chapter 38-22 (CCS Act)",
+        "zh": "北达科他州《世纪法典》第 38-22 章 (CCS 核心法案)"
+      }
+    },
+    {
+      "id": "cn-gd-carbon-inclusive",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 68,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 702,
+        "zhDescriptionLength": 236,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Guangdong Carbon Inclusive & CCUS Offset Rules 2024",
+        "zh": "广东省碳普惠与 CCUS 抵消管理办法 (2024)"
+      }
+    },
+    {
+      "id": "tx-hb-1284-ccus",
+      "country": "United States",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 68,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 682,
+        "zhDescriptionLength": 233,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Texas HB 1284: CCS Jurisdictional Act",
+        "zh": "德克萨斯州 HB 1284 封存管辖权法案"
+      }
+    },
+    {
+      "id": "cn-js-industrial-decarb-2022",
+      "country": "China",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 69,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 720,
+        "zhDescriptionLength": 257,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Jiangsu Province Industrial Green Transformation Action Plan (CCUS)",
+        "zh": "江苏省工业绿色低碳转型行动方案 (CCUS 专项)"
+      }
+    },
+    {
+      "id": "cn-sd-eco-plan-14fym",
+      "country": "China",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 69,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 815,
+        "zhDescriptionLength": 246,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Shandong 14th Five-Year Plan for Eco-Protection (CCUS)",
+        "zh": "山东省“十四五”生态环境保护规划 (CCUS 条款)"
+      }
+    },
+    {
+      "id": "icao-corsia-ccu-2024",
+      "country": "International",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 69,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 675,
+        "zhDescriptionLength": 257,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "ICAO CORSIA Carbon Offsetting & CCU Fuel Rules (2024)",
+        "zh": "ICAO CORSIA 航空抵消与 CCU 燃料规则 (2024)"
+      }
+    },
+    {
+      "id": "intl-gcca-net-zero-2050",
+      "country": "International",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 69,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 655,
+        "zhDescriptionLength": 247,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "GCCA 2050 Cement & Concrete Industry Roadmap for Net Zero",
+        "zh": "GCCA 全球水泥与混凝土行业净零路线图 (2050)"
+      }
+    },
+    {
+      "id": "sa-hydrogen-strategy-ccus",
+      "country": "Saudi Arabia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 69,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 646,
+        "zhDescriptionLength": 254,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Saudi Arabia Hydrogen Strategy & CCS Coupling",
+        "zh": "沙特阿拉伯氢能战略与 CCS 耦合计划 (2024)"
+      }
+    },
+    {
+      "id": "au-offshore-ghg-safety-2024",
+      "country": "Australia",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 719,
+        "zhDescriptionLength": 275,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Australia Offshore GHG Storage (Safety) Regulations 2024",
+        "zh": "澳大利亚离岸温室气体存储安全条例 (2024)"
+      }
+    },
+    {
+      "id": "ca-sk-spii",
+      "country": "Canada",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1057,
+        "zhDescriptionLength": 483,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Saskatchewan Petroleum Innovation Incentive (SPII)",
+        "zh": "萨斯喀彻温省石油创新激励计划 (SPII)"
+      }
+    },
+    {
+      "id": "cn-hb-ets-offset",
+      "country": "China",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 986,
+        "zhDescriptionLength": 395,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Hubei ETS Carbon Offset Rules (CCUS Provisions)",
+        "zh": "湖北省碳排放权交易试点抵消规则 (CCUS 条款)"
+      }
+    },
+    {
+      "id": "intl-ccs-plus-framework",
+      "country": "International",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Technical",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 881,
+        "zhDescriptionLength": 330,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "CCS+ Initiative: Global Carbon Accounting Framework",
+        "zh": "CCS+ Initiative 全球碳核算与信用框架"
+      }
+    },
+    {
+      "id": "intl-paris-art-6-4-ccs",
+      "country": "International",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1141,
+        "zhDescriptionLength": 488,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Paris Agreement Article 6.4 Mechanism (CCS & CDR Standards)",
+        "zh": "《巴黎协定》第 6.4 条碳交易机制 (含 CCS/CDR 标准)"
+      }
+    },
+    {
+      "id": "jp-jogmec-advanced-ccs-2024",
+      "country": "Japan",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1141,
+        "zhDescriptionLength": 471,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Japan JOGMEC Advanced CCS Projects Support Program",
+        "zh": "日本 JOGMEC 先进 CCS 项目资助计划 (2024)"
+      }
+    },
+    {
+      "id": "nl-porthos-sde-subsidy",
+      "country": "Netherlands",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 748,
+        "zhDescriptionLength": 261,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "Netherlands Porthos SDE++ Operational Subsidy",
+        "zh": "荷兰 Porthos 项目 SDE++ 运营补贴机制"
+      }
+    },
+    {
+      "id": "us-cifia-lpo",
+      "country": "United States",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1056,
+        "zhDescriptionLength": 506,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "US CIFIA: Carbon Dioxide Transportation Infrastructure Finance and Innovation",
+        "zh": "美国 CIFIA 二氧化碳运输基础设施融资计划"
+      }
+    },
+    {
+      "id": "us-epa-class-vi-primacy",
+      "country": "United States",
+      "year": 2010,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 70,
+      "severity": "medium",
+      "flags": [
+        "missing-or-thin-scope",
+        "missing-evolution",
+        "placeholder-analysis"
+      ],
+      "metrics": {
+        "enDescriptionLength": 1075,
+        "zhDescriptionLength": 457,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 1
+      },
+      "titles": {
+        "en": "US EPA Class VI Primacy Delegation",
+        "zh": "美国 EPA VI 类井州级执法权委派 (Primacy)"
+      }
+    },
+    {
+      "id": "in-union-budget-2026-ccus",
+      "country": "India",
+      "year": 2026,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 71,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 609,
+        "zhDescriptionLength": 246,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "India Union Budget 2026: CCUS Incentive Scheme",
+        "zh": "印度 2026 联邦预算案 - CCUS 专项激励计划"
+      }
+    },
+    {
+      "id": "ca-ab-sequestration-tenure",
+      "country": "Canada",
+      "year": 2011,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 1135,
+        "zhDescriptionLength": 523,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Alberta CO2 Sequestration Tenure Framework",
+        "zh": "阿尔伯塔省二氧化碳封存经营权框架 (Tenure Framework)"
+      }
+    },
+    {
+      "id": "eu-ets-mrr-2018",
+      "country": "European Union",
+      "year": 2018,
+      "reviewStatus": "verified",
+      "category": "Technical",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 1078,
+        "zhDescriptionLength": 458,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "EU ETS Monitoring and Reporting Regulation (MRR) 2024 Revision",
+        "zh": "欧盟排放交易体系监测与汇报条例 (MRR) 2024 修订版"
+      }
+    },
+    {
+      "id": "eu-nzia",
+      "country": "European Union",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 1098,
+        "zhDescriptionLength": 417,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "EU Net-Zero Industry Act (NZIA)",
+        "zh": "欧盟净零工业法案 (Net-Zero Industry Act - NZIA)"
+      }
+    },
+    {
+      "id": "id-presidential-reg-14-2024",
+      "country": "Indonesia",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 1093,
+        "zhDescriptionLength": 475,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 4,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Indonesia Presidential Regulation No. 14/2024 (CCS Framework)",
+        "zh": "印尼 2024 年第 14 号总统令 (CCS 框架)"
+      }
+    },
+    {
+      "id": "in-ccus-roadmap",
+      "country": "India",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 879,
+        "zhDescriptionLength": 404,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 1,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "India National CCUS R&D and Deployment Roadmap (2025-2045)",
+        "zh": "印度国家 CCUS 开发与部署路线图 (2025-2045)"
+      }
+    },
+    {
+      "id": "netherlands-sde",
+      "country": "Netherlands",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 915,
+        "zhDescriptionLength": 372,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Netherlands SDE++ Climate Transition Incentive Scheme",
+        "zh": "荷兰可持续能源与气候转型激励计划 (SDE++)"
+      }
+    },
+    {
+      "id": "no-storage-framework",
+      "country": "Norway",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 972,
+        "zhDescriptionLength": 381,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 4,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway CO2 Storage & Transport Regulations (Offshore)",
+        "zh": "挪威海底二氧化碳运输与存储规例"
+      }
+    },
+    {
+      "id": "sa-megi-ccus",
+      "country": "Saudi Arabia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 853,
+        "zhDescriptionLength": 417,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 1,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Saudi Circular Carbon Economy (CCE) & Jubail CCS Hub Strategy",
+        "zh": "沙特“循环碳经济”与朱拜勒 CCS 枢纽战略"
+      }
+    },
+    {
+      "id": "th-boi-incentives",
+      "country": "Thailand",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 966,
+        "zhDescriptionLength": 379,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Thailand BOI CCUS Investment Promotion Incentives",
+        "zh": "泰国 BOI 碳捕集与封存激励优惠政策"
+      }
+    },
+    {
+      "id": "uae-adnoc-ccs-2030",
+      "country": "United Arab Emirates",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 943,
+        "zhDescriptionLength": 413,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "ADNOC 2030 Carbon Capture & Decarbonization Strategy",
+        "zh": "ADNOC 2030 碳捕集与脱碳战略"
+      }
+    },
+    {
+      "id": "uk-energy-act-2023",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 72,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope", "missing-evolution"],
+      "metrics": {
+        "enDescriptionLength": 1117,
+        "zhDescriptionLength": 479,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 0,
+        "zhMilestones": 0,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK Energy Act 2023 (CCUS Economic Regulation)",
+        "zh": "英国 2023 年能源法案 (CCUS 经济监管)"
+      }
+    },
+    {
+      "id": "my-ccus-act-2025",
+      "country": "Malaysia",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 75,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope"],
+      "metrics": {
+        "enDescriptionLength": 543,
+        "zhDescriptionLength": 194,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Malaysia Carbon Capture, Utilisation and Storage Act 2025 (Act 870)",
+        "zh": "马来西亚《2025 年碳捕集、利用与封存法》（第 870 号法令）"
+      }
+    },
+    {
+      "id": "br-law-14993-2024",
+      "country": "Brazil",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 76,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope"],
+      "metrics": {
+        "enDescriptionLength": 595,
+        "zhDescriptionLength": 205,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Brazil 'Fuels of the Future' Act (Law No. 14,993/2024)",
+        "zh": "巴西《未来燃料法》（第14,993/2024号法律）"
+      }
+    },
+    {
+      "id": "nl-mining-act-co2-storage-2011",
+      "country": "Netherlands",
+      "year": 2011,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 85,
+      "severity": "healthy",
+      "flags": ["incomplete-impact-analysis"],
+      "metrics": {
+        "enDescriptionLength": 590,
+        "zhDescriptionLength": 172,
+        "enScopeLength": 102,
+        "zhScopeLength": 20,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 2,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Netherlands Mining Act CO2 Storage Framework (2011)",
+        "zh": "荷兰《矿业法》二氧化碳封存框架（2011）"
+      }
+    },
+    {
+      "id": "br-sbce-law-15042-2024",
+      "country": "Brazil",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 89,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 595,
+        "zhDescriptionLength": 191,
+        "enScopeLength": 73,
+        "zhScopeLength": 20,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Brazilian Emissions Trading System (SBCE) — Law No. 15,042/2024",
+        "zh": "巴西排放交易体系（SBCE）——第15,042/2024号法律"
+      }
+    },
+    {
+      "id": "us-iija-hubs",
+      "country": "United States",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 90,
+      "severity": "healthy",
+      "flags": ["incomplete-impact-analysis"],
+      "metrics": {
+        "enDescriptionLength": 827,
+        "zhDescriptionLength": 236,
+        "enScopeLength": 93,
+        "zhScopeLength": 28,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 0,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "U.S. CIFIA CO2 Transportation Infrastructure Finance Program",
+        "zh": "美国CIFIA二氧化碳运输基础设施融资计划"
+      }
+    },
+    {
+      "id": "kr-ccus-act-enforcement-decree-2025",
+      "country": "South Korea",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 91,
+      "severity": "healthy",
+      "flags": ["incomplete-impact-analysis"],
+      "metrics": {
+        "enDescriptionLength": 654,
+        "zhDescriptionLength": 166,
+        "enScopeLength": 140,
+        "zhScopeLength": 33,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 2,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "South Korea CCUS Act Enforcement Decree (2025)",
+        "zh": "韩国《二氧化碳捕集、运输、封存及利用法》实施令（2025）"
+      }
+    },
+    {
+      "id": "eu-industrial-carbon-management-strategy-2024",
+      "country": "European Union",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 95,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 633,
+        "zhDescriptionLength": 187,
+        "enScopeLength": 98,
+        "zhScopeLength": 28,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 1,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "EU Industrial Carbon Management Strategy (COM(2024) 62)",
+        "zh": "欧盟工业碳管理战略（COM(2024) 62）"
+      }
+    },
+    {
+      "id": "cn-national-ets-expansion-2025",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 97,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 712,
+        "zhDescriptionLength": 217,
+        "enScopeLength": 71,
+        "zhScopeLength": 26,
+        "enTags": 5,
+        "zhTags": 5,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China National ETS Expansion to Steel, Cement and Aluminium (2025)",
+        "zh": "全国碳市场纳入钢铁、水泥、铝冶炼行业工作方案（2025）"
+      }
+    },
+    {
+      "id": "uk-industrial-carbon-capture-business-model-2025",
+      "country": "United Kingdom",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 97,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 747,
+        "zhDescriptionLength": 211,
+        "enScopeLength": 101,
+        "zhScopeLength": 29,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK Industrial Carbon Capture Business Model (2025)",
+        "zh": "英国工业碳捕集商业模式（2025）"
+      }
+    },
+    {
+      "id": "cn-ccus-roadmap-2025",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 990,
+        "zhDescriptionLength": 305,
+        "enScopeLength": 191,
+        "zhScopeLength": 45,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China CCUS Technology Development Roadmap (2025)",
+        "zh": "中国 CCUS 技术发展路线图 (2025)"
+      }
+    },
+    {
+      "id": "cn-pboc-cerf",
+      "country": "China",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1063,
+        "zhDescriptionLength": 293,
+        "enScopeLength": 197,
+        "zhScopeLength": 56,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "PBOC Carbon Emission Reduction Facility (CERF)",
+        "zh": "中国人民银行碳减排支持工具 (CERF)"
+      }
+    },
+    {
+      "id": "cn-standards-2024",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1022,
+        "zhDescriptionLength": 361,
+        "enScopeLength": 193,
+        "zhScopeLength": 52,
+        "enTags": 5,
+        "zhTags": 5,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China Batch of 12 CCUS National Standards (2025)",
+        "zh": "中国12项CCUS国家标准（2025）"
+      }
+    },
+    {
+      "id": "eu-cbam",
+      "country": "European Union",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1177,
+        "zhDescriptionLength": 354,
+        "enScopeLength": 215,
+        "zhScopeLength": 51,
+        "enTags": 5,
+        "zhTags": 5,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "EU Carbon Border Adjustment Mechanism (CBAM)",
+        "zh": "欧盟碳边境调节机制 (CBAM)"
+      }
+    },
+    {
+      "id": "eu-innovation-fund",
+      "country": "European Union",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1064,
+        "zhDescriptionLength": 288,
+        "enScopeLength": 178,
+        "zhScopeLength": 57,
+        "enTags": 5,
+        "zhTags": 5,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 2,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "EU Innovation Fund",
+        "zh": "欧盟创新基金"
+      }
+    },
+    {
+      "id": "ipcc-guidelines",
+      "country": "International",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "Methodology",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1037,
+        "zhDescriptionLength": 308,
+        "enScopeLength": 184,
+        "zhScopeLength": 48,
+        "enTags": 5,
+        "zhTags": 5,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "IPCC GHG Inventory Guidelines (2019 Refinement)",
+        "zh": "IPCC 温室气体清单指南 (2019 修订)"
+      }
+    },
+    {
+      "id": "us-45q-ira",
+      "country": "United States",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1239,
+        "zhDescriptionLength": 386,
+        "enScopeLength": 186,
+        "zhScopeLength": 47,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "US 45Q Tax Credit (IRA Enhanced)",
+        "zh": "美国 45Q 税收抵免 (IRA 增强版)"
+      }
+    },
+    {
+      "id": "verra-vm0049",
+      "country": "International",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Methodology",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1195,
+        "zhDescriptionLength": 352,
+        "enScopeLength": 181,
+        "zhScopeLength": 48,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 3,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Verra CCS Methodology (VM0049)",
+        "zh": "Verra CCS 核证方法学 (VM0049)"
+      }
+    }
+  ]
+}

@@ -63,6 +63,16 @@ jobs:
           git diff --exit-code -- docs/policy-coverage-matrix.md
           rm -f docs/policy-coverage-matrix.json
 
+      - name: Verify Policy Content Depth Report
+        run: |
+          pnpm manage:db:audit:policy-content-depth
+          pnpm prettier --write \
+            docs/policy-content-depth-report.json \
+            docs/policy-content-depth-report.md
+          git diff --exit-code -- \
+            docs/policy-content-depth-report.json \
+            docs/policy-content-depth-report.md
+
       - name: Generate Quality Metrics
         run: pnpm manage:db:quality:export
 

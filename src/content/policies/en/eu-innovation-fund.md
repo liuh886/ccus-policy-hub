@@ -4,73 +4,104 @@
     {
       'incentive':
         {
-          'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'EU Innovation Fund 2025 Call; Net-Zero Industry Act (NZIA)',
-          'evidence': "The EU's incentive framework in 2025 is dominated by the multi-billion Euro Innovation Fund and the widespread implementation of Carbon Contracts for Difference (CCfDs). These contracts provide a fixed carbon price for projects, covering the gap between the EU ETS price and the actual cost of capture and storage, thereby providing unparalleled revenue certainty. Furthermore, the Net-Zero Industry Act (NZIA) has established a target of 50 million tonnes of CO2 injection capacity per year by 2030, with 2025 funding focused on cross-border transport infrastructure (Projects of Common Interest). This is complemented by Horizon Europe grants for next-generation capture technologies. While the EU ETS price remains volatile, the strategic 'floor' provided by CCfDs at the member-state level (e.g., Germany, Netherlands) has successfully triggered multiple Final Investment Decisions in the North Sea and Mediterranean hubs.",
-          'label': 'Innovation Fund',
-          'score': 90,
+          'auditNote': '',
+          'citation': 'EU ETS Directive Article 10a(8); European Commission Innovation Fund overview.',
+          'evidence': 'The Fund recycles EU ETS auction revenues into grants, auctions and development assistance for selected innovative net-zero projects, including eligible CCUS projects.',
+          'label': 'Large-scale competitive EU funding',
+          'score': 95,
         },
       'market':
         {
-          'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'EU ETS Directive (Phase IV Update); CRCF Regulation 2024',
-          'evidence': "The EU CCUS market is deeply integrated with the EU Emissions Trading System (ETS), where CCS is a fully recognized mitigation option, allowing emitters to avoid purchasing expensive allowances. In 2025, the market has matured with the emergence of specialized CO2 transport and storage operators (T&S), which offer 'Storage-as-a-Service' models to industrial emitters across the continent. The development of the 'CO2 Backbone' infrastructure, linking inland industrial clusters in Germany and Poland to storage sites in the North Sea, has created a truly pan-European carbon market. This is further supported by the EU's Carbon Removal Certification Framework (CRCF), which provides a standardized market for high-quality carbon removals, including DACCS and BECCS. This regulatory-market linkage ensures that CCUS is not just a compliance cost but a core component of the EU's competitive green industrial strategy.",
-          'label': 'ETS Integration',
-          'score': 90,
+          'auditNote': '',
+          'citation': 'European Commission Innovation Fund overview and calls for proposals.',
+          'evidence': 'Auction revenues from the EU carbon market are competitively recycled into technology deployment, but the Fund is not itself an operating carbon price or universal CCfD.',
+          'label': 'ETS revenue recycling and competitive allocation',
+          'score': 75,
         },
       'mrv':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Standard reporting required.',
-          'label': 'Standard',
-          'score': 40,
+          'citation': 'Innovation Fund call and grant requirements.',
+          'evidence': 'Applicants quantify expected greenhouse-gas avoidance and funded projects report performance under grant conditions, although this is not a universal CCUS crediting methodology.',
+          'label': 'Project-level avoided-emissions monitoring',
+          'score': 80,
         },
       'statutory':
         {
-          'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'Net-Zero Industry Act (NZIA) 2024; EU CCS Directive 2025 Update',
-          'evidence': "EU regulatory maturity reached a new peak in 2025 with the full implementation of the Net-Zero Industry Act (NZIA), which mandates oil and gas producers within the EU to contribute to the 50Mtpa storage target. This 'producer responsibility' model has effectively socialized the risk of storage development and ensured a steady supply of injection capacity. Furthermore, the 2025 updates to the CCS Directive (2009/31/EC) have clarified cross-border liability and third-party access rules for CO2 pipelines, enabling seamless transport across member states. The permitting process has also been streamlined, with 'Net-Zero Strategic Projects' receiving accelerated approval status (maximum 18 months). This robust legal framework is anchored in the principle of environmental integrity, requiring comprehensive monitoring and financial security for the entire lifecycle of storage sites, ensuring long-term containment and public trust.",
-          'label': 'NZIA Mandates',
-          'score': 95,
+          'auditNote': '',
+          'citation': 'Directive 2003/87/EC Article 10a(8); Innovation Fund legal framework.',
+          'evidence': 'The programme has a binding legal and implementing framework, while individual support is created through call decisions and project-specific grant agreements.',
+          'label': 'EU-ETS-based funding framework',
+          'score': 80,
         },
       'strategic':
         {
-          'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'EU Industrial Carbon Management Strategy 2024; European Climate Law',
-          'evidence': "Strategically, CCUS is a cornerstone of the European Green Deal and the legally binding target to become the first climate-neutral continent by 2050. The 2025 EU Industrial Carbon Management Strategy provides a comprehensive roadmap for scaling capture, transport, and storage, positioning CCUS as essential for preserving the EU's industrial base in a net-zero world. The strategy focuses on 'Carbon Management Hubs' to leverage economies of scale and reduce regional disparities in decarbonization. Strategically, the EU also views CCUS as a tool for international climate leadership, promoting the London Protocol amendments and export-import frameworks to enable a global carbon economy. This strategic vision is supported by a strong social dialogue, with 'Just Transition' funds used to ensure that CCUS development supports job creation and industrial revitalization in coal and energy-intensive regions.",
-          'label': 'Green Deal 2050',
-          'score': 100,
-        },
-      'technical':
-        {
-          'auditNote': 'FSRTM 5.0 Audit (2025-03-19)',
-          'citation': 'EU Taxonomy Regulation 2025 Annex; ECCSEL Monitoring Standards',
-          'evidence': "The EU leads in technical standards for CCUS monitoring and verification through its 2025 Digital MRV (DMRV) protocols. These standards mandate real-time data sharing between operators and regulators, utilizing a blockchain-based 'Carbon Ledger' to prevent double counting and ensure the permanence of sequestered CO2. Technical rigor is further ensured through the European CCS Research Infrastructure (ECCSEL), which provides a network of world-class labs for validating capture solvents and storage monitoring technologies. EU-funded projects in 2025, such as Northern Lights and Porthos, have set the global technical benchmark for offshore sub-seabed storage, demonstrating multi-user injection and advanced plume tracking. These technical baselines are integrated into the EU Taxonomy for Sustainable Finance, ensuring that only projects meeting the highest technical performance criteria receive preferential 'green' investment.",
-          'label': 'DMRV Protocols',
-          'score': 95,
+          'auditNote': '',
+          'citation': 'European Commission, Innovation Fund.',
+          'evidence': 'The Fund is a central EU mechanism for moving innovative industrial decarbonisation technologies from demonstration toward commercial deployment.',
+          'label': 'EU net-zero technology deployment instrument',
+          'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': 'Incentive',
   'country': 'European Union',
-  'description': "One of the world's largest funding programs for low-carbon technologies, financing large-scale CCS hubs across 18 EU nations.",
+  'description': 'The EU Innovation Fund is one of the world’s largest public funding programmes for demonstrating and deploying innovative net-zero and low-carbon technologies. Established under Article 10a(8) of the EU ETS Directive, it recycles revenues from the auctioning of EU ETS allowances into competitive grants, auctions and project-development assistance across EU Member States and associated eligible territories. Carbon capture, utilisation and storage projects are eligible where they demonstrate subst',
+  'evolution':
+    {
+      'clusters':
+        [
+          'EU Innovation Fund',
+          'EU ETS Revenue Recycling',
+          'EU Net-Zero Technology Deployment',
+        ],
+      'milestones':
+        [
+          {
+            'date': '2019-01-01',
+            'event': 'The revised EU ETS framework established the legal basis for the Innovation Fund.',
+          },
+          {
+            'date': '2020-07-03',
+            'event': 'The Commission launched the first large-scale project call.',
+          },
+          {
+            'date': '2024-11-25',
+            'event': 'The Commission adopted the financing decision launching the 2024 calls and auctions.',
+          },
+          {
+            'date': '2025-01-01',
+            'event': 'The programme continued with large net-zero technology calls and competitive auctions under the updated funding framework.',
+          },
+        ],
+    },
   'id': 'eu-innovation-fund',
-  'legalWeight': 'Guideline/Policy',
+  'impactAnalysis':
+    {
+      'economic': 'Provides capital and, through selected competitive instruments, performance-linked support that can bridge financing gaps for first-of-a-kind projects, subject to competitive selection and grant conditions.',
+      'environmental': 'Directs EU ETS revenues toward projects expected to deliver large and verifiable emissions avoidance or removals while retaining project-specific monitoring obligations.',
+      'technical': 'Prioritises innovative technologies with credible engineering maturity, implementation plans, scalability and measurable greenhouse-gas avoidance.',
+    },
+  'legalWeight': 'EU Funding Programme',
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-07-22',
+      'reviewer': 'Primary-source content-depth audit',
     },
   'pubDate': '2024-01-01',
+  'regulatory':
+    {
+      'award_mechanism': 'Support is allocated through competitive calls, auctions or project-development assistance and becomes binding only through project-specific grant or support agreements.',
+      'selection_boundary': 'Eligibility does not guarantee funding; projects are ranked against innovation, emissions avoidance, maturity, scalability and cost-efficiency criteria.',
+    },
   'relatedFacilities': [],
   'reviewStatus': 'verified',
   'source': 'European Commission, DG Climate Action',
-  'status': '现行',
+  'status': 'Active',
   'title': 'EU Innovation Fund',
   'url': 'https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en',
   'year': 2024,
 }
 ---
 
-One of the world's largest funding programs for low-carbon technologies, financing large-scale CCS hubs across 18 EU nations.
+The EU Innovation Fund is one of the world’s largest public funding programmes for demonstrating and deploying innovative net-zero and low-carbon technologies. Established under Article 10a(8) of the EU ETS Directive, it recycles revenues from the auctioning of EU ETS allowances into competitive grants, auctions and project-development assistance across EU Member States and associated eligible territories. Carbon capture, utilisation and storage projects are eligible where they demonstrate substantial greenhouse-gas avoidance, sufficient technological and financial maturity, innovation beyond prevailing practice, scalability and cost efficiency. Funding may support capture facilities, transport and storage infrastructure or integrated industrial decarbonisation projects, but awards are made through specific calls and grant agreements rather than as an automatic entitlement. The Fund should therefore be distinguished from member-state operating support such as carbon contracts for difference and from the EU ETS compliance value of avoided emissions.
