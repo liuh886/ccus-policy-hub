@@ -173,26 +173,44 @@ jobs:
             agent/ccus-ai-agent/governance || forbidden=1
           exit "$forbidden"
 
-      - name: Commit materialized policy corrections
+      - name: Prepare verified materialization artifact
         if: >-
           success() &&
           github.event_name == 'pull_request' &&
           github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
           github.actor != 'github-actions[bot]'
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- \
+          rm -rf materialized-policy-corrections
+          mkdir -p materialized-policy-corrections/files
+          git diff --name-only -- \
             agent/ccus-ai-agent/db/ccus_master.sqlite \
             src/content/policies \
             src/content/facilities \
             public/data \
             src/data/quality_metrics.generated.json \
             docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
-          if git diff --cached --quiet; then
-            echo 'No materialized policy changes to commit.'
-          else
-            git commit -m 'fix(data): materialize verified policy coverage corrections'
-            git push origin HEAD:agent/policy-coverage-corrections-2026-07
-          fi
+            docs/policy-db-consistency-report.md \
+            > materialized-policy-corrections/changed-files.txt
+          : > materialized-policy-corrections/deleted-files.txt
+          while IFS= read -r file; do
+            [[ -z "$file" ]] && continue
+            if [[ -f "$file" ]]; then
+              mkdir -p "materialized-policy-corrections/files/$(dirname "$file")"
+              cp "$file" "materialized-policy-corrections/files/$file"
+            else
+              echo "$file" >> materialized-policy-corrections/deleted-files.txt
+            fi
+          done < materialized-policy-corrections/changed-files.txt
+
+      - name: Upload verified materialization artifact
+        if: >-
+          success() &&
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-policy-materialization
+          path: materialized-policy-corrections
+          if-no-files-found: error
+          retention-days: 7
