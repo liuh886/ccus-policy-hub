@@ -53,6 +53,7 @@ jobs:
       - name: Verify Committed Policy Links
         run: node scripts/sync-policy-link-projections.mjs
 
+      # Coverage is curated, but every evidence anchor must resolve to SQLite.
       - name: Verify Policy Coverage Matrix
         run: |
           pnpm manage:db:audit:policy-coverage
