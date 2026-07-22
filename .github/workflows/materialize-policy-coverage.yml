@@ -55,15 +55,20 @@ jobs:
             public/data/facilities.json
 
       - name: Commit matrix
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'chore(data): materialize policy coverage matrix'
-          branch: agent/policy-coverage-audit-framework
-          file_pattern: >-
-            agent/ccus-ai-agent/config/policy-coverage-framework.json
-            scripts/audit-policy-coverage.mjs
-            scripts/audit-policy-coverage.test.mjs
-            package.json
-            .github/workflows/materialize-policy-coverage.yml
-            docs/policy-coverage-matrix.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            agent/ccus-ai-agent/config/policy-coverage-framework.json \
+            scripts/audit-policy-coverage.mjs \
+            scripts/audit-policy-coverage.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-coverage.yml \
+            docs/policy-coverage-matrix.json \
             docs/policy-coverage-matrix.md
+          if git diff --cached --quiet; then
+            echo "No coverage changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): materialize policy coverage matrix"
+          git push origin HEAD:agent/policy-coverage-audit-framework
