@@ -53,6 +53,12 @@ jobs:
       - name: Verify Committed Policy Links
         run: node scripts/sync-policy-link-projections.mjs
 
+      - name: Verify Policy Coverage Matrix
+        run: |
+          pnpm manage:db:audit:policy-coverage
+          git diff --exit-code -- docs/policy-coverage-matrix.md
+          rm -f docs/policy-coverage-matrix.json
+
       - name: Generate Quality Metrics
         run: pnpm manage:db:quality:export
 
