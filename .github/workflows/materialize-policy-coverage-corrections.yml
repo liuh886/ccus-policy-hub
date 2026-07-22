@@ -1,0 +1,114 @@
+name: Materialize Policy Coverage Corrections
+
+on:
+  push:
+    branches:
+      - agent/policy-coverage-corrections-2026-07
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/policy-coverage-corrections-2026-07
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Format migration controls
+        run: |
+          pnpm prettier --write \
+            scripts/migrate-policy-coverage-corrections-2026-07.mjs \
+            scripts/migrate-policy-coverage-corrections-2026-07.test.mjs \
+            package.json \
+            .github/workflows/materialize-policy-coverage-corrections.yml
+
+      - name: Run migration tests
+        run: pnpm test
+
+      - name: Apply governed SQLite migration
+        run: pnpm manage:db:migrate:policy-coverage-corrections
+
+      - name: Run deep audit
+        run: pnpm manage:db:audit:deep
+
+      - name: Export policy projections
+        run: pnpm manage:db:export:policies
+
+      - name: Remove superseded and unsupported policy projections
+        run: |
+          rm -f \
+            src/content/policies/en/kr-motie-cluster-district-2025.md \
+            src/content/policies/zh/kr-motie-cluster-district-2025.md \
+            src/content/policies/en/ph-ccus-policy-framework-2025.md \
+            src/content/policies/zh/ph-ccus-policy-framework-2025.md
+
+      - name: Synchronize facility policy links
+        run: node scripts/sync-policy-link-projections.mjs --write
+
+      - name: Regenerate public and quality data
+        run: |
+          pnpm manage:db:quality:export
+          pnpm manage:db:data:export
+
+      - name: Format changed projections
+        run: |
+          mapfile -t changed < <(
+            git diff --name-only -- \
+              'src/content/policies/**/*.md' \
+              'src/content/facilities/**/*.md' \
+              'public/data/*.json' \
+              'src/data/*.json' \
+              'docs/*.json' \
+              'docs/*.md'
+          )
+          if (( ${#changed[@]} > 0 )); then
+            pnpm prettier --write "${changed[@]}"
+          fi
+
+      - name: Verify projections
+        run: |
+          pnpm manage:db:audit:policy-consistency
+          node scripts/sync-policy-link-projections.mjs
+          pnpm manage:db:audit:facilities-parity
+
+      - name: Validate application
+        run: |
+          pnpm eslint .
+          pnpm prettier --check .
+          pnpm astro check
+          pnpm run build
+
+      - name: Commit materialized policy corrections
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: agent/policy-coverage-corrections-2026-07
+          commit_message: 'fix(data): materialize verified policy coverage corrections'
+          file_pattern: >-
+            agent/ccus-ai-agent/db/ccus_master.sqlite
+            src/content/policies
+            src/content/facilities
+            public/data
+            src/data/quality_metrics.generated.json
+            docs/policy-db-consistency-report.json
+            docs/policy-db-consistency-report.md
+            scripts/migrate-policy-coverage-corrections-2026-07.mjs
+            scripts/migrate-policy-coverage-corrections-2026-07.test.mjs
+            package.json
+            .github/workflows/materialize-policy-coverage-corrections.yml
