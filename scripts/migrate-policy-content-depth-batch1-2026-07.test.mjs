@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import initSqlJs from 'sql.js';
 
 import {
+  MIGRATION_ID,
   POLICY_CONTENT_UPDATES,
   applyPolicyContentDepthMigration,
 } from './migrate-policy-content-depth-batch1-2026-07.mjs';
@@ -13,6 +14,12 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
+
+function execute(db, sql, params = []) {
+  const statement = db.prepare(sql);
+  statement.run(params);
+  statement.free();
+}
 
 function scalar(db, sql, params = []) {
   const statement = db.prepare(sql);
@@ -41,6 +48,10 @@ function parse(value) {
   return value ? JSON.parse(value) : null;
 }
 
+function clearMigrationMarker(db) {
+  execute(db, 'DELETE FROM db_meta WHERE key = ?', [`migration:${MIGRATION_ID}`]);
+}
+
 const PLACEHOLDER_PATTERNS = [
   /no direct .* found/i,
   /not specified/i,
@@ -67,7 +78,10 @@ test('content-depth migration enriches eight policies without changing policy co
 
   assert.equal(beforeCount, 130);
   assert.equal(summary.policyCount, 130);
-  assert.deepEqual(summary.updatedPolicies, POLICY_CONTENT_UPDATES.map((entry) => entry.id));
+  assert.deepEqual(
+    summary.updatedPolicies,
+    POLICY_CONTENT_UPDATES.map((entry) => entry.id)
+  );
   assert.equal(summary.updatedPolicies.length, 8);
 
   for (const update of POLICY_CONTENT_UPDATES) {
@@ -133,8 +147,10 @@ test('content-depth migration enriches eight policies without changing policy co
   db.close();
 });
 
-test('content-depth migration is idempotent', async () => {
+test('content-depth migration is idempotent from a clean marker state', async () => {
   const db = await openDatabase();
+  clearMigrationMarker(db);
+
   const first = applyPolicyContentDepthMigration(db, {
     auditDate: '2026-07-22',
     expectedPolicyCount: 130,
@@ -144,6 +160,7 @@ test('content-depth migration is idempotent', async () => {
     expectedPolicyCount: 999,
   });
 
+  assert.equal(first.alreadyApplied, false);
   assert.equal(first.policyCount, 130);
   assert.equal(second.alreadyApplied, true);
   assert.equal(second.policyCount, 130);
@@ -152,6 +169,8 @@ test('content-depth migration is idempotent', async () => {
 
 test('content-depth migration rejects an unexpected first-run baseline', async () => {
   const db = await openDatabase();
+  clearMigrationMarker(db);
+
   assert.throws(
     () =>
       applyPolicyContentDepthMigration(db, {
