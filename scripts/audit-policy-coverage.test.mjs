@@ -103,7 +103,10 @@ test('missing cells cannot cite policies and partial cells require evidence', ()
     }),
     new Map([['policy-a', policy('policy-a', 'Example')]])
   );
-  assert.match(invalidMissing.errors.join('\n'), /missing but references policy IDs/);
+  assert.match(
+    invalidMissing.errors.join('\n'),
+    /missing but references policy IDs/
+  );
 
   const invalidPartial = evaluateCoverage(
     framework({
@@ -126,5 +129,8 @@ test('high-priority gap guardrail prevents silent regression', () => {
     guarded,
     new Map([['policy-a', policy('policy-a', 'Example')]])
   );
-  assert.match(result.errors.join('\n'), /High-priority missing coverage increased/);
+  assert.match(
+    result.errors.join('\n'),
+    /High-priority missing coverage increased/
+  );
 });
