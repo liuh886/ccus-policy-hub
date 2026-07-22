@@ -179,20 +179,20 @@ jobs:
           github.event_name == 'pull_request' &&
           github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
           github.actor != 'github-actions[bot]'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: agent/policy-coverage-corrections-2026-07
-          commit_message: 'fix(data): materialize verified policy coverage corrections'
-          file_pattern: >-
-            .github/workflows/ci.yml
-            .github/workflows/materialize-policy-coverage-corrections.yml
-            package.json
-            scripts/migrate-policy-coverage-corrections-2026-07.mjs
-            scripts/migrate-policy-coverage-corrections-2026-07.test.mjs
-            agent/ccus-ai-agent/db/ccus_master.sqlite
-            src/content/policies
-            src/content/facilities
-            public/data
-            src/data/quality_metrics.generated.json
-            docs/policy-db-consistency-report.json
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A -- \
+            agent/ccus-ai-agent/db/ccus_master.sqlite \
+            src/content/policies \
+            src/content/facilities \
+            public/data \
+            src/data/quality_metrics.generated.json \
+            docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md
+          if git diff --cached --quiet; then
+            echo 'No materialized policy changes to commit.'
+          else
+            git commit -m 'fix(data): materialize verified policy coverage corrections'
+            git push origin HEAD:agent/policy-coverage-corrections-2026-07
+          fi
