@@ -4,55 +4,81 @@
     {
       'incentive':
         {
-          'auditNote': 'Upgraded from baseline to verified regional status during Final Audit.',
-          'citation': '',
-          'evidence': 'No direct incentive found.',
-          'label': 'Not specified',
-          'score': 40,
+          'auditNote': '',
+          'citation': 'Infrastructure Investment and Jobs Act; DOE CIFIA programme page.',
+          'evidence': 'CIFIA provides federal loans and grants for eligible large-capacity common-carrier CO2 transportation projects.',
+          'label': '$2.1 billion transport-finance programme',
+          'score': 95,
         },
       'market':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'No specific market rules.',
-          'label': 'Market Integration',
-          'score': 40,
+          'citation': 'DOE CIFIA eligible-use criteria.',
+          'evidence': 'Eligibility prioritises large-capacity common-carrier infrastructure with demonstrated demand from associated capture projects.',
+          'label': 'Shared common-carrier infrastructure',
+          'score': 85,
         },
       'mrv':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Standard reporting required.',
-          'label': 'Standard',
-          'score': 40,
+          'citation': 'DOE CIFIA programme requirements.',
+          'evidence': 'Projects must document eligibility, demand and use of federal funds, while emissions-accounting and storage MRV are governed by separate regimes.',
+          'label': 'Project finance and reporting controls',
+          'score': 60,
         },
       'statutory':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Pore space rights not explicitly defined.',
-          'label': 'Undefined',
-          'score': 40,
+          'citation': 'Infrastructure Investment and Jobs Act, CIFIA provisions.',
+          'evidence': 'The programme was authorised by the Infrastructure Investment and Jobs Act and implemented by DOE.',
+          'label': 'Federal statutory finance authority',
+          'score': 85,
         },
       'strategic':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Baseline strategic alignment under V5.0 migration.',
-          'label': 'Initial Assessment',
-          'score': 30,
+          'citation': 'DOE CIFIA programme overview.',
+          'evidence': 'CIFIA is the dedicated federal financing mechanism for expanding shared CO2 transportation infrastructure across emitting regions.',
+          'label': 'National CO2 transport build-out',
+          'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': 'Incentive',
   'country': 'United States',
-  'description': '$12 billion federal investment program for regional DAC hubs and large-scale CO2 transport/storage infrastructure.',
+  'description': 'The Infrastructure Investment and Jobs Act established the Carbon Dioxide Transportation Infrastructure Finance and Innovation Act (CIFIA) programme with $2.1 billion available for loans and grants supporting large-capacity, common-carrier CO2 transportation infrastructure. Eligible projects must demonstrate demand from associated anthropogenic or direct-air-capture projects, support geographic diversity and minimise siting impacts, including through existing infrastructure corridors. The existi',
+  'evolution':
+    {
+      'clusters':
+        [
+          'US Bipartisan Infrastructure Law',
+          'US CO2 Transport Infrastructure',
+          'US Carbon Management Finance',
+        ],
+      'milestones':
+        [
+          {
+            'date': '2021-11-15',
+            'event': 'The Infrastructure Investment and Jobs Act authorised the CIFIA programme.',
+          },
+          {
+            'date': '2022-10-05',
+            'event': 'DOE issued programme guidance and began implementing the federal transport-finance authority.',
+          },
+        ],
+    },
   'id': 'us-iija-hubs',
-  'legalWeight': 'Guideline/Policy',
+  'impactAnalysis':
+    {
+      'economic': 'Provides access to $2.1 billion in federal loans and grants intended to reduce financing barriers for shared CO2 transport infrastructure.',
+      'environmental': 'Requires project demand, geographic diversity and siting considerations intended to minimise environmental disturbance.',
+      'technical': 'Supports large-capacity pipelines, shipping, rail and other common-carrier transport projects connected to multiple capture sources.',
+    },
+  'legalWeight': 'Federal Statutory Finance Program',
   'provenance':
     {
-      'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'author': 'CCUS AI Agent',
+      'lastAuditDate': '2026-07-22',
+      'reviewer': 'Primary-source coverage gap audit',
     },
   'pubDate': '2021-11-15',
   'relatedFacilities':
@@ -434,11 +460,11 @@
     ],
   'reviewStatus': 'verified',
   'source': 'U.S. Department of Energy',
-  'status': '现行',
-  'title': 'US IIJA CCS Hubs Program',
+  'status': 'Active',
+  'title': 'U.S. CIFIA CO2 Transportation Infrastructure Finance Program',
   'url': 'https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program',
   'year': 2021,
 }
 ---
 
-$12 billion federal investment program for regional DAC hubs and large-scale CO2 transport/storage infrastructure.
+The Infrastructure Investment and Jobs Act established the Carbon Dioxide Transportation Infrastructure Finance and Innovation Act (CIFIA) programme with $2.1 billion available for loans and grants supporting large-capacity, common-carrier CO2 transportation infrastructure. Eligible projects must demonstrate demand from associated anthropogenic or direct-air-capture projects, support geographic diversity and minimise siting impacts, including through existing infrastructure corridors. The existing database record previously combined the broader $12 billion federal carbon-management package, regional direct-air-capture hubs and transport infrastructure under one title. This corrected record follows its official DOE URL and represents CIFIA specifically; other IIJA programmes should be recorded separately when needed.

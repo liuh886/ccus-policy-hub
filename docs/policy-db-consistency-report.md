@@ -5,10 +5,10 @@ Facilities and coordinates are intentionally outside its scope.
 
 ## Summary
 
-- SQLite policies: **127**
-- English policy files: **127**
-- Chinese policy files: **127**
-- Public policy records: **127**
+- SQLite policies: **130**
+- English policy files: **130**
+- Chinese policy files: **130**
+- Public policy records: **130**
 - Consistency mismatches: **0**
 - Formatting-only equivalents ignored: **48**
 - Result: **PASS**

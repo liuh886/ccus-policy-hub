@@ -58,7 +58,12 @@ export const POLICIES = [
           'The UK Industrial Carbon Capture (ICC) Business Model is the government contractual support framework for industrial and waste-sector carbon capture projects. The November 2025 package includes updated business-model terms, Front End Agreements and standard terms and conditions. The model combines an up-to-15-year payment per tonne of captured and permanently stored CO2 with capital grant co-funding for eligible initial projects. Revenue support is intended to cover efficient operating costs, CO2 transport and storage charges, repayment of capital investment and an allowed return. Support is allocated through government project-selection and contracting processes; publication of the model does not create an automatic subsidy entitlement.',
         scope:
           'Contractual capital and revenue support for eligible UK industrial and waste carbon capture projects.',
-        tags: ['industrial CCS', 'contract', 'revenue support', 'capital grant'],
+        tags: [
+          'industrial CCS',
+          'contract',
+          'revenue support',
+          'capital grant',
+        ],
         impactAnalysis: {
           economic:
             'Provides long-term revenue certainty and initial capital co-funding intended to bridge the cost gap for first-of-a-kind industrial capture projects.',
@@ -189,7 +194,12 @@ export const POLICIES = [
           'The Netherlands implemented the EU CCS Directive through amendments to the Mining Act and related legislation in 2011. The current Mining Act defines CO2 storage complexes and permanent geological storage, establishes exploration and storage permits, and provides the national legal basis for authorising and supervising offshore CO2 storage. It operates together with the Mining Decree, Mining Regulation, environmental permitting and EU emissions-accounting rules. This record represents the Dutch implementation layer and should not be confused with the separate SDE++ operating subsidy.',
         scope:
           'Dutch national exploration, permitting and supervision framework for permanent geological CO2 storage.',
-        tags: ['Mining Act', 'storage permit', 'offshore storage', 'EU CCS Directive'],
+        tags: [
+          'Mining Act',
+          'storage permit',
+          'offshore storage',
+          'EU CCS Directive',
+        ],
         impactAnalysis: {
           economic:
             'Creates the legal certainty required for Dutch offshore storage licences and shared storage projects, while project revenue support is provided through separate mechanisms.',
@@ -222,7 +232,8 @@ export const POLICIES = [
         regulatory: {
           pore_space_rights:
             'CO2 exploration and storage require licences under the Dutch Mining Act.',
-          permitting_lead_time: 'Project-specific statutory permitting process.',
+          permitting_lead_time:
+            'Project-specific statutory permitting process.',
         },
       },
       zh: {
@@ -244,17 +255,20 @@ export const POLICIES = [
           milestones: [
             {
               date: '2011-06-06',
-              event: '荷兰通过实施欧盟2009/31/EC指令的法律，修订《矿业法》等法规。',
+              event:
+                '荷兰通过实施欧盟2009/31/EC指令的法律，修订《矿业法》等法规。',
             },
             {
               date: '2012-02-08',
               event: '配套生效安排实施后，国内封存监管框架正式生效。',
             },
           ],
-          currentConsolidatedVersion: '现行合并文本由荷兰政府法规数据库持续维护。',
+          currentConsolidatedVersion:
+            '现行合并文本由荷兰政府法规数据库持续维护。',
         },
         regulatory: {
-          pore_space_rights: '二氧化碳封存复合体勘探和封存须取得荷兰《矿业法》许可。',
+          pore_space_rights:
+            '二氧化碳封存复合体勘探和封存须取得荷兰《矿业法》许可。',
           permitting_lead_time: '适用项目级法定许可程序。',
         },
       },
@@ -319,7 +333,12 @@ export const POLICIES = [
           'The Enforcement Decree implements South Korea’s Act on Carbon Dioxide Capture, Transport, Storage and Utilisation from 7 February 2025. It specifies procedures and criteria for capture-facility plans, transport-business approvals, pipeline safety management and inspection, storage-site exploration approvals, storage-business approvals, safety management, monitoring and performance evaluation. It also details certification and support arrangements for CO2 utilisation technologies, products and specialised enterprises. The decree operationalises the framework Act; it does not create a general regulated tariff or automatic project-revenue guarantee.',
         scope:
           'Detailed national implementation rules for CO2 capture facilities, transport, storage approvals, safety, monitoring and utilisation support.',
-        tags: ['enforcement decree', 'storage permit', 'transport safety', 'monitoring'],
+        tags: [
+          'enforcement decree',
+          'storage permit',
+          'transport safety',
+          'monitoring',
+        ],
         impactAnalysis: {
           economic:
             'Reduces implementation uncertainty by specifying approval and support procedures, while project revenue support remains programme-specific rather than automatic.',
@@ -351,7 +370,8 @@ export const POLICIES = [
                 'The consolidated decree was updated through government-organisation and climate-governance amendments without changing its core CCUS approval structure.',
             },
           ],
-          currentConsolidatedVersion: 'Presidential Decree No. 36231, effective 31 March 2026.',
+          currentConsolidatedVersion:
+            'Presidential Decree No. 36231, effective 31 March 2026.',
         },
         regulatory: {
           liability_transfer:
@@ -363,7 +383,8 @@ export const POLICIES = [
         title: '韩国《二氧化碳捕集、运输、封存及利用法》实施令（2025）',
         description:
           '韩国《二氧化碳捕集、运输、封存及利用法》实施令自2025年2月7日起实施，细化捕集设施安装计划、运输业务批准、管道安全管理与检查、封存候选地勘探批准、封存业务批准、安全管理、监测和绩效评价程序，并规定二氧化碳利用技术、产品及专业企业的认证与支持安排。该实施令将框架法转化为可操作制度，但并未建立统一受监管运输费率或自动项目收入保障。',
-        scope: '韩国捕集设施、运输、封存许可、安全、监测及利用支持的国家实施规则。',
+        scope:
+          '韩国捕集设施、运输、封存许可、安全、监测及利用支持的国家实施规则。',
         tags: ['实施令', '封存许可', '运输安全', '监测'],
         impactAnalysis: {
           economic:
@@ -386,13 +407,15 @@ export const POLICIES = [
             },
             {
               date: '2026-03-31',
-              event: '因政府组织及气候治理调整形成现行合并版本，核心CCUS批准制度未改变。',
+              event:
+                '因政府组织及气候治理调整形成现行合并版本，核心CCUS批准制度未改变。',
             },
           ],
           currentConsolidatedVersion: '总统令第36231号，2026年3月31日起施行。',
         },
         regulatory: {
-          liability_transfer: '运营方义务和审批程序由实施令细化，长期责任仍由法律及具体决定共同规范。',
+          liability_transfer:
+            '运营方义务和审批程序由实施令细化，长期责任仍由法律及具体决定共同规范。',
           permitting_lead_time: '适用项目级法定审批程序。',
         },
       },
@@ -417,7 +440,8 @@ export const POLICIES = [
         label: 'Approved transport and storage operations',
         evidence:
           'The decree operationalises transport and storage business approvals and safety requirements, but not a general network tariff or third-party-access regime.',
-        citation: 'CCUS Act Enforcement Decree, transport and storage chapters.',
+        citation:
+          'CCUS Act Enforcement Decree, transport and storage chapters.',
       },
       strategic: {
         score: 90,
@@ -432,7 +456,8 @@ export const POLICIES = [
         label: 'Operational monitoring and evaluation rules',
         evidence:
           'The decree specifies storage monitoring, safety management, inspection, evaluation and reporting procedures.',
-        citation: 'CCUS Act Enforcement Decree, storage and monitoring provisions.',
+        citation:
+          'CCUS Act Enforcement Decree, storage and monitoring provisions.',
       },
     },
   },
@@ -455,8 +480,14 @@ export const POLICIES = [
         title: 'U.S. CIFIA CO2 Transportation Infrastructure Finance Program',
         description:
           'The Infrastructure Investment and Jobs Act established the Carbon Dioxide Transportation Infrastructure Finance and Innovation Act (CIFIA) programme with $2.1 billion available for loans and grants supporting large-capacity, common-carrier CO2 transportation infrastructure. Eligible projects must demonstrate demand from associated anthropogenic or direct-air-capture projects, support geographic diversity and minimise siting impacts, including through existing infrastructure corridors. The existing database record previously combined the broader $12 billion federal carbon-management package, regional direct-air-capture hubs and transport infrastructure under one title. This corrected record follows its official DOE URL and represents CIFIA specifically; other IIJA programmes should be recorded separately when needed.',
-        scope: 'Federal loans and grants for large-capacity common-carrier CO2 transportation infrastructure.',
-        tags: ['CIFIA', 'CO2 transport', 'common carrier', 'infrastructure finance'],
+        scope:
+          'Federal loans and grants for large-capacity common-carrier CO2 transportation infrastructure.',
+        tags: [
+          'CIFIA',
+          'CO2 transport',
+          'common carrier',
+          'infrastructure finance',
+        ],
         impactAnalysis: {
           economic:
             'Provides access to $2.1 billion in federal loans and grants intended to reduce financing barriers for shared CO2 transport infrastructure.',
@@ -501,7 +532,11 @@ export const POLICIES = [
             '要求证明项目需求、地区多样性并考虑选址影响，以降低环境扰动。',
         },
         evolution: {
-          clusters: ['美国两党基础设施法', '美国二氧化碳运输基础设施', '美国碳管理融资'],
+          clusters: [
+            '美国两党基础设施法',
+            '美国二氧化碳运输基础设施',
+            '美国碳管理融资',
+          ],
           milestones: [
             {
               date: '2021-11-15',
@@ -606,7 +641,9 @@ function assertFrozenTablesUnchanged(before, after) {
 }
 
 function policyExists(db, id) {
-  return Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0;
+  return (
+    Number(scalar(db, 'SELECT COUNT(*) FROM policies WHERE id = ?', [id])) > 0
+  );
 }
 
 function upsertPolicy(db, policy, auditDate) {
@@ -708,7 +745,9 @@ function upsertPolicy(db, policy, auditDate) {
 
 function verifyPolicy(db, policyId) {
   const i18nCount = Number(
-    scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id = ?', [policyId])
+    scalar(db, 'SELECT COUNT(*) FROM policy_i18n WHERE policy_id = ?', [
+      policyId,
+    ])
   );
   const analysisCount = Number(
     scalar(db, 'SELECT COUNT(*) FROM policy_analysis WHERE policy_id = ?', [
@@ -719,7 +758,9 @@ function verifyPolicy(db, policyId) {
     throw new Error(`Policy ${policyId} does not have exact bilingual parity`);
   }
   if (analysisCount !== ANALYSIS_DIMENSIONS.length) {
-    throw new Error(`Policy ${policyId} does not have five analysis dimensions`);
+    throw new Error(
+      `Policy ${policyId} does not have five analysis dimensions`
+    );
   }
 }
 
@@ -783,7 +824,8 @@ export function applyHighPriorityPolicyGapMigration(
 }
 
 async function main() {
-  if (!fs.existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
+  if (!fs.existsSync(DB_PATH))
+    throw new Error(`Database not found: ${DB_PATH}`);
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
   const summary = applyHighPriorityPolicyGapMigration(db);
@@ -795,7 +837,8 @@ async function main() {
 
 const isDirectRun =
   process.argv[1] &&
-  path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+  path.resolve(process.argv[1]) ===
+    path.resolve(fileURLToPath(import.meta.url));
 
 if (isDirectRun) {
   main().catch((error) => {

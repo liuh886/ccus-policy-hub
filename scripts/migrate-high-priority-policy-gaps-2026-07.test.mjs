@@ -225,16 +225,15 @@ async function createFixture() {
      VALUES (?, ?, ?, ?, ?)`,
     ['facility-1', 'Frozen facility', 1.5, 10.1, 20.2]
   );
-  execute(
-    db,
-    'INSERT INTO facility_i18n VALUES (?, ?, ?)',
-    ['facility-1', 'en', 'Frozen description']
-  );
-  execute(
-    db,
-    'INSERT INTO facility_partners VALUES (?, ?)',
-    ['facility-1', 'Frozen partner']
-  );
+  execute(db, 'INSERT INTO facility_i18n VALUES (?, ?, ?)', [
+    'facility-1',
+    'en',
+    'Frozen description',
+  ]);
+  execute(db, 'INSERT INTO facility_partners VALUES (?, ?)', [
+    'facility-1',
+    'Frozen partner',
+  ]);
   execute(db, 'INSERT INTO facility_links VALUES (?, ?)', [
     'facility-1',
     'https://example.com/facility',
@@ -283,9 +282,11 @@ test('adds three policies, refreshes CIFIA and preserves frozen tables', async (
 
   for (const policy of POLICIES) {
     assert.equal(
-      firstRow(db, 'SELECT COUNT(*) AS count FROM policy_i18n WHERE policy_id = ?', [
-        policy.core.id,
-      ]).count,
+      firstRow(
+        db,
+        'SELECT COUNT(*) AS count FROM policy_i18n WHERE policy_id = ?',
+        [policy.core.id]
+      ).count,
       2
     );
     assert.equal(
@@ -368,9 +369,6 @@ test('rejects an unexpected first-run policy baseline', async () => {
     /Unexpected policy baseline/
   );
 
-  assert.equal(
-    firstRow(db, 'SELECT COUNT(*) AS count FROM policies').count,
-    1
-  );
+  assert.equal(firstRow(db, 'SELECT COUNT(*) AS count FROM policies').count, 1);
   db.close();
 });

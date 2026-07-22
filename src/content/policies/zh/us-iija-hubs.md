@@ -4,55 +4,77 @@
     {
       'incentive':
         {
-          'auditNote': 'Upgraded from baseline to verified regional status during Final Audit.',
-          'citation': '',
-          'evidence': 'No direct incentive found.',
-          'label': 'Not specified',
-          'score': 40,
+          'auditNote': '',
+          'citation': 'Infrastructure Investment and Jobs Act; DOE CIFIA programme page.',
+          'evidence': 'CIFIA provides federal loans and grants for eligible large-capacity common-carrier CO2 transportation projects.',
+          'label': '$2.1 billion transport-finance programme',
+          'score': 95,
         },
       'market':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'No specific market rules.',
-          'label': 'Market Integration',
-          'score': 40,
+          'citation': 'DOE CIFIA eligible-use criteria.',
+          'evidence': 'Eligibility prioritises large-capacity common-carrier infrastructure with demonstrated demand from associated capture projects.',
+          'label': 'Shared common-carrier infrastructure',
+          'score': 85,
         },
       'mrv':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Standard reporting required.',
-          'label': 'Standard',
-          'score': 40,
+          'citation': 'DOE CIFIA programme requirements.',
+          'evidence': 'Projects must document eligibility, demand and use of federal funds, while emissions-accounting and storage MRV are governed by separate regimes.',
+          'label': 'Project finance and reporting controls',
+          'score': 60,
         },
       'statutory':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Pore space rights not explicitly defined.',
-          'label': 'Undefined',
-          'score': 40,
+          'citation': 'Infrastructure Investment and Jobs Act, CIFIA provisions.',
+          'evidence': 'The programme was authorised by the Infrastructure Investment and Jobs Act and implemented by DOE.',
+          'label': 'Federal statutory finance authority',
+          'score': 85,
         },
       'strategic':
         {
           'auditNote': '',
-          'citation': '',
-          'evidence': 'Baseline strategic alignment under V5.0 migration.',
-          'label': 'Initial Assessment',
-          'score': 30,
+          'citation': 'DOE CIFIA programme overview.',
+          'evidence': 'CIFIA is the dedicated federal financing mechanism for expanding shared CO2 transportation infrastructure across emitting regions.',
+          'label': 'National CO2 transport build-out',
+          'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': '经济激励',
   'country': '美国',
-  'description': '120 亿美元的联邦投资计划，用于区域性 DAC 枢纽及大规模二氧化碳运输/封存基础设施。',
+  'description': '美国《基础设施投资与就业法》设立二氧化碳运输基础设施融资与创新法（CIFIA）计划，安排21亿美元贷款和补助资金，用于支持大容量、公共承运性质的二氧化碳运输基础设施。合格项目须证明相关人为源或直接空气捕集项目的运输需求，促进地区多样性，并通过利用既有基础设施走廊等方式降低选址影响。数据库原记录将更广泛的120亿美元联邦碳管理投资、区域直接空气捕集中心和运输基础设施混为同一标题；现根据其DOE官方URL将记录校正为CIFIA专项，其它IIJA项目应在确有需要时分别建档。',
+  'evolution':
+    {
+      'clusters':
+        ['美国两党基础设施法', '美国二氧化碳运输基础设施', '美国碳管理融资'],
+      'milestones':
+        [
+          {
+            'date': '2021-11-15',
+            'event': '《基础设施投资与就业法》授权设立CIFIA计划。',
+          },
+          {
+            'date': '2022-10-05',
+            'event': '美国能源部发布计划指南并开始实施联邦运输融资权限。',
+          },
+        ],
+    },
   'id': 'us-iija-hubs',
-  'legalWeight': 'Guideline/Policy',
+  'impactAnalysis':
+    {
+      'economic': '通过21亿美元联邦贷款和补助降低共享二氧化碳运输基础设施的融资障碍。',
+      'environmental': '要求证明项目需求、地区多样性并考虑选址影响，以降低环境扰动。',
+      'technical': '支持连接多个捕集源的大容量管道、船舶、铁路及其它公共承运运输方式。',
+    },
+  'legalWeight': 'Federal Statutory Finance Program',
   'provenance':
     {
-      'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'author': 'CCUS AI Agent',
+      'lastAuditDate': '2026-07-22',
+      'reviewer': 'Primary-source coverage gap audit',
     },
   'pubDate': '2021-11-15',
   'relatedFacilities':
@@ -435,10 +457,10 @@
   'reviewStatus': 'verified',
   'source': 'U.S. Department of Energy',
   'status': '现行',
-  'title': '美国 IIJA CCS 枢纽计划',
+  'title': '美国CIFIA二氧化碳运输基础设施融资计划',
   'url': 'https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program',
   'year': 2021,
 }
 ---
 
-120 亿美元的联邦投资计划，用于区域性 DAC 枢纽及大规模二氧化碳运输/封存基础设施。
+美国《基础设施投资与就业法》设立二氧化碳运输基础设施融资与创新法（CIFIA）计划，安排21亿美元贷款和补助资金，用于支持大容量、公共承运性质的二氧化碳运输基础设施。合格项目须证明相关人为源或直接空气捕集项目的运输需求，促进地区多样性，并通过利用既有基础设施走廊等方式降低选址影响。数据库原记录将更广泛的120亿美元联邦碳管理投资、区域直接空气捕集中心和运输基础设施混为同一标题；现根据其DOE官方URL将记录校正为CIFIA专项，其它IIJA项目应在确有需要时分别建档。
