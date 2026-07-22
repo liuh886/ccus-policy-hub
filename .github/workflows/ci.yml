@@ -52,21 +52,46 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Materialize policy coverage corrections
+      - name: Apply policy coverage migration
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: pnpm manage:db:migrate:policy-coverage-corrections
+
+      - name: Audit migrated database
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: pnpm manage:db:audit:deep
+
+      - name: Export migrated policy projections
         if: >-
           github.event_name == 'pull_request' &&
           github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
           github.actor != 'github-actions[bot]'
         run: |
-          pnpm manage:db:migrate:policy-coverage-corrections
-          pnpm manage:db:audit:deep
           pnpm manage:db:export:policies
           rm -f \
             src/content/policies/en/kr-motie-cluster-district-2025.md \
             src/content/policies/zh/kr-motie-cluster-district-2025.md \
             src/content/policies/en/ph-ccus-policy-framework-2025.md \
             src/content/policies/zh/ph-ccus-policy-framework-2025.md
-          node scripts/sync-policy-link-projections.mjs --write
+
+      - name: Synchronize migrated policy relationships
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: node scripts/sync-policy-link-projections.mjs --write
+
+      - name: Regenerate migrated public data
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.head_ref == 'agent/policy-coverage-corrections-2026-07' &&
+          github.actor != 'github-actions[bot]'
+        run: |
           pnpm manage:db:quality:export
           pnpm manage:db:data:export
           mapfile -t changed < <(
