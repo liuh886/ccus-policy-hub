@@ -88,11 +88,32 @@ export function facilityCapacity(data = {}) {
   return minCapacity || maxCapacity || 0;
 }
 
-export function summarizeFacilities(facilities, expectedStatus) {
-  const matching = facilities.filter(
-    (facility) =>
-      normalizeFacilityStatus(facility.data?.status) === expectedStatus
-  );
+export function facilityOperationYear(data = {}) {
+  const value = data.operation;
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return Math.trunc(value);
+  }
+  if (typeof value !== 'string') return null;
+
+  const match = value.match(/\d{4}/);
+  return match ? Number.parseInt(match[0], 10) : null;
+}
+
+export function summarizeFacilities(
+  facilities,
+  expectedStatus,
+  { operationYearCutoff = null } = {}
+) {
+  const matching = facilities.filter((facility) => {
+    if (normalizeFacilityStatus(facility.data?.status) !== expectedStatus) {
+      return false;
+    }
+
+    if (operationYearCutoff === null) return true;
+
+    const operationYear = facilityOperationYear(facility.data);
+    return operationYear !== null && operationYear <= operationYearCutoff;
+  });
   const storageRelated = matching.filter((facility) =>
     STORAGE_RELATED_TYPES.has(normalizeFacilityType(facility.data?.type))
   );
