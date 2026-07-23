@@ -1,4 +1,5 @@
 export const STORAGE_RELATED_TYPES = new Set(['ts', 'storage', 'full-chain']);
+export const UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF = 2026;
 
 export function normalizeFacilityStatus(status) {
   const value = String(status || '')
@@ -102,17 +103,26 @@ export function facilityOperationYear(data = {}) {
 export function summarizeFacilities(
   facilities,
   expectedStatus,
-  { operationYearCutoff = null } = {}
+  { operationYearCutoff } = {}
 ) {
+  const effectiveOperationYearCutoff =
+    operationYearCutoff === undefined
+      ? expectedStatus === 'under-construction'
+        ? UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF
+        : null
+      : operationYearCutoff;
+
   const matching = facilities.filter((facility) => {
     if (normalizeFacilityStatus(facility.data?.status) !== expectedStatus) {
       return false;
     }
 
-    if (operationYearCutoff === null) return true;
+    if (effectiveOperationYearCutoff === null) return true;
 
     const operationYear = facilityOperationYear(facility.data);
-    return operationYear !== null && operationYear <= operationYearCutoff;
+    return (
+      operationYear !== null && operationYear <= effectiveOperationYearCutoff
+    );
   });
   const storageRelated = matching.filter((facility) =>
     STORAGE_RELATED_TYPES.has(normalizeFacilityType(facility.data?.type))
