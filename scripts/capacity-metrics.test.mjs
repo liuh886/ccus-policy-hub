@@ -2,7 +2,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
+  facilityOperationYear,
   normalizeFacilityStatus,
   normalizeFacilityType,
   summarizeFacilities,
@@ -46,6 +48,7 @@ test('summarizes storage-related project records without capture, transport or C
       data: {
         status: 'Under construction',
         type: 'Storage',
+        operation: '2026',
         announcedCapacityMin: 8,
         announcedCapacityMax: 10,
       },
@@ -63,5 +66,52 @@ test('summarizes storage-related project records without capture, transport or C
     totalCapacity: 9,
     storageRelatedCount: 1,
     storageRelatedCapacity: 9,
+  });
+});
+
+test('counts only under-construction records operating in 2026 or earlier', () => {
+  const facilities = [
+    {
+      data: {
+        status: 'Under construction',
+        type: 'Storage',
+        operation: '2025',
+        estimatedCapacity: 1,
+      },
+    },
+    {
+      data: {
+        status: 'Under construction',
+        type: 'Capture',
+        operation: 2026,
+        estimatedCapacity: 2,
+      },
+    },
+    {
+      data: {
+        status: 'Under construction',
+        type: 'Full chain',
+        operation: '2027',
+        estimatedCapacity: 4,
+      },
+    },
+    {
+      data: {
+        status: 'Under construction',
+        type: 'Storage',
+        operation: '',
+        estimatedCapacity: 8,
+      },
+    },
+  ];
+
+  assert.equal(UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF, 2026);
+  assert.equal(facilityOperationYear({ operation: 'Expected in 2025' }), 2025);
+  assert.equal(facilityOperationYear({ operation: '' }), null);
+  assert.deepEqual(summarizeFacilities(facilities, 'under-construction'), {
+    totalCount: 2,
+    totalCapacity: 3,
+    storageRelatedCount: 1,
+    storageRelatedCapacity: 1,
   });
 });
