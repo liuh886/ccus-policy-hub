@@ -1,27 +1,3 @@
-# --- Core Build & Runtime ---
-dist/
-.astro/
-node_modules/
-.env
-.env.production
-.env.local
-.env.*.local
-
-# --- OS & IDE Junk ---
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-*.log
-pnpm-debug.log*
-.eslintcache
-*.tmp
-
-# --- Lean Architecture: Archive & Tests ---
-/archive/
-!governance/archive/
-!governance/archive/**
-
 # --- Internal AI Context ---
 .gemini/
 .codex/
@@ -29,33 +5,44 @@ skills/
 *.skill
 .worktrees/
 
-# --- CCUS AI Agent Governance (Workspace) ---
-# We allow the specific agent workspace but ignore other possible agent subfolders
+# --- CCUS maintenance agent product workspace ---
 agent/*
 !agent/ccus-ai-agent/
 
-# Inside the agent workspace, un-ignore core skill code and documentation
 agent/ccus-ai-agent/*
+!agent/ccus-ai-agent/AGENTS.md
 !agent/ccus-ai-agent/SKILL.md
 !agent/ccus-ai-agent/DESIGN.md
-!agent/ccus-ai-agent/TASKS.md
-!agent/ccus-ai-agent/AGENTS.md
-!agent/ccus-ai-agent/PROGRESS.md
-!agent/ccus-ai-agent/FINDINGS.md
+!agent/ccus-ai-agent/ARCHITECTURE.md
+!agent/ccus-ai-agent/METHODOLOGY.md
+!agent/ccus-ai-agent/RUNBOOK.md
+!agent/ccus-ai-agent/SAFETY.md
+!agent/ccus-ai-agent/archive/
+!agent/ccus-ai-agent/archive/*.md
+!agent/ccus-ai-agent/migrations/
+!agent/ccus-ai-agent/migrations/*.md
 !agent/ccus-ai-agent/logic/
+!agent/ccus-ai-agent/governance/
 
-# Un-ignore logic scripts
+# Track the canonical CLI, active logic, and logic guidance.
 agent/ccus-ai-agent/logic/*
 !agent/ccus-ai-agent/logic/*.mjs
+!agent/ccus-ai-agent/logic/README.md
 
-# Keep the schema but ignore the actual master database and locks
+# Keep schema and the active master database; ignore locks and ambiguous snapshots.
 !agent/ccus-ai-agent/db/
 agent/ccus-ai-agent/db/*
 !agent/ccus-ai-agent/db/schema.sql
-agent/ccus-ai-agent/db/*.sqlite
+!agent/ccus-ai-agent/db/ccus_master.sqlite
 agent/ccus-ai-agent/db/.lock
+agent/ccus-ai-agent/db/*.tmp
+agent/ccus-ai-agent/db/*backup*.sqlite
+agent/ccus-ai-agent/db/*snapshot*.sqlite
 
-# Ignore transient governance reports and archives
+# Governance configuration is tracked; reports and legacy archives are generated/history.
+agent/ccus-ai-agent/governance/*
+!agent/ccus-ai-agent/governance/README.md
+!agent/ccus-ai-agent/governance/audit_thresholds.json
 agent/ccus-ai-agent/governance/reports/*
 agent/ccus-ai-agent/governance/archive/*
 
