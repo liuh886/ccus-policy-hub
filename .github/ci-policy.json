@@ -12,9 +12,7 @@
     ".github/workflows/ci-governance.yml",
     ".github/workflows/ci.yml"
   ],
-  "release_workflows": [
-    ".github/workflows/deploy.yml"
-  ],
+  "release_workflows": [".github/workflows/deploy.yml"],
   "advisory_workflows": [],
   "artifact_retention_days": {
     "pr_diagnostics": 14,
