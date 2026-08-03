@@ -1,0 +1,36 @@
+name: Format CI Policy
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/format-ci-policy.yml'
+      - '.github/ci-policy.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: format-ci-policy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  format:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prettier .github/ci-policy.json > formatted-ci-policy.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: formatted-ci-policy
+          path: formatted-ci-policy.json
+          if-no-files-found: error
+          retention-days: 1
