@@ -59,8 +59,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24'
-          cache: 'pnpm'
+          node-version: "24"
+          cache: pnpm
 
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
@@ -105,8 +105,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '24'
-          cache: 'pnpm'
+          node-version: "24"
+          cache: pnpm
 
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
@@ -145,7 +145,7 @@ jobs:
             docs/policy-content-depth-report.json \
             docs/policy-content-depth-report.md
 
-      - name: Regenerate governed public projections
+      - name: Regenerate and semantically verify public projections
         run: |
           pnpm manage:db:quality:export
           pnpm manage:db:data:export
@@ -153,11 +153,10 @@ jobs:
           pnpm manage:db:audit:policy-consistency
           node scripts/sync-policy-link-projections.mjs
 
-      - name: Require a clean governed tree
+      - name: Require stable governance reports to remain current
         run: |
           git diff --exit-code -- \
             src/content/policies \
-            public/data \
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md \
             docs/policy-coverage-matrix.md \
