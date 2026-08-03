@@ -1,0 +1,50 @@
+name: CI Governance
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - '.github/ci-policy.json'
+      - 'scripts/check-ci-policy.py'
+      - '**/package.json'
+      - '**/package-lock.json'
+      - '**/pnpm-lock.yaml'
+      - '**/yarn.lock'
+      - '**/bun.lock*'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/**'
+      - '.github/ci-policy.json'
+      - 'scripts/check-ci-policy.py'
+      - '**/package.json'
+      - '**/package-lock.json'
+      - '**/pnpm-lock.yaml'
+      - '**/yarn.lock'
+      - '**/bun.lock*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-governance-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  policy:
+    name: Policy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Enforce repository CI policy
+        run: python scripts/check-ci-policy.py --policy .github/ci-policy.json --output artifacts/ci-policy-report.json --enforce
+      - name: Retain governance inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-policy-report
+          path: artifacts/ci-policy-report.json
+          if-no-files-found: error
+          retention-days: 14
