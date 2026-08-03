@@ -1,0 +1,34 @@
+name: Format CI governance
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/ci.yml
+      - .github/workflows/deploy.yml
+      - .github/workflows/format-ci-governance.yml
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prettier --write .github/workflows/ci.yml .github/workflows/deploy.yml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: formatted-ci-governance
+          path: |
+            .github/workflows/ci.yml
+            .github/workflows/deploy.yml
+          if-no-files-found: error
+          retention-days: 1
