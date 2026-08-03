@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "liuh886/ccus-policy-hub",
+  "default_branch": "main",
+  "package_manager": "pnpm",
+  "governed_workflows": [
+    ".github/workflows/ci-governance.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/deploy.yml"
+  ],
+  "required_pr_workflows": [
+    ".github/workflows/ci-governance.yml",
+    ".github/workflows/ci.yml"
+  ],
+  "release_workflows": [
+    ".github/workflows/deploy.yml"
+  ],
+  "advisory_workflows": [],
+  "artifact_retention_days": {
+    "pr_diagnostics": 14,
+    "deployable_build": 7,
+    "durable_evidence": 90
+  },
+  "retention_exceptions": {},
+  "dependency_audit": {
+    "production_high_critical": "blocking",
+    "development_tooling": "advisory"
+  },
+  "branch_protection": {
+    "settings_managed_outside_repository": true,
+    "recommended_required_checks": [
+      "CI / Fast quality and production build",
+      "CI Governance / Policy"
+    ]
+  }
+}
