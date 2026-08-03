@@ -1,6 +1,12 @@
+# Historical Task Snapshot — April 2026
+
+> Archived on 2026-07-19. This document records completed or superseded work and must not be used as the current task queue. Use current GitHub issues, pull requests, milestones, CI, dataset versions, and quality reports.
+
+---
+
 # TodoList: CCUS Policy Hub Evolution
 
-> **Status**: Dynamic Task Tracker | **Alignment**: DESIGN V2.3.0 (DVC)
+> **Status**: Historical snapshot | **Alignment**: DESIGN V2.3.0 (DVC)  
 > **Last Updated**: 2026-04-06
 
 ## 0. Workspace Consolidation & Agent Skills (P0)
