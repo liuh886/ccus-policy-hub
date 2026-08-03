@@ -1,12 +1,14 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main]
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -15,74 +17,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate-and-build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Test
-        run: pnpm test
-
-      - name: Astro Check
-        run: pnpm astro check
-
-      - name: Deep Audit and Metadata Stamp
-        run: pnpm manage:db:audit:deep
-
-      - name: Verify Committed Policy Projections
-        run: |
-          pnpm manage:db:audit:policy-consistency
-          git diff --exit-code -- \
-            src/content/policies \
-            public/data/policies.json \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
-
-      - name: Generate Quality Metrics
-        run: pnpm manage:db:quality:export
-
-      - name: Generate Public Data
-        run: pnpm manage:db:data:export
-
-      - name: Format Generated Data
-        run: pnpm prettier --write public/data/*.json
-
-      - name: Verify Generated Public Policy Data
-        run: pnpm manage:db:audit:policy-consistency
-
-      - name: Build Project
-        run: pnpm build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
   deploy:
+    if: (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') || github.event_name == 'workflow_dispatch'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: validate-and-build
     runs-on: ubuntu-latest
     steps:
+      - name: Download validated CI build
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: ccus-policy-hub-dist
+          path: dist
+          github-token: ${{ github.token }}
+          repository: liuh886/ccus-policy-hub
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Build current main for manual deployment
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          git clone --depth=1 --branch main https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git repository
+          cd repository
+          corepack enable
+          corepack prepare pnpm@9 --activate
+          pnpm install --frozen-lockfile
+          pnpm build
+          cp -R dist ../dist
+
+      - name: Verify deployment artifact
+        run: |
+          test -f dist/index.html
+          test -d dist/_astro
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
