@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,24 +15,55 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  detect-scope:
+    runs-on: ubuntu-latest
+    outputs:
+      governed_data: ${{ steps.scope.outputs.governed_data }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Classify changed authority layer
+        id: scope
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" != "pull_request" ]]; then
+            echo "governed_data=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > changed-files.txt
+          cat changed-files.txt
+          if grep -Eq '^(data/|src/content/policies/|public/data/|docs/policy-(db-consistency|coverage|content-depth)|scripts/(manage-db|sync-policy|audit-policy|export)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
+            echo "governed_data=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "governed_data=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    name: Fast quality and production build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: ESLint
         run: pnpm eslint .
@@ -44,6 +76,40 @@ jobs:
 
       - name: Astro Check
         run: pnpm astro check
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Retain validated Pages build
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ccus-policy-hub-dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 7
+
+  governed-data:
+    name: Governed policy and database integrity
+    needs: detect-scope
+    if: needs.detect-scope.outputs.governed_data == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Deep Audit (blocking)
         run: pnpm manage:db:audit:deep
@@ -60,7 +126,6 @@ jobs:
       - name: Verify Committed Policy Links
         run: node scripts/sync-policy-link-projections.mjs
 
-      # Coverage is curated, but every evidence anchor must resolve to SQLite.
       - name: Verify Policy Coverage Matrix
         run: |
           pnpm manage:db:audit:policy-coverage
@@ -80,20 +145,21 @@ jobs:
             docs/policy-content-depth-report.json \
             docs/policy-content-depth-report.md
 
-      - name: Generate Quality Metrics
-        run: pnpm manage:db:quality:export
+      - name: Regenerate governed public projections
+        run: |
+          pnpm manage:db:quality:export
+          pnpm manage:db:data:export
+          pnpm prettier --write public/data/*.json
+          pnpm manage:db:audit:policy-consistency
+          node scripts/sync-policy-link-projections.mjs
 
-      - name: Generate Public Data
-        run: pnpm manage:db:data:export
-
-      - name: Format Generated Data
-        run: pnpm prettier --write public/data/*.json
-
-      - name: Verify Generated Public Policy Data
-        run: pnpm manage:db:audit:policy-consistency
-
-      - name: Verify Generated Policy Links
-        run: node scripts/sync-policy-link-projections.mjs
-
-      - name: Build
-        run: pnpm run build
+      - name: Require a clean governed tree
+        run: |
+          git diff --exit-code -- \
+            src/content/policies \
+            public/data \
+            docs/policy-db-consistency-report.json \
+            docs/policy-db-consistency-report.md \
+            docs/policy-coverage-matrix.md \
+            docs/policy-content-depth-report.json \
+            docs/policy-content-depth-report.md
