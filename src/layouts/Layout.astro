@@ -45,7 +45,9 @@ import '../styles/light-editorial-capacity.css';
           is:inline
           type="module"
           src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={JSON.stringify({ token: cloudflareAnalyticsToken })}
+          data-cf-beacon={JSON.stringify({
+            token: cloudflareAnalyticsToken,
+          })}
         ></script>
       )
     }
