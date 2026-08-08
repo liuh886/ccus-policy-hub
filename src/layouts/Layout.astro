@@ -20,11 +20,6 @@ const hideCompareDrawer =
   normalizedPath === '/en/facilities';
 
 const { title, description, keywords, pageClass = '' } = Astro.props;
-const cloudflareAnalyticsToken =
-  import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN?.trim() || '';
-const cloudflareAnalyticsTag = cloudflareAnalyticsToken
-  ? `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${JSON.stringify({ token: cloudflareAnalyticsToken })}'></script>`
-  : '';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
@@ -42,7 +37,6 @@ import '../styles/light-editorial-capacity.css';
     <SEO title={title} description={description} keywords={keywords} />
     <ClientRouter />
     <meta id="site-theme-color" name="theme-color" content="#f6f7f4" />
-    {cloudflareAnalyticsTag && <Fragment set:html={cloudflareAnalyticsTag} />}
     <script is:inline>
       (() => {
         const STORAGE_KEY = 'theme';
