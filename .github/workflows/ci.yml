@@ -69,10 +69,7 @@ jobs:
         run: pnpm eslint .
 
       - name: Prettier Check
-        run: |
-          pnpm prettier --write src/layouts/Layout.astro
-          git diff -- src/layouts/Layout.astro
-          git diff --quiet -- src/layouts/Layout.astro
+        run: pnpm prettier --check .
 
       - name: Test
         run: pnpm test
