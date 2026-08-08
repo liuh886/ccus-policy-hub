@@ -16,11 +16,12 @@ function initializeGoogleTag(): void {
   if (window.__ccusGa4Initialized) return;
 
   window.dataLayer = window.dataLayer ?? [];
-  window.gtag =
+  const gtag: Gtag =
     window.gtag ??
     ((...args: unknown[]) => {
       window.dataLayer?.push(args);
     });
+  window.gtag = gtag;
 
   if (!document.querySelector(`script[src="${GOOGLE_TAG_SRC}"]`)) {
     const script = document.createElement('script');
@@ -29,8 +30,8 @@ function initializeGoogleTag(): void {
     document.head.appendChild(script);
   }
 
-  window.gtag('js', new Date());
-  window.gtag('config', MEASUREMENT_ID, { send_page_view: false });
+  gtag('js', new Date());
+  gtag('config', MEASUREMENT_ID, { send_page_view: false });
   window.__ccusGa4Initialized = true;
 }
 
@@ -49,3 +50,5 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     window.__ccusGa4PageViewBound = true;
   }
 }
+
+export {};
