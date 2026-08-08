@@ -37,6 +37,8 @@ jobs:
       - name: Build current main for manual deployment
         if: github.event_name == 'workflow_dispatch'
         shell: bash
+        env:
+          PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
           git clone --depth=1 --branch main https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git repository
           cd repository
@@ -50,6 +52,9 @@ jobs:
         run: |
           test -f dist/index.html
           test -d dist/_astro
+          if [ -n "${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}" ]; then
+            grep -q 'static.cloudflareinsights.com/beacon.min.js' dist/index.html
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
