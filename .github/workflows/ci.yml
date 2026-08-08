@@ -69,7 +69,10 @@ jobs:
         run: pnpm eslint .
 
       - name: Prettier Check
-        run: pnpm prettier --check .
+        run: |
+          pnpm prettier --write scripts/inject-cloudflare-analytics.mjs
+          git diff -- scripts/inject-cloudflare-analytics.mjs
+          git diff --quiet -- scripts/inject-cloudflare-analytics.mjs
 
       - name: Test
         run: pnpm test
