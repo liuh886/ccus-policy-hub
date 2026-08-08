@@ -45,11 +45,9 @@ import '../styles/light-editorial-capacity.css';
       (() => {
         const MEASUREMENT_ID = 'G-4WP54VZF14';
         window.dataLayer = window.dataLayer || [];
-        window.gtag =
-          window.gtag ||
-          function () {
-            window.dataLayer.push(arguments);
-          };
+        window.gtag = window.gtag || function () {
+          window.dataLayer.push(arguments);
+        };
 
         if (!window.__ccusGa4Initialized) {
           window.gtag('js', new Date());
