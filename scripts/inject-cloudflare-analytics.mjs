@@ -2,7 +2,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
 const distRoot = resolve('dist');
-const token = process.env.CLOUDFLARE_WEB_ANALYTICS_TOKEN?.trim() || '';
+const token = process.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN?.trim() || '';
 const beaconUrl = 'https://static.cloudflareinsights.com/beacon.min.js';
 
 async function htmlFiles(directory) {
