@@ -18,6 +18,8 @@ const hideCompareDrawer =
   normalizedPath === '/en' ||
   normalizedPath === '/facilities' ||
   normalizedPath === '/en/facilities';
+const usesFacilityMap =
+  normalizedPath === '/facilities' || normalizedPath === '/en/facilities';
 
 const { title, description, keywords, pageClass = '' } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -25,6 +27,9 @@ import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
 import CompareDrawer from '../components/CompareDrawer.astro';
 import { ClientRouter } from 'astro:transitions';
+import leafletCssUrl from 'leaflet/dist/leaflet.css?url';
+import markerClusterCssUrl from 'leaflet.markercluster/dist/MarkerCluster.css?url';
+import markerClusterDefaultCssUrl from 'leaflet.markercluster/dist/MarkerCluster.Default.css?url';
 import '../styles/global.css';
 import '../styles/interaction-controls.css';
 import '../styles/light-editorial.css';
@@ -121,18 +126,15 @@ import '../styles/light-editorial-capacity.css';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
-    />
+    {
+      usesFacilityMap && (
+        <>
+          <link rel="stylesheet" href={leafletCssUrl} />
+          <link rel="stylesheet" href={markerClusterCssUrl} />
+          <link rel="stylesheet" href={markerClusterDefaultCssUrl} />
+        </>
+      )
+    }
   </head>
   <body
     class={`site-shell min-h-screen flex flex-col font-['Inter',_sans-serif] transition-colors ${pageClass}`.trim()}
