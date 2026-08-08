@@ -78,7 +78,18 @@ jobs:
         run: pnpm astro check
 
       - name: Build
+        env:
+          PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: pnpm run build
+
+      - name: Verify Cloudflare RUM when configured
+        env:
+          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
+        run: |
+          if [ -n "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" ]; then
+            grep -q 'static.cloudflareinsights.com/beacon.min.js' dist/index.html
+            grep -q "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" dist/index.html
+          fi
 
       - name: Retain validated Pages build
         if: github.event_name != 'pull_request'
