@@ -52,6 +52,12 @@ tasks/
 # --- Media ---
 video/
 
+# --- Node/Astro/Editor ---
+node_modules/
+dist/
+.astro/
+.vscode/
+
 # --- Absolute Entry Points (Must be tracked) ---
 !agent.md
 !README.md
