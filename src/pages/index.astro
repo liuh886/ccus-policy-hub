@@ -6,8 +6,7 @@ import CapacityTrend from '../components/CapacityTrend.astro';
 import ProjectLandscape from '../components/ProjectLandscape.astro';
 import DatasetVersion from '../components/DatasetVersion.astro';
 import { getCollection } from 'astro:content';
-import '../styles/home-refinement.css';
-import '../styles/home-final-qa.css';
+import '../styles/home.css';
 
 const policies = await getCollection('policies_zh');
 const policyCount = policies.length;
