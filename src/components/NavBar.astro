@@ -27,6 +27,8 @@ const navItems = [
         currentPath.startsWith(`${normalizedHref}/`);
   return { ...item, active };
 });
+
+const desktopNavItems = navItems.slice(1);
 ---
 
 <header class="site-header">
@@ -40,7 +42,7 @@ const navItems = [
       aria-label="Primary navigation"
     >
       {
-        navItems.map((item) => (
+        desktopNavItems.map((item) => (
           <a
             href={item.href}
             class="site-nav-link"
@@ -51,7 +53,9 @@ const navItems = [
         ))
       }
       <div
-        class="ml-3 flex items-center gap-1 border-l border-slate-200 pl-3 dark:border-slate-700"
+        class="ml-4 flex items-center gap-1.5 border-l border-slate-200 pl-4 dark:border-slate-700"
+        role="group"
+        aria-label="Site tools"
       >
         <a
           href={`${prefix}/search/`}
@@ -142,7 +146,7 @@ const navItems = [
           </svg>
           {t('nav.search')}
         </a>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-1" role="group" aria-label="Site tools">
           <LanguagePicker />
           <ThemeToggle />
         </div>
