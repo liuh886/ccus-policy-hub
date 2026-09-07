@@ -25,5 +25,15 @@ export default defineConfig({
     // @ts-ignore
     plugins: [tailwindcss()],
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'zh',
+        locales: {
+          zh: 'zh-CN',
+          en: 'en',
+        },
+      },
+    }),
+  ],
 });
