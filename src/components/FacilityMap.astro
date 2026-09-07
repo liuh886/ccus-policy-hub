@@ -240,7 +240,16 @@ const mapDataJson = JSON.stringify(mapData);
       return { mapFacilities: [], isEn: false };
     }
 
-    const mapData = JSON.parse(rawPayload);
+    let mapData;
+    try {
+      mapData = JSON.parse(rawPayload);
+    } catch (parseError) {
+      console.warn(
+        'Facility map payload is not valid JSON; rendering an empty map.',
+        parseError
+      );
+      return { mapFacilities: [], isEn: false };
+    }
 
     return {
       mapFacilities: Array.isArray(mapData.mapFacilities)
@@ -295,7 +304,6 @@ const mapDataJson = JSON.stringify(mapData);
         center: [30, 10],
         zoom: 3,
         zoomControl: false,
-        attributionControl: false,
         preferCanvas: true,
       });
 
@@ -306,7 +314,12 @@ const mapDataJson = JSON.stringify(mapData);
         ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
         : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
 
-      L.tileLayer(esriUrl, { maxZoom: 16, minZoom: 2 }).addTo(map);
+      L.tileLayer(esriUrl, {
+        maxZoom: 16,
+        minZoom: 2,
+        attribution:
+          'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
+      }).addTo(map);
 
       const markers =
         typeof L.markerClusterGroup === 'function'

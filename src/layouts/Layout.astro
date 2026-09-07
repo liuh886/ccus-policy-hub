@@ -6,10 +6,8 @@ interface Props {
   pageClass?: string;
 }
 
-import { ui, defaultLang } from '../i18n/ui';
+import { defaultLang } from '../i18n/ui';
 const lang = Astro.currentLocale || defaultLang;
-const t = (key: keyof (typeof ui)['zh']) =>
-  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 const normalizedPath =
   Astro.url.pathname.replace(/^\/ccus-policy-hub/, '').replace(/\/$/, '') ||
   '/';

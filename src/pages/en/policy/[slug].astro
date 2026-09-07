@@ -12,7 +12,6 @@ export async function getStaticPaths() {
   });
 }
 
-const inferredLang = 'en';
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const allPolicies = await getCollection('policies_en');
@@ -125,22 +124,6 @@ const relatedFacilities = allFacilities.filter(
 const t = (key: string) => {
   const dict = i18nDict.ui as any;
   return dict[key] || key;
-};
-
-const chartData = {
-  incentive: analysis?.incentive?.score || 0,
-  statutory: analysis?.statutory?.score || 0,
-  market: analysis?.market?.score || 0,
-  strategic: analysis?.strategic?.score || 0,
-  mrv: analysis?.mrv?.score || 0,
-};
-
-const chartDetails = {
-  incentive: analysis?.incentive?.evidence,
-  statutory: analysis?.statutory?.evidence,
-  market: analysis?.market?.evidence,
-  strategic: analysis?.strategic?.evidence,
-  mrv: analysis?.mrv?.evidence,
 };
 
 const chartLabels = [

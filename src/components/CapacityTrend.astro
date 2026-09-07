@@ -348,11 +348,18 @@ const metricClose = lang === 'zh' ? '）' : ')';
   </section>
 </div>
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Bundled from npm (versioned in package.json) instead of an unversioned CDN
+  // tag. Assigned on window before the `load` event, so the inline init script
+  // below sees it both on first load and after astro:page-load navigation.
+  import Chart from 'chart.js/auto';
+  (window as { Chart?: unknown }).Chart = Chart;
+</script>
 <script is:inline>
   function initCapacityChart() {
     const canvas = document.getElementById('capacityChart');
-    if (!canvas || typeof Chart === 'undefined') return;
+    const ChartCtor = window.Chart;
+    if (!canvas || typeof ChartCtor === 'undefined') return;
 
     const root = canvas.closest('[data-capacity-trend]') || document;
     const minSlider = root.querySelector('#minYearSlider');
@@ -364,8 +371,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
     const totalValue = root.querySelector('[data-capacity-total]');
     const totalYear = root.querySelector('[data-capacity-total-year]');
     const typeCheckboxes = Array.from(root.querySelectorAll('[data-capacity-type]'));
-
-    const existingChart = Chart.getChart(canvas);
+    const existingChart = ChartCtor.getChart(canvas);
     if (existingChart) existingChart.destroy();
 
     try {
@@ -426,8 +432,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         if (subtitleMaxYear) subtitleMaxYear.textContent = activeYear;
       };
 
-      const initialSeries = combineSelectedSeries();
-      const chart = new Chart(canvas, {
+      const chart = new ChartCtor(canvas, {
         type: 'line',
         data: {
           labels,

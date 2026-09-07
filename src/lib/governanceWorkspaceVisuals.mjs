@@ -279,7 +279,7 @@ const renderRadar = (countrySystems, text) => {
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: 'nearest', intersect: true },
-      onClick(event, elements) {
+      onClick(_event, elements) {
         const element = elements[0];
         if (!element) return;
         const country = countrySystems[element.datasetIndex];

@@ -22,7 +22,6 @@ const {
   relatedPolicies = [],
   url,
   announcedCapacityMax,
-  announcedCapacityMin,
   announcedCapacityRaw,
   phase,
   hub,
@@ -70,8 +69,6 @@ const statusColors: Record<string, string> = {
 
 // Capacity Logic
 const displayCapacity = estimatedCapacity || announcedCapacityMax || 0;
-const maxCap = Math.max(displayCapacity, 1);
-const capacityPct = (displayCapacity / maxCap) * 100;
 
 // Timeline Logic
 const timeline = [

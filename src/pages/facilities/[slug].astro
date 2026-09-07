@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import countryData from '../../data/countries.json';
 import i18nDict from '../../data/i18n_dictionary.json';
 
 export async function getStaticPaths() {
@@ -23,8 +22,6 @@ const {
   relatedPolicies = [],
   url,
   announcedCapacityMax,
-  announcedCapacityMin,
-  announcedCapacityRaw,
   phase,
   hub,
   partners = [],
@@ -35,7 +32,6 @@ const {
   links = [],
   provenance,
   fateOfCarbon,
-  region,
   operator,
   captureTechnology,
   storageTechnology,

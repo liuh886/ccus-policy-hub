@@ -129,22 +129,6 @@ const t = (key: string) => {
   return dict[key] || key;
 };
 
-const chartData = {
-  incentive: analysis?.incentive?.score || 0,
-  statutory: analysis?.statutory?.score || 0,
-  market: analysis?.market?.score || 0,
-  strategic: analysis?.strategic?.score || 0,
-  mrv: analysis?.mrv?.score || 0,
-};
-
-const chartDetails = {
-  incentive: analysis?.incentive?.evidence,
-  statutory: analysis?.statutory?.evidence,
-  market: analysis?.market?.evidence,
-  strategic: analysis?.strategic?.evidence,
-  mrv: analysis?.mrv?.evidence,
-};
-
 const chartLabels =
   inferredLang === 'zh'
     ? ['经济激励', '法律监管', '市场机制', '战略引导', '技术规范']
