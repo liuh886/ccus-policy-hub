@@ -1,0 +1,101 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="About Us">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl font-extrabold mb-6">About CCUS Policy Hub</h1>
+
+    <div class="prose prose-slate dark:prose-invert max-w-none mb-16">
+      <p class="text-lg">
+        CCUS Policy Hub is an open knowledge infrastructure dedicated to
+        advancing the development of carbon capture, utilization, and storage
+        (CCUS) technologies worldwide.
+      </p>
+      <p>
+        Our core mission is to eliminate information barriers in cross-border
+        collaboration through structured policy data, providing a solid policy
+        reference for the global energy transition.
+      </p>
+      <h3>Contact Us</h3>
+      <p>
+        If you have suggestions, data additions, or collaboration inquiries,
+        please fill out the feedback form below.
+      </p>
+    </div>
+
+    <div
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm"
+    >
+      <h2 class="text-2xl font-bold mb-6">Feedback &amp; Suggestions</h2>
+      <form id="feedback-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label for="name" class="text-sm font-medium">Name</label>
+            <input
+              type="text"
+              id="name"
+              required
+              class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="email" class="text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white"
+            />
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label for="subject" class="text-sm font-medium">Subject</label>
+          <select
+            id="subject"
+            class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white"
+          >
+            <option>Policy data addition</option>
+            <option>Correction</option>
+            <option>Feature suggestion</option>
+            <option>Collaboration inquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="space-y-2">
+          <label for="message" class="text-sm font-medium">Message</label>
+          <textarea
+            id="message"
+            rows="4"
+            required
+            class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-blue-500 outline-none dark:text-white"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Submit Feedback
+        </button>
+      </form>
+      <div
+        id="form-success"
+        class="hidden text-center py-4 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-lg mt-4 font-medium"
+      >
+        Thank you for your feedback! We will review it as soon as possible.
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('feedback-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Simulate submission
+    form.classList.add('hidden');
+    successMsg?.classList.remove('hidden');
+  });
+</script>

@@ -2,7 +2,29 @@
 import { languages } from '../i18n/ui';
 const currentLang = Astro.currentLocale || 'zh';
 const pathname = Astro.url.pathname;
-const BASE = '/ccus-policy-hub';
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Routes mirrored under /en/. Anything else (legal, changelog, policy/country,
+// api, rss, ...) has no English equivalent; linking to it would 404.
+const EN_ROUTE_SEGMENTS = new Set([
+  'about',
+  'compare',
+  'docs',
+  'facilities',
+  'policy',
+  'quality',
+  'search',
+]);
+
+const pathWithoutBase =
+  (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname) || '/';
+
+const segments = pathWithoutBase.replace(/^\/+/, '').split('/');
+const hasEnCounterpart =
+  pathWithoutBase === '/' ||
+  (segments.length > 0 &&
+    EN_ROUTE_SEGMENTS.has(segments[0]) &&
+    !(segments[0] === 'policy' && segments[1] === 'country'));
 ---
 
 <div
@@ -11,15 +33,16 @@ const BASE = '/ccus-policy-hub';
 >
   {
     Object.entries(languages).map(([lang, label]) => {
-      let href = pathname;
-      const pathWithoutBase =
-        (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname) ||
-        '/';
+      let href: string;
 
       if (lang === 'en') {
-        if (!pathWithoutBase.startsWith('/en')) {
+        if (pathWithoutBase.startsWith('/en')) {
+          href = pathname;
+        } else if (hasEnCounterpart) {
           href = `${BASE}/en${pathWithoutBase === '/' ? '/' : pathWithoutBase}`;
           if (!href.endsWith('/')) href += '/';
+        } else {
+          href = `${BASE}/en/`;
         }
       } else if (pathWithoutBase.startsWith('/en')) {
         href = `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`;
