@@ -7,10 +7,11 @@ interface Props {
 }
 
 import { defaultLang } from '../i18n/ui';
+import { stripSiteBase } from '../lib/i18nRoutes';
+import { SITE_BASE } from '../lib/siteBase';
 const lang = Astro.currentLocale || defaultLang;
 const normalizedPath =
-  Astro.url.pathname.replace(/^\/ccus-policy-hub/, '').replace(/\/$/, '') ||
-  '/';
+  stripSiteBase(Astro.url.pathname, SITE_BASE).replace(/\/$/, '') || '/';
 const hideCompareDrawer =
   normalizedPath === '/' ||
   normalizedPath === '/en' ||

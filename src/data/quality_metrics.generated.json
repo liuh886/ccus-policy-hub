@@ -3,8 +3,8 @@
   "source_db_path": "agent/ccus-ai-agent/db/ccus_master.sqlite",
   "audit_status": {
     "last_audit_pass": true,
-    "last_audit_date": "2026-07-21",
-    "last_audit_summary": "Deep audit passed under 2026-07-v1; policy, facility, regulatory-fill and coordinate-governance gates satisfied; source revision 918cca1583934f113096e28bee10494c7b76aa40."
+    "last_audit_date": "2026-09-07",
+    "last_audit_summary": "Deep audit passed under 2026-07-v1; policy, facility, regulatory-fill and coordinate-governance gates satisfied; source revision local-worktree."
   },
   "counts": {
     "policies": 130,

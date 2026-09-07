@@ -24,7 +24,8 @@ interface Region {
   enHref: string;
 }
 
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 
 const regions: Region[] = [
   {

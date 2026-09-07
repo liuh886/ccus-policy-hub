@@ -54,7 +54,7 @@ const copy = {
       'foundation-building': '基础培育',
       'deployment-led': '工程先行',
     },
-    policyPath: '/ccus-policy-hub/policy/',
+    policyPath: `${import.meta.env?.BASE_URL ?? ''}/policy/`,
   },
   en: {
     dimensionLabels: [
@@ -92,7 +92,7 @@ const copy = {
       'foundation-building': 'Foundation building',
       'deployment-led': 'Deployment-led',
     },
-    policyPath: '/ccus-policy-hub/en/policy/',
+    policyPath: `${import.meta.env?.BASE_URL ?? ''}/en/policy/`,
   },
 };
 

@@ -1,30 +1,15 @@
 ---
 import { languages } from '../i18n/ui';
+import {
+  hasEnCounterpart,
+  stripSiteBase,
+  withTrailingSlash,
+} from '../lib/i18nRoutes';
 const currentLang = Astro.currentLocale || 'zh';
 const pathname = Astro.url.pathname;
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Routes mirrored under /en/. Anything else (legal, changelog, policy/country,
-// api, rss, ...) has no English equivalent; linking to it would 404.
-const EN_ROUTE_SEGMENTS = new Set([
-  'about',
-  'compare',
-  'docs',
-  'facilities',
-  'policy',
-  'quality',
-  'search',
-]);
-
-const pathWithoutBase =
-  (pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname) || '/';
-
-const segments = pathWithoutBase.replace(/^\/+/, '').split('/');
-const hasEnCounterpart =
-  pathWithoutBase === '/' ||
-  (segments.length > 0 &&
-    EN_ROUTE_SEGMENTS.has(segments[0]) &&
-    !(segments[0] === 'policy' && segments[1] === 'country'));
+const pathWithoutBase = stripSiteBase(pathname, BASE);
 ---
 
 <div
@@ -38,18 +23,19 @@ const hasEnCounterpart =
       if (lang === 'en') {
         if (pathWithoutBase.startsWith('/en')) {
           href = pathname;
-        } else if (hasEnCounterpart) {
-          href = `${BASE}/en${pathWithoutBase === '/' ? '/' : pathWithoutBase}`;
-          if (!href.endsWith('/')) href += '/';
+        } else if (hasEnCounterpart(pathWithoutBase)) {
+          href = withTrailingSlash(
+            `${BASE}/en${pathWithoutBase === '/' ? '/' : pathWithoutBase}`
+          );
         } else {
           href = `${BASE}/en/`;
         }
       } else if (pathWithoutBase.startsWith('/en')) {
-        href = `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`;
-        if (!href.endsWith('/')) href += '/';
+        href = withTrailingSlash(
+          `${BASE}${pathWithoutBase.replace('/en', '') || '/'}`
+        );
       } else {
-        href = `${BASE}${pathWithoutBase}`;
-        if (!href.endsWith('/')) href += '/';
+        href = withTrailingSlash(`${BASE}${pathWithoutBase}`);
       }
 
       return (

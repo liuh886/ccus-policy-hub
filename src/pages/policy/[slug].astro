@@ -1,4 +1,5 @@
 ---
+import { SITE_BASE } from '../../lib/siteBase';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import RadarChart from '../../components/RadarChart.astro';
@@ -148,7 +149,7 @@ const chartLabels =
               class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest"
             >
               <a
-                href="/ccus-policy-hub/policy"
+                href={`${SITE_BASE}/policy`}
                 class="hover:text-slate-900 dark:hover:text-white transition-colors"
                 >Database</a
               >
@@ -338,7 +339,7 @@ const chartLabels =
                     <div class="space-y-6">
                       {supersededPolicies.map((p) => (
                         <a
-                          href={`/ccus-policy-hub/policy/${p.id.replace(/^zh\//, '')}/`}
+                          href={`${SITE_BASE}/policy/${p.id.replace(/^zh\//, '')}/`}
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-slate-400 uppercase mb-1">
@@ -359,7 +360,7 @@ const chartLabels =
                       </div>
                       {successorPolicy && (
                         <a
-                          href={`/ccus-policy-hub/policy/${successorPolicy.id.replace(/^zh\//, '')}/`}
+                          href={`${SITE_BASE}/policy/${successorPolicy.id.replace(/^zh\//, '')}/`}
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-emerald-500 uppercase mb-1">
@@ -403,7 +404,7 @@ const chartLabels =
                         .slice(0, 3)
                         .map((p) => (
                           <a
-                            href={`/ccus-policy-hub/policy/${p.id.replace(/^zh\//, '')}/`}
+                            href={`${SITE_BASE}/policy/${p.id.replace(/^zh\//, '')}/`}
                             class="group block"
                           >
                             <div class="flex justify-between items-start mb-1">
@@ -436,7 +437,7 @@ const chartLabels =
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {relatedFacilities.map((f) => (
                     <a
-                      href={`/ccus-policy-hub/facilities/${f.id}/`}
+                      href={`${SITE_BASE}/facilities/${f.id}/`}
                       class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group"
                     >
                       <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">

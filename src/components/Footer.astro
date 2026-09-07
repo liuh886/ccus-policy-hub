@@ -9,7 +9,8 @@ const { lang = defaultLang } = Astro.props;
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 const prefix = lang === 'zh' ? BASE : `${BASE}/${lang}`;
 const currentYear = new Date().getFullYear();
 ---

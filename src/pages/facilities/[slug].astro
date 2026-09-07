@@ -1,4 +1,5 @@
 ---
+import { SITE_BASE } from '../../lib/siteBase';
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import i18nDict from '../../data/i18n_dictionary.json';
@@ -117,7 +118,7 @@ const timeline = [
               class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest"
             >
               <a
-                href="/ccus-policy-hub/facilities"
+                href={`${SITE_BASE}/facilities`}
                 class="hover:text-slate-900 dark:hover:text-white transition-colors"
                 >Facilities</a
               >
@@ -196,7 +197,7 @@ const timeline = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {applicablePolicies.map((p) => (
                     <a
-                      href={`/ccus-policy-hub/policy/${p.id}/`}
+                      href={`${SITE_BASE}/policy/${p.id}/`}
                       class="p-6 border border-emerald-100 dark:border-emerald-900/30 bg-emerald-50/10 rounded-2xl hover:border-emerald-500 transition-all group"
                     >
                       <div class="flex justify-between items-start mb-2">
@@ -214,7 +215,7 @@ const timeline = [
                   ))}
                   {suggestedPolicies.slice(0, 2).map((p) => (
                     <a
-                      href={`/ccus-policy-hub/policy/${p.id}/`}
+                      href={`${SITE_BASE}/policy/${p.id}/`}
                       class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group"
                     >
                       <div class="flex justify-between items-start mb-2">

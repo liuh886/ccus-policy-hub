@@ -421,7 +421,7 @@ const mapDataJson = JSON.stringify(mapData);
           </div>
           <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${safeName}</div>
           <div class="text-xs font-bold text-slate-500">${displayCap} Mtpa | ${safeStatus}</div>
-          <a href="/ccus-policy-hub/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">Details</a>
+          <a href="${import.meta.env.BASE_URL}/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">${isEn ? 'Details' : '查看详情'}</a>
         </div>
       `);
 

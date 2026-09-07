@@ -20,7 +20,8 @@ const {
 } = facility.data;
 
 const isEn = facility.data.lang === 'en';
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 const detailHref = `${BASE}/${isEn ? 'en/facilities' : 'facilities'}/${facility.id}/`;
 
 const displayCapacity = estimatedCapacity || announcedCapacityMax || 0;

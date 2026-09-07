@@ -7,7 +7,8 @@ const lang = Astro.currentLocale || defaultLang;
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 const prefix = lang === 'zh' ? BASE : `${BASE}/${lang}`;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 

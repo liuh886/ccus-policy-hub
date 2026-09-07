@@ -1,4 +1,5 @@
 ---
+import { SITE_BASE } from '../../../lib/siteBase';
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import PolicyCard from '../../../components/PolicyCard.astro';
@@ -43,7 +44,7 @@ const { policies } = Astro.props;
 <Layout title={`${country} 政策集`}>
   <nav class="mb-8">
     <a
-      href="/ccus-policy-hub/policy/"
+      href={`${SITE_BASE}/policy/`}
       class="text-blue-600 hover:underline flex items-center gap-2 text-sm"
     >
       <svg

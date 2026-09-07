@@ -61,7 +61,7 @@ const copy = {
     openPolicy: '查看政策记录',
     evidencePrompt:
       '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
-    policyPath: '/ccus-policy-hub/policy/',
+    policyPath: `${import.meta.env?.BASE_URL ?? ''}/policy/`,
   },
   en: {
     governance: 'Governance capability',
@@ -80,7 +80,7 @@ const copy = {
     openPolicy: 'Open policy record',
     evidencePrompt:
       'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
-    policyPath: '/ccus-policy-hub/en/policy/',
+    policyPath: `${import.meta.env?.BASE_URL ?? ''}/en/policy/`,
   },
 };
 

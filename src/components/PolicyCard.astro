@@ -36,7 +36,8 @@ const isEn = lang === 'en';
 const isVerified = reviewStatus === 'verified';
 const pureSlug = policy.id;
 
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 const href = isEn
   ? `${BASE}/en/policy/${pureSlug}/`
   : `${BASE}/policy/${pureSlug}/`;

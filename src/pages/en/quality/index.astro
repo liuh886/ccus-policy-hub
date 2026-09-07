@@ -1,4 +1,5 @@
 ---
+import { SITE_BASE } from '../../../lib/siteBase';
 import Layout from '../../../layouts/Layout.astro';
 import DatasetVersion from '../../../components/DatasetVersion.astro';
 import metrics from '../../../data/quality_metrics.generated.json';
@@ -394,7 +395,7 @@ const links = metrics.facility_policy_links;
     <!-- Back link -->
     <div class="text-center">
       <a
-        href="/ccus-policy-hub/en/"
+        href={`${SITE_BASE}/en/`}
         class="text-blue-600 dark:text-blue-400 hover:underline text-sm"
       >
         &larr; {t('返回首页', 'Back to Home')}

@@ -35,7 +35,7 @@ export const governanceComparisonCopy = Object.freeze({
     emptyDescription:
       '请从政策数据库中选择多项政策（最多 5 项），再进入国家治理能力与项目落地对比。',
     emptyAction: '前往政策数据库',
-    emptyHref: '/ccus-policy-hub/policy/',
+    emptyHref: `${import.meta.env?.BASE_URL ?? ''}/policy/`,
   }),
   en: Object.freeze({
     pageTitle: 'Policy Comparison Analysis',
@@ -78,6 +78,6 @@ export const governanceComparisonCopy = Object.freeze({
     emptyDescription:
       'Select up to five policies from the database to compare national governance capability and project deployment.',
     emptyAction: 'Go to policy database',
-    emptyHref: '/ccus-policy-hub/en/policy/',
+    emptyHref: `${import.meta.env?.BASE_URL ?? ''}/en/policy/`,
   }),
 });

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { SITE_BASE } from '../lib/siteBase';
 import {
   facilityCapacity,
   normalizeFacilityStatus,
@@ -57,8 +58,8 @@ const text =
           '集成 IEA 全球设施数据库与核心激励机制，提供多维度政策对比、地理空间分布及行业趋势分析。',
         primaryAction: '探索全球设施地图',
         secondaryAction: '查阅政策数据库',
-        primaryHref: '/ccus-policy-hub/facilities/',
-        secondaryHref: '/ccus-policy-hub/policy/',
+        primaryHref: `${SITE_BASE}/facilities/`,
+        secondaryHref: `${SITE_BASE}/policy/`,
         totalLabel: '全球项目记录能力',
         yearSuffix: '估',
         totalScope: '规划 + 在运 + 在建',
@@ -76,8 +77,8 @@ const text =
           'Integrating IEA global project data with key incentive mechanisms for policy comparison, spatial mapping and deployment-trend analysis.',
         primaryAction: 'Explore Facility Map',
         secondaryAction: 'Browse Policy Database',
-        primaryHref: '/ccus-policy-hub/en/facilities/',
-        secondaryHref: '/ccus-policy-hub/en/policy/',
+        primaryHref: `${SITE_BASE}/en/facilities/`,
+        secondaryHref: `${SITE_BASE}/en/policy/`,
         totalLabel: 'Global project-record capacity',
         yearSuffix: ' Est.',
         totalScope: 'Planned + operational + under construction',

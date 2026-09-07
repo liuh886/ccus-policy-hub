@@ -12,7 +12,8 @@ const lang =
 const t = (key: keyof (typeof ui)['zh']) =>
   ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
 const isEn = lang === 'en';
-const BASE = '/ccus-policy-hub';
+import { SITE_BASE } from '../lib/siteBase';
+const BASE = SITE_BASE;
 const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
 ---
 
