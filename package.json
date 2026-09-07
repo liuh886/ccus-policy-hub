@@ -44,7 +44,7 @@
     "check:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "lint": "eslint . && prettier --check .",
     "lint:staged": "node scripts/lint-staged.mjs",
-    "test": "node --test scripts/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

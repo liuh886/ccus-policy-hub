@@ -137,6 +137,9 @@ jobs:
       - name: Verify Committed Policy Links
         run: node scripts/sync-policy-link-projections.mjs
 
+      - name: Verify Facilities Parity
+        run: pnpm check:facilities-parity
+
       - name: Verify Policy Coverage Matrix
         run: |
           pnpm manage:db:audit:policy-coverage
@@ -168,6 +171,8 @@ jobs:
         run: |
           git diff --exit-code -- \
             src/content/policies \
+            src/data/quality_metrics.generated.json \
+            public/data \
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md \
             docs/policy-coverage-matrix.md \

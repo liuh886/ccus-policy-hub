@@ -100,7 +100,23 @@ async function generatePublicData() {
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
 
-  const generatedAt = new Date().toISOString();
+  // Deterministic timestamp derived from the database itself so that the
+  // generated files only change when governed data actually changes.
+  const lastPolicyAudit = queryScalar(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM policies"
+  );
+  const lastFacilityAudit = queryScalar(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM facilities"
+  );
+  const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
+    .filter(Boolean)
+    .sort()
+    .pop();
+  const generatedAt = lastAuditDate
+    ? `${lastAuditDate}T00:00:00.000Z`
+    : '1970-01-01T00:00:00.000Z';
 
   // --- Generate policies.json ---
   console.log('Generating policies.json...');

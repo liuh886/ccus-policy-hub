@@ -58,8 +58,25 @@ async function generateMetrics() {
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
 
+  // Deterministic timestamp derived from the database itself so that the
+  // generated file only changes when governed data actually changes.
+  const lastPolicyAudit = queryScalar(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM policies"
+  );
+  const lastFacilityAudit = queryScalar(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM facilities"
+  );
+  const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
+    .filter(Boolean)
+    .sort()
+    .pop();
+
   const metrics = {
-    generated_at: new Date().toISOString(),
+    generated_at: lastAuditDate
+      ? `${lastAuditDate}T00:00:00.000Z`
+      : '1970-01-01T00:00:00.000Z',
     source_db_path: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
     audit_status: {},
     counts: {},
