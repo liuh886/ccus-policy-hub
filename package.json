@@ -37,7 +37,6 @@
     "manage:db:pipeline": "node agent/ccus-ai-agent/logic/manage.mjs db:pipeline",
     "manage:db:compute:governance-deployment": "node agent/ccus-ai-agent/logic/governance-deployment-algo.mjs",
     "manage:db:compute:maturity": "node agent/ccus-ai-agent/logic/maturity-algo.mjs",
-    "manage:db:clean": "node agent/ccus-ai-agent/logic/manage.mjs db:clean",
     "manage:db:quality:export": "node scripts/generate-quality-metrics.mjs",
     "manage:db:data:export": "node scripts/generate-public-data.mjs",
     "sync:all": "pnpm manage:db:export:md",
