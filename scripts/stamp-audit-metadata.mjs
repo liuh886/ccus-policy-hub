@@ -10,6 +10,11 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import {
+  acquireDbLock,
+  atomicWriteDb,
+  releaseDbLock,
+} from './lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -50,37 +55,42 @@ async function stampAuditMetadata() {
     throw new Error(`Database not found at: ${DB_PATH}`);
   }
 
-  const SQL = await initSqlJs();
-  const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
-  const passResult = db.exec(
-    "SELECT value FROM db_meta WHERE key = 'last_audit_pass' LIMIT 1"
-  );
-  const lastAuditPassed = passResult[0]?.values?.[0]?.[0] === 'true';
-
-  if (!lastAuditPassed) {
-    db.close();
-    throw new Error(
-      'Refusing to stamp audit metadata because last_audit_pass is not true.'
+  acquireDbLock();
+  try {
+    const SQL = await initSqlJs();
+    const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
+    const passResult = db.exec(
+      "SELECT value FROM db_meta WHERE key = 'last_audit_pass' LIMIT 1"
     );
+    const lastAuditPassed = passResult[0]?.values?.[0]?.[0] === 'true';
+
+    if (!lastAuditPassed) {
+      db.close();
+      throw new Error(
+        'Refusing to stamp audit metadata because last_audit_pass is not true.'
+      );
+    }
+
+    const metadata = buildAuditMetadata();
+    const statement = db.prepare(
+      'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)'
+    );
+
+    for (const [key, value] of Object.entries(metadata)) {
+      statement.run([key, value]);
+    }
+    statement.free();
+
+    const bytes = db.export();
+    db.close();
+    atomicWriteDb(DB_PATH, bytes);
+
+    console.log(`Audit metadata stamped: ${metadata.last_audit_date}`);
+    console.log(`Audit rule version: ${metadata.last_audit_rule_version}`);
+    console.log(`Source revision: ${metadata.last_audit_source_revision}`);
+  } finally {
+    releaseDbLock();
   }
-
-  const metadata = buildAuditMetadata();
-  const statement = db.prepare(
-    'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)'
-  );
-
-  for (const [key, value] of Object.entries(metadata)) {
-    statement.run([key, value]);
-  }
-  statement.free();
-
-  const bytes = db.export();
-  db.close();
-  fs.writeFileSync(DB_PATH, new Uint8Array(bytes));
-
-  console.log(`Audit metadata stamped: ${metadata.last_audit_date}`);
-  console.log(`Audit rule version: ${metadata.last_audit_rule_version}`);
-  console.log(`Source revision: ${metadata.last_audit_source_revision}`);
 }
 
 const isDirectRun =

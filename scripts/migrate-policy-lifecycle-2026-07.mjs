@@ -13,6 +13,11 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import {
+  acquireDbLock,
+  atomicWriteDb,
+  releaseDbLock,
+} from './lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -438,14 +443,19 @@ async function main() {
     throw new Error(`Database not found: ${DB_PATH}`);
   }
 
-  const SQL = await initSqlJs();
-  const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
-  const summary = applyPolicyLifecycleMigration(db);
-  const output = db.export();
-  db.close();
-  fs.writeFileSync(DB_PATH, new Uint8Array(output));
+  acquireDbLock();
+  try {
+    const SQL = await initSqlJs();
+    const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
+    const summary = applyPolicyLifecycleMigration(db);
+    const output = db.export();
+    db.close();
+    atomicWriteDb(DB_PATH, output);
 
-  console.log(JSON.stringify(summary, null, 2));
+    console.log(JSON.stringify(summary, null, 2));
+  } finally {
+    releaseDbLock();
+  }
 }
 
 const isDirectRun =
