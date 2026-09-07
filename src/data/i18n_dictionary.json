@@ -176,6 +176,7 @@
     "Use": "工业利用",
     "Use and storage": "利用与封存"
   },
+  "sourceAliases": {},
   "ui": {
     "categories": {
       "Economic Incentive": {
@@ -263,6 +264,58 @@
       "Upcoming": {
         "zh": "即将实施",
         "en": "Upcoming"
+      }
+    },
+    "dimensions": {
+      "incentive": {
+        "label": {
+          "zh": "经济激励",
+          "en": "Economic"
+        },
+        "desc": {
+          "zh": "财政补贴、税收抵免及直接资金支持力度。",
+          "en": "Direct funding, tax credits, and subsidies."
+        }
+      },
+      "market": {
+        "label": {
+          "zh": "市场机制",
+          "en": "Market"
+        },
+        "desc": {
+          "zh": "碳交易、信用补偿及商业模式的成熟度。",
+          "en": "Carbon trading and commercial maturity."
+        }
+      },
+      "mrv": {
+        "label": {
+          "zh": "技术规范",
+          "en": "Technical"
+        },
+        "desc": {
+          "zh": "监测、报告与核证 (MRV) 的技术严谨性。",
+          "en": "Monitoring, Reporting and Verification rigor."
+        }
+      },
+      "statutory": {
+        "label": {
+          "zh": "法律监管",
+          "en": "Statutory"
+        },
+        "desc": {
+          "zh": "法律授权、准入许可及监管框架的完备性。",
+          "en": "Legal authority and permitting rigor."
+        }
+      },
+      "strategic": {
+        "label": {
+          "zh": "战略引导",
+          "en": "Strategic"
+        },
+        "desc": {
+          "zh": "国家长期目标、路线图及政策稳定性。",
+          "en": "Long-term goals and roadmaps."
+        }
       }
     }
   }

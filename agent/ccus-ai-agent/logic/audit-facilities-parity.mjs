@@ -95,14 +95,6 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
-function toSlugSetFromDir(dirPath) {
-  if (!fs.existsSync(dirPath)) return [];
-  return fs
-    .readdirSync(dirPath)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => f.replace(/\.md$/i, ''));
-}
-
 function loadFacilityMarkdown(lang) {
   const dir = path.join(FACILITY_MD_DIR, lang);
   const map = new Map();

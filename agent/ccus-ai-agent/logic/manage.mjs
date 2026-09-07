@@ -22,7 +22,6 @@ const THRESHOLDS_PATH = path.join(
   __dirname,
   '../governance/audit_thresholds.json'
 );
-const GOVERNANCE_ROOT = path.join(__dirname, '../governance');
 const FACILITY_COORD_REPORT_JSON = path.join(
   REPORTS_DIR,
   'facility_coordinate_governance_report.json'
@@ -141,12 +140,6 @@ async function main() {
       case 'db:standardize':
         await dbStandardize(SQL);
         break;
-      case 'db:standardize:region-zh':
-        await dbStandardizeRegionZh(SQL);
-        break;
-      case 'db:standardize:policy-source':
-        await dbStandardizePolicySource(SQL);
-        break;
       case 'db:geocode:facilities':
         await dbGeocodeFacilities(SQL);
         break;
@@ -165,17 +158,11 @@ async function main() {
       case 'db:audit:deep':
         await dbAuditDeep(SQL);
         break;
-      case 'db:dict:lint':
-        await dbDictLint(SQL);
-        break;
       case 'db:export:i18n':
         await dbExportI18n(SQL);
         break;
       case 'db:export:md':
         await dbExportMd(SQL);
-        break;
-      case 'db:export:schema-enums':
-        await dbExportSchemaEnums(SQL);
         break;
       case 'db:compute:maturity':
         await dbComputeMaturity(SQL);
@@ -202,9 +189,6 @@ async function main() {
       }
       case 'db:pipeline':
         await dbPipeline(SQL, args.slice(1));
-        break;
-      case 'db:clean':
-        await dbClean();
         break;
       default:
         console.log('Unknown command.');
@@ -264,22 +248,22 @@ async function dbImportI18n(SQL) {
         'INSERT OR REPLACE INTO ui_status (key, zh, en) VALUES (?, ?, ?)',
         [k, v.zh, v.en]
       );
-    for (const [k, v] of Object.entries(dict.ui.dimensions)) {
-      db.run(
-        'INSERT OR REPLACE INTO ui_dimension (key, label_zh, label_en, desc_zh, desc_en) VALUES (?, ?, ?, ?, ?)',
-        [k, v.label.zh, v.label.en, v.desc.zh, v.desc.en]
-      );
+    if (dict.ui.dimensions) {
+      for (const [k, v] of Object.entries(dict.ui.dimensions)) {
+        db.run(
+          'INSERT OR REPLACE INTO ui_dimension (key, label_zh, label_en, desc_zh, desc_en) VALUES (?, ?, ?, ?, ?)',
+          [k, v.label.zh, v.label.en, v.desc.zh, v.desc.en]
+        );
+      }
     }
+    for (const [alias, canon] of Object.entries(dict.sourceAliases || {}))
+      db.run(
+        'INSERT OR REPLACE INTO dict_source_alias (alias, canonical) VALUES (?, ?)',
+        [alias, canon]
+      );
   });
   db.save();
   console.log('IMPORT I18N DONE.');
-}
-
-async function dbImportLegacy(SQL) {
-  void SQL;
-  throw new Error(
-    'dbImportLegacy() has been retired. Legacy JSON import logic was removed; use SQLite-native ingest and export flows.'
-  );
 }
 
 async function dbImportIeaLinks(SQL, args = []) {
@@ -354,13 +338,6 @@ async function dbStandardize(SQL) {
   });
   db.save();
   console.log('STANDARDIZE DONE.');
-}
-
-async function dbStandardizeRegionZh(SQL) {
-  console.log('STANDARDIZE REGION DONE.');
-}
-async function dbStandardizePolicySource(SQL) {
-  console.log('STANDARDIZE SOURCE DONE.');
 }
 
 function coordinatesEqual(a, b, epsilon = 1e-9) {
@@ -956,10 +933,6 @@ async function dbImportMdReverse(SQL, argv = []) {
     fs.readdirSync(dir).forEach((file) => {
       if (!file.endsWith('.md')) return;
       const filePath = path.join(dir, file);
-      if (file === '873.md')
-        console.log(
-          `IMPORTING: ${filePath} as lang=${dir.endsWith('zh') ? 'zh' : 'en'}`
-        );
       const { data, content } = matter(fs.readFileSync(filePath, 'utf8'));
       const lang = dir.endsWith('zh') ? 'zh' : 'en';
 
@@ -1065,8 +1038,6 @@ async function dbImportMdReverse(SQL, argv = []) {
             data.phase,
           ]
         );
-        if (fileId === '873')
-          console.log(`SUCCESSFULLY STORED 873 in DB for lang=${lang}`);
 
         if (data.partners) {
           db.run(
@@ -1119,12 +1090,11 @@ async function dbImportMdReverse(SQL, argv = []) {
     )
   );
 
-  const data = db.db.export();
-  fs.writeFileSync(DB_PATH, new Uint8Array(data));
+  db.save();
   console.log('REVERSE IMPORT DONE AND DB WRITTEN TO DISK.');
 }
 
-async function dbStats(SQL, args = []) {
+async function dbStats(SQL) {
   const db = loadDb(SQL);
   const pCount = db.get('SELECT COUNT(*) as c FROM policies').c;
   const fCount = db.get('SELECT COUNT(*) as c FROM facilities').c;
@@ -1196,9 +1166,7 @@ async function dbFixRelationships(SQL) {
   db.save();
   console.log('FIX RELATIONSHIPS DONE.');
 }
-async function dbDictLint(SQL) {
-  console.log('DICT LINT DONE.');
-}
+
 async function dbExportI18n(SQL) {
   const db = loadDb(SQL);
   console.log('EXPORTING I18N DICTIONARY...');
@@ -1209,7 +1177,8 @@ async function dbExportI18n(SQL) {
     sectors: {},
     types: {},
     fates: {},
-    ui: { categories: {}, status: {} },
+    sourceAliases: {},
+    ui: { categories: {}, status: {}, dimensions: {} },
   };
 
   db.all('SELECT alias, canonical FROM dict_country_alias').forEach(
@@ -1217,6 +1186,9 @@ async function dbExportI18n(SQL) {
   );
   db.all('SELECT en, zh FROM dict_region_alias').forEach(
     (r) => (dict.regions[r.en] = r.zh)
+  );
+  db.all('SELECT alias, canonical FROM dict_source_alias').forEach(
+    (r) => (dict.sourceAliases[r.alias] = r.canonical)
   );
 
   const domains = { sector: 'sectors', type: 'types', fate: 'fates' };
@@ -1231,18 +1203,21 @@ async function dbExportI18n(SQL) {
   db.all('SELECT key, zh, en FROM ui_status').forEach(
     (r) => (dict.ui.status[r.key] = { zh: r.zh, en: r.en })
   );
+  db.all(
+    'SELECT key, label_zh, label_en, desc_zh, desc_en FROM ui_dimension'
+  ).forEach(
+    (r) =>
+      (dict.ui.dimensions[r.key] = {
+        label: { zh: r.label_zh, en: r.label_en },
+        desc: { zh: r.desc_zh, en: r.desc_en },
+      })
+  );
 
   fs.writeFileSync(LEGACY_I18N_PATH, JSON.stringify(dict, null, 2));
   console.log('EXPORT I18N DONE.');
 }
-async function dbExportSchemaEnums(SQL) {
-  console.log('EXPORT ENUMS DONE.');
-}
-async function dbClean() {
-  console.log('CLEAN DONE.');
-}
 
-async function dbComputeMaturity(SQL) {
+async function dbComputeMaturity() {
   const { execSync } = await import('child_process');
   execSync('node agent/ccus-ai-agent/logic/maturity-algo.mjs', {
     stdio: 'inherit',
@@ -1250,7 +1225,7 @@ async function dbComputeMaturity(SQL) {
 }
 
 async function dbPipeline(SQL, argv = []) {
-  const run = async (name, fn) => {
+  const run = async (_name, fn) => {
     await fn();
   };
   if (argv.includes('--init')) await run('db:init', () => dbInit(SQL));

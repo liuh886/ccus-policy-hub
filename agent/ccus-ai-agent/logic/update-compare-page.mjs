@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 
 const PAGE_PATH = 'src/pages/compare/index.astro';
 let content = fs.readFileSync(PAGE_PATH, 'utf8');

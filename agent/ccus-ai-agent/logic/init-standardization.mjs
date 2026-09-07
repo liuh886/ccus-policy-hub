@@ -6,7 +6,6 @@ const DB_PATH = 'agent/ccus-ai-agent/db/ccus_master.sqlite';
 async function initStandard() {
   const SQL = await initSqlJs();
   const db = new SQL.Database(fs.readFileSync(DB_PATH));
-  const encoder = new TextEncoder();
 
   const countryAliases = [
     ['United States', 'United States'],

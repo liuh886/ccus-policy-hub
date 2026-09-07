@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import initSqlJs from 'sql.js';
 
 async function query() {
