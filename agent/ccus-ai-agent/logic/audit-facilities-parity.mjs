@@ -8,6 +8,10 @@ import {
   isMeaningfulCoordinatePair,
   resolveFacilityCoordinates,
 } from '../../../scripts/content-export-utils.mjs';
+import {
+  createTranslator,
+  REVIEWER_PLACEHOLDER,
+} from '../../../scripts/lib/i18n-translate.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, '..', '..', '..');
@@ -160,11 +164,13 @@ export function projectFacilityForLang({
   partners,
   links,
   relatedPolicies,
+  translate = (key) => key,
 }) {
-  // Facilities markdown currently keeps shared canonical values (e.g. country/status)
-  // in both en/zh frontmatter. Audit compares against that contract directly.
-  const displayCountry = f.country ?? '';
-  const displayStatus = f.status ?? '';
+  // zh frontmatter carries localized display values produced by the same
+  // translator as the export pipeline (see scripts/lib/i18n-translate.mjs);
+  // en frontmatter keeps canonical values.
+  const displayCountry = translate(f.country ?? '', 'country', lang) ?? '';
+  const displayStatus = translate(f.status ?? '', 'status', lang) ?? '';
   const coordinates =
     resolveFacilityCoordinates({
       country: f.country,
@@ -361,9 +367,10 @@ function buildFacilitiesDbRepairList({
     const enFm = mdEnRec.frontmatter ?? {};
     const zhFm = mdZhRec.frontmatter ?? {};
 
+    // country/status are localized per language (see projectFacilityForLang
+    // and the export pipeline's translator) and are compared per-lang below;
+    // only truly shared raw values go through the shared-field check.
     const sharedFieldMap = [
-      ['country', 'country'],
-      ['status', 'status'],
       ['announcedCapacityRaw', 'announced_capacity_raw'],
       ['investmentScale', 'investment_scale'],
     ];
@@ -575,6 +582,14 @@ async function runAudit() {
     const { map: mdEn, duplicateIds: mdEnDup } = loadFacilityMarkdown('en');
     const { map: mdZh, duplicateIds: mdZhDup } = loadFacilityMarkdown('zh');
 
+    const dict = JSON.parse(
+      fs.readFileSync(
+        path.join(REPO_ROOT, 'src', 'data', 'i18n_dictionary.json'),
+        'utf8'
+      )
+    );
+    const translate = createTranslator(dict);
+
     const facilityMap = buildMaps(facilities, (r) => String(r.id));
     const facilityI18nMap = buildMaps(
       facilityI18n,
@@ -728,6 +743,7 @@ async function runAudit() {
           partners,
           links,
           relatedPolicies: relatedPoliciesRaw,
+          translate,
         });
 
         const mdFm = mdRec.frontmatter ?? {};
@@ -870,7 +886,8 @@ async function runAudit() {
           lang,
           field: 'provenance.reviewer',
           expected: projected.frontmatter.provenance.reviewer,
-          actual: mdProv.reviewer,
+          actual:
+            mdProv.reviewer === REVIEWER_PLACEHOLDER ? '' : mdProv.reviewer,
         });
         compareScalarField({
           mismatches: errors,
