@@ -1,5 +1,6 @@
 ---
 import datasetVersions from '../data/dataset_versions.json';
+import { makePair } from '../i18n/ui';
 
 interface Props {
   lang?: 'zh' | 'en';
@@ -8,7 +9,7 @@ interface Props {
 
 const { lang = 'zh', compact = false } = Astro.props;
 
-const t = (zh: string, en: string) => (lang === 'zh' ? zh : en);
+const t = makePair(lang);
 ---
 
 <div

@@ -1,35 +1,10 @@
 ---
-import { governanceComparisonCopy } from '../lib/governanceComparisonCopy.mjs';
+import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
 import '../styles/governance-workspace.css';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
 const copy = governanceComparisonCopy[lang];
-const ui =
-  lang === 'zh'
-    ? {
-        profileView: '画像视图',
-        radar: '雷达图',
-        heatmap: '热力矩阵',
-        profileTab: '治理画像',
-        deploymentTab: '治理—部署',
-        evidenceTitle: '评分证据',
-        evidenceEmpty:
-          '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
-        insightsTitle: '对比洞察',
-        insightsSubtitle: '优势、短板与治理—部署位置',
-      }
-    : {
-        profileView: 'Profile view',
-        radar: 'Radar',
-        heatmap: 'Heatmap',
-        profileTab: 'Governance profile',
-        deploymentTab: 'Governance–deployment',
-        evidenceTitle: 'Scoring evidence',
-        evidenceEmpty:
-          'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
-        insightsTitle: 'Comparison insights',
-        insightsSubtitle: 'Strengths, gaps and governance–deployment position',
-      };
+const ui = copy.panels;
 ---
 
 <section class="governance-analytics" data-governance-analytics>

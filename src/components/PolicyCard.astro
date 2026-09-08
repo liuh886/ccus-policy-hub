@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
+import { t as translateUi, makePair, type UiKey } from '../i18n/ui';
 
 type PolicyEntry =
   | CollectionEntry<'policies_zh'>
@@ -33,6 +34,8 @@ const country =
 
 const implementationDetails = (policy.data as any).implementationDetails;
 const isEn = lang === 'en';
+const tu = (key: UiKey) => translateUi(lang, key);
+const tp = makePair(lang);
 const isVerified = reviewStatus === 'verified';
 const pureSlug = policy.id;
 
@@ -44,7 +47,7 @@ const href = isEn
 
 const categoryData = (i18nDict.ui.categories as any)[category];
 const displayCategory = categoryData ? categoryData[lang] : category;
-const t = (key: string) => {
+const td = (key: string) => {
   const dict = i18nDict.ui as any;
   return dict[key] || key;
 };
@@ -78,7 +81,7 @@ const activeDimensions = dimensions.filter(
             isVerified && (
               <span
                 class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
-                title={isEn ? 'Verified record' : '已核验记录'}
+                title={tu('policy.card.verified.title')}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +96,7 @@ const activeDimensions = dimensions.filter(
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {isEn ? 'Verified' : '已核验'}
+                {tu('policy.card.verified')}
               </span>
             )
           }
@@ -153,7 +156,7 @@ const activeDimensions = dimensions.filter(
                 activeDimensions.map((d) => (
                   <span
                     class="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-slate-200 bg-slate-50 px-1.5 text-[9px] font-black text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-                    title={t(`dimensions.${d.key}`)}
+                    title={td(`dimensions.${d.key}`)}
                   >
                     <span class={`mr-1 h-1.5 w-1.5 rounded-full ${d.color}`} />
                     {d.icon}
@@ -174,7 +177,7 @@ const activeDimensions = dimensions.filter(
             implementationDetails?.fundingScale && (
               <div class="max-w-[42%] text-right">
                 <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
-                  {isEn ? 'Funding scale' : '资金规模'}
+                  {tu('policy.card.funding')}
                 </div>
                 <div class="mt-1 truncate text-[11px] font-semibold text-teal-700 dark:text-teal-300">
                   {implementationDetails.fundingScale}
@@ -193,7 +196,7 @@ const activeDimensions = dimensions.filter(
         type="checkbox"
         class="peer sr-only compare-checkbox"
         data-id={policy.id}
-        aria-label={isEn ? `Compare ${title}` : `对比 ${title}`}
+        aria-label={tp('对比 ', 'Compare ') + title}
       />
       <span
         class="flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border-2 border-slate-200 bg-white shadow-sm transition-all peer-checked:border-teal-700 peer-checked:bg-teal-700 dark:border-slate-700 dark:bg-slate-800"

@@ -44,45 +44,7 @@ const escapeHtml = (value) =>
       })[character] || character
   );
 
-const copy = {
-  zh: {
-    governance: '治理能力',
-    deployment: '已承诺项目记录规模',
-    activePolicies: '现行政策',
-    strongest: '优势维度',
-    weakest: '主要短板',
-    balanced: '治理结构',
-    balancedGood: '较均衡',
-    balancedUneven: '差异较大',
-    scoreEvidence: '评分依据',
-    sourcePolicy: '贡献政策',
-    evidenceMissing: '该记录暂未提供结构化评分依据。',
-    citation: '证据来源',
-    openPolicy: '查看政策记录',
-    evidencePrompt:
-      '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
-    policyPath: `${import.meta.env?.BASE_URL ?? ''}/policy/`,
-  },
-  en: {
-    governance: 'Governance capability',
-    deployment: 'Committed project-record scale',
-    activePolicies: 'Active policies',
-    strongest: 'Leading dimension',
-    weakest: 'Main gap',
-    balanced: 'Profile balance',
-    balancedGood: 'Relatively balanced',
-    balancedUneven: 'Uneven',
-    scoreEvidence: 'Scoring evidence',
-    sourcePolicy: 'Contributing policy',
-    evidenceMissing:
-      'No structured scoring evidence is available for this record.',
-    citation: 'Evidence source',
-    openPolicy: 'Open policy record',
-    evidencePrompt:
-      'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
-    policyPath: `${import.meta.env?.BASE_URL ?? ''}/en/policy/`,
-  },
-};
+import { governanceVisualsCopy as copy } from './governanceCopy.mjs';
 
 const countryKey = (country) =>
   String(country.canonicalCountry || country.country);

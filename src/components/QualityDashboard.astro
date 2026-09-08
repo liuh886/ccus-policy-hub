@@ -1,5 +1,6 @@
 ---
 import { SITE_BASE } from '../lib/siteBase';
+import { makePair } from '../i18n/ui';
 import Layout from '../layouts/Layout.astro';
 import DatasetVersion from './DatasetVersion.astro';
 import metrics from '../data/quality_metrics.generated.json';
@@ -10,7 +11,7 @@ interface Props {
 
 const { lang = 'zh' } = Astro.props;
 const isEn = lang === 'en';
-const t = (zh: string, en: string) => (isEn ? en : zh);
+const t = makePair(lang);
 const homeHref = isEn ? SITE_BASE + '/en/' : SITE_BASE + '/';
 
 const totalPolicies = metrics.counts.policies;

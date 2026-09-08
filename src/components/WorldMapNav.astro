@@ -1,13 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
-import { ui, defaultLang } from '../i18n/ui';
+import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
 import { SITE_BASE } from '../lib/siteBase';
 import i18nDict from '../data/i18n_dictionary.json';
 
 const lang = Astro.props.lang || defaultLang;
 const isEn = lang === 'en';
-const t = (key: keyof (typeof ui)['zh']) =>
-  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const t = (key: UiKey) => translateUi(lang, key);
 
 const BASE = SITE_BASE;
 

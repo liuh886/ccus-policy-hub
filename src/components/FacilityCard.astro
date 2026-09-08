@@ -21,6 +21,10 @@ const {
 
 const isEn = facility.data.lang === 'en';
 import { SITE_BASE } from '../lib/siteBase';
+import { t as translateUi, makePair, type UiKey } from '../i18n/ui';
+const lang = isEn ? 'en' : 'zh';
+const t = (key: UiKey) => translateUi(lang, key);
+const tp = makePair(lang);
 const BASE = SITE_BASE;
 const detailHref = `${BASE}/${isEn ? 'en/facilities' : 'facilities'}/${facility.id}/`;
 
@@ -65,7 +69,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
         precision === 'approximate' && (
           <span
             class="shrink-0 text-amber-600 dark:text-amber-400"
-            title={isEn ? 'Approximate location' : '区域近似坐标'}
+            title={t('facility.card.location')}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +120,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
         <div
           class="mb-1 flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
         >
-          {isEn ? 'Capacity' : '年捕集规模'}
+          {t('facility.card.capacity')}
           {
             isAnnounced && (
               <span
@@ -138,7 +142,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
         <div
           class="mb-1 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
         >
-          {isEn ? 'Type' : '设施类型'}
+          {t('facility.card.type')}
         </div>
         <div
           class="truncate text-xs font-semibold text-teal-700 dark:text-teal-300"
@@ -153,7 +157,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
         <div
           class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400"
         >
-          {isEn ? 'Industry' : '所属行业'}
+          {t('facility.card.industry')}
         </div>
         <div
           class="mt-1 truncate text-xs font-semibold text-slate-700 dark:text-slate-300"
@@ -164,7 +168,7 @@ const statusColor = statusColors[status] || 'bg-slate-400';
       <a
         href={detailHref}
         class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-500 transition-all group-hover:border-teal-700 group-hover:bg-teal-700 group-hover:text-white dark:border-slate-700 dark:bg-slate-800"
-        aria-label={isEn ? `View ${name}` : `查看 ${name}`}
+        aria-label={tp('查看 ', 'View ') + name}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

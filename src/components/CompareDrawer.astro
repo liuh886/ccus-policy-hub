@@ -1,5 +1,5 @@
 ---
-import { ui, defaultLang } from '../i18n/ui';
+import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
 
 interface Props {
   lang?: 'zh' | 'en';
@@ -9,8 +9,7 @@ const lang =
   Astro.props.lang ??
   (Astro.currentLocale as 'zh' | 'en' | undefined) ??
   defaultLang;
-const t = (key: keyof (typeof ui)['zh']) =>
-  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const t = (key: UiKey) => translateUi(lang, key);
 const isEn = lang === 'en';
 import { SITE_BASE } from '../lib/siteBase';
 const BASE = SITE_BASE;
@@ -43,7 +42,7 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
           >Benchmarking</span
         >
         <span class="text-sm font-bold text-white leading-none"
-          >{isEn ? 'policies selected' : '项政策已选'}</span
+          >{t('compare.selected')}</span
         >
       </div>
     </div>
@@ -54,7 +53,7 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
       <button
         id="clear-compare"
         class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-400 transition-colors cursor-pointer"
-        >{isEn ? 'Reset' : '重置'}</button
+        >{t('compare.reset')}</button
       >
       <a
         href={compareHref}
@@ -67,6 +66,8 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
 </div>
 
 <script>
+  import { t as translateUi } from '../i18n/ui';
+
   const STORAGE_KEY = 'compare-list';
   const LEGACY_KEY = 'compare-policies';
 
@@ -124,12 +125,7 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
       if (target.checked) {
         if (!list.includes(id)) {
           if (list.length >= 5) {
-            const isEn = document.documentElement.lang === 'en';
-            alert(
-              isEn
-                ? 'You can compare up to 5 policies.'
-                : '最多只能同时对比 5 项政策'
-            );
+            alert(translateUi(document.documentElement.lang, 'compare.limit'));
             target.checked = false;
             return;
           }

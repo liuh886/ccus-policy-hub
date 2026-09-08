@@ -1,11 +1,10 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
 import LanguagePicker from './LanguagePicker.astro';
-import { ui, defaultLang } from '../i18n/ui';
+import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
 
 const lang = Astro.currentLocale || defaultLang;
-const t = (key: keyof (typeof ui)['zh']) =>
-  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+const t = (key: UiKey) => translateUi(lang, key);
 
 import { SITE_BASE } from '../lib/siteBase';
 const BASE = SITE_BASE;
