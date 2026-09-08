@@ -14,6 +14,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryScalar, queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -28,27 +29,10 @@ const OUTPUT_PATH = path.join(
 /**
  * Helper: run a query that returns a single scalar value
  */
-function queryScalar(db, sql) {
-  const result = db.exec(sql);
-  if (result.length === 0 || result[0].values.length === 0) return 0;
-  return result[0].values[0][0];
-}
 
 /**
  * Helper: run a query that returns rows as objects
  */
-function queryRows(db, sql) {
-  const result = db.exec(sql);
-  if (result.length === 0) return [];
-  const columns = result[0].columns;
-  return result[0].values.map((row) => {
-    const obj = {};
-    columns.forEach((col, i) => {
-      obj[col] = row[i];
-    });
-    return obj;
-  });
-}
 
 async function generateMetrics() {
   if (!fs.existsSync(DB_PATH)) {

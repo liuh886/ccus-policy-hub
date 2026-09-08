@@ -14,29 +14,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 import initSqlJs from 'sql.js';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 const FACILITY_ROOT = path.join(ROOT, 'src/content/facilities');
 const PUBLIC_FACILITIES_PATH = path.join(ROOT, 'public/data/facilities.json');
-
-function queryRows(db, sql, params = []) {
-  const statement = db.prepare(sql);
-  statement.bind(params);
-  const columns = statement.getColumnNames();
-  const rows = [];
-  while (statement.step()) {
-    const values = statement.get();
-    const row = {};
-    columns.forEach((column, index) => {
-      row[column] = values[index];
-    });
-    rows.push(row);
-  }
-  statement.free();
-  return rows;
-}
 
 export function normalizeIds(values = []) {
   return [...new Set((values || []).map((value) => String(value)))].sort();

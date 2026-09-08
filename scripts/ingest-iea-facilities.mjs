@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
 import { acquireDbLock, atomicWriteDb } from './lib/db-write.mjs';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -391,25 +392,8 @@ function buildChineseDescription(record) {
   return lines.join('\n');
 }
 
-function rowsFromQuery(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  const columns = stmt.getColumnNames();
-  while (stmt.step()) {
-    const values = stmt.get();
-    const row = {};
-    for (let i = 0; i < columns.length; i += 1) {
-      row[columns[i]] = values[i];
-    }
-    rows.push(row);
-  }
-  stmt.free();
-  return rows;
-}
-
 function tableHasColumn(db, tableName, columnName) {
-  const rows = rowsFromQuery(db, `PRAGMA table_info(${tableName})`);
+  const rows = queryRows(db, `PRAGMA table_info(${tableName})`);
   return rows.some((row) => row.name === columnName);
 }
 
@@ -450,12 +434,12 @@ async function run() {
     const hasMrvJson = tableHasColumn(db, 'facilities', 'mrv_json');
 
     const existingFacilities = new Map(
-      rowsFromQuery(db, 'SELECT * FROM facilities').map((row) => [
+      queryRows(db, 'SELECT * FROM facilities').map((row) => [
         String(row.id),
         row,
       ])
     );
-    const existingI18n = rowsFromQuery(db, 'SELECT * FROM facility_i18n');
+    const existingI18n = queryRows(db, 'SELECT * FROM facility_i18n');
     const existingEn = new Map(
       existingI18n
         .filter((row) => row.lang === 'en')

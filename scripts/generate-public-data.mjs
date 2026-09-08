@@ -14,6 +14,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryScalar, queryRows, parseJsonSafe } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -34,55 +35,14 @@ const DATASET_VERSIONS_PATH = path.join(
 /**
  * Helper: run a query that returns a single scalar value
  */
-function queryScalar(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  if (params.length > 0) {
-    stmt.bind(params);
-  }
-  let result = 0;
-  if (stmt.step()) {
-    result = stmt.get()[0];
-  }
-  stmt.free();
-  return result;
-}
 
 /**
  * Helper: run a query that returns rows as objects
  */
-function queryRows(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  if (params.length > 0) {
-    stmt.bind(params);
-  }
-  const rows = [];
-  let columnNames = null;
-  while (stmt.step()) {
-    if (!columnNames) {
-      columnNames = stmt.getColumnNames();
-    }
-    const values = stmt.get();
-    const row = {};
-    columnNames.forEach((col, i) => {
-      row[col] = values[i];
-    });
-    rows.push(row);
-  }
-  stmt.free();
-  return rows;
-}
 
 /**
  * Helper: parse JSON field safely
  */
-function parseJsonSafe(str) {
-  if (!str) return null;
-  try {
-    return JSON.parse(str);
-  } catch {
-    return str;
-  }
-}
 
 async function generatePublicData() {
   if (!fs.existsSync(DB_PATH)) {

@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryRows } from '../../../../scripts/lib/sqlite-query.mjs';
 import {
   acquireDbLock,
   atomicWriteDb,
@@ -1188,22 +1189,6 @@ function scalar(db, sql, params = []) {
   const value = statement.step() ? statement.get()[0] : null;
   statement.free();
   return value;
-}
-
-function queryRows(db, sql) {
-  const statement = db.prepare(sql);
-  const columns = statement.getColumnNames();
-  const rows = [];
-  while (statement.step()) {
-    const values = statement.get();
-    rows.push(
-      Object.fromEntries(
-        columns.map((column, index) => [column, values[index]])
-      )
-    );
-  }
-  statement.free();
-  return rows;
 }
 
 function snapshotFrozenTables(db) {

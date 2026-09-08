@@ -141,7 +141,7 @@ async function main() {
         await dbSyncCountryProfiles(SQL);
         break;
       case 'db:fix-relationships':
-        await dbFixRelationships(SQL);
+        await dbFixRelationships(SQL, args.slice(1));
         break;
       case 'db:audit:deep':
         await dbAuditDeep(SQL);
@@ -1118,20 +1118,27 @@ async function dbStats(SQL) {
   console.log('=======================================');
 }
 
-async function dbFixRelationships(SQL) {
+async function dbFixRelationships(SQL, args = []) {
   const db = loadDb(SQL);
+  const force = args.includes('--force');
   console.log(
-    'REPAIRING RELATIONSHIPS: Policy <-> Facility (Country-based)...'
+    force
+      ? 'REBUILDING RELATIONSHIPS: Policy <-> Facility (Country-based, --force)...'
+      : 'REPAIRING RELATIONSHIPS: Policy <-> Facility (add-missing only)...'
   );
 
   db.transaction(() => {
-    // 1. Clear existing links
-    db.run('DELETE FROM policy_facility_links');
+    // A full rebuild deletes every link, including any human-curated
+    // non-country links; it must be an explicit --force decision.
+    if (force) {
+      db.run('DELETE FROM policy_facility_links');
+    }
 
-    // 2. Fetch all facilities
+    // Fetch all facilities
     const facilities = db.all('SELECT id, country FROM facilities');
 
-    // 3. Link facilities to policies based on country
+    // Link facilities to policies based on country (INSERT OR IGNORE keeps
+    // existing links intact in add-missing mode).
     let linkCount = 0;
     for (const f of facilities) {
       // Find all policies in the same country

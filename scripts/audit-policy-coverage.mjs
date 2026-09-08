@@ -13,6 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -33,23 +34,6 @@ const VALID_STATUSES = new Set([
   'not_applicable',
 ]);
 const VALID_PRIORITIES = new Set(['high', 'medium', 'low']);
-
-function queryRows(db, sql, params = []) {
-  const statement = db.prepare(sql);
-  statement.bind(params);
-  const columns = statement.getColumnNames();
-  const rows = [];
-  while (statement.step()) {
-    const values = statement.get();
-    rows.push(
-      Object.fromEntries(
-        columns.map((column, index) => [column, values[index]])
-      )
-    );
-  }
-  statement.free();
-  return rows;
-}
 
 function loadPolicies(db) {
   const rows = queryRows(

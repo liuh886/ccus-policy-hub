@@ -3,27 +3,11 @@ import path from 'path';
 import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
-
-function rowsFromQuery(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  const columns = stmt.getColumnNames();
-  while (stmt.step()) {
-    const values = stmt.get();
-    const row = {};
-    for (let i = 0; i < columns.length; i += 1) {
-      row[columns[i]] = values[i];
-    }
-    rows.push(row);
-  }
-  stmt.free();
-  return rows;
-}
 
 function slugifyCountryId(id) {
   return String(id).toLowerCase().replace(/ /g, '-');
@@ -96,18 +80,12 @@ export function buildExpectedMarkdownSetsFromRows({
 
 function buildExpectedMarkdownSets(db) {
   const expected = buildExpectedMarkdownSetsFromRows({
-    policyI18nRows: rowsFromQuery(
-      db,
-      'SELECT policy_id, lang FROM policy_i18n'
-    ),
-    facilityI18nRows: rowsFromQuery(
+    policyI18nRows: queryRows(db, 'SELECT policy_id, lang FROM policy_i18n'),
+    facilityI18nRows: queryRows(
       db,
       'SELECT facility_id, lang FROM facility_i18n'
     ),
-    countryI18nRows: rowsFromQuery(
-      db,
-      'SELECT country_id, lang FROM country_i18n'
-    ),
+    countryI18nRows: queryRows(db, 'SELECT country_id, lang FROM country_i18n'),
   });
 
   return {

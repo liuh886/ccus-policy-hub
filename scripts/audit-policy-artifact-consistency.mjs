@@ -12,6 +12,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 import initSqlJs from 'sql.js';
+import { queryRows, parseJsonSafe } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -27,32 +28,6 @@ const DEFAULT_PATHS = {
 
 function cleanString(value) {
   return value === null || value === undefined ? '' : String(value).trim();
-}
-
-function queryRows(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  const columns = stmt.getColumnNames();
-  while (stmt.step()) {
-    const values = stmt.get();
-    rows.push(
-      Object.fromEntries(
-        columns.map((column, index) => [column, values[index]])
-      )
-    );
-  }
-  stmt.free();
-  return rows;
-}
-
-function parseJsonSafe(value, fallback) {
-  if (!value) return fallback;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return fallback;
-  }
 }
 
 export function deepClean(value) {

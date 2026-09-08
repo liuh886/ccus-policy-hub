@@ -13,29 +13,13 @@ import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 
 import { expectedMarkdownPolicy } from './audit-policy-artifact-consistency.mjs';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 const DICTIONARY_PATH = path.join(ROOT, 'src/data/i18n_dictionary.json');
 const POLICY_ROOT = path.join(ROOT, 'src/content/policies');
-
-function queryRows(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  const columns = stmt.getColumnNames();
-  while (stmt.step()) {
-    const values = stmt.get();
-    rows.push(
-      Object.fromEntries(
-        columns.map((column, index) => [column, values[index]])
-      )
-    );
-  }
-  stmt.free();
-  return rows;
-}
 
 function loadPolicies(db) {
   const policies = queryRows(

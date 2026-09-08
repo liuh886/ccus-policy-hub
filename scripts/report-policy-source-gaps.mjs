@@ -12,6 +12,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -22,25 +23,6 @@ const JSON_PATH = path.join(ROOT, 'docs/policy-source-url-gaps.json');
 function clean(value) {
   if (value === null || value === undefined) return '';
   return String(value).trim();
-}
-
-function rowsFromQuery(db, sql, params = []) {
-  const stmt = db.prepare(sql);
-  stmt.bind(params);
-  const rows = [];
-  const columns = stmt.getColumnNames();
-
-  while (stmt.step()) {
-    const values = stmt.get();
-    rows.push(
-      Object.fromEntries(
-        columns.map((column, index) => [column, values[index]])
-      )
-    );
-  }
-
-  stmt.free();
-  return rows;
 }
 
 export function classifyPolicySourceGap(row) {
@@ -163,7 +145,7 @@ export async function generatePolicySourceGapReport({
 
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(dbPath)));
-  const rows = rowsFromQuery(
+  const rows = queryRows(
     db,
     `SELECT
        p.id,
@@ -196,11 +178,11 @@ export async function generatePolicySourceGapReport({
   // Deterministic timestamp derived from the database itself so that the
   // generated files only change when governed data actually changes
   // (same derivation as generate-public-data.mjs).
-  const lastPolicyAudit = rowsFromQuery(
+  const lastPolicyAudit = queryRows(
     db,
     "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM policies"
   )[0]?.value;
-  const lastFacilityAudit = rowsFromQuery(
+  const lastFacilityAudit = queryRows(
     db,
     "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM facilities"
   )[0]?.value;
