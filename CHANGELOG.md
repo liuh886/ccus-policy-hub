@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.1.0 - 2026-09-08
+
+Maintenance CLI split + governance supplements. No public data or API change.
+
+### Changed
+
+- Split `agent/ccus-ai-agent/logic/manage.mjs` (1,233 lines) into `logic/db.mjs`
+  (SQLite access + `db:peek` identifier allowlist) and 7 `logic/commands/` modules
+  (import/export/standardize/geocode/seed/audit/maintenance); `manage.mjs` is now a
+  ~140-line router. Local `translate` replaced by shared `createTranslator`.
+- Reverse sync (`dbImportMdReverse`) now upserts parent rows instead of
+  delete-and-reinsert, closing a cascade wipe of bilingual child data.
+- Report-only wall-clock timestamps renamed `data_as_of` -> `run_at`
+  (`export-md-clean-sync`, IEA ingest reports); governed artifacts stay deterministic.
+- Legacy 2025 IEA workbook untracked (local copy kept, documented in
+  `agent/ccus-ai-agent/assets/README.md`).
+- README (en/zh) documents the `/api/policies.json` + `/api/policies.csv` endpoints.
+- Note: `tsconfig.json` still excludes `scripts/`; verified harmless because the only
+  8 `.ts` files in the repo live under `src/` and are covered by `include: ["**/*"]`
+  (checked via `astro check`, 146 files clean).
+
+### Validation
+
+- `pnpm test` 118/118 (10 new: export/import-reverse/audit heart paths + peek allowlist)
+- `astro check` 0/0/0, `eslint` clean, `pnpm build` green
+- `manage:db:audit:deep` PASS (97.0% fill rate), `policy-consistency` 0 mismatches,
+  post-audit `git diff --exit-code` clean
+
 ## v1.0.0 - 2026-07-02
 
 First stable release of **CCUS Policy Hub**.
