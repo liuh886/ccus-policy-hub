@@ -245,10 +245,10 @@ const mapDataJson = JSON.stringify(mapData);
       mapData = JSON.parse(rawPayload);
     } catch (parseError) {
       console.warn(
-        'Facility map payload is not valid JSON; rendering an empty map.',
+        'Facility map payload is not valid JSON; rendering an error state.',
         parseError
       );
-      return { mapFacilities: [], isEn: false };
+      return { mapFacilities: [], isEn: false, payloadError: true };
     }
 
     return {
@@ -284,7 +284,33 @@ const mapDataJson = JSON.stringify(mapData);
       mapNode.innerHTML = '';
     }
 
-    const { mapFacilities, isEn } = getMapPayload();
+    const { mapFacilities, isEn, payloadError } = getMapPayload();
+
+    if (payloadError) {
+      mapShell.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 text-center p-8">
+          <div class="text-2xl" aria-hidden="true">⚠️</div>
+          <p class="font-bold text-slate-900 dark:text-white">
+            ${isEn ? 'Map data failed to load' : '地图数据加载失败'}
+          </p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            ${
+              isEn
+                ? 'The embedded map payload could not be read. Please refresh the page, or report the issue if it persists.'
+                : '页面内嵌的地图数据无法解析。请刷新页面重试；若仍然失败，欢迎反馈。'
+            }
+          </p>
+          <a
+            href="${import.meta.env.BASE_URL}/${
+              isEn ? 'en/facilities' : 'facilities'
+            }/"
+            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
+          >
+            ${isEn ? 'Browse the facility list instead' : '改为浏览设施列表'}
+          </a>
+        </div>`;
+      return;
+    }
 
     try {
       const leafletModule = await import('leaflet');
@@ -476,6 +502,21 @@ const mapDataJson = JSON.stringify(mapData);
     } catch (error) {
       console.error('Map Init Error:', error);
       mapNode.dataset.mapReady = '';
+      mapShell.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 text-center p-8">
+          <div class="text-2xl" aria-hidden="true">⚠️</div>
+          <p class="font-bold text-slate-900 dark:text-white">
+            ${isEn ? 'Map failed to load' : '地图加载失败'}
+          </p>
+          <a
+            href="${import.meta.env.BASE_URL}/${
+              isEn ? 'en/facilities' : 'facilities'
+            }/"
+            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
+          >
+            ${isEn ? 'Browse the facility list instead' : '改为浏览设施列表'}
+          </a>
+        </div>`;
     } finally {
       const loader = document.getElementById('map-loader');
       if (loader) {

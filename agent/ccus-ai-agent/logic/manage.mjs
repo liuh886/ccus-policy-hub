@@ -11,7 +11,6 @@ import {
 import {
   acquireDbLock,
   atomicWriteDb,
-  releaseDbLock,
 } from '../../../scripts/lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

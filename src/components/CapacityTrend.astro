@@ -349,17 +349,16 @@ const metricClose = lang === 'zh' ? '）' : ')';
 </div>
 
 <script>
+  // @ts-nocheck
   // Bundled from npm (versioned in package.json) instead of an unversioned CDN
-  // tag. Assigned on window before the `load` event, so the inline init script
-  // below sees it both on first load and after astro:page-load navigation.
+  // tag. Chart stays in module scope — no window globals; View Transitions
+  // navigation re-runs init via the astro:page-load listener registered below.
+  // DOM-heavy legacy code; typed checking tracked separately.
   import Chart from 'chart.js/auto';
-  (window as { Chart?: unknown }).Chart = Chart;
-</script>
-<script is:inline>
+
   function initCapacityChart() {
     const canvas = document.getElementById('capacityChart');
-    const ChartCtor = window.Chart;
-    if (!canvas || typeof ChartCtor === 'undefined') return;
+    if (!canvas) return;
 
     const root = canvas.closest('[data-capacity-trend]') || document;
     const minSlider = root.querySelector('#minYearSlider');
@@ -371,8 +370,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
     const totalValue = root.querySelector('[data-capacity-total]');
     const totalYear = root.querySelector('[data-capacity-total-year]');
     const typeCheckboxes = Array.from(root.querySelectorAll('[data-capacity-type]'));
-    const existingChart = ChartCtor.getChart(canvas);
-    if (existingChart) existingChart.destroy();
+    Chart.getChart(canvas)?.destroy();
 
     try {
       const allSeries = JSON.parse(canvas.dataset.values || '[]');
@@ -432,7 +430,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         if (subtitleMaxYear) subtitleMaxYear.textContent = activeYear;
       };
 
-      const chart = new ChartCtor(canvas, {
+      const chart = new Chart(canvas, {
         type: 'line',
         data: {
           labels,
