@@ -12,9 +12,15 @@ import {
 import { THRESHOLDS_PATH, loadDb } from '../db.mjs';
 import { coordinatesEqual } from './geocode.mjs';
 
-export async function dbAuditDeep(SQL) {
-  const db = loadDb(SQL);
-  const thresholds = JSON.parse(fs.readFileSync(THRESHOLDS_PATH, 'utf8'));
+export async function dbAuditDeep(
+  SQL,
+  { db: injectedDb = null, thresholds: injectedThresholds = null } = {}
+) {
+  // Test seam: pass { db, thresholds } to evaluate gates against an
+  // in-memory database without touching the master file.
+  const db = injectedDb ?? loadDb(SQL);
+  const thresholds =
+    injectedThresholds ?? JSON.parse(fs.readFileSync(THRESHOLDS_PATH, 'utf8'));
   const pCount = db.get('SELECT COUNT(*) as c FROM policies').c;
   const fCount = db.get('SELECT COUNT(*) as c FROM facilities').c;
 
@@ -79,7 +85,7 @@ export async function dbAuditDeep(SQL) {
     "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)",
     [pass ? 'true' : 'false']
   );
-  db.save();
+  if (injectedDb == null) db.save();
   console.log(
     `AUDIT ${pass ? 'PASSED' : 'FAILED'} (Fill Rate: ${(regFillRate * 100).toFixed(1)}%, unresolved facility coordinates: ${unresolvedFacilityCoordinates}, country anchor drift: ${countryAnchorDrift})`
   );

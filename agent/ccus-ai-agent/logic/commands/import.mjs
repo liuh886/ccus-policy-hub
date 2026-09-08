@@ -120,13 +120,21 @@ export async function dbImportIeaLinks(SQL, args = []) {
   console.log('IMPORT IEA DONE.');
 }
 
-export async function dbImportMdReverse(SQL, argv = []) {
+export async function dbImportMdReverse(
+  SQL,
+  argv = [],
+  { db: injectedDb = null, contentRoot = null } = {}
+) {
   if (!argv.includes(REVERSE_SYNC_MIGRATION_FLAG)) {
     throw new Error(
       `Reverse sync is migration-only. Re-run with ${REVERSE_SYNC_MIGRATION_FLAG} to acknowledge DB overwrite risk.`
     );
   }
-  const db = loadDb(SQL);
+  // Test seam: pass { db, contentRoot } to run against an in-memory database
+  // and fixture markdown without touching real artifacts.
+  const db = injectedDb ?? loadDb(SQL);
+  const CONTENT_ROOT =
+    contentRoot ?? path.join(LOGIC_DIR, '../../../src/content');
   console.log('REVERSE IMPORT: Markdown -> DB...');
 
   const processDir = (dir, type) => {
@@ -279,18 +287,12 @@ export async function dbImportMdReverse(SQL, argv = []) {
   };
 
   ['en', 'zh'].forEach((l) =>
-    processDir(
-      path.join(LOGIC_DIR, '../../../src/content/policies', l),
-      'policy'
-    )
+    processDir(path.join(CONTENT_ROOT, 'policies', l), 'policy')
   );
   ['en', 'zh'].forEach((l) =>
-    processDir(
-      path.join(LOGIC_DIR, '../../../src/content/facilities', l),
-      'facility'
-    )
+    processDir(path.join(CONTENT_ROOT, 'facilities', l), 'facility')
   );
 
-  db.save();
+  if (injectedDb == null) db.save();
   console.log('REVERSE IMPORT DONE AND DB WRITTEN TO DISK.');
 }

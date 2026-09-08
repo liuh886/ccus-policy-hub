@@ -17,8 +17,18 @@ import {
 } from '../../../../scripts/lib/i18n-translate.mjs';
 import { LEGACY_I18N_PATH, LOGIC_DIR, loadDb } from '../db.mjs';
 
-export async function dbExportMd(SQL) {
-  const db = loadDb(SQL);
+export async function dbExportMd(
+  SQL,
+  {
+    db: injectedDb = null,
+    contentRoot = null,
+    dictPath = LEGACY_I18N_PATH,
+  } = {}
+) {
+  // Test seam: pass { db } to run against an in-memory database without
+  // touching the master file; { contentRoot, dictPath } redirect file IO.
+  // Production callers pass only SQL, so default behavior is unchanged.
+  const db = injectedDb ?? loadDb(SQL);
   const auditPass = db.get(
     "SELECT value FROM db_meta WHERE key = 'last_audit_pass'"
   );
@@ -44,8 +54,10 @@ export async function dbExportMd(SQL) {
   };
   const cleanStr = (s) => (s || '').replace(/\n/g, '\n').trim();
 
-  const dict = JSON.parse(fs.readFileSync(LEGACY_I18N_PATH, 'utf8'));
+  const dict = JSON.parse(fs.readFileSync(dictPath, 'utf8'));
   const translate = createTranslator(dict);
+  const CONTENT_ROOT =
+    contentRoot ?? path.join(LOGIC_DIR, '../../../src/content');
 
   db.all('SELECT * FROM policies').forEach((p) => {
     const analysis = {};
@@ -99,7 +111,7 @@ export async function dbExportMd(SQL) {
           lastAuditDate: p.provenance_last_audit_date,
         },
       });
-      const dir = path.join(LOGIC_DIR, '../../../src/content/policies', lang);
+      const dir = path.join(CONTENT_ROOT, 'policies', lang);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(
         path.join(dir, `${p.id}.md`),
@@ -190,7 +202,7 @@ export async function dbExportMd(SQL) {
             new Date().toISOString().split('T')[0],
         },
       });
-      const dir = path.join(LOGIC_DIR, '../../../src/content/facilities', lang);
+      const dir = path.join(CONTENT_ROOT, 'facilities', lang);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(
         path.join(dir, `${f.id}.md`),
@@ -241,7 +253,7 @@ export async function dbExportMd(SQL) {
             new Date().toISOString().split('T')[0],
         },
       });
-      const dir = path.join(LOGIC_DIR, '../../../src/content/countries', lang);
+      const dir = path.join(CONTENT_ROOT, 'countries', lang);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(
         path.join(dir, `${c.id.toLowerCase().replace(/ /g, '-')}.md`),
@@ -254,7 +266,7 @@ export async function dbExportMd(SQL) {
     "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_export_timestamp', ?)",
     [Date.now().toString()]
   );
-  db.save();
+  if (injectedDb == null) db.save();
   console.log('EXPORT DONE.');
 }
 
