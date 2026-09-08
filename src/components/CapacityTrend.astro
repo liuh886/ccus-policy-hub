@@ -6,6 +6,7 @@ import {
   normalizeFacilityType,
   summarizeFacilities,
 } from '../lib/capacityMetrics.mjs';
+import { SITE_BASE } from '../lib/siteBase';
 
 const lang = Astro.currentLocale || 'zh';
 const facilities = await getCollection(
@@ -84,6 +85,13 @@ const text = {
     lang === 'zh'
       ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。筛选项覆盖 capture、transport、T&S、storage、full-chain、CCU。数值为跨类型项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
       : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. The type filter covers capture, transport, T&S, storage, full-chain and CCU. Values aggregate project-record capacity across selected types and should not be interpreted as net deliverable capture or storage capacity.',
+  chartErrorTitle: lang === 'zh' ? '趋势图加载失败' : 'Trend chart failed to load',
+  chartErrorNote:
+    lang === 'zh'
+      ? '图表数据无法渲染。请刷新页面重试；若仍然失败，欢迎反馈。'
+      : 'The chart data could not be rendered. Please refresh the page; report the issue if it persists.',
+  chartErrorAction:
+    lang === 'zh' ? '改为浏览设施列表' : 'Browse the facility list instead',
 };
 
 const parseYear = (value: unknown): number | null => {
@@ -326,13 +334,17 @@ const metricClose = lang === 'zh' ? '）' : ')';
         </div>
       </aside>
 
-      <div class="relative h-[300px] w-full">
+      <div id="capacityChartShell" class="relative h-[300px] w-full">
         <canvas
           id="capacityChart"
           data-values={JSON.stringify(chartData)}
           data-type-series={JSON.stringify(typeChartData)}
           data-label-op={text.committedLabel}
           data-label-pipe={text.pipelineLabel}
+          data-error-title={text.chartErrorTitle}
+          data-error-note={text.chartErrorNote}
+          data-error-action={text.chartErrorAction}
+          data-base={SITE_BASE}
           data-default-min-year={defaultMinYear}
           data-default-max-year={defaultMaxYear}
           data-start-year={startYear}
@@ -430,6 +442,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         if (subtitleMaxYear) subtitleMaxYear.textContent = activeYear;
       };
 
+      const initialSeries = combineSelectedSeries();
       const chart = new Chart(canvas, {
         type: 'line',
         data: {
@@ -563,6 +576,27 @@ const metricClose = lang === 'zh' ? '）' : ')';
       }
     } catch (error) {
       console.error('Failed to init capacity chart:', error);
+      const shell = document.getElementById('capacityChartShell');
+      if (shell) {
+        const base = (canvas.dataset.base || '').replace(/\/$/, '');
+        const isEn = document.documentElement.lang === 'en';
+        shell.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full min-h-[280px] gap-3 text-center p-8">
+          <div class="text-2xl" aria-hidden="true">⚠️</div>
+          <p class="font-bold text-slate-900 dark:text-white">
+            ${canvas.dataset.errorTitle || (isEn ? 'Chart failed to load' : '图表加载失败')}
+          </p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            ${canvas.dataset.errorNote || ''}
+          </p>
+          <a
+            href="${base}/${isEn ? 'en/facilities' : 'facilities'}/"
+            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
+          >
+            ${canvas.dataset.errorAction || (isEn ? 'Browse facilities' : '浏览设施')}
+          </a>
+        </div>`;
+      }
     }
   }
 
