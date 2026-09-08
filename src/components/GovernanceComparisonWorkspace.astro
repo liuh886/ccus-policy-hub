@@ -2,7 +2,12 @@
 import { getCollection } from 'astro:content';
 import GovernanceAnalyticsPanels from './GovernanceAnalyticsPanels.astro';
 import countryData from '../data/countries.json';
-import { governanceComparisonCopy } from '../lib/governanceComparisonCopy.mjs';
+import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
+import {
+  toCompareFacility,
+  toComparePolicy,
+  toCompareProfile,
+} from '../lib/comparePayload.mjs';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
 const policies = await getCollection(
@@ -141,13 +146,13 @@ const text = governanceComparisonCopy[lang];
 
 <div
   id="all-facilities-data"
-  data-facilities={JSON.stringify(facilities)}
+  data-facilities={JSON.stringify(facilities.map(toCompareFacility))}
   class="hidden"
 >
 </div>
 <div
   id="all-policies-data"
-  data-policies={JSON.stringify(policies)}
+  data-policies={JSON.stringify(policies.map(toComparePolicy))}
   class="hidden"
 >
 </div>
@@ -159,7 +164,7 @@ const text = governanceComparisonCopy[lang];
 </div>
 <div
   id="countries-profiles-data"
-  data-profiles={JSON.stringify(profiles)}
+  data-profiles={JSON.stringify(profiles.map(toCompareProfile))}
   class="hidden"
 >
 </div>
