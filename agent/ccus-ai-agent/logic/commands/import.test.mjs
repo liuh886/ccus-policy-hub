@@ -175,37 +175,74 @@ test('imports policy and facility markdown into the database', async () => {
   }
 });
 
-// KNOWN DATA-LOSS ISSUE — read before touching this test.
-//
-// en is imported before zh and both branches run
-// `INSERT OR REPLACE INTO policies` on the same row. REPLACE is DELETE +
-// INSERT, and every child table carries ON DELETE CASCADE, so the zh pass
-// silently wipes the en policy_i18n row (and its policy_analysis rows).
-// The same trap applies to bilingual facility imports.
-//
-// Do NOT "fix" this test to expect both languages: fix the implementation
-// (UPSERT the parent rows instead of REPLACE) after explicit governance
-// approval — reverse sync is a governed migration tool (see SAFETY.md).
-test('documents bilingual cascade loss on parent REPLACE (known issue)', async () => {
+// Bilingual imports must preserve both languages. Parent rows use UPSERT
+// (not REPLACE) precisely so the second language pass cannot cascade-wipe
+// the first language's i18n / analysis / partner rows (all ON DELETE
+// CASCADE). Scalar shared columns still follow last-write-wins (zh last).
+test('preserves both languages on bilingual import (no cascade loss)', async () => {
   const SQL = await initSqlJs();
   const db = makeDb(SQL);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'import-test-'));
   try {
     seedContent(tmp, { bilingualPolicy: true });
+    writeMd(
+      tmp,
+      'facilities/zh/f1.md',
+      {
+        id: 'f1',
+        name: '设施',
+        country: '巴西',
+        status: '运行中',
+        coordinates: [-22.9, -43.2],
+        precision: 'exact',
+        provenance: {
+          author: 'tester',
+          reviewer: '',
+          lastAuditDate: '2026-01-01',
+        },
+      },
+      '设施正文'
+    );
     await dbImportMdReverse(SQL, [REVERSE_SYNC_MIGRATION_FLAG], {
       db,
       contentRoot: tmp,
     });
-    const langs = db
+    const policyLangs = db
       .all('SELECT lang FROM policy_i18n WHERE policy_id = ? ORDER BY lang', [
         'p1',
       ])
       .map((r) => r.lang);
-    assert.deepEqual(langs, ['zh']);
+    assert.deepEqual(policyLangs, ['en', 'zh']);
     assert.equal(
-      db.all('SELECT * FROM policy_analysis WHERE policy_id = ?', ['p1'])
-        .length,
-      0
+      db.get(
+        'SELECT score FROM policy_analysis WHERE policy_id = ? AND dimension = ?',
+        ['p1', 'incentive']
+      ).score,
+      40
+    );
+    const facilityLangs = db
+      .all(
+        'SELECT lang FROM facility_i18n WHERE facility_id = ? ORDER BY lang',
+        ['f1']
+      )
+      .map((r) => r.lang);
+    assert.deepEqual(facilityLangs, ['en', 'zh']);
+    assert.deepEqual(
+      db
+        .all('SELECT partner FROM facility_partners WHERE facility_id = ?', [
+          'f1',
+        ])
+        .map((r) => r.partner),
+      ['Partner A']
+    );
+    assert.deepEqual(
+      db
+        .all(
+          'SELECT policy_id FROM policy_facility_links WHERE facility_id = ?',
+          ['f1']
+        )
+        .map((r) => r.policy_id),
+      ['p1']
     );
   } finally {
     db.close();

@@ -147,8 +147,10 @@ export async function dbImportMdReverse(
 
       const fileId = String(data.id);
       if (type === 'policy') {
+        // UPSERT, not REPLACE: REPLACE is DELETE + INSERT and would cascade
+        // into the other language's policy_i18n / policy_analysis rows.
         db.run(
-          `INSERT OR REPLACE INTO policies (id, country, year, status, category, review_status, legal_weight, source, url, pub_date, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+          `INSERT INTO policies (id, country, year, status, category, review_status, legal_weight, source, url, pub_date, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET country=excluded.country, year=excluded.year, status=excluded.status, category=excluded.category, review_status=excluded.review_status, legal_weight=excluded.legal_weight, source=excluded.source, url=excluded.url, pub_date=excluded.pub_date, provenance_author=excluded.provenance_author, provenance_reviewer=excluded.provenance_reviewer, provenance_last_audit_date=excluded.provenance_last_audit_date`,
           [
             fileId,
             data.country,
@@ -205,8 +207,10 @@ export async function dbImportMdReverse(
             ? 'country'
             : data.precision || 'country';
 
+        // UPSERT, not REPLACE: REPLACE is DELETE + INSERT and would cascade
+        // into the other language's facility_i18n / partners / links rows.
         db.run(
-          `INSERT OR REPLACE INTO facilities (id, country, status, announced_capacity_min, announced_capacity_max, announced_capacity_raw, estimated_capacity, lat, lng, precision, investment_scale, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+          `INSERT INTO facilities (id, country, status, announced_capacity_min, announced_capacity_max, announced_capacity_raw, estimated_capacity, lat, lng, precision, investment_scale, provenance_author, provenance_reviewer, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET country=excluded.country, status=excluded.status, announced_capacity_min=excluded.announced_capacity_min, announced_capacity_max=excluded.announced_capacity_max, announced_capacity_raw=excluded.announced_capacity_raw, estimated_capacity=excluded.estimated_capacity, lat=excluded.lat, lng=excluded.lng, precision=excluded.precision, investment_scale=excluded.investment_scale, provenance_author=excluded.provenance_author, provenance_reviewer=excluded.provenance_reviewer, provenance_last_audit_date=excluded.provenance_last_audit_date`,
           [
             fileId,
             data.country,
