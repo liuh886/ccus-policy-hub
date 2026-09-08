@@ -27,7 +27,7 @@ import {
 } from './commands/maintenance.mjs';
 import { dbSeedCountries, dbSyncCountryProfiles } from './commands/seed.mjs';
 import { dbStandardize } from './commands/standardize.mjs';
-import { loadDb } from './db.mjs';
+import { assertKnownColumn, assertKnownTable, loadDb } from './db.mjs';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -102,6 +102,8 @@ async function main() {
         break;
       case 'db:peek': {
         const db = loadDb(SQL);
+        assertKnownTable(db, args[1]);
+        assertKnownColumn(db, args[1], args[2] || 'id');
         const data = db.all(
           `SELECT DISTINCT ${args[2] || 'id'} FROM ${args[1]} LIMIT 100`
         );
@@ -110,6 +112,8 @@ async function main() {
       }
       case 'db:peek:raw': {
         const db = loadDb(SQL);
+        assertKnownTable(db, args[1]);
+        assertKnownColumn(db, args[1], args[2] || 'id');
         const data = db.all(
           `SELECT * FROM ${args[1]} WHERE ${args[2] || 'id'} = ?`,
           [args[3]]

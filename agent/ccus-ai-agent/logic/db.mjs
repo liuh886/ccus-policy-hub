@@ -98,3 +98,42 @@ export function loadDb(SQL) {
   if (!fs.existsSync(DB_PATH)) throw new Error('Database file missing.');
   return new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
 }
+
+/**
+ * Diagnostics allowlist for the read-only `db:peek` commands in
+ * `logic/manage.mjs`. Table/column identifiers come from CLI argv and must
+ * never be interpolated into SQL unchecked.
+ */
+const SAFE_IDENTIFIER = /^[A-Za-z_][A-Za-z0-9_]*$/;
+
+export function knownTables(db) {
+  return new Set(
+    db
+      .all(
+        "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%'"
+      )
+      .map((row) => row.name)
+  );
+}
+
+export function assertKnownTable(db, table) {
+  if (
+    typeof table !== 'string' ||
+    !SAFE_IDENTIFIER.test(table) ||
+    !knownTables(db).has(table)
+  ) {
+    throw new Error(`Unknown table: ${table}`);
+  }
+}
+
+export function assertKnownColumn(db, table, column) {
+  assertKnownTable(db, table);
+  const columns = db.all(`PRAGMA table_info(${table})`).map((row) => row.name);
+  if (
+    typeof column !== 'string' ||
+    !SAFE_IDENTIFIER.test(column) ||
+    !columns.includes(column)
+  ) {
+    throw new Error(`Unknown column: ${table}.${column}`);
+  }
+}

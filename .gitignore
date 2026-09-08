@@ -41,6 +41,7 @@ agent/ccus-ai-agent/logic/*
 !agent/ccus-ai-agent/logic/*.mjs
 !agent/ccus-ai-agent/logic/README.md
 !agent/ccus-ai-agent/logic/commands/
+!agent/ccus-ai-agent/logic/tests/
 
 # Keep schema and the active master database; ignore locks and ambiguous snapshots.
 !agent/ccus-ai-agent/db/
