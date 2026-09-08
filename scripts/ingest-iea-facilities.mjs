@@ -876,7 +876,10 @@ async function run() {
     ensureDir(REPORT_DIR);
 
     const report = {
-      data_as_of: new Date().toISOString(),
+      // Run timestamp for this timestamp-filenamed, gitignored run report
+      // (governance/reports/): wall-clock is correct here. Named run_at to
+      // distinguish it from data_as_of (DB-derived) used by governed files.
+      run_at: new Date().toISOString(),
       excel_path: excelPath,
       sheet_name: sheetName,
       source_rows: sourceRows.length,
@@ -913,7 +916,7 @@ async function run() {
       [
         '# IEA 2026 Facilities Refresh',
         '',
-        `- Generated at: ${report.data_as_of}`,
+        `- Generated at: ${report.run_at}`,
         `- Excel: ${excelPath}`,
         `- Sheet: ${sheetName}`,
         `- Source rows: ${sourceRows.length}`,

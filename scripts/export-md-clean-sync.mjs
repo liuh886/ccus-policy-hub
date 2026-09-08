@@ -128,7 +128,10 @@ export async function runCleanExportSync() {
   );
 
   const summary = {
-    data_as_of: new Date().toISOString(),
+    // Run timestamp (console/return only, never persisted): this summary is
+    // not a governed artifact, so wall-clock is correct here. Named run_at
+    // to distinguish it from data_as_of (DB-derived) used by governed files.
+    run_at: new Date().toISOString(),
     db_path: DB_PATH,
     pruned,
     total_deleted: pruned.reduce((sum, item) => sum + item.deleted_count, 0),
