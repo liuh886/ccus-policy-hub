@@ -1,5 +1,6 @@
 ---
 import '../styles/light-editorial-capacity.css';
+import '../styles/interaction-controls.css';
 import { getCollection } from 'astro:content';
 import {
   facilityCapacity,
@@ -362,33 +363,62 @@ const metricClose = lang === 'zh' ? '）' : ')';
 </div>
 
 <script>
-  // @ts-nocheck
   // Bundled from npm (versioned in package.json) instead of an unversioned CDN
   // tag. Chart stays in module scope — no window globals; View Transitions
   // navigation re-runs init via the astro:page-load listener registered below.
-  // DOM-heavy legacy code; typed checking tracked separately.
   import Chart from 'chart.js/auto';
-  import { t as translateUi } from '../i18n/ui';
+  import { t as translateUi, type UiKey } from '../i18n/ui';
+
+  interface CapacityPoint {
+    year: number;
+    operational: number;
+    pipeline: number;
+  }
+
+  interface CapacitySeries {
+    operational: number[];
+    pipeline: number[];
+  }
 
   function initCapacityChart() {
-    const canvas = document.getElementById('capacityChart');
+    const canvas = document.getElementById(
+      'capacityChart'
+    ) as HTMLCanvasElement | null;
     if (!canvas) return;
 
     const root = canvas.closest('[data-capacity-trend]') || document;
-    const minSlider = root.querySelector('#minYearSlider');
-    const maxSlider = root.querySelector('#maxYearSlider');
-    const trackHighlight = root.querySelector('#sliderTrackHighlight');
-    const yearMinVal = root.querySelector('#yearMinVal');
-    const yearMaxVal = root.querySelector('#yearMaxVal');
-    const subtitleMaxYear = root.querySelector('[data-capacity-subtitle-max]');
-    const totalValue = root.querySelector('[data-capacity-total]');
-    const totalYear = root.querySelector('[data-capacity-total-year]');
-    const typeCheckboxes = Array.from(root.querySelectorAll('[data-capacity-type]'));
+    const minSlider = root.querySelector(
+      '#minYearSlider'
+    ) as HTMLInputElement | null;
+    const maxSlider = root.querySelector(
+      '#maxYearSlider'
+    ) as HTMLInputElement | null;
+    const trackHighlight = root.querySelector(
+      '#sliderTrackHighlight'
+    ) as HTMLElement | null;
+    const yearMinVal = root.querySelector('#yearMinVal') as HTMLElement | null;
+    const yearMaxVal = root.querySelector('#yearMaxVal') as HTMLElement | null;
+    const subtitleMaxYear = root.querySelector(
+      '[data-capacity-subtitle-max]'
+    ) as HTMLElement | null;
+    const totalValue = root.querySelector(
+      '[data-capacity-total]'
+    ) as HTMLElement | null;
+    const totalYear = root.querySelector(
+      '[data-capacity-total-year]'
+    ) as HTMLElement | null;
+    const typeCheckboxes = Array.from(
+      root.querySelectorAll('[data-capacity-type]')
+    ) as HTMLInputElement[];
     Chart.getChart(canvas)?.destroy();
 
     try {
-      const allSeries = JSON.parse(canvas.dataset.values || '[]');
-      const typeSeries = JSON.parse(canvas.dataset.typeSeries || '{}');
+      const allSeries = JSON.parse(
+        canvas.dataset.values || '[]'
+      ) as CapacityPoint[];
+      const typeSeries = JSON.parse(
+        canvas.dataset.typeSeries || '{}'
+      ) as Record<string, CapacityPoint[]>;
       if (allSeries.length === 0) return;
 
       const labels = allSeries.map((point) => point.year);
@@ -427,7 +457,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         }, zeroSeries());
       };
 
-      const yearIndex = (year) => {
+      const yearIndex = (year: number) => {
         const index = labels.findIndex((label) => Number(label) === Number(year));
         return index >= 0 ? index : labels.length - 1;
       };
@@ -435,13 +465,16 @@ const metricClose = lang === 'zh' ? '）' : ')';
       const currentMaxYear = () =>
         maxSlider ? Number.parseInt(maxSlider.value, 10) : defaultMaxYear;
 
-      const updateTotalDisplay = (series, maxYear) => {
+      const updateTotalDisplay = (
+        series: CapacitySeries,
+        maxYear?: number
+      ) => {
         const activeYear = maxYear || currentMaxYear();
         const activePipeline = series.pipeline[yearIndex(activeYear)] || 0;
 
         if (totalValue) totalValue.textContent = Number(activePipeline).toFixed(1);
         if (totalYear) totalYear.textContent = `(${activeYear}${yearSuffix})`;
-        if (subtitleMaxYear) subtitleMaxYear.textContent = activeYear;
+        if (subtitleMaxYear) subtitleMaxYear.textContent = String(activeYear);
       };
 
       const initialSeries = combineSelectedSeries();
@@ -510,7 +543,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
               ticks: {
                 font: { size: 10 },
                 color: '#94a3b8',
-                callback(value) {
+                callback(value: string | number) {
                   return Number(value).toFixed(0);
                 },
               },
@@ -527,7 +560,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         chart.update();
       };
 
-      const updateSliderUI = (event) => {
+      const updateSliderUI = (event?: Event) => {
         if (!minSlider || !maxSlider) return;
 
         let min = Number.parseInt(minSlider.value, 10);
@@ -557,8 +590,11 @@ const metricClose = lang === 'zh' ? '）' : ')';
         minSlider.style.zIndex = event?.target === minSlider ? '34' : '31';
         maxSlider.style.zIndex = event?.target === maxSlider ? '34' : '32';
 
-        chart.options.scales.x.min = min;
-        chart.options.scales.x.max = max;
+        const scales = chart.options.scales;
+        if (scales?.x) {
+          scales.x.min = min;
+          scales.x.max = max;
+        }
         updateTotalDisplay(combineSelectedSeries(), max);
         chart.update('none');
       };
@@ -582,7 +618,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
       if (shell) {
         const base = (canvas.dataset.base || '').replace(/\/$/, '');
         const isEn = document.documentElement.lang === 'en';
-        const t = (key) => translateUi(isEn ? 'en' : 'zh', key);
+        const t = (key: UiKey) => translateUi(isEn ? 'en' : 'zh', key);
         shell.innerHTML = `
         <div class="flex flex-col items-center justify-center h-full min-h-[280px] gap-3 text-center p-8">
           <div class="text-2xl" aria-hidden="true">⚠️</div>

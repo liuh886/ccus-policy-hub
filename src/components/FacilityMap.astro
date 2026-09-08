@@ -220,33 +220,57 @@ const mapDataJson = JSON.stringify(mapData);
 </style>
 
 <script>
-  // @ts-nocheck
-  import { t as translateUi } from '../i18n/ui';
+  import type * as Leaflet from 'leaflet';
+  import { t as translateUi, type UiKey } from '../i18n/ui';
 
-  const escapeHtml = (value) =>
+  interface MapFacility {
+    id: string | number;
+    name: string;
+    coordinates: [number, number] | null;
+    precision: string;
+    status: string;
+    estimatedCapacity: number | null;
+    announcedCapacityMax: number | null;
+    type: string;
+  }
+
+  interface MapPayload {
+    mapFacilities: MapFacility[];
+    isEn: boolean;
+    payloadError?: boolean;
+  }
+
+  const escapeHtml = (value: unknown) =>
     String(value ?? '').replace(
       /[&<>"']/g,
-      (char) =>
-        ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;',
-        })[char] || char
+      (char: string) =>
+        (
+          ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+          }) as Record<string, string>
+        )[char] || char
     );
 
-  function getMapPayload() {
-    const mapDataEl = document.getElementById('facility-map-data');
+  function getMapPayload(): MapPayload {
+    const mapDataEl = document.getElementById(
+      'facility-map-data'
+    ) as HTMLScriptElement | null;
     const rawPayload = mapDataEl?.textContent?.trim() || '';
 
     if (!rawPayload) {
       return { mapFacilities: [], isEn: false };
     }
 
-    let mapData;
+    let mapData: { mapFacilities?: unknown; isEn?: unknown };
     try {
-      mapData = JSON.parse(rawPayload);
+      mapData = JSON.parse(rawPayload) as {
+        mapFacilities?: unknown;
+        isEn?: unknown;
+      };
     } catch (parseError) {
       console.warn(
         'Facility map payload is not valid JSON; rendering an error state.',
@@ -257,13 +281,15 @@ const mapDataJson = JSON.stringify(mapData);
 
     return {
       mapFacilities: Array.isArray(mapData.mapFacilities)
-        ? mapData.mapFacilities
+        ? (mapData.mapFacilities as MapFacility[])
         : [],
       isEn: Boolean(mapData.isEn),
     };
   }
 
-  function hasRenderableCoordinates(coordinates) {
+  function hasRenderableCoordinates(
+    coordinates: unknown
+  ): coordinates is [number, number] {
     if (!Array.isArray(coordinates) || coordinates.length < 2) {
       return false;
     }
@@ -283,14 +309,15 @@ const mapDataJson = JSON.stringify(mapData);
     const mapNode = document.getElementById('map');
     if (!mapShell || !mapNode || mapNode.dataset.mapReady === '1') return;
 
-    if (mapNode._leaflet_id && !mapNode.dataset.mapReady) {
-      delete mapNode._leaflet_id;
+    const mapDiv = mapNode as HTMLElement & { _leaflet_id?: unknown };
+    if (mapDiv._leaflet_id && !mapNode.dataset.mapReady) {
+      delete mapDiv._leaflet_id;
       mapNode.innerHTML = '';
     }
 
     const { mapFacilities, isEn, payloadError } = getMapPayload();
     const lang = isEn ? 'en' : 'zh';
-    const t = (key) => translateUi(lang, key);
+    const t = (key: UiKey) => translateUi(lang, key);
 
     if (payloadError) {
       mapShell.innerHTML = `
@@ -317,7 +344,7 @@ const mapDataJson = JSON.stringify(mapData);
     try {
       const leafletModule = await import('leaflet');
       const L = leafletModule.default;
-      window.L = L;
+      (window as unknown as { L: typeof L }).L = L;
 
       try {
         await import('leaflet.markercluster');
@@ -349,7 +376,7 @@ const mapDataJson = JSON.stringify(mapData);
           'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
       }).addTo(map);
 
-      const markers =
+      const markers: Leaflet.MarkerClusterGroup | Leaflet.LayerGroup =
         typeof L.markerClusterGroup === 'function'
           ? L.markerClusterGroup({
               showCoverageOnHover: false,
@@ -368,16 +395,31 @@ const mapDataJson = JSON.stringify(mapData);
             })
           : L.layerGroup();
 
-      const filterState = {
+      const addMarkers = (
+        group: Leaflet.MarkerClusterGroup | Leaflet.LayerGroup,
+        items: Leaflet.Marker[]
+      ) => {
+        if ('addLayers' in group) group.addLayers(items);
+        else items.forEach((m) => group.addLayer(m));
+      };
+      const removeMarkers = (
+        group: Leaflet.MarkerClusterGroup | Leaflet.LayerGroup,
+        items: Leaflet.Marker[]
+      ) => {
+        if ('removeLayers' in group) group.removeLayers(items);
+        else items.forEach((m) => group.removeLayer(m));
+      };
+
+      const filterState: Record<string, boolean> = {
         operational: true,
         construction: true,
         planned: true,
         inactive: true,
       };
 
-      const allMarkers = [];
-      const markerBounds = [];
-      const categoryToMarkers = {
+      const allMarkers: Leaflet.Marker[] = [];
+      const markerBounds: Leaflet.LatLngTuple[] = [];
+      const categoryToMarkers: Record<string, Leaflet.Marker[]> = {
         operational: [],
         construction: [],
         planned: [],
@@ -419,7 +461,7 @@ const mapDataJson = JSON.stringify(mapData);
           precision === 'exact' ? 1.0 : precision === 'state' ? 0.7 : 0.4;
         const lat = Number(coordinates[0]);
         const lng = Number(coordinates[1]);
-        const latLng = [lat, lng];
+        const latLng: Leaflet.LatLngTuple = [lat, lng];
 
         const displayCap = estimatedCapacity || announcedCapacityMax || 0;
         const safeName = escapeHtml(name);
@@ -462,38 +504,28 @@ const mapDataJson = JSON.stringify(mapData);
         markerBounds.push(latLng);
       });
 
-      if (typeof markers.addLayers === 'function') {
-        markers.addLayers(allMarkers);
-      } else {
-        allMarkers.forEach((m) => markers.addLayer(m));
-      }
+      addMarkers(markers, allMarkers);
 
       // Filter Logic
-      document.querySelectorAll('.legend-item').forEach((button) => {
-        button.addEventListener('click', () => {
-          const category = button.dataset.filter;
-          filterState[category] = !filterState[category];
+      document
+        .querySelectorAll<HTMLElement>('.legend-item')
+        .forEach((button) => {
+          button.addEventListener('click', () => {
+            const category = button.dataset.filter || '';
+            filterState[category] = !filterState[category];
 
-          // UI Feedback
-          button.classList.toggle('disabled', !filterState[category]);
+            // UI Feedback
+            button.classList.toggle('disabled', !filterState[category]);
 
-          // Marker Update
-          const targetMarkers = categoryToMarkers[category];
-          if (filterState[category]) {
-            if (typeof markers.addLayers === 'function') {
-              markers.addLayers(targetMarkers);
+            // Marker Update
+            const targetMarkers = categoryToMarkers[category] || [];
+            if (filterState[category]) {
+              addMarkers(markers, targetMarkers);
             } else {
-              targetMarkers.forEach((m) => markers.addLayer(m));
+              removeMarkers(markers, targetMarkers);
             }
-          } else {
-            if (typeof markers.removeLayers === 'function') {
-              markers.removeLayers(targetMarkers);
-            } else {
-              targetMarkers.forEach((m) => markers.removeLayer(m));
-            }
-          }
+          });
         });
-      });
 
       map.addLayer(markers);
       requestAnimationFrame(() => {
