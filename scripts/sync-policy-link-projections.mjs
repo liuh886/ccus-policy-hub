@@ -33,7 +33,7 @@ export function sameIds(left = [], right = []) {
 }
 
 function findArrayBounds(frontmatter, key = 'relatedPolicies') {
-  const keyPattern = new RegExp(`(?:['\"]?${key}['\"]?)\\s*:`);
+  const keyPattern = new RegExp(`(?:['"]?${key}['"]?)\\s*:`);
   const match = keyPattern.exec(frontmatter);
   if (!match) return null;
 

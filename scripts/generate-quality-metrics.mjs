@@ -176,10 +176,13 @@ async function generateMetrics() {
     metaMap[row.key] = row.value;
   }
 
+  // audit_status deliberately exposes only the stable pass flag. The audit
+  // date/summary are stamped with the wall clock (and CI revision) on every
+  // governed run, so emitting them here would make this generated file
+  // non-deterministic and break the CI projection diff gate. The authoritative
+  // audit trail lives in db_meta and the governance reports.
   metrics.audit_status = {
     last_audit_pass: metaMap['last_audit_pass'] === 'true',
-    last_audit_date: metaMap['last_audit_date'] || null,
-    last_audit_summary: metaMap['last_audit_summary'] || null,
   };
 
   db.close();

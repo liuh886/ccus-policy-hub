@@ -136,20 +136,13 @@ const links = metrics.facility_policy_links;
           )
         }
         {
-          metrics.audit_status.last_audit_date && (
+          metrics.data_as_of && (
             <span class="text-sm text-slate-500">
-              {metrics.audit_status.last_audit_date}
+              {t('数据截至', 'Data as of')} {metrics.data_as_of}
             </span>
           )
         }
       </div>
-      {
-        metrics.audit_status.last_audit_summary && (
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
-            {metrics.audit_status.last_audit_summary}
-          </p>
-        )
-      }
     </section>
 
     <!-- Quality Gaps -->
