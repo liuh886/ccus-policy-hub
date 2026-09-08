@@ -29,6 +29,12 @@ agent/ccus-ai-agent/*
 agent/ccus-ai-agent/assets/*
 !agent/ccus-ai-agent/assets/README.md
 !agent/ccus-ai-agent/assets/manifest.json
+# Only the SSOT database and schema belong in git; timestamped snapshots and
+# .bak files are git history's job, not the working tree's.
+!agent/ccus-ai-agent/db/
+agent/ccus-ai-agent/db/*
+!agent/ccus-ai-agent/db/ccus_master.sqlite
+!agent/ccus-ai-agent/db/schema.sql
 
 # Track the canonical CLI, active logic, and logic guidance.
 agent/ccus-ai-agent/logic/*

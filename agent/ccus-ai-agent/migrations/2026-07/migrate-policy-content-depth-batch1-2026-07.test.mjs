@@ -12,7 +12,7 @@ import {
 } from './migrate-policy-content-depth-batch1-2026-07.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(__dirname, '../../../..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 
 function execute(db, sql, params = []) {

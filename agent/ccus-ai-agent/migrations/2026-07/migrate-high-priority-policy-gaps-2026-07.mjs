@@ -16,10 +16,10 @@ import {
   acquireDbLock,
   atomicWriteDb,
   releaseDbLock,
-} from './lib/db-write.mjs';
+} from '../../../../scripts/lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(__dirname, '../../../..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 
 export const MIGRATION_ID = 'high-priority-policy-gaps-2026-07';

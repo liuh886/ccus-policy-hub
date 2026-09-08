@@ -190,13 +190,32 @@ export async function generatePolicySourceGapReport({
        END,
        p.country,
        p.year DESC,
-       p.id`
+        p.id`
   );
+
+  // Deterministic timestamp derived from the database itself so that the
+  // generated files only change when governed data actually changes
+  // (same derivation as generate-public-data.mjs).
+  const lastPolicyAudit = rowsFromQuery(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM policies"
+  )[0]?.value;
+  const lastFacilityAudit = rowsFromQuery(
+    db,
+    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM facilities"
+  )[0]?.value;
+  const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
+    .filter(Boolean)
+    .sort()
+    .pop();
+  const dataAsOf = lastAuditDate
+    ? `${lastAuditDate}T00:00:00.000Z`
+    : '1970-01-01T00:00:00.000Z';
   db.close();
 
   const records = rows.map(classifyPolicySourceGap);
   const payload = {
-    data_as_of: new Date().toISOString(),
+    data_as_of: dataAsOf,
     source_db_path: path.relative(ROOT, dbPath).replaceAll('\\', '/'),
     summary: summarizePolicySourceGaps(rows),
     records,

@@ -17,11 +17,6 @@
     "manage:db:import:md:migration": "node agent/ccus-ai-agent/logic/manage.mjs db:import:md:migration --allow-reverse-sync-migration",
     "manage:db:standardize": "node agent/ccus-ai-agent/logic/manage.mjs db:standardize",
     "manage:db:fix-relationships": "node agent/ccus-ai-agent/logic/manage.mjs db:fix-relationships",
-    "manage:db:migrate:policy-lifecycle": "node scripts/migrate-policy-lifecycle-2026-07.mjs",
-    "manage:db:migrate:policy-sources": "node scripts/migrate-policy-source-metadata-2026-07.mjs",
-    "manage:db:migrate:official-policy-gaps": "node scripts/migrate-official-policy-gaps-2026-07.mjs",
-    "manage:db:migrate:high-priority-policy-gaps": "node scripts/migrate-high-priority-policy-gaps-2026-07.mjs",
-    "manage:db:migrate:policy-content-depth-batch1": "node scripts/migrate-policy-content-depth-batch1-2026-07.mjs",
     "manage:db:audit:policy-sources": "node scripts/report-policy-source-gaps.mjs",
     "manage:db:audit:policy-consistency": "node scripts/run-policy-consistency-audit.mjs",
     "manage:db:audit:policy-coverage": "node scripts/audit-policy-coverage.mjs",
@@ -43,7 +38,7 @@
     "check:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "lint": "eslint . && prettier --check .",
     "lint:staged": "node scripts/lint-staged.mjs",
-    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/migrations/*/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
