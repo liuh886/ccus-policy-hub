@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
 import matter from 'gray-matter';
@@ -8,31 +7,24 @@ import {
   hasMeaningfulCoordinates,
   resolveFacilityCoordinates,
 } from '../../../scripts/content-export-utils.mjs';
+import { acquireDbLock } from '../../../scripts/lib/db-write.mjs';
 import {
-  acquireDbLock,
-  atomicWriteDb,
-} from '../../../scripts/lib/db-write.mjs';
+  DB_PATH,
+  FACILITY_COORD_REPORT_JSON,
+  FACILITY_COORD_REPORT_MD,
+  LEGACY_I18N_PATH,
+  LOGIC_DIR,
+  REPORTS_DIR,
+  SCHEMA_PATH,
+  THRESHOLDS_PATH,
+  SqlJsDatabase,
+  loadDb,
+} from './db.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
-const SCHEMA_PATH = path.join(__dirname, '../db/schema.sql');
-const LEGACY_I18N_PATH = path.join(
-  __dirname,
-  '../../../src/data/i18n_dictionary.json'
-);
-const REPORTS_DIR = path.join(__dirname, '../governance/reports');
-const THRESHOLDS_PATH = path.join(
-  __dirname,
-  '../governance/audit_thresholds.json'
-);
-const FACILITY_COORD_REPORT_JSON = path.join(
-  REPORTS_DIR,
-  'facility_coordinate_governance_report.json'
-);
-const FACILITY_COORD_REPORT_MD = path.join(
-  REPORTS_DIR,
-  'facility_coordinate_governance_report.md'
-);
+// Same directory this file has always lived in; kept so the command
+// implementations below keep working untouched until they move to
+// `logic/commands/` (C2), where each module resolves paths from LOGIC_DIR.
+const __dirname = LOGIC_DIR;
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -45,58 +37,6 @@ const EXIT_CODES = {
   FATAL: 1,
 };
 const REVERSE_SYNC_MIGRATION_FLAG = '--allow-reverse-sync-migration';
-
-class SqlJsDatabase {
-  constructor(SQL, buffer = null) {
-    this.db = new SQL.Database(buffer);
-    this.db.run('PRAGMA foreign_keys = ON;');
-    this.db.run("PRAGMA encoding = 'UTF-8';");
-  }
-  close() {
-    this.db.close();
-  }
-  exec(sql) {
-    this.db.run(sql);
-  }
-  run(sql, params = []) {
-    this.db.run(
-      sql,
-      params.map((p) => (p === undefined ? null : p))
-    );
-  }
-  all(sql, params = []) {
-    const stmt = this.db.prepare(sql);
-    stmt.bind(params.map((p) => (p === undefined ? null : p)));
-    const rows = [];
-    const columnNames = stmt.getColumnNames();
-    while (stmt.step()) {
-      const values = stmt.get();
-      const row = {};
-      for (let i = 0; i < columnNames.length; i++)
-        row[columnNames[i]] = values[i];
-      rows.push(row);
-    }
-    stmt.free();
-    return rows;
-  }
-  get(sql, params = []) {
-    const rows = this.all(sql, params);
-    return rows.length > 0 ? rows[0] : null;
-  }
-  save() {
-    atomicWriteDb(DB_PATH, this.db.export());
-  }
-  transaction(fn) {
-    this.db.run('BEGIN TRANSACTION');
-    try {
-      fn();
-      this.db.run('COMMIT');
-    } catch (e) {
-      this.db.run('ROLLBACK');
-      throw e;
-    }
-  }
-}
 
 async function main() {
   let exitCode = EXIT_CODES.SUCCESS;
@@ -190,11 +130,6 @@ async function main() {
     if (release) release();
     if (command) process.exit(exitCode);
   }
-}
-
-function loadDb(SQL) {
-  if (!fs.existsSync(DB_PATH)) throw new Error('Database file missing.');
-  return new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
 }
 
 async function dbInit(SQL) {
