@@ -3,7 +3,8 @@ import { glob } from 'astro/loaders';
 
 // NOTE: enums.generated.ts lists the target enum values, but live frontmatter
 // still contains unnormalized zh/en variants and out-of-enum values. Tighten
-// status/category to z.enum() only after a governed normalization migration.
+// status/category to z.enum() only after the normalization migration tracked
+// in https://github.com/liuh886/ccus-policy-hub/issues/69.
 
 const provenanceSchema = z.object({
   author: z.string(),
