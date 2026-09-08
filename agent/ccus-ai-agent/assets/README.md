@@ -15,3 +15,10 @@ import, never vendored into the open-source repository.
 Before running `pnpm manage:db:import:iea:facilities`, place the workbook
 here and confirm its SHA256 matches `manifest.json`. The ingestion script
 verifies the hash automatically and refuses to run on mismatch.
+
+## Legacy workbook
+
+- `IEA CCUS Projects Database 2025.xlsx` is intentionally untracked. It is
+  only the default input of the unwired legacy command
+  `db:import:iea:links` (no package.json entry); keep a local copy only if
+  you still run that path.
