@@ -1,0 +1,14 @@
+{
+  "workbook": "IEA CCUS Projects Database 2026.xlsx",
+  "source_url": "https://www.iea.org/data-and-statistics/data-tools/ccus-projects-database",
+  "version": "2026 (draft release as used for the 2026-Q2 facility refresh)",
+  "sha256": "9AFDE5C0BA8F8B3F314EBC44EED7BDAA0A54D479BE70C242369E696857272BD8",
+  "size_bytes": 618023,
+  "sheets": {
+    "data": "DRAFT CCUS Projects Database",
+    "data_row_count": 1110,
+    "reference": ["Notes", "Definitions and assumptions"]
+  },
+  "license_note": "The workbook is IEA material and is NOT redistributed in this repository. Download it from the source URL above and verify the SHA256 against this manifest before running any ingestion. IEA publishes data and tools under CC BY 4.0; confirm the current terms on the download page before redistribution of derived datasets.",
+  "retrieved_date": "2026-09-08"
+}

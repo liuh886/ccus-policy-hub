@@ -23,6 +23,12 @@ agent/ccus-ai-agent/*
 !agent/ccus-ai-agent/migrations/*.md
 !agent/ccus-ai-agent/logic/
 !agent/ccus-ai-agent/governance/
+# Third-party source workbooks stay untracked (licence); only the provenance
+# manifest and fetching instructions are tracked.
+!agent/ccus-ai-agent/assets/
+agent/ccus-ai-agent/assets/*
+!agent/ccus-ai-agent/assets/README.md
+!agent/ccus-ai-agent/assets/manifest.json
 
 # Track the canonical CLI, active logic, and logic guidance.
 agent/ccus-ai-agent/logic/*

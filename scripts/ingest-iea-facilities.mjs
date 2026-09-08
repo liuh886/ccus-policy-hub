@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
@@ -13,6 +14,10 @@ const REPORT_DIR = path.join(ROOT, 'agent/ccus-ai-agent/governance/reports');
 const DEFAULT_EXCEL_PATH = path.join(
   ROOT,
   'agent/ccus-ai-agent/assets/IEA CCUS Projects Database 2026.xlsx'
+);
+const EXCEL_MANIFEST_PATH = path.join(
+  ROOT,
+  'agent/ccus-ai-agent/assets/manifest.json'
 );
 const DEFAULT_SHEET_NAME = 'DRAFT CCUS Projects Database';
 const IMPORT_AUTHOR = 'IEA CCUS Projects Database 2026';
@@ -173,6 +178,29 @@ function resolveExcelPath() {
 
 function resolveSheetName() {
   return getArgValue('--sheet', DEFAULT_SHEET_NAME);
+}
+
+function verifyWorkbookHash(excelPath) {
+  if (!fs.existsSync(EXCEL_MANIFEST_PATH)) {
+    throw new Error(
+      `Workbook manifest not found: ${EXCEL_MANIFEST_PATH}. It records the ` +
+        `expected source URL and SHA256 of the IEA workbook.`
+    );
+  }
+  const manifest = JSON.parse(fs.readFileSync(EXCEL_MANIFEST_PATH, 'utf8'));
+  const actual = crypto
+    .createHash('sha256')
+    .update(fs.readFileSync(excelPath))
+    .digest('hex');
+  if (actual.toLowerCase() !== String(manifest.sha256 || '').toLowerCase()) {
+    throw new Error(
+      `Workbook SHA256 mismatch.\n` +
+        `  expected: ${manifest.sha256}\n` +
+        `  actual:   ${actual}\n` +
+        `Re-download the workbook from ${manifest.source_url} and update ` +
+        `manifest.json if the source has legitimately changed.`
+    );
+  }
 }
 
 function todayIso() {
@@ -414,8 +442,13 @@ async function run() {
   const sheetName = resolveSheetName();
 
   if (!fs.existsSync(excelPath)) {
-    throw new Error(`Excel file not found: ${excelPath}`);
+    throw new Error(
+      `Excel file not found: ${excelPath}. The IEA workbook is not ` +
+        `redistributed in this repository; download it from the URL recorded ` +
+        `in agent/ccus-ai-agent/assets/manifest.json and verify its SHA256.`
+    );
   }
+  verifyWorkbookHash(excelPath);
   if (!fs.existsSync(DB_PATH)) {
     throw new Error(`Database file not found: ${DB_PATH}`);
   }
