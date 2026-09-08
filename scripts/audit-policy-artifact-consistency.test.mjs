@@ -212,7 +212,7 @@ async function createFixture() {
   fs.writeFileSync(
     publicPath,
     JSON.stringify({
-      generated_at: 'ignored-by-audit',
+      data_as_of: 'ignored-by-audit',
       count: 1,
       records: [expectedPublicPolicy(policy)],
     })

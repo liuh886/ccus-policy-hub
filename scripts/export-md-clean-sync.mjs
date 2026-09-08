@@ -150,7 +150,7 @@ export async function runCleanExportSync() {
   );
 
   const summary = {
-    generated_at: new Date().toISOString(),
+    data_as_of: new Date().toISOString(),
     db_path: DB_PATH,
     pruned,
     total_deleted: pruned.reduce((sum, item) => sum + item.deleted_count, 0),

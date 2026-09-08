@@ -23,7 +23,7 @@ describe('Public Data Endpoints', () => {
     assert.ok(fs.existsSync(filePath), 'policies.json should exist');
 
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(typeof content.count === 'number', 'Should have count');
     assert.ok(Array.isArray(content.records), 'Should have records array');
     assert.strictEqual(
@@ -38,7 +38,7 @@ describe('Public Data Endpoints', () => {
     assert.ok(fs.existsSync(filePath), 'facilities.json should exist');
 
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(typeof content.count === 'number', 'Should have count');
     assert.ok(Array.isArray(content.records), 'Should have records array');
     assert.strictEqual(
@@ -53,7 +53,7 @@ describe('Public Data Endpoints', () => {
     assert.ok(fs.existsSync(filePath), 'countries.json should exist');
 
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(typeof content.count === 'number', 'Should have count');
     assert.ok(Array.isArray(content.records), 'Should have records array');
     assert.strictEqual(
@@ -68,7 +68,7 @@ describe('Public Data Endpoints', () => {
     assert.ok(fs.existsSync(filePath), 'quality.json should exist');
 
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(content.counts, 'Should have counts');
     assert.ok(content.audit_status, 'Should have audit_status');
   });
@@ -94,7 +94,7 @@ describe('Public Data Endpoints', () => {
     assert.ok(fs.existsSync(filePath), 'manifest.json should exist');
 
     const content = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(content.project, 'Should have project');
     assert.ok(content.datasets, 'Should have datasets');
     assert.ok(content.schemas, 'Should have schemas');

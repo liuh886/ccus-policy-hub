@@ -105,7 +105,7 @@ function renderTable(records) {
 }
 
 function renderMarkdown(payload) {
-  const { generated_at: generatedAt, summary, records } = payload;
+  const { data_as_of: dataAsOf, summary, records } = payload;
   const verified = records.filter(
     (record) => clean(record.review_status).toLowerCase() === 'verified'
   );
@@ -119,7 +119,7 @@ function renderMarkdown(payload) {
 
   return `# Policy source and URL gap audit
 
-Generated from the SQLite single source of truth on ${generatedAt}.
+Generated from the SQLite single source of truth on ${dataAsOf}.
 
 ## Summary
 
@@ -196,7 +196,7 @@ export async function generatePolicySourceGapReport({
 
   const records = rows.map(classifyPolicySourceGap);
   const payload = {
-    generated_at: new Date().toISOString(),
+    data_as_of: new Date().toISOString(),
     source_db_path: path.relative(ROOT, dbPath).replaceAll('\\', '/'),
     summary: summarizePolicySourceGaps(rows),
     records,

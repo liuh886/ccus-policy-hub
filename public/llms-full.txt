@@ -54,7 +54,7 @@ The current index of datasets, schemas, documentation, counts, and known limitat
 
 Important fields:
 
-- `generated_at`
+- `data_as_of`
 - `version`
 - `datasets`
 - `schemas`
@@ -163,7 +163,7 @@ Generated quality and audit information. This endpoint is authoritative for the 
 
 Key sections:
 
-- `generated_at`
+- `data_as_of`
 - `audit_status`
 - `counts`
 - `quality_gaps`

@@ -892,7 +892,7 @@ async function run() {
     ensureDir(REPORT_DIR);
 
     const report = {
-      generated_at: new Date().toISOString(),
+      data_as_of: new Date().toISOString(),
       excel_path: excelPath,
       sheet_name: sheetName,
       source_rows: sourceRows.length,
@@ -929,7 +929,7 @@ async function run() {
       [
         '# IEA 2026 Facilities Refresh',
         '',
-        `- Generated at: ${report.generated_at}`,
+        `- Generated at: ${report.data_as_of}`,
         `- Excel: ${excelPath}`,
         `- Sheet: ${sheetName}`,
         `- Source rows: ${sourceRows.length}`,

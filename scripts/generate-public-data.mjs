@@ -114,7 +114,7 @@ async function generatePublicData() {
     .filter(Boolean)
     .sort()
     .pop();
-  const generatedAt = lastAuditDate
+  const dataAsOf = lastAuditDate
     ? `${lastAuditDate}T00:00:00.000Z`
     : '1970-01-01T00:00:00.000Z';
 
@@ -178,7 +178,7 @@ async function generatePublicData() {
   fs.writeFileSync(
     path.join(PUBLIC_DATA_DIR, 'policies.json'),
     JSON.stringify(
-      { generated_at: generatedAt, count: policies.length, records: policies },
+      { data_as_of: dataAsOf, count: policies.length, records: policies },
       null,
       2
     ) + '\n'
@@ -254,7 +254,7 @@ async function generatePublicData() {
     path.join(PUBLIC_DATA_DIR, 'facilities.json'),
     JSON.stringify(
       {
-        generated_at: generatedAt,
+        data_as_of: dataAsOf,
         count: facilities.length,
         records: facilities,
       },
@@ -328,7 +328,7 @@ async function generatePublicData() {
     path.join(PUBLIC_DATA_DIR, 'countries.json'),
     JSON.stringify(
       {
-        generated_at: generatedAt,
+        data_as_of: dataAsOf,
         count: countries.length,
         records: countries,
       },
@@ -368,7 +368,7 @@ async function generatePublicData() {
   console.log('Generating manifest.json...');
   const BASE_URL = 'https://liuh886.github.io/ccus-policy-hub';
   const manifest = {
-    generated_at: generatedAt,
+    data_as_of: dataAsOf,
     project: 'CCUS Policy Hub',
     description: 'Global CCUS Policy Database & Analysis Platform',
     version: '1.0.0',

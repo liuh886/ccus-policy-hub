@@ -74,7 +74,7 @@ async function generateMetrics() {
     .pop();
 
   const metrics = {
-    generated_at: lastAuditDate
+    data_as_of: lastAuditDate
       ? `${lastAuditDate}T00:00:00.000Z`
       : '1970-01-01T00:00:00.000Z',
     source_db_path: 'agent/ccus-ai-agent/db/ccus_master.sqlite',

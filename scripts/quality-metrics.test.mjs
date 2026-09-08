@@ -40,7 +40,7 @@ describe('Quality Metrics Generation', () => {
     assert.ok(fs.existsSync(OUTPUT_PATH), 'Output file should exist');
 
     const content = JSON.parse(fs.readFileSync(OUTPUT_PATH, 'utf8'));
-    assert.ok(content.generated_at, 'Should have generated_at');
+    assert.ok(content.data_as_of, 'Should have data_as_of');
     assert.ok(content.source_db_path, 'Should have source_db_path');
     assert.ok(content.audit_status, 'Should have audit_status');
     assert.ok(content.counts, 'Should have counts');
