@@ -196,6 +196,8 @@ Static endpoints are available for AI agents, researchers, and scripts:
 | `/data/schemas/`              | JSON Schemas for validation                            |
 | `/llms.txt`                   | Concise AI-agent documentation                         |
 | `/llms-full.txt`              | Extended data and field documentation                  |
+| `/api/policies.json`          | 260 bilingual policy records with `lang` markers       |
+| `/api/policies.csv`           | 130 zh policy records as flat CSV extract              |
 
 Recommended usage:
 

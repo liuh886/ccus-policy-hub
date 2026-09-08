@@ -185,17 +185,19 @@ graph LR
 
 平台为 AI Agent、研究人员和脚本提供静态数据接口：
 
-| 接口                          | 说明                             |
-| ----------------------------- | -------------------------------- |
-| `/data/manifest.json`         | 数据集、Schema 与文档索引        |
-| `/data/policies.json`         | 130 条政策记录及分析数据         |
-| `/data/facilities.json`       | 1,110 条设施记录及能力、位置数据 |
-| `/data/countries.json`        | 66 个国家治理档案及监管支柱      |
-| `/data/quality.json`          | 数据质量指标与审计状态           |
-| `/data/dataset-versions.json` | 数据版本与最近检查时间           |
-| `/data/schemas/`              | 用于验证的 JSON Schema           |
-| `/llms.txt`                   | 面向 AI Agent 的简明文档         |
-| `/llms-full.txt`              | 完整数据与字段文档               |
+| 接口                          | 说明                                 |
+| ----------------------------- | ------------------------------------ |
+| `/data/manifest.json`         | 数据集、Schema 与文档索引            |
+| `/data/policies.json`         | 130 条政策记录及分析数据             |
+| `/data/facilities.json`       | 1,110 条设施记录及能力、位置数据     |
+| `/data/countries.json`        | 66 个国家治理档案及监管支柱          |
+| `/data/quality.json`          | 数据质量指标与审计状态               |
+| `/data/dataset-versions.json` | 数据版本与最近检查时间               |
+| `/data/schemas/`              | 用于验证的 JSON Schema               |
+| `/llms.txt`                   | 面向 AI Agent 的简明文档             |
+| `/llms-full.txt`              | 完整数据与字段文档                   |
+| `/api/policies.json`          | 260 条双语政策记录（含 `lang` 标记） |
+| `/api/policies.csv`           | 130 条中文政策记录的扁平 CSV         |
 
 推荐使用流程：
 
