@@ -7,6 +7,7 @@ import ProjectLandscape from '../components/ProjectLandscape.astro';
 import DatasetVersion from '../components/DatasetVersion.astro';
 import { getCollection } from 'astro:content';
 import '../styles/home.css';
+import '../styles/light-editorial-capacity.css';
 
 const policies = await getCollection('policies_zh');
 const policyCount = policies.length;
