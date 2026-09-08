@@ -4,11 +4,11 @@ import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import XLSX from 'xlsx';
+import { acquireDbLock, atomicWriteDb } from './lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
-const LOCK_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/.lock');
 const DICT_PATH = path.join(ROOT, 'src/data/i18n_dictionary.json');
 const REPORT_DIR = path.join(ROOT, 'agent/ccus-ai-agent/governance/reports');
 const DEFAULT_EXCEL_PATH = path.join(
@@ -209,21 +209,6 @@ function todayIso() {
 
 function timestampTag() {
   return new Date().toISOString().replace(/[:.]/g, '-');
-}
-
-function acquireLock() {
-  if (fs.existsSync(LOCK_PATH)) {
-    const stat = fs.statSync(LOCK_PATH);
-    if ((Date.now() - stat.mtimeMs) / 1000 < 300) {
-      throw new Error('Database is locked.');
-    }
-    fs.unlinkSync(LOCK_PATH);
-  }
-  fs.writeFileSync(LOCK_PATH, String(process.pid));
-}
-
-function releaseLock() {
-  if (fs.existsSync(LOCK_PATH)) fs.unlinkSync(LOCK_PATH);
 }
 
 function cleanString(value) {
@@ -453,7 +438,7 @@ async function run() {
     throw new Error(`Database file not found: ${DB_PATH}`);
   }
 
-  acquireLock();
+  const releaseLock = acquireDbLock();
   try {
     const SQL = await initSqlJs();
     const buffer = fs.readFileSync(DB_PATH);
@@ -901,7 +886,7 @@ async function run() {
     }
 
     const data = db.export();
-    fs.writeFileSync(DB_PATH, new Uint8Array(data));
+    atomicWriteDb(DB_PATH, data);
     db.close();
 
     ensureDir(REPORT_DIR);

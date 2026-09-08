@@ -8,6 +8,11 @@ import {
   hasMeaningfulCoordinates,
   resolveFacilityCoordinates,
 } from '../../../scripts/content-export-utils.mjs';
+import {
+  acquireDbLock,
+  atomicWriteDb,
+  releaseDbLock,
+} from '../../../scripts/lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
@@ -17,7 +22,6 @@ const LEGACY_I18N_PATH = path.join(
   '../../../src/data/i18n_dictionary.json'
 );
 const REPORTS_DIR = path.join(__dirname, '../governance/reports');
-const LOCK_PATH = path.join(__dirname, '../db/.lock');
 const THRESHOLDS_PATH = path.join(
   __dirname,
   '../governance/audit_thresholds.json'
@@ -81,10 +85,7 @@ class SqlJsDatabase {
     return rows.length > 0 ? rows[0] : null;
   }
   save() {
-    const data = this.db.export();
-    const tmpPath = `${DB_PATH}.tmp`;
-    fs.writeFileSync(tmpPath, new Uint8Array(data));
-    fs.renameSync(tmpPath, DB_PATH);
+    atomicWriteDb(DB_PATH, this.db.export());
   }
   transaction(fn) {
     this.db.run('BEGIN TRANSACTION');
@@ -98,23 +99,11 @@ class SqlJsDatabase {
   }
 }
 
-function acquireLock() {
-  if (fs.existsSync(LOCK_PATH)) {
-    const stat = fs.statSync(LOCK_PATH);
-    if ((Date.now() - stat.mtimeMs) / 1000 < 300)
-      throw new Error('Database is locked.');
-    fs.unlinkSync(LOCK_PATH);
-  }
-  fs.writeFileSync(LOCK_PATH, process.pid.toString());
-}
-function releaseLock() {
-  if (fs.existsSync(LOCK_PATH)) fs.unlinkSync(LOCK_PATH);
-}
-
 async function main() {
   let exitCode = EXIT_CODES.SUCCESS;
+  let release = null;
   try {
-    acquireLock();
+    release = acquireDbLock();
     const SQL = await initSqlJs();
     switch (command) {
       case 'db:init':
@@ -199,7 +188,7 @@ async function main() {
       ? EXIT_CODES.AUDIT_FAILED
       : EXIT_CODES.FATAL;
   } finally {
-    releaseLock();
+    if (release) release();
     if (command) process.exit(exitCode);
   }
 }
