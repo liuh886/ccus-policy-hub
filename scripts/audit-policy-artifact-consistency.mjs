@@ -243,7 +243,10 @@ function auditMarkdownPolicy({
   const filePath = path.join(directory, `${policy.id}.md`);
   if (!fs.existsSync(filePath)) return;
 
-  const parsed = matter(fs.readFileSync(filePath, 'utf8'));
+  // Normalize CRLF to LF so mismatch detection is identical on Windows
+  // checkouts and Linux CI; line-ending differences are formatting-only.
+  const raw = fs.readFileSync(filePath, 'utf8').replace(/\r\n/g, '\n');
+  const parsed = matter(raw);
   const expected = expectedMarkdownPolicy(policy, localized, lang, dictionary);
 
   if (!equalValues(parsed.data, expected.frontmatter)) {
