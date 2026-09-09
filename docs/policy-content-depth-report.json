@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 50,
+    "critical": 46,
     "high": 6,
     "medium": 38,
-    "healthy": 37
+    "healthy": 41
   },
-  "verifiedNeedsWork": 87,
+  "verifiedNeedsWork": 83,
   "lowestScore": 15,
-  "medianScore": 67,
+  "medianScore": 69,
   "assessments": [
     {
       "id": "puro-earth",
@@ -844,80 +844,6 @@
       }
     },
     {
-      "id": "dk-ccs-subsidy-scheme-2025",
-      "country": "Denmark",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 25,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 276,
-        "zhDescriptionLength": 109,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 6,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Danish CCS Subsidy Scheme 2025",
-        "zh": "2025年丹麦 CCS 补贴计划"
-      }
-    },
-    {
-      "id": "nl-cdr-roadmap-2025",
-      "country": "Netherlands",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 25,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 260,
-        "zhDescriptionLength": 116,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Netherlands Carbon Dioxide Removal (CDR) Roadmap 2025",
-        "zh": "荷兰 2025 年二氧化碳消除 (CDR) 路线图"
-      }
-    },
-    {
       "id": "vn-carbon-market-decree-2025",
       "country": "Vietnam",
       "year": 2025,
@@ -1139,44 +1065,6 @@
       "titles": {
         "en": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
         "zh": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)"
-      }
-    },
-    {
-      "id": "de-icm-strategy",
-      "country": "Germany",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 27,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 351,
-        "zhDescriptionLength": 98,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 3
-      },
-      "titles": {
-        "en": "Germany Carbon Management Strategy Key Principles (2024)",
-        "zh": "德国碳管理战略要点（2024）"
       }
     },
     {
@@ -1761,41 +1649,6 @@
       "titles": {
         "en": "Malaysia CCS Tax Incentives (Budget 2023)",
         "zh": "马来西亚 CCS 税收激励（2023 年预算）"
-      }
-    },
-    {
-      "id": "no-14th-licensing-round-2025",
-      "country": "Norway",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 43,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 417,
-        "zhDescriptionLength": 153,
-        "enScopeLength": 8,
-        "zhScopeLength": 8,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 2,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Norway 2025 CO2 Storage Licensing Round 1",
-        "zh": "挪威2025年二氧化碳封存许可第1轮"
       }
     },
     {
@@ -3918,6 +3771,68 @@
       }
     },
     {
+      "id": "de-icm-strategy",
+      "country": "Germany",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 925,
+        "zhDescriptionLength": 284,
+        "enScopeLength": 212,
+        "zhScopeLength": 56,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Germany Carbon Management Strategy Key Principles (2024)",
+        "zh": "德国碳管理战略要点（2024）"
+      }
+    },
+    {
+      "id": "dk-ccs-subsidy-scheme-2025",
+      "country": "Denmark",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 986,
+        "zhDescriptionLength": 368,
+        "enScopeLength": 212,
+        "zhScopeLength": 65,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Danish CCS Subsidy Scheme 2025",
+        "zh": "2025年丹麦 CCS 补贴计划"
+      }
+    },
+    {
       "id": "eu-cbam",
       "country": "European Union",
       "year": 2023,
@@ -4101,6 +4016,68 @@
       "titles": {
         "en": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
         "zh": "韩国《二氧化碳捕集、运输、封存及利用法》"
+      }
+    },
+    {
+      "id": "nl-cdr-roadmap-2025",
+      "country": "Netherlands",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 929,
+        "zhDescriptionLength": 296,
+        "enScopeLength": 197,
+        "zhScopeLength": 80,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Netherlands Carbon Dioxide Removal (CDR) Roadmap 2025",
+        "zh": "荷兰 2025 年二氧化碳消除 (CDR) 路线图"
+      }
+    },
+    {
+      "id": "no-14th-licensing-round-2025",
+      "country": "Norway",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 899,
+        "zhDescriptionLength": 315,
+        "enScopeLength": 204,
+        "zhScopeLength": 60,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway 2025 CO2 Storage Licensing Round (EXL014)",
+        "zh": "挪威2025年二氧化碳封存许可轮（EXL014）"
       }
     },
     {

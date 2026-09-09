@@ -1,5 +1,22 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3b-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3B — enrich the four
+  Denmark/Netherlands/Norway/Germany records (scores 25/25/43/27);
+  2026-09-09.
+- rows affected: 4 policies × 2 locales + 20 analysis rows. Status change:
+  de-icm-strategy Upcoming → Active (May 2024 cabinet adoption is a fact).
+  Title correction: no-14th round renamed to EXL014 round (eighth award
+  process, not fourteenth).
+- integrity fixes: Danish CCS Fund stated as tender-stage (awards due
+  April 2026, state-aid pending), not approved-and-disbursing; no-14th
+  pore-space field aligned; six dimensions normalised to five.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 50 → 46, healthy
+  37 → 41, median 67 → 69), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3a-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3A — enrich the five US
