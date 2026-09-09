@@ -1,15 +1,15 @@
 # Policy coverage matrix
 
-As of **2026-07-22**. This matrix is a curated research control backed by policy IDs in the SQLite single source of truth. A missing entry means the database has no verified direct record for that function; it does not prove that no policy exists.
+As of **2026-09-09**. This matrix is a curated research control backed by policy IDs in the SQLite single source of truth. A missing entry means the database has no verified direct record for that function; it does not prove that no policy exists.
 
 ## Summary
 
 - Jurisdictions: **5**
 - Governance dimensions: **5**
 - Covered cells: **14**
-- Partial cells: **7**
-- Missing cells: **4**
-- High-priority missing cells: **2**
+- Partial cells: **9**
+- Missing cells: **2**
+- High-priority missing cells: **0**
 - Audit result: **PASS**
 
 ## Matrix
@@ -20,7 +20,7 @@ As of **2026-07-22**. This matrix is a curated research control backed by policy
 | United Kingdom | ✅ Covered                 | ✅ Covered             | ✅ Covered             | ⚠️ Partial                      | ⚠️ Partial         |
 | South Korea    | ✅ Covered                 | ❌ Missing             | ✅ Covered             | ⚠️ Partial                      | ✅ Covered         |
 | Netherlands    | ✅ Covered                 | ✅ Covered             | ✅ Covered             | ❌ Missing                      | ✅ Covered         |
-| China          | ⚠️ Partial                 | ⚠️ Partial             | ❌ Missing             | ❌ Missing                      | ⚠️ Partial         |
+| China          | ⚠️ Partial                 | ⚠️ Partial             | ⚠️ Partial             | ⚠️ Partial                      | ⚠️ Partial         |
 
 ## Research gaps and partial coverage
 
@@ -30,11 +30,11 @@ As of **2026-07-22**. This matrix is a curated research control backed by policy
 - **South Korea — Incentives and finance** · medium priority · missing. The decree details enterprise and project-support procedures, but no dedicated verified regulated-revenue or universal CCUS incentive is currently recorded.
 - **South Korea — CO2 transport and market access** · medium priority · partial. Transport approvals, pipeline safety and inspections are operationalized, but dedicated network-access and tariff rules are not separately recorded. Evidence: `kr-ccus-act`, `kr-ccus-act-enforcement-decree-2025`.
 - **Netherlands — CO2 transport and market access** · medium priority · missing. No dedicated Dutch CO2 transport, network-access or tariff policy record is currently mapped.
-- **China — Legal and regulatory basis** · high priority · partial. National standards and sectoral carbon-market rules provide components, but China does not yet have a dedicated national CCS permitting and liability law. Evidence: `cn-standards-2024`, `cn-national-ets-expansion-2025`.
+- **China — Legal and regulatory basis** · high priority · partial. National standards and sectoral carbon-market rules provide components, but China does not yet have a dedicated national CCS permitting and liability law. Evidence: `cn-standards-2024`, `cn-national-ets-expansion-2025`, `cn-ccus-national-standards-2026`.
 - **China — Incentives and finance** · high priority · partial. Central-bank and demonstration support can finance eligible low-carbon projects, but a dedicated CCUS revenue mechanism is not established. Evidence: `cn-pboc-cerf`, `cn-demo-tech-2024`.
-- **China — Storage and permitting** · high priority · missing. No dedicated national policy record currently governs pore-space rights, injection licensing, closure and long-term storage liability.
-- **China — CO2 transport and market access** · high priority · missing. No dedicated national CO2 pipeline, shipping, third-party access or tariff framework is currently recorded.
-- **China — MRV and accounting** · high priority · partial. Standards and ETS MRV capacity are developing, but a complete cross-chain CCUS accounting framework is not yet recorded. Evidence: `cn-standards-2024`, `cn-national-ets-expansion-2025`.
+- **China — Storage and permitting** · high priority · partial. The 12 national standards (GB/T 46878 storage lifecycle, MEE risk guideline, EIA classification) provide technical components, but pore-space rights, injection licensing, closure and long-term liability still have no dedicated national rules. Evidence: `cn-ccus-national-standards-2026`.
+- **China — CO2 transport and market access** · high priority · partial. An operating dense-phase trunk line, the GB/T pipeline-quality standard and a funded long-distance demonstration exist, but third-party access, tariffs and shipping rules are still absent. Evidence: `cn-co2-transport-status-2025`.
+- **China — MRV and accounting** · high priority · partial. Standards and ETS MRV capacity are developing, but a complete cross-chain CCUS accounting framework is not yet recorded. Evidence: `cn-standards-2024`, `cn-national-ets-expansion-2025`, `cn-ccus-national-standards-2026`.
 
 ## Governance rules
 

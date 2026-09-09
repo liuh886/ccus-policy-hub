@@ -1,5 +1,28 @@
 # manifest — migrations/2026-09
 
+## coverage-phase2a-2026-09.mjs
+
+- purpose and date: data-quality special Phase 2A — close the two
+  high-priority missing China cells with two new draft records plus curated
+  framework updates; 2026-09-09.
+- verification first: confirmed no dedicated national CCS permitting or
+  liability law (new Mineral Resources Law governs minerals, not storage)
+  and no dedicated CO2 transport/access/tariff framework — cells move to
+  partial (components documented), not covered.
+- rows affected: 2 INSERTs (policies/policy_i18n/policy_analysis),
+  `cn-ccus-national-standards-2026` (12 GB/T standards, Jan 8 2026,
+  effective Jul 1 2026) and `cn-co2-transport-status-2025` (Qilu-Shengli
+  109 km line of Jul 11 2023, GB/T 46875, funded long-distance demo).
+  129 → 131 policies. Framework: storage/transport missing → partial,
+  legal/mrv partial gain standards evidence, as_of → 2026-09-09.
+- debug note: a missing `title` key in one locale produced sql.js
+  "tried to bind undefined"; batch tests now assert non-empty titles.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (2 × 100; healthy 30 → 32, median holds
+  67), coverage (high-priority missing 2 → 0, missing 4 → 2).
+- approval status: approved 2026-09-09 (2A research outline + new records +
+  cell moves).
+
 ## policy-content-depth-batch2-1c-2026-09.mjs
 
 - purpose and date: data-quality special Phase 1C — enrich the

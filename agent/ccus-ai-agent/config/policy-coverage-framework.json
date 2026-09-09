@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-07-22",
+  "as_of": "2026-09-09",
   "purpose": "Evaluate whether priority jurisdictions have policy records covering the core governance functions required for CCUS deployment. Coverage status is curated from official-source review; SQLite policy IDs provide the evidence anchor.",
   "status_definitions": {
     "covered": "At least one current policy record directly and materially covers the governance function.",
@@ -195,7 +195,7 @@
         "legal_regulatory": {
           "status": "partial",
           "priority": "high",
-          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025"],
+          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025", "cn-ccus-national-standards-2026"],
           "rationale": "National standards and sectoral carbon-market rules provide components, but China does not yet have a dedicated national CCS permitting and liability law."
         },
         "incentives_finance": {
@@ -205,21 +205,21 @@
           "rationale": "Central-bank and demonstration support can finance eligible low-carbon projects, but a dedicated CCUS revenue mechanism is not established."
         },
         "storage_permitting": {
-          "status": "missing",
+          "status": "partial",
           "priority": "high",
-          "policy_ids": [],
-          "rationale": "No dedicated national policy record currently governs pore-space rights, injection licensing, closure and long-term storage liability."
+          "policy_ids": ["cn-ccus-national-standards-2026"],
+          "rationale": "The 12 national standards (GB/T 46878 storage lifecycle, MEE risk guideline, EIA classification) provide technical components, but pore-space rights, injection licensing, closure and long-term liability still have no dedicated national rules."
         },
         "transport_market": {
-          "status": "missing",
+          "status": "partial",
           "priority": "high",
-          "policy_ids": [],
-          "rationale": "No dedicated national CO2 pipeline, shipping, third-party access or tariff framework is currently recorded."
+          "policy_ids": ["cn-co2-transport-status-2025"],
+          "rationale": "An operating dense-phase trunk line, the GB/T pipeline-quality standard and a funded long-distance demonstration exist, but third-party access, tariffs and shipping rules are still absent."
         },
         "mrv_accounting": {
           "status": "partial",
           "priority": "high",
-          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025"],
+          "policy_ids": ["cn-standards-2024", "cn-national-ets-expansion-2025", "cn-ccus-national-standards-2026"],
           "rationale": "Standards and ETS MRV capacity are developing, but a complete cross-chain CCUS accounting framework is not yet recorded."
         }
       }

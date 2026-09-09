@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-09-09",
-  "totalPolicies": 129,
+  "totalPolicies": 131,
   "severityCounts": {
     "critical": 54,
     "high": 6,
     "medium": 39,
-    "healthy": 30
+    "healthy": 32
   },
   "verifiedNeedsWork": 90,
   "lowestScore": 15,
@@ -3885,6 +3885,37 @@
       }
     },
     {
+      "id": "cn-ccus-national-standards-2026",
+      "country": "China",
+      "year": 2026,
+      "reviewStatus": "draft",
+      "category": "Technical Standard",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1367,
+        "zhDescriptionLength": 483,
+        "enScopeLength": 296,
+        "zhScopeLength": 74,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China 12 National CCUS Standards Package (2026)",
+        "zh": "中国CCUS十二项国家标准（2026）"
+      }
+    },
+    {
       "id": "cn-ccus-roadmap-2025",
       "country": "China",
       "year": 2025,
@@ -3913,6 +3944,37 @@
       "titles": {
         "en": "China CCUS Technology Development Roadmap (2025)",
         "zh": "中国 CCUS 技术发展路线图 (2025)"
+      }
+    },
+    {
+      "id": "cn-co2-transport-status-2025",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1079,
+        "zhDescriptionLength": 347,
+        "enScopeLength": 235,
+        "zhScopeLength": 64,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China CO2 Transport: Operating Pipeline and Demonstration (2025)",
+        "zh": "中国二氧化碳运输：运营管线与示范计划（2025）"
       }
     },
     {

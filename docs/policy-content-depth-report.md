@@ -4,11 +4,11 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 
 ## Summary
 
-- Policies assessed: **129**
+- Policies assessed: **131**
 - Critical: **54**
 - High: **6**
 - Medium: **39**
-- Healthy: **30**
+- Healthy: **32**
 - Verified policies needing improvement: **90**
 - Median score: **67/100**
 
