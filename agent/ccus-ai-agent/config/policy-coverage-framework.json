@@ -97,10 +97,10 @@
           "rationale": "Existing legislation and licensing arrangements provide the core storage and transport regulatory basis."
         },
         "transport_market": {
-          "status": "partial",
+          "status": "covered",
           "priority": "high",
-          "policy_ids": ["uk-ccs-network-code", "uk-ccus-vision"],
-          "rationale": "The market vision proposes a network code, but the code remains a planned governance component rather than a final rule."
+          "policy_ids": ["uk-ccs-network-code", "uk-energy-act-2023"],
+          "rationale": "The operative January 2025 Network Code plus Energy Act economic licensing govern access, connection and commercial terms on FID'd networks; non-pipeline transport rules continue to evolve."
         },
         "mrv_accounting": {
           "status": "partial",
@@ -125,10 +125,10 @@
           "rationale": "The 2024 CCUS Act and its enforcement decree establish and operationalize the national framework for capture, transport, storage and utilization."
         },
         "incentives_finance": {
-          "status": "missing",
+          "status": "partial",
           "priority": "medium",
-          "policy_ids": [],
-          "rationale": "The decree details enterprise and project-support procedures, but no dedicated verified regulated-revenue or universal CCUS incentive is currently recorded."
+          "policy_ids": ["kr-ccus-act"],
+          "rationale": "The CCUS Act funds demos, clusters, R&D and loans (plus the 2026 carbon-neutrality loan programme), but no dedicated regulated-revenue or universal CCUS incentive exists."
         },
         "storage_permitting": {
           "status": "covered",
@@ -174,10 +174,10 @@
           "rationale": "EU storage requirements are implemented through the Dutch Mining Act exploration, storage-permit and supervision framework."
         },
         "transport_market": {
-          "status": "missing",
+          "status": "partial",
           "priority": "medium",
-          "policy_ids": [],
-          "rationale": "No dedicated Dutch CO2 transport, network-access or tariff policy record is currently mapped."
+          "policy_ids": ["nl-porthos-sde-subsidy"],
+          "rationale": "Porthos TSA fees with third-party assignment plus the Aramis open-access trunkline and SDE++ T&S allowances provide working access and tariff practice, but no national tariff schedule or shipping framework exists."
         },
         "mrv_accounting": {
           "status": "covered",
