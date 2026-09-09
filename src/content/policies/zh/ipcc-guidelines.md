@@ -43,7 +43,7 @@
           'score': 85,
         },
     },
-  'category': 'Methodology',
+  'category': '技术规范',
   'country': '国际',
   'description': 'IPCC《国家温室气体清单指南》是各国在国家排放清单中反映碳捕集与地质封存的主要国际核算框架。CCS的具体方法位于2006年指南第2卷第5章，针对二氧化碳运输、注入和地质封存设立清单类别1C。捕集过程产生的排放与减排应计入捕集发生的相应部门，运输、注入、封存以及可能泄漏产生的排放则单独估算。地质封存采用场址特定的Tier 3方法，并结合监测、质量平衡、质量保证和不确定性分析。2019年精细化指南用于更新、补充和细化2006年指南，并不取代后者；2019年精细化文件明确显示第2卷第5章“无修订”，因此CCS核算仍以2006年章节为基础。该指南服务于国家温室气体清单编制，并不是项目封存许可或自愿碳信用签发方法学。',
   'evolution':
@@ -76,8 +76,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-22',
-      'reviewer': 'Primary-source content-depth audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2019-05-12',
   'regulatory':

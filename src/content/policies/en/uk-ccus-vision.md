@@ -43,7 +43,7 @@
           'score': 100,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'United Kingdom',
   'description': 'Strategic blueprint targeting 20-30 Mtpa storage by 2030 through the sequence-based cluster development model.',
   'id': 'uk-ccus-vision',
@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2023-12-20',
   'relatedFacilities':
@@ -166,7 +166,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'UK Department for Energy Security and Net Zero',
-  'status': '现行',
+  'status': 'Active',
   'title': 'UK CCUS Vision (2035 Strategy)',
   'url': 'https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market',
   'year': 2023,

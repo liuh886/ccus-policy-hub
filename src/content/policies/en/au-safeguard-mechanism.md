@@ -43,7 +43,7 @@
           'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'Australia',
   'description': "Mandatory emission reduction tool for Australia's largest emitters, requiring a 4.9% annual decline in carbon intensity, driving demand for industrial CCUS.",
   'id': 'au-safeguard-mechanism',
@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2023-07-01',
   'relatedFacilities':
@@ -104,7 +104,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)',
-  'status': '现行',
+  'status': 'Active',
   'title': 'Australia Safeguard Mechanism 2023',
   'url': 'https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism',
   'year': 2023,

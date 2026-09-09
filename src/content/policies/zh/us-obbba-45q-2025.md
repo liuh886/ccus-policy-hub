@@ -49,7 +49,7 @@
           'score': 90,
         },
     },
-  'category': 'Tax Incentives',
+  'category': '经济激励',
   'country': '美国',
   'description': '美国第119-21号公法于2025年7月4日生效，其中第70522节修订45Q。对于2025年7月4日后投入使用的合格设施或设备，法律将利用或强化采收情形的抵免水平与安全地质封存情形对齐，并新增针对特定外国实体和受外国影响实体的限制。该法延续并调整IRA形成的较高抵免框架，而不是新设原有的DAC封存180美元/吨和点源封存85美元/吨标准。',
   'id': 'us-obbba-45q-2025',
@@ -57,8 +57,8 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2025-07-04',
   'regulatory':

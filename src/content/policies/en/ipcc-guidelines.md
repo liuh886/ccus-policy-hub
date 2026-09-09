@@ -43,7 +43,7 @@
           'score': 85,
         },
     },
-  'category': 'Methodology',
+  'category': 'Technical Standard',
   'country': 'International',
   'description': 'The IPCC Guidelines for National Greenhouse Gas Inventories provide the principal international accounting framework for reflecting carbon capture and geological storage in national emissions inventories. The operative CCS methodology is contained in Volume 2, Chapter 5 of the 2006 Guidelines, covering CO2 transport, injection and geological storage under inventory category 1C. Capture-related emissions and reductions are reported in the sector where capture occurs, while emissions from transpor',
   'evolution':
@@ -81,8 +81,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-22',
-      'reviewer': 'Primary-source content-depth audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2019-05-12',
   'regulatory':

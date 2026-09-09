@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2024-02-26',
   'relatedFacilities':
@@ -81,7 +81,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'German Federal Ministry for Economic Affairs and Climate Action',
-  'status': 'Policy principles adopted',
+  'status': 'Upcoming',
   'title': 'Germany Carbon Management Strategy Key Principles (2024)',
   'url': 'https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html',
   'year': 2024,

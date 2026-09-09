@@ -51,7 +51,7 @@
           'score': 90,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'Canada',
   'description': "Alberta's Technology Innovation and Emissions Reduction (TIER) framework, updated in 2024 to set a carbon price floor of $170/t by 2030, specifically incentivizing sequestration credits.",
   'id': 'alberta-tier',
@@ -59,8 +59,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2023-01-01',
   'relatedFacilities':
@@ -157,7 +157,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'Government of Alberta',
-  'status': '现行',
+  'status': 'Active',
   'title': 'Alberta TIER System & CCS Incentives',
   'url': 'https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation',
   'year': 2023,

@@ -49,7 +49,7 @@
           'score': 90,
         },
     },
-  'category': 'Tax Incentives',
+  'category': 'Incentive',
   'country': 'United States',
   'description': 'Public Law 119-21, enacted on 4 July 2025, amended Section 45Q through section 70522. For qualifying facilities or equipment placed in service after 4 July 2025, it establishes parity between credit amounts for utilisation or enhanced recovery and those for secure geological storage. It also adds restrictions for specified foreign entities and foreign-influenced entities. The law preserved the higher IRA credit architecture; it did not newly create the existing $180-per-tonne DAC storage and $85',
   'id': 'us-obbba-45q-2025',
@@ -57,8 +57,8 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2025-07-04',
   'regulatory':

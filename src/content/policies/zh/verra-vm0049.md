@@ -43,7 +43,7 @@
           'score': 80,
         },
     },
-  'category': 'Methodology',
+  'category': '技术规范',
   'country': '国际',
   'description': 'VM0049《碳捕集与封存》是Verra核证碳标准体系下适用于全球的CCS温室气体减排和二氧化碳移除核算方法学，于2024年6月27日批准发布。方法学采用模块化结构，项目须将VM0049总体要求与符合自身设计的捕集、运输和封存模块组合使用。现行模块包括直接空气捕集、二氧化碳运输、咸水层及枯竭油气藏封存、生物能源捕集，以及自2025年12月起生效的天然气处理过程捕集。该结构能够适应共享运输与封存枢纽，也可以处理项目仅控制CCS链条一部分的情形，但必须明确项目边界、权属、监测、泄漏和重复计算风险。采用VM0049并不自动产生核证碳单位；项目还需满足适用模块与工具、证明额外性和基准线资格、完成审定与核查，并符合VCS注册和签发程序。该方法学也不能替代所在国对捕集设施、二氧化碳运输和地质封存的行政许可。',
   'evolution':
@@ -74,8 +74,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-22',
-      'reviewer': 'Primary-source content-depth audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2024-06-27',
   'regulatory':

@@ -43,7 +43,7 @@
           'score': 100,
         },
     },
-  'category': '法律监管',
+  'category': 'Regulatory',
   'country': 'Norway',
   'description': 'Norway launched Longship on 21 September 2020 as a state-supported full-scale CCS demonstration covering industrial capture, ship transport, intermediate storage and permanent offshore geological storage through Northern Lights. Government project information was updated in 2024, but the underlying policy decision and launch date are from 2020.',
   'id': 'norway-longship',
@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2020-09-21',
   'relatedFacilities':
@@ -114,7 +114,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'Norwegian Ministry of Energy',
-  'status': '现行',
+  'status': 'Active',
   'title': 'Norway Longship Full-Scale CCS Project',
   'url': 'https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/',
   'year': 2020,

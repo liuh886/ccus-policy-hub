@@ -201,10 +201,10 @@ async function generatePublicData() {
       };
     }
 
-    // Add linked policies
+    // Add linked policies (ordered for deterministic output)
     const linkedPolicies = queryRows(
       db,
-      'SELECT policy_id FROM policy_facility_links WHERE facility_id = ?',
+      'SELECT policy_id FROM policy_facility_links WHERE facility_id = ? ORDER BY policy_id',
       [facility.id]
     );
     facility.linked_policies = linkedPolicies.map((r) => r.policy_id);

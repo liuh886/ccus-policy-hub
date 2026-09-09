@@ -33,12 +33,17 @@
           'score': 90,
         },
     },
-  'category': 'Statutory',
+  'category': '法律监管',
   'country': 'Turkey',
   'description': '2025年第7552号气候法案为国家排放交易体系 (TR ETS) 和2053年净零排放目标奠定了法律基础。它针对碳密集型行业（水泥、钢铁、电力）进行 CBAM 对接，并引入“绿色分类法”法规以解锁 CCUS 基础设施融资。',
   'id': 'tr-climate-law-2025',
   'legalWeight': 'Law No. 7552',
-  'provenance': { 'author': 'CCUS AI Agent', 'lastAuditDate': '2026-03-18' },
+  'provenance':
+    {
+      'author': 'CCUS AI Agent',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
+    },
   'pubDate': '2025-07-09',
   'regulatory':
     {

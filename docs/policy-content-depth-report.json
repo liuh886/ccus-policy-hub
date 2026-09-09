@@ -1,137 +1,23 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-07-22",
+  "asOf": "2026-09-08",
   "totalPolicies": 130,
   "severityCounts": {
-    "critical": 69,
+    "critical": 66,
     "high": 6,
     "medium": 40,
-    "healthy": 15
+    "healthy": 18
   },
   "verifiedNeedsWork": 103,
-  "lowestScore": 8,
-  "medianScore": 44,
+  "lowestScore": 15,
+  "medianScore": 46,
   "assessments": [
-    {
-      "id": "gr-climate-law-2022-update",
-      "country": "Greece",
-      "year": 2022,
-      "reviewStatus": null,
-      "category": "Regulatory",
-      "score": 8,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 134,
-        "zhDescriptionLength": 43,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 5,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Greece National Climate Law - CCUS Update",
-        "zh": "希腊国家气候法 - CCUS 更新版"
-      }
-    },
-    {
-      "id": "ph-doe-ccus-roadmap-2024",
-      "country": "Philippines",
-      "year": 2024,
-      "reviewStatus": null,
-      "category": "Strategic",
-      "score": 9,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 169,
-        "zhDescriptionLength": 44,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 5,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Philippines CCUS Strategic Roadmap",
-        "zh": "菲律宾 CCUS 战略路线图"
-      }
-    },
-    {
-      "id": "ro-emergency-ordinance-2024",
-      "country": "Romania",
-      "year": 2024,
-      "reviewStatus": null,
-      "category": "Regulatory",
-      "score": 9,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 139,
-        "zhDescriptionLength": 52,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Romania CCUS Regulatory Framework 2024",
-        "zh": "罗马尼亚 CCUS 监管框架 2024"
-      }
-    },
     {
       "id": "puro-earth",
       "country": "International",
       "year": 2019,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 15,
       "severity": "critical",
       "flags": [
@@ -170,7 +56,7 @@
       "country": "International",
       "year": 2019,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 16,
       "severity": "critical",
       "flags": [
@@ -700,7 +586,7 @@
       "country": "Canada",
       "year": 2023,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 23,
       "severity": "critical",
       "flags": [
@@ -1559,7 +1445,7 @@
       "country": "United Kingdom",
       "year": 2023,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 27,
       "severity": "critical",
       "flags": [
@@ -1671,7 +1557,7 @@
       "country": "Australia",
       "year": 2023,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 29,
       "severity": "critical",
       "flags": [
@@ -1708,7 +1594,7 @@
       "country": "International",
       "year": 2025,
       "reviewStatus": "verified",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "score": 29,
       "severity": "critical",
       "flags": [
@@ -2001,7 +1887,7 @@
       "country": "Turkey",
       "year": 2025,
       "reviewStatus": "verified",
-      "category": "Statutory",
+      "category": "Regulatory Framework",
       "score": 39,
       "severity": "critical",
       "flags": [
@@ -2072,7 +1958,7 @@
       "country": "Norway",
       "year": 2020,
       "reviewStatus": "verified",
-      "category": "法律监管",
+      "category": "Regulatory",
       "score": 40,
       "severity": "critical",
       "flags": [
@@ -2108,7 +1994,7 @@
       "country": "South Africa",
       "year": 2024,
       "reviewStatus": "verified",
-      "category": "Statutory",
+      "category": "Regulatory Framework",
       "score": 40,
       "severity": "critical",
       "flags": [
@@ -2250,7 +2136,7 @@
       "country": "United States",
       "year": 2025,
       "reviewStatus": "verified",
-      "category": "Tax Incentives",
+      "category": "Incentive",
       "score": 42,
       "severity": "critical",
       "flags": [
@@ -4498,11 +4384,42 @@
       }
     },
     {
+      "id": "gr-climate-law-2022-update",
+      "country": "Greece",
+      "year": 2022,
+      "reviewStatus": null,
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1478,
+        "zhDescriptionLength": 485,
+        "enScopeLength": 284,
+        "zhScopeLength": 91,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Greece National Climate Law - CCUS Update",
+        "zh": "希腊国家气候法 - CCUS 更新版"
+      }
+    },
+    {
       "id": "ipcc-guidelines",
       "country": "International",
       "year": 2019,
       "reviewStatus": "verified",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "score": 100,
       "severity": "healthy",
       "flags": [],
@@ -4526,6 +4443,68 @@
       "titles": {
         "en": "IPCC GHG Inventory Guidelines (2019 Refinement)",
         "zh": "IPCC 温室气体清单指南 (2019 修订)"
+      }
+    },
+    {
+      "id": "ph-doe-ccus-roadmap-2024",
+      "country": "Philippines",
+      "year": 2024,
+      "reviewStatus": null,
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1373,
+        "zhDescriptionLength": 438,
+        "enScopeLength": 267,
+        "zhScopeLength": 89,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Philippines CCUS Strategic Roadmap",
+        "zh": "菲律宾 CCUS 战略路线图"
+      }
+    },
+    {
+      "id": "ro-emergency-ordinance-2024",
+      "country": "Romania",
+      "year": 2024,
+      "reviewStatus": null,
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1591,
+        "zhDescriptionLength": 524,
+        "enScopeLength": 299,
+        "zhScopeLength": 95,
+        "enTags": 4,
+        "zhTags": 4,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Romania CCUS Regulatory Framework 2024",
+        "zh": "罗马尼亚 CCUS 监管框架 2024"
       }
     },
     {
@@ -4564,7 +4543,7 @@
       "country": "International",
       "year": 2024,
       "reviewStatus": "verified",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "score": 100,
       "severity": "healthy",
       "flags": [],

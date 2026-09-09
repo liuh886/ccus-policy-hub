@@ -43,7 +43,7 @@
           'score': 30,
         },
     },
-  'category': 'Methodology',
+  'category': 'Technical Standard',
   'country': 'International',
   'description': 'Gold Standard published its Engineered Removals Activity Requirements on 22 July 2025. The framework sets high-level requirements for engineered carbon dioxide removal activities seeking Gold Standard certification and provides the basis for subsequent methodology and project development. The prior 2023 date in the database was not supported by the official publication record.',
   'id': 'gold-standard',
@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2025-07-22',
   'relatedFacilities': [],

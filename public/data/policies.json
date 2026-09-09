@@ -1,5 +1,5 @@
 {
-  "data_as_of": "2026-07-22T00:00:00.000Z",
+  "data_as_of": "2026-09-08T00:00:00.000Z",
   "count": 130,
   "records": [
     {
@@ -189,16 +189,16 @@
       "id": "au-safeguard-mechanism",
       "country": "Australia",
       "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Australian Department of Climate Change, Energy, the Environment and Water (DCCEEW)",
       "url": "https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism",
       "pub_date": "2023-07-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Australia Safeguard Mechanism 2023",
@@ -524,7 +524,7 @@
       "id": "br-bill-1425-2022",
       "country": "Brazil",
       "year": 2022,
-      "status": "Proposed",
+      "status": "Upcoming",
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Proposed Legislation",
@@ -532,8 +532,8 @@
       "url": "https://www25.senado.leg.br/web/atividade/materias/-/materia/153342",
       "pub_date": "2022-05-31",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Brazil Bill PL 1425/2022 on CO2 Storage",
@@ -585,16 +585,16 @@
       "id": "alberta-tier",
       "country": "Canada",
       "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Government of Alberta",
       "url": "https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation",
       "pub_date": "2023-01-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Alberta TIER System & CCS Incentives",
@@ -2808,7 +2808,7 @@
       "id": "de-icm-strategy",
       "country": "Germany",
       "year": 2024,
-      "status": "Policy principles adopted",
+      "status": "Upcoming",
       "category": "Strategic",
       "review_status": "verified",
       "legal_weight": "Strategic Guidance",
@@ -2816,8 +2816,8 @@
       "url": "https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html",
       "pub_date": "2024-02-26",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Germany Carbon Management Strategy Key Principles (2024)",
@@ -2999,23 +2999,59 @@
       "url": "https://ypen.gov.gr",
       "pub_date": null,
       "provenance_author": "Gemini Governance Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": null,
+      "provenance_reviewer": "Primary-source content-depth audit",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Greece National Climate Law - CCUS Update",
-          "description": "Updated framework providing legal clarity for offshore storage concessions, specifically supporting the Prinos industrial storage hub.",
-          "scope": null,
-          "tags": null
+          "description": "Greece's National Climate Law 4936/2022 (45 articles) sets the country's climate-neutrality-by-2050 framework: five-year sectoral carbon budgets, emission cuts across power, buildings, transport and industry, and monitoring indicators tied to the National Energy and Climate Plan under EU Governance Regulation 2018/1999. For CCS specifically, the operating regime is layered: Joint Ministerial Decision 48416/2011 transposed the EU CCS Directive 2009/31/EC (site selection and characterisation, exploration and storage permitting, monitoring and reporting, closure and post-closure duties, financial guarantees, transfer of responsibility), with HEREMA designated licensing authority for CO2 geological storage (Law 4920/2022). Law 4964/2022 Article 173 added a fast track letting hydrocarbon concession holders convert existing exploration data directly into storage exploration and then storage permits (notably the Prinos Complex off Kavala), though its 12-month application window has lapsed. In December 2025 Greece adopted Law 5261/2025, its first comprehensive CCS statute: state ownership of storage sites, exploration licences up to five years, mandatory plume monitoring with operator liability until strict handover conditions are met, a dedicated CCS account funded by per-tonne storage fees, and a carbon-contracts-for-difference support route. The 2022 record therefore reads as the framework-setting step in an active legislative sequence, not a finished regime.",
+          "scope": "Greece-wide climate governance (carbon budgets, sectoral mitigation, adaptation) plus the national CO2 geological-storage regime: onshore, sub-lake and offshore formations under Greek sovereignty, capture (including DAC), use, transport and storage for projects of 100 kt CO2 or more.",
+          "tags": [
+            "national climate law",
+            "carbon budgets",
+            "CCS Directive transposition",
+            "storage licensing"
+          ]
         },
         "zh": {
           "title": "希腊国家气候法 - CCUS 更新版",
-          "description": "更新后的法律框架为近海封存特许权提供了法律依据，特别支持 Prinos 工业封存枢纽。",
-          "scope": null,
-          "tags": null
+          "description": "希腊《国家气候法》（第4936/2022号法律，共45条）确立了该国2050年气候中和框架：五年期部门碳预算，覆盖电力、建筑、交通和工业的减排安排，以及与国家能源与气候计划挂钩的监测指标。CCS方面的现行制度是分层构成的：2011年第48416号联合部长决定转化了欧盟CCS指令（2009/31/EC），规定选址与 characterization、勘探与封存许可、监测报告、关闭与关闭后义务、财务担保和责任转移，HEREMA被指定为二氧化碳地质封存许可机关（第4920/2022号法律）。第4964/2022号法律第173条曾为油气特许权持有人开辟快速通道，可凭现有勘探资料直接申请封存勘探直至封存许可（代表性案例为卡瓦拉近海Prinos综合体），但其12个月申请窗口已经届满。2025年12月希腊通过第5261/2025号法律，即首部综合性CCS专门法：封存场地国有、勘探许可最长五年、全程羽流监测且经营者在严格移交条件满足前承担责任、按吨征收封存费注入CCS专户、并开辟碳差价合约支持路径。因此2022年记录应理解为仍在演进中的立法序列的框架性一步，而非终局制度。",
+          "scope": "覆盖希腊全国的气候治理（碳预算、部门减排、适应）及本国二氧化碳地质封存制度：希腊主权范围内的陆上、湖下和海上地层，适用于10万吨及以上的捕集（含直接空气捕集）、利用、运输与封存项目。",
+          "tags": ["国家气候法", "碳预算", "CCS指令转化", "封存许可"]
         }
       },
-      "analysis": {}
+      "analysis": {
+        "incentive": {
+          "score": 45,
+          "label": "Emerging CfD route, no direct grant",
+          "evidence": "Law 5261/2025 enables carbon contracts for difference covering part of the gap between capture costs and ETS allowance prices, plus a dedicated CCS account; no per-tonne capture grant or tax credit exists in the 2022 framework itself.",
+          "citation": "Hellenic Parliament bill summary for Law 5261/2025; DLA Piper analysis of the Greek CCS Law (Lexology, 2026)."
+        },
+        "market": {
+          "score": 50,
+          "label": "ETS-linked, cross-border enabled",
+          "evidence": "The framework operates inside the EU ETS price signal, foresees third-party access to transport and storage networks with regulated dispute settlement, and explicitly enables participation in cross-border CO2 transport and storage networks.",
+          "citation": "DLA Piper analysis of the Greek CCS Law (Lexology, 2026); Law 5261/2025 licensing provisions."
+        },
+        "mrv": {
+          "score": 65,
+          "label": "Directive-grade monitoring",
+          "evidence": "Continuous CO2-plume behaviour and leakage monitoring, immediate corrective measures on any irregularity, EIA-backed storage permits with defined injection parameters, and a central digital registry of capture, use, transport and storage certificates.",
+          "citation": "JMD 48416/2011 monitoring annexes; Hellenic Parliament bill summary for Law 5261/2025."
+        },
+        "statutory": {
+          "score": 70,
+          "label": "Layered primary + secondary regime",
+          "evidence": "Law 4936/2022 (45 articles) plus JMD 48416/2011 transposing Directive 2009/31/EC and Law 4964/2022 Article 173 form a binding multi-layer regime, superseded in part by the comprehensive Law 5261/2025.",
+          "citation": "Law 4936/2022 (ECOLEX/UNEP LEAP); JMD 48416/2037/2011; Law 4964/2022 Article 173."
+        },
+        "strategic": {
+          "score": 75,
+          "label": "Neutrality-anchored strategy",
+          "evidence": "CCS is embedded in the statutory 2050 climate-neutrality objective, five-year sectoral carbon budgets and the National Energy and Climate Plan, with a central digital CO2-certificate registry and public environmental-information duties.",
+          "citation": "Law 4936/2022 (ECOLEX/UNEP LEAP summary)."
+        }
+      }
     },
     {
       "id": "is-onshore-storage-permit-2025",
@@ -3418,15 +3454,15 @@
       "country": "International",
       "year": 2025,
       "status": "Active",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "review_status": "verified",
       "legal_weight": "Voluntary Standard",
       "source": "Gold Standard",
       "url": "https://www.goldstandard.org/news/gold-standard-publishes-engineered-removals-activity-requirements",
       "pub_date": "2025-07-22",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Gold Standard Engineered Removals Activity Requirements (2025)",
@@ -3479,15 +3515,15 @@
       "country": "International",
       "year": 2024,
       "status": "Active",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "review_status": "verified",
       "legal_weight": "Voluntary Carbon Crediting Methodology",
       "source": "Verra",
       "url": "https://verra.org/methodologies/vm0049-carbon-capture-and-storage/",
       "pub_date": "2024-06-27",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source content-depth audit",
-      "provenance_last_audit_date": "2026-07-22",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Verra CCS Methodology (VM0049)",
@@ -3852,15 +3888,15 @@
       "country": "International",
       "year": 2019,
       "status": "Active",
-      "category": "Methodology",
+      "category": "Technical Standard",
       "review_status": "verified",
       "legal_weight": "International Inventory Guideline",
       "source": "IPCC Task Force on National Greenhouse Gas Inventories",
       "url": "https://www.ipcc-nggip.iges.or.jp/public/2019rf/",
       "pub_date": "2019-05-12",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source content-depth audit",
-      "provenance_last_audit_date": "2026-07-22",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "IPCC GHG Inventory Guidelines (2019 Refinement)",
@@ -3918,16 +3954,16 @@
       "id": "iso-standards",
       "country": "International",
       "year": 2019,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "International Organization for Standardization, ISO/TC 265",
       "url": "https://www.iso.org/committee/648607.html",
       "pub_date": "2019-01-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "ISO CCUS Standards (TC 265)",
@@ -3979,16 +4015,16 @@
       "id": "puro-earth",
       "country": "International",
       "year": 2019,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Puro.earth",
       "url": "https://puro.earth/cdr-infrastructure/methodologies/puro-standard/",
       "pub_date": "2019-05-01",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Puro.earth CDR Certification (CORC)",
@@ -4972,7 +5008,7 @@
       "id": "no-14th-licensing-round-2025",
       "country": "Norway",
       "year": 2025,
-      "status": "Awarded",
+      "status": "Active",
       "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Licensing Round",
@@ -4980,8 +5016,8 @@
       "url": "https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/",
       "pub_date": "2025-03-05",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Norway 2025 CO2 Storage Licensing Round 1",
@@ -5155,16 +5191,16 @@
       "id": "norway-longship",
       "country": "Norway",
       "year": 2020,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "Norwegian Ministry of Energy",
       "url": "https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/",
       "pub_date": "2020-09-21",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Norway Longship Full-Scale CCS Project",
@@ -5346,23 +5382,59 @@
       "url": "https://www.doe.gov.ph",
       "pub_date": null,
       "provenance_author": "Gemini Governance Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": null,
+      "provenance_reviewer": "Primary-source content-depth audit",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Philippines CCUS Strategic Roadmap",
-          "description": "The roadmap outlines the regulatory and technical pathways for CCUS implementation in the Philippines, focusing on offshore storage potential in the West Philippine Sea.",
-          "scope": null,
-          "tags": null
+          "description": "The Philippines has no standalone CCUS statute; carbon capture sits inside energy-planning documents as a \"potential technology\" whose applicability is still being determined. The anchor is the Philippine Energy Plan 2020-2040 (\"Towards a Sustainable and Clean Energy Future\") under AmBisyon Natin 2040, with a Clean Energy Scenario targeting 35-50% renewable power share, LNG imports, EV penetration and energy savings. The analytical base is the ADB 2013 \"Prospects for Carbon Capture and Storage in Southeast Asia\" study, which screened power plants south of Metro Manila, reviewed storage in oil and gas fields, and drew an actionable pilot roadmap with a government CCS working group. Project delivery would run through generic fast-track channels: the Certificate of Energy Project of National Significance under Executive Order 30 and the Energy Virtual One Stop Shop Act (RA 11234). Climate linkage comes from the 2021 NDC (75% emission reduction/avoidance by 2030, only 2.71% unconditional) and its Implementation Plan (~$72 billion need, energy sector ~$36.5 billion). Independent technology ranking (Lau 2022) rates industrial and gas-plant CCS high on security and affordability for the country, with coal-to-gas switching as the nearer-term priority. Pending dedicated environmental guidelines on CCUS are the recognised next step before any pilot can proceed.",
+          "scope": "Philippines-wide pre-deployment scoping: coal and gas power-plant capture potential, depleted oil and gas fields and saline formations as candidate stores, NDC-linked energy-sector decarbonisation, and the permitting channels (CEPNS/EVOSS) any future pilot would use.",
+          "tags": [
+            "strategic roadmap",
+            "pre-deployment scoping",
+            "energy plan",
+            "NDC linkage"
+          ]
         },
         "zh": {
           "title": "菲律宾 CCUS 战略路线图",
-          "description": "该路线图概述了菲律宾实施 CCUS 的监管和技术路径，重点关注西菲律宾海的近海封存潜力。",
-          "scope": null,
-          "tags": null
+          "description": "菲律宾尚无独立的CCUS专门立法，碳捕集目前落在能源规划文件中，被列为适用性“有待确定”的“潜在技术”。 anchor是《2020—2040菲律宾能源计划》（“迈向可持续清洁能源未来”，对接2040宏愿），其清洁能源情景要求可再生能源发电占比35%—50%、进口LNG、推广电动车并节能。分析基础是亚行2013年《东南亚碳捕集与封存前景》研究：筛查了马尼拉南部电厂、评估油气田封存条件，并给出试点路线图与政府工作组。项目落地将走通用 fast-track 通道：依据第30号行政令的“国家重大能源项目证书”（CEPNS）和《能源一站式虚拟商店法》（RA 11234）。气候挂钩来自2021年国家自主贡献（2030年减排/避免75%，其中无条件仅2.71%）及其实施计划（约720亿美元需求，能源占约365亿）。独立技术评估（Lau 2022）认为燃气电厂与工业CCS在安全与可负担性上评分较高，煤改气是更近期的优先项。公认的下一步是出台CCUS专门环境指南，之后方可推进试点。",
+          "scope": "覆盖菲律宾全国的部署前 scoping：燃煤与燃气电厂捕集潜力、枯竭油气田与咸水层候选封存场地、与NDC挂钩的能源部门脱碳，以及未来试点可用的审批通道（CEPNS/EVOSS）。",
+          "tags": ["战略路线图", "部署前评估", "能源计划", "NDC挂钩"]
         }
       },
-      "analysis": {}
+      "analysis": {
+        "incentive": {
+          "score": 35,
+          "label": "Facilitation only, no CCUS subsidy",
+          "evidence": "No dedicated capture grant, tax credit or CfD exists; the only tangible support is procedural fast-tracking via CEPNS (EO 30) and EVOSS (RA 11234), plus prospective access to international climate finance.",
+          "citation": "ASEAN Blue Wealth CCUS sectoral snapshot (2026); Philippine NDC Implementation Plan 2020-2030."
+        },
+        "market": {
+          "score": 40,
+          "label": "NDC-linked market potential",
+          "evidence": "Value would flow through future carbon-market and Article 6 channels tied to the conditional 72.29% of the NDC, but no domestic CCS crediting rule or ETS inclusion exists yet.",
+          "citation": "Philippine NDC Implementation Plan 2020-2030; DOE Clean Energy Scenario."
+        },
+        "mrv": {
+          "score": 30,
+          "label": "Data gaps acknowledged",
+          "evidence": "ADB and ACE assessments flag geological-data access and MRV design as the binding constraints; storage suitability work covers early identification only, with no national monitoring standard issued.",
+          "citation": "ADB Prospects for CCS in Southeast Asia (2013); ASEAN Blue Wealth snapshot on geological-data access (ACE, 2024)."
+        },
+        "statutory": {
+          "score": 25,
+          "label": "No standalone CCUS law",
+          "evidence": "CCUS is recognised only inside the Philippine Energy Plan as a potential technology; dedicated environmental guidelines on CCUS are still pending and no storage licensing code has been enacted.",
+          "citation": "Philippine Energy Plan 2020-2040; 6Wresearch Philippines CO2 EOR Market note on pending CCUS guidelines."
+        },
+        "strategic": {
+          "score": 60,
+          "label": "Anchored in energy planning",
+          "evidence": "CCUS is formally scoped in PEP 2020-2040 under AmBisyon Natin 2040 with ADB-backed pilot identification, sectoral roadmaps and a standing government working-group lineage.",
+          "citation": "DOE Philippine Energy Plan 2020-2040; ADB Prospects for CCS in Southeast Asia (2013)."
+        }
+      }
     },
     {
       "id": "pl-mining-law-ccs-2024",
@@ -5620,23 +5692,59 @@
       "url": "https://www.energie.gov.ro",
       "pub_date": null,
       "provenance_author": "Gemini Governance Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": null,
+      "provenance_reviewer": "Primary-source content-depth audit",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Romania CCUS Regulatory Framework 2024",
-          "description": "A specific legal framework for the transport and storage of CO2, aligned with EU directives and supporting the Hope and Constanta clusters.",
-          "scope": null,
-          "tags": null
+          "description": "Government Emergency Ordinance 139/2024 (adopted 4 December 2024, published in Monitorul Oficial 1225/2024) rewrote the operative core of Romania's CO2 storage regime: Emergency Ordinance 64/2011, which transposed EU Directive 2009/31/EC and was approved by Law 114/2013. The 2024 ordinance was driven explicitly by the EU Net-Zero Industry Act (Regulation 2024/1735) and its 50 Mt union-wide 2030 injection objective with proportional oil-and-gas-producer contributions. Its centrepiece is speed: the regulator ANRMPSG may now issue a storage permit directly to the holder of a valid petroleum agreement covering the site, with no prior exploration phase, provided existing data already characterises the formation and the holder proves technical and financial capacity (new Articles 7(8^1)-(8^4)), including conversion or abandonment terms for legacy oil infrastructure. Complementing this, ANRE licenses the CO2 transport network layer (design/construction/operation authorisations plus an operating licence), the National Geological Fund is opened for storage-site studies, and every operator must also hold a greenhouse-gas emissions permit. Operating a storage site without a permit is now a criminal offence under Penal Code Article 348. ANRMPSG and ANRE must issue all implementing procedures within 18 months. National analysis behind the ordinance puts full-chain CCS delivery at 6-7 years, annual capture needs around 62 MtCO2, pipeline transport near 16 Mtpa and geological storage potential of at least 9 Mtpa, with Romania allowing both onshore and offshore storage nationwide.",
+          "scope": "Romania-wide CO2 transport and geological storage: permitting of exploration and storage by ANRMPSG, CO2 transport-network licensing by ANRE, storage inside active petroleum perimeters via the direct-permit route, GHG-permit linkage, and monitoring/closure duties under the transposed CCS Directive.",
+          "tags": [
+            "storage permitting",
+            "emergency ordinance",
+            "NZIA alignment",
+            "transport licensing"
+          ]
         },
         "zh": {
           "title": "罗马尼亚 CCUS 监管框架 2024",
-          "description": "专门针对二氧化碳运输和封存的法律框架，与欧盟指令保持一致，支持 Hope 和 Constanta 集群。",
-          "scope": null,
-          "tags": null
+          "description": "2024年第139号政府紧急法令（2024年12月4日通过，刊于第1225/2024号官方公报）重写了罗马尼亚二氧化碳封存制度的操作核心：该制度源于转化欧盟指令（2009/31/EC）的2011年第64号紧急法令（经第114/2013号法律批准）。2024年修订的直接动因是欧盟《净零工业法案》（2024/1735号条例）及其2030年全联盟5000万吨注入目标与油气生产商按比例贡献义务。核心是提速：监管机关ANRMPSG可直接向覆盖场址的有效石油协议持有人签发封存许可，无需前置勘探，前提是已有资料已按附录1完成场地评价且持有人证明技术与资金能力（新增第7条第8^1—8^4款），并明确原石油资产转为封存用途或废弃的规则。配套制度包括：ANRE负责二氧化碳运输管网的设计/建设/运营授权与运营许可；国家地质基金开放用于封存选址研究；经营者须同时持有温室气体排放许可；无证运营封存场构成刑事犯罪（刑法第348条）。ANRMPSG与ANRE须在18个月内出台全部实施细则。法令背后的国家分析估计全链条CCS交付需6—7年、年捕集需求约6200万吨、管道运输约1600万吨/年、地质封存潜力至少900万吨/年，且罗马尼亚全国陆上与海上均允许地质封存。",
+          "scope": "覆盖罗马尼亚全国的二氧化碳运输与地质封存：ANRMPSG负责勘探与封存许可、ANRE负责运输管网许可、现役石油区块内经直接许可路径建封存场、温室气体许可挂钩，以及转化指令下的监测与关闭义务。",
+          "tags": ["封存许可", "紧急法令", "NZIA对接", "运输许可"]
         }
       },
-      "analysis": {}
+      "analysis": {
+        "incentive": {
+          "score": 45,
+          "label": "Strategic status, no direct grant",
+          "evidence": "The ordinance creates no capture payment or tax credit; value comes from strategic-project treatment, shortened timelines worth years of appraisal cost, and eligibility for EU channels tied to the NZIA storage objective.",
+          "citation": "OUG 139/2024 preamble (Monitorul Oficial 1225/2024); ANRMPSG general description of geological storage (namr.ro)."
+        },
+        "market": {
+          "score": 55,
+          "label": "NZIA-linked obligations",
+          "evidence": "The preamble ties the reform to proportional EU oil-and-gas storage obligations and third-party network access with anchor-user priority rights, embedding Romanian storage in the emerging EU-wide capacity market.",
+          "citation": "OUG 139/2024 preamble on Regulation (EU) 2024/1735; new Article 22^1 access rules."
+        },
+        "mrv": {
+          "score": 65,
+          "label": "Permit-embedded monitoring",
+          "evidence": "Storage permits carry EIA-backed monitoring plans with defined injection parameters, GHG-permit linkage, measurement of plume behaviour and leakage risk, and corrective-action duties enforceable through permit withdrawal.",
+          "citation": "OUG 64/2011 as amended (Articles 7-8, 10); OUG 139/2024 Article 7 amendments."
+        },
+        "statutory": {
+          "score": 80,
+          "label": "Binding ordinance-level regime",
+          "evidence": "OUG 139/2024 directly amends OUG 64/2011 (Law 114/2013) with operative permitting articles, ANRMPSG/ANRE competence split, criminal liability under Penal Code Article 348, and an 18-month deadline for implementing procedures.",
+          "citation": "OUG 139/2024 amending OUG 64/2011 (legislatie.just.ro; Monitorul Oficial 1225/2024)."
+        },
+        "strategic": {
+          "score": 75,
+          "label": "PNIESC and LTS anchored",
+          "evidence": "The reform implements PNIESC 2021-2030 emission targets (87% energy, 77% industry cuts) and the long-term strategy counting on CCUS for non-metallic minerals, with a national estimate of 62 Mt annual capture need and 9+ Mtpa storage potential.",
+          "citation": "ANRMPSG general description (namr.ro); Romania Long-Term Strategy for GHG reduction."
+        }
+      }
     },
     {
       "id": "ro-law-114-2013-ccs",
@@ -6009,15 +6117,15 @@
       "country": "South Africa",
       "year": 2024,
       "status": "Active",
-      "category": "Statutory",
+      "category": "Regulatory Framework",
       "review_status": "verified",
       "legal_weight": "Act of Parliament",
       "source": "Government of South Africa",
       "url": "https://www.gov.za/",
       "pub_date": "2024-07-23",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Climate Change Act (No. 22 of 2024)",
@@ -6502,15 +6610,15 @@
       "country": "Turkey",
       "year": 2025,
       "status": "Active",
-      "category": "Statutory",
+      "category": "Regulatory Framework",
       "review_status": "verified",
       "legal_weight": "Law No. 7552",
       "source": "Grand National Assembly of Turkey",
       "url": "https://www.resmigazete.gov.tr/",
       "pub_date": "2025-07-09",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": null,
-      "provenance_last_audit_date": "2026-03-18",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Climate Law (No. 7552 of 2025)",
@@ -6872,16 +6980,16 @@
       "id": "uk-ccus-vision",
       "country": "United Kingdom",
       "year": 2023,
-      "status": "现行",
-      "category": "法律监管",
+      "status": "Active",
+      "category": "Regulatory",
       "review_status": "verified",
       "legal_weight": "Guideline/Policy",
       "source": "UK Department for Energy Security and Net Zero",
       "url": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
       "pub_date": "2023-12-20",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "UK CCUS Vision (2035 Strategy)",
@@ -6995,15 +7103,15 @@
       "country": "United States",
       "year": 2025,
       "status": "Active",
-      "category": "Tax Incentives",
+      "category": "Incentive",
       "review_status": "verified",
       "legal_weight": "Primary Legislation",
       "source": "U.S. Government Publishing Office / Internal Revenue Service",
       "url": "https://www.govinfo.gov/app/details/PLAW-119publ21",
       "pub_date": "2025-07-04",
       "provenance_author": "CCUS AI Agent",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "U.S. Public Law 119-21: 2025 Amendments to Section 45Q",
@@ -7061,7 +7169,7 @@
       "id": "us-doe-carbon-management-strategy",
       "country": "United States",
       "year": 2024,
-      "status": "Draft for public comment",
+      "status": "Under development",
       "category": "Strategic",
       "review_status": "verified",
       "legal_weight": "Draft Strategy",
@@ -7069,8 +7177,8 @@
       "url": "https://www.energy.gov/hgeo/does-carbon-management-strategy",
       "pub_date": "2024-10-10",
       "provenance_author": "Gemini Intelligence",
-      "provenance_reviewer": "Primary-source metadata audit",
-      "provenance_last_audit_date": "2026-07-21",
+      "provenance_reviewer": "Taxonomy normalization (#69)",
+      "provenance_last_audit_date": "2026-09-08",
       "i18n": {
         "en": {
           "title": "Draft U.S. DOE Carbon Management Strategy (2024)",

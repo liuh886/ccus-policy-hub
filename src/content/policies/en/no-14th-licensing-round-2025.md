@@ -43,8 +43,8 @@
   'provenance':
     {
       'author': 'CCUS AI Agent',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2025-03-05',
   'regulatory':
@@ -116,7 +116,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'Norwegian Offshore Directorate',
-  'status': 'Awarded',
+  'status': 'Active',
   'title': 'Norway 2025 CO2 Storage Licensing Round 1',
   'url': 'https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/',
   'year': 2025,

@@ -1,10 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-
-// NOTE: enums.generated.ts lists the target enum values, but live frontmatter
-// still contains unnormalized zh/en variants and out-of-enum values. Tighten
-// status/category to z.enum() only after the normalization migration tracked
-// in https://github.com/liuh886/ccus-policy-hub/issues/69.
+import { POLICY_CATEGORIES, POLICY_STATUSES } from './enums.generated';
 
 const provenanceSchema = z.object({
   author: z.string(),
@@ -84,6 +80,14 @@ const policySchema = z.object({
   provenance: policyProvenanceSchema.optional(),
 });
 
+// en markdown carries canonical enum values (issue #69 migration); zh
+// markdown carries dictionary-translated labels, so only the en schema is
+// enum-tight. zh labels are guarded by scripts/policy-taxonomy.test.mjs.
+const policySchemaEn = policySchema.extend({
+  status: z.enum(POLICY_STATUSES).optional().default('Active'),
+  category: z.enum(POLICY_CATEGORIES).optional().default('Regulatory'),
+});
+
 const facilitySchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -141,7 +145,7 @@ const policies_zh = defineCollection({
 
 const policies_en = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/policies/en' }),
-  schema: policySchema,
+  schema: policySchemaEn,
 });
 
 const facilities_zh = defineCollection({

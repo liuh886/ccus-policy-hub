@@ -1,24 +1,21 @@
 # Policy content-depth report
 
-As of **2026-07-22**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
+As of **2026-09-08**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
 
 ## Summary
 
 - Policies assessed: **130**
-- Critical: **69**
+- Critical: **66**
 - High: **6**
 - Medium: **40**
-- Healthy: **15**
+- Healthy: **18**
 - Verified policies needing improvement: **103**
-- Median score: **44/100**
+- Median score: **46/100**
 
 ## Priority queue
 
 | Score | Severity | Policy                                                                                                               | Jurisdiction         | Review   | Main gaps                                                                                                                                                      |
 | ----: | -------- | -------------------------------------------------------------------------------------------------------------------- | -------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|     8 | critical | `gr-climate-law-2022-update` — Greece National Climate Law - CCUS Update                                             | Greece               | null     | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                       |
-|     9 | critical | `ph-doe-ccus-roadmap-2024` — Philippines CCUS Strategic Roadmap                                                      | Philippines          | null     | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                       |
-|     9 | critical | `ro-emergency-ordinance-2024` — Romania CCUS Regulatory Framework 2024                                               | Romania              | null     | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                       |
 |    15 | critical | `puro-earth` — Puro.earth CDR Certification (CORC)                                                                   | International        | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
 |    16 | critical | `iso-standards` — ISO CCUS Standards (TC 265)                                                                        | International        | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
 |    18 | critical | `my-netr-ccus-2023` — Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar                               | Malaysia             | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
@@ -56,6 +53,9 @@ As of **2026-07-22**. This audit evaluates the explanatory depth of policy recor
 |    27 | critical | `au-offshore-ghg-act` — Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006                             | Australia            | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
 |    27 | critical | `de-icm-strategy` — Germany Carbon Management Strategy Key Principles (2024)                                         | Germany              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    27 | critical | `kr-motie-cluster-district-2025` — Korea MOTIE CCUS Strategic Cluster Designation Criteria                           | South Korea          | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
+|    27 | critical | `qa-national-climate-strategy-2024` — Qatar National Environment and Climate Change Strategy 2024                    | Qatar                | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
+|    27 | critical | `uk-ccus-vision` — UK CCUS Vision (2035 Strategy)                                                                    | United Kingdom       | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                               |
+|    28 | critical | `br-bill-1425-2022` — Brazil Bill PL 1425/2022 on CO2 Storage                                                        | Brazil               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 
 ## Scoring principles
 

@@ -43,7 +43,7 @@
           'score': 30,
         },
     },
-  'category': 'Methodology',
+  'category': '技术规范',
   'country': '国际',
   'description': '黄金标准于2025年7月22日发布《工程化碳移除活动要求》，为寻求黄金标准认证的工程化二氧化碳移除活动规定高层级完整性要求，并作为后续方法学和项目开发的基础。数据库原记录的2023年发布日期缺乏官方依据，现予纠正。',
   'id': 'gold-standard',
@@ -51,8 +51,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2025-07-22',
   'relatedFacilities': [],

@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import '../styles/interaction-controls.css';
 import Layout from '../layouts/Layout.astro';
 import PolicyCard from './PolicyCard.astro';
@@ -19,30 +20,22 @@ const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
 const countryMap: Record<string, any> = countryData;
 const dictCountries: Record<string, string> = i18nDict.countries;
 
-const policies = allPolicies.map((p) => ({
+type PolicyEntry =
+  | CollectionEntry<'policies_en'>
+  | CollectionEntry<'policies_zh'>;
+
+// The spread below only overrides the display country; status/category keep
+// their collection-validated types, so the cast back to entries is safe.
+const policies = (allPolicies as PolicyEntry[]).map((p) => ({
   ...p,
   data: {
     ...p.data,
     country: dictCountries[p.data.country] || p.data.country,
   },
-}));
+})) as PolicyEntry[];
 
-// Category display mapping. The zh page translates canonical categories to
-// zh labels (and absorbs legacy singular/plural variants); en displays as-is.
-const categoryMap: Record<string, string> = isEn
-  ? {}
-  : {
-      'Economic Incentive': '经济激励',
-      'Regulatory Framework': '法律监管',
-      'Market Mechanism': '市场机制',
-      'Strategic Guidance': '战略引导',
-      'Technical Standard': '技术规范',
-      'Economic Incentives': '经济激励',
-      'Legal & Regulatory': '法律监管',
-      'Market Mechanisms': '市场机制',
-      Regulatory: '法律监管',
-    };
-
+// Categories/statuses are enum-clean at the source (issue #69 migration);
+// zh/en markdown already carries the display value, no mapping needed.
 const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country)))
   .sort()
   .map((canon) => ({
@@ -53,7 +46,7 @@ const uniqueSectors = Array.from(
   new Set(policies.flatMap((p) => p.data.sectors || []))
 ).sort();
 const uniqueCategories = Array.from(
-  new Set(policies.map((p) => categoryMap[p.data.category] || p.data.category))
+  new Set(policies.map((p) => p.data.category))
 ).sort();
 
 const copy = isEn
@@ -257,8 +250,7 @@ const copy = isEn
       policies
         .sort((a, b) => b.data.year - a.data.year)
         .map((policy) => {
-          const displayCategory =
-            categoryMap[policy.data.category] || policy.data.category;
+          const displayCategory = policy.data.category;
           return (
             <div
               class="policy-item"

@@ -43,7 +43,7 @@
           'score': 80,
         },
     },
-  'category': 'Methodology',
+  'category': 'Technical Standard',
   'country': 'International',
   'description': 'VM0049 Carbon Capture and Storage is Verra’s globally applicable Verified Carbon Standard methodology for quantifying greenhouse-gas emission reductions and carbon dioxide removals from eligible CCS activities. Approved on 27 June 2024, it uses a modular architecture: projects combine the overarching VM0049 requirements with activity-specific capture, transport and storage modules that match their design. Active modules include direct air capture, CO2 transport, storage in saline aquifers and de',
   'evolution':
@@ -81,8 +81,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-22',
-      'reviewer': 'Primary-source content-depth audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2024-06-27',
   'regulatory':

@@ -8,8 +8,8 @@
   'provenance':
     {
       'author': 'Gemini Intelligence',
-      'lastAuditDate': '2026-07-21',
-      'reviewer': 'Primary-source metadata audit',
+      'lastAuditDate': '2026-09-08',
+      'reviewer': 'Taxonomy normalization (#69)',
     },
   'pubDate': '2024-10-10',
   'relatedFacilities':
@@ -391,7 +391,7 @@
     ],
   'reviewStatus': 'verified',
   'source': 'U.S. Department of Energy',
-  'status': 'Draft for public comment',
+  'status': '制定中',
   'title': '美国能源部碳管理战略草案（2024）',
   'url': 'https://www.energy.gov/hgeo/does-carbon-management-strategy',
   'year': 2024,

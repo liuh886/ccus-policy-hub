@@ -149,11 +149,28 @@ async function generateMetrics() {
     'SELECT COUNT(*) FROM policy_facility_links'
   );
 
-  // Currently all links are country-level (no link_type column yet)
-  metrics.facility_policy_links.country_level =
-    metrics.facility_policy_links.total;
-  metrics.facility_policy_links.sector_level = 0;
-  metrics.facility_policy_links.evidence_level = 0;
+  // Phase 2 (2026-09) added link_type; pre-migration DBs lack the column.
+  const linkColumns = queryRows(
+    db,
+    'PRAGMA table_info(policy_facility_links)'
+  ).map((row) => row.name);
+  if (linkColumns.includes('link_type')) {
+    const byType = Object.fromEntries(
+      queryRows(
+        db,
+        'SELECT link_type, COUNT(*) AS n FROM policy_facility_links GROUP BY link_type'
+      ).map((row) => [row.link_type, row.n])
+    );
+    metrics.facility_policy_links.country_level = byType.country || 0;
+    metrics.facility_policy_links.sector_level = byType.sector || 0;
+    metrics.facility_policy_links.evidence_level = byType.evidence || 0;
+  } else {
+    // Currently all links are country-level (no link_type column yet)
+    metrics.facility_policy_links.country_level =
+      metrics.facility_policy_links.total;
+    metrics.facility_policy_links.sector_level = 0;
+    metrics.facility_policy_links.evidence_level = 0;
+  }
 
   // High-risk warning if most links are country-level
   if (metrics.facility_policy_links.total > 0) {
