@@ -1,0 +1,12 @@
+# Enforce LF line endings everywhere (the prettier/editorconfig contract).
+# All tracked blobs are already LF; this keeps fresh checkouts and new files
+# LF-clean on every platform instead of depending on core.autocrlf.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending-normalized.
+*.sqlite binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.pdf binary

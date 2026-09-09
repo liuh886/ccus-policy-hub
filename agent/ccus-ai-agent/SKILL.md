@@ -42,6 +42,8 @@ For each material data change, record or verify:
 
 Secondary sources may help discovery but should not override available primary evidence.
 
+Honest absence outranks convenient presence: when verification shows no dedicated instrument exists (no law, no tariff, no programme), record the absence explicitly in rationale/evolution with what was checked, rather than stretching an adjacent instrument to fill the cell. A documented gap with a checked date is data; a stretched claim is fabrication. Coverage cells stay honestly missing/partial until a real instrument appears.
+
 ## Analytical guardrails
 
 - **Project-record capacity** is an aggregation of reported or estimated capacities attached to database records. It is not automatically net deliverable capture capacity or geological storage capacity.

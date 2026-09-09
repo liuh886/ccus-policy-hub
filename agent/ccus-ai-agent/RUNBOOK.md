@@ -76,10 +76,7 @@ After import, run parity audit, deep audit, exports, public-data generation, tes
 Regenerate outputs after structured data changes:
 
 ```bash
-pnpm manage:db:export:md
-pnpm manage:db:quality:export
-pnpm manage:db:data:export
-pnpm prettier --write public/data/*.json
+pnpm gen
 ```
 
 Review diffs for unexpected record churn, deleted bilingual files, changed IDs, or methodology drift.
@@ -87,6 +84,8 @@ Review diffs for unexpected record churn, deleted bilingual files, changed IDs, 
 ## 7. High-risk recovery and migration
 
 Markdown-to-SQLite reverse sync and facility recovery are migration-only operations. Read `SAFETY.md`, create a database backup, run a dry run where available, inspect the diff, and obtain explicit approval before writing.
+
+Never `git checkout --` the SQLite file after a migration has run: audits that stamp wall-clock metadata (deep audit) dirty the working-tree database by design, and restoring discards the migration itself along with the stamp. The rule is: restore is for audit-only runs on an unmigrated tree; after any migration, the migrated-plus-stamped database is what gets verified and committed. Idempotent migrations make accidental restores recoverable by re-running, but the restore itself is always the wrong move mid-batch.
 
 ## 8. Pull request checklist
 
