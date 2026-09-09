@@ -1,5 +1,21 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3k-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3K — enrich four records
+  (scores 19/AI/27/50) and merge the unverifiable Korea promotion-act
+  duplicate; 2026-09-09.
+- rows affected: 4 policies × 2 locales + 20 analysis rows, plus deletion
+  of `kr-ccus-promotion-act-2024` (no distinct referent; operative statute
+  is kr-ccus-act No. 20203; zero links on victim, kept 7 intact).
+- integrity fixes: in-budget ₹20,000-crore verified against the Budget
+  speech with DST R&D-led framing corrected; cn 6 dimensions normalised
+  to five with system-versus-package split documented.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 4 → 0, healthy
+  84 → 88, median holds 100), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3j-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3J — enrich the six

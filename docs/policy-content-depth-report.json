@@ -1,128 +1,17 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-09-09",
-  "totalPolicies": 130,
+  "totalPolicies": 129,
   "severityCounts": {
-    "critical": 4,
+    "critical": 0,
     "high": 5,
-    "medium": 37,
-    "healthy": 84
+    "medium": 36,
+    "healthy": 88
   },
-  "verifiedNeedsWork": 45,
-  "lowestScore": 19,
+  "verifiedNeedsWork": 41,
+  "lowestScore": 45,
   "medianScore": 100,
   "assessments": [
-    {
-      "id": "in-national-mission-ccus-2024",
-      "country": "India",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 19,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 297,
-        "zhDescriptionLength": 113,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 4,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "National Mission for CCUS & Regulatory Roadmap",
-        "zh": "国家 CCUS 任务与监管路线图"
-      }
-    },
-    {
-      "id": "kr-motie-cluster-district-2025",
-      "country": "South Korea",
-      "year": 2025,
-      "reviewStatus": "draft",
-      "category": "Strategic",
-      "score": 27,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 123,
-        "zhDescriptionLength": 68,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
-        "zh": "韩国 MOTIE CCUS 专项产业集群认定标准"
-      }
-    },
-    {
-      "id": "kr-ccus-promotion-act-2024",
-      "country": "Republic of Korea",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 32,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 417,
-        "zhDescriptionLength": 137,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Act on the Promotion of CCUS and Safety Management",
-        "zh": "二氧化碳捕集、利用与封存培育及安全管理法 (CCUS 培育法)"
-      }
-    },
     {
       "id": "it-law-11-2024-modernization",
       "country": "Italy",
@@ -156,41 +45,6 @@
       "titles": {
         "en": "Law 11/2024 - CCUS Regulatory Modernization",
         "zh": "第11/2024号法律 - CCUS 监管现代化"
-      }
-    },
-    {
-      "id": "cn-national-standards",
-      "country": "China",
-      "year": 2026,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 50,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "missing-or-thin-scope",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 98,
-        "zhDescriptionLength": 269,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 6,
-        "specificAnalysisCount": 6,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "China National Standards for CCUS (GB Series)",
-        "zh": "中国 CCUS 国家标准体系 (GB/T)"
       }
     },
     {
@@ -1142,37 +996,6 @@
       "titles": {
         "en": "Netherlands Porthos SDE++ Operational Subsidy",
         "zh": "荷兰 Porthos 项目 SDE++ 运营补贴机制"
-      }
-    },
-    {
-      "id": "in-union-budget-2026-ccus",
-      "country": "India",
-      "year": 2026,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 71,
-      "severity": "medium",
-      "flags": ["missing-or-thin-scope", "missing-evolution"],
-      "metrics": {
-        "enDescriptionLength": 609,
-        "zhDescriptionLength": 246,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "India Union Budget 2026: CCUS Incentive Scheme",
-        "zh": "印度 2026 联邦预算案 - CCUS 专项激励计划"
       }
     },
     {
@@ -2385,6 +2208,37 @@
       }
     },
     {
+      "id": "cn-national-standards",
+      "country": "China",
+      "year": 2026,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 702,
+        "zhDescriptionLength": 276,
+        "enScopeLength": 196,
+        "zhScopeLength": 54,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China National Standards for CCUS (GB Series)",
+        "zh": "中国 CCUS 国家标准体系 (GB/T)"
+      }
+    },
+    {
       "id": "cn-ordos-pilot-2024",
       "country": "China",
       "year": 2024,
@@ -2943,6 +2797,68 @@
       }
     },
     {
+      "id": "in-national-mission-ccus-2024",
+      "country": "India",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 954,
+        "zhDescriptionLength": 325,
+        "enScopeLength": 160,
+        "zhScopeLength": 58,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "National Mission for CCUS & Regulatory Roadmap",
+        "zh": "国家 CCUS 任务与监管路线图"
+      }
+    },
+    {
+      "id": "in-union-budget-2026-ccus",
+      "country": "India",
+      "year": 2026,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 831,
+        "zhDescriptionLength": 315,
+        "enScopeLength": 179,
+        "zhScopeLength": 64,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "India Union Budget 2026: CCUS Incentive Scheme",
+        "zh": "印度 2026 联邦预算案 - CCUS 专项激励计划"
+      }
+    },
+    {
       "id": "ipcc-guidelines",
       "country": "International",
       "year": 2019,
@@ -3126,6 +3042,37 @@
       "titles": {
         "en": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
         "zh": "韩国《二氧化碳捕集、运输、封存及利用法》"
+      }
+    },
+    {
+      "id": "kr-motie-cluster-district-2025",
+      "country": "South Korea",
+      "year": 2025,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 775,
+        "zhDescriptionLength": 284,
+        "enScopeLength": 164,
+        "zhScopeLength": 59,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
+        "zh": "韩国 MOTIE CCUS 专项产业集群认定标准"
       }
     },
     {
