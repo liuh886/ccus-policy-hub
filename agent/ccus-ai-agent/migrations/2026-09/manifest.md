@@ -1,5 +1,22 @@
 # manifest — migrations/2026-09
 
+## policy-content-depth-batch2-1b-2026-09.mjs
+
+- purpose and date: data-quality special Phase 1B — enrich the four
+  Australia/Canada flagship records (scores 29/27/23/58); 2026-09-09.
+- rows affected: 4 policies × 2 locales + 20 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: `[AI-Generated]` evidence replaced in all ten
+  safeguard/ITC dimensions; alberta-tier $170/t-by-2030 claim corrected to
+  the May 12, 2025 C$95/t freeze plus December 2025 amendments, six analysis
+  dimensions normalised to five; offshore "2023 regulations" sharpened to
+  the exact instruments (Environment 2023, Safety 2024, Resource Management 2025) with first five analysis dimensions; ITC EOR exclusion verified
+  against Income Tax Act s.127.44 and kept.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 63 → 59, median 59 → 65),
+  coverage unchanged.
+- approval status: approved 2026-09-09 (1B research outline + sources).
+
 ## policy-content-depth-batch2-1a-2026-09.mjs
 
 - purpose and date: data-quality special Phase 1A — enrich the four US/UK

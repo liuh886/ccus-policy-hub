@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 130,
   "severityCounts": {
-    "critical": 63,
+    "critical": 59,
     "high": 6,
     "medium": 39,
-    "healthy": 22
+    "healthy": 26
   },
-  "verifiedNeedsWork": 99,
+  "verifiedNeedsWork": 95,
   "lowestScore": 15,
-  "medianScore": 59,
+  "medianScore": 65,
   "assessments": [
     {
       "id": "puro-earth",
@@ -579,44 +579,6 @@
       "titles": {
         "en": "Romania Operational Law for Geological CO2 Storage 2025",
         "zh": "2025年罗马尼亚地质二氧化碳封存运营法"
-      }
-    },
-    {
-      "id": "alberta-tier",
-      "country": "Canada",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 23,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 186,
-        "zhDescriptionLength": 57,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 6,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Alberta TIER System & CCS Incentives",
-        "zh": "阿尔伯塔省 TIER 体系与 CCS 激励"
       }
     },
     {
@@ -1257,42 +1219,6 @@
       }
     },
     {
-      "id": "au-offshore-ghg-act",
-      "country": "Australia",
-      "year": 2006,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 27,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 488,
-        "zhDescriptionLength": 136,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006",
-        "zh": "澳大利亚《2006年海上石油和温室气体封存法》"
-      }
-    },
-    {
       "id": "de-icm-strategy",
       "country": "Germany",
       "year": 2024,
@@ -1477,43 +1403,6 @@
       "titles": {
         "en": "Thailand Draft Climate Change Act 2025",
         "zh": "泰国气候变化法草案 2025"
-      }
-    },
-    {
-      "id": "au-safeguard-mechanism",
-      "country": "Australia",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 29,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 156,
-        "zhDescriptionLength": 47,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Australia Safeguard Mechanism 2023",
-        "zh": "澳大利亚保障机制 2023"
       }
     },
     {
@@ -2376,41 +2265,6 @@
       "titles": {
         "en": "China National Standards for CCUS (GB Series)",
         "zh": "中国 CCUS 国家标准体系 (GB/T)"
-      }
-    },
-    {
-      "id": "ca-ccus-itc",
-      "country": "Canada",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 58,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "missing-or-thin-scope",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 107,
-        "zhDescriptionLength": 285,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 1,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Canada CCUS Investment Tax Credit (ITC)",
-        "zh": "加拿大 CCUS 投资税务抵免 (ITC)"
       }
     },
     {
@@ -4083,6 +3937,130 @@
       "titles": {
         "en": "UK Industrial Carbon Capture Business Model (2025)",
         "zh": "英国工业碳捕集商业模式（2025）"
+      }
+    },
+    {
+      "id": "alberta-tier",
+      "country": "Canada",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1232,
+        "zhDescriptionLength": 406,
+        "enScopeLength": 276,
+        "zhScopeLength": 102,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Alberta TIER System & CCS Incentives",
+        "zh": "阿尔伯塔省 TIER 体系与 CCS 激励"
+      }
+    },
+    {
+      "id": "au-offshore-ghg-act",
+      "country": "Australia",
+      "year": 2006,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1250,
+        "zhDescriptionLength": 377,
+        "enScopeLength": 282,
+        "zhScopeLength": 85,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Australia Offshore Petroleum and Greenhouse Gas Storage Act 2006",
+        "zh": "澳大利亚《2006年海上石油和温室气体封存法》"
+      }
+    },
+    {
+      "id": "au-safeguard-mechanism",
+      "country": "Australia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1129,
+        "zhDescriptionLength": 383,
+        "enScopeLength": 296,
+        "zhScopeLength": 83,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Australia Safeguard Mechanism 2023",
+        "zh": "澳大利亚保障机制 2023"
+      }
+    },
+    {
+      "id": "ca-ccus-itc",
+      "country": "Canada",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1085,
+        "zhDescriptionLength": 339,
+        "enScopeLength": 246,
+        "zhScopeLength": 87,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Canada CCUS Investment Tax Credit (ITC)",
+        "zh": "加拿大 CCUS 投资税务抵免 (ITC)"
       }
     },
     {
