@@ -1,5 +1,19 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3e-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3E — enrich the five MENA
+  records (scores 26/26/24/24/27); 2026-09-09.
+- rows affected: 5 policies × 2 locales + 25 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: Kuwait/Oman legacy regulatory blocks rewritten from
+  strategy publications; Abu Dhabi May 2026 policy added with pending
+  details stated; Qatar NDC 3.0 and Ras Laffan record added.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (5 × 100; critical 38 → 33, healthy
+  50 → 55, median 70 → 72), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3d-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3D — enrich the five

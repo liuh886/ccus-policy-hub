@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 38,
+    "critical": 33,
     "high": 5,
     "medium": 38,
-    "healthy": 50
+    "healthy": 55
   },
-  "verifiedNeedsWork": 75,
+  "verifiedNeedsWork": 70,
   "lowestScore": 15,
-  "medianScore": 70,
+  "medianScore": 72,
   "assessments": [
     {
       "id": "puro-earth",
@@ -509,43 +509,6 @@
       }
     },
     {
-      "id": "kw-kpc-net-zero-2024",
-      "country": "Kuwait",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 24,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 264,
-        "zhDescriptionLength": 92,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Kuwait KPC Net Zero Strategy 2024",
-        "zh": "科威特 KPC 2050 净零战略 2024"
-      }
-    },
-    {
       "id": "kz-ecology-code-ccus-2024",
       "country": "Kazakhstan",
       "year": 2024,
@@ -580,43 +543,6 @@
       "titles": {
         "en": "Kazakhstan Ecology Code (CCUS) Framework 2024",
         "zh": "哈萨克斯坦生态法 (CCUS) 框架 2024"
-      }
-    },
-    {
-      "id": "om-ccus-roadmap-2024",
-      "country": "Oman",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 24,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 248,
-        "zhDescriptionLength": 99,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Oman CCUS Strategic Roadmap 2024",
-        "zh": "阿曼 CCUS 战略路线图 2024"
       }
     },
     {
@@ -693,81 +619,6 @@
       }
     },
     {
-      "id": "ae-carbon-strategy",
-      "country": "United Arab Emirates",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 332,
-        "zhDescriptionLength": 82,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 3
-      },
-      "titles": {
-        "en": "UAE Net Zero 2050 Strategy",
-        "zh": "阿联酋2050净零战略"
-      }
-    },
-    {
-      "id": "ae-federal-climate-law-2024",
-      "country": "United Arab Emirates",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 278,
-        "zhDescriptionLength": 117,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Federal Decree-Law No. (11) of 2024 & Abu Dhabi Carbon Capture Policy",
-        "zh": "2024年第 (11) 号联邦法令及阿布扎比碳捕集政策"
-      }
-    },
-    {
       "id": "au-wa-petroleum-amendment-2024",
       "country": "Australia",
       "year": 2024,
@@ -841,42 +692,6 @@
       "titles": {
         "en": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
         "zh": "韩国 MOTIE CCUS 专项产业集群认定标准"
-      }
-    },
-    {
-      "id": "qa-national-climate-strategy-2024",
-      "country": "Qatar",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 27,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 285,
-        "zhDescriptionLength": 131,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Qatar National Environment and Climate Change Strategy 2024",
-        "zh": "卡塔尔国家环境与气候变化战略 2024"
       }
     },
     {
@@ -3095,6 +2910,68 @@
       }
     },
     {
+      "id": "ae-carbon-strategy",
+      "country": "United Arab Emirates",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 981,
+        "zhDescriptionLength": 349,
+        "enScopeLength": 224,
+        "zhScopeLength": 65,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UAE Net Zero 2050 Strategy",
+        "zh": "阿联酋2050净零战略"
+      }
+    },
+    {
+      "id": "ae-federal-climate-law-2024",
+      "country": "United Arab Emirates",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1054,
+        "zhDescriptionLength": 304,
+        "enScopeLength": 214,
+        "zhScopeLength": 62,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Federal Decree-Law No. (11) of 2024 & Abu Dhabi Carbon Capture Policy",
+        "zh": "2024年第 (11) 号联邦法令及阿布扎比碳捕集政策"
+      }
+    },
+    {
       "id": "alberta-tier",
       "country": "Canada",
       "year": 2023,
@@ -3932,6 +3809,37 @@
       }
     },
     {
+      "id": "kw-kpc-net-zero-2024",
+      "country": "Kuwait",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 731,
+        "zhDescriptionLength": 284,
+        "enScopeLength": 176,
+        "zhScopeLength": 56,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Kuwait KPC Net Zero Strategy 2024",
+        "zh": "科威特 KPC 2050 净零战略 2024"
+      }
+    },
+    {
       "id": "nl-cdr-roadmap-2025",
       "country": "Netherlands",
       "year": 2025,
@@ -4025,6 +3933,37 @@
       }
     },
     {
+      "id": "om-ccus-roadmap-2024",
+      "country": "Oman",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 851,
+        "zhDescriptionLength": 305,
+        "enScopeLength": 192,
+        "zhScopeLength": 61,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Oman CCUS Strategic Roadmap 2024",
+        "zh": "阿曼 CCUS 战略路线图 2024"
+      }
+    },
+    {
       "id": "ph-doe-ccus-roadmap-2024",
       "country": "Philippines",
       "year": 2024,
@@ -4084,6 +4023,37 @@
       "titles": {
         "en": "Poland Geological and Mining Law (CCS) 2024",
         "zh": "波兰地质和采矿法 (CCS) 2024"
+      }
+    },
+    {
+      "id": "qa-national-climate-strategy-2024",
+      "country": "Qatar",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 796,
+        "zhDescriptionLength": 271,
+        "enScopeLength": 163,
+        "zhScopeLength": 77,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Qatar National Environment and Climate Change Strategy 2024",
+        "zh": "卡塔尔国家环境与气候变化战略 2024"
       }
     },
     {
