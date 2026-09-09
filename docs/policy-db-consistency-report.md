@@ -10,7 +10,7 @@ Facilities and coordinates are intentionally outside its scope.
 - Chinese policy files: **130**
 - Public policy records: **130**
 - Consistency mismatches: **0**
-- Formatting-only equivalents ignored: **47**
+- Formatting-only equivalents ignored: **48**
 - Result: **PASS**
 
 ## Rules
