@@ -3,93 +3,15 @@
   "asOf": "2026-09-09",
   "totalPolicies": 130,
   "severityCounts": {
-    "critical": 10,
+    "critical": 4,
     "high": 5,
     "medium": 37,
-    "healthy": 78
+    "healthy": 84
   },
-  "verifiedNeedsWork": 50,
-  "lowestScore": 15,
+  "verifiedNeedsWork": 45,
+  "lowestScore": 19,
   "medianScore": 100,
   "assessments": [
-    {
-      "id": "puro-earth",
-      "country": "International",
-      "year": 2019,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 15,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 122,
-        "zhDescriptionLength": 40,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "Puro.earth CDR Certification (CORC)",
-        "zh": "Puro.earth CDR 核证 (CORC)"
-      }
-    },
-    {
-      "id": "iso-standards",
-      "country": "International",
-      "year": 2019,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 16,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 136,
-        "zhDescriptionLength": 49,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "ISO CCUS Standards (TC 265)",
-        "zh": "ISO CCUS 标准体系 (TC 265)"
-      }
-    },
     {
       "id": "in-national-mission-ccus-2024",
       "country": "India",
@@ -125,45 +47,6 @@
       "titles": {
         "en": "National Mission for CCUS & Regulatory Roadmap",
         "zh": "国家 CCUS 任务与监管路线图"
-      }
-    },
-    {
-      "id": "is-carbfix-act",
-      "country": "Iceland",
-      "year": 1998,
-      "reviewStatus": "draft",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 116,
-        "zhDescriptionLength": 68,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 2,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Iceland Geologic Storage Act (Carbfix Mineralization)",
-        "zh": "冰岛地质封存法案 (Carbfix 矿化许可)"
       }
     },
     {
@@ -205,82 +88,6 @@
       }
     },
     {
-      "id": "gold-standard",
-      "country": "International",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Technical Standard",
-      "score": 29,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 379,
-        "zhDescriptionLength": 107,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "Gold Standard Engineered Removals Activity Requirements (2025)",
-        "zh": "黄金标准工程化碳移除活动要求（2025）"
-      }
-    },
-    {
-      "id": "is-cdr-framework",
-      "country": "Iceland",
-      "year": 2022,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 30,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 396,
-        "zhDescriptionLength": 119,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)",
-        "zh": "冰岛二氧化碳封存与矿化法律框架（第67/2022号法律）"
-      }
-    },
-    {
       "id": "kr-ccus-promotion-act-2024",
       "country": "Republic of Korea",
       "year": 2024,
@@ -314,41 +121,6 @@
       "titles": {
         "en": "Act on the Promotion of CCUS and Safety Management",
         "zh": "二氧化碳捕集、利用与封存培育及安全管理法 (CCUS 培育法)"
-      }
-    },
-    {
-      "id": "is-onshore-storage-permit-2025",
-      "country": "Iceland",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 40,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 316,
-        "zhDescriptionLength": 126,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Iceland Onshore Mineralization Storage Framework 2025",
-        "zh": "冰岛陆上矿化封存框架 2025"
       }
     },
     {
@@ -3078,6 +2850,37 @@
       }
     },
     {
+      "id": "gold-standard",
+      "country": "International",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Technical Standard",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 748,
+        "zhDescriptionLength": 263,
+        "enScopeLength": 140,
+        "zhScopeLength": 37,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Gold Standard Engineered Removals Activity Requirements (2025)",
+        "zh": "黄金标准工程化碳移除活动要求（2025）"
+      }
+    },
+    {
       "id": "gr-ccs-regulatory-framework-2025",
       "country": "Greece",
       "year": 2025,
@@ -3168,6 +2971,130 @@
       "titles": {
         "en": "IPCC GHG Inventory Guidelines (2019 Refinement)",
         "zh": "IPCC 温室气体清单指南 (2019 修订)"
+      }
+    },
+    {
+      "id": "is-carbfix-act",
+      "country": "Iceland",
+      "year": 1998,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 939,
+        "zhDescriptionLength": 310,
+        "enScopeLength": 164,
+        "zhScopeLength": 53,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Iceland Geologic Storage Act (Carbfix Mineralization)",
+        "zh": "冰岛地质封存法案 (Carbfix 矿化许可)"
+      }
+    },
+    {
+      "id": "is-cdr-framework",
+      "country": "Iceland",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 806,
+        "zhDescriptionLength": 271,
+        "enScopeLength": 187,
+        "zhScopeLength": 52,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)",
+        "zh": "冰岛二氧化碳封存与矿化法律框架（第67/2022号法律）"
+      }
+    },
+    {
+      "id": "is-onshore-storage-permit-2025",
+      "country": "Iceland",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 866,
+        "zhDescriptionLength": 323,
+        "enScopeLength": 163,
+        "zhScopeLength": 63,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Iceland Onshore Mineralization Storage Framework 2025",
+        "zh": "冰岛陆上矿化封存框架 2025"
+      }
+    },
+    {
+      "id": "iso-standards",
+      "country": "International",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 818,
+        "zhDescriptionLength": 297,
+        "enScopeLength": 155,
+        "zhScopeLength": 44,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "ISO CCUS Standards (TC 265)",
+        "zh": "ISO CCUS 标准体系 (TC 265)"
       }
     },
     {
@@ -3602,6 +3529,37 @@
       "titles": {
         "en": "Poland Geological and Mining Law (CCS) 2024",
         "zh": "波兰地质和采矿法 (CCS) 2024"
+      }
+    },
+    {
+      "id": "puro-earth",
+      "country": "International",
+      "year": 2019,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 818,
+        "zhDescriptionLength": 287,
+        "enScopeLength": 163,
+        "zhScopeLength": 44,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Puro.earth CDR Certification (CORC)",
+        "zh": "Puro.earth CDR 核证 (CORC)"
       }
     },
     {

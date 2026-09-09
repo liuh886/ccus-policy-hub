@@ -1,5 +1,20 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3j-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3J — enrich the six
+  standards/removal and Iceland records (scores 16/15/29/22/30/40);
+  2026-09-09.
+- rows affected: 6 policies × 2 locales + 30 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: Gold Standard 2023 date corrected to the verified July
+  2025 requirements; Iceland trio ordered as a method-framework-permit
+  stack from primary permit sources.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (6 × 100; critical 10 → 4, healthy
+  78 → 84, median holds 100), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3i-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3I — enrich five records
