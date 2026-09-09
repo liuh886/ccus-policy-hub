@@ -1,5 +1,19 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3h-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3H — enrich the six
+  Eurasia/Africa records (scores 22/24/39/40/41/37); 2026-09-09.
+- rows affected: 6 policies × 2 locales + 30 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: Egypt/Kazakhstan/Nigeria legacy regulatory blocks
+  rewritten from verified decrees and ETS records; Nigeria deliberately
+  thin (no fresh sources — structure without invented specifics).
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (6 × 100; critical 21 → 15, healthy
+  67 → 73, median 89 → 100), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3g-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3G — enrich the six Latin

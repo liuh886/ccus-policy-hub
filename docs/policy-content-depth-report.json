@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 21,
+    "critical": 15,
     "high": 5,
     "medium": 38,
-    "healthy": 67
+    "healthy": 73
   },
-  "verifiedNeedsWork": 61,
+  "verifiedNeedsWork": 55,
   "lowestScore": 15,
-  "medianScore": 89,
+  "medianScore": 100,
   "assessments": [
     {
       "id": "puro-earth",
@@ -128,43 +128,6 @@
       }
     },
     {
-      "id": "eg-carbon-market-framework-2024",
-      "country": "Egypt",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 249,
-        "zhDescriptionLength": 73,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Egypt Carbon Market Framework 2024",
-        "zh": "埃及碳市场框架 2024"
-      }
-    },
-    {
       "id": "is-carbfix-act",
       "country": "Iceland",
       "year": 1998,
@@ -238,43 +201,6 @@
       "titles": {
         "en": "Romania Operational Law for Geological CO2 Storage 2025",
         "zh": "2025年罗马尼亚地质二氧化碳封存运营法"
-      }
-    },
-    {
-      "id": "kz-ecology-code-ccus-2024",
-      "country": "Kazakhstan",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 24,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 248,
-        "zhDescriptionLength": 98,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Kazakhstan Ecology Code (CCUS) Framework 2024",
-        "zh": "哈萨克斯坦生态法 (CCUS) 框架 2024"
       }
     },
     {
@@ -503,78 +429,6 @@
       }
     },
     {
-      "id": "ng-nuprc-decarb-2024",
-      "country": "Nigeria",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 37,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 300,
-        "zhDescriptionLength": 83,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Nigeria NUPRC Upstream Decarbonization Rules 2024",
-        "zh": "尼日利亚 NUPRC 上游脱碳规则 2024"
-      }
-    },
-    {
-      "id": "tr-climate-law-2025",
-      "country": "Turkey",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory Framework",
-      "score": 39,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 303,
-        "zhDescriptionLength": 112,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Climate Law (No. 7552 of 2025)",
-        "zh": "气候法 (2025年第7552号)"
-      }
-    },
-    {
       "id": "is-onshore-storage-permit-2025",
       "country": "Iceland",
       "year": 2025,
@@ -607,78 +461,6 @@
       "titles": {
         "en": "Iceland Onshore Mineralization Storage Framework 2025",
         "zh": "冰岛陆上矿化封存框架 2025"
-      }
-    },
-    {
-      "id": "za-climate-change-act-2024",
-      "country": "South Africa",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory Framework",
-      "score": 40,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 323,
-        "zhDescriptionLength": 114,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 6,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Climate Change Act (No. 22 of 2024)",
-        "zh": "气候变化法案 (2024年第22号)"
-      }
-    },
-    {
-      "id": "ru-climate-doctrine-2023",
-      "country": "Russia",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 41,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 358,
-        "zhDescriptionLength": 115,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Climate Doctrine of the Russian Federation (2023 Update)",
-        "zh": "俄罗斯联邦气候条约 (2023年更新)"
       }
     },
     {
@@ -3234,6 +3016,37 @@
       }
     },
     {
+      "id": "eg-carbon-market-framework-2024",
+      "country": "Egypt",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 994,
+        "zhDescriptionLength": 336,
+        "enScopeLength": 214,
+        "zhScopeLength": 59,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Egypt Carbon Market Framework 2024",
+        "zh": "埃及碳市场框架 2024"
+      }
+    },
+    {
       "id": "es-climate-law-ccs-2025",
       "country": "Spain",
       "year": 2025,
@@ -3544,6 +3357,37 @@
       }
     },
     {
+      "id": "kz-ecology-code-ccus-2024",
+      "country": "Kazakhstan",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 854,
+        "zhDescriptionLength": 300,
+        "enScopeLength": 177,
+        "zhScopeLength": 62,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Kazakhstan Ecology Code (CCUS) Framework 2024",
+        "zh": "哈萨克斯坦生态法 (CCUS) 框架 2024"
+      }
+    },
+    {
       "id": "mx-sener-ccus-2025",
       "country": "Mexico",
       "year": 2025,
@@ -3634,6 +3478,37 @@
       "titles": {
         "en": "Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar",
         "zh": "马来西亚国家能源转型路线图 (NETR) - CCUS 支柱"
+      }
+    },
+    {
+      "id": "ng-nuprc-decarb-2024",
+      "country": "Nigeria",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 706,
+        "zhDescriptionLength": 278,
+        "enScopeLength": 171,
+        "zhScopeLength": 53,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Nigeria NUPRC Upstream Decarbonization Rules 2024",
+        "zh": "尼日利亚 NUPRC 上游脱碳规则 2024"
       }
     },
     {
@@ -3916,6 +3791,37 @@
       }
     },
     {
+      "id": "ru-climate-doctrine-2023",
+      "country": "Russia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 878,
+        "zhDescriptionLength": 289,
+        "enScopeLength": 173,
+        "zhScopeLength": 55,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Doctrine of the Russian Federation (2023 Update)",
+        "zh": "俄罗斯联邦气候条约 (2023年更新)"
+      }
+    },
+    {
       "id": "sg-carbon-tax-ccus-2025",
       "country": "Singapore",
       "year": 2025,
@@ -3975,6 +3881,37 @@
       "titles": {
         "en": "Thailand Draft Climate Change Act 2025",
         "zh": "泰国气候变化法草案 2025"
+      }
+    },
+    {
+      "id": "tr-climate-law-2025",
+      "country": "Turkey",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory Framework",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 927,
+        "zhDescriptionLength": 285,
+        "enScopeLength": 208,
+        "zhScopeLength": 74,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Law (No. 7552 of 2025)",
+        "zh": "气候法 (2025年第7552号)"
       }
     },
     {
@@ -4316,6 +4253,37 @@
       "titles": {
         "en": "Vietnam Domestic Carbon Market Framework 2025",
         "zh": "越南国内碳市场框架 2025"
+      }
+    },
+    {
+      "id": "za-climate-change-act-2024",
+      "country": "South Africa",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory Framework",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 838,
+        "zhDescriptionLength": 306,
+        "enScopeLength": 209,
+        "zhScopeLength": 58,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Climate Change Act (No. 22 of 2024)",
+        "zh": "气候变化法案 (2024年第22号)"
       }
     }
   ]
