@@ -3,12 +3,12 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 54,
+    "critical": 50,
     "high": 6,
-    "medium": 39,
-    "healthy": 32
+    "medium": 38,
+    "healthy": 37
   },
-  "verifiedNeedsWork": 90,
+  "verifiedNeedsWork": 87,
   "lowestScore": 15,
   "medianScore": 67,
   "assessments": [
@@ -621,45 +621,6 @@
       }
     },
     {
-      "id": "us-tx-natural-resources-121",
-      "country": "United States",
-      "year": 2009,
-      "reviewStatus": "draft",
-      "category": "Regulatory",
-      "score": 23,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 116,
-        "zhDescriptionLength": 54,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 3,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Texas Natural Resources Code Chapter 121 (CO2 Stewardship)",
-        "zh": "德克萨斯州自然资源法第 121 章 (人为 CO2 管理)"
-      }
-    },
-    {
       "id": "fr-ccus-roadmap",
       "country": "France",
       "year": 2024,
@@ -1178,44 +1139,6 @@
       "titles": {
         "en": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
         "zh": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)"
-      }
-    },
-    {
-      "id": "us-wy-hb-0200",
-      "country": "United States",
-      "year": 2020,
-      "reviewStatus": "draft",
-      "category": "Incentive",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 114,
-        "zhDescriptionLength": 60,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Wyoming House Bill 0200 (Low-Carbon Reliable Energy Standard)",
-        "zh": "美国怀俄明州 HB 0200 号法案 (低碳可靠能源标准)"
       }
     },
     {
@@ -1804,41 +1727,6 @@
       }
     },
     {
-      "id": "us-obbba-45q-2025",
-      "country": "United States",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 42,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 539,
-        "zhDescriptionLength": 171,
-        "enScopeLength": 8,
-        "zhScopeLength": 8,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 4,
-        "analysisDimensions": 6,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "U.S. Public Law 119-21: 2025 Amendments to Section 45Q",
-        "zh": "美国第119-21号公法：2025年45Q修订"
-      }
-    },
-    {
       "id": "my-mida-incentives",
       "country": "Malaysia",
       "year": 2023,
@@ -2014,43 +1902,6 @@
       "titles": {
         "en": "Law 11/2024 - CCUS Regulatory Modernization",
         "zh": "第11/2024号法律 - CCUS 监管现代化"
-      }
-    },
-    {
-      "id": "california-lcfs",
-      "country": "United States",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Market",
-      "score": 46,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "missing-or-thin-scope",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 183,
-        "zhDescriptionLength": 227,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
-        "zh": "加州低碳燃料标准 (LCFS) 2024/2025 修订版"
       }
     },
     {
@@ -3075,41 +2926,6 @@
       }
     },
     {
-      "id": "us-cifia-lpo",
-      "country": "United States",
-      "year": 2021,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 70,
-      "severity": "medium",
-      "flags": [
-        "missing-or-thin-scope",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 1056,
-        "zhDescriptionLength": 506,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "US CIFIA: Carbon Dioxide Transportation Infrastructure Finance and Innovation",
-        "zh": "美国 CIFIA 二氧化碳运输基础设施融资计划"
-      }
-    },
-    {
       "id": "in-union-budget-2026-ccus",
       "country": "India",
       "year": 2026,
@@ -3885,6 +3701,37 @@
       }
     },
     {
+      "id": "california-lcfs",
+      "country": "United States",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Market",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 892,
+        "zhDescriptionLength": 306,
+        "enScopeLength": 267,
+        "zhScopeLength": 62,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
+        "zh": "加州低碳燃料标准 (LCFS) 2024/2025 修订版"
+      }
+    },
+    {
       "id": "cn-ccus-national-standards-2026",
       "country": "China",
       "year": 2026,
@@ -4443,6 +4290,37 @@
       }
     },
     {
+      "id": "us-cifia-lpo",
+      "country": "United States",
+      "year": 2021,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 958,
+        "zhDescriptionLength": 286,
+        "enScopeLength": 212,
+        "zhScopeLength": 68,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "US CIFIA: Carbon Dioxide Transportation Infrastructure Finance and Innovation",
+        "zh": "美国 CIFIA 二氧化碳运输基础设施融资计划"
+      }
+    },
+    {
       "id": "us-doe-carbon-management-strategy",
       "country": "United States",
       "year": 2024,
@@ -4502,6 +4380,99 @@
       "titles": {
         "en": "US EPA Class VI Primacy Delegation",
         "zh": "美国 EPA VI 类井州级执法权委派 (Primacy)"
+      }
+    },
+    {
+      "id": "us-obbba-45q-2025",
+      "country": "United States",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1137,
+        "zhDescriptionLength": 337,
+        "enScopeLength": 242,
+        "zhScopeLength": 69,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "U.S. Public Law 119-21: 2025 Amendments to Section 45Q",
+        "zh": "美国第119-21号公法：2025年45Q修订"
+      }
+    },
+    {
+      "id": "us-tx-natural-resources-121",
+      "country": "United States",
+      "year": 2009,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 898,
+        "zhDescriptionLength": 277,
+        "enScopeLength": 229,
+        "zhScopeLength": 69,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Texas Natural Resources Code Chapter 121 (CO2 Stewardship)",
+        "zh": "德克萨斯州自然资源法第 121 章 (人为 CO2 管理)"
+      }
+    },
+    {
+      "id": "us-wy-hb-0200",
+      "country": "United States",
+      "year": 2020,
+      "reviewStatus": "draft",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 908,
+        "zhDescriptionLength": 280,
+        "enScopeLength": 212,
+        "zhScopeLength": 73,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Wyoming House Bill 0200 (Low-Carbon Reliable Energy Standard)",
+        "zh": "美国怀俄明州 HB 0200 号法案 (低碳可靠能源标准)"
       }
     },
     {

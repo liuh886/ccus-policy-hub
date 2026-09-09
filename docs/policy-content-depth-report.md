@@ -5,11 +5,11 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 ## Summary
 
 - Policies assessed: **131**
-- Critical: **54**
+- Critical: **50**
 - High: **6**
-- Medium: **39**
-- Healthy: **32**
-- Verified policies needing improvement: **90**
+- Medium: **38**
+- Healthy: **37**
+- Verified policies needing improvement: **87**
 - Median score: **67/100**
 
 ## Priority queue
@@ -32,7 +32,6 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    22 | critical | `ph-ccus-policy-framework-2025` — Philippines CCUS Development Framework 2025                                        | Philippines          | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                       |
 |    22 | critical | `ro-ccs-operational-law-2025` — Romania Operational Law for Geological CO2 Storage 2025                              | Romania              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    23 | critical | `co-law-2099-energy-transition` — Colombia Law 2099 of 2021 (CCS Income Tax Incentives)                              | Colombia             | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
-|    23 | critical | `us-tx-natural-resources-121` — Texas Natural Resources Code Chapter 121 (CO2 Stewardship)                           | United States        | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
 |    24 | critical | `fr-ccus-roadmap` — France CCUS Deployment Outlook (2024)                                                            | France               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    24 | critical | `kw-kpc-net-zero-2024` — Kuwait KPC Net Zero Strategy 2024                                                           | Kuwait               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    24 | critical | `kz-ecology-code-ccus-2024` — Kazakhstan Ecology Code (CCUS) Framework 2024                                          | Kazakhstan           | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
@@ -47,7 +46,6 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    26 | critical | `au-wa-petroleum-amendment-2024` — Western Australia Petroleum Legislation Amendment Act 2024                        | Australia            | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    26 | critical | `cn-demo-tech-2024` — Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023) | China                | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    26 | critical | `cn-ordos-pilot-2024` — National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)                             | China                | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
-|    26 | critical | `us-wy-hb-0200` — Wyoming House Bill 0200 (Low-Carbon Reliable Energy Standard)                                      | United States        | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    27 | critical | `de-icm-strategy` — Germany Carbon Management Strategy Key Principles (2024)                                         | Germany              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    27 | critical | `kr-motie-cluster-district-2025` — Korea MOTIE CCUS Strategic Cluster Designation Criteria                           | South Korea          | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    27 | critical | `qa-national-climate-strategy-2024` — Qatar National Environment and Climate Change Strategy 2024                    | Qatar                | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
@@ -56,6 +54,8 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    29 | critical | `gold-standard` — Gold Standard Engineered Removals Activity Requirements (2025)                                     | International        | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    30 | critical | `is-cdr-framework` — Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)                        | Iceland              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    32 | critical | `kr-ccus-promotion-act-2024` — Act on the Promotion of CCUS and Safety Management                                    | Republic of Korea    | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
+|    33 | critical | `cn-zero-carbon-parks` — China National Zero-Carbon Park Construction Notice (2025)                                  | China                | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                                             |
+|    37 | critical | `ng-nuprc-decarb-2024` — Nigeria NUPRC Upstream Decarbonization Rules 2024                                           | Nigeria              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                     |
 
 ## Scoring principles
 

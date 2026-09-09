@@ -1,5 +1,20 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3a-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3A — enrich the five US
+  records (scores 42/23/26/46/70); 2026-09-09.
+- rows affected: 5 policies × 2 locales + 25 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: LCFS placeholder evidence in all five dimensions
+  rewritten from CARB regulation text; OBBBA unsourced primacy claims
+  rewritten and six dimensions normalised to five; Wyoming HB0209 repeal
+  recorded as failed in Senate committee (March 2025), not enacted.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (5 × 100; critical 54 → 50, healthy
+  32 → 37, median holds 67), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## coverage-phase2a-2026-09.mjs
 
 - purpose and date: data-quality special Phase 2A — close the two
