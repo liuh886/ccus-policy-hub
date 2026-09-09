@@ -1,5 +1,17 @@
 # manifest — migrations/2026-09
 
+## strategic-dim-sweep-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3 sweep — replace the
+  systematic strategic-dimension placeholder across 25 medium/high
+  policies with record-grounded evidence; 2026-09-09.
+- rows affected: 25 strategic rows updated in place (other dimensions
+  untouched) plus provenance restamps. No status changes.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (high 5 → 3, no regressions, placeholders
+  zero), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3k-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3K — enrich four records
