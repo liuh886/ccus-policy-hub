@@ -3,12 +3,12 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 43,
+    "critical": 38,
     "high": 5,
     "medium": 38,
-    "healthy": 45
+    "healthy": 50
   },
-  "verifiedNeedsWork": 80,
+  "verifiedNeedsWork": 75,
   "lowestScore": 15,
   "medianScore": 70,
   "assessments": [
@@ -167,44 +167,6 @@
       }
     },
     {
-      "id": "gr-ccs-regulatory-framework-2025",
-      "country": "Greece",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 20,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 195,
-        "zhDescriptionLength": 74,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 6,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Greece Strategic Framework for CCS Development 2025",
-        "zh": "2025年希腊 CCS 发展战略框架"
-      }
-    },
-    {
       "id": "sg-carbon-tax-ccus-2025",
       "country": "Singapore",
       "year": 2025,
@@ -278,43 +240,6 @@
       "titles": {
         "en": "Colombia Regulatory Decree for CCUS 2025",
         "zh": "2025年哥伦比亚 CCUS 监管法令"
-      }
-    },
-    {
-      "id": "be-ccus-strategy-2025",
-      "country": "Belgium",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 250,
-        "zhDescriptionLength": 71,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Belgium Federal CCUS and Hydrogen Strategy 2025",
-        "zh": "2025年比利时联邦 CCUS 与氢能战略"
       }
     },
     {
@@ -428,43 +353,6 @@
       "titles": {
         "en": "Egypt Carbon Market Framework 2024",
         "zh": "埃及碳市场框架 2024"
-      }
-    },
-    {
-      "id": "es-climate-law-ccs-2025",
-      "country": "Spain",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 240,
-        "zhDescriptionLength": 84,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Spain Climate Change and CCS Framework 2025",
-        "zh": "西班牙气候变化与 CCS 框架 2025"
       }
     },
     {
@@ -621,44 +509,6 @@
       }
     },
     {
-      "id": "fr-ccus-roadmap",
-      "country": "France",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 24,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 281,
-        "zhDescriptionLength": 85,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "France CCUS Deployment Outlook (2024)",
-        "zh": "法国CCUS部署现状与展望（2024）"
-      }
-    },
-    {
       "id": "kw-kpc-net-zero-2024",
       "country": "Kuwait",
       "year": 2024,
@@ -767,43 +617,6 @@
       "titles": {
         "en": "Oman CCUS Strategic Roadmap 2024",
         "zh": "阿曼 CCUS 战略路线图 2024"
-      }
-    },
-    {
-      "id": "pl-mining-law-ccs-2024",
-      "country": "Poland",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 24,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 273,
-        "zhDescriptionLength": 96,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Poland Geological and Mining Law (CCS) 2024",
-        "zh": "波兰地质和采矿法 (CCS) 2024"
       }
     },
     {
@@ -3375,6 +3188,37 @@
       }
     },
     {
+      "id": "be-ccus-strategy-2025",
+      "country": "Belgium",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1040,
+        "zhDescriptionLength": 347,
+        "enScopeLength": 230,
+        "zhScopeLength": 82,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Belgium Federal CCUS and Hydrogen Strategy 2025",
+        "zh": "2025年比利时联邦 CCUS 与氢能战略"
+      }
+    },
+    {
       "id": "ca-ccus-itc",
       "country": "Canada",
       "year": 2023,
@@ -3809,6 +3653,37 @@
       }
     },
     {
+      "id": "es-climate-law-ccs-2025",
+      "country": "Spain",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1073,
+        "zhDescriptionLength": 396,
+        "enScopeLength": 209,
+        "zhScopeLength": 80,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 4,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Spain Climate Change and CCS Framework 2025",
+        "zh": "西班牙气候变化与 CCS 框架 2025"
+      }
+    },
+    {
       "id": "eu-cbam",
       "country": "European Union",
       "year": 2023,
@@ -3871,6 +3746,37 @@
       }
     },
     {
+      "id": "fr-ccus-roadmap",
+      "country": "France",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1074,
+        "zhDescriptionLength": 386,
+        "enScopeLength": 210,
+        "zhScopeLength": 68,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "France CCUS Deployment Outlook (2024)",
+        "zh": "法国CCUS部署现状与展望（2024）"
+      }
+    },
+    {
       "id": "fr-ccus-strategy-2024",
       "country": "France",
       "year": 2024,
@@ -3899,6 +3805,37 @@
       "titles": {
         "en": "Strategy for Decarbonising Industry (CCUS Roadmap 2024)",
         "zh": "工业脱碳战略 (2024 CCUS 路线图)"
+      }
+    },
+    {
+      "id": "gr-ccs-regulatory-framework-2025",
+      "country": "Greece",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 976,
+        "zhDescriptionLength": 369,
+        "enScopeLength": 186,
+        "zhScopeLength": 71,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Greece Strategic Framework for CCS Development 2025",
+        "zh": "2025年希腊 CCS 发展战略框架"
       }
     },
     {
@@ -4116,6 +4053,37 @@
       "titles": {
         "en": "Philippines CCUS Strategic Roadmap",
         "zh": "菲律宾 CCUS 战略路线图"
+      }
+    },
+    {
+      "id": "pl-mining-law-ccs-2024",
+      "country": "Poland",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 865,
+        "zhDescriptionLength": 297,
+        "enScopeLength": 222,
+        "zhScopeLength": 63,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 2,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Poland Geological and Mining Law (CCS) 2024",
+        "zh": "波兰地质和采矿法 (CCS) 2024"
       }
     },
     {

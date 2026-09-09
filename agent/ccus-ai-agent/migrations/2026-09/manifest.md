@@ -1,5 +1,20 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3d-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3D — enrich the five
+  EU-periphery records (scores 22/20/24/22/24); 2026-09-09.
+- rows affected: 5 policies × 2 locales + 25 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: Belgian phantom federal strategy reframed as composite
+  posture; Greek Eni-Hellas dropped for the verified portfolio; Spanish
+  2025-amendment claim replaced with Law 40/2010 base plus hub momentum;
+  all four legacy regulatory blocks rewritten.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (5 × 100; critical 43 → 38, healthy
+  45 → 50, median holds 70), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3c-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3C — enrich the four China
