@@ -45,6 +45,7 @@ jobs:
           corepack enable
           corepack prepare pnpm@9 --activate
           pnpm install --frozen-lockfile
+          pnpm gen
           pnpm build
           cp -R dist ../dist
 

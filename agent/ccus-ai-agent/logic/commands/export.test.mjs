@@ -170,7 +170,9 @@ test('exports facilities with sorted links and reviewer fallback', async () => {
     assert.equal(zh.provenance.reviewer, REVIEWER_PLACEHOLDER);
     assert.equal(zh.provenance.lastAuditDate, '2026-03-01');
     const fallback = readFm(path.join(tmp, 'facilities/zh/f2.md'));
-    assert.match(fallback.provenance.lastAuditDate, /^\d{4}-\d{2}-\d{2}$/);
+    // Determinism lock: missing audit dates inherit the dataset as-of date
+    // (MAX over fixtures = f1's 2026-03-01), never the wall-clock date.
+    assert.equal(fallback.provenance.lastAuditDate, '2026-03-01');
   } finally {
     db.close();
     fs.rmSync(tmp, { recursive: true, force: true });

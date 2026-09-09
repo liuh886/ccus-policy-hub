@@ -1,3 +1,17 @@
+# --- Generated publication outputs ---
+# Pure functions of agent/ccus-ai-agent/db/ccus_master.sqlite.
+# Never edit or commit these; regenerate with `pnpm gen` (byte-identical).
+# Kept tracked (curated sources, not projections): src/data/countries.json
+# (component seed data), src/content/enums.generated.ts (allowed-value list),
+# docs/* reports (human review artifacts).
+src/content/policies/
+src/content/facilities/
+src/content/countries/
+public/data/
+src/data/dataset_versions.json
+src/data/i18n_dictionary.json
+src/data/quality_metrics.generated.json
+
 # --- Internal AI Context ---
 .gemini/
 .codex/

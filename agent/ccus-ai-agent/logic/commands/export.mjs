@@ -56,6 +56,16 @@ export async function dbExportMd(
 
   const dict = JSON.parse(fs.readFileSync(dictPath, 'utf8'));
   const translate = createTranslator(dict);
+  // Deterministic audit-date fallback: records without their own
+  // provenance_last_audit_date inherit the dataset as-of date (MAX over all
+  // audit dates), never the wall-clock export date. Export output must be a
+  // pure function of the database file, so regeneration is byte-identical.
+  const datasetAsOf =
+    db.get(`SELECT MAX(d) AS m FROM (
+      SELECT provenance_last_audit_date AS d FROM policies
+      UNION ALL SELECT provenance_last_audit_date FROM facilities
+      UNION ALL SELECT provenance_last_audit_date FROM country_profiles
+    )`)?.m ?? null;
   const CONTENT_ROOT =
     contentRoot ?? path.join(LOGIC_DIR, '../../../src/content');
 
@@ -197,9 +207,7 @@ export async function dbExportMd(
         provenance: {
           author: f.provenance_author || 'IEA Ingestion',
           reviewer: f.provenance_reviewer || REVIEWER_PLACEHOLDER,
-          lastAuditDate:
-            f.provenance_last_audit_date ||
-            new Date().toISOString().split('T')[0],
+          lastAuditDate: f.provenance_last_audit_date || datasetAsOf,
         },
       });
       const dir = path.join(CONTENT_ROOT, 'facilities', lang);
@@ -248,9 +256,7 @@ export async function dbExportMd(
             c.provenance_reviewer && c.provenance_reviewer.trim() !== ''
               ? c.provenance_reviewer
               : REVIEWER_PLACEHOLDER,
-          lastAuditDate:
-            c.provenance_last_audit_date ||
-            new Date().toISOString().split('T')[0],
+          lastAuditDate: c.provenance_last_audit_date || datasetAsOf,
         },
       });
       const dir = path.join(CONTENT_ROOT, 'countries', lang);
@@ -262,11 +268,10 @@ export async function dbExportMd(
     });
   });
 
-  db.run(
-    "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_export_timestamp', ?)",
-    [Date.now().toString()]
-  );
-  if (injectedDb == null) db.save();
+  // Export is read-only on the database: no timestamps are stamped back into
+  // db_meta (a wall-clock write would dirty the SSOT on every export and
+  // break byte-identical regeneration). All DB writes go through
+  // scripts/lib/db-write.mjs.
   console.log('EXPORT DONE.');
 }
 

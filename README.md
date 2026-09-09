@@ -216,6 +216,7 @@ Recommended usage:
 git clone https://github.com/liuh886/ccus-policy-hub.git
 cd ccus-policy-hub
 pnpm install
+pnpm gen # regenerate src/content, public/data, src/data from the SQLite SSOT
 pnpm dev
 ```
 
@@ -226,8 +227,7 @@ pnpm lint
 pnpm test
 pnpm astro check
 pnpm manage:db:audit:deep
-pnpm manage:db:quality:export
-pnpm manage:db:data:export
+pnpm gen
 pnpm build
 ```
 

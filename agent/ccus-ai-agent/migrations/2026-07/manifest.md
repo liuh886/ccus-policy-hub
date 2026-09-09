@@ -7,6 +7,10 @@ They are kept here for provenance and rollback reference only — do **not**
 re-run them (they are idempotent, but re-running is a governed operation that
 requires explicit human approval per `AGENTS.md` section 6).
 
+Code retired: the five `migrate-*.mjs` scripts and their `.test.mjs` files were
+moved to `_archive/2026-07/` (convergence cleanup; executed code is not kept
+next to active batches). This manifest stays as the execution record.
+
 Common properties (all five):
 
 - Source schema/data version: post-`1d50fc8e` checkpoint (2026-07 baseline)

@@ -39,7 +39,10 @@ jobs:
 
           git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > changed-files.txt
           cat changed-files.txt
-          if grep -Eq '^(data/|src/content/policies/|public/data/|docs/policy-(db-consistency|coverage|content-depth)|scripts/(manage-db|sync-policy|audit-policy|export)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
+          # Generated projections (src/content/*, public/data, src/data) are no
+          # longer committed: they are pure functions of the SQLite SSOT and
+          # are regenerated with `pnpm gen`. Watch the generators instead.
+          if grep -Eq '^(agent/ccus-ai-agent/(db|logic|migrations|governance)/|src/content/(config\.ts|enums\.generated\.ts)|src/data/countries\.json|docs/policy-(db-consistency|coverage|content-depth)|scripts/(export|generate|sync-policy|audit-policy|manage-db|content-export-utils|lib/)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
             echo "governed_data=true" >> "$GITHUB_OUTPUT"
           else
             echo "governed_data=false" >> "$GITHUB_OUTPUT"
@@ -64,6 +67,9 @@ jobs:
 
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Regenerate derived content from SQLite SSOT
+        run: pnpm gen
 
       - name: ESLint
         run: pnpm eslint .
@@ -122,20 +128,24 @@ jobs:
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Regenerate derived content from SQLite SSOT
+        run: pnpm gen
+
+      - name: Verify byte-identical regeneration
+        run: |
+          hash_trees() {
+            find src/content/policies src/content/facilities src/content/countries public/data src/data/dataset_versions.json src/data/i18n_dictionary.json src/data/quality_metrics.generated.json -type f | sort | xargs sha256sum
+          }
+          hash_trees > /tmp/gen-a.txt
+          pnpm gen > /dev/null
+          hash_trees > /tmp/gen-b.txt
+          diff /tmp/gen-a.txt /tmp/gen-b.txt
+
       - name: Deep Audit (blocking)
         run: pnpm manage:db:audit:deep
 
-      - name: Verify Committed Policy Projections
-        run: |
-          pnpm manage:db:audit:policy-consistency
-          git diff --exit-code -- \
-            src/content/policies \
-            public/data/policies.json \
-            docs/policy-db-consistency-report.json \
-            docs/policy-db-consistency-report.md
-
-      - name: Verify Committed Policy Links
-        run: node scripts/sync-policy-link-projections.mjs
+      - name: Verify Policy Consistency (DB vs regenerated Markdown)
+        run: pnpm manage:db:audit:policy-consistency
 
       - name: Verify Facilities Parity
         run: pnpm check:facilities-parity
@@ -159,20 +169,9 @@ jobs:
             docs/policy-content-depth-report.json \
             docs/policy-content-depth-report.md
 
-      - name: Regenerate and semantically verify public projections
-        run: |
-          pnpm manage:db:quality:export
-          pnpm manage:db:data:export
-          pnpm prettier --write public/data/*.json
-          pnpm manage:db:audit:policy-consistency
-          node scripts/sync-policy-link-projections.mjs
-
       - name: Require stable governance reports to remain current
         run: |
           git diff --exit-code -- \
-            src/content/policies \
-            src/data/quality_metrics.generated.json \
-            public/data \
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md \
             docs/policy-coverage-matrix.md \

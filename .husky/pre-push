@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Heavier gates run here instead of pre-commit so commits stay frictionless;
+# CI repeats everything.
+bash -lc 'pnpm exec astro check && pnpm test'

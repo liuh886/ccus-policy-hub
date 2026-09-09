@@ -45,3 +45,10 @@
 - post-migration audits and exports: quality metrics regenerated (grouped
   counts identical: 6938/0/0), deep audit, consistency, full gates.
 - approval status: approved 2026-09-08 (T4/Q3).
+
+## Execution record
+
+All three migrations executed 2026-09-08/09 against
+`agent/ccus-ai-agent/db/ccus_master.sqlite`, committed as `078b6608` and
+pushed to `origin/main`. Code retired to `_archive/2026-09/` per the lifecycle
+rule in `migrations/README.md`; this manifest stays as the record.

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# 保留全项目类型检查；格式与 lint 仅检查 staged 文件，避免旧文件样式问题阻塞新提交
-bash -lc 'pnpm exec astro check && pnpm run lint:staged'
+# 仅检查 staged 文件的格式与 lint（快）；类型检查与测试移到 pre-push，CI 全量复跑
+bash -lc 'pnpm run lint:staged'

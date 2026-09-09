@@ -35,10 +35,11 @@
     "manage:db:quality:export": "node scripts/generate-quality-metrics.mjs",
     "manage:db:data:export": "node scripts/generate-public-data.mjs",
     "sync:all": "pnpm manage:db:export:md",
+    "gen": "pnpm manage:db:export:md && pnpm manage:db:export:md:clean && pnpm manage:db:export:i18n && pnpm manage:db:data:export && pnpm manage:db:quality:export && node scripts/sync-policy-link-projections.mjs && pnpm prettier --write src/content/policies src/content/facilities src/content/countries public/data src/data/dataset_versions.json src/data/i18n_dictionary.json src/data/quality_metrics.generated.json",
     "check:facilities-parity": "node agent/ccus-ai-agent/logic/audit-facilities-parity.mjs",
     "lint": "eslint . && prettier --check .",
     "lint:staged": "node scripts/lint-staged.mjs",
-    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs agent/ccus-ai-agent/migrations/*/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs agent/ccus-ai-agent/migrations/20*/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
