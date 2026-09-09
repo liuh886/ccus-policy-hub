@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 27,
+    "critical": 21,
     "high": 5,
     "medium": 38,
-    "healthy": 61
+    "healthy": 67
   },
-  "verifiedNeedsWork": 65,
+  "verifiedNeedsWork": 61,
   "lowestScore": 15,
-  "medianScore": 72,
+  "medianScore": 89,
   "assessments": [
     {
       "id": "puro-earth",
@@ -128,120 +128,6 @@
       }
     },
     {
-      "id": "co-ccus-regulatory-decree-2025",
-      "country": "Colombia",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 21,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 202,
-        "zhDescriptionLength": 84,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Colombia Regulatory Decree for CCUS 2025",
-        "zh": "2025年哥伦比亚 CCUS 监管法令"
-      }
-    },
-    {
-      "id": "br-anp-ccs-resolution",
-      "country": "Brazil",
-      "year": 2024,
-      "reviewStatus": "draft",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 122,
-        "zhDescriptionLength": 68,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 2,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Brazil ANP Resolution on CCS Authorization (Law 14.993)",
-        "zh": "巴西 ANP CCS 授权与监管决议 (基于 14.993 号法)"
-      }
-    },
-    {
-      "id": "cl-green-hydrogen-ccs-2025",
-      "country": "Chile",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 245,
-        "zhDescriptionLength": 74,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Chile Green Hydrogen and CCUS Roadmap 2025",
-        "zh": "智利绿氢与 CCUS 路线图 2025"
-      }
-    },
-    {
       "id": "eg-carbon-market-framework-2024",
       "country": "Egypt",
       "year": 2024,
@@ -352,45 +238,6 @@
       "titles": {
         "en": "Romania Operational Law for Geological CO2 Storage 2025",
         "zh": "2025年罗马尼亚地质二氧化碳封存运营法"
-      }
-    },
-    {
-      "id": "co-law-2099-energy-transition",
-      "country": "Colombia",
-      "year": 2021,
-      "reviewStatus": "draft",
-      "category": "Incentive",
-      "score": 23,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 105,
-        "zhDescriptionLength": 59,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 3,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Colombia Law 2099 of 2021 (CCS Income Tax Incentives)",
-        "zh": "哥伦比亚第 2099/2021 号能源法 (CCS 所得税减免)"
       }
     },
     {
@@ -541,44 +388,6 @@
       "titles": {
         "en": "Korea MOTIE CCUS Strategic Cluster Designation Criteria",
         "zh": "韩国 MOTIE CCUS 专项产业集群认定标准"
-      }
-    },
-    {
-      "id": "br-bill-1425-2022",
-      "country": "Brazil",
-      "year": 2022,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 28,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 299,
-        "zhDescriptionLength": 96,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 1,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "Brazil Bill PL 1425/2022 on CO2 Storage",
-        "zh": "巴西二氧化碳封存法案 PL 1425/2022"
       }
     },
     {
@@ -940,41 +749,6 @@
       "titles": {
         "en": "Circular Carbon Economy (CCE) National Program",
         "zh": "循环碳经济 (CCE) 国家计划"
-      }
-    },
-    {
-      "id": "mx-sener-ccus-2025",
-      "country": "Mexico",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 44,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 361,
-        "zhDescriptionLength": 156,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "SENER CCUS Legal Framework & CCS Cluster Strategy (2025)",
-        "zh": "SENER CCUS 法律框架与 CCS 集群战略 (2025)"
       }
     },
     {
@@ -2871,6 +2645,68 @@
       }
     },
     {
+      "id": "br-anp-ccs-resolution",
+      "country": "Brazil",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 978,
+        "zhDescriptionLength": 342,
+        "enScopeLength": 185,
+        "zhScopeLength": 53,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Brazil ANP Resolution on CCS Authorization (Law 14.993)",
+        "zh": "巴西 ANP CCS 授权与监管决议 (基于 14.993 号法)"
+      }
+    },
+    {
+      "id": "br-bill-1425-2022",
+      "country": "Brazil",
+      "year": 2022,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 776,
+        "zhDescriptionLength": 296,
+        "enScopeLength": 163,
+        "zhScopeLength": 57,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Brazil Bill PL 1425/2022 on CO2 Storage",
+        "zh": "巴西二氧化碳封存法案 PL 1425/2022"
+      }
+    },
+    {
       "id": "ca-ccus-itc",
       "country": "Canada",
       "year": 2023,
@@ -2930,6 +2766,37 @@
       "titles": {
         "en": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
         "zh": "加州低碳燃料标准 (LCFS) 2024/2025 修订版"
+      }
+    },
+    {
+      "id": "cl-green-hydrogen-ccs-2025",
+      "country": "Chile",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 892,
+        "zhDescriptionLength": 290,
+        "enScopeLength": 180,
+        "zhScopeLength": 57,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Chile Green Hydrogen and CCUS Roadmap 2025",
+        "zh": "智利绿氢与 CCUS 路线图 2025"
       }
     },
     {
@@ -3209,6 +3076,68 @@
       "titles": {
         "en": "China National Zero-Carbon Park Construction Notice (2025)",
         "zh": "《关于开展零碳园区建设的通知》（2025）"
+      }
+    },
+    {
+      "id": "co-ccus-regulatory-decree-2025",
+      "country": "Colombia",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 901,
+        "zhDescriptionLength": 303,
+        "enScopeLength": 185,
+        "zhScopeLength": 61,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 6,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Colombia Regulatory Decree for CCUS 2025",
+        "zh": "2025年哥伦比亚 CCUS 监管法令"
+      }
+    },
+    {
+      "id": "co-law-2099-energy-transition",
+      "country": "Colombia",
+      "year": 2021,
+      "reviewStatus": "draft",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 960,
+        "zhDescriptionLength": 301,
+        "enScopeLength": 202,
+        "zhScopeLength": 63,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Colombia Law 2099 of 2021 (CCS Income Tax Incentives)",
+        "zh": "哥伦比亚第 2099/2021 号能源法 (CCS 所得税减免)"
       }
     },
     {
@@ -3612,6 +3541,37 @@
       "titles": {
         "en": "Kuwait KPC Net Zero Strategy 2024",
         "zh": "科威特 KPC 2050 净零战略 2024"
+      }
+    },
+    {
+      "id": "mx-sener-ccus-2025",
+      "country": "Mexico",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 936,
+        "zhDescriptionLength": 392,
+        "enScopeLength": 198,
+        "zhScopeLength": 101,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 3,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "SENER CCUS Legal Framework & CCS Cluster Strategy (2025)",
+        "zh": "SENER CCUS 法律框架与 CCS 集群战略 (2025)"
       }
     },
     {

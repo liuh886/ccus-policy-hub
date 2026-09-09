@@ -1,5 +1,23 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3g-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3G — enrich the six Latin
+  America records (scores 22/28/21/23/22/44); 2026-09-09.
+- rows affected: 6 policies × 2 locales + 30 analysis rows. Status change:
+  co-ccus-regulatory-decree-2025 Active → Under development (draft under
+  consultation, not gazetted).
+- integrity fixes: co-law2099 50%/15yr framing replaced with actual
+  articles; br-bill kept Upcoming with supersession-by-substance noted
+  (formal archival unverified); unverifiable regulatory specifics in
+  co-decree/cl/mx rewritten from ministry sources.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (6 × 100; critical 27 → 21, healthy
+  61 → 67, median 72 → 89), coverage unchanged (missing stays 0).
+- process note: one transient full-suite failure observed (unreproducible,
+  green on two consecutive reruns); 3G file tests stable.
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3f-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3F — enrich the six
