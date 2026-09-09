@@ -1,5 +1,20 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3c-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3C — enrich the four China
+  records (scores 45/26/33/26); 2026-09-09.
+- rows affected: 4 policies × 2 locales + 20 analysis rows. No status
+  changes (all stay Active).
+- integrity fixes: cn-ccer core claim corrected — no CCUS methodology
+  published (first batch and 2025 adds enumerated, CCUS in suggestion
+  pool); unsourced 948 figure replaced with MEE-verified 1776/921
+  numbers; AI-marked dimensions rewritten.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 46 → 43, healthy
+  41 → 45, median 69 → 70), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3b-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3B — enrich the four

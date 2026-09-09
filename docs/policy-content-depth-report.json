@@ -3,14 +3,14 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 46,
-    "high": 6,
+    "critical": 43,
+    "high": 5,
     "medium": 38,
-    "healthy": 41
+    "healthy": 45
   },
-  "verifiedNeedsWork": 83,
+  "verifiedNeedsWork": 80,
   "lowestScore": 15,
-  "medianScore": 69,
+  "medianScore": 70,
   "assessments": [
     {
       "id": "puro-earth",
@@ -993,81 +993,6 @@
       }
     },
     {
-      "id": "cn-demo-tech-2024",
-      "country": "China",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 372,
-        "zhDescriptionLength": 101,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 2,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)",
-        "zh": "《绿色低碳先进技术示范工程实施方案》（2023）"
-      }
-    },
-    {
-      "id": "cn-ordos-pilot-2024",
-      "country": "China",
-      "year": 2024,
-      "reviewStatus": "draft",
-      "category": "Strategic",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 130,
-        "zhDescriptionLength": 53,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
-        "zh": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)"
-      }
-    },
-    {
       "id": "kr-motie-cluster-district-2025",
       "country": "South Korea",
       "year": 2025,
@@ -1326,43 +1251,6 @@
       "titles": {
         "en": "Act on the Promotion of CCUS and Safety Management",
         "zh": "二氧化碳捕集、利用与封存培育及安全管理法 (CCUS 培育法)"
-      }
-    },
-    {
-      "id": "cn-zero-carbon-parks",
-      "country": "China",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 33,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 464,
-        "zhDescriptionLength": 123,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 4
-      },
-      "titles": {
-        "en": "China National Zero-Carbon Park Construction Notice (2025)",
-        "zh": "《关于开展零碳园区建设的通知》（2025）"
       }
     },
     {
@@ -1684,42 +1572,6 @@
       "titles": {
         "en": "SENER CCUS Legal Framework & CCS Cluster Strategy (2025)",
         "zh": "SENER CCUS 法律框架与 CCS 集群战略 (2025)"
-      }
-    },
-    {
-      "id": "cn-ccer",
-      "country": "China",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 45,
-      "severity": "high",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 279,
-        "zhDescriptionLength": 102,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)",
-        "zh": "温室气体自愿减排交易管理办法（试行）"
       }
     },
     {
@@ -3585,6 +3437,37 @@
       }
     },
     {
+      "id": "cn-ccer",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 895,
+        "zhDescriptionLength": 293,
+        "enScopeLength": 193,
+        "zhScopeLength": 46,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial)",
+        "zh": "温室气体自愿减排交易管理办法（试行）"
+      }
+    },
+    {
       "id": "cn-ccus-national-standards-2026",
       "country": "China",
       "year": 2026,
@@ -3678,6 +3561,68 @@
       }
     },
     {
+      "id": "cn-demo-tech-2024",
+      "country": "China",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 759,
+        "zhDescriptionLength": 298,
+        "enScopeLength": 184,
+        "zhScopeLength": 52,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Implementation Plan for Green and Low-Carbon Advanced Technology Demonstration Projects (2023)",
+        "zh": "《绿色低碳先进技术示范工程实施方案》（2023）"
+      }
+    },
+    {
+      "id": "cn-ordos-pilot-2024",
+      "country": "China",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 896,
+        "zhDescriptionLength": 277,
+        "enScopeLength": 197,
+        "zhScopeLength": 54,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "National Carbon Peaking Pilot (Ordos) Implementation Plan (2024)",
+        "zh": "国家碳达峰试点 (鄂尔多斯) 实施方案 (2024)"
+      }
+    },
+    {
       "id": "cn-pboc-cerf",
       "country": "China",
       "year": 2021,
@@ -3737,6 +3682,37 @@
       "titles": {
         "en": "China Batch of 12 CCUS National Standards (2025)",
         "zh": "中国12项CCUS国家标准（2025）"
+      }
+    },
+    {
+      "id": "cn-zero-carbon-parks",
+      "country": "China",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 908,
+        "zhDescriptionLength": 264,
+        "enScopeLength": 221,
+        "zhScopeLength": 52,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "China National Zero-Carbon Park Construction Notice (2025)",
+        "zh": "《关于开展零碳园区建设的通知》（2025）"
       }
     },
     {
