@@ -3,12 +3,12 @@
   "asOf": "2026-09-09",
   "totalPolicies": 131,
   "severityCounts": {
-    "critical": 33,
+    "critical": 27,
     "high": 5,
     "medium": 38,
-    "healthy": 55
+    "healthy": 61
   },
-  "verifiedNeedsWork": 70,
+  "verifiedNeedsWork": 65,
   "lowestScore": 15,
   "medianScore": 72,
   "assessments": [
@@ -91,45 +91,6 @@
       }
     },
     {
-      "id": "my-netr-ccus-2023",
-      "country": "Malaysia",
-      "year": 2023,
-      "reviewStatus": "draft",
-      "category": "Strategic",
-      "score": 18,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 101,
-        "zhDescriptionLength": 63,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 1,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar",
-        "zh": "马来西亚国家能源转型路线图 (NETR) - CCUS 支柱"
-      }
-    },
-    {
       "id": "in-national-mission-ccus-2024",
       "country": "India",
       "year": 2024,
@@ -164,44 +125,6 @@
       "titles": {
         "en": "National Mission for CCUS & Regulatory Roadmap",
         "zh": "国家 CCUS 任务与监管路线图"
-      }
-    },
-    {
-      "id": "sg-carbon-tax-ccus-2025",
-      "country": "Singapore",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 20,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 209,
-        "zhDescriptionLength": 66,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Singapore Carbon Pricing (CCUS) Framework 2025",
-        "zh": "新加坡碳定价 (CCUS) 框架 2025"
       }
     },
     {
@@ -395,44 +318,6 @@
       }
     },
     {
-      "id": "ph-ccus-policy-framework-2025",
-      "country": "Philippines",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 216,
-        "zhDescriptionLength": 94,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Philippines CCUS Development Framework 2025",
-        "zh": "2025年菲律宾 CCUS 发展框架"
-      }
-    },
-    {
       "id": "ro-ccs-operational-law-2025",
       "country": "Romania",
       "year": 2025,
@@ -583,42 +468,6 @@
       }
     },
     {
-      "id": "vn-carbon-market-decree-2025",
-      "country": "Vietnam",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 25,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 244,
-        "zhDescriptionLength": 122,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Vietnam Domestic Carbon Market Framework 2025",
-        "zh": "越南国内碳市场框架 2025"
-      }
-    },
-    {
       "id": "au-wa-petroleum-amendment-2024",
       "country": "Australia",
       "year": 2024,
@@ -730,43 +579,6 @@
       "titles": {
         "en": "Brazil Bill PL 1425/2022 on CO2 Storage",
         "zh": "巴西二氧化碳封存法案 PL 1425/2022"
-      }
-    },
-    {
-      "id": "th-draft-climate-change-act-2025",
-      "country": "Thailand",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 28,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 332,
-        "zhDescriptionLength": 117,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Thailand Draft Climate Change Act 2025",
-        "zh": "泰国气候变化法草案 2025"
       }
     },
     {
@@ -1128,43 +940,6 @@
       "titles": {
         "en": "Circular Carbon Economy (CCE) National Program",
         "zh": "循环碳经济 (CCE) 国家计划"
-      }
-    },
-    {
-      "id": "my-mida-incentives",
-      "country": "Malaysia",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 43,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 534,
-        "zhDescriptionLength": 205,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 1,
-        "placeholderAnalysisCount": 3
-      },
-      "titles": {
-        "en": "Malaysia CCS Tax Incentives (Budget 2023)",
-        "zh": "马来西亚 CCS 税收激励（2023 年预算）"
       }
     },
     {
@@ -3840,6 +3615,68 @@
       }
     },
     {
+      "id": "my-mida-incentives",
+      "country": "Malaysia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 714,
+        "zhDescriptionLength": 264,
+        "enScopeLength": 160,
+        "zhScopeLength": 60,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Malaysia CCS Tax Incentives (Budget 2023)",
+        "zh": "马来西亚 CCS 税收激励（2023 年预算）"
+      }
+    },
+    {
+      "id": "my-netr-ccus-2023",
+      "country": "Malaysia",
+      "year": 2023,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1004,
+        "zhDescriptionLength": 354,
+        "enScopeLength": 170,
+        "zhScopeLength": 60,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Malaysia National Energy Transition Roadmap (NETR) - CCUS Pillar",
+        "zh": "马来西亚国家能源转型路线图 (NETR) - CCUS 支柱"
+      }
+    },
+    {
       "id": "nl-cdr-roadmap-2025",
       "country": "Netherlands",
       "year": 2025,
@@ -3964,6 +3801,37 @@
       }
     },
     {
+      "id": "ph-ccus-policy-framework-2025",
+      "country": "Philippines",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 815,
+        "zhDescriptionLength": 272,
+        "enScopeLength": 164,
+        "zhScopeLength": 66,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Philippines CCUS Development Framework 2025",
+        "zh": "2025年菲律宾 CCUS 发展框架"
+      }
+    },
+    {
       "id": "ph-doe-ccus-roadmap-2024",
       "country": "Philippines",
       "year": 2024,
@@ -4085,6 +3953,68 @@
       "titles": {
         "en": "Romania CCUS Regulatory Framework 2024",
         "zh": "罗马尼亚 CCUS 监管框架 2024"
+      }
+    },
+    {
+      "id": "sg-carbon-tax-ccus-2025",
+      "country": "Singapore",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 971,
+        "zhDescriptionLength": 347,
+        "enScopeLength": 202,
+        "zhScopeLength": 80,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Singapore Carbon Pricing (CCUS) Framework 2025",
+        "zh": "新加坡碳定价 (CCUS) 框架 2025"
+      }
+    },
+    {
+      "id": "th-draft-climate-change-act-2025",
+      "country": "Thailand",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1132,
+        "zhDescriptionLength": 311,
+        "enScopeLength": 222,
+        "zhScopeLength": 84,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Thailand Draft Climate Change Act 2025",
+        "zh": "泰国气候变化法草案 2025"
       }
     },
     {
@@ -4395,6 +4325,37 @@
       "titles": {
         "en": "Verra CCS Methodology (VM0049)",
         "zh": "Verra CCS 核证方法学 (VM0049)"
+      }
+    },
+    {
+      "id": "vn-carbon-market-decree-2025",
+      "country": "Vietnam",
+      "year": 2025,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 931,
+        "zhDescriptionLength": 279,
+        "enScopeLength": 210,
+        "zhScopeLength": 78,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Vietnam Domestic Carbon Market Framework 2025",
+        "zh": "越南国内碳市场框架 2025"
       }
     }
   ]

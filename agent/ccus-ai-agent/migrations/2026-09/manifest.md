@@ -1,5 +1,20 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3f-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3F — enrich the six
+  Southeast Asia records (scores 18/43/22/28/20/25); 2026-09-09.
+- rows affected: 6 policies × 2 locales + 30 analysis rows. Status change:
+  th-draft-climate-change-act-2025 Active → Under development (cabinet
+  approval in principle, December 2025, years from enactment).
+- integrity fixes: Philippine 2025 circular reframed as unverified
+  direction (only petroleum circulars found); Singapore credit-eligibility
+  corrected to the ICC offset mechanism.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (6 × 100; critical 33 → 27, healthy
+  55 → 61, median holds 72), coverage unchanged (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3e-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3E — enrich the five MENA
