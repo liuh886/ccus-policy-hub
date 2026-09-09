@@ -1,13 +1,10 @@
 // GENERATED FILE - DO NOT EDIT
 export const POLICY_CATEGORIES = [
-  'Economic Incentive',
   'Incentive',
   'Market',
-  'Market Mechanism',
   'Regulatory',
   'Regulatory Framework',
   'Strategic',
-  'Strategic Guidance',
   'Technical',
   'Technical Standard',
 ] as const;

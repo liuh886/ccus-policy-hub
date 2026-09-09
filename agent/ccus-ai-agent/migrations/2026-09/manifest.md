@@ -1,5 +1,23 @@
 # manifest — migrations/2026-09
 
+## phase4-governance-closeout-2026-09.mjs
+
+- purpose and date: data-quality special Phase 4 — stamp the 15 NULL
+  country audit dates and fold the 3 redundant ui_category rows;
+  2026-09-09.
+- rows affected: 15 country_profiles UPDATEs (date 2026-09-09, reviewer
+  Export-consistency verification — parity-audited, not primary-researched,
+  and labelled as such) + 3 ui_category DELETEs.
+- taxonomy call: only near-duplicate categories folded (Economic
+  Incentive, Market Mechanism, Strategic Guidance); facility lifecycle
+  states kept as legitimate vocabulary. enums.generated.ts trimmed to
+  match; dictionary regenerated to 7 canonical keys; taxonomy test locks
+  the fold (dictionary keys subset of POLICY_CATEGORIES).
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth unchanged (0/3/38/88), coverage unchanged
+  (missing stays 0).
+- approval status: blanket execution approval for the five-task programme.
+
 ## strategic-dim-sweep-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3 sweep — replace the

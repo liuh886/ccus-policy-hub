@@ -147,4 +147,16 @@ describe('policy taxonomy enums (#69)', () => {
     }
     assert.deepStrictEqual(violations, [], 'out-of-enum facility values');
   });
+
+  it('dictionary category keys have no redundant aliases', () => {
+    // The generated dictionary mirrors ui_category; every key must be a
+    // live canonical category. Redundant near-duplicates (Economic
+    // Incentive, Market Mechanism, Strategic Guidance) were folded in
+    // Phase 4 — this locks the fold. Facility lifecycle states are
+    // legitimate vocabulary and are intentionally NOT folded.
+    const orphans = Object.keys(dictionary.ui?.categories || {}).filter(
+      (key) => !POLICY_CATEGORIES.has(key)
+    );
+    assert.deepStrictEqual(orphans, [], 'orphan dictionary category keys');
+  });
 });
