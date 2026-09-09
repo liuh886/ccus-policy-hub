@@ -1,16 +1,16 @@
 # Policy content-depth report
 
-As of **2026-09-08**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
+As of **2026-09-09**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
 
 ## Summary
 
 - Policies assessed: **130**
-- Critical: **66**
+- Critical: **63**
 - High: **6**
-- Medium: **40**
-- Healthy: **18**
-- Verified policies needing improvement: **103**
-- Median score: **46/100**
+- Medium: **39**
+- Healthy: **22**
+- Verified policies needing improvement: **99**
+- Median score: **59/100**
 
 ## Priority queue
 
@@ -42,7 +42,6 @@ As of **2026-09-08**. This audit evaluates the explanatory depth of policy recor
 |    25 | critical | `ch-co2-act-ccs-2024` — Switzerland Revised CO2 Act (CCS/NETs) 2024                                                  | Switzerland          | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    25 | critical | `dk-ccs-subsidy-scheme-2025` — Danish CCS Subsidy Scheme 2025                                                        | Denmark              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    25 | critical | `nl-cdr-roadmap-2025` — Netherlands Carbon Dioxide Removal (CDR) Roadmap 2025                                        | Netherlands          | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
-|    25 | critical | `us-doe-carbon-management-strategy` — Draft U.S. DOE Carbon Management Strategy (2024)                               | United States        | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
 |    25 | critical | `vn-carbon-market-decree-2025` — Vietnam Domestic Carbon Market Framework 2025                                       | Vietnam              | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
 |    26 | critical | `ae-carbon-strategy` — UAE Net Zero 2050 Strategy                                                                    | United Arab Emirates | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    26 | critical | `ae-federal-climate-law-2024` — Federal Decree-Law No. (11) of 2024 & Abu Dhabi Carbon Capture Policy                | United Arab Emirates | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
@@ -54,8 +53,9 @@ As of **2026-09-08**. This audit evaluates the explanatory depth of policy recor
 |    27 | critical | `de-icm-strategy` — Germany Carbon Management Strategy Key Principles (2024)                                         | Germany              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    27 | critical | `kr-motie-cluster-district-2025` — Korea MOTIE CCUS Strategic Cluster Designation Criteria                           | South Korea          | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    27 | critical | `qa-national-climate-strategy-2024` — Qatar National Environment and Climate Change Strategy 2024                    | Qatar                | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
-|    27 | critical | `uk-ccus-vision` — UK CCUS Vision (2035 Strategy)                                                                    | United Kingdom       | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                               |
 |    28 | critical | `br-bill-1425-2022` — Brazil Bill PL 1425/2022 on CO2 Storage                                                        | Brazil               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
+|    28 | critical | `th-draft-climate-change-act-2025` — Thailand Draft Climate Change Act 2025                                          | Thailand             | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
+|    29 | critical | `au-safeguard-mechanism` — Australia Safeguard Mechanism 2023                                                        | Australia            | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                               |
 
 ## Scoring principles
 

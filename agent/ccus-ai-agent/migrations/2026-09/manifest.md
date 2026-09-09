@@ -1,5 +1,31 @@
 # manifest — migrations/2026-09
 
+## policy-content-depth-batch2-1a-2026-09.mjs
+
+- purpose and date: data-quality special Phase 1A — enrich the four US/UK
+  flagship records (scores 25/27/43/70) with primary-source bilingual content;
+  2026-09-09.
+- source and target: `policies` core (status/category/legal_weight/
+  provenance) + `policy_i18n` (description/scope/tags/impact/evolution, both
+  langs) + `policy_analysis` (5 dimensions replaced) for
+  `us-doe-carbon-management-strategy`, `uk-ccus-vision`,
+  `uk-ccs-network-code`, `us-epa-class-vi-primacy`.
+- rows affected: 4 policies × 2 locales + 20 analysis rows. Status change:
+  `uk-ccs-network-code` Planned → Active with `legal_weight` Proposed
+  Market Rule → Market Rule (January 2025 Code operative, approved 1A).
+- integrity fixes: `uk-ccus-vision` `[AI-Generated]` evidence replaced in all
+  five dimensions; `us-epa-class-vi-primacy` unsourced claims (permit counts,
+  moratorium) removed; Louisiana date verified (FR final rule effective
+  2024-02-05); Arizona (2025-09-10), Texas (effective 2025-12-15) and
+  Colorado (proposed 2026-03-16) milestones added.
+- idempotency: UPDATEs + DELETE/INSERT analysis + marker; re-run converges.
+- dry-run: `.test.mjs` (in-memory real-db copy, real scorer ≥ 70 per target).
+- backup and rollback: pre-migration DB copy; content-only (no schema).
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 66 → 63, median 46 → 59),
+  coverage unchanged (high-priority missing still 2 — Phase 2 work).
+- approval status: approved 2026-09-09 (1A research outline + sources).
+
 ## normalize-policy-taxonomy-2026-09.mjs
 
 - purpose and date: normalize policy `category`/`status` to the canonical

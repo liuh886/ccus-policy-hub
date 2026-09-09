@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-09-08",
+  "asOf": "2026-09-09",
   "totalPolicies": 130,
   "severityCounts": {
-    "critical": 66,
+    "critical": 63,
     "high": 6,
-    "medium": 40,
-    "healthy": 18
+    "medium": 39,
+    "healthy": 22
   },
-  "verifiedNeedsWork": 103,
+  "verifiedNeedsWork": 99,
   "lowestScore": 15,
-  "medianScore": 46,
+  "medianScore": 59,
   "assessments": [
     {
       "id": "puro-earth",
@@ -995,42 +995,6 @@
       }
     },
     {
-      "id": "us-doe-carbon-management-strategy",
-      "country": "United States",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 25,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 462,
-        "zhDescriptionLength": 123,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 0,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Draft U.S. DOE Carbon Management Strategy (2024)",
-        "zh": "美国能源部碳管理战略草案（2024）"
-      }
-    },
-    {
       "id": "vn-carbon-market-decree-2025",
       "country": "Vietnam",
       "year": 2025,
@@ -1438,43 +1402,6 @@
       "titles": {
         "en": "Qatar National Environment and Climate Change Strategy 2024",
         "zh": "卡塔尔国家环境与气候变化战略 2024"
-      }
-    },
-    {
-      "id": "uk-ccus-vision",
-      "country": "United Kingdom",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 27,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 110,
-        "zhDescriptionLength": 46,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "UK CCUS Vision (2035 Strategy)",
-        "zh": "英国 CCUS 愿景 (2035 战略)"
       }
     },
     {
@@ -2236,41 +2163,6 @@
       "titles": {
         "en": "Norway 2025 CO2 Storage Licensing Round 1",
         "zh": "挪威2025年二氧化碳封存许可第1轮"
-      }
-    },
-    {
-      "id": "uk-ccs-network-code",
-      "country": "United Kingdom",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 43,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 394,
-        "zhDescriptionLength": 123,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "UK CCS Network Code Framework (Planned)",
-        "zh": "英国CCS网络代码框架（规划中）"
       }
     },
     {
@@ -3543,41 +3435,6 @@
       }
     },
     {
-      "id": "us-epa-class-vi-primacy",
-      "country": "United States",
-      "year": 2010,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 70,
-      "severity": "medium",
-      "flags": [
-        "missing-or-thin-scope",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 1075,
-        "zhDescriptionLength": 457,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "US EPA Class VI Primacy Delegation",
-        "zh": "美国 EPA VI 类井州级执法权委派 (Primacy)"
-      }
-    },
-    {
       "id": "in-union-budget-2026-ccus",
       "country": "India",
       "year": 2026,
@@ -4508,6 +4365,68 @@
       }
     },
     {
+      "id": "uk-ccs-network-code",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1160,
+        "zhDescriptionLength": 324,
+        "enScopeLength": 283,
+        "zhScopeLength": 78,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK CCS Network Code Framework (Planned)",
+        "zh": "英国CCS网络代码框架（规划中）"
+      }
+    },
+    {
+      "id": "uk-ccus-vision",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 996,
+        "zhDescriptionLength": 393,
+        "enScopeLength": 269,
+        "zhScopeLength": 101,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK CCUS Vision (2035 Strategy)",
+        "zh": "英国 CCUS 愿景 (2035 战略)"
+      }
+    },
+    {
       "id": "us-45q-ira",
       "country": "United States",
       "year": 2022,
@@ -4536,6 +4455,68 @@
       "titles": {
         "en": "US 45Q Tax Credit (IRA Enhanced)",
         "zh": "美国 45Q 税收抵免 (IRA 增强版)"
+      }
+    },
+    {
+      "id": "us-doe-carbon-management-strategy",
+      "country": "United States",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1219,
+        "zhDescriptionLength": 370,
+        "enScopeLength": 313,
+        "zhScopeLength": 92,
+        "enTags": 7,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Draft U.S. DOE Carbon Management Strategy (2024)",
+        "zh": "美国能源部碳管理战略草案（2024）"
+      }
+    },
+    {
+      "id": "us-epa-class-vi-primacy",
+      "country": "United States",
+      "year": 2010,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1000,
+        "zhDescriptionLength": 334,
+        "enScopeLength": 258,
+        "zhScopeLength": 70,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "US EPA Class VI Primacy Delegation",
+        "zh": "美国 EPA VI 类井州级执法权委派 (Primacy)"
       }
     },
     {
