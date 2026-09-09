@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-09-09",
-  "totalPolicies": 130,
+  "totalPolicies": 129,
   "severityCounts": {
-    "critical": 59,
+    "critical": 54,
     "high": 6,
     "medium": 39,
-    "healthy": 26
+    "healthy": 30
   },
-  "verifiedNeedsWork": 95,
+  "verifiedNeedsWork": 90,
   "lowestScore": 15,
-  "medianScore": 65,
+  "medianScore": 67,
   "assessments": [
     {
       "id": "puro-earth",
@@ -1444,78 +1444,6 @@
       }
     },
     {
-      "id": "no-longship-operational-2025",
-      "country": "Norway",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 29,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 284,
-        "zhDescriptionLength": 92,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 6,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Norway Longship Operational Framework 2025",
-        "zh": "2025年挪威“长船”项目运营框架"
-      }
-    },
-    {
-      "id": "de-carbon-management-strategy-2024",
-      "country": "Germany",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 30,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 349,
-        "zhDescriptionLength": 137,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Carbon Management Strategy (CMS) & KSpG Amendment",
-        "zh": "碳管理战略 (CMS) 与二氧化碳封存法修订案"
-      }
-    },
-    {
       "id": "is-cdr-framework",
       "country": "Iceland",
       "year": 2022,
@@ -1627,42 +1555,6 @@
       }
     },
     {
-      "id": "kr-ccus-act",
-      "country": "South Korea",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 37,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 301,
-        "zhDescriptionLength": 89,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
-        "zh": "韩国《二氧化碳捕集、运输、封存及利用法》"
-      }
-    },
-    {
       "id": "ng-nuprc-decarb-2024",
       "country": "Nigeria",
       "year": 2024,
@@ -1767,42 +1659,6 @@
       "titles": {
         "en": "Iceland Onshore Mineralization Storage Framework 2025",
         "zh": "冰岛陆上矿化封存框架 2025"
-      }
-    },
-    {
-      "id": "norway-longship",
-      "country": "Norway",
-      "year": 2020,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 40,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 346,
-        "zhDescriptionLength": 115,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Norway Longship Full-Scale CCS Project",
-        "zh": "挪威“长船”全规模CCS项目"
       }
     },
     {
@@ -2052,41 +1908,6 @@
       "titles": {
         "en": "Norway 2025 CO2 Storage Licensing Round 1",
         "zh": "挪威2025年二氧化碳封存许可第1轮"
-      }
-    },
-    {
-      "id": "fr-ccus-strategy-2024",
-      "country": "France",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 44,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 390,
-        "zhDescriptionLength": 143,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 6,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Strategy for Decarbonising Industry (CCUS Roadmap 2024)",
-        "zh": "工业脱碳战略 (2024 CCUS 路线图)"
       }
     },
     {
@@ -4157,6 +3978,37 @@
       }
     },
     {
+      "id": "de-carbon-management-strategy-2024",
+      "country": "Germany",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 959,
+        "zhDescriptionLength": 313,
+        "enScopeLength": 279,
+        "zhScopeLength": 86,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Carbon Management Strategy (CMS) & KSpG Amendment",
+        "zh": "碳管理战略 (CMS) 与二氧化碳封存法修订案"
+      }
+    },
+    {
       "id": "eu-cbam",
       "country": "European Union",
       "year": 2023,
@@ -4219,6 +4071,37 @@
       }
     },
     {
+      "id": "fr-ccus-strategy-2024",
+      "country": "France",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1205,
+        "zhDescriptionLength": 409,
+        "enScopeLength": 282,
+        "zhScopeLength": 86,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Strategy for Decarbonising Industry (CCUS Roadmap 2024)",
+        "zh": "工业脱碳战略 (2024 CCUS 路线图)"
+      }
+    },
+    {
       "id": "gr-climate-law-2022-update",
       "country": "Greece",
       "year": 2022,
@@ -4278,6 +4161,68 @@
       "titles": {
         "en": "IPCC GHG Inventory Guidelines (2019 Refinement)",
         "zh": "IPCC 温室气体清单指南 (2019 修订)"
+      }
+    },
+    {
+      "id": "kr-ccus-act",
+      "country": "South Korea",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1245,
+        "zhDescriptionLength": 385,
+        "enScopeLength": 270,
+        "zhScopeLength": 68,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "South Korea Act on Carbon Dioxide Capture, Transport, Storage and Utilisation",
+        "zh": "韩国《二氧化碳捕集、运输、封存及利用法》"
+      }
+    },
+    {
+      "id": "norway-longship",
+      "country": "Norway",
+      "year": 2020,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1209,
+        "zhDescriptionLength": 478,
+        "enScopeLength": 244,
+        "zhScopeLength": 78,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Norway Longship Full-Scale CCS Project",
+        "zh": "挪威“长船”全规模CCS项目"
       }
     },
     {

@@ -1,5 +1,26 @@
 # manifest — migrations/2026-09
 
+## policy-content-depth-batch2-1c-2026-09.mjs
+
+- purpose and date: data-quality special Phase 1C — enrich the
+  Norway/Germany/Korea/France flagship records (scores 40/30/37/44) and merge
+  the duplicated Longship records; 2026-09-09.
+- rows affected: 4 policies × 2 locales + 20 analysis rows, plus deletion of
+  `no-longship-operational-2025` (policies/policy_i18n/policy_analysis and
+  its 54 policy_facility_links rows, verified identical to the kept record
+  pre-delete; facilities untouched, 129 policies after).
+- integrity fixes: `[AI-Generated]` evidence replaced in the
+  norway-longship and kr-ccus-act dimensions; France/Norway 2024 partnership
+  sharpened (strategic partnership January 2024, export agreement July
+  2025); German KSpTG November 2025 enactment recorded.
+- follow-up fixed in this batch: merge made idempotent (skip once merged);
+  policy-taxonomy test counts derived from bilingual parity instead of a
+  hardcoded 130.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (4 × 100; critical 59 → 54, median 65 → 67),
+  coverage unchanged.
+- approval status: approved 2026-09-09 (1C research outline + merge scheme).
+
 ## policy-content-depth-batch2-1b-2026-09.mjs
 
 - purpose and date: data-quality special Phase 1B — enrich the four

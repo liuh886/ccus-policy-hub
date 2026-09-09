@@ -4,13 +4,13 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 
 ## Summary
 
-- Policies assessed: **130**
-- Critical: **59**
+- Policies assessed: **129**
+- Critical: **54**
 - High: **6**
 - Medium: **39**
-- Healthy: **26**
-- Verified policies needing improvement: **95**
-- Median score: **65/100**
+- Healthy: **30**
+- Verified policies needing improvement: **90**
+- Median score: **67/100**
 
 ## Priority queue
 
@@ -54,8 +54,8 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    28 | critical | `br-bill-1425-2022` — Brazil Bill PL 1425/2022 on CO2 Storage                                                        | Brazil               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    28 | critical | `th-draft-climate-change-act-2025` — Thailand Draft Climate Change Act 2025                                          | Thailand             | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    29 | critical | `gold-standard` — Gold Standard Engineered Removals Activity Requirements (2025)                                     | International        | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
-|    29 | critical | `no-longship-operational-2025` — Norway Longship Operational Framework 2025                                          | Norway               | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                     |
-|    30 | critical | `de-carbon-management-strategy-2024` — Carbon Management Strategy (CMS) & KSpG Amendment                             | Germany              | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
+|    30 | critical | `is-cdr-framework` — Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)                        | Iceland              | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
+|    32 | critical | `kr-ccus-promotion-act-2024` — Act on the Promotion of CCUS and Safety Management                                    | Republic of Korea    | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
 
 ## Scoring principles
 

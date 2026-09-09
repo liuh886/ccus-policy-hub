@@ -64,9 +64,19 @@ function listMd(dir) {
 describe('policy taxonomy enums (#69)', () => {
   it('every en policy file has enum-clean category and status', () => {
     const files = listMd(path.join(ROOT, 'src/content/policies/en'));
+    const zhFiles = listMd(path.join(ROOT, 'src/content/policies/zh'));
+    // File-level invariants only (db-vs-files parity is the consistency
+    // audit's job): bilingual parity plus a catastrophe floor. No hardcoded
+    // record counts — merges legitimately shrink the set (129 after the
+    // Longship merge of 2026-09).
+    assert.equal(
+      files.length,
+      zhFiles.length,
+      `en/zh policy file parity, got ${files.length}/${zhFiles.length}`
+    );
     assert.ok(
-      files.length >= 130,
-      `expected 130 en policy files, got ${files.length}`
+      files.length >= 100,
+      `suspiciously few en policy files, got ${files.length}`
     );
     const violations = [];
     for (const file of files) {
@@ -87,9 +97,15 @@ describe('policy taxonomy enums (#69)', () => {
 
   it('every zh policy file carries a known translated label', () => {
     const files = listMd(path.join(ROOT, 'src/content/policies/zh'));
+    const enFiles = listMd(path.join(ROOT, 'src/content/policies/en'));
+    assert.equal(
+      files.length,
+      enFiles.length,
+      `zh/en policy file parity, got ${files.length}/${enFiles.length}`
+    );
     assert.ok(
-      files.length >= 130,
-      `expected 130 zh policy files, got ${files.length}`
+      files.length >= 100,
+      `suspiciously few zh policy files, got ${files.length}`
     );
     const violations = [];
     for (const file of files) {
