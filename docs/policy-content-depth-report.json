@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-09-09",
-  "totalPolicies": 131,
+  "totalPolicies": 130,
   "severityCounts": {
-    "critical": 15,
+    "critical": 10,
     "high": 5,
-    "medium": 38,
-    "healthy": 73
+    "medium": 37,
+    "healthy": 78
   },
-  "verifiedNeedsWork": 55,
+  "verifiedNeedsWork": 50,
   "lowestScore": 15,
   "medianScore": 100,
   "assessments": [
@@ -164,118 +164,6 @@
       "titles": {
         "en": "Iceland Geologic Storage Act (Carbfix Mineralization)",
         "zh": "冰岛地质封存法案 (Carbfix 矿化许可)"
-      }
-    },
-    {
-      "id": "ro-ccs-operational-law-2025",
-      "country": "Romania",
-      "year": 2025,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 22,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 232,
-        "zhDescriptionLength": 80,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Romania Operational Law for Geological CO2 Storage 2025",
-        "zh": "2025年罗马尼亚地质二氧化碳封存运营法"
-      }
-    },
-    {
-      "id": "ch-co2-act-ccs-2024",
-      "country": "Switzerland",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 25,
-      "severity": "critical",
-      "flags": [
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "thin-analysis-evidence"
-      ],
-      "metrics": {
-        "enDescriptionLength": 290,
-        "zhDescriptionLength": 99,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 0,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Switzerland Revised CO2 Act (CCS/NETs) 2024",
-        "zh": "瑞士修订版二氧化碳法 (CCS/NETs) 2024"
-      }
-    },
-    {
-      "id": "au-wa-petroleum-amendment-2024",
-      "country": "Australia",
-      "year": 2024,
-      "reviewStatus": "draft",
-      "category": "Regulatory",
-      "score": 26,
-      "severity": "critical",
-      "flags": [
-        "short-en-description",
-        "short-zh-description",
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 130,
-        "zhDescriptionLength": 53,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Western Australia Petroleum Legislation Amendment Act 2024",
-        "zh": "西澳大利亚州 2024 石油立法修正案 (GHG 封存)"
       }
     },
     {
@@ -461,76 +349,6 @@
       "titles": {
         "en": "Iceland Onshore Mineralization Storage Framework 2025",
         "zh": "冰岛陆上矿化封存框架 2025"
-      }
-    },
-    {
-      "id": "ar-rigi-ccus-2024",
-      "country": "Argentina",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Incentive",
-      "score": 42,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 370,
-        "zhDescriptionLength": 126,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 6,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Incentive Regime for Large Investments (RIGI - CCUS 2024)",
-        "zh": "大型投资激励机制 (RIGI - 2024 CCUS)"
-      }
-    },
-    {
-      "id": "sa-circular-carbon-economy-2024",
-      "country": "Saudi Arabia",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 42,
-      "severity": "critical",
-      "flags": [
-        "missing-or-thin-scope",
-        "incomplete-impact-analysis",
-        "missing-evolution"
-      ],
-      "metrics": {
-        "enDescriptionLength": 371,
-        "zhDescriptionLength": 129,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 0,
-        "zhImpactFields": 0,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 5,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Circular Carbon Economy (CCE) National Program",
-        "zh": "循环碳经济 (CCE) 国家计划"
       }
     },
     {
@@ -1307,41 +1125,6 @@
       "titles": {
         "en": "GCCA 2050 Cement & Concrete Industry Roadmap for Net Zero",
         "zh": "GCCA 全球水泥与混凝土行业净零路线图 (2050)"
-      }
-    },
-    {
-      "id": "sa-hydrogen-strategy-ccus",
-      "country": "Saudi Arabia",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Strategic",
-      "score": 69,
-      "severity": "medium",
-      "flags": [
-        "missing-or-thin-scope",
-        "missing-evolution",
-        "placeholder-analysis"
-      ],
-      "metrics": {
-        "enDescriptionLength": 646,
-        "zhDescriptionLength": 254,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 0,
-        "zhMilestones": 0,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 4,
-        "placeholderAnalysisCount": 1
-      },
-      "titles": {
-        "en": "Saudi Arabia Hydrogen Strategy & CCS Coupling",
-        "zh": "沙特阿拉伯氢能战略与 CCS 耦合计划 (2024)"
       }
     },
     {
@@ -2334,6 +2117,37 @@
       }
     },
     {
+      "id": "ar-rigi-ccus-2024",
+      "country": "Argentina",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Incentive",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 745,
+        "zhDescriptionLength": 287,
+        "enScopeLength": 190,
+        "zhScopeLength": 61,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 6,
+        "zhRegulatoryFields": 5,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Incentive Regime for Large Investments (RIGI - CCUS 2024)",
+        "zh": "大型投资激励机制 (RIGI - 2024 CCUS)"
+      }
+    },
+    {
       "id": "au-offshore-ghg-act",
       "country": "Australia",
       "year": 2006,
@@ -2393,6 +2207,37 @@
       "titles": {
         "en": "Australia Safeguard Mechanism 2023",
         "zh": "澳大利亚保障机制 2023"
+      }
+    },
+    {
+      "id": "au-wa-petroleum-amendment-2024",
+      "country": "Australia",
+      "year": 2024,
+      "reviewStatus": "draft",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 888,
+        "zhDescriptionLength": 297,
+        "enScopeLength": 191,
+        "zhScopeLength": 53,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Western Australia Petroleum Legislation Amendment Act 2024",
+        "zh": "西澳大利亚州 2024 石油立法修正案 (GHG 封存)"
       }
     },
     {
@@ -2548,6 +2393,37 @@
       "titles": {
         "en": "California Low Carbon Fuel Standard (LCFS) 2024/2025 Amendments",
         "zh": "加州低碳燃料标准 (LCFS) 2024/2025 修订版"
+      }
+    },
+    {
+      "id": "ch-co2-act-ccs-2024",
+      "country": "Switzerland",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 760,
+        "zhDescriptionLength": 269,
+        "enScopeLength": 161,
+        "zhScopeLength": 48,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 2,
+        "zhMilestones": 2,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 1,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Switzerland Revised CO2 Act (CCS/NETs) 2024",
+        "zh": "瑞士修订版二氧化碳法 (CCS/NETs) 2024"
       }
     },
     {
@@ -3819,6 +3695,68 @@
       "titles": {
         "en": "Climate Doctrine of the Russian Federation (2023 Update)",
         "zh": "俄罗斯联邦气候条约 (2023年更新)"
+      }
+    },
+    {
+      "id": "sa-circular-carbon-economy-2024",
+      "country": "Saudi Arabia",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 878,
+        "zhDescriptionLength": 318,
+        "enScopeLength": 147,
+        "zhScopeLength": 68,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Circular Carbon Economy (CCE) National Program",
+        "zh": "循环碳经济 (CCE) 国家计划"
+      }
+    },
+    {
+      "id": "sa-hydrogen-strategy-ccus",
+      "country": "Saudi Arabia",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 926,
+        "zhDescriptionLength": 304,
+        "enScopeLength": 160,
+        "zhScopeLength": 57,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 3,
+        "zhMilestones": 3,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Saudi Arabia Hydrogen Strategy & CCS Coupling",
+        "zh": "沙特阿拉伯氢能战略与 CCS 耦合计划 (2024)"
       }
     },
     {

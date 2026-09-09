@@ -1,5 +1,23 @@
 # manifest — migrations/2026-09
 
+## content-depth-batch3i-2026-09.mjs
+
+- purpose and date: data-quality special Phase 3I — enrich five records
+  (scores 42/69/42/26/25) and merge the duplicated Romania operational-law
+  record; 2026-09-09.
+- rows affected: 5 policies × 2 locales + 25 analysis rows, plus deletion
+  of `ro-ccs-operational-law-2025` (subset duplicate of the enriched
+  ro-emergency-ordinance-2024, identical 3-row link set; facilities
+  untouched, 130 policies after). No status changes.
+- integrity fixes: sa-hydrogen 10%-CAPEX claim removed; Swiss bilaterals
+  softened to under-development posture.
+- post-migration audits and exports: `pnpm gen`, deep audit, consistency
+  (0 mismatches), content-depth (5 × 100; critical 15 → 10, healthy
+  73 → 78, median holds 100), coverage unchanged (missing stays 0).
+- process note: second transient full-suite failure (green on immediate
+  rerun, twice); both flakes followed deep-audit runs — watch item.
+- approval status: blanket execution approval for the five-task programme.
+
 ## content-depth-batch3h-2026-09.mjs
 
 - purpose and date: data-quality special Phase 3H — enrich the six

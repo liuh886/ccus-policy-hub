@@ -4,12 +4,12 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 
 ## Summary
 
-- Policies assessed: **131**
-- Critical: **15**
+- Policies assessed: **130**
+- Critical: **10**
 - High: **5**
-- Medium: **38**
-- Healthy: **73**
-- Verified policies needing improvement: **55**
+- Medium: **37**
+- Healthy: **78**
+- Verified policies needing improvement: **50**
 - Median score: **100/100**
 
 ## Priority queue
@@ -20,16 +20,11 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    16 | critical | `iso-standards` — ISO CCUS Standards (TC 265)                                                        | International     | verified | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
 |    19 | critical | `in-national-mission-ccus-2024` — National Mission for CCUS & Regulatory Roadmap                     | India             | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
 |    22 | critical | `is-carbfix-act` — Iceland Geologic Storage Act (Carbfix Mineralization)                             | Iceland           | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence |
-|    22 | critical | `ro-ccs-operational-law-2025` — Romania Operational Law for Geological CO2 Storage 2025              | Romania           | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
-|    25 | critical | `ch-co2-act-ccs-2024` — Switzerland Revised CO2 Act (CCS/NETs) 2024                                  | Switzerland       | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                             |
-|    26 | critical | `au-wa-petroleum-amendment-2024` — Western Australia Petroleum Legislation Amendment Act 2024        | Australia         | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    27 | critical | `kr-motie-cluster-district-2025` — Korea MOTIE CCUS Strategic Cluster Designation Criteria           | South Korea       | draft    | short-en-description, short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis                         |
 |    29 | critical | `gold-standard` — Gold Standard Engineered Removals Activity Requirements (2025)                     | International     | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    30 | critical | `is-cdr-framework` — Iceland CO2 Storage and Mineralisation Legal Framework (Law No. 67/2022)        | Iceland           | verified | short-zh-description, missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, placeholder-analysis, thin-analysis-evidence                       |
 |    32 | critical | `kr-ccus-promotion-act-2024` — Act on the Promotion of CCUS and Safety Management                    | Republic of Korea | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution, thin-analysis-evidence                                                                   |
 |    40 | critical | `is-onshore-storage-permit-2025` — Iceland Onshore Mineralization Storage Framework 2025             | Iceland           | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                                           |
-|    42 | critical | `ar-rigi-ccus-2024` — Incentive Regime for Large Investments (RIGI - CCUS 2024)                      | Argentina         | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                                           |
-|    42 | critical | `sa-circular-carbon-economy-2024` — Circular Carbon Economy (CCE) National Program                   | Saudi Arabia      | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                                           |
 |    45 | high     | `it-law-11-2024-modernization` — Law 11/2024 - CCUS Regulatory Modernization                         | Italy             | verified | missing-or-thin-scope, incomplete-impact-analysis, missing-evolution                                                                                           |
 |    50 | critical | `cn-national-standards` — China National Standards for CCUS (GB Series)                              | China             | verified | short-en-description, missing-or-thin-scope, missing-evolution                                                                                                 |
 |    59 | high     | `denmark-ccfd` — Denmark Negative Emission Carbon Capture and Storage (NECCS) Fund & CCfD            | Denmark           | verified | short-en-description, missing-or-thin-scope, missing-evolution                                                                                                 |
@@ -52,10 +47,15 @@ As of **2026-09-09**. This audit evaluates the explanatory depth of policy recor
 |    69 | medium   | `cn-sd-eco-plan-14fym` — Shandong 14th Five-Year Plan for Eco-Protection (CCUS)                      | China             | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
 |    69 | medium   | `icao-corsia-ccu-2024` — ICAO CORSIA Carbon Offsetting & CCU Fuel Rules (2024)                       | International     | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
 |    69 | medium   | `intl-gcca-net-zero-2050` — GCCA 2050 Cement & Concrete Industry Roadmap for Net Zero                | International     | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
-|    69 | medium   | `sa-hydrogen-strategy-ccus` — Saudi Arabia Hydrogen Strategy & CCS Coupling                          | Saudi Arabia      | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
 |    70 | medium   | `au-offshore-ghg-safety-2024` — Australia Offshore GHG Storage (Safety) Regulations 2024             | Australia         | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
 |    70 | medium   | `ca-sk-spii` — Saskatchewan Petroleum Innovation Incentive (SPII)                                    | Canada            | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
 |    70 | medium   | `cn-hb-ets-offset` — Hubei ETS Carbon Offset Rules (CCUS Provisions)                                 | China             | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
+|    70 | medium   | `intl-ccs-plus-framework` — CCS+ Initiative: Global Carbon Accounting Framework                      | International     | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
+|    70 | medium   | `intl-paris-art-6-4-ccs` — Paris Agreement Article 6.4 Mechanism (CCS & CDR Standards)               | International     | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
+|    70 | medium   | `jp-jogmec-advanced-ccs-2024` — Japan JOGMEC Advanced CCS Projects Support Program                   | Japan             | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
+|    70 | medium   | `nl-porthos-sde-subsidy` — Netherlands Porthos SDE++ Operational Subsidy                             | Netherlands       | verified | missing-or-thin-scope, missing-evolution, placeholder-analysis                                                                                                 |
+|    71 | medium   | `in-union-budget-2026-ccus` — India Union Budget 2026: CCUS Incentive Scheme                         | India             | verified | missing-or-thin-scope, missing-evolution                                                                                                                       |
+|    72 | medium   | `ca-ab-sequestration-tenure` — Alberta CO2 Sequestration Tenure Framework                            | Canada            | verified | missing-or-thin-scope, missing-evolution                                                                                                                       |
 
 ## Scoring principles
 
