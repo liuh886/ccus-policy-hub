@@ -1,5 +1,25 @@
 ---
+import { getCollection } from 'astro:content';
 import FacilitiesIndex from '../../../components/FacilitiesIndex.astro';
+import {
+  facilitiesPageCount,
+  facilitiesPageSlice,
+  sortFacilities,
+} from '../../../lib/facilityPagination.mjs';
+
+const sorted = sortFacilities(await getCollection('facilities_en'));
+const total = facilitiesPageCount(sorted.length);
 ---
 
-<FacilitiesIndex lang="en" />
+<FacilitiesIndex
+  lang="en"
+  items={facilitiesPageSlice(sorted, 1)}
+  pagination={total > 1
+    ? {
+        current: 1,
+        total,
+        prevUrl: undefined,
+        nextUrl: total >= 2 ? `/en/facilities/page/2` : undefined,
+      }
+    : undefined}
+/>

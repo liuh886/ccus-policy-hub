@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import FacilitiesIndex from '../../../../components/FacilitiesIndex.astro';
+import {
+  facilitiesPageCount,
+  facilitiesPageSlice,
+  facilitiesPageUrls,
+  sortFacilities,
+} from '../../../../lib/facilityPagination.mjs';
+
+export async function getStaticPaths() {
+  const sorted = sortFacilities(await getCollection('facilities_en'));
+  const total = facilitiesPageCount(sorted.length);
+  return Array.from({ length: total - 1 }, (_, i) => {
+    const page = i + 2;
+    return { params: { page: String(page) } };
+  });
+}
+
+const { page: pageParam } = Astro.params;
+const page = Number(pageParam);
+const sorted = sortFacilities(await getCollection('facilities_en'));
+const total = facilitiesPageCount(sorted.length);
+const { prevUrl, nextUrl } = facilitiesPageUrls('/en/facilities', page, total);
+---
+
+<FacilitiesIndex
+  lang="en"
+  items={facilitiesPageSlice(sorted, page)}
+  pagination={{ current: page, total, prevUrl, nextUrl }}
+/>

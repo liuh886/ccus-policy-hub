@@ -1,21 +1,37 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import FacilityMap from './FacilityMap.astro';
 import FacilityCard from './FacilityCard.astro';
+import Pagination from './Pagination.astro';
 import DatasetVersion from './DatasetVersion.astro';
 import countryData from '../data/countries.json';
 
+type FacilityEntry =
+  | CollectionEntry<'facilities_en'>
+  | CollectionEntry<'facilities_zh'>;
+
 interface Props {
   lang?: 'zh' | 'en';
+  /** Current page slice (Astro paginate). Falls back to the full collection. */
+  items?: FacilityEntry[];
+  pagination?: {
+    current: number;
+    total: number;
+    prevUrl?: string;
+    nextUrl?: string;
+  };
 }
 
-const { lang = 'zh' } = Astro.props;
+const { lang = 'zh', items, pagination } = Astro.props;
 const isEn = lang === 'en';
 
 const facilities = await getCollection(
   isEn ? 'facilities_en' : 'facilities_zh'
 );
+// Paginated slice for the card grid. Filter dropdowns and the map always
+// use the full collection; only the rendered cards are sliced.
+const pageItems = items ?? facilities;
 const countryMap: Record<string, any> = countryData;
 
 const specialCountryLabels: Record<string, string> = {
@@ -291,7 +307,7 @@ const copy = isEn
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
     >
       {
-        facilities.map((f) => {
+        pageItems.map((f) => {
           const normalizedType = normalizeTypeLabel(f.data.type);
 
           return (
@@ -324,6 +340,18 @@ const copy = isEn
     >
       <p class="text-slate-500 font-bold">{copy.noResults}</p>
     </div>
+
+    {
+      pagination && pagination.total > 1 && (
+        <Pagination
+          current={pagination.current}
+          total={pagination.total}
+          prevUrl={pagination.prevUrl}
+          nextUrl={pagination.nextUrl}
+          lang={lang}
+        />
+      )
+    }
 
     <!-- Dataset Version Metadata -->
     <DatasetVersion lang={lang} compact />
