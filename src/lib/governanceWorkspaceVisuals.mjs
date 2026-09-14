@@ -4,6 +4,7 @@ import {
   GOVERNANCE_DIMENSIONS,
   classifyGovernanceDeployment,
 } from './governanceBenchmarking.mjs';
+import { governanceVisualsCopy as copy } from './governanceCopy.mjs';
 
 let profileChart = null;
 let deploymentChart = null;
@@ -43,8 +44,6 @@ const escapeHtml = (value) =>
         "'": '&#39;',
       })[character] || character
   );
-
-import { governanceVisualsCopy as copy } from './governanceCopy.mjs';
 
 const countryKey = (country) =>
   String(country.canonicalCountry || country.country);

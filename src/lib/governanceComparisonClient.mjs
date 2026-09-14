@@ -5,6 +5,7 @@ import {
   calculateGovernanceCapability,
   isActivePolicy,
 } from './governanceBenchmarking.mjs';
+import { governanceClientCopy as copy } from './governanceCopy.mjs';
 import {
   clearGovernanceAnalytics,
   renderGovernanceAnalytics,
@@ -17,8 +18,6 @@ const colors = [
   { border: 'rgb(139, 92, 246)', bg: 'rgba(139, 92, 246, 0.1)' },
   { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' },
 ];
-
-import { governanceClientCopy as copy } from './governanceCopy.mjs';
 
 const escapeHtml = (value) =>
   String(value ?? '').replace(

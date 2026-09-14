@@ -27,24 +27,49 @@ const {
 ---
 
 <div class="relative w-full h-full min-h-[200px]">
-  <canvas id={id}></canvas>
+  <canvas
+    id={id}
+    data-radar-chart
+    data-values={JSON.stringify(data)}
+    data-details={JSON.stringify(details ?? null)}
+    data-labels={JSON.stringify(labels)}></canvas>
 </div>
 
-<script
-  define:vars={{
-    chartData: data,
-    chartDetails: details,
-    canvasId: id,
-    chartLabels: labels,
-  }}
->
-  const canvas = document.getElementById(canvasId);
-  if (canvas) {
-    // Lazy-load the bundled chart.js (shared chunk with CapacityTrend)
-    // instead of a versionless CDN script: no external SPOF, no duplicate
-    // library payload, and the 200KB parse cost moves off first paint.
-    import('chart.js/auto').then(({ default: Chart }) => {
-      const labelMapping = {
+<script>
+  // Bundled from npm (versioned in package.json) instead of a dynamic
+  // bare-specifier import inside a define:vars script (which Astro treats as
+  // inline: no bundling, no TS, astro(4000)/ts(2570) hints). Payload travels
+  // via data-* attributes — the same pattern as CapacityTrend.astro.
+  import Chart from 'chart.js/auto';
+
+  interface RadarScores {
+    incentive: number;
+    statutory: number;
+    market: number;
+    strategic: number;
+    mrv: number;
+  }
+
+  type RadarKey = keyof RadarScores;
+
+  function initRadarChart() {
+    const canvas = document.querySelector(
+      'canvas[data-radar-chart]'
+    ) as HTMLCanvasElement | null;
+    if (!canvas) return;
+    Chart.getChart(canvas)?.destroy();
+
+    try {
+      const chartData = JSON.parse(
+        canvas.dataset.values || '{}'
+      ) as RadarScores;
+      const chartDetails = JSON.parse(
+        canvas.dataset.details || 'null'
+      ) as Partial<Record<RadarKey, string>> | null;
+      const chartLabels = JSON.parse(canvas.dataset.labels || '[]') as string[];
+      if (chartLabels.length < 5) return;
+
+      const labelMapping: Record<string, RadarKey> = {
         [chartLabels[0]]: 'incentive',
         [chartLabels[1]]: 'statutory',
         [chartLabels[2]]: 'market',
@@ -90,7 +115,7 @@ const {
               pointBorderColor: '#fff',
               pointBorderWidth: 2,
               pointHitRadius: 15,
-              lineTension: 0.15,
+              tension: 0.15,
             },
           ],
         },
@@ -103,7 +128,7 @@ const {
               grid: { color: 'rgba(148, 163, 184, 0.1)' },
               pointLabels: {
                 display: true,
-                font: { size: 11, weight: '900' },
+                font: { size: 11, weight: 900 },
                 color: '#64748b',
               },
               ticks: {
@@ -126,12 +151,13 @@ const {
               displayColors: false,
               callbacks: {
                 label: function (context) {
-                  const label = context.label;
+                  const label = context.label as string;
                   const value = context.formattedValue;
                   const key = labelMapping[label];
-                  const evidence = chartDetails ? chartDetails[key] : null;
+                  const evidence =
+                    key && chartDetails ? (chartDetails[key] ?? null) : null;
 
-                  let result = [`Score: ${value}/100`];
+                  const result: string[] = [`Score: ${value}/100`];
 
                   if (evidence && evidence !== 'No evidence provided yet.') {
                     result.push('');
@@ -139,7 +165,7 @@ const {
                     const words = evidence.split(' ');
                     let currentLine = 'Evidence: ';
 
-                    words.forEach((word) => {
+                    words.forEach((word: string) => {
                       if ((currentLine + word).length > 35) {
                         result.push(currentLine);
                         currentLine = '  ' + word;
@@ -158,6 +184,15 @@ const {
           },
         },
       });
-    });
+    } catch (error) {
+      console.error('Failed to init radar chart:', error);
+    }
+  }
+
+  document.addEventListener('astro:page-load', initRadarChart);
+  if (document.readyState === 'complete') {
+    initRadarChart();
+  } else {
+    window.addEventListener('load', initRadarChart);
   }
 </script>
