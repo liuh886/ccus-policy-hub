@@ -50,11 +50,19 @@ const countryDisplayName = (country, countryMap, lang) => {
 
 const getData = (id, key) => {
   const node = document.getElementById(id);
-  if (!node) return [];
+  if (!node) return key === 'countries' ? {} : [];
   try {
-    return JSON.parse(node.dataset[key] || '[]');
+    if (
+      node.tagName === 'SCRIPT' ||
+      (node.textContent && node.textContent.trim())
+    ) {
+      return JSON.parse(
+        node.textContent || (key === 'countries' ? '{}' : '[]')
+      );
+    }
+    return JSON.parse(node.dataset[key] || (key === 'countries' ? '{}' : '[]'));
   } catch {
-    return [];
+    return key === 'countries' ? {} : [];
   }
 };
 

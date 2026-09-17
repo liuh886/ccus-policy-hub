@@ -39,8 +39,26 @@ const {
   // Bundled from npm (versioned in package.json) instead of a dynamic
   // bare-specifier import inside a define:vars script (which Astro treats as
   // inline: no bundling, no TS, astro(4000)/ts(2570) hints). Payload travels
-  // via data-* attributes — the same pattern as CapacityTrend.astro.
-  import Chart from 'chart.js/auto';
+  import {
+    Chart,
+    RadarController,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+
+  Chart.register(
+    RadarController,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend
+  );
 
   interface RadarScores {
     incentive: number;
@@ -161,20 +179,35 @@ const {
 
                   if (evidence && evidence !== 'No evidence provided yet.') {
                     result.push('');
-                    // Improved wrapping logic
-                    const words = evidence.split(' ');
-                    let currentLine = 'Evidence: ';
+                    // Robust wrapping logic supporting both CJK and Latin text
+                    const isCjk = /[\u4e00-\u9fa5]/.test(evidence);
+                    const prefix = isCjk ? '依据说明: ' : 'Evidence: ';
+                    let currentLine = prefix;
 
-                    words.forEach((word: string) => {
-                      if ((currentLine + word).length > 35) {
-                        result.push(currentLine);
-                        currentLine = '  ' + word;
-                      } else {
-                        currentLine +=
-                          (currentLine === 'Evidence: ' ? '' : ' ') + word;
-                      }
-                    });
-                    result.push(currentLine);
+                    if (isCjk) {
+                      const chars = Array.from(evidence);
+                      chars.forEach((char) => {
+                        if (currentLine.length >= 26) {
+                          result.push(currentLine);
+                          currentLine = '  ' + char;
+                        } else {
+                          currentLine += char;
+                        }
+                      });
+                      if (currentLine.trim()) result.push(currentLine);
+                    } else {
+                      const words = evidence.split(' ');
+                      words.forEach((word: string) => {
+                        if ((currentLine + word).length > 35) {
+                          result.push(currentLine);
+                          currentLine = '  ' + word;
+                        } else {
+                          currentLine +=
+                            (currentLine === prefix ? '' : ' ') + word;
+                        }
+                      });
+                      if (currentLine.trim()) result.push(currentLine);
+                    }
                   }
 
                   return result;
@@ -190,6 +223,12 @@ const {
   }
 
   document.addEventListener('astro:page-load', initRadarChart);
+  document.addEventListener('astro:before-swap', () => {
+    const canvas = document.querySelector(
+      'canvas[data-radar-chart]'
+    ) as HTMLCanvasElement | null;
+    if (canvas) Chart.getChart(canvas)?.destroy();
+  });
   if (document.readyState === 'complete') {
     initRadarChart();
   } else {

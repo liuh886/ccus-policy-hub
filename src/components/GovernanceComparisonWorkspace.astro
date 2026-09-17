@@ -87,7 +87,7 @@ const text = governanceComparisonCopy[lang];
         </section>
       </aside>
 
-      <main class="space-y-12 lg:col-span-7">
+      <div class="space-y-12 lg:col-span-7">
         <section>
           <div class="mb-8 flex items-center gap-3">
             <h2
@@ -121,7 +121,7 @@ const text = governanceComparisonCopy[lang];
             </table>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   </div>
 
@@ -144,30 +144,30 @@ const text = governanceComparisonCopy[lang];
   </div>
 </div>
 
-<div
+<script
   id="all-facilities-data"
-  data-facilities={JSON.stringify(facilities.map(toCompareFacility))}
-  class="hidden"
->
-</div>
-<div
+  type="application/json"
+  is:inline
+  set:html={JSON.stringify(facilities.map(toCompareFacility))}
+/>
+<script
   id="all-policies-data"
-  data-policies={JSON.stringify(policies.map(toComparePolicy))}
-  class="hidden"
->
-</div>
-<div
+  type="application/json"
+  is:inline
+  set:html={JSON.stringify(policies.map(toComparePolicy))}
+/>
+<script
   id="country-data"
-  data-countries={JSON.stringify(countryData)}
-  class="hidden"
->
-</div>
-<div
+  type="application/json"
+  is:inline
+  set:html={JSON.stringify(countryData)}
+/>
+<script
   id="countries-profiles-data"
-  data-profiles={JSON.stringify(profiles.map(toCompareProfile))}
-  class="hidden"
->
-</div>
+  type="application/json"
+  is:inline
+  set:html={JSON.stringify(profiles.map(toCompareProfile))}
+/>
 
 <script>
   import { initGovernanceComparison } from '../lib/governanceComparisonClient.mjs';

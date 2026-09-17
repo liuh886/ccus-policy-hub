@@ -51,7 +51,6 @@
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "pagefind": "^1.4.0",
-    "sql.js": "^1.13.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
@@ -67,6 +66,7 @@
     "husky": "^9.1.7",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
+    "sql.js": "^1.13.0",
     "typescript": "^5.9.3",
     "xlsx": "^0.18.5"
   }

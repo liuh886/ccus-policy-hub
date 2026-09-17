@@ -35,9 +35,6 @@ importers:
       pagefind:
         specifier: ^1.4.0
         version: 1.4.0
-      sql.js:
-        specifier: ^1.13.0
-        version: 1.13.0
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
@@ -78,6 +75,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
+      sql.js:
+        specifier: ^1.13.0
+        version: 1.13.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3

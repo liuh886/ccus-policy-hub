@@ -37,6 +37,14 @@ const typeOptions = [
 ] as const;
 
 type TypeId = (typeof typeOptions)[number]['id'];
+const typeLabels: Record<TypeId, { zh: string; en: string }> = {
+  capture: { zh: '碳捕集 (Capture)', en: 'Capture' },
+  transport: { zh: '碳运输 (Transport)', en: 'Transport' },
+  ts: { zh: '运输与封存 (T&S)', en: 'T&S' },
+  storage: { zh: '地质封存 (Storage)', en: 'Storage' },
+  'full-chain': { zh: '全产业链 (Full chain)', en: 'Full chain' },
+  ccu: { zh: '碳利用 (CCU)', en: 'CCU' },
+};
 type ChartPoint = {
   year: number;
   operational: number;
@@ -328,7 +336,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
                   data-capacity-type
                   class="h-3 w-3 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>{option.label}</span>
+                <span>{lang === 'zh' ? typeLabels[option.id].zh : option.label}</span>
               </label>
             ))
           }
@@ -364,8 +372,28 @@ const metricClose = lang === 'zh' ? '）' : ')';
 <script>
   // Bundled from npm (versioned in package.json) instead of an unversioned CDN
   // tag. Chart stays in module scope — no window globals; View Transitions
-  // navigation re-runs init via the astro:page-load listener registered below.
-  import Chart from 'chart.js/auto';
+  import {
+    Chart,
+    LineController,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+
+  Chart.register(
+    LineController,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend
+  );
   import { t as translateUi, type UiKey } from '../i18n/ui';
 
   interface CapacityPoint {
@@ -639,6 +667,12 @@ const metricClose = lang === 'zh' ? '）' : ')';
   }
 
   document.addEventListener('astro:page-load', initCapacityChart);
+  document.addEventListener('astro:before-swap', () => {
+    const canvas = document.getElementById(
+      'capacityChart'
+    ) as HTMLCanvasElement | null;
+    if (canvas) Chart.getChart(canvas)?.destroy();
+  });
   if (document.readyState === 'complete') {
     initCapacityChart();
   } else {

@@ -10,7 +10,7 @@ CCUS is not a single technology. It is a carbon-management system connecting **c
 
 <figure class="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
   <img
-    src="../../../images/ccus-value-chain-infographic.png"
+    src="../../../images/ccus-value-chain-infographic.webp"
     alt="CCUS value chain connecting carbon capture, transport, utilization, and permanent geological storage"
     width="1536"
     height="1024"

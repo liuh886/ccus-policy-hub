@@ -10,7 +10,7 @@ CCUS 不是一项孤立技术，而是一套连接**碳捕集、运输、利用�
 
 <figure class="not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
   <img
-    src="../../images/ccus-value-chain-infographic.png"
+    src="../../images/ccus-value-chain-infographic.webp"
     alt="连接碳捕集、运输、利用与永久地质封存的 CCUS 完整价值链"
     width="1536"
     height="1024"

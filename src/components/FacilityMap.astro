@@ -217,6 +217,25 @@ const mapDataJson = JSON.stringify(mapData);
     background: transparent;
     border: 0;
   }
+
+  .dark .leaflet-popup-content-wrapper {
+    background: var(--surface-panel) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-panel) !important;
+  }
+
+  .dark .leaflet-popup-tip {
+    background: var(--surface-panel) !important;
+  }
+
+  .dark .leaflet-popup-close-button {
+    color: var(--text-muted) !important;
+  }
+
+  .dark .leaflet-popup-close-button:hover {
+    color: var(--text-primary) !important;
+  }
 </style>
 
 <script>
@@ -365,16 +384,42 @@ const mapDataJson = JSON.stringify(mapData);
       L.control.zoom({ position: 'topleft' }).addTo(map);
 
       const isDark = document.documentElement.classList.contains('dark');
-      const esriUrl = isDark
-        ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-        : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
+      const getTileUrl = (dark: boolean) =>
+        dark
+          ? 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+          : 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
 
-      L.tileLayer(esriUrl, {
+      let currentTileLayer = L.tileLayer(getTileUrl(isDark), {
         maxZoom: 16,
         minZoom: 2,
         attribution:
           'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
       }).addTo(map);
+
+      const handleThemeChange = (event: Event) => {
+        const customEv = event as CustomEvent<{ resolved: string }>;
+        const nextDark = customEv?.detail?.resolved
+          ? customEv.detail.resolved === 'dark'
+          : document.documentElement.classList.contains('dark');
+        const nextUrl = getTileUrl(nextDark);
+        map.removeLayer(currentTileLayer);
+        currentTileLayer = L.tileLayer(nextUrl, {
+          maxZoom: 16,
+          minZoom: 2,
+          attribution:
+            'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS',
+        }).addTo(map);
+      };
+
+      window.addEventListener('ccus:themechange', handleThemeChange);
+      document.addEventListener(
+        'astro:before-swap',
+        () => {
+          window.removeEventListener('ccus:themechange', handleThemeChange);
+          map.remove();
+        },
+        { once: true }
+      );
 
       const markers: Leaflet.MarkerClusterGroup | Leaflet.LayerGroup =
         typeof L.markerClusterGroup === 'function'

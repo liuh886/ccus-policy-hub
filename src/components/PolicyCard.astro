@@ -200,7 +200,7 @@ const activeDimensions = dimensions.filter(
         aria-label={tp('对比 ', 'Compare ') + title}
       />
       <span
-        class="flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border-2 border-slate-200 bg-white shadow-sm transition-all peer-checked:border-teal-700 peer-checked:bg-teal-700 dark:border-slate-700 dark:bg-slate-800"
+        class="flex h-6 w-6 items-center justify-center overflow-hidden rounded-md border-2 border-slate-200 bg-white shadow-sm transition-all peer-checked:border-teal-700 peer-checked:bg-teal-700 peer-checked:[&>svg]:opacity-100 dark:border-slate-700 dark:bg-slate-800"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ const activeDimensions = dimensions.filter(
           stroke-width="4"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="opacity-0 transition-opacity peer-checked:opacity-100"
+          class="opacity-0 transition-opacity"
         >
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
