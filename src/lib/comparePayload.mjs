@@ -9,8 +9,10 @@
  * governanceBenchmarking.mjs:
  *
  * - policy: id + country/status (filter) + analysis (scores + evidence) +
- *   year/title/source (display + citation fallback)
- * - facility: country/status/capacities (deployment metrics only)
+ *   year/title/source (display + citation fallback) + legalWeight/reviewStatus
+ *   (contribution cards + verification badges) + evolution (timeline)
+ * - facility: country/status/capacities (deployment metrics only) +
+ *   sector/type (deployment structure breakdowns)
  * - profile: country id + regulatory matrix
  *
  * The `{ id, data }` envelope is preserved so client code is untouched.
@@ -25,6 +27,9 @@ export const COMPARE_POLICY_FIELDS = Object.freeze([
   'year',
   'title',
   'source',
+  'legalWeight',
+  'reviewStatus',
+  'evolution',
 ]);
 
 export const COMPARE_FACILITY_FIELDS = Object.freeze([
@@ -33,6 +38,8 @@ export const COMPARE_FACILITY_FIELDS = Object.freeze([
   'estimatedCapacity',
   'announcedCapacityMin',
   'announcedCapacityMax',
+  'sector',
+  'type',
 ]);
 
 const pick = (data, fields) =>

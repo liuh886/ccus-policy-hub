@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import GovernanceAnalyticsPanels from './GovernanceAnalyticsPanels.astro';
 import countryData from '../data/countries.json';
 import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
+import { governanceClientCopy } from '../lib/governanceCopy.mjs';
 import {
   toCompareFacility,
   toComparePolicy,
@@ -20,8 +21,32 @@ const profiles = await getCollection(
   lang === 'en' ? 'countries_en' : 'countries_zh'
 );
 const text = governanceComparisonCopy[lang];
+const clientText = governanceClientCopy[lang];
 const safeJson = (data: unknown) =>
   JSON.stringify(data).replace(/</g, '\\u003c');
+
+const presetLinks = [
+  {
+    id: 'big3',
+    label: text.presetBig3,
+    query: 'united-states,china,germany',
+  },
+  {
+    id: 'anglosphere',
+    label: text.presetAnglo,
+    query: 'united-states,united-kingdom,australia',
+  },
+  {
+    id: 'gulf',
+    label: text.presetGulf,
+    query: 'united-arab-emirates,saudi-arabia',
+  },
+  {
+    id: 'nordic',
+    label: text.presetNordic,
+    query: 'norway,denmark,iceland',
+  },
+];
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8">
@@ -35,6 +60,37 @@ const safeJson = (data: unknown) =>
       <p class="max-w-3xl text-slate-500 dark:text-slate-400">
         {text.pageDescription}
       </p>
+      <nav
+        class="mt-6 flex flex-wrap items-center gap-2"
+        aria-label={text.presetTitle}
+      >
+        <span
+          class="mr-1 text-[10px] font-black uppercase tracking-widest text-slate-400"
+        >
+          {text.presetTitle}
+        </span>
+        {
+          presetLinks.map((preset) => (
+            <a
+              href={`?countries=${preset.query}`}
+              data-preset={preset.id}
+              class="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-bold text-slate-600 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+            >
+              {preset.label}
+            </a>
+          ))
+        }
+      </nav>
+      <details class="country-selector-details mt-4 max-w-3xl">
+        <summary
+          class="cursor-pointer text-xs font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400"
+        >
+          {text.selectorLabel}
+        </summary>
+        <div id="country-selector" class="country-selector-grid"></div>
+        <p id="selector-limit" class="country-selector-hint" aria-live="polite">
+        </p>
+      </details>
     </div>
     <div class="flex flex-wrap gap-3">
       <button
@@ -42,6 +98,24 @@ const safeJson = (data: unknown) =>
         class="px-4 py-2 text-sm font-bold text-slate-500 transition-colors hover:text-red-500"
       >
         {text.clear}
+      </button>
+      <button
+        id="export-csv"
+        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+      >
+        {text.exportCsv}
+      </button>
+      <button
+        id="export-json"
+        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+      >
+        {text.exportJson}
+      </button>
+      <button
+        id="copy-citation"
+        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+      >
+        {text.copyCite}
       </button>
       <button
         id="print-report"
@@ -62,6 +136,34 @@ const safeJson = (data: unknown) =>
   </div>
 
   <div id="compare-container">
+    <section
+      id="scorecard-section"
+      class="hidden mb-10 overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
+    >
+      <div
+        class="border-b border-slate-100 bg-slate-50 p-7 dark:border-slate-800 dark:bg-slate-900/50"
+      >
+        <h2 class="text-xs font-black uppercase tracking-widest text-slate-500">
+          {text.scorecardTitle}
+        </h2>
+        <ul id="insight-list" class="insight-list"></ul>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="scorecard-table w-full border-collapse text-left">
+          <thead id="scorecard-head"></thead>
+          <tbody
+            id="scorecard-body"
+            class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
+        </table>
+      </div>
+      <details class="method-details">
+        <summary>{text.methodTitle}</summary>
+        <p>{text.methodPeak}</p>
+        <p>{text.methodCapacity}</p>
+        <p>{text.methodLink}</p>
+      </details>
+    </section>
+
     <GovernanceAnalyticsPanels lang={lang} />
 
     <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
@@ -123,6 +225,22 @@ const safeJson = (data: unknown) =>
             </table>
           </div>
         </section>
+
+        <section
+          id="timeline-section"
+          class="hidden overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
+        >
+          <div
+            class="border-b border-slate-100 bg-slate-50 p-7 dark:border-slate-800 dark:bg-slate-900/50"
+          >
+            <h2
+              class="text-xs font-black uppercase tracking-widest text-slate-500"
+            >
+              {clientText.timelineTitle}
+            </h2>
+          </div>
+          <ol id="timeline-list" class="timeline-list p-7"></ol>
+        </section>
       </div>
     </div>
   </div>
@@ -134,9 +252,25 @@ const safeJson = (data: unknown) =>
     <h2 class="mb-2 text-xl font-bold text-slate-900 dark:text-white">
       {text.emptyTitle}
     </h2>
-    <p class="mx-auto mb-8 max-w-lg text-slate-500 dark:text-slate-400">
+    <p class="mx-auto mb-4 max-w-lg text-slate-500 dark:text-slate-400">
       {text.emptyDescription}
     </p>
+    <p class="mb-6 text-sm font-bold text-slate-500 dark:text-slate-400">
+      {text.emptyHint}
+    </p>
+    <div class="mb-10 flex flex-wrap justify-center gap-3">
+      {
+        presetLinks.map((preset) => (
+          <a
+            href={`?countries=${preset.query}`}
+            data-preset={preset.id}
+            class="rounded-2xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          >
+            {preset.label}
+          </a>
+        ))
+      }
+    </div>
     <a
       href={text.emptyHref}
       class="inline-flex rounded-xl bg-blue-600 px-8 py-3 font-bold text-white hover:bg-blue-700"

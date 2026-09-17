@@ -76,10 +76,15 @@ const dimensionLabel = (text, dimension) => {
   return text.dimensionLabels[index] || dimension;
 };
 
+const matrixXOf = (country) =>
+  Number(
+    country?.deployment?.matrixX ?? country?.deployment?.committedCapacity ?? 0
+  );
+
 const quadrantLabel = (text, country, benchmarks) => {
   const quadrant = classifyGovernanceDeployment(
     country.governance.index,
-    country.deployment.committedCapacity,
+    matrixXOf(country),
     benchmarks
   );
   return { quadrant, label: text.quadrant[quadrant] || quadrant };
@@ -140,7 +145,7 @@ const renderInsights = (countrySystems, benchmarks, text, lang) => {
       const weakest = dimensionLabel(text, country.governance.weakestDimension);
       const balance =
         country.governance.spread <= 25 ? ui.balancedGood : ui.balancedUneven;
-      return `<button type="button" class="governance-insight-card" data-country-key="${escapeHtml(key)}" data-select-country="${escapeHtml(key)}"><div class="governance-insight-heading"><strong>${escapeHtml(country.displayCountry)}</strong><span>${escapeHtml(label)}</span></div><div class="governance-insight-metrics"><div><strong>${Number(country.governance.index).toFixed(1)}/100</strong>${ui.governance}</div><div><strong>${Number(country.deployment.committedCapacity).toFixed(1)} Mtpa</strong>${ui.deployment}</div><div><strong>${escapeHtml(strongest)}</strong>${ui.strongest}</div><div><strong>${escapeHtml(weakest)}</strong>${ui.weakest}</div><div><strong>${escapeHtml(balance)}</strong>${ui.balanced}</div><div><strong>${country.governance.policyCount}</strong>${ui.activePolicies}</div></div></button>`;
+      return `<button type="button" class="governance-insight-card" data-country-key="${escapeHtml(key)}" data-select-country="${escapeHtml(key)}"><div class="governance-insight-heading"><strong>${escapeHtml(country.displayCountry)}</strong><span>${escapeHtml(label)}</span></div><div class="governance-insight-metrics"><div><strong>${Number(country.governance.index).toFixed(1)}/100</strong>${ui.governance}</div><div><strong>${Number(matrixXOf(country)).toFixed(1)} Mtpa</strong>${ui.deployment}</div><div><strong>${escapeHtml(strongest)}</strong>${ui.strongest}</div><div><strong>${escapeHtml(weakest)}</strong>${ui.weakest}</div><div><strong>${escapeHtml(balance)}</strong>${ui.balanced}</div><div><strong>${country.governance.policyCount}</strong>${ui.activePolicies}</div></div></button>`;
     })
     .join('');
 
@@ -164,7 +169,9 @@ const evidenceForCountry = (country, dimension, text, lang) => {
           const analysis = policy.data.analysis?.[selectedDimension] || {};
           const evidence = analysis.evidence || ui.evidenceMissing;
           const citation = analysis.citation || policy.data.source || '';
-          return `<article class="governance-evidence-item"><h3>${escapeHtml(policy.data.title || policy.id)}</h3><p><strong>${ui.scoreEvidence}:</strong> ${escapeHtml(evidence)}</p>${citation ? `<p><strong>${ui.citation}:</strong> ${escapeHtml(citation)}</p>` : ''}<a href="${ui.policyPath}${encodeURIComponent(String(policy.id))}/">${ui.openPolicy}</a></article>`;
+          const verified = policy?.data?.reviewStatus === 'verified';
+          const badge = `<span class="governance-evidence-badge ${verified ? 'is-verified' : 'is-draft'}">${escapeHtml(verified ? ui.verifiedBadge : ui.draftBadge)}</span>`;
+          return `<article class="governance-evidence-item"><h3>${escapeHtml(policy.data.title || policy.id)} ${badge}</h3><p><strong>${ui.scoreEvidence}:</strong> ${escapeHtml(evidence)}</p>${citation ? `<p><strong>${ui.citation}:</strong> ${escapeHtml(citation)}</p>` : ''}<a href="${ui.policyPath}${encodeURIComponent(String(policy.id))}/">${ui.openPolicy}</a></article>`;
         })
         .join('')
     : `<p class="governance-evidence-empty">${ui.evidenceMissing}</p>`;
@@ -447,14 +454,19 @@ const matrixBackdropPlugin = {
   },
 };
 
-const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
+const renderDeploymentMatrix = (
+  countrySystems,
+  benchmarks,
+  text,
+  includePlanned = false
+) => {
   const canvas = document.getElementById('maturity-matrix-canvas');
   if (!canvas) return;
   deploymentChart?.destroy();
 
   const maxCapacity = Math.max(
     Number(benchmarks.deployment || 0) * 1.35,
-    ...countrySystems.map((country) => country.deployment.committedCapacity),
+    ...countrySystems.map((country) => matrixXOf(country)),
     1
   );
   const governanceMin = governanceAxisMinimum(countrySystems, benchmarks);
@@ -470,7 +482,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
           countryKey: countryKey(country),
           data: [
             {
-              x: country.deployment.committedCapacity,
+              x: matrixXOf(country),
               y: country.governance.index,
               quadrant,
               policyCount: country.governance.policyCount,
@@ -520,7 +532,7 @@ const renderDeploymentMatrix = (countrySystems, benchmarks, text) => {
           suggestedMax: Math.ceil(maxCapacity * 1.15),
           title: {
             display: true,
-            text: text.xAxis,
+            text: includePlanned ? text.xAxisPlanned : text.xAxis,
             font: { size: 10, weight: 700 },
           },
           grid: { color: 'rgba(148,163,184,0.12)' },
@@ -608,6 +620,7 @@ export function renderGovernanceAnalytics({
   benchmarks,
   text,
   lang = 'zh',
+  includePlanned = false,
 }) {
   currentState = { countrySystems, benchmarks, text, lang };
   if (
@@ -621,7 +634,7 @@ export function renderGovernanceAnalytics({
 
   renderRadar(countrySystems, text);
   renderHeatmap(countrySystems, text);
-  renderDeploymentMatrix(countrySystems, benchmarks, text);
+  renderDeploymentMatrix(countrySystems, benchmarks, text, includePlanned);
   renderInsights(countrySystems, benchmarks, text, lang);
   updateBenchmarkLabels(benchmarks);
 
