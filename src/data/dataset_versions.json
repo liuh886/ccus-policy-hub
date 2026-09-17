@@ -1,0 +1,9 @@
+{
+  "facility_dataset_name": "IEA CCUS Facilities & Custom Ingestion",
+  "facility_dataset_version": "2026-Q2",
+  "facility_dataset_source": "IEA CCUS Projects Database + manual curation",
+  "last_checked_date": "2026-06-24",
+  "policy_dataset_review_status": "active",
+  "country_profile_dataset_version": "2026-Q2",
+  "notes": "Dataset includes facilities from IEA CCUS database and custom ingestion scripts. Policy database covers 130 policies across 66 countries. All data is maintained in SQLite SSOT with automated quality checks."
+}
