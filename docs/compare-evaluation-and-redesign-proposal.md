@@ -4,6 +4,10 @@
 > 任何治理维度、聚合口径、容量方法论的实际变更，需按 `agent/ccus-ai-agent/AGENTS.md §6`
 > 获得人工批准后，另起实施 PR。本 PR 只新增本文档，供评审与排期。
 > 评估基线：`main`（`eba6c5a7`）+ 线上 `https://liuh886.github.io/ccus-policy-hub/compare/`（2026-09-17 实测）。
+> 修订记录（2026-09-18）：纳入 PR #71 评审意见——① `fundingScale` 勘误（§2 断层 4）：该字段在
+> `src/content/config.ts` schema 中未定义，全库 258 文件 0 填充，P1 改用现成字段；② 监管“状态点化”降为 P1
+> 二元方案，深层分级列为方法论扩展事项（§4 L4、§7）；③ `?countries=` 参数需国家名别名映射（§4 L1）；
+> ④ 预设一键按钮提前至 P0（§6）；⑤ 权重联动需同步重算全局基准（§5）；⑥ payload 扩字段须同步门禁测试（附录）。
 
 ## 0. 一句话结论
 
@@ -47,15 +51,15 @@
 
 ### 断层 4：数据优势只用了约 30%
 
-| 有但没用的弹药                                         | 位置                                             | 可比什么                                             |
-| ------------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------------- |
-| `legalWeight`（国家战略 vs 部门规章）                  | policy frontmatter                               | 制度含金量                                           |
-| `implementationDetails.fundingScale`（45Q 等激励规模） | policy frontmatter，卡片已展示                   | 钱的量级，最值得比                                   |
-| `impactAnalysis` 经济/技术/环境                        | policy frontmatter，详情页已展示                 | 政策影响结构                                         |
-| `evolution.milestones`                                 | policy frontmatter（如 `ae-carbon-strategy.md`） | 治理演进时间线                                       |
-| 设施 `sector/type/region/hub/date`                     | facilities collection                            | 部署结构（电力/水泥/钢铁/制氢；捕集/运输/封存/全链） |
-| `planned` 管线                                         | 有数据，矩阵 X 轴一刀切排除                      | 预期信号（中东/东南亚被系统性低估）                  |
-| `reviewStatus/provenance` + `quality.json`             | 详情页有 Verified 徽                             | 可信度分层                                           |
+| 有但没用的弹药                                             | 位置                                                                                                                                                                                                          | 可比什么                                             |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `legalWeight`（国家战略 vs 部门规章）                      | policy frontmatter，schema 内建字段                                                                                                                                                                           | 制度含金量                                           |
+| ~~`implementationDetails.fundingScale`（45Q 等激励规模）~~ | ⚠️ 勘误：`src/content/config.ts` 未定义该字段，全库 258 文件 0 填充，卡片从未渲染过金额。激励金额对比需先立项扩 schema + 人工填报；P1 政策卡改用现成的 `year + legalWeight + reviewStatus`（verified 约 89%） | 暂不可比，先补元数据                                 |
+| `impactAnalysis` 经济/技术/环境                            | policy frontmatter，详情页已展示                                                                                                                                                                              | 政策影响结构                                         |
+| `evolution.milestones`                                     | policy frontmatter（如 `ae-carbon-strategy.md`）                                                                                                                                                              | 治理演进时间线                                       |
+| 设施 `sector/type/region/hub/date`                         | facilities collection                                                                                                                                                                                         | 部署结构（电力/水泥/钢铁/制氢；捕集/运输/封存/全链） |
+| `planned` 管线                                             | 有数据，矩阵 X 轴一刀切排除                                                                                                                                                                                   | 预期信号（中东/东南亚被系统性低估）                  |
+| `reviewStatus/provenance` + `quality.json`                 | 详情页有 Verified 徽                                                                                                                                                                                          | 可信度分层                                           |
 
 ### 断层 5：方法不透明
 
@@ -95,21 +99,28 @@
 ```
 
 **L1 选择层（P0）：**默认加载 `美国 + 中国 + 英国 + 挪威`（覆盖四象限，首屏永远有图）；
-国家多选器替代“去政策库勾选”（policy→country 反查已具备）；预设一键（中美欧三强 / 英语圈 / 海湾新兴 / 北欧封存圈）；
-`?countries=US,CN,GB&scope=system&view=radar` 深链（`localStorage` 只做辅助）；
+国家多选器替代“去政策库勾选”（policy→country 反查已具备）；预设一键（中美欧三强 / 英语圈 / 海湾新兴 / 北欧封存圈，纯前端按钮，约 1 小时工作量，与默认预设同批交付形成闭环）；
+`?countries=` 深链（`localStorage` 只做辅助）。参数规范注意：`src/data/countries.json`
+以标准英文名（`United States` / `China` / `United Kingdom`…）为键，全库无 ISO2 映射，
+P0 实现时须引入轻量别名层——接受 `US,CN,GB` 或小写 slug（`united-states,china,norway`），统一归一化到标准英文名后再进 `countryMap`，保证深链无歧义；
 空状态重做为 3 个预设卡片 + 示例缩略图，而非“去选吧”。
 
 **L2 总览层（现在缺失，P0）：**模板生成一句话洞察
 （例：`美国治理 78.4（+12.1 vs 基准），优势在经济激励，短板在跨境规则；已承诺 25.3Mtpa，位于协同领先象限。`）；
-计分卡表头：`国家 | 治理指数 | 5维迷你条 | 现行政策数 | 已承诺Mtpa | 规划Mtpa | 监管就绪度 n/7 | 象限`，可点表头排序。
+计分卡表头：`国家 | 治理指数 | 5维迷你条 | 现行政策数 | 已承诺Mtpa | 规划Mtpa | 监管明确度 x/7（明确条文数，待定 y/7） | 象限`，可点表头排序。
+（注：原“监管就绪度 n/7”口径修正——66 国 regulatory 现为 433 种自由文本长句，不存在枚举等级，
+前端无权判定“就绪/部分/缺失”。P1 只做二元区分，见 L4。）
 
 **L3 结构层（保留优化，P0–P1）：**雷达/热力保留（>3 国默认热力，`preferredProfileView` 逻辑正确）；
 矩阵 X 轴加 toggle（已承诺 / 含规划管线）；Y 轴截断（`governanceAxisMinimum` 从 30 起正确）必须标注“截断轴”。
 
-**L4 机制层（差距最大，P1–P2）：**监管矩阵文本改为 `●就绪/◐部分/○缺失/—待定 + hover 定义 + 跳 country profile`；
+**L4 机制层（差距最大，P1–P2）：**监管矩阵 P1 采用**二元点化**：`● 已明确`（有实质法律条文文本）
+/ `— 待定或缺失`（文本为待定/未具体说明/Pending 类），默认显示紧凑摘要 + hover 浮层看全文 + 跳 country
+profile。`●就绪/◐部分/○缺失` 的深层三级定性属于方法论判断（AGENTS.md §6 高风险），列为后续里程碑，
+需学术/人工审批，不与 P1 纯前端重构绑定；
 设施 3 数字改为堆叠条（在运/在建/规划）+ sector 分布 + type 分布；
-贡献政策卡加上 `year + legalWeight + fundingScale`（peak 彩色点保留）；
-新增 `evolution.milestones` 时间线（2015–2026），区分制度先行 vs 后发追赶。
+贡献政策卡加上 `year + legalWeight + reviewStatus`（peak 彩色点保留；`fundingScale` 待补元数据后加入，见断层 4 勘误）；
+新增 `evolution.milestones` 时间线（2015–2026，约 70% 政策已具备），区分制度先行 vs 后发追赶。
 
 **L5 证据与导出（P1）：**`evidenceForCountry` 已有 evidence+citation+openPolicy，加上 `reviewStatus` 徽章；
 打印样式真正做分页（现在只是 `print:hidden` 藏头）；新增 `导出 CSV（计分卡）/ JSON（带 evidence）/ 复制引用（Zenodo DOI）`；
@@ -119,6 +130,8 @@
 
 1. **权重联动（核心）：**`PolicyIndex` 已有 5 滑杆加权排名，对比页却是等权平均。
    改法：`calculateGovernanceCapability(policies, weights?)` 加可选权重参数，对比页加同款滑杆，默认等权，改动即重算指数与矩阵 Y 轴。两处共用同一权重语义。
+   连锁注意：象限矩阵的中位数基线取自**全库所有国家系统**（`governanceBenchmarking.mjs:155-167`），拖滑杆时选中国家的指数变了，全局中位数基准线也会位移——P1
+   实现必须同步用新权重重算 `globalSystems` 再取中位数，否则象限判定（协同领先/制度先行等）在新权重下统计失真。
 2. **命名统一：**三处维度中文先收敛到 `governanceCopy.mjs` 一处（与 `docs/ROADMAP.md` 的 i18n 收敛项合并，避免另起第四套）。
 3. **双向闭环：**政策详情已有国家聚合雷达（`PolicyDetail.astro:224-312`），补“一键加入对比”；
    对比 → 贡献政策 → 政策详情 → 相关设施（`relatedFacilities` 双向逻辑 `PolicyDetail.astro:126-130` 已有，只差入口）。
@@ -126,12 +139,12 @@
 
 ## 6. 路线图
 
-**P0（1–2 天，解决“看起来没做完”）：**默认 4 国预设 + 空状态重做 + 修双斜杠链接；
-`?countries=` 深链 + Drawer 同步；计分卡总览表（纯 HTML 表，无新依赖）；
+**P0（1–2 天，解决“看起来没做完”）：**默认 4 国预设 + 预设一键按钮（中美欧 / 英语圈 / 海湾 / 北欧，与默认预设同批交付，否则无选择器时用户改不了国家）+ 空状态重做 + 修双斜杠链接；
+`?countries=` 深链（含别名归一化）+ Drawer 同步；计分卡总览表（纯 HTML 表，无新依赖）；
 方法折叠块 + 基准骨架屏（替代 `—`）。
 
-**P1（1 周，发挥优势）：**国家选择器 + 预设组合；权重滑杆联动；
-监管状态点化 + 设施堆叠条；CSV/引用导出。
+**P1（1 周，发挥优势）：**国家选择器；权重滑杆联动（含全局基准同步重算）；
+监管二元点化（●/— + 浮层全文）+ 设施堆叠条；CSV 计分卡/引用导出。
 
 **P2（2–3 周，做深）：**政策时间线 + sector/type 结构；质量徽章 + planned toggle + 移动端卡片化；
 预设组合 SEO（`og:image` + 描述）；EN/ZH copy 对齐加固。
@@ -142,6 +155,8 @@
 ## 7. 风险与不做事项
 
 - 不改动 `GOVERNANCE_DIMENSIONS` 五维定义与峰值聚合语义（AGENTS.md §6 高风险，需另行审批）。
+- 监管深层三级定性（就绪/部分/缺失）列为方法论扩展事项，不在 P1 前端重构内判定。
+- `fundingScale` 激励金额对比需先立项：`config.ts` 加 schema + 人工填报（当前 0 填充），不阻塞 P0/P1。
 - 不改动 Pipeline/Committed 容量口径（`README` 方法论已承诺）。
 - 不动 `public/data/*.json` 对外 AI 接口结构（`comparePayload` 只动页面内嵌 payload，如需动接口则版本化）。
 - 大视觉/IA 重构以本提案评审通过为前提，不在本文档 PR 里顺手做。
@@ -154,6 +169,7 @@
 - `src/lib/governanceWorkspaceVisuals.mjs`（雷达/矩阵/洞察/证据渲染）
 - `src/lib/governanceBenchmarking.mjs`（权重参数、基准、象限）
 - `src/lib/governanceCopy.mjs`（命名统一收敛点）
-- `src/lib/comparePayload.mjs`（字段清单，动字段需同步 `scripts/page-payload.test.mjs`）
+- `src/lib/comparePayload.mjs`（字段清单。堆叠条需 policy 加 `legalWeight`、facility 加 `sector/type`、时间线需 `evolution` 提炼字段：每次扩字段必须同步更新 `scripts/page-payload.test.mjs` 白名单门禁；129 政策 + 1110 设施增量约 35–45KB，在静态载荷安全阈值内）
+- `src/lib/governanceCopy.mjs:59`（双斜杠根因：此处直接用原始 `BASE_URL` 尾部 `/` 拼接 `/policy/`，而 `src/lib/siteBase.ts` 已做 `replace(/\/$/, '')` 归一化；P0 修法为镜像同一归一化，一行即可）
 - `src/components/CompareDrawer.astro` + `src/components/PolicyCard.astro`（选择器联动）
 - `src/components/PolicyDetail.astro:224-312`（详情→对比入口）
