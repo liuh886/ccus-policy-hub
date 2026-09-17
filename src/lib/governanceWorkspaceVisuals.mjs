@@ -1,4 +1,27 @@
-import Chart from 'chart.js/auto';
+import {
+  Chart,
+  RadarController,
+  ScatterController,
+  LinearScale,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+Chart.register(
+  RadarController,
+  ScatterController,
+  LinearScale,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 import {
   GOVERNANCE_DIMENSIONS,
@@ -574,6 +597,10 @@ export function clearGovernanceAnalytics() {
   const insights = document.getElementById('governance-insights');
   if (heatmap) heatmap.innerHTML = '';
   if (insights) insights.innerHTML = '';
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('astro:before-swap', clearGovernanceAnalytics);
 }
 
 export function renderGovernanceAnalytics({

@@ -13,9 +13,15 @@ const { lang = 'zh', entry, allDocs } = Astro.props;
 const isEn = lang === 'en';
 const { Content } = await render(entry);
 
-// Simple reading time estimate
-const wordCount = entry.body?.split(/\s+/).length || 0;
-const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+// Accurate reading time estimate supporting CJK ideographs and Latin words
+const rawBody = entry.body || '';
+const cjkCount = (rawBody.match(/[\u4e00-\u9fa5]/g) || []).length;
+const nonCjkWords = rawBody
+  .replace(/[\u4e00-\u9fa5]/g, ' ')
+  .trim()
+  .split(/\s+/)
+  .filter(Boolean).length;
+const readingTime = Math.max(1, Math.ceil(cjkCount / 350 + nonCjkWords / 200));
 
 const docPath = (id: string) =>
   `${SITE_BASE}/${isEn ? 'en/docs' : 'docs'}/${id}/`;
@@ -100,7 +106,7 @@ const copy = isEn
       </aside>
 
       <!-- Main Content -->
-      <main class="flex-grow min-w-0 order-1 lg:order-2">
+      <div class="flex-grow min-w-0 order-1 lg:order-2">
         <!-- Breadcrumbs -->
         <nav
           class="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8"
@@ -234,7 +240,7 @@ const copy = isEn
             </a>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   </div>
 </Layout>

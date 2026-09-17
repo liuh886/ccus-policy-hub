@@ -1,9 +1,9 @@
 ---
-import { SITE_BASE } from '../lib/siteBase';
-import Layout from '../layouts/Layout.astro';
+import { SITE_BASE } from '../../lib/siteBase';
+import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="404 - 页面未找到 / Page Not Found">
+<Layout title="404 - Page Not Found">
   <div
     class="flex min-h-[60vh] flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8"
   >
@@ -21,23 +21,23 @@ import Layout from '../layouts/Layout.astro';
         404
       </h1>
       <p class="mt-4 text-lg font-semibold text-slate-800 dark:text-slate-200">
-        抱歉，您访问的页面不存在
+        Page Not Found
       </p>
       <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
         The page you are looking for does not exist or has moved.
       </p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
         <a
-          href={`${SITE_BASE}/`}
+          href={`${SITE_BASE}/en/`}
           class="inline-flex items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 dark:bg-teal-600 dark:hover:bg-teal-500"
         >
-          返回首页
+          Return to Homepage
         </a>
         <a
-          href={`${SITE_BASE}/en/`}
+          href={`${SITE_BASE}/`}
           class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
         >
-          English Home
+          返回中文首页
         </a>
       </div>
     </div>

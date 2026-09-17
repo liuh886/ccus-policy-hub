@@ -12,16 +12,27 @@ import { SITE_BASE } from '../lib/siteBase';
 const BASE = SITE_BASE;
 const prefix = lang === 'zh' ? BASE : `${BASE}/${lang}`;
 const currentYear = new Date().getFullYear();
+const isEn = lang === 'en';
 ---
 
-<footer class="site-footer">
+<footer class="site-footer" data-pagefind-ignore>
   <div class="site-footer-shell">
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
       <div class="max-w-md">
         <img
           src={`${BASE}/logo_optimized.svg`}
           alt="CCUS Policy Hub"
-          class="mb-5 h-12 w-auto"
+          width="220"
+          height="48"
+          class="mb-5 h-12 w-auto dark:hidden"
+          loading="lazy"
+        />
+        <img
+          src={`${BASE}/logo_dark.svg`}
+          alt="CCUS Policy Hub"
+          width="220"
+          height="48"
+          class="mb-5 h-12 w-auto hidden dark:block"
           loading="lazy"
         />
         <p class="text-sm leading-6 text-slate-500 dark:text-slate-400">
@@ -32,15 +43,15 @@ const currentYear = new Date().getFullYear();
         >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >Open data</span
+            >{isEn ? 'Open data' : '开放数据'}</span
           >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >Traceable sources</span
+            >{isEn ? 'Traceable sources' : '溯源可查'}</span
           >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >Bilingual</span
+            >{isEn ? 'Bilingual' : '中英双语'}</span
           >
         </div>
       </div>
@@ -56,7 +67,11 @@ const currentYear = new Date().getFullYear();
           <li><a href={`${prefix}/facilities/`}>{t('nav.map')}</a></li>
           <li><a href={`${prefix}/compare/`}>{t('nav.compare')}</a></li>
           <li><a href={`${prefix}/docs/`}>{t('nav.docs')}</a></li>
-          <li><a href={`${prefix}/changelog/`}>Changelog</a></li>
+          <li>
+            <a href={`${prefix}/changelog/`}
+              >{isEn ? 'Changelog' : '更新日志'}</a
+            >
+          </li>
         </ul>
       </div>
 
@@ -73,7 +88,7 @@ const currentYear = new Date().getFullYear();
           href={`${prefix}/legal/`}
           class="inline-flex items-center gap-2 text-xs font-semibold"
         >
-          Legal & Privacy
+          {isEn ? 'Legal & Privacy' : '法律与隐私声明'}
           <span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -84,7 +99,11 @@ const currentYear = new Date().getFullYear();
     >
       <span>&copy; {currentYear} CCUS Policy Hub.</span>
       <span
-        >Open-source intelligence for global CCUS policies and projects.</span
+        >{
+          isEn
+            ? 'Open-source intelligence for global CCUS policies and projects.'
+            : '全球 CCUS 政策与项目开源知识基础设施'
+        }</span
       >
     </div>
   </div>

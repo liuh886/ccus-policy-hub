@@ -31,10 +31,23 @@ const navItems = [
 const desktopNavItems = navItems.slice(1);
 ---
 
-<header class="site-header">
+<header class="site-header" data-pagefind-ignore>
   <div class="site-nav-shell flex items-center justify-between gap-5">
     <a href={`${prefix}/`} class="site-logo" aria-label="CCUS Policy Hub home">
-      <img src={`${BASE}/logo_optimized.svg`} alt="CCUS Policy Hub" />
+      <img
+        src={`${BASE}/logo_optimized.svg`}
+        alt="CCUS Policy Hub"
+        width="220"
+        height="48"
+        class="dark:hidden"
+      />
+      <img
+        src={`${BASE}/logo_dark.svg`}
+        alt="CCUS Policy Hub"
+        width="220"
+        height="48"
+        class="hidden dark:block"
+      />
     </a>
 
     <nav

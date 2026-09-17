@@ -12,13 +12,14 @@ import { SITE_BASE } from '../lib/siteBase';
 const lang = Astro.currentLocale || defaultLang;
 const normalizedPath =
   stripSiteBase(Astro.url.pathname, SITE_BASE).replace(/\/$/, '') || '/';
-const hideCompareDrawer =
-  normalizedPath === '/' ||
-  normalizedPath === '/en' ||
+const isFacilitiesPath =
   normalizedPath === '/facilities' ||
-  normalizedPath === '/en/facilities';
-const usesFacilityMap =
-  normalizedPath === '/facilities' || normalizedPath === '/en/facilities';
+  normalizedPath.startsWith('/facilities/') ||
+  normalizedPath === '/en/facilities' ||
+  normalizedPath.startsWith('/en/facilities/');
+const hideCompareDrawer =
+  normalizedPath === '/' || normalizedPath === '/en' || isFacilitiesPath;
+const usesFacilityMap = isFacilitiesPath;
 
 const { title, description, keywords, pageClass = '' } = Astro.props;
 import NavBar from '../components/NavBar.astro';
@@ -134,10 +135,10 @@ import '../styles/light-editorial.css';
     }
   </head>
   <body
-    class={`site-shell min-h-screen flex flex-col font-['Inter',_sans-serif] transition-colors ${pageClass}`.trim()}
+    class={`site-shell min-h-screen flex flex-col transition-colors ${pageClass}`.trim()}
   >
     <NavBar />
-    <main class="site-main flex-grow">
+    <main class="site-main flex-grow" data-pagefind-body>
       <slot />
     </main>
     {!hideCompareDrawer && <CompareDrawer lang={lang as 'zh' | 'en'} />}

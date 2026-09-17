@@ -78,16 +78,37 @@ test('projectFacilityForLang keeps canonical country/status for zh in md-truth a
 
   assert.equal(projected.frontmatter.country, 'United States');
   assert.equal(projected.frontmatter.status, 'Planned');
-  assert.equal(projected.frontmatter.provenance.reviewer, 'Human Audit Pending');
+  assert.equal(
+    projected.frontmatter.provenance.reviewer,
+    'Human Audit Pending'
+  );
 });
 
 test('resolveSharedMdValue deduplicates matching en/zh values and rejects divergence', () => {
-  assert.equal(resolveSharedMdValue('country', { country: 'France' }, { country: 'France' }), 'France');
-  assert.equal(resolveSharedMdValue('country', { country: 'France' }, {}), 'France');
-  assert.equal(resolveSharedMdValue('country', {}, { country: 'France' }), 'France');
+  assert.equal(
+    resolveSharedMdValue(
+      'country',
+      { country: 'France' },
+      { country: 'France' }
+    ),
+    'France'
+  );
+  assert.equal(
+    resolveSharedMdValue('country', { country: 'France' }, {}),
+    'France'
+  );
+  assert.equal(
+    resolveSharedMdValue('country', {}, { country: 'France' }),
+    'France'
+  );
 
   assert.throws(
-    () => resolveSharedMdValue('country', { country: 'France' }, { country: 'Germany' }),
+    () =>
+      resolveSharedMdValue(
+        'country',
+        { country: 'France' },
+        { country: 'Germany' }
+      ),
     /inconsistent/i
   );
 });
