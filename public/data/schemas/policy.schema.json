@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://liuh886.github.io/ccus-policy-hub/data/schemas/policy.schema.json",
+  "title": "CCUS Policy",
+  "description": "A CCUS policy record from the CCUS Policy Hub database",
+  "type": "object",
+  "required": ["id", "country"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique policy identifier"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country where the policy applies"
+    },
+    "year": {
+      "type": ["integer", "null"],
+      "description": "Year the policy was enacted or updated"
+    },
+    "status": {
+      "type": ["string", "null"],
+      "description": "Current status of the policy"
+    },
+    "category": {
+      "type": ["string", "null"],
+      "description": "Policy category (e.g., Regulatory, Economic Incentive)"
+    },
+    "review_status": {
+      "type": ["string", "null"],
+      "description": "Review status (e.g., verified, draft)"
+    },
+    "legal_weight": {
+      "type": ["string", "null"],
+      "description": "Legal weight or authority level"
+    },
+    "source": {
+      "type": ["string", "null"],
+      "description": "Source document or reference"
+    },
+    "url": {
+      "type": ["string", "null"],
+      "description": "URL to the original policy document"
+    },
+    "pub_date": {
+      "type": ["string", "null"],
+      "description": "Publication date"
+    },
+    "provenance_author": {
+      "type": ["string", "null"],
+      "description": "Author who created the record"
+    },
+    "provenance_reviewer": {
+      "type": ["string", "null"],
+      "description": "Reviewer who verified the record"
+    },
+    "provenance_last_audit_date": {
+      "type": ["string", "null"],
+      "description": "Date of last audit"
+    },
+    "i18n": {
+      "type": "object",
+      "description": "Internationalized content by language code",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": { "type": ["string", "null"] },
+          "description": { "type": ["string", "null"] },
+          "scope": { "type": ["string", "null"] },
+          "tags": {
+            "type": ["array", "null"],
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "description": "FSRTM dimension analysis scores",
+      "properties": {
+        "incentive": { "$ref": "#/$defs/dimensionScore" },
+        "statutory": { "$ref": "#/$defs/dimensionScore" },
+        "market": { "$ref": "#/$defs/dimensionScore" },
+        "strategic": { "$ref": "#/$defs/dimensionScore" },
+        "mrv": { "$ref": "#/$defs/dimensionScore" }
+      }
+    }
+  },
+  "$defs": {
+    "dimensionScore": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "label": { "type": "string" },
+        "evidence": { "type": "string" },
+        "citation": { "type": "string" }
+      }
+    }
+  }
+}

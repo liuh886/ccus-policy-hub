@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://liuh886.github.io/ccus-policy-hub/data/schemas/facility.schema.json",
+  "title": "CCUS Facility",
+  "description": "A CCUS facility record from the CCUS Policy Hub database",
+  "type": "object",
+  "required": ["id", "country"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique facility identifier"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country where the facility is located"
+    },
+    "status": {
+      "type": ["string", "null"],
+      "description": "Current operational status"
+    },
+    "review_status": {
+      "type": ["string", "null"],
+      "description": "Review status (e.g., verified, draft)"
+    },
+    "announced_capacity_min": {
+      "type": ["number", "null"],
+      "description": "Minimum announced capacity (MtCO2/yr)"
+    },
+    "announced_capacity_max": {
+      "type": ["number", "null"],
+      "description": "Maximum announced capacity (MtCO2/yr)"
+    },
+    "announced_capacity_raw": {
+      "type": ["string", "null"],
+      "description": "Raw capacity text as published"
+    },
+    "estimated_capacity": {
+      "type": ["number", "null"],
+      "description": "Estimated capacity used for calculations (MtCO2/yr)"
+    },
+    "lat": {
+      "type": ["number", "null"],
+      "description": "Latitude coordinate"
+    },
+    "lng": {
+      "type": ["number", "null"],
+      "description": "Longitude coordinate"
+    },
+    "precision": {
+      "type": ["string", "null"],
+      "description": "Coordinate precision level (exact, state, country)"
+    },
+    "investment_scale": {
+      "type": ["string", "null"],
+      "description": "Investment scale category"
+    },
+    "provenance_author": {
+      "type": ["string", "null"],
+      "description": "Author who created the record"
+    },
+    "provenance_reviewer": {
+      "type": ["string", "null"],
+      "description": "Reviewer who verified the record"
+    },
+    "provenance_last_audit_date": {
+      "type": ["string", "null"],
+      "description": "Date of last audit"
+    },
+    "i18n": {
+      "type": "object",
+      "description": "Internationalized content by language code",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": { "type": ["string", "null"] },
+          "description": { "type": ["string", "null"] },
+          "region": { "type": ["string", "null"] },
+          "type": { "type": ["string", "null"] },
+          "phase": { "type": ["string", "null"] },
+          "sector": { "type": ["string", "null"] },
+          "fate_of_carbon": { "type": ["string", "null"] },
+          "hub": { "type": ["string", "null"] },
+          "operator": { "type": ["string", "null"] },
+          "capture_technology": { "type": ["string", "null"] },
+          "storage_type": { "type": ["string", "null"] },
+          "announcement": { "type": ["string", "null"] },
+          "fid": { "type": ["string", "null"] },
+          "operation": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "linked_policies": {
+      "type": "array",
+      "description": "IDs of linked policies (currently country-level only)",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

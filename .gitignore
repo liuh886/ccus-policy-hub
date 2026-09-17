@@ -3,11 +3,13 @@
 # Never edit or commit these; regenerate with `pnpm gen` (byte-identical).
 # Kept tracked (curated sources, not projections): src/data/countries.json
 # (component seed data), src/data/dataset_versions.json (version metadata),
+# public/data/schemas/ (API schema definitions),
 # src/content/enums.generated.ts (allowed-value list), docs/* reports.
 src/content/policies/
 src/content/facilities/
 src/content/countries/
-public/data/
+public/data/*
+!public/data/schemas/
 src/data/i18n_dictionary.json
 src/data/quality_metrics.generated.json
 
