@@ -20,6 +20,8 @@ const profiles = await getCollection(
   lang === 'en' ? 'countries_en' : 'countries_zh'
 );
 const text = governanceComparisonCopy[lang];
+const safeJson = (data: unknown) =>
+  JSON.stringify(data).replace(/</g, '\\u003c');
 ---
 
 <div class="mx-auto max-w-7xl px-4 py-8">
@@ -148,25 +150,25 @@ const text = governanceComparisonCopy[lang];
   id="all-facilities-data"
   type="application/json"
   is:inline
-  set:html={JSON.stringify(facilities.map(toCompareFacility))}
+  set:html={safeJson(facilities.map(toCompareFacility))}
 />
 <script
   id="all-policies-data"
   type="application/json"
   is:inline
-  set:html={JSON.stringify(policies.map(toComparePolicy))}
+  set:html={safeJson(policies.map(toComparePolicy))}
 />
 <script
   id="country-data"
   type="application/json"
   is:inline
-  set:html={JSON.stringify(countryData)}
+  set:html={safeJson(countryData)}
 />
 <script
   id="countries-profiles-data"
   type="application/json"
   is:inline
-  set:html={JSON.stringify(profiles.map(toCompareProfile))}
+  set:html={safeJson(profiles.map(toCompareProfile))}
 />
 
 <script>

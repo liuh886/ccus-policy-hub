@@ -411,11 +411,23 @@ const mapDataJson = JSON.stringify(mapData);
         }).addTo(map);
       };
 
+      const winWithHandler = window as unknown as {
+        __ccusMapThemeHandler?: EventListener;
+      };
+      if (winWithHandler.__ccusMapThemeHandler) {
+        window.removeEventListener(
+          'ccus:themechange',
+          winWithHandler.__ccusMapThemeHandler
+        );
+      }
+      winWithHandler.__ccusMapThemeHandler = handleThemeChange as EventListener;
       window.addEventListener('ccus:themechange', handleThemeChange);
+
       document.addEventListener(
         'astro:before-swap',
         () => {
           window.removeEventListener('ccus:themechange', handleThemeChange);
+          delete winWithHandler.__ccusMapThemeHandler;
           map.remove();
         },
         { once: true }

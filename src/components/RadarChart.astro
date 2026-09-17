@@ -180,7 +180,10 @@ const {
                   if (evidence && evidence !== 'No evidence provided yet.') {
                     result.push('');
                     // Robust wrapping logic supporting both CJK and Latin text
-                    const isCjk = /[\u4e00-\u9fa5]/.test(evidence);
+                    const isCjk =
+                      /[\p{Unified_Ideograph}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(
+                        evidence
+                      );
                     const prefix = isCjk ? '依据说明: ' : 'Evidence: ';
                     let currentLine = prefix;
 

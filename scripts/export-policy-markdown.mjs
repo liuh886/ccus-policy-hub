@@ -74,7 +74,11 @@ export async function exportPolicyMarkdown({
 } = {}) {
   if (!fs.existsSync(dbPath)) throw new Error(`Database not found: ${dbPath}`);
   if (!fs.existsSync(dictionaryPath)) {
-    throw new Error(`Translation dictionary not found: ${dictionaryPath}`);
+    const { execSync } = await import('child_process');
+    execSync('pnpm manage:db:export:i18n', { stdio: 'inherit' });
+    if (!fs.existsSync(dictionaryPath)) {
+      throw new Error(`Translation dictionary not found: ${dictionaryPath}`);
+    }
   }
 
   const dictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
