@@ -88,6 +88,59 @@ const readWeightState = () => {
   return present ? weights : null;
 };
 
+// Shareable weight scenarios: `?weights=30,20,20,15,15` in
+// GOVERNANCE_DIMENSIONS order. Invalid payloads fall back to equal weights.
+const readWeightsFromUrl = (params) => {
+  const raw = String(params.get('weights') || '').trim();
+  if (!raw) return null;
+  const values = raw.split(',').map((token) => Number(token.trim()));
+  if (values.length !== GOVERNANCE_DIMENSIONS.length) return null;
+  if (!values.every((value) => Number.isFinite(value) && value >= 0)) {
+    return null;
+  }
+  if (values.reduce((sum, value) => sum + value, 0) <= 0) return null;
+  return Object.fromEntries(
+    GOVERNANCE_DIMENSIONS.map((dimension, position) => [
+      dimension,
+      values[position],
+    ])
+  );
+};
+
+const applyWeightsToSliders = (weights) => {
+  if (!weights) return false;
+  let applied = false;
+  for (const dimension of GOVERNANCE_DIMENSIONS) {
+    const slider = document.getElementById(`weight-${dimension}`);
+    if (slider && Number.isFinite(Number(weights[dimension]))) {
+      slider.value = String(
+        Math.min(100, Math.max(0, Number(weights[dimension])))
+      );
+      applied = true;
+    }
+  }
+  return applied;
+};
+
+// Persist the explorable view state (weights + planned toggle) next to
+// `countries` so a copied URL reproduces the exact scenario. Defaults are
+// omitted to keep shared links short.
+const syncViewParamsToUrl = () => {
+  const url = new URL(window.location.href);
+  const weights = readWeightState();
+  if (weights) {
+    const values = GOVERNANCE_DIMENSIONS.map(
+      (dimension) => Number(weights[dimension]) || 0
+    );
+    const uniform = values.every((value) => value === values[0]);
+    if (uniform) url.searchParams.delete('weights');
+    else url.searchParams.set('weights', values.join(','));
+  }
+  if (readIncludePlanned()) url.searchParams.set('planned', '1');
+  else url.searchParams.delete('planned');
+  window.history.replaceState(null, '', url.toString());
+};
+
 const readIncludePlanned = () =>
   document.getElementById('include-planned')?.checked === true;
 
@@ -415,6 +468,17 @@ const renderTimeline = (countrySystems, text) => {
     .join('');
 };
 
+const renderSelectedTags = (selectedCanonical, countryMap, lang, pageText) => {
+  const container = document.getElementById('selected-tags');
+  if (!container) return;
+  container.innerHTML = selectedCanonical
+    .map(
+      (canonical) =>
+        `<span class="selected-tag" data-country-key="${escapeHtml(canonical)}">${escapeHtml(countryDisplayName(canonical, countryMap, lang))}<button type="button" data-remove-country="${escapeHtml(canonical)}" aria-label="${escapeHtml(pageText.removeCountry)}${escapeHtml(countryDisplayName(canonical, countryMap, lang))}">×</button></span>`
+    )
+    .join('');
+};
+
 const renderCountrySelector = (
   selectedCanonical,
   allPolicies,
@@ -629,6 +693,7 @@ export function initGovernanceComparison(lang = 'zh') {
       lang,
       pageText
     );
+    renderSelectedTags(selectedCanonical, countryMap, lang, pageText);
 
     if (explicitEmpty || !selectedCanonical.length) {
       emptyState?.classList.remove('hidden');
@@ -743,7 +808,12 @@ export function initGovernanceComparison(lang = 'zh') {
   const scopeSelect = document.getElementById('analysis-scope');
   if (scopeSelect) scopeSelect.onchange = render;
   const plannedToggle = document.getElementById('include-planned');
-  if (plannedToggle) plannedToggle.onchange = render;
+  if (plannedToggle) {
+    plannedToggle.onchange = () => {
+      syncViewParamsToUrl();
+      render();
+    };
+  }
   const resetWeights = document.getElementById('reset-weights-compare');
   if (resetWeights) {
     resetWeights.onclick = () => {
@@ -752,6 +822,7 @@ export function initGovernanceComparison(lang = 'zh') {
         if (slider) slider.value = '20';
       }
       updateWeightLabels();
+      syncViewParamsToUrl();
       render();
     };
   }
@@ -760,6 +831,7 @@ export function initGovernanceComparison(lang = 'zh') {
     if (slider)
       slider.addEventListener('input', () => {
         updateWeightLabels();
+        syncViewParamsToUrl();
         render();
       });
   }
@@ -817,11 +889,47 @@ export function initGovernanceComparison(lang = 'zh') {
   window.__ccusCountryChangeHandler = countryChangeHandler;
   document.addEventListener('change', countryChangeHandler);
 
+  // Tag removal uses the same re-binding discipline as the selector above.
+  if (window.__ccusTagRemoveHandler) {
+    document.removeEventListener('click', window.__ccusTagRemoveHandler);
+  }
+  const tagRemoveHandler = (event) => {
+    const button = event.target?.closest?.('[data-remove-country]');
+    if (!button) return;
+    event.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    const countryMap = getData('country-data', 'countries');
+    const current = params.has('countries')
+      ? queryToCountries(params.get('countries'), countryMap)
+      : [
+          ...new Set(
+            [...document.querySelectorAll('.country-checkbox')]
+              .filter((box) => box.checked)
+              .map((box) => box.value)
+          ),
+        ];
+    setCountriesQuery(
+      current.filter((canonical) => canonical !== button.dataset.removeCountry)
+    );
+    render();
+  };
+  window.__ccusTagRemoveHandler = tagRemoveHandler;
+  document.addEventListener('click', tagRemoveHandler);
+
   const bindingKey = `__ccusGovernanceComparisonBound_${lang}`;
   if (!window[bindingKey]) {
     window.addEventListener('compare-updated', render);
     window.addEventListener('storage', render);
     window[bindingKey] = true;
+  }
+
+  // Hydrate explorable view state from a shared link before first paint.
+  const initialParams = new URLSearchParams(window.location.search);
+  const sharedWeights = readWeightsFromUrl(initialParams);
+  if (sharedWeights) applyWeightsToSliders(sharedWeights);
+  const sharedPlanned = document.getElementById('include-planned');
+  if (sharedPlanned && initialParams.get('planned') === '1') {
+    sharedPlanned.checked = true;
   }
 
   updateWeightLabels();

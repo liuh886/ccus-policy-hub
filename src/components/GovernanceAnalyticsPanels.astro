@@ -1,10 +1,23 @@
 ---
-import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
+import {
+  governanceClientCopy,
+  governanceComparisonCopy,
+} from '../lib/governanceCopy.mjs';
 import '../styles/governance-workspace.css';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
 const copy = governanceComparisonCopy[lang];
 const ui = copy.panels;
+// Static skeleton labels: identical strings are re-asserted client-side by
+// updateWeightLabels(), so slow JS never leaves an empty control row.
+const weightDimensions = [
+  'incentive',
+  'statutory',
+  'market',
+  'strategic',
+  'mrv',
+] as const;
+const weightLabels = governanceClientCopy[lang].dimensionLabels;
 ---
 
 <section class="governance-analytics" data-governance-analytics>
@@ -73,23 +86,23 @@ const ui = copy.panels;
         </div>
         <div class="governance-weights-grid">
           {
-            ['incentive', 'statutory', 'market', 'strategic', 'mrv'].map(
-              (dimension) => (
-                <label class="governance-weight">
-                  <span class="governance-weight-top">
-                    <span data-weight-label={dimension} />
-                    <em id={`weight-${dimension}-val`}>20%</em>
+            weightDimensions.map((dimension, position) => (
+              <label class="governance-weight">
+                <span class="governance-weight-top">
+                  <span data-weight-label={dimension}>
+                    {weightLabels[position]}
                   </span>
-                  <input
-                    type="range"
-                    id={`weight-${dimension}`}
-                    min="0"
-                    max="100"
-                    value="20"
-                  />
-                </label>
-              )
-            )
+                  <em id={`weight-${dimension}-val`}>20%</em>
+                </span>
+                <input
+                  type="range"
+                  id={`weight-${dimension}`}
+                  min="0"
+                  max="100"
+                  value="20"
+                />
+              </label>
+            ))
           }
         </div>
       </div>
