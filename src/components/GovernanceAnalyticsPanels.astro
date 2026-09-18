@@ -45,85 +45,95 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
     </button>
   </div>
 
-  <div class="governance-primary-grid">
-    <article
-      class="governance-panel governance-profile-panel"
-      data-governance-panel="profile"
-    >
-      <header class="governance-panel-header">
-        <div>
-          <p class="governance-eyebrow">{copy.capabilityEyebrow}</p>
-          <h2>{copy.capabilityTitle}</h2>
-          <p class="governance-panel-subtitle">{copy.capabilitySubtitle}</p>
-        </div>
-        <div
-          class="governance-profile-toggle print:hidden"
-          aria-label={ui.profileView}
-        >
-          <button type="button" data-profile-view="radar">{ui.radar}</button>
-          <button type="button" data-profile-view="heatmap">{ui.heatmap}</button
-          >
-        </div>
-      </header>
-
-      <div class="governance-scope-row print:hidden hidden">
-        <div>
-          <strong>{copy.scopeTitle}</strong>
-          <span>{copy.scopeNote}</span>
-        </div>
-        <select id="analysis-scope">
-          <option value="system">{copy.scopeSystem}</option>
-          <option value="selected">{copy.scopeSelected}</option>
-        </select>
-      </div>
-
-      <details class="governance-weights-details print:hidden">
-        <summary>
-          <span class="governance-weights-title">{copy.weightsTitle}</span>
-          <span class="governance-weights-hint">{copy.weightsHint}</span>
-          <span class="governance-weights-chevron" aria-hidden="true">▾</span>
-        </summary>
-        <div class="governance-weights">
-          <div class="governance-weights-head">
-            <button type="button" id="reset-weights-compare">
-              {copy.weightsReset}
-            </button>
-          </div>
-          <div class="governance-weights-grid">
-            {
-              weightDimensions.map((dimension, position) => (
-                <label class="governance-weight">
-                  <span class="governance-weight-top">
-                    <span data-weight-label={dimension}>
-                      {weightLabels[position]}
-                    </span>
-                    <em id={`weight-${dimension}-val`}>20%</em>
-                  </span>
-                  <input
-                    type="range"
-                    id={`weight-${dimension}`}
-                    min="0"
-                    max="100"
-                    value="20"
-                  />
-                </label>
-              ))
-            }
-          </div>
-        </div>
-      </details>
-
-      <div class="governance-profile-visual" data-profile-visual="radar">
-        <canvas id="compare-radar-canvas"></canvas>
+  <article
+    class="governance-panel governance-profile-panel"
+    data-governance-panel="profile"
+  >
+    <header class="governance-panel-header">
+      <div>
+        <p class="governance-eyebrow">{copy.capabilityEyebrow}</p>
+        <h2>{copy.capabilityTitle}</h2>
+        <p class="governance-panel-subtitle">{copy.capabilitySubtitle}</p>
       </div>
       <div
-        id="governance-heatmap"
-        class="governance-heatmap hidden"
-        data-profile-visual="heatmap"
+        class="governance-profile-toggle print:hidden"
+        aria-label={ui.profileView}
       >
+        <button type="button" data-profile-view="radar">{ui.radar}</button>
+        <button type="button" data-profile-view="heatmap">{ui.heatmap}</button>
       </div>
-    </article>
+    </header>
 
+    <div class="governance-scope-row print:hidden hidden">
+      <div>
+        <strong>{copy.scopeTitle}</strong>
+        <span>{copy.scopeNote}</span>
+      </div>
+      <select id="analysis-scope">
+        <option value="system">{copy.scopeSystem}</option>
+        <option value="selected">{copy.scopeSelected}</option>
+      </select>
+    </div>
+
+    <details class="governance-weights-details print:hidden">
+      <summary>
+        <span class="governance-weights-title">{copy.weightsTitle}</span>
+        <span class="governance-weights-hint">{copy.weightsHint}</span>
+        <span class="governance-weights-chevron" aria-hidden="true">▾</span>
+      </summary>
+      <div class="governance-weights">
+        <div class="governance-weights-head">
+          <button type="button" id="reset-weights-compare">
+            {copy.weightsReset}
+          </button>
+        </div>
+        <div class="governance-weights-grid">
+          {
+            weightDimensions.map((dimension, position) => (
+              <label class="governance-weight">
+                <span class="governance-weight-top">
+                  <span data-weight-label={dimension}>
+                    {weightLabels[position]}
+                  </span>
+                  <em id={`weight-${dimension}-val`}>20%</em>
+                </span>
+                <input
+                  type="range"
+                  id={`weight-${dimension}`}
+                  min="0"
+                  max="100"
+                  value="20"
+                />
+              </label>
+            ))
+          }
+        </div>
+      </div>
+    </details>
+
+    <div class="governance-profile-visual" data-profile-visual="radar">
+      <div class="governance-radar-canvas-wrap">
+        <canvas id="compare-radar-canvas"></canvas>
+      </div>
+      <div id="governance-radar-summary" class="governance-radar-summary"></div>
+    </div>
+    <div
+      id="governance-heatmap"
+      class="governance-heatmap hidden"
+      data-profile-visual="heatmap"
+    >
+    </div>
+
+    <details class="method-details">
+      <summary>{copy.methodTitle}</summary>
+      <p>{copy.methodPeak}</p>
+      <p>{copy.methodCapacity}</p>
+      <p>{copy.methodRegulatory}</p>
+      <p>{copy.methodLink}</p>
+    </details>
+  </article>
+
+  <div class="governance-secondary-grid">
     <article
       class="governance-panel governance-deployment-panel"
       data-governance-panel="deployment"
@@ -172,12 +182,11 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
         {copy.benchmarkMethod}
       </p>
     </article>
-  </div>
 
-  <div class="governance-secondary-grid">
     <aside
       id="governance-evidence-panel"
       class="governance-evidence-panel"
+      data-governance-panel="deployment"
       aria-live="polite"
     >
       <header>

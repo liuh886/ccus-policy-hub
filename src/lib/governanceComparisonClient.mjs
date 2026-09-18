@@ -29,7 +29,6 @@ import {
 import {
   clearGovernanceAnalytics,
   renderGovernanceAnalytics,
-  selectGovernanceCountry,
 } from './governanceWorkspaceVisuals.mjs';
 
 const colors = [
@@ -239,58 +238,6 @@ const buildGlobalSystems = (
 
 const regulatoryClarity = (regulatory, regKeys) =>
   regKeys.filter(([, key]) => !isPendingRegulatory(regulatory?.[key])).length;
-
-const renderScorecard = (countrySystems, benchmarks, text, lang) => {
-  const section = document.getElementById('scorecard-section');
-  const head = document.getElementById('scorecard-head');
-  const body = document.getElementById('scorecard-body');
-  const insights = document.getElementById('insight-list');
-  if (!section || !body) return;
-  section.classList.remove('hidden');
-
-  if (head) {
-    head.innerHTML = `<tr><th scope="col">${escapeHtml(text.colCountry)}</th><th scope="col">${escapeHtml(text.colGovernance)}</th><th scope="col">${escapeHtml(text.colProfile)}</th><th scope="col">${escapeHtml(text.colPolicies)}</th><th scope="col">${escapeHtml(text.colCommitted)}</th><th scope="col">${escapeHtml(text.colPlanned)}</th><th scope="col">${escapeHtml(text.colRegulatory)}</th><th scope="col">${escapeHtml(text.colQuadrant)}</th></tr>`;
-  }
-
-  if (insights) {
-    insights.innerHTML = countrySystems
-      .map((country) => {
-        const diff = country.governance.index - benchmarks.governance;
-        const sign = diff >= 0 ? '+' : '−';
-        const strongest =
-          text.dimensionLabels[
-            GOVERNANCE_DIMENSIONS.indexOf(country.governance.strongestDimension)
-          ];
-        const weakest =
-          text.dimensionLabels[
-            GOVERNANCE_DIMENSIONS.indexOf(country.governance.weakestDimension)
-          ];
-        const quadrant =
-          text.quadrant[
-            classifyQuadrant(country, benchmarks) || 'foundation-building'
-          ];
-        return `<li><strong>${escapeHtml(country.displayCountry)}</strong><span> · ${Number(country.governance.index).toFixed(1)}/100（${escapeHtml(text.insightVs)} ${sign}${escapeHtml(Math.abs(diff).toFixed(1))}） · ${escapeHtml(text.insightStrong)}：${escapeHtml(strongest)} · ${escapeHtml(text.insightWeak)}：${escapeHtml(weakest)} · ${formatCapacity(country.deployment.matrixX)} Mtpa · ${escapeHtml(quadrant)}${lang === 'zh' ? '象限' : ''}</span></li>`;
-      })
-      .join('');
-  }
-
-  body.innerHTML = countrySystems
-    .map((country) => {
-      const clarity = regulatoryClarity(country.regulatory, text.regKeys);
-      const quadrant =
-        text.quadrant[
-          classifyQuadrant(country, benchmarks) || 'foundation-building'
-        ];
-      const profileBars = GOVERNANCE_DIMENSIONS.map((_, position) => {
-        const score = country.governance.scores[position] || 0;
-        const label = `${text.dimensionLabels[position]} ${Number(score).toFixed(0)}/100`;
-        return `<div class="scorecard-bar" role="img" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"><span style="width:${Math.min(100, Math.max(0, score))}%"></span></div>`;
-      }).join('');
-      const key = escapeHtml(country.canonicalCountry);
-      return `<tr data-country-key="${key}" class="scorecard-row"><th scope="row"><button type="button" class="scorecard-country" data-scorecard-country="${key}" aria-label="${escapeHtml(text.colCountry)}: ${escapeHtml(country.displayCountry)}">${escapeHtml(country.displayCountry)}</button></th><td class="scorecard-index">${Number(country.governance.index).toFixed(1)}</td><td><div class="scorecard-bars">${profileBars}</div></td><td>${country.governance.policyCount}</td><td>${formatCapacity(country.deployment.committedCapacity)}</td><td>${formatCapacity(country.deployment.plannedCapacity)}</td><td>${clarity}/${text.regKeys.length}</td><td>${escapeHtml(quadrant)}</td></tr>`;
-    })
-    .join('');
-};
 
 const classifyQuadrant = (country, benchmarks) => {
   const governanceHigh =
@@ -780,7 +727,6 @@ export function initGovernanceComparison(lang = 'zh') {
       (deployment) => deployment?.matrixX
     );
 
-    renderScorecard(countrySystems, benchmarks, text, lang);
     renderContributors(
       countrySystems,
       text,
@@ -996,19 +942,6 @@ export function initGovernanceComparison(lang = 'zh') {
   };
   window.__ccusDisclosureHandler = disclosureHandler;
   document.addEventListener('click', disclosureHandler);
-
-  // Scorecard countries open the evidence panel (the former insight cards
-  // were a duplicate of the scorecard rows).
-  if (window.__ccusScorecardHandler) {
-    document.removeEventListener('click', window.__ccusScorecardHandler);
-  }
-  const scorecardHandler = (event) => {
-    const button = event.target?.closest?.('[data-scorecard-country]');
-    if (!button) return;
-    selectGovernanceCountry(button.dataset.scorecardCountry);
-  };
-  window.__ccusScorecardHandler = scorecardHandler;
-  document.addEventListener('click', scorecardHandler);
 
   const bindingKey = `__ccusGovernanceComparisonBound_${lang}`;
   if (!window[bindingKey]) {

@@ -22,7 +22,7 @@ test('heatmap opacity is monotonic and clamps governance scores', () => {
   assert.equal(heatmapOpacity(140), 0.8);
 });
 
-test('governance matrix starts at 30 when all relevant scores are at least 30', () => {
+test('governance matrix starts at 30 when the lowest relevant score is 30-49', () => {
   const countries = [
     { governance: { index: 42 } },
     { governance: { index: 76 } },
@@ -30,6 +30,22 @@ test('governance matrix starts at 30 when all relevant scores are at least 30', 
 
   assert.equal(governanceAxisMinimum([], {}), 30);
   assert.equal(governanceAxisMinimum(countries, { governance: 54 }), 30);
+  assert.equal(
+    governanceAxisMinimum([{ governance: { index: 35 } }], { governance: 40 }),
+    30
+  );
+});
+
+test('governance matrix keeps a high floor close to high-scoring data', () => {
+  const countries = [
+    { governance: { index: 84 } },
+    { governance: { index: 97 } },
+  ];
+  assert.equal(governanceAxisMinimum(countries, { governance: 84 }), 70);
+  assert.equal(
+    governanceAxisMinimum([{ governance: { index: 62 } }], { governance: 71 }),
+    50
+  );
 });
 
 test('governance matrix safely expands below 30 for low scores or benchmarks', () => {

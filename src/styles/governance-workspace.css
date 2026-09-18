@@ -2,13 +2,6 @@
   margin-bottom: 3rem;
 }
 
-.governance-primary-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
 .governance-panel,
 .governance-evidence-panel {
   border: 1px solid var(--border-subtle);
@@ -125,7 +118,11 @@
   font-weight: 700;
 }
 
-.governance-profile-visual,
+.governance-profile-visual {
+  position: relative;
+}
+
+.governance-radar-canvas-wrap,
 .governance-matrix-wrap {
   position: relative;
   height: 25rem;
@@ -140,7 +137,6 @@
 
 .governance-heatmap {
   overflow-x: auto;
-  min-height: 25rem;
   padding-top: 0.5rem;
 }
 
@@ -170,9 +166,60 @@
 }
 
 .governance-heatmap-country {
-  width: 5rem;
+  width: 6rem;
   color: var(--text-primary) !important;
   text-align: left !important;
+}
+
+.governance-heatmap-country-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.governance-heatmap-country-button:hover,
+.governance-heatmap-country-button:focus-visible {
+  color: var(--brand-teal-700);
+  text-decoration: underline;
+  outline: none;
+}
+
+.governance-heatmap-summary-head {
+  border-left: 1px solid var(--border-subtle);
+}
+
+.governance-heatmap-index {
+  border-left: 1px solid var(--border-subtle);
+  color: var(--brand-navy-800);
+  font-size: 0.86rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.dark .governance-heatmap-index {
+  color: #e2e8f0;
+}
+
+.governance-heatmap-stat {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.governance-heatmap-quadrant {
+  color: var(--brand-teal-700);
+  font-size: 0.7rem;
+  font-weight: 850;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .governance-heatmap-cell {
@@ -192,9 +239,57 @@
   outline-offset: 2px;
 }
 
+.governance-radar-summary {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.8rem;
+}
+
+.radar-summary-row {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1.2fr) repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+}
+
+.radar-summary-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.radar-summary-country i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+}
+
+.radar-summary-row strong {
+  color: var(--text-primary);
+}
+
+.radar-summary-quadrant {
+  color: var(--brand-teal-700);
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .radar-summary-row {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.15rem;
+  }
+}
+
 @media (max-width: 640px) {
   .governance-heatmap-table {
-    min-width: 21rem;
+    min-width: 44rem;
   }
 }
 
@@ -266,7 +361,7 @@
 
 .governance-secondary-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 8fr) minmax(16rem, 4fr);
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -351,12 +446,11 @@
 }
 
 @media (max-width: 1023px) {
-  .governance-primary-grid,
   .governance-secondary-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .governance-profile-visual,
+  .governance-radar-canvas-wrap,
   .governance-matrix-wrap {
     height: 23rem;
   }
@@ -389,9 +483,8 @@
     width: 100%;
   }
 
-  .governance-profile-visual,
-  .governance-matrix-wrap,
-  .governance-heatmap {
+  .governance-radar-canvas-wrap,
+  .governance-matrix-wrap {
     height: 21rem;
     min-height: 21rem;
   }
@@ -402,19 +495,17 @@
 }
 
 @media print {
-  .governance-primary-grid,
   .governance-secondary-grid {
     grid-template-columns: 1fr 1fr;
     break-inside: avoid;
   }
 
   .governance-panel,
-  .governance-insights-panel,
   .governance-evidence-panel {
     box-shadow: none;
   }
 
-  .governance-profile-visual,
+  .governance-radar-canvas-wrap,
   .governance-matrix-wrap {
     height: 19rem;
   }
@@ -637,112 +728,14 @@
   color: #fff;
 }
 
-.insight-list {
-  display: grid;
-  gap: 0.45rem;
-  margin: 0.9rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.insight-list li {
-  color: var(--text-secondary);
-  font-size: 0.74rem;
-  line-height: 1.6;
-}
-
-.insight-list strong {
-  color: var(--text-primary);
-}
-
-.scorecard-table {
-  font-size: 0.76rem;
-}
-
-.scorecard-table thead th {
-  padding: 0.8rem 1rem;
-  color: var(--text-muted);
-  font-size: 0.62rem;
-  font-weight: 850;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.scorecard-table tbody th,
-.scorecard-table tbody td {
-  padding: 0.8rem 1rem;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
-.scorecard-table tbody th {
-  font-weight: 800;
-}
-
-.scorecard-row {
-  transition: background-color 140ms ease;
-}
-
-.scorecard-row:hover {
-  background: var(--surface-subtle);
-}
-
-.scorecard-country {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: inherit;
-  font: inherit;
-  font-weight: 800;
-  text-align: left;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  transition: text-decoration-color 140ms ease;
-}
-
-.scorecard-country:hover,
-.scorecard-country:focus-visible {
-  color: var(--brand-teal-700);
-  text-decoration-color: currentColor;
-  outline: none;
-}
-
-.scorecard-index {
-  font-size: 0.95rem;
-  font-weight: 850;
-  color: var(--brand-navy-800);
-}
-
-.dark .scorecard-index {
-  color: #e2e8f0;
-}
-
-.scorecard-bars {
-  display: grid;
-  gap: 3px;
-  min-width: 7rem;
-}
-
-.scorecard-bar {
-  height: 4px;
-  border-radius: 999px;
-  background: rgb(100 116 139 / 0.18);
-  overflow: hidden;
-}
-
-.scorecard-bar span {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background: var(--brand-teal-500);
-}
-
 .method-details {
   border-top: 1px solid var(--border-subtle);
   padding: 1rem 1.75rem 1.25rem;
+}
+
+.governance-profile-panel .method-details {
+  margin-top: 1.25rem;
+  padding: 0.9rem 0 0;
 }
 
 .method-details summary {
