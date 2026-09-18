@@ -1,10 +1,23 @@
 ---
-import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
+import {
+  governanceClientCopy,
+  governanceComparisonCopy,
+} from '../lib/governanceCopy.mjs';
 import '../styles/governance-workspace.css';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
 const copy = governanceComparisonCopy[lang];
 const ui = copy.panels;
+// Static skeleton labels: identical strings are re-asserted client-side by
+// updateWeightLabels(), so slow JS never leaves an empty control row.
+const weightDimensions = [
+  'incentive',
+  'statutory',
+  'market',
+  'strategic',
+  'mrv',
+] as const;
+const weightLabels = governanceClientCopy[lang].dimensionLabels;
 ---
 
 <section class="governance-analytics" data-governance-analytics>
@@ -64,6 +77,36 @@ const ui = copy.panels;
         </select>
       </div>
 
+      <div class="governance-weights print:hidden">
+        <div class="governance-weights-head">
+          <strong>{copy.weightsTitle}</strong>
+          <button type="button" id="reset-weights-compare">
+            {copy.weightsReset}
+          </button>
+        </div>
+        <div class="governance-weights-grid">
+          {
+            weightDimensions.map((dimension, position) => (
+              <label class="governance-weight">
+                <span class="governance-weight-top">
+                  <span data-weight-label={dimension}>
+                    {weightLabels[position]}
+                  </span>
+                  <em id={`weight-${dimension}-val`}>20%</em>
+                </span>
+                <input
+                  type="range"
+                  id={`weight-${dimension}`}
+                  min="0"
+                  max="100"
+                  value="20"
+                />
+              </label>
+            ))
+          }
+        </div>
+      </div>
+
       <div class="governance-profile-visual" data-profile-visual="radar">
         <canvas id="compare-radar-canvas"></canvas>
       </div>
@@ -91,12 +134,12 @@ const ui = copy.panels;
           <div class="governance-benchmark-item">
             <small>{copy.benchmarkGovernanceLabel}</small>
             <strong
-              ><span data-governance-benchmark>—</span><em>/100</em></strong
+              ><span data-governance-benchmark>…</span><em>/100</em></strong
             >
           </div>
           <div class="governance-benchmark-item">
             <small>{copy.benchmarkDeploymentLabel}</small>
-            <strong><span data-deployment-benchmark>—</span></strong>
+            <strong><span data-deployment-benchmark>…</span></strong>
           </div>
         </div>
       </header>
@@ -104,6 +147,11 @@ const ui = copy.panels;
       <div class="governance-matrix-wrap">
         <canvas id="maturity-matrix-canvas"></canvas>
       </div>
+
+      <label class="governance-planned-toggle print:hidden">
+        <input type="checkbox" id="include-planned" />
+        <span>{copy.plannedToggle}</span>
+      </label>
 
       <div class="governance-quadrant-legend" aria-label={copy.matrixTitle}>
         <span data-quadrant="policy-led">{copy.qPolicy}</span>

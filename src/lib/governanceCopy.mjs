@@ -17,7 +17,9 @@
  * by design (URL prefix, not copy).
  */
 
-const BASE = import.meta.env?.BASE_URL ?? '';
+// SITE_BASE strips the trailing slash; mirror that here so `${BASE}/policy/`
+// never renders a double slash under a non-root Astro base.
+const BASE = (import.meta.env?.BASE_URL ?? '').replace(/\/$/, '');
 
 export const governanceComparisonCopy = Object.freeze({
   zh: Object.freeze({
@@ -54,7 +56,31 @@ export const governanceComparisonCopy = Object.freeze({
     regulatory: '关键制度要素对标',
     emptyTitle: '暂未选择对比政策',
     emptyDescription:
-      '请从政策数据库中选择多项政策（最多 5 项），再进入国家治理能力与项目落地对比。',
+      '已清空当前选择。下方预设组合可一键载入，或前往政策数据库勾选政策（最多 5 项），再进入国家治理能力与项目落地对比。',
+    emptyHint: '或从一个预设组合开始：',
+    presetTitle: '预设对比组合',
+    presetBig3: '中美欧三强',
+    presetAnglo: '英语圈',
+    presetGulf: '海湾新兴',
+    presetNordic: '北欧封存圈',
+    selectorLabel: '自选国家（最多 6 个）',
+    selectorLimit: '最多选择 6 个国家，已忽略多余选择。',
+    removeCountry: '移除',
+    scorecardTitle: '国家治理计分卡',
+    weightsTitle: '维度权重',
+    weightsReset: '重置权重',
+    plannedToggle: '含规划管线',
+    methodTitle: '方法与口径',
+    methodPeak:
+      '治理能力指数取各维度现行政策最高分（峰值法），默认等权平均；拖动权重滑杆可调整并同步重算全球基准与象限位置。',
+    methodCapacity:
+      '部署规模默认取在运 + 在建（已承诺）；勾选“含规划管线”后切换为在运 + 在建 + 规划，基准同步重算。',
+    methodLink:
+      '设施与政策为同一司法辖区关联，非项目级法律适用；评分证据链详见下方，数据质量见质量看板。',
+    exportCsv: '导出计分卡 (CSV)',
+    exportJson: '导出 JSON',
+    copyCite: '复制引用',
+    citedOk: '引用已复制',
     emptyAction: '前往政策数据库',
     emptyHref: `${BASE}/policy/`,
     panels: Object.freeze({
@@ -109,7 +135,31 @@ export const governanceComparisonCopy = Object.freeze({
     regulatory: 'Critical regulatory benchmarking',
     emptyTitle: 'No policies selected',
     emptyDescription:
-      'Select up to five policies from the database to compare national governance capability and project deployment.',
+      'The current selection is empty. Load a preset below, or select up to five policies from the database to compare national governance capability and project deployment.',
+    emptyHint: 'Or start from a preset:',
+    presetTitle: 'Preset comparisons',
+    presetBig3: 'CN–US–EU majors',
+    presetAnglo: 'Anglophone',
+    presetGulf: 'Gulf emerging',
+    presetNordic: 'Nordic storage circle',
+    selectorLabel: 'Custom countries (up to 6)',
+    selectorLimit: 'Up to 6 countries; extra selections were ignored.',
+    removeCountry: 'Remove',
+    scorecardTitle: 'National governance scorecard',
+    weightsTitle: 'Dimension weights',
+    weightsReset: 'Reset weights',
+    plannedToggle: 'Include planned pipeline',
+    methodTitle: 'Method & scope',
+    methodPeak:
+      'The governance index takes the peak active-policy score per dimension (peak-strength method) with equal default weights; moving the weight sliders re-weights the index and recomputes global benchmarks and quadrant positions.',
+    methodCapacity:
+      'Deployment defaults to operational + under construction (committed); toggling “Include planned pipeline” switches to operational + under construction + planned, with benchmarks recomputed.',
+    methodLink:
+      'Facilities link to policies at the jurisdiction level, not as project-specific legal applicability; evidence chains are shown below, data quality on the quality dashboard.',
+    exportCsv: 'Export scorecard (CSV)',
+    exportJson: 'Export JSON',
+    copyCite: 'Copy citation',
+    citedOk: 'Citation copied',
     emptyAction: 'Go to policy database',
     emptyHref: `${BASE}/en/policy/`,
     panels: Object.freeze({
@@ -153,6 +203,25 @@ export const governanceClientCopy = Object.freeze({
     ],
     xAxis: '已承诺项目记录规模（在运 + 在建，Mtpa）',
     yAxis: '治理能力指数（满分 100）',
+    xAxisPlanned: '项目记录规模（含规划管线，Mtpa）',
+    colCountry: '国家',
+    colGovernance: '治理指数',
+    colProfile: '五维结构',
+    colPolicies: '现行政策',
+    colCommitted: '已承诺 Mtpa',
+    colPlanned: '规划 Mtpa',
+    colRegulatory: '监管明确',
+    colQuadrant: '象限',
+    insightVs: '较基准',
+    insightStrong: '优势',
+    insightWeak: '短板',
+    regStated: '已明确',
+    regPending: '待定',
+    bySector: '分行业',
+    byType: '分类型',
+    otherGroup: '其他',
+    timelineTitle: '治理演进时间线',
+    timelineEmpty: '所选国家暂无已收录的政策里程碑。',
     governance: '治理能力指数',
     deployment: '已承诺项目记录规模',
     policyCount: '纳入现行政策',
@@ -191,6 +260,25 @@ export const governanceClientCopy = Object.freeze({
     xAxis:
       'Committed project-record scale (operational + under construction, Mtpa)',
     yAxis: 'Governance capability index (/100)',
+    xAxisPlanned: 'Project-record scale (incl. planned pipeline, Mtpa)',
+    colCountry: 'Country',
+    colGovernance: 'Governance',
+    colProfile: 'Profile',
+    colPolicies: 'Policies',
+    colCommitted: 'Committed Mtpa',
+    colPlanned: 'Planned Mtpa',
+    colRegulatory: 'Regulatory clarity',
+    colQuadrant: 'Quadrant',
+    insightVs: 'vs benchmark',
+    insightStrong: 'Strength',
+    insightWeak: 'Gap',
+    regStated: 'Stated',
+    regPending: 'Pending',
+    bySector: 'By sector',
+    byType: 'By type',
+    otherGroup: 'Other',
+    timelineTitle: 'Governance timeline',
+    timelineEmpty: 'No recorded policy milestones for the selected countries.',
     governance: 'Governance capability index',
     deployment: 'Committed project-record scale',
     policyCount: 'Active policies included',
@@ -216,6 +304,8 @@ export const governanceVisualsCopy = Object.freeze({
     balancedGood: '较均衡',
     balancedUneven: '差异较大',
     scoreEvidence: '评分依据',
+    verifiedBadge: '已核验',
+    draftBadge: '待核验',
     sourcePolicy: '贡献政策',
     evidenceMissing: '该记录暂未提供结构化评分依据。',
     citation: '证据来源',
@@ -234,6 +324,8 @@ export const governanceVisualsCopy = Object.freeze({
     balancedGood: 'Relatively balanced',
     balancedUneven: 'Uneven',
     scoreEvidence: 'Scoring evidence',
+    verifiedBadge: 'Verified',
+    draftBadge: 'Pending review',
     sourcePolicy: 'Contributing policy',
     evidenceMissing:
       'No structured scoring evidence is available for this record.',

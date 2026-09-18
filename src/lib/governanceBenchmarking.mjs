@@ -41,10 +41,11 @@ export function isActivePolicy(policy) {
   );
 }
 
-export function calculateGovernanceCapability(policies = []) {
+export function calculateGovernanceCapability(policies = [], weights = null) {
   const activePolicies = policies.filter(isActivePolicy);
   const dimensions = {};
   const contributorIds = new Set();
+  const normalizedWeights = normalizeDimensionWeights(weights);
 
   for (const dimension of GOVERNANCE_DIMENSIONS) {
     let peakScore = 0;
@@ -73,9 +74,18 @@ export function calculateGovernanceCapability(policies = []) {
   const scores = GOVERNANCE_DIMENSIONS.map(
     (dimension) => dimensions[dimension].score
   );
-  const index = scores.length
-    ? scores.reduce((sum, score) => sum + score, 0) / scores.length
-    : 0;
+  // Default is the documented equal-weight mean of the five peak dimensions.
+  // An optional weights map ({ incentive: w, ... }) re-weights the index for
+  // what-if exploration; peaks, contributors and strongest/weakest labels are
+  // unaffected so evidence tracing stays stable across weightings.
+  const index = normalizedWeights
+    ? scores.reduce(
+        (sum, score, position) => sum + score * normalizedWeights[position],
+        0
+      )
+    : scores.length
+      ? scores.reduce((sum, score) => sum + score, 0) / scores.length
+      : 0;
   const maxScore = scores.length ? Math.max(...scores) : 0;
   const minScore = scores.length ? Math.min(...scores) : 0;
   const strongestDimension =
@@ -140,6 +150,16 @@ export function calculateDeploymentMetrics(facilities = []) {
   return result;
 }
 
+export function normalizeDimensionWeights(weights) {
+  if (!weights) return null;
+  const values = GOVERNANCE_DIMENSIONS.map((dimension) =>
+    Math.max(0, Number(weights?.[dimension]) || 0)
+  );
+  const total = values.reduce((sum, value) => sum + value, 0);
+  if (!(total > 0)) return null;
+  return values.map((value) => value / total);
+}
+
 export function median(values = []) {
   const sorted = values
     .map(Number)
@@ -152,12 +172,23 @@ export function median(values = []) {
     : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
-export function calculateGlobalBenchmarks(countrySystems = []) {
+export function calculateGlobalBenchmarks(
+  countrySystems = [],
+  pickDeployment = null
+) {
   const governanceValues = countrySystems
     .map((item) => item?.governance?.index)
     .filter((value) => Number.isFinite(value));
+  // Default reads committed (operational + under-construction) capacity.
+  // Callers exploring the planned pipeline pass a picker such as
+  // `(deployment) => deployment.committedCapacity + deployment.plannedCapacity`
+  // so the deployment median tracks the same metric shown on the matrix axis.
+  const readDeployment =
+    typeof pickDeployment === 'function'
+      ? pickDeployment
+      : (deployment) => deployment?.committedCapacity;
   const deploymentValues = countrySystems
-    .map((item) => item?.deployment?.committedCapacity)
+    .map((item) => readDeployment(item?.deployment))
     .filter((value) => Number.isFinite(value) && value > 0);
 
   return {
