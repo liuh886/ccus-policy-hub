@@ -28,14 +28,14 @@ export const governanceComparisonCopy = Object.freeze({
       '以所选政策所属国家为入口，对现行治理体系、项目落地和关键监管机制进行横向分析。',
     clear: '清空选择',
     export: '导出分析报告 (PDF)',
+    exportMenu: '导出',
     reportTitle: 'CCUS 政策对比分析简报',
     generated: '生成日期',
     capabilityEyebrow: '治理体系对标',
     capabilityTitle: '治理能力画像',
     capabilitySubtitle: '峰值政策强度',
     scopeTitle: '分析范围',
-    scopeNote:
-      '默认比较所选国家的全部现行政策；从政策库勾选进入时可切换为“仅所选政策”。',
+    scopeNote: '来自政策库勾选时可切换为“仅所选政策”。',
     scopeSystem: '国家现行政策体系',
     scopeSelected: '仅所选现行政策',
     matrixTitle: '治理—部署矩阵',
@@ -53,12 +53,12 @@ export const governanceComparisonCopy = Object.freeze({
     qLeader: '协同领先',
     qFoundation: '基础培育',
     qDeployment: '工程先行',
-    facilityTitle: '设施规模对标',
-    facilityNote:
-      '矩阵横轴默认仅包括在运与在建设施；勾选“含规划管线”后纳入规划规模。',
+    facilityTitle: '设施部署结构',
+    facilityNote: '按在运 + 在建设施统计行业与类型分布；规划管线不计入。',
     evidenceEyebrow: '证据与来源',
     contributors: '治理核心贡献政策',
     regulatory: '关键制度要素对标',
+    regulatoryHint: '7 项制度要素全文对照，点击展开',
     emptyTitle: '暂未选择对比国家',
     emptyDescription:
       '当前未选择任何国家。可从下方预设组合一键载入，或展开“自选国家”选择最多 6 个国家，比较其现行治理体系、项目落地与监管机制。',
@@ -73,6 +73,7 @@ export const governanceComparisonCopy = Object.freeze({
     removeCountry: '移除',
     scorecardTitle: '国家治理计分卡',
     weightsTitle: '维度权重',
+    weightsHint: '默认等权，可展开调整并同步重算基准',
     weightsReset: '重置权重',
     plannedToggle: '含规划管线',
     methodTitle: '方法与口径',
@@ -96,9 +97,7 @@ export const governanceComparisonCopy = Object.freeze({
       deploymentTab: '治理—部署',
       evidenceTitle: '评分证据',
       evidenceEmpty:
-        '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
-      insightsTitle: '对比洞察',
-      insightsSubtitle: '优势、短板与治理—部署位置',
+        '点击雷达维度、热力单元格、矩阵散点或计分卡国家，查看评分依据与贡献政策。',
     }),
   }),
   en: Object.freeze({
@@ -107,6 +106,7 @@ export const governanceComparisonCopy = Object.freeze({
       'Use selected policies as entry points to compare active national governance systems, project deployment and critical regulatory mechanisms.',
     clear: 'Clear all',
     export: 'Export report (PDF)',
+    exportMenu: 'Export',
     reportTitle: 'CCUS Policy Comparison Brief',
     generated: 'Generated',
     capabilityEyebrow: 'Governance Capability Profile',
@@ -114,7 +114,7 @@ export const governanceComparisonCopy = Object.freeze({
     capabilitySubtitle: 'Peak Policy Strength',
     scopeTitle: 'Analysis scope',
     scopeNote:
-      'By default each selected country is benchmarked on all of its active policies; when you arrive from a policy selection, you can narrow to the selected policies only.',
+      'Switch to selected policies only when arriving from a policy selection.',
     scopeSystem: 'Active national policy system',
     scopeSelected: 'Selected active policies only',
     matrixTitle: 'Governance–Deployment Matrix',
@@ -134,12 +134,14 @@ export const governanceComparisonCopy = Object.freeze({
     qLeader: 'Integrated leaders',
     qFoundation: 'Foundation building',
     qDeployment: 'Deployment-led',
-    facilityTitle: 'Facility benchmarking',
+    facilityTitle: 'Facility deployment structure',
     facilityNote:
-      'The matrix x-axis uses operational and under-construction facilities by default; enable “Include planned pipeline” to add planned scale.',
+      'Sector and type mix for operational + under-construction facilities; the planned pipeline is excluded.',
     evidenceEyebrow: 'Evidence & provenance',
     contributors: 'Governance peak contributors',
     regulatory: 'Critical regulatory benchmarking',
+    regulatoryHint:
+      'Full text of the seven regulatory elements; expand to view',
     emptyTitle: 'No countries selected',
     emptyDescription:
       'No countries are selected. Load a preset below, or expand “Custom countries” to pick up to six and compare their active governance systems, project pipelines and regulatory mechanisms.',
@@ -154,6 +156,8 @@ export const governanceComparisonCopy = Object.freeze({
     removeCountry: 'Remove',
     scorecardTitle: 'National governance scorecard',
     weightsTitle: 'Dimension weights',
+    weightsHint:
+      'Equal by default; expand to re-weight and recompute benchmarks',
     weightsReset: 'Reset weights',
     plannedToggle: 'Include planned pipeline',
     methodTitle: 'Method & scope',
@@ -177,9 +181,7 @@ export const governanceComparisonCopy = Object.freeze({
       deploymentTab: 'Governance–deployment',
       evidenceTitle: 'Scoring evidence',
       evidenceEmpty:
-        'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
-      insightsTitle: 'Comparison insights',
-      insightsSubtitle: 'Strengths, gaps and governance–deployment position',
+        'Select a radar dimension, heatmap cell, matrix point or scorecard country to inspect evidence and contributing policies.',
     }),
   }),
 });
@@ -310,14 +312,8 @@ export const governanceClientCopy = Object.freeze({
 
 export const governanceVisualsCopy = Object.freeze({
   zh: Object.freeze({
-    governance: '治理能力',
-    deployment: '已承诺项目记录规模',
-    activePolicies: '现行政策',
     strongest: '优势维度',
     weakest: '主要短板',
-    balanced: '治理结构',
-    balancedGood: '较均衡',
-    balancedUneven: '差异较大',
     scoreEvidence: '评分依据',
     verifiedBadge: '已核验',
     draftBadge: '待核验',
@@ -326,18 +322,12 @@ export const governanceVisualsCopy = Object.freeze({
     citation: '证据来源',
     openPolicy: '查看政策记录',
     evidencePrompt:
-      '点击雷达维度、热力单元格或国家散点，查看评分依据与贡献政策。',
+      '点击雷达维度、热力单元格、矩阵散点或计分卡国家，查看评分依据与贡献政策。',
     policyPath: `${BASE}/policy/`,
   }),
   en: Object.freeze({
-    governance: 'Governance capability',
-    deployment: 'Committed project-record scale',
-    activePolicies: 'Active policies',
     strongest: 'Leading dimension',
     weakest: 'Main gap',
-    balanced: 'Profile balance',
-    balancedGood: 'Relatively balanced',
-    balancedUneven: 'Uneven',
     scoreEvidence: 'Scoring evidence',
     verifiedBadge: 'Verified',
     draftBadge: 'Pending review',
@@ -347,7 +337,7 @@ export const governanceVisualsCopy = Object.freeze({
     citation: 'Evidence source',
     openPolicy: 'Open policy record',
     evidencePrompt:
-      'Select a radar dimension, heatmap cell or country point to inspect evidence and contributing policies.',
+      'Select a radar dimension, heatmap cell, matrix point or scorecard country to inspect evidence and contributing policies.',
     policyPath: `${BASE}/en/policy/`,
   }),
 });

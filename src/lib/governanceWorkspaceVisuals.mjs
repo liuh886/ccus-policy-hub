@@ -129,33 +129,6 @@ const renderHeatmap = (countrySystems, text) => {
   });
 };
 
-const renderInsights = (countrySystems, benchmarks, text, lang) => {
-  const container = document.getElementById('governance-insights');
-  if (!container) return;
-  const ui = copy[lang] || copy.zh;
-
-  container.innerHTML = countrySystems
-    .map((country) => {
-      const key = countryKey(country);
-      const { label } = quadrantLabel(text, country, benchmarks);
-      const strongest = dimensionLabel(
-        text,
-        country.governance.strongestDimension
-      );
-      const weakest = dimensionLabel(text, country.governance.weakestDimension);
-      const balance =
-        country.governance.spread <= 25 ? ui.balancedGood : ui.balancedUneven;
-      return `<button type="button" class="governance-insight-card" data-country-key="${escapeHtml(key)}" data-select-country="${escapeHtml(key)}"><div class="governance-insight-heading"><strong>${escapeHtml(country.displayCountry)}</strong><span>${escapeHtml(label)}</span></div><div class="governance-insight-metrics"><div><strong>${Number(country.governance.index).toFixed(1)}/100</strong>${ui.governance}</div><div><strong>${Number(matrixXOf(country)).toFixed(1)} Mtpa</strong>${ui.deployment}</div><div><strong>${escapeHtml(strongest)}</strong>${ui.strongest}</div><div><strong>${escapeHtml(weakest)}</strong>${ui.weakest}</div><div><strong>${escapeHtml(balance)}</strong>${ui.balanced}</div><div><strong>${country.governance.policyCount}</strong>${ui.activePolicies}</div></div></button>`;
-    })
-    .join('');
-
-  container.querySelectorAll('[data-select-country]').forEach((button) => {
-    button.addEventListener('click', () => {
-      selectCountry(button.dataset.selectCountry);
-    });
-  });
-};
-
 const evidenceForCountry = (country, dimension, text, lang) => {
   const ui = copy[lang] || copy.zh;
   const selectedDimension = dimension || country.governance.strongestDimension;
@@ -243,6 +216,10 @@ function selectCountry(key, dimension) {
   if (country) renderEvidence(country, dimension);
   else resetEvidence();
   applyCrossSelection();
+}
+
+export function selectGovernanceCountry(key, dimension) {
+  selectCountry(key, dimension);
 }
 
 const renderRadar = (countrySystems, text) => {
@@ -606,9 +583,7 @@ export function clearGovernanceAnalytics() {
   currentState = null;
   selectedCountryKey = null;
   const heatmap = document.getElementById('governance-heatmap');
-  const insights = document.getElementById('governance-insights');
   if (heatmap) heatmap.innerHTML = '';
-  if (insights) insights.innerHTML = '';
 }
 
 if (typeof document !== 'undefined') {
@@ -635,7 +610,6 @@ export function renderGovernanceAnalytics({
   renderRadar(countrySystems, text);
   renderHeatmap(countrySystems, text);
   renderDeploymentMatrix(countrySystems, benchmarks, text, includePlanned);
-  renderInsights(countrySystems, benchmarks, text, lang);
   updateBenchmarkLabels(benchmarks);
 
   bindProfileViewControls();

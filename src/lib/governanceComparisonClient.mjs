@@ -29,6 +29,7 @@ import {
 import {
   clearGovernanceAnalytics,
   renderGovernanceAnalytics,
+  selectGovernanceCountry,
 } from './governanceWorkspaceVisuals.mjs';
 
 const colors = [
@@ -285,7 +286,8 @@ const renderScorecard = (countrySystems, benchmarks, text, lang) => {
         const label = `${text.dimensionLabels[position]} ${Number(score).toFixed(0)}/100`;
         return `<div class="scorecard-bar" role="img" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"><span style="width:${Math.min(100, Math.max(0, score))}%"></span></div>`;
       }).join('');
-      return `<tr data-country-key="${escapeHtml(country.canonicalCountry)}"><th scope="row">${escapeHtml(country.displayCountry)}</th><td class="scorecard-index">${Number(country.governance.index).toFixed(1)}</td><td><div class="scorecard-bars">${profileBars}</div></td><td>${country.governance.policyCount}</td><td>${formatCapacity(country.deployment.committedCapacity)}</td><td>${formatCapacity(country.deployment.plannedCapacity)}</td><td>${clarity}/${text.regKeys.length}</td><td>${escapeHtml(quadrant)}</td></tr>`;
+      const key = escapeHtml(country.canonicalCountry);
+      return `<tr data-country-key="${key}" class="scorecard-row"><th scope="row"><button type="button" class="scorecard-country" data-scorecard-country="${key}" aria-label="${escapeHtml(text.colCountry)}: ${escapeHtml(country.displayCountry)}">${escapeHtml(country.displayCountry)}</button></th><td class="scorecard-index">${Number(country.governance.index).toFixed(1)}</td><td><div class="scorecard-bars">${profileBars}</div></td><td>${country.governance.policyCount}</td><td>${formatCapacity(country.deployment.committedCapacity)}</td><td>${formatCapacity(country.deployment.plannedCapacity)}</td><td>${clarity}/${text.regKeys.length}</td><td>${escapeHtml(quadrant)}</td></tr>`;
     })
     .join('');
 };
@@ -323,7 +325,7 @@ const renderContributors = (
     mrv: 'bg-slate-500',
   };
 
-  const renderCard = (country, policy, hidden) => {
+  const renderRow = (country, policy, hidden) => {
     const peakDots = GOVERNANCE_DIMENSIONS.map((dimension) => {
       const score = Number(policy.data.analysis?.[dimension]?.score || 0);
       const peak = country.peakAnalysis[dimension];
@@ -332,7 +334,8 @@ const renderContributors = (
         : '';
     }).join('');
     const legalWeight = localizeLegalWeight(policy.data.legalWeight, lang);
-    return `<article class="contributor-card${hidden ? ' is-extra' : ''} relative rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-blue-500 dark:border-slate-800 dark:bg-slate-900"><div class="mb-3 flex items-start justify-between"><span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}${legalWeight ? ` · ${escapeHtml(legalWeight)}` : ''}</span>${verificationBadge(policy, lang)}</div><h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4><div class="flex gap-1.5">${peakDots}</div><a class="absolute inset-0" href="${text.policyPath}${encodeURIComponent(String(policy.id))}/" aria-label="${escapeHtml(policy.data.title)}"></a></article>`;
+    const href = `${text.policyPath}${encodeURIComponent(String(policy.id))}/`;
+    return `<li class="contributor-row${hidden ? ' is-extra' : ''}"><span class="contributor-year">${escapeHtml(policy.data.year)}</span><a class="contributor-title" href="${href}" title="${escapeHtml(policy.data.title)}">${escapeHtml(policy.data.title)}</a><span class="contributor-meta">${legalWeight ? escapeHtml(legalWeight) : ''}</span><span class="contributor-dots">${peakDots}</span>${verificationBadge(policy, lang)}</li>`;
   };
 
   container.innerHTML = countrySystems
@@ -343,11 +346,11 @@ const renderContributors = (
         country.contributors
       );
       const expanded = expandedCountries.has(key);
-      return `<section class="contributor-section space-y-6${expanded ? ' is-expanded' : ''}" data-country-key="${escapedKey}"><div class="flex items-center gap-4"><div class="h-3 w-3 rounded-full" style="background-color:${country.color.border}"></div><h3 class="text-xl font-bold dark:text-white">${escapeHtml(country.displayCountry)}</h3><span class="text-xs font-semibold text-slate-400">${text.policyCount} ${country.governance.policyCount}${text.items}</span></div><div class="contributor-grid grid grid-cols-1 gap-4 md:grid-cols-2">${visible
-        .map((policy) => renderCard(country, policy, false))
+      return `<section class="contributor-section${expanded ? ' is-expanded' : ''}" data-country-key="${escapedKey}"><div class="contributor-head"><span class="contributor-dot" style="background-color:${country.color.border}"></span><h3>${escapeHtml(country.displayCountry)}</h3><span class="contributor-count">${text.policyCount} ${country.governance.policyCount}${text.items}</span></div><ul class="contributor-list">${visible
+        .map((policy) => renderRow(country, policy, false))
         .join('')}${extra
-        .map((policy) => renderCard(country, policy, true))
-        .join('')}</div>${
+        .map((policy) => renderRow(country, policy, true))
+        .join('')}</ul>${
         hiddenCount
           ? `<button type="button" class="contributor-toggle" data-contributors-toggle="${escapedKey}" aria-expanded="${expanded ? 'true' : 'false'}">${
               expanded
@@ -357,7 +360,7 @@ const renderContributors = (
           : ''
       }</section>`;
     })
-    .join('<div class="my-8 h-px bg-slate-100 dark:bg-slate-800"></div>');
+    .join('');
 };
 
 const breakdownRows = (entries, total, label) => {
@@ -381,11 +384,6 @@ const renderFacilityStats = (countrySystems, text) => {
       const committedBase =
         country.deployment.operationalCapacity +
         country.deployment.constructionCapacity;
-      const pipelineTotal = committedBase + country.deployment.plannedCapacity;
-      const stack =
-        pipelineTotal > 0
-          ? `<div class="capacity-stack"><span class="is-operational" style="width:${((country.deployment.operationalCapacity / pipelineTotal) * 100).toFixed(1)}%"></span><span class="is-construction" style="width:${((country.deployment.constructionCapacity / pipelineTotal) * 100).toFixed(1)}%"></span><span class="is-planned" style="width:${((country.deployment.plannedCapacity / pipelineTotal) * 100).toFixed(1)}%"></span></div>`
-          : '';
       const byDimension = (pick) => {
         const groups = new Map();
         for (const facility of country.facilityList || []) {
@@ -402,30 +400,11 @@ const renderFacilityStats = (countrySystems, text) => {
           const name = String(pick(data) || '').trim() || text.otherGroup;
           groups.set(name, (groups.get(name) || 0) + facilityCapacity(data));
         }
-        return [...groups.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4);
+        return [...groups.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3);
       };
       const sectors = byDimension((data) => data.sector);
       const types = byDimension((data) => data.type);
-      return `<article class="rounded-2xl border border-slate-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/50" data-country-key="${escapeHtml(country.canonicalCountry)}"><div class="mb-4 flex items-center justify-between gap-3"><span class="font-bold text-slate-900 dark:text-white">${escapeHtml(country.displayCountry)}</span><span class="text-[10px] font-black text-blue-600">${country.deployment.operationalCount} ${text.operationalProjects}</span></div>${stack}<div class="grid grid-cols-3 gap-2">${[
-        [
-          text.operational,
-          country.deployment.operationalCapacity,
-          'text-emerald-500',
-        ],
-        [
-          text.construction,
-          country.deployment.constructionCapacity,
-          'text-amber-500',
-        ],
-        [text.planned, country.deployment.plannedCapacity, 'text-blue-500'],
-      ]
-        .map(
-          ([label, value, className]) =>
-            `<div class="rounded-xl bg-slate-50 p-2 text-center dark:bg-slate-800/50"><p class="text-[8px] font-black uppercase ${className}">${label}</p><p class="text-xs font-bold dark:text-white">${formatCapacity(value)}</p></div>`
-        )
-        .join(
-          ''
-        )}</div><div class="breakdown">${breakdownRows(sectors, committedBase, text.bySector)}${breakdownRows(types, committedBase, text.byType)}</div></article>`;
+      return `<article class="rounded-2xl border border-slate-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/50" data-country-key="${escapeHtml(country.canonicalCountry)}"><div class="mb-4 flex items-center justify-between gap-3"><span class="font-bold text-slate-900 dark:text-white">${escapeHtml(country.displayCountry)}</span><span class="text-[10px] font-black text-blue-600">${country.deployment.operationalCount} ${text.operationalProjects}</span></div><div class="breakdown">${breakdownRows(sectors, committedBase, text.bySector)}${breakdownRows(types, committedBase, text.byType)}</div></article>`;
     })
     .join('');
 };
@@ -754,23 +733,19 @@ export function initGovernanceComparison(lang = 'zh') {
     );
     // "Selected policies only" is meaningful only when the visitor arrived
     // with a policy selection that overlaps the countries on screen. Deep
-    // links / presets carry no policy list, so the option is disabled and the
-    // scope falls back to the full active national system instead of
-    // rendering a bogus all-zero profile.
+    // links / presets carry no policy list, so the whole scope row stays
+    // hidden and the page benchmarks the full active national system instead
+    // of rendering a bogus all-zero profile.
     const storedMatchesSelection = storedPolicies.some((policy) =>
       selectedCanonical.includes(
         countryKeyOf(policy?.data?.country, countryMap)
       )
     );
+    const scopeRow = document.querySelector('.governance-scope-row');
+    scopeRow?.classList.toggle('hidden', !storedMatchesSelection);
     let scope = scopeSelect?.value || 'system';
     if (scope === 'selected' && !storedMatchesSelection) scope = 'system';
-    if (scopeSelect) {
-      const selectedOption = scopeSelect.querySelector(
-        'option[value="selected"]'
-      );
-      if (selectedOption) selectedOption.disabled = !storedMatchesSelection;
-      if (scopeSelect.value !== scope) scopeSelect.value = scope;
-    }
+    if (scopeSelect && scopeSelect.value !== scope) scopeSelect.value = scope;
 
     const policyPool = scope === 'selected' ? storedPolicies : allPolicies;
     const countrySystems = selectedCanonical.map((canonical, index) =>
@@ -839,9 +814,14 @@ export function initGovernanceComparison(lang = 'zh') {
   }
   const printButton = document.getElementById('print-report');
   if (printButton) printButton.onclick = () => window.print();
+  const closeExportMenu = () =>
+    document
+      .querySelector('.compare-export-menu[open]')
+      ?.removeAttribute('open');
   const csvButton = document.getElementById('export-csv');
   if (csvButton) {
     csvButton.onclick = () => {
+      closeExportMenu();
       const detail = window.__ccusCompareLast;
       if (detail) exportScorecardCsv(detail.systems, detail.benchmarks, text);
     };
@@ -849,6 +829,7 @@ export function initGovernanceComparison(lang = 'zh') {
   const jsonButton = document.getElementById('export-json');
   if (jsonButton) {
     jsonButton.onclick = () => {
+      closeExportMenu();
       const detail = window.__ccusCompareLast;
       if (detail) {
         exportSummaryJson(
@@ -864,7 +845,10 @@ export function initGovernanceComparison(lang = 'zh') {
   }
   const citeButton = document.getElementById('copy-citation');
   if (citeButton) {
-    citeButton.onclick = () => copyCitation(citeButton, pageText);
+    citeButton.onclick = () => {
+      closeExportMenu();
+      copyCitation(citeButton, pageText);
+    };
   }
   const scopeSelect = document.getElementById('analysis-scope');
   if (scopeSelect) scopeSelect.onchange = render;
@@ -1012,6 +996,19 @@ export function initGovernanceComparison(lang = 'zh') {
   };
   window.__ccusDisclosureHandler = disclosureHandler;
   document.addEventListener('click', disclosureHandler);
+
+  // Scorecard countries open the evidence panel (the former insight cards
+  // were a duplicate of the scorecard rows).
+  if (window.__ccusScorecardHandler) {
+    document.removeEventListener('click', window.__ccusScorecardHandler);
+  }
+  const scorecardHandler = (event) => {
+    const button = event.target?.closest?.('[data-scorecard-country]');
+    if (!button) return;
+    selectGovernanceCountry(button.dataset.scorecardCountry);
+  };
+  window.__ccusScorecardHandler = scorecardHandler;
+  document.addEventListener('click', scorecardHandler);
 
   const bindingKey = `__ccusGovernanceComparisonBound_${lang}`;
   if (!window[bindingKey]) {

@@ -93,7 +93,7 @@ const presetLinks = [
       </details>
       <div id="selected-tags" class="selected-tags" aria-live="polite"></div>
     </div>
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap items-center gap-3">
       <button
         id="clear-all"
         class="px-4 py-2 text-sm font-bold text-slate-500 transition-colors hover:text-red-500"
@@ -101,29 +101,23 @@ const presetLinks = [
         {text.clear}
       </button>
       <button
-        id="export-csv"
-        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-      >
-        {text.exportCsv}
-      </button>
-      <button
-        id="export-json"
-        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-      >
-        {text.exportJson}
-      </button>
-      <button
-        id="copy-citation"
-        class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-      >
-        {text.copyCite}
-      </button>
-      <button
         id="print-report"
         class="rounded-xl bg-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-blue-500/20 transition-colors hover:bg-blue-700"
       >
         {text.export}
       </button>
+      <details class="compare-export-menu">
+        <summary
+          class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        >
+          {text.exportMenu}
+        </summary>
+        <div class="compare-export-menu-list">
+          <button id="export-csv" type="button">{text.exportCsv}</button>
+          <button id="export-json" type="button">{text.exportJson}</button>
+          <button id="copy-citation" type="button">{text.copyCite}</button>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -206,18 +200,14 @@ const presetLinks = [
           <div id="policy-bundles-container" class="space-y-10"></div>
         </section>
 
-        <section
-          class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
+        <details
+          class="reg-details overflow-hidden rounded-[2rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950"
         >
-          <div
-            class="border-b border-slate-100 bg-slate-50 p-7 dark:border-slate-800 dark:bg-slate-900/50"
-          >
-            <h2
-              class="text-xs font-black uppercase tracking-widest text-slate-500"
-            >
-              {text.regulatory}
-            </h2>
-          </div>
+          <summary class="reg-details-summary">
+            <span class="reg-details-title">{text.regulatory}</span>
+            <span class="reg-details-hint">{text.regulatoryHint}</span>
+            <span class="reg-details-chevron" aria-hidden="true">▾</span>
+          </summary>
           <div class="overflow-x-auto">
             <table class="w-full border-collapse text-left">
               <thead id="reg-matrix-header"></thead>
@@ -226,7 +216,7 @@ const presetLinks = [
                 class="divide-y divide-slate-50 dark:divide-slate-900"></tbody>
             </table>
           </div>
-        </section>
+        </details>
 
         <section
           id="timeline-section"
