@@ -17,8 +17,16 @@ const isFacilitiesPath =
   normalizedPath.startsWith('/facilities/') ||
   normalizedPath === '/en/facilities' ||
   normalizedPath.startsWith('/en/facilities/');
+const isComparePath =
+  normalizedPath === '/compare' ||
+  normalizedPath.startsWith('/compare/') ||
+  normalizedPath === '/en/compare' ||
+  normalizedPath.startsWith('/en/compare/');
 const hideCompareDrawer =
-  normalizedPath === '/' || normalizedPath === '/en' || isFacilitiesPath;
+  normalizedPath === '/' ||
+  normalizedPath === '/en' ||
+  isFacilitiesPath ||
+  isComparePath;
 const usesFacilityMap = isFacilitiesPath;
 
 const { title, description, keywords, pageClass = '' } = Astro.props;

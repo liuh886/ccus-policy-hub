@@ -95,12 +95,25 @@ const compareHref = isEn ? `${BASE}/en/compare/` : `${BASE}/compare/`;
 
   function updateDrawer() {
     const drawer = document.getElementById('compare-drawer');
+    const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+    const isExcludedPage =
+      pathname === '/' ||
+      pathname.endsWith('/en') ||
+      pathname.includes('/compare') ||
+      pathname.includes('/facilities');
+
+    if (isExcludedPage && drawer) {
+      drawer.classList.add('hidden');
+      drawer.classList.remove('flex');
+      return;
+    }
+
     const countEl = document.getElementById('compare-count');
     const list = getCompareList();
 
     if (countEl) countEl.innerText = list.length.toString();
 
-    if (list.length > 0) {
+    if (list.length > 0 && !isExcludedPage) {
       drawer?.classList.remove('hidden');
       drawer?.classList.add('flex');
     } else {

@@ -15,10 +15,11 @@ pnpm-lock.yaml
 .codex/
 .worktrees/
 
-# --- Generated Data (auto-generated, do not hand-edit) ---
+# --- Generated Data & Reports (auto-generated, do not hand-edit) ---
 src/data/quality_metrics.generated.json
 src/data/dataset_versions.generated.json
 src/content/enums.generated.ts
+public/reports/
 
 # --- Complex Interactive Components ---
 src/components/CapacityTrend.astro
