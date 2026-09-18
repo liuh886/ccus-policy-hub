@@ -168,7 +168,7 @@ const changelog = defineCollection({
 });
 
 const docs_zh = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: 'src/content/docs/zh' }),
+  loader: glob({ pattern: '*.md', base: './src/content/docs/zh' }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -177,7 +177,7 @@ const docs_zh = defineCollection({
 });
 
 const docs_en = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: 'src/content/docs/en' }),
+  loader: glob({ pattern: '*.md', base: './src/content/docs/en' }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
