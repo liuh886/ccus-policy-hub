@@ -66,7 +66,7 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
         </div>
       </header>
 
-      <div class="governance-scope-row print:hidden">
+      <div class="governance-scope-row print:hidden hidden">
         <div>
           <strong>{copy.scopeTitle}</strong>
           <span>{copy.scopeNote}</span>
@@ -77,35 +77,41 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
         </select>
       </div>
 
-      <div class="governance-weights print:hidden">
-        <div class="governance-weights-head">
-          <strong>{copy.weightsTitle}</strong>
-          <button type="button" id="reset-weights-compare">
-            {copy.weightsReset}
-          </button>
-        </div>
-        <div class="governance-weights-grid">
-          {
-            weightDimensions.map((dimension, position) => (
-              <label class="governance-weight">
-                <span class="governance-weight-top">
-                  <span data-weight-label={dimension}>
-                    {weightLabels[position]}
+      <details class="governance-weights-details print:hidden">
+        <summary>
+          <span class="governance-weights-title">{copy.weightsTitle}</span>
+          <span class="governance-weights-hint">{copy.weightsHint}</span>
+          <span class="governance-weights-chevron" aria-hidden="true">▾</span>
+        </summary>
+        <div class="governance-weights">
+          <div class="governance-weights-head">
+            <button type="button" id="reset-weights-compare">
+              {copy.weightsReset}
+            </button>
+          </div>
+          <div class="governance-weights-grid">
+            {
+              weightDimensions.map((dimension, position) => (
+                <label class="governance-weight">
+                  <span class="governance-weight-top">
+                    <span data-weight-label={dimension}>
+                      {weightLabels[position]}
+                    </span>
+                    <em id={`weight-${dimension}-val`}>20%</em>
                   </span>
-                  <em id={`weight-${dimension}-val`}>20%</em>
-                </span>
-                <input
-                  type="range"
-                  id={`weight-${dimension}`}
-                  min="0"
-                  max="100"
-                  value="20"
-                />
-              </label>
-            ))
-          }
+                  <input
+                    type="range"
+                    id={`weight-${dimension}`}
+                    min="0"
+                    max="100"
+                    value="20"
+                  />
+                </label>
+              ))
+            }
+          </div>
         </div>
-      </div>
+      </details>
 
       <div class="governance-profile-visual" data-profile-visual="radar">
         <canvas id="compare-radar-canvas"></canvas>
@@ -169,14 +175,6 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
   </div>
 
   <div class="governance-secondary-grid">
-    <section class="governance-insights-panel">
-      <header>
-        <p class="governance-eyebrow">{ui.insightsSubtitle}</p>
-        <h2>{ui.insightsTitle}</h2>
-      </header>
-      <div id="governance-insights" class="governance-insights-grid"></div>
-    </section>
-
     <aside
       id="governance-evidence-panel"
       class="governance-evidence-panel"
