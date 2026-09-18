@@ -20,6 +20,13 @@ import {
   queryToCountries,
 } from './comparePresets.mjs';
 import {
+  TIMELINE_OPEN_THRESHOLD,
+  buildTimelineGroups,
+  isPendingRegulatory,
+  localizeLegalWeight,
+  splitContributors,
+} from './comparePresentation.mjs';
+import {
   clearGovernanceAnalytics,
   renderGovernanceAnalytics,
 } from './governanceWorkspaceVisuals.mjs';
@@ -32,8 +39,6 @@ const colors = [
   { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' },
   { border: 'rgb(14, 165, 183)', bg: 'rgba(14, 165, 183, 0.1)' },
 ];
-
-const PENDING_PATTERN = /pending|待定|未具体说明|tbd|^—+$|^-+$|^n\/?a$/i;
 
 const escapeHtml = (value) =>
   String(value ?? '').replace(
@@ -49,8 +54,15 @@ const escapeHtml = (value) =>
   );
 
 const formatCapacity = (value) => Number(value || 0).toFixed(1);
-const isPendingRegulatory = (value) =>
-  !String(value || '').trim() || PENDING_PATTERN.test(String(value).trim());
+
+const readCompareList = () => {
+  try {
+    const parsed = JSON.parse(localStorage.getItem('compare-list') || '[]');
+    return Array.isArray(parsed) ? parsed.map(String) : [];
+  } catch {
+    return [];
+  }
+};
 
 const countryDisplayName = (canonical, countryMap, lang) => {
   if (lang === 'en') return countryMap[canonical]?.en || canonical;
@@ -270,7 +282,8 @@ const renderScorecard = (countrySystems, benchmarks, text, lang) => {
         ];
       const profileBars = GOVERNANCE_DIMENSIONS.map((_, position) => {
         const score = country.governance.scores[position] || 0;
-        return `<div class="scorecard-bar" title="${escapeHtml(text.dimensionLabels[position])}: ${Number(score).toFixed(0)}"><span style="width:${Math.min(100, Math.max(0, score))}%"></span></div>`;
+        const label = `${text.dimensionLabels[position]} ${Number(score).toFixed(0)}/100`;
+        return `<div class="scorecard-bar" role="img" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"><span style="width:${Math.min(100, Math.max(0, score))}%"></span></div>`;
       }).join('');
       return `<tr data-country-key="${escapeHtml(country.canonicalCountry)}"><th scope="row">${escapeHtml(country.displayCountry)}</th><td class="scorecard-index">${Number(country.governance.index).toFixed(1)}</td><td><div class="scorecard-bars">${profileBars}</div></td><td>${country.governance.policyCount}</td><td>${formatCapacity(country.deployment.committedCapacity)}</td><td>${formatCapacity(country.deployment.plannedCapacity)}</td><td>${clarity}/${text.regKeys.length}</td><td>${escapeHtml(quadrant)}</td></tr>`;
     })
@@ -294,7 +307,12 @@ const verificationBadge = (policy, lang) => {
   return `<span class="contributor-badge ${verified ? 'is-verified' : 'is-draft'}">${escapeHtml(verified ? ui.verifiedBadge : ui.draftBadge)}</span>`;
 };
 
-const renderContributors = (countrySystems, text, lang) => {
+const renderContributors = (
+  countrySystems,
+  text,
+  lang,
+  expandedCountries = new Set()
+) => {
   const container = document.getElementById('policy-bundles-container');
   if (!container) return;
   const dimensionColors = {
@@ -305,27 +323,39 @@ const renderContributors = (countrySystems, text, lang) => {
     mrv: 'bg-slate-500',
   };
 
+  const renderCard = (country, policy, hidden) => {
+    const peakDots = GOVERNANCE_DIMENSIONS.map((dimension) => {
+      const score = Number(policy.data.analysis?.[dimension]?.score || 0);
+      const peak = country.peakAnalysis[dimension];
+      return score > 0 && score === peak
+        ? `<span class="h-1.5 w-1.5 rounded-full ${dimensionColors[dimension]}"></span>`
+        : '';
+    }).join('');
+    const legalWeight = localizeLegalWeight(policy.data.legalWeight, lang);
+    return `<article class="contributor-card${hidden ? ' is-extra' : ''} relative rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-blue-500 dark:border-slate-800 dark:bg-slate-900"><div class="mb-3 flex items-start justify-between"><span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}${legalWeight ? ` · ${escapeHtml(legalWeight)}` : ''}</span>${verificationBadge(policy, lang)}</div><h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4><div class="flex gap-1.5">${peakDots}</div><a class="absolute inset-0" href="${text.policyPath}${encodeURIComponent(String(policy.id))}/" aria-label="${escapeHtml(policy.data.title)}"></a></article>`;
+  };
+
   container.innerHTML = countrySystems
     .map((country) => {
-      const key = escapeHtml(country.canonicalCountry);
-      return `<section class="space-y-6" data-country-key="${key}"><div class="flex items-center gap-4"><div class="h-3 w-3 rounded-full" style="background-color:${country.color.border}"></div><h3 class="text-xl font-bold dark:text-white">${escapeHtml(country.displayCountry)} · ${text.contributorHeading}</h3><span class="text-xs font-semibold text-slate-400">${text.policyCount} ${country.governance.policyCount}${text.items}</span></div><div class="grid grid-cols-1 gap-4 md:grid-cols-2">${country.contributors
-        .map(
-          (policy) =>
-            `<article class="relative rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-blue-500 dark:border-slate-800 dark:bg-slate-900"><div class="mb-3 flex items-start justify-between"><span class="text-[9px] font-black uppercase tracking-widest text-slate-400">${escapeHtml(policy.data.year)}${policy.data.legalWeight ? ` · ${escapeHtml(policy.data.legalWeight)}` : ''}</span>${verificationBadge(policy, lang)}</div><h4 class="mb-4 line-clamp-2 text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(policy.data.title)}</h4><div class="flex gap-1.5">${GOVERNANCE_DIMENSIONS.map(
-              (dimension) => {
-                const score = Number(
-                  policy.data.analysis?.[dimension]?.score || 0
-                );
-                const peak = country.peakAnalysis[dimension];
-                return score > 0 && score === peak
-                  ? `<span class="h-1.5 w-1.5 rounded-full ${dimensionColors[dimension]}"></span>`
-                  : '';
-              }
-            ).join(
-              ''
-            )}</div><a class="absolute inset-0" href="${text.policyPath}${encodeURIComponent(String(policy.id))}/" aria-label="${escapeHtml(policy.data.title)}"></a></article>`
-        )
-        .join('')}</div></section>`;
+      const key = country.canonicalCountry;
+      const escapedKey = escapeHtml(key);
+      const { visible, extra, total, hiddenCount } = splitContributors(
+        country.contributors
+      );
+      const expanded = expandedCountries.has(key);
+      return `<section class="contributor-section space-y-6${expanded ? ' is-expanded' : ''}" data-country-key="${escapedKey}"><div class="flex items-center gap-4"><div class="h-3 w-3 rounded-full" style="background-color:${country.color.border}"></div><h3 class="text-xl font-bold dark:text-white">${escapeHtml(country.displayCountry)}</h3><span class="text-xs font-semibold text-slate-400">${text.policyCount} ${country.governance.policyCount}${text.items}</span></div><div class="contributor-grid grid grid-cols-1 gap-4 md:grid-cols-2">${visible
+        .map((policy) => renderCard(country, policy, false))
+        .join('')}${extra
+        .map((policy) => renderCard(country, policy, true))
+        .join('')}</div>${
+        hiddenCount
+          ? `<button type="button" class="contributor-toggle" data-contributors-toggle="${escapedKey}" aria-expanded="${expanded ? 'true' : 'false'}">${
+              expanded
+                ? escapeHtml(text.collapse)
+                : `${escapeHtml(text.showAllContributors)} · ${total}`
+            }</button>`
+          : ''
+      }</section>`;
     })
     .join('<div class="my-8 h-px bg-slate-100 dark:bg-slate-800"></div>');
 };
@@ -423,8 +453,8 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
               const value = country.regulatory[key] || '';
               const pending = isPendingRegulatory(value);
               const cell = pending
-                ? `<span class="reg-dot is-pending" aria-label="${escapeHtml(text.regPending)}">— ${escapeHtml(text.regPending)}</span>`
-                : `<span class="reg-dot is-stated" title="${escapeHtml(value)}">● ${escapeHtml(value)}</span>`;
+                ? `<span class="reg-dot is-pending">— ${escapeHtml(text.regPending)}</span>`
+                : `<button type="button" class="reg-dot is-stated" title="${escapeHtml(value)}">● ${escapeHtml(value)}</button>`;
               return `<td data-country-key="${escapeHtml(country.canonicalCountry)}" class="reg-cell border-l border-slate-100 p-6 text-xs font-medium text-slate-600 dark:border-slate-800 dark:text-slate-400">${cell}</td>`;
             })
             .join('')}</tr>`
@@ -433,38 +463,45 @@ const renderRegulatoryMatrix = (countrySystems, text) => {
   }
 };
 
-const renderTimeline = (countrySystems, text) => {
+const renderTimeline = (countrySystems, text, timelineState = new Map()) => {
   const section = document.getElementById('timeline-section');
   const container = document.getElementById('timeline-list');
   if (!section || !container) return;
-  const items = [];
-  for (const country of countrySystems) {
-    for (const policy of country.policyList || []) {
-      const milestones = policy?.data?.evolution?.milestones;
-      if (!Array.isArray(milestones)) continue;
-      for (const milestone of milestones) {
-        if (!milestone?.date || !milestone?.event) continue;
-        items.push({
-          date: String(milestone.date),
-          event: String(milestone.event),
-          country: country.displayCountry,
-          color: country.color.border,
-        });
-      }
-    }
-  }
-  if (!items.length) {
-    section.classList.remove('hidden');
+  section.classList.remove('hidden');
+
+  const groups = buildTimelineGroups(countrySystems);
+  if (!groups.some((group) => group.total > 0)) {
     container.innerHTML = `<p class="text-sm text-slate-500">${escapeHtml(text.timelineEmpty)}</p>`;
     return;
   }
-  items.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
-  section.classList.remove('hidden');
-  container.innerHTML = items
-    .map(
-      (item) =>
-        `<li class="timeline-item"><span class="timeline-dot" style="background-color:${item.color}"></span><span class="timeline-date">${escapeHtml(item.date)}</span><span class="timeline-body"><strong>${escapeHtml(item.country)}</strong> — ${escapeHtml(item.event)}</span></li>`
-    )
+
+  container.innerHTML = groups
+    .map((group) => {
+      const key = group.country;
+      const escapedKey = escapeHtml(key);
+      const autoOpen =
+        groups.length === 1 || group.total <= TIMELINE_OPEN_THRESHOLD;
+      const open = timelineState.has(key)
+        ? timelineState.get(key)
+        : autoOpen && group.total > 0;
+      const range =
+        group.firstDate && group.lastDate
+          ? ` · ${String(group.firstDate).slice(0, 4)}–${String(group.lastDate).slice(0, 4)}`
+          : '';
+      const meta =
+        group.total > 0
+          ? `${group.total}${escapeHtml(text.timelineMilestones)}${escapeHtml(range)}`
+          : escapeHtml(text.timelineEmptyCountry);
+      const items = group.items.length
+        ? `<ol class="timeline-list">${group.items
+            .map(
+              (item) =>
+                `<li class="timeline-item"><span class="timeline-date">${escapeHtml(item.date)}</span><span class="timeline-body">${escapeHtml(item.event)}</span></li>`
+            )
+            .join('')}</ol>`
+        : `<p class="timeline-group-empty">${escapeHtml(text.timelineEmptyCountry)}</p>`;
+      return `<section class="timeline-group${open ? ' is-open' : ''}" data-country-key="${escapedKey}"><button type="button" class="timeline-group-head" data-timeline-toggle="${escapedKey}" aria-expanded="${open ? 'true' : 'false'}"><span class="timeline-dot" style="background-color:${group.color}"></span><strong>${escapeHtml(group.displayCountry)}</strong><span class="timeline-group-meta">${meta}</span><span class="timeline-chevron" aria-hidden="true">▾</span></button>${items}</section>`;
+    })
     .join('');
 };
 
@@ -646,6 +683,8 @@ const setCountriesQuery = (canonicals) => {
 export function initGovernanceComparison(lang = 'zh') {
   const text = copy[lang] || copy.zh;
   const pageText = pageCopy[lang] || pageCopy.zh;
+  const expandedContributorCountries = new Set();
+  const timelineState = new Map();
 
   const render = () => {
     const allPolicies = getData('all-policies-data', 'policies');
@@ -655,7 +694,7 @@ export function initGovernanceComparison(lang = 'zh') {
     const params = new URLSearchParams(window.location.search);
     const weights = readWeightState();
     const includePlanned = readIncludePlanned();
-    const scope = document.getElementById('analysis-scope')?.value || 'system';
+    const scopeSelect = document.getElementById('analysis-scope');
     const container = document.getElementById('compare-container');
     const emptyState = document.getElementById('empty-state');
 
@@ -709,14 +748,31 @@ export function initGovernanceComparison(lang = 'zh') {
     emptyState?.classList.add('hidden');
     container?.classList.remove('hidden');
 
-    const policyPool =
-      scope === 'selected'
-        ? allPolicies.filter((policy) =>
-            JSON.parse(localStorage.getItem('compare-list') || '[]').includes(
-              policy.id
-            )
-          )
-        : allPolicies;
+    const storedPolicyIds = readCompareList();
+    const storedPolicies = allPolicies.filter((policy) =>
+      storedPolicyIds.includes(String(policy.id))
+    );
+    // "Selected policies only" is meaningful only when the visitor arrived
+    // with a policy selection that overlaps the countries on screen. Deep
+    // links / presets carry no policy list, so the option is disabled and the
+    // scope falls back to the full active national system instead of
+    // rendering a bogus all-zero profile.
+    const storedMatchesSelection = storedPolicies.some((policy) =>
+      selectedCanonical.includes(
+        countryKeyOf(policy?.data?.country, countryMap)
+      )
+    );
+    let scope = scopeSelect?.value || 'system';
+    if (scope === 'selected' && !storedMatchesSelection) scope = 'system';
+    if (scopeSelect) {
+      const selectedOption = scopeSelect.querySelector(
+        'option[value="selected"]'
+      );
+      if (selectedOption) selectedOption.disabled = !storedMatchesSelection;
+      if (scopeSelect.value !== scope) scopeSelect.value = scope;
+    }
+
+    const policyPool = scope === 'selected' ? storedPolicies : allPolicies;
     const countrySystems = selectedCanonical.map((canonical, index) =>
       buildCountrySystem({
         canonical,
@@ -750,10 +806,15 @@ export function initGovernanceComparison(lang = 'zh') {
     );
 
     renderScorecard(countrySystems, benchmarks, text, lang);
-    renderContributors(countrySystems, text, lang);
+    renderContributors(
+      countrySystems,
+      text,
+      lang,
+      expandedContributorCountries
+    );
     renderFacilityStats(countrySystems, text);
     renderRegulatoryMatrix(countrySystems, text);
-    renderTimeline(countrySystems, text);
+    renderTimeline(countrySystems, text, timelineState);
     renderGovernanceAnalytics({
       countrySystems,
       benchmarks,
@@ -915,6 +976,42 @@ export function initGovernanceComparison(lang = 'zh') {
   };
   window.__ccusTagRemoveHandler = tagRemoveHandler;
   document.addEventListener('click', tagRemoveHandler);
+
+  // Progressive disclosure: contributor cards, timeline groups and clamped
+  // regulatory cells toggle in place. State lives in the closure so a
+  // re-render (weights / planned toggle) preserves what the user expanded.
+  if (window.__ccusDisclosureHandler) {
+    document.removeEventListener('click', window.__ccusDisclosureHandler);
+  }
+  const disclosureHandler = (event) => {
+    const toggle = event.target?.closest?.('[data-contributors-toggle]');
+    if (toggle) {
+      const key = toggle.dataset.contributorsToggle;
+      const section = toggle.closest('.contributor-section');
+      const expanded = Boolean(section?.classList.toggle('is-expanded'));
+      if (expanded) expandedContributorCountries.add(key);
+      else expandedContributorCountries.delete(key);
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      const total = section?.querySelectorAll('.contributor-card').length || 0;
+      toggle.textContent = expanded
+        ? text.collapse
+        : `${text.showAllContributors} · ${total}`;
+      return;
+    }
+    const timelineToggle = event.target?.closest?.('[data-timeline-toggle]');
+    if (timelineToggle) {
+      const key = timelineToggle.dataset.timelineToggle;
+      const group = timelineToggle.closest('.timeline-group');
+      const expanded = Boolean(group?.classList.toggle('is-open'));
+      timelineState.set(key, expanded);
+      timelineToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      return;
+    }
+    const regCell = event.target?.closest?.('.reg-dot.is-stated');
+    if (regCell) regCell.classList.toggle('is-expanded');
+  };
+  window.__ccusDisclosureHandler = disclosureHandler;
+  document.addEventListener('click', disclosureHandler);
 
   const bindingKey = `__ccusGovernanceComparisonBound_${lang}`;
   if (!window[bindingKey]) {

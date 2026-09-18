@@ -153,15 +153,15 @@
 
 .governance-heatmap-table {
   width: 100%;
-  min-width: 34rem;
+  min-width: 0;
   border-collapse: separate;
-  border-spacing: 0.35rem;
+  border-spacing: 0.28rem;
 }
 
 .governance-heatmap-table th {
-  padding: 0.45rem;
+  padding: 0.35rem 0.2rem;
   color: var(--text-muted);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 800;
   line-height: 1.25;
   text-align: center;
@@ -172,18 +172,18 @@
 }
 
 .governance-heatmap-country {
-  width: 8rem;
+  width: 5rem;
   color: var(--text-primary) !important;
   text-align: left !important;
 }
 
 .governance-heatmap-cell {
-  width: 4.5rem;
-  min-height: 3.25rem;
+  width: 2.9rem;
+  min-height: 3rem;
   border: 1px solid rgb(8 127 121 / 0.12);
   border-radius: 9px;
   color: var(--text-primary);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 850;
   cursor: pointer;
 }
@@ -192,6 +192,12 @@
 .governance-heatmap-cell:focus-visible {
   outline: 2px solid var(--brand-teal-500);
   outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .governance-heatmap-table {
+    min-width: 21rem;
+  }
 }
 
 .governance-benchmark-chip {
@@ -553,6 +559,18 @@
   display: none;
 }
 
+.country-selector-details summary::after {
+  content: '▾';
+  display: inline-block;
+  margin-left: 0.4rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.country-selector-details[open] summary::after {
+  transform: rotate(180deg);
+}
+
 .country-selector-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
@@ -887,32 +905,108 @@
 .reg-dot.is-stated {
   display: -webkit-box;
   overflow: hidden;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--brand-teal-700);
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  color: var(--brand-teal-700);
-  cursor: help;
 }
 
 .reg-dot.is-pending {
   color: var(--text-muted);
 }
 
+.timeline-groups {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.timeline-group {
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.timeline-group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.timeline-group-head:hover {
+  background: var(--surface-subtle);
+}
+
+.timeline-group-head strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+}
+
+.timeline-group-meta {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-chevron {
+  color: var(--text-muted);
+  font-style: normal;
+  transition: transform 0.2s ease;
+}
+
+.timeline-group.is-open .timeline-chevron {
+  transform: rotate(180deg);
+}
+
+.timeline-group .timeline-list,
+.timeline-group-empty {
+  display: none;
+}
+
+.timeline-group.is-open .timeline-list {
+  display: grid;
+}
+
+.timeline-group.is-open .timeline-group-empty {
+  display: block;
+}
+
 .timeline-list {
   display: grid;
   gap: 0;
   margin: 0;
-  padding: 1.75rem;
+  padding: 0 1rem 1rem 1.4rem;
   list-style: none;
+}
+
+.timeline-group-empty {
+  margin: 0;
+  padding: 0 1rem 0.85rem 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.7rem;
 }
 
 .timeline-item {
   display: grid;
-  grid-template-columns: auto 6.5rem minmax(0, 1fr);
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 0.7rem;
   align-items: baseline;
   border-left: 2px solid var(--border-subtle);
   margin-left: 0.35rem;
-  padding: 0 0 1rem 1rem;
+  padding: 0 0 0.9rem 1rem;
   position: relative;
 }
 
@@ -921,9 +1015,7 @@
 }
 
 .timeline-dot {
-  position: absolute;
-  left: -5px;
-  top: 0.35rem;
+  flex: none;
   width: 8px;
   height: 8px;
   border-radius: 999px;
@@ -944,6 +1036,37 @@
 
 .timeline-body strong {
   color: var(--text-primary);
+}
+
+.contributor-card.is-extra {
+  display: none;
+}
+
+.contributor-section.is-expanded .contributor-card.is-extra {
+  display: block;
+}
+
+.contributor-toggle {
+  margin-top: 0.9rem;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  background: transparent;
+  color: var(--brand-teal-700);
+  font-size: 0.7rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contributor-toggle:hover,
+.contributor-toggle:focus-visible {
+  border-color: var(--brand-teal-500);
+  outline: none;
+}
+
+.reg-dot.is-stated.is-expanded {
+  -webkit-line-clamp: unset;
+  cursor: zoom-out;
 }
 
 .contributor-badge,
