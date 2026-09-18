@@ -2874,7 +2874,7 @@ const template = `<!DOCTYPE html>
 
   <!-- Navbar -->
   <header class="navbar">
-    <a href="/" class="nav-brand">
+    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回 CCUS Policy Hub 首页" aria-label="返回 CCUS Policy Hub 首页">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
       <span>CCUS Policy Hub</span>
       <span class="badge">智库报告</span>
@@ -2988,6 +2988,13 @@ const template = `<!DOCTYPE html>
   </button>
 
   <script>
+    // 0. 导航栏品牌首页跳转支持 (适配 GitHub Pages 子路径与根域名)
+    const brandLink = document.getElementById('nav-brand-link');
+    if (brandLink) {
+      const isGhPages = window.location.pathname.startsWith('/ccus-policy-hub');
+      brandLink.href = isGhPages ? '/ccus-policy-hub/' : '/';
+    }
+
     // 1. 顶部阅读进度条
     window.addEventListener('scroll', () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
