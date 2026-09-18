@@ -1074,7 +1074,7 @@ const template = `<!DOCTYPE html>
         margin: 1.75rem auto;
       }
       .ga-img-wrap img, .figure-img-wrap img, figure img, p img {
-        max-height: 280px;
+        max-height: 380px;
       }
     }
 
@@ -1232,14 +1232,14 @@ const template = `<!DOCTYPE html>
 
     /* 图表 Figure 通用约束与居中排版 */
     figure {
-      max-width: 680px;
+      max-width: 900px;
       margin: 2.75rem auto;
       text-align: center;
       position: relative;
     }
     figure img, p img {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 560px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -1858,7 +1858,7 @@ const template = `<!DOCTYPE html>
 
     /* 图文摘要卡片 (Graphical Abstract) - 优雅尺寸与学术居中约束 */
     .graphical-abstract-card {
-      max-width: 640px;
+      max-width: 860px;
       margin: 2.25rem auto 3rem;
       border: 1px solid var(--border-color);
       border-radius: 0.85rem;
@@ -1911,7 +1911,7 @@ const template = `<!DOCTYPE html>
     }
     .ga-img-wrap img {
       max-width: 100%;
-      max-height: 380px;
+      max-height: 520px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -2072,7 +2072,7 @@ const template = `<!DOCTYPE html>
 
     /* 规范学术图表 (Academic Figures) - 优雅尺寸与学术居中约束 */
     .academic-figure {
-      max-width: 680px;
+      max-width: 900px;
       margin: 3rem auto;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
@@ -2137,7 +2137,7 @@ const template = `<!DOCTYPE html>
     }
     .figure-img-wrap img {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 560px;
       width: auto;
       height: auto;
       object-fit: contain;

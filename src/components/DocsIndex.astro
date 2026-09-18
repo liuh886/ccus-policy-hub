@@ -24,21 +24,6 @@ const copy = isEn
         id === 'esg30-report-3-4'
           ? `${SITE_BASE}/reports/2601_ESG30/`
           : `${SITE_BASE}/en/docs/${id}/`,
-      featuredBadge: 'Special Report · v3.4',
-      featuredProgram: 'ESG30 Young Scholars Program (Phase II)',
-      featuredTitle: 'Governance Mix and dMRV Evidence Base for CCUS Scaling',
-      featuredDesc:
-        'Comprehensive comparative analysis across 7 jurisdictions, proposing a 4-tier continuous dMRV evidence architecture with an interactive academic report viewer, collapsible TOC, in-text annotation, and native XeLaTeX PDF download.',
-      featuredRead: 'Read Interactive Report',
-      featuredPdf: 'Download PDF (33p)',
-      reportHref: `${SITE_BASE}/reports/2601_ESG30/`,
-      pdfHref: `${SITE_BASE}/reports/2601_ESG30/paper_draft.pdf`,
-      stats: [
-        '⏱️ 60 Mins Read',
-        '📊 ~70k Words',
-        '⚖️ 7 Jurisdictions',
-        '💬 Text Annotation',
-      ],
     }
   : {
       title: '文档中心',
@@ -50,27 +35,12 @@ const copy = isEn
         id === 'esg30-report-3-4'
           ? `${SITE_BASE}/reports/2601_ESG30/`
           : `${SITE_BASE}/docs/${id}/`,
-      featuredBadge: '特约报告 · v3.4',
-      featuredProgram: 'ESG30 青年学者计划（二期）· 课题研究报告',
-      featuredTitle: 'CCUS 规模化的治理组合与 dMRV 证据基础',
-      featuredDesc:
-        '全面解析全球 7 大法域政策对标矩阵与“源—网—库”协同瓶颈，提出从传感器到核证/金融/责任接续的 dMRV 连续证据网络，提供完整交互式学术研讨界面、大纲折叠、划词批注系统及原版矢量 PDF 下载。',
-      featuredRead: '进入交互式研讨报告',
-      featuredPdf: '下载原版 33 页 PDF',
-      reportHref: `${SITE_BASE}/reports/2601_ESG30/`,
-      pdfHref: `${SITE_BASE}/reports/2601_ESG30/paper_draft.pdf`,
-      stats: [
-        '⏱️ 建议阅读 60 分钟',
-        '📊 约 70k 字深度专论',
-        '⚖️ 7 法域对标',
-        '💬 划词批注与导出',
-      ],
     };
 ---
 
 <Layout title={copy.title}>
   <div class="max-w-5xl mx-auto py-12 px-4">
-    <header class="mb-12 text-center">
+    <header class="mb-16 text-center">
       <div
         class="inline-flex items-center justify-center p-3 bg-blue-50 dark:bg-blue-900/30 rounded-2xl mb-6"
       >
@@ -103,96 +73,6 @@ const copy = isEn
         {copy.intro}
       </p>
     </header>
-
-    <!-- 特约智库报告 Featured Report Showcase Banner -->
-    <section
-      class="mb-14 p-8 md:p-10 rounded-[2.5rem] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white relative overflow-hidden shadow-2xl border border-blue-500/30"
-    >
-      <div
-        class="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"
-      >
-      </div>
-      <div
-        class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8"
-      >
-        <div class="max-w-2xl">
-          <div class="flex items-center gap-3 mb-3.5 flex-wrap">
-            <span
-              class="px-3 py-1 text-[11px] font-black uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full"
-            >
-              {copy.featuredBadge}
-            </span>
-            <span class="text-xs text-slate-400 font-medium">
-              {copy.featuredProgram}
-            </span>
-          </div>
-          <h2
-            class="text-2xl md:text-3xl font-black mb-3 text-white tracking-tight leading-snug"
-          >
-            {copy.featuredTitle}
-          </h2>
-          <p
-            class="text-slate-300 text-sm md:text-base leading-relaxed mb-6 font-normal"
-          >
-            {copy.featuredDesc}
-          </p>
-          <div
-            class="flex items-center gap-3 text-xs font-semibold text-slate-400 flex-wrap"
-          >
-            {
-              copy.stats.map((s, idx) => (
-                <>
-                  <span>{s}</span>
-                  {idx < copy.stats.length - 1 && (
-                    <span class="text-slate-600">•</span>
-                  )}
-                </>
-              ))
-            }
-          </div>
-        </div>
-        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-          <a
-            href={copy.reportHref}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:scale-[1.02] text-sm"
-          >
-            <span>{copy.featuredRead}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-            >
-          </a>
-          <a
-            href={copy.pdfHref}
-            download
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 hover:text-white font-medium rounded-2xl transition-all duration-200 border border-slate-700 text-sm"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-              ></path><polyline points="7 10 12 15 17 10"></polyline><line
-                x1="12"
-                y1="15"
-                x2="12"
-                y2="3"></line></svg
-            >
-            <span>{copy.featuredPdf}</span>
-          </a>
-        </div>
-      </div>
-    </section>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
