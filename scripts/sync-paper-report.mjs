@@ -474,7 +474,7 @@ for (const app of appendixMapping) {
   bodyHtml = bodyHtml.replace(regex, replacement);
 }
 
-// 2. 重构 附录 C：关键术语与缩略语 (从 TeX 源码中提取 25 个术语并排版为现代卡片网格)
+// 2. 重构 附录 C：关键术语与缩略语 (排版为现代紧凑高密度学术对标规范表，含分类过滤与即时检索)
 const termsStart = texContent.indexOf('\\section{关键术语与缩略语}');
 const termsEnd = texContent.indexOf('\\section{研究局限与后续验证方向}');
 if (termsStart !== -1 && termsEnd !== -1) {
@@ -487,12 +487,19 @@ if (termsStart !== -1 && termsEnd !== -1) {
 
   if (termMatches.length > 0) {
     console.log(
-      `[sync-paper-report] 成功提取到 ${termMatches.length} 个关键术语与缩略语，正在重构排版...`
+      `[sync-paper-report] 成功提取到 ${termMatches.length} 个关键术语与缩略语，正在重构为紧凑学术规范表...`
     );
-    const glossaryCards = termMatches
+
+    let abbrCount = 0;
+    let conceptCount = 0;
+
+    const glossaryRows = termMatches
       .map((m) => {
-        const termName = m[1].trim().replace(/\\&/g, '&');
-        let termDesc = m[2]
+        const rawName = m[1]
+          .trim()
+          .replace(/\\&/g, '&')
+          .replace(/CO\$_2\$/g, 'CO<sub>2</sub>');
+        let cleanDesc = m[2]
           .trim()
           .replace(/\\_/g, '_')
           .replace(/\\\$/g, '$')
@@ -504,10 +511,11 @@ if (termsStart !== -1 && termsEnd !== -1) {
             /\\url\{([^{}]+)\}/g,
             '<a href="$1" target="_blank" rel="noopener">$1</a>'
           )
-          .replace(/\\cite\{[^{}]+\}/g, '');
+          .replace(/\\cite\{[^{}]+\}/g, '')
+          .replace(/\s+/g, ' ');
 
         const isAbbr =
-          /^[A-Z0-9&/–-]{2,8}$/.test(termName) ||
+          /^[A-Za-z0-9&/–-]{2,8}$/.test(rawName) ||
           [
             'VM0049',
             'NZIA',
@@ -517,23 +525,104 @@ if (termsStart !== -1 && termsEnd !== -1) {
             'T&S',
             'RaC',
             'API',
-          ].includes(termName);
-        const badgeText = isAbbr ? '缩略语' : '学术术语';
+            'FEED',
+            'TIER',
+            'AER',
+            'NSTA',
+            'MMV',
+            'PISC',
+            'MRV',
+            'dMRV',
+          ].includes(rawName);
+
+        if (isAbbr) {
+          abbrCount++;
+        } else {
+          conceptCount++;
+        }
+
+        const badgeText = isAbbr ? '缩略语' : '学术概念';
         const badgeClass = isAbbr ? 'badge-abbr' : 'badge-concept';
+        const typeKey = isAbbr ? 'abbr' : 'concept';
+
+        let lead = '';
+        let sep = '';
+        let rest = cleanDesc;
+
+        if (cleanDesc.includes('；')) {
+          const parts = cleanDesc.split('；');
+          lead = parts[0].trim();
+          sep = '；';
+          rest = parts.slice(1).join('；').trim();
+        } else if (cleanDesc.includes('，') && isAbbr) {
+          const firstComma = cleanDesc.indexOf('，');
+          lead = cleanDesc.slice(0, firstComma).trim();
+          sep = '，';
+          rest = cleanDesc.slice(firstComma + 1).trim();
+        }
+
+        const leadHtml = lead
+          ? `<strong class="term-lead">${lead}</strong>${sep} `
+          : '';
+        const searchKeywords = `${rawName} ${lead} ${rest}`
+          .toLowerCase()
+          .replace(/"/g, '&quot;');
 
         return `
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">${termName}</span>
-            <span class="glossary-badge ${badgeClass}">${badgeText}</span>
-          </div>
-          <div class="glossary-desc">${termDesc}</div>
-        </div>
-      `;
+            <tr class="glossary-row" data-type="${typeKey}" data-keywords="${searchKeywords}">
+              <td class="col-term-name">
+                <span class="term-code">${rawName}</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge ${badgeClass}">${badgeText}</span>
+              </td>
+              <td class="col-term-desc">
+                ${leadHtml}<span class="term-body">${rest}</span>
+              </td>
+            </tr>`;
       })
       .join('\n');
 
-    const newGlossaryHtml = `<div class="glossary-grid">${glossaryCards}</div>`;
+    const newGlossaryHtml = `
+  <div class="glossary-card-container" id="glossary-container">
+    <div class="glossary-toolbar">
+      <div class="glossary-filter-group" role="tablist" aria-label="术语分类过滤">
+        <button type="button" class="glossary-tab active" data-filter="all" role="tab" aria-selected="true">全部 (${termMatches.length})</button>
+        <button type="button" class="glossary-tab" data-filter="abbr" role="tab" aria-selected="false">缩略语 (${abbrCount})</button>
+        <button type="button" class="glossary-tab" data-filter="concept" role="tab" aria-selected="false">核心学术概念 (${conceptCount})</button>
+      </div>
+      <div class="glossary-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="glossary-search" placeholder="搜索术语、缩写或释义..." aria-label="搜索术语">
+        <button type="button" id="glossary-search-clear" style="display: none;" title="清空搜索" aria-label="清空搜索">✕</button>
+      </div>
+    </div>
+    <div class="glossary-table-wrap" id="glossary-scroll-wrap">
+      <table class="glossary-table" id="glossary-table">
+        <thead>
+          <tr>
+            <th style="width: 175px;">术语 / 缩写</th>
+            <th style="width: 88px;">类别</th>
+            <th>规范全称与核心释义说明</th>
+          </tr>
+        </thead>
+        <tbody id="glossary-tbody">
+          ${glossaryRows}
+        </tbody>
+      </table>
+      <div id="glossary-empty" class="glossary-empty" style="display: none;">
+        未检索到与 "<span id="glossary-empty-query"></span>" 匹配的术语或缩略语
+      </div>
+    </div>
+    <div class="glossary-footer">
+      <span id="glossary-count-text">显示全部 ${termMatches.length} 项术语与缩略语规范</span>
+      <button type="button" id="glossary-toggle-expand" class="glossary-btn-expand" title="切换完整展开与紧凑视图">
+        <span id="glossary-expand-text">展开全部 (${termMatches.length} 项)</span>
+        <svg id="glossary-expand-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </div>`;
+
     bodyHtml = bodyHtml.replace(
       /<div class="description">[\s\S]*?<\/div>/,
       newGlossaryHtml
@@ -1767,73 +1856,239 @@ const template = `<!DOCTYPE html>
       list-style: none;
     }
 
-    /* 关键术语与缩略语专业卡片网格 (Glossary Grid) */
-    .glossary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-      gap: 1.25rem;
-      margin: 2rem 0 3.5rem;
-    }
-    @media (max-width: 640px) {
-      .glossary-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .glossary-card {
-      background: var(--bg-secondary);
+    /* 附录 C：关键术语与缩略语紧凑学术规范表 (Glossary Table) */
+    .glossary-card-container {
+      background: var(--bg-primary);
       border: 1px solid var(--border-color);
-      border-left: 3.5px solid var(--brand-blue);
-      border-radius: 0.65rem;
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: all 0.2s ease;
+      border-radius: 0.75rem;
+      margin: 1.5rem 0 2.75rem;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
-    .glossary-card:hover {
-      border-color: var(--brand-blue);
-      background: var(--bg-tertiary);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    }
-    .glossary-header {
+    .glossary-toolbar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.65rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
-    .glossary-name {
-      font-family: var(--font-mono);
-      font-size: 1.05rem;
-      font-weight: 700;
+    .glossary-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-tertiary);
+      padding: 0.2rem;
+      border-radius: 0.5rem;
+    }
+    .glossary-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.35rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .glossary-tab:hover {
       color: var(--text-main);
+    }
+    .glossary-tab.active {
+      background: var(--bg-primary);
+      color: var(--brand-blue);
+      border-color: var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .glossary-search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .glossary-search-wrap svg {
+      position: absolute;
+      left: 0.65rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    #glossary-search {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 0.45rem;
+      padding: 0.32rem 1.8rem 0.32rem 2rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--text-main);
+      width: 220px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    #glossary-search:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      width: 250px;
+    }
+    #glossary-search-clear {
+      position: absolute;
+      right: 0.45rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 0.1rem 0.25rem;
+    }
+    .glossary-table-wrap {
+      max-height: 520px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+      position: relative;
+    }
+    .glossary-table-wrap.is-expanded {
+      max-height: none;
+      overflow-y: visible;
+    }
+    .glossary-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    .glossary-table thead th {
+      background: var(--table-header);
+      padding: 0.55rem 0.95rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .glossary-table tbody tr {
+      transition: background-color 0.15s ease;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .glossary-table tbody tr:nth-child(even) {
+      background: var(--table-stripe);
+    }
+    .glossary-table tbody tr:hover {
+      background: var(--highlight-flash);
+    }
+    .glossary-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .col-term-name {
+      padding: 0.6rem 0.95rem;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    .term-code {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      display: inline-block;
+    }
+    .col-term-type {
+      padding: 0.6rem 0.5rem;
+      vertical-align: top;
+      white-space: nowrap;
     }
     .glossary-badge {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.15rem 0.55rem;
+      padding: 0.12rem 0.45rem;
       border-radius: 9999px;
+      display: inline-block;
     }
     .badge-abbr {
-      background: rgba(139, 92, 246, 0.12);
+      background: rgba(139, 92, 246, 0.1);
       color: #8b5cf6;
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      border: 1px solid rgba(139, 92, 246, 0.22);
     }
     .badge-concept {
-      background: rgba(37, 99, 235, 0.1);
+      background: rgba(37, 99, 235, 0.08);
       color: var(--brand-blue);
       border: 1px solid rgba(37, 99, 235, 0.2);
     }
-    .glossary-desc {
-      font-family: var(--font-serif);
-      font-size: 0.94rem;
-      line-height: 1.8;
+    .col-term-desc {
+      padding: 0.6rem 1rem;
+      vertical-align: top;
+      line-height: 1.6;
+      font-size: 0.88rem;
+    }
+    .term-lead {
+      font-weight: 700;
       color: var(--text-main);
-      text-align: justify;
-      text-indent: 0 !important;
+    }
+    .term-body {
+      font-family: var(--font-serif);
+      color: var(--text-muted);
+    }
+    .glossary-empty {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    .glossary-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .glossary-btn-expand {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 0.35rem;
+      padding: 0.22rem 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+    .glossary-btn-expand:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--brand-blue);
+      color: var(--brand-blue);
+    }
+    .glossary-btn-expand svg {
+      transition: transform 0.2s ease;
+    }
+    .glossary-btn-expand.is-expanded svg {
+      transform: rotate(180deg);
+    }
+    @media (max-width: 640px) {
+      .glossary-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #glossary-search {
+        width: 100% !important;
+      }
+      .glossary-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     /* BibTeX 引用卡片 */
@@ -2767,9 +3022,16 @@ const template = `<!DOCTYPE html>
         margin-bottom: 2rem !important;
       }
       figure, .academic-figure, table, .table-responsive-wrapper,
-      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-grid {
+      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-card-container, .glossary-table {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+      }
+      .glossary-toolbar, .glossary-footer, #glossary-toggle-expand {
+        display: none !important;
+      }
+      .glossary-table-wrap {
+        max-height: none !important;
+        overflow: visible !important;
       }
       h1, h2, h3 {
         page-break-after: avoid !important;
@@ -3773,6 +4035,98 @@ const template = `<!DOCTYPE html>
 
     // 初始化运行批注恢复
     rehydrateComments();
+
+    // 附录 C：关键术语与缩略语互动过滤、即时检索与展开切换
+    const glossaryContainer = document.getElementById('glossary-container');
+    if (glossaryContainer) {
+      const tabs = glossaryContainer.querySelectorAll('.glossary-tab');
+      const searchInput = document.getElementById('glossary-search');
+      const searchClear = document.getElementById('glossary-search-clear');
+      const rows = glossaryContainer.querySelectorAll('.glossary-row');
+      const countText = document.getElementById('glossary-count-text');
+      const emptyState = document.getElementById('glossary-empty');
+      const emptyQuery = document.getElementById('glossary-empty-query');
+      const toggleExpand = document.getElementById('glossary-toggle-expand');
+      const expandText = document.getElementById('glossary-expand-text');
+      const scrollWrap = document.getElementById('glossary-scroll-wrap');
+
+      let currentFilter = 'all';
+
+      function applyGlossaryFilter() {
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        if (searchClear) {
+          searchClear.style.display = query ? 'block' : 'none';
+        }
+
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+          const rowType = row.getAttribute('data-type');
+          const rowKeywords = row.getAttribute('data-keywords') || '';
+          const matchesType = currentFilter === 'all' || rowType === currentFilter;
+          const matchesQuery = !query || rowKeywords.includes(query);
+
+          if (matchesType && matchesQuery) {
+            row.style.display = '';
+            visibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (countText) {
+          if (query || currentFilter !== 'all') {
+            countText.textContent = '当前筛选显示 ' + visibleCount + ' / ' + rows.length + ' 项术语规范';
+          } else {
+            countText.textContent = '显示全部 ' + rows.length + ' 项术语与缩略语规范';
+          }
+        }
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.style.display = 'block';
+            if (emptyQuery) emptyQuery.textContent = query || '所选分类';
+          } else {
+            emptyState.style.display = 'none';
+          }
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach((t) => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          currentFilter = tab.getAttribute('data-filter') || 'all';
+          applyGlossaryFilter();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyGlossaryFilter);
+      }
+
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchInput.focus();
+          applyGlossaryFilter();
+        });
+      }
+
+      if (toggleExpand && scrollWrap) {
+        toggleExpand.addEventListener('click', () => {
+          const isExpanded = scrollWrap.classList.toggle('is-expanded');
+          toggleExpand.classList.toggle('is-expanded', isExpanded);
+          if (expandText) {
+            expandText.textContent = isExpanded ? '收起紧凑视图' : ('展开全部 (' + rows.length + ' 项)');
+          }
+        });
+      }
+    }
   </script>
 </body>
 </html>`;

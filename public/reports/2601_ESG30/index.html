@@ -997,73 +997,239 @@
       list-style: none;
     }
 
-    /* 关键术语与缩略语专业卡片网格 (Glossary Grid) */
-    .glossary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-      gap: 1.25rem;
-      margin: 2rem 0 3.5rem;
-    }
-    @media (max-width: 640px) {
-      .glossary-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .glossary-card {
-      background: var(--bg-secondary);
+    /* 附录 C：关键术语与缩略语紧凑学术规范表 (Glossary Table) */
+    .glossary-card-container {
+      background: var(--bg-primary);
       border: 1px solid var(--border-color);
-      border-left: 3.5px solid var(--brand-blue);
-      border-radius: 0.65rem;
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: all 0.2s ease;
+      border-radius: 0.75rem;
+      margin: 1.5rem 0 2.75rem;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
-    .glossary-card:hover {
-      border-color: var(--brand-blue);
-      background: var(--bg-tertiary);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    }
-    .glossary-header {
+    .glossary-toolbar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.65rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
-    .glossary-name {
-      font-family: var(--font-mono);
-      font-size: 1.05rem;
-      font-weight: 700;
+    .glossary-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-tertiary);
+      padding: 0.2rem;
+      border-radius: 0.5rem;
+    }
+    .glossary-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.35rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .glossary-tab:hover {
       color: var(--text-main);
+    }
+    .glossary-tab.active {
+      background: var(--bg-primary);
+      color: var(--brand-blue);
+      border-color: var(--border-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+    .glossary-search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .glossary-search-wrap svg {
+      position: absolute;
+      left: 0.65rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    #glossary-search {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 0.45rem;
+      padding: 0.32rem 1.8rem 0.32rem 2rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--text-main);
+      width: 220px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    #glossary-search:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      width: 250px;
+    }
+    #glossary-search-clear {
+      position: absolute;
+      right: 0.45rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 0.1rem 0.25rem;
+    }
+    .glossary-table-wrap {
+      max-height: 520px;
+      overflow-y: auto;
+      transition: max-height 0.3s ease;
+      position: relative;
+    }
+    .glossary-table-wrap.is-expanded {
+      max-height: none;
+      overflow-y: visible;
+    }
+    .glossary-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    .glossary-table thead th {
+      background: var(--table-header);
+      padding: 0.55rem 0.95rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .glossary-table tbody tr {
+      transition: background-color 0.15s ease;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .glossary-table tbody tr:nth-child(even) {
+      background: var(--table-stripe);
+    }
+    .glossary-table tbody tr:hover {
+      background: var(--highlight-flash);
+    }
+    .glossary-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .col-term-name {
+      padding: 0.6rem 0.95rem;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    .term-code {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      display: inline-block;
+    }
+    .col-term-type {
+      padding: 0.6rem 0.5rem;
+      vertical-align: top;
+      white-space: nowrap;
     }
     .glossary-badge {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.15rem 0.55rem;
+      padding: 0.12rem 0.45rem;
       border-radius: 9999px;
+      display: inline-block;
     }
     .badge-abbr {
-      background: rgba(139, 92, 246, 0.12);
+      background: rgba(139, 92, 246, 0.1);
       color: #8b5cf6;
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      border: 1px solid rgba(139, 92, 246, 0.22);
     }
     .badge-concept {
-      background: rgba(37, 99, 235, 0.1);
+      background: rgba(37, 99, 235, 0.08);
       color: var(--brand-blue);
       border: 1px solid rgba(37, 99, 235, 0.2);
     }
-    .glossary-desc {
-      font-family: var(--font-serif);
-      font-size: 0.94rem;
-      line-height: 1.8;
+    .col-term-desc {
+      padding: 0.6rem 1rem;
+      vertical-align: top;
+      line-height: 1.6;
+      font-size: 0.88rem;
+    }
+    .term-lead {
+      font-weight: 700;
       color: var(--text-main);
-      text-align: justify;
-      text-indent: 0 !important;
+    }
+    .term-body {
+      font-family: var(--font-serif);
+      color: var(--text-muted);
+    }
+    .glossary-empty {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    .glossary-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .glossary-btn-expand {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 0.35rem;
+      padding: 0.22rem 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s ease;
+    }
+    .glossary-btn-expand:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--brand-blue);
+      color: var(--brand-blue);
+    }
+    .glossary-btn-expand svg {
+      transition: transform 0.2s ease;
+    }
+    .glossary-btn-expand.is-expanded svg {
+      transform: rotate(180deg);
+    }
+    @media (max-width: 640px) {
+      .glossary-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #glossary-search {
+        width: 100% !important;
+      }
+      .glossary-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     /* BibTeX 引用卡片 */
@@ -1997,9 +2163,16 @@
         margin-bottom: 2rem !important;
       }
       figure, .academic-figure, table, .table-responsive-wrapper,
-      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-grid {
+      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-card-container, .glossary-table {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+      }
+      .glossary-toolbar, .glossary-footer, #glossary-toggle-expand {
+        display: none !important;
+      }
+      .glossary-table-wrap {
+        max-height: none !important;
+        overflow: visible !important;
       }
       h1, h2, h3 {
         page-break-after: avoid !important;
@@ -3754,231 +3927,344 @@ style="text-align: left;">属于本文基于现有证据形成的规范性政策
 </table></div>
 </section>
 <h1 data-number="附录 C" id="appendix-c" class="appendix-h1"><span class="header-section-number">附录 C</span> 关键术语与缩略语</h1>
-<div class="glossary-grid">
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Energy penalty</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">能源惩罚；在保持相同产品或服务产出的条件下，CCUS 相对于无 CCUS 基准，为实现单位净避免排放而额外占用的一次能源，通常以 GJ/tCO<sub>2</sub> avoided 表示。它是一项物理系数；能源价格及其机会成本将其转化为成本惩罚，能源碳强度将其转化为排放惩罚。</div>
-        </div>
-      
 
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Net avoided emissions</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">净避免排放；基准情景排放与 CCUS 全链条排放之差，不等同于捕集量或注入量。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Cost of CO$_2$ avoided</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">单位 CO<sub>2</sub> 避免成本；项目相对于基准方案的增量成本除以净避免排放，用于衡量经济结果。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">MRV</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Monitoring, Reporting and Verification，监测、报告与核证；强调按适用规则形成监测、报告和独立核证结果。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">TIS</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Technological Innovation Systems，技术创新系统；本文用于诊断技术从示范走向产业形成所需的市场形成、资源动员、合法性和主体协同等功能。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">FEED</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Front-End Engineering Design，前端工程设计；大型工程投资决策前用于收敛技术方案、成本和风险的设计阶段。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">TIER</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Technology Innovation and Emissions Reduction，阿尔伯塔省工业温室气体合规与减排机制。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">AER</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Alberta Energy Regulator，阿尔伯塔能源监管机构。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">NSTA</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">North Sea Transition Authority，英国北海转型局。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">dMRV</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">Digital Monitoring, Reporting and Verification，数字化监测、报告与核证；本文特指利用结构化数据、审计记录和制度接口组织证据，不等同于自动核证或自动签发。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">MMV</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Monitoring, Measurement and Verification，监测、计量与核证；本文主要沿用阿尔伯塔地质封存监管和项目实践中的术语。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">PISC</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Post-Injection Site Care，注入后场地管理。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">RaC</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Rules as Code，规则即代码；将规则转译为人和机器均可读取、执行和核查的结构化表达。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Chain of custody</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">交接追溯链；记录 CO<sub>2</sub> 在不同主体和物理节点之间的身份、数量、流质、责任切换和修订历史。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">API</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Application Programming Interface，应用程序编程接口；用于在权限、语义和审计要求明确的条件下调用数据或证据输出。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">VM0049</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Verra 发布的《碳捕集与封存方法学》，采用模块化结构组织捕集、运输和封存等项目活动。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">NZIA</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Net-Zero Industry Act，欧盟《净零工业法案》。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">DAS</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Distributed Acoustic Sensing，分布式声学传感；可用于 VSP、井筒活动和部分储层响应监测，但不直接测量地下 CO<sub>2</sub> 质量。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">EOR</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Enhanced Oil Recovery，提高采收率；CCUS-EOR 指将 CO<sub>2</sub> 注入与提高采收率结合的场景。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">CCER</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">China Certified Emission Reduction，国家核证自愿减排量。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">T&S</span>
-            <span class="glossary-badge badge-abbr">缩略语</span>
-          </div>
-          <div class="glossary-desc">Transport and Storage，CO<sub>2</sub> 输送与封存。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Storage-as-a-Service</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">封存即服务；由基础设施运营方向第三方客户提供接收、运输、注入、封存和交付证明等服务。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Bankability</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">可融资性；项目在收益、合同、政策、责任和风险分担等条件下获得融资的能力，dMRV 仅为其提供部分证据基础。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Pore space</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">孔隙空间；地质介质中可容纳流体的空间，其权属和使用权安排因法域而异。</div>
-        </div>
-      
-
-        <div class="glossary-card">
-          <div class="glossary-header">
-            <span class="glossary-name">Stewardship / Liability transfer</span>
-            <span class="glossary-badge badge-concept">学术术语</span>
-          </div>
-          <div class="glossary-desc">长期管护 / 责任移交；指关闭后监测、维护、修复和法律责任的持续承担及可能接续。</div>
-        </div>
+  <div class="glossary-card-container" id="glossary-container">
+    <div class="glossary-toolbar">
+      <div class="glossary-filter-group" role="tablist" aria-label="术语分类过滤">
+        <button type="button" class="glossary-tab active" data-filter="all" role="tab" aria-selected="true">全部 (25)</button>
+        <button type="button" class="glossary-tab" data-filter="abbr" role="tab" aria-selected="false">缩略语 (17)</button>
+        <button type="button" class="glossary-tab" data-filter="concept" role="tab" aria-selected="false">核心学术概念 (8)</button>
       </div>
+      <div class="glossary-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="glossary-search" placeholder="搜索术语、缩写或释义..." aria-label="搜索术语">
+        <button type="button" id="glossary-search-clear" style="display: none;" title="清空搜索" aria-label="清空搜索">✕</button>
+      </div>
+    </div>
+    <div class="glossary-table-wrap" id="glossary-scroll-wrap">
+      <table class="glossary-table" id="glossary-table">
+        <thead>
+          <tr>
+            <th style="width: 175px;">术语 / 缩写</th>
+            <th style="width: 88px;">类别</th>
+            <th>规范全称与核心释义说明</th>
+          </tr>
+        </thead>
+        <tbody id="glossary-tbody">
+          
+            <tr class="glossary-row" data-type="concept" data-keywords="energy penalty 能源惩罚 在保持相同产品或服务产出的条件下，ccus 相对于无 ccus 基准，为实现单位净避免排放而额外占用的一次能源，通常以 gj/tco<sub>2</sub> avoided 表示。它是一项物理系数；能源价格及其机会成本将其转化为成本惩罚，能源碳强度将其转化为排放惩罚。">
+              <td class="col-term-name">
+                <span class="term-code">Energy penalty</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">能源惩罚</strong>； <span class="term-body">在保持相同产品或服务产出的条件下，CCUS 相对于无 CCUS 基准，为实现单位净避免排放而额外占用的一次能源，通常以 GJ/tCO<sub>2</sub> avoided 表示。它是一项物理系数；能源价格及其机会成本将其转化为成本惩罚，能源碳强度将其转化为排放惩罚。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="net avoided emissions 净避免排放 基准情景排放与 ccus 全链条排放之差，不等同于捕集量或注入量。">
+              <td class="col-term-name">
+                <span class="term-code">Net avoided emissions</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">净避免排放</strong>； <span class="term-body">基准情景排放与 CCUS 全链条排放之差，不等同于捕集量或注入量。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="cost of co<sub>2</sub> avoided 单位 co<sub>2</sub> 避免成本 项目相对于基准方案的增量成本除以净避免排放，用于衡量经济结果。">
+              <td class="col-term-name">
+                <span class="term-code">Cost of CO<sub>2</sub> avoided</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">单位 CO<sub>2</sub> 避免成本</strong>； <span class="term-body">项目相对于基准方案的增量成本除以净避免排放，用于衡量经济结果。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="mrv monitoring, reporting and verification，监测、报告与核证 强调按适用规则形成监测、报告和独立核证结果。">
+              <td class="col-term-name">
+                <span class="term-code">MRV</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Monitoring, Reporting and Verification，监测、报告与核证</strong>； <span class="term-body">强调按适用规则形成监测、报告和独立核证结果。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="tis technological innovation systems，技术创新系统 本文用于诊断技术从示范走向产业形成所需的市场形成、资源动员、合法性和主体协同等功能。">
+              <td class="col-term-name">
+                <span class="term-code">TIS</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Technological Innovation Systems，技术创新系统</strong>； <span class="term-body">本文用于诊断技术从示范走向产业形成所需的市场形成、资源动员、合法性和主体协同等功能。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="feed front-end engineering design，前端工程设计 大型工程投资决策前用于收敛技术方案、成本和风险的设计阶段。">
+              <td class="col-term-name">
+                <span class="term-code">FEED</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Front-End Engineering Design，前端工程设计</strong>； <span class="term-body">大型工程投资决策前用于收敛技术方案、成本和风险的设计阶段。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="tier technology innovation and emissions reduction 阿尔伯塔省工业温室气体合规与减排机制。">
+              <td class="col-term-name">
+                <span class="term-code">TIER</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Technology Innovation and Emissions Reduction</strong>， <span class="term-body">阿尔伯塔省工业温室气体合规与减排机制。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="aer alberta energy regulator 阿尔伯塔能源监管机构。">
+              <td class="col-term-name">
+                <span class="term-code">AER</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Alberta Energy Regulator</strong>， <span class="term-body">阿尔伯塔能源监管机构。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="nsta north sea transition authority 英国北海转型局。">
+              <td class="col-term-name">
+                <span class="term-code">NSTA</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">North Sea Transition Authority</strong>， <span class="term-body">英国北海转型局。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="dmrv digital monitoring, reporting and verification，数字化监测、报告与核证 本文特指利用结构化数据、审计记录和制度接口组织证据，不等同于自动核证或自动签发。">
+              <td class="col-term-name">
+                <span class="term-code">dMRV</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Digital Monitoring, Reporting and Verification，数字化监测、报告与核证</strong>； <span class="term-body">本文特指利用结构化数据、审计记录和制度接口组织证据，不等同于自动核证或自动签发。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="mmv monitoring, measurement and verification，监测、计量与核证 本文主要沿用阿尔伯塔地质封存监管和项目实践中的术语。">
+              <td class="col-term-name">
+                <span class="term-code">MMV</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Monitoring, Measurement and Verification，监测、计量与核证</strong>； <span class="term-body">本文主要沿用阿尔伯塔地质封存监管和项目实践中的术语。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="pisc post-injection site care 注入后场地管理。">
+              <td class="col-term-name">
+                <span class="term-code">PISC</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Post-Injection Site Care</strong>， <span class="term-body">注入后场地管理。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="rac rules as code，规则即代码 将规则转译为人和机器均可读取、执行和核查的结构化表达。">
+              <td class="col-term-name">
+                <span class="term-code">RaC</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Rules as Code，规则即代码</strong>； <span class="term-body">将规则转译为人和机器均可读取、执行和核查的结构化表达。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="chain of custody 交接追溯链 记录 co<sub>2</sub> 在不同主体和物理节点之间的身份、数量、流质、责任切换和修订历史。">
+              <td class="col-term-name">
+                <span class="term-code">Chain of custody</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">交接追溯链</strong>； <span class="term-body">记录 CO<sub>2</sub> 在不同主体和物理节点之间的身份、数量、流质、责任切换和修订历史。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="api application programming interface，应用程序编程接口 用于在权限、语义和审计要求明确的条件下调用数据或证据输出。">
+              <td class="col-term-name">
+                <span class="term-code">API</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Application Programming Interface，应用程序编程接口</strong>； <span class="term-body">用于在权限、语义和审计要求明确的条件下调用数据或证据输出。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="vm0049 verra 发布的《碳捕集与封存方法学》 采用模块化结构组织捕集、运输和封存等项目活动。">
+              <td class="col-term-name">
+                <span class="term-code">VM0049</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Verra 发布的《碳捕集与封存方法学》</strong>， <span class="term-body">采用模块化结构组织捕集、运输和封存等项目活动。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="nzia net-zero industry act 欧盟《净零工业法案》。">
+              <td class="col-term-name">
+                <span class="term-code">NZIA</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Net-Zero Industry Act</strong>， <span class="term-body">欧盟《净零工业法案》。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="das distributed acoustic sensing，分布式声学传感 可用于 vsp、井筒活动和部分储层响应监测，但不直接测量地下 co<sub>2</sub> 质量。">
+              <td class="col-term-name">
+                <span class="term-code">DAS</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Distributed Acoustic Sensing，分布式声学传感</strong>； <span class="term-body">可用于 VSP、井筒活动和部分储层响应监测，但不直接测量地下 CO<sub>2</sub> 质量。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="eor enhanced oil recovery，提高采收率 ccus-eor 指将 co<sub>2</sub> 注入与提高采收率结合的场景。">
+              <td class="col-term-name">
+                <span class="term-code">EOR</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Enhanced Oil Recovery，提高采收率</strong>； <span class="term-body">CCUS-EOR 指将 CO<sub>2</sub> 注入与提高采收率结合的场景。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="ccer china certified emission reduction 国家核证自愿减排量。">
+              <td class="col-term-name">
+                <span class="term-code">CCER</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">China Certified Emission Reduction</strong>， <span class="term-body">国家核证自愿减排量。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="abbr" data-keywords="t&s transport and storage co<sub>2</sub> 输送与封存。">
+              <td class="col-term-name">
+                <span class="term-code">T&S</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-abbr">缩略语</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">Transport and Storage</strong>， <span class="term-body">CO<sub>2</sub> 输送与封存。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="storage-as-a-service 封存即服务 由基础设施运营方向第三方客户提供接收、运输、注入、封存和交付证明等服务。">
+              <td class="col-term-name">
+                <span class="term-code">Storage-as-a-Service</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">封存即服务</strong>； <span class="term-body">由基础设施运营方向第三方客户提供接收、运输、注入、封存和交付证明等服务。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="bankability 可融资性 项目在收益、合同、政策、责任和风险分担等条件下获得融资的能力，dmrv 仅为其提供部分证据基础。">
+              <td class="col-term-name">
+                <span class="term-code">Bankability</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">可融资性</strong>； <span class="term-body">项目在收益、合同、政策、责任和风险分担等条件下获得融资的能力，dMRV 仅为其提供部分证据基础。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="pore space 孔隙空间 地质介质中可容纳流体的空间，其权属和使用权安排因法域而异。">
+              <td class="col-term-name">
+                <span class="term-code">Pore space</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">孔隙空间</strong>； <span class="term-body">地质介质中可容纳流体的空间，其权属和使用权安排因法域而异。</span>
+              </td>
+            </tr>
+
+            <tr class="glossary-row" data-type="concept" data-keywords="stewardship / liability transfer 长期管护 / 责任移交 指关闭后监测、维护、修复和法律责任的持续承担及可能接续。">
+              <td class="col-term-name">
+                <span class="term-code">Stewardship / Liability transfer</span>
+              </td>
+              <td class="col-term-type">
+                <span class="glossary-badge badge-concept">学术概念</span>
+              </td>
+              <td class="col-term-desc">
+                <strong class="term-lead">长期管护 / 责任移交</strong>； <span class="term-body">指关闭后监测、维护、修复和法律责任的持续承担及可能接续。</span>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+      <div id="glossary-empty" class="glossary-empty" style="display: none;">
+        未检索到与 "<span id="glossary-empty-query"></span>" 匹配的术语或缩略语
+      </div>
+    </div>
+    <div class="glossary-footer">
+      <span id="glossary-count-text">显示全部 25 项术语与缩略语规范</span>
+      <button type="button" id="glossary-toggle-expand" class="glossary-btn-expand" title="切换完整展开与紧凑视图">
+        <span id="glossary-expand-text">展开全部 (25 项)</span>
+        <svg id="glossary-expand-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </div>
 <h1 data-number="附录 D" id="appendix-d" class="appendix-h1"><span class="header-section-number">附录 D</span> 研究局限与后续验证方向</h1>
 <p>本文主要依据公开法规、政策文件、项目披露、标准与同行评议材料开展比较，能够支持制度结构、证据需求和政策方向判断，但不能替代项目合同、监管审查底稿和真实运营数据。尤其是
 Quest 的关闭证书审查门槛、Northern Lights
@@ -6218,6 +6504,98 @@ href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 
     // 初始化运行批注恢复
     rehydrateComments();
+
+    // 附录 C：关键术语与缩略语互动过滤、即时检索与展开切换
+    const glossaryContainer = document.getElementById('glossary-container');
+    if (glossaryContainer) {
+      const tabs = glossaryContainer.querySelectorAll('.glossary-tab');
+      const searchInput = document.getElementById('glossary-search');
+      const searchClear = document.getElementById('glossary-search-clear');
+      const rows = glossaryContainer.querySelectorAll('.glossary-row');
+      const countText = document.getElementById('glossary-count-text');
+      const emptyState = document.getElementById('glossary-empty');
+      const emptyQuery = document.getElementById('glossary-empty-query');
+      const toggleExpand = document.getElementById('glossary-toggle-expand');
+      const expandText = document.getElementById('glossary-expand-text');
+      const scrollWrap = document.getElementById('glossary-scroll-wrap');
+
+      let currentFilter = 'all';
+
+      function applyGlossaryFilter() {
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        if (searchClear) {
+          searchClear.style.display = query ? 'block' : 'none';
+        }
+
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+          const rowType = row.getAttribute('data-type');
+          const rowKeywords = row.getAttribute('data-keywords') || '';
+          const matchesType = currentFilter === 'all' || rowType === currentFilter;
+          const matchesQuery = !query || rowKeywords.includes(query);
+
+          if (matchesType && matchesQuery) {
+            row.style.display = '';
+            visibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (countText) {
+          if (query || currentFilter !== 'all') {
+            countText.textContent = '当前筛选显示 ' + visibleCount + ' / ' + rows.length + ' 项术语规范';
+          } else {
+            countText.textContent = '显示全部 ' + rows.length + ' 项术语与缩略语规范';
+          }
+        }
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.style.display = 'block';
+            if (emptyQuery) emptyQuery.textContent = query || '所选分类';
+          } else {
+            emptyState.style.display = 'none';
+          }
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach((t) => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          currentFilter = tab.getAttribute('data-filter') || 'all';
+          applyGlossaryFilter();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyGlossaryFilter);
+      }
+
+      if (searchClear) {
+        searchClear.addEventListener('click', () => {
+          searchInput.value = '';
+          searchInput.focus();
+          applyGlossaryFilter();
+        });
+      }
+
+      if (toggleExpand && scrollWrap) {
+        toggleExpand.addEventListener('click', () => {
+          const isExpanded = scrollWrap.classList.toggle('is-expanded');
+          toggleExpand.classList.toggle('is-expanded', isExpanded);
+          if (expandText) {
+            expandText.textContent = isExpanded ? '收起紧凑视图' : ('展开全部 (' + rows.length + ' 项)');
+          }
+        });
+      }
+    }
   </script>
 </body>
 </html>
