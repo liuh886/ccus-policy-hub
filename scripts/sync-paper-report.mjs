@@ -450,7 +450,7 @@ bodyHtml = bodyHtml.replace(
 );
 
 console.log(
-  `[sync-paper-report] 成功将 ${citationReplaceCount} 处引用链接化，已连接至 85 篇文献条目！`
+  `[sync-paper-report] 成功将 ${citationReplaceCount} 处引用链接化，已连接至 ${bibItemsMap.size} 篇文献条目！`
 );
 
 // --- 6. 附录体系重构与关键术语/缩略语高阶排版 ---
