@@ -213,17 +213,69 @@ if (fs.existsSync(defaultLocalPdf)) {
   }
 }
 
+// 嵌套括号感知的 \shortstack 清洗函数，避免非贪婪正则因 \textbf{} 嵌套提前截断
+function replaceNestedShortstack(str) {
+  let result = '';
+  let i = 0;
+  while (i < str.length) {
+    if (str.startsWith('\\shortstack{', i)) {
+      let depth = 1;
+      let startInner = i + '\\shortstack{'.length;
+      let j = startInner;
+      while (j < str.length && depth > 0) {
+        if (str[j] === '{' && str[j - 1] !== '\\') depth++;
+        else if (str[j] === '}' && str[j - 1] !== '\\') depth--;
+        j++;
+      }
+      let inner = str.slice(startInner, j - 1);
+      let cleanInner = inner.replace(/\\\\/g, ' ');
+      result += cleanInner;
+      i = j;
+    } else {
+      result += str[i];
+      i++;
+    }
+  }
+  return result;
+}
+
 // --- 4. 调用 Pandoc (--number-sections) 编译为 HTML ---
 console.log(
-  `[sync-paper-report] 调用 Pandoc 进行 TeX -> HTML 语法转换 (启用 --number-sections)...`
+  `[sync-paper-report] 调用 Pandoc 进行 TeX -> HTML 语法转换 (启用 --number-sections 与 --wrap=none)...`
 );
+
+let preprocessedTex = texContent;
+
+// 1. 预处理 Appendix A 表格 (tab:global_ccus_distribution)：
+// 将 tabularx 转换为标准 tabular{lcccccc}，并清洗 \shortstack 嵌套结构，
+// 防止 Pandoc 因无法解析复杂列修饰与 shortstack 换行导致多列数据单元格严重丢失
+preprocessedTex = preprocessedTex.replace(
+  /(\\begin\{table\}[h!]?[\s\S]*?\\caption\{2026 年全球 CCUS 已运行与在建项目的地区分布（预期交付口径）\}[\s\S]*?)\\begin\{tabularx\}\{[^}]*\}\{[\s\S]*?\n([\s\S]*?)\\end\{tabularx\}/g,
+  (m, tableHeader, innerContent) => {
+    const cleanContent = replaceNestedShortstack(innerContent);
+    return `${tableHeader}\\begin{tabular}{lcccccc}\n${cleanContent}\\end{tabular}`;
+  }
+);
+
+// 2. 预处理 Appendix B 表格 (核心主张—规则依据—案例锚点—证据边界映射)：
+// 移除 \rowcolors 与 longtable 重复表头 (\midrule\endfirsthead ... \endhead)，
+// 消除 Pandoc 转换后表头连续重复两次且无 <thead> 的缺陷
+preprocessedTex = preprocessedTex.replace(
+  /(\\caption\{核心主张—规则依据—案例锚点—证据边界映射\}[\s\S]*?)\\rowcolors\{[^}]*\}\{[^}]*\}[\s\n]*\\\\/g,
+  '$1'
+);
+preprocessedTex = preprocessedTex.replace(
+  /\\midrule[\s\n]*\\endfirsthead[\s\S]*?\\endhead/g,
+  ''
+);
+
 const tempTexPath = path.join(outDir, '_temp_build.tex');
-fs.writeFileSync(tempTexPath, texContent, 'utf8');
+fs.writeFileSync(tempTexPath, preprocessedTex, 'utf8');
 
 const tempHtmlPath = path.join(outDir, '_temp_body.html');
 try {
   execSync(
-    `pandoc "${tempTexPath}" --number-sections --mathjax -o "${tempHtmlPath}"`,
+    `pandoc "${tempTexPath}" --number-sections --mathjax --wrap=none -o "${tempHtmlPath}"`,
     { stdio: 'inherit' }
   );
 } catch (e) {
@@ -324,7 +376,101 @@ if (!benchmarkMatched) {
   );
 }
 
-// 3. 将所有其它未包裹的 <table> 包裹进响应式容器
+// 3. 重构附录 A 全球 CCUS 项目分布与统计口径数据表 (tab:global_ccus_distribution)
+const distRegex =
+  /<div id="tab:global_ccus_distribution">\s*<table>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>\s*<\/div>(?:\s*<p>(<strong>口径说明：<\/strong>[\s\S]*?)<\/p>)?/;
+bodyHtml = bodyHtml.replace(distRegex, (m, caption, innerTable, notesP) => {
+  let formattedInner = innerTable
+    .replace(
+      /<strong>已运行<\/strong>\s*<strong>项目数<\/strong>/g,
+      '已运行<br/>项目数'
+    )
+    .replace(
+      /<strong>已运行容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
+      '已运行容量<br/>(MtCO<sub>2</sub>/yr)'
+    )
+    .replace(
+      /<strong>在建<\/strong>\s*<strong>项目数<\/strong>/g,
+      '在建<br/>项目数'
+    )
+    .replace(
+      /<strong>在建容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
+      '在建容量<br/>(MtCO<sub>2</sub>/yr)'
+    )
+    .replace(
+      /<strong>合计<\/strong>\s*<strong>项目数<\/strong>/g,
+      '合计<br/>项目数'
+    )
+    .replace(
+      /<strong>合计容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
+      '合计容量<br/>(MtCO<sub>2</sub>/yr)'
+    )
+    .replace(/<th><strong>地区<\/strong><\/th>/g, '<th>地区</th>');
+
+  const notesHtml = notesP
+    ? `
+    <div class="table-notes-footer">
+      <span class="note-tag">口径说明</span>
+      <div class="note-text">${notesP}</div>
+    </div>`
+    : '';
+
+  return `
+    <div class="table-container-card" id="tab:global_ccus_distribution">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">附录 A 表</span>
+          <span class="table-title">${caption.trim()}</span>
+        </div>
+        <span class="table-scroll-hint-pill">全球 6 大重点法域及其他地区汇总</span>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="table-dist-data">
+          ${formattedInner}
+        </table>
+      </div>
+      ${notesHtml}
+    </div>
+  `;
+});
+
+// 4. 重构附录 B 关键主张与证据边界映射表：彻底消除重复表头，构建高阶 4 列语义映射矩阵
+const claimsRegex =
+  /<table[^>]*>\s*<caption>核心主张—规则依据—案例锚点—证据边界映射<\/caption>([\s\S]*?)<\/table>/;
+bodyHtml = bodyHtml.replace(claimsRegex, (m, inner) => {
+  const rows = [...inner.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((r) => r[0]);
+  // 严格过滤掉所有表头行，杜绝任何重复表头进入 tbody
+  const dataRows = rows.filter((r) => !r.includes('<strong>核心主张</strong>'));
+
+  return `
+    <div class="table-container-card" id="tab:appendix_b_claims_mapping">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">附录 B 表</span>
+          <span class="table-title">核心主张—规则依据—案例锚点—证据边界映射</span>
+        </div>
+        <span class="table-scroll-hint-pill">11 项核心论断与证据映射</span>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table table-claims-mapping">
+          <thead>
+            <tr>
+              <th style="width: 22%;">核心主张</th>
+              <th style="width: 26%;">规则、标准或方法学依据</th>
+              <th style="width: 24%;">案例或实施锚点</th>
+              <th style="width: 28%;">支持程度与证据边界</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${dataRows.join('\n')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+});
+
+// 5. 将所有其它未包裹的 <table> 包裹进响应式容器
 bodyHtml = bodyHtml.replace(/<table>([\s\S]*?)<\/table>/g, (match, inner) => {
   return `<div class="table-responsive-wrapper"><table class="standard-table">${inner}</table></div>`;
 });
@@ -406,7 +552,7 @@ if (theBibMatch) {
   referencesHtml = `
     <section id="references-container" class="references-container">
       <h1 class="unnumbered" id="参考文献">
-        <span class="header-section-number">#</span> 参考文献 (References)
+        参考文献 (References)
       </h1>
       <div class="references-list">
         ${refListItems}
@@ -467,8 +613,9 @@ const appendixMapping = [
 ];
 
 for (const app of appendixMapping) {
+  const titlePattern = app.title.replace(/\s+/g, '\\s+');
   const regex = new RegExp(
-    `<h1 data-number="${app.num}"[^>]*><span[\\s\\S]*?class="header-section-number"[^>]*>${app.num}<\\/span>[\\s\\S]*?${app.title}<\\/h1>`
+    `<h1\\s+data-number="${app.num}"[^>]*><span[\\s\\S]*?class="header-section-number"[^>]*>${app.num}<\\/span>[\\s\\S]*?${titlePattern}<\\/h1>`
   );
   const replacement = `<h1 data-number="附录 ${app.letter}" id="appendix-${app.letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${app.letter}</span> ${app.title}</h1>`;
   bodyHtml = bodyHtml.replace(regex, replacement);
@@ -658,13 +805,15 @@ bodyHtml = bodyHtml.replace(titlepageRegex, gaCardHtml);
 
 // 2. 将 Pandoc 生成的伪数学公式标记清洗为原生超轻量 HTML，消除公式渲染延迟与抖动
 bodyHtml = bodyHtml.replace(
-  /<span class="math inline">\\\(_2\\\)<\/span>/g,
+  /<span\s+class="math inline">\s*\\?\(_2\\?\)\s*<\/span>/g,
   '<sub>2</sub>'
 );
 bodyHtml = bodyHtml.replace(
-  /<span class="math inline">\\\((\^\\circ|\\circ)\\\)<\/span>/g,
+  /<span\s+class="math inline">\s*\\?\((\^\\circ|\\circ)\\?\)\s*<\/span>/g,
   '°'
 );
+bodyHtml = bodyHtml.replace(/\\\(_2\\\)/g, '<sub>2</sub>');
+bodyHtml = bodyHtml.replace(/\\\((\^\\circ|\\circ)\\\)/g, '°');
 
 // 3. 重构 1.4 节下 1.4.0.1 ~ 1.4.0.3 伪 4 级标题为系统问题分析卡片 (.systemic-question-card)
 const qData = [
@@ -1628,6 +1777,87 @@ const template = `<!DOCTYPE html>
       flex: 1;
     }
 
+    /* 附录 A 全球 CCUS 项目分布与统计口径数据表专属样式 */
+    .table-dist-data {
+      width: 100% !important;
+      border-collapse: collapse;
+      min-width: 820px;
+    }
+    .table-dist-data th {
+      text-align: center;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.84rem;
+      line-height: 1.35;
+      background: var(--table-header);
+      border-bottom: 2px solid var(--table-border);
+      font-weight: 700;
+    }
+    .table-dist-data th:first-child {
+      text-align: left;
+    }
+    .table-dist-data td {
+      padding: 0.75rem 0.8rem;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--table-border);
+    }
+    .table-dist-data td:not(:first-child) {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+    }
+    .table-dist-data tr:last-child td {
+      background: var(--bg-tertiary);
+      font-weight: 700;
+      border-top: 2px solid var(--table-border);
+      border-bottom: none;
+    }
+
+    /* 附录 B 关键主张与证据边界映射表专属样式 */
+    .table-claims-mapping {
+      width: 100% !important;
+      border-collapse: collapse;
+      min-width: 920px;
+      table-layout: fixed;
+    }
+    .table-claims-mapping th {
+      position: sticky;
+      top: 57px;
+      z-index: 10;
+      background: var(--table-header);
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-bottom: 2px solid var(--table-border);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .table-claims-mapping td {
+      padding: 0.95rem 1.1rem;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      vertical-align: top;
+      border-bottom: 1px solid var(--table-border);
+    }
+    .table-claims-mapping td:first-child {
+      font-weight: 600;
+      color: var(--text-main);
+      background-color: rgba(37, 99, 235, 0.02);
+    }
+    [data-theme="dark"] .table-claims-mapping td:first-child {
+      background-color: rgba(59, 130, 246, 0.04);
+    }
+    .table-claims-mapping td:nth-child(2) {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .table-claims-mapping td:nth-child(3) {
+      font-size: 0.85rem;
+    }
+    .table-claims-mapping td:nth-child(4) {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
     .table-ref-link {
       color: var(--brand-blue);
       font-weight: 600;
@@ -1697,29 +1927,29 @@ const template = `<!DOCTYPE html>
       word-break: break-all;
     }
 
-    /* 文末参考文献容器与条目排版 */
+    /* 文末参考文献容器与条目紧凑排版 */
     .references-container {
-      margin-top: 5rem;
-      padding-top: 2.5rem;
+      margin-top: 4rem;
+      padding-top: 2rem;
       border-top: 2px solid var(--border-color);
     }
     .references-list {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      margin-top: 2rem;
+      gap: 0.55rem;
+      margin-top: 1.25rem;
     }
     .ref-item {
       display: flex;
-      gap: 1rem;
-      padding: 0.85rem 1.1rem;
+      gap: 0.85rem;
+      padding: 0.5rem 0.85rem;
       border-radius: 0.5rem;
       background: var(--bg-secondary);
       border: 1px solid transparent;
       font-family: var(--font-sans);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      transition: all 0.3s ease;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      transition: all 0.2s ease;
       scroll-margin-top: 90px;
     }
     .ref-item:hover {
@@ -1742,10 +1972,12 @@ const template = `<!DOCTYPE html>
       font-weight: 700;
       color: var(--brand-blue);
       background: rgba(37, 99, 235, 0.08);
-      padding: 0.2rem 0.45rem;
+      padding: 0.12rem 0.4rem;
       border-radius: 0.3rem;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       white-space: nowrap;
+      height: fit-content;
+      margin-top: 1px;
     }
     .ref-content-col {
       flex: 1;
@@ -1759,10 +1991,10 @@ const template = `<!DOCTYPE html>
       word-break: break-all;
     }
     .ref-actions {
-      margin-top: 0.4rem;
+      margin-top: 0.25rem;
     }
     .ref-back-link {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 500;
@@ -3225,7 +3457,7 @@ const template = `<!DOCTYPE html>
         </p>
         <pre class="citation-code"><code>@techreport{liu2026esg30ccus,
   title={从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础},
-  author={刘志豪 and 崔博宇 and 吴俊军 and 施闻如},
+  author={刘志豪, 崔博宇, 吴俊军, 施闻如},
   year={2026},
   institution={CCUS Policy Hub / ESG30 青年学者计划},
   doi={10.5281/zenodo.21110615},
