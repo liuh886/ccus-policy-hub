@@ -10,7 +10,7 @@ import { execSync, spawnSync } from 'child_process';
  * 2. 自动调用 pandoc (--number-sections) 编译为带严谨章节编号的结构化语义 HTML
  * 3. 自动解析 \begin{thebibliography}，将正文空缺引用修复为标准 [1], [2, 3] 可点击链接
  * 4. 注入即时浮窗气泡 (Citation Tooltip)、跳转高亮反馈与文末编号式参考文献列表
- * 5. 自动调用 xelatex 生成 100% 矢量的 33 页原版 PDF 交付物
+ * 5. 自动调用 xelatex 生成 100% 矢量的原版 PDF 交付物（页数自动识别）
  * 6. 注入现代学术级 UI 框架（交互式目录、图片全屏放大、深浅色模式、BibTeX 一键复制等）
  *
  * 用法:
@@ -213,6 +213,38 @@ if (fs.existsSync(defaultLocalPdf)) {
   }
 }
 
+// 尽力从 PDF 解析实际页数，供模板文案使用；解析失败返回 null，避免硬编码页数随版本漂移
+function detectPdfPageCount(pdfPath) {
+  if (!pdfPath || !fs.existsSync(pdfPath)) return null;
+  const posixPath = pdfPath.replace(/\\/g, '/');
+  try {
+    const pySnippet = `import importlib.util;mod=__import__('pypdf') if importlib.util.find_spec('pypdf') else __import__('PyPDF2');print(len(mod.PdfReader(r'${posixPath}').pages))`;
+    const out = execSync(`python -c "${pySnippet}"`, {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    const n = parseInt(out, 10);
+    if (Number.isFinite(n) && n > 0) return n;
+  } catch {
+    // 忽略，继续尝试下一种方式
+  }
+  try {
+    const out = execSync(`pdfinfo "${pdfPath}"`, {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    });
+    const m = out.match(/Pages:\s*(\d+)/);
+    if (m) return parseInt(m[1], 10);
+  } catch {
+    // 忽略，回退到无页数文案
+  }
+  return null;
+}
+const pdfPageCount = detectPdfPageCount(pdfDest);
+if (pdfPageCount) {
+  console.log(`[sync-paper-report] PDF 实际页数识别为 ${pdfPageCount} 页`);
+}
+
 // 嵌套括号感知的 \shortstack 清洗函数，避免非贪婪正则因 \textbf{} 嵌套提前截断
 function replaceNestedShortstack(str) {
   let result = '';
@@ -248,25 +280,27 @@ let preprocessedTex = texContent;
 
 // 1. 预处理 Appendix A 表格 (tab:global_ccus_distribution)：
 // 将 tabularx 转换为标准 tabular{lcccccc}，并清洗 \shortstack 嵌套结构，
-// 防止 Pandoc 因无法解析复杂列修饰与 shortstack 换行导致多列数据单元格严重丢失
+// 防止 Pandoc 因无法解析复杂列修饰与 shortstack 换行导致多列数据单元格严重丢失。
+// 以稳定的 \label 锚定，避免 TeX 改版后 caption 文案变化导致预处理被静默跳过。
 preprocessedTex = preprocessedTex.replace(
-  /(\\begin\{table\}[h!]?[\s\S]*?\\caption\{2026 年全球 CCUS 已运行与在建项目的地区分布（预期交付口径）\}[\s\S]*?)\\begin\{tabularx\}\{[^}]*\}\{[\s\S]*?\n([\s\S]*?)\\end\{tabularx\}/g,
+  /(\\begin\{table\}[h!]?[\s\S]*?\\label\{tab:global_ccus_distribution\}[\s\S]*?)\\begin\{tabularx\}\{[^}]*\}\{[\s\S]*?\n([\s\S]*?)\\end\{tabularx\}/g,
   (m, tableHeader, innerContent) => {
     const cleanContent = replaceNestedShortstack(innerContent);
     return `${tableHeader}\\begin{tabular}{lcccccc}\n${cleanContent}\\end{tabular}`;
   }
 );
 
-// 2. 预处理 Appendix B 表格 (核心主张—规则依据—案例锚点—证据边界映射)：
+// 2. 预处理 Appendix B 表格（关键主张与证据边界映射 longtable）：
 // 移除 \rowcolors 与 longtable 重复表头 (\midrule\endfirsthead ... \endhead)，
-// 消除 Pandoc 转换后表头连续重复两次且无 <thead> 的缺陷
+// 消除 Pandoc 转换后表头连续重复两次且无 <thead> 的缺陷。
+// 以全局唯一的 \begin{longtable} 块锚定（\rowcolors 在全文出现多次，不能裸替换）。
 preprocessedTex = preprocessedTex.replace(
-  /(\\caption\{核心主张—规则依据—案例锚点—证据边界映射\}[\s\S]*?)\\rowcolors\{[^}]*\}\{[^}]*\}[\s\n]*\\\\/g,
+  /(\\begin\{longtable\}[\s\S]*?)\\rowcolors\{[^}]*\}\{[^}]*\}\{[^}]*\}[\s\n]*\\\\/g,
   '$1'
 );
 preprocessedTex = preprocessedTex.replace(
-  /\\midrule[\s\n]*\\endfirsthead[\s\S]*?\\endhead/g,
-  ''
+  /(\\begin\{longtable\}[\s\S]*?)\\midrule[\s\n]*\\endfirsthead[\s\S]*?\\endhead/g,
+  '$1'
 );
 
 const tempTexPath = path.join(outDir, '_temp_build.tex');
@@ -378,34 +412,23 @@ if (!benchmarkMatched) {
 
 // 3. 重构附录 A 全球 CCUS 项目分布与统计口径数据表 (tab:global_ccus_distribution)
 const distRegex =
-  /<div id="tab:global_ccus_distribution">\s*<table>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>\s*<\/div>(?:\s*<p>(<strong>口径说明：<\/strong>[\s\S]*?)<\/p>)?/;
+  /<div id="tab:global_ccus_distribution">\s*<table>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>\s*<\/div>(?:\s*<p>(<strong>(?:口径说明|口径与筛选说明)：<\/strong>[\s\S]*?)<\/p>)?/;
 bodyHtml = bodyHtml.replace(distRegex, (m, caption, innerTable, notesP) => {
-  let formattedInner = innerTable
-    .replace(
-      /<strong>已运行<\/strong>\s*<strong>项目数<\/strong>/g,
-      '已运行<br/>项目数'
-    )
-    .replace(
-      /<strong>已运行容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
-      '已运行容量<br/>(MtCO<sub>2</sub>/yr)'
-    )
-    .replace(
-      /<strong>在建<\/strong>\s*<strong>项目数<\/strong>/g,
-      '在建<br/>项目数'
-    )
-    .replace(
-      /<strong>在建容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
-      '在建容量<br/>(MtCO<sub>2</sub>/yr)'
-    )
-    .replace(
-      /<strong>合计<\/strong>\s*<strong>项目数<\/strong>/g,
-      '合计<br/>项目数'
-    )
-    .replace(
-      /<strong>合计容量<\/strong>\s*<strong>（MtCO<span class="math inline">\\?\(_2\\?\)<\/span>\/yr）<\/strong>/g,
-      '合计容量<br/>(MtCO<sub>2</sub>/yr)'
-    )
-    .replace(/<th><strong>地区<\/strong><\/th>/g, '<th>地区</th>');
+  // 表头单元格通用归一化：把 \shortstack 产生的多个 <strong> 片段折叠为 <br/> 分隔，
+  // 并去除内层 <strong>，避免因列名文案改版（如“项目数”→“项目记录数”）而失配。
+  let formattedInner = innerTable.replace(
+    /<th\b([^>]*)>([\s\S]*?)<\/th>/g,
+    (m, attrs, cell) => {
+      const joined = cell
+        .replace(/<\/strong>\s*<strong>/g, '<br/>')
+        .replace(/<\/?strong>/g, '')
+        .replace(
+          /<span class="math inline">\\?\(_2\\?\)<\/span>/g,
+          '<sub>2</sub>'
+        );
+      return `<th${attrs}>${joined}</th>`;
+    }
+  );
 
   const notesHtml = notesP
     ? `
@@ -435,21 +458,25 @@ bodyHtml = bodyHtml.replace(distRegex, (m, caption, innerTable, notesP) => {
 });
 
 // 4. 重构附录 B 关键主张与证据边界映射表：彻底消除重复表头，构建高阶 4 列语义映射矩阵
+// 以 caption 的语义特征（含“核心主张”与“证据边界”）结构锚定，标题直接取自 caption，
+// 避免 TeX 改版调整 caption 文案后匹配失败。
 const claimsRegex =
-  /<table[^>]*>\s*<caption>核心主张—规则依据—案例锚点—证据边界映射<\/caption>([\s\S]*?)<\/table>/;
-bodyHtml = bodyHtml.replace(claimsRegex, (m, inner) => {
+  /<table[^>]*>\s*<caption>([^<]*核心主张[^<]*证据边界[^<]*)<\/caption>([\s\S]*?)<\/table>/;
+bodyHtml = bodyHtml.replace(claimsRegex, (m, caption, inner) => {
   const rows = [...inner.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((r) => r[0]);
   // 严格过滤掉所有表头行，杜绝任何重复表头进入 tbody
   const dataRows = rows.filter((r) => !r.includes('<strong>核心主张</strong>'));
+  const claimsTitle = caption.trim();
+  const claimsCount = dataRows.length;
 
   return `
     <div class="table-container-card" id="tab:appendix_b_claims_mapping">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
           <span class="table-badge">附录 B 表</span>
-          <span class="table-title">核心主张—规则依据—案例锚点—证据边界映射</span>
+          <span class="table-title">${claimsTitle}</span>
         </div>
-        <span class="table-scroll-hint-pill">11 项核心论断与证据映射</span>
+        <span class="table-scroll-hint-pill">${claimsCount} 项核心论断与证据映射</span>
       </div>
       <div class="table-responsive-wrapper">
         <table class="standard-table table-claims-mapping">
@@ -457,7 +484,7 @@ bodyHtml = bodyHtml.replace(claimsRegex, (m, inner) => {
             <tr>
               <th style="width: 22%;">核心主张</th>
               <th style="width: 26%;">规则、标准或方法学依据</th>
-              <th style="width: 24%;">案例或实施锚点</th>
+              <th style="width: 24%;">案例事实或正文分析位置</th>
               <th style="width: 28%;">支持程度与证据边界</th>
             </tr>
           </thead>
@@ -3384,7 +3411,7 @@ const template = `<!DOCTYPE html>
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
       <button class="btn" id="theme-toggle" title="切换深浅模式">🌓 主题</button>
-      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版 33 页高保真 PDF">
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版${pdfPageCount ? ` ${pdfPageCount} 页` : ''}高保真 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span>下载原版 PDF</span>
       </a>
@@ -3465,7 +3492,7 @@ const template = `<!DOCTYPE html>
 }</code></pre>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
           <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX 引用代码</button>
-          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF (33页)</a>
+          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF${pdfPageCount ? ` (${pdfPageCount}页)` : ''}</a>
         </div>
       </div>
     </main>
