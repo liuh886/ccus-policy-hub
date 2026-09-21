@@ -99,6 +99,8 @@ Seeded entries carry `origin='iea-ref'` and are mirrored across en/zh with their
 
 Page titles and publication dates are fetched once from the live URL during data preparation (`scripts/enrich-facility-news-metadata.mjs`) and stored; entries whose title cannot be fetched, or whose fetched title is an anti-bot/paywall/error page or off-topic spam, fall back to the publisher/host name rather than showing a misleading title. Coverage (facilities with sources, facilities with titled sources, titled-row share) is reported under `facility_news` in the quality metrics.
 
+Evidence-backed additions for high-value facilities (e.g. operational, ≥1 Mtpa) are curated by hand in `scripts/data/facility-news-research.json` — each item carries a real, resolvable URL, a title, and a tier verified against a primary source — and ingested with `pnpm manage:db:import:facility-news-research` as `origin='agent-research'` rows with a `verified_at` date. URLs and titles are never generated.
+
 ## 10. Method changes
 
 Any change to dimensions, score scales, aggregation, capacity selection, status sets, year priority, region mapping, relationship confidence, or exclusions requires:

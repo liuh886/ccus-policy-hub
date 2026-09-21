@@ -1,0 +1,146 @@
+{
+  "as_of": "2026-09-21",
+  "tier_legend": {
+    "official": "government / regulator / agency",
+    "press_release": "first-party newsroom or wire-service release",
+    "media": "independent journalism",
+    "reference": "portal / dataset / paper / other"
+  },
+  "facilities": {
+    "25": [
+      {
+        "url": "https://wolfmidstream.com/new-carbon-solution-in-alberta-delivers-use-for-industrial-emissions",
+        "title": "New carbon solution in Alberta delivers use for industrial emissions",
+        "publisher": "Wolf Midstream",
+        "date": "2020-06-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.newswire.ca/news-releases/new-carbon-solution-in-alberta-delivers-use-for-industrial-emissions-881170617.html",
+        "title": "New carbon solution in Alberta delivers use for industrial emissions",
+        "publisher": "CNW / Newswire",
+        "date": "2020-06-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.newswire.ca/news-releases/wolf-midstream-to-extend-alberta-carbon-trunk-line-into-the-edmonton-region-enabling-large-scale-emissions-reduction-872102700.html",
+        "title": "Wolf Midstream to Extend Alberta Carbon Trunk Line into the Edmonton Region, Enabling Large-Scale Emissions Reduction",
+        "publisher": "CNW / Newswire",
+        "date": "2023-09-05",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cbc.ca/news/business/actl-enhance-energy-oil-ccs-co2-ccus-1.5593969",
+        "title": "At long last, new carbon capture project launches in Alberta",
+        "publisher": "CBC News",
+        "date": "2020-06-02",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "295": [
+      {
+        "url": "https://totalenergies.com/news/press-releases/norway-northern-lights-facilities-completed-and-ready-store-co2",
+        "title": "Norway: Northern Lights facilities completed and ready to store CO2",
+        "publisher": "TotalEnergies",
+        "date": "2024-09-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.equinor.com/news/20240926-northern-lights-ready-to-receive-co2",
+        "title": "Northern Lights is ready to receive CO2",
+        "publisher": "Equinor",
+        "date": "2024-09-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.equinor.com/news/20250825-first-co2-volumes-stored-at-northern-lights",
+        "title": "First CO2 volumes stored at Northern Lights",
+        "publisher": "Equinor",
+        "date": "2025-08-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://totalenergies.com/system/files/documents/totalenergies_pr-norway-first-co2-storage-northern-lights_2025.pdf",
+        "title": "Norway: First CO2 storage in Northern Lights",
+        "publisher": "TotalEnergies",
+        "date": "2025-08-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "309": [
+      {
+        "url": "https://www.eneos-xplora.com/english/newsrelease/upload_files/20230913EN.pdf",
+        "title": "Restart of the large-scale Petra Nova Carbon Capture Facility in the U.S.",
+        "publisher": "JX Nippon Oil & Gas Exploration",
+        "date": "2023-09-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://investors.nrg.com/news-releases/news-release-details/worlds-largest-post-combustion-carbon-capture-enhanced-oil",
+        "title": "World's Largest Post-Combustion Carbon Capture-Enhanced Oil Recovery Project to be built by NRG Energy and JX Nippon Oil & Gas Exploration",
+        "publisher": "NRG Energy",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://jpt.spe.org/a-new-day-begins-for-shuttered-petra-nova-ccus",
+        "title": "A New Day Begins for Shuttered Petra Nova CCUS",
+        "publisher": "JPT (SPE)",
+        "date": "2023-09-18",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/energy-transition/article/14300566/jx-nippon-restarts-petra-nova-carbon-capture-plant-in-texas",
+        "title": "JX Nippon restarts Petra Nova carbon capture plant in Texas",
+        "publisher": "Oil & Gas Journal",
+        "date": "2023-10-23",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "347": [
+      {
+        "url": "https://www.newswire.ca/news-releases/quest-ccs-facility-reaches-major-milestone-captures-and-stores-four-million-tonnes-of-co2-871349116.html",
+        "title": "Quest CCS Facility Reaches Major Milestone: Captures and Stores Four Million Tonnes of CO2",
+        "publisher": "Shell Canada / CNW",
+        "date": "2019-05-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.newswire.ca/news-releases/quest-ccs-facility-captures-and-stores-five-million-tonnes-of-co2-ahead-of-fifth-anniversary-819805232.html",
+        "title": "Quest CCS Facility Captures and Stores Five Million Tonnes of CO2 Ahead of Fifth Anniversary",
+        "publisher": "Shell Canada / CNW",
+        "date": "2020-07-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.alberta.ca/release.cfm?xID=30771c28ee8fc-f24f-e03c-1ba374d3c893a32b",
+        "title": "Alberta inks deal for Shell Quest CCS project",
+        "publisher": "Government of Alberta",
+        "date": "2013-10-01",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://financialpost.com/commodities/energy/shell-mulls-more-carbon-capture-projects-in-alberta-as-quest-hits-5-million-tonne-milestone",
+        "title": "Shell mulls more carbon capture projects in Alberta as Quest hits 5 million tonne milestone",
+        "publisher": "Financial Post",
+        "date": "2020-07-10",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ]
+  }
+}

@@ -15,15 +15,15 @@ Last updated: 2026-09-08
 
 ## Engineering backlog
 
-| Item                                  | Detail                                                                                                                                                                                                                                            |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facility news — Phase D (remaining)   | Enrich `facility_news` for a high-value subset (e.g. Operational, ≥1 Mtpa) with evidence-backed `agent-research` items, and add a link-rot check. (Titles/dates fetched and coverage metric shipped.) See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
-| Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                            |
-| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                            |
-| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                                 |
-| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                          |
-| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                             |
-| Performance polish                    | Google Fonts: 7 weights → 3 + CJK fallback stack; `light-editorial-capacity.css` loaded site-wide but only used on home                                                                                                                           |
+| Item                                  | Detail                                                                                                                                                                                                                                                                |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Facility news — Phase D (remaining)   | Expand curated `agent-research` coverage beyond the first batch (17 operational ≥1 Mtpa facilities identified; 4 enriched) and add a link-rot check. (Ingest mechanism, titles/dates fetch, and coverage metric shipped.) See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
+| Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                                                |
+| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                                                |
+| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                                                     |
+| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                                              |
+| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                                                 |
+| Performance polish                    | Google Fonts: 7 weights → 3 + CJK fallback stack; `light-editorial-capacity.css` loaded site-wide but only used on home                                                                                                                                               |
 
 ## Done (2026-09 sessions, for context)
 
@@ -34,6 +34,9 @@ Last updated: 2026-09-08
 - Facility news titles/dates fetched for ~1,100 of ~1,840 distinct source URLs
   (anti-bot/paywall/spam titles rejected → publisher fallback), plus a
   `facility_news` coverage block in the quality metrics (Phase D, partial)
+- Curated research ingest (`scripts/data/facility-news-research.json` +
+  `manage:db:import:facility-news-research`) with a first verified batch for
+  ACTL, Northern Lights, Petra Nova and Quest (Phase D, partial)
 - CI projection diff gate closed (quality metrics + public data), deterministic
   `data_as_of` timestamps, volatile audit fields removed from generated output
 - zh/en page consolidation (8 pairs), Base-path literals eliminated (guard test),
