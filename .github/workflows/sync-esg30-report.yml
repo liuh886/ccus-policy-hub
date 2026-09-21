@@ -86,9 +86,23 @@ jobs:
           node-version: '24'
           cache: pnpm
 
-      - name: Install Pandoc and pdfinfo
+      - name: Install Pandoc (pinned) and pdfinfo
         if: steps.gate.outputs.changed == 'true'
-        run: sudo apt-get update && sudo apt-get install -y pandoc poppler-utils
+        env:
+          # 必须与本地生成环境一致，否则 tabularx 等表格的解析结果会不同。
+          PANDOC_VERSION: '3.1.12.3'
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+          curl -fsSL -o /tmp/pandoc.tar.gz \
+            "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz"
+          sudo tar -xzf /tmp/pandoc.tar.gz -C /usr/local --strip-components=1
+          INSTALLED=$(pandoc --version | head -n 1 | awk '{print $2}')
+          echo "pandoc: $INSTALLED"
+          if [ "$INSTALLED" != "$PANDOC_VERSION" ]; then
+            echo "::error::Pandoc 版本不匹配（期望 $PANDOC_VERSION，实际 $INSTALLED）"
+            exit 1
+          fi
 
       - name: Install locked dependencies
         if: steps.gate.outputs.changed == 'true'
@@ -99,6 +113,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
         run: pnpm report:sync:full
+
+      - name: Guard against LaTeX parse artifacts
+        if: steps.gate.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          HTML=public/reports/2601_ESG30/index.html
+          if grep -qE 'class="tabularx"|<p>@&gt;|\\begin\{tabularx\}' "$HTML"; then
+            echo "::error::生成结果包含未解析的 LaTeX 表格残留，Pandoc 版本可能不匹配，已中止。"
+            exit 1
+          fi
 
       - name: Verify no drift remains
         if: steps.gate.outputs.changed == 'true'
