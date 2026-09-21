@@ -77,6 +77,18 @@ export function localizeLegalWeight(value, lang = 'zh') {
 
 export const CONTRIBUTOR_VISIBLE_LIMIT = 3;
 
+/**
+ * Single source for the progressive-disclosure button label. The initial
+ * render and the click handler both go through here so the count can never
+ * drift (the handler previously counted a stale `.contributor-card` selector
+ * and collapsed to "… · 0").
+ */
+export function contributorToggleLabel(expanded, total, text = {}) {
+  return expanded
+    ? text.collapse
+    : `${text.showAllContributors} · ${Math.max(0, Number(total) || 0)}`;
+}
+
 export function splitContributors(
   contributors = [],
   limit = CONTRIBUTOR_VISIBLE_LIMIT
