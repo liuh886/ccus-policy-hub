@@ -76,6 +76,18 @@ node scripts/enrich-facility-news-metadata.mjs --sanitize-only   # clear placeho
 
 It performs one capped GET per distinct URL, writes to `governance/reports/facility_news_enrichment_report.json`, and is safe to re-run (only rows still missing a title are fetched). Coverage is reported under `facility_news` in the quality metrics.
 
+Curated, evidence-backed news is added by editing
+`scripts/data/facility-news-research.json` (real URL + title + tier per item,
+verified against a primary source) and running:
+
+```bash
+pnpm manage:db:import:facility-news-research -- --dry-run
+pnpm manage:db:import:facility-news-research
+```
+
+The ingest is idempotent, mirrors items across en/zh, skips duplicates by
+normalized URL, and re-sorts by tier. Never invent a URL or title.
+
 ## 5. Frontend or documentation update
 
 - Change source components, styles, translations, or Markdown directly.
