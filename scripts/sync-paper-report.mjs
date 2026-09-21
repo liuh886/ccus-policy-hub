@@ -32,7 +32,7 @@ const repo = getArg('--repo', 'liuh886/2601_ESG30');
 const slug = getArg('--slug', '2601_ESG30');
 const localTex = getArg('--local-tex', null);
 const checkMode = args.includes('--check');
-const skipPdf = args.includes('--skip-pdf') || checkMode;
+const skipPdf = args.includes('--skip-pdf');
 
 const committedHtmlPath = path.resolve('public/reports', slug, 'index.html');
 const outDir = checkMode
@@ -52,6 +52,11 @@ const defaultLocalPdf =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output/ESG30_dMRV_Report_v3.4.pdf';
 const defaultLocalDataDir =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/data';
+// 本机已构建 PDF 路径（可用 --local-pdf 覆盖；传不存在路径可强制走远端拉取/编译）
+const localPdfPath = getArg('--local-pdf', null) || defaultLocalPdf;
+// 远端（ESG30 仓库）中已构建 PDF 的位置；本地无 PDF 时（如 CI）从此处拉取。
+// 传 'latest' 或该路径不存在时，自动在 output/ 下挑选版本号最高的 PDF。
+const pdfRemotePath = getArg('--pdf-remote-path', 'latest');
 
 let texContent = '';
 
@@ -193,48 +198,107 @@ console.log(`[sync-paper-report] 解析到 ${rawKeys.length} 条原始参考文�
 
 // --- 3. 编译或同步 PDF ---
 const pdfDest = path.join(outDir, 'paper_draft.pdf');
-if (fs.existsSync(defaultLocalPdf)) {
-  fs.copyFileSync(defaultLocalPdf, pdfDest);
+
+// 通过 gh api 下载仓库内二进制文件
+function fetchRemoteBinary(remotePath, destPath) {
+  const buf = execSync(
+    `gh api "repos/${repo}/contents/${remotePath}" -H "Accept: application/vnd.github.v3.raw"`,
+    { maxBuffer: 256 * 1024 * 1024, encoding: 'buffer' }
+  );
+  fs.writeFileSync(destPath, buf);
+}
+
+// 解析 ESG30 仓库 output/ 下版本号最高的已构建 PDF
+function resolveLatestRemotePdf() {
+  const names = execSync(
+    `gh api "repos/${repo}/contents/output" --jq ".[].name"`,
+    { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
+  )
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter((n) => /^ESG30_dMRV_Report_v[\d.]+\.pdf$/.test(n));
+  if (!names.length) return null;
+  const versionOf = (n) =>
+    n
+      .match(/v([\d.]+)\.pdf$/)[1]
+      .split('.')
+      .map((x) => parseInt(x, 10) || 0);
+  names.sort((a, b) => {
+    const va = versionOf(a);
+    const vb = versionOf(b);
+    for (let i = 0; i < Math.max(va.length, vb.length); i++) {
+      const d = (va[i] || 0) - (vb[i] || 0);
+      if (d) return d;
+    }
+    return 0;
+  });
+  return `output/${names[names.length - 1]}`;
+}
+
+if (fs.existsSync(localPdfPath)) {
+  fs.copyFileSync(localPdfPath, pdfDest);
   console.log(
     `[sync-paper-report] 直接同步本机最新 3.4 原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
   );
 } else if (!skipPdf) {
+  // 本地无 PDF（例如 CI 环境）：优先从 ESG30 仓库直接拉取已构建的 PDF
+  let pdfFetched = false;
   try {
-    const checkXe = spawnSync('xelatex', ['--version']);
-    if (checkXe.status === 0) {
-      console.log(
-        `[sync-paper-report] 检测到本机已安装 xelatex，正在构建高保真原版 PDF...`
-      );
-      const tempTex = path.join(outDir, 'source.tex');
-      fs.writeFileSync(tempTex, texContent, 'utf8');
-
-      console.log(`[sync-paper-report] 编译 PDF 第一遍...`);
-      execSync(
-        `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
-        { stdio: 'ignore' }
-      );
-      console.log(`[sync-paper-report] 编译 PDF 第二遍 (解析目录与引用)...`);
-      execSync(
-        `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
-        { stdio: 'ignore' }
-      );
-
-      const genPdf = path.join(outDir, 'source.pdf');
-      if (fs.existsSync(genPdf)) {
-        fs.renameSync(genPdf, pdfDest);
+    let remotePdf = pdfRemotePath;
+    if (!remotePdf || remotePdf === 'latest') {
+      remotePdf = resolveLatestRemotePdf();
+    }
+    if (remotePdf) {
+      fetchRemoteBinary(remotePdf, pdfDest);
+      pdfFetched = fs.existsSync(pdfDest) && fs.statSync(pdfDest).size > 0;
+      if (pdfFetched) {
         console.log(
-          `[sync-paper-report] PDF 编译成功: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+          `[sync-paper-report] 已从 ${repo} 拉取 PDF: ${remotePdf} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
         );
       }
-
-      for (const ext of ['.aux', '.log', '.out', '.toc']) {
-        const f = path.join(outDir, 'source' + ext);
-        if (fs.existsSync(f)) fs.unlinkSync(f);
-      }
-      if (fs.existsSync(tempTex)) fs.unlinkSync(tempTex);
     }
   } catch (err) {
-    console.warn(`[sync-paper-report] PDF 编译跳过或告警:`, err.message);
+    console.warn(`[sync-paper-report] 从远端拉取 PDF 失败:`, err.message);
+  }
+
+  if (!pdfFetched) {
+    try {
+      const checkXe = spawnSync('xelatex', ['--version']);
+      if (checkXe.status === 0) {
+        console.log(
+          `[sync-paper-report] 检测到本机已安装 xelatex，正在构建高保真原版 PDF...`
+        );
+        const tempTex = path.join(outDir, 'source.tex');
+        fs.writeFileSync(tempTex, texContent, 'utf8');
+
+        console.log(`[sync-paper-report] 编译 PDF 第一遍...`);
+        execSync(
+          `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
+          { stdio: 'ignore' }
+        );
+        console.log(`[sync-paper-report] 编译 PDF 第二遍 (解析目录与引用)...`);
+        execSync(
+          `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
+          { stdio: 'ignore' }
+        );
+
+        const genPdf = path.join(outDir, 'source.pdf');
+        if (fs.existsSync(genPdf)) {
+          fs.renameSync(genPdf, pdfDest);
+          console.log(
+            `[sync-paper-report] PDF 编译成功: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+          );
+        }
+
+        for (const ext of ['.aux', '.log', '.out', '.toc']) {
+          const f = path.join(outDir, 'source' + ext);
+          if (fs.existsSync(f)) fs.unlinkSync(f);
+        }
+        if (fs.existsSync(tempTex)) fs.unlinkSync(tempTex);
+      }
+    } catch (err) {
+      console.warn(`[sync-paper-report] PDF 编译跳过或告警:`, err.message);
+    }
   }
 }
 
@@ -4422,16 +4486,26 @@ if (checkMode) {
   }
   const committed = fs.readFileSync(committedHtmlPath, 'utf8');
   const regenerated = fs.readFileSync(finalOut, 'utf8');
-  const committedSha = crypto
-    .createHash('sha256')
-    .update(committed)
-    .digest('hex');
-  const regeneratedSha = crypto
-    .createHash('sha256')
-    .update(regenerated)
-    .digest('hex');
 
-  if (committed === regenerated) {
+  const committedPdfPath = path.join(
+    path.dirname(committedHtmlPath),
+    'paper_draft.pdf'
+  );
+  const regeneratedPdfPath = path.join(outDir, 'paper_draft.pdf');
+  const pdfComparable =
+    fs.existsSync(committedPdfPath) && fs.existsSync(regeneratedPdfPath);
+  const pdfMatches = pdfComparable
+    ? fs
+        .readFileSync(committedPdfPath)
+        .equals(fs.readFileSync(regeneratedPdfPath))
+    : null;
+
+  if (committed === regenerated && pdfMatches !== false) {
+    if (pdfMatches === null) {
+      console.warn(
+        `[sync-paper-report][check] ⚠️ 未能同时取得已提交与应生成的 PDF，跳过 PDF 比对。`
+      );
+    }
     console.log(
       `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
     );
@@ -4439,12 +4513,31 @@ if (checkMode) {
   }
 
   console.error(
-    `[sync-paper-report][check] ❌ 检测到漂移：已提交页面与最新 paper draft 不一致。`
+    `[sync-paper-report][check] ❌ 检测到漂移：已提交产物与最新 paper draft 不一致。`
   );
-  console.error(`[sync-paper-report][check]   已提交 : ${committedSha}`);
-  console.error(`[sync-paper-report][check]   应生成 : ${regeneratedSha}`);
+  if (committed !== regenerated) {
+    const committedSha = crypto
+      .createHash('sha256')
+      .update(committed)
+      .digest('hex');
+    const regeneratedSha = crypto
+      .createHash('sha256')
+      .update(regenerated)
+      .digest('hex');
+    console.error(
+      `[sync-paper-report][check]   index.html 已提交 : ${committedSha}`
+    );
+    console.error(
+      `[sync-paper-report][check]   index.html 应生成 : ${regeneratedSha}`
+    );
+  }
+  if (pdfMatches === false) {
+    console.error(
+      `[sync-paper-report][check]   paper_draft.pdf 与最新交付 PDF 不一致`
+    );
+  }
   console.error(
-    `[sync-paper-report][check]   请运行 \`pnpm report:sync\` 重新生成并提交 public/reports/${slug}/index.html。`
+    `[sync-paper-report][check]   请运行 \`pnpm report:sync:full\` 重新生成并提交 public/reports/${slug}/ 下的 index.html 与 paper_draft.pdf。`
   );
   process.exit(1);
 }

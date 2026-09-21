@@ -1,0 +1,134 @@
+name: Sync ESG30 report
+
+# 监控 ESG30 报告仓库（liuh886/2601_ESG30）的 paper_draft.tex / output 产物，
+# 一旦有新版本，就重新生成 public/reports/2601_ESG30 并推送到 main，
+# 由既有 CI → Deploy 流水线发布到 GitHub Pages。
+#
+# 需要仓库 Secret：ESG30_REPO_TOKEN —— 一个对 liuh886/2601_ESG30 具备 Contents: Read 的 PAT。
+# 未配置该 Secret 时，本工作流会安全跳过（不会失败）。
+
+on:
+  schedule:
+    # 每 6 小时检查一次（UTC）
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-esg30-report
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check token availability
+        id: token
+        env:
+          ESG30_REPO_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: |
+          if [ -z "${ESG30_REPO_TOKEN}" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::未配置 ESG30_REPO_TOKEN，跳过 ESG30 报告同步。请添加该 Secret 后重试。"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.token.outputs.available == 'true'
+        uses: actions/checkout@v6
+
+      - name: Detect latest ESG30 revision
+        id: rev
+        if: steps.token.outputs.available == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: |
+          set -euo pipefail
+          TEX_SHA=$(gh api "repos/liuh886/2601_ESG30/commits?path=paper_draft.tex&per_page=1" --jq '.[0].sha')
+          OUT_SHA=$(gh api "repos/liuh886/2601_ESG30/commits?path=output&per_page=1" --jq '.[0].sha')
+          REV="${TEX_SHA}:${OUT_SHA}"
+          echo "rev=$REV" >> "$GITHUB_OUTPUT"
+          echo "tex_sha=$TEX_SHA" >> "$GITHUB_OUTPUT"
+          echo "out_sha=$OUT_SHA" >> "$GITHUB_OUTPUT"
+          echo "tex_short=${TEX_SHA:0:12}" >> "$GITHUB_OUTPUT"
+          echo "ESG30 revision: $REV"
+
+      - name: Compare with last synced revision
+        id: gate
+        if: steps.token.outputs.available == 'true'
+        run: |
+          set -euo pipefail
+          PREV=""
+          if [ -f .esg30-sync.json ]; then
+            PREV=$(node -e "try{process.stdout.write(require('./.esg30-sync.json').rev||'')}catch(e){}")
+          fi
+          if [ "$PREV" = "${{ steps.rev.outputs.rev }}" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "ESG30 未更新（rev 未变），跳过。"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "检测到 ESG30 新版本：$PREV -> ${{ steps.rev.outputs.rev }}"
+          fi
+
+      - name: Install pnpm
+        if: steps.gate.outputs.changed == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        if: steps.gate.outputs.changed == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+
+      - name: Install Pandoc and pdfinfo
+        if: steps.gate.outputs.changed == 'true'
+        run: sudo apt-get update && sudo apt-get install -y pandoc poppler-utils
+
+      - name: Install locked dependencies
+        if: steps.gate.outputs.changed == 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Regenerate report from ESG30 sources
+        if: steps.gate.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: pnpm report:sync:full
+
+      - name: Verify no drift remains
+        if: steps.gate.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: pnpm report:check
+
+      - name: Record synced revision
+        if: steps.gate.outputs.changed == 'true'
+        run: |
+          node -e "
+            const fs=require('fs');
+            fs.writeFileSync('.esg30-sync.json', JSON.stringify({
+              rev: '${{ steps.rev.outputs.rev }}',
+              texSha: '${{ steps.rev.outputs.tex_sha }}',
+              outputSha: '${{ steps.rev.outputs.out_sha }}',
+              syncedAt: new Date().toISOString()
+            }, null, 2) + '\n');
+          "
+
+      - name: Commit and push if changed
+        if: steps.gate.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/reports/2601_ESG30 .esg30-sync.json
+          if git diff --cached --quiet; then
+            echo "报告内容与上次一致，无需提交。"
+            exit 0
+          fi
+          git commit -m "chore(report): auto-sync ESG30 report (${{ steps.rev.outputs.tex_short }})"
+          git push
