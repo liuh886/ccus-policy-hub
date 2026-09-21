@@ -5,7 +5,10 @@ import {
   calculateGovernanceCapability,
   isActivePolicy,
 } from './governanceBenchmarking.mjs';
-import { facilityCapacity } from './capacityMetrics.mjs';
+import {
+  facilityCapacity,
+  normalizeFacilityStatus,
+} from './capacityMetrics.mjs';
 import {
   governanceClientCopy as copy,
   governanceComparisonCopy as pageCopy,
@@ -22,6 +25,7 @@ import {
 import {
   TIMELINE_OPEN_THRESHOLD,
   buildTimelineGroups,
+  contributorToggleLabel,
   isPendingRegulatory,
   localizeLegalWeight,
   splitContributors,
@@ -299,11 +303,7 @@ const renderContributors = (
         .map((policy) => renderRow(country, policy, true))
         .join('')}</ul>${
         hiddenCount
-          ? `<button type="button" class="contributor-toggle" data-contributors-toggle="${escapedKey}" aria-expanded="${expanded ? 'true' : 'false'}">${
-              expanded
-                ? escapeHtml(text.collapse)
-                : `${escapeHtml(text.showAllContributors)} · ${total}`
-            }</button>`
+          ? `<button type="button" class="contributor-toggle" data-contributors-toggle="${escapedKey}" data-contributor-total="${total}" aria-expanded="${expanded ? 'true' : 'false'}">${escapeHtml(contributorToggleLabel(expanded, total, text))}</button>`
           : ''
       }</section>`;
     })
@@ -335,15 +335,10 @@ const renderFacilityStats = (countrySystems, text) => {
         const groups = new Map();
         for (const facility of country.facilityList || []) {
           const data = facility?.data ?? {};
-          const status = String(data.status || '');
-          const active = ['operational', 'under-construction'].some(
-            (key) =>
-              status.toLowerCase().includes(key) ||
-              (key === 'operational' && /运行中|operational/i.test(status)) ||
-              (key === 'under-construction' &&
-                /建设中|under.construction/i.test(status))
-          );
-          if (!active) continue;
+          const status = normalizeFacilityStatus(data.status);
+          if (status !== 'operational' && status !== 'under-construction') {
+            continue;
+          }
           const name = String(pick(data) || '').trim() || text.otherGroup;
           groups.set(name, (groups.get(name) || 0) + facilityCapacity(data));
         }
@@ -664,10 +659,7 @@ export function initGovernanceComparison(lang = 'zh') {
       emptyState?.classList.remove('hidden');
       container?.classList.add('hidden');
       clearGovernanceAnalytics();
-      const scorecard = document.getElementById('scorecard-section');
-      const timeline = document.getElementById('timeline-section');
-      scorecard?.classList.add('hidden');
-      timeline?.classList.add('hidden');
+      document.getElementById('timeline-section')?.classList.add('hidden');
       return;
     }
 
@@ -922,10 +914,8 @@ export function initGovernanceComparison(lang = 'zh') {
       if (expanded) expandedContributorCountries.add(key);
       else expandedContributorCountries.delete(key);
       toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      const total = section?.querySelectorAll('.contributor-card').length || 0;
-      toggle.textContent = expanded
-        ? text.collapse
-        : `${text.showAllContributors} · ${total}`;
+      const total = Number(toggle.dataset.contributorTotal) || 0;
+      toggle.textContent = contributorToggleLabel(expanded, total, text);
       return;
     }
     const timelineToggle = event.target?.closest?.('[data-timeline-toggle]');

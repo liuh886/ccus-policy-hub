@@ -13,6 +13,7 @@ import {
   CONTRIBUTOR_VISIBLE_LIMIT,
   LEGAL_WEIGHT_LABELS_ZH,
   buildTimelineGroups,
+  contributorToggleLabel,
   isPendingRegulatory,
   localizeLegalWeight,
   splitContributors,
@@ -132,6 +133,37 @@ describe('localizeLegalWeight', () => {
     for (const value of observed) {
       assert.ok(LEGAL_WEIGHT_LABELS_ZH[value], `missing zh label for ${value}`);
     }
+  });
+});
+
+describe('contributorToggleLabel', () => {
+  const text = {
+    collapse: '收起',
+    showAllContributors: '展开全部贡献政策',
+  };
+
+  it('shows the contributor count when collapsed', () => {
+    assert.equal(
+      contributorToggleLabel(false, 7, text),
+      '展开全部贡献政策 · 7'
+    );
+  });
+
+  it('shows the collapse label when expanded', () => {
+    assert.equal(contributorToggleLabel(true, 7, text), '收起');
+  });
+
+  it('never renders a zero count from a missing total', () => {
+    // Regression: the click handler used to count a stale selector and
+    // collapsed to "… · 0".
+    assert.equal(
+      contributorToggleLabel(false, undefined, text),
+      '展开全部贡献政策 · 0'
+    );
+    assert.equal(
+      contributorToggleLabel(false, 3, text),
+      '展开全部贡献政策 · 3'
+    );
   });
 });
 
