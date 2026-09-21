@@ -182,6 +182,35 @@ CREATE TABLE IF NOT EXISTS facility_links (
   FOREIGN KEY(facility_id) REFERENCES facilities(id) ON DELETE CASCADE
 );
 
+-- Curated news / source references per facility, ordered by tier so that
+-- first-party press releases and official announcements render first.
+-- `url_normalized` is the dedup key (tracking params / trailing slash /
+-- protocol removed); `origin` separates IEA-sourced links (iea-ref) from
+-- later evidence-backed research (agent-research) so re-seeding never wipes
+-- curated rows. Titles/publishers are original-language and mirrored across
+-- en/zh (news is not translated), see agent/ccus-ai-agent/METHODOLOGY.md.
+CREATE TABLE IF NOT EXISTS facility_news (
+  facility_id TEXT NOT NULL,
+  lang TEXT NOT NULL CHECK(lang IN ('en','zh')),
+  order_index INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  url_normalized TEXT NOT NULL DEFAULT '',
+  title TEXT,
+  publisher TEXT,
+  published_date TEXT,
+  tier TEXT NOT NULL DEFAULT 'reference'
+    CHECK(tier IN ('official','press_release','media','reference')),
+  item_lang TEXT,
+  origin TEXT NOT NULL DEFAULT 'iea-ref'
+    CHECK(origin IN ('iea-ref','agent-research','manual')),
+  verified_at TEXT,
+  PRIMARY KEY(facility_id, lang, order_index),
+  FOREIGN KEY(facility_id) REFERENCES facilities(id) ON DELETE CASCADE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_facility_news_dedup
+  ON facility_news(facility_id, lang, url_normalized);
+
 CREATE TABLE IF NOT EXISTS policy_facility_links (
   policy_id TEXT NOT NULL,
   facility_id TEXT NOT NULL,

@@ -82,7 +82,22 @@ Relationship strength depends on evidence:
 
 Country-level association must not be worded as verified project-specific legal applicability.
 
-## 9. Method changes
+## 9. Facility news and source tiers
+
+Each facility may carry a curated, ordered list of external sources (`facility_news`). The list is evidence, not analysis: every entry is a real, resolvable URL and nothing is invented.
+
+Entries are classified into four evidence tiers, rendered most-authoritative first:
+
+1. `official` — government, regulator, or agency publications;
+2. `press_release` — first-party newsrooms and wire-service releases;
+3. `media` — independent journalism;
+4. `reference` — project portals, datasets, papers, and anything unmatched.
+
+The unmatched default is `reference` so an unknown domain is never presented as news. Classification is deterministic (`logic/facility-news-classify.mjs`): government suffixes and an official domain list, a wire-service list, a media list, then a newsroom path heuristic, then `reference`. URLs are normalized (protocol folded to https, `www.` and tracking parameters removed, trailing slash trimmed) to deduplicate within a facility.
+
+Seeded entries carry `origin='iea-ref'` and are mirrored across en/zh with their original-language titles (news is not translated). Later evidence-backed research carries `origin='agent-research'` and a `verified_at` date; re-seeding rebuilds only `iea-ref` rows and preserves curated rows. The list is display-only and is not included in the `facilities.json` public payload.
+
+## 10. Method changes
 
 Any change to dimensions, score scales, aggregation, capacity selection, status sets, year priority, region mapping, relationship confidence, or exclusions requires:
 
