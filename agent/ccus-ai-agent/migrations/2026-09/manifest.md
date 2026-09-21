@@ -1,5 +1,33 @@
 # manifest — migrations/2026-09
 
+## seed-facility-news-from-links-2026-09.mjs
+
+- purpose and date: add and seed `facility_news`, a tiered external
+  source/news list rendered on facility profile pages; 2026-09-21.
+- source and target: new table `facility_news` (+ unique dedup index) added
+  to `db/schema.sql`; rows produced from existing `facility_links`
+  (IEA `Ref 1..7`).
+- input files: `agent/ccus-ai-agent/db/ccus_master.sqlite` only.
+- rows affected: 5,024 rows seeded across 1,110 facilities × 2 locales
+  (2,116 facility/lang groups; 52 facilities have no links); tiers
+  official 692 / press_release 1,482 / media 422 / reference 2,428.
+  `db_meta` records the run.
+- idempotency: per (facility_id, lang) — `origin='iea-ref'` rows are rebuilt
+  from `facility_links`; `agent-research`/`manual` rows are preserved and
+  re-interleaved by tier. Re-run changes zero additional rows (tested).
+- dry-run: `seed-facility-news-from-links-2026-09.test.mjs` (in-memory
+  fixtures: dedup, tier ordering, idempotency, curated-row preservation).
+- backup and rollback: pre-migration DB copy taken before execution; the
+  table is independently droppable and `facility_links` is untouched, so
+  rollback is schema-only.
+- post-migration audits and exports: `pnpm gen`, `check:facilities-parity`
+  (errors=0; news adds 0 mismatches), deep audit, tests, `astro check`,
+  production build.
+- approval status: approved 2026-09-21 (requester requested implementation
+  after being advised the schema/table addition requires sign-off; four-tier
+  taxonomy, per-lang mirrored original-language titles, and news excluded
+  from `facilities.json` confirmed).
+
 ## phase4-governance-closeout-2026-09.mjs
 
 - purpose and date: data-quality special Phase 4 — stamp the 15 NULL

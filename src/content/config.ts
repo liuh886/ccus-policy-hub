@@ -88,6 +88,14 @@ const policySchemaEn = policySchema.extend({
   category: z.enum(POLICY_CATEGORIES).optional().default('Regulatory'),
 });
 
+const facilityNewsSchema = z.object({
+  url: z.string(),
+  title: z.string().optional(),
+  publisher: z.string().optional(),
+  date: z.string().optional(),
+  tier: z.enum(['official', 'press_release', 'media', 'reference']),
+});
+
 const facilitySchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -133,6 +141,7 @@ const facilitySchema = z.object({
   suspensionDate: z.string().optional().default(''),
   partners: z.array(z.string()).default([]),
   links: z.array(z.string()).default([]),
+  news: z.array(facilityNewsSchema).default([]),
   url: z.string().optional().default(''),
   relatedPolicies: z.array(z.string()).default([]),
   provenance: provenanceSchema.optional(),

@@ -157,12 +157,31 @@ function fallbackFacilityDescription({
 This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''}, within the ${i.sector || 'CCUS'} sector. The facility is classified as ${i.type || 'Capture'} and is currently ${displayStatus}. ${i.hub ? `As part of the ${i.hub} hub, ` : ''}${i.operator ? `it is operated by ${i.operator}.` : ''}`;
 }
 
+/**
+ * Mirror the export pipeline's news shape post deep-clean: `url`/`tier` are
+ * always present, optional fields are omitted when null.
+ */
+function projectFacilityNews(news = []) {
+  return news.map((r) => {
+    const item = { url: r.url, tier: r.tier };
+    if (r.title !== null && r.title !== undefined) item.title = r.title;
+    if (r.publisher !== null && r.publisher !== undefined) {
+      item.publisher = r.publisher;
+    }
+    if (r.published_date !== null && r.published_date !== undefined) {
+      item.date = r.published_date;
+    }
+    return item;
+  });
+}
+
 export function projectFacilityForLang({
   f,
   i,
   lang,
   partners,
   links,
+  news = [],
   relatedPolicies,
   translate = (key) => key,
 }) {
@@ -219,6 +238,7 @@ export function projectFacilityForLang({
       relatedPolicies: [...relatedPolicies].sort(),
       partners: [...partners],
       links: [...links],
+      news: projectFacilityNews(news),
       provenance: {
         author: f.provenance_author ?? '',
         reviewer: f.provenance_reviewer ?? '',
@@ -572,6 +592,9 @@ async function runAudit() {
     const linksRows = db.all(
       'SELECT * FROM facility_links ORDER BY facility_id, lang, order_index'
     );
+    const newsRows = db.all(
+      'SELECT * FROM facility_news ORDER BY facility_id, lang, order_index'
+    );
     const relRows = db.all(
       'SELECT * FROM policy_facility_links ORDER BY facility_id, policy_id'
     );
@@ -601,6 +624,10 @@ async function runAudit() {
     );
     const linksMap = buildArrayMap(
       linksRows,
+      (r) => `${r.facility_id}::${r.lang}`
+    );
+    const newsMap = buildArrayMap(
+      newsRows,
       (r) => `${r.facility_id}::${r.lang}`
     );
     const relatedPoliciesMap = buildArrayMap(relRows, (r) =>
@@ -736,12 +763,14 @@ async function runAudit() {
         const links = (linksMap.get(`${facilityId}::${lang}`) ?? []).map((r) =>
           String(r.link)
         );
+        const news = newsMap.get(`${facilityId}::${lang}`) ?? [];
         const projected = projectFacilityForLang({
           f,
           i,
           lang,
           partners,
           links,
+          news,
           relatedPolicies: relatedPoliciesRaw,
           translate,
         });
@@ -867,6 +896,36 @@ async function runAudit() {
             field: 'links',
             db: projected.frontmatter.links,
             md: mdFm.links || [],
+            note: 'Same set but different order',
+          });
+        }
+
+        const serializeNews = (arr) =>
+          (arr || []).map((item) =>
+            JSON.stringify(item, Object.keys(item).sort())
+          );
+        const newsDb = serializeNews(projected.frontmatter.news);
+        const newsMd = serializeNews(mdFm.news);
+        const newsSameOrder = newsDb.join('\n') === newsMd.join('\n');
+        const newsSameSet =
+          [...newsDb].sort().join('\n') === [...newsMd].sort().join('\n');
+        if (!newsSameSet) {
+          pushMismatch(errors, {
+            id: facilityId,
+            lang,
+            field: 'news',
+            db: projected.frontmatter.news,
+            md: mdFm.news || [],
+          });
+        } else if (!newsSameOrder) {
+          pushMismatch(warnings, {
+            severity: 'warning',
+            type: 'order_mismatch',
+            id: facilityId,
+            lang,
+            field: 'news',
+            db: projected.frontmatter.news,
+            md: mdFm.news || [],
             note: 'Same set but different order',
           });
         }

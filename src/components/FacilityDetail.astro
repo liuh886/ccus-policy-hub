@@ -30,7 +30,6 @@ const {
   fid,
   operation,
   suspensionDate,
-  links = [],
   provenance,
   fateOfCarbon,
   operator,
@@ -100,6 +99,11 @@ const copy = isEn
       ieaModel: 'IEA Model',
       investmentRestricted: 'Restricted',
       breadcrumb: 'Facilities',
+      newsHeading: 'Press Releases & Coverage',
+      newsPrimary: 'Primary Source',
+      newsOfficial: 'Official & Press Releases',
+      newsMedia: 'Media Coverage',
+      newsReference: 'References & Portals',
     }
   : {
       title: `${name} | CCUS 设施数据库`,
@@ -110,6 +114,11 @@ const copy = isEn
       ieaModel: 'IEA Model',
       investmentRestricted: 'Restricted',
       breadcrumb: 'Facilities',
+      newsHeading: '新闻与引用来源',
+      newsPrimary: '一手来源',
+      newsOfficial: '官方与一手发布',
+      newsMedia: '媒体报道',
+      newsReference: '参考资料与门户',
     };
 
 // Timeline Logic
@@ -131,6 +140,37 @@ const timeline = [
     active: !!suspensionDate,
   },
 ].filter((t) => t.active);
+
+// Curated, tier-ordered news / source list (see METHODOLOGY.md). Grouped by
+// evidence tier so first-party press releases and official announcements
+// render before media coverage and generic references.
+const news = entry.data.news || [];
+const hostOf = (value: string) => {
+  try {
+    return new URL(value).hostname.replace(/^www\./, '');
+  } catch {
+    return value;
+  }
+};
+const newsGroups = [
+  {
+    key: 'official',
+    label: copy.newsOfficial,
+    items: news.filter(
+      (n: any) => n.tier === 'official' || n.tier === 'press_release'
+    ),
+  },
+  {
+    key: 'media',
+    label: copy.newsMedia,
+    items: news.filter((n: any) => n.tier === 'media'),
+  },
+  {
+    key: 'reference',
+    label: copy.newsReference,
+    items: news.filter((n: any) => n.tier === 'reference'),
+  },
+].filter((group: any) => group.items.length > 0);
 ---
 
 <Layout title={copy.title}>
@@ -431,55 +471,68 @@ const timeline = [
             </div>
           </section>
 
-          <!-- Reference Matrix -->
-          <section
-            class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800"
-          >
-            <h3
-              class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6"
-            >
-              Reference Matrix
-            </h3>
-            <div class="space-y-3">
-              {
-                url && (
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
-                  >
-                    <p class="text-[9px] font-black uppercase text-slate-400 mb-1">
-                      Primary Source
-                    </p>
-                    <p class="text-xs font-bold text-slate-900 dark:text-white truncate">
-                      Project Portal &nearr;
-                    </p>
-                  </a>
-                )
-              }
-              {
-                links
-                  .filter((l: string) => l && l.startsWith('http'))
-                  .slice(0, 3)
-                  .map((link: string, i: number) => (
+          <!-- Press Releases & Coverage -->
+          {
+            (url || newsGroups.length > 0) && (
+              <section
+                class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800"
+                data-pagefind-ignore
+              >
+                <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">
+                  {copy.newsHeading}
+                </h3>
+                <div class="space-y-5">
+                  {url && (
                     <a
-                      href={link}
+                      href={url}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
                     >
                       <p class="text-[9px] font-black uppercase text-slate-400 mb-1">
-                        Link {i + 1}
+                        {copy.newsPrimary}
                       </p>
-                      <p class="text-xs font-bold text-slate-500 truncate">
-                        {link}
+                      <p class="text-xs font-bold text-slate-900 dark:text-white break-words">
+                        {hostOf(url)}{' '}
+                        <span class="text-slate-400">&nearr;</span>
                       </p>
                     </a>
-                  ))
-              }
-            </div>
-          </section>
+                  )}
+
+                  {newsGroups.map((group: any) => (
+                    <div>
+                      <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                        {group.label}
+                      </p>
+                      <ul class="space-y-2">
+                        {group.items.map((item: any) => (
+                          <li>
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="group block p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
+                            >
+                              <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-snug">
+                                {item.title || hostOf(item.url)}{' '}
+                                <span class="text-slate-300 dark:text-slate-600">
+                                  &nearr;
+                                </span>
+                              </p>
+                              <p class="mt-1 text-[9px] font-medium text-slate-400 uppercase tracking-wide">
+                                {item.publisher || hostOf(item.url)}
+                                {item.date ? ` · ${item.date}` : ''}
+                              </p>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )
+          }
 
           <div
             class="flex justify-between items-center px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest"

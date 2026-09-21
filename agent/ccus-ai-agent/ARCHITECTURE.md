@@ -46,7 +46,7 @@ Structured identity, jurisdiction, year, status, category, legal weight, source,
 
 ### Facilities
 
-Record identity, country, status, capacity fields, coordinates and precision, bilingual technical/project metadata, partners, links, relationships, and provenance.
+Record identity, country, status, capacity fields, coordinates and precision, bilingual technical/project metadata, partners, links, a tiered news/source list (`facility_news`), relationships, and provenance.
 
 ### Country governance profiles
 

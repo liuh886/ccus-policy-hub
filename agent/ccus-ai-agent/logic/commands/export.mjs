@@ -154,6 +154,21 @@ export async function dbExportMd(
           [f.id, lang]
         )
         .map((r) => r.link);
+      // Curated, tier-ordered news/source list. Order is meaningful here
+      // (press releases first), so it is NOT sorted like `links`.
+      const news = db
+        .all(
+          `SELECT url, title, publisher, published_date, tier
+           FROM facility_news WHERE facility_id=? AND lang=? ORDER BY order_index`,
+          [f.id, lang]
+        )
+        .map((r) => ({
+          url: r.url,
+          title: r.title,
+          publisher: r.publisher,
+          date: r.published_date,
+          tier: r.tier,
+        }));
 
       const displayCountry = translate(f.country, 'country', lang);
       const displayStatus = translate(f.status, 'status', lang);
@@ -204,6 +219,7 @@ export async function dbExportMd(
         relatedPolicies: relatedPolicies.sort(),
         partners: partners.sort(),
         links: links.sort(),
+        news,
         provenance: {
           author: f.provenance_author || 'IEA Ingestion',
           reviewer: f.provenance_reviewer || REVIEWER_PLACEHOLDER,
