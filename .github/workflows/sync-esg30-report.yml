@@ -121,6 +121,8 @@ jobs:
 
       - name: Commit and push if changed
         if: steps.gate.outputs.changed == 'true'
+        env:
+          HUSKY: '0'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -131,4 +133,5 @@ jobs:
             exit 0
           fi
           git commit -m "chore(report): auto-sync ESG30 report (${{ steps.rev.outputs.tex_short }})"
-          git push
+          # CI 会在推送后对提交做完整校验，这里绕过本地 husky 钩子
+          git push --no-verify
