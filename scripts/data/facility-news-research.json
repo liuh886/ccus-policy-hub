@@ -41,6 +41,156 @@
         "itemLang": "en"
       }
     ],
+    "59": [
+      {
+        "url": "https://www.saskpower.com/about-us/media-information/news-releases/2024/saskpower-marks-10-years-of-operation-at-carbon-capture-and-storage-facility",
+        "title": "SaskPower Marks 10 Years of Operation at Carbon Capture and Storage Facility",
+        "publisher": "SaskPower",
+        "date": "2024-11-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.saskatchewan.ca/government/news-and-media/2014/october/02/boundary-dam-3-launch",
+        "title": "SaskPower Launches World's First Commercial CCS Process",
+        "publisher": "Government of Saskatchewan",
+        "date": "2014-10-02",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sasktoday.ca/southeast/estevan-mercury/ccs-at-boundary-dam-nearly-flawless-in-first-3-months-of-2026-12141977",
+        "title": "CCS at Boundary Dam nearly flawless in first 3 months of 2026",
+        "publisher": "SaskToday / Estevan Mercury",
+        "date": "2026-04-14",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "94": [
+      {
+        "url": "https://static.aer.ca/prd/documents/by-topic/ccus/2023-EnhanceCO2-Annual-Report.pdf",
+        "title": "Enhance Energy Inc. Approval No. 12832M Clive D-3A Enhanced Oil Recovery Project 2023 Annual Report",
+        "publisher": "Alberta Energy Regulator (AER)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.canadianenergycentre.ca/inside-clive-a-model-for-reducing-emissions-while-adding-value-in-alberta",
+        "title": "Inside Clive, a model for reducing emissions while adding value in Alberta",
+        "publisher": "Canadian Energy Centre",
+        "date": "2025-06-24",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "133": [
+      {
+        "url": "https://www.epa.gov/ghgreporting/eastern-wyoming-sequestration-hub",
+        "title": "Eastern Wyoming Sequestration Hub",
+        "publisher": "US EPA",
+        "date": "2025-04-09",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.epa.gov/system/files/documents/2025-04/juniper_i-1_decision.pdf",
+        "title": "Technical Review of Subpart RR MRV Plan for Eastern Wyoming Sequestration Hub, Juniper I-1",
+        "publisher": "US EPA",
+        "date": "2025-04-14",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "176": [
+      {
+        "url": "https://www.dakotagas.com/about-us/co2-capture-and-storage/",
+        "title": "CO2 Capture and Storage",
+        "publisher": "Dakota Gasification Company",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.netl.doe.gov/research/Coal/energy-systems/gasification/gasifipedia/weyburn",
+        "title": "7.5.2. Weyburn Project",
+        "publisher": "U.S. Department of Energy / NETL",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.basinelectric.com/News-Center/_files/pdf/Fact-Sheets-Media-Kit/DGC-Fact-Sheet.pdf",
+        "title": "Great Plains Synfuels Plant",
+        "publisher": "Basin Electric Power Cooperative / Dakota Gasification Company",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "251": [
+      {
+        "url": "https://investor.exxonmobil.com/company-information/press-releases/detail/796/exxonmobil-expands-worlds-largest-carbon-capture-plant-in",
+        "title": "ExxonMobil Expands World's Largest Carbon Capture Plant in Wyoming",
+        "publisher": "ExxonMobil (Investor Relations)",
+        "date": "2010-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/general-interest/companies/article/17284133/exxonmobil-finishes-shute-creek-carbon-capture-expansion",
+        "title": "ExxonMobil finishes Shute Creek carbon capture expansion",
+        "publisher": "Oil & Gas Journal",
+        "date": "2010-12-13",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.pinedaleonline.com/news/2010/12/ExxonMobilexpandswor.htm",
+        "title": "ExxonMobil expands world's largest carbon capture plant in Wyoming",
+        "publisher": "Pinedale Online",
+        "date": "2010-12-12",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "252": [
+      {
+        "url": "https://www.epa.gov/sites/default/files/2019-12/documents/shutecreekdecision2019.pdf",
+        "title": "Technical Review of Subpart RR MRV Plan for ExxonMobil Shute Creek Treating Facility",
+        "publisher": "U.S. Environmental Protection Agency",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://sequestration.mit.edu/tools/projects/la_barge.html",
+        "title": "LaBarge Fact Sheet: Carbon Dioxide Capture and Storage Project",
+        "publisher": "MIT Carbon Capture and Sequestration Technologies",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20220224005079/en/ExxonMobil-to-Expand-Carbon-Capture-and-Storage-at-LaBarge-Wyoming-Facility",
+        "title": "ExxonMobil to Expand Carbon Capture and Storage at LaBarge, Wyoming, Facility",
+        "publisher": "Business Wire",
+        "date": "2022-02-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "293": [
+      {
+        "url": "https://nwrsturgeonrefinery.com/project/carbon-capture-and-storage",
+        "title": "Carbon Capture and Storage - Redwater - Sturgeon Refinery",
+        "publisher": "North West Redwater Partnership (Sturgeon Refinery)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.nwrefining.com/the-sturgeon-refinery/",
+        "title": "The Sturgeon Refinery - North West Refining",
+        "publisher": "North West Refining",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "295": [
       {
         "url": "https://totalenergies.com/news/press-releases/norway-northern-lights-facilities-completed-and-ready-store-co2",
@@ -139,6 +289,151 @@
         "publisher": "Financial Post",
         "date": "2020-07-10",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "358": [
+      {
+        "url": "https://www.santos.com/news/moomba-ccs-receives-record-australian-carbon-credit-units-after-first-year-of-operations/",
+        "title": "Moomba CCS receives record Australian Carbon Credit Units after first year of operations",
+        "publisher": "Santos",
+        "date": "2025-11-03",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.santos.com/news/santos-announces-fid-on-moomba-carbon-capture-and-storage-project/",
+        "title": "Santos announces FID on Moomba carbon capture and storage project",
+        "publisher": "Santos",
+        "date": "2021-11-01",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.santos.com/news/moomba-ccs-project-achieves-historic-emissions-reduction-milestone/",
+        "title": "Moomba CCS project achieves historic emissions reduction milestone",
+        "publisher": "Santos",
+        "date": "2026-05-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "374": [
+      {
+        "url": "https://www.equinor.com/energy/sleipner",
+        "title": "The Sleipner area - Equinor",
+        "publisher": "Equinor",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.equinor.com/news/archive/2019-06-12-sleipner-co2-storage-data",
+        "title": "Sleipner partnership releases CO2 storage data",
+        "publisher": "Equinor",
+        "date": "2019-06-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.norskpetroleum.no/en/environment-and-technology/carbon-capture-and-storage",
+        "title": "Carbon capture and storage - Norwegianpetroleum.no",
+        "publisher": "Norwegian Petroleum Directorate / Ministry of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "458": [
+      {
+        "url": "https://www.cfindustries.com/newsroom/2022/donaldsonville-carbon-capture",
+        "title": "Landmark Emissions-Reduction Project in Louisiana Announced; CF Industries, ExxonMobil, EnLink Midstream to Collaborate",
+        "publisher": "CF Industries",
+        "date": "2022-10-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20250713409457/en/CF-Industries-Announces-Start-up-of-Donaldsonville-Complex-CO2-Dehydration-and-Compression-Unit-Permanent-CO2-Sequestration",
+        "title": "CF Industries Announces Start-up of Donaldsonville Complex CO2 Dehydration and Compression Unit, Permanent CO2 Sequestration",
+        "publisher": "Business Wire",
+        "date": "2025-07-14",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.opportunitylouisiana.gov/news/cf-industries-announces-198-5-million-plan-to-produce-blue-ammonia-at-donaldsonville-complex",
+        "title": "CF Industries Announces $198.5 Million Plan to Produce Blue Ammonia at Donaldsonville Complex",
+        "publisher": "Louisiana Economic Development",
+        "date": "2022-08-05",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fertilizerdaily.com/20250716-cf-industries-starts-co2-dehydration-and-compression-operations-at-donaldsonville-complex/",
+        "title": "CF Industries starts CO2 dehydration and compression operations at Donaldsonville complex",
+        "publisher": "Fertilizer Daily",
+        "date": "2025-07-16",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "593": [
+      {
+        "url": "http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html",
+        "title": "全球最大煤电碳捕集示范工程在华能投运",
+        "publisher": "国务院国有资产监督管理委员会 (SASAC)",
+        "date": "2025-09-28",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://gansu.gansudaily.com.cn/system/2025/09/26/031253276.shtml",
+        "title": "全球最大煤电碳捕集示范工程在庆阳投运",
+        "publisher": "甘肃日报",
+        "date": "2025-09-26",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.ceec.net.cn/art/2023/7/18/art_11019_2528119.html",
+        "title": "中国能建建筑集团中标世界规模最大燃煤电厂碳捕集工程施工总承包项目",
+        "publisher": "中国能源建设股份有限公司 (CEEC)",
+        "date": "2023-07-18",
+        "tier": "press_release",
+        "itemLang": "zh"
+      }
+    ],
+    "659": [
+      {
+        "url": "https://ptrc.ca/past-projects/weyburn-midale",
+        "title": "Weyburn-Midale",
+        "publisher": "Petroleum Technology Research Centre",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/hgeo/articles/us-partners-canada-renew-funding-worlds-largest-international-co2-storage-project",
+        "title": "U.S. Partners with Canada to Renew Funding for World's Largest International CO2 Storage Project in Depleted Oil Fields",
+        "publisher": "U.S. Department of Energy",
+        "date": "2010-07-20",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.saskatchewan.ca/government/news-and-media/2025/september/05/energy-and-resources-minister-tours-key-oil-and-gas-facilities-in-southeast-saskatchewan",
+        "title": "Energy and Resources Minister Tours Key Oil and Gas Facilities in Southeast Saskatchewan",
+        "publisher": "Government of Saskatchewan",
+        "date": "2025-09-05",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "1312": [
+      {
+        "url": "https://corporate.exxonmobil.com/what-we-do/delivering-industrial-solutions/carbon-capture-and-storage/expanding-our-ccs-operations-in-louisiana-with-another-project-startup",
+        "title": "Expanding CCS in Louisiana",
+        "publisher": "ExxonMobil",
+        "date": "2026-02-18",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ]

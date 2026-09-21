@@ -88,6 +88,17 @@ pnpm manage:db:import:facility-news-research
 The ingest is idempotent, mirrors items across en/zh, skips duplicates by
 normalized URL, and re-sorts by tier. Never invent a URL or title.
 
+Link health is checked (advisory, read-only) with:
+
+```bash
+pnpm manage:db:audit:facility-news-links
+```
+
+It writes `governance/reports/facility_news_link_health.{json,md}` and buckets
+each URL as ok / dead (404/410) / blocked (anti-bot 401/403/406/418/429) /
+timeout / non_html / server_error / error. Only `dead` indicates link rot;
+`blocked` and `timeout` are environmental.
+
 ## 5. Frontend or documentation update
 
 - Change source components, styles, translations, or Markdown directly.
