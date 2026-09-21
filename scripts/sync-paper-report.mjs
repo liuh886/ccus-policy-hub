@@ -1,4 +1,6 @@
 import fs from 'fs';
+import os from 'os';
+import crypto from 'crypto';
 import path from 'path';
 import { execSync, spawnSync } from 'child_process';
 
@@ -15,6 +17,9 @@ import { execSync, spawnSync } from 'child_process';
  *
  * 用法:
  *   node scripts/sync-paper-report.mjs [--repo liuh886/2601_ESG30] [--slug 2601_ESG30] [--local-tex path/to/file.tex] [--skip-pdf]
+ *   node scripts/sync-paper-report.mjs --check
+ *     --check: 仅在临时目录重新生成，并与已提交的 public/reports/<slug>/index.html 比对，
+ *              若不一致则以退出码 1 报告“报告页与最新 paper draft 漂移”，不修改工作区文件。
  */
 
 const args = process.argv.slice(2);
@@ -26,14 +31,20 @@ function getArg(flag, defaultValue) {
 const repo = getArg('--repo', 'liuh886/2601_ESG30');
 const slug = getArg('--slug', '2601_ESG30');
 const localTex = getArg('--local-tex', null);
-const skipPdf = args.includes('--skip-pdf');
+const checkMode = args.includes('--check');
+const skipPdf = args.includes('--skip-pdf') || checkMode;
 
-const outDir = path.resolve('public/reports', slug);
+const committedHtmlPath = path.resolve('public/reports', slug, 'index.html');
+const outDir = checkMode
+  ? fs.mkdtempSync(path.join(os.tmpdir(), `ccus-report-check-${slug}-`))
+  : path.resolve('public/reports', slug);
 const outDataDir = path.join(outDir, 'data');
 fs.mkdirSync(outDataDir, { recursive: true });
 
 console.log(`[sync-paper-report] 开始处理报告: ${slug}`);
-console.log(`[sync-paper-report] 目标输出目录: ${outDir}`);
+console.log(
+  `[sync-paper-report] 目标输出目录: ${outDir}${checkMode ? ' (check 模式，仅临时目录)' : ''}`
+);
 
 const defaultLocalTex =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/paper_draft.tex';
@@ -68,10 +79,24 @@ if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
       `[sync-paper-report] 成功获取 TeX 源码，字符数: ${texContent.length}`
     );
   } catch (err) {
+    if (checkMode) {
+      console.warn(
+        `[sync-paper-report][check] ⚠️ 无法获取 paper draft 源码（本机 TeX 与 GitHub 均不可用），跳过漂移检查。`
+      );
+      process.exit(0);
+    }
     console.error(`[sync-paper-report] 获取 GitHub 源码失败:`, err.message);
     process.exit(1);
   }
 }
+
+// 源码指纹：用于在页面内标注所依据的 paper draft 版本，并支撑 --check 漂移比对
+const texSha = crypto
+  .createHash('sha256')
+  .update(texContent)
+  .digest('hex')
+  .slice(0, 16);
+console.log(`[sync-paper-report] paper draft sha256(前16位): ${texSha}`);
 
 // 提取并下载 TeX 中引用到的图片
 const imgMatches = [
@@ -983,22 +1008,19 @@ bodyHtml = bodyHtml.replace(fig2Regex, (match, src, caption) => {
   `;
 });
 
-// 6. 强化 5.1 ~ 5.3 核心政策建议标题徽章与视觉指引
+// 6. 统一 5.1 ~ 5.3 核心政策建议标题的版式与间距（不注入冗余编号徽章）
 const policyData = [
   {
     num: '5.1',
-    badge: '建议 01',
     id: '政策建议一将证据要求前置到集群遴选与可研设计',
   },
   {
     num: '5.2',
-    badge: '建议 02',
     id: '政策建议二建立连接工程事实与制度使用的接口',
   },
   {
     num: '5.3',
-    badge: '建议 03',
-    id: '政策建议三以影子评估验证长期责任接续条件',
+    id: '政策建议三通过影子评估检验长期责任审查的证据要求',
   },
 ];
 for (const p of policyData) {
@@ -1009,7 +1031,6 @@ for (const p of policyData) {
     return `
       <h2 data-number="${p.num}" id="${p.id}" class="policy-rec-heading">
         <span class="header-section-number">${p.num}</span>
-        <span class="policy-badge">${p.badge}</span>
         <span class="policy-title">${title.trim()}</span>
       </h2>
     `;
@@ -1040,6 +1061,7 @@ const template = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${docTitle} | CCUS Policy Hub</title>
   <meta name="description" content="${programName}：${docTitle}" />
+  <meta name="paper-source" content="paper_draft.tex sha256:${texSha}" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -1840,6 +1862,14 @@ const template = `<!DOCTYPE html>
       border-bottom: none;
     }
 
+    /* 卡片内表格滚动容器：去掉与卡片重复的边框/外边距，避免双层框与空档 */
+    .table-container-card .table-responsive-wrapper {
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     /* 附录 B 关键主张与证据边界映射表专属样式 */
     .table-claims-mapping {
       width: 100% !important;
@@ -1848,9 +1878,6 @@ const template = `<!DOCTYPE html>
       table-layout: fixed;
     }
     .table-claims-mapping th {
-      position: sticky;
-      top: 57px;
-      z-index: 10;
       background: var(--table-header);
       padding: 0.75rem 1rem;
       font-size: 0.85rem;
@@ -2703,17 +2730,6 @@ const template = `<!DOCTYPE html>
       margin-top: 3.5rem !important;
       padding-top: 0.75rem;
       position: relative;
-    }
-    .policy-badge {
-      font-family: var(--font-sans);
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: #ffffff;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      margin-right: 0.6rem;
-      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
     }
 
     /* 脚注区域美化 (Footnotes Endnotes) */
@@ -4395,3 +4411,40 @@ fs.writeFileSync(finalOut, template, 'utf8');
 
 console.log(`[sync-paper-report] 全部流水线执行完毕！`);
 console.log(`[sync-paper-report] 最终报告页面已保存至: ${finalOut}`);
+
+// --- check 模式：比对已提交页面与基于最新 TeX 的生成结果 ---
+if (checkMode) {
+  if (!fs.existsSync(committedHtmlPath)) {
+    console.error(
+      `[sync-paper-report][check] 未找到已提交页面: ${committedHtmlPath}`
+    );
+    process.exit(1);
+  }
+  const committed = fs.readFileSync(committedHtmlPath, 'utf8');
+  const regenerated = fs.readFileSync(finalOut, 'utf8');
+  const committedSha = crypto
+    .createHash('sha256')
+    .update(committed)
+    .digest('hex');
+  const regeneratedSha = crypto
+    .createHash('sha256')
+    .update(regenerated)
+    .digest('hex');
+
+  if (committed === regenerated) {
+    console.log(
+      `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
+    );
+    process.exit(0);
+  }
+
+  console.error(
+    `[sync-paper-report][check] ❌ 检测到漂移：已提交页面与最新 paper draft 不一致。`
+  );
+  console.error(`[sync-paper-report][check]   已提交 : ${committedSha}`);
+  console.error(`[sync-paper-report][check]   应生成 : ${regeneratedSha}`);
+  console.error(
+    `[sync-paper-report][check]   请运行 \`pnpm report:sync\` 重新生成并提交 public/reports/${slug}/index.html。`
+  );
+  process.exit(1);
+}

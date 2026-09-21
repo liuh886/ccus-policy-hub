@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 | CCUS Policy Hub</title>
   <meta name="description" content="ESG30 青年学者计划（二期）：从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础" />
+  <meta name="paper-source" content="paper_draft.tex sha256:51f99e8b588b7eb7" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -805,6 +806,14 @@
       border-bottom: none;
     }
 
+    /* 卡片内表格滚动容器：去掉与卡片重复的边框/外边距，避免双层框与空档 */
+    .table-container-card .table-responsive-wrapper {
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     /* 附录 B 关键主张与证据边界映射表专属样式 */
     .table-claims-mapping {
       width: 100% !important;
@@ -813,9 +822,6 @@
       table-layout: fixed;
     }
     .table-claims-mapping th {
-      position: sticky;
-      top: 57px;
-      z-index: 10;
       background: var(--table-header);
       padding: 0.75rem 1rem;
       font-size: 0.85rem;
@@ -1669,17 +1675,6 @@
       padding-top: 0.75rem;
       position: relative;
     }
-    .policy-badge {
-      font-family: var(--font-sans);
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: #ffffff;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      margin-right: 0.6rem;
-      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
-    }
 
     /* 脚注区域美化 (Footnotes Endnotes) */
     .footnotes {
@@ -2412,7 +2407,7 @@
         <h1 class="paper-title">从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础</h1>
         <div class="paper-meta">
           <div class="meta-item"><strong>作者团队：</strong>刘志豪、崔博宇、吴俊军、施闻如</div>
-          <div class="meta-item"><strong>发布日期：</strong>2026年9月15日</div>
+          <div class="meta-item"><strong>发布日期：</strong>2026年9月21日</div>
           <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
         </div>
 
@@ -2458,14 +2453,16 @@
     <strong>图文总览：</strong>展示了从“单点技术示范”迈向“集群化枢纽治理”的系统动力学演进路径、关键制度瓶颈以及 dMRV 作为产业信用基础设施的协同支撑关系。
   </div>
 </div>
+<p>注：责任曲线为概念示意，不表示责任随时间自动递减；责任移交须满足适用法律及审批条件。</p>
 <h1 class="unnumbered" id="研究方法分析框架与材料说明">研究方法、分析框架与材料说明</h1>
 <p>本文采用制度比较与技术创新系统（TIS）分析。制度比较用于识别主要法域在价值形成、先导风险分担、基础设施组织、许可和长期责任等方面的制度差异；TIS 七项功能则作为诊断语言，用于观察外部压力、既有产业与制度基础、首先出现的功能瓶颈、缓解瓶颈的主体与工具，以及治理组合能否由示范启动转入稳定扩张<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="80" id="cite-return-hekkert2007" title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">80</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="81"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">81</a>]</sup>。本文不将 TIS 用作等权评分模型；考虑到 CCUS 的网络型特征，比较中额外关注“源—网—库”能否同步形成。</p>
 <p>本文属于前瞻性政策研究，分析边界限定于工业集群场景下的 CCUS 地质封存项目，核心对象包括多源碳捕集、共享运输网络以及咸水层或枯竭油气田集中封存。自然碳汇和一般自愿碳抵消项目不属于本文主要讨论范围。第三章进一步分析 dMRV 如何把工程监测与运行记录组织为可供核证、结算、监管、金融和责任审查使用的证据，但该证据机制本身不是本文预设的研究结论。</p>
 <p>材料主要来自三类来源：法规、标准和政策文本用于确认制度要求和监管边界；企业、项目方及主管机构公开材料用于确认项目状态、技术路径和运行安排；同行评议文献与机构研究报告用于支撑技术判断、产业趋势和情景分析。对合同字段、责任分摊、保险安排、实际运营数据等公开资料无法充分覆盖的事项，本文仅作与证据强度相匹配的方向性判断，并在附录说明研究边界。</p>
+<p>政策与案例材料以截至 2026 年 9 月 15 日采用的公开资料为比较边界；项目分布统计另采用 2026 年 3 月数据库快照，不代表截至报告修订日的项目普查。</p>
 <h1 data-number="1" id="ccus-规模化的系统障碍与治理转型"><span class="header-section-number">1</span> CCUS 规模化的系统障碍与治理转型</h1>
 <h2 data-number="1.1" id="从吉吨级需求到交付鸿沟"><span class="header-section-number">1.1</span> 从吉吨级需求到交付鸿沟</h2>
 <p>风光水核、终端电气化和能效提升将承担净零转型的主体减排任务，但钢铁、水泥、化工等行业仍存在难以消除的过程排放和高温工艺需求；部分低排放能源生产仍可能形成 CO<sub>2</sub> 捕集需求，航空、航运和农业等领域难以消除的剩余排放则需要碳移除加以抵消。因此，主流净零情景对碳捕集、利用与封存（CCUS）提出了吉吨级部署要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-nze2023" data-cite="iea-nze2023" data-index="26" id="cite-return-iea-nze2023" title="IEA. (2023). Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach – 2023 Update. IEA, Paris. https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach">26</a>]</sup>。这一要求进一步进入国家规划、产业目标和政策工具：欧盟设置 CO<sub>2</sub> 注入能力目标，英国推进集群排序和输送封存商业模式，美国以《美国国内税收法典》第45Q条（45Q）税收抵免改善项目收益预期，挪威和加拿大则依托油气工程、公共资本和长期责任安排发展共享封存能力<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1" id="cite-return-epa-class6" title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2"  title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4"  title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="34"  title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">34</a>]</sup>。</p>
-<p>上述政策预期已体现为快速扩张的项目规划，但规划储备与工程落地之间仍存在显著差距。截至 2026 年，全球公开披露的 CCUS 前瞻性项目规划<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>规模约为 954 MtCO<sub>2</sub>/yr，而同期 86 个已运行项目与 37 个在建项目的合计记录规模仅约 150.3 MtCO<sub>2</sub>/yr，大量规划容量仍停留在前期开发阶段，尚未转化为已运行或在建能力。按项目方披露的投运时间表，至 2036 年前后，前瞻性规划规模增长至约 2,243 MtCO<sub>2</sub>/yr，而已运行和在建项目预期规模仅约 224 MtCO<sub>2</sub>/yr（<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与预期交付缺口">图 1</a>）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>。</p>
+<p>上述政策预期已体现为快速扩张的项目规划，但规划储备与工程落地之间仍存在显著差距。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计约为 150.3 MtCO<sub>2</sub>/yr。按项目方披露的投运时间表，至 2036 年前后，前瞻性规划记录规模约为 2,243 MtCO<sub>2</sub>/yr，而已运行和在建项目的累计记录规模约为 224 MtCO<sub>2</sub>/yr（<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与预期交付缺口">图 1</a>）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>。</p>
 <p>规划规模快速增长，并不意味着捕集、运输和封存能力能够同步形成。捕集项目较容易形成规划储备，而运输网络、封存库容、注入井体系、监测设施和长期责任安排往往需要更长建设周期和更复杂的跨主体协调。以美国为例，Princeton Net-Zero America 研究显示，实现净零情景所需 CO<sub>2</sub> 输送网络规模可能达到约 10 万公里，说明 CCUS 规模化不仅依赖捕集设施建设，也依赖跨区域运输和共享基础设施的同步形成<sup class="citation-cluster">[<a class="cite-ref" href="#ref-larson2020nza" data-cite="larson2020nza" data-index="29" id="cite-return-larson2020nza" title="Larson, E., et al. (2020). Net-Zero America: Potential Pathways, Infrastructure, and Impacts. Princeton University. https://netzeroamerica.princeton.edu/the-report">29</a>]</sup>。捕集能力只有获得运输封存服务、收入机制、核证和长期责任安排的共同支撑，才能转化为稳定交付。CCUS 规模化的难题由此从“技术是否存在”转向“多个环节和主体能否共同形成产业能力”。</p>
 <p>尽管百万吨级 CCUS 项目已在加拿大、挪威等地持续运行，并形成长期监测、跨主体交付和公开披露实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="9" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO<sub>2</sub>. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="11"  title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">11</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-status2025" data-cite="gccsi-status2025" data-index="58"  title="Global CCS Institute. (2025). Global Status of CCS 2025: Staying the Course. https://www.globalccsinstitute.com/resources/global-status-report/">58</a>]</sup>，这些项目所证明的首先是工程可以建设和运行，尚不能直接回答产业能否持续扩张。项目全寿命期持续承受捕集、压缩、运输、注入和监测带来的能源惩罚；共享设施还要在初始流量、容量利用和远期扩容之间取得平衡；地质封存结果必须持续得到证明，异常、损耗和责任也要在不同主体之间明确归属；长期资本则据此判断合同、现金流和风险边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ab2024" data-cite="ab2024" data-index="23" id="cite-return-ab2024" title="AllianceBernstein. (2024年11月). Can the Energy Transition Happen? (Reality Check Series). https://www.alliancebernstein.com/content/dam/global/insights/insights-whitepapers/can-the-energy-transition-happen_final.pdf">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="74"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">74</a>]</sup>。因此，百万吨级示范之后的核心问题已经由“能否建成”转向“能否以可承担的代价长期运行、能否组织为稳定网络、能否形成可信的减排结果”。</p>
 <p>中国尤其值得观察：大型能源和工业企业、公共组织资源与工程供应链使项目动员和工程实施具备较强基础，但捕集源、运输封存设施和长期责任往往跨行业、跨区域和跨部门。如何把工程动员能力转化为稳定的跨主体治理能力，为理解不同于成熟市场体系的 CCUS 集群形成路径提供了另一类样本。</p>
@@ -2483,7 +2480,7 @@
       </div>
       <div class="figure-notes">
         <span class="note-tag">数据说明</span>
-        <div class="note-text">数据引自 CCUS Policy Hub，基于 IEA <em>CCUS Projects Database</em> 2026 年 3 月版本整理，共收录全球 1,110 个 CCUS 项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>。图中容量采用数据库记录的预计年处理能力（<em>estimated capacity</em>）；前瞻性项目规划纳入未标记为 Cancelled、Suspended 或 Decommissioned，且披露预计投运时间的项目，预期交付仅包括状态为 Operational 或 Under construction 的项目。主图按公开投运时间表累计项目容量，其中 2020–2026 年数据来自同一数据库快照，2027–2036 年反映项目方披露的前瞻性项目规划时间表，并非对实际投产能力的预测。“转化缺口”为前瞻性项目规划与预期交付规模之差，用于衡量项目完成最终投资决策（FID）、许可审批、工程建设和封存权落实所面临的转化风险。右侧按地区及 IEA 项目类型展示 2026 年项目构成；Capture、Transport、T&amp;S、Storage、Full chain 与 CCU/Utilisation 分别对应价值链不同环节，其记录容量不代表已经匹配的端到端系统能力，Transport 容量亦不应解释为可直接累加的系统输送能力。</div>
+        <div class="note-text">数据引自 CCUS Policy Hub，基于 IEA <em>CCUS Projects Database</em> 2026 年 3 月版本整理，共收录全球 1,110 个 CCUS 项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>。图中容量采用数据库记录的预计年处理能力（<em>estimated capacity</em>）；前瞻性项目规划纳入未标记为 Cancelled、Suspended 或 Decommissioned，且披露预计投运时间的项目，预期交付仅包括状态为 Operational 或 Under construction 的项目。主图按公开投运时间表累计项目容量，其中 2020–2026 年数据来自同一数据库快照，2027–2036 年反映项目方披露的前瞻性项目规划时间表，并非对实际投产能力的预测。图中“交付”“历史交付”均包含在建记录；“转化缺口”为前瞻性项目规划与预期交付规模之差。右侧按地区及 IEA 项目类型展示 2026 年项目构成；Capture、Transport、T&amp;S、Storage、Full chain 与 CCU/Utilisation 分别对应价值链不同环节，其记录容量不代表已经匹配的端到端系统能力，Transport 容量亦不应解释为可直接累加的系统输送能力。</div>
       </div>
     </figure>
   
@@ -2916,7 +2913,7 @@
 <h2 data-number="4.2" id="北极光northern-lights服务化运营与跨境治理接口"><span class="header-section-number">4.2</span> 北极光（Northern Lights）：服务化运营与跨境治理接口</h2>
 <p>Northern Lights 的客户购买的不只是单项工程能力，而是 CO<sub>2</sub> 被接收、运输、封存并获得证明的服务结果。该项目由 Equinor、Shell 和 TotalEnergies 共同组建，是 Longship 框架下的 CO<sub>2</sub> 运输与封存运营主体，同时以开放接入模式服务欧洲其他排放源。项目将船运、陆上接收与中转、海底管输和地质封存组织为一体化服务，首期设计接收与封存能力为 150 万吨/年<sup class="citation-cluster">[<a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="46" id="cite-return-wettestad2024norway" title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">46</a>]</sup>。</p>
 <p>项目官方披露显示，Northern Lights 于 2025 年 8 月宣布完成首次 CO<sub>2</sub> 注入，首批来源为挪威 Brevik 水泥厂<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="9" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO<sub>2</sub>. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">9</a>]</sup>。CO<sub>2</sub> 在 Øygarden 接收站汇集后，经约 100 公里海底管道输送至海床下约 2600 米的 Aurora 储层。同年 12 月，公司宣布签发首批封存凭证（storage certificates）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="10" id="cite-return-northernlights-certs" title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO<sub>2</sub> storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">10</a>]</sup>。凭证以特定船次货载为对应单位，记录封存量及相关运输封存环节的排放分摊，并通过数字化系统维护凭证台账。其意义在于，将一次实际交付与可供客户核对的封存证明对应起来。</p>
-<p>2026 年 9 月，随着荷兰 Yara Sluiskil 捕集设施正式启用，双方宣布启动跨境 CCS 运营，将荷兰工业排放源接入挪威运输与永久封存设施<sup class="citation-cluster">[<a class="cite-ref" href="#ref-yara-sluiskil2026" data-cite="yara-sluiskil2026" data-index="99" id="cite-return-yara-sluiskil2026" title="Yara International. (2026年9月7日). Yara and Northern Lights start operations of commercial cross-border CCS value chain. https://www.yara.com/news-and-insights/news/2026/yara-and-northern-lights-start-operations/">99</a>]</sup>。</p>
+<p>2026 年 9 月，随着荷兰 Yara Sluiskil 捕集设施正式启用，双方宣布启动跨境 CCS 运营，将荷兰工业排放源接入挪威运输与永久封存设施<sup class="citation-cluster">[<a class="cite-ref" href="#ref-yara-sluiskil2026" data-cite="yara-sluiskil2026" data-index="99" id="cite-return-yara-sluiskil2026" title="Yara International. (2026年9月7日). Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands. https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/">99</a>]</sup>。</p>
 <p>开放式基础设施使证据链必须跨越捕集方、运输方、接收端、封存运营方和核证主体。每批 CO<sub>2</sub> 都需要保持来源、数量、流质、交接点、运输区段、注入位置、损耗和服务链排放之间的一致记录。这些信息可为服务结算和责任识别提供依据，其具体效力仍取决于合同和适用规则。数字化交付记录需要与许可、客户合同和跨境规则衔接，才能支撑封存服务的交付确认与结算<sup class="citation-cluster">[<a class="cite-ref" href="#ref-imo-ccs" data-cite="imo-ccs" data-index="5" id="cite-return-imo-ccs" title="International Maritime Organization. (2025). Carbon Capture and Storage and the London Protocol. https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx">5</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-london-article6" data-cite="london-article6" data-index="6"  title="International Maritime Organization. (2009). Resolution LP.3(4): Amendment to Article 6 of the London Protocol. https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/LCLPDocuments/LP.3(4).pdf">6</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-london-provisional" data-cite="london-provisional" data-index="7"  title="International Maritime Organization. (2019). Resolution LP.5(14): Provisional Application of the 2009 Amendment to Article 6 of the London Protocol. https://www.imo.org/en/knowledgecentre/indexofimoresolutions/pages/ldc-lc-lp.aspx">7</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="46"  title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">46</a>]</sup>。封存凭证提供的是服务交付与封存事实的证明，不能仅凭凭证签发就认定已经生成碳信用、完成长期责任转移，或核定了捕集至封存全链条的净减排量。</p>
 <h2 data-number="4.3" id="大亚湾集群中国沿海场景形成期的制度需求识别"><span class="header-section-number">4.3</span> 大亚湾集群（中国沿海场景）：形成期的制度需求识别</h2>
 <p>中国海油披露，大亚湾区 CCS/CCUS 集群示范项目于 2025 年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="32" id="cite-return-cnooc-results2026" title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">32</a>]</sup>。本节据此将其作为集群形成期场景，重点讨论多排放源与共享运输封存设施之间需要提前明确的证据和责任安排。此前，中国海油在恩平 15-1 先后实施了海上咸水层封存示范与驱油工程，为离岸封存积累了工程与监测经验<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc2024" data-cite="cnooc2024" data-index="20" id="cite-return-cnooc2024" title="CNOOC Limited. (2024). 2023 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc-esg2024" data-cite="cnooc-esg2024" data-index="30"  title="CNOOC Limited. (2025年4月8日). 2024 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202504/P020250408542745334285.pdf">30</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc-enping2025" data-cite="cnooc-enping2025" data-index="31"  title="CNOOC Limited. (2025年8月27日). 油气产量再创新高盈利能力韧性凸显——中国海油公布2025年中期业绩. https://www.cnoocltd.com/xwzx/gsxw/2025/202508/t20250827_117385.html">31</a>]</sup>。大亚湾项目面向石化区多排放源与珠江口盆地离岸集中封存，体现了沿海 CCUS 从单点示范走向多主体集群治理的过渡。</p>
@@ -3015,7 +3012,6 @@
 
       <h2 data-number="5.1" id="政策建议一将证据要求前置到集群遴选与可研设计" class="policy-rec-heading">
         <span class="header-section-number">5.1</span>
-        <span class="policy-badge">建议 01</span>
         <span class="policy-title">政策建议一：将证据要求前置到集群遴选与可研设计</span>
       </h2>
     
@@ -3034,7 +3030,6 @@
 
       <h2 data-number="5.2" id="政策建议二建立连接工程事实与制度使用的接口" class="policy-rec-heading">
         <span class="header-section-number">5.2</span>
-        <span class="policy-badge">建议 02</span>
         <span class="policy-title">政策建议二：建立连接工程事实与制度使用的接口</span>
       </h2>
     
@@ -3042,7 +3037,12 @@
 <p>《绿色金融支持项目目录（2025年版）》为符合条件的 CCUS 项目提供绿色金融分类依据，但实际融资仍取决于项目收益、信用结构、政策支持、合同安排和风险分担<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="19" id="cite-return-pboc-green-finance-2025" title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">19</a>]</sup>。授信、核保和定价仍由相应机构判断；dMRV 将许可、运行、核证、责任边界和异常处置等工程状态转换为可复核信息，为这些判断提供证据支持。</p>
 <p>试点宜从服务对账或核证复核等明确用途入手，由项目运营方与至少一个实际使用方共同试用轻量接口，验证字段、权限、调用与撤销、异常样本和历史状态能否满足工作需要，再逐步扩展至金融、保险或监管场景。例如，可选取同一结算期的项目数据，由运营方与服务客户分别通过现行流程和试用接口完成对账，并设置计量更正、资料缺失和权限撤销等测试情景，检查使用方能否追溯依据、识别修订影响并保留历史结果。初期试用可以采用统一格式的材料包和受控文件交换，不以新建平台或完成系统联调为前提。</p>
 <p>试用前后应在用途、数据范围和样本复杂度相近的条件下比较工作量，并同时记录错漏、无法复核的事项及新增的数据维护成本，避免仅以处理速度评价接口成效。接口成效可结合审计准备时长、重复材料索取次数、关键字段来源可追溯率、历史状态复原成功率及异常处置与复核耗时综合观察，重点识别证据转换摩擦，不形成统一评分。后续接口扩展和系统整合应以试用结果为依据，不以建设统一平台为前提。</p>
-<h2 data-number="5.3" id="政策建议三通过影子评估检验长期责任审查的证据要求"><span class="header-section-number">5.3</span> 政策建议三：通过影子评估检验长期责任审查的证据要求</h2>
+
+      <h2 data-number="5.3" id="政策建议三通过影子评估检验长期责任审查的证据要求" class="policy-rec-heading">
+        <span class="header-section-number">5.3</span>
+        <span class="policy-title">政策建议三：通过影子评估检验长期责任审查的证据要求</span>
+      </h2>
+    
 <p>建议在封存试点中开展长期责任影子评估。本文所称影子评估，是在不改变现有责任安排的条件下，使用项目材料开展的模拟审查。其目的在于检验证据要求是否清楚、材料是否充分，以及不同专业人员能否据此形成可解释的判断，不对项目能否移交责任作出具有法律效力的结论。对于设置责任接续节点的制度，长期责任审查应综合考虑时间要求、持续监测、风险状态、关闭条件和资金保障。</p>
 <p>模拟审查可围绕四类审查问题展开：</p>
 <ul>
@@ -3061,7 +3061,7 @@
 <p>上述三项任务分别形成证据设计要求、跨主体接口试用结果和长期责任模拟审查记录。对反复出现、能够通用的问题，可提炼为合同条款、操作指引或技术规范建议；涉及法定职责和责任转移的事项，则应另行开展制度论证，并依相应程序推进。具体实施节奏与技术路径由有关部门、地方产业集群和工程联合体结合项目成熟度、集群结构和既有系统因地制宜确定。</p>
 <h1 data-number="6" id="结论"><span class="header-section-number">6</span> 结论</h1>
 <p>CCUS 从单点示范走向规模化集群，治理对象由单个项目合规扩展为跨主体、跨环节和跨周期的运行网络。吉吨级部署预期和快速增长的项目储备不会自然转化为工程交付能力。规模化需要通过政策工具组合弥补全链条价值缺口并分担储层评价、先导基础设施等早期风险，以长期商业契约协调“源—网—库”的投资时序、交付义务与风险分配，推动捕集、运输和封存同步形成产业能力。</p>
-<p>不同治理模式的差异，主要来自各阶段的功能瓶颈和风险承担方式。能源惩罚构成长期运行的工程绩效约束，反映单位净避免排放所付出的能源、成本和附加排放代价；首发风险则影响项目能否跨过初始投资门槛，需要通过公共资本、风险分担和长期合同缓释。两类问题需要分别配置技术改进方向和政策工具。</p>
+<p>不同治理模式的差异，主要来自各阶段的功能瓶颈和风险承担方式。能源惩罚构成长期运行的工程绩效约束，本文以单位净避免排放对应的额外一次能源投入表示；其成本与附加排放后果还取决于能源价格和碳强度。首发风险则影响项目能否跨过初始投资门槛，需要通过公共资本、风险分担和长期合同缓释。两类问题需要分别配置技术改进方向和政策工具。</p>
 <p>当集群进入多主体运行后，交付与归因、风险与责任、金融与外部信任成为三类制度接口。dMRV 通过规则字段化、连续证据和差异化接口，把来源、交接、能源投入、链条排放、注入封存、异常处置和责任状态组织为可追溯的共同事实。本文将这种能力概括为“产业信用基础设施”：它使支持政策、商业结算和监管规则能够基于同一组真实运行证据进行复核，并随运行结果持续调整。</p>
 <p>对中国而言，下一阶段宜沿“探索示范—集群形成—规模扩张”推进，并优先在具备条件的项目中验证证据前置、差异化接口和长期责任影子评估。经过多项目、多周期运行后，再将成熟安排逐步固化为合同、行业规则或正式监管要求。</p>
 <section id="全球-ccus-项目分布与统计口径" class="landscape" data-number="7">
@@ -3160,7 +3160,7 @@
       
     <div class="table-notes-footer">
       <span class="note-tag">口径说明</span>
-      <div class="note-text"><strong>口径与筛选说明：</strong> （1）状态与年份界定：“已运行”为原始数据库快照记录的项目状态，不代表截至全文截稿日对每个项目运行现状的重新核实；“在建”仅包括数据库状态为 Under construction、且项目披露预计投运年份不晚于 2026 年底的记录，预计投运并不等同于项目已在 2026 年内实际完成投运；预计投运年份晚于 2026 年或未披露投运年份的在建项目记录予以排除，不计入本表。 （2）处理能力与环节边界：处理能力采用数据库中登记的项目记录预计年处理能力（MtCO<sub>2</sub>/年）归类加总；由于捕集、运输、运输与封存、封存、全产业链和利用等项目记录覆盖的价值链环节不同，各环节数字不能简单累加理解为已经完成源汇匹配的端到端系统封存能力。 （3）收录范围与数据库版本：IEA CCUS Projects Database 主要收录具备一定工程规模的商业与先导项目（通常捕集规模不低于 10 万吨/年，少数典型小型先导除外），并非全球所有小微 CCUS 设施的完整普查。本表数据锁定自 IEA CCUS Projects Database（2026 年 3 月版快照）及 CCUS Policy Hub 导出整理记录<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>；在线数据库随项目跟踪动态更新可能产生微差（如个别项目状态在快照截点后调整、分类口径更新或投运年份推迟，导致在线聚合显示为在建 35 条、54.8 MtCO<sub>2</sub>/年），本表严格保留基线快照的逐项加总记录以确保统计复核一致性。其他地区指除美国、加拿大、中国、挪威、欧盟及英国之外的地区。</div>
+      <div class="note-text"><strong>口径与筛选说明：</strong> （1）状态与年份界定：“已运行”为原始数据库快照记录的项目状态，不代表截至全文截稿日对每个项目运行现状的重新核实；“在建”仅包括数据库状态为 Under construction、且项目披露预计投运年份不晚于 2026 年底的记录，预计投运并不等同于项目已在 2026 年内实际完成投运；预计投运年份晚于 2026 年或未披露投运年份的在建项目记录予以排除，不计入本表。 （2）处理能力与环节边界：处理能力采用数据库中登记的项目记录预计年处理能力（MtCO<sub>2</sub>/年）归类加总；由于捕集、运输、运输与封存、封存、全产业链和利用等项目记录覆盖的价值链环节不同，各环节数字不能简单累加理解为已经完成源汇匹配的端到端系统封存能力。 （3）收录范围与数据库版本：IEA CCUS Projects Database 主要收录具备一定工程规模的商业与先导项目（通常捕集规模不低于 10 万吨/年，少数典型小型先导除外），并非全球所有小微 CCUS 设施的完整普查。本表数据基于 IEA CCUS Projects Database（2026 年 3 月版）与 CCUS Policy Hub 整理<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="27" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="73"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">73</a>]</sup>；在线数据库随项目跟踪动态更新，可能与本表快照存在微差，本表保留快照口径以保障统计可复核。其他地区指除美国、加拿大、中国、挪威、欧盟及英国之外的地区。</div>
     </div>
     </div>
   
@@ -4948,7 +4948,7 @@
           <span class="ref-badge">[99]</span>
         </div>
         <div class="ref-content-col">
-          <div class="ref-body">Yara International. (2026年9月7日). <em>Yara and Northern Lights start operations of commercial cross-border CCS value chain</em>. <a href="https://www.yara.com/news-and-insights/news/2026/yara-and-northern-lights-start-operations/" class="uri">https://www.yara.com/news-and-insights/news/2026/yara-and-northern-lights-start-operations/</a></div>
+          <div class="ref-body">Yara International. (2026年9月7日). <em>Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands</em>. <a href="https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/" class="uri">https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/</a></div>
           <div class="ref-actions">
             <a href="#cite-return-yara-sluiskil2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
           </div>
@@ -4958,16 +4958,6 @@
       </div>
     </section>
   
-
-  <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-    <div class="footnotes-header">
-      <span class="footnotes-title">📑 脚注说明 (Footnotes)</span>
-    </div>
-
-<ol>
-<li id="fn1"><p>注：IEA 数据库展示了全球不同环节（捕集、运输、封存、全流程等）项目规划与储备管线的分布特征，反映出“规划活跃但端到端落地滞后”的结构性现象，限定其统计描述含义，不作为精确的端到端系统产能衡量。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
       </article>
 

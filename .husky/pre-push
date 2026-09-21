@@ -3,3 +3,7 @@
 # Heavier gates run here instead of pre-commit so commits stay frictionless;
 # CI repeats everything.
 bash -lc 'pnpm exec astro check && pnpm test'
+
+# 报告页防漂移：确认 public/reports/2601_ESG30 与最新 paper draft 一致。
+# 若本机与 GitHub 均无 paper draft 源码，脚本会自行跳过（退出码 0），不会阻塞推送。
+bash -lc 'pnpm report:check'
