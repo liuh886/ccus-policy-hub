@@ -467,6 +467,14 @@ preprocessedTex = preprocessedTex.replace(
   '$1'
 );
 
+// 3. 保护正文/表格中的中文方括号标记（如 [本文分析]、[项目披露]、[本文建议]）。
+// Pandoc 在解析 longtable 时会将行首的 [xxx] 误当作 \\ 的可选参数而静默丢弃，
+// 用 {[}...{]} 包裹后可确保方括号原样保留并正常渲染。
+preprocessedTex = preprocessedTex.replace(
+  /\[([\u4e00-\u9fff][^\]\r\n]{0,20})\]/g,
+  '{[}$1{]}'
+);
+
 const tempTexPath = path.join(outDir, '_temp_build.tex');
 fs.writeFileSync(tempTexPath, preprocessedTex, 'utf8');
 
@@ -661,26 +669,58 @@ bodyHtml = bodyHtml.replace(claimsRegex, (m, caption, inner) => {
   `;
 });
 
-// 5. 将所有其它未包裹的 <table> 包裹进响应式容器
+// 5. 为正文中带编号的数据表（表 3-1 / 3-2 / 4-1）注入表号徽标与卡片式表头，
+// 使正文交叉引用与表格本体一一对应，避免“有引用、无表号”的断层。
+const numberedTables = {
+  'tab:dmrv_minimum_fields': '表 3-1',
+  'tab:dmrv_governance_mapping': '表 3-2',
+  'tab:case_evidence_comparison': '表 4-1',
+};
+for (const [label, badge] of Object.entries(numberedTables)) {
+  const re = new RegExp(
+    `<div id="${label}">\\s*<table>\\s*<caption>([\\s\\S]*?)<\\/caption>([\\s\\S]*?)<\\/table>\\s*<\\/div>`
+  );
+  bodyHtml = bodyHtml.replace(re, (m, caption, inner) => {
+    return `
+    <div class="table-container-card" id="${label}">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">${badge}</span>
+          <span class="table-title">${caption.trim()}</span>
+        </div>
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table table-numbered">
+          ${inner}
+        </table>
+      </div>
+    </div>
+  `;
+  });
+}
+
+// 6. 将所有其它未包裹的 <table> 包裹进响应式容器
 bodyHtml = bodyHtml.replace(/<table>([\s\S]*?)<\/table>/g, (match, inner) => {
   return `<div class="table-responsive-wrapper"><table class="standard-table">${inner}</table></div>`;
 });
 
 // 4. 修复正文中的图表交叉引用标签 (data-reference)
+// 注意：TeX 原文写作“表~\ref{...}”“图~\ref{...}”，Pandoc 会生成独立链接。
+// 因此需连同前置的“表/图”一并替换，避免出现“表 表 2-1”式重复。
 bodyHtml = bodyHtml.replace(
-  /<a href="#tab:governance_benchmark"[^>]*>\[tab:governance_benchmark\]<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:governance_benchmark"[^>]*>\[tab:governance_benchmark\]<\/a>/g,
   '<a href="#tab:governance_benchmark" class="table-ref-link" title="点击查看表 2-1 全球治理对标表">表 2-1（全球治理对标表）</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /<a href="#tab:dmrv_minimum_fields"[^>]*>1<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:dmrv_minimum_fields"[^>]*>1<\/a>/g,
   '<a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1">表 3-1</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /<a href="#tab:dmrv_governance_mapping"[^>]*>3<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:dmrv_governance_mapping"[^>]*>3<\/a>/g,
   '<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-2">表 3-2</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /<a href="#tab:case_evidence_comparison"[^>]*>4<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:case_evidence_comparison"[^>]*>4<\/a>/g,
   '<a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1">表 4-1</a>'
 );
 bodyHtml = bodyHtml.replace(

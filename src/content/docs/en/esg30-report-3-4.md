@@ -6,7 +6,7 @@ order: 1
 
 # Governance Mix and dMRV Evidence Base for CCUS Scaling
 
-> **Report Version**: v3.4 ｜ **Program**: ESG30 Young Scholars Program (Phase II) ｜ **Date**: September 15, 2026  
+> **Report Version**: v3.4 ｜ **Program**: ESG30 Young Scholars Program (Phase II) ｜ **Date**: September 21, 2026  
 > **Interactive Features**: Full-screen academic report interface with 7-jurisdiction benchmark matrix, collapsible TOC, in-text commenting, structured export, and 36-page native XeLaTeX vector PDF download.
 
 <div style="margin: 2rem 0; padding: 1.5rem 1.75rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(99, 102, 241, 0.04)); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 1rem;">

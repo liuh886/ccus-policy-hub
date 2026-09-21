@@ -6,7 +6,7 @@ order: 1
 
 # CCUS 规模化的治理组合与 dMRV 证据基础
 
-> **课题报告版本**：v3.4 ｜ **归属计划**：ESG30 青年学者计划（二期） ｜ **发布日期**：2026年9月15日  
+> **课题报告版本**：v3.4 ｜ **归属计划**：ESG30 青年学者计划（二期） ｜ **发布日期**：2026年9月21日  
 > **报告载体**：支持全屏学术交互研讨页面（含 7 法域横向对标矩阵、目录折叠、划词批注与结构化导出）及 36 页 XeLaTeX 原版矢量 PDF 下载。
 
 <div style="margin: 2rem 0; padding: 1.5rem 1.75rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(99, 102, 241, 0.04)); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 1rem;">
