@@ -42,6 +42,7 @@
     "report:sync": "node scripts/sync-paper-report.mjs --skip-pdf",
     "report:sync:full": "node scripts/sync-paper-report.mjs",
     "report:check": "node scripts/sync-paper-report.mjs --check",
+    "report:check:strict": "node scripts/sync-paper-report.mjs --check --strict",
     "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs agent/ccus-ai-agent/migrations/20*/*.test.mjs"
   },
   "dependencies": {

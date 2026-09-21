@@ -18,8 +18,10 @@ import { execSync, spawnSync } from 'child_process';
  * 用法:
  *   node scripts/sync-paper-report.mjs [--repo liuh886/2601_ESG30] [--slug 2601_ESG30] [--local-tex path/to/file.tex] [--skip-pdf]
  *   node scripts/sync-paper-report.mjs --check
- *     --check: 仅在临时目录重新生成，并与已提交的 public/reports/<slug>/index.html 比对，
- *              若不一致则以退出码 1 报告“报告页与最新 paper draft 漂移”，不修改工作区文件。
+ *     --check: 环境无关的漂移检查。读取已提交页面内的 paper-source 溯源指纹（及 PDF）
+ *              与最新 paper draft 比对，不一致则以退出码 1 报告，不修改工作区文件。
+ *   node scripts/sync-paper-report.mjs --check --strict
+ *     --strict: 额外在临时目录整页重新生成并逐字节比对（要求与本机 Pandoc 版本一致）。
  */
 
 const args = process.argv.slice(2);
@@ -360,11 +362,84 @@ function replaceNestedShortstack(str) {
   return result;
 }
 
+// --- check 模式（默认，环境无关）：用页面内溯源指纹与 PDF 比对，不依赖 Pandoc 版本 ---
+// 仅在 --strict 时才对整页做逐字节重生成比对。
+if (checkMode && !args.includes('--strict')) {
+  const fail = (msg) => {
+    console.error(`[sync-paper-report][check] ❌ ${msg}`);
+    process.exit(1);
+  };
+
+  if (!fs.existsSync(committedHtmlPath)) {
+    fail(`未找到已提交页面: ${committedHtmlPath}`);
+  }
+  const committedHtml = fs.readFileSync(committedHtmlPath, 'utf8');
+  const stampMatch = committedHtml.match(
+    /<meta name="paper-source" content="paper_draft\.tex sha256:([0-9a-f]+)"\s*\/>/
+  );
+  if (!stampMatch) {
+    fail(
+      `已提交页面缺少 paper-source 溯源标记，无法确认其对应的 paper draft 版本。请运行 \`pnpm report:sync\`。`
+    );
+  }
+  if (stampMatch[1] !== texSha) {
+    fail(
+      `已提交页面基于 paper draft sha256:${stampMatch[1]}，而最新为 sha256:${texSha}。请运行 \`pnpm report:sync\`。`
+    );
+  }
+
+  const committedPdf = path.join(
+    path.dirname(committedHtmlPath),
+    'paper_draft.pdf'
+  );
+  if (fs.existsSync(committedPdf)) {
+    let refPdf = null;
+    let tmpRefPdf = null;
+    if (fs.existsSync(localPdfPath)) {
+      refPdf = localPdfPath;
+    } else {
+      try {
+        const remotePdf =
+          pdfRemotePath && pdfRemotePath !== 'latest'
+            ? pdfRemotePath
+            : resolveLatestRemotePdf();
+        if (remotePdf) {
+          tmpRefPdf = path.join(
+            os.tmpdir(),
+            `ccus-report-ref-${Date.now()}.pdf`
+          );
+          fetchRemoteBinary(remotePdf, tmpRefPdf);
+          refPdf = tmpRefPdf;
+        }
+      } catch (err) {
+        console.warn(
+          `[sync-paper-report][check] ⚠️ 无法取得参考 PDF，跳过 PDF 比对: ${err.message}`
+        );
+      }
+    }
+    if (refPdf) {
+      const same = fs
+        .readFileSync(committedPdf)
+        .equals(fs.readFileSync(refPdf));
+      if (!same) {
+        fail(
+          `已提交 paper_draft.pdf 与最新交付 PDF 不一致。请运行 \`pnpm report:sync:full\`。`
+        );
+      }
+    }
+    if (tmpRefPdf && fs.existsSync(tmpRefPdf)) fs.unlinkSync(tmpRefPdf);
+  }
+
+  console.log(
+    `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
+  );
+  process.exit(0);
+}
+
 // --- 4. 调用 Pandoc (--number-sections) 编译为 HTML ---
 console.log(
   `[sync-paper-report] 调用 Pandoc 进行 TeX -> HTML 语法转换 (启用 --number-sections 与 --wrap=none)...`
 );
-
 let preprocessedTex = texContent;
 
 // 1. 预处理 Appendix A 表格 (tab:global_ccus_distribution)：
@@ -4476,8 +4551,8 @@ fs.writeFileSync(finalOut, template, 'utf8');
 console.log(`[sync-paper-report] 全部流水线执行完毕！`);
 console.log(`[sync-paper-report] 最终报告页面已保存至: ${finalOut}`);
 
-// --- check 模式：比对已提交页面与基于最新 TeX 的生成结果 ---
-if (checkMode) {
+// --- check --strict 模式：对整页做逐字节重生成比对（需与本机 Pandoc 版本一致） ---
+if (checkMode && args.includes('--strict')) {
   if (!fs.existsSync(committedHtmlPath)) {
     console.error(
       `[sync-paper-report][check] 未找到已提交页面: ${committedHtmlPath}`
