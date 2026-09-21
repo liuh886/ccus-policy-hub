@@ -15,6 +15,7 @@
     "manage:db:import:i18n": "node agent/ccus-ai-agent/logic/manage.mjs db:import:i18n",
     "manage:db:import:iea:facilities": "node scripts/ingest-iea-facilities.mjs",
     "manage:db:import:facility-news-research": "node scripts/ingest-facility-news-research.mjs",
+    "manage:db:audit:facility-news-links": "node scripts/check-facility-news-links.mjs",
     "manage:db:import:md:migration": "node agent/ccus-ai-agent/logic/manage.mjs db:import:md:migration --allow-reverse-sync-migration",
     "manage:db:standardize": "node agent/ccus-ai-agent/logic/manage.mjs db:standardize",
     "manage:db:fix-relationships": "node agent/ccus-ai-agent/logic/manage.mjs db:fix-relationships",
