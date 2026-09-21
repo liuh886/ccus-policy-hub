@@ -67,6 +67,15 @@ After import, run parity audit, deep audit, exports, public-data generation, tes
 
 `facility_news` holds a tiered, deduplicated source list per facility (`official` → `press_release` → `media` → `reference`; see `METHODOLOGY.md` §9). It is seeded from the existing `facility_links` by the one-off migration `migrations/2026-09/seed-facility-news-from-links-2026-09.mjs` (idempotent, preserves `agent-research` rows). The export pipeline emits it automatically, so routine refreshes only need `pnpm gen`. Adding new evidence-backed items means inserting `origin='agent-research'` rows with a `verified_at` date and a real URL, then regenerating.
 
+Real page titles/dates are populated by a data-preparation step (never in the build):
+
+```bash
+node scripts/enrich-facility-news-metadata.mjs            # fetch titles/dates (resumable)
+node scripts/enrich-facility-news-metadata.mjs --sanitize-only   # clear placeholder titles only
+```
+
+It performs one capped GET per distinct URL, writes to `governance/reports/facility_news_enrichment_report.json`, and is safe to re-run (only rows still missing a title are fetched). Coverage is reported under `facility_news` in the quality metrics.
+
 ## 5. Frontend or documentation update
 
 - Change source components, styles, translations, or Markdown directly.

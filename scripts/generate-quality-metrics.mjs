@@ -68,6 +68,7 @@ async function generateMetrics() {
     bilingual_parity: {},
     coordinate_precision: {},
     facility_policy_links: {},
+    facility_news: {},
   };
 
   // --- Total counts ---
@@ -184,6 +185,57 @@ async function generateMetrics() {
   } else {
     metrics.facility_policy_links.high_risk_warning = false;
     metrics.facility_policy_links.country_level_pct = 0;
+  }
+
+  // --- Facility news / source coverage ---
+  const hasNewsTable = queryRows(
+    db,
+    "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'facility_news'"
+  ).length;
+  if (hasNewsTable) {
+    const news = metrics.facility_news;
+    news.rows_total = queryScalar(db, 'SELECT COUNT(*) FROM facility_news');
+    news.rows_with_title = queryScalar(
+      db,
+      "SELECT COUNT(*) FROM facility_news WHERE title IS NOT NULL AND title <> ''"
+    );
+    news.rows_with_date = queryScalar(
+      db,
+      "SELECT COUNT(*) FROM facility_news WHERE published_date IS NOT NULL AND published_date <> ''"
+    );
+    news.distinct_urls = queryScalar(
+      db,
+      'SELECT COUNT(DISTINCT url_normalized) FROM facility_news'
+    );
+    news.facilities_with_news = queryScalar(
+      db,
+      "SELECT COUNT(DISTINCT facility_id) FROM facility_news WHERE url <> ''"
+    );
+    news.facilities_with_titled_news = queryScalar(
+      db,
+      "SELECT COUNT(DISTINCT facility_id) FROM facility_news WHERE title IS NOT NULL AND title <> ''"
+    );
+    news.facilities_total = metrics.counts.facilities;
+    news.by_tier = {};
+    for (const row of queryRows(
+      db,
+      'SELECT tier, COUNT(*) AS n FROM facility_news GROUP BY tier'
+    )) {
+      news.by_tier[row.tier] = row.n;
+    }
+    news.by_origin = {};
+    for (const row of queryRows(
+      db,
+      'SELECT origin, COUNT(*) AS n FROM facility_news GROUP BY origin'
+    )) {
+      news.by_origin[row.origin] = row.n;
+    }
+    if (news.rows_total > 0) {
+      news.titled_pct =
+        Math.round((news.rows_with_title / news.rows_total) * 1000) / 10;
+    } else {
+      news.titled_pct = 0;
+    }
   }
 
   // --- Audit status from db_meta ---

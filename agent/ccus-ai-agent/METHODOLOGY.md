@@ -97,6 +97,8 @@ The unmatched default is `reference` so an unknown domain is never presented as 
 
 Seeded entries carry `origin='iea-ref'` and are mirrored across en/zh with their original-language titles (news is not translated). Later evidence-backed research carries `origin='agent-research'` and a `verified_at` date; re-seeding rebuilds only `iea-ref` rows and preserves curated rows. The list is display-only and is not included in the `facilities.json` public payload.
 
+Page titles and publication dates are fetched once from the live URL during data preparation (`scripts/enrich-facility-news-metadata.mjs`) and stored; entries whose title cannot be fetched, or whose fetched title is an anti-bot/paywall/error page or off-topic spam, fall back to the publisher/host name rather than showing a misleading title. Coverage (facilities with sources, facilities with titled sources, titled-row share) is reported under `facility_news` in the quality metrics.
+
 ## 10. Method changes
 
 Any change to dimensions, score scales, aggregation, capacity selection, status sets, year priority, region mapping, relationship confidence, or exclusions requires:
