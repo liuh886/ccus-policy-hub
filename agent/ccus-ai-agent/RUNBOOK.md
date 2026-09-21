@@ -99,6 +99,17 @@ each URL as ok / dead (404/410) / blocked (anti-bot 401/403/406/418/429) /
 timeout / non_html / server_error / error. Only `dead` indicates link rot;
 `blocked` and `timeout` are environmental.
 
+Confirmed-dead links are removed from the display layer with:
+
+```bash
+pnpm manage:db:prune:facility-news-dead-links -- --dry-run
+pnpm manage:db:prune:facility-news-dead-links
+```
+
+It reads the latest link-health report and deletes `facility_news` rows whose
+normalized URL is bucketed `dead`; `facility_links` (raw IEA source) is left
+untouched. Idempotent.
+
 ## 5. Frontend or documentation update
 
 - Change source components, styles, translations, or Markdown directly.

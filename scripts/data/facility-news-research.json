@@ -7,6 +7,38 @@
     "reference": "portal / dataset / paper / other"
   },
   "facilities": {
+    "20": [
+      {
+        "url": "https://majorprojects.alberta.ca/details/Air-Products-Hydrogen-Production-and-Liquefaction-Facility/4461",
+        "title": "Air Products Hydrogen Production and Liquefaction Facility",
+        "publisher": "Government of Alberta",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.airproducts.ca/energy-transition/canada-net-zero-hydrogen-energy-complex",
+        "title": "Canada Net-Zero Hydrogen Energy Complex",
+        "publisher": "Air Products Canada",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.airproducts.com/company/news-center/2021/06/0609-air-products-net-zero-hydrogen-energy-complex-in-edmonton-alberta-canada",
+        "title": "Air Products Announces Multi-Billion Dollar Net-Zero Hydrogen Energy Complex in Edmonton, Alberta, Canada",
+        "publisher": "Air Products",
+        "date": "2021-06-09",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://energynow.ca/2023/01/construction-underway-on-1-6-billion-alberta-net-zero-hydrogen-complex/",
+        "title": "Construction Underway on $1.6 billion Alberta Net Zero Hydrogen Complex",
+        "publisher": "EnergyNow",
+        "date": "2023-01-09",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "25": [
       {
         "url": "https://wolfmidstream.com/new-carbon-solution-in-alberta-delivers-use-for-industrial-emissions",
@@ -67,6 +99,32 @@
         "itemLang": "en"
       }
     ],
+    "82": [
+      {
+        "url": "https://www.cfindustries.com/newsroom/2026/blue-point-groundbreaking",
+        "title": "CF Industries, JERA and Mitsui Break Ground on Blue Point One, the World's Largest Low-Carbon Ammonia Plant in Louisiana",
+        "publisher": "CF Industries",
+        "date": "2026-08-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ir.cfindustries.com/Investors/news/news-details/2026/CF-Industries-JERA-Co--and-Mitsui--Co--Ltd--Break-Ground-on-Blue-Point-One-the-Worlds-Largest-Low-Carbon-Ammonia-Plant-in-Louisiana/default.aspx",
+        "title": "CF Industries, JERA Co., and Mitsui & Co., Ltd., Break Ground on Blue Point One",
+        "publisher": "CF Industries (Investor Relations)",
+        "date": "2026-08-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.hydrocarbonprocessing.com/news/2026/08/blue-point-one-breaks-ground-on-37-b-14-mmtpy-low-carbon-ammonia-project/",
+        "title": "Blue Point One breaks ground on $3.7-B, 1.4-MMtpy low-carbon ammonia project",
+        "publisher": "Hydrocarbon Processing",
+        "date": "2026-08-27",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "94": [
       {
         "url": "https://static.aer.ca/prd/documents/by-topic/ccus/2023-EnhanceCO2-Annual-Report.pdf",
@@ -81,6 +139,31 @@
         "publisher": "Canadian Energy Centre",
         "date": "2025-06-24",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "129": [
+      {
+        "url": "https://www.linde.com/news-and-media/2024/linde-signs-long-term-agreement-to-supply-clean-hydrogen-to-dow%E2%80%99s-path2zero-project-in-canada",
+        "title": "Linde Signs Long-Term Agreement to Supply Clean Hydrogen to Dow's Path2Zero Project in Canada",
+        "publisher": "Linde",
+        "date": "2024-08-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://investors.dow.com/en/news/news-details/2023/Dows-Board-of-Directors-Approves-Final-Investment-Decision-for-Path2Zero-Project/default.aspx",
+        "title": "Dow's Board of Directors Approves Final Investment Decision for Path2Zero Project",
+        "publisher": "Dow Investor Relations",
+        "date": "2023-11-28",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://majorprojects.alberta.ca/details/Linde-Integrated-Clean-Hydrogen-and-Atmospheric-Gases-Facility/11341",
+        "title": "Linde Integrated Clean Hydrogen and Atmospheric Gases Facility",
+        "publisher": "Government of Alberta (Major Projects)",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -122,6 +205,40 @@
         "title": "Great Plains Synfuels Plant",
         "publisher": "Basin Electric Power Cooperative / Dakota Gasification Company",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "249": [
+      {
+        "url": "https://www.porthosco2.nl/en/milestone-the-golden-weld-connects-the-low-and-high-pressure-pipelines-to-the-porthos-system/",
+        "title": "Milestone: the golden weld connects the low- and high-pressure pipelines to the Porthos system",
+        "publisher": "Porthos",
+        "date": "2026-06-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.porthosco2.nl/en/golden-weld-connects-shells-co%e2%82%82-capture-plant-to-porthos/",
+        "title": "'Golden weld' connects Shell's CO2 capture plant to Porthos",
+        "publisher": "Porthos",
+        "date": "2026-03-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://swzmaritime.nl/news/2026/04/21/porthos-co2-storage-project-suffers-delays/",
+        "title": "Porthos CO2 storage project suffers delays",
+        "publisher": "SWZ|Maritime",
+        "date": "2026-04-21",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.oedigital.com/news/529470-rotterdam-s-offshore-co2-pipeline-completed",
+        "title": "Rotterdam's Offshore CO2 Pipeline Completed",
+        "publisher": "Offshore Engineer (OEDigital)",
+        "date": "2025-09-01",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -175,6 +292,74 @@
         "itemLang": "en"
       }
     ],
+    "265": [
+      {
+        "url": "https://www.eni.com/en-IT/media/press-release/2025/04/eni-and-uk-reach-financial-close-for-the-liverpool-bay-ccs-project.html",
+        "title": "Eni and the UK Government reach Financial Close for the Liverpool Bay CCS project",
+        "publisher": "Eni",
+        "date": "2025-04-24",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.nstauthority.co.uk/news-publications/2bn-hynet-carbon-storage-project-will-provide-massive-jobs-and-net-zero-boost/",
+        "title": "£2bn HyNet carbon storage project will provide massive jobs and net zero boost",
+        "publisher": "North Sea Transition Authority",
+        "date": "2025-04-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://hynet.co.uk/wp-content/uploads/2025/04/24052025-HyNet-gets-green-light.pdf",
+        "title": "HyNet gets green light to power ahead into construction",
+        "publisher": "HyNet",
+        "date": "2025-04-24",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.thecrownestate.co.uk/news/liverpool-bay-CCS-ltd-enters-into-lease-with-the-crown-estate",
+        "title": "Liverpool Bay CCS Ltd enters into lease with The Crown Estate for UK-first carbon storage project repurposing existing infrastructure",
+        "publisher": "The Crown Estate",
+        "date": "2026-07-27",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "287": [
+      {
+        "url": "https://www.bp.com/en_gb/united-kingdom/home/news/press-releases/green-light-for-carbon-capture-and-low-carbon-power-joint-venture-projects-in-teesside.html",
+        "title": "Green light for carbon capture and low carbon power joint venture projects in Teesside",
+        "publisher": "bp",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.netzeroteesside.co.uk/news/greenlight-for-net-zero-teesside-power/",
+        "title": "Greenlight for Net Zero Teesside Power",
+        "publisher": "Net Zero Teesside",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ten.com/en/media/press-releases/technip-energies-and-ge-vernova-awarded-major-contract-net-zero-teesside-power",
+        "title": "Technip Energies and GE Vernova awarded a major contract for the Net Zero Teesside Power project",
+        "publisher": "Technip Energies",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.enr.com/articles/60094-first-net-zero-gas-power-plant-with-carbon-capture-gets-uk-go-ahead",
+        "title": "First Net-Zero Gas Power Plant With Carbon Capture Gets UK Go-Ahead",
+        "publisher": "Engineering News-Record",
+        "date": "2024-12-20",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "293": [
       {
         "url": "https://nwrsturgeonrefinery.com/project/carbon-capture-and-storage",
@@ -188,6 +373,40 @@
         "title": "The Sturgeon Refinery - North West Refining",
         "publisher": "North West Refining",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "294": [
+      {
+        "url": "https://northernendurancepartnership.co.uk/2024/12/10/northern-endurance-partnership-greenlights-uks-first-co2-transportation-and-storage-infrastructure-project/",
+        "title": "Northern Endurance Partnership greenlights UK's first CO2 transportation and storage infrastructure project",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://northernendurancepartnership.co.uk/2026/01/21/northern-endurance-partnership-and-the-crown-estate-sign-lease-for-uks-first-ccs-project-ahead-of-offshore-construction/",
+        "title": "Northern Endurance Partnership and The Crown Estate sign lease for UK's first CCS project ahead of offshore construction",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2026-01-21",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://northernendurancepartnership.co.uk/2026/03/27/east-coast-cluster-delivers-1-5bn-of-uk-supply-chain-contracts-as-construction-ramps-up/",
+        "title": "East Coast Cluster Delivers £1.5bn of UK Supply-Chain Contracts as Construction Ramps Up",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2026-03-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.thenorthernecho.co.uk/news/26532373.castorone-arrives-lay-teesside-carbon-capture-pipeline/",
+        "title": "Castorone arrives to lay Teesside carbon capture pipeline",
+        "publisher": "The Northern Echo",
+        "date": "2026-09-09",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -225,6 +444,40 @@
         "itemLang": "en"
       }
     ],
+    "296": [
+      {
+        "url": "https://www.equinor.com/news/20250327-northern-lights-phase-2",
+        "title": "Investing NOK 7.5 billion in expansion of the groundbreaking Northern Lights CCS-project",
+        "publisher": "Equinor",
+        "date": "2025-03-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://totalenergies.com/newsroom/norway-totalenergies-and-partners-launch-2nd-phase-northern-lights-ccs-project/?lang=eng",
+        "title": "Norway: TotalEnergies and partners launch the 2nd phase of the Northern Lights CCS project",
+        "publisher": "TotalEnergies",
+        "date": "2025-03-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://norlights.com/news/northern-lights-is-expanding-capacity-through-commercial-agreement/",
+        "title": "Northern Lights is expanding capacity through commercial agreement",
+        "publisher": "Northern Lights JV",
+        "date": "2025-03-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.reuters.com/business/energy/shell-equinor-totalenergies-invest-714-million-carbon-storage-expansion-2025-03-27/",
+        "title": "Shell, Equinor, TotalEnergies to invest $714 million in carbon storage expansion",
+        "publisher": "Reuters",
+        "date": "2025-03-27",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "309": [
       {
         "url": "https://www.eneos-xplora.com/english/newsrelease/upload_files/20230913EN.pdf",
@@ -254,6 +507,73 @@
         "title": "JX Nippon restarts Petra Nova carbon capture plant in Texas",
         "publisher": "Oil & Gas Journal",
         "date": "2023-10-23",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "311": [
+      {
+        "url": "https://www.petronas.com/media/media-releases/petronas-carigali-reaches-final-investment-decision-kasawari-ccs-project",
+        "title": "PETRONAS Carigali Reaches Final Investment Decision for Kasawari CCS Project Offshore Sarawak",
+        "publisher": "PETRONAS",
+        "date": "2022-11-29",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://mhb.com.my/mhb-awarded-the-epcic-alliance-for-kasawari-ccs-project-from-petronas-carigali/",
+        "title": "MHB Awarded the EPCIC Alliance for the Kasawari Carbon Capture & Storage (CCS) Project from PETRONAS Carigali",
+        "publisher": "Malaysia Marine and Heavy Engineering Holdings (MHB)",
+        "date": "2022-11-29",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.upstreamonline.com/carbon-capture/petronas-steps-up-carbon-capture-offshore-malaysia/2-1-1975028",
+        "title": "McDermott to commence installation of key structures for Petronas' Kasawari carbon capture and storage project",
+        "publisher": "Upstream Online",
+        "date": "2026-04-17",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.thestar.com.my/business/business-news/2026/04/01/petronas-seeks-to-bring-forward-first-co2-injection-at-kasawari-to-2027",
+        "title": "PETRONAS seeks to bring forward first CO2 injection at Kasawari to 2027",
+        "publisher": "The Star (Malaysia)",
+        "date": "2026-04-01",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "325": [
+      {
+        "url": "https://www.porthosco2.nl/en/project/",
+        "title": "Project - Porthos",
+        "publisher": "Porthos",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.offshore-energy.biz/north-sea-gas-wells-ready-for-co2-storage-as-part-of-dutch-porthos-project/",
+        "title": "North Sea gas wells ready for CO2 storage as part of Dutch Porthos project",
+        "publisher": "Offshore Energy",
+        "date": "2026-02-05",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://swzmaritime.nl/news/2026/04/21/porthos-co2-storage-project-suffers-delays/",
+        "title": "Porthos CO2 storage project suffers delays",
+        "publisher": "SWZ|Maritime",
+        "date": "2026-04-21",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonherald.com/dutch-porthos-project-prepares-north-sea-gas-wells-for-co2-injection/",
+        "title": "Dutch Porthos Project Prepares North Sea Gas Wells For CO2 Injection",
+        "publisher": "Carbon Herald",
+        "date": "2026-02-06",
         "tier": "media",
         "itemLang": "en"
       }
@@ -402,6 +722,47 @@
         "itemLang": "zh"
       }
     ],
+    "601": [
+      {
+        "url": "https://www.aramco.com/en/news-media/news/2024/aramco-linde-and-slb-sign-shareholders-agreement-for-one-of-the-largest-ccs-hubs-globally",
+        "title": "Aramco, Linde and SLB sign shareholders' agreement for one of the largest CCS hubs globally",
+        "publisher": "Aramco",
+        "date": "2024-12-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.aramco.com/ar/news-media/news/2024/aramco-linde-and-slb-sign-shareholders-agreement-for-one-of-the-largest-ccs-hubs-globally",
+        "title": "أرامكو السعودية توقع اتفاقية مساهمين مع لينداي وإس إل بي لبناء أحد أكبر مراكز استخلاص الكربون وتخزينه على مستوى العالم",
+        "publisher": "أرامكو السعودية (Aramco)",
+        "date": "2024-12-04",
+        "tier": "press_release",
+        "itemLang": "ar"
+      },
+      {
+        "url": "https://www.meed.com/firms-submit-bids-for-aramco-carbon-capture-pmc",
+        "title": "Firms submit bids for Aramco carbon capture PMC",
+        "publisher": "MEED",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonherald.com/saudi-aramco-awards-larsen-toubro-1-5b-contract-for-ccs-project/",
+        "title": "Saudi Aramco Awards Larsen & Toubro $1.5B Contract For CCS Project",
+        "publisher": "Carbon Herald",
+        "date": "2025-02-24",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.zawya.com/en/business/energy/saudi-aramco-inks-deal-with-linde-slb-to-develop-ccs-hub-in-jubail-catpd1cs",
+        "title": "Saudi Aramco inks deal with Linde, SLB to develop CCS hub in Jubail",
+        "publisher": "Zawya",
+        "date": "2024-12-04",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "659": [
       {
         "url": "https://ptrc.ca/past-projects/weyburn-midale",
@@ -427,6 +788,207 @@
         "itemLang": "en"
       }
     ],
+    "672": [
+      {
+        "url": "https://portofaalborg.dk/en/norne-and-port-of-aalborg-sign-30-year-exclusive-agreement-accept-eu-cef-grant-and-launch-construction-of-co2-hub/",
+        "title": "Norne and Port of Aalborg Sign 30-Year Exclusive Agreement, Accept EU CEF Grant and Launch Construction of CO2 Hub",
+        "publisher": "Port of Aalborg",
+        "date": "2025-06-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://portofaalborg.dk/en/first-milestone-reached-eu-funded-quay-expansion-in-aalborg-takes-shape/",
+        "title": "First milestone reached: EU-funded quay expansion in Aalborg takes shape",
+        "publisher": "Port of Aalborg",
+        "date": "2026-03-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://portofaalborg.dk/en/port-of-aalborg-signs-agreement-with-contractor-for-major-quay-expansion/",
+        "title": "Port of Aalborg Signs Agreement with Contractor for Major Quay Expansion",
+        "publisher": "Port of Aalborg",
+        "date": "2025-06-19",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/norne-and-port-of-aalborg-sign-30-year-exclusive-agreement-accept-eu-cef-grant-and-launch-construction-of-co2-hub-302472722.html",
+        "title": "Norne and Port of Aalborg Sign 30-Year Exclusive Agreement, Accept EU CEF Grant and Launch Construction of CO2 Hub",
+        "publisher": "PR Newswire (Fidelis New Energy)",
+        "date": "2025-06-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "708": [
+      {
+        "url": "https://www.dce.louisiana.gov/assets/OPC-ClassVI/Louisiana-Class-VI-Permit-Status.pdf",
+        "title": "Louisiana Class VI Permit Status",
+        "publisher": "Louisiana Department of Conservation and Energy",
+        "date": "2026-05-07",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.dce.louisiana.gov/page/class-vi-permits-and-applications",
+        "title": "Class VI Permits and Applications",
+        "publisher": "Louisiana Department of Conservation and Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.globenewswire.com/news-release/2025/10/15/3167414/0/en/CapturePoint-s-CENLA-Hub-Project-Advances-on-Louisiana-s-Short-List-for-Carbon-Storage-Permitting.html",
+        "title": "CapturePoint's CENLA Hub Project Advances on Louisiana's Short List for Carbon Storage Permitting",
+        "publisher": "GlobeNewswire",
+        "date": "2025-10-15",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://capturepointllc.com/sites/default/files/2024-03/CPSPressRelease-CENLAHubInvestments-FINAL.pdf",
+        "title": "CapturePoint LLC Announces Final Investment Decision for CENLA Hub Carbon Capture and Storage Infrastructure Investments",
+        "publisher": "CapturePoint Solutions",
+        "date": "2024-03-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "709": [
+      {
+        "url": "http://corporate.exxonmobil.com/what-we-do/delivering-industrial-solutions/carbon-capture-and-storage/expanding-our-ccs-operations-in-louisiana-with-another-project-startup",
+        "title": "Expanding our CCS operations in Louisiana with another project startup",
+        "publisher": "ExxonMobil",
+        "date": "2026-02-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/energy-transition/news/55394396/williams-contracts-exxonmobil-for-co2-transportation-and-storage",
+        "title": "ExxonMobil to transport, store CO2 for Williams",
+        "publisher": "Oil & Gas Journal",
+        "date": "2026-07-30",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gasprocessingnews.com/news/2026/02/exxonmobil-starts-operations-on-second-carbon-capture-project-in-louisiana-us/",
+        "title": "ExxonMobil starts operations on second carbon capture project in Louisiana (U.S.)",
+        "publisher": "Gas Processing & LNG",
+        "date": "2026-02-01",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://investors.comstockresources.com/news-releases/news-release-details/bkv-corp-and-comstock-resources-announce-collaboration-agreement",
+        "title": "BKV Corp. and Comstock Resources Announce Collaboration Agreement to Accelerate Deployment of Carbon Capture Projects",
+        "publisher": "Comstock Resources (Business Wire)",
+        "date": "2025-04-30",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "815": [
+      {
+        "url": "https://www.1pointfive.com/news/1pointfive-and-enbridge-form-joint-venture-for-pelican-sequestration-hub",
+        "title": "1PointFive and Enbridge Form Joint Venture for Pelican Sequestration Hub",
+        "publisher": "1PointFive",
+        "date": "2025-09-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.oxy.com/news/news-releases/1pointfive-and-enbridge-form-joint-venture-for-pelican-sequestration-hub/",
+        "title": "1PointFive and Enbridge Form Joint Venture for Pelican Sequestration Hub",
+        "publisher": "Occidental (Oxy)",
+        "date": "2025-09-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.1pointfive.com/projects/pelican-hub",
+        "title": "Pelican Hub",
+        "publisher": "1PointFive",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://lailluminator.com/2026/09/17/livingston-parish-residents-worry-about-co2-pipeline-proximity/",
+        "title": "Livingston Parish residents worry about CO2 pipeline proximity",
+        "publisher": "Louisiana Illuminator",
+        "date": "2026-09-17",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "831": [
+      {
+        "url": "https://wolfmidstream.com/wolf-midstream-to-extend-alberta-carbon-trunk-line-into-the-edmonton-region-enabling-large-scale-emissions-reduction/",
+        "title": "Wolf Midstream to Extend Alberta Carbon Trunk Line into the Edmonton Region, Enabling Large-Scale Emissions Reduction",
+        "publisher": "Wolf Midstream",
+        "date": "2023-09-05",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.newswire.ca/news-releases/wolf-midstream-to-extend-alberta-carbon-trunk-line-into-the-edmonton-region-enabling-large-scale-emissions-reduction-872102700.html",
+        "title": "Wolf Midstream to Extend Alberta Carbon Trunk Line into the Edmonton Region, Enabling Large-Scale Emissions Reduction",
+        "publisher": "CNW / Newswire",
+        "date": "2023-09-05",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://majorprojects.alberta.ca/details/Alberta-Carbon-Trunk-Line-Edmonton-Connector/10970",
+        "title": "Alberta Carbon Trunk Line Edmonton Connector",
+        "publisher": "Government of Alberta (Alberta Major Projects)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cer-rec.gc.ca/en/data-analysis/energy-markets/market-snapshots/2024/market-snapshot-canada-is-expanding-its-co2-pipeline-network.html",
+        "title": "Market Snapshot: Canada is expanding its CO2 pipeline network",
+        "publisher": "Canada Energy Regulator (CER)",
+        "date": "2024-05-17",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "1240": [
+      {
+        "url": "https://www.upstreamonline.com/exclusive/saudi-aramco-poised-to-tender-huge-carbon-capture-project-targeting-multiple-gas-plants/2-1-1389566",
+        "title": "Saudi Aramco poised to tender huge carbon capture project targeting multiple gas plants",
+        "publisher": "Upstream Online",
+        "date": "2023-01-19",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://gulffire.com/one-of-the-largest-carbon-capture-hubs-secures-usd-1-5-billion-epc-contract/",
+        "title": "One of the Largest Carbon Capture Hubs Secures USD 1.5 Billion EPC Contract",
+        "publisher": "Gulf Fire",
+        "date": "2025-03-04",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.mepmiddleeast.com/news/larsen-toubro-snaps-1-5bn-contract-for-saudi-aramco-project",
+        "title": "Larsen & Toubro Snaps $1.5Bn Contract For Saudi Aramco Project",
+        "publisher": "MEP Middle East",
+        "date": "2025-02-24",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.kapsarc.org/newsroom/news/saudi-aramco-seen-achieving-its-ccus-goals/",
+        "title": "Saudi Aramco Seen Achieving its CCUS Goals",
+        "publisher": "KAPSARC",
+        "date": "2024-05-01",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "1312": [
       {
         "url": "https://corporate.exxonmobil.com/what-we-do/delivering-industrial-solutions/carbon-capture-and-storage/expanding-our-ccs-operations-in-louisiana-with-another-project-startup",
@@ -434,6 +996,39 @@
         "publisher": "ExxonMobil",
         "date": "2026-02-18",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "1409": [
+      {
+        "url": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
+        "title": "Construction of CO2 backbone started in Antwerp port area by joint initiative of Fluxys Belgium, Pipelink and Air Liquide",
+        "publisher": "Fluxys",
+        "date": "2025-05-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.portofantwerpbruges.com/en/news/construction-co2-backbone-started-antwerp-port-area-joint-initiative-fluxys-belgium-pipelink",
+        "title": "Construction of CO2 backbone started in Antwerp port area",
+        "publisher": "Port of Antwerp-Bruges",
+        "date": "2025-05-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fluxys.com/en/press-releases/fluxys-belgium/2026/260320-press-fluxys-c-grid-antwerp-appointed-local-carbon-network-operator-port-antwerp",
+        "title": "Fluxys c-grid Antwerp appointed as \"Local CO2 network operator\" in the Antwerp port area",
+        "publisher": "Fluxys",
+        "date": "2026-03-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fluxys.com/en/projects/antwerpatc-co2-export-hub",
+        "title": "Antwerp@C CO2 Export Hub",
+        "publisher": "Fluxys",
+        "tier": "reference",
         "itemLang": "en"
       }
     ]
