@@ -2,11 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  BENCHMARK_QUANTILE,
   calculateDeploymentMetrics,
   calculateGlobalBenchmarks,
   calculateGovernanceCapability,
   classifyGovernanceDeployment,
-  median,
+  quantile,
 } from '../src/lib/governanceBenchmarking.mjs';
 
 const policy = (id, status, scores, year = 2025) => ({
@@ -80,7 +81,7 @@ test('deployment metrics reuse governed capacity fallbacks and normalized status
   assert.equal(result.committedCapacity, 16);
 });
 
-test('global benchmarks use stable medians and exclude zero deployment from the x threshold', () => {
+test('global benchmarks use the 75th percentile and exclude zero deployment from the x threshold', () => {
   const benchmarks = calculateGlobalBenchmarks([
     {
       governance: { index: 40 },
@@ -96,9 +97,19 @@ test('global benchmarks use stable medians and exclude zero deployment from the 
     },
   ]);
 
-  assert.equal(benchmarks.governance, 60);
-  assert.equal(benchmarks.deployment, 20);
-  assert.equal(median([4, 1, 3, 2]), 2.5);
+  // governance: p75 of [40, 60, 80] -> 70 (interpolated)
+  assert.equal(benchmarks.governance, 70);
+  // deployment: p75 of [10, 30] (zero excluded) -> 25
+  assert.equal(benchmarks.deployment, 25);
+  assert.equal(BENCHMARK_QUANTILE, 0.75);
+});
+
+test('quantile interpolates between ranks and handles edge cases', () => {
+  assert.equal(quantile([10, 20, 30, 40], 0.75), 32.5);
+  assert.equal(quantile([5], 0.75), 5);
+  assert.equal(quantile([], 0.75), 0);
+  assert.equal(quantile([10, 20], 0), 10);
+  assert.equal(quantile([10, 20], 1), 20);
 });
 
 test('quadrant classification uses governance and deployment benchmarks', () => {
