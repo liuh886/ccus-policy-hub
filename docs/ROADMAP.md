@@ -3,7 +3,7 @@
 Single aggregation point for open work items. Sources of truth for details:
 the linked audit reports and issues. Keep each item's status current.
 
-Last updated: 2026-09-08
+Last updated: 2026-09-23
 
 ## In review / blocked on governance approval
 
@@ -27,6 +27,14 @@ Last updated: 2026-09-08
 
 ## Done (2026-09 sessions, for context)
 
+- Compare governance–deployment quadrant split moved from the median to the
+  75th percentile (`BENCHMARK_QUANTILE`), so "integrated leaders" reflects the
+  top band instead of a crowded mid-point; timeline groups restyled with a
+  colour rail (#97)
+- Compare heatmap header no longer pinned mid-table: the sticky `thead` rule
+  is scoped to the regulatory detail table (#90)
+- PR #80 closed as superseded — its contributor-toggle and facility-filter
+  fixes were already on `main`
 - Facility profiles: added `facility_news`, a deduplicated, tier-classified
   external source list (official → press_release → media → reference), seeded
   from the existing IEA links and rendered as a formal "Press Releases &
