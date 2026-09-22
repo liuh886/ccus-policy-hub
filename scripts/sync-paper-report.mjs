@@ -1066,7 +1066,7 @@ bodyHtml = bodyHtml.replace(titlepageRegex, (match, gaNote) => {
   <div class="ga-header">
     <div class="ga-title">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <span>图文摘要 · 系统逻辑架构总览 (Graphical Abstract)</span>
+      <span>图文摘要 (Graphical Abstract)</span>
     </div>
     <span class="ga-tip">🔍 点击图片可放大高清原图</span>
   </div>
