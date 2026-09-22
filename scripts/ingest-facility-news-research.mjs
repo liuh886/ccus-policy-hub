@@ -6,9 +6,10 @@
  * Each curated item must carry a real, resolvable URL, a title, and an
  * evidence tier. Items are inserted as `origin='agent-research'` with a
  * `verified_at` date and mirrored across en/zh (original-language title, like
- * the seeded `iea-ref` rows). Existing rows are preserved; duplicates are
- * skipped by normalized URL; rows are re-sorted by tier so press releases and
- * official announcements stay first.
+ * the seeded `iea-ref` rows). When a curated URL already exists as a seeded
+ * row, the curated tier/title/date **upgrade that row in place** (curated
+ * metadata wins); only genuinely new URLs are inserted. Rows are re-sorted by
+ * tier so press releases and official announcements stay first.
  *
  * Idempotent: re-running rebuilds only the `agent-research` rows from the JSON
  * and leaves seeded/other rows untouched.
@@ -94,6 +95,8 @@ export function applyFacilityNewsResearch(db, research) {
     facilitiesRequested: facilityIds.length,
     facilitiesUpdated: 0,
     itemsInserted: 0,
+    itemsUpgraded: 0,
+    itemsTierChanged: 0,
     itemsSkippedDuplicate: 0,
     itemsSkippedInvalid: 0,
     unknownFacilities: [],
@@ -122,11 +125,14 @@ export function applyFacilityNewsResearch(db, research) {
           [facilityId, lang]
         );
         const preserved = existing.filter((r) => r.origin !== 'agent-research');
-        // Dedup against preserved rows only; agent-research rows are rebuilt
-        // from the JSON each run, so they must not block re-insertion.
-        const existingKeys = new Set(preserved.map((r) => r.url_normalized));
 
-        const additions = [];
+        // Curated items keyed by normalized URL, validated first. When a
+        // curated item shares a URL with a preserved (iea-ref) row the curated
+        // metadata wins: tier/title/date are upgraded in place rather than the
+        // item being dropped as a duplicate. Curated tier is authoritative;
+        // other fields fall back to the preserved value when the curated item
+        // omits them.
+        const curatedByUrl = new Map();
         for (const item of curated) {
           const problems = validateResearchItem(item);
           if (problems.length > 0) {
@@ -141,11 +147,43 @@ export function applyFacilityNewsResearch(db, research) {
             continue;
           }
           const normalized = normalizeUrl(item.url);
-          if (existingKeys.has(normalized)) {
-            if (lang === 'en') summary.itemsSkippedDuplicate += 1;
+          if (!curatedByUrl.has(normalized)) {
+            curatedByUrl.set(normalized, { item, normalized });
+          }
+        }
+
+        const upgraded = [];
+        const appliedKeys = new Set();
+        for (const row of preserved) {
+          const match = curatedByUrl.get(row.url_normalized);
+          if (!match) {
+            upgraded.push({ ...row });
             continue;
           }
-          existingKeys.add(normalized);
+          appliedKeys.add(row.url_normalized);
+          const item = match.item;
+          upgraded.push({
+            url: row.url,
+            url_normalized: row.url_normalized,
+            title: item.title,
+            publisher:
+              item.publisher || row.publisher || derivePublisher(row.url),
+            published_date: item.date || row.published_date || null,
+            tier: item.tier,
+            item_lang: item.itemLang || row.item_lang || null,
+            origin: 'agent-research',
+            verified_at: asOf || null,
+          });
+          if (lang === 'en') {
+            summary.itemsUpgraded += 1;
+            if (row.tier !== item.tier) summary.itemsTierChanged += 1;
+          }
+        }
+
+        const additions = [];
+        for (const [normalized, match] of curatedByUrl) {
+          if (appliedKeys.has(normalized)) continue;
+          const item = match.item;
           additions.push({
             url: item.url.trim(),
             url_normalized: normalized,
@@ -160,10 +198,10 @@ export function applyFacilityNewsResearch(db, research) {
         }
 
         const merged = [
-          ...preserved.map((r, index) => ({ ...r, sortIndex: index })),
+          ...upgraded.map((r, index) => ({ ...r, sortIndex: index })),
           ...additions.map((r, index) => ({
             ...r,
-            sortIndex: preserved.length + index,
+            sortIndex: upgraded.length + index,
           })),
         ];
         merged.sort((a, b) => {
@@ -202,7 +240,8 @@ export function applyFacilityNewsResearch(db, research) {
         if (lang === 'en') {
           summary.itemsInserted += additions.length;
         }
-        if (additions.length > 0) updatedThisFacility = true;
+        if (additions.length > 0 || upgraded.length > 0)
+          updatedThisFacility = true;
       }
       if (updatedThisFacility) summary.facilitiesUpdated += 1;
     }

@@ -91,8 +91,16 @@ test('validateResearchItem flags invalid url, title, tier and date', () => {
   );
 });
 
-test('ingests curated items, mirrors locales, preserves seeded rows and orders by tier', async () => {
+test('ingests curated items, upgrades colliding seeded rows and preserves the rest', async () => {
   const db = await createFixture();
+  // A seeded row that does NOT collide with any curated URL must be preserved.
+  execute(
+    db,
+    `INSERT INTO facility_news
+       (facility_id, lang, order_index, url, url_normalized, publisher, tier, origin)
+     VALUES ('1','en',1,'https://example.com/keep','https://example.com/keep','example.com','reference','iea-ref'),
+            ('1','zh',1,'https://example.com/keep','https://example.com/keep','example.com','reference','iea-ref')`
+  );
   const summary = applyFacilityNewsResearch(db, {
     as_of: '2026-09-21',
     facilities: {
@@ -111,8 +119,8 @@ test('ingests curated items, mirrors locales, preserves seeded rows and orders b
         },
         {
           url: 'https://example.com/portal',
-          title: 'Duplicate of seeded',
-          tier: 'reference',
+          title: 'Upgraded seeded',
+          tier: 'press_release',
         },
         { url: 'not-a-url', title: 'bad', tier: 'media' },
       ],
@@ -126,30 +134,110 @@ test('ingests curated items, mirrors locales, preserves seeded rows and orders b
     },
   });
 
-  assert.equal(summary.itemsInserted, 2, 'two valid non-duplicate items');
-  assert.equal(summary.itemsSkippedDuplicate, 1);
+  assert.equal(summary.itemsInserted, 2, 'two valid new items');
+  assert.equal(summary.itemsUpgraded, 1, 'colliding seeded URL upgraded');
+  assert.equal(summary.itemsTierChanged, 1);
+  assert.equal(summary.itemsSkippedDuplicate, 0);
   assert.equal(summary.itemsSkippedInvalid, 1);
   assert.deepEqual(summary.unknownFacilities, ['999']);
 
   const en = allRows(
     db,
-    `SELECT order_index, tier, origin, title, verified_at FROM facility_news
+    `SELECT order_index, tier, origin, title FROM facility_news
      WHERE facility_id='1' AND lang='en' ORDER BY order_index`
   );
   assert.deepEqual(
     en.map((r) => r.tier),
-    ['official', 'media', 'reference'],
-    'tier order with seeded reference last'
+    ['official', 'press_release', 'media', 'reference'],
+    'tier order with the upgraded press_release second'
   );
   assert.equal(en[0].origin, 'agent-research');
-  assert.equal(en[0].verified_at, '2026-09-21');
-  assert.equal(en[2].origin, 'iea-ref', 'seeded row preserved');
+  const upgraded = en.find((r) => r.title === 'Upgraded seeded');
+  assert.equal(upgraded.tier, 'press_release', 'curated tier wins');
+  assert.equal(upgraded.origin, 'agent-research');
+  assert.equal(
+    en.filter((r) => r.origin === 'iea-ref').length,
+    1,
+    'non-colliding seeded row preserved'
+  );
 
   const zhCount = allRows(
     db,
     "SELECT COUNT(*) n FROM facility_news WHERE facility_id='1' AND lang='zh'"
   )[0].n;
-  assert.equal(zhCount, 3, 'en/zh mirror parity');
+  assert.equal(zhCount, 4, 'en/zh mirror parity');
+  db.close();
+});
+
+test('upgrades a seeded row in place when a curated URL collides', async () => {
+  const db = await createFixture();
+  const summary = applyFacilityNewsResearch(db, {
+    as_of: '2026-09-21',
+    facilities: {
+      // Same URL as the seeded 'reference' row, curated as press_release with
+      // a date: the curated metadata must win, with no duplicate inserted.
+      1: [
+        {
+          url: 'https://example.com/portal',
+          title: 'Upgraded curated title',
+          publisher: 'Example Newsroom',
+          date: '2025-04-01',
+          tier: 'press_release',
+        },
+      ],
+    },
+  });
+
+  assert.equal(summary.itemsInserted, 0, 'no new row for a colliding URL');
+  assert.equal(summary.itemsUpgraded, 1);
+  assert.equal(summary.itemsTierChanged, 1);
+
+  const en = allRows(
+    db,
+    `SELECT order_index, tier, origin, title, publisher, published_date, verified_at
+     FROM facility_news WHERE facility_id='1' AND lang='en' ORDER BY order_index`
+  );
+  assert.equal(en.length, 1, 'still exactly one row for the URL');
+  assert.equal(en[0].tier, 'press_release', 'curated tier wins');
+  assert.equal(en[0].origin, 'agent-research');
+  assert.equal(en[0].title, 'Upgraded curated title');
+  assert.equal(en[0].publisher, 'Example Newsroom');
+  assert.equal(en[0].published_date, '2025-04-01');
+  assert.equal(en[0].verified_at, '2026-09-21');
+
+  const zhCount = allRows(
+    db,
+    "SELECT COUNT(*) n FROM facility_news WHERE facility_id='1' AND lang='zh'"
+  )[0].n;
+  assert.equal(zhCount, 1, 'en/zh mirror parity');
+  db.close();
+});
+
+test('keeps the preserved value when the curated item omits a field', async () => {
+  const db = await createFixture();
+  execute(
+    db,
+    "UPDATE facility_news SET published_date='2024-01-01' WHERE facility_id='1'"
+  );
+  applyFacilityNewsResearch(db, {
+    as_of: '2026-09-21',
+    facilities: {
+      1: [
+        {
+          url: 'https://example.com/portal',
+          title: 'Curated title',
+          tier: 'media',
+          // no date supplied
+        },
+      ],
+    },
+  });
+  const en = allRows(
+    db,
+    "SELECT published_date, tier FROM facility_news WHERE facility_id='1' AND lang='en'"
+  );
+  assert.equal(en[0].published_date, '2024-01-01', 'preserved date kept');
+  assert.equal(en[0].tier, 'media', 'curated tier wins');
   db.close();
 });
 
