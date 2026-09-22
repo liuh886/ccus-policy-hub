@@ -1424,6 +1424,34 @@ const template = `<!DOCTYPE html>
       background: var(--brand-blue-hover);
     }
 
+    /* 移动端点导航收敛：图标优先、单行不换行、隐藏冗余文字 */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.5rem 0.85rem;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+      }
+      .nav-brand {
+        gap: 0.45rem;
+        font-size: 0.95rem;
+        min-width: 0;
+        white-space: nowrap;
+      }
+      .nav-brand .badge { display: none; }
+      .nav-actions { gap: 0.4rem; flex-shrink: 0; }
+      .navbar .btn {
+        padding: 0.45rem;
+        min-width: 38px;
+        min-height: 38px;
+        justify-content: center;
+        gap: 0;
+      }
+      .btn-label { display: none; }
+    }
+    @media (max-width: 400px) {
+      .nav-brand .brand-text { display: none; }
+    }
+
     /* 主布局 Layout */
     .container {
       max-width: 1440px;
@@ -3631,7 +3659,7 @@ const template = `<!DOCTYPE html>
   <header class="navbar">
     <a href="../../" id="nav-brand-link" class="nav-brand" title="返回 CCUS Policy Hub 首页" aria-label="返回 CCUS Policy Hub 首页">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-      <span>CCUS Policy Hub</span>
+      <span class="brand-text">CCUS Policy Hub</span>
       <span class="badge">智库报告</span>
     </a>
     <div class="nav-actions">
@@ -3639,15 +3667,15 @@ const template = `<!DOCTYPE html>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
         <span id="btn-toggle-toc-text">折叠大纲</span>
       </button>
-      <button class="btn" id="btn-toggle-comments" title="打开审阅批注抽屉 (支持选中文本添加批注与结构化导出)">
+      <button class="btn" id="btn-toggle-comments" title="打开审阅批注抽屉 (支持选中文本添加批注与结构化导出)" aria-label="打开批注抽屉">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>批注</span>
+        <span class="btn-label">批注</span>
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
-      <button class="btn" id="theme-toggle" title="切换深浅模式">🌓 主题</button>
-      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版${pdfPageCount ? ` ${pdfPageCount} 页` : ''}高保真 PDF">
+      <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><span aria-hidden="true">🌓</span><span class="btn-label">主题</span></button>
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版${pdfPageCount ? ` ${pdfPageCount} 页` : ''}高保真 PDF" aria-label="下载原版 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>下载原版 PDF</span>
+        <span class="btn-label">下载原版 PDF</span>
       </a>
     </div>
   </header>
