@@ -1448,6 +1448,37 @@
         "itemLang": "en"
       }
     ],
+    "207": [
+      {
+        "url": "https://www.holcim.com/what-we-do/green-operations/ccus/carbon2business",
+        "title": "Carbon2Business CCUS project",
+        "publisher": "Holcim",
+        "date": "2026-02-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbon2business.com/",
+        "title": "Carbon2Business",
+        "publisher": "Holcim Deutschland",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://climate.ec.europa.eu/system/files/2022-12/if_pf_2022_c2b_en.pdf",
+        "title": "C2B - Carbon2Business - Innovation Fund",
+        "publisher": "European Commission (EU Innovation Fund)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.zkg.de/en/artikel/laegerdorf-groundbreaking-ceremony-for-the-co2-neutral-cement-plant-4100689.html",
+        "title": "Laegerdorf: Groundbreaking ceremony for the CO2-neutral cement plant",
+        "publisher": "ZKG Cement Lime Gypsum",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "215": [
       {
         "url": "https://www.portofrotterdam.com/en/news-and-press-releases/h-vision-kicks-hydrogen-economy-rotterdam",
@@ -2709,6 +2740,39 @@
         "itemLang": "en"
       }
     ],
+    "373": [
+      {
+        "url": "https://en.hdec.kr/en/newsroom/news_view.aspx?NewsListType=news_clist&NewsSeq=819&NewsType=LATEST",
+        "title": "Hyundai E&C and Korea National Oil Corporation Lay the Groundwork for Korea's First CCS Commercialization Project",
+        "publisher": "Hyundai E&C",
+        "date": "2023-07-17",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://en.yna.co.kr/view/AEN20211118006300320",
+        "title": "S. Korea to push for first commercial-scale carbon storage in East Sea gas field",
+        "publisher": "Yonhap News Agency",
+        "date": "2021-11-18",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.petromindo.com/news/article/regional-ccs-korea-s-donghae-1-moves-into-design-phase",
+        "title": "Regional CCS: Korea's Donghae-1 moves into design phase",
+        "publisher": "Petromindo",
+        "date": "2025-12-10",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.argusmedia.com/en/news-and-insights/latest-market-news/2500448-s-korean-firms-advance-country-s-largest-ccs-project",
+        "title": "S Korean firms advance country's largest CCS project",
+        "publisher": "Argus Media",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "374": [
       {
         "url": "https://www.equinor.com/energy/sleipner",
@@ -3614,6 +3678,71 @@
         "itemLang": "en"
       }
     ],
+    "557": [
+      {
+        "url": "https://www.holcim.com/what-we-do/green-operations/ccus/go4zero",
+        "title": "GO4ZERO CCUS project",
+        "publisher": "Holcim",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.holcim.com/media/media-releases/go4zero-groundbreaking-ceremony",
+        "title": "Holcim breaks ground of state-of-the-art GO4ZERO plant in Belgium for net zero cement",
+        "publisher": "Holcim",
+        "date": "2024-05-14",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101132807.pdf",
+        "title": "GO4ZERO - Project Factsheet",
+        "publisher": "CINEA / European Commission",
+        "date": "2026-08-18",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.go4zero.com/en/key-steps",
+        "title": "Key steps",
+        "publisher": "GO4ZERO (Holcim Belgium)",
+        "date": "2023-12-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "565": [
+      {
+        "url": "https://www.holcim.com/what-we-do/green-operations/ccus/go4ecoplanet",
+        "title": "Go4ECOPlanet",
+        "publisher": "Holcim",
+        "date": "2024-01-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.go4ecoplanet.com/en/news",
+        "title": "News - Go4ECOPlanet",
+        "publisher": "Holcim Polska / Go4ECOPlanet",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.go4ecoplanet.com/en/home",
+        "title": "The first zero-emission cement plant - Go4ECOPlanet",
+        "publisher": "Holcim Polska / Go4ECOPlanet",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.holcim.com/who-we-are/our-stories/decarbonizing-building-poland",
+        "title": "Decarbonizing building in Poland",
+        "publisher": "Holcim",
+        "date": "2023-02-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "568": [
       {
         "url": "https://assets.publishing.service.gov.uk/media/66697f5a43c77d8616f76023/grain-b-power-station-eia-scoping-opinion-11062024.pdf",
@@ -4144,6 +4273,39 @@
         "title": "Energy and Resources Minister Tours Key Oil and Gas Facilities in Southeast Saskatchewan",
         "publisher": "Government of Saskatchewan",
         "date": "2025-09-05",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "662": [
+      {
+        "url": "https://marquisinc.com/2021/10/04/marquis-industrial-complex-to-be-the-worlds-first-carbon-neutral-industrial-complex",
+        "title": "Marquis Industrial Complex To Be the World's First Carbon-Neutral Industrial Complex",
+        "publisher": "Marquis Incorporated",
+        "date": "2021-10-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/gle-commences-engineering-on-carbon-capture-at-marquis-industrial-complex-301769736.html",
+        "title": "GLE Commences Engineering on Carbon Capture at Marquis Industrial Complex",
+        "publisher": "PR Newswire / Gas Liquids Engineering",
+        "date": "2023-03-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://webapps.illinois.gov/EPA/WebSiteApi/api/PublicNotices/GetAirPermitDocument/9786",
+        "title": "Marquis Carbon Capture LLC",
+        "publisher": "Illinois EPA",
+        "date": "2025-06-23",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.epa.gov/system/files/documents/2025-09/508_1-marquis-draft-attachment-c-il-155-6a-0001.pdf",
+        "title": "Attachment C: Testing and Monitoring Plan",
+        "publisher": "US EPA",
         "tier": "official",
         "itemLang": "en"
       }
@@ -5071,6 +5233,39 @@
         "publisher": "World Oil",
         "date": "2026-08-25",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "773": [
+      {
+        "url": "https://enfinium.co.uk/enfinium-proposal-to-decarbonise-largest-energy-from-waste-site-in-uk-designated-as-nationally-significant-by-uk-government",
+        "title": "enfinium proposal to decarbonise largest energy from waste site in UK designated as Nationally Significant by UK Government",
+        "publisher": "enfinium",
+        "date": "2024-02-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://enfinium.co.uk/uk-first-carbon-capture-pilot-on-energy-from-waste-facility-goes-live",
+        "title": "UK-first carbon capture pilot on energy from waste facility goes live",
+        "publisher": "enfinium",
+        "date": "2024-09-16",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://enfinium.co.uk/nuadas-next-generation-carbon-capture-technology-goes-live-at-enfiniums-energy-from-waste-plant",
+        "title": "Nuada's Next Generation Carbon Capture Technology Goes Live at enfinium's Energy from Waste Plant",
+        "publisher": "enfinium",
+        "date": "2025-09-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN0710002",
+        "title": "Ferrybridge Carbon Capture and Storage - Project information",
+        "publisher": "Planning Inspectorate (UK)",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -7364,6 +7559,31 @@
         "itemLang": "en"
       }
     ],
+    "1277": [
+      {
+        "url": "https://www.worldcement.com/europe-cis/17072026/cemex-receive-200-million-to-promote-carbon-capture-capture-project-in-alcanar/",
+        "title": "Cemex receive 200 million to promote carbon capture project in Alcanar",
+        "publisher": "World Cement",
+        "date": "2026-07-17",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://globalcement.com/news/21008-cemex-espana-receives-funding-for-somzero-project",
+        "title": "Cemex Espana receives funding for SOMZERO project",
+        "publisher": "Global Cement",
+        "date": "2026-07-17",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonstorage.io/facilities/somzero",
+        "title": "SOMZERO",
+        "publisher": "CarbonStorage.io",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "1312": [
       {
         "url": "https://corporate.exxonmobil.com/what-we-do/delivering-industrial-solutions/carbon-capture-and-storage/expanding-our-ccs-operations-in-louisiana-with-another-project-startup",
@@ -7471,6 +7691,38 @@
         "publisher": "gasworld",
         "date": "2025-01-31",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1335": [
+      {
+        "url": "https://www.uniper.energy/united-kingdom/projects-united-kingdom/connahs-quay-low-carbon-power",
+        "title": "Connah's Quay Low Carbon Power",
+        "publisher": "Uniper",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.uniper.energy/united-kingdom/news/public-engagement-programme-launched-for-new-low-carbon-power-station-project-at-unipers-connahs-quay-site",
+        "title": "Public engagement programme launched for new low carbon power station project at Uniper's Connah's Quay site",
+        "publisher": "Uniper",
+        "date": "2024-02-15",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010166-000595-Connah%27s%20Quay%20Examination%20Library%20-%20PDF%20version.pdf",
+        "title": "Connah's Quay Low Carbon Power Project Examination Library",
+        "publisher": "Planning Inspectorate (UK)",
+        "date": "2026-08-17",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://publicregister.naturalresources.wales/Search/Download?RecordId=202690",
+        "title": "Connah's Quay Low Carbon Power Station",
+        "publisher": "Natural Resources Wales",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -7638,6 +7890,39 @@
         "itemLang": "en"
       }
     ],
+    "1408": [
+      {
+        "url": "https://www.akersolutions.com/news/news-archive/2019/aker-solutions-wins-ccus-work-for-preem-in-sweden/",
+        "title": "Aker Solutions Wins CCUS Work for Preem in Sweden",
+        "publisher": "Aker Solutions",
+        "date": "2019-02-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.akersolutions.com/news/news-archive/2020/aker-solutions-starts-ccs-test-program-at-preem-refinery-in-sweden/",
+        "title": "Aker Solutions Starts CCS Test Program at Preem Refinery in Sweden",
+        "publisher": "Aker Solutions",
+        "date": "2020-05-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://climit.no/en/project/techno-economic-feasibility-study-of-the-implementation-of-carbon-capture-from-major-emission-sources-at-preemraff-lysekil-preem-ccs/",
+        "title": "Techno-Economic Feasibility Study of the Implementation of Carbon Capture from Major Emission Sources at Preemraff Lysekil (PREEM CCS)",
+        "publisher": "CLIMIT / Gassnova",
+        "date": "2021-10-20",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonstorage.io/facilities/preem-ccs",
+        "title": "Preem CCS",
+        "publisher": "CarbonStorage.io",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "1409": [
       {
         "url": "https://www.fluxys.com/en/news/fluxys-belgium/2025/250526_construction-of-co2-backbone-started-in-antwerp-port-area",
@@ -7668,6 +7953,40 @@
         "title": "Antwerp@C CO2 Export Hub",
         "publisher": "Fluxys",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "1461": [
+      {
+        "url": "https://www.vicat.com/news/vicat-group-launches-vaia-project-accelerator-decarbonization-ambitions",
+        "title": "The Vicat group launches the VAIA project as an accelerator of the decarbonization ambitions",
+        "publisher": "Groupe Vicat",
+        "date": "2025-03-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.vicat.com/news/vicat-group-awarded-grand-projets-industriels-de-decarbonation-gpid-grant-its-vaia-project-0",
+        "title": "The Vicat Group awarded a Grand Projets Industriels de Decarbonation (GPID) grant for its VAIA project",
+        "publisher": "Groupe Vicat",
+        "date": "2026-02-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.vicat.com/news/vicat-group-has-officially-been-awarded-innovation-fund-grant-its-vaia-project",
+        "title": "The Vicat Group has officially been awarded the Innovation Fund grant for its VAIA project",
+        "publisher": "Groupe Vicat",
+        "date": "2026-03-30",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gasworld.com/story/vicat-secures-eu-backing-for-frances-largest-cement-carbon-capture-project/2173010.article/",
+        "title": "Vicat secures EU backing for France's largest cement carbon capture project",
+        "publisher": "gasworld",
+        "date": "2026-02-16",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -7913,6 +8232,31 @@
         "publisher": "The Slovak Spectator",
         "date": "2025-03-12",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1534": [
+      {
+        "url": "https://energeticcity.ca/2025/01/10/northriver-midstream-notifies-taylor-residents-of-application-for-new-project-at-mcmahon-plant/",
+        "title": "NorthRiver Midstream notifies Taylor residents of application for new project at McMahon plant",
+        "publisher": "Energeticcity.ca",
+        "date": "2025-01-10",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.brokentypewriter.ca/p/northriver-seeks-to-modernize-mcmahon",
+        "title": "NorthRiver seeks to modernize McMahon Plant, sequester emissions",
+        "publisher": "The Broken Typewriter",
+        "date": "2025-01-27",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonstorage.io/facilities/northriver-midstream-mcmahon-gas-plant-carbon-capture-project",
+        "title": "NorthRiver Midstream McMahon Gas Plant Carbon Capture Project",
+        "publisher": "CarbonStorage.io",
+        "tier": "reference",
         "itemLang": "en"
       }
     ]
