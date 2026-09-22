@@ -830,6 +830,8 @@ if (theBibMatch) {
 
 // 替换正文中的空白引用 <span class="citation" data-cites="...">
 let citationReplaceCount = 0;
+// 每个文献键仅输出一次返回锚点，避免同一引文多处出现时产生重复 id 或断裂的反向链接
+const returnAnchoredKeys = new Set();
 bodyHtml = bodyHtml.replace(
   /<span\s+class="citation"\s+data-cites="([^"]+)">[\s\S]*?<\/span>/g,
   (match, citesStr) => {
@@ -846,8 +848,12 @@ bodyHtml = bodyHtml.replace(
 
     // 格式化为紧凑合并上标，单个方括号包围：如 [1] 或 [80, 81] 或 [1, 2, 4, 34]
     const linksHtml = validItems
-      .map((item, i) => {
-        const returnAnchor = i === 0 ? `id="cite-return-${item.key}"` : '';
+      .map((item) => {
+        let returnAnchor = '';
+        if (!returnAnchoredKeys.has(item.key)) {
+          returnAnchoredKeys.add(item.key);
+          returnAnchor = `id="cite-return-${item.key}"`;
+        }
         return `<a class="cite-ref" href="#ref-${item.key}" data-cite="${item.key}" data-index="${item.index}" ${returnAnchor} title="${item.cleanText}">${item.index}</a>`;
       })
       .join('<span class="cite-sep">, </span>');
@@ -1447,6 +1453,9 @@ const template = `<!DOCTYPE html>
         gap: 0;
       }
       .btn-label { display: none; }
+      .reading-stats { flex-wrap: wrap; }
+      .ga-header { flex-wrap: wrap; }
+      .figure-header { flex-wrap: wrap; }
     }
     @media (max-width: 400px) {
       .nav-brand .brand-text { display: none; }
@@ -3752,7 +3761,7 @@ const template = `<!DOCTYPE html>
   doi={10.5281/zenodo.21110615},
   url={https://liuh886.github.io/ccus-policy-hub/reports/${slug}/}
 }</code></pre>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 1rem;">
           <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX 引用代码</button>
           <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF${pdfPageCount ? ` (${pdfPageCount}页)` : ''}</a>
         </div>
