@@ -2397,6 +2397,40 @@ const template = `<!DOCTYPE html>
       list-style: none;
     }
 
+    /* 附录 A–D 与参考文献：默认折叠 + 小型展开按钮 */
+    .article-content h1 .collapse-toggle {
+      margin-left: auto;
+      align-self: center;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.22rem 0.62rem;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      background: var(--bg-secondary);
+      color: var(--brand-blue);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .article-content h1 .collapse-toggle:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--brand-blue);
+    }
+    .article-content h1 .collapse-toggle svg {
+      transition: transform 0.2s ease;
+    }
+    .article-content h1 .collapse-toggle[aria-expanded="false"] svg {
+      transform: rotate(-90deg);
+    }
+    .collapsible-body.is-collapsed {
+      display: none;
+    }
+
     /* 附录 C：关键术语与缩略语紧凑学术规范表 (Glossary Table) */
     .glossary-card-container {
       background: var(--bg-primary);
@@ -3524,8 +3558,14 @@ const template = `<!DOCTYPE html>
       #progress-bar, .navbar, .toc-sidebar, #citation-popover, #lightbox-modal,
       .mobile-toc-btn, #mobile-drawer, .back-to-top, .ref-actions, #copy-bibtex-btn,
       .table-scroll-hint, .ga-tip, .figure-tip,
-      .selection-toolbar, .comment-modal-backdrop, .comments-drawer, .comments-drawer-backdrop, #comment-toast {
+        .selection-toolbar, .comment-modal-backdrop, .comments-drawer, .comments-drawer-backdrop, #comment-toast {
         display: none !important;
+      }
+      .collapse-toggle {
+        display: none !important;
+      }
+      .collapsible-body.is-collapsed {
+        display: block !important;
       }
       mark.comment-highlight {
         background: transparent !important;
@@ -4657,6 +4697,121 @@ const template = `<!DOCTYPE html>
         });
       }
     }
+
+    // 附录 A–D 与参考文献：默认折叠，附小型展开按钮，避免页面过长
+    (function initCollapsibleSections() {
+      const root = document.getElementById('report-content');
+      if (!root) return;
+
+      const headings = Array.from(
+        root.querySelectorAll('h1.appendix-h1, #references-container > h1')
+      );
+      if (!headings.length) return;
+
+      const sections = [];
+
+      const resolveHashTarget = (hash) => {
+        if (!hash || hash.charAt(0) !== '#') return null;
+        let id = hash.slice(1);
+        try {
+          id = decodeURIComponent(id);
+        } catch (e) {
+          /* 保留原始 id */
+        }
+        return document.getElementById(id);
+      };
+
+      const expandFor = (el) => {
+        if (!el) return;
+        // 1) 目标位于折叠体内部（引用、图表、表格锚点等）
+        if (typeof el.closest === 'function') {
+          const body = el.closest('.collapsible-body.is-collapsed');
+          if (body) {
+            const entry = sections.find((s) => s.body === body);
+            if (entry) entry.setExpanded(true);
+            return;
+          }
+        }
+        // 2) 目标本身即折叠区标题（目录大纲链接常见）
+        const byHeading = sections.find((s) => s.heading === el);
+        if (byHeading) {
+          byHeading.setExpanded(true);
+          return;
+        }
+        // 3) 目标位于折叠区所属容器内（如 #references-container）
+        if (typeof el.closest === 'function') {
+          const entry = sections.find(
+            (s) => s.heading.parentNode && s.heading.parentNode.contains(el)
+          );
+          if (entry) entry.setExpanded(true);
+        }
+      };
+
+      headings.forEach((heading, i) => {
+        if (!heading.id) heading.id = 'collapsible-section-' + i;
+
+        // 收集标题之后、下一章节（h1/section）之前的所有兄弟节点
+        const nodes = [];
+        let node = heading.nextElementSibling;
+        while (node) {
+          if (node.tagName === 'H1' || node.tagName === 'SECTION') break;
+          nodes.push(node);
+          node = node.nextElementSibling;
+        }
+        if (!nodes.length) return;
+
+        const body = document.createElement('div');
+        body.className = 'collapsible-body is-collapsed';
+        body.id = heading.id + '-panel';
+        nodes.forEach((n) => body.appendChild(n));
+        heading.parentNode.insertBefore(body, heading.nextSibling);
+
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'collapse-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-controls', body.id);
+        toggle.innerHTML =
+          '<span class="collapse-toggle-label">展开</span>' +
+          '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+        heading.appendChild(toggle);
+
+        const entry = {
+          heading,
+          body,
+          setExpanded(expanded) {
+            body.classList.toggle('is-collapsed', !expanded);
+            toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            const label = toggle.querySelector('.collapse-toggle-label');
+            if (label) label.textContent = expanded ? '收起' : '展开';
+          },
+        };
+        sections.push(entry);
+
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          entry.setExpanded(body.classList.contains('is-collapsed'));
+        });
+      });
+
+      // 深链接（目录/引用跳转/分享锚点）自动展开目标所在折叠区
+      window.addEventListener('hashchange', () =>
+        expandFor(resolveHashTarget(location.hash))
+      );
+      document.addEventListener(
+        'click',
+        (e) => {
+          const anchor =
+            e.target && typeof e.target.closest === 'function'
+              ? e.target.closest('a[href^="#"]')
+              : null;
+          if (!anchor) return;
+          expandFor(resolveHashTarget(anchor.getAttribute('href')));
+        },
+        true
+      );
+      if (location.hash) expandFor(resolveHashTarget(location.hash));
+    })();
   </script>
 </body>
 </html>`;
