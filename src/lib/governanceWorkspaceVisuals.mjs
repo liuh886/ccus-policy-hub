@@ -29,6 +29,7 @@ import {
 } from './governanceBenchmarking.mjs';
 import {
   isPendingRegulatory,
+  makeCountryComparator,
   rankByGovernance,
 } from './comparePresentation.mjs';
 import { governanceVisualsCopy as copy } from './governanceCopy.mjs';
@@ -132,34 +133,92 @@ const regulatoryClarityOf = (country, text) =>
     ([, key]) => !isPendingRegulatory(country.regulatory?.[key])
   ).length;
 
+// Sortable profile matrix. Column keys resolve to a comparable value; the
+// default is governance index descending, which reproduces the ranked
+// overview. The `#n` badge always reflects governance rank, independent of the
+// active sort, so "who is strongest" stays stable while the user re-orders.
+let heatmapSort = { key: 'governance', dir: 'desc' };
+
+const sortValueOf = (country, key, benchmarks, text) => {
+  const dimensionIndex = GOVERNANCE_DIMENSIONS.indexOf(key);
+  if (dimensionIndex >= 0) {
+    return Number(country.governance.scores[dimensionIndex] || 0);
+  }
+  switch (key) {
+    case 'policies':
+      return Number(country.governance.policyCount || 0);
+    case 'committed':
+      return Number(country.deployment.committedCapacity || 0);
+    case 'planned':
+      return Number(country.deployment.plannedCapacity || 0);
+    case 'regulatory':
+      return regulatoryClarityOf(country, text);
+    case 'quadrant':
+      return quadrantLabel(text, country, benchmarks).label;
+    default:
+      return Number(country.governance.index || 0);
+  }
+};
+
+const orderCountries = (countrySystems, benchmarks, text) => {
+  const rankMap = new Map(
+    rankByGovernance(countrySystems).map((entry) => [
+      countryKey(entry.country),
+      entry.rank,
+    ])
+  );
+  const ordered = [...countrySystems].sort(
+    makeCountryComparator(
+      (country) => sortValueOf(country, heatmapSort.key, benchmarks, text),
+      heatmapSort.dir
+    )
+  );
+  return { ordered, rankMap };
+};
+
 const renderHeatmap = (countrySystems, benchmarks, text) => {
   const container = document.getElementById('governance-heatmap');
   if (!container) return;
   const shortLabels = text.dimensionShortLabels || text.dimensionLabels;
 
+  const sortHeading = (label, key, ariaLabel, className = '') => {
+    const active = heatmapSort.key === key;
+    const ariaSort = active
+      ? heatmapSort.dir === 'asc'
+        ? 'ascending'
+        : 'descending'
+      : 'none';
+    const caret = active ? (heatmapSort.dir === 'asc' ? '▲' : '▼') : '';
+    return `<th scope="col" class="governance-heatmap-sortable ${className}" aria-sort="${ariaSort}"><button type="button" class="governance-heatmap-sort" data-sort="${key}" title="${escapeHtml(ariaLabel)}">${escapeHtml(label)}<span class="governance-sort-caret" aria-hidden="true">${caret}</span></button></th>`;
+  };
+
   const headings = text.dimensionLabels
-    .map(
-      (label, index) =>
-        `<th scope="col" title="${escapeHtml(label)}">${escapeHtml(shortLabels[index] || label)}</th>`
+    .map((label, index) =>
+      sortHeading(
+        shortLabels[index] || label,
+        GOVERNANCE_DIMENSIONS[index],
+        label
+      )
     )
     .join('');
   const summaryHeadings = [
-    text.colGovernance,
-    text.colPolicies,
-    text.colCommitted,
-    text.colPlanned,
-    text.colRegulatory,
-    text.colQuadrant,
+    [text.colGovernance, 'governance'],
+    [text.colPolicies, 'policies'],
+    [text.colCommitted, 'committed'],
+    [text.colPlanned, 'planned'],
+    [text.colRegulatory, 'regulatory'],
+    [text.colQuadrant, 'quadrant'],
   ]
-    .map(
-      (label) =>
-        `<th scope="col" class="governance-heatmap-summary-head">${escapeHtml(label)}</th>`
+    .map(([label, key]) =>
+      sortHeading(label, key, label, 'governance-heatmap-summary-head')
     )
     .join('');
 
-  const rows = rankByGovernance(countrySystems)
-    .map(({ country, rank }) => {
+  const { ordered, rankMap } = orderCountries(countrySystems, benchmarks, text);
+  const rows = ordered
+    .map((country) => {
       const key = countryKey(country);
+      const rank = rankMap.get(key) || 1;
       const rankBadge = `<span class="governance-rank-badge" aria-label="${escapeHtml(text.rankLabel)} #${rank}">#${rank}</span>`;
       const cells = GOVERNANCE_DIMENSIONS.map((dimension, index) => {
         const score = country.governance.scores[index] || 0;
@@ -179,6 +238,30 @@ const renderHeatmap = (countrySystems, benchmarks, text) => {
       selectCountry(
         button.dataset.evidenceCountry,
         button.dataset.evidenceDimension
+      );
+    });
+  });
+  container.querySelectorAll('[data-sort]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.sort;
+      if (!key) return;
+      heatmapSort = {
+        key,
+        dir:
+          heatmapSort.key === key && heatmapSort.dir === 'desc'
+            ? 'asc'
+            : 'desc',
+      };
+      if (!currentState) return;
+      renderHeatmap(
+        currentState.countrySystems,
+        currentState.benchmarks,
+        currentState.text
+      );
+      renderRadarSummary(
+        currentState.countrySystems,
+        currentState.benchmarks,
+        currentState.text
       );
     });
   });
@@ -277,8 +360,10 @@ const renderRadarSummary = (countrySystems, benchmarks, text) => {
   const container = document.getElementById('governance-radar-summary');
   if (!container) return;
   const regTotal = (text.regKeys || []).length;
-  container.innerHTML = rankByGovernance(countrySystems)
-    .map(({ country, rank }) => {
+  const { ordered, rankMap } = orderCountries(countrySystems, benchmarks, text);
+  container.innerHTML = ordered
+    .map((country) => {
+      const rank = rankMap.get(countryKey(country)) || 1;
       const clarity = regulatoryClarityOf(country, text);
       const { label: quadrant } = quadrantLabel(text, country, benchmarks);
       const rankBadge = `<span class="governance-rank-badge" aria-label="${escapeHtml(text.rankLabel)} #${rank}">#${rank}</span>`;

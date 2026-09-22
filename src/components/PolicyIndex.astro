@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro';
 import PolicyCard from './PolicyCard.astro';
 import countryData from '../data/countries.json';
 import i18nDict from '../data/i18n_dictionary.json';
+import { GOVERNANCE_DIMENSION_LABELS } from '../lib/governanceCopy.mjs';
 
 interface Props {
   lang?: 'zh' | 'en';
@@ -49,15 +50,32 @@ const uniqueCategories = Array.from(
   new Set(policies.map((p) => p.data.category))
 ).sort();
 
+// Weights reuse the canonical dimension taxonomy (single source in
+// governanceCopy.mjs) so the policy database, the policy-detail radar and the
+// compare workspace name the five dimensions identically.
+const dimensionColors = [
+  'bg-emerald-500',
+  'bg-blue-500',
+  'bg-amber-500',
+  'bg-purple-500',
+  'bg-slate-500',
+];
+const dimensionKeys = ['incentive', 'statutory', 'market', 'strategic', 'mrv'];
+const dimensionWeights = dimensionKeys.map((key, index) => ({
+  key,
+  color: dimensionColors[index],
+  label: GOVERNANCE_DIMENSION_LABELS[isEn ? 'en' : 'zh'].full[index],
+}));
+
 const copy = isEn
   ? {
       title: 'Policy Database',
       description:
-        'Search and analyze global CCUS policies and regulations across five dimensions: Legal, Economic, Market, Strategic, and Technical.',
+        'Search and analyze global CCUS policies and regulations across five dimensions: economic incentives, statutory and regulatory, market mechanisms, strategic planning, and MRV & data governance.',
       keywords:
         'CCUS Policies, Carbon Capture Regulations, Climate Policy Database, Global CCS Incentives',
       intro:
-        'CCUS policies from major economies worldwide, covering five dimensions: Legal, Economic, Market, Strategic and Technical.',
+        'CCUS policies from major economies worldwide, covering five dimensions: economic incentives, statutory and regulatory, market mechanisms, strategic planning and MRV & data governance.',
       searchPlaceholder: 'Search titles, content or tags...',
       allCountries: 'All Countries',
       allSectors: 'All Sectors',
@@ -68,21 +86,15 @@ const copy = isEn
       weightsNote:
         'The system will calculate the comprehensive score of each policy in real-time based on the weights you set and re-sort them.',
       noResults: 'No policies found matching your criteria.',
-      weights: [
-        { label: 'Incentive', color: 'bg-emerald-500', key: 'incentive' },
-        { label: 'Regulatory', color: 'bg-blue-500', key: 'statutory' },
-        { label: 'Market', color: 'bg-amber-500', key: 'market' },
-        { label: 'Strategic', color: 'bg-purple-500', key: 'strategic' },
-        { label: 'Technical', color: 'bg-slate-500', key: 'mrv' },
-      ],
+      weights: dimensionWeights,
     }
   : {
       title: '政策数据库',
       description:
-        '检索全球主要的 CCUS 政策与法规，涵盖法律监管、经济激励、市场机制、战略引导及技术标准五大维度。',
+        '检索全球主要的 CCUS 政策与法规，涵盖经济激励、法规制度、市场机制、战略规划及 MRV 与数据治理五大维度。',
       keywords: 'CCUS 政策, 碳捕集法规, 碳封存激励, 气候政策数据库',
       intro:
-        '收录全球主要经济体的 CCUS 相关政策，涵盖法律监管、经济激励、市场机制、战略引导及技术标准五大维度。',
+        '收录全球主要经济体的 CCUS 相关政策，涵盖经济激励、法规制度、市场机制、战略规划及 MRV 与数据治理五大维度。',
       searchPlaceholder: '搜索政策标题、内容或标签...',
       allCountries: '所有国家和地区',
       allSectors: '所有行业',
@@ -93,13 +105,7 @@ const copy = isEn
       weightsNote:
         '系统将根据您设定的权重，实时计算各项政策的综合得分并重新排序。',
       noResults: '未找到符合条件的政策。',
-      weights: [
-        { label: '经济激励', color: 'bg-emerald-500', key: 'incentive' },
-        { label: '法律监管', color: 'bg-blue-500', key: 'statutory' },
-        { label: '市场机制', color: 'bg-amber-500', key: 'market' },
-        { label: '战略引导', color: 'bg-purple-500', key: 'strategic' },
-        { label: '技术规范', color: 'bg-slate-500', key: 'mrv' },
-      ],
+      weights: dimensionWeights,
     };
 ---
 

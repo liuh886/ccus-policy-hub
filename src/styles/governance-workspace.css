@@ -211,6 +211,34 @@
   border-left: 1px solid var(--border-subtle);
 }
 
+.governance-heatmap-sortable {
+  padding: 0 !important;
+}
+
+.governance-heatmap-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  border: 0;
+  background: transparent;
+  padding: 0.35rem 0.2rem;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.governance-heatmap-sort:hover,
+.governance-heatmap-sort:focus-visible {
+  color: var(--brand-teal-700);
+  outline: none;
+}
+
+.governance-sort-caret {
+  font-size: 0.5rem;
+  line-height: 1;
+}
+
 .governance-heatmap-index {
   border-left: 1px solid var(--border-subtle);
   color: var(--brand-navy-800);

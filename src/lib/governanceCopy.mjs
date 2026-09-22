@@ -21,6 +21,41 @@
 // never renders a double slash under a non-root Astro base.
 const BASE = (import.meta.env?.BASE_URL ?? '').replace(/\/$/, '');
 
+/**
+ * Canonical five-dimension taxonomy (T2 single source). The compare workspace,
+ * the policy database and the policy-detail radar all read these labels so a
+ * dimension is named the same everywhere. Order matches
+ * `GOVERNANCE_DIMENSIONS` (incentive, statutory, market, strategic, mrv).
+ */
+export const GOVERNANCE_DIMENSION_LABELS = Object.freeze({
+  zh: Object.freeze({
+    full: Object.freeze([
+      '经济激励',
+      '法规制度',
+      '市场机制',
+      '战略规划',
+      'MRV 与数据治理',
+    ]),
+    short: Object.freeze(['激励', '法规', '市场', '战略', 'MRV']),
+  }),
+  en: Object.freeze({
+    full: Object.freeze([
+      'Economic Incentives',
+      'Statutory & Regulatory',
+      'Market Mechanisms',
+      'Strategic Planning',
+      'MRV & Data Governance',
+    ]),
+    short: Object.freeze([
+      'Incentive',
+      'Statutory',
+      'Market',
+      'Strategic',
+      'MRV',
+    ]),
+  }),
+});
+
 export const governanceComparisonCopy = Object.freeze({
   zh: Object.freeze({
     pageTitle: '政策对比分析',
@@ -186,14 +221,8 @@ export const governanceComparisonCopy = Object.freeze({
 
 export const governanceClientCopy = Object.freeze({
   zh: Object.freeze({
-    dimensionLabels: [
-      '经济激励',
-      '法规制度',
-      '市场机制',
-      '战略规划',
-      'MRV 与数据治理',
-    ],
-    dimensionShortLabels: ['激励', '法规', '市场', '战略', 'MRV'],
+    dimensionLabels: GOVERNANCE_DIMENSION_LABELS.zh.full,
+    dimensionShortLabels: GOVERNANCE_DIMENSION_LABELS.zh.short,
     operationalProjects: '在运设施',
     dimension: '对比维度',
     regKeys: [
@@ -241,20 +270,8 @@ export const governanceClientCopy = Object.freeze({
     policyPath: `${BASE}/policy/`,
   }),
   en: Object.freeze({
-    dimensionLabels: [
-      'Economic Incentives',
-      'Statutory & Regulatory',
-      'Market Mechanisms',
-      'Strategic Planning',
-      'MRV & Data Governance',
-    ],
-    dimensionShortLabels: [
-      'Incentive',
-      'Statutory',
-      'Market',
-      'Strategic',
-      'MRV',
-    ],
+    dimensionLabels: GOVERNANCE_DIMENSION_LABELS.en.full,
+    dimensionShortLabels: GOVERNANCE_DIMENSION_LABELS.en.short,
     operationalProjects: 'operational facilities',
     dimension: 'Dimension',
     regKeys: [
