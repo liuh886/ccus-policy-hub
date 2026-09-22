@@ -799,6 +799,31 @@
         "itemLang": "en"
       }
     ],
+    "122": [
+      {
+        "url": "https://www.airliquide.com/group/press-releases-news/2024-06-18/decarbonization-dunkirk-basin-air-liquide-and-dunkerque-lng-co2-infrastructure-project-takes-major",
+        "title": "Decarbonization of the Dunkirk basin: Air Liquide and Dunkerque LNG CO2 infrastructure project takes a major step forward and receives support from the European Union",
+        "publisher": "Air Liquide",
+        "date": "2024-06-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fluxys.com/en/news/dunkerque-lng/2024/240618_decarbonisation-dunkerque-basin-co2-infrastructure-project-takes-major-step",
+        "title": "Decarbonisation of the Dunkerque basin: Dunkerque LNG and Air Liquide CO2 infrastructure project takes major step forward",
+        "publisher": "Fluxys / Dunkerque LNG",
+        "date": "2024-06-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/projects-details/43251567/101147522/CEF2027",
+        "title": "D'Artagnan: Dunkirk CO2 Hub - EU Funding & Tenders Portal",
+        "publisher": "European Commission (CEF2027)",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "123": [
       {
         "url": "https://www.airliquide.com/group/press-releases-news/2024-06-18/decarbonization-dunkirk-basin-air-liquide-and-dunkerque-lng-co2-infrastructure-project-takes-major",
@@ -1423,6 +1448,36 @@
         "itemLang": "en"
       }
     ],
+    "215": [
+      {
+        "url": "https://www.portofrotterdam.com/en/news-and-press-releases/h-vision-kicks-hydrogen-economy-rotterdam",
+        "title": "H-vision kicks off the hydrogen economy in Rotterdam",
+        "publisher": "Port of Rotterdam Authority",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.entsog.eu/h-vision",
+        "title": "H-vision",
+        "publisher": "ENTSOG",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.spglobal.com/energy/en/news-research/latest-news/electric-power/050421-dutch-port-of-rotterdam-targets-end-2026-for-blue-hydrogen-plant",
+        "title": "Dutch Port of Rotterdam targets end-2026 for blue hydrogen plant",
+        "publisher": "S&P Global Commodity Insights",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.tno.nl/en/sustainable/industry/carbon-neutral-industry/clean-hydrogen-production/hydrogen-infrastructure-transport/vision-blue-hydrogen-accelerate-carbon",
+        "title": "H-vision: blue hydrogen for carbon-low industry",
+        "publisher": "TNO",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "227": [
       {
         "url": "https://www.inpex.com/english/business/project/abadi.html",
@@ -1452,6 +1507,39 @@
         "title": "Worley helps propel $21B Asian LNG and CCS project forward with FEEDs now out of the way",
         "publisher": "Offshore Energy",
         "date": "2026-09-18",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "237": [
+      {
+        "url": "https://climate.ec.europa.eu/system/files/2022-07/if_pf_2022_kairos_en.pdf",
+        "title": "Kairos@C: Building strong momentum for massive decarbonisation in the EU through a unique end-to-end CCS project",
+        "publisher": "European Commission (Innovation Fund)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.basf.com/global/en/media/news-releases/2021/11/p-21-385",
+        "title": "Air Liquide and BASF welcome support from European Innovation Fund for joint CCS project",
+        "publisher": "BASF",
+        "date": "2021-11-22",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.basf.com/be/en/who-we-are/Group-Companies/BASF-Antwerpen/Projects",
+        "title": "Projects & Collaborations",
+        "publisher": "BASF Antwerpen",
+        "date": "2022-06-11",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://cms.law/en/nor/legal-updates/European-Commission-approves-EUR-260-million-grant-for-Air-Liquide-and-BASF-for-a-decarbonisation-project-in-Antwerp",
+        "title": "EU Approves EUR 260M Grant for Kairos@C CCS Project",
+        "publisher": "CMS Law",
+        "date": "2026-04-03",
         "tier": "media",
         "itemLang": "en"
       }
@@ -1572,6 +1660,40 @@
         "itemLang": "en"
       }
     ],
+    "253": [
+      {
+        "url": "https://www.holcim.com/media/media-releases/joint-carbon-capture-project-usa-plant",
+        "title": "Svante, LafargeHolcim, Oxy Low Carbon Ventures and Total launch study for commercial-scale carbon capture and end-use at U.S. plant",
+        "publisher": "Holcim (LafargeHolcim)",
+        "date": "2020-01-06",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.svanteinc.com/press-releases/u-s-department-of-energys-national-energy-technology-laboratory-announces-investment-to-further-develop-lh-co2ment-colorado-project-carbon-capture-technology",
+        "title": "U.S. Department of Energy's National Energy Technology Laboratory Announces Investment to Further Develop LH CO2MENT Colorado Project",
+        "publisher": "Svante",
+        "date": "2020-09-17",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.holcim.com/media/media-releases/media-release-carbon-capture-projects-USA-germany",
+        "title": "LafargeHolcim expands carbon capture projects with government funding from the US and Germany",
+        "publisher": "Holcim (LafargeHolcim)",
+        "date": "2020-10-14",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://corporate.totalenergies.us/news/us-department-energys-national-energy-technology-laboratory-announces-investment-further",
+        "title": "U.S. Department of Energy's National Energy Technology Laboratory Announces Investment to Further Develop LH CO2MENT Colorado Project",
+        "publisher": "TotalEnergies",
+        "date": "2020-09-17",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "254": [
       {
         "url": "https://www.businesswire.com/news/home/20211028005770/en/U.S.-Department-of-Energy-Announces-Investment-to-Further-Develop-Carbon-Capture-Technology-via-FEED-Study",
@@ -1603,6 +1725,31 @@
         "publisher": "Global Cement",
         "date": "2021-11-03",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "261": [
+      {
+        "url": "https://netl.doe.gov/projects/project-information.aspx?p=FE0032113",
+        "title": "Svante solid sorbent post-combustion capture at a Linde SMR H2 plant",
+        "publisher": "National Energy Technology Laboratory (NETL), U.S. DOE",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/biblio/2279036",
+        "title": "Engineering Study of Svante's Solid Sorbent Post-Combustion CO2 Capture Technology at a Linde Steam Methane Reforming H2 Plant",
+        "publisher": "OSTI.GOV (U.S. DOE)",
+        "date": "2023-12-04",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/servlets/purl/2279036",
+        "title": "Final Project Report",
+        "publisher": "OSTI.GOV (U.S. DOE)",
+        "date": "2023-12-04",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -1703,6 +1850,39 @@
         "url": "https://www.liverpoolbay-ts.co.uk/",
         "title": "Liverpool Bay CO2 T&S - Transportation and Storage",
         "publisher": "Liverpool Bay CCS Limited (Eni)",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "270": [
+      {
+        "url": "https://www.businesswire.com/news/home/20260304802951/en/Strategic-Biofuels-Secures-Draft-Class-VI-Well-Permit-to-Construct-from-Louisiana-Department-of-Conservation-and-Energy",
+        "title": "Strategic Biofuels Secures Draft Class VI Well Permit to Construct from Louisiana Department of Conservation and Energy",
+        "publisher": "Business Wire (Strategic Biofuels)",
+        "date": "2026-03-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.hatch.com/en/Projects/Energy/Louisiana-Green-Fuels-project",
+        "title": "Louisiana Green Fuels project",
+        "publisher": "Hatch",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/energy-transition/article/14304936/japanese-firm-to-partner-on-newly-revised-louisiana-renewables-fuel-project",
+        "title": "Japanese firm to partner on newly revised Louisiana renewables fuel project",
+        "publisher": "Oil & Gas Journal",
+        "date": "2024-02-09",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sumitomocorp.com/en/jp/news/topics/2024/group/20240409",
+        "title": "JX to Join Forces with Sumitomo Corporation at Large Scale SAF/BECCS Project in Louisiana",
+        "publisher": "Sumitomo Corporation",
+        "date": "2024-04-09",
         "tier": "press_release",
         "itemLang": "en"
       }
@@ -2718,6 +2898,40 @@
         "itemLang": "en"
       }
     ],
+    "409": [
+      {
+        "url": "https://wintershalldea.de/sites/default/files/media/files/220505_PI%20Wilhelmshaven_BlueHyNow_en_final.pdf",
+        "title": "Wintershall Dea helps shape the Wilhelmshaven Energy Hub",
+        "publisher": "Wintershall Dea AG",
+        "date": "2022-05-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://wintershalldea.de/en/newsroom/wintershall-dea-and-nwo-agree-plans-hydrogen-production-wilhelmshaven",
+        "title": "Wintershall Dea and NWO agree plans for hydrogen production in Wilhelmshaven",
+        "publisher": "Wintershall Dea GmbH",
+        "date": "2022-08-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://geostor.cdrmare.de/wp-content/uploads/sites/6/2022/10/WintershallDea_2022-09-30-BlueHyNow-CO2nnectNow.pdf",
+        "title": "BlueHyNow and CO2nnectNow",
+        "publisher": "Wintershall Dea AG",
+        "date": "2022-09-30",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.globalccsinstitute.com/wp-content/uploads/2025/08/CCS-in-Germany.pdf",
+        "title": "CCS in Germany's Decarbonisation Pathway: State of Play and Way Forward",
+        "publisher": "Global CCS Institute",
+        "date": "2024-03-06",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "442": [
       {
         "url": "https://drc.gd.gov.cn/gkmlpt/content/4/4403/post_4403112.html",
@@ -3342,6 +3556,31 @@
         "itemLang": "en"
       }
     ],
+    "540": [
+      {
+        "url": "https://www.cemex.com/w/eu-backs-pioneering-co2-capture-project-at-cemexs-rudersdorf-cement-plant",
+        "title": "EU backs pioneering CO2 capture project at Cemex's Rudersdorf cement plant",
+        "publisher": "Cemex",
+        "date": "2024-10-22",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://co2llect.de/en/news/news-24.10.2024",
+        "title": "EU Funding for CO2LLECT at the CEMEX Rudersdorf Plant - Pioneering CCS Project",
+        "publisher": "CO2LLECT (Cemex / Linde)",
+        "date": "2024-10-24",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191027.pdf",
+        "title": "CO2LLECT: Innovation in Carbon Capture and Transport",
+        "publisher": "European Commission (CINEA)",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "551": [
       {
         "url": "https://lge-ku.com/newsroom/press-releases/2024/02/02/ppl-affiliate-partners-selected-72-million-research-grant-us",
@@ -3626,6 +3865,38 @@
         "publisher": "Zawya",
         "date": "2024-12-04",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "609": [
+      {
+        "url": "https://www.eralberta.ca/projects/details/hinton-bioenergy-carbon-capture-and-storage-project/",
+        "title": "Hinton Bioenergy Carbon Capture and Storage Project",
+        "publisher": "Emissions Reduction Alberta",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://natural-resources.canada.ca/funding-partnerships/hinton-pulp-beccs-negative-emissions-feed-study",
+        "title": "Hinton Pulp Beccs for Negative Emissions FEED Study",
+        "publisher": "Natural Resources Canada",
+        "date": "2024-12-23",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.eralberta.ca/media-releases/over-40-million-investment-to-kickstart-20-billion-in-carbon-capture-projects/",
+        "title": "Over $40 million investment to kickstart $20 billion in carbon capture projects",
+        "publisher": "Emissions Reduction Alberta",
+        "date": "2022-07-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.rockymountaincarbon.com/",
+        "title": "Rocky Mountain Carbon - Bioenergy with Carbon Capture and Storage",
+        "publisher": "Rocky Mountain Carbon (Vault 44.01 / Mondi)",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -4330,6 +4601,40 @@
         "itemLang": "en"
       }
     ],
+    "696": [
+      {
+        "url": "https://www.osti.gov/biblio/1898038",
+        "title": "Engineering Design of a Linde-BASF Advanced Post-Combustion CO2 Capture Technology at a Linde Steam Methane Reforming H2 Plant",
+        "publisher": "U.S. DOE Office of Scientific and Technical Information (OSTI)",
+        "date": "2022-11-03",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/servlets/purl/1898038",
+        "title": "Final Project Report: Engineering Design of a Linde-BASF Advanced Post-Combustion CO2 Capture Technology at a Linde Steam Methane Reforming H2 Plant",
+        "publisher": "U.S. DOE / OSTI (Linde)",
+        "date": "2022-11-03",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/22CM_PSC15_Shah.pdf",
+        "title": "Engineering Design of a Linde-BASF Advanced Post-Combustion CO2 Capture Technology at a Linde Steam Methane Reforming H2 Plant",
+        "publisher": "U.S. DOE / NETL",
+        "date": "2022-08-17",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.opportunitylouisiana.gov/news/linde-announces-construction-of-new-250-million-world-scale-hydrogen-plant-in-st-james-parish",
+        "title": "Linde Announces Construction Of New $250 Million World-Scale Hydrogen Plant In St. James Parish",
+        "publisher": "Louisiana Economic Development",
+        "date": "2019-04-02",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "697": [
       {
         "url": "https://www.energy.gov/nepa/articles/cx-024311-blue-bison-atr-advanced-ccus-system-initial-engineering-166mtpy-co2-capture",
@@ -4649,6 +4954,62 @@
         "itemLang": "en"
       }
     ],
+    "728": [
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191049.pdf",
+        "title": "ACCSION - Aalborg Portland Carbon Capture and Storage using Infrastructure Onshore in North Jutland",
+        "publisher": "European Commission (CINEA)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cementirholding.com/en/investors/press-releases/air-liquide-and-cementir-holding-group-receive-support-european-innovation",
+        "title": "Air Liquide and Cementir Holding Group to receive support from European Innovation Fund for Carbon Capture and Storage project in Denmark",
+        "publisher": "Cementir Holding N.V.",
+        "date": "2024-10-24",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cementirholding.com/en/investors/press-releases/aalborg-portland-cementir-holding-affiliate-has-signed-agreement-danish",
+        "title": "Aalborg Portland has signed an agreement with the Danish Energy Agency to receive a carbon capture subsidy for ACCSION",
+        "publisher": "Cementir Holding N.V.",
+        "date": "2026-06-09",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://aalborgportlandholding.com/en/sustainability/our-commitment-environment/carbon-capture-and-storage",
+        "title": "Carbon Capture and Storage",
+        "publisher": "Aalborg Portland Holding A/S",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "733": [
+      {
+        "url": "https://web.mit.edu/sequestration/tools/projects/getica.html",
+        "title": "Getica CCS Demo Project Fact Sheet: Carbon Dioxide Capture and Storage Project",
+        "publisher": "MIT Carbon Capture and Sequestration Technologies",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://doi.org/10.3390/su17156793",
+        "title": "Carbon Management and Storage for Oltenia: Tackling Romania's Decarbonization Goals",
+        "publisher": "Sustainability (MDPI)",
+        "date": "2025-07-25",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://docslib.org/doc/4488492/feasibility-study-overview-report-public-report-getica-ccs",
+        "title": "Feasibility Study Overview Report - Getica CCS",
+        "publisher": "Global CCS Institute",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "746": [
       {
         "url": "https://www.portsofstockholm.com/about-us/news/2025/pioneering-collaboration-on-co2-logistics-at-stockholm-norvik-port",
@@ -4831,6 +5192,40 @@
         "title": "Electric Generation - City Water, Light, and Power",
         "publisher": "City Water, Light and Power (CWLP)",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "797": [
+      {
+        "url": "https://www.blm.gov/announcement/blm-authorizes-sweetwater-carbon-sequestration-southwest-wyoming",
+        "title": "BLM authorizes Sweetwater carbon sequestration in southwest Wyoming",
+        "publisher": "Bureau of Land Management",
+        "date": "2025-05-23",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://frontierholdings.com/news/sweetwater-carbon-storage-hub-completes-deepest-carbon-storage-well-in-the-nation/",
+        "title": "Sweetwater Carbon Storage Hub Completes Deepest Carbon Storage Well in the Nation",
+        "publisher": "Frontier Infrastructure Holdings",
+        "date": "2025-09-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://wyofile.com/crews-drilled-3-miles-deep-in-wyoming-hoping-to-tap-emerging-co2-storage-market/",
+        "title": "Crews drilled 3 miles deep in Wyoming, hoping to tap emerging CO2 storage market",
+        "publisher": "WyoFile",
+        "date": "2025-09-04",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/24CM/24CM_CTS1_6_Jiao.pdf",
+        "title": "CarbonSAFE Phase III: Sweetwater Carbon Storage Hub",
+        "publisher": "U.S. DOE National Energy Technology Laboratory (NETL)",
+        "date": "2024-08-06",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -5957,6 +6352,40 @@
         "itemLang": "en"
       }
     ],
+    "1020": [
+      {
+        "url": "https://8rivers.com/8-rivers-8rh2-ultra-low-carbon-hydrogen-technology-announcement/",
+        "title": "Announcing Cormorant Clean Energy, the First Commercial Deployment of 8RH2 Ultra-Low-Carbon Hydrogen Technology",
+        "publisher": "8 Rivers Capital",
+        "date": "2024-01-09",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://8rivers.com/cormorant-clean-energy/",
+        "title": "Cormorant Clean Energy: Making Affordable, Ultra-Low-Carbon Ammonia Production a Reality",
+        "publisher": "8 Rivers Capital",
+        "date": "2024-04-11",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ammoniaenergy.org/articles/project-cormorant-carbon-capture-based-ammonia-in-texas/",
+        "title": "Project Cormorant: carbon capture-based ammonia in Texas",
+        "publisher": "Ammonia Energy Association",
+        "date": "2024-01-16",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://panews.com/2024/01/13/new-low-carbon-project-to-bring-jobs-to-city/",
+        "title": "Construction timeline and jobs plans for major Port Arthur plant construction shared",
+        "publisher": "Port Arthur News",
+        "date": "2024-01-13",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "1054": [
       {
         "url": "https://worldsteel.org/wp-content/uploads/8.-Ban-HUA_English.pdf",
@@ -6085,6 +6514,36 @@
         "title": "Permian Regional Carbon Sequestration Hub",
         "publisher": "U.S. Department of Energy / NETL",
         "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "1093": [
+      {
+        "url": "https://www.lhoist.com/en/everest",
+        "title": "EVEREST Project - Decarbonizing Europe's Largest Lime Plant",
+        "publisher": "Lhoist",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101132835.pdf",
+        "title": "Everest - Project Factsheet",
+        "publisher": "CINEA / European Commission (Innovation Fund)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://database.co2value.eu/projects/355",
+        "title": "everest",
+        "publisher": "CO2 Value Europe project database",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.zkg.de/en/artikel/everest-eu-supports-innovative-decarbonisation-of-the-lime-industry-4169871.html",
+        "title": "EU supports innovative decarbonisation of the lime industry",
+        "publisher": "ZKG Cement Lime Gypsum",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -6242,6 +6701,39 @@
         "title": "Cypress Carbon Capture Project",
         "publisher": "CarbonStorage.io",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "1129": [
+      {
+        "url": "https://www.energy.gov/sites/default/files/2024-01/OCED_CCFEEDs_AwardeeFactSheet_SSEB_1.4.24.pdf",
+        "title": "Clean Energy Demonstrations",
+        "publisher": "U.S. Department of Energy, Office of Clean Energy Demonstrations",
+        "date": "2024-01-04",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sseb.org/doe-selects-sseb-to-negotiate-carbon-capture-demonstration-project-program-front-end-engineering-design-feed-study/",
+        "title": "DOE Selects SSEB to Negotiate Carbon Capture Demonstration Project Program Front-End Engineering Design (FEED) Study",
+        "publisher": "Southern States Energy Board",
+        "date": "2023-05-31",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sseb.org/programs/foreman-cement-plant-carbon-capture-and-storage-feed/",
+        "title": "Foreman Cement Plant Carbon Capture and Storage FEED",
+        "publisher": "Southern States Energy Board",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.nwaonline.com/news/2024/apr/22/research-underway-to-capture-sequester-carbon-at/",
+        "title": "Research underway to capture, sequester carbon at Foreman cement plant",
+        "publisher": "Northwest Arkansas Democrat-Gazette",
+        "date": "2024-04-22",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -7354,6 +7846,39 @@
         "title": "Progressive Energy eyes mammoth Baltic Sea carbon capture plan",
         "publisher": "Energy Voice",
         "date": "2026-01-27",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1515": [
+      {
+        "url": "https://nordionenergi.se/engelska/nordion-energi/projects/ccus/malmo-co2-hub",
+        "title": "Malmo CO2 Hub",
+        "publisher": "Nordion Energi",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://nordionenergi.se/nyheter/2026-02-19-malmo-co2-hub-beviljas-statligt-stod---kan-bli-nav-for-transport-och-lagring-av-koldioxid",
+        "title": "Malmo CO2 Hub beviljas statligt stod - kan bli nav for transport och lagring av koldioxid",
+        "publisher": "Nordion Energi",
+        "date": "2026-02-19",
+        "tier": "press_release",
+        "itemLang": "sv"
+      },
+      {
+        "url": "https://news.cmport.com/pressreleases/the-swedish-energy-agency-grants-support-for-establishing-a-carbon-dioxide-infrastructure-in-southern-sweden-3358242",
+        "title": "The Swedish Energy Agency grants support for establishing a carbon dioxide infrastructure in southern Sweden",
+        "publisher": "Copenhagen Malmo Port (CMP)",
+        "date": "2024-12-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonherald.com/sweden-backs-malmo-co2-hub-to-anchor-emerging-ccs-network/",
+        "title": "Sweden Backs Malmo CO2 Hub To Anchor Emerging CCS Network",
+        "publisher": "Carbon Herald",
+        "date": "2026-02-24",
         "tier": "media",
         "itemLang": "en"
       }
