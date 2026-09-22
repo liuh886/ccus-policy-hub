@@ -7,7 +7,6 @@ import {
   calculateGlobalBenchmarks,
   calculateGovernanceCapability,
   classifyGovernanceDeployment,
-  median,
   quantile,
 } from '../src/lib/governanceBenchmarking.mjs';
 
@@ -102,7 +101,6 @@ test('global benchmarks use the 75th percentile and exclude zero deployment from
   assert.equal(benchmarks.governance, 70);
   // deployment: p75 of [10, 30] (zero excluded) -> 25
   assert.equal(benchmarks.deployment, 25);
-  assert.equal(median([4, 1, 3, 2]), 2.5);
   assert.equal(BENCHMARK_QUANTILE, 0.75);
 });
 

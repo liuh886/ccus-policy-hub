@@ -13,9 +13,9 @@ export const GOVERNANCE_DIMENSIONS = Object.freeze([
 
 /**
  * Percentile used as the "high" threshold on both axes of the governance-
- * deployment matrix. Top-quartile (0.75) rather than the 0.5 median so the
- * quadrant split actually separates strong performers instead of leaving
- * almost everyone in "integrated leaders".
+ * deployment matrix. Top-quartile (0.75) is deliberately more selective than
+ * the median: a median split clears half the countries on each axis, so the
+ * "integrated leaders" quadrant stays crowded. p75 limits it to the top band.
  */
 export const BENCHMARK_QUANTILE = 0.75;
 
@@ -168,23 +168,10 @@ export function normalizeDimensionWeights(weights) {
   return values.map((value) => value / total);
 }
 
-export function median(values = []) {
-  const sorted = values
-    .map(Number)
-    .filter(Number.isFinite)
-    .sort((a, b) => a - b);
-  if (!sorted.length) return 0;
-  const middle = Math.floor(sorted.length / 2);
-  return sorted.length % 2
-    ? sorted[middle]
-    : (sorted[middle - 1] + sorted[middle]) / 2;
-}
-
 /**
- * Linear-interpolation quantile (type 7, matching the common `numpy`/`R`
- * default). Used for the quadrant split so "high" means the top band of the
- * whole country distribution, not a mechanical mid-point that leaves almost
- * every strong performer in the same quadrant.
+ * Linear-interpolation quantile (type 7, matching the `numpy`/`R` default).
+ * Used for the quadrant split so "high" means the top band of the country
+ * distribution instead of a mechanical mid-point.
  */
 export function quantile(values = [], probability = BENCHMARK_QUANTILE) {
   const sorted = values
