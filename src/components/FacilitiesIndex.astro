@@ -6,6 +6,12 @@ import FacilityCard from './FacilityCard.astro';
 import Pagination from './Pagination.astro';
 import DatasetVersion from './DatasetVersion.astro';
 import countryData from '../data/countries.json';
+import {
+  FACILITIES_PAGE_SIZE,
+  sortFacilities,
+} from '../lib/facilityPagination.mjs';
+import { toFacilityListItem } from '../lib/facilityListPayload.mjs';
+import { SITE_BASE } from '../lib/siteBase';
 
 type FacilityEntry =
   | CollectionEntry<'facilities_en'>
@@ -29,8 +35,9 @@ const isEn = lang === 'en';
 const facilities = await getCollection(
   isEn ? 'facilities_en' : 'facilities_zh'
 );
-// Paginated slice for the card grid. Filter dropdowns and the map always
-// use the full collection; only the rendered cards are sliced.
+// Paginated slice for the card grid. Filter dropdowns, the map and the
+// client-side filter all use the full collection; only the server-rendered
+// cards are sliced (progressive enhancement / SEO fallback).
 const pageItems = items ?? facilities;
 const countryMap: Record<string, any> = countryData;
 
@@ -79,6 +86,19 @@ const types = Array.from(
 const statuses = Array.from(
   new Set(facilities.map((f) => f.data.status))
 ).sort();
+
+// Full compact dataset for client-side filter/sort/pagination. Canonical
+// order must match the server page slices so the first client render is
+// identical to the server-rendered fallback.
+const listItems = sortFacilities(facilities).map((facility) => ({
+  ...toFacilityListItem(facility),
+  type: normalizeTypeLabel(facility.data.type),
+}));
+const listDataJson = JSON.stringify({ items: listItems });
+
+const listPath = isEn ? '/en/facilities' : '/facilities';
+const currentPage = pagination?.current ?? 1;
+const pageSize = FACILITIES_PAGE_SIZE;
 
 const copy = isEn
   ? {
@@ -266,16 +286,7 @@ const copy = isEn
           class="px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-xs outline-none focus:ring-2 focus:ring-blue-500 dark:text-white cursor-pointer font-bold text-emerald-600"
         >
           <option value="">{copy.allStatuses}</option>
-          {
-            statuses.map((s) => (
-              <option
-                value={s}
-                selected={s === 'Operational' || s === '运行中'}
-              >
-                {s}
-              </option>
-            ))
-          }
+          {statuses.map((s) => <option value={s}>{s}</option>)}
         </select>
         <select
           id="sector-filter"
@@ -305,32 +316,18 @@ const copy = isEn
     <div
       id="facility-grid"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      data-page-size={pageSize}
+      data-current-page={currentPage}
+      data-list-path={listPath}
+      data-site-base={SITE_BASE}
+      data-lang={lang}
     >
       {
-        pageItems.map((f) => {
-          const normalizedType = normalizeTypeLabel(f.data.type);
-
-          return (
-            <div
-              class="facility-item"
-              data-name={f.data.name}
-              data-country={f.data.country}
-              data-region={f.data.region || ''}
-              data-sector={f.data.sector}
-              data-type={normalizedType}
-              data-status={f.data.status}
-              data-capacity={
-                f.data.estimatedCapacity || f.data.announcedCapacityMax || 0
-              }
-              data-year={f.data.announcement || ''}
-              data-hub={f.data.hub || ''}
-              data-partners={f.data.partners?.join(' ') || ''}
-              data-operator={f.data.operator || ''}
-            >
-              <FacilityCard facility={f} />
-            </div>
-          );
-        })
+        pageItems.map((f) => (
+          <div class="facility-item">
+            <FacilityCard facility={f} />
+          </div>
+        ))
       }
     </div>
 
@@ -341,50 +338,108 @@ const copy = isEn
       <p class="text-slate-500 font-bold">{copy.noResults}</p>
     </div>
 
-    {
-      pagination && pagination.total > 1 && (
-        <Pagination
-          current={pagination.current}
-          total={pagination.total}
-          prevUrl={pagination.prevUrl}
-          nextUrl={pagination.nextUrl}
-          lang={lang}
-        />
-      )
-    }
+    <div id="facility-pagination">
+      {
+        pagination && pagination.total > 1 && (
+          <Pagination
+            current={pagination.current}
+            total={pagination.total}
+            prevUrl={pagination.prevUrl}
+            nextUrl={pagination.nextUrl}
+            lang={lang}
+          />
+        )
+      }
+    </div>
 
     <!-- Dataset Version Metadata -->
     <DatasetVersion lang={lang} compact />
   </div>
 </Layout>
 
+<script
+  is:inline
+  type="application/json"
+  id="facility-list-data"
+  set:html={listDataJson}
+/>
+
 <script>
+  import { renderFacilityCardHtml } from '../lib/facilityCard.mjs';
+  import {
+    computeFacilityStats,
+    filterFacilities,
+    paginateFacilities,
+    sortFacilityItems,
+  } from '../lib/facilityListQuery.mjs';
+  import { t as translateUi, makePair, type UiKey } from '../i18n/ui';
+
+  interface FacilityListItem {
+    id: string | number | null;
+    name: string | null;
+    country: string | null;
+    region: string | null;
+    sector: string | null;
+    type: string | null;
+    status: string | null;
+    estimatedCapacity: number | null;
+    announcedCapacityMax: number | null;
+    announcement: string | null;
+    hub: string | null;
+    partners: string;
+    operator: string | null;
+    phase: string | null;
+    precision: string | null;
+  }
+
+  let abortCurrent: AbortController | null = null;
+
+  function readListPayload(): FacilityListItem[] {
+    const el = document.getElementById(
+      'facility-list-data'
+    ) as HTMLScriptElement | null;
+    const raw = el?.textContent?.trim() || '';
+    if (!raw) return [];
+    try {
+      const parsed = JSON.parse(raw) as { items?: unknown };
+      return Array.isArray(parsed.items)
+        ? (parsed.items as FacilityListItem[])
+        : [];
+    } catch (error) {
+      console.warn('Facility list payload is not valid JSON.', error);
+      return [];
+    }
+  }
+
   function setupFacilityFiltering() {
-    const facilityGridEl = document.getElementById('facility-grid');
-    if (facilityGridEl?.getAttribute('data-filter-bound') === '1') return;
-    facilityGridEl?.setAttribute('data-filter-bound', '1');
+    const grid = document.getElementById('facility-grid') as HTMLElement | null;
+    if (!grid) return;
+
+    abortCurrent?.abort();
+    const controller = new AbortController();
+    abortCurrent = controller;
+    const { signal } = controller;
 
     const searchInput = document.getElementById(
       'search-input'
-    ) as HTMLInputElement;
+    ) as HTMLInputElement | null;
     const countryFilter = document.getElementById(
       'country-filter'
-    ) as HTMLSelectElement;
+    ) as HTMLSelectElement | null;
     const statusFilter = document.getElementById(
       'status-filter'
-    ) as HTMLSelectElement;
+    ) as HTMLSelectElement | null;
     const sectorFilter = document.getElementById(
       'sector-filter'
-    ) as HTMLSelectElement;
+    ) as HTMLSelectElement | null;
     const typeFilter = document.getElementById(
       'type-filter'
-    ) as HTMLSelectElement;
+    ) as HTMLSelectElement | null;
     const sortSelect = document.getElementById(
       'sort-select'
-    ) as HTMLSelectElement;
-    const items = Array.from(document.querySelectorAll('.facility-item'));
-    const grid = document.getElementById('facility-grid');
+    ) as HTMLSelectElement | null;
     const noResults = document.getElementById('no-results');
+    const paginationHost = document.getElementById('facility-pagination');
 
     const statCount = document.getElementById('stat-count');
     const statCapacity = document.getElementById('stat-capacity');
@@ -394,80 +449,131 @@ const copy = isEn
       'stat-construction-cap'
     );
 
-    function filterAndStats() {
-      const search = searchInput?.value.toLowerCase() || '';
-      const country = countryFilter?.value || '';
-      const status = statusFilter?.value || '';
-      const sector = sectorFilter?.value || '';
-      const type = typeFilter?.value || '';
-      const sortValue = sortSelect?.value || 'default';
+    const allItems = readListPayload();
+    const pageSize = Number(grid.dataset.pageSize) || 48;
+    const siteBase = grid.dataset.siteBase || '';
+    const listPath = grid.dataset.listPath || '/facilities';
+    const lang = grid.dataset.lang === 'en' ? 'en' : 'zh';
+    const t = (key: UiKey) => translateUi(lang, key);
+    const tp = makePair(lang);
+    const cardCtx = { base: siteBase, lang, t, tp };
 
-      let count = 0;
-      let capacity = 0;
-      let operational = 0;
-      let operationalCap = 0;
-      let constructionCap = 0;
+    const params = new URLSearchParams(window.location.search);
+    const state = {
+      q: params.get('q') || '',
+      country: params.get('country') || '',
+      status: params.get('status') || '',
+      sector: params.get('sector') || '',
+      type: params.get('type') || '',
+      sort: params.get('sort') || 'default',
+      page: Number(grid.dataset.currentPage) || 1,
+    };
 
-      // Filter
-      items.forEach((item: any) => {
-        const d = item.dataset;
-        const matches =
-          (d.name.toLowerCase().includes(search) ||
-            d.hub.toLowerCase().includes(search) ||
-            d.partners.toLowerCase().includes(search) ||
-            d.operator.toLowerCase().includes(search) ||
-            d.country.toLowerCase().includes(search) ||
-            d.region.toLowerCase().includes(search)) &&
-          (!country || d.country === country) &&
-          (!status || d.status === status) &&
-          (!sector || d.sector === sector) &&
-          (!type || d.type === type);
+    const applyStateToControls = () => {
+      if (searchInput) searchInput.value = state.q;
+      if (countryFilter) countryFilter.value = state.country;
+      if (statusFilter) statusFilter.value = state.status;
+      if (sectorFilter) sectorFilter.value = state.sector;
+      if (typeFilter) typeFilter.value = state.type;
+      if (sortSelect) sortSelect.value = state.sort;
+    };
 
-        if (matches) {
-          item.style.display = 'block';
-          count++;
-          const cap = parseFloat(d.capacity || 0);
-          capacity += cap;
-          if (d.status === '运行中' || d.status === 'Operational') {
-            operational++;
-            operationalCap += cap;
-          }
-          if (d.status === '建设中' || d.status === 'Under construction') {
-            constructionCap += cap;
-          }
-        } else {
-          item.style.display = 'none';
-        }
-      });
+    const syncUrl = (page: number) => {
+      const search = new URLSearchParams();
+      if (state.q) search.set('q', state.q);
+      if (state.country) search.set('country', state.country);
+      if (state.status) search.set('status', state.status);
+      if (state.sector) search.set('sector', state.sector);
+      if (state.type) search.set('type', state.type);
+      if (state.sort !== 'default') search.set('sort', state.sort);
+      const query = search.toString();
+      const path =
+        page <= 1
+          ? `${siteBase}${listPath}/`
+          : `${siteBase}${listPath}/page/${page}`;
+      const url = `${path}${query ? `?${query}` : ''}`;
+      window.history.replaceState(window.history.state, '', url);
+    };
 
-      // Sort
-      const sortedItems = [...items].sort((a: any, b: any) => {
-        if (sortValue === 'capacity-desc') {
-          return (
-            parseFloat(b.dataset.capacity || 0) -
-            parseFloat(a.dataset.capacity || 0)
+    const renderPagination = (page: number, total: number) => {
+      if (!paginationHost) return;
+      if (total <= 1) {
+        paginationHost.innerHTML = '';
+        return;
+      }
+
+      const buttonClass =
+        'px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 transition-colors text-sm font-medium cursor-pointer';
+      const disabledClass =
+        'px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 rounded-lg text-slate-300 text-sm cursor-not-allowed';
+
+      const prev = `<button type="button" data-page="${page - 1}" class="${page > 1 ? buttonClass : disabledClass}" ${page > 1 ? '' : 'disabled'}>&larr; ${tp('上一页', 'Previous')}</button>`;
+      const next = `<button type="button" data-page="${page + 1}" class="${page < total ? buttonClass : disabledClass}" ${page < total ? '' : 'disabled'}>${tp('下一页', 'Next')} &rarr;</button>`;
+      const label = `<span class="text-sm font-bold text-slate-500">${tp(`第 ${page} 页 / 共 ${total} 页`, `Page ${page} of ${total}`)}</span>`;
+
+      paginationHost.innerHTML = `<nav class="flex justify-center items-center gap-4 mt-12">${prev}${label}${next}</nav>`;
+
+      paginationHost
+        .querySelectorAll<HTMLButtonElement>('button[data-page]')
+        .forEach((button) => {
+          button.addEventListener(
+            'click',
+            () => {
+              const target = Number(button.dataset.page);
+              if (!Number.isFinite(target) || target < 1 || target > total) {
+                return;
+              }
+              state.page = target;
+              render();
+              grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            },
+            { signal }
           );
-        } else if (sortValue === 'year-asc') {
-          const yearA = parseInt(a.dataset.year) || 9999;
-          const yearB = parseInt(b.dataset.year) || 9999;
-          return yearA - yearB;
-        }
-        // Default order (original index)
-        return items.indexOf(a) - items.indexOf(b);
-      });
+        });
+    };
 
-      sortedItems.forEach((item) => grid?.appendChild(item));
+    const render = () => {
+      const filtered = filterFacilities(allItems, state);
+      const sorted = sortFacilityItems(filtered, state.sort);
+      const paged = paginateFacilities(sorted, state.page, pageSize);
+      state.page = paged.page;
 
-      if (statCount) statCount.textContent = count.toString();
-      if (statCapacity) statCapacity.textContent = capacity.toFixed(1);
-      if (statOperational) statOperational.textContent = operational.toString();
+      grid.innerHTML = paged.items
+        .map(
+          (item: FacilityListItem) =>
+            `<div class="facility-item">${renderFacilityCardHtml(item, cardCtx)}</div>`
+        )
+        .join('');
+
+      const stats = computeFacilityStats(filtered);
+      if (statCount) statCount.textContent = stats.count.toString();
+      if (statCapacity) statCapacity.textContent = stats.capacity.toFixed(1);
+      if (statOperational)
+        statOperational.textContent = stats.operational.toString();
       if (statOperationalCap)
-        statOperationalCap.textContent = operationalCap.toFixed(1);
+        statOperationalCap.textContent = stats.operationalCap.toFixed(1);
       if (statConstructionCap)
-        statConstructionCap.textContent = constructionCap.toFixed(1);
+        statConstructionCap.textContent = stats.constructionCap.toFixed(1);
 
-      if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
-    }
+      if (noResults)
+        noResults.style.display = stats.count === 0 ? 'block' : 'none';
+
+      renderPagination(paged.page, paged.total);
+      syncUrl(paged.page);
+    };
+
+    const onFilterChange = () => {
+      state.q = searchInput?.value ?? '';
+      state.country = countryFilter?.value ?? '';
+      state.status = statusFilter?.value ?? '';
+      state.sector = sectorFilter?.value ?? '';
+      state.type = typeFilter?.value ?? '';
+      state.sort = sortSelect?.value || 'default';
+      state.page = 1;
+      render();
+    };
+
+    applyStateToControls();
 
     [
       searchInput,
@@ -476,14 +582,20 @@ const copy = isEn
       sectorFilter,
       typeFilter,
       sortSelect,
-    ].forEach((el) => {
-      el?.addEventListener('input', filterAndStats);
-      el?.addEventListener('change', filterAndStats);
-    });
+    ]
+      .filter((el): el is HTMLInputElement | HTMLSelectElement => Boolean(el))
+      .forEach((el) => {
+        el.addEventListener('input', onFilterChange, { signal });
+        el.addEventListener('change', onFilterChange, { signal });
+      });
 
-    filterAndStats();
+    render();
   }
 
+  document.addEventListener('astro:before-swap', () => {
+    abortCurrent?.abort();
+    abortCurrent = null;
+  });
   document.addEventListener('astro:page-load', setupFacilityFiltering);
   setupFacilityFiltering();
 </script>

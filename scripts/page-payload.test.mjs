@@ -16,6 +16,10 @@ import {
   toCompareProfile,
 } from '../src/lib/comparePayload.mjs';
 import { MAP_PAYLOAD_FIELDS, toMapFacility } from '../src/lib/mapPayload.mjs';
+import {
+  FACILITY_LIST_FIELDS,
+  toFacilityListItem,
+} from '../src/lib/facilityListPayload.mjs';
 
 describe('compare payload projections', () => {
   it('policy projection keeps exactly the consumed fields', () => {
@@ -128,5 +132,39 @@ describe('map payload projection', () => {
       announcedCapacityMax: null,
       type: null,
     });
+  });
+});
+
+describe('facility list payload projection', () => {
+  it('carries exactly the documented fields', () => {
+    const projected = toFacilityListItem({
+      id: '7',
+      data: {
+        name: 'N',
+        country: 'Indonesia',
+        region: 'Sumatra',
+        sector: 'Power',
+        type: 'Capture',
+        status: 'Operational',
+        estimatedCapacity: 1.2,
+        announcedCapacityMax: 2,
+        announcement: '2021',
+        hub: 'H',
+        partners: ['A', 'B'],
+        operator: 'O',
+        phase: 'FEED',
+        precision: 'exact',
+        description: 'dropped',
+      },
+    });
+    assert.deepStrictEqual(Object.keys(projected), [...FACILITY_LIST_FIELDS]);
+    assert.strictEqual(projected.partners, 'A B');
+    assert.ok(!JSON.stringify(projected).includes('dropped'));
+  });
+
+  it('uses stable null/empty values for missing data', () => {
+    const projected = toFacilityListItem({ id: '1' });
+    assert.strictEqual(projected.partners, '');
+    assert.strictEqual(projected.name, null);
   });
 });
