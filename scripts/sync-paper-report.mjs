@@ -1072,9 +1072,6 @@ bodyHtml = bodyHtml.replace(titlepageRegex, (match, gaNote) => {
   </div>
   <div class="ga-img-wrap">
     <img src="./data/图文摘要2.png" alt="CCUS 规模化治理与 dMRV 架构图文摘要" />
-  </div>
-  <div class="ga-caption">
-    <strong>图文说明：</strong>展示了从“单点技术示范”迈向“集群化枢纽治理”的系统动力学演进路径、关键制度瓶颈以及 dMRV 作为产业信用基础设施的协同支撑关系。
   </div>${gaNoteHtml}
 </div>`;
 });
