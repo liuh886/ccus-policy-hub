@@ -214,6 +214,13 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_facility_news_dedup
 CREATE TABLE IF NOT EXISTS policy_facility_links (
   policy_id TEXT NOT NULL,
   facility_id TEXT NOT NULL,
+  link_type TEXT DEFAULT 'country',
+  confidence REAL DEFAULT 0.3,
+  evidence TEXT,
+  source_url TEXT,
+  review_status TEXT DEFAULT 'draft',
+  created_at TEXT,
+  updated_at TEXT,
   PRIMARY KEY(policy_id, facility_id),
   FOREIGN KEY(policy_id) REFERENCES policies(id) ON DELETE CASCADE,
   FOREIGN KEY(facility_id) REFERENCES facilities(id) ON DELETE CASCADE
