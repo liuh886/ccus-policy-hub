@@ -1140,17 +1140,22 @@
       overflow-y: auto;
     }
 
-    /* 附录特殊标识与分割样式 */
+    /* 附录特殊标识与分割样式（克制版：字号与字重低于正文一级标题） */
     .appendix-h1 {
-      margin-top: 4.5rem !important;
-      border-bottom: 2px dashed var(--brand-emerald) !important;
+      font-size: 1.32rem !important;
+      font-weight: 700 !important;
+      margin-top: 3.25rem !important;
+      margin-bottom: 1rem !important;
+      padding-bottom: 0.45rem !important;
+      border-bottom: 1.5px dashed var(--brand-emerald) !important;
     }
     .appendix-h1 .header-section-number {
       background: rgba(16, 185, 129, 0.1) !important;
       color: var(--brand-emerald) !important;
       border: 1px solid rgba(16, 185, 129, 0.25);
       border-radius: 0.375rem;
-      padding: 0.15rem 0.5rem;
+      padding: 0.1rem 0.45rem;
+      font-size: 0.82em;
     }
     .toc-section-divider {
       font-family: var(--font-sans);
