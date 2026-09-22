@@ -17,7 +17,7 @@ Last updated: 2026-09-08
 
 | Item                                  | Detail                                                                                                                                                                                                                                                      |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 251 facilities already enriched (operational ≥1 Mtpa + under-construction ≥1 Mtpa + planned ≥1.3 Mtpa) toward the full planned/under-construction set, as capacity warrants. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
+| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 262 facilities already enriched (operational ≥1 Mtpa + under-construction ≥1 Mtpa + planned ≥1.1 Mtpa) toward the full planned/under-construction set, as capacity warrants. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
 | Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                                      |
 | Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                                      |
 | Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                                           |
@@ -59,6 +59,8 @@ Last updated: 2026-09-08
   ≥1.5 Mtpa projects (Phase E)
 - Curated coverage extended to 251 facilities / 960 items: added planned
   ≥1.3 Mtpa projects (Phase E)
+- Curated coverage extended to 262 facilities / 1002 items: added planned
+  ≥1.1 Mtpa projects (Phase E)
 - CI projection diff gate closed (quality metrics + public data), deterministic
   `data_as_of` timestamps, volatile audit fields removed from generated output
 - zh/en page consolidation (8 pairs), Base-path literals eliminated (guard test),
