@@ -104,6 +104,9 @@ const copy = isEn
       newsOfficial: 'Official & Press Releases',
       newsMedia: 'Media Coverage',
       newsReference: 'References & Portals',
+      newsSourcesLabel: 'sources',
+      newsLead:
+        'External reporting and primary sources for this asset, ordered from official announcements to references.',
     }
   : {
       title: `${name} | CCUS 设施数据库`,
@@ -119,6 +122,9 @@ const copy = isEn
       newsOfficial: '官方与一手发布',
       newsMedia: '媒体报道',
       newsReference: '参考资料与门户',
+      newsSourcesLabel: '条来源',
+      newsLead:
+        '与该设施相关的外部报道与一手来源，按官方发布到参考资料的层级排列。',
     };
 
 // Timeline Logic
@@ -171,6 +177,10 @@ const newsGroups = [
     items: news.filter((n: any) => n.tier === 'reference'),
   },
 ].filter((group: any) => group.items.length > 0);
+const newsCount = newsGroups.reduce(
+  (total: number, group: any) => total + group.items.length,
+  0
+);
 ---
 
 <Layout title={copy.title}>
@@ -239,6 +249,84 @@ const newsGroups = [
               )
             }
           </div>
+
+          <!-- Press Releases & Coverage (primary position) -->
+          {
+            (url || newsCount > 0) && (
+              <section
+                class="mb-16 rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/40 p-8 md:p-10"
+                data-pagefind-ignore
+              >
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+                  <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                    {copy.newsHeading}
+                  </h2>
+                  {newsCount > 0 && (
+                    <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                      {newsCount} {copy.newsSourcesLabel}
+                    </span>
+                  )}
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-8 max-w-3xl">
+                  {copy.newsLead}
+                </p>
+
+                {url && (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mb-8 flex items-center justify-between gap-4 p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 transition-colors"
+                  >
+                    <span>
+                      <span class="block text-[9px] font-black uppercase text-slate-400 mb-1">
+                        {copy.newsPrimary}
+                      </span>
+                      <span class="text-sm font-bold text-slate-900 dark:text-white break-words">
+                        {hostOf(url)}
+                      </span>
+                    </span>
+                    <span class="text-slate-300 dark:text-slate-600">
+                      &nearr;
+                    </span>
+                  </a>
+                )}
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  {newsGroups.map((group: any) => (
+                    <div>
+                      <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3 border-b border-slate-100 dark:border-slate-800 pb-2">
+                        {group.label}
+                      </p>
+                      <ul class="space-y-2">
+                        {group.items.map((item: any) => (
+                          <li>
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="group block p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-blue-400 transition-colors"
+                            >
+                              <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-snug">
+                                {item.title || hostOf(item.url)}{' '}
+                                <span class="text-slate-300 dark:text-slate-600">
+                                  &nearr;
+                                </span>
+                              </p>
+                              <p class="mt-1 text-[9px] font-medium text-slate-400 uppercase tracking-wide">
+                                {item.publisher || hostOf(item.url)}
+                                {item.date ? ` · ${item.date}` : ''}
+                              </p>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )
+          }
 
           <!-- Engineering Narrative -->
           <section class="mb-16">
@@ -470,69 +558,6 @@ const newsGroups = [
               </div>
             </div>
           </section>
-
-          <!-- Press Releases & Coverage -->
-          {
-            (url || newsGroups.length > 0) && (
-              <section
-                class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-100 dark:border-slate-800"
-                data-pagefind-ignore
-              >
-                <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">
-                  {copy.newsHeading}
-                </h3>
-                <div class="space-y-5">
-                  {url && (
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="block p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
-                    >
-                      <p class="text-[9px] font-black uppercase text-slate-400 mb-1">
-                        {copy.newsPrimary}
-                      </p>
-                      <p class="text-xs font-bold text-slate-900 dark:text-white break-words">
-                        {hostOf(url)}{' '}
-                        <span class="text-slate-400">&nearr;</span>
-                      </p>
-                    </a>
-                  )}
-
-                  {newsGroups.map((group: any) => (
-                    <div>
-                      <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                        {group.label}
-                      </p>
-                      <ul class="space-y-2">
-                        {group.items.map((item: any) => (
-                          <li>
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              class="group block p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-blue-300 transition-colors"
-                            >
-                              <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors leading-snug">
-                                {item.title || hostOf(item.url)}{' '}
-                                <span class="text-slate-300 dark:text-slate-600">
-                                  &nearr;
-                                </span>
-                              </p>
-                              <p class="mt-1 text-[9px] font-medium text-slate-400 uppercase tracking-wide">
-                                {item.publisher || hostOf(item.url)}
-                                {item.date ? ` · ${item.date}` : ''}
-                              </p>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )
-          }
 
           <div
             class="flex justify-between items-center px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest"
