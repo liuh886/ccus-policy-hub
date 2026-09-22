@@ -455,9 +455,12 @@ body:has(#compare-container) #compare-container {
   gap: 2rem !important;
 }
 
-body:has(#compare-container) table thead {
+/* Sticky header only for the regulatory detail table. Scoping this is
+   required: an unscoped `table thead` rule pinned the heatmap matrix header
+   mid-table (top offset applied to a table that never sticks). */
+body:has(#compare-container) .reg-details table thead {
   position: sticky;
-  top: 4.5rem;
+  top: 0;
   z-index: 5;
   background: var(--surface-panel);
 }
