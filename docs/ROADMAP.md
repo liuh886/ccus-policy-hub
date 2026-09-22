@@ -7,11 +7,16 @@ Last updated: 2026-09-23
 
 ## In review / blocked on governance approval
 
-| Item                                       | Detail                                                                                                                                                                              | Blocked on           |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Content schema tightening (`z.enum`)       | [#69](https://github.com/liuh886/ccus-policy-hub/issues/69) — 13 raw `category` / 13 raw `status` values need a governed normalization mapping before `config.ts` can enforce enums | Mapping approval     |
-| Facility–policy relationship model Phase 2 | `docs/facility-policy-relationship-model.md` — `link_type`/`confidence` schema migration; 6,938 links are 100% country-level (`high_risk_warning`)                                  | Semantics approval   |
-| Policy content depth remediation           | `docs/policy-content-depth-report.md` — 103/130 policies below bar, median 44/100                                                                                                   | Editorial scheduling |
+None. Every item previously listed here has landed (see Done): content schema
+tightening ([#69](https://github.com/liuh886/ccus-policy-hub/issues/69)), the
+facility–policy relationship model Phase 2, and the bulk of the policy
+content-depth remediation.
+
+## Editorial backlog
+
+| Item                        | Detail                                                                                                                                                                                      |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Policy content depth (tail) | `docs/policy-content-depth-report.md` — 41 of 129 verified policies still below bar (3 high, 38 medium; median 100/100, critical 0). Editorial scheduling only; no schema or approval gate. |
 
 ## Engineering backlog
 
@@ -23,10 +28,20 @@ Last updated: 2026-09-23
 | Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                          |
 | Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                   |
 | Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                      |
-| Performance polish                    | Google Fonts: 7 weights → 3 + CJK fallback stack; `light-editorial-capacity.css` loaded site-wide but only used on home                                                                                                                    |
+| Performance polish                    | `light-editorial-capacity.css` loaded site-wide but only used on home (Inter font weights resolved via variable axis)                                                                                                                      |
 
 ## Done (2026-09 sessions, for context)
 
+- Content schema tightened to `z.enum(POLICY_CATEGORIES/POLICY_STATUSES)` on
+  the en collection after the governed taxonomy normalization migration;
+  `categoryMap` compatibility patch removed and a taxonomy guard test added
+  ([#69](https://github.com/liuh886/ccus-policy-hub/issues/69))
+- Facility–policy relationship model Phase 2 executed:
+  `link_type`/`confidence`/`evidence`/`source_url`/`review_status`/timestamps
+  added to `policy_facility_links` and all 6,938 links backfilled country/0.3;
+  `schema.sql` aligned with the live schema
+- Policy content depth remediated: critical 103 → 0, median 44 → 100 across the
+  Phase 1A–3K batches; residual editorial tail tracked separately
 - Compare governance–deployment quadrant split moved from the median to the
   75th percentile (`BENCHMARK_QUANTILE`), so "integrated leaders" reflects the
   top band instead of a crowded mid-point; timeline groups restyled with a
