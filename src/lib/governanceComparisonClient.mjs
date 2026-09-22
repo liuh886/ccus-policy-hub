@@ -421,7 +421,7 @@ const renderTimeline = (countrySystems, text, timelineState = new Map()) => {
             )
             .join('')}</ol>`
         : `<p class="timeline-group-empty">${escapeHtml(text.timelineEmptyCountry)}</p>`;
-      return `<section class="timeline-group${open ? ' is-open' : ''}" data-country-key="${escapedKey}"><button type="button" class="timeline-group-head" data-timeline-toggle="${escapedKey}" aria-expanded="${open ? 'true' : 'false'}"><span class="timeline-dot" style="background-color:${group.color}"></span><strong>${escapeHtml(group.displayCountry)}</strong><span class="timeline-group-meta">${meta}</span><span class="timeline-chevron" aria-hidden="true">▾</span></button>${items}</section>`;
+      return `<section class="timeline-group${open ? ' is-open' : ''}" data-country-key="${escapedKey}" style="--timeline-color:${escapeHtml(group.color || 'var(--text-muted)')}"><button type="button" class="timeline-group-head" data-timeline-toggle="${escapedKey}" aria-expanded="${open ? 'true' : 'false'}"><span class="timeline-dot"></span><strong>${escapeHtml(group.displayCountry)}</strong><span class="timeline-group-meta">${meta}</span><span class="timeline-chevron" aria-hidden="true">▾</span></button>${items}</section>`;
     })
     .join('');
 };
