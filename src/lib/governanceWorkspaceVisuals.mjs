@@ -27,7 +27,10 @@ import {
   GOVERNANCE_DIMENSIONS,
   classifyGovernanceDeployment,
 } from './governanceBenchmarking.mjs';
-import { isPendingRegulatory } from './comparePresentation.mjs';
+import {
+  isPendingRegulatory,
+  rankByGovernance,
+} from './comparePresentation.mjs';
 import { governanceVisualsCopy as copy } from './governanceCopy.mjs';
 
 let profileChart = null;
@@ -106,6 +109,24 @@ const updateBenchmarkLabels = (benchmarks) => {
 
 const formatCompact = (value) => Number(value || 0).toFixed(1);
 
+/**
+ * The governance axis is data-driven and may start above 0 so high scorers do
+ * not collapse into a band at the top. Whenever the floor is non-zero the
+ * plot is truncated, so surface that explicitly instead of silently rescaling.
+ */
+const updateAxisNote = (governanceMin, text) => {
+  const note = document.querySelector('[data-axis-note]');
+  if (!note) return;
+  const floor = Number(governanceMin || 0);
+  if (floor > 0 && text.axisNote) {
+    note.textContent = String(text.axisNote).replace('{min}', String(floor));
+    note.classList.remove('is-hidden');
+  } else {
+    note.textContent = '';
+    note.classList.add('is-hidden');
+  }
+};
+
 const regulatoryClarityOf = (country, text) =>
   (text.regKeys || []).filter(
     ([, key]) => !isPendingRegulatory(country.regulatory?.[key])
@@ -136,9 +157,10 @@ const renderHeatmap = (countrySystems, benchmarks, text) => {
     )
     .join('');
 
-  const rows = countrySystems
-    .map((country) => {
+  const rows = rankByGovernance(countrySystems)
+    .map(({ country, rank }) => {
       const key = countryKey(country);
+      const rankBadge = `<span class="governance-rank-badge" aria-label="${escapeHtml(text.rankLabel)} #${rank}">#${rank}</span>`;
       const cells = GOVERNANCE_DIMENSIONS.map((dimension, index) => {
         const score = country.governance.scores[index] || 0;
         return `<td><button type="button" class="governance-heatmap-cell" data-country-key="${escapeHtml(key)}" data-evidence-country="${escapeHtml(key)}" data-evidence-dimension="${dimension}" style="background:rgba(11,143,135,${heatmapOpacity(score)})" aria-label="${escapeHtml(country.displayCountry)} ${escapeHtml(text.dimensionLabels[index])} ${Number(score).toFixed(0)}"><span>${Number(score).toFixed(0)}</span></button></td>`;
@@ -146,7 +168,7 @@ const renderHeatmap = (countrySystems, benchmarks, text) => {
       const clarity = regulatoryClarityOf(country, text);
       const { label: quadrant } = quadrantLabel(text, country, benchmarks);
       const summary = `<td class="governance-heatmap-index">${Number(country.governance.index).toFixed(1)}</td><td class="governance-heatmap-stat">${country.governance.policyCount}</td><td class="governance-heatmap-stat">${formatCompact(country.deployment.committedCapacity)}</td><td class="governance-heatmap-stat">${formatCompact(country.deployment.plannedCapacity)}</td><td class="governance-heatmap-stat">${clarity}/${(text.regKeys || []).length}</td><td class="governance-heatmap-quadrant">${escapeHtml(quadrant)}</td>`;
-      return `<tr data-country-key="${escapeHtml(key)}"><th scope="row" class="governance-heatmap-country"><button type="button" class="governance-heatmap-country-button" data-evidence-country="${escapeHtml(key)}" aria-label="${escapeHtml(country.displayCountry)}">${escapeHtml(country.displayCountry)}</button></th>${cells}${summary}</tr>`;
+      return `<tr data-country-key="${escapeHtml(key)}"><th scope="row" class="governance-heatmap-country"><button type="button" class="governance-heatmap-country-button" data-evidence-country="${escapeHtml(key)}" aria-label="${escapeHtml(country.displayCountry)}">${escapeHtml(country.displayCountry)}</button>${rankBadge}</th>${cells}${summary}</tr>`;
     })
     .join('');
 
@@ -255,11 +277,12 @@ const renderRadarSummary = (countrySystems, benchmarks, text) => {
   const container = document.getElementById('governance-radar-summary');
   if (!container) return;
   const regTotal = (text.regKeys || []).length;
-  container.innerHTML = countrySystems
-    .map((country) => {
+  container.innerHTML = rankByGovernance(countrySystems)
+    .map(({ country, rank }) => {
       const clarity = regulatoryClarityOf(country, text);
       const { label: quadrant } = quadrantLabel(text, country, benchmarks);
-      return `<div class="radar-summary-row" data-country-key="${escapeHtml(countryKey(country))}"><span class="radar-summary-country"><i style="background-color:${country.color.border}"></i>${escapeHtml(country.displayCountry)}</span><span><strong>${Number(country.governance.index).toFixed(1)}</strong>/100</span><span>${escapeHtml(text.colPolicies)} ${country.governance.policyCount}</span><span>${escapeHtml(text.colCommitted)} ${formatCompact(country.deployment.committedCapacity)}</span><span>${escapeHtml(text.colPlanned)} ${formatCompact(country.deployment.plannedCapacity)}</span><span>${escapeHtml(text.colRegulatory)} ${clarity}/${regTotal}</span><span class="radar-summary-quadrant">${escapeHtml(quadrant)}</span></div>`;
+      const rankBadge = `<span class="governance-rank-badge" aria-label="${escapeHtml(text.rankLabel)} #${rank}">#${rank}</span>`;
+      return `<div class="radar-summary-row" data-country-key="${escapeHtml(countryKey(country))}"><span class="radar-summary-country"><i style="background-color:${country.color.border}"></i>${escapeHtml(country.displayCountry)}${rankBadge}</span><span><strong>${Number(country.governance.index).toFixed(1)}</strong>/100</span><span>${escapeHtml(text.colPolicies)} ${country.governance.policyCount}</span><span>${escapeHtml(text.colCommitted)} ${formatCompact(country.deployment.committedCapacity)}</span><span>${escapeHtml(text.colPlanned)} ${formatCompact(country.deployment.plannedCapacity)}</span><span>${escapeHtml(text.colRegulatory)} ${clarity}/${regTotal}</span><span class="radar-summary-quadrant">${escapeHtml(quadrant)}</span></div>`;
     })
     .join('');
 };
@@ -491,6 +514,7 @@ const renderDeploymentMatrix = (
     1
   );
   const governanceMin = governanceAxisMinimum(countrySystems, benchmarks);
+  updateAxisNote(governanceMin, text);
 
   deploymentChart = new Chart(canvas, {
     type: 'scatter',
@@ -630,6 +654,12 @@ export function clearGovernanceAnalytics() {
   const radarSummary = document.getElementById('governance-radar-summary');
   if (heatmap) heatmap.innerHTML = '';
   if (radarSummary) radarSummary.innerHTML = '';
+  document.querySelector('[data-benchmark-chip]')?.classList.add('is-hidden');
+  const axisNote = document.querySelector('[data-axis-note]');
+  if (axisNote) {
+    axisNote.textContent = '';
+    axisNote.classList.add('is-hidden');
+  }
 }
 
 if (typeof document !== 'undefined') {
@@ -657,6 +687,9 @@ export function renderGovernanceAnalytics({
   renderHeatmap(countrySystems, benchmarks, text);
   renderDeploymentMatrix(countrySystems, benchmarks, text, includePlanned);
   updateBenchmarkLabels(benchmarks);
+  document
+    .querySelector('[data-benchmark-chip]')
+    ?.classList.remove('is-hidden');
 
   bindProfileViewControls();
   bindMobileTabs();

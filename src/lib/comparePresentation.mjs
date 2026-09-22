@@ -106,6 +106,33 @@ export function splitContributors(
 export const TIMELINE_OPEN_THRESHOLD = 6;
 
 /**
+ * Rank selected countries by governance capability, descending. Equal indices
+ * share a standard-competition rank (#1, #1, #3) so a tie never invents a
+ * false leader. Returns `{ country, value, rank }[]` in ranked display order;
+ * the caller keeps each country's own colour/evidence bindings.
+ */
+export function rankByGovernance(countrySystems = []) {
+  const ranked = (Array.isArray(countrySystems) ? countrySystems : [])
+    .map((country) => ({
+      country,
+      value: Number(country?.governance?.index || 0),
+    }))
+    .sort((a, b) => b.value - a.value);
+
+  let previousValue = null;
+  let previousRank = 0;
+  return ranked.map((entry, index) => {
+    const rank =
+      previousValue !== null && entry.value === previousValue
+        ? previousRank
+        : index + 1;
+    previousValue = entry.value;
+    previousRank = rank;
+    return { ...entry, rank };
+  });
+}
+
+/**
  * Collect `evolution.milestones` per country in ascending date order.
  * Countries without milestones stay in the result so the UI can say so.
  */

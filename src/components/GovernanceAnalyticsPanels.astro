@@ -144,7 +144,8 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
           <h2>{copy.matrixTitle}</h2>
         </div>
         <div
-          class="governance-benchmark-chip"
+          class="governance-benchmark-chip is-hidden"
+          data-benchmark-chip
           aria-label={copy.benchmarkPrefix}
         >
           <div class="governance-benchmark-item">
@@ -175,6 +176,7 @@ const weightLabels = governanceClientCopy[lang].dimensionLabels;
         <span data-quadrant="foundation-building">{copy.qFoundation}</span>
         <span data-quadrant="deployment-led">{copy.qDeployment}</span>
       </div>
+      <p class="governance-axis-note is-hidden" data-axis-note></p>
       <p class="governance-method-note">
         {copy.benchmarkPrefix}: {copy.benchmarkGovernance}; {
           copy.benchmarkDeployment
