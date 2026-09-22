@@ -1,0 +1,78 @@
+name: Facility news link health
+
+# 定期巡检 facility_news 的外链健康度（404/410 = 死链；401/403 等为反爬，非死链）。
+# 只读：不写数据库、不推送。报告作为 artifact 上传，并在 job summary 中汇总。
+# 用 `pnpm manage:db:prune:facility-news-dead-links` 在本地按报告清理死链。
+
+on:
+  schedule:
+    # 每月 1 日 04:23 UTC
+    - cron: '23 4 1 * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '最多检查多少个 URL（留空 = 全部）'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: facility-news-link-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check facility news links
+        id: check
+        env:
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          if [ -n "${LIMIT:-}" ]; then ARGS+=(--limit "$LIMIT"); fi
+          node scripts/check-facility-news-links.mjs "${ARGS[@]}" | tee /tmp/link-check.json
+
+      - name: Summarize
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ ! -f agent/ccus-ai-agent/governance/reports/facility_news_link_health.md ]; then
+            echo "无报告产出。" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          {
+            echo "## Facility news link health"
+            echo
+            cat agent/ccus-ai-agent/governance/reports/facility_news_link_health.md
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: facility-news-link-health
+          path: |
+            agent/ccus-ai-agent/governance/reports/facility_news_link_health.json
+            agent/ccus-ai-agent/governance/reports/facility_news_link_health.md
+          if-no-files-found: warn
