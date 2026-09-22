@@ -16,6 +16,7 @@ import {
   contributorToggleLabel,
   isPendingRegulatory,
   localizeLegalWeight,
+  rankByGovernance,
   splitContributors,
 } from '../src/lib/comparePresentation.mjs';
 
@@ -163,6 +164,45 @@ describe('contributorToggleLabel', () => {
     assert.equal(
       contributorToggleLabel(false, 3, text),
       '展开全部贡献政策 · 3'
+    );
+  });
+});
+
+describe('rankByGovernance', () => {
+  const systems = [
+    { displayCountry: 'China', governance: { index: 92 } },
+    { displayCountry: 'Norway', governance: { index: 97 } },
+    { displayCountry: 'US', governance: { index: 97 } },
+    { displayCountry: 'UK', governance: { index: 94 } },
+  ];
+
+  it('sorts descending by governance index', () => {
+    const ranked = rankByGovernance(systems);
+    assert.deepEqual(
+      ranked.map((entry) => entry.country.displayCountry),
+      ['Norway', 'US', 'UK', 'China']
+    );
+  });
+
+  it('gives tied indices a shared standard-competition rank', () => {
+    const ranked = rankByGovernance(systems);
+    assert.deepEqual(
+      ranked.map((entry) => entry.rank),
+      [1, 1, 3, 4]
+    );
+  });
+
+  it('handles empty and missing input', () => {
+    assert.deepEqual(rankByGovernance([]), []);
+    assert.deepEqual(rankByGovernance(undefined), []);
+  });
+
+  it('does not mutate the input order', () => {
+    const before = systems.map((entry) => entry.displayCountry);
+    rankByGovernance(systems);
+    assert.deepEqual(
+      systems.map((entry) => entry.displayCountry),
+      before
     );
   });
 });

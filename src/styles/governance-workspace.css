@@ -171,6 +171,24 @@
   text-align: left !important;
 }
 
+.governance-rank-badge {
+  display: inline-block;
+  margin-left: 0.3rem;
+  border-radius: 999px;
+  background: rgb(11 143 135 / 0.12);
+  padding: 0.05rem 0.32rem;
+  color: var(--brand-teal-700);
+  font-size: 0.56rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  vertical-align: middle;
+}
+
+.dark .governance-rank-badge {
+  background: rgb(45 212 191 / 0.16);
+  color: #5eead4;
+}
+
 .governance-heatmap-country-button {
   border: 0;
   background: transparent;
@@ -306,6 +324,10 @@
   white-space: nowrap;
 }
 
+.governance-benchmark-chip.is-hidden {
+  display: none;
+}
+
 .governance-benchmark-chip small {
   color: var(--text-muted);
   font-size: 0.58rem;
@@ -357,6 +379,18 @@
   color: var(--text-muted);
   font-size: 0.64rem;
   line-height: 1.55;
+}
+
+.governance-axis-note {
+  margin: 0.6rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.governance-axis-note.is-hidden {
+  display: none;
 }
 
 .governance-secondary-grid {
