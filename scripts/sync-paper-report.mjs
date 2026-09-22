@@ -542,7 +542,7 @@ bodyHtml = bodyHtml.replace(benchRegex, (match, innerTable, notesP) => {
         cleanNotes
           ? `
       <div class="table-notes-footer">
-        <span class="note-tag">说明</span>
+        <span class="note-tag">注</span>
         <div class="note-text"><em>注：</em>${cleanNotes}</div>
       </div>`
           : ''
@@ -605,7 +605,7 @@ bodyHtml = bodyHtml.replace(distRegex, (m, caption, innerTable, notesP) => {
   const notesHtml = notesP
     ? `
     <div class="table-notes-footer">
-      <span class="note-tag">口径说明</span>
+      <span class="note-tag">注</span>
       <div class="note-text">${notesP}</div>
     </div>`
     : '';
@@ -669,23 +669,30 @@ bodyHtml = bodyHtml.replace(claimsRegex, (m, caption, inner) => {
   `;
 });
 
-// 5. 为正文中带编号的数据表（表 3-1 / 3-2 / 4-1）注入表号徽标与卡片式表头，
-// 使正文交叉引用与表格本体一一对应，避免“有引用、无表号”的断层。
+// 5. 为正文中的每一张数据表注入卡片式表头（含表号徽标），
+// 使正文交叉引用与表格本体一一对应，避免“有引用、无表号”或“未被当作表格”的断层。
+// 表号按章节内出现顺序编排（表 2-x / 表 3-x / 表 4-x）。
 const numberedTables = {
   'tab:dmrv_minimum_fields': '表 3-1',
-  'tab:dmrv_governance_mapping': '表 3-2',
+  'tab:continuous_evidence_monitoring': '表 3-2',
+  'tab:dmrv_governance_mapping': '表 3-3',
   'tab:case_evidence_comparison': '表 4-1',
 };
-for (const [label, badge] of Object.entries(numberedTables)) {
-  const re = new RegExp(
-    `<div id="${label}">\\s*<table>\\s*<caption>([\\s\\S]*?)<\\/caption>([\\s\\S]*?)<\\/table>\\s*<\\/div>`
-  );
-  bodyHtml = bodyHtml.replace(re, (m, caption, inner) => {
-    return `
-    <div class="table-container-card" id="${label}">
+// 少数表格在 TeX 中未加 \label，仅能依据 caption 文案匹配表号并补一个锚点 id。
+const captionBadges = {
+  '中国 CCUS 集群治理的现实基础与待补功能': {
+    badge: '表 2-2',
+    id: 'tab:china_cluster_governance',
+  },
+};
+
+function buildTableCard(idAttr, badge, caption, inner) {
+  const badgeHtml = badge ? `<span class="table-badge">${badge}</span>` : '';
+  return `
+    <div class="table-container-card"${idAttr}>
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
-          <span class="table-badge">${badge}</span>
+          ${badgeHtml}
           <span class="table-title">${caption.trim()}</span>
         </div>
       </div>
@@ -696,8 +703,27 @@ for (const [label, badge] of Object.entries(numberedTables)) {
       </div>
     </div>
   `;
-  });
 }
+
+// 5a. 带 \label 的表（Pandoc 输出形如 <div id="tab:X"><table><caption>…</caption>…）
+for (const [label, badge] of Object.entries(numberedTables)) {
+  const re = new RegExp(
+    `<div id="${label}">\\s*<table[^>]*>\\s*<caption>([\\s\\S]*?)<\\/caption>([\\s\\S]*?)<\\/table>\\s*<\\/div>`
+  );
+  bodyHtml = bodyHtml.replace(re, (m, caption, inner) =>
+    buildTableCard(` id="${label}"`, badge, caption, inner)
+  );
+}
+
+// 5b. 未加 \label 但有 caption 的表（如“中国 CCUS 集群治理的现实基础与待补功能”）
+bodyHtml = bodyHtml.replace(
+  /<table[^>]*>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>/g,
+  (m, caption, inner) => {
+    const meta = captionBadges[caption.trim()];
+    if (!meta) return m;
+    return buildTableCard(` id="${meta.id}"`, meta.badge, caption, inner);
+  }
+);
 
 // 6. 将所有其它未包裹的 <table> 包裹进响应式容器
 bodyHtml = bodyHtml.replace(/<table>([\s\S]*?)<\/table>/g, (match, inner) => {
@@ -716,8 +742,12 @@ bodyHtml = bodyHtml.replace(
   '<a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1">表 3-1</a>'
 );
 bodyHtml = bodyHtml.replace(
+  /表[\s\u00a0]*<a href="#tab:continuous_evidence_monitoring"[^>]*>2<\/a>/g,
+  '<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2">表 3-2</a>'
+);
+bodyHtml = bodyHtml.replace(
   /表[\s\u00a0]*<a href="#tab:dmrv_governance_mapping"[^>]*>3<\/a>/g,
-  '<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-2">表 3-2</a>'
+  '<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3">表 3-3</a>'
 );
 bodyHtml = bodyHtml.replace(
   /表[\s\u00a0]*<a href="#tab:case_evidence_comparison"[^>]*>4<\/a>/g,
@@ -1014,9 +1044,18 @@ console.log(
 );
 
 // 1. 移除 Pandoc 冗余 titlepage 与重复关键词，注入全新高保真图文摘要总览卡片 (Graphical Abstract)
+// 图片紧随其后的“注：…”说明原本会被 Pandoc 落到正文，这里一并捕获并收纳进图文摘要卡片内。
 const titlepageRegex =
-  /<div class="titlepage">[\s\S]*?<\/div>\s*<p><strong>关键词[：:]<\/strong>[\s\S]*?<\/p>\s*<p><img src="\.\/data\/图文摘要2\.png"[^>]*><\/p>/;
-const gaCardHtml = `
+  /<div class="titlepage">[\s\S]*?<\/div>\s*<p><strong>关键词[：:]<\/strong>[\s\S]*?<\/p>\s*<p><img src="\.\/data\/图文摘要2\.png"[^>]*><\/p>(?:\s*<p>(注：[\s\S]*?)<\/p>)?/;
+bodyHtml = bodyHtml.replace(titlepageRegex, (match, gaNote) => {
+  const gaNoteHtml = gaNote
+    ? `
+  <div class="figure-notes ga-notes">
+    <span class="note-tag">注</span>
+    <div class="note-text">${gaNote.replace(/^注：\s*/, '')}</div>
+  </div>`
+    : '';
+  return `
 <div class="graphical-abstract-card" id="graphical-abstract">
   <div class="ga-header">
     <div class="ga-title">
@@ -1029,10 +1068,10 @@ const gaCardHtml = `
     <img src="./data/图文摘要2.png" alt="CCUS 规模化治理与 dMRV 架构图文摘要" />
   </div>
   <div class="ga-caption">
-    <strong>图文总览：</strong>展示了从“单点技术示范”迈向“集群化枢纽治理”的系统动力学演进路径、关键制度瓶颈以及 dMRV 作为产业信用基础设施的协同支撑关系。
-  </div>
+    <strong>注：</strong>展示了从“单点技术示范”迈向“集群化枢纽治理”的系统动力学演进路径、关键制度瓶颈以及 dMRV 作为产业信用基础设施的协同支撑关系。
+  </div>${gaNoteHtml}
 </div>`;
-bodyHtml = bodyHtml.replace(titlepageRegex, gaCardHtml);
+});
 
 // 2. 将 Pandoc 生成的伪数学公式标记清洗为原生超轻量 HTML，消除公式渲染延迟与抖动
 bodyHtml = bodyHtml.replace(
@@ -1157,7 +1196,7 @@ bodyHtml = bodyHtml.replace(fig1Regex, (match, src, pNotes, caption) => {
         <img src="${src}" alt="${caption.trim()}" loading="lazy" />
       </div>
       <div class="figure-notes">
-        <span class="note-tag">数据说明</span>
+        <span class="note-tag">注</span>
         <div class="note-text">${cleanNotes}</div>
       </div>
     </figure>
@@ -1180,7 +1219,7 @@ bodyHtml = bodyHtml.replace(fig2Regex, (match, src, caption) => {
         <img src="${src}" alt="${caption.trim()}" loading="lazy" />
       </div>
       <div class="figure-notes">
-        <span class="note-tag">架构说明</span>
+        <span class="note-tag">注</span>
         <div class="note-text">展示了规范底座（监管/标准/方法学）、工程事实、证据组织接口与制度用途（核证、结算、金融、责任接续）之间的四层映射体系与证据支撑网络。</div>
       </div>
     </figure>
