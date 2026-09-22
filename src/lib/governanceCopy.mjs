@@ -78,9 +78,9 @@ export const governanceComparisonCopy = Object.freeze({
     benchmarkPrefix: '全球基准',
     benchmarkGovernanceLabel: '治理基准',
     benchmarkDeploymentLabel: '部署基准',
-    benchmarkGovernance: '治理能力指数中位数',
+    benchmarkGovernance: '治理能力指数 75 分位',
     benchmarkDeployment:
-      '有项目记录国家的项目记录规模中位数（默认已承诺口径，含规划时同步重算）',
+      '有项目记录国家的项目记录规模 75 分位（默认已承诺口径，含规划时同步重算）',
     benchmarkMethod: '治理能力指数为五个峰值维度的平均值。',
     methodRegulatory:
       '监管明确列为 7 个制度要素中已给出明确安排的条目数；“尚未/暂无/研究中/待定”等不计入。',
@@ -157,9 +157,9 @@ export const governanceComparisonCopy = Object.freeze({
     benchmarkPrefix: 'Global benchmark',
     benchmarkGovernanceLabel: 'Governance benchmark',
     benchmarkDeploymentLabel: 'Deployment benchmark',
-    benchmarkGovernance: 'median governance capability',
+    benchmarkGovernance: '75th-percentile governance capability',
     benchmarkDeployment:
-      'median project-record scale among countries with recorded projects (committed by default, recomputed with planned included)',
+      '75th-percentile project-record scale among countries with recorded projects (committed by default, recomputed with planned included)',
     benchmarkMethod:
       'The governance capability index is the mean of five peak dimensions.',
     methodRegulatory:

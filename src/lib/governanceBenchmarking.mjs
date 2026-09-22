@@ -11,6 +11,14 @@ export const GOVERNANCE_DIMENSIONS = Object.freeze([
   'mrv',
 ]);
 
+/**
+ * Percentile used as the "high" threshold on both axes of the governance-
+ * deployment matrix. Top-quartile (0.75) rather than the 0.5 median so the
+ * quadrant split actually separates strong performers instead of leaving
+ * almost everyone in "integrated leaders".
+ */
+export const BENCHMARK_QUANTILE = 0.75;
+
 export const ACTIVE_POLICY_STATUSES = new Set([
   'active',
   'operational',
@@ -172,6 +180,27 @@ export function median(values = []) {
     : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
+/**
+ * Linear-interpolation quantile (type 7, matching the common `numpy`/`R`
+ * default). Used for the quadrant split so "high" means the top band of the
+ * whole country distribution, not a mechanical mid-point that leaves almost
+ * every strong performer in the same quadrant.
+ */
+export function quantile(values = [], probability = BENCHMARK_QUANTILE) {
+  const sorted = values
+    .map(Number)
+    .filter(Number.isFinite)
+    .sort((a, b) => a - b);
+  if (!sorted.length) return 0;
+  if (sorted.length === 1) return sorted[0];
+  const rank =
+    Math.min(1, Math.max(0, Number(probability) || 0)) * (sorted.length - 1);
+  const lower = Math.floor(rank);
+  const upper = Math.ceil(rank);
+  if (lower === upper) return sorted[lower];
+  return sorted[lower] + (sorted[upper] - sorted[lower]) * (rank - lower);
+}
+
 export function calculateGlobalBenchmarks(
   countrySystems = [],
   pickDeployment = null
@@ -182,7 +211,7 @@ export function calculateGlobalBenchmarks(
   // Default reads committed (operational + under-construction) capacity.
   // Callers exploring the planned pipeline pass a picker such as
   // `(deployment) => deployment.committedCapacity + deployment.plannedCapacity`
-  // so the deployment median tracks the same metric shown on the matrix axis.
+  // so the deployment threshold tracks the same metric shown on the matrix axis.
   const readDeployment =
     typeof pickDeployment === 'function'
       ? pickDeployment
@@ -192,8 +221,8 @@ export function calculateGlobalBenchmarks(
     .filter((value) => Number.isFinite(value) && value > 0);
 
   return {
-    governance: median(governanceValues),
-    deployment: median(deploymentValues),
+    governance: quantile(governanceValues, BENCHMARK_QUANTILE),
+    deployment: quantile(deploymentValues, BENCHMARK_QUANTILE),
   };
 }
 
