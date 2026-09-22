@@ -7,6 +7,38 @@
     "reference": "portal / dataset / paper / other"
   },
   "facilities": {
+    "4": [
+      {
+        "url": "https://www.adnoc.ae/en/towards-net-zero/decarbonizing-our-operations",
+        "title": "Decarbonizing Our Operations",
+        "publisher": "ADNOC",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://masdar.ae/en/news/newsroom/menas-first-carbon-capture-utilisation--amp-storage-ccus-project-now-on-stream-23",
+        "title": "MENA's first Carbon Capture Utilisation & Storage (CCUS) project now on stream",
+        "publisher": "Masdar",
+        "date": "2016-11-05",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://hgeo.energy.gov/archives/cslf/Projects/AlReyadah.html",
+        "title": "Al Reyadah Carbon Capture, Use, and Storage (CCUS) Project",
+        "publisher": "Carbon Sequestration Leadership Forum (CSLF)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.thenationalnews.com/business/abu-dhabi-starts-up-worlds-first-commercial-steel-carbon-capture-project-1.213295",
+        "title": "Abu Dhabi starts up world's first commercial steel carbon capture project",
+        "publisher": "The National",
+        "date": "2016-11-05",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "5": [
       {
         "url": "https://adnoc.ae/en/News-and-Media/Press-Releases/2023/ADNOC-to-Invest-in-One-of-the-Largest-Integrated-Carbon-Capture-Projects-in-MENA",
@@ -72,6 +104,40 @@
         "publisher": "The National",
         "date": "2018-11-28",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "18": [
+      {
+        "url": "https://www.airliquide.com/group/press-releases-news/2023-12-19/air-liquide-build-world-scale-co2-capture-unit-contribute-rotterdams-industrial-basin",
+        "title": "Air Liquide to build a world-scale CO2 capture unit to contribute to Rotterdam's industrial basin decarbonization",
+        "publisher": "Air Liquide",
+        "date": "2023-12-19",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.portofrotterdam.com/en/news-and-press-releases/porthos-lays-foundations-future-european-ccs-projects",
+        "title": "Porthos lays foundations for future European CCS projects",
+        "publisher": "Port of Rotterdam Authority",
+        "date": "2024-09-02",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.porthosco2.nl/en/golden-weld-connects-shells-co%e2%82%82-capture-plant-to-porthos/",
+        "title": "'Golden weld' connects Shell's CO2 capture plant to Porthos",
+        "publisher": "Porthos",
+        "date": "2026-03-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.airliquide.com/stories/sustainability/rotterdam-co2-transportation-and-storage-project-decarbonize-european-industry",
+        "title": "In Rotterdam, a CO2 Transportation and Storage Project to decarbonize European industry",
+        "publisher": "Air Liquide",
+        "date": "2025-04-04",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -367,6 +433,38 @@
         "title": "PTTEP Greenlights $320M Offshore CCS Project at Arthit Gas Field in Thailand",
         "publisher": "Offshore Engineer (OE Digital)",
         "date": "2025-09-08",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "39": [
+      {
+        "url": "https://www.atlascarbonhub.ca/",
+        "title": "Atlas Carbon Storage Hub",
+        "publisher": "Atlas Carbon Storage Hub (Shell / ATCO EnPower)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.atco.com/en-ca/about-us/news/2024/123013-atco-enpower-to-proceed-with-atlas-carbon-storage-hub-a-signific.html",
+        "title": "ATCO EnPower to Proceed with Atlas Carbon Storage Hub",
+        "publisher": "ATCO",
+        "date": "2024-06-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://majorprojects.alberta.ca/details/Atlas-Carbon-Storage-Hub/11237",
+        "title": "Atlas Carbon Storage Hub",
+        "publisher": "Government of Alberta",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://environmentjournal.ca/atlas-carbon-sequestration-project-gets-the-green-light",
+        "title": "Atlas carbon sequestration project gets the green light",
+        "publisher": "The Environment Journal",
+        "date": "2024-07-08",
         "tier": "media",
         "itemLang": "en"
       }
@@ -680,6 +778,39 @@
         "publisher": "Hydrocarbon Processing",
         "date": "2026-08-27",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "85": [
+      {
+        "url": "http://www.sasac.gov.cn/n2588025/n2588124/c28093352/content.html",
+        "title": "国家能源集团大型碳捕集利用与封存项目投产",
+        "publisher": "国务院国资委 (SASAC)",
+        "date": "2023-06-05",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "http://english.scio.gov.cn/chinavoices/2023-06/02/content_86125183.htm",
+        "title": "China launches Asia's largest carbon capture project for coal-fired power sector",
+        "publisher": "State Council Information Office",
+        "date": "2023-06-02",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ceic.com/gjnyjtwwEn/xwzx/202306/b14014c59e7748d9a4f570ebb850429f.shtml",
+        "title": "Asia's Largest Coal-fired Power CCUS Project Successfully Produced Liquid Carbon Dioxide",
+        "publisher": "CHN Energy (China Energy)",
+        "date": "2023-06-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://academic.oup.com/ce/article/9/4/15/8071291",
+        "title": "Taizhou 500kt per year post-combustion carbon capture demonstration project",
+        "publisher": "Clean Energy (Oxford Academic)",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -1238,6 +1369,39 @@
         "publisher": "Fugitive Emissions Journal",
         "date": "2021-03-09",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "144": [
+      {
+        "url": "https://www.energy.gov/sites/default/files/2021-06/2019%20-%20Meeting%20the%20Dual%20Challenge%20Vol%20II%20Chapter%202.pdf",
+        "title": "Meeting the Dual Challenge",
+        "publisher": "U.S. Department of Energy",
+        "date": "2021-06-01",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.epa.gov/newsreleases/epa-announces-koch-fertilizer-enid-okla-among-2020-energy-starr-certified",
+        "title": "EPA Announces Koch Fertilizer in Enid, Okla., Among 2020 ENERGY STAR Certified Manufacturing Plants",
+        "publisher": "US EPA",
+        "date": "2021-03-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://kochfertilizer.com/newsroom/kf-to-invest-150m-in-enid-expansion",
+        "title": "KF to Invest $150M in Enid Expansion",
+        "publisher": "Koch Fertilizer",
+        "date": "2021-03-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://sequestration.mit.edu/tools/projects/enid_fertilizer.html",
+        "title": "Enid Fertilizer Fact Sheet",
+        "publisher": "MIT Carbon Capture and Sequestration Technologies",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -2079,6 +2243,36 @@
         "itemLang": "en"
       }
     ],
+    "267": [
+      {
+        "url": "https://netl.doe.gov/coal/carbon-storage/atlas/pcor/phase-III/bell-creek",
+        "title": "Bell Creek",
+        "publisher": "U.S. Department of Energy / NETL",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2021-06/2019%20-%20Meeting%20the%20Dual%20Challenge%20Vol%20II%20Chapter%202.pdf",
+        "title": "Meeting the Dual Challenge (Vol II, Chapter 2)",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gem.wiki/Lost_Cabin_Gas_Plant_Capture_Project",
+        "title": "Lost Cabin Gas Plant Capture Project",
+        "publisher": "Global Energy Monitor",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.kiewit.com/projects/lost-cabin-gas-plant",
+        "title": "Lost Cabin Gas Plant",
+        "publisher": "Kiewit Corporation",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "270": [
       {
         "url": "https://www.businesswire.com/news/home/20260304802951/en/Strategic-Biofuels-Secures-Draft-Class-VI-Well-Permit-to-Construct-from-Louisiana-Department-of-Conservation-and-Energy",
@@ -2463,6 +2657,40 @@
         "itemLang": "en"
       }
     ],
+    "303": [
+      {
+        "url": "https://www.padeswoodccs.co.uk/en/latest-news/construction-gains-pace-on-world-leading-ccs-project",
+        "title": "Construction gains pace on world-leading CCS project",
+        "publisher": "Padeswood CCS / Heidelberg Materials UK",
+        "date": "2026-07-30",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gov.uk/government/news/pioneering-carbon-capture-projects-ready-for-construction",
+        "title": "Pioneering carbon capture projects ready for construction",
+        "publisher": "UK Government (GOV.UK)",
+        "date": "2025-09-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.heidelbergmaterials.com/en/pr-2025-09-25",
+        "title": "CCS project: Final Investment Decision",
+        "publisher": "Heidelberg Materials",
+        "date": "2025-09-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.padeswoodccs.co.uk/en/latest-news/governments-announcement-reaffirming-commitment-to-carbon-capture",
+        "title": "Government's announcement reaffirming commitment to carbon capture and storage cluster projects",
+        "publisher": "Padeswood CCS / Heidelberg Materials UK",
+        "date": "2024-10-04",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "307": [
       {
         "url": "https://www.ssethermal.com/flexible-generation/development/peterhead-carbon-capture/",
@@ -2747,6 +2975,80 @@
         "itemLang": "en"
       }
     ],
+    "321": [
+      {
+        "url": "https://www.shell.com/news-and-insights/newsroom/news-and-media-releases/2024/shell-to-build-carbon-capture-and-storage-projects-in-canada.html",
+        "title": "Shell to build carbon capture and storage projects in Canada",
+        "publisher": "Shell Global",
+        "date": "2024-06-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/shell-to-build-carbon-capture-and-storage-projects-in-canada-302182658.html",
+        "title": "Shell to build carbon capture and storage projects in Canada",
+        "publisher": "PR Newswire / Shell Canada Products",
+        "date": "2024-06-26",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cbc.ca/news/canada/edmonton/shell-gives-go-ahead-to-2-carbon-capture-and-storage-projects-in-alberta-1.7247142",
+        "title": "Shell gives go-ahead to 2 carbon capture and storage projects in Alberta",
+        "publisher": "CBC News",
+        "date": "2024-06-26",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://globalnews.ca/news/10589111/shell-carbon-capture-projects-proceeding",
+        "title": "Shell Canada Products going ahead with carbon capture project in Alberta",
+        "publisher": "Global News",
+        "date": "2024-06-26",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "323": [
+      {
+        "url": "https://www.energy.gov/fecm/air-products-chemicals-inc",
+        "title": "Air Products & Chemicals, Inc.",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://investors.airproducts.com/node/22341/pdf",
+        "title": "Air Products' Phase One Carbon Capture Project Onstream in Texas",
+        "publisher": "Air Products",
+        "date": "2013-01-28",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/air-products-celebrates-texas-carbon-capture-demonstration-project-achievement-206968461.html",
+        "title": "Air Products Celebrates Texas Carbon Capture Demonstration Project Achievement",
+        "publisher": "PR Newswire / Air Products",
+        "date": "2013-05-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.valero.com/about/locations/port-arthur-refinery",
+        "title": "Port Arthur Refinery",
+        "publisher": "Valero Energy Corporation",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/hgeo/articles/doe-supported-co2-capture-project-hits-major-milestone-4-million-metric-tons",
+        "title": "DOE-Supported CO2-Capture Project Hits Major Milestone: 4 Million Metric Tons",
+        "publisher": "U.S. Department of Energy",
+        "date": "2017-10-11",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "325": [
       {
         "url": "https://www.porthosco2.nl/en/project/",
@@ -3001,6 +3303,38 @@
         "itemLang": "en"
       }
     ],
+    "365": [
+      {
+        "url": "https://www.shell.nl/over-ons/nieuws/shell-venster-2026/opslag-van-co2-uitstoot-shell-pernis-en-porthos.html",
+        "title": "Opslag van CO2-uitstoot: Shell Pernis nu rechtstreeks verbonden met de zeebodem",
+        "publisher": "Shell Nederland",
+        "tier": "press_release",
+        "itemLang": "nl"
+      },
+      {
+        "url": "https://decarbonisationtechnology.com/article/80/decarbonisation-transformation-of-shells-pernis-refinery",
+        "title": "Decarbonisation transformation of Shells Pernis refinery",
+        "publisher": "Decarbonisation Technology",
+        "date": "2022-05-01",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.pbl.nl/uploads/default/downloads/pbl-2020-decarbonisation-options-for-large-volume-organic-chemical-production-shell-pernis_4274.pdf",
+        "title": "Decarbonisation options for large volume organic chemical production, Shell Pernis",
+        "publisher": "PBL Netherlands Environmental Assessment Agency",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.tomatoworld.nl/media/1857/ocap_factsheet_english_tcm978-561158.pdf",
+        "title": "About OCAP Pure CO2 for greenhouses",
+        "publisher": "OCAP / Tomato World",
+        "date": "2018-09-07",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "366": [
       {
         "url": "https://www.uniper.energy/united-kingdom/news/shell-and-uniper-to-work-together-on-blue-hydrogen-production-facility-in-the-uk",
@@ -3090,6 +3424,63 @@
         "itemLang": "en"
       }
     ],
+    "375": [
+      {
+        "url": "https://www.equinor.com/energy/snohvit",
+        "title": "Snohvit and Hammerfest LNG",
+        "publisher": "Equinor",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.equinor.com/news/archive/2008/04/23/CarbonStorageStartedOnSnhvit",
+        "title": "Carbon storage started on Snohvit",
+        "publisher": "Equinor",
+        "date": "2008-04-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.equinor.com/en/what-we-do/carbon-capture-and-storage.html",
+        "title": "CCS: Carbon capture, utilisation and storage",
+        "publisher": "Equinor",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sodir.no/en/whats-new/publications/co2-atlases/co2-atlas-for-the-norwegian-continental-shelf/6-the-barents-sea/6.2-storage-options-of-the-barents-sea/6.2.1-saline-aquifers/storage-capacity-snohvit-area",
+        "title": "Storage capacity Snohvit area",
+        "publisher": "Norwegian Offshore Directorate (Sodir)",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "380": [
+      {
+        "url": "https://www.stockholmexergi.se/en/nyheter/groundbreaking-ceremony-for-beccs-stockholm",
+        "title": "Groundbreaking Ceremony for Beccs Stockholm",
+        "publisher": "Stockholm Exergi",
+        "date": "2025-06-17",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.skanska.com/group/en/media/press-releases/2025/skanska-conducts-groundworks-for-stockholm-exergis-new-beccs-facility-in-stockholm-sweden-for-about-sek-990m",
+        "title": "Skanska conducts groundworks for Stockholm Exergi's new Beccs facility in Stockholm",
+        "publisher": "Skanska",
+        "date": "2025-04-03",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.euwid-recycling.com/news/business/stockholm-exergi-breaks-ground-at-vaertan-beccs-facility",
+        "title": "Stockholm Exergi breaks ground at Vartan BECCS facility",
+        "publisher": "EUWID Recycling and Waste Management",
+        "date": "2025-06-18",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "391": [
       {
         "url": "https://www.prnewswire.com/news-releases/systems-international-announces-two-power-plants-300973783.html",
@@ -3120,6 +3511,38 @@
         "publisher": "EIN Presswire",
         "date": "2020-01-29",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "395": [
+      {
+        "url": "https://www.aramco.com/en/sustainability/climate-and-energy/managing-our-emissions/carbon-management",
+        "title": "Carbon emissions management for more-sustainable development",
+        "publisher": "Saudi Aramco",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://hgeo.energy.gov/archives/cslf/Projects/Uthmaniyah.html",
+        "title": "Uthmaniyah Carbon Dioxide Enhanced Oil Recovery (CO2-EOR) Demonstration Project",
+        "publisher": "Carbon Sequestration Leadership Forum (CSLF)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://americas.aramco.com/en/news-media/elements-magazine/2021/smarter-oil-and-gas-production",
+        "title": "Smarter oil and gas production",
+        "publisher": "Aramco Americas",
+        "date": "2021-12-16",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/drilling-production/production-operations/ior-eor/article/17244999/saudi-aramco-launches-carbon-capture-pilot-project",
+        "title": "Saudi Aramco launches carbon capture pilot project",
+        "publisher": "Oil & Gas Journal",
+        "date": "2015-08-06",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -3488,6 +3911,40 @@
         "itemLang": "en"
       }
     ],
+    "459": [
+      {
+        "url": "https://www.cfindustries.com/newsroom/2024/yazoo-city-ccs-exxonmobil",
+        "title": "CF Industries Announces Emissions Reduction Project at Yazoo City, MS, Facility",
+        "publisher": "CF Industries",
+        "date": "2024-07-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.businesswire.com/news/home/20240725783919/en/CF-Industries-Announces-Emissions-Reduction-Project-at-Yazoo-City-MS-Facility-Agreement-with-ExxonMobil-to-Transport-and-Sequester-Up-to-500000-Metric-Tons-CO2-Annually",
+        "title": "CF Industries Announces Emissions Reduction Project at Yazoo City, MS, Facility, Agreement with ExxonMobil",
+        "publisher": "Business Wire",
+        "date": "2024-07-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://magnoliatribune.com/2024/07/26/100-million-emissions-reduction-project-announced-in-yazoo-city/",
+        "title": "$100 million emissions reduction project announced in Yazoo City",
+        "publisher": "Magnolia Tribune",
+        "date": "2024-07-26",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ammoniaenergy.org/articles/cf-exxon-ccs-ammonia-production-in-mississippi/",
+        "title": "CF & Exxon: CCS ammonia production in Mississippi",
+        "publisher": "Ammonia Energy Association",
+        "date": "2024-07-30",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "460": [
       {
         "url": "https://www.pdports.co.uk/news/uks-first-ccs-project-launches-offshore-construction-in-hartlepool/",
@@ -3518,6 +3975,39 @@
         "title": "Northern Endurance begins the long haul to CO2 subsea storage",
         "publisher": "Maritime Journal",
         "date": "2026-08-27",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "465": [
+      {
+        "url": "https://www.yara.com/sustainability/transforming-food-system/carbon-capture-and-storage/yaras-project-in-sluiskil",
+        "title": "Carbon Capture and Storage in action: Yara's project in Sluiskil",
+        "publisher": "Yara International",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands-302871255.html",
+        "title": "Europe's largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands",
+        "publisher": "PR Newswire / Yara International",
+        "date": "2026-09-07",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://energy.ec.europa.eu/news/commission-inaugurates-europes-largest-industrial-carbon-capture-and-storage-facility-netherlands-2026-09-07_en",
+        "title": "Commission inaugurates Europe's largest industrial carbon capture and storage facility in the Netherlands",
+        "publisher": "European Commission (DG ENER)",
+        "date": "2026-09-07",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://jpt.spe.org/europes-largest-carbon-capture-facility-officially-inaugurated",
+        "title": "Europe's Largest Carbon Capture Facility Officially Inaugurated",
+        "publisher": "Journal of Petroleum Technology (SPE)",
+        "date": "2026-09-13",
         "tier": "media",
         "itemLang": "en"
       }
@@ -5631,6 +6121,38 @@
         "itemLang": "en"
       }
     ],
+    "745": [
+      {
+        "url": "https://danubecarbon.com/danube-removals-project",
+        "title": "Danube Removals Project",
+        "publisher": "Danube Carbon Storage",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191237.pdf",
+        "title": "Danube Removals Project Innovation Fund - Project Factsheet",
+        "publisher": "European Commission (CINEA)",
+        "date": "2026-09-09",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://danubeenergy.com/danube-removals/",
+        "title": "Danube Removals",
+        "publisher": "Danube Energy / Danube CCS Ventures",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://dteurope.com/environment/pannonia-bio-ccs-project-proceeding-on-schedule/",
+        "title": "Pannonia Bio CCS Project Proceeding on Schedule",
+        "publisher": "DT Europe",
+        "date": "2026-07-11",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "746": [
       {
         "url": "https://www.portsofstockholm.com/about-us/news/2025/pioneering-collaboration-on-co2-logistics-at-stockholm-norvik-port",
@@ -6863,6 +7385,40 @@
         "itemLang": "en"
       }
     ],
+    "924": [
+      {
+        "url": "https://www.chnenergy.com.cn/gjnyjtww/chnjcxw/202501/08787b996d354b04a19a886b26fe44e1.shtml",
+        "title": "宁夏300万吨/年CCUS示范项目二期合作方案签订",
+        "publisher": "国家能源集团 (CHN Energy)",
+        "date": "2025-01-14",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "http://news.cnpc.com.cn/system/2025/02/27/030156266.shtml",
+        "title": "长庆油田：示范项目吃碳又吐油",
+        "publisher": "中国石油新闻中心 (CNPC)",
+        "date": "2025-02-27",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "http://cn.chinadaily.com.cn/a/202305/19/WS64675cdaa310537989375121.html",
+        "title": "宁夏在全球首次实现现代煤化工和大型油气田开采之间的绿色减碳合作",
+        "publisher": "中国日报 (China Daily)",
+        "date": "2023-05-19",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "http://news.cnpc.com.cn/system/2025/08/20/030171610.shtml",
+        "title": "长庆油田CCUS技术埋存二氧化碳突破百万吨",
+        "publisher": "中国石油新闻中心 (CNPC)",
+        "date": "2025-08-20",
+        "tier": "official",
+        "itemLang": "zh"
+      }
+    ],
     "925": [
       {
         "url": "https://www.ceic.com/gjnyjtwwEn/xwzx/202401/4d90d45cab074fb8b4b810c61d51052c.shtml",
@@ -7492,6 +8048,39 @@
         "itemLang": "en"
       }
     ],
+    "1053": [
+      {
+        "url": "https://www.scmp.com/business/article/3225578/climate-finance-chinas-ping-bank-lends-us25-million-inner-mongolia-steel-maker-capture-carbon",
+        "title": "Climate finance: China's Ping An Bank lends US$25 million to Inner Mongolia steel maker to capture carbon emissions",
+        "publisher": "South China Morning Post",
+        "date": "2023-06-27",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://investinchina.chinadaily.com.cn/s/202208/03/WS62ea3aa4498ea2749279ffdb/ccus-key-to-steelmakers-new-energy-transition.html",
+        "title": "CCUS key to steelmaker's new energy transition",
+        "publisher": "China Daily",
+        "date": "2022-08-03",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.globalccsinstitute.com/wp-content/uploads/2025/10/CCUS-Progress-in-China.pdf",
+        "title": "CCUS Progress in China - A Status Report",
+        "publisher": "Global CCS Institute",
+        "date": "2023-03-16",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://worldsteel.org/wp-content/uploads/8.-Ban-HUA_English.pdf",
+        "title": "CCUS Demonstration Project (Phase I of 500,000 tons) of Baogang Group",
+        "publisher": "worldsteel Association",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "1054": [
       {
         "url": "https://worldsteel.org/wp-content/uploads/8.-Ban-HUA_English.pdf",
@@ -7650,6 +8239,32 @@
         "title": "EU supports innovative decarbonisation of the lime industry",
         "publisher": "ZKG Cement Lime Gypsum",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1096": [
+      {
+        "url": "https://www.portofrotterdam.com/sites/default/files/2021-06/Factsheet-Rotterdam-Energy-Port.pdf",
+        "title": "Factsheet Rotterdam Energy Port",
+        "publisher": "Port of Rotterdam Authority",
+        "date": "2012-06-25",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.hortidaily.com/article/9518516/dutch-greenhouses-receive-co2-via-network",
+        "title": "Dutch greenhouses receive CO2 via network",
+        "publisher": "HortiDaily",
+        "date": "2023-04-13",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.tomatoworld.nl/media/1857/ocap_factsheet_english_tcm978-561158.pdf",
+        "title": "About OCAP Pure CO2 for greenhouses",
+        "publisher": "OCAP / TomatoWorld",
+        "date": "2018-09-07",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -8137,6 +8752,39 @@
         "title": "Mo I Rana",
         "publisher": "Ferroglobe PLC",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "1173": [
+      {
+        "url": "https://www.shell.nl/over-ons/nieuws/shell-venster-2026/opslag-van-co2-uitstoot-shell-pernis-en-porthos.html",
+        "title": "Opslag van CO2-uitstoot: Shell Pernis nu rechtstreeks verbonden met de zeebodem",
+        "publisher": "Shell Nederland",
+        "tier": "press_release",
+        "itemLang": "nl"
+      },
+      {
+        "url": "https://www.porthosco2.nl/en/golden-weld-connects-shells-co%e2%82%82-capture-plant-to-porthos/",
+        "title": "'Golden weld' connects Shell's CO2 capture plant to Porthos",
+        "publisher": "Porthos CO2",
+        "date": "2026-03-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.porthosco2.nl/wp-content/uploads/2024/09/20240902_Press-Release-Porthos-Milestone_ENG.pdf",
+        "title": "Press Release - Porthos (Milestone)",
+        "publisher": "Porthos CO2",
+        "date": "2024-09-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://swzmaritime.nl/news/2026/04/21/porthos-co2-storage-project-suffers-delays",
+        "title": "Porthos CO2 storage project suffers delays",
+        "publisher": "SWZ|Maritime",
+        "date": "2026-04-21",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -8689,6 +9337,39 @@
         "itemLang": "en"
       }
     ],
+    "1314": [
+      {
+        "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk11/202401/t20240117_1063968.html",
+        "title": "关于陕煤集团榆林化学有限责任公司1500万吨/年煤炭分质清洁高效转化示范项目环境影响报告书的批复",
+        "publisher": "生态环境部 (Ministry of Ecology and Environment)",
+        "date": "2024-01-15",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.cnpec.net/news/show-216650.html",
+        "title": "陕煤集团全球最大煤化工项目正式开工",
+        "publisher": "中华石油化工网",
+        "date": "2024-09-30",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "http://zixun.ygbid.com/1470660.html",
+        "title": "榆林化学1500万吨煤化工项目开工，采用航天粉煤加压气化技术",
+        "publisher": "阳光采招网",
+        "date": "2025-08-06",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.mtkxjs.com.cn/article/doi/10.12438/cst.2023-0808",
+        "title": "二氧化碳捕集及封存技术探索研究——以陕煤集团榆林化学公司为例",
+        "publisher": "煤炭科学技术",
+        "tier": "reference",
+        "itemLang": "zh"
+      }
+    ],
     "1315": [
       {
         "url": "https://finance.sina.com.cn/roll/2025-11-11/doc-infwzrrx4315427.shtml",
@@ -9215,6 +9896,39 @@
         "title": "Enagas and Molins to lead innovation in carbon capture and transport in Europe",
         "publisher": "Carbon Capture Journal",
         "date": "2025-02-16",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1468": [
+      {
+        "url": "https://www.newswire.ca/news-releases/bison-low-carbon-ventures-completes-commissioning-operations-of-phase-1-facility-at-meadowbrook-carbon-storage-hub-874605462.html",
+        "title": "Bison Low Carbon Ventures Completes Commissioning Operations of Phase 1 Facility at Meadowbrook Carbon Storage Hub",
+        "publisher": "Newswire (CNW) / Bison Low-Carbon Ventures Inc.",
+        "date": "2025-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.marubeni.com/en/news/2025/info/00040.html",
+        "title": "Commencement of First Phase Operations for a Carbon Capture and Storage (CCS) Project in Canada",
+        "publisher": "Marubeni Corporation",
+        "date": "2025-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://majorprojects.alberta.ca/details/Meadowbrook-Carbon-Storage-Project/12022",
+        "title": "Meadowbrook Carbon Storage Project",
+        "publisher": "Government of Alberta",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonherald.com/bison-and-marubeni-launch-first-phase-of-alberta-ccs-hub-operations",
+        "title": "Bison And Marubeni Launch First Phase Of Alberta CCS Hub Operations",
+        "publisher": "Carbon Herald",
+        "date": "2025-12-19",
         "tier": "media",
         "itemLang": "en"
       }
