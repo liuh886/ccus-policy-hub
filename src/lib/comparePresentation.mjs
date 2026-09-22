@@ -103,6 +103,30 @@ export function splitContributors(
   };
 }
 
+/**
+ * Stable comparator for the sortable profile matrix. `valueOf` projects a
+ * country to a comparable number or string; equal values fall back to
+ * governance index (desc) then display name so re-sorting never jitters.
+ */
+export function makeCountryComparator(valueOf, direction = 'desc') {
+  const sign = direction === 'asc' ? 1 : -1;
+  return (a, b) => {
+    const left = valueOf(a);
+    const right = valueOf(b);
+    const cmp =
+      typeof left === 'number' && typeof right === 'number'
+        ? left - right
+        : String(left).localeCompare(String(right));
+    if (cmp !== 0) return cmp * sign;
+    return (
+      Number(b?.governance?.index || 0) - Number(a?.governance?.index || 0) ||
+      String(a?.displayCountry || '').localeCompare(
+        String(b?.displayCountry || '')
+      )
+    );
+  };
+}
+
 export const TIMELINE_OPEN_THRESHOLD = 6;
 
 /**

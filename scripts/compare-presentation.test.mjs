@@ -16,6 +16,7 @@ import {
   contributorToggleLabel,
   isPendingRegulatory,
   localizeLegalWeight,
+  makeCountryComparator,
   rankByGovernance,
   splitContributors,
 } from '../src/lib/comparePresentation.mjs';
@@ -203,6 +204,51 @@ describe('rankByGovernance', () => {
     assert.deepEqual(
       systems.map((entry) => entry.displayCountry),
       before
+    );
+  });
+});
+
+describe('makeCountryComparator', () => {
+  const a = { displayCountry: 'A', governance: { index: 90 } };
+  const b = { displayCountry: 'B', governance: { index: 80 } };
+  const c = { displayCountry: 'C', governance: { index: 90 } };
+
+  it('orders numbers by direction', () => {
+    const desc = [b, a].sort(
+      makeCountryComparator((x) => x.governance.index, 'desc')
+    );
+    assert.deepEqual(
+      desc.map((x) => x.displayCountry),
+      ['A', 'B']
+    );
+    const asc = [b, a].sort(
+      makeCountryComparator((x) => x.governance.index, 'asc')
+    );
+    assert.deepEqual(
+      asc.map((x) => x.displayCountry),
+      ['B', 'A']
+    );
+  });
+
+  it('breaks ties with higher governance first regardless of direction', () => {
+    const asc = [c, a].sort(makeCountryComparator(() => 1, 'asc'));
+    assert.deepEqual(
+      asc.map((x) => x.displayCountry),
+      ['A', 'C']
+    );
+  });
+
+  it('orders strings lexicographically', () => {
+    const list = [
+      { displayCountry: 'Z', governance: { index: 1 } },
+      { displayCountry: 'A', governance: { index: 2 } },
+    ];
+    const sorted = list.sort(
+      makeCountryComparator((x) => x.displayCountry, 'asc')
+    );
+    assert.deepEqual(
+      sorted.map((x) => x.displayCountry),
+      ['A', 'Z']
     );
   });
 });

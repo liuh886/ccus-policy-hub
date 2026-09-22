@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import RadarChart from './RadarChart.astro';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
+import { GOVERNANCE_DIMENSION_LABELS } from '../lib/governanceCopy.mjs';
 
 interface Props {
   lang?: 'zh' | 'en';
@@ -134,10 +135,9 @@ const t = (key: string) => {
   return dict[key] || key;
 };
 
-const chartLabels =
-  lang === 'zh'
-    ? ['经济激励', '法律监管', '市场机制', '战略引导', '技术规范']
-    : ['Incentive', 'Regulatory', 'Market', 'Strategic', 'Technical'];
+const chartLabels = [
+  ...GOVERNANCE_DIMENSION_LABELS[lang === 'en' ? 'en' : 'zh'].full,
+];
 ---
 
 <Layout title={title}>
