@@ -557,6 +557,39 @@
         "itemLang": "en"
       }
     ],
+    "79": [
+      {
+        "url": "https://www.heidelbergmaterials.com/en/pr-30-05-2022",
+        "title": "Slite CCS project to cut 3% of Sweden's CO2 emissions",
+        "publisher": "Heidelberg Materials",
+        "date": "2022-05-30",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.globalcement.com/news/20531-heidelberg-materials-withdraws-slite-ccs-permit-application",
+        "title": "Heidelberg Materials withdraws Slite CCS permit application",
+        "publisher": "Global Cement",
+        "date": "2026-03-12",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonherald.com/heidelberg-materials-pauses-ccs-investment-in-sweden-after-losing-state-backing/",
+        "title": "Heidelberg Materials Pauses CCS Investment In Sweden After Losing State Backing",
+        "publisher": "Carbon Herald",
+        "date": "2025-11-17",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sliteccs.se/en",
+        "title": "Slite CCS",
+        "publisher": "Slite CCS (Heidelberg Materials / Cementa)",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "81": [
       {
         "url": "https://www.governor.nd.gov/news/burgum-commerce-announce-nd-development-fund-support-cerilon-build-28b-gas-liquids-plant",
@@ -700,6 +733,72 @@
         "itemLang": "zh"
       }
     ],
+    "104": [
+      {
+        "url": "https://www.carbfix.com/operations/codaterminal",
+        "title": "Coda Terminals",
+        "publisher": "Carbfix",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://hafnarfjordur.is/en/carbfix-abandons-its-plans-and-goes-elsewhere",
+        "title": "Carbfix abandons its plans and moves elsewhere",
+        "publisher": "Municipality of Hafnarfjordur",
+        "date": "2025-03-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101085993.pdf",
+        "title": "Coda Terminal: Coda by Carbfix - Project Factsheet",
+        "publisher": "European Commission (CINEA)",
+        "date": "2026-03-27",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.icelandreview.com/news/economy/carbfix-to-build-co2-mineral-storage-facility-in-straumsvik/",
+        "title": "Carbfix to build CO2 Mineral Storage Facility in Straumsvik",
+        "publisher": "Iceland Review",
+        "date": "2021-04-23",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "121": [
+      {
+        "url": "https://www.airliquide.com/group/press-releases-news/2024-06-18/decarbonization-dunkirk-basin-air-liquide-and-dunkerque-lng-co2-infrastructure-project-takes-major",
+        "title": "Decarbonization of the Dunkirk basin: Air Liquide and Dunkerque LNG CO2 infrastructure project takes a major step",
+        "publisher": "Air Liquide",
+        "date": "2024-06-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fluxys.com/en/news/dunkerque-lng/2024/240618_decarbonisation-dunkerque-basin-co2-infrastructure-project-takes-major-step",
+        "title": "Dunkerque LNG and Air Liquide CO2 infrastructure project takes major step",
+        "publisher": "Fluxys",
+        "date": "2024-06-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/projects-details/43251567/101147522/CEF2027",
+        "title": "D'Artagnan: Dunkirk CO2 Hub - EU Funding & Tenders Portal",
+        "publisher": "European Commission (CEF)",
+        "date": "2026-07-20",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.fluxys.com/en/projects/dunkirk-co2-export-terminal",
+        "title": "Dunkirk CO2 export terminal",
+        "publisher": "Fluxys (Dunkerque LNG)",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "123": [
       {
         "url": "https://www.airliquide.com/group/press-releases-news/2024-06-18/decarbonization-dunkirk-basin-air-liquide-and-dunkerque-lng-co2-infrastructure-project-takes-major",
@@ -755,6 +854,32 @@
         "publisher": "Gasunie",
         "date": "2026-06-10",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "127": [
+      {
+        "url": "https://www.mitsubishicorp.com/jp/en/news/release/2021/0000047790.html",
+        "title": "MC Reaches Agreement with Denbury on CO2 Transport and Storage Operations for Fuel Ammonia Production",
+        "publisher": "Mitsubishi Corporation",
+        "date": "2021-09-21",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.denbury.com/wp-content/uploads/2022/11/2021.09.21-Denbury-Executes-Term-Sheet-with-Mitsubishi-Corporation-for-CO2-Transport-and-Storage-from-Ammonia-Project.pdf",
+        "title": "Denbury Executes Term Sheet with Mitsubishi Corporation for CO2 Transport and Storage from Ammonia Project",
+        "publisher": "Denbury Inc.",
+        "date": "2021-09-21",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.offshore-energy.biz/denbury-to-transport-and-store-co2-from-mitsubishis-ammonia-project/",
+        "title": "Denbury to transport and store CO2 from Mitsubishi's ammonia project",
+        "publisher": "Offshore Energy",
+        "date": "2021-09-21",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -1167,6 +1292,73 @@
         "itemLang": "en"
       }
     ],
+    "188": [
+      {
+        "url": "https://www.kiwa.com/globalassets/uk/reports/h21-leeds-city-gate-report.pdf",
+        "title": "H21 Report",
+        "publisher": "Kiwa / Northern Gas Networks",
+        "date": "2016-07-11",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.h2knowledgecentre.com/content/project327",
+        "title": "H21 - Leeds City Gate Project Report",
+        "publisher": "Hydrogen Knowledge Centre",
+        "date": "2016-07-11",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gasworld.com/story/h21-leeds-city-gate-project-report-on-hydrogen-and-ccs-signals-winning-combination/2081784.article/",
+        "title": "H21 Leeds City Gate project report on hydrogen and CCS signals winning combination",
+        "publisher": "gasworld",
+        "date": "2016-07-11",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://smarter.energynetworks.org/projects/nia_ngn_114/",
+        "title": "H21 Leeds Citygate - ENA Innovation Portal",
+        "publisher": "Energy Networks Association",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "190": [
+      {
+        "url": "https://www.equinor.com/news/archive/20211215-launch-h2be-project-hydrogen-belgium",
+        "title": "ENGIE & Equinor launch the H2BE project to kick-start low-carbon hydrogen market in Belgium",
+        "publisher": "Equinor",
+        "date": "2021-12-15",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.h2be.eu/engie-equinor-launch-the-h2be-project-to-kick-start-low-carbon-hydrogen-market-in-belgium/",
+        "title": "ENGIE & Equinor launch the H2BE project",
+        "publisher": "H2BE",
+        "date": "2023-02-08",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.h2be.eu/h2be-signs-the-innovation-fund-grant-agreement/",
+        "title": "H2BE signs the Innovation Fund Grant Agreement",
+        "publisher": "H2BE",
+        "date": "2025-03-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.h2be.eu/h2be-and-ineos-announcement/",
+        "title": "H2BE and INEOS announcement",
+        "publisher": "H2BE",
+        "date": "2026-07-06",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "198": [
       {
         "url": "https://semprainfrastructure.com/what-we-do/low-carbon-solutions/hackberry-carbon-sequestration/",
@@ -1260,6 +1452,38 @@
         "title": "Worley helps propel $21B Asian LNG and CCS project forward with FEEDs now out of the way",
         "publisher": "Offshore Energy",
         "date": "2026-09-18",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "239": [
+      {
+        "url": "https://www.keadbycarboncapture.com/project",
+        "title": "The Project - Keadby 3 Carbon Capture Power Station",
+        "publisher": "SSE Thermal & Equinor",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010114",
+        "title": "Keadby 3 Carbon Capture Power Station - Project information",
+        "publisher": "UK Planning Inspectorate",
+        "date": "2023-04-19",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ssethermal.com/flexible-generation/development/keadby-3-carbon-capture/",
+        "title": "Keadby 3 Carbon Capture Power Station",
+        "publisher": "SSE Thermal",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energyvoice.com/renewables-energy-transition/ccs/uk-ccs/467485/sse-equinor-granted-uk-first-approval-for-keadby-carbon-capture-power-station/",
+        "title": "SSE, Equinor granted UK-first approval for Keadby carbon capture power station",
+        "publisher": "Energy Voice",
+        "date": "2022-12-08",
         "tier": "media",
         "itemLang": "en"
       }
@@ -1517,6 +1741,38 @@
         "itemLang": "en"
       }
     ],
+    "283": [
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/22CM_PSC17_Rochelle.pdf",
+        "title": "Piperazine Advanced Stripper (PZAS) Front End Engineering Design (FEED)",
+        "publisher": "US DOE NETL",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/biblio/1878608",
+        "title": "Front-End Engineering Design for Piperazine with the Advanced Stripper",
+        "publisher": "US DOE OSTI",
+        "date": "2022-07-29",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S1750583623002104",
+        "title": "Cost details from front-end engineering design of carbon capture from NGCC by aqueous piperazine",
+        "publisher": "International Journal of Greenhouse Gas Control",
+        "date": "2024-02-01",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gsec.coop/plants",
+        "title": "GSEC - Generation",
+        "publisher": "Golden Spread Electric Cooperative",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "287": [
       {
         "url": "https://www.bp.com/en_gb/united-kingdom/home/news/press-releases/green-light-for-carbon-capture-and-low-carbon-power-joint-venture-projects-in-teesside.html",
@@ -1548,6 +1804,40 @@
         "publisher": "Engineering News-Record",
         "date": "2024-12-20",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "289": [
+      {
+        "url": "https://www.jogmec.go.jp/english/news/release/release_00235.html",
+        "title": "JOGMEC selected 7 projects, starting CO2 storage by FY2030",
+        "publisher": "JOGMEC",
+        "date": "2023-06-22",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.meti.go.jp/english/press/2024/0628_005.html",
+        "title": "Advanced Efforts for Commercialization of CCS",
+        "publisher": "METI (Japan)",
+        "date": "2024-06-28",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.japex.co.jp/en/news/detail/20230808_01/",
+        "title": "Entrust a Study in East-Niigata Area as the Business Feasibility Study on Japanese Advanced CCS Project in FY2023 by JOGMEC",
+        "publisher": "Japan Petroleum Exploration (JAPEX)",
+        "date": "2023-08-08",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.mgc.co.jp/eng/corporate/news/files/240917e_1.pdf",
+        "title": "Entrustment a CCS engineering design work in Higashi-Niigata Area",
+        "publisher": "Mitsubishi Gas Chemical",
+        "date": "2024-09-17",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -1735,6 +2025,38 @@
         "itemLang": "en"
       }
     ],
+    "307": [
+      {
+        "url": "https://www.ssethermal.com/flexible-generation/development/peterhead-carbon-capture/",
+        "title": "Peterhead Carbon Capture Power Station",
+        "publisher": "SSE Thermal",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sse.com/news-and-views/2022/03/peterhead-takes-major-step-towards-low-carbon-power-as-planning-application-submitted/",
+        "title": "Peterhead takes major step towards low-carbon power as planning application submitted",
+        "publisher": "SSE",
+        "date": "2022-03-01",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.sse.com/news-and-views/2021/05/sse-thermal-and-equinor-join-forces-on-peterhead-ccs-power-station-project/",
+        "title": "SSE Thermal and Equinor join forces on Peterhead CCS Power Station project",
+        "publisher": "SSE",
+        "date": "2021-05-11",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.peterheadcarboncapture.com/project",
+        "title": "The Project - Peterhead Carbon Capture Power Station",
+        "publisher": "SSE Thermal & Equinor",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "309": [
       {
         "url": "https://www.eneos-xplora.com/english/newsrelease/upload_files/20230913EN.pdf",
@@ -1832,6 +2154,39 @@
         "title": "Pieridae Creating Caroline Carbon Capture Power Complex",
         "publisher": "Financial Post (GlobeNewswire)",
         "date": "2021-05-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "316": [
+      {
+        "url": "https://www.osti.gov/biblio/1890156",
+        "title": "Front End Engineering Design of Linde-BASF Advanced Post-Combustion CO2 Capture Technology at a Southern Company Natural Gas-Fired Power Plant",
+        "publisher": "U.S. DOE OSTI / NETL",
+        "date": "2022-09-30",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/21CMOG_CCUS_Lunsford.pdf",
+        "title": "Front End Engineering Design of Linde-BASF Advanced Post-Combustion CO2 Capture Technology at a Southern Company Natural Gas-Fired Power Plant",
+        "publisher": "National Energy Technology Laboratory (DOE)",
+        "date": "2021-09-30",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-020615-feed-linde-basf-advanced-pcc-technology-southern-company-ng-power-plant",
+        "title": "CX-020615: FEED of Linde-BASF Advanced PCC Technology at a Southern Company NG Power Plant",
+        "publisher": "U.S. Department of Energy",
+        "date": "2019-09-20",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.mississippipower.com/company/energy-sources/power-plants.html",
+        "title": "Power Plants",
+        "publisher": "Mississippi Power",
         "tier": "press_release",
         "itemLang": "en"
       }
@@ -2142,6 +2497,38 @@
         "itemLang": "en"
       }
     ],
+    "366": [
+      {
+        "url": "https://www.uniper.energy/united-kingdom/news/shell-and-uniper-to-work-together-on-blue-hydrogen-production-facility-in-the-uk",
+        "title": "Shell and Uniper to work together on blue hydrogen production facility in the UK",
+        "publisher": "Uniper",
+        "date": "2022-04-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.shell.com/business-customers/catalysts-technologies/resources-library/shell-blue-hydrogen-process-humber-design-package-contract.html",
+        "title": "Shell Blue Hydrogen Process wins Humber H2ub process design package contract",
+        "publisher": "Shell",
+        "date": "2025-12-09",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://projectmap.hydrogen-uk.org/projects/humber-h2ub-blue",
+        "title": "Humber H2ub (Blue)",
+        "publisher": "Hydrogen UK",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.humberindustrialclusterplan.org/title-humber-hub-%E2%80%93-uniper%E2%80%99s-flagship-hydrogen-project-in-the-humber.html",
+        "title": "HICP - Humber Hub - Uniper's flagship hydrogen project in the Humber",
+        "publisher": "Humber Industrial Cluster Plan",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "374": [
       {
         "url": "https://www.equinor.com/energy/sleipner",
@@ -2163,6 +2550,39 @@
         "title": "Carbon capture and storage - Norwegianpetroleum.no",
         "publisher": "Norwegian Petroleum Directorate / Ministry of Energy",
         "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "391": [
+      {
+        "url": "https://www.prnewswire.com/news-releases/systems-international-announces-two-power-plants-300973783.html",
+        "title": "Systems International Announces Two Power Plants",
+        "publisher": "PR Newswire / Systems International",
+        "date": "2019-12-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://oaktrust.library.tamu.edu/bitstreams/8ef77e1b-5c49-45fc-924f-4088eff1be21/download",
+        "title": "A Survey of Active U.S. Carbon Capture Projects",
+        "publisher": "Texas A&M University (OAKTrust)",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.eqmagpro.com/systems-international-announces-two-power-plants/",
+        "title": "Systems International Announces Two Power Plants",
+        "publisher": "EQ Magazine Pro",
+        "date": "2019-12-13",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.einnews.com/pr_news/508361458/systems-international-and-the-zeros-technology-awareness-program",
+        "title": "Systems International and The ZEROS Technology Awareness Program",
+        "publisher": "EIN Presswire",
+        "date": "2020-01-29",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -2922,6 +3342,39 @@
         "itemLang": "en"
       }
     ],
+    "551": [
+      {
+        "url": "https://lge-ku.com/newsroom/press-releases/2024/02/02/ppl-affiliate-partners-selected-72-million-research-grant-us",
+        "title": "PPL, affiliate partners selected for $72 million research grant from the U.S. Department of Energy's Office of Clean Energy Demonstrations",
+        "publisher": "LG&E and KU (PPL Corporation)",
+        "date": "2024-02-02",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://lge-ku.com/newsroom/press-releases/2023/03/31/lge-and-ku-epri-university-kentucky-begin-industry-leading",
+        "title": "LG&E and KU, EPRI, University of Kentucky, begin industry-leading carbon capture research",
+        "publisher": "LG&E and KU (PPL Corporation)",
+        "date": "2023-03-31",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2025-04/CX-033535.pdf",
+        "title": "NEPA CX - Carbon Capture Pilot at Cane Run Generating Station - Phase 1",
+        "publisher": "U.S. Department of Energy (OCED)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/24CM/24CM_PSCC_5_Berger.pdf",
+        "title": "CO2 Capture at LG&E Cane Run NGCC Power Plant",
+        "publisher": "NETL (U.S. Department of Energy)",
+        "date": "2024-08-05",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "568": [
       {
         "url": "https://assets.publishing.service.gov.uk/media/66697f5a43c77d8616f76023/grain-b-power-station-eia-scoping-opinion-11062024.pdf",
@@ -3176,6 +3629,39 @@
         "itemLang": "en"
       }
     ],
+    "622": [
+      {
+        "url": "https://www.eni.com/en-IT/media/press-release/2023/01/eni-launches-a-major-gas-development-project-in-libya.html",
+        "title": "Eni launches a major gas development project in Libya",
+        "publisher": "Eni",
+        "date": "2023-01-28",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://mellitahog.ly/wp-content/uploads/2021/02/02.pdf",
+        "title": "Enquiry for Prequalification: A&E Structures, Mellitah Complex Expansion & CO2 Management Integrated Development Project",
+        "publisher": "Mellitah Oil & Gas B.V.",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.offshore-technology.com/news/libyas-mellitah-hill-gas-projects/",
+        "title": "Libya's Mellitah to work with Hill on two gas projects",
+        "publisher": "Offshore Technology",
+        "date": "2025-07-24",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://epcintel.com/insight/libya-launches-usd-8-billion-gas-project-with-major-offshore-pipeline-and-carbon-capture-contracts-ahead-34",
+        "title": "Libya launches USD $8 billion gas project with major offshore, pipeline, and carbon capture contracts ahead",
+        "publisher": "EPC Intel",
+        "date": "2025-08-13",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "628": [
       {
         "url": "https://www.santos.com/news/bayu-undan-joint-venture-and-timor-gap-sign-mou-to-cooperate-on-carbon-capture-and-storage/",
@@ -3422,6 +3908,40 @@
         "publisher": "産経ニュース",
         "date": "2024-11-16",
         "tier": "media",
+        "itemLang": "ja"
+      }
+    ],
+    "667": [
+      {
+        "url": "https://www.jogmec.go.jp/english/news/release/release_00235.html",
+        "title": "First Step to Launch Japanese CCS Project - JOGMEC selected 7 projects, starting CO2 storage by FY2030",
+        "publisher": "JOGMEC",
+        "date": "2023-06-13",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.japex.co.jp/en/news/detail/20241015_01",
+        "title": "JAPEX, Idemitsu, HEPCO Commission an engineering design work toward the Launch of CCS Project in Tomakomai Area",
+        "publisher": "JAPEX",
+        "date": "2024-10-15",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.japex.co.jp/en/news/uploads/pdf/JAPEX20260713_TomakomaiCCS_SPC_e.pdf",
+        "title": "Establishment of a New Company for the CCS Project in the Tomakomai Area",
+        "publisher": "Tomakomai CCS Co., Ltd. / JAPEX",
+        "date": "2026-07-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.hepco.co.jp/info/2024/1252632_2023.html",
+        "title": "苫小牧エリアでのCCS事業開始を目指す設計作業等を受託",
+        "publisher": "北海道電力株式会社",
+        "date": "2024-10-15",
+        "tier": "press_release",
         "itemLang": "ja"
       }
     ],
@@ -3744,6 +4264,39 @@
         "itemLang": "en"
       }
     ],
+    "689": [
+      {
+        "url": "https://herema.gr/storage-permit-issued-for-prinos-co2/",
+        "title": "Storage permit issued for Prinos CO2",
+        "publisher": "HEREMA",
+        "date": "2026-02-26",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.enearth.earth/what-we-do",
+        "title": "Prinos CO2",
+        "publisher": "EnEarth",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ccarbon.info/news/prinos-co%e2%82%82-storage-capacity-independently-estimated-by-nsai/",
+        "title": "Prinos CO2 Storage Capacity Independently Estimated By NSAI",
+        "publisher": "ccarbon.info",
+        "date": "2026-07-31",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ebrd.com/home/work-with-us/projects/psd/56584.html",
+        "title": "Prinos CO2 Storage Project",
+        "publisher": "European Bank for Reconstruction and Development",
+        "date": "2025-10-03",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "691": [
       {
         "url": "https://www.clevelandcliffs.com/news/news-releases/detail/562/cleveland-cliffs-submits-application-for-front-end",
@@ -3774,6 +4327,39 @@
         "title": "Carbon Capture Design at Burns Harbor Steel Plant",
         "publisher": "NETL (US DOE)",
         "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "697": [
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-024311-blue-bison-atr-advanced-ccus-system-initial-engineering-166mtpy-co2-capture",
+        "title": "CX-024311: Blue Bison ATR Advanced CCUS system - Initial Engineering of a 1.66MTPY CO2 Capture Unit",
+        "publisher": "U.S. Department of Energy",
+        "date": "2021-07-28",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/servlets/purl/1975500",
+        "title": "Blue Bison ATR Advanced CCUS System (Final Report)",
+        "publisher": "Tallgrass MLP Operations, LLC / U.S. DOE OSTI",
+        "date": "2023-09-19",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/fecm/articles/us-department-energy-selects-12-projects-improve-fossil-based-hydrogen-production",
+        "title": "U.S. Department of Energy Selects 12 Projects to Improve Fossil-Based Hydrogen Production, Transport, Storage and Utilization",
+        "publisher": "U.S. Department of Energy (FECM)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.uwyo.edu/govcom/_files/docs/reports/2022/ser-annual-report-2022.pdf",
+        "title": "School of Energy Resources Annual Report 2022",
+        "publisher": "University of Wyoming, School of Energy Resources",
+        "date": "2022-09-23",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -3929,6 +4515,105 @@
         "publisher": "Comstock Resources (Business Wire)",
         "date": "2025-04-30",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "715": [
+      {
+        "url": "https://www.heidelbergmaterials.us/home/news/news/2025/02/24/heidelberg-materials-north-america-announces-new-milestone-for-mitchell-ccs-project",
+        "title": "Heidelberg Materials North America Announces New Milestone for Mitchell CCS Project",
+        "publisher": "Heidelberg Materials North America",
+        "date": "2025-02-24",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-028550-mitchell-carbonsafe-phase-ii",
+        "title": "CX-028550: Mitchell CarbonSAFE Phase II",
+        "publisher": "U.S. Department of Energy",
+        "date": "2023-08-14",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://blogs.illinois.edu/view/7447/598934245",
+        "title": "Multimillion-dollar project investigates potential CO2 storage at Heidelberg Materials' cement plant in Mitchell, Indiana",
+        "publisher": "Prairie Research Institute / Illinois State Geological Survey",
+        "date": "2023-02-22",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.globalcement.com/news/19103-heidelberg-materials-north-america-begins-test-well-drilling-at-mitchell-plant",
+        "title": "Heidelberg Materials North America begins test well drilling at Mitchell plant",
+        "publisher": "Global Cement",
+        "date": "2025-02-26",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "716": [
+      {
+        "url": "https://www.calpine.com/carbon-capture-and-sequestration-ccs/sutter-carbon-capture/",
+        "title": "Sutter Carbon Capture",
+        "publisher": "Calpine",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.calpine.com/calpine-announces-execution-of-full-scale-ccs-demonstration-project-cost-sharing-agreement-with-the-department-of-energy-for-sutter-decarbonization-project/",
+        "title": "Calpine Announces Execution of Full-Scale CCS Demonstration Project Cost Sharing Agreement with the Department of Energy for Sutter Decarbonization Project",
+        "publisher": "Calpine",
+        "date": "2024-08-07",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-031567-sutter-decarbonization-project-phase-1",
+        "title": "CX-031567: Sutter Decarbonization Project - Phase 1",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.appeal-democrat.com/news/feds-yank-270-million-grant-for-sutter-county-carbon-project/article_5cff8427-238a-4abd-8df7-252490db7770.html",
+        "title": "Feds yank $270 million grant for Sutter County carbon project",
+        "publisher": "Appeal-Democrat",
+        "date": "2025-06-05",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "721": [
+      {
+        "url": "https://www.uwyo.edu/ser/news/2023/02/hero-carbonsafe.html",
+        "title": "UW Receives DOE Funding for HERO Basalt CarbonSAFE Project in Pacific Northwest",
+        "publisher": "University of Wyoming School of Energy Resources",
+        "date": "2023-02-01",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/24CM/24CM_CTS2_7_Eakin.pdf",
+        "title": "HERO Basalt CarbonSAFE",
+        "publisher": "NETL (U.S. Department of Energy)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/biblio/2507031",
+        "title": "HERO CarbonSAFE Phase 2 Project in the Columbia River Basalt Group: Technical Program Overview",
+        "publisher": "OSTI.GOV (U.S. Department of Energy)",
+        "date": "2025-01-06",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://doi.org/10.2172/2475149",
+        "title": "HERO CarbonSAFE Phase 2 Project in the Columbia River Basalt Group",
+        "publisher": "OSTI.GOV / University of Wyoming",
+        "date": "2024-10-24",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -4125,6 +4810,30 @@
         "itemLang": "en"
       }
     ],
+    "796": [
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-031922-illinois-basin-west-carbonsafe-iii",
+        "title": "CX-031922: Illinois Basin West CarbonSAFE III",
+        "publisher": "U.S. Department of Energy",
+        "date": "2024-08-28",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/sites/default/files/netl-file/24CM/24CM_CTS1_5_Taft.pdf",
+        "title": "Illinois Basin West CarbonSAFE",
+        "publisher": "Illinois State Geological Survey / U.S. DOE NETL",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://cwlp.com/Departments/ElectricDeptHome/ElectricInformation/Generation.aspx",
+        "title": "Electric Generation - City Water, Light, and Power",
+        "publisher": "City Water, Light and Power (CWLP)",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "798": [
       {
         "url": "https://www.eoriwyoming.org/news/eori-news/300-doe-awards-eori-and-carbon-solutions-award",
@@ -4181,6 +4890,72 @@
         "publisher": "U.S. Department of Energy (OSTI)",
         "date": "2024-05-06",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "804": [
+      {
+        "url": "https://uk.rwe.com/project-proposals/stallingborough-power-station/",
+        "title": "Stallingborough Power Station",
+        "publisher": "RWE",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://uk.rwe.com/press-and-news/2026-03-11-rwe-launch-consultation-for-low-carbon-power-station/",
+        "title": "RWE launches statutory consultation for low carbon power station",
+        "publisher": "RWE",
+        "date": "2026-03-11",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010161",
+        "title": "Stallingborough Combined Cycle Gas Turbine (CCGT) generating plant and Carbon Capture Plant (CCP)",
+        "publisher": "UK Planning Inspectorate",
+        "date": "2026-03-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.bbc.co.uk/news/articles/cqxd75w0xnyo",
+        "title": "Public consultation over Stallingborough gas-fired power station",
+        "publisher": "BBC News",
+        "date": "2026-03-12",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "811": [
+      {
+        "url": "https://www.jogmec.go.jp/english/news/release/release_00268.html",
+        "title": "Advanced Efforts for Commercialization of CCS - JOGMEC selects Nine projects as Japanese Advanced CCS Projects",
+        "publisher": "JOGMEC",
+        "date": "2024-07-24",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.meti.go.jp/press/2024/06/20240628011/20240628011.html",
+        "title": "CCS事業化に向けた先進的取組",
+        "publisher": "経済産業省 (METI)",
+        "date": "2024-06-28",
+        "tier": "official",
+        "itemLang": "ja"
+      },
+      {
+        "url": "https://www.jpower.co.jp/english/news_release/pdf/news241015_2e.pdf",
+        "title": "JOGMEC officially selected the Offshore Western Kyushu CCS in the Engineering Design Work for Advanced CCS Projects in FY2024",
+        "publisher": "Electric Power Development Co., Ltd. (J-POWER)",
+        "date": "2024-10-15",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.mol.co.jp/en/pr/2024/24112.html",
+        "title": "MOL to Study Vessel Transport of Liquefied CO2 as Part of JOGMEC Call for Engineering Design Work for Advanced CCS Projects",
+        "publisher": "Mitsui O.S.K. Lines",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -4280,6 +5055,39 @@
         "publisher": "Canada Energy Regulator (CER)",
         "date": "2024-05-17",
         "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "845": [
+      {
+        "url": "http://perenco-ccs.com/the-poseidon-project",
+        "title": "The Poseidon Project",
+        "publisher": "Perenco CCS",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.perenco.com/wp-content/uploads/2024/01/Licence-award-for-Perencos-Poseidon-Carbon-Capture-and-Storage-Project-UK.pdf",
+        "title": "Licence award for Perenco's Poseidon Carbon Capture and Storage project",
+        "publisher": "Perenco UK",
+        "date": "2023-08-14",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.perenco.com/wp-content/uploads/2025/02/Start-of-UKs-first-CO2-injection-test-for-CCS-UK.pdf",
+        "title": "Start of UK's first CO2 injection test for CCS",
+        "publisher": "Perenco",
+        "date": "2025-02-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.worldoil.com/news/2025/4/10/perenco-completes-uk-s-first-co2-injection-test-for-ccs",
+        "title": "Perenco completes UK's first CO2 injection test for CCS",
+        "publisher": "World Oil",
+        "date": "2025-04-10",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -4408,6 +5216,30 @@
         "itemLang": "en"
       }
     ],
+    "876": [
+      {
+        "url": "https://www.denr.louisiana.gov/page/permits-and-applications",
+        "title": "Permits and Applications",
+        "publisher": "Louisiana Department of Energy and Natural Resources",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.epa.gov/system/files/documents/2024-01/class-vi-permit-tracker_1-5-24.pdf",
+        "title": "Class VI Permit Tracker",
+        "publisher": "U.S. Environmental Protection Agency",
+        "date": "2024-01-05",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.dce.louisiana.gov/page/class-vi-permits-and-applications",
+        "title": "Class VI Permits and Applications",
+        "publisher": "Louisiana Department of Conservation and Energy",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "878": [
       {
         "url": "https://riverparishseq.com/",
@@ -4470,6 +5302,38 @@
         "title": "Cleco. Project Diamond Vault.",
         "publisher": "U.S. EPA",
         "date": "2025-06-17",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "896": [
+      {
+        "url": "https://www.businesswire.com/news/home/20231010583746/en/Aera-Announces-Carbon-Capture-and-Storage-Project-CarbonFrontier",
+        "title": "Aera Announces Carbon Capture and Storage Project - CarbonFrontier",
+        "publisher": "Business Wire (Aera Energy)",
+        "date": "2023-10-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.crc.com/carbon-terravault/projects/carbon-frontier",
+        "title": "CarbonFrontier",
+        "publisher": "California Resources Corporation (CRC)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.epa.gov/uic/r9-uic-permits",
+        "title": "UIC Permits in EPA's Pacific Southwest (Region 9)",
+        "publisher": "U.S. Environmental Protection Agency",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ceqanet.opr.ca.gov/2023060293",
+        "title": "CarbonFrontier Carbon Capture and Sequestration by Aera Energy, LLC",
+        "publisher": "CEQAnet / Kern County",
+        "date": "2023-06-09",
         "tier": "official",
         "itemLang": "en"
       }
@@ -4539,6 +5403,121 @@
         "date": "2023-06-21",
         "tier": "media",
         "itemLang": "en"
+      }
+    ],
+    "916": [
+      {
+        "url": "https://www.mhi.com/news/24031201.html",
+        "title": "MHI Selected as Licensor of CO2 Capture Technology for HPP2",
+        "publisher": "Mitsubishi Heavy Industries",
+        "date": "2024-03-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gov.uk/government/publications/hynet-track-1-expansion-selected-projects/hynet-expansion-project-negotiation-list",
+        "title": "HyNet expansion: project negotiation list",
+        "publisher": "GOV.UK (DESNZ)",
+        "date": "2025-08-05",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://projectmap.hydrogen-uk.org/projects/hynet-hydrogen-production-plant-hpp2/",
+        "title": "HyNet Hydrogen Production Plant HPP2",
+        "publisher": "Hydrogen UK",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.hynethub.co.uk/index.php?contentid=985",
+        "title": "HyNet FAQs",
+        "publisher": "HyNet",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "920": [
+      {
+        "url": "https://www.prnewswire.com/news-releases/aker-carbon-capture-awarded-study-and-test-campaign-from-wacker-302096793.html",
+        "title": "Aker Carbon Capture awarded study and test campaign from Wacker",
+        "publisher": "Aker Carbon Capture ASA / PR Newswire",
+        "date": "2024-03-22",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://cen.acs.org/environment/greenhouse-gases/Wacker-eyes-carbon-capture-Norway/102/i10",
+        "title": "Wacker eyes carbon capture in Norway",
+        "publisher": "Chemical & Engineering News (C&EN)",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.prnewswire.com/news/aker-carbon-capture-as",
+        "title": "Aker Carbon Capture AS News and Press Releases",
+        "publisher": "PR Newswire",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "925": [
+      {
+        "url": "https://www.ceic.com/gjnyjtwwEn/xwzx/202401/4d90d45cab074fb8b4b810c61d51052c.shtml",
+        "title": "China's largest CCUS Demonstrative Project's Spherical Tanks Completed Base Construction",
+        "publisher": "China Energy Investment Corporation (CEIC)",
+        "date": "2024-01-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://chem.jgvogel.cn/c1292832.shtml",
+        "title": "宁夏300万吨CCUS示范项目全面开工",
+        "publisher": "PROCESS 流程工业",
+        "date": "2023-05-23",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.te-ch.tech/news/show-336341.html",
+        "title": "中国最大CCUS示范项目一期工程圆满竣工",
+        "publisher": "科技网",
+        "date": "2024-10-16",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.cpezg.com/qikan/article/qkshow.html?qklwid=102",
+        "title": "布局CCUS 产业链",
+        "publisher": "中国石油企业杂志社",
+        "tier": "reference",
+        "itemLang": "zh"
+      }
+    ],
+    "929": [
+      {
+        "url": "https://xbj.nea.gov.cn/dtyw/hyxx/202601/t20260130_295187.html",
+        "title": "延长石油扩油增气助力陕西夯实能源保供底盘",
+        "publisher": "国家能源局西北监管局",
+        "date": "2026-01-30",
+        "tier": "official",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://chem.jgvogel.cn/c1570875.shtml",
+        "title": "陕西百万吨CCUS全流程项目完成全国首例备案",
+        "publisher": "PROCESS 流程工业",
+        "date": "2025-12-19",
+        "tier": "media",
+        "itemLang": "zh"
+      },
+      {
+        "url": "https://www.chemall.com.cn/news/show-252622.html",
+        "title": "延长石油百万吨全流程一体化CCUS项目开工",
+        "publisher": "中国石油和化工网",
+        "date": "2026-06-12",
+        "tier": "media",
+        "itemLang": "zh"
       }
     ],
     "930": [
@@ -4794,6 +5773,55 @@
         "title": "CarbonSAFE Phase II Projects",
         "publisher": "NETL EDX (U.S. DOE)",
         "date": "2024-04-16",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "974": [
+      {
+        "url": "https://www.energy.gov/nepa/articles/cx-030648-red-hills-co2-storage-hub-feasibility-study",
+        "title": "CX-030648: Red Hills CO2 Storage Hub Feasibility Study",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/hgeo/project-selections-foa-2711-carbon-storage-validation-and-testing-round-2",
+        "title": "Project Selections for FOA 2711: Carbon Storage Validation and Testing Round 2",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.osti.gov/biblio/2507423",
+        "title": "Red Hills Storage Hub Feasibility Study - Summary of Milestone 2",
+        "publisher": "OSTI.GOV (U.S. Department of Energy)",
+        "date": "2025-01-31",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "975": [
+      {
+        "url": "https://www.powermag.com/tva-exploring-carbon-capture-feasibility-for-two-gas-fired-power-plants/",
+        "title": "TVA Exploring Carbon Capture Feasibility for Two Gas-Fired Power Plants",
+        "publisher": "POWER Magazine",
+        "date": "2023-09-21",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.power-eng.com/gas/turbines/tva-to-study-carbon-capture-at-two-natural-gas-fired-plants/",
+        "title": "TVA to study carbon capture at two natural gas-fired plants",
+        "publisher": "Power Engineering",
+        "date": "2023-09-14",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://carbonstorage.io/storage/red-hills-co2-storage-hub",
+        "title": "Red Hills CO2 Storage Hub",
+        "publisher": "CarbonStorage.io",
         "tier": "reference",
         "itemLang": "en"
       }
@@ -5094,6 +6122,38 @@
         "itemLang": "en"
       }
     ],
+    "1110": [
+      {
+        "url": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010166",
+        "title": "Connah's Quay Low Carbon Power Project - Project information",
+        "publisher": "UK Planning Inspectorate",
+        "date": "2026-09-10",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.uniper.energy/united-kingdom/projects-united-kingdom/connahs-quay-low-carbon-power",
+        "title": "Connah's Quay Low Carbon Power",
+        "publisher": "Uniper",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://uniperuk.consulting/cqlcp/planning-and-consultation-process/",
+        "title": "Planning and consultation process - Connah's Quay Low Carbon Power",
+        "publisher": "Uniper UK",
+        "date": "2024-02-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://connahsquaylcp.co.uk/index.php?contentid=143",
+        "title": "Connah's Quay Low Carbon Power",
+        "publisher": "Uniper UK (CQLCP)",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "1114": [
       {
         "url": "https://www.natrangroupe.com/en/our-energy-transition/co2-transport/goco2",
@@ -5250,6 +6310,40 @@
         "itemLang": "en"
       }
     ],
+    "1141": [
+      {
+        "url": "https://ifestos.eu/about-us/",
+        "title": "About IFESTOS: Europe's Largest Carbon Capture Project",
+        "publisher": "IFESTOS / TITAN Group",
+        "date": "2024-03-06",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.titan.gr/en/newsroom/news-and-press-releases/new?item=1691",
+        "title": "TITAN Group signs engineering contract with thyssenkrupp Polysius for large-scale carbon capture project",
+        "publisher": "TITAN Greece",
+        "date": "2024-10-09",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.titan.gr/en/newsroom/news-and-press-releases/new?item=1706",
+        "title": "TITAN Greece's IFESTOS project designated as a Strategic Investment by Enterprise Greece",
+        "publisher": "TITAN Greece",
+        "date": "2025-06-05",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101133204.pdf",
+        "title": "IFESTOS - one of the largest carbon capture projects in Europe",
+        "publisher": "European Commission (CINEA)",
+        "date": "2026-09-09",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "1148": [
       {
         "url": "https://www.edb.gov.sg/content/dam/edb-en/about-edb/media-releases/news/appointment-of-s-hub-to-develop-cross-border-ccs-project/Press%20release-Appointment%20of%20S%20hub%20to%20develop%20cross-border%20CCS%20project.pdf",
@@ -5312,6 +6406,39 @@
         "title": "Valero to Connect Eight Ethanol Plants to Summit's CO2 Pipeline",
         "publisher": "DTN Progressive Farmer",
         "date": "2024-03-04",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1166": [
+      {
+        "url": "https://www.prnewswire.com/news-releases/worlds-first-carbon-capture-pilot-for-smelters-inaugurated-at-elkem-in-rana-norway-301726897.html",
+        "title": "World's first carbon capture pilot for smelters inaugurated at Elkem in Rana, Norway",
+        "publisher": "PR Newswire / Elkem",
+        "date": "2023-01-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://news.cision.com/elkem/r/world-s-first-carbon-capture-pilot-for-smelters-inaugurated-at-elkem-in-rana--norway,c3700851",
+        "title": "World's first carbon capture pilot for smelters inaugurated at Elkem in Rana, Norway",
+        "publisher": "Cision / Elkem",
+        "date": "2023-01-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://news.cision.com/elkem/r/elkem-and-ferroglobe-to-study-ccs-in-a-common-hub-in-rana,c3947145",
+        "title": "Elkem and Ferroglobe to study CCS in a common hub in Rana",
+        "publisher": "Cision / Elkem",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.chemengonline.com/elkem-completes-carbon-capture-pilot-project-in-rana-norway/",
+        "title": "Elkem completes carbon-capture pilot project in Rana, Norway",
+        "publisher": "Chemical Engineering",
+        "date": "2024-01-29",
         "tier": "media",
         "itemLang": "en"
       }
@@ -5821,6 +6948,40 @@
         "itemLang": "en"
       }
     ],
+    "1332": [
+      {
+        "url": "https://www.businesswire.com/news/home/20250130240324/en/Svante-Selected-for-US-DOE-Funding-to-Advance-Carbon-Capture-in-the-Pulp-Paper-Industry",
+        "title": "Svante Selected for US DOE Funding to Advance Carbon Capture in the Pulp & Paper Industry",
+        "publisher": "Business Wire",
+        "date": "2025-01-30",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.pulpapernews.com/20250207/16397/svante-developing-world-first-carbon-capture-and-storage-project-pulp-mill-arkansas",
+        "title": "Svante is developing a world-first carbon capture and storage project at pulp mill in Arkansas",
+        "publisher": "PULPAPERnews",
+        "date": "2025-02-07",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energytech.com/energy-efficiency/news/55265276/massive-paper-pulp-mill-in-arkansas-aiming-to-capture-15m-metric-tons-of-carbon",
+        "title": "Massive Paper Pulp Mill in Arkansas Aiming to Capture 1.5M Metric Tons of Carbon",
+        "publisher": "EnergyTech",
+        "date": "2025-02-03",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gasworld.com/story/svante-to-develop-carbon-capture-project-at-arkansas-pulp-mill-with-doe-backing/2150331.article/",
+        "title": "Svante to develop carbon capture project at Arkansas pulp mill with DOE backing",
+        "publisher": "gasworld",
+        "date": "2025-01-31",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "1360": [
       {
         "url": "https://www.epuki.co.uk/about/our-power-stations/lynemouth/",
@@ -6193,6 +7354,39 @@
         "title": "Progressive Energy eyes mammoth Baltic Sea carbon capture plan",
         "publisher": "Energy Voice",
         "date": "2026-01-27",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1529": [
+      {
+        "url": "https://www.engas.sk/articles/engas-submits-final-EIA-CCS",
+        "title": "ENGAS Submits Final EIA for Slovakia's First Carbon Capture & Storage Project",
+        "publisher": "Engas s.r.o.",
+        "date": "2025-03-11",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.engas.sk/news",
+        "title": "ENGAS CCS - News & Updates",
+        "publisher": "Engas s.r.o.",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.earthdoc.org/content/papers/10.3997/2214-4609.202510385",
+        "title": "Developing a Carbon Storage Site in Slovakia via Conversion of a Depleted Gas Field",
+        "publisher": "European Association of Geoscientists & Engineers (EAGE)",
+        "date": "2025-06-02",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://spectator.sme.sk/business/c/slovakia-s-first-co2-storage-site-takes-shape",
+        "title": "Slovakia's first CO2 storage site takes shape",
+        "publisher": "The Slovak Spectator",
+        "date": "2025-03-12",
         "tier": "media",
         "itemLang": "en"
       }
