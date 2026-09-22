@@ -22,7 +22,7 @@ content-depth remediation.
 
 | Item                                  | Detail                                                                                                                                                                                                                                     |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 323 facilities already enriched (operational + under-construction ≥0.5 Mtpa, plus planned ≥1 Mtpa) toward the remaining operational/under-construction set. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
+| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 339 facilities already enriched (operational + under-construction ≥0.5 Mtpa, plus planned ≥1 Mtpa) toward the remaining operational/under-construction set. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
 | Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                     |
 | Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                     |
 | Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                          |
@@ -86,8 +86,14 @@ content-depth remediation.
   ≥1.1 Mtpa projects (Phase E)
 - Curated coverage extended to 301 facilities / 1154 items: added planned
   ≥1 Mtpa projects (Phase E)
-- Curated coverage extended to 323 facilities / 1241 items: added operational
-  and under-construction ≥0.5 Mtpa projects (Phase E)
+- Curated coverage extended to 339 facilities: the earlier ≥0.5 Mtpa batch left
+  16 operational/under-construction facilities uncurated (e.g. Gorgon, Century,
+  Petrobras Santos, Trailblazer); these were added. On a URL collision the
+  curated tier/title/date now **upgrade the seeded row in place** instead of
+  being dropped — 118 rows upgraded, 48 tier corrections (Phase E)
+- Facility-news link health runs on a monthly schedule
+  (`.github/workflows/facility-news-link-check.yml`, advisory artifact);
+  facility-news titles are now included in site search
 - CI projection diff gate closed (quality metrics + public data), deterministic
   `data_as_of` timestamps, volatile audit fields removed from generated output
 - zh/en page consolidation (8 pairs), Base-path literals eliminated (guard test),
