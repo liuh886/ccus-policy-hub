@@ -15,15 +15,15 @@ Last updated: 2026-09-08
 
 ## Engineering backlog
 
-| Item                                  | Detail                                                                                                                                                                                                                                                    |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 301 facilities already enriched (operational ≥1 Mtpa + under-construction ≥1 Mtpa + planned ≥1 Mtpa) toward the full planned/under-construction set, as capacity warrants. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
-| Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                                    |
-| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                                    |
-| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                                         |
-| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                                  |
-| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                                     |
-| Performance polish                    | Google Fonts: 7 weights → 3 + CJK fallback stack; `light-editorial-capacity.css` loaded site-wide but only used on home                                                                                                                                   |
+| Item                                  | Detail                                                                                                                                                                                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 323 facilities already enriched (operational + under-construction ≥0.5 Mtpa, plus planned ≥1 Mtpa) toward the remaining operational/under-construction set. See `agent/ccus-ai-agent/METHODOLOGY.md` §9 |
+| Split `manage.mjs`                    | 1,233-line module into `commands/` modules; add direct tests for `dbExportMd`, `dbImportMdReverse`, `dbAuditDeep` (shared helpers already extracted to `scripts/lib/`)                                                                     |
+| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                     |
+| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales; 32 of 130 en policy files also contain Chinese fragments. Add a zh-translation-rate metric to quality output                                          |
+| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                   |
+| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                      |
+| Performance polish                    | Google Fonts: 7 weights → 3 + CJK fallback stack; `light-editorial-capacity.css` loaded site-wide but only used on home                                                                                                                    |
 
 ## Done (2026-09 sessions, for context)
 
@@ -63,6 +63,8 @@ Last updated: 2026-09-08
   ≥1.1 Mtpa projects (Phase E)
 - Curated coverage extended to 301 facilities / 1154 items: added planned
   ≥1 Mtpa projects (Phase E)
+- Curated coverage extended to 323 facilities / 1241 items: added operational
+  and under-construction ≥0.5 Mtpa projects (Phase E)
 - CI projection diff gate closed (quality metrics + public data), deterministic
   `data_as_of` timestamps, volatile audit fields removed from generated output
 - zh/en page consolidation (8 pairs), Base-path literals eliminated (guard test),
