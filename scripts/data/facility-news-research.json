@@ -317,6 +317,38 @@
         "itemLang": "en"
       }
     ],
+    "87": [
+      {
+        "url": "https://www.portofgothenburg.com/about/future/co2hub/",
+        "title": "Large-scale CO2 hub",
+        "publisher": "Port of Gothenburg",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://nordionenergi.se/engelska/nordion-energi/projects/ccus/cinfracap",
+        "title": "CinfraCap",
+        "publisher": "Nordion Energi",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.mynewsdesk.com/goteborgs_hamn/pressreleases/significant-gains-from-ccs-collaboration-3094051",
+        "title": "Significant gains from CCS collaboration",
+        "publisher": "Port of Gothenburg (MyNewsDesk)",
+        "date": "2021-04-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.di.se/hallbart-naringsliv/megaprojekt-fangar-in-goteborgs-koldioxid/",
+        "title": "Cinfra Cap fangar koldioxid i Goteborg",
+        "publisher": "Dagens Industri",
+        "date": "2023-02-16",
+        "tier": "media",
+        "itemLang": "sv"
+      }
+    ],
     "94": [
       {
         "url": "https://static.aer.ca/prd/documents/by-topic/ccus/2023-EnhanceCO2-Annual-Report.pdf",
@@ -417,6 +449,39 @@
         "itemLang": "en"
       }
     ],
+    "130": [
+      {
+        "url": "https://www.gov.uk/government/news/drax-bioenergy-with-carbon-capture-and-storage-project-development-consent-decision-announced",
+        "title": "Drax Bioenergy with Carbon Capture and Storage Project development consent decision announced",
+        "publisher": "Planning Inspectorate / GOV.UK",
+        "date": "2024-01-16",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.drax.com/press_release/uk-government-approves-planning-application-for-beccs-at-drax-power-station/",
+        "title": "UK Government approves planning application for BECCS at Drax Power Station",
+        "publisher": "Drax Group",
+        "date": "2024-01-16",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010120",
+        "title": "Drax Bioenergy with Carbon Capture and Storage Project",
+        "publisher": "UK Planning Inspectorate",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.drax.com/wp-content/uploads/2025/04/Drax-Climate-Transition-Plan_FINAL.pdf",
+        "title": "Drax Group plc Climate Transition Plan",
+        "publisher": "Drax Group plc",
+        "date": "2025-04-30",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "133": [
       {
         "url": "https://www.epa.gov/ghgreporting/eastern-wyoming-sequestration-hub",
@@ -464,6 +529,23 @@
         "url": "https://www.ogj.com/energy-transition/article/14293451/exxonmobil-using-integrated-approach-on-path-to-decarbonize-downstream",
         "title": "ExxonMobil using integrated approach on path to decarbonize downstream",
         "publisher": "Oil & Gas Journal",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "160": [
+      {
+        "url": "https://g2netzero.com/",
+        "title": "G2 Net-Zero",
+        "publisher": "G2 Net-Zero",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energyconnects.com/news/utilities/2022/january/mcdermott-awarded-contract-for-a-net-zero-power-plant-in-the-us",
+        "title": "McDermott awarded contract for a net-zero power plant in the US",
+        "publisher": "Energy Connects",
+        "date": "2022-01-07",
         "tier": "media",
         "itemLang": "en"
       }
@@ -895,6 +977,39 @@
         "itemLang": "en"
       }
     ],
+    "300": [
+      {
+        "url": "https://majorprojects.alberta.ca/details/Open-Access-Wabamun-Carbon-Hub/9512",
+        "title": "Open Access Wabamun Carbon Hub",
+        "publisher": "Government of Alberta",
+        "date": "2022-02-06",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.enbridge.com/media-center/news/details?id=123715",
+        "title": "Enbridge Awarded Right to Advance Alberta Carbon Hub",
+        "publisher": "Enbridge Inc.",
+        "date": "2022-03-31",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://natural-resources.canada.ca/funding-partnerships/wabamun-hub-co2-storage-optimization-project",
+        "title": "The Wabamun Hub CO2 Storage Optimization Project",
+        "publisher": "Natural Resources Canada",
+        "date": "2025-07-09",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://albertainnovates.ca/projects/the-open-access-wabamun-carbon-hubs-co%E2%82%82-storage-development-and-optimization-project/",
+        "title": "The Open Access Wabamun Carbon Hub's CO2 Storage Development and Optimization Project",
+        "publisher": "Alberta Innovates",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "301": [
       {
         "url": "http://enhanceenergy.com/origins-ccs-hub-receives-approval",
@@ -992,6 +1107,40 @@
         "publisher": "The Star (Malaysia)",
         "date": "2026-04-01",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "318": [
+      {
+        "url": "https://www.kirkland.com/news/press-release/2024/01/kirkland-advises-summit-on-carbon-capture-partnership-with-poet",
+        "title": "Kirkland Advises Summit on Carbon Capture Partnership with POET",
+        "publisher": "Kirkland & Ellis LLP",
+        "date": "2024-01-29",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.reuters.com/sustainability/climate-energy/poets-us-midwest-ethanol-plants-join-summit-carbon-pipeline-project-2024-01-29",
+        "title": "POET's US Midwest ethanol plants to join Summit Carbon pipeline project",
+        "publisher": "Reuters",
+        "date": "2024-01-29",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.thegazette.com/news/agriculture/poet-ethanol-plants-in-iowa-and-south-dakota-sign-on-to-summit-co2-pipeline/article_45456a9b-d849-54a4-95bf-d5c6bbd2a968.html",
+        "title": "POET ethanol plants in Iowa and South Dakota sign on to Summit CO2 pipeline",
+        "publisher": "The Gazette",
+        "date": "2024-01-29",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://poet.com/pr/navigator-co2-poet-sign-letter-of-intent",
+        "title": "Navigator CO2, POET Sign Letter of Intent to Capture, Transport, and Store Five (5) Million Tons of CO2 Annually",
+        "publisher": "POET",
+        "date": "2022-06-07",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -1118,6 +1267,39 @@
         "date": "2020-07-10",
         "tier": "media",
         "itemLang": "en"
+      }
+    ],
+    "349": [
+      {
+        "url": "https://va.mite.gov.it/en-GB/Oggetti/Info/12097",
+        "title": "RAVENNA CCS FASE 2 per lo stoccaggio geologico di anidride carbonica",
+        "publisher": "Ministero dell'Ambiente e della Sicurezza Energetica (MASE)",
+        "date": "2026-06-12",
+        "tier": "official",
+        "itemLang": "it"
+      },
+      {
+        "url": "https://www.eni.com/en-IT/media/press-release/2024/09/eni-snam-launch-ravenna-css-italy-s-first-carbon-capture-storage-project.html",
+        "title": "Eni and Snam launch Ravenna CCS, Italy's first Carbon Capture and Storage project",
+        "publisher": "Eni",
+        "date": "2024-09-03",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ravennaccs.com/en-IT/project/ravenna-hub",
+        "title": "CCS Eni-Snam: Ravenna Hub",
+        "publisher": "Ravenna CCS (Eni-Snam JV)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.milanofinanza.it/news/cosi-eni-stocchera-il-carbonio-nei-giacimenti-offshore-di-ravenna-202602101705405193",
+        "title": "Cosi Eni stocchera il carbonio nei giacimenti offshore di Ravenna",
+        "publisher": "Milano Finanza",
+        "date": "2026-02-10",
+        "tier": "media",
+        "itemLang": "it"
       }
     ],
     "358": [
@@ -1328,6 +1510,40 @@
         "title": "Full Business Case for HyNet Cluster Carbon Capture, Usage & Storage (CCUS)",
         "publisher": "UK Government",
         "tier": "official",
+        "itemLang": "en"
+      }
+    ],
+    "452": [
+      {
+        "url": "https://northernendurancepartnership.co.uk/2024/12/10/northern-endurance-partnership-greenlights-uks-first-co2-transportation-and-storage-infrastructure-project/",
+        "title": "Northern Endurance Partnership greenlights UK's first CO2 transportation and storage infrastructure project",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://northernendurancepartnership.co.uk/2025/12/12/northern-endurance-partnership-secures-ofgem-approval-to-advance-humber-ccs-development/",
+        "title": "Northern Endurance Partnership Secures Ofgem Approval to Advance Humber CCS Development",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2025-12-12",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gov.uk/government/publications/northern-endurance-partnership-development",
+        "title": "Northern Endurance Partnership Development",
+        "publisher": "Offshore Petroleum Regulator for Environment and Decommissioning (GOV.UK)",
+        "date": "2023-10-04",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://northernendurancepartnership.co.uk/2026/01/21/northern-endurance-partnership-and-the-crown-estate-sign-lease-for-uks-first-ccs-project-ahead-of-offshore-construction/",
+        "title": "Northern Endurance Partnership and The Crown Estate sign lease for UK's first CCS project ahead of offshore construction",
+        "publisher": "Northern Endurance Partnership",
+        "date": "2026-01-21",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -1907,6 +2123,38 @@
         "itemLang": "en"
       }
     ],
+    "673": [
+      {
+        "url": "https://ec.europa.eu/assets/cinea/PCI/files/PCIFiche_13.10_1st_PCI_PMI_list.pdf",
+        "title": "Norne - transportation infrastructure in Denmark with onshore storage",
+        "publisher": "European Commission (CINEA)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://norneccs.com/en/",
+        "title": "CO2 Reception Facilities in Denmark",
+        "publisher": "Norne Carbon Storage Hub (Fidelis New Energy)",
+        "date": "2022-07-20",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.soefart.dk/article/view/1030583/nu_forbereder_kalundborg_havn_sig_ogsa_til_co2lagring",
+        "title": "Nu forbereder Kalundborg Havn sig ogsa til CO2-lagring",
+        "publisher": "Sofart",
+        "tier": "media",
+        "itemLang": "da"
+      },
+      {
+        "url": "https://www.modernpowersystems.com/analysis/carbon-capture-storage/construction-starts-on-norne-denmarks-other-co2-hub/",
+        "title": "Construction starts on Norne, Denmark's other CO2 hub",
+        "publisher": "Modern Power Systems",
+        "date": "2025-07-21",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "674": [
       {
         "url": "https://norneccs.com/en/",
@@ -2038,6 +2286,39 @@
         "itemLang": "en"
       }
     ],
+    "683": [
+      {
+        "url": "https://knenergies.lt/en/feed-agreement-signed-for-the-planned-co2-transshipment-terminal-in-klaipeda/",
+        "title": "FEED agreement signed for the planned CO2 transshipment terminal in Klaipeda",
+        "publisher": "KN Energies",
+        "date": "2026-03-19",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ccs-baltic.eu/2026/05/27/kn-energies-co%e2%82%82-transshipment-terminal-recognised-as-a-project-of-national-importance/",
+        "title": "KN Energies CO2 transshipment terminal recognised as a project of national importance",
+        "publisher": "CCS Baltic Consortium",
+        "date": "2026-05-27",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ccs-baltic.eu/2026/08/19/eia-programme-for-the-planned-co2-transshipment-terminal-in-klaipeda-approved/",
+        "title": "EIA programme for the planned CO2 transshipment terminal in Klaipeda approved",
+        "publisher": "CCS Baltic Consortium",
+        "date": "2026-08-19",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://ccs-baltic.eu/",
+        "title": "CCS Baltic Consortium project",
+        "publisher": "CCS Baltic Consortium",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "685": [
       {
         "url": "https://www.entsog.eu/pycasso",
@@ -2067,6 +2348,30 @@
         "publisher": "energynews.pro",
         "date": "2024-10-28",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "703": [
+      {
+        "url": "https://www.netl.doe.gov/carbon-management/carbon-storage/storage-infrastructure-projects",
+        "title": "Carbon Storage Infrastructure Project Portfolio",
+        "publisher": "U.S. Department of Energy / NETL",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://undeerc.org/research/projects/carbonsafe.html",
+        "title": "CarbonSAFE - University of North Dakota",
+        "publisher": "University of North Dakota EERC",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.energy.gov/sites/default/files/2023-08/draft-ea-2197-nd-carbonsafe-chapters-2023-08.pdf",
+        "title": "DOE/EA-2197D Draft Environmental Assessment for North Dakota CarbonSAFE",
+        "publisher": "U.S. Department of Energy",
+        "date": "2023-08-19",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -2199,6 +2504,70 @@
         "publisher": "Sigholm",
         "date": "2024-09-08",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "772": [
+      {
+        "url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191516.pdf",
+        "title": "StarFish - Project Factsheet",
+        "publisher": "European Commission (CINEA / EU Innovation Fund)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://havstjerne.com/starfish",
+        "title": "STARFISH - Havstjerne Carbon Storage Project",
+        "publisher": "Havstjerne (Harbour Energy / Stella Maris CCS)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://alterainfra.com/articles/ccs-project-starfish-awarded-eur-225-million-from-eu-innovation-fund",
+        "title": "CCS Project STARFISH awarded EUR 225 million from EU Innovation Fund",
+        "publisher": "Altera Infrastructure",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.worldoil.com/news/2026/8/25/slb-selected-for-feed-work-on-havstjerne-carbon-storage-project",
+        "title": "SLB selected for FEED work on Havstjerne carbon storage project",
+        "publisher": "World Oil",
+        "date": "2026-08-25",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "793": [
+      {
+        "url": "https://www.1pointfive.com/projects/magnolia-hub",
+        "title": "Allen Parish Sequestration Hub",
+        "publisher": "1PointFive",
+        "date": "2023-05-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.oxy.com/news/news-releases/1pointfive-sequestration-hubs-awarded-department-of-energy-funding/",
+        "title": "1PointFive Sequestration Hubs Awarded Department of Energy Funding",
+        "publisher": "Occidental (Oxy)",
+        "date": "2024-10-03",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.dce.louisiana.gov/assets/OPC-ClassVI/Louisiana-Class-VI-Permit-Status.pdf",
+        "title": "Louisiana Class VI Permit Status",
+        "publisher": "Louisiana Department of Conservation and Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://americanpress.com/2025/11/18/company-moving-forward-with-plans-for-carbon-capture-sequestration-project-in-allen/",
+        "title": "Company moving forward with plans for carbon capture, sequestration project in Allen",
+        "publisher": "American Press",
+        "date": "2025-11-18",
+        "tier": "media",
         "itemLang": "en"
       }
     ],
@@ -2658,6 +3027,39 @@
         "itemLang": "en"
       }
     ],
+    "971": [
+      {
+        "url": "https://www.energy.gov/hgeo/project-selections-foa-2711-carbon-storage-validation-and-testing-round-2",
+        "title": "Project Selections for FOA 2711: Carbon Storage Validation and Testing Round 2",
+        "publisher": "U.S. Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/node/13090",
+        "title": "DOE Invests More Than $444 Million for CarbonSAFE Projects",
+        "publisher": "NETL (U.S. DOE)",
+        "date": "2023-11-15",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://cardinalnews.org/2023/11/16/study-of-carbon-dioxide-storage-hub-proposed-for-wise-county-receives-4-29-million-federal-grant/",
+        "title": "Study of carbon dioxide storage hub proposed for Wise County receives $4.29 million federal grant",
+        "publisher": "Cardinal News",
+        "date": "2023-11-16",
+        "tier": "media",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://edx.netl.doe.gov/sites/carbonsafe/carbonsafe-phase-ii-projects/",
+        "title": "CarbonSAFE Phase II Projects",
+        "publisher": "NETL EDX (U.S. DOE)",
+        "date": "2024-04-16",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "979": [
       {
         "url": "https://www.energy.gov/nepa/articles/cx-031374-project-crossroads",
@@ -2820,6 +3222,40 @@
         "publisher": "POWER Magazine",
         "date": "2024-09-19",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "1182": [
+      {
+        "url": "https://www.metsagroup.com/news-and-publications/news/2024/metsa-group-and-andritz-start-pioneering-investigation-on-capturing-wood-based-carbon-dioxide",
+        "title": "Metsa Group and ANDRITZ start pioneering investigation on capturing wood-based carbon dioxide",
+        "publisher": "Metsa Group",
+        "date": "2024-06-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.metsagroup.com/metsaspring/portfolio/capture-of-biogenic-carbon-dioxide",
+        "title": "Capture of biogenic carbon dioxide",
+        "publisher": "Metsa Spring (Metsa Group)",
+        "date": "2024-02-13",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.metsagroup.com/news-and-publications/news/2023/metsa-group-is-looking-into-the-construction-of-a-carbon-capture-facility",
+        "title": "Metsa Group is looking into the construction of a carbon capture facility",
+        "publisher": "Metsa Group",
+        "date": "2023-12-18",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://oulu.com/wp-content/uploads/2025/02/4-minna-mentzer_metsa-group_keynote-opportunities-for-ccu-in-forest-industry_ver2.pdf",
+        "title": "Metsa Group keynote: Opportunities for CCU in forest industry",
+        "publisher": "Metsa Group (via Oulu)",
+        "date": "2025-02-13",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -2999,6 +3435,38 @@
         "itemLang": "en"
       }
     ],
+    "1389": [
+      {
+        "url": "https://www.h2naturally.com/",
+        "title": "Hydrogen Naturally - Bright Green Hydrogen",
+        "publisher": "Hydrogen Naturally",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://console.carbonremoval.ca/projects/hub-1-hydrogen-naturally",
+        "title": "Hub 1 (Hydrogen Naturally)",
+        "publisher": "Carbon Console",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.eralberta.ca/media-releases/turning-forestry-waste-into-industrial-fuel/",
+        "title": "Turning Forestry Waste into Industrial Fuel",
+        "publisher": "Emissions Reduction Alberta",
+        "date": "2025-04-23",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://edmonton.taproot.news/news/2025/05/26/hydrogen-naturally-targets-capturing-carbon-and-producing-hydrogen-with-waste-wood",
+        "title": "Hydrogen Naturally targets capturing carbon and producing hydrogen with waste wood",
+        "publisher": "Taproot Edmonton",
+        "date": "2025-05-26",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "1404": [
       {
         "url": "https://normodcarbon.com/about/grenaa-port-selected-as-site-for-normod-carbons-new-co-hub",
@@ -3121,6 +3589,29 @@
         "publisher": "Fluxys",
         "date": "2026-03-20",
         "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "1498": [
+      {
+        "url": "https://ravennaccs.com/en-IT/project/ravenna-hub",
+        "title": "CCS Eni-Snam: Ravenna Hub",
+        "publisher": "Ravenna CCS (Eni/Snam)",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://va.mite.gov.it/en-GB/Oggetti/Documentazione/11069/16591?pagina=5",
+        "title": "CCS Pianura Padana - Rete di Trasporto CO2",
+        "publisher": "Italian Ministry of the Environment and Energy Security (MASE)",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ccsassociation.org/case-studies/ravenna-ccs/",
+        "title": "Ravenna CCS",
+        "publisher": "CCS Association",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
