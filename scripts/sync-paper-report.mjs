@@ -1350,6 +1350,19 @@ const template = `<!DOCTYPE html>
       transition: background-color 0.2s, color 0.2s;
     }
 
+    /* 可访问性：键盘焦点环与文本选区配色 */
+    :focus-visible {
+      outline: 2px solid var(--brand-blue);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
+    ::selection {
+      background: rgba(37, 99, 235, 0.22);
+    }
+    [data-theme="dark"] ::selection {
+      background: rgba(59, 130, 246, 0.38);
+    }
+
     /* 顶部滚动进度指示条 */
     #progress-bar {
       position: fixed;
@@ -1453,12 +1466,14 @@ const template = `<!DOCTYPE html>
         gap: 0;
       }
       .btn-label { display: none; }
-      .reading-stats { flex-wrap: wrap; }
+      .reading-stats { flex-wrap: wrap; row-gap: 0.45rem; }
       .ga-header { flex-wrap: wrap; }
       .figure-header { flex-wrap: wrap; }
     }
+    .brand-text-short { display: none; }
     @media (max-width: 400px) {
       .nav-brand .brand-text { display: none; }
+      .nav-brand .brand-text-short { display: inline; }
     }
 
     /* 主布局 Layout */
@@ -1665,6 +1680,39 @@ const template = `<!DOCTYPE html>
       padding: 0.35rem 0.8rem;
       border-radius: 0.5rem;
       margin-bottom: 2rem;
+    }
+    .reading-stats span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .reading-stats svg {
+      color: var(--brand-blue);
+      flex-shrink: 0;
+    }
+
+    /* 锚点跳转时为吸顶导航预留空间，避免目标内容被遮挡 */
+    figure, .academic-figure, .table-container-card, .graphical-abstract-card,
+    .references-container, .glossary-card-container {
+      scroll-margin-top: 72px;
+    }
+
+    /* 移动端封面版式：标题与元信息更紧凑 */
+    @media (max-width: 768px) {
+      .paper-hero {
+        padding-bottom: 1.75rem;
+        margin-bottom: 2.25rem;
+      }
+      .paper-title {
+        font-size: 1.6rem;
+        line-height: 1.42;
+        margin-bottom: 1rem;
+      }
+      .paper-meta {
+        gap: 0.4rem 1.25rem;
+        font-size: 0.88rem;
+        margin-bottom: 1.25rem;
+      }
     }
 
     /* 摘要卡片 */
@@ -3709,6 +3757,7 @@ const template = `<!DOCTYPE html>
     <a href="../../" id="nav-brand-link" class="nav-brand" title="返回 CCUS Policy Hub 首页" aria-label="返回 CCUS Policy Hub 首页">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
       <span class="brand-text">CCUS Policy Hub</span>
+      <span class="brand-text-short">CCUS</span>
       <span class="badge">智库报告</span>
     </a>
     <div class="nav-actions">
@@ -3721,7 +3770,7 @@ const template = `<!DOCTYPE html>
         <span class="btn-label">批注</span>
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
-      <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><span aria-hidden="true">🌓</span><span class="btn-label">主题</span></button>
+      <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><span class="btn-label">主题</span></button>
       <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版${pdfPageCount ? ` ${pdfPageCount} 页` : ''}高保真 PDF" aria-label="下载原版 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="btn-label">下载原版 PDF</span>
@@ -3763,9 +3812,9 @@ const template = `<!DOCTYPE html>
         </div>
 
         <div class="reading-stats">
-          <span>📊 正文约 ${Math.round(charCount / 1000)}k 字</span>
-          <span>⏱️ 建议阅读时间 ${readMinutes} 分钟</span>
-          <span>📑 支持 XeLaTeX 原始矢量 PDF 下载</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>正文约 ${Math.round(charCount / 1000)}k 字</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>建议阅读时间 ${readMinutes} 分钟</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>支持 XeLaTeX 原始矢量 PDF 下载</span>
         </div>
 
         <div class="abstract-box">
@@ -3815,8 +3864,9 @@ const template = `<!DOCTYPE html>
   </button>
 
   <!-- Mobile Floating Button -->
-  <button class="btn btn-primary mobile-toc-btn" id="open-drawer">
-    📑 报告大纲
+  <button class="btn btn-primary mobile-toc-btn" id="open-drawer" aria-label="打开报告大纲">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    <span>报告大纲</span>
   </button>
 
   <script>
