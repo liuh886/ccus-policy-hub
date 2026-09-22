@@ -721,6 +721,23 @@
         "itemLang": "en"
       }
     ],
+    "80": [
+      {
+        "url": "https://sequestration.mit.edu/tools/projects/century_plant.html",
+        "title": "Century Plant Fact Sheet: Commercial EOR using Anthropogenic Carbon Dioxide",
+        "publisher": "MIT CCS Technologies",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.ogj.com/refining-processing/article/17283296/west-texas-carbon-dioxide-plant-starts-up",
+        "title": "West Texas carbon dioxide plant starts up",
+        "publisher": "Oil & Gas Journal",
+        "date": "2010-11-08",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "81": [
       {
         "url": "https://www.governor.nd.gov/news/burgum-commerce-announce-nd-development-fund-support-cerilon-build-28b-gas-liquids-plant",
@@ -778,6 +795,22 @@
         "publisher": "Hydrocarbon Processing",
         "date": "2026-08-27",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "83": [
+      {
+        "url": "https://www.cnpc.com.cn/en/environmentcase/202504/fdc063d5b17e4ea88fd63291667afc59.shtml",
+        "title": "CCUS project at Jilin Oilfield",
+        "publisher": "CNPC",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.cnpc.com.cn/en/xhtml/pdf/2018CCSEORinJilin.pdf",
+        "title": "Industrial CCS-EOR in CNPC's Jilin Oilfield",
+        "publisher": "CNPC",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -995,6 +1028,23 @@
         "publisher": "Iceland Review",
         "date": "2021-04-23",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "105": [
+      {
+        "url": "https://www.energy.gov/sites/default/files/2021-06/2019%20-%20Meeting%20the%20Dual%20Challenge%20Vol%20II%20Chapter%202.pdf",
+        "title": "Meeting the Dual Challenge — Chapter 2",
+        "publisher": "US Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.congress.gov/116/meeting/house/110268/witnesses/HHRG-116-SY20-Wstate-DewingR-20191122-SD001.pdf",
+        "title": "The Future of Advanced Carbon Capture Research and Development",
+        "publisher": "US House Committee on Science, Space, and Technology",
+        "date": "2019-11-21",
+        "tier": "official",
         "itemLang": "en"
       }
     ],
@@ -1469,6 +1519,23 @@
         "itemLang": "en"
       }
     ],
+    "150": [
+      {
+        "url": "https://www.airproducts.com/company/news-center/2023/11/1106-air-products-blue-hydrogen-plant-europe-and-exxonmobil-long-term-agreement",
+        "title": "Air Products to Build Europe's Largest Blue Hydrogen Plant and Strengthens Long-term Agreement",
+        "publisher": "Air Products",
+        "date": "2023-11-06",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.portofrotterdam.com/en/news-and-press-releases/air-products-to-build-europes-largest-blue-hydrogen-plant",
+        "title": "Air Products to build Europe's largest blue hydrogen plant",
+        "publisher": "Port of Rotterdam",
+        "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
     "160": [
       {
         "url": "https://g2netzero.com/",
@@ -1550,6 +1617,23 @@
         "publisher": "OSTI.GOV (U.S. DOE)",
         "date": "2023-03-01",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "173": [
+      {
+        "url": "https://australia.chevron.com/what-we-do/gorgon-project/carbon-capture-and-storage",
+        "title": "Gorgon carbon capture and storage",
+        "publisher": "Chevron Australia",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.chevron.com/newsroom/2023/q1/global-carbon-capture-utilization-and-storage-helps-lower-carbon-intensity",
+        "title": "Chevron's global carbon capture, utilization, and storage efforts help lower carbon intensity",
+        "publisher": "Chevron",
+        "date": "2023-03-28",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -1800,6 +1884,23 @@
         "itemLang": "en"
       }
     ],
+    "223": [
+      {
+        "url": "https://www.adm.com/ccs",
+        "title": "Carbon Capture and Storage",
+        "publisher": "ADM",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://netl.doe.gov/node/2373",
+        "title": "Official Celebration Launches Illinois ICCS Project",
+        "publisher": "NETL (US DOE)",
+        "date": "2017-09-22",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "226": [
       {
         "url": "https://www.ineos.com/sites/grangemouth/sustainability/ineos-at-grangemouth-announces-plans-to-construct-a-low-carbon-hydrogen-manufacturing-plant",
@@ -1963,6 +2064,24 @@
         "publisher": "Offshore Engineer (OEDigital)",
         "date": "2025-09-01",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "250": [
+      {
+        "url": "https://corporate.exxonmobil.com/news/news-releases/2022/0225_exxonmobil-to-expand-carbon-capture-and-storage-at-labarge-wyoming-facility",
+        "title": "ExxonMobil to Expand Carbon Capture and Storage at LaBarge, Wyoming, Facility",
+        "publisher": "ExxonMobil",
+        "date": "2022-02-25",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://corporate.exxonmobil.com/what-we-do/delivering-industrial-solutions/carbon-capture-and-storage/labarge-carbon-capture-facility-wyoming",
+        "title": "LaBarge: Gateway to the future",
+        "publisher": "ExxonMobil",
+        "date": "2022-10-19",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -2756,6 +2875,23 @@
         "itemLang": "en"
       }
     ],
+    "310": [
+      {
+        "url": "https://petrobras.com.br/en/pre-sal",
+        "title": "Pre-salt: dive into this ultra-deep journey",
+        "publisher": "Petrobras",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://agencia.petrobras.com.br/en/w/negocio/petrobras-bate-recorde-de-processamento-de-gas-natural-do-pre-sal-da-bacia-de-santos-em-2023",
+        "title": "Petrobras breaks record for processing natural gas from the Santos Basin Pre-Salt in 2023",
+        "publisher": "Agência Petrobras",
+        "date": "2024-03-14",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "311": [
       {
         "url": "https://www.petronas.com/media/media-releases/petronas-carigali-reaches-final-investment-decision-kasawari-ccs-project",
@@ -3147,6 +3283,40 @@
         "itemLang": "en"
       }
     ],
+    "344": [
+      {
+        "url": "https://www.qatarenergylng.qa/portals/0/Environment%20Article.pdf",
+        "title": "QatarEnergy LNG Major Projects demonstrate world-class environmental performance",
+        "publisher": "QatarEnergy LNG",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.gulf-times.com/article/713081/business/qatarenergy-aims-to-scale-carbon-capture-and-storage-capacity-to-11-mtpy-by-2035",
+        "title": "QatarEnergy aims to scale carbon capture and storage capacity to 11 mtpy by 2035",
+        "publisher": "Gulf Times",
+        "date": "2025-10-18",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "345": [
+      {
+        "url": "https://www.qatarenergy.qa/en/Sustainability/Pages/ClimateChangeAction.aspx",
+        "title": "Climate Change Action",
+        "publisher": "QatarEnergy",
+        "tier": "reference",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.qatarenergylng.qa/english/Media/News/Article/ArticleID/494/H-E-the-Minister-of-State-for-Energy-Affairs-Visits-North-Field-Expansion-Project",
+        "title": "H.E. the Minister of State for Energy Affairs Visits North Field Expansion Project",
+        "publisher": "QatarEnergy LNG",
+        "date": "2023-03-01",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
     "347": [
       {
         "url": "https://www.newswire.ca/news-releases/quest-ccs-facility-reaches-major-milestone-captures-and-stores-four-million-tonnes-of-co2-871349116.html",
@@ -3367,6 +3537,23 @@
         "itemLang": "en"
       }
     ],
+    "370": [
+      {
+        "url": "http://www.sinopecgroup.com/group/en/000/000/065/65136.shtml",
+        "title": "Sinopec Completes China's First Megaton Scale Carbon Capture Project",
+        "publisher": "Sinopec",
+        "date": "2022-01-29",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.chinadailyhk.com/hk/article/227097",
+        "title": "Sinopec's carbon capture project on",
+        "publisher": "China Daily",
+        "tier": "media",
+        "itemLang": "en"
+      }
+    ],
     "373": [
       {
         "url": "https://en.hdec.kr/en/newsroom/news_view.aspx?NewsListType=news_clist&NewsSeq=819&NewsType=LATEST",
@@ -3478,6 +3665,40 @@
         "publisher": "EUWID Recycling and Waste Management",
         "date": "2025-06-18",
         "tier": "media",
+        "itemLang": "en"
+      }
+    ],
+    "388": [
+      {
+        "url": "https://www.bp.com/en_id/indonesia/home/news/press-releases/bp-and-partners-give-go-ahead-for-tangguh-ucc-project-in-papua-barat-indonesia.html",
+        "title": "bp and partners give go-ahead for Tangguh UCC Project in Papua Barat, Indonesia",
+        "publisher": "bp",
+        "date": "2024-11-22",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.bp.com/en-US/press-and-publications/energy-in-focus-magazine/tangguh-train-3-starts-up",
+        "title": "Boosting Indonesia's energy supply",
+        "publisher": "bp",
+        "date": "2023-10-19",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "389": [
+      {
+        "url": "https://www.energy.gov/sites/default/files/2021-06/2019%20-%20Meeting%20the%20Dual%20Challenge%20Vol%20II%20Appendix%20C.pdf",
+        "title": "Meeting the Dual Challenge — Appendix C",
+        "publisher": "US Department of Energy",
+        "tier": "official",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://sequestration.mit.edu/tools/projects/val_verde.html",
+        "title": "Val Verde Fact Sheet: Commercial EOR using Anthropogenic Carbon Dioxide",
+        "publisher": "MIT CCS Technologies",
+        "tier": "reference",
         "itemLang": "en"
       }
     ],
@@ -3678,6 +3899,23 @@
         "itemLang": "en"
       }
     ],
+    "407": [
+      {
+        "url": "https://www.nutrien.com/news/stories/advancing-carbon-solutions-and-reducing-emissions-redwater",
+        "title": "Advancing carbon solutions and reducing emissions at Redwater",
+        "publisher": "Nutrien",
+        "date": "2024-01-08",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.eralberta.ca/projects/details/nutrien-redwater-carbon-capture-study",
+        "title": "Nutrien Redwater Carbon Capture Study",
+        "publisher": "Emissions Reduction Alberta",
+        "tier": "official",
+        "itemLang": "en"
+      }
+    ],
     "409": [
       {
         "url": "https://wintershalldea.de/sites/default/files/media/files/220505_PI%20Wilhelmshaven_BlueHyNow_en_final.pdf",
@@ -3709,6 +3947,24 @@
         "publisher": "Global CCS Institute",
         "date": "2024-03-06",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "414": [
+      {
+        "url": "https://www.linde.com/news-and-media/2023/linde-to-invest-1-8-billion-to-supply-clean-hydrogen-to-oci-s-world-scale-blue-ammonia-project-in-the-u-s-gulf-coas",
+        "title": "Linde to Invest $1.8 Billion to Supply Clean Hydrogen to OCI's World-Scale Blue Ammonia Project in the U.S. Gulf Coast",
+        "publisher": "Linde",
+        "date": "2023-02-06",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.bp.com/en/global/corporate/news-and-insights/press-releases/bp-and-linde-plan-major-ccs-project-to-advance-decarbonization-efforts-across-texas-gulf-coast.html",
+        "title": "bp and Linde plan major CCS project to advance decarbonization efforts across Texas Gulf Coast",
+        "publisher": "bp",
+        "date": "2022-05-17",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
@@ -6183,6 +6439,24 @@
         "publisher": "Sigholm",
         "date": "2024-09-08",
         "tier": "reference",
+        "itemLang": "en"
+      }
+    ],
+    "769": [
+      {
+        "url": "https://tallgrass.com/newsroom/press-releases/MAAPW",
+        "title": "MAAPW Marks First CO2 Shipment on Trailblazer Pipeline",
+        "publisher": "Tallgrass",
+        "date": "2025-10-03",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://tallgrass.com/newsroom/press-releases/tallgrass-announces-open-season-for-the-trailblazer-co2-pipeline-050126",
+        "title": "Tallgrass Announces Open Season for the Trailblazer CO2 Pipeline",
+        "publisher": "Tallgrass",
+        "date": "2026-05-01",
+        "tier": "press_release",
         "itemLang": "en"
       }
     ],
