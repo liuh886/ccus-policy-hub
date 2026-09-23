@@ -65,6 +65,10 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 - **T2/T4 复核结论**：facilities 页面内嵌 payload 早已瘦身（`src/lib/mapPayload.mjs`，
   8 字段 ~221KB，锁定测试），`@ts-nocheck` 与 `light-editorial-capacity.css` 作用域
   也已就位——HANDOVER 原 T2/T4 条目为陈旧描述，已纠正。
+- **修复 en 内容本地化泄漏**：迁移
+  `migrations/2026-09/fix-en-content-localization-2026-09.mjs`（21 处，9 条政策），
+  翻译混合语片段、中文法条引用与日文汉字；`content_localization.en_files_with_content_cjk`
+  由 9 → 0（余 20 条仅 `source` 原名，属设计）。含测试 + manifest 记录。
 
 ## 3. 🔴 接手时需要注意的事
 
