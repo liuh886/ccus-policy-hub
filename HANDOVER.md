@@ -46,11 +46,35 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 - 删除本地 11 条陈旧分支（已合并/已关闭/临时），远端 25 条陈旧分支
   （全部对应已合并或已关闭 PR）。现仅 `main`。
 
+### 本轮维护续（2026-09-23 复查）
+
+- **Windows 退出崩溃修复**：`logic/manage.mjs` 在 sql.js/WASM 使用后调用
+  `process.exit()` 会触发 libuv 断言（`UV_HANDLE_CLOSING`，退出码 `0xC0000409`），
+  令 `pnpm gen` 及 `db:stats`/`db:export:i18n`/`db:peek` 等命令**假失败**（写入其实
+  已完成）。改为设置 `process.exitCode` 后自然退出 → `pnpm gen` 端到端恢复。仅
+  Windows 触发，CI（Linux）不受影响。
+- **陈旧计数修正**：`src/data/dataset_versions.json` 的 notes 由 `130 policies`
+  更正为 `129`（与 DB/README/quality 一致），并随 `pnpm gen` 同步到
+  `public/data/dataset-versions.json`。
+- `docs/ROADMAP.md`：移除已完成的「Split `manage.mjs`」待办（转入 Done），并把
+  analyze-block 计数由 `32 of 130` 更新为 `24 of 129`。
+- **内容本地化指标**：`scripts/generate-quality-metrics.mjs` 新增
+  `content_localization` 块（扫描 en 政策文件，区分可本地化内容的 CJK 泄漏与
+  原生 `source` 原名），随 `quality_metrics.generated.json` / `public/data/quality.json`
+  输出；`quality-metrics.test.mjs` 加守卫。实测：24 个含 CJK，其中 9 个为内容泄漏。
+- **T2/T4 复核结论**：facilities 页面内嵌 payload 早已瘦身（`src/lib/mapPayload.mjs`，
+  8 字段 ~221KB，锁定测试），`@ts-nocheck` 与 `light-editorial-capacity.css` 作用域
+  也已就位——HANDOVER 原 T2/T4 条目为陈旧描述，已纠正。
+
 ## 3. 🔴 接手时需要注意的事
 
 1. **有并行自动化在写 git**：本轮任务中途，某进程向 `main` 直推了 `e0370a72`，
    还一度把提交写进我的工作分支。若这不是你预期的行为，**务必排查**是哪个
    进程/计划任务在写仓库（本轮 pre-push 钩子会跑 `sync-paper-report`）。
+   **2026-09-23 复查**：已知写入方为 `.github/workflows/sync-esg30-report.yml`
+   （`github-actions[bot]`，每 6 小时检测 `liuh886/2601_ESG30` 变更后直推
+   `public/reports/2601_ESG30`，最近一次 2026-09-21 22:00 UTC）；`e0370a72`
+   的作者是 `liuh886`，更像本地手工/自动化提交，非该 workflow。
 2. **受保护文件**：`agent/ccus-ai-agent/DESIGN.md` 是用户自己的内容，
    **不要提交、不要回退**。
 3. **commitlint 标题 ≤100 字符**（踩过多次）。
@@ -61,37 +85,29 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 
 ## 4. 下一步任务（按优先序）
 
-### T1. manage.mjs 拆分（大工程，最优先）
+> 注：原 T1「manage.mjs 拆分」已在 2026-09-08 完成（`af5d3667` 拆为
+> `logic/commands/*` + `logic/db.mjs`，`3428a554` 补心脏路径测试），本清单已重排。
 
-- 现状：`agent/ccus-ai-agent/logic/manage.mjs` 仍偏大，混合 SqlJsDatabase 适配器、
-  命令路由、20+ 命令实现；`logic/db.mjs` 已抽出（`DB_PATH`/`SCHEMA_PATH`）。
-- 目标：`logic/commands/*.mjs`（按 import/export/standardize/audit/geocode 分）。
-- **必须同时补测试**（现心脏路径零测试）：`dbExportMd`、`dbImportMdReverse`、
-  `dbAuditDeep`。参考 `migrations/2026-07/migrate-policy-lifecycle-2026-07.test.mjs`
-  的"从 schema.sql 重建内存库"模式。
-- 验证：拆分后 `pnpm manage:db:audit:deep` 必须 PASS +
-  `pnpm manage:db:audit:policy-consistency` 后 `git diff --exit-code` 干净。
-
-### T2. i18n 词典三套并行收敛（中）
+### T1. i18n 词典三套并行收敛（中）
 
 - 三套：`src/i18n/ui.ts`、~48 处组件内 `isEn ? :` 三元、组件自带 copy 对象
   （`governanceCopy.mjs` 等）。方向：全部收编进共享 copy 模块。
 - 注意：`scripts/lib/i18n-translate.mjs`（DB 词典往返）是**数据层**机制，勿混淆。
 - `governanceWorkspaceVisuals.mjs` 有模块级可变状态 + innerHTML 拼接，收敛时顺手治理。
 
-### T3. facilities.json 瘦身（中）
+### T2. facilities.json 瘦身（中）
 
 - `scripts/generate-public-data.mjs` 生成；地图组件经 `getMapPayload()` 消费页面内嵌
   JSON（`#facility-map-data`）。
 - ⚠️ `public/data/facilities.json` 是对外 AI 接口（有 JSON Schema），**只瘦身页面内嵌
   payload**，或走接口版本化。
 
-### T4. 内容深度尾部（编辑性，低）
+### T3. 内容深度尾部（编辑性，低）
 
 - `docs/policy-content-depth-report.md`：41/129 待改进（3 high、38 medium），
   critical 已归零。纯编辑排期，无 schema/审批门槛。
 
-### T5. 小尾巴（低优先）
+### T4. 小尾巴（低优先）
 
 - `FacilityMap.astro`/`CapacityTrend.astro` 的 `@ts-nocheck` 区域 typed 化
 - `light-editorial-capacity.css` 全站加载但仅首页用，可作用域收窄
@@ -100,7 +116,7 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 ## 5. 验证基线（当前全绿命令）
 
 ```powershell
-pnpm test                    # 190/190
+pnpm test                    # 192/192
 pnpm exec astro check        # 0 errors / 0 warnings / 0 hints (201 files)
 pnpm build                   # ~10-17s, 2604 pages
 pnpm manage:db:audit:deep    # PASS
