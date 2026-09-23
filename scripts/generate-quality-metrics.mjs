@@ -25,6 +25,10 @@ const OUTPUT_PATH = path.join(
   __dirname,
   '../src/data/quality_metrics.generated.json'
 );
+const CONTENT_EN_POLICY_DIR = path.join(
+  __dirname,
+  '../src/content/policies/en'
+);
 
 /**
  * Helper: run a query that returns a single scalar value
@@ -69,6 +73,7 @@ async function generateMetrics() {
     coordinate_precision: {},
     facility_policy_links: {},
     facility_news: {},
+    content_localization: {},
   };
 
   // --- Total counts ---
@@ -236,6 +241,45 @@ async function generateMetrics() {
     } else {
       news.titled_pct = 0;
     }
+  }
+
+  // --- Content localization (analysis-block localization backlog) ---
+  // The published English policy files should read as English. The 2026-09
+  // backlog tracks CJK fragments that survive into the en layer. Count them,
+  // separating the native-language provenance `source` (publisher name, kept
+  // in its original language by design) from localizable analytical content
+  // (a genuine translation gap). Read the exported files so the metric
+  // matches exactly what a reader sees on the published page.
+  if (fs.existsSync(CONTENT_EN_POLICY_DIR)) {
+    const cjk = /[\u4e00-\u9fff]/;
+    let enFilesWithCjk = 0;
+    let enFilesWithContentCjk = 0;
+    for (const file of fs.readdirSync(CONTENT_EN_POLICY_DIR)) {
+      if (!file.endsWith('.md')) continue;
+      const raw = fs.readFileSync(
+        path.join(CONTENT_EN_POLICY_DIR, file),
+        'utf8'
+      );
+      if (!cjk.test(raw)) continue;
+      enFilesWithCjk += 1;
+      const frontmatter = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      let contentHasCjk = true;
+      if (frontmatter) {
+        try {
+          const { source: _source, ...rest } = JSON.parse(frontmatter[1]);
+          contentHasCjk = cjk.test(JSON.stringify(rest));
+        } catch {
+          contentHasCjk = true;
+        }
+      }
+      if (contentHasCjk) enFilesWithContentCjk += 1;
+    }
+    metrics.content_localization = {
+      en_policy_files: metrics.counts.policies,
+      en_files_with_cjk: enFilesWithCjk,
+      en_files_with_content_cjk: enFilesWithContentCjk,
+      en_files_source_cjk_only: enFilesWithCjk - enFilesWithContentCjk,
+    };
   }
 
   // --- Audit status from db_meta ---

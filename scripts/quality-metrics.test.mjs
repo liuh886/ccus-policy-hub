@@ -149,6 +149,28 @@ describe('Quality Metrics Generation', () => {
       'Should have last_audit_pass'
     );
   });
+
+  it('reports content localization gaps', () => {
+    if (!metrics) return;
+
+    const loc = metrics.content_localization;
+    assert.ok(loc, 'Should have content_localization');
+    assert.ok(loc.en_policy_files >= 0, 'Should have en_policy_files');
+    assert.ok(loc.en_files_with_cjk >= 0, 'Should have en_files_with_cjk');
+    assert.ok(
+      loc.en_files_with_content_cjk >= 0,
+      'Should have en_files_with_content_cjk'
+    );
+    assert.ok(
+      loc.en_files_with_content_cjk <= loc.en_files_with_cjk,
+      'Content CJK should be a subset of any-CJK files'
+    );
+    assert.strictEqual(
+      loc.en_files_with_cjk - loc.en_files_with_content_cjk,
+      loc.en_files_source_cjk_only,
+      'Source-only count should be the difference'
+    );
+  });
 });
 
 describe('Audit Status Tracking', () => {
