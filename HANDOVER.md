@@ -1,6 +1,7 @@
 # HANDOVER — CCUS Policy Hub 维护代理交接
 
-> 交接时间：2026-09-23 ｜ 交接分支：`main`（HEAD `3b6f287b`，与 origin 同步）
+> 交接时间：2026-09-23（报告 v3.5 同步：2026-09-24）｜ 交接分支：`main`
+> （HEAD `09262497`，与 origin 同步）
 > 工作区干净，仅 `main` 一条本地/远端分支，无开放 PR/Issue。
 > **接手前必读**：`agent/ccus-ai-agent/AGENTS.md`（治理契约）→ `SAFETY.md` → 按任务类型读对应文档。
 
@@ -48,6 +49,14 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 
 ### 本轮维护续（2026-09-23 复查）
 
+- **ESG30 报告升级 v3.5**（`09262497`）：报告页由 v3.4 同步到 v3.5（37 页，
+  2026-09-23，99 篇文献）。产物 `public/reports/2601_ESG30/*` 由守卫
+  `.github/workflows/sync-esg30-report.yml` 自动同步（见 §3.1），本地只改元数据：
+  文档 slug `esg30-report-3-4` → `esg30-report-3-5`（`src/content/docs/{zh,en}/`
+  - `src/components/DocsIndex.astro`）、`scripts/sync-paper-report.mjs` 默认路径/版本号。
+- **paper draft 指纹归一化**：`sync-paper-report.mjs` 哈希前统一 CRLF→LF，修复
+  Windows 检出与远端 CI 内容相同却指纹不同（本机 `4136...` vs 远端 `fdb1...`）
+  导致 pre-push `report:check` 误报。现本机与 CI 一致为 `fdb158965ae4145b`。
 - **Windows 退出崩溃修复**：`logic/manage.mjs` 在 sql.js/WASM 使用后调用
   `process.exit()` 会触发 libuv 断言（`UV_HANDLE_CLOSING`，退出码 `0xC0000409`），
   令 `pnpm gen` 及 `db:stats`/`db:export:i18n`/`db:peek` 等命令**假失败**（写入其实
@@ -77,8 +86,15 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
    进程/计划任务在写仓库（本轮 pre-push 钩子会跑 `sync-paper-report`）。
    **2026-09-23 复查**：已知写入方为 `.github/workflows/sync-esg30-report.yml`
    （`github-actions[bot]`，每 6 小时检测 `liuh886/2601_ESG30` 变更后直推
-   `public/reports/2601_ESG30`，最近一次 2026-09-21 22:00 UTC）；`e0370a72`
-   的作者是 `liuh886`，更像本地手工/自动化提交，非该 workflow。
+   `public/reports/2601_ESG30` 与 `.esg30-sync.json`，最近一次 2026-09-23 17:01 UTC
+   同步 v3.5 至 `11a289f2`）；`e0370a72` 的作者是 `liuh886`，更像本地手工/自动化提交，
+   非该 workflow。
+   - **手动同步首选跑 `pnpm report:sync`**：从本机最新 TeX/PDF 生成，避免与 bot
+     抢推同一文件；推送前先 `git fetch` 并 rebase，若 bot 已同步同一版本，
+     保留 bot 产物、只提交 `docs`/`slug` 等本地元数据改动。
+   - **哈希归一化**：`sync-paper-report.mjs` 计算 paper draft 指纹前统一
+     CRLF→LF。Windows 检出（CRLF）与远端 CI（LF）内容相同时指纹一致，
+     不再误报漂移（本轮修复前本机 `4136...` vs 远端 `fdb1...` 即此原因）。
 2. **受保护文件**：`agent/ccus-ai-agent/DESIGN.md` 是用户自己的内容，
    **不要提交、不要回退**。
 3. **commitlint 标题 ≤100 字符**（踩过多次）。
