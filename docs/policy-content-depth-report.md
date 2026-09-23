@@ -1,6 +1,6 @@
 # Policy content-depth report
 
-As of **2026-09-09**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
+As of **2026-09-23**. This audit evaluates the explanatory depth of policy records in SQLite. It does not judge whether a policy is substantively strong; it tests whether the page explains the instrument with enough bilingual, analytical and lifecycle context.
 
 ## Summary
 

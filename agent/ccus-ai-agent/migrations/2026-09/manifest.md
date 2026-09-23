@@ -1,5 +1,36 @@
 # manifest — migrations/2026-09
 
+## fix-en-content-localization-2026-09.mjs
+
+- purpose and date: remove the 9 remaining CJK content leaks from the English
+  policy layer (analysis-block localization backlog); 2026-09-23.
+- source and target: `policy_analysis` (shared five-dimension block) and
+  `policy_i18n` en rows (description / impact / evolution / regulatory) for
+  9 policies — cn-ccer, cn-co2-transport-status-2025, cn-gd-carbon-inclusive,
+  cn-hb-ets-offset, cn-js-industrial-decarb-2022, cn-ordos-pilot-2024,
+  cn-sd-eco-plan-14fym, cn-zero-carbon-parks, jp-ccs-business-act-2024.
+- input files: `agent/ccus-ai-agent/db/ccus_master.sqlite` only.
+- rows affected: 21 cells updated (13 shared analysis cells + 8 en i18n cells);
+  the 9 policies are stamped `provenance_reviewer='Content localization fix
+(2026-09)'`, `provenance_last_audit_date='2026-09-23'`. No status, capacity,
+  or deletion changes.
+- integrity note: translations only — mixed-language fragments
+  (审定/核算/核查 → validation/accounting/verification; 新能源 → new energy),
+  Chinese article citations (第四章：核证减排量管理 → Chapter 4: Certified
+  Emission Reduction Management), and one Japanese kanji gloss (拟制物权 →
+  Quasi-real Rights). The 15 native-language `source` publisher names are left
+  as-is by design.
+- idempotency: literal substring replacements whose `to` never contains `from`;
+  re-run changes zero rows (tested).
+- dry-run: `fix-en-content-localization-2026-09.test.mjs` (fix-set integrity +
+  in-memory apply/idempotency).
+- backup and rollback: pre-migration DB copy taken; content-only, no schema.
+- post-migration audits and exports: `pnpm gen` (`content_localization`
+  en_files_with_content_cjk 9 → 0), deep audit, policy consistency (0
+  mismatches), facilities parity (errors=0), content-depth unchanged
+  (0/3/38/88), tests 196/196, `astro check`, production build.
+- approval status: approved 2026-09-23 (user: "可以，修复后推送").
+
 ## seed-facility-news-from-links-2026-09.mjs
 
 - purpose and date: add and seed `facility_news`, a tiered external
