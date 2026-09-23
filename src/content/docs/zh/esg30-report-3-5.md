@@ -1,13 +1,13 @@
 ---
-title: 'CCUS 规模化的治理组合与 dMRV 证据基础 (v3.4)'
+title: 'CCUS 规模化的治理组合与 dMRV 证据基础 (v3.5)'
 description: 'ESG30 青年学者计划特约报告：深入解析全球主要法域 CCUS 治理对标、dMRV 连续证据链架构及落地政策建议。'
 order: 1
 ---
 
 # CCUS 规模化的治理组合与 dMRV 证据基础
 
-> **课题报告版本**：v3.4 ｜ **归属计划**：ESG30 青年学者计划（二期） ｜ **发布日期**：2026年9月21日  
-> **报告载体**：支持全屏学术交互研讨页面（含 7 法域横向对标矩阵、目录折叠、划词批注与结构化导出）及 36 页 XeLaTeX 原版矢量 PDF 下载。
+> **课题报告版本**：v3.5 ｜ **归属计划**：ESG30 青年学者计划（二期） ｜ **发布日期**：2026年9月23日  
+> **报告载体**：支持全屏学术交互研讨页面（含 7 法域横向对标矩阵、目录折叠、划词批注与结构化导出）及 37 页 XeLaTeX 原版矢量 PDF 下载。
 
 <div style="margin: 2rem 0; padding: 1.5rem 1.75rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(99, 102, 241, 0.04)); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 1rem;">
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1d4ed8; font-size: 1.15rem; font-weight: 700;">📖 报告核心通道</h3>
@@ -17,7 +17,7 @@ order: 1
       <span>进入交互式研讨报告 ↗</span>
     </a>
     <a href="/reports/2601_ESG30/paper_draft.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #f1f5f9; color: #1e293b; text-decoration: none; border: 1px solid #cbd5e1; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
-      <span>下载原版 36 页 PDF</span>
+      <span>下载原版 37 页 PDF</span>
     </a>
   </div>
 </div>

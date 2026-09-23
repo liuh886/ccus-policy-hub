@@ -21,7 +21,7 @@ const copy = isEn
       viewDetails: 'View Details',
       openReport: 'Open Report',
       docHref: (id: string) =>
-        id === 'esg30-report-3-4'
+        id === 'esg30-report-3-5'
           ? `${SITE_BASE}/reports/2601_ESG30/`
           : `${SITE_BASE}/en/docs/${id}/`,
     }
@@ -32,7 +32,7 @@ const copy = isEn
       viewDetails: '查看详情',
       openReport: '进入报告',
       docHref: (id: string) =>
-        id === 'esg30-report-3-4'
+        id === 'esg30-report-3-5'
           ? `${SITE_BASE}/reports/2601_ESG30/`
           : `${SITE_BASE}/docs/${id}/`,
     };
@@ -79,7 +79,7 @@ const copy = isEn
         docs
           .sort((a, b) => a.data.order - b.data.order)
           .map((doc) => {
-            const isReport = doc.id === 'esg30-report-3-4';
+            const isReport = doc.id === 'esg30-report-3-5';
             return (
               <a
                 href={copy.docHref(doc.id)}

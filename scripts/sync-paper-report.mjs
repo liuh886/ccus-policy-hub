@@ -51,7 +51,7 @@ console.log(
 const defaultLocalTex =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/paper_draft.tex';
 const defaultLocalPdf =
-  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output/ESG30_dMRV_Report_v3.4.pdf';
+  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output/ESG30_dMRV_Report_v3.5.pdf';
 const defaultLocalDataDir =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/data';
 // 本机已构建 PDF 路径（可用 --local-pdf 覆盖；传不存在路径可强制走远端拉取/编译）
@@ -67,7 +67,7 @@ const candidateLocalTex =
   localTex || (fs.existsSync(defaultLocalTex) ? defaultLocalTex : null);
 if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
   console.log(
-    `[sync-paper-report] 优先使用本机最新 3.4 TeX 源码: ${candidateLocalTex}`
+    `[sync-paper-report] 优先使用本机最新 3.5 TeX 源码: ${candidateLocalTex}`
   );
   texContent = fs.readFileSync(candidateLocalTex, 'utf8');
 } else {
@@ -97,10 +97,12 @@ if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
   }
 }
 
-// 源码指纹：用于在页面内标注所依据的 paper draft 版本，并支撑 --check 漂移比对
+// 源码指纹：用于在页面内标注所依据的 paper draft 版本，并支撑 --check 漂移比对。
+// 先归一化换行（CRLF -> LF），使本机 Windows 检出与远端 CI 得到一致的指纹。
+const texContentNormalized = texContent.replace(/\r\n/g, '\n');
 const texSha = crypto
   .createHash('sha256')
-  .update(texContent)
+  .update(texContentNormalized)
   .digest('hex')
   .slice(0, 16);
 console.log(`[sync-paper-report] paper draft sha256(前16位): ${texSha}`);
@@ -161,7 +163,7 @@ const docDate = extractMeta(/\\date\{([^}]+)\}/) || '2026年9月15日';
 const reportType =
   extractMeta(/\\newcommand\{\\ReportType\}\{([^}]+)\}/) || '课题研究报告';
 const reportVersion =
-  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.4';
+  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.5';
 const programName =
   extractMeta(/\\newcommand\{\\ProgramName\}\{([^}]+)\}/) ||
   'ESG30 青年学者计划（二期）';
@@ -240,7 +242,7 @@ function resolveLatestRemotePdf() {
 if (fs.existsSync(localPdfPath)) {
   fs.copyFileSync(localPdfPath, pdfDest);
   console.log(
-    `[sync-paper-report] 直接同步本机最新 3.4 原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+    `[sync-paper-report] 直接同步本机最新 3.5 原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
   );
 } else if (!skipPdf) {
   // 本地无 PDF（例如 CI 环境）：优先从 ESG30 仓库直接拉取已构建的 PDF
