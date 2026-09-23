@@ -134,7 +134,11 @@ async function main() {
       : EXIT_CODES.FATAL;
   } finally {
     if (release) release();
-    if (command) process.exit(exitCode);
+    // Set the exit code and let the process drain naturally. Calling
+    // process.exit() right after sql.js/WASM work aborts with a libuv
+    // assertion (`UV_HANDLE_CLOSING`) on Windows; the natural exit is clean
+    // and still flushes stdout.
+    if (command) process.exitCode = exitCode;
   }
 }
 
