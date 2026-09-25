@@ -757,7 +757,7 @@ bodyHtml = bodyHtml.replace(
 );
 bodyHtml = bodyHtml.replace(
   /图[\s\u00a0]*<a\s+href="#fig:global_ccus_scale"[^>]*>1<\/a>/g,
-  '<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与预期交付缺口">图 1</a>'
+  '<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距">图 1</a>'
 );
 bodyHtml = bodyHtml.replace(
   /图[\s\u00a0]*<a\s+href="#fig:dmrv_house"[^>]*>2<\/a>/g,
