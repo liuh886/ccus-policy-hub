@@ -50,10 +50,40 @@ console.log(
 
 const defaultLocalTex =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/paper_draft.tex';
-const defaultLocalPdf =
-  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output/ESG30_dMRV_Report_v3.5.pdf';
+const defaultLocalOutputDir =
+  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output';
 const defaultLocalDataDir =
   'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/data';
+
+// 在候选文件名中挑选版本号最高的 PDF（如 v3.6 高于 v3.5）
+function pickLatestPdfName(names) {
+  const filtered = names.filter((n) =>
+    /^ESG30_dMRV_Report_v[\d.]+\.pdf$/.test(n)
+  );
+  if (!filtered.length) return null;
+  const versionOf = (n) =>
+    n
+      .match(/v([\d.]+)\.pdf$/)[1]
+      .split('.')
+      .map((x) => parseInt(x, 10) || 0);
+  filtered.sort((a, b) => {
+    const va = versionOf(a);
+    const vb = versionOf(b);
+    for (let i = 0; i < Math.max(va.length, vb.length); i++) {
+      const d = (va[i] || 0) - (vb[i] || 0);
+      if (d) return d;
+    }
+    return 0;
+  });
+  return filtered[filtered.length - 1];
+}
+
+// 本机 output/ 下版本号最高的已构建 PDF（避免硬编码版本号同步到旧 PDF）
+const defaultLocalPdf = (() => {
+  if (!fs.existsSync(defaultLocalOutputDir)) return null;
+  const latest = pickLatestPdfName(fs.readdirSync(defaultLocalOutputDir));
+  return latest ? path.join(defaultLocalOutputDir, latest) : null;
+})();
 // 本机已构建 PDF 路径（可用 --local-pdf 覆盖；传不存在路径可强制走远端拉取/编译）
 const localPdfPath = getArg('--local-pdf', null) || defaultLocalPdf;
 // 远端（ESG30 仓库）中已构建 PDF 的位置；本地无 PDF 时（如 CI）从此处拉取。
@@ -67,7 +97,7 @@ const candidateLocalTex =
   localTex || (fs.existsSync(defaultLocalTex) ? defaultLocalTex : null);
 if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
   console.log(
-    `[sync-paper-report] 优先使用本机最新 3.5 TeX 源码: ${candidateLocalTex}`
+    `[sync-paper-report] 优先使用本机最新 TeX 源码: ${candidateLocalTex}`
   );
   texContent = fs.readFileSync(candidateLocalTex, 'utf8');
 } else {
@@ -219,30 +249,15 @@ function resolveLatestRemotePdf() {
     { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
   )
     .split(/\r?\n/)
-    .map((s) => s.trim())
-    .filter((n) => /^ESG30_dMRV_Report_v[\d.]+\.pdf$/.test(n));
-  if (!names.length) return null;
-  const versionOf = (n) =>
-    n
-      .match(/v([\d.]+)\.pdf$/)[1]
-      .split('.')
-      .map((x) => parseInt(x, 10) || 0);
-  names.sort((a, b) => {
-    const va = versionOf(a);
-    const vb = versionOf(b);
-    for (let i = 0; i < Math.max(va.length, vb.length); i++) {
-      const d = (va[i] || 0) - (vb[i] || 0);
-      if (d) return d;
-    }
-    return 0;
-  });
-  return `output/${names[names.length - 1]}`;
+    .map((s) => s.trim());
+  const latest = pickLatestPdfName(names);
+  return latest ? `output/${latest}` : null;
 }
 
 if (fs.existsSync(localPdfPath)) {
   fs.copyFileSync(localPdfPath, pdfDest);
   console.log(
-    `[sync-paper-report] 直接同步本机最新 3.5 原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+    `[sync-paper-report] 直接同步本机最新原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
   );
 } else if (!skipPdf) {
   // 本地无 PDF（例如 CI 环境）：优先从 ESG30 仓库直接拉取已构建的 PDF
