@@ -1209,7 +1209,7 @@ if (s1 && s2 && s3) {
   bodyHtml = bodyHtml.replace(entireStagesRegex, roadmapHtml);
 }
 
-// 5. 规范图 1 与图 2 学术排版（置顶标题、高清防变形、注释独立微排版）
+// 5. 规范图 1、图 2 与图 3 学术排版（置顶标题、高清防变形、注释独立微排版）
 const fig1Regex =
   /<div class="landscape">\s*<figure id="fig:global_ccus_scale">\s*<img src="([^"]+)"[^>]*\/>\s*(<p><em>注：<\/em>[\s\S]*?<\/p>)\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>\s*<\/div>/;
 bodyHtml = bodyHtml.replace(fig1Regex, (match, src, pNotes, caption) => {
@@ -1237,13 +1237,40 @@ bodyHtml = bodyHtml.replace(fig1Regex, (match, src, pNotes, caption) => {
 });
 
 const fig2Regex =
-  /<figure id="fig:dmrv_house">\s*<img src="([^"]+)"[^>]*\/>\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>/;
+  /<figure id="fig:cluster_stages">\s*<img src="([^"]+)"[^>]*\/>\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>/;
 bodyHtml = bodyHtml.replace(fig2Regex, (match, src, caption) => {
+  const full = caption.trim();
+  const dotIdx = full.indexOf('。');
+  const title = dotIdx > 0 ? full.slice(0, dotIdx) : full;
+  const notes = dotIdx > 0 ? full.slice(dotIdx + 1).trim() : '';
+  return `
+    <figure class="academic-figure" id="fig:cluster_stages">
+      <div class="figure-header">
+        <div class="figure-title-group">
+          <span class="figure-label">图 2</span>
+          <span class="figure-title">${title}</span>
+        </div>
+        <span class="figure-tip">🔍 点击放大</span>
+      </div>
+      <div class="figure-img-wrap">
+        <img src="${src}" alt="${title}" loading="lazy" />
+      </div>
+      <div class="figure-notes">
+        <span class="note-tag">注</span>
+        <div class="note-text">${notes}</div>
+      </div>
+    </figure>
+  `;
+});
+
+const fig3Regex =
+  /<figure id="fig:dmrv_house">\s*<img src="([^"]+)"[^>]*\/>\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>/;
+bodyHtml = bodyHtml.replace(fig3Regex, (match, src, caption) => {
   return `
     <figure class="academic-figure" id="fig:dmrv_house">
       <div class="figure-header">
         <div class="figure-title-group">
-          <span class="figure-label">图 2</span>
+          <span class="figure-label">图 3</span>
           <span class="figure-title">${caption.trim()}</span>
         </div>
         <span class="figure-tip">🔍 点击放大</span>
