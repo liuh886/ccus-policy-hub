@@ -750,33 +750,46 @@ bodyHtml = bodyHtml.replace(/<table>([\s\S]*?)<\/table>/g, (match, inner) => {
 // 4. 修复正文中的图表交叉引用标签 (data-reference)
 // 注意：TeX 原文写作“表~\ref{...}”“图~\ref{...}”，Pandoc 会生成独立链接。
 // 因此需连同前置的“表/图”一并替换，避免出现“表 表 2-1”式重复。
+// 引用模式使用 \d+ 匹配 Pandoc 编号，避免表格增删导致编号漂移后失配。
 bodyHtml = bodyHtml.replace(
   /表[\s\u00a0]*<a href="#tab:governance_benchmark"[^>]*>\[tab:governance_benchmark\]<\/a>/g,
   '<a href="#tab:governance_benchmark" class="table-ref-link" title="点击查看表 2-1 全球治理对标表">表 2-1（全球治理对标表）</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:dmrv_minimum_fields"[^>]*>1<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:china_basis_gaps"[^>]*>\d+<\/a>/g,
+  '<a href="#tab:china_basis_gaps" class="table-ref-link" title="点击查看表 2-2 中国 CCUS 集群治理的现实基础与待补功能">表 2-2</a>'
+);
+bodyHtml = bodyHtml.replace(
+  /表[\s\u00a0]*<a href="#tab:dmrv_minimum_fields"[^>]*>\d+<\/a>/g,
   '<a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1">表 3-1</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:continuous_evidence_monitoring"[^>]*>2<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:continuous_evidence_monitoring"[^>]*>\d+<\/a>/g,
   '<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2">表 3-2</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:dmrv_governance_mapping"[^>]*>3<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:dmrv_governance_mapping"[^>]*>\d+<\/a>/g,
   '<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3">表 3-3</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:case_evidence_comparison"[^>]*>4<\/a>/g,
+  /表[\s\u00a0]*<a href="#tab:case_evidence_comparison"[^>]*>\d+<\/a>/g,
   '<a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1">表 4-1</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /图[\s\u00a0]*<a\s+href="#fig:global_ccus_scale"[^>]*>1<\/a>/g,
+  /附录 A 表[\s\u00a0]*<a href="#tab:global_ccus_distribution"[^>]*>\d+<\/a>/g,
+  '<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 全球 CCUS 项目分布与统计口径">附录 A 表</a>'
+);
+bodyHtml = bodyHtml.replace(
+  /图[\s\u00a0]*<a\s+href="#fig:global_ccus_scale"[^>]*>\d+<\/a>/g,
   '<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距">图 1</a>'
 );
 bodyHtml = bodyHtml.replace(
-  /图[\s\u00a0]*<a\s+href="#fig:dmrv_house"[^>]*>2<\/a>/g,
-  '<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 2：从工程事实到制度用途 dMRV 证据架构">图 2</a>'
+  /图[\s\u00a0]*<a\s+href="#fig:cluster_stages"[^>]*>\d+<\/a>/g,
+  '<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a>'
+);
+bodyHtml = bodyHtml.replace(
+  /图[\s\u00a0]*<a\s+href="#fig:dmrv_house"[^>]*>\d+<\/a>/g,
+  '<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3：从工程事实到制度用途 CCUS dMRV 的证据基础设施定位">图 3</a>'
 );
 
 // --- 5. 深度处理参考文献与正文引用关联 ---
@@ -1240,7 +1253,7 @@ bodyHtml = bodyHtml.replace(fig2Regex, (match, src, caption) => {
       </div>
       <div class="figure-notes">
         <span class="note-tag">注</span>
-        <div class="note-text">展示了规范底座（监管/标准/方法学）、工程事实、证据组织接口与制度用途（核证、结算、金融、责任接续）之间的四层映射体系与证据支撑网络。</div>
+        <div class="note-text">展示了规范性框架（监管/标准/方法学）、工程事实、证据组织接口与制度用途（核证、结算、金融、责任接续）之间的四层映射体系与证据支撑网络。</div>
       </div>
     </figure>
   `;
