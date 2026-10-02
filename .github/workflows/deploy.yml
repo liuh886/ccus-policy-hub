@@ -2,7 +2,10 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_run:
-    workflows: [CI]
+    # CI produces the validated dist artifact. "Sync ESG30 report" commits freshly
+    # synced report content to main but uploads no artifact, so it is routed to the
+    # build-from-main path below instead of the artifact download.
+    workflows: [CI, Sync ESG30 report]
     types: [completed]
   workflow_dispatch:
 
@@ -25,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download validated CI build
-        if: github.event_name == 'workflow_run'
+        if: github.event_name == 'workflow_run' && github.event.workflow_run.name == 'CI'
         uses: actions/download-artifact@v6
         with:
           name: ccus-policy-hub-dist
@@ -34,8 +37,8 @@ jobs:
           repository: liuh886/ccus-policy-hub
           run-id: ${{ github.event.workflow_run.id }}
 
-      - name: Build current main for manual deployment
-        if: github.event_name == 'workflow_dispatch'
+      - name: Build current main from source
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.name != 'CI')
         shell: bash
         env:
           PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
