@@ -193,7 +193,7 @@ const docDate = extractMeta(/\\date\{([^}]+)\}/) || '2026年9月15日';
 const reportType =
   extractMeta(/\\newcommand\{\\ReportType\}\{([^}]+)\}/) || '课题研究报告';
 const reportVersion =
-  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.5';
+  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.6';
 const programName =
   extractMeta(/\\newcommand\{\\ProgramName\}\{([^}]+)\}/) ||
   'ESG30 青年学者计划（二期）';
