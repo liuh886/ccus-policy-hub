@@ -89,12 +89,37 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
    `public/reports/2601_ESG30` 与 `.esg30-sync.json`，最近一次 2026-09-23 17:01 UTC
    同步 v3.5 至 `11a289f2`）；`e0370a72` 的作者是 `liuh886`，更像本地手工/自动化提交，
    非该 workflow。
-   - **手动同步首选跑 `pnpm report:sync`**：从本机最新 TeX/PDF 生成，避免与 bot
-     抢推同一文件；推送前先 `git fetch` 并 rebase，若 bot 已同步同一版本，
+   - **手动同步跑 `pnpm report:sync`**（2026-10-03 起默认就是"远端权威"模式，
+     与 CI 逐字节一致）。推送前先 `git fetch` 并 rebase，若 bot 已同步同一版本，
      保留 bot 产物、只提交 `docs`/`slug` 等本地元数据改动。
+     起草期想用本机 tex 预览请显式用 `pnpm report:sync:local`（产物与线上不一致，
+     CI 会判为漂移，属预期）。
    - **哈希归一化**：`sync-paper-report.mjs` 计算 paper draft 指纹前统一
      CRLF→LF。Windows 检出（CRLF）与远端 CI（LF）内容相同时指纹一致，
      不再误报漂移（本轮修复前本机 `4136...` vs 远端 `fdb1...` 即此原因）。
+     Pandoc 输出同样归一化为 LF，使本机与 CI 产物逐字节一致。
+   - **结构自检是硬门禁**（2026-10-03 新增）：报告生成脚本过去所有版面改写都是
+     「正则静默 no-op」——TeX 改版后失配即原样跳过，页面照样产出并上线。已实际发生：
+     图文摘要卡片整体消失（`图文摘要2.png` → `图文摘要4.png`）、
+     图 2 丢失图头（img 与 figcaption 之间被插入「注：」段）、
+     表 5-1 无表头（新表未登记进硬编码映射）。
+     现在两道闸：(a) 每处结构性改写登记命中数，须与 TeX 实际数量一致；
+     (b) `scripts/lib/report-structure.mjs` 对正文做结构体检（图表头/表头/注释一致性/
+     残留 caption/titlepage/裸 LaTeX/锚点完整性/图片存在性/label↔ref 交叉）。
+     任一不通过即 `exit 1`、**不写盘**。
+   - **素材清单 `assets-manifest.json`**：登记每张配图与 PDF 的 `source` + `sha256`，
+     用于发现"文字没变、但图被换了"。清单里 `source: "existing"` 表示该素材没从数据源
+     取得、只是沿用了目录里的旧文件 —— 这是必须失败的信号。
+   - **本机 / CI 必须同源**（2026-10-03 修复的第二类事故）：历史上 CI 读不到维护者
+     本机目录，于是走"目标文件已存在 → 跳过"分支，**远端更新过的配图永远拉不下来**，
+     页面上没有任何报错。现在：
+     - 默认即**远端权威**（`--local` 才读本机），本机产物 == CI 产物 == 线上发布物；
+     - 本机路径可用 `ESG30_LOCAL_DIR` 覆盖（脚本不再硬编码盘符）；
+     - 若任何素材只能沿用旧文件，直接 `exit 1`；
+     - 运行时会检测"本机草稿 vs 远端 tex"分歧并给出可执行的下一步。
+   - 回归用例见 `scripts/report-structure.test.mjs`（16 例）。
+   - 新增表格/图片时**不需要**再改脚本：表号按所在章节自动编排
+     （正文 表 N-x，附录 附录 X 表）；只保留 `tableTweaks` 里的纯视觉差异化声明。
 2. **受保护文件**：`agent/ccus-ai-agent/DESIGN.md` 是用户自己的内容，
    **不要提交、不要回退**。
 3. **commitlint 标题 ≤100 字符**（踩过多次）。
@@ -102,6 +127,38 @@ CCUS Policy Hub：中英双语静态站（Astro 5 + Tailwind 4），内容来自
 5. PowerShell 里做字符串替换极易翻车，**优先用 Edit 工具或写 .ps1/.mjs 脚本**。
 6. `git add -A` 会带上未跟踪的 `HANDOVER.md`，**提交前用显式路径 add**。
 7. 每次提交前跑：`pnpm test` + `pnpm exec astro check` + `pnpm build`。
+8. **ESG30 报告页的日常维护循环**（2026-10-03 起标准化，工具已强制执行）：
+
+   ```text
+   ┌─ 起草（在 ESG30 仓库里改 paper_draft.tex / data/*.png）
+   │    本机预览：pnpm report:sync:local        # 产物与线上不一致，属预期
+   │
+   ├─ push 到 liuh886/2601_ESG30                # 必须先 push，否则线上不会更新
+   │
+   ├─ 生成：pnpm report:sync                    # 默认远端权威 = CI 模式，逐字节一致
+   │        （或什么都不做，等 sync-esg30-report.yml 每 6 小时自动同步）
+   │
+   └─ 提交前把关（pre-push 已自动跑前两条）
+      pnpm report:check        # 防漂移：tex 指纹 + PDF + 结构；不需要 pandoc
+      pnpm report:verify       # 结构体检 + 素材清单校验；不需要 pandoc
+      pnpm report:parity       # 复现 CI 生成路径并逐字节比对（需联网 + gh）
+   ```
+
+   - 其它模式：`report:sync:html`（只重生成 HTML，跳过 PDF）、
+     `report:sync:local`（本机草稿）、`report:sync:remote` / `report:sync:full`（`report:sync` 的别名）。
+   - **为什么要先 push**：`report:sync` 默认以 ESG30 远端为 SSOT。若本机 tex 还没 push，
+     脚本会明确打出 `local=xxx / remote=yyy` 的分歧警告，并告诉你先 push 再 sync ——
+     不会出现"我明明改了、页面却没变"的静默困惑。
+   - `report:parity` 要求本机 Pandoc 与 `sync-esg30-report.yml` 的 `PANDOC_VERSION`
+     一致，不一致会直接报版本不匹配，而不是给出误导性的 diff。
+   - 与 bot 抢同一文件时：先 `git fetch` 再 rebase，保留 bot 产物。
+
+9. **`pnpm lint` 的假阳性**：Windows 本机检出（`core.autocrlf=true`）下
+   `pnpm exec prettier --check .` 会报约 22 个文件"未格式化"，但这些文件在仓库里
+   是纯 LF，**CI 是绿的**——报出来的全部是本机 CRLF 造成的假阳性（2026-10-03 实测：
+   逐个核对工作区 CRLF=100%、HEAD blob LF=100%）。
+   判断口径：先看 `git show HEAD:<file>` 的换行符，再决定是不是真问题。
+   确实要格式化时只格式化自己碰过的文件，不要因为这份名单去全量 `--write .`。
 
 ## 4. 下一步任务（按优先序）
 

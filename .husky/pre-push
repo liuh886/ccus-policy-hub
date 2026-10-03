@@ -5,5 +5,10 @@
 bash -lc 'pnpm exec astro check && pnpm test'
 
 # 报告页防漂移：确认 public/reports/2601_ESG30 与最新 paper draft 一致。
+# 只读 tex 指纹 + 已提交产物，不需要 pandoc，也不下载素材，因此很快。
 # 若本机与 GitHub 均无 paper draft 源码，脚本会自行跳过（退出码 0），不会阻塞推送。
 bash -lc 'pnpm report:check'
+
+# 报告页结构体检 + 素材清单校验：图缺图头 / 表缺表头 / 注释版式不一致 /
+# 素材被手工替换或落到兜底来源，都在这里硬失败。
+bash -lc 'pnpm report:verify'

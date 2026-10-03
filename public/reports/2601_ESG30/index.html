@@ -508,6 +508,29 @@
       display: flex;
       align-items: baseline;
     }
+    /* \paragraph 级小标题（TeX 中本身不带编号） */
+    .article-content h4 {
+      font-family: var(--font-sans);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--brand-blue);
+      color: var(--text-main);
+      line-height: 1.5;
+      scroll-margin-top: 80px;
+    }
+    .article-content h4 + p {
+      margin-top: 0;
+    }
+    /* 路线图卡片内的阶段标题不重复左侧色条 */
+    .roadmap-content h4.stage-title {
+      border-left: none;
+      padding-left: 0;
+      margin-top: 0;
+      font-size: 1.05rem;
+    }
 
     /* 章节数字徽章样式 (Header Number Badge) */
     .header-section-number {
@@ -900,6 +923,11 @@
       min-width: 920px;
       table-layout: fixed;
     }
+    /* 四列宽度比例：表头由 ensureThead 从 TeX 提升而来，比例统一在 CSS 维护 */
+    .table-claims-mapping th:nth-child(1) { width: 22%; }
+    .table-claims-mapping th:nth-child(2) { width: 26%; }
+    .table-claims-mapping th:nth-child(3) { width: 24%; }
+    .table-claims-mapping th:nth-child(4) { width: 28%; }
     .table-claims-mapping th {
       background: var(--table-header);
       padding: 0.75rem 1rem;
@@ -1536,55 +1564,6 @@
       background: var(--bg-secondary);
       text-align: justify;
     }
-
-    /* 核心系统问题卡片 (Systemic Question Cards in Section 1.4) */
-    .systemic-question-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--brand-blue);
-      border-radius: 0.75rem;
-      margin: 1.75rem 0;
-      padding: 1.35rem 1.6rem;
-      transition: all 0.2s ease;
-    }
-    .systemic-question-card:hover {
-      background: var(--bg-tertiary);
-      border-color: var(--brand-blue);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
-      transform: translateY(-1px);
-    }
-    .sq-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px dashed var(--border-color);
-    }
-    .sq-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--brand-blue);
-      background: rgba(37, 99, 235, 0.1);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      padding: 0.15rem 0.55rem;
-      border-radius: 0.35rem;
-      white-space: nowrap;
-    }
-    .sq-title {
-      font-family: var(--font-sans);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .sq-body p {
-      margin-bottom: 0 !important;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      text-indent: 0 !important;
-    }
-
     /* 三阶段演化路线图 (3-Stage Evolution Roadmap in Section 5) */
     .roadmap-container {
       display: flex;
@@ -1779,6 +1758,12 @@
     .note-text {
       flex: 1;
       text-align: justify;
+    }
+    /* 注释正文里的语义标签（如“口径与筛选说明”），由 normalizeNote 生成 */
+    .note-lead {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-right: 0.15rem;
     }
     .fig-ref-link {
       color: var(--brand-blue);
@@ -2365,7 +2350,7 @@
         margin-bottom: 2rem !important;
       }
       figure, .academic-figure, table, .table-responsive-wrapper,
-      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-card-container, .glossary-table {
+      .roadmap-container, .graphical-abstract-card, .glossary-card-container, .glossary-table {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
@@ -2514,7 +2499,7 @@
     <!-- TOC Sidebar (Desktop) -->
     <aside class="toc-sidebar" id="toc-sidebar">
       <div class="toc-title">
-        <span>报告大纲 (TOC)</span>
+        <span>报告大纲</span>
         <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="收起目录以拓宽正文 (快捷键: [)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
@@ -2536,10 +2521,9 @@
           <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
         </div>
 
-        <div class="reading-stats">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>正文约 55k 字</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>建议阅读时间 69 分钟</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>支持 XeLaTeX 原始矢量 PDF 下载</span>
+<div class="reading-stats">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 52k 字</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>65 分钟</span>
         </div>
 
         <div class="abstract-box">
@@ -2562,11 +2546,19 @@
 
       <!-- Article Body from Pandoc with Citations Linked -->
       <article class="article-content" id="report-content">
-        <div class="titlepage">
-
+        
+<div class="graphical-abstract-card" id="graphical-abstract">
+  <div class="ga-header">
+    <div class="ga-title">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>图文摘要 (Graphical Abstract)</span>
+    </div>
+    <span class="ga-tip">🔍 点击图片可放大高清原图</span>
+  </div>
+  <div class="ga-img-wrap">
+    <img src="./data/图文摘要4.png" alt="CCUS 规模化治理与 dMRV 架构图文摘要" />
+  </div>
 </div>
-<p><strong>关键词：</strong>CCUS；集群治理；产业协作；能源惩罚；首发风险；dMRV；产业信用基础设施</p>
-<p><img src="./data/图文摘要4.png" style="width:94.0%" alt="image" /></p>
 <h1 class="unnumbered" id="研究问题分析框架与材料说明">研究问题、分析框架与材料说明</h1>
 <p>本文关注 CCUS 从单点工程示范走向规模化部署过程中出现的治理问题，围绕三个相互衔接的问题展开：为什么单点工程可行不会自然转化为规模化交付能力；不同国家和地区如何组织价值形成、风险分担与跨主体协作；当集群进入多主体运行后，为什么需要共同、可复核的工程证据，以及 dMRV 如何组织这些证据并使其进入交付、责任和外部评估等制度过程。</p>
 <p>本文采用制度比较，并借助技术创新系统（Technological Innovation Systems，TIS）功能框架，对不同国家和地区推动 CCUS 从工程示范走向产业形成所需的关键功能进行结构化分析。TIS 关注新兴技术从研发示范走向商业部署时，市场、资源、参与主体与制度条件能否协同演进，常用于识别这一转化过程中的系统瓶颈；这一框架也已用于分析 CCS 从单点示范向多行业、多主体价值链扩展过程中出现的协同问题<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72" id="cite-return-hekkert2007" title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73" id="cite-return-bergek2008" title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-vanalphen2010" data-cite="vanalphen2010" data-index="74" id="cite-return-vanalphen2010" title="van Alphen, K., Hekkert, M. P., &amp; Turkenburg, W. C. (2010). Accelerating the deployment of carbon capture and storage technologies by strengthening the innovation system. International Journal of Greenhouse Gas Control, 4(2), 396–409. https://doi.org/10.1016/j.ijggc.2009.09.019">74</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-lai2012" data-cite="lai2012" data-index="75" id="cite-return-lai2012" title="Lai, X., Ye, Z., Xu, Z., Holmes, M. H., &amp; Lambright, W. H. (2012). Carbon capture and sequestration technological innovation system in China: Structure, function evaluation and policy implication. Energy Policy, 50, 635–646. https://doi.org/10.1016/j.enpol.2012.08.004">75</a>]</sup>。因此，本文借助 TIS 识别 CCUS 规模化过程中哪些系统功能已经形成、哪些仍构成瓶颈。TIS 功能框架主要包括企业家活动、知识开发与扩散、方向引导、市场形成、资源动员和合法性创建。</p>
@@ -2576,10 +2568,11 @@
 <h1 data-number="1" id="ccus-规模化的系统障碍与治理转型"><span class="header-section-number">1</span> CCUS 规模化的系统障碍与治理转型</h1>
 <h2 data-number="1.1" id="从吉吨级需求到交付鸿沟"><span class="header-section-number">1.1</span> 从吉吨级需求到交付鸿沟</h2>
 <p>风光水核、终端电气化和能效提升将承担净零转型的主体减排任务，但钢铁、水泥、化工等行业仍存在难以消除的过程排放和高温工艺需求；部分低排放能源生产仍可能形成 CO<sub>2</sub> 捕集需求，航空、航运和农业等领域难以消除的剩余排放则需要碳移除加以抵消。因此，主流净零情景对碳捕集、利用与封存（CCUS）提出了吉吨级部署要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-nze2023" data-cite="iea-nze2023" data-index="22" id="cite-return-iea-nze2023" title="IEA. (2023). Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach – 2023 Update. IEA, Paris. https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach">22</a>]</sup>。这一要求进一步进入国家规划、产业目标和政策工具：欧盟设置 CO<sub>2</sub> 注入能力目标，英国推进集群排序和输送封存商业模式，美国以《美国国内税收法典》第45Q条（45Q）税收抵免改善项目收益预期，挪威和加拿大则依托油气工程、公共资本和长期责任安排发展共享封存能力<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1" id="cite-return-epa-class6" title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2" id="cite-return-usc45q" title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4" id="cite-return-eu-nzia" title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29" id="cite-return-uk-energy-act2023" title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a>]</sup>。</p>
-<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距">图 1</a> 以规划项目与已运行/在建项目之间的规模差距，近似反映项目从规划走向交付的转化程度。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计仅约为 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 全球 CCUS 项目分布与统计口径">附录 A 表</a>）。按已披露的投运时间表，至 2036 年前后，前瞻性规划规模约为 2,243 MtCO<sub>2</sub>/yr，而已进入运行或建设阶段的项目累计仅约为 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
+<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1 全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）">图 1</a> 以规划项目与已运行/在建项目之间的规模差距，近似反映项目从规划走向交付的转化程度。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计仅约为 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 表 全球 CCUS 已运行及预计于 2026 年底前投运的在建项目记录分布">附录 A 表</a>）。按已披露的投运时间表，至 2036 年前后，前瞻性规划规模约为 2,243 MtCO<sub>2</sub>/yr，而已进入运行或建设阶段的项目累计仅约为 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
 <p>规划规模快速增长，并不意味着捕集、运输和封存能力能够同步到位。捕集项目较容易形成规划储备，而运输网络、封存库容、注入井体系、监测设施和长期责任安排往往需要更长建设周期和更复杂的跨主体协调。以美国为例，Princeton Net-Zero America 研究显示，实现净零情景所需 CO<sub>2</sub> 输送网络规模可能达到约 10 万公里，说明 CCUS 规模化不仅依赖捕集设施建设，也依赖跨区域运输和共享基础设施的同步建成<sup class="citation-cluster">[<a class="cite-ref" href="#ref-larson2020nza" data-cite="larson2020nza" data-index="25" id="cite-return-larson2020nza" title="Larson, E., et al. (2020). Net-Zero America: Potential Pathways, Infrastructure, and Impacts. Princeton University. https://netzeroamerica.princeton.edu/the-report">25</a>]</sup>。只有当运输封存服务、收入机制、核证和长期责任安排同时到位，捕集能力才能转化为稳定交付。</p>
-<p>这种交付鸿沟并不意味着单体工程尚不可行。加拿大、挪威等地已有百万吨级 CCUS 项目持续运行，并形成长期监测、跨主体交付和公开披露实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO<sub>2</sub>. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="9" id="cite-return-shellquest2024" title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-status2025" data-cite="gccsi-status2025" data-index="54" id="cite-return-gccsi-status2025" title="Global CCS Institute. (2025). Global Status of CCS 2025: Staying the Course. https://www.globalccsinstitute.com/resources/global-status-report/">54</a>]</sup>。这些项目证明，CCUS 工程可以在特定条件下建成并持续运行；但产业形成并不是单体项目的简单复制，还要求价值机制、基础设施、资源投入、参与主体和制度规则能够彼此衔接、相互强化。规模化的关键问题，也因此从“能否建成”转向“能否长期运行、能否组织为网络、能否形成可信减排结果”。</p>
+<p>这种交付鸿沟并不意味着单体工程尚不可行。加拿大、挪威等地已有百万吨级 CCUS 项目持续运行，并形成长期监测、跨主体交付和公开披露实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO2. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="9" id="cite-return-shellquest2024" title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-status2025" data-cite="gccsi-status2025" data-index="54" id="cite-return-gccsi-status2025" title="Global CCS Institute. (2025). Global Status of CCS 2025: Staying the Course. https://www.globalccsinstitute.com/resources/global-status-report/">54</a>]</sup>。这些项目证明，CCUS 工程可以在特定条件下建成并持续运行；但产业形成并不是单体项目的简单复制，还要求价值机制、基础设施、资源投入、参与主体和制度规则能够彼此衔接、相互强化。规模化的关键问题，也因此从“能否建成”转向“能否长期运行、能否组织为网络、能否形成可信减排结果”。</p>
 <p>中国尤其值得观察：大型能源和工业企业、公共组织资源以及较完整的工程供应链，使中国具备较强的项目动员和工程实施能力，但捕集源、运输封存设施和长期责任往往跨行业、跨区域和跨部门。如何把工程动员能力转化为稳定的跨主体治理能力，可为理解不同于成熟市场体系的 CCUS 集群形成路径提供另一类样本。</p>
+
 
     <figure class="academic-figure" id="fig:global_ccus_scale">
       <div class="figure-header">
@@ -2592,15 +2585,15 @@
       <div class="figure-img-wrap">
         <img src="./data/Figure_cn_2.jpg" alt="全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）" loading="lazy" />
       </div>
+      
       <div class="figure-notes">
         <span class="note-tag">注</span>
         <div class="note-text">数据引自 CCUS Policy Hub，基于 IEA <em>CCUS Projects Database</em> 2026 年 3 月版本整理，共收录全球 1,110 个 CCUS 项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。图中容量采用数据库记录的预计年处理能力（<em>estimated capacity</em>）；前瞻性项目规划不包括已取消、已暂停或已退役项目，并仅纳入披露预计投运时间的项目；预期交付仅包括已运行或在建项目。主图按公开投运时间表累计项目容量，其中 2020–2026 年数据来自同一数据库快照，2027–2036 年反映项目方披露的前瞻性项目规划时间表，并非对实际投产能力的预测。图中“交付”“历史交付”均包含在建记录；“转化缺口”为前瞻性项目规划与预期交付规模之差。右侧按地区及 IEA 项目类型展示 2026 年项目构成；Capture、Transport、T&amp;S、Storage、Full chain 与 CCU/Utilisation 分别对应价值链不同环节，其记录容量不代表已经匹配的端到端系统能力，Transport 容量亦不应解释为可直接累加的系统输送能力。</div>
       </div>
     </figure>
-  
 <h2 data-number="1.2" id="地质封存的结构性约束"><span class="header-section-number">1.2</span> 地质封存的结构性约束</h2>
-<p>CCUS 的气候效益最终取决于捕集的 CO<sub>2</sub> 能否得到长期、稳定的地质封存。地质封存的结构性难题在于，关键地下风险难以被直接、连续和低成本地观察。CO<sub>2</sub> 注入后，储层压力、羽流迁移、盖层封闭性和井筒完整性都会长期演化，储层非均质性、断裂系统和注采历史又进一步增加不确定性。因此，单次监测通常只能反映特定时间窗口内的状态，长期稳定性判断需要连续观测、模型更新与多类证据相互印证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42" id="cite-return-ipcc-srccs2005" title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-seal2024" data-cite="ieaghg-seal2024" data-index="46" id="cite-return-ieaghg-seal2024" title="IEAGHG. (2024). Geological Storage of CO<sub>2</sub>: Seal Integrity Review. https://ieaghg.org/publications/geological-storage-of-co2-seal-integrity-review/">46</a>]</sup>。</p>
-<p>这一特征带来一个基本张力：地下风险是连续演化的，而监测与核证通常以阶段性调查、周期性报告和模型更新的方式开展。3D/4D 地震、测井、压力监测和储层模拟在空间覆盖、时间分辨率、成本和解释能力上各有边界，单一手段难以形成对地下状态的完整判断<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ieaghg-monitoring2020" data-cite="ieaghg-monitoring2020" data-index="47" id="cite-return-ieaghg-monitoring2020" title="IEAGHG. (2020). Monitoring and Modelling of CO<sub>2</sub> Storage: The Potential for Improving the Cost-Benefit Ratio of Reducing Risk (2020-01). https://ieaghg.org/publications/monitoring-and-modelling-of-co2-storage/">47</a>]</sup>。治理的难点因此在于，如何依据监测结果核查运行是否处于许可边界内、实测与模型是否相符，并识别异常、判断责任状态。</p>
+<p>CCUS 的气候效益最终取决于捕集的 CO<sub>2</sub> 能否得到长期、稳定的地质封存。地质封存的结构性难题在于，关键地下风险难以被直接、连续和低成本地观察。CO<sub>2</sub> 注入后，储层压力、羽流迁移、盖层封闭性和井筒完整性都会长期演化，储层非均质性、断裂系统和注采历史又进一步增加不确定性。因此，单次监测通常只能反映特定时间窗口内的状态，长期稳定性判断需要连续观测、模型更新与多类证据相互印证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42" id="cite-return-ipcc-srccs2005" title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-seal2024" data-cite="ieaghg-seal2024" data-index="46" id="cite-return-ieaghg-seal2024" title="IEAGHG. (2024). Geological Storage of CO2: Seal Integrity Review. https://ieaghg.org/publications/geological-storage-of-co2-seal-integrity-review/">46</a>]</sup>。</p>
+<p>这一特征带来一个基本张力：地下风险是连续演化的，而监测与核证通常以阶段性调查、周期性报告和模型更新的方式开展。3D/4D 地震、测井、压力监测和储层模拟在空间覆盖、时间分辨率、成本和解释能力上各有边界，单一手段难以形成对地下状态的完整判断<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ieaghg-monitoring2020" data-cite="ieaghg-monitoring2020" data-index="47" id="cite-return-ieaghg-monitoring2020" title="IEAGHG. (2020). Monitoring and Modelling of CO2 Storage: The Potential for Improving the Cost-Benefit Ratio of Reducing Risk (2020-01). https://ieaghg.org/publications/monitoring-and-modelling-of-co2-storage/">47</a>]</sup>。治理的难点因此在于，如何依据监测结果核查运行是否处于许可边界内、实测与模型是否相符，并识别异常、判断责任状态。</p>
 <p>进入多用户集群后，这一问题会进一步放大。同一封存库需要承接不同来源和批次的 CO<sub>2</sub>，地下状态变化又可能同时影响多个客户、合同和责任主体。长期封存由此不再只是单体项目的安全问题，而成为跨主体、跨周期的治理问题。地下风险不会因项目建设完成而消失，其状态需要通过持续监测、模型更新和长期运行证据不断确认；随着证据积累，对风险状态的判断持续更新，在长期观测与模型符合性得到验证的情况下，不确定性可以逐步收敛，并为关闭条件、后续管护和责任接续提供判断基础。因此，跨周期证据积累源于地质封存本身的治理需求，是评估封存安全状态、确认关闭条件和衔接长期责任的重要基础。</p>
 <h2 data-number="1.3" id="从单点技术示范到集群化枢纽治理"><span class="header-section-number">1.3</span> 从“单点技术示范”到“集群化枢纽治理”</h2>
 <p>早期 CCUS 多以“单源—单汇”一体化示范为主，工程、企业和责任边界大体重合，商业结算与责任界定多可在企业内部协调。进入共享基础设施后，捕集、运输与封存由不同主体投资运营，储层开发、运输调度与长期监测跨越多个企业与监管层级。单个环节合规已不足以保证网络整体稳定，治理对象随之扩展为跨主体、跨环节和跨周期的运行网络。</p>
@@ -2613,39 +2606,12 @@
 <p>集群化意味着产业组织方式和治理单元的改变，已超出单体项目简单扩容的范畴。捕集、运输和封存能否同步投资、稳定运行并共同承担长期责任，关键在于价值机制、基础设施、规则和参与主体能否彼此衔接，形成相互支撑的产业系统。</p>
 <h2 data-number="1.4" id="集群形成的三类系统问题与两项关键约束"><span class="header-section-number">1.4</span> 集群形成的三类系统问题与两项关键约束</h2>
 <p>CCUS 集群形成需要同时解决价值形成、跨主体协调和制度采信三类问题。它们分别决定项目是否具有持续收益基础、价值链能否同步投资并稳定运行，以及工程结果能否被不同制度主体共同使用。</p>
-
-      <div class="systemic-question-card" id="q1-value-chain">
-        <div class="sq-header">
-          <span class="sq-badge">核心问题 01</span>
-          <span class="sq-title">价值如何形成并在全链条分配？</span>
-        </div>
-        <div class="sq-body">
-          <p>捕集端承担产线改造及捕集环节的额外能耗，网络运营方承担先导容量与利用率不足风险，封存开发商承担储层勘探与渗漏风险；减排价值往往首先体现在排放源一侧，例如履约收益、税收优惠或低碳产品溢价；承担运输与封存基础设施的主体却难以自动分享。产业形成需要回答：这些价值能否覆盖全链条成本，能否流向承担基础设施和长期安全责任的主体，以及短期政策支持能否支撑长期投资与合同安排<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66" id="cite-return-iea-financing2026" title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
-        </div>
-      </div>
-    
-
-      <div class="systemic-question-card" id="q2-network-sync">
-        <div class="sq-header">
-          <span class="sq-badge">核心问题 02</span>
-          <span class="sq-title">价值链如何同步投资并稳定运行？</span>
-        </div>
-        <div class="sq-body">
-          <p>捕集方与运输封存运营商面临投资上的双向等待：前者在缺少可靠运输和封存服务时不愿率先改造，后者在没有锚定客户和确定流量前也难以启动建设。储层评价、管网建设、捕集改造、许可审批和客户签约周期不同，单靠双边交易难以确保全链条同步达到投资条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-clusters2025" data-cite="iea-clusters2025" data-index="33"  title="IEA. (2025). CCUS projects around the world are reaching new milestones. https://www.iea.org/commentaries/ccus-projects-around-the-world-are-reaching-new-milestones">33</a>]</sup>。集群规划、锚定用户、公共先导能力、开放接入和网络运营规则，实质上都在解决这一协调任务。</p>
-        </div>
-      </div>
-    
-
-      <div class="systemic-question-card" id="q3-evidence-trust">
-        <div class="sq-header">
-          <span class="sq-badge">核心问题 03</span>
-          <span class="sq-title">工程结果如何获得制度采信？</span>
-        </div>
-        <div class="sq-body">
-          <p>网络投运后，来源身份、交接计量、损耗与排放分摊、地下风险、异常处置和责任阶段需要被不同主体持续复核。核证机构、客户、监管部门、银行和保险机构并不需要完全相同的数据，却需要能够回溯到同一组工程事实。本文据此将主要制度用途归纳为三类证据使用场景：交付与归因、风险与责任、金融与外部信任。</p>
-        </div>
-      </div>
-    
+<h4 id="价值如何形成并在全链条分配">价值如何形成并在全链条分配。</h4>
+<p>捕集端承担产线改造及捕集环节的额外能耗，网络运营方承担先导容量与利用率不足风险，封存开发商承担储层勘探与渗漏风险；减排价值往往首先体现在排放源一侧，例如履约收益、税收优惠或低碳产品溢价；承担运输与封存基础设施的主体却难以自动分享。产业形成需要回答：这些价值能否覆盖全链条成本，能否流向承担基础设施和长期安全责任的主体，以及短期政策支持能否支撑长期投资与合同安排<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66" id="cite-return-iea-financing2026" title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
+<h4 id="价值链如何同步投资并稳定运行">价值链如何同步投资并稳定运行。</h4>
+<p>捕集方与运输封存运营商面临投资上的双向等待：前者在缺少可靠运输和封存服务时不愿率先改造，后者在没有锚定客户和确定流量前也难以启动建设。储层评价、管网建设、捕集改造、许可审批和客户签约周期不同，单靠双边交易难以确保全链条同步达到投资条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-clusters2025" data-cite="iea-clusters2025" data-index="33"  title="IEA. (2025). CCUS projects around the world are reaching new milestones. https://www.iea.org/commentaries/ccus-projects-around-the-world-are-reaching-new-milestones">33</a>]</sup>。集群规划、锚定用户、公共先导能力、开放接入和网络运营规则，实质上都在解决这一协调任务。</p>
+<h4 id="工程结果如何获得制度采信">工程结果如何获得制度采信。</h4>
+<p>网络投运后，来源身份、交接计量、损耗与排放分摊、地下风险、异常处置和责任阶段需要被不同主体持续复核。核证机构、客户、监管部门、银行和保险机构并不需要完全相同的数据，却需要能够回溯到同一组工程事实。本文据此将主要制度用途归纳为三类证据使用场景：交付与归因、风险与责任、金融与外部信任。</p>
 <p>除上述三类系统问题外，CCUS 规模化还受到两项性质不同的关键约束。第一是能源惩罚。能源惩罚反映引入 CCUS 后，为实现实际减排效果所增加的能源投入及由此产生的效率损失。它并不只是回答“CCUS 多消耗了多少能源”，而是同时连接额外能源投入与净避免排放两个端点：一端是捕集、压缩、运输和注入封存等环节增加的能源需求<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，这些投入会通过能源价格形成运行成本，并通过能源碳强度产生附加排放；另一端是在扣除这些附加排放后实际实现的净避免排放，它反映最终的气候减排效果；项目能够获得多少减排价值，则还取决于碳价、税收激励、低碳产品溢价等具体政策与市场机制。本文采用与 SPECCA 同类的“单位净避免排放额外一次能源投入”表征能源惩罚<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
 <p>这一指标也提供了一种拆解 CCUS 经济性的分析方法。对 CCUS“成本过高”的质疑，如果只比较项目总成本，很难判断压力究竟来自技术效率和能源条件，还是基础设施利用、融资和减排价值不足。能源惩罚首先把其中的物理效率代价单独识别出来；在此基础上，再结合建设和运营成本、设施利用水平、融资条件和减排价值，才能进一步解释项目的经济结果。相同的能源惩罚，在能源价格、设施利用率和减排价值不同的条件下，可能对应不同的项目经济性；反过来，融资成本下降或设施利用率提高可以改善项目经济性，却不意味着能源效率本身得到改善。</p>
 <p>这种区分也为 CCUS 的部署和降本增效提供了更清晰的判断路径。能源惩罚较高时，改善重点更多落在捕集工艺、热集成、压缩运输效率和低碳能源供给等技术与能源系统环节；如果能源惩罚已经较低，而项目仍缺乏经济性，则应进一步从建设运营成本、设施利用、融资条件、基础设施启动风险和减排价值等方面寻找原因。由此，“CCUS 贵不贵”可以进一步转化为“成本压力来自哪里、应通过什么路径改善”的具体判断。</p>
@@ -2655,21 +2621,22 @@
 <h1 data-number="2" id="治理组合的形成逻辑与产业推动力"><span class="header-section-number">2</span> 治理组合的形成逻辑与产业推动力</h1>
 <p>CCUS 走向规模化后，关键不再只是单个项目能否建成，还要形成稳定的减排价值，协调跨主体投资，并建立能够被监管和市场采信的规则。主要法域形成了不同的治理组合：税收与碳约束形成减排价值，公共资本和长期合同分担首发风险，集群规划与基础设施规则协调“源—网—库”，许可、长期责任和财务保障界定运行与责任边界。本文据此比较这些工具如何在不同产业结构、资源禀赋和制度体系下组合，并以 TIS 框架识别各阶段首先需要补足的功能。</p>
 <h2 data-number="2.1" id="主要法域的治理制度基线"><span class="header-section-number">2.1</span> 主要法域的治理制度基线</h2>
-<p><a href="#tab:governance_benchmark" class="table-ref-link" title="点击查看表 2-1 全球治理对标表">表 2-1（全球治理对标表）</a> 从 CO<sub>2</sub> 地质封存的监管定位、封存空间权属、关闭后监测、责任移交、财务保障以及许可与市场组织等维度比较美国、欧盟、英国、加拿大（联邦/阿尔伯塔）、挪威和中国的现行制度安排，为后文分析不同治理路径提供制度基线。</p>
+<p><a href="#tab:governance_benchmark" class="table-ref-link" title="点击查看表 2-1 主要法域 CCUS 治理制度比较（2026）">表 2-1</a> 从 CO<sub>2</sub> 地质封存的监管定位、封存空间权属、关闭后监测、责任移交、财务保障以及许可与市场组织等维度比较美国、欧盟、英国、加拿大（联邦/阿尔伯塔）、挪威和中国的现行制度安排，为后文分析不同治理路径提供制度基线。</p>
 
     <div class="table-container-card table-breakout" id="tab:governance_benchmark">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
           <span class="table-badge">表 2-1</span>
-          <span class="table-title">全球主要法域 CCUS 治理对标表（2026）</span>
+          <span class="table-title">主要法域 CCUS 治理制度比较（2026）</span>
         </div>
+        
         <div class="table-card-controls">
-          <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部 7 法域</span>
+          <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部法域</span>
           <div class="table-nav-btns">
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动对标表" aria-label="向左滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动表格" aria-label="向左滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动对标表" aria-label="向右滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动表格" aria-label="向右滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -2689,13 +2656,13 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>监管维度</strong></th>
-<th style="text-align: left;"><strong>美国 (US)</strong></th>
-<th style="text-align: left;"><strong>欧盟 (EU)</strong></th>
-<th style="text-align: left;"><strong>英国 (UK)</strong></th>
-<th style="text-align: left;"><strong>加拿大（联邦/阿尔伯塔）(CA-AB)</strong></th>
-<th style="text-align: left;"><strong>挪威 (NO)</strong></th>
-<th style="text-align: left;"><strong>中国 (CN)</strong></th>
+<th style="text-align: left;">监管维度</th>
+<th style="text-align: left;">美国 (US)</th>
+<th style="text-align: left;">欧盟 (EU)</th>
+<th style="text-align: left;">英国 (UK)</th>
+<th style="text-align: left;">加拿大（联邦/阿尔伯塔）(CA-AB)</th>
+<th style="text-align: left;">挪威 (NO)</th>
+<th style="text-align: left;">中国 (CN)</th>
 </tr>
 </thead>
 <tbody>
@@ -2769,7 +2736,7 @@
       
       <div class="table-notes-footer">
         <span class="note-tag">注</span>
-        <div class="note-text"><em>注：</em>本表比较各法域制度结构，不同法域的许可与责任安排并非同一制度。美国 PISC 自停止注入起算；欧盟须经主管机关确认条件后方可移交责任，移交后仍由主管机关继续监测。加拿大列示以阿尔伯塔为限，英国海上封存的海床权益与许可分属不同管理。中国条目限于国家层面现行法律与推荐性标准，地方和项目安排不纳入本表比较。资料依据相关法律、监管要求和标准整理<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1"  title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2"  title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-ccs" data-cite="eu-ccs" data-index="3" id="cite-return-eu-ccs" title="European Union. (2009). Directive 2009/31/EC on the geological storage of carbon dioxide. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031">3</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4"  title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46875-2025" data-cite="gbt46875-2025" data-index="14" id="cite-return-gbt46875-2025" title="国家数字标准馆. (2025). GB/T 46875-2025: 进入二氧化碳长输管道介质质量要求. 发布日期：2025-12-31；实施日期：2026-07-01. https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479">14</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20" id="cite-return-gccsi-gap2024" title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO<sub>2</sub> Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29"  title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-closure2025" data-cite="alberta-closure2025" data-index="36" id="cite-return-alberta-closure2025" title="Government of Alberta. (2011, current consolidation). Carbon Sequestration Tenure Regulation, Alta Reg 68/2011. https://www.canlii.org/en/ab/laws/regu/alta-reg-68-2011/latest/alta-reg-68-2011.html">36</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-norway-co2-regs" data-cite="norway-co2-regs" data-index="40" id="cite-return-norway-co2-regs" title="Norwegian Offshore Directorate. (2026年访问). Regulations relating to exploitation of subsea reservoirs on the continental shelf for storage of CO<sub>2</sub> and relating to transportation of CO<sub>2</sub> on the continental shelf. https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/">40</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-us-pisc-rule" data-cite="us-pisc-rule" data-index="77" id="cite-return-us-pisc-rule" title="Office of the Federal Register. (2026年访问). 40 CFR §146.93: Post-injection site care and site closure. https://www.ecfr.gov/current/title-40/chapter-I/subchapter-D/part-146/subpart-H/section-146.93">77</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-storage-termination" data-cite="uk-storage-termination" data-index="78" id="cite-return-uk-storage-termination" title="United Kingdom. (2011). The Storage of Carbon Dioxide (Termination of Licences) Regulations 2011, S.I. 2011/1483, and Explanatory Memorandum. https://www.legislation.gov.uk/uksi/2011/1483/pdfs/uksiem_20111483_en.pdf">78</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-storage-rights" data-cite="uk-storage-rights" data-index="79" id="cite-return-uk-storage-rights" title="North Sea Transition Authority. (2026年访问). Guidance on Applications for a Carbon Storage Permit. https://www.nstauthority.co.uk/media/oxuhiqtb/guidance-on-applications-for-a-carbon-storage-permit.pdf">79</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-directive065" data-cite="alberta-directive065" data-index="80" id="cite-return-alberta-directive065" title="Alberta Energy Regulator. (2023). Directive 065: Resources Applications for Oil and Gas Reservoirs. https://www.aer.ca/providing-information/regulatory-frameworks/directive-065">80</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ecocode2026" data-cite="china-ecocode2026" data-index="84" id="cite-return-china-ecocode2026" title="全国人民代表大会. (2026年3月12日). 中华人民共和国生态环境法典. 2026年8月15日起施行. https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml">84</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46878-2025" data-cite="gbt46878-2025" data-index="90" id="cite-return-gbt46878-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46878-2025: 二氧化碳捕集、运输和地质封存 地质封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A">90</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46871-2025" data-cite="gbt46871-2025" data-index="91" id="cite-return-gbt46871-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46871-2025: 二氧化碳捕集、运输和地质封存 提高原油采收率的二氧化碳封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A">91</a>]</sup>。</div>
+        <div class="note-text">本表比较各法域制度结构，不同法域的许可与责任安排并非同一制度。美国 PISC 自停止注入起算；欧盟须经主管机关确认条件后方可移交责任，移交后仍由主管机关继续监测。加拿大列示以阿尔伯塔为限，英国海上封存的海床权益与许可分属不同管理。中国条目限于国家层面现行法律与推荐性标准，地方和项目安排不纳入本表比较。资料依据相关法律、监管要求和标准整理<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1"  title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2"  title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-ccs" data-cite="eu-ccs" data-index="3" id="cite-return-eu-ccs" title="European Union. (2009). Directive 2009/31/EC on the geological storage of carbon dioxide. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031">3</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4"  title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46875-2025" data-cite="gbt46875-2025" data-index="14" id="cite-return-gbt46875-2025" title="国家数字标准馆. (2025). GB/T 46875-2025: 进入二氧化碳长输管道介质质量要求. 发布日期：2025-12-31；实施日期：2026-07-01. https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479">14</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20" id="cite-return-gccsi-gap2024" title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO2 Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29"  title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-closure2025" data-cite="alberta-closure2025" data-index="36" id="cite-return-alberta-closure2025" title="Government of Alberta. (2011, current consolidation). Carbon Sequestration Tenure Regulation, Alta Reg 68/2011. https://www.canlii.org/en/ab/laws/regu/alta-reg-68-2011/latest/alta-reg-68-2011.html">36</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-norway-co2-regs" data-cite="norway-co2-regs" data-index="40" id="cite-return-norway-co2-regs" title="Norwegian Offshore Directorate. (2026年访问). Regulations relating to exploitation of subsea reservoirs on the continental shelf for storage of CO2 and relating to transportation of CO2 on the continental shelf. https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/">40</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-us-pisc-rule" data-cite="us-pisc-rule" data-index="77" id="cite-return-us-pisc-rule" title="Office of the Federal Register. (2026年访问). 40 CFR §146.93: Post-injection site care and site closure. https://www.ecfr.gov/current/title-40/chapter-I/subchapter-D/part-146/subpart-H/section-146.93">77</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-storage-termination" data-cite="uk-storage-termination" data-index="78" id="cite-return-uk-storage-termination" title="United Kingdom. (2011). The Storage of Carbon Dioxide (Termination of Licences) Regulations 2011, S.I. 2011/1483, and Explanatory Memorandum. https://www.legislation.gov.uk/uksi/2011/1483/pdfs/uksiem_20111483_en.pdf">78</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-storage-rights" data-cite="uk-storage-rights" data-index="79" id="cite-return-uk-storage-rights" title="North Sea Transition Authority. (2026年访问). Guidance on Applications for a Carbon Storage Permit. https://www.nstauthority.co.uk/media/oxuhiqtb/guidance-on-applications-for-a-carbon-storage-permit.pdf">79</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-directive065" data-cite="alberta-directive065" data-index="80" id="cite-return-alberta-directive065" title="Alberta Energy Regulator. (2023). Directive 065: Resources Applications for Oil and Gas Reservoirs. https://www.aer.ca/providing-information/regulatory-frameworks/directive-065">80</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ecocode2026" data-cite="china-ecocode2026" data-index="84" id="cite-return-china-ecocode2026" title="全国人民代表大会. (2026年3月12日). 中华人民共和国生态环境法典. 2026年8月15日起施行. https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml">84</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46878-2025" data-cite="gbt46878-2025" data-index="90" id="cite-return-gbt46878-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46878-2025: 二氧化碳捕集、运输和地质封存 地质封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A">90</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46871-2025" data-cite="gbt46871-2025" data-index="91" id="cite-return-gbt46871-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46871-2025: 二氧化碳捕集、运输和地质封存 提高原油采收率的二氧化碳封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A">91</a>]</sup>。</div>
       </div>
     </div>
   
@@ -2782,17 +2749,17 @@
 <p>欧盟以碳排放成本形成企业采用 CCUS 的经济动机。在欧盟碳排放交易体系（EU ETS）下，符合监测和转移规则、送往合规设施进行永久封存的 CO<sub>2</sub>，可以从设施报告排放中扣除，从而减少配额清缴负担。《二氧化碳地质封存指令》及成员国制度规定封存许可、泄漏处置、关闭和责任移交条件，为这种减排价值提供法律边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-eu-ccs" data-cite="eu-ccs" data-index="3"  title="European Union. (2009). Directive 2009/31/EC on the geological storage of carbon dioxide. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031">3</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-mrr2024" data-cite="eu-mrr2024" data-index="32" id="cite-return-eu-mrr2024" title="European Commission. (2024). Commission Implementing Regulation (EU) 2024/2493 amending Implementing Regulation (EU) 2018/2066 as regards the monitoring and reporting of greenhouse gas emissions pursuant to Directive 2003/87/EC. https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj">32</a>]</sup>。</p>
 <p>欧盟又以资金支持和供给义务补充碳价机制。创新基金利用碳市场相关收入支持工业低碳创新，分担早期项目成本；工业碳管理战略推动跨境运输封存服务发展；《净零工业法案》（NZIA）要求到 2030 年形成至少 5000 万吨/年的可用 CO<sub>2</sub> 注入能力，并按照符合条件的油气生产商在 2020—2023 年的欧盟油气产量份额分摊贡献义务<sup class="citation-cluster">[<a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4"  title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ec-icm2024" data-cite="ec-icm2024" data-index="24" id="cite-return-ec-icm2024" title="European Commission. (2024). Communication from the Commission to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions: Towards an ambitious Industrial Carbon Management for the EU (COM(2024) 62 final). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2024:62:FIN">24</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-innovation-fund2026" data-cite="eu-innovation-fund2026" data-index="67" id="cite-return-eu-innovation-fund2026" title="European Commission. (2026年访问). Innovation Fund. https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en">67</a>]</sup>。三类工具分别作用于企业减排需求、项目投资成本和封存能力供给，具体项目仍需由成员国和开发者落实。</p>
 <h3 data-number="2.2.3" id="英国政府设计商业模式的集群组织路径"><span class="header-section-number">2.2.3</span> 英国：政府设计商业模式的集群组织路径</h3>
-<p>英国重点解决排放源与管网设施的双向等待。其产业基础包括沿海工业集群与北海油气工程能力。政府通过集群遴选确定先导网络与首批捕集项目，并设计差异化商业模式分担首发风险，通过长期合同稳定各方投资预期<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-cluster-sequencing2026" data-cite="uk-cluster-sequencing2026" data-index="68" id="cite-return-uk-cluster-sequencing2026" title="UK Department for Energy Security and Net Zero. (2026年访问). Cluster sequencing for carbon capture, usage and storage deployment. https://www.gov.uk/government/publications/cluster-sequencing-for-carbon-capture-usage-and-storage-ccus-deployment-phase-1-expressions-of-interest">68</a>]</sup>。其中，运输与封存网络采用以受监管资产基础（Regulated Asset Base，RAB）为核心的经济监管安排，由经济监管机构核定许可运营商的允许收入，并通过向网络用户收取受监管费用实现成本回收；捕集端则配置与不同应用场景相匹配的长期合同型商业模式<sup class="citation-cluster">[<a class="cite-ref" href="#ref-uk-co2-econ-reg2025" data-cite="uk-co2-econ-reg2025" data-index="70" id="cite-return-uk-co2-econ-reg2025" title="UK Department for Energy Security and Net Zero, Office of Gas and Electricity Markets. (2025年8月6日). Evolution of economic regulation for CO<sub>2</sub> storage: call for evidence (accessible webpage). https://www.gov.uk/government/calls-for-evidence/evolution-of-economic-regulation-for-co2-storage/evolution-of-economic-regulation-for-co2-storage-call-for-evidence-accessible-webpage">70</a>]</sup>。</p>
+<p>英国重点解决排放源与管网设施的双向等待。其产业基础包括沿海工业集群与北海油气工程能力。政府通过集群遴选确定先导网络与首批捕集项目，并设计差异化商业模式分担首发风险，通过长期合同稳定各方投资预期<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-cluster-sequencing2026" data-cite="uk-cluster-sequencing2026" data-index="68" id="cite-return-uk-cluster-sequencing2026" title="UK Department for Energy Security and Net Zero. (2026年访问). Cluster sequencing for carbon capture, usage and storage deployment. https://www.gov.uk/government/publications/cluster-sequencing-for-carbon-capture-usage-and-storage-ccus-deployment-phase-1-expressions-of-interest">68</a>]</sup>。其中，运输与封存网络采用以受监管资产基础（Regulated Asset Base，RAB）为核心的经济监管安排，由经济监管机构核定许可运营商的允许收入，并通过向网络用户收取受监管费用实现成本回收；捕集端则配置与不同应用场景相匹配的长期合同型商业模式<sup class="citation-cluster">[<a class="cite-ref" href="#ref-uk-co2-econ-reg2025" data-cite="uk-co2-econ-reg2025" data-index="70" id="cite-return-uk-co2-econ-reg2025" title="UK Department for Energy Security and Net Zero, Office of Gas and Electricity Markets. (2025年8月6日). Evolution of economic regulation for CO2 storage: call for evidence (accessible webpage). https://www.gov.uk/government/calls-for-evidence/evolution-of-economic-regulation-for-co2-storage/evolution-of-economic-regulation-for-co2-storage-call-for-evidence-accessible-webpage">70</a>]</sup>。</p>
 <p>网络许可、接入计量和运行规则已形成相对明确的制度安排<sup class="citation-cluster">[<a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29"  title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ofgem-co2ts" data-cite="ofgem-co2ts" data-index="30" id="cite-return-ofgem-co2ts" title="Ofgem. (2026年访问). How we regulate carbon dioxide transport and storage networks. https://www.ofgem.gov.uk/energy-regulation/low-carbon/carbon-capture-and-storage/how-we-regulate-carbon-dioxide-transport-and-storage-networks">30</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-ccs-code2025" data-cite="uk-ccs-code2025" data-index="31" id="cite-return-uk-ccs-code2025" title="UK Department for Energy Security and Net Zero. (2025). CCS Network Code. https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf">31</a>]</sup>。英国还在北海规划中协调封存、海上风电与氢能，优化系统能效并分担网络成本<sup class="citation-cluster">[<a class="cite-ref" href="#ref-uk-nsta-energy-integration2026" data-cite="uk-nsta-energy-integration2026" data-index="69" id="cite-return-uk-nsta-energy-integration2026" title="North Sea Transition Authority. (2026年访问). Energy Integration. https://www.nstauthority.co.uk/the-move-to-net-zero/energy-integration/">69</a>]</sup>。这一模式展现了政府组织先导项目并提供稳定合作框架的特征。</p>
 <h3 data-number="2.2.4" id="加拿大阿尔伯塔资源确权与省级责任治理路径"><span class="header-section-number">2.2.4</span> 加拿大/阿尔伯塔：资源确权与省级责任治理路径</h3>
 <p>加拿大的政策由联邦投资支持与省级制度共同组成。联邦 CCUS 投资税收抵免降低合格设备的投资负担<sup class="citation-cluster">[<a class="cite-ref" href="#ref-canada-ccus-itc" data-cite="canada-ccus-itc" data-index="37" id="cite-return-canada-ccus-itc" title="Canada Revenue Agency. (2026年访问). Carbon Capture, Utilization, and Storage (CCUS) Investment Tax Credit. https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/business-tax-credits/clean-economy-itc/carbon-capture-itc/about-ccus-itc.html">37</a>]</sup>；在阿尔伯塔，工业温室气体合规机制（TIER）又为符合条件的捕集和永久封存活动提供减排价值。省政府依托地下资源管理权，通过竞争性程序配置封存权，支持能够服务多个排放源的封存枢纽，并要求开发者兼顾开放接入和合理成本回收<sup class="citation-cluster">[<a class="cite-ref" href="#ref-alberta-ccus" data-cite="alberta-ccus" data-index="10" id="cite-return-alberta-ccus" title="Government of Alberta. (未注明发布日期，2026年3月25日访问). Carbon capture, utilization and storage. https://www.alberta.ca/carbon-capture-and-storage">10</a>]</sup>。</p>
 <p>阿尔伯塔还提前回答了项目关闭后由谁继续管护的问题。2010 年修法明确省政府对孔隙空间的所有权，并建立关闭证书和关闭后管理基金制度<sup class="citation-cluster">[<a class="cite-ref" href="#ref-alberta-ccus" data-cite="alberta-ccus" data-index="10"  title="Government of Alberta. (未注明发布日期，2026年3月25日访问). Carbon capture, utilization and storage. https://www.alberta.ca/carbon-capture-and-storage">10</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-closure2025" data-cite="alberta-closure2025" data-index="36"  title="Government of Alberta. (2011, current consolidation). Carbon Sequestration Tenure Regulation, Alta Reg 68/2011. https://www.canlii.org/en/ab/laws/regu/alta-reg-68-2011/latest/alta-reg-68-2011.html">36</a>]</sup>。运营者承担运行和关闭阶段的责任并向基金缴费，在满足条件、取得关闭证书后，由省政府接续法定范围内的长期责任。其路径特点，是把封存资源配置、开发者义务和关闭后管护放在省级制度内衔接。</p>
 <h3 data-number="2.2.5" id="挪威国家先导与开放式封存服务路径"><span class="header-section-number">2.2.5</span> 挪威：国家先导与开放式封存服务路径</h3>
 <p>挪威先通过海上油气项目积累地质封存经验，并持续支持捕集技术研发和工业测试。进入工业减排应用后，需要把分散的捕集、运输和封存能力组织成完整服务链。2014 年提出全规模 CCS 战略后，政府通过可行性研究和工程设计逐步筛选捕集项目、运输方案与封存场地，形成“长船”（Longship）全链条示范计划<sup class="citation-cluster">[<a class="cite-ref" href="#ref-norway-longship2020" data-cite="norway-longship2020" data-index="38" id="cite-return-norway-longship2020" title="Norwegian Ministry of Petroleum and Energy. (2020). Longship – Carbon capture and storage. https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/">38</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="39" id="cite-return-wettestad2024norway" title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">39</a>]</sup>。</p>
-<p>“长船”计划通过公共资金和长期协议分担首批项目成本，以及各环节同步建设和初始客户不足的风险。其中，“北极光”（Northern Lights）负责运输与封存，将船运、接收、管道输送和地下封存连接为一项服务<sup class="citation-cluster">[<a class="cite-ref" href="#ref-norway-longship2020" data-cite="norway-longship2020" data-index="38"  title="Norwegian Ministry of Petroleum and Energy. (2020). Longship – Carbon capture and storage. https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/">38</a>]</sup>。“北极光”从设计之初就为后续客户预留服务空间，除服务“长船”计划中的捕集项目外，还面向欧洲其他排放源签订运输封存合同，客户接入需同时满足储层许可与跨境安排<sup class="citation-cluster">[<a class="cite-ref" href="#ref-imo-ccs" data-cite="imo-ccs" data-index="5" id="cite-return-imo-ccs" title="International Maritime Organization. (2025). Carbon Capture and Storage and the London Protocol. https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx">5</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-norway-co2-regs" data-cite="norway-co2-regs" data-index="40"  title="Norwegian Offshore Directorate. (2026年访问). Regulations relating to exploitation of subsea reservoirs on the continental shelf for storage of CO<sub>2</sub> and relating to transportation of CO<sub>2</sub> on the continental shelf. https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/">40</a>]</sup>。这一路径体现了国家支持首批完整价值链、再依托共享设施发展封存服务的思路；后续市场能否扩大，仍取决于客户项目、支持政策和服务需求。</p>
+<p>“长船”计划通过公共资金和长期协议分担首批项目成本，以及各环节同步建设和初始客户不足的风险。其中，“北极光”（Northern Lights）负责运输与封存，将船运、接收、管道输送和地下封存连接为一项服务<sup class="citation-cluster">[<a class="cite-ref" href="#ref-norway-longship2020" data-cite="norway-longship2020" data-index="38"  title="Norwegian Ministry of Petroleum and Energy. (2020). Longship – Carbon capture and storage. https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/">38</a>]</sup>。“北极光”从设计之初就为后续客户预留服务空间，除服务“长船”计划中的捕集项目外，还面向欧洲其他排放源签订运输封存合同，客户接入需同时满足储层许可与跨境安排<sup class="citation-cluster">[<a class="cite-ref" href="#ref-imo-ccs" data-cite="imo-ccs" data-index="5" id="cite-return-imo-ccs" title="International Maritime Organization. (2025). Carbon Capture and Storage and the London Protocol. https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx">5</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-norway-co2-regs" data-cite="norway-co2-regs" data-index="40"  title="Norwegian Offshore Directorate. (2026年访问). Regulations relating to exploitation of subsea reservoirs on the continental shelf for storage of CO2 and relating to transportation of CO2 on the continental shelf. https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/">40</a>]</sup>。这一路径体现了国家支持首批完整价值链、再依托共享设施发展封存服务的思路；后续市场能否扩大，仍取决于客户项目、支持政策和服务需求。</p>
 <h3 data-number="2.2.6" id="中国规划与工程示范先行的治理路径"><span class="header-section-number">2.2.6</span> 中国：规划与工程示范先行的治理路径</h3>
 <p>中国通过国家规划、科技任务和骨干企业示范推进 CCUS，政策重点覆盖低能耗捕集研发、工业耦合及全流程工程示范，大型能源与工业企业为关键实施主体<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ndrc-green-demo2023" data-cite="ndrc-green-demo2023" data-index="15" id="cite-return-ndrc-green-demo2023" title="国家发展改革委等十部门. (2023年8月4日). 关于印发《绿色低碳先进技术示范工程实施方案》的通知. 发改环资〔2023〕1093号. https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230822_1359995.html">15</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc2024" data-cite="cnooc2024" data-index="18" id="cite-return-cnooc2024" title="CNOOC Limited. (2024). 2023 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf">18</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnpc-sr2025" data-cite="cnpc-sr2025" data-index="28" id="cite-return-cnpc-sr2025" title="中国石油天然气集团有限公司. (2025). 企业社会责任报告 2024. https://www.cnpc.com.cn/cnpc/lncbw/202505/55347d1f8d2843c79e99fd61d180067b/files/4dc524c14cd949fb941e2e16986b8fb6.pdf">28</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-most2022tech" data-cite="most2022tech" data-index="71" id="cite-return-most2022tech" title="科技部, 国家发展改革委, 工业和信息化部, 等. (2022). 科技支撑碳达峰碳中和实施方案（2022—2030年）. https://www.gov.cn/zhengce/zhengceku/2022-08/18/5705865/files/94318119b8464e2583a3d4284df9c855.pdf">71</a>]</sup>。</p>
-<p>随着示范向多主体共享设施扩展，单体工程的内部协调难以自发转化为跨主体的制度规则。中国的突出矛盾是项目动员能力较强，而单体示范中的内部协调尚未转化为跨主体的价值分配、接入与责任机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17" id="cite-return-pboc-green-finance-2025" title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO<sub>2</sub> Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63" id="cite-return-china-ets-work2026" title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a>]</sup>。其具体现实起点与制度窗口详见 2.4 节。</p>
+<p>随着示范向多主体共享设施扩展，单体工程的内部协调难以自发转化为跨主体的制度规则。中国的突出矛盾是项目动员能力较强，而单体示范中的内部协调尚未转化为跨主体的价值分配、接入与责任机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17" id="cite-return-pboc-green-finance-2025" title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO2 Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63" id="cite-return-china-ets-work2026" title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a>]</sup>。其具体现实起点与制度窗口详见 2.4 节。</p>
 <p>综合来看，各法域治理路径的主要差异，在于产业形成初期由谁弥补减排价值缺口、谁承担先导基础设施风险，以及长期责任如何安排；这些风险在政府、开发主体和市场参与者之间的不同分配，塑造了各自的治理组合。</p>
 <h2 data-number="2.3" id="政策工具如何组织集群形成"><span class="header-section-number">2.3</span> 政策工具如何组织集群形成</h2>
 <p>跨法域经验表明，在集群形成初期，CCUS 的专业化分工通常难以仅靠市场机制自发形成。首发风险主要集中于开发准备、投资决策和网络启动阶段；随着项目进入稳定运行、扩张和关闭，治理重点逐步转向履约协调、容量管理和长期责任。因此，政策支持与治理工具也需要随生命周期调整。政策组合最终需要同时保障捕集端的持续减排收益、运输封存端的长期现金流，并明确建设、运行与关闭后的责任边界，使“源—网—库”具备同步投资和稳定运行的条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
@@ -2802,13 +2769,26 @@
 <p>进入建设投运与协同履约阶段，治理重点开始转向各环节同步建设和实际履约。捕集、运输与封存设施需要按合同节点衔接，计量交接、流质控制、异常处置、信息披露和减排归因等规则则需要在投运爬坡和实际履约中接受检验。</p>
 <p>进入运行扩张期后，新增接入、容量分配与扩容规则成为关键。随着网络利用率提升、需求与收入预期趋稳，公共支持可逐步减少，并更多用于覆盖特定风险。越过初始投资门槛后，能源惩罚、运行维护成本和长期管护责任仍持续影响项目经济性和运行条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-rogge2016" data-cite="rogge2016" data-index="76" id="cite-return-rogge2016" title="Rogge, K. S., &amp; Reichardt, K. (2016). Policy mixes for sustainability transitions: An extended concept and framework for analysis. Research Policy, 45(8), 1620–1635. https://doi.org/10.1016/j.respol.2016.04.004">76</a>]</sup>。进入关闭后阶段，长期环境与风险监测、财务保障和责任接续则成为治理重点。</p>
 <p>为比较不同生命周期阶段的系统瓶颈，本文进一步从 TIS 功能视角观察产业形成所需功能能否协同形成并相互强化。集群启动通常同时依赖方向引导、资源动员和市场形成：明确的政策预期与公共先导投入需要与锚定用户、长期合同共同形成投资条件；封存开发则既依赖地质知识积累，也依赖许可、权属和长期责任规则提供制度确定性。不同功能之间相互影响：市场形成不足会削弱收入预期和资源动员，许可、权属与责任规则不明确则增加融资和长期合同安排难度。因此，本文重点识别阻塞产业形成的关键功能及其相互作用。</p>
-<p>从这一视角看，中国在方向引导、知识开发与扩散和资源动员方面已有较多政策与示范基础，而市场形成和合法性创建所依赖的跨主体价值确认、许可及长期责任制度仍不完整<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-lai2012" data-cite="lai2012" data-index="75"  title="Lai, X., Ye, Z., Xu, Z., Holmes, M. H., &amp; Lambright, W. H. (2012). Carbon capture and sequestration technological innovation system in China: Structure, function evaluation and policy implication. Energy Policy, 50, 635–646. https://doi.org/10.1016/j.enpol.2012.08.004">75</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-rogge2016" data-cite="rogge2016" data-index="76"  title="Rogge, K. S., &amp; Reichardt, K. (2016). Policy mixes for sustainability transitions: An extended concept and framework for analysis. Research Policy, 45(8), 1620–1635. https://doi.org/10.1016/j.respol.2016.04.004">76</a>]</sup>。<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a> 据此汇总两项关键约束、分阶段治理任务及中国在各项任务上的相对基础。</p>
-<figure id="fig:cluster_stages">
-<img src="./data/Figure_cn_4.png" style="width:98.0%" />
-<p>注：上部展示 CCUS 集群形成面临的两项关键约束——能源惩罚（Energy Penalty）与首发风险（First-mover Risk）；下部从技术创新系统（TIS）视角归纳产业形成过程中不同生命周期阶段的治理任务，并以颜色反映中国当前在相应任务上的相对基础。下部四列对正文所述生命周期阶段作适度合并，以突出治理重点，与第 5 章“探索示范—集群形成—规模扩张”的治理推进阶段不作一一对应；颜色标注为定性诊断，不表示任务优先级，也不构成量化评分。资料来源：作者根据 TIS 功能文献、IEA 关于 CCUS 法律监管、商业模式与融资的研究，以及本文跨法域比较综合归纳<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccus-legal2022" data-cite="iea-ccus-legal2022" data-index="41" id="cite-return-iea-ccus-legal2022" title="IEA. (2022年7月25日). Legal and Regulatory Frameworks for CCUS: An IEA CCUS Handbook. IEA, Paris. https://www.iea.org/reports/legal-and-regulatory-frameworks-for-ccus">41</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a>]</sup>。</p>
-<figcaption>CCUS 集群形成的关键约束与阶段性治理任务</figcaption>
-</figure>
-<p><a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a> 将上述治理组合进一步落到项目生命周期。定性诊断显示，中国在方向引导和工程实施方面已有较强基础，而市场形成、孔隙权与封存区块获取、长期责任以及社会与环境接受等任务仍存在不同程度的制度缺口。下文据此进一步梳理中国的现实起点与制度窗口。</p>
+<p>从这一视角看，中国在方向引导、知识开发与扩散和资源动员方面已有较多政策与示范基础，而市场形成和合法性创建所依赖的跨主体价值确认、许可及长期责任制度仍不完整<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-lai2012" data-cite="lai2012" data-index="75"  title="Lai, X., Ye, Z., Xu, Z., Holmes, M. H., &amp; Lambright, W. H. (2012). Carbon capture and sequestration technological innovation system in China: Structure, function evaluation and policy implication. Energy Policy, 50, 635–646. https://doi.org/10.1016/j.enpol.2012.08.004">75</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-rogge2016" data-cite="rogge2016" data-index="76"  title="Rogge, K. S., &amp; Reichardt, K. (2016). Policy mixes for sustainability transitions: An extended concept and framework for analysis. Research Policy, 45(8), 1620–1635. https://doi.org/10.1016/j.respol.2016.04.004">76</a>]</sup>。<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 据此汇总两项关键约束、分阶段治理任务及中国在各项任务上的相对基础。</p>
+
+    <figure class="academic-figure" id="fig:cluster_stages">
+      <div class="figure-header">
+        <div class="figure-title-group">
+          <span class="figure-label">图 2</span>
+          <span class="figure-title">CCUS 集群形成的关键约束与阶段性治理任务</span>
+        </div>
+        <span class="figure-tip">🔍 点击放大</span>
+      </div>
+      <div class="figure-img-wrap">
+        <img src="./data/Figure_cn_4.png" alt="CCUS 集群形成的关键约束与阶段性治理任务" loading="lazy" />
+      </div>
+      
+      <div class="figure-notes">
+        <span class="note-tag">注</span>
+        <div class="note-text">上部展示 CCUS 集群形成面临的两项关键约束——能源惩罚（Energy Penalty）与首发风险（First-mover Risk）；下部从技术创新系统（TIS）视角归纳产业形成过程中不同生命周期阶段的治理任务，并以颜色反映中国当前在相应任务上的相对基础。下部四列对正文所述生命周期阶段作适度合并，以突出治理重点，与第 5 章“探索示范—集群形成—规模扩张”的治理推进阶段不作一一对应；颜色标注为定性诊断，不表示任务优先级，也不构成量化评分。资料来源：作者根据 TIS 功能文献、IEA 关于 CCUS 法律监管、商业模式与融资的研究，以及本文跨法域比较综合归纳<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccus-legal2022" data-cite="iea-ccus-legal2022" data-index="41" id="cite-return-iea-ccus-legal2022" title="IEA. (2022年7月25日). Legal and Regulatory Frameworks for CCUS: An IEA CCUS Handbook. IEA, Paris. https://www.iea.org/reports/legal-and-regulatory-frameworks-for-ccus">41</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a>]</sup>。</div>
+      </div>
+    </figure>
+<p><a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 将上述治理组合进一步落到项目生命周期。定性诊断显示，中国在方向引导和工程实施方面已有较强基础，而市场形成、孔隙权与封存区块获取、长期责任以及社会与环境接受等任务仍存在不同程度的制度缺口。下文据此进一步梳理中国的现实起点与制度窗口。</p>
 <h2 data-number="2.4" id="中国治理体系的现实起点与制度窗口"><span class="header-section-number">2.4</span> 中国治理体系的现实起点与制度窗口</h2>
 <h3 data-number="2.4.1" id="现实起点政策支持与工程标准进展"><span class="header-section-number">2.4.1</span> 现实起点：政策支持与工程、标准进展</h3>
 <p>中国将 CCUS 定位为实现深度减排和碳中和的“兜底”与末端固碳技术储备<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ndrc-green-demo-qa2023" data-cite="ndrc-green-demo-qa2023" data-index="81" id="cite-return-ndrc-green-demo-qa2023" title="国家发展改革委. (2023年8月22日). 国家发展改革委有关负责同志就《绿色低碳先进技术示范工程实施方案》答记者问. https://www.ndrc.gov.cn/xxgk/jd/jd/202308/t20230822_1360007_ext.html">81</a>]</sup>。《科技支撑碳达峰碳中和实施方案（2022—2030年）》明确部署了低能耗百万吨级成套工艺研发、大型油气田示范及工业流程与清洁能源耦合研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-most2022tech" data-cite="most2022tech" data-index="71"  title="科技部, 国家发展改革委, 工业和信息化部, 等. (2022). 科技支撑碳达峰碳中和实施方案（2022—2030年）. https://www.gov.cn/zhengce/zhengceku/2022-08/18/5705865/files/94318119b8464e2583a3d4284df9c855.pdf">71</a>]</sup>。</p>
@@ -2816,26 +2796,27 @@
 <p>工程示范已从油气田场景扩展至煤电、钢铁与水泥等行业。油气与地质封存方面，齐鲁石化—胜利油田百万吨级项目、恩平 15-1 海上封存示范已投入运行，大庆敖南 CCUS-EOR 集输系统于 2025 年投运，大亚湾多排放源集群于同年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc2024" data-cite="cnooc2024" data-index="18"  title="CNOOC Limited. (2024). 2023 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf">18</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnpc-aonan2025" data-cite="cnpc-aonan2025" data-index="19" id="cite-return-cnpc-aonan2025" title="中国石油天然气集团有限公司. (2025年7月28日). 我国首个百万吨级非混相驱 CCUS 全产业链示范基地核心工程投产. https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml">19</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="27" id="cite-return-cnooc-results2026" title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-sinopec-qilu2022" data-cite="sinopec-qilu2022" data-index="88" id="cite-return-sinopec-qilu2022" title="国家能源局. (2022年9月2日). 我国首个百万吨级 CCUS 项目全面建成投产. https://www.nea.gov.cn/2022-09/02/c_1310658658.htm">88</a>]</sup>。煤电方面，华能正宁 150 万吨/年工程于 2025 年投运；钢铁与水泥领域也已开展工业示范<sup class="citation-cluster">[<a class="cite-ref" href="#ref-huaneng-zhengning2025" data-cite="huaneng-zhengning2025" data-index="85" id="cite-return-huaneng-zhengning2025" title="国务院国资委. (2025年9月28日). 全球最大煤电碳捕集示范工程在华能投运. http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html">85</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hegang-ccus2026" data-cite="hegang-ccus2026" data-index="86" id="cite-return-hegang-ccus2026" title="河北省人民政府. (2026年1月7日). 河钢CCUS技术工业示范项目在唐钢新区全线贯通. https://www.hebei.gov.cn/columns/580d0301-2e0b-4152-9dd1-7d7f4e0f4980/202601/07/f4cf9f76-33e1-456e-9e92-3ea52a646a69.html">86</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-qingzhou-ccus2025" data-cite="qingzhou-ccus2025" data-index="87" id="cite-return-qingzhou-ccus2025" title="国家发展改革委办公厅. (2025年4月16日). 关于印发《绿色低碳先进技术示范项目清单（第二批）》的通知（发改办环资〔2025〕396号）. https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20500">87</a>]</sup>。</p>
 <p>标准体系已覆盖管输、介质质量、地质封存和驱油封存等关键环节。GB/T 42797-2023 规范管输系统，GB/T 46872-2025、GB/T 46875-2025、GB/T 46878-2025 与 GB/T 46871-2025（2026年7月实施）分别规范共性术语、管输介质、地质封存与驱油封存<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gbt46872-2025" data-cite="gbt46872-2025" data-index="13" id="cite-return-gbt46872-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46872-2025: 二氧化碳捕集、运输和地质封存 词汇 共性术语. 发布日期：2025-12-31；实施日期：2026-07-01. https://std.samr.gov.cn/gb/search/gbDetailed?id=wPHTYrjhhLY%3D&amp;mode=p">13</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46875-2025" data-cite="gbt46875-2025" data-index="14"  title="国家数字标准馆. (2025). GB/T 46875-2025: 进入二氧化碳长输管道介质质量要求. 发布日期：2025-12-31；实施日期：2026-07-01. https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479">14</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt42797-2023" data-cite="gbt42797-2023" data-index="89" id="cite-return-gbt42797-2023" title="国家市场监督管理总局, 国家标准化管理委员会. (2023). GB/T 42797-2023: 二氧化碳捕集、输送和地质封存 管道输送系统. 2023年9月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=FC816D04FEBF62EBE05397BE0A0AD5FA">89</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46878-2025" data-cite="gbt46878-2025" data-index="90"  title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46878-2025: 二氧化碳捕集、运输和地质封存 地质封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A">90</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46871-2025" data-cite="gbt46871-2025" data-index="91"  title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46871-2025: 二氧化碳捕集、运输和地质封存 提高原油采收率的二氧化碳封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A">91</a>]</sup>，为工程实施提供了较完整的标准基础；封存许可、孔隙空间权属与使用安排、责任接续仍待进一步制度建设。</p>
 <p>配套制度方面，《绿色金融支持项目目录（2025年版）》纳入了捕集、利用与封存项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17"  title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a>]</sup>；全国碳市场 2026 年要求对重点行业实施月度信息化存证与核查<sup class="citation-cluster">[<a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63"  title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a>]</sup>。总体看，中国工程示范推进较快，但跨主体协同规则仍不完整。现有制度安排更多围绕单体项目展开，CCUS 减排价值确认、服务定价、长期责任和网络型基础设施协调机制仍待完善，专业化捕集、运输与封存服务所需的制度基础尚不完整。</p>
-<p>下一阶段制度建设需要重点处理 CO<sub>2</sub> 监管属性、深部孔隙空间权属及使用安排、封存区块配置与获取机制，以及停注后的风险评估、长期责任接续和公共管护机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO<sub>2</sub> Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a>]</sup>。</p>
+<p>下一阶段制度建设需要重点处理 CO<sub>2</sub> 监管属性、深部孔隙空间权属及使用安排、封存区块配置与获取机制，以及停注后的风险评估、长期责任接续和公共管护机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO2 Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a>]</sup>。</p>
 <h3 data-number="2.4.2" id="制度窗口在集群形成期同步塑造规则"><span class="header-section-number">2.4.2</span> 制度窗口：在集群形成期同步塑造规则</h3>
-<p>工程示范、标准实施和应用场景培育，为检验跨主体合作规则提供了条件。多个企业共用设施后，服务合同需要明确交付和付费，公共支持需要核验实施效果，长期责任审查需要持续的监测与风险记录。这些制度用途共同提出了证据需求。因此，可在集群遴选、可研和许可衔接阶段同步明确计量边界、交接记录和数据责任，并将证据要求与接入规则、责任分工及后续审查相衔接，再依据运行结果校准相关规则与证据要求。在<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a> 的生命周期诊断基础上，<a href="#tab:china_basis_gaps" class="table-ref-link" title="点击查看表 2-2 中国 CCUS 集群治理的现实基础与待补功能">表 2-2</a> 进一步将中国的现实基础与待补功能归纳为三类系统问题和两项关键约束。</p>
-<div id="tab:china_basis_gaps">
+<p>工程示范、标准实施和应用场景培育，为检验跨主体合作规则提供了条件。多个企业共用设施后，服务合同需要明确交付和付费，公共支持需要核验实施效果，长期责任审查需要持续的监测与风险记录。这些制度用途共同提出了证据需求。因此，可在集群遴选、可研和许可衔接阶段同步明确计量边界、交接记录和数据责任，并将证据要求与接入规则、责任分工及后续审查相衔接，再依据运行结果校准相关规则与证据要求。在<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 的生命周期诊断基础上，<a href="#tab:china_basis_gaps" class="table-ref-link" title="点击查看表 2-2 中国 CCUS 集群治理的现实基础与待补功能">表 2-2</a> 进一步将中国的现实基础与待补功能归纳为三类系统问题和两项关键约束。</p>
 
-    <div class="table-container-card" id="tab:china_cluster_governance">
+    <div class="table-container-card" id="tab:china_basis_gaps">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
           <span class="table-badge">表 2-2</span>
           <span class="table-title">中国 CCUS 集群治理的现实基础与待补功能</span>
         </div>
+        
       </div>
       <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
+        <table class="standard-table">
           
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>治理维度</strong></th>
-<th style="text-align: left;"><strong>现实基础（既有起点）</strong></th>
-<th style="text-align: left;"><strong>待补功能（形成期关键任务）</strong></th>
+<th style="text-align: left;">治理维度</th>
+<th style="text-align: left;">现实基础（既有起点）</th>
+<th style="text-align: left;">待补功能（形成期关键任务）</th>
 </tr>
 </thead>
 <tbody>
@@ -2868,9 +2849,9 @@
 
         </table>
       </div>
+      
     </div>
   
-</div>
 <p>中国正由探索示范向集群形成过渡，政策动员、工程实施与标准建设已有基础，突破口在于把单体示范的内部协调转化为跨主体的组织规则、价值确认与长期责任安排。结合前文比较，中国集群治理可进一步归结为三个具体问题：一是减排价值如何确认，并在捕集、运输、封存及长期责任承担主体之间合理分配；二是多主体共用设施下，由谁组织集群，准入、容量、计量交接、异常与扩容按什么规则运行；三是封存许可、孔隙空间权属、关闭与责任接续的审查依据什么证据、由谁以什么权限复核。三个问题在进入实际运行与制度执行后，都对跨主体可复核的工程证据提出要求。</p>
 <p>上述缺口涉及市场机制、基础设施组织、许可确权、长期责任与证据能力等多个层面，并不能由单一工具解决。其中，价值形成和法定责任安排仍有赖于政策、合同与制度建设；相比之下，跨主体证据机制可以较早嵌入现有示范和集群设计，在不预设最终制度形态的条件下先行验证。下文因此聚焦 dMRV，讨论工程事实如何被组织为可复核、可跨主体使用的制度证据。</p>
 <h1 data-number="3" id="从工程事实到可复核证据"><span class="header-section-number">3</span> 从工程事实到可复核证据</h1>
@@ -2888,16 +2869,12 @@
       <div class="figure-img-wrap">
         <img src="./data/Figure_cn_3_ver2.png" alt="从工程事实到制度用途：CCUS dMRV 的证据基础设施定位" loading="lazy" />
       </div>
-      <div class="figure-notes">
-        <span class="note-tag">注</span>
-        <div class="note-text">展示了规范性框架（监管/标准/方法学）、工程事实、证据组织接口与制度用途（核证、结算、金融、责任接续）之间的四层映射体系与证据支撑网络。</div>
-      </div>
+      
     </figure>
-  
-<p>如<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3：从工程事实到制度用途 CCUS dMRV 的证据基础设施定位">图 3</a> 所示，上述结构性变化使工程数据具备跨主体复核和复用的条件。本文所称产业信用，是不同主体能够基于同一组可复核工程事实开展交付确认、减排核证、监管审查和责任判断，并由此形成协作所需的可信基础。支撑这些工程事实跨主体、跨制度过程持续组织、追溯和复用的证据能力，本文称为“产业信用基础设施”。当这种证据机制具备共同语义、全流程追溯、差异化证据输出与制度可用性，并实际服务于结算、核证或监管过程时，即构成本文所讨论的产业信用基础设施。</p>
+<p>如<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3 从工程事实到制度用途：CCUS dMRV 的证据基础设施定位">图 3</a> 所示，上述结构性变化使工程数据具备跨主体复核和复用的条件。本文所称产业信用，是不同主体能够基于同一组可复核工程事实开展交付确认、减排核证、监管审查和责任判断，并由此形成协作所需的可信基础。支撑这些工程事实跨主体、跨制度过程持续组织、追溯和复用的证据能力，本文称为“产业信用基础设施”。当这种证据机制具备共同语义、全流程追溯、差异化证据输出与制度可用性，并实际服务于结算、核证或监管过程时，即构成本文所讨论的产业信用基础设施。</p>
 <h2 data-number="3.1" id="规则字段化明确什么必须被证明"><span class="header-section-number">3.1</span> 规则字段化：明确什么必须被证明</h2>
 <p>规范性框架首先回答“什么必须被证明”。法规和许可规定项目边界、安全要求、监测义务和责任条件；方法学规定核算边界、参数、公式、数据质量和不确定性处理；合同和网络规则规定交付标准、容量分配、损耗分摊、异常处置和违约责任；技术标准则统一术语、计量、流质和工程接口。dMRV 的第一项工作，是将这些要求转化为可记录、可校核、可追溯的数据字段、计算逻辑和事件规则。</p>
-<p><a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1">表 3-1</a> 归纳了 CCUS 集群 dMRV 的五项核心证据域。具体字段应根据项目边界、适用方法学、许可和合同要求确定，并按不同用途输出。例如，能源消耗作为物理活动数据、能源碳强度作为核算参数，共同进入净减排核算；而能源价格与机会成本属于外部经济评价参数而非工程监测事实，应与活动数据及适用规则版本建立关联，并与底层工程证据分层保存。</p>
+<p><a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1 CCUS 集群 dMRV 的最小证据字段框架">表 3-1</a> 归纳了 CCUS 集群 dMRV 的五项核心证据域。具体字段应根据项目边界、适用方法学、许可和合同要求确定，并按不同用途输出。例如，能源消耗作为物理活动数据、能源碳强度作为核算参数，共同进入净减排核算；而能源价格与机会成本属于外部经济评价参数而非工程监测事实，应与活动数据及适用规则版本建立关联，并与底层工程证据分层保存。</p>
 
     <div class="table-container-card" id="tab:dmrv_minimum_fields">
       <div class="table-card-toolbar">
@@ -2905,15 +2882,17 @@
           <span class="table-badge">表 3-1</span>
           <span class="table-title">CCUS 集群 dMRV 的最小证据字段框架</span>
         </div>
+        
       </div>
       <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
+        <table class="standard-table">
           
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>字段类别</strong></th>
-<th style="text-align: left;"><strong>最低记录内容</strong></th>
-<th style="text-align: left;"><strong>主要制度用途</strong></th>
+<th style="text-align: left;">字段类别</th>
+<th style="text-align: left;">最低记录内容</th>
+<th style="text-align: left;">主要制度用途</th>
 </tr>
 </thead>
 <tbody>
@@ -2946,6 +2925,7 @@
 
         </table>
       </div>
+      
     </div>
   
 <p>例如，若合同按月确认合格交付量，就需要明确交接计量点、统计时间窗、流质判定条件、计量更正方式和确认主体。规则字段化的作用，是使这些要求能够在日常记录和后续复核中得到一致执行。传统流程中，捕集方、运输方和封存方可能分别汇总数据后再进行人工对账；在 dMRV 场景中，同一交接点、时间窗和规则版本通过共同标识保持关联，计量更正可以明确追踪其对结算和后续核证材料的影响。</p>
@@ -2956,7 +2936,7 @@
 <p>捕集量、交付量和注入量是净减排核算的输入，而非最终结果。全链条净减排量必须在一致系统边界下，扣减捕集、压缩、运输与注入封存等环节的相关排放，其中能源惩罚引致的附加排放是重要组成部分。dMRV 在净减排核算中的作用，是完整留存全环节能耗活动数据、对应时段的能源碳强度、计算规则版本与不确定性调整记录，使最终的净减排结论能够逐级回溯至原始工程记录。碳信用签发另适用相应机制的合格性规则。</p>
 <h3 data-number="3.2.1" id="从传感器到证据链风险导向的监测组合"><span class="header-section-number">3.2.1</span> 从传感器到证据链：风险导向的监测组合</h3>
 <p>CCUS 封存监测通常采用风险导向的组合设计。项目应依据场地风险和监测计划，在注入前建立基线，在运行期间开展持续或定期观测，并在发现异常时启动针对性调查。按计划开展的重复观测与异常触发的追加监测共同支持风险判断。证据“连续”并不要求所有数据实时上传，而是要求每项关键风险均有明确的数据来源、更新频率、触发阈值、升级路径和处置记录。Quest 等项目的 MMV 计划覆盖注入设施、井筒、储层、地下水、地表和大气等监测域，并根据风险变化调整技术组合<sup class="citation-cluster">[<a class="cite-ref" href="#ref-shellquest-mmv2024" data-cite="shellquest-mmv2024" data-index="34" id="cite-return-shellquest-mmv2024" title="Shell Canada. (2024). Quest CCS Project: 2023 Annual Knowledge Sharing Report – MMV Performance. Project knowledge-sharing report. https://open.alberta.ca/publications/quest-carbon-capture-and-storage-project-annual-knowledge-sharing-report">34</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49" id="cite-return-bourne2014quest" title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a>]</sup>。</p>
-<p>连续证据链应覆盖三个相互衔接的状态。基线状态记录注入前的环境和地下系统初始条件；运行状态说明注入量、压力响应、流质变化和设备运行是否处于许可边界内；风险状态记录羽流迁移、井筒完整性、浅层环境和受体暴露是否出现偏离或异常。统一时间戳、版本记录、触发阈值和处置留痕将三类状态连接起来，使监管部门和第三方核证机构能够还原项目各阶段的运行状态及当时可用的证据依据。连续证据的作用，是使风险状态能够随新证据持续更新，并为监测调整、关闭判断和责任接续保留可追溯的依据。<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2">表 3-2</a> 列示了各层级监测的核心功能与证明边界；其中模型符合性关注实测地下行为与预测是否一致，封闭性判断则需综合储层、井筒与环境等多维证据相互印证。</p>
+<p>连续证据链应覆盖三个相互衔接的状态。基线状态记录注入前的环境和地下系统初始条件；运行状态说明注入量、压力响应、流质变化和设备运行是否处于许可边界内；风险状态记录羽流迁移、井筒完整性、浅层环境和受体暴露是否出现偏离或异常。统一时间戳、版本记录、触发阈值和处置留痕将三类状态连接起来，使监管部门和第三方核证机构能够还原项目各阶段的运行状态及当时可用的证据依据。连续证据的作用，是使风险状态能够随新证据持续更新，并为监测调整、关闭判断和责任接续保留可追溯的依据。<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2 CCUS 连续证据链的主要监测层级、证明功能与边界">表 3-2</a> 列示了各层级监测的核心功能与证明边界；其中模型符合性关注实测地下行为与预测是否一致，封闭性判断则需综合储层、井筒与环境等多维证据相互印证。</p>
 
     <div class="table-container-card" id="tab:continuous_evidence_monitoring">
       <div class="table-card-toolbar">
@@ -2964,16 +2944,18 @@
           <span class="table-badge">表 3-2</span>
           <span class="table-title">CCUS 连续证据链的主要监测层级、证明功能与边界</span>
         </div>
+        
       </div>
       <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
+        <table class="standard-table">
           
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>监测层级</strong></th>
-<th style="text-align: left;"><strong>常见数据或技术</strong></th>
-<th style="text-align: left;"><strong>主要回答的问题</strong></th>
-<th style="text-align: left;"><strong>证明边界 / 需补充证据</strong></th>
+<th style="text-align: left;">监测层级</th>
+<th style="text-align: left;">常见数据或技术</th>
+<th style="text-align: left;">主要回答的问题</th>
+<th style="text-align: left;">证明边界 / 需补充证据</th>
 </tr>
 </thead>
 <tbody>
@@ -3005,12 +2987,13 @@
 
         </table>
       </div>
+      
     </div>
   
-<p>分布式声学传感（DAS）和数字孪生/数字影子说明了技术工具在证据链中的具体定位。DAS 可通过光纤信号记录振动或应变，配合地震观测推断地下变化，但不能直接等同于地下 CO<sub>2</sub> 质量；Quest 的 DAS-VSP 实践表明，其结果仍需结合基线、采集条件和储层模型反演解释。数字孪生或数字影子可支持“预测—观测—偏差识别—模型校准”的迭代过程，其证据价值在于完整保留输入数据、校准记录、模型版本和不确定性。技术工具能够提高数据获取与分析效率，但不能替代校准记录、版本控制、解释依据与专业人员的人工复核<sup class="citation-cluster">[<a class="cite-ref" href="#ref-mateeva2014" data-cite="mateeva2014" data-index="48" id="cite-return-mateeva2014" title="Mateeva, A., et al. (2014). Distributed acoustic sensing for reservoir monitoring with VSP. Geophysical Prospecting, 62(4), 679-692. https://doi.org/10.1111/1365-2478.12116">48</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49"  title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-harvey2022quest" data-cite="harvey2022quest" data-index="50" id="cite-return-harvey2022quest" title="Harvey, S., et al. (2022). Quest CCS facility: Time-lapse seismic campaigns. International Journal of Greenhouse Gas Control, 117, 103665. https://doi.org/10.1016/j.ijggc.2022.103665">50</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gahlot2025shadow" data-cite="gahlot2025shadow" data-index="52" id="cite-return-gahlot2025shadow" title="Gahlot, A. P., et al. (2025). An uncertainty-aware digital shadow for underground multimodal CO<sub>2</sub> storage monitoring. Geophysical Journal International, 242(1), ggaf176. https://doi.org/10.1093/gji/ggaf176">52</a>]</sup>。</p>
+<p>分布式声学传感（DAS）和数字孪生/数字影子说明了技术工具在证据链中的具体定位。DAS 可通过光纤信号记录振动或应变，配合地震观测推断地下变化，但不能直接等同于地下 CO<sub>2</sub> 质量；Quest 的 DAS-VSP 实践表明，其结果仍需结合基线、采集条件和储层模型反演解释。数字孪生或数字影子可支持“预测—观测—偏差识别—模型校准”的迭代过程，其证据价值在于完整保留输入数据、校准记录、模型版本和不确定性。技术工具能够提高数据获取与分析效率，但不能替代校准记录、版本控制、解释依据与专业人员的人工复核<sup class="citation-cluster">[<a class="cite-ref" href="#ref-mateeva2014" data-cite="mateeva2014" data-index="48" id="cite-return-mateeva2014" title="Mateeva, A., et al. (2014). Distributed acoustic sensing for reservoir monitoring with VSP. Geophysical Prospecting, 62(4), 679-692. https://doi.org/10.1111/1365-2478.12116">48</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49"  title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-harvey2022quest" data-cite="harvey2022quest" data-index="50" id="cite-return-harvey2022quest" title="Harvey, S., et al. (2022). Quest CCS facility: Time-lapse seismic campaigns. International Journal of Greenhouse Gas Control, 117, 103665. https://doi.org/10.1016/j.ijggc.2022.103665">50</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gahlot2025shadow" data-cite="gahlot2025shadow" data-index="52" id="cite-return-gahlot2025shadow" title="Gahlot, A. P., et al. (2025). An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring. Geophysical Journal International, 242(1), ggaf176. https://doi.org/10.1093/gji/ggaf176">52</a>]</sup>。</p>
 <h3 data-number="3.2.2" id="跨主体证据链交接批次与责任边界"><span class="header-section-number">3.2.2</span> 跨主体证据链：交接、批次与责任边界</h3>
 <p>集群场景中的证据链需要跨越多个法人主体和物理节点。多源 CO<sub>2</sub> 依次经过捕集端、管网入口、压缩站、运输区段、封存接收端和注入井，每次交接均涉及流量、流质、计量不确定度、运行排放、与交付相关的责任边界和数据版本。统一的来源标识、批次或时间窗规则、节点质量平衡和交接追溯链（chain of custody），可使工程记录在跨主体流转中保持可归因性，并为结算、核证和责任判断提供连续底账<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12" id="cite-return-iso27913" title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-ccs-code2025" data-cite="uk-ccs-code2025" data-index="31"  title="UK Department for Energy Security and Net Zero. (2025). CCS Network Code. https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf">31</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-mrr2024" data-cite="eu-mrr2024" data-index="32"  title="European Commission. (2024). Commission Implementing Regulation (EU) 2024/2493 amending Implementing Regulation (EU) 2018/2066 as regards the monitoring and reporting of greenhouse gas emissions pursuant to Directive 2003/87/EC. https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj">32</a>]</sup>。</p>
-<p>多源 CO<sub>2</sub> 进入共享设施后，统一标识可以保留来源关联，但各来源的交付量、服务链排放和减排成果归属，仍需依据各自适用的计量、核算和合同规则确定。例如，Verra VT0012 明确了共享设施中非 VCS 碳流的排放分摊与核算边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61" id="cite-return-verra-vt0012" title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO<sub>2</sub> in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。系统应保存分摊所采用的时间窗、数据、规则版本和确认记录，使相关结果能够复算和核查。物理数量的分摊与合同权益的分配应分别说明，不能仅凭来源标识推定。</p>
+<p>多源 CO<sub>2</sub> 进入共享设施后，统一标识可以保留来源关联，但各来源的交付量、服务链排放和减排成果归属，仍需依据各自适用的计量、核算和合同规则确定。例如，Verra VT0012 明确了共享设施中非 VCS 碳流的排放分摊与核算边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61" id="cite-return-verra-vt0012" title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。系统应保存分摊所采用的时间窗、数据、规则版本和确认记录，使相关结果能够复算和核查。物理数量的分摊与合同权益的分配应分别说明，不能仅凭来源标识推定。</p>
 <p>跨主体证据链不仅需要保存修订历史，还需要识别修订影响了哪些后续结果。例如，某排放源的交付计量经复核发生更正，应检查相应分摊计算、客户凭证和核证材料是否需要调整，并记录修订原因、确认主体和处理状态。已出具结果的更正，应按适用程序由相应主体确认，不能由系统直接覆盖。只有保留这些版本及其影响关系，后续争议处理和责任追溯才有可靠依据。</p>
 <h2 data-number="3.3" id="制度衔接让证据进入核证结算与责任判断"><span class="header-section-number">3.3</span> 制度衔接：让证据进入核证、结算与责任判断</h2>
 <p>制度衔接的核心，是将连续工程记录组织为可用于核证、结算、责任判断和外部评估的证据输出。证据输出应按主体职责、权限和信息需求有所区分，而不是无差别开放原始工程数据。不同主体的审查重点也各不相同：</p>
@@ -3021,7 +3004,7 @@
 <li><p><strong>银行与保险机构</strong>：将工程和履约记录作为风险评估的部分依据，具体数据需求依据其尽调、授信或核保目的确定。</p></li>
 </ul>
 <p>不同用途可以共享底层事实，但采用的核算边界、证明要求和最终判断并不相同。对外证据输出应说明数据所属期间、适用规则、版本及复核状态，并保留结论与底层依据之间的可追溯关系，而不是只输出孤立的最终结果。原始地震数据、压力曲线和商业敏感信息可以保留在项目系统或受控数据空间中，外部主体可通过受控数据交换获取核证摘要、交付凭证、事件状态或责任档案等履职所需信息。</p>
-<p><a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3">表 3-3</a> 列示交付与归因、风险与责任、金融与外部信任三类证据使用场景，以及 dMRV 的证据功能和现有制度主体保留的最终判断。三类场景面向不同使用者，但共享同一组工程事实和审计底账。</p>
+<p><a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3 dMRV 支持 CCUS 集群三类证据使用场景的作用及边界">表 3-3</a> 列示交付与归因、风险与责任、金融与外部信任三类证据使用场景，以及 dMRV 的证据功能和现有制度主体保留的最终判断。三类场景面向不同使用者，但共享同一组工程事实和审计底账。</p>
 
     <div class="table-container-card" id="tab:dmrv_governance_mapping">
       <div class="table-card-toolbar">
@@ -3029,16 +3012,18 @@
           <span class="table-badge">表 3-3</span>
           <span class="table-title">dMRV 支持 CCUS 集群三类证据使用场景的作用及边界</span>
         </div>
+        
       </div>
       <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
+        <table class="standard-table">
           
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>证据使用场景</strong></th>
-<th style="text-align: left;"><strong>dMRV 的核心作用</strong></th>
-<th style="text-align: left;"><strong>主要证据输出</strong></th>
-<th style="text-align: left;"><strong>仍由现有制度完成的判断</strong></th>
+<th style="text-align: left;">证据使用场景</th>
+<th style="text-align: left;">dMRV 的核心作用</th>
+<th style="text-align: left;">主要证据输出</th>
+<th style="text-align: left;">仍由现有制度完成的判断</th>
 </tr>
 </thead>
 <tbody>
@@ -3064,13 +3049,14 @@
 
         </table>
       </div>
+      
     </div>
   
 <p>在交付与归因层面，dMRV 通过交接记录、质量平衡与追溯链，保持物理碳流、核算结果与归属之间的可追溯关系。当项目成果进入碳信用登记或国际转移时，该证据链还可与登记簿序列号、CAD Trust 元数据以及《巴黎协定》第 6 条的授权与相应调整机制衔接，降低重复签发、重复使用和重复主张的风险<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58" id="cite-return-cadtrust-api2026" title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-unfccc-a6registry2026" data-cite="unfccc-a6registry2026" data-index="59" id="cite-return-unfccc-a6registry2026" title="UNFCCC. (2026年1月23日). Development of Paris Agreement Article 6 registry infrastructure begins. https://unfccc.int/news/development-of-paris-agreement-article-6-registry-infrastructure-begins">59</a>]</sup>。</p>
 <p>在风险与责任层面，dMRV 保存持续监测、模型符合性、异常处置与资金保障记录，保留项目在运行期与关闭后的风险演化轨迹。监管机关可据此审查场地是否处于许可边界内、风险状态及其不确定性如何演化，并据此决定是否调整监测要求或启动责任移交程序。</p>
 <p>在金融与外部信任层面，dMRV 将许可、运行、核证与履约趋势组织为可供外部使用的风险信息，可为金融机构和承保人的风险评估提供过程留痕与审计底账，减少对期末集中解释和一次性申报材料的依赖<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
 <h3 data-number="3.3.1" id="国际实践不同机构选择不同的制度衔接路径"><span class="header-section-number">3.3.1</span> 国际实践：不同机构选择不同的制度衔接路径</h3>
-<p>现有实践已从三个方向提供可借鉴经验：VM0049、VT0012 等方法学开始标准化共享基础设施下的核算和分摊规则<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60" id="cite-return-verra-vm0049" title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO<sub>2</sub> in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>；数字化核证实践展示了监测数据、独立核证和签发之间的流程衔接<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-dmrv2026" data-cite="verra-dmrv2026" data-index="57" id="cite-return-verra-dmrv2026" title="Verra. (2026年2月19日). Verra Approves First Credits under DMRV Pilot for High-Frequency Issuances. https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/">57</a>]</sup>；项目端数据接口和跨登记系统则探索共同语义、唯一标识与状态同步<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58"  title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62"  title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>。对 CCUS 而言，这些实践的价值主要在规则结构化、证据交换和制度衔接设计，而非提供一套可以直接照搬的平台方案。</p>
+<p>现有实践已从三个方向提供可借鉴经验：VM0049、VT0012 等方法学开始标准化共享基础设施下的核算和分摊规则<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60" id="cite-return-verra-vm0049" title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>；数字化核证实践展示了监测数据、独立核证和签发之间的流程衔接<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-dmrv2026" data-cite="verra-dmrv2026" data-index="57" id="cite-return-verra-dmrv2026" title="Verra. (2026年2月19日). Verra Approves First Credits under DMRV Pilot for High-Frequency Issuances. https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/">57</a>]</sup>；项目端数据接口和跨登记系统则探索共同语义、唯一标识与状态同步<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58"  title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62"  title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>。对 CCUS 而言，这些实践的价值主要在规则结构化、证据交换和制度衔接设计，而非提供一套可以直接照搬的平台方案。</p>
 <h3 data-number="3.3.2" id="技术边界工具服务于证据链与制度衔接"><span class="header-section-number">3.3.2</span> 技术边界：工具服务于证据链与制度衔接</h3>
 <p>dMRV 跨越企业、监管和第三方机构，数据治理应从系统设计阶段同步纳入。项目需要明确数据管理责任、使用权限和共享边界，按照最小权限原则设置访问范围，区分原始工程数据、核证材料、对外凭证和公开信息，并保留调用日志、授权变更和撤销记录。商业秘密、关键基础设施数据和个人信息应进入受控环境，跨境调用还需满足适用的数据安全与网络安全要求。对需要长期保存的监测和责任记录，宜提前约定保存期限、迁移方式和承接主体，避免运营主体变更或平台停止服务后，历史证据无法继续查询和复核。</p>
 <p>规则、模型和算法同样需要版本治理。系统应保存规则版本、计算路径、模型参数、校准数据与人工批准记录；重大变更应评估对历史结果、合同结算与责任状态的影响。技术方案应以记录能否追溯、结果能否复核、权限能否控制和证据能否长期使用为评价依据，具体工具的选择应服从审计可溯、权限受控与人工监督等基本要求。</p>
@@ -3082,7 +3068,7 @@
 <p>Quest 将井下压力、温度及地下水位等监测记录接入生产信息系统，通过监控与数据采集系统汇入生产信息数据库，为后续监测分析和风险评估提供数据基础<sup class="citation-cluster">[<a class="cite-ref" href="#ref-nrcan-quest" data-cite="nrcan-quest" data-index="92" id="cite-return-nrcan-quest" title="Natural Resources Canada. (2026年访问). Shell Canada Energy Quest Project. https://natural-resources.canada.ca/funding-partnerships/shell-canada-energy-quest-project">92</a>]</sup>。由 PNNL、NETL、宾夕法尼亚州立大学与项目方共同完成的研究，使用 NRAP-Open-IAM 对潜在井筒泄漏和地下水影响开展定量分析<sup class="citation-cluster">[<a class="cite-ref" href="#ref-brown2023quest" data-cite="brown2023quest" data-index="35" id="cite-return-brown2023quest" title="Brown, C. F., Lackey, G., Mitchell, N., Baek, S., Schwartz, B., Dean, M., Dilmore, R., Blanke, H., O’Brien, S., &amp; Rowe, C. (2023). Integrating risk assessment methods for carbon storage: A case study for the Quest carbon capture and storage facility. International Journal of Greenhouse Gas Control, 129, 103972. https://doi.org/10.1016/j.ijggc.2023.103972">35</a>]</sup>。该研究通过定量模拟将评估关注区域由约 460 平方公里缩小至约 100 平方公里，该分析用于支持风险导向的监测优化；实际监测调整和责任移交仍由法定监管程序决定。这表明，封存项目需要从运营期开始持续积累监测结果、模型更新、偏差解释和处置记录，为后续关闭评估与责任审查准备可追溯的证据底账。</p>
 <h2 data-number="4.2" id="北极光northern-lights开放式运输封存服务与跨境接入"><span class="header-section-number">4.2</span> 北极光（Northern Lights）：开放式运输封存服务与跨境接入</h2>
 <p>Northern Lights 将船运、陆上接收、中转、海底管输、地质封存及交付证明整合为一项完整的运输封存服务。该项目由 Equinor、Shell 和 TotalEnergies 共同组建，是 Longship 框架下的 CO<sub>2</sub> 运输与封存运营主体，同时以开放接入模式服务欧洲其他排放源，首期设计接收与封存能力为 150 万吨/年<sup class="citation-cluster">[<a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="39"  title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">39</a>]</sup>。</p>
-<p>项目官方披露显示，Northern Lights 于 2025 年 8 月宣布完成首次 CO<sub>2</sub> 注入，首批来源为挪威 Brevik 水泥厂<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7"  title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO<sub>2</sub>. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a>]</sup>。CO<sub>2</sub> 在 Øygarden 接收站汇集后，经约 100 公里海底管道输送至海床下约 2600 米的 Aurora 储层。同年 12 月，公司宣布签发首批封存凭证（storage certificates）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8" id="cite-return-northernlights-certs" title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO<sub>2</sub> storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>，以特定船次货载为记录单元关联封存量与链条排放分摊，将物理交付转化为可核对的封存服务凭证。2026 年 9 月，随着荷兰 Yara Sluiskil 捕集设施正式启用，该项目首次将荷兰工业排放源接入挪威运输与封存设施，成为开放接入模式的一次跨境商业实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-yara-sluiskil2026" data-cite="yara-sluiskil2026" data-index="93" id="cite-return-yara-sluiskil2026" title="Yara International. (2026年9月7日). Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands. https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/">93</a>]</sup>。</p>
+<p>项目官方披露显示，Northern Lights 于 2025 年 8 月宣布完成首次 CO<sub>2</sub> 注入，首批来源为挪威 Brevik 水泥厂<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7"  title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO2. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a>]</sup>。CO<sub>2</sub> 在 Øygarden 接收站汇集后，经约 100 公里海底管道输送至海床下约 2600 米的 Aurora 储层。同年 12 月，公司宣布签发首批封存凭证（storage certificates）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8" id="cite-return-northernlights-certs" title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO2 storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>，以特定船次货载为记录单元关联封存量与链条排放分摊，将物理交付转化为可核对的封存服务凭证。2026 年 9 月，随着荷兰 Yara Sluiskil 捕集设施正式启用，该项目首次将荷兰工业排放源接入挪威运输与封存设施，成为开放接入模式的一次跨境商业实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-yara-sluiskil2026" data-cite="yara-sluiskil2026" data-index="93" id="cite-return-yara-sluiskil2026" title="Yara International. (2026年9月7日). Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands. https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/">93</a>]</sup>。</p>
 <p>开放式基础设施使证据链必须跨越捕集方、运输方、接收端、封存运营方和核证主体。交付记录需要通过批次或时间窗、交接计量和质量平衡等方式，将来源、数量、流质、运输过程、注入记录、损耗和服务链排放保持可核对的关联。多源 CO<sub>2</sub> 混合进入共享设施后，证据链维持的是计量与归因关系，而不是对特定 CO<sub>2</sub> 分子在地下位置的逐批物理追踪。数字化交付记录需要与许可、客户合同和跨境规则衔接，才能支撑封存服务的交付确认与结算<sup class="citation-cluster">[<a class="cite-ref" href="#ref-imo-ccs" data-cite="imo-ccs" data-index="5"  title="International Maritime Organization. (2025). Carbon Capture and Storage and the London Protocol. https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx">5</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-london-article6" data-cite="london-article6" data-index="6" id="cite-return-london-article6" title="International Maritime Organization. (2009). Resolution LP.3(4): Amendment to Article 6 of the London Protocol. https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/LCLPDocuments/LP.3(4).pdf">6</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="39"  title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">39</a>]</sup>。封存凭证主要确认服务交付和特定货载的封存事实；碳信用签发、长期责任接续和全链条净减排核定分别受相应方法学、法律程序和核算边界约束。</p>
 <h2 data-number="4.3" id="大亚湾集群中国沿海场景形成期的制度需求识别"><span class="header-section-number">4.3</span> 大亚湾集群（中国沿海场景）：形成期的制度需求识别</h2>
 <p>中国海油披露，大亚湾区 CCS/CCUS 集群示范项目于 2025 年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="27"  title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">27</a>]</sup>。此前，中国海油在恩平 15-1 先后实施了海上咸水层封存示范与驱油工程，为离岸封存积累了工程与监测经验<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc-esg2024" data-cite="cnooc-esg2024" data-index="26" id="cite-return-cnooc-esg2024" title="CNOOC Limited. (2025年4月8日). 2024 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202504/P020250408542745334285.pdf">26</a>]</sup>。大亚湾项目面向石化区多排放源与珠江口盆地离岸集中封存，体现了沿海 CCUS 从单点工程示范走向多主体集群治理的过渡场景。</p>
@@ -3098,7 +3084,7 @@
 <p>油田型 CCUS 除需监测地下 CO<sub>2</sub> 的迁移与封存状态外，还需追踪伴随油气生产发生的采出、分离、回收和循环回注。上述两级分离工艺提示，油田型 CCUS 的碳流记录需要与分离设备、注采调控及异常工况记录对应。这意味着，同一核算期内需要对注入、采出、回收和循环回注量进行交叉核对，并完整记录相关能耗与异常排放。</p>
 <p>核算上，应首先区分外部新增 CO<sub>2</sub> 与循环回注量，避免将同一批 CO<sub>2</sub> 的重复注入累计为新增封存；其次，应分别报告封存量与在明确边界下计算的净减排量，并说明能耗、损耗及增产原油相关排放的处理方式。dMRV 应优先嵌入既有生产与安全环保体系，避免另建与生产系统割裂的独立平台。CCUS-EOR 的净减排结果还取决于适用核算规则如何处理增产原油及其基准情景。不同政策工具和方法学可能采用不同核算边界，因此 dMRV 应保留基准产量、外部新增 CO<sub>2</sub>、循环量、相关能耗及所采用的规则版本，使地质封存量和净减排量能够分别复核。</p>
 <h2 data-number="4.5" id="小结案例比较与制度含义"><span class="header-section-number">4.5</span> 小结：案例比较与制度含义</h2>
-<p><a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1">表 4-1</a> 从证据对象与组织方式、制度用途和公开证据边界三个方面，汇总上述案例与工程场景的比较结果。</p>
+<p><a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1 案例与工程场景的证据机制、制度用途与公开证据边界">表 4-1</a> 从证据对象与组织方式、制度用途和公开证据边界三个方面，汇总上述案例与工程场景的比较结果。</p>
 
     <div class="table-container-card" id="tab:case_evidence_comparison">
       <div class="table-card-toolbar">
@@ -3106,16 +3092,18 @@
           <span class="table-badge">表 4-1</span>
           <span class="table-title">案例与工程场景的证据机制、制度用途与公开证据边界</span>
         </div>
+        
       </div>
       <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
+        <table class="standard-table">
           
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>案例</strong></th>
-<th style="text-align: left;"><strong>主要证据对象与组织方式</strong></th>
-<th style="text-align: left;"><strong>已见用途 / 本文分析与建议</strong></th>
-<th style="text-align: left;"><strong>公开证据边界</strong></th>
+<th style="text-align: left;">案例</th>
+<th style="text-align: left;">主要证据对象与组织方式</th>
+<th style="text-align: left;">已见用途 / 本文分析与建议</th>
+<th style="text-align: left;">公开证据边界</th>
 </tr>
 </thead>
 <tbody>
@@ -3147,12 +3135,16 @@
 
         </table>
       </div>
+      
+      <div class="table-notes-footer">
+        <span class="note-tag">注</span>
+        <div class="note-text">各行已区分“已见”（来源可核查的既有实践）与“本文分析/建议”（作者基于公开信息的推论与设计）。大亚湾与大庆敖南两行的证据组织方式与用途均为本文基于项目工程场景提出的设计建议，非项目既有实践。</div>
+      </div>
     </div>
   
-<p><em>注：各行已区分“已见”（来源可核查的既有实践）与“本文分析/建议”（作者基于公开信息的推论与设计）。大亚湾与大庆敖南两行的证据组织方式与用途均为本文基于项目工程场景提出的设计建议，非项目既有实践。</em></p>
 <p>上述案例与工程场景提示，证据组织方式应随治理任务调整：长期风险判断需要连续监测与模型复核，封存服务交付需要批次对应和交接记录，形成期集群需要提前约定数据与责任规则，油田型项目则需要将碳核算接入生产循环。其中可以跨项目复用的是证据组织原则，具体系统架构和技术参数仍需因地制宜。技术阈值和量化标准需要更多长期运行数据验证；关闭条件、责任接续方式及相关期限则需要在工程证据基础上，结合监管目标和法律制度进一步论证。制度衔接需要经过真实业务周期检验，才能进一步判断哪些证据要求具有跨项目复用价值，并适合进入正式规则。</p>
 <h1 data-number="5" id="从试点验证到集群治理规则形成"><span class="header-section-number">5</span> 从试点验证到集群治理规则形成</h1>
-<p>前文分别从治理组合和证据机制两个层面梳理了集群化问题。下一步需要通过真实项目试点，检验证据机制能否进入项目评审、商业履约和长期责任审查。第 4 章的案例与场景观察表明，多源交接、服务化交付和长期责任分别提出不同的证据要求，本章据此设置三项相互衔接的试点。<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a> 所列治理任务覆盖市场、基础设施、许可、责任和证据等多个层面；本章从中优先选择能够嵌入现有项目、无需预设最终制度形态，并可在真实业务周期中获得反馈的证据机制进行验证。</p>
+<p>前文分别从治理组合和证据机制两个层面梳理了集群化问题。下一步需要通过真实项目试点，检验证据机制能否进入项目评审、商业履约和长期责任审查。第 4 章的案例与场景观察表明，多源交接、服务化交付和长期责任分别提出不同的证据要求，本章据此设置三项相互衔接的试点。<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 所列治理任务覆盖市场、基础设施、许可、责任和证据等多个层面；本章从中优先选择能够嵌入现有项目、无需预设最终制度形态，并可在真实业务周期中获得反馈的证据机制进行验证。</p>
 <p>中国已具备工程示范、标准规范与生产数字化等基础，但跨主体证据和制度衔接机制仍需在真实项目中验证。中国治理重点可随产业成熟度由探索示范、集群形成向规模扩张调整：早期重点降低地质与工程不确定性并明确证据设计，中期围绕锚定用户、共享设施和跨主体履约验证运行规则，网络成熟后再通过多项目比较提炼可复用规则。三个阶段描述的是治理背景，与下述三项试点不一一对应；三项试点可根据项目成熟度组合实施，每项均经历“设计—试用—评估”的验证过程，并优先复用既有生产和监管系统。</p>
 
       <h2 data-number="5.1" id="政策建议一将证据要求前置到集群遴选与可研设计" class="policy-rec-heading">
@@ -3172,7 +3164,12 @@
 <p>试点指引应保持技术中立，并按场景设置重点：沿海集群优先验证多源接入、交接计量、容量占用与封存服务确认；油田型 CCUS 优先验证注采循环、生产系统接入、地质封存量与封存状态的可复核性；新建咸水层封存项目优先验证许可边界、基线、模型符合性、异常处置与关闭准备。</p>
 <p>在不改变各主体法定许可职责的前提下，试点可围绕最小字段、数据责任、事件分级、第三方复核和外部接口形成共同评审材料，具体组织方式结合项目场景、现行职责与既有系统确定。</p>
 <p>项目评价应区分工程绩效与证据能力。工程绩效继续按照适用的技术经济指标和项目边界评价；证据能力则关注关键事实能否复原、异常过程能否追踪、不同主体能否按权限完成复核。两类评价应分别开展，避免将证据完备程度等同于工程绩效。现阶段，证据能力评价主要服务于项目比较和政策学习，不形成统一准入评分。</p>
-<h2 data-number="5.2" id="政策建议二建立连接工程事实与制度使用的衔接机制"><span class="header-section-number">5.2</span> 政策建议二：建立连接工程事实与制度使用的衔接机制</h2>
+
+      <h2 data-number="5.2" id="政策建议二建立连接工程事实与制度使用的衔接机制" class="policy-rec-heading">
+        <span class="header-section-number">5.2</span>
+        <span class="policy-title">政策建议二：建立连接工程事实与制度使用的衔接机制</span>
+      </h2>
+    
 <p>制度衔接首先要回答“谁需要什么证据、以何种粒度和权限获取”。不同使用主体的证据需求并不相同，但都应能够回溯到同一组工程事实；原始地震、压力和商业敏感数据可保留在受控环境中，外部主体按职责获取核证摘要、交付凭证、事件状态或责任档案等必要信息。</p>
 <p>《绿色金融支持项目目录（2025年版）》为符合条件的 CCUS 项目提供绿色金融分类依据，但实际融资仍取决于项目收益、信用结构、政策支持、合同安排和风险分担<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17"  title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a>]</sup>。授信、核保和定价仍由相应机构判断；dMRV 将许可、运行、核证、责任边界和异常处置等工程状态组织为可复核信息，为金融机构和保险机构开展尽调、授信、核保和定价判断提供部分证据支持。</p>
 <p>试点宜从服务对账或核证复核等明确用途入手，由项目运营方与至少一个实际使用主体共同试用统一格式材料包、受控文件交换或轻量接口，验证字段、权限、异常样本、历史状态及版本变化能否满足实际工作需要，再根据验证结果逐步扩展至其他制度场景。例如，可选取同一结算期的项目数据，由运营方与服务客户分别通过现行流程和试用接口完成对账，并设置计量更正、资料缺失和权限撤销等测试情景，检查使用方能否追溯依据、识别修订影响并保留历史结果。</p>
@@ -3198,17 +3195,27 @@
 <li><p>汇总证据缺口、专业分歧和补充要求，在补充材料或下一轮评估中复核。</p></li>
 </ol>
 <p>审查重点在于识别哪些异常或证据缺口会使模拟审查暂时无法形成判断，并形成证据缺口与规则改进清单。对尚未进入关闭后阶段的项目，影子评估用于提前识别未来关闭评估和责任接续所需的证据；长期稳定性判断应以持续观测和模型更新为依据。影子评估不改变项目现行责任安排，也不预设未来责任接续方式或监测期限。</p>
-<p>三项任务的共同目的是，在不预设全国统一制度的前提下先行验证关键证据衔接环节，再判断哪些要求适合固化为合同条款、行业规则或正式监管要求；其最小交付件与验证路径归纳如表 <a href="#tab:pilot_implementation_matrix" data-reference-type="ref" data-reference="tab:pilot_implementation_matrix">6</a>。</p>
-<div id="tab:pilot_implementation_matrix">
-<div class="table-responsive-wrapper"><table class="standard-table">
-<caption>三项试点的最小交付件、使用主体与验证路径</caption>
+<p>三项任务的共同目的是，在不预设全国统一制度的前提下先行验证关键证据衔接环节，再判断哪些要求适合固化为合同条款、行业规则或正式监管要求；其最小交付件与验证路径归纳如<a href="#tab:pilot_implementation_matrix" class="table-ref-link" title="点击查看表 5-1 三项试点的最小交付件、使用主体与验证路径">表 5-1</a>。</p>
+
+    <div class="table-container-card" id="tab:pilot_implementation_matrix">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">表 5-1</span>
+          <span class="table-title">三项试点的最小交付件、使用主体与验证路径</span>
+        </div>
+        
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table">
+          
+
 <thead>
 <tr class="header">
-<th style="text-align: left;"><strong>试点任务</strong></th>
-<th style="text-align: left;"><strong>最小交付件</strong></th>
-<th style="text-align: left;"><strong>主要使用场景 / 主体</strong></th>
-<th style="text-align: left;"><strong>验证方法</strong></th>
-<th style="text-align: left;"><strong>验证后可形成的规则输入</strong></th>
+<th style="text-align: left;">试点任务</th>
+<th style="text-align: left;">最小交付件</th>
+<th style="text-align: left;">主要使用场景 / 主体</th>
+<th style="text-align: left;">验证方法</th>
+<th style="text-align: left;">验证后可形成的规则输入</th>
 </tr>
 </thead>
 <tbody>
@@ -3234,16 +3241,20 @@
 <td style="text-align: left;">监管审查要点与制度论证输入</td>
 </tr>
 </tbody>
-</table></div>
-</div>
+
+        </table>
+      </div>
+      
+    </div>
+  
 <p>对反复出现且具有通用性的问题，可进一步提炼为合同条款、操作指引或技术规范建议；涉及法定职责和长期责任接续的事项，应开展制度论证并依相应程序推进。具体实施节奏、组织方式与技术路径应结合项目成熟度、集群结构、现行职责和既有系统确定。</p>
 <h1 data-number="6" id="结论"><span class="header-section-number">6</span> 结论</h1>
 <p>CCUS 从单点示范走向规模化集群，治理对象由单个项目扩展为跨主体、跨环节和跨周期的运行网络。百万吨级项目已证明 CCUS 可在特定条件下建成并持续运行，但规模化不是单体项目的数量复制，而是价值机制、资源投入、基础设施、参与主体和制度规则共同形成产业系统的过程，吉吨级部署预期和快速增长的项目储备不会自然转化为交付能力。规模化仍需通过政策工具组合弥补全链条价值缺口、分担早期风险，并以长期商业契约协调“源—网—库”的投资时序、交付义务与风险分配。</p>
 <p>不同治理模式的演进路径，取决于功能瓶颈与风险承担机制的分工。能源惩罚与首发风险分别代表贯穿全链条运行过程的物理约束和集中于集群启动阶段的协调约束。前者可以将物理效率代价从项目总体经济性中单独识别，帮助判断成本压力究竟来自能源效率，还是来自其他经济与组织条件；后者则主要需要通过公共风险分担、网络统筹和长期契约加以缓解。</p>
 <p>当集群进入多主体运行后，交付与归因、风险与责任、金融与外部信任构成三类主要的证据使用场景。dMRV 通过规则字段化、连续证据和差异化证据输出，把来源、交接、能源投入、链条排放、注入封存、异常处置和责任状态组织为可追溯的共同事实。本文将这种跨主体复核和复用工程证据的能力概括为“产业信用基础设施”。这种能力使政策执行、商业结算和监管审查能够基于同一组真实运行证据开展复核，并为规则调整提供运行反馈。若仍以各主体分别留档、事后补件为主，协调成本将随参与主体增多而上升，工程能力也难以转化为可复制的网络规则。</p>
 <p>中国下一阶段可从具备条件的先行集群开展三类验证：将证据要求前置到项目设计，试用跨主体证据输出与制度衔接机制，并开展长期责任影子评估。统一平台建设应建立在规则和数据接口经过实际验证之后。政策支持、长期契约和真实运行证据由此形成闭环，推动中国 CCUS 跨越交付鸿沟，迈向可投资、可核证、可治理的产业系统。</p>
-<section id="全球-ccus-项目分布与统计口径" class="landscape" data-number="7">
-<h1 data-number="附录 A" id="appendix-a" class="appendix-h1"><span class="header-section-number">附录 A</span> 全球 CCUS 项目分布与统计口径</h1>
+<section id="全球-ccus-项目分布与统计口径" data-number="7">
+<h1 data-number="附录 A" id="appendix-a" class="appendix-h1"><span class="header-section-number">附录 A</span></h1>
 
     <div class="table-container-card" id="tab:global_ccus_distribution">
       <div class="table-card-toolbar">
@@ -3256,99 +3267,108 @@
       <div class="table-responsive-wrapper">
         <table class="table-dist-data">
           
+
+<colgroup>
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">地区</th>
-<th style="text-align: center;">已运行<br/>项目记录数</th>
-<th style="text-align: center;">已运行项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
-<th style="text-align: center;">在建<br/>项目记录数</th>
-<th style="text-align: center;">在建项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
-<th style="text-align: center;">合计<br/>项目记录数</th>
-<th style="text-align: center;">合计项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: left;">已运行<br/>项目记录数</th>
+<th style="text-align: left;">已运行项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: left;">在建<br/>项目记录数</th>
+<th style="text-align: left;">在建项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: left;">合计<br/>项目记录数</th>
+<th style="text-align: left;">合计项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">美国</td>
-<td style="text-align: center;">33</td>
-<td style="text-align: center;">35.326</td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">9.662</td>
-<td style="text-align: center;">42</td>
-<td style="text-align: center;">44.988</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">欧盟及英国</td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">1.635</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">32.279</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">33.914</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">其他地区</td>
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">24.491</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.030</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">27.521</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">加拿大</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">23.104</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">7.732</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">30.836</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">挪威</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.600</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.600</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">中国</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">6.980</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">2.500</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">9.480</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>合计</strong></td>
-<td style="text-align: center;"><strong>86</strong></td>
-<td style="text-align: center;"><strong>95.136</strong></td>
-<td style="text-align: center;"><strong>37</strong></td>
-<td style="text-align: center;"><strong>55.203</strong></td>
-<td style="text-align: center;"><strong>123</strong></td>
-<td style="text-align: center;"><strong>150.339</strong></td>
+<td style="text-align: left;"><strong>86</strong></td>
+<td style="text-align: left;"><strong>95.136</strong></td>
+<td style="text-align: left;"><strong>37</strong></td>
+<td style="text-align: left;"><strong>55.203</strong></td>
+<td style="text-align: left;"><strong>123</strong></td>
+<td style="text-align: left;"><strong>150.339</strong></td>
 </tr>
 </tbody>
 
         </table>
       </div>
       
-    <div class="table-notes-footer">
-      <span class="note-tag">注</span>
-      <div class="note-text"><strong>口径与筛选说明：</strong> （1）状态与年份界定：“已运行”为原始数据库快照记录的项目状态，不代表截至全文截稿日对每个项目运行现状的重新核实；“在建”仅包括数据库状态为 Under construction、且项目披露预计投运年份不晚于 2026 年底的记录，预计投运并不等同于项目已在 2026 年内实际完成投运；预计投运年份晚于 2026 年或未披露投运年份的在建项目记录予以排除，不计入本表。 （2）处理能力与环节边界：处理能力采用数据库中登记的项目记录预计年处理能力（MtCO<sub>2</sub>/年）归类加总；由于捕集、运输、运输与封存、封存、全产业链和利用等项目记录覆盖的价值链环节不同，各环节数字不能简单累加理解为已经完成源汇匹配的端到端系统封存能力。 （3）收录范围与数据库版本：IEA CCUS Projects Database 主要收录具备一定工程规模的商业与先导项目（通常捕集规模不低于 10 万吨/年，少数典型小型先导除外），并非全球所有小微 CCUS 设施的完整普查。本表数据基于 IEA CCUS Projects Database（2026 年 3 月版）与 CCUS Policy Hub 整理<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>；在线数据库随项目跟踪动态更新，可能与本表快照存在微差，本表保留快照口径以保障统计可复核。其他地区指除美国、加拿大、中国、挪威、欧盟及英国之外的地区。</div>
-    </div>
+      <div class="table-notes-footer">
+        <span class="note-tag">注</span>
+        <div class="note-text"><strong class="note-lead">口径与筛选说明</strong>（1）状态与年份界定：“已运行”为原始数据库快照记录的项目状态，不代表截至全文截稿日对每个项目运行现状的重新核实；“在建”仅包括数据库状态为 Under construction、且项目披露预计投运年份不晚于 2026 年底的记录，预计投运并不等同于项目已在 2026 年内实际完成投运；预计投运年份晚于 2026 年或未披露投运年份的在建项目记录予以排除，不计入本表。 （2）处理能力与环节边界：处理能力采用数据库中登记的项目记录预计年处理能力（MtCO<sub>2</sub>/年）归类加总；由于捕集、运输、运输与封存、封存、全产业链和利用等项目记录覆盖的价值链环节不同，各环节数字不能简单累加理解为已经完成源汇匹配的端到端系统封存能力。 （3）收录范围与数据库版本：IEA CCUS Projects Database 主要收录具备一定工程规模的商业与先导项目（通常捕集规模不低于 10 万吨/年，少数典型小型先导除外），并非全球所有小微 CCUS 设施的完整普查。本表数据基于 IEA CCUS Projects Database（2026 年 3 月版）与 CCUS Policy Hub 整理<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>；在线数据库随项目跟踪动态更新，可能与本表快照存在微差，本表保留快照口径以保障统计可复核。其他地区指除美国、加拿大、中国、挪威、欧盟及英国之外的地区。</div>
+      </div>
     </div>
   
 </section>
-<section id="关键主张与证据边界" class="landscape" data-number="8">
+<section id="关键主张与证据边界" data-number="8">
 <h1 data-number="附录 B" id="appendix-b" class="appendix-h1"><span class="header-section-number">附录 B</span> 关键主张与证据边界</h1>
 <p>本附录将正文的核心判断与主要规则、方法学依据和案例证据对应起来。“支持程度与证据边界”用于区分公开材料能够支持的治理判断与仍需项目数据、合同文件或监管程序确认的事项，避免把方向性证据外推为统一技术参数或法定结论。</p>
-<div id="tab:claims_evidence_mapping">
 
-    <div class="table-container-card" id="tab:appendix_b_claims_mapping">
+    <div class="table-container-card" id="tab:claims_evidence_mapping">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
           <span class="table-badge">附录 B 表</span>
@@ -3358,16 +3378,24 @@
       </div>
       <div class="table-responsive-wrapper">
         <table class="standard-table table-claims-mapping">
-          <thead>
-            <tr>
-              <th style="width: 22%;">核心主张</th>
-              <th style="width: 26%;">规则、标准或方法学依据</th>
-              <th style="width: 24%;">案例事实或正文分析位置</th>
-              <th style="width: 28%;">支持程度与证据边界</th>
-            </tr>
+          
+
+<colgroup>
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+<thead>
+            <tr class="odd">
+<th style="text-align: left;">核心主张</th>
+<th style="text-align: left;">规则、标准或方法学依据</th>
+<th style="text-align: left;">案例事实或正文分析位置</th>
+<th style="text-align: left;">支持程度与证据边界</th>
+</tr>
           </thead>
           <tbody>
-            <tr class="even">
+<tr class="even">
 <td style="text-align: left;">CCUS 从单点示范走向规模化集群，取决于技术创新系统关键功能能否协同形成，并在“源—网—库”之间实现有效协调。</td>
 <td style="text-align: left;">TIS 功能研究及 CCS 创新系统应用<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-vanalphen2010" data-cite="vanalphen2010" data-index="74"  title="van Alphen, K., Hekkert, M. P., &amp; Turkenburg, W. C. (2010). Accelerating the deployment of carbon capture and storage technologies by strengthening the innovation system. International Journal of Greenhouse Gas Control, 4(2), 396–409. https://doi.org/10.1016/j.ijggc.2009.09.019">74</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-lai2012" data-cite="lai2012" data-index="75"  title="Lai, X., Ye, Z., Xu, Z., Holmes, M. H., &amp; Lambright, W. H. (2012). Carbon capture and sequestration technological innovation system in China: Structure, function evaluation and policy implication. Energy Policy, 50, 635–646. https://doi.org/10.1016/j.enpol.2012.08.004">75</a>]</sup></td>
 <td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第一章产业形成框架；第二章六个法域形成路径</td>
@@ -3381,26 +3409,26 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">全链条能源惩罚是 CCUS 运行中的重要物理约束；本文以单位净避免排放额外一次能源投入这一 SPECCA 类指标对其进行表征。能源价格和碳强度分别将其转化为成本与排放后果，首发风险则集中于启动阶段。</td>
-<td style="text-align: left;">IPCC CCS 评估（含仍沿用 energy penalty 术语的成本核算）、IEA 政策与融资分析及本文全链条边界框架<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42"  title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-ar6-wg3-ch6" data-cite="ipcc-ar6-wg3-ch6" data-index="43" id="cite-return-ipcc-ar6-wg3-ch6" title="Clarke, L., Y.-M. Wei, A. De La Vega Navarro, A. Garg, N. K. Hahmann, S. Khennas, I. M. L. Azevedo, A. Löschel, K. A. K. Singh, G. Streck, C. Stratou, &amp; Yanda, W. (2022). Energy systems. In IPCC, Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report, Chapter 6. https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/">43</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>；SPECCA 类指标定义<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hagi2015" data-cite="hagi2015" data-index="44" id="cite-return-hagi2015" title="Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO<sub>2</sub> capture, cogeneration and hybridization. Energy, 91, 306–323. https://doi.org/10.1016/j.energy.2015.08.038">44</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-specca2024" data-cite="ieaghg-specca2024" data-index="45" id="cite-return-ieaghg-specca2024" title="IEAGHG. (2024). Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems (Report 2024-03). https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/">45</a>]</sup></td>
+<td style="text-align: left;">IPCC CCS 评估（含仍沿用 energy penalty 术语的成本核算）、IEA 政策与融资分析及本文全链条边界框架<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42"  title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-ar6-wg3-ch6" data-cite="ipcc-ar6-wg3-ch6" data-index="43" id="cite-return-ipcc-ar6-wg3-ch6" title="Clarke, L., Y.-M. Wei, A. De La Vega Navarro, A. Garg, N. K. Hahmann, S. Khennas, I. M. L. Azevedo, A. Löschel, K. A. K. Singh, G. Streck, C. Stratou, &amp; Yanda, W. (2022). Energy systems. In IPCC, Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report, Chapter 6. https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/">43</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>；SPECCA 类指标定义<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hagi2015" data-cite="hagi2015" data-index="44" id="cite-return-hagi2015" title="Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO2 capture, cogeneration and hybridization. Energy, 91, 306–323. https://doi.org/10.1016/j.energy.2015.08.038">44</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-specca2024" data-cite="ieaghg-specca2024" data-index="45" id="cite-return-ieaghg-specca2024" title="IEAGHG. (2024). Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems (Report 2024-03). https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/">45</a>]</sup></td>
 <td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第一章能源惩罚的定义与全链条边界；第三章能源投入核算与碳流字段；第五章工程绩效与证据能力评价</td>
 <td style="text-align: left;">支持识别工艺、能源结构和集群协同方向，但项目经济性评价还需结合投资与运行成本、设施利用率、融资条件和减排价值；公开项目数据尚不足以形成统一数值阈值或跨行业横向排名。</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">集群化 CCUS 需要跨主体保持来源身份、交接计量、质量平衡和与交付相关的责任边界记录。</td>
 <td style="text-align: left;">ISO 27913:2024、英国 CCS Network Code、VM0049 模块化方法学<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12"  title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-ccs-code2025" data-cite="uk-ccs-code2025" data-index="31"  title="UK Department for Energy Security and Net Zero. (2025). CCS Network Code. https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf">31</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60"  title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a>]</sup></td>
-<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 的批次交付与封存凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO<sub>2</sub> storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>；<span>[</span>本文建议<span>]</span> 大亚湾形成期的多源接入设计</td>
+<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 的批次交付与封存凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO2 storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>；<span>[</span>本文建议<span>]</span> 大亚湾形成期的多源接入设计</td>
 <td style="text-align: left;">支持统一身份、字段和交接追溯链的必要性；不能据公开资料确定具体损耗分摊公式、合同责任或结算价格。</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">dMRV 的制度功能是组织和传递证据，而不是替代监管、方法学或独立核证。</td>
-<td style="text-align: left;">世界银行 dMRV 框架及 dMRV 专业研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-veen-dmrv2025" data-cite="veen-dmrv2025" data-index="56" id="cite-return-veen-dmrv2025" title="Veen, P., Winkler, M., Oh, S., &amp; Michaelowa, A. (2025). Can digital monitoring, reporting, and verification (dMRV) unlock industrial CO<sub>2</sub> capture and removal in carbon markets? Environmental Research Letters, 20(12), 121002. https://doi.org/10.1088/1748-9326/ae20ad">56</a>]</sup></td>
+<td style="text-align: left;">世界银行 dMRV 框架及 dMRV 专业研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-veen-dmrv2025" data-cite="veen-dmrv2025" data-index="56" id="cite-return-veen-dmrv2025" title="Veen, P., Winkler, M., Oh, S., &amp; Michaelowa, A. (2025). Can digital monitoring, reporting, and verification (dMRV) unlock industrial CO2 capture and removal in carbon markets? Environmental Research Letters, 20(12), 121002. https://doi.org/10.1088/1748-9326/ae20ad">56</a>]</sup></td>
 <td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第三章提出的规则字段化、连续证据和差异化证据输出</td>
 <td style="text-align: left;">支持“产业信用基础设施”的功能定位；该定位是本文的治理综合，不赋予平台法定采信或信用签发权限。</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">共享运输和封存设施需要解决跨主体归因、服务交付确认和相关排放分摊。</td>
-<td style="text-align: left;">VM0049 及 VT0012 的模块化核算安排；跨源管输质量要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12"  title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60"  title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO<sub>2</sub> in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup></td>
-<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 的开放接入、数字记录和封存凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO<sub>2</sub> storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup></td>
+<td style="text-align: left;">VM0049 及 VT0012 的模块化核算安排；跨源管输质量要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12"  title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60"  title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup></td>
+<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 的开放接入、数字记录和封存凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO2 storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup></td>
 <td style="text-align: left;">支持服务化封存需要可审计底账；公开披露尚不足以还原完整凭证字段、客户对账和争议处理流程。</td>
 </tr>
 <tr class="even">
@@ -3412,7 +3440,7 @@
 <tr class="odd">
 <td style="text-align: left;">工程证据需要通过权限受控的证据输出与制度衔接进入核证、结算和金融风控。</td>
 <td style="text-align: left;">绿色金融分类与 dMRV 接口实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17"  title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup></td>
-<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 服务凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO<sub>2</sub> storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>；<span>[</span>本文建议<span>]</span> 第五章差异化证据输出与制度衔接机制试用</td>
+<td style="text-align: left;"><span>[</span>项目披露<span>]</span> Northern Lights 服务凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8"  title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO2 storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>；<span>[</span>本文建议<span>]</span> 第五章差异化证据输出与制度衔接机制试用</td>
 <td style="text-align: left;">支持减少重复报送和证据转换的政策方向；不能据此承诺授信、保险定价、碳信用签发或融资成本下降。</td>
 </tr>
 <tr class="even">
@@ -3429,16 +3457,17 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">中国现阶段可优先在具备条件的项目中验证证据要求前置、差异化证据输出与制度衔接机制和长期责任模拟审查，再根据试点结果提炼可推广的规则。</td>
-<td style="text-align: left;">前述规则比较、案例证据和国内碳市场数据管理要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO<sub>2</sub> Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63"  title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ccer-rules2023" data-cite="china-ccer-rules2023" data-index="64" id="cite-return-china-ccer-rules2023" title="生态环境部, 市场监管总局. (2023年10月19日). 温室气体自愿减排交易管理办法（试行）. https://www.mee.gov.cn/gzk/gz/202310/t20231020_1043695.shtml">64</a>]</sup></td>
+<td style="text-align: left;">前述规则比较、案例证据和国内碳市场数据管理要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO2 Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63"  title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-ccer-rules2023" data-cite="china-ccer-rules2023" data-index="64" id="cite-return-china-ccer-rules2023" title="生态环境部, 市场监管总局. (2023年10月19日). 温室气体自愿减排交易管理办法（试行）. https://www.mee.gov.cn/gzk/gz/202310/t20231020_1043695.shtml">64</a>]</sup></td>
 <td style="text-align: left;"><span>[</span>本文建议<span>]</span> 第五章的证据要求前置、跨主体证据衔接机制试用和长期责任影子评估三项任务</td>
 <td style="text-align: left;">属于本文基于现有证据形成的规范性政策综合，并非现行法定义务；适用范围和具体参数仍需项目试点与跨主体验证。</td>
 </tr>
-          </tbody>
+</tbody>
+
         </table>
       </div>
+      
     </div>
   
-</div>
 </section>
 <h1 data-number="附录 C" id="appendix-c" class="appendix-h1"><span class="header-section-number">附录 C</span> 关键术语与缩略语</h1>
 
@@ -5092,7 +5121,7 @@
 
 <ol>
 <li id="fn1"><p>这一物理代价在实际项目中可能达到不可忽略的量级。以发电领域为参照，IPCC AR6 汇总研究显示，配置 CCS 后燃料需求增幅约为 13%–44%<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ipcc-ar6-wg3-ch6" data-cite="ipcc-ar6-wg3-ch6" data-index="43"  title="Clarke, L., Y.-M. Wei, A. De La Vega Navarro, A. Garg, N. K. Hahmann, S. Khennas, I. M. L. Azevedo, A. Löschel, K. A. K. Singh, G. Streck, C. Stratou, &amp; Yanda, W. (2022). Energy systems. In IPCC, Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report, Chapter 6. https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/">43</a>]</sup>；压缩、运输和注入封存等环节同样存在额外能源需求，因此能源惩罚需要在一致的全链条边界下评价，而不能只观察捕集装置本身。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>定量比较时，本文采用与 SPECCA（Specific Primary Energy Consumption for CO<sub>2</sub> Avoided）同类的表征思路：分母取实际净避免排放而非捕集量，以扣除 CCUS 自身能源消耗及其他相关排放后评价实际减排效果；指标定义、单位与适用条件见附录 C<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42"  title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hagi2015" data-cite="hagi2015" data-index="44"  title="Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO<sub>2</sub> capture, cogeneration and hybridization. Energy, 91, 306–323. https://doi.org/10.1016/j.energy.2015.08.038">44</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-specca2024" data-cite="ieaghg-specca2024" data-index="45"  title="IEAGHG. (2024). Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems (Report 2024-03). https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/">45</a>]</sup>。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>定量比较时，本文采用与 SPECCA（Specific Primary Energy Consumption for CO<sub>2</sub> Avoided）同类的表征思路：分母取实际净避免排放而非捕集量，以扣除 CCUS 自身能源消耗及其他相关排放后评价实际减排效果；指标定义、单位与适用条件见附录 C<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42"  title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hagi2015" data-cite="hagi2015" data-index="44"  title="Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO2 capture, cogeneration and hybridization. Energy, 91, 306–323. https://doi.org/10.1016/j.energy.2015.08.038">44</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-specca2024" data-cite="ieaghg-specca2024" data-index="45"  title="IEAGHG. (2024). Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems (Report 2024-03). https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/">45</a>]</sup>。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -5598,22 +5627,26 @@
         }
       }
 
-      // 实时包裹高亮 mark
-      let wrapped = false;
+      // 实时包裹高亮 mark。
+      // 跨段落选区不能交给 surroundContents（会抛 InvalidStateError），统一用
+      // wrapRangeWithMarks 逐文本节点包裹；失败时再按引文文本兜底定位一次。
+      let segments = 0;
       if (currentSelectionRange) {
-        try {
-          const mark = document.createElement('mark');
-          mark.className = 'comment-highlight';
-          mark.setAttribute('data-comment-id', id);
-          mark.id = 'mark-' + id;
-          mark.title = '批注：' + commentBody;
-          currentSelectionRange.surroundContents(mark);
-          wrapped = true;
-        } catch (err) {
-          wrapped = highlightTextInElement(document.getElementById('report-content'), currentSelectedText, id, commentBody);
-        }
-      } else {
-        wrapped = highlightTextInElement(document.getElementById('report-content'), currentSelectedText, id, commentBody);
+        segments = wrapRangeWithMarks(
+          currentSelectionRange,
+          id,
+          commentBody,
+          'mark-' + id
+        );
+      }
+      if (!segments) {
+        segments = wrapRangeWithMarks(
+          findTextRange(document.getElementById('report-content'), currentSelectedText) ||
+            document.createRange(),
+          id,
+          commentBody,
+          'mark-' + id
+        );
       }
 
       const newComment = {
@@ -5631,7 +5664,13 @@
       closeCommentModal();
       attachMarkListeners();
       openCommentsDrawer(id);
-      showToast('✅ 批注已成功保存至本地！');
+      // 高亮片段为 0 说明引文无法在正文中定位（例如文本已变动）。
+      // 批注本身仍然保存，但必须明确告知，否则用户会看到"存了却没划线"且毫无线索。
+      showToast(
+        segments
+          ? `✅ 批注已保存（${segments > 1 ? `跨段落 ${segments} 处已划线` : '已划线'}）`
+          : '⚠️ 批注已保存，但未能在正文中定位该引文（文本可能已变动），刷新后也不会划线'
+      );
     }
 
     // 抽屉开关交互
@@ -5726,35 +5765,45 @@
       });
     }
 
+// 定位原文高亮 Mark。跨段落批注会有多个片段，按 data-comment-id 全部取出。
+    function marksForComment(id) {
+      return [...document.querySelectorAll(`mark[data-comment-id="${id}"]`)];
+    }
+
+    // 解构（去掉 <mark> 保留文字）
+    function unwrapMark(mark) {
+      const parent = mark.parentNode;
+      if (!parent) return;
+      while (mark.firstChild) {
+        parent.insertBefore(mark.firstChild, mark);
+      }
+      parent.removeChild(mark);
+    }
+
     // 定位原文高亮 Mark
     function scrollToMark(id) {
-      const mark = document.getElementById('mark-' + id) || document.querySelector(`mark[data-comment-id="${id}"]`);
-      if (!mark) {
+      const marks = marksForComment(id);
+      if (!marks.length) {
         showToast('⚠️ 未能在当前页面定位到该引用片段（可能文本变动）');
         return;
       }
-      mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      mark.classList.remove('pulse-highlight');
-      void mark.offsetWidth;
-      mark.classList.add('pulse-highlight');
+      marks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      marks.forEach(mark => {
+        mark.classList.remove('pulse-highlight');
+        void mark.offsetWidth;
+        mark.classList.add('pulse-highlight');
+      });
     }
 
     // 删除单条批注
     function deleteComment(id) {
-      if (!confirm('确定删除该条审阅批注吗？')) return;
+      if (!confirm('确定删除这条审阅批注吗？')) return;
       let comments = getStoredComments();
       comments = comments.filter(c => c.id !== id);
       saveStoredComments(comments);
 
-      // 解构正文中的 mark
-      const mark = document.getElementById('mark-' + id) || document.querySelector(`mark[data-comment-id="${id}"]`);
-      if (mark) {
-        const parent = mark.parentNode;
-        while (mark.firstChild) {
-          parent.insertBefore(mark.firstChild, mark);
-        }
-        parent.removeChild(mark);
-      }
+      // 解构正文中该批注的全部高亮片段（跨段落批注不止一个 <mark>）
+      marksForComment(id).forEach(unwrapMark);
       showToast('🗑️ 批注已删除');
     }
 
@@ -5765,13 +5814,7 @@
       if (!confirm(`确定清空全部 ${comments.length} 条审阅批注吗？此操作不可逆。`)) return;
 
       localStorage.removeItem(STORAGE_KEY);
-      document.querySelectorAll('.comment-highlight').forEach(mark => {
-        const parent = mark.parentNode;
-        while (mark.firstChild) {
-          parent.insertBefore(mark.firstChild, mark);
-        }
-        parent.removeChild(mark);
-      });
+      document.querySelectorAll('.comment-highlight').forEach(unwrapMark);
       updateCommentBadges(0);
       renderCommentsList([]);
       showToast('🗑️ 全部批注已清空');
@@ -5862,43 +5905,180 @@
       attachMarkListeners();
     }
 
-    // 文本树深度遍历恢复高亮
-    function highlightTextInElement(container, quote, id, commentText) {
-      if (!quote || quote.length < 2) return false;
-      const target = quote.trim();
+    /**
+     * 批注高亮底层工具
+     *
+     * 历史实现有两个缺陷，导致"跨自然段划词"完全失效（批注存进了 localStorage，
+     * 但正文不出现下划线）：
+     *   1) 实时高亮用 Range.surroundContents()。按 DOM 规范，只要 Range **部分包含**
+     *      任何非文本节点就抛 InvalidStateError —— 跨段落选区必然部分包含 <p>，
+     *      于是每次都进catch 分支。
+     *   2) catch 里的兜底 highlightTextInElement 只在**单个文本节点**内做
+     *      indexOf 查找。跨段落的引文在 DOM 里根本不属于同一个文本节点，永远匹配不到，
+     *      返回 false，页面无任何高亮也没有报错。
+     * 刷新后恢复（rehydrateComments）走的是同一个函数，因此跨段落批注在重载后
+     * 同样无法还原。
+     *
+     * 现在改为：跨文本节点定位 Range + 逐文本节点包裹 <mark>。
+     * 这样跨段落、跨 <strong>/<sup> 的选区都能正确落笔，且不再产生
+     * "<mark> 里套 <p>" 这种非法结构（同一批注可以有多个高亮片段，
+     * 通过 data-comment-id 关联）。
+     */
 
-      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-      let node;
-      while ((node = walker.nextNode())) {
-        if (node.parentElement && (
-          node.parentElement.classList.contains('comment-highlight') ||
-          ['SCRIPT', 'STYLE', 'BUTTON'].includes(node.parentElement.tagName)
-        )) {
+    // 高亮禁区：脚本/按钮/已有批注内部不允许再次包裹
+    const HIGHLIGHT_SKIP_SELECTOR = 'script, style, button, .comment-highlight';
+
+    /**
+     * 逐文本节点把 Range 包进 <mark>。返回生成的片段数。
+     * 先固化 range 的起止锚点再改 DOM，避免 splitText 让偏移失效。
+     */
+    function wrapRangeWithMarks(range, id, commentText, markIdBase) {
+      if (!range || range.collapsed) return 0;
+      const root =
+        range.commonAncestorContainer.nodeType === Node.ELEMENT_NODE
+          ? range.commonAncestorContainer
+          : range.commonAncestorContainer.parentElement;
+      if (!root) return 0;
+
+      const startNode = range.startContainer;
+      const startOffset = range.startOffset;
+      const endNode = range.endContainer;
+      const endOffset = range.endOffset;
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const p = node.parentElement;
+          if (!p || p.closest(HIGHLIGHT_SKIP_SELECTOR)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (!range.intersectsNode(node)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const targets = [];
+      let n;
+      while ((n = walker.nextNode())) targets.push(n);
+
+      let segments = 0;
+      for (const t of targets) {
+        let s = 0;
+        let e = t.nodeValue.length;
+        if (t === startNode) s = startOffset;
+        if (t === endNode) e = endOffset;
+        if (e <= s) continue;
+
+        let sub;
+        try {
+          sub = document.createRange();
+          sub.setStart(t, s);
+          sub.setEnd(t, e);
+        } catch (err) {
           continue;
         }
+        if (sub.collapsed) continue;
 
-        const val = node.nodeValue;
-        const idx = val.indexOf(target);
-        if (idx !== -1) {
-          try {
-            const mark = document.createElement('mark');
-            mark.className = 'comment-highlight';
-            mark.setAttribute('data-comment-id', id);
-            mark.id = 'mark-' + id;
-            mark.title = '批注：' + (commentText || '');
+        const mark = document.createElement('mark');
+        mark.className = 'comment-highlight';
+        mark.setAttribute('data-comment-id', id);
+        mark.id = markIdBase + (segments ? '-' + segments : '');
+        mark.title = '批注：' + (commentText || '');
+        // 先把内容搬进游离的 mark，再插入 DOM：appendChild 作用于脱离文档的节点，
+        // 不会影响 sub.range 的位置。
+        mark.appendChild(sub.extractContents());
+        sub.insertNode(mark);
+        segments++;
+      }
+      return segments;
+    }
 
-            const targetNode = node.splitText(idx);
-            targetNode.splitText(target.length);
+    /**
+     * 在容器内按引文文本定位 Range，支持跨文本节点与跨段落。
+     *
+     * 空白处理是这个函数的关键。Selection.toString() 在跨段落时会插入换行，
+     * 而 DOM 里两个 <p> 之间根本没有空白文本节点，"上一段结尾"与"下一段开头"
+     * 是直接相接的。因此这里对两侧统一做**全量去空白**再比对，
+     * 同时维护"去空白后的字符 -> 源位置"映射，把命中位置还原回真实 Range。
+     */
+    function findTextRange(container, needle) {
+      if (!container || !needle) return null;
+      // 注意：本文件整体被包在模板字符串里，正则里的空白类（反斜杠 + s）
+      // 必须写成双反斜杠，否则模板字面量会把它吞成字母 s，生成出 /s+/ 这种坏正则。
+      const target = needle.replace(/\s+/g, '');
+      if (target.length < 2) return null;
 
-            mark.appendChild(targetNode.cloneNode(true));
-            targetNode.parentNode.replaceChild(mark, targetNode);
-            return true;
-          } catch (e) {
-            console.warn('Rehydration wrap failed:', e);
+      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) {
+            return NodeFilter.FILTER_REJECT;
           }
+          const p = node.parentElement;
+          if (!p || p.closest(HIGHLIGHT_SKIP_SELECTOR)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const nodes = [];
+      const map = [];
+      let norm = '';
+      let n;
+      while ((n = walker.nextNode())) {
+        const v = n.nodeValue;
+        const nodeIdx = nodes.length;
+        nodes.push(n);
+        for (let i = 0; i < v.length; i++) {
+          const ch = v[i];
+          if (/\s/.test(ch)) continue; // 空白一律丢弃，跨段落才能对上
+          norm += ch;
+          map.push([nodeIdx, i]);
         }
       }
-      return false;
+      if (!norm) return null;
+
+      let idx = norm.indexOf(target);
+      if (idx === -1) return null;
+      // 多次出现时取最后一次，便于与"就地高亮"的直觉一致
+      while (norm.indexOf(target, idx + 1) !== -1) {
+        idx = norm.indexOf(target, idx + 1);
+      }
+
+      const startPos = map[idx];
+      let endPos = map[idx + target.length - 1];
+      if (!startPos || !endPos) return null;
+      // 命中末位若是代理对的高代理（emoji 等），不能从中间切断
+      while (
+        endPos &&
+        nodes[endPos[0]].nodeValue.charCodeAt(endPos[1]) >= 0xd800 &&
+        nodes[endPos[0]].nodeValue.charCodeAt(endPos[1]) <= 0xdbff
+      ) {
+        const at = map.indexOf(endPos);
+        endPos = at >= 0 ? map[at + 1] : null;
+        if (!endPos) break;
+      }
+
+      try {
+        const range = document.createRange();
+        range.setStart(nodes[startPos[0]], startPos[1]);
+        range.setEnd(
+          nodes[endPos[0]],
+          Math.min(endPos[1] + 1, nodes[endPos[0]].nodeValue.length)
+        );
+        return range.collapsed ? null : range;
+      } catch (err) {
+        return null;
+      }
+    }
+
+    // 文本树深度遍历恢复高亮（刷新后按引文重新定位，跨段落同样有效）
+    function highlightTextInElement(container, quote, id, commentText) {
+      const range = findTextRange(container, quote);
+      if (!range) return false;
+      return wrapRangeWithMarks(range, id, commentText, 'mark-' + id) > 0;
     }
 
     // 为所有 Mark 绑定点击事件（打开抽屉并聚焦该批注）
