@@ -1,27 +1,61 @@
+import crypto from 'crypto';
 import fs from 'fs';
 import os from 'os';
-import crypto from 'crypto';
 import path from 'path';
-import { execSync, spawnSync } from 'child_process';
+import { fileURLToPath } from 'url';
+import { spawnSync } from 'child_process';
+import {
+  verifyReportFile,
+  verifyReportStructure,
+} from './lib/report-structure.mjs';
+import {
+  preprocessTex,
+  texCaptionForLabel,
+  texCaptionToText,
+} from './lib/tex-preprocess.mjs';
+
+// 仓库根目录：以脚本自身位置推导，不依赖调用者的 CWD。
+// 历史上所有路径都走 path.resolve('public/reports', ...)，一旦从子目录或
+// 绝对路径调用就会把产物写到错误位置（CI 里表现为"文件不见了"）。
+const repoRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..'
+);
 
 /**
  * sync-paper-report.mjs
  *
  * 一键可复用的学术报告转换与同步管道：
- * 1. 支持从 GitHub 仓库（通过 gh api）或本地路径读取 .tex 源码与配图
+ * 1. 支持从 GitHub 仓库（通过 gh api）或本机路径读取 .tex 源码与配图
  * 2. 自动调用 pandoc (--number-sections) 编译为带严谨章节编号的结构化语义 HTML
  * 3. 自动解析 \begin{thebibliography}，将正文空缺引用修复为标准 [1], [2, 3] 可点击链接
  * 4. 注入即时浮窗气泡 (Citation Tooltip)、跳转高亮反馈与文末编号式参考文献列表
- * 5. 自动调用 xelatex 生成 100% 矢量的原版 PDF 交付物（页数自动识别）
+ * 5. 同步或生成原版 PDF 交付物（页数自动识别）
  * 6. 注入现代学术级 UI 框架（交互式目录、图片全屏放大、深浅色模式、BibTeX 一键复制等）
+ * 7. 写出 assets-manifest.json（每个交付素材的来源 + 指纹），供 report:verify 复检
  *
  * 用法:
- *   node scripts/sync-paper-report.mjs [--repo liuh886/2601_ESG30] [--slug 2601_ESG30] [--local-tex path/to/file.tex] [--skip-pdf]
+ *   node scripts/sync-paper-report.mjs [选项]
+ *     默认（远端权威）：从 ESG30 远端仓库取 tex/配图/PDF，产出与 CI 逐字节一致。
+ *     日常循环「编辑 → push 到 ESG30 → pnpm report:sync」用的就是这个模式。
+ *
+ *     --repo <owner/name>     ESG30 源仓库，默认 liuh886/2601_ESG30
+ *     --slug <slug>           报告 slug，默认 2601_ESG30
+ *     --local                 改用本机 tex/配图/PDF（起草预览；产物与线上不一致）
+ *     --local-tex <path>      指定本机 TeX（隐含 --local）
+ *     --local-pdf <path>      指定本机已构建 PDF
+ *     --out-dir <path>        产物输出目录，默认 public/reports/<slug>
+ *     --skip-pdf              不重新获取 PDF，沿用输出目录中已有的（快速迭代 HTML 用）
  *   node scripts/sync-paper-report.mjs --check
- *     --check: 环境无关的漂移检查。读取已提交页面内的 paper-source 溯源指纹（及 PDF）
- *              与最新 paper draft 比对，不一致则以退出码 1 报告，不修改工作区文件。
+ *     --check: 环境无关的漂移检查。比对已提交页面内的 paper-source 指纹、PDF 与结构体检，
+ *              不一致则以退出码 1 报告。不需要 pandoc，也不下载素材。
  *   node scripts/sync-paper-report.mjs --check --strict
- *     --strict: 额外在临时目录整页重新生成并逐字节比对（要求与本机 Pandoc 版本一致）。
+ *     --strict: 额外在临时目录整页重新生成并逐字节比对（含素材清单与 PDF）。
+ *              要求本机 Pandoc 版本与生成已提交产物时一致。
+ *
+ * 环境变量:
+ *   ESG30_LOCAL_DIR    本机 ESG30 工作目录（替代历史硬编码盘符）
+ *   GH_TOKEN           访问私有 ESG30 仓库的 token（CI 用）
  */
 
 const args = process.argv.slice(2);
@@ -36,10 +70,42 @@ const localTex = getArg('--local-tex', null);
 const checkMode = args.includes('--check');
 const skipPdf = args.includes('--skip-pdf');
 
-const committedHtmlPath = path.resolve('public/reports', slug, 'index.html');
-const outDir = checkMode
-  ? fs.mkdtempSync(path.join(os.tmpdir(), `ccus-report-check-${slug}-`))
-  : path.resolve('public/reports', slug);
+/**
+ * 本机素材根目录。可用环境变量 ESG30_LOCAL_DIR 覆盖，避免把某个人的盘符写死在脚本里
+ * （换机器/换盘符时 CI 与本机会走不同分支，是此前多处"图没更新"类问题的温床）。
+ */
+const localRootDir =
+  process.env.ESG30_LOCAL_DIR ||
+  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30';
+
+/**
+ * 素材来源模式：**默认远端权威**，与 CI 完全一致。
+ *
+ * 采用的日常循环是「编辑 → push 到 ESG30 仓库 → report:sync」，
+ * 所以默认走远端：本机产物 == CI 产物 == 线上发布物，三者不会分叉。
+ * 起草阶段想用本机 tex/配图时显式加 --local（产物与线上不一致，属预期）。
+ *
+ * 历史事故：CI 上探测不到本机素材目录，而目标目录里已有从 git 检出的旧图，
+ * 于是走"文件已存在就跳过"分支——远端图更新了也不会被拉取，页面永远用旧图。
+ * 因此默认必须是远端权威，而不是"本机优先、缺失再回退"。
+ */
+const localFirst = args.includes('--local') || !!localTex;
+const remoteOnly = !localFirst;
+
+const committedHtmlPath = path.resolve(
+  repoRoot,
+  'public/reports',
+  slug,
+  'index.html'
+);
+// --out-dir 让调用方（主要是 report:parity）把产物写到指定目录，
+// 避免为了隔离输出而伪造 slug —— slug 会渗进页面里的 canonical URL 与评论存储键。
+const outDirOverride = getArg('--out-dir', null);
+const outDir = outDirOverride
+  ? path.resolve(outDirOverride)
+  : checkMode
+    ? fs.mkdtempSync(path.join(os.tmpdir(), `ccus-report-check-${slug}-`))
+    : path.resolve(repoRoot, 'public/reports', slug);
 const outDataDir = path.join(outDir, 'data');
 fs.mkdirSync(outDataDir, { recursive: true });
 
@@ -47,13 +113,72 @@ console.log(`[sync-paper-report] 开始处理报告: ${slug}`);
 console.log(
   `[sync-paper-report] 目标输出目录: ${outDir}${checkMode ? ' (check 模式，仅临时目录)' : ''}`
 );
+console.log(
+  `[sync-paper-report] 素材来源模式: ${
+    remoteOnly
+      ? '远端权威（与 CI 一致）'
+      : `本机草稿 (${localRootDir})，缺失时回退远端`
+  }`
+);
 
-const defaultLocalTex =
-  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/paper_draft.tex';
-const defaultLocalOutputDir =
-  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/output';
-const defaultLocalDataDir =
-  'D:/Documents/zhihaol/100_Project/2601_ESG30/ESG30/data';
+const defaultLocalTex = path.join(localRootDir, 'paper_draft.tex');
+const defaultLocalOutputDir = path.join(localRootDir, 'output');
+const defaultLocalDataDir = path.join(localRootDir, 'data');
+
+/**
+ * 统一的所有权边界：所有取内容的动作都走这里，避免把路径/引号拼进 shell 字符串。
+ * 历史上用 execSync(`python -c "...${path}..."`) 下载二进制，在 Windows 依赖单引号/双引号
+ * 嵌套、在 CI 又依赖 `python` 恰好存在——两个环境都只是"碰巧能用"。这里改成 argv 直传。
+ */
+function ghApiToFile(remotePath, destPath) {
+  const res = spawnSync(
+    'gh',
+    [
+      'api',
+      `repos/${repo}/contents/${remotePath}`,
+      '-H',
+      'Accept: application/vnd.github.v3.raw',
+    ],
+    { encoding: 'buffer', maxBuffer: 512 * 1024 * 1024 }
+  );
+  if (res.error || res.status !== 0 || !res.stdout || !res.stdout.length) {
+    const why = res.error
+      ? res.error.message
+      : (res.stderr || Buffer.alloc(0)).toString('utf8').trim() ||
+        `exit ${res.status}`;
+    return { ok: false, error: why };
+  }
+  fs.writeFileSync(destPath, res.stdout);
+  return { ok: true, bytes: res.stdout.length };
+}
+
+function ghApiToText(remotePath) {
+  const res = spawnSync(
+    'gh',
+    [
+      'api',
+      `repos/${repo}/contents/${remotePath}`,
+      '-H',
+      'Accept: application/vnd.github.v3.raw',
+    ],
+    { encoding: 'utf8', maxBuffer: 128 * 1024 * 1024 }
+  );
+  if (res.error || res.status !== 0 || !res.stdout) {
+    const why = res.error
+      ? res.error.message
+      : (res.stderr || '').trim() || `exit ${res.status}`;
+    throw new Error(why);
+  }
+  return res.stdout;
+}
+
+function sha256File(filePath) {
+  return crypto
+    .createHash('sha256')
+    .update(fs.readFileSync(filePath))
+    .digest('hex')
+    .slice(0, 16);
+}
 
 // 在候选文件名中挑选版本号最高的 PDF（如 v3.6 高于 v3.5）
 function pickLatestPdfName(names) {
@@ -92,26 +217,24 @@ const pdfRemotePath = getArg('--pdf-remote-path', 'latest');
 
 let texContent = '';
 
-// --- 1. 获取 TeX 源码与图片资源 ---
-const candidateLocalTex =
-  localTex || (fs.existsSync(defaultLocalTex) ? defaultLocalTex : null);
+// --- 1. 获取 TeX 源码与配图 ---
+// texSource 决定后续所有素材的来源：拿的是本机 tex 就用本机 data/，保证同一快照；
+// 拿的是远端 tex 就必须用远端 data/，否则会出现"文字是新的、图还是旧的"。
+let texSource = null;
+const candidateLocalTex = remoteOnly
+  ? null
+  : localTex || (fs.existsSync(defaultLocalTex) ? defaultLocalTex : null);
 if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
+  texSource = 'local';
   console.log(
     `[sync-paper-report] 优先使用本机最新 TeX 源码: ${candidateLocalTex}`
   );
   texContent = fs.readFileSync(candidateLocalTex, 'utf8');
 } else {
-  console.log(
-    `[sync-paper-report] 从 GitHub 私有/公开仓库获取 TeX 源码: ${repo}...`
-  );
+  texSource = 'remote';
+  console.log(`[sync-paper-report] 从 GitHub 仓库获取 TeX 源码: ${repo}...`);
   try {
-    texContent = execSync(
-      `gh api repos/${repo}/contents/paper_draft.tex -H "Accept: application/vnd.github.v3.raw"`,
-      {
-        encoding: 'utf8',
-        maxBuffer: 50 * 1024 * 1024,
-      }
-    );
+    texContent = ghApiToText('paper_draft.tex');
     console.log(
       `[sync-paper-report] 成功获取 TeX 源码，字符数: ${texContent.length}`
     );
@@ -122,9 +245,55 @@ if (candidateLocalTex && fs.existsSync(candidateLocalTex)) {
       );
       process.exit(0);
     }
-    console.error(`[sync-paper-report] 获取 GitHub 源码失败:`, err.message);
+    console.error(
+      `[sync-paper-report] ❌ 从 ${repo} 获取 paper_draft.tex 失败: ${err.message}`
+    );
+    console.error(
+      `[sync-paper-report]    默认模式只信任远端仓库（与 CI 一致）。若你是离线起草、想用本机 tex 生成预览，请改用：`
+    );
+    console.error(
+      `[sync-paper-report]      node scripts/sync-paper-report.mjs --local --skip-pdf`
+    );
+    console.error(
+      `[sync-paper-report]    （注意：--local 产出的页面与线上不一致，CI 的 report:parity 会判为漂移。）`
+    );
     process.exit(1);
   }
+}
+
+/**
+ * 起草分歧预警：默认模式下产物基于**远端** tex。若本机还有未推送的草稿，
+ * 必须明确告知，否则会出现"我明明改了、页面却没变"的困惑。
+ */
+function warnIfLocalDraftDiverges() {
+  // 只在"远端权威"模式下提醒：此时产物基于远端，本机未推送的草稿不会体现在页面上。
+  // --local 模式下本机就是来源，无需提醒；check 模式只做只读比对，不打扰。
+  if (!remoteOnly || checkMode) return;
+  const localPath = localTex || defaultLocalTex;
+  if (!localPath || !fs.existsSync(localPath)) return;
+  const localSha = crypto
+    .createHash('sha256')
+    .update(fs.readFileSync(localPath, 'utf8').replace(/\r\n/g, '\n'))
+    .digest('hex')
+    .slice(0, 16);
+  if (localSha === texSha) {
+    console.log(
+      `[sync-paper-report] 本机草稿与远端一致 (${texSha})，产物即线上将发布的版本。`
+    );
+    return;
+  }
+  console.warn(
+    `[sync-paper-report] ⚠️  本机草稿与远端不一致：local=${localSha} / remote=${texSha}`
+  );
+  console.warn(
+    `[sync-paper-report]    本次产物基于**远端**（= 线上将发布的版本）。若要让线上反映本机草稿：`
+  );
+  console.warn(`[sync-paper-report]      1) 先把 ${localPath} 推送到 ${repo}`);
+  console.warn(`[sync-paper-report]      2) 再跑 \`pnpm report:sync\``);
+  console.warn(
+    `[sync-paper-report]    若只是想本机预览（产物与线上不一致，CI 会判为漂移）：`
+  );
+  console.warn(`[sync-paper-report]      pnpm report:sync:local`);
 }
 
 // 源码指纹：用于在页面内标注所依据的 paper draft 版本，并支撑 --check 漂移比对。
@@ -136,48 +305,206 @@ const texSha = crypto
   .digest('hex')
   .slice(0, 16);
 console.log(`[sync-paper-report] paper draft sha256(前16位): ${texSha}`);
+warnIfLocalDraftDiverges();
 
-// 提取并下载 TeX 中引用到的图片
-const imgMatches = [
-  ...texContent.matchAll(/\\includegraphics(?:\[.*?\])?\{([^}]+)\}/g),
+/**
+ * --check（默认模式）是环境无关的漂移检查，只需要 tex 指纹。
+ * 先做完指纹比对再拉素材，避免每次 pre-push / CI 都白白下载几 MB 图片与 PDF。
+ */
+if (checkMode && !args.includes('--strict')) {
+  const fail = (msg) => {
+    console.error(`[sync-paper-report][check] ❌ ${msg}`);
+    process.exit(1);
+  };
+
+  if (!fs.existsSync(committedHtmlPath)) {
+    fail(`未找到已提交页面: ${committedHtmlPath}`);
+  }
+  const committedHtml = fs.readFileSync(committedHtmlPath, 'utf8');
+  const stampMatch = committedHtml.match(
+    /<meta name="paper-source" content="paper_draft\.tex sha256:([0-9a-f]+)"\s*\/>/
+  );
+  if (!stampMatch) {
+    fail(
+      `已提交页面缺少 paper-source 溯源标记，无法确认其对应的 paper draft 版本。请运行 \`pnpm report:sync\`。`
+    );
+  }
+  if (stampMatch[1] !== texSha) {
+    fail(
+      `已提交页面基于 paper draft sha256:${stampMatch[1]}，而最新为 sha256:${texSha}。请运行 \`pnpm report:sync\`。`
+    );
+  }
+
+  const committedPdf = path.join(
+    path.dirname(committedHtmlPath),
+    'paper_draft.pdf'
+  );
+  if (fs.existsSync(committedPdf)) {
+    let refPdf = null;
+    let tmpRefPdf = null;
+    const localRef =
+      !remoteOnly && fs.existsSync(localPdfPath || '') ? localPdfPath : null;
+    if (localRef) {
+      refPdf = localRef;
+    } else {
+      try {
+        const remotePdf =
+          pdfRemotePath && pdfRemotePath !== 'latest'
+            ? pdfRemotePath
+            : resolveLatestRemotePdf();
+        if (remotePdf) {
+          tmpRefPdf = path.join(
+            os.tmpdir(),
+            `ccus-report-ref-${Date.now()}.pdf`
+          );
+          fetchRemoteBinary(remotePdf, tmpRefPdf);
+          refPdf = tmpRefPdf;
+        }
+      } catch (err) {
+        console.warn(
+          `[sync-paper-report][check] ⚠️ 无法取得参考 PDF，跳过 PDF 比对: ${err.message}`
+        );
+      }
+    }
+    if (refPdf && fs.existsSync(refPdf)) {
+      const same = fs
+        .readFileSync(committedPdf)
+        .equals(fs.readFileSync(refPdf));
+      if (!same) {
+        fail(
+          `已提交 paper_draft.pdf 与最新交付 PDF 不一致。请运行 \`pnpm report:sync\`。`
+        );
+      }
+    }
+    if (tmpRefPdf && fs.existsSync(tmpRefPdf)) fs.unlinkSync(tmpRefPdf);
+  }
+
+  // 结构体检：指纹一致但版面损坏（例如手工改坏产物、或生成脚本回归）也要拦住。
+  // CI 的 report:verify 走同一条规则。
+  const structureProblems = verifyReportFile(
+    committedHtmlPath,
+    texContentNormalized
+  );
+  if (structureProblems.length) {
+    console.error(
+      `[sync-paper-report][check] ❌ 已提交页面结构自检未通过（${structureProblems.length} 项）：`
+    );
+    for (const p of structureProblems) console.error(`  · ${p}`);
+    process.exit(1);
+  }
+
+  console.log(
+    `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
+  );
+  process.exit(0);
+}
+
+// 提取 TeX 中引用到的配图
+const referencedImages = [
+  ...new Set(
+    [...texContent.matchAll(/\\includegraphics(?:\[.*?\])?\{([^}]+)\}/g)].map(
+      (m) => m[1]
+    )
+  ),
 ];
-const referencedImages = [...new Set(imgMatches.map((m) => m[1]))];
 console.log(`[sync-paper-report] 检测到引用图片:`, referencedImages);
 
-for (const relImg of referencedImages) {
-  const destImgPath = path.join(outDir, relImg);
-  fs.mkdirSync(path.dirname(destImgPath), { recursive: true });
+/**
+ * 配图获取：按"与 tex 同源优先"的顺序解析，并把每个文件的来源与指纹登记进清单。
+ * 关键修正：远端优先模式下，若最终落到"目标目录里已有旧文件"这一兜底分支，
+ * 说明远端素材没取到——直接失败，而不是把旧图当新图发布。
+ */
+const assetManifest = [];
+{
+  const unresolved = [];
+  for (const relImg of referencedImages) {
+    const destImgPath = path.join(outDir, relImg);
+    fs.mkdirSync(path.dirname(destImgPath), { recursive: true });
 
-  // 优先从本机 ESG30/data 目录复制最新高清素材
-  const localCand = path.join(defaultLocalDataDir, path.basename(relImg));
-  if (fs.existsSync(localCand)) {
-    fs.copyFileSync(localCand, destImgPath);
-    console.log(`[sync-paper-report] 从本机最新数据源同步图片: ${localCand}`);
-    continue;
-  }
+    // 候选来源，按优先级：tex 同源目录 -> 本机 data -> 远端 -> 目标目录已有文件
+    const localDataCand = path.join(defaultLocalDataDir, path.basename(relImg));
+    const candidates = [
+      texSource === 'local' && fs.existsSync(localDataCand)
+        ? { kind: 'local', from: localDataCand }
+        : null,
+      !remoteOnly && texSource === 'remote' && fs.existsSync(localDataCand)
+        ? { kind: 'local', from: localDataCand }
+        : null,
+      { kind: 'remote', from: relImg },
+      fs.existsSync(relImg) &&
+      path.resolve(relImg) !== path.resolve(destImgPath)
+        ? { kind: 'local', from: relImg }
+        : null,
+      fs.existsSync(destImgPath) && fs.statSync(destImgPath).size > 0
+        ? { kind: 'existing', from: destImgPath }
+        : null,
+    ].filter(Boolean);
 
-  if (fs.existsSync(destImgPath) && fs.statSync(destImgPath).size > 0) {
-    continue;
-  }
-
-  // 尝试从相对本地或 GitHub 下载
-  if (fs.existsSync(relImg)) {
-    fs.copyFileSync(relImg, destImgPath);
-    console.log(`[sync-paper-report] 从相对路径复制图片: ${relImg}`);
-  } else {
-    console.log(
-      `[sync-paper-report] 从 GitHub API 下载二进制图片: ${relImg}...`
-    );
-    try {
-      const pyCmd = `python -c "import subprocess, os; f='${relImg}'; t='${destImgPath.replace(/\\/g, '/')}'; out=open(t,'wb'); subprocess.run(['gh','api',f'repos/${repo}/contents/{f}','-H','Accept: application/vnd.github.v3.raw'], stdout=out); out.close()"`;
-      execSync(pyCmd);
-      console.log(
-        `[sync-paper-report] 下载完成: ${destImgPath} (${fs.statSync(destImgPath).size} bytes)`
-      );
-    } catch (e) {
-      console.warn(`[sync-paper-report] 下载图片失败 ${relImg}:`, e.message);
+    let placed = null;
+    const failures = [];
+    for (const cand of candidates) {
+      if (cand.kind === 'remote') {
+        const r = ghApiToFile(relImg, destImgPath);
+        if (r.ok) {
+          placed = { source: 'remote', bytes: r.bytes };
+          break;
+        }
+        failures.push(`remote(${r.error})`);
+        continue;
+      }
+      try {
+        if (path.resolve(cand.from) === path.resolve(destImgPath)) {
+          placed = { source: 'existing', bytes: fs.statSync(destImgPath).size };
+          break;
+        }
+        fs.copyFileSync(cand.from, destImgPath);
+        placed = { source: 'local', bytes: fs.statSync(destImgPath).size };
+        break;
+      } catch (err) {
+        failures.push(`${cand.kind}(${err.message})`);
+      }
     }
+
+    if (!placed) {
+      unresolved.push(relImg);
+      console.error(
+        `[sync-paper-report] ❌ 无法获取配图 ${relImg}；尝试过: ${failures.join(', ') || '(无可用来源)'}`
+      );
+      continue;
+    }
+    if (placed.source === 'existing') {
+      const msg =
+        `[sync-paper-report] ⚠️ 配图 ${relImg} 未能从${texSource === 'local' ? '本机' : '远端'}数据源取得，` +
+        `沿用目标目录中已有文件（可能是旧版本）。`;
+      if (remoteOnly) unresolved.push(relImg);
+      console.warn(msg);
+    }
+    assetManifest.push({
+      path: relImg.replace(/\\/g, '/'),
+      source: placed.source,
+      bytes: placed.bytes,
+      sha256: sha256File(destImgPath),
+    });
   }
+
+  if (unresolved.length) {
+    if (remoteOnly) {
+      console.error(
+        `[sync-paper-report] ❌ 远端优先模式下有 ${unresolved.length} 张配图只能沿用旧文件，已中止：` +
+          unresolved.join(', ')
+      );
+      process.exit(1);
+    }
+    console.warn(
+      `[sync-paper-report] ⚠️ 有 ${unresolved.length} 张配图使用兜底来源，产物可能与 paper draft 不一致。`
+    );
+  }
+
+  const bySource = assetManifest.reduce((acc, a) => {
+    acc[a.source] = (acc[a.source] || 0) + 1;
+    return acc;
+  }, {});
+  console.log(`[sync-paper-report] 配图来源统计: ${JSON.stringify(bySource)}`);
 }
 
 // --- 2. 提取 TeX 元数据 ---
@@ -193,7 +520,7 @@ const docDate = extractMeta(/\\date\{([^}]+)\}/) || '2026年9月15日';
 const reportType =
   extractMeta(/\\newcommand\{\\ReportType\}\{([^}]+)\}/) || '课题研究报告';
 const reportVersion =
-  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.5';
+  extractMeta(/\\newcommand\{\\ReportVersion\}\{([^}]+)\}/) || 'v3.6';
 const programName =
   extractMeta(/\\newcommand\{\\ProgramName\}\{([^}]+)\}/) ||
   'ESG30 青年学者计划（二期）';
@@ -232,120 +559,173 @@ console.log(`[sync-paper-report] 解析到 ${rawKeys.length} 条原始参考文�
 
 // --- 3. 编译或同步 PDF ---
 const pdfDest = path.join(outDir, 'paper_draft.pdf');
+let pdfSource = null;
 
-// 通过 gh api 下载仓库内二进制文件
 function fetchRemoteBinary(remotePath, destPath) {
-  const buf = execSync(
-    `gh api "repos/${repo}/contents/${remotePath}" -H "Accept: application/vnd.github.v3.raw"`,
-    { maxBuffer: 256 * 1024 * 1024, encoding: 'buffer' }
-  );
-  fs.writeFileSync(destPath, buf);
+  const r = ghApiToFile(remotePath, destPath);
+  if (!r.ok) throw new Error(r.error);
+  return r.bytes;
 }
 
 // 解析 ESG30 仓库 output/ 下版本号最高的已构建 PDF
 function resolveLatestRemotePdf() {
-  const names = execSync(
-    `gh api "repos/${repo}/contents/output" --jq ".[].name"`,
+  const res = spawnSync(
+    'gh',
+    ['api', `repos/${repo}/contents/output`, '--jq', '.[].name'],
     { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }
-  )
+  );
+  if (res.error || res.status !== 0 || !res.stdout) {
+    throw new Error(
+      res.error
+        ? res.error.message
+        : (res.stderr || '').trim() || `exit ${res.status}`
+    );
+  }
+  const names = res.stdout
     .split(/\r?\n/)
-    .map((s) => s.trim());
+    .map((s) => s.trim())
+    .filter(Boolean);
   const latest = pickLatestPdfName(names);
   return latest ? `output/${latest}` : null;
 }
 
-if (fs.existsSync(localPdfPath)) {
-  fs.copyFileSync(localPdfPath, pdfDest);
-  console.log(
-    `[sync-paper-report] 直接同步本机最新原版 PDF: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
-  );
-} else if (!skipPdf) {
-  // 本地无 PDF（例如 CI 环境）：优先从 ESG30 仓库直接拉取已构建的 PDF
-  let pdfFetched = false;
-  try {
-    let remotePdf = pdfRemotePath;
-    if (!remotePdf || remotePdf === 'latest') {
-      remotePdf = resolveLatestRemotePdf();
-    }
-    if (remotePdf) {
-      fetchRemoteBinary(remotePdf, pdfDest);
-      pdfFetched = fs.existsSync(pdfDest) && fs.statSync(pdfDest).size > 0;
-      if (pdfFetched) {
-        console.log(
-          `[sync-paper-report] 已从 ${repo} 拉取 PDF: ${remotePdf} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
-        );
-      }
-    }
-  } catch (err) {
-    console.warn(`[sync-paper-report] 从远端拉取 PDF 失败:`, err.message);
+// 构建 PDF：先本机已构建产物，再远端已构建产物，最后才本机 xelatex 兜底。
+// 顺序与 tex/配图一致：远端优先模式下不读本机产物，保证与 CI 同源。
+// 所有获取都先落到 .staged 临时文件再 rename，避免中途失败破坏已提交产物。
+if (skipPdf) {
+  if (fs.existsSync(pdfDest)) {
+    pdfSource = 'existing';
+    console.log(
+      `[sync-paper-report] --skip-pdf：沿用现有 ${path.relative(repoRoot, pdfDest)}（${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB）`
+    );
+  } else {
+    console.warn(
+      `[sync-paper-report][warn] --skip-pdf 且目标位置没有 paper_draft.pdf，页面将不带下载入口。`
+    );
+  }
+} else {
+  const staged = path.join(outDir, '.paper_draft.pdf.staged');
+  const commitStaged = (source) => {
+    fs.renameSync(staged, pdfDest);
+    pdfSource = source;
+  };
+
+  if (!remoteOnly && localPdfPath && fs.existsSync(localPdfPath)) {
+    fs.copyFileSync(localPdfPath, staged);
+    commitStaged('local');
+    console.log(
+      `[sync-paper-report] 同步本机已构建原版 PDF: ${localPdfPath} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+    );
   }
 
-  if (!pdfFetched) {
+  if (!pdfSource) {
     try {
-      const checkXe = spawnSync('xelatex', ['--version']);
-      if (checkXe.status === 0) {
-        console.log(
-          `[sync-paper-report] 检测到本机已安装 xelatex，正在构建高保真原版 PDF...`
-        );
-        const tempTex = path.join(outDir, 'source.tex');
-        fs.writeFileSync(tempTex, texContent, 'utf8');
-
-        console.log(`[sync-paper-report] 编译 PDF 第一遍...`);
-        execSync(
-          `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
-          { stdio: 'ignore' }
-        );
-        console.log(`[sync-paper-report] 编译 PDF 第二遍 (解析目录与引用)...`);
-        execSync(
-          `xelatex -interaction=nonstopmode -output-directory="${outDir}" "${tempTex}"`,
-          { stdio: 'ignore' }
-        );
-
-        const genPdf = path.join(outDir, 'source.pdf');
-        if (fs.existsSync(genPdf)) {
-          fs.renameSync(genPdf, pdfDest);
+      const remotePdf =
+        pdfRemotePath && pdfRemotePath !== 'latest'
+          ? pdfRemotePath
+          : resolveLatestRemotePdf();
+      if (remotePdf) {
+        fetchRemoteBinary(remotePdf, staged);
+        if (fs.statSync(staged).size > 0) {
+          commitStaged('remote');
           console.log(
-            `[sync-paper-report] PDF 编译成功: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+            `[sync-paper-report] 已从 ${repo} 拉取 PDF: ${remotePdf} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
           );
         }
+      } else {
+        console.warn(
+          `[sync-paper-report][warn] ${repo}/output 下未找到符合 ESG30_dMRV_Report_v*.pdf 的已构建 PDF。`
+        );
+      }
+    } catch (err) {
+      console.warn(`[sync-paper-report] 从远端拉取 PDF 失败:`, err.message);
+    }
+  }
 
-        for (const ext of ['.aux', '.log', '.out', '.toc']) {
+  if (!pdfSource) {
+    // 最后兜底：本机 xelatex 现编。注意其字节与 ESG30 官方构建不同，会触发 PDF 漂移告警，
+    // 因此只作为"本机没有现成产物"的应急手段，并显式提示来源差异。
+    const checkXe = spawnSync('xelatex', ['--version']);
+    if (checkXe.status === 0) {
+      console.log(
+        `[sync-paper-report] 未取得现成 PDF，检测到本机 xelatex，正在本地构建（字节将与 ESG30 官方构建不同）...`
+      );
+      const tempTex = path.join(outDir, 'source.tex');
+      fs.writeFileSync(tempTex, texContent, 'utf8');
+      try {
+        for (const pass of [1, 2]) {
+          console.log(`[sync-paper-report] 编译 PDF 第 ${pass} 遍...`);
+          spawnSync(
+            'xelatex',
+            [
+              '-interaction=nonstopmode',
+              `-output-directory=${outDir}`,
+              tempTex,
+            ],
+            { stdio: 'ignore' }
+          );
+        }
+        const genPdf = path.join(outDir, 'source.pdf');
+        if (fs.existsSync(genPdf) && fs.statSync(genPdf).size > 0) {
+          fs.copyFileSync(genPdf, staged);
+          commitStaged('local-build');
+          console.log(
+            `[sync-paper-report] PDF 本地构建成功: ${pdfDest} (${(fs.statSync(pdfDest).size / 1024 / 1024).toFixed(2)} MB)`
+          );
+        }
+      } finally {
+        for (const ext of ['.tex', '.aux', '.log', '.out', '.toc']) {
           const f = path.join(outDir, 'source' + ext);
           if (fs.existsSync(f)) fs.unlinkSync(f);
         }
-        if (fs.existsSync(tempTex)) fs.unlinkSync(tempTex);
       }
-    } catch (err) {
-      console.warn(`[sync-paper-report] PDF 编译跳过或告警:`, err.message);
     }
+  }
+
+  if (fs.existsSync(staged)) fs.unlinkSync(staged);
+
+  if (!pdfSource) {
+    console.error(
+      `[sync-paper-report] ❌ 未取得 paper_draft.pdf（来源模式: ${remoteOnly ? '仅远端' : '本机优先'}），已中止。`
+    );
+    process.exit(1);
   }
 }
 
-// 尽力从 PDF 解析实际页数，供模板文案使用；解析失败返回 null，避免硬编码页数随版本漂移
+/**
+ * 从 PDF 解析实际页数，供模板文案使用；解析失败返回 null（模板会省略页数），
+ * 避免硬编码页数随版本漂移。三种方式全部走 argv 直传，不把路径拼进 shell 字符串：
+ * 历史实现用 execSync(`python -c "...${path}..."`)，在 Windows 依赖引号嵌套、
+ * 在 CI 依赖 `python` 恰好在 PATH 上，两个环境都只是碰巧能用。
+ */
+const PY_PDF_PAGES =
+  'import importlib.util,sys;' +
+  'mod=__import__("pypdf") if importlib.util.find_spec("pypdf") else __import__("PyPDF2");' +
+  'print(len(mod.PdfReader(sys.argv[1]).pages))';
+
 function detectPdfPageCount(pdfPath) {
   if (!pdfPath || !fs.existsSync(pdfPath)) return null;
-  const posixPath = pdfPath.replace(/\\/g, '/');
-  try {
-    const pySnippet = `import importlib.util;mod=__import__('pypdf') if importlib.util.find_spec('pypdf') else __import__('PyPDF2');print(len(mod.PdfReader(r'${posixPath}').pages))`;
-    const out = execSync(`python -c "${pySnippet}"`, {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-    const n = parseInt(out, 10);
-    if (Number.isFinite(n) && n > 0) return n;
-  } catch {
-    // 忽略，继续尝试下一种方式
-  }
-  try {
-    const out = execSync(`pdfinfo "${pdfPath}"`, {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    });
-    const m = out.match(/Pages:\s*(\d+)/);
+
+  // 1) pdfinfo（poppler-utils；CI 已安装）
+  const info = spawnSync('pdfinfo', [pdfPath], { encoding: 'utf8' });
+  if (!info.error && info.status === 0 && info.stdout) {
+    const m = info.stdout.match(/Pages:\s*(\d+)/);
     if (m) return parseInt(m[1], 10);
-  } catch {
-    // 忽略，回退到无页数文案
   }
+
+  // 2) python / python3（argv 传参，无引号问题）
+  for (const py of ['python', 'python3']) {
+    const r = spawnSync(py, ['-c', PY_PDF_PAGES, pdfPath], {
+      encoding: 'utf8',
+    });
+    if (r.error || r.status !== 0 || !r.stdout) continue;
+    const n = parseInt(r.stdout.trim(), 10);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+
+  console.warn(
+    `[sync-paper-report][warn] 未能解析 PDF 页数（缺 pdfinfo / python），页面将不显示页数。`
+  );
   return null;
 }
 const pdfPageCount = detectPdfPageCount(pdfDest);
@@ -353,143 +733,63 @@ if (pdfPageCount) {
   console.log(`[sync-paper-report] PDF 实际页数识别为 ${pdfPageCount} 页`);
 }
 
-// 嵌套括号感知的 \shortstack 清洗函数，避免非贪婪正则因 \textbf{} 嵌套提前截断
-function replaceNestedShortstack(str) {
-  let result = '';
-  let i = 0;
-  while (i < str.length) {
-    if (str.startsWith('\\shortstack{', i)) {
-      let depth = 1;
-      let startInner = i + '\\shortstack{'.length;
-      let j = startInner;
-      while (j < str.length && depth > 0) {
-        if (str[j] === '{' && str[j - 1] !== '\\') depth++;
-        else if (str[j] === '}' && str[j - 1] !== '\\') depth--;
-        j++;
-      }
-      let inner = str.slice(startInner, j - 1);
-      let cleanInner = inner.replace(/\\\\/g, ' ');
-      result += cleanInner;
-      i = j;
-    } else {
-      result += str[i];
-      i++;
-    }
+// 素材清单落盘：记录每个交付素材的来源与指纹。
+// 用途：(a) report:verify 能发现"页面文字没变、但配图被手工替换"这类指纹比对抓不到的问题；
+//      (b) --check --strict 可逐项比对素材，避免静默沿用旧图/旧 PDF。
+{
+  if (pdfSource && fs.existsSync(pdfDest)) {
+    assetManifest.push({
+      path: 'paper_draft.pdf',
+      source: pdfSource,
+      bytes: fs.statSync(pdfDest).size,
+      sha256: sha256File(pdfDest),
+    });
   }
-  return result;
+  const manifestPath = path.join(outDir, 'assets-manifest.json');
+  fs.writeFileSync(
+    manifestPath,
+    JSON.stringify(
+      {
+        slug,
+        texSha,
+        texSource,
+        remoteOnly,
+        pandocVersion: pandocVersion(),
+        generatedAt: new Date().toISOString(),
+        assets: assetManifest,
+      },
+      null,
+      2
+    ) + '\n',
+    'utf8'
+  );
+  console.log(
+    `[sync-paper-report] 素材清单已写入 ${path.relative(repoRoot, manifestPath)}（${assetManifest.length} 项）`
+  );
 }
 
-// --- check 模式（默认，环境无关）：用页面内溯源指纹与 PDF 比对，不依赖 Pandoc 版本 ---
-// 仅在 --strict 时才对整页做逐字节重生成比对。
-if (checkMode && !args.includes('--strict')) {
-  const fail = (msg) => {
-    console.error(`[sync-paper-report][check] ❌ ${msg}`);
-    process.exit(1);
-  };
-
-  if (!fs.existsSync(committedHtmlPath)) {
-    fail(`未找到已提交页面: ${committedHtmlPath}`);
-  }
-  const committedHtml = fs.readFileSync(committedHtmlPath, 'utf8');
-  const stampMatch = committedHtml.match(
-    /<meta name="paper-source" content="paper_draft\.tex sha256:([0-9a-f]+)"\s*\/>/
-  );
-  if (!stampMatch) {
-    fail(
-      `已提交页面缺少 paper-source 溯源标记，无法确认其对应的 paper draft 版本。请运行 \`pnpm report:sync\`。`
-    );
-  }
-  if (stampMatch[1] !== texSha) {
-    fail(
-      `已提交页面基于 paper draft sha256:${stampMatch[1]}，而最新为 sha256:${texSha}。请运行 \`pnpm report:sync\`。`
-    );
-  }
-
-  const committedPdf = path.join(
-    path.dirname(committedHtmlPath),
-    'paper_draft.pdf'
-  );
-  if (fs.existsSync(committedPdf)) {
-    let refPdf = null;
-    let tmpRefPdf = null;
-    if (fs.existsSync(localPdfPath)) {
-      refPdf = localPdfPath;
-    } else {
-      try {
-        const remotePdf =
-          pdfRemotePath && pdfRemotePath !== 'latest'
-            ? pdfRemotePath
-            : resolveLatestRemotePdf();
-        if (remotePdf) {
-          tmpRefPdf = path.join(
-            os.tmpdir(),
-            `ccus-report-ref-${Date.now()}.pdf`
-          );
-          fetchRemoteBinary(remotePdf, tmpRefPdf);
-          refPdf = tmpRefPdf;
-        }
-      } catch (err) {
-        console.warn(
-          `[sync-paper-report][check] ⚠️ 无法取得参考 PDF，跳过 PDF 比对: ${err.message}`
-        );
-      }
-    }
-    if (refPdf) {
-      const same = fs
-        .readFileSync(committedPdf)
-        .equals(fs.readFileSync(refPdf));
-      if (!same) {
-        fail(
-          `已提交 paper_draft.pdf 与最新交付 PDF 不一致。请运行 \`pnpm report:sync:full\`。`
-        );
-      }
-    }
-    if (tmpRefPdf && fs.existsSync(tmpRefPdf)) fs.unlinkSync(tmpRefPdf);
-  }
-
-  console.log(
-    `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
-  );
-  process.exit(0);
+/** 记录生成时的 Pandoc 版本：--check --strict 的整页比对依赖版本一致，需可追溯 */
+function pandocVersion() {
+  const r = spawnSync('pandoc', ['--version'], { encoding: 'utf8' });
+  if (r.error || r.status !== 0 || !r.stdout) return null;
+  const m = r.stdout.match(/^pandoc\s+(\S+)/m);
+  return m ? m[1] : null;
 }
 
 // --- 4. 调用 Pandoc (--number-sections) 编译为 HTML ---
 console.log(
   `[sync-paper-report] 调用 Pandoc 进行 TeX -> HTML 语法转换 (启用 --number-sections 与 --wrap=none)...`
 );
-let preprocessedTex = texContent;
 
-// 1. 预处理 Appendix A 表格 (tab:global_ccus_distribution)：
-// 将 tabularx 转换为标准 tabular{lcccccc}，并清洗 \shortstack 嵌套结构，
-// 防止 Pandoc 因无法解析复杂列修饰与 shortstack 换行导致多列数据单元格严重丢失。
-// 以稳定的 \label 锚定，避免 TeX 改版后 caption 文案变化导致预处理被静默跳过。
-preprocessedTex = preprocessedTex.replace(
-  /(\\begin\{table\}[h!]?[\s\S]*?\\label\{tab:global_ccus_distribution\}[\s\S]*?)\\begin\{tabularx\}\{[^}]*\}\{[\s\S]*?\n([\s\S]*?)\\end\{tabularx\}/g,
-  (m, tableHeader, innerContent) => {
-    const cleanContent = replaceNestedShortstack(innerContent);
-    return `${tableHeader}\\begin{tabular}{lcccccc}\n${cleanContent}\\end{tabular}`;
-  }
-);
-
-// 2. 预处理 Appendix B 表格（关键主张与证据边界映射 longtable）：
-// 移除 \rowcolors 与 longtable 重复表头 (\midrule\endfirsthead ... \endhead)，
-// 消除 Pandoc 转换后表头连续重复两次且无 <thead> 的缺陷。
-// 以全局唯一的 \begin{longtable} 块锚定（\rowcolors 在全文出现多次，不能裸替换）。
-preprocessedTex = preprocessedTex.replace(
-  /(\\begin\{longtable\}[\s\S]*?)\\rowcolors\{[^}]*\}\{[^}]*\}\{[^}]*\}[\s\n]*\\\\/g,
-  '$1'
-);
-preprocessedTex = preprocessedTex.replace(
-  /(\\begin\{longtable\}[\s\S]*?)\\midrule[\s\n]*\\endfirsthead[\s\S]*?\\endhead/g,
-  '$1'
-);
-
-// 3. 保护正文/表格中的中文方括号标记（如 [本文分析]、[项目披露]、[本文建议]）。
-// Pandoc 在解析 longtable 时会将行首的 [xxx] 误当作 \\ 的可选参数而静默丢弃，
-// 用 {[}...{]} 包裹后可确保方括号原样保留并正常渲染。
-preprocessedTex = preprocessedTex.replace(
-  /\[([\u4e00-\u9fff][^\]\r\n]{0,20})\]/g,
-  '{[}$1{]}'
+// TeX 预处理（\shortstack 折叠 / longtable 重复表头 / 中文方括号保护）已抽到
+// lib/tex-preprocess.mjs：这几条规则对应实测确认的 Pandoc 缺陷，且历史上正是
+// 因为内联在脚本里无法单测，一处 label 硬编码就让作者改名后产出"缺表头"页面。
+const preprocessResult = preprocessTex(texContent);
+const preprocessedTex = preprocessResult.tex;
+console.log(
+  `[sync-paper-report] TeX 预处理：折叠 ${preprocessResult.shortstackCount} 处 shortstack，` +
+    `longtable ${preprocessResult.longtableCount} 个（修正 ${preprocessResult.longtableTouched} 个），` +
+    `方括号保护 ${preprocessResult.bracketGuardCount} 处`
 );
 
 const tempTexPath = path.join(outDir, '_temp_build.tex');
@@ -497,299 +797,583 @@ fs.writeFileSync(tempTexPath, preprocessedTex, 'utf8');
 
 const tempHtmlPath = path.join(outDir, '_temp_body.html');
 try {
-  execSync(
-    `pandoc "${tempTexPath}" --number-sections --mathjax --wrap=none -o "${tempHtmlPath}"`,
+  // argv 直传：路径含空格/中文时不依赖 shell 引号，Windows 与 Linux 行为一致。
+  const pandoc = spawnSync(
+    'pandoc',
+    [
+      tempTexPath,
+      '--number-sections',
+      '--mathjax',
+      '--wrap=none',
+      '-o',
+      tempHtmlPath,
+    ],
     { stdio: 'inherit' }
   );
+  if (pandoc.error || pandoc.status !== 0) {
+    throw new Error(
+      pandoc.error ? pandoc.error.message : `pandoc 退出码 ${pandoc.status}`
+    );
+  }
 } catch (e) {
   console.error(`[sync-paper-report] Pandoc 转换失败:`, e.message);
   process.exit(1);
 }
 
-let bodyHtml = fs.readFileSync(tempHtmlPath, 'utf8');
+// Pandoc 在 Windows 上会输出 CRLF。统一归一化为 LF，使本机生成结果与
+// CI（Linux）逐字节一致——否则 --check --strict 的整页比对与 git diff 都会被行尾噪声淹没，
+// 也违反仓库的 `* text=auto eol=lf` 约定。
+let bodyHtml = fs.readFileSync(tempHtmlPath, 'utf8').replace(/\r\n/g, '\n');
 fs.unlinkSync(tempTexPath);
 fs.unlinkSync(tempHtmlPath);
 
 // 修正相对图片路径
 bodyHtml = bodyHtml.replace(/src="data\//g, 'src="./data/');
 
-// --- 表格排版与横向宽表对标矩阵深度优化 ---
-console.log(
-  `[sync-paper-report] 正在优化数据表格排版并解决 [tab:governance_benchmark] 宽度局促问题...`
+// --- 4.1 通用排版工具 ---
+// 这些工具被图、表、附录、图文摘要共用，保证全站注释与卡片结构只有一套实现。
+
+/**
+ * 版面改写命中登记表。
+ * 历史上所有改写都是“正则静默 no-op”：TeX 改版后一旦失配就原样跳过、不报错，
+ * 页面因此静默腐烂并直接上线（如图 2 丢失图头、图文摘要卡片整体消失）。
+ * 现在每处结构性改写都必须登记预期命中数，写盘前统一核对，对不上就硬失败。
+ */
+const qcStats = [];
+function expectHits(name, actual, expected) {
+  qcStats.push({ name, actual, expected });
+}
+
+// 注释前缀：既匹配裸文本“注：”，也匹配 Pandoc 生成的 <em>注：</em> / <strong>口径与筛选说明：</strong>
+const NOTE_LEAD_RE =
+  /^(?:<strong>|<em>)?\s*(注|口径(?:与筛选)?说明)\s*[：:]\s*(?:<\/strong>|<\/em>)?\s*/;
+
+function stripHtml(html) {
+  return html.replace(/<[^>]+>/g, '');
+}
+
+// 判断一个块级片段是否是“注释段落”（用于把紧随表格/图之后的说明纳入统一注释组件）
+function isNoteBlock(html) {
+  return (
+    /^\s*<(p|div)\b[^>]*>/.test(html) &&
+    NOTE_LEAD_RE.test(stripHtml(html).trim())
+  );
+}
+
+/**
+ * 规范化注释正文：剥离冗余的“注：”（已由 note-tag 承载），
+ * 把“口径与筛选说明”等语义标签保留为加粗前导，使图注与表注语义一致。
+ */
+function normalizeNote(html) {
+  const out = html
+    .trim()
+    .replace(/^\s*<p[^>]*>([\s\S]*)<\/p>\s*$/, '$1')
+    .trim();
+  const lead = out.match(NOTE_LEAD_RE);
+  if (!lead) return out;
+  // \textit{注：…} 会被 Pandoc 整体包成 <em>…</em>，剥离前缀后尾部会残留一个 </em>
+  const rest = out
+    .slice(lead[0].length)
+    .replace(/<\/(?:em|strong)>\s*$/, '')
+    .trim();
+  return lead[1] === '注'
+    ? rest
+    : `<strong class="note-lead">${lead[1]}</strong>${rest}`;
+}
+
+/**
+ * 全站唯一的注释渲染器：图注用 .figure-notes，表注用 .table-notes-footer，
+ * 两者内部结构（note-tag + note-text）完全一致；空注释不输出任何容器。
+ */
+function renderNote(inner, containerClass) {
+  const text = (inner || '').trim();
+  if (!text) return '';
+  return `
+      <div class="${containerClass}">
+        <span class="note-tag">注</span>
+        <div class="note-text">${text}</div>
+      </div>`;
+}
+
+function escapeRegExp(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// HTML 属性值转义：图题/表题会进入 alt 与 title，必须防止引号破坏属性
+function attr(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+// 定位与 from 处 div 配对的结束位置（返回 </div> 之后的下标）。
+// 用于"某附录是否只包含一张表卡片"这类结构判定，必须按嵌套深度配对而不是
+// 非贪婪正则——卡片内部还有多层 div。
+function findDivEnd(str, from) {
+  let depth = 0;
+  for (let i = from; i < str.length; i++) {
+    if (str.startsWith('<div', i) && !/[a-zA-Z-]/.test(str[i + 4] || ''))
+      depth++;
+    else if (str.startsWith('</div>', i)) {
+      depth--;
+      if (depth === 0) return i + 6;
+    }
+  }
+  return -1;
+}
+
+// 附录识别：以 TeX 中 \appendix 之后的 \section 数量为准，把正文末尾同样数量的顶层章节
+// 映射为附录 A/B/C…，脚本内不再硬编码章节号与标题。
+const appendixSectionLetters = (() => {
+  const marker = texContent.indexOf('\\appendix');
+  if (marker === -1) return {};
+  const count = (texContent.slice(marker).match(/\\section\{/g) || []).length;
+  if (!count) return {};
+  const topSections = [
+    ...bodyHtml.matchAll(/<h1\s+data-number="(\d+)"[^>]*>/g),
+  ].map((m) => m[1]);
+  if (topSections.length < count) {
+    console.warn(
+      `[sync-paper-report] ⚠️ TeX 中 \\appendix 之后有 ${count} 个章节，但正文仅解析出 ${topSections.length} 个顶层章节，附录编号将跳过。`
+    );
+    return {};
+  }
+  const map = {};
+  topSections.slice(-count).forEach((num, i) => {
+    map[num] = String.fromCharCode(65 + i);
+  });
+  console.log(
+    `[sync-paper-report] 识别到 ${count} 个附录章节: ${Object.entries(map)
+      .map(([num, letter]) => `${num}->附录 ${letter}`)
+      .join(', ')}`
+  );
+  return map;
+})();
+
+// 把 Pandoc 生成的伪数学标记清洗为原生 HTML（下标/度数），消除公式渲染延迟与抖动。
+// 必须早于表格与图形的规范化步骤，否则表头单元格内的 \(_2\) 会残留。
+bodyHtml = bodyHtml.replace(
+  /<span\s+class="math inline">\s*\\?\(_2\\?\)\s*<\/span>/g,
+  '<sub>2</sub>'
 );
+bodyHtml = bodyHtml.replace(
+  /<span\s+class="math inline">\s*\\?\((\^\\circ|\\circ)\\?\)\s*<\/span>/g,
+  '°'
+);
+bodyHtml = bodyHtml.replace(/\\\(_2\\\)/g, '<sub>2</sub>');
+bodyHtml = bodyHtml.replace(/\\\((\^\\circ|\\circ)\\\)/g, '°');
+
+// --- 学术图规范化：通用卡片 + 自动图号 ---
+// 不再为每张图硬编码正则：图号按文档顺序分配，图内注释段落被吸收进统一的注释组件，
+// 因此 TeX 增删图片或调整 caption 文案都不会导致图头丢失。
+const figureNumbering = new Map(); // fig label -> { badge, title }
+{
+  let figureSeq = 0;
+  bodyHtml = bodyHtml.replace(
+    /<figure\b([^>]*)>([\s\S]*?)<\/figure>/g,
+    (match, attrs, inner) => {
+      const idM = attrs.match(/id="([^"]+)"/);
+      const imgM = inner.match(/<img\b[^>]*\ssrc="([^"]+)"[^>]*\/?>/);
+      if (!idM || !imgM) {
+        console.warn(
+          `[sync-paper-report] ⚠️ 图形 ${idM ? idM[1] : '(无 id)'} 结构异常（缺少 id 或 img），已跳过规范化。`
+        );
+        return match;
+      }
+      figureSeq += 1;
+      const badge = `图 ${figureSeq}`;
+      const captionM = inner.match(/<figcaption>([\s\S]*?)<\/figcaption>/);
+      const title = captionM ? captionM[1].trim() : '';
+      // 图内注释：Pandoc 把 \begin{minipage} 里的“注：…”排成 <p>，位于 figcaption 之前
+      const noteHtml = (
+        inner.match(/<p\b[^>]*>(?:(?!<\/p>)[\s\S])*?<\/p>/g) || []
+      )
+        .filter(isNoteBlock)
+        .map(normalizeNote)
+        .join(' ');
+      if (!title) {
+        console.warn(`[sync-paper-report] ⚠️ ${idM[1]} 缺少 figcaption。`);
+      }
+      figureNumbering.set(idM[1], { badge, title });
+      const alt = attr(title || badge);
+      return `
+    <figure class="academic-figure" id="${idM[1]}">
+      <div class="figure-header">
+        <div class="figure-title-group">
+          <span class="figure-label">${badge}</span>
+          <span class="figure-title">${title}</span>
+        </div>
+        <span class="figure-tip">🔍 点击放大</span>
+      </div>
+      <div class="figure-img-wrap">
+        <img src="${imgM[1]}" alt="${alt}" loading="lazy" />
+      </div>
+      ${renderNote(noteHtml, 'figure-notes')}
+    </figure>`;
+    }
+  );
+  // landscape 包裹层只服务于 TeX 横向排版，在 HTML 中无意义，直接摊平/剥离避免残留
+  bodyHtml = bodyHtml.replace(
+    /<div class="landscape">(\s*<figure class="academic-figure"[\s\S]*?<\/figure>)\s*<\/div>/g,
+    '$1'
+  );
+  bodyHtml = bodyHtml.replace(
+    /(<section\b[^>]*?)\s+class="landscape"([^>]*>)/g,
+    '$1$2'
+  );
+  expectHits(
+    '学术图卡片化',
+    figureNumbering.size,
+    (texContent.match(/\\begin\{figure\}/g) || []).length
+  );
+  console.log(
+    `[sync-paper-report] 已规范化 ${figureNumbering.size} 张图：${[
+      ...figureNumbering.entries(),
+    ]
+      .map(([k, v]) => `${k}=${v.badge}`)
+      .join(', ')}`
+  );
+}
+
+// --- 表格排版：通用卡片化 + 自动表号 ---
+console.log(`[sync-paper-report] 正在统一表格卡片、表号与注释排版...`);
 
 // 1. 移除 Pandoc 误生成的内联 table width 限制 (例如 style="width:12%;") 和 col 限制
 bodyHtml = bodyHtml.replace(/<table[^>]*style="[^"]*"[^>]*>/g, '<table>');
 bodyHtml = bodyHtml.replace(/<col style="width:[^"]*" \/>/g, '<col />');
 
-// 2. 特别重构 tab:governance_benchmark: 移除提示，注入精致卡片、表头工具栏、平滑横向滚动视口与底栏
-const benchRegex =
-  /<div class="landscape">\s*<div class="center">\s*<p><span\s+id="tab:governance_benchmark"[\s\S]*?<\/span><\/p>\s*<table>([\s\S]*?)<\/table>\s*(<p><em>注：[\s\S]*?<\/em><\/p>)?\s*<\/div>\s*<\/div>/;
-let benchmarkMatched = false;
-bodyHtml = bodyHtml.replace(benchRegex, (match, innerTable, notesP) => {
-  benchmarkMatched = true;
-  const cleanNotes = notesP
-    ? notesP.replace(/^<p><em>注：\s*/, '').replace(/<\/em><\/p>$/, '')
-    : '';
-  return `
-    <div class="table-container-card table-breakout" id="tab:governance_benchmark">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">表 2-1</span>
-          <span class="table-title">全球主要法域 CCUS 治理对标表（2026）</span>
-        </div>
-        <div class="table-card-controls">
-          <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部 7 法域</span>
-          <div class="table-nav-btns">
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动对标表" aria-label="向左滚动">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动对标表" aria-label="向右滚动">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="table-responsive-wrapper table-benchmark-wrapper" id="benchmark-table-wrapper">
-        <table class="table-benchmark">
-          ${innerTable}
-        </table>
-      </div>
-      ${
-        cleanNotes
-          ? `
-      <div class="table-notes-footer">
-        <span class="note-tag">注</span>
-        <div class="note-text"><em>注：</em>${cleanNotes}</div>
-      </div>`
-          : ''
-      }
-    </div>
-  `;
-});
-
-// 兜底：若未匹配到 landscape 容器，按局部 table 标签匹配
-if (!benchmarkMatched) {
-  bodyHtml = bodyHtml.replace(
-    /<p><span\s+id="tab:governance_benchmark"[\s\S]*?<\/span><\/p>\s*<table>([\s\S]*?)<\/table>/,
-    (m, inner) => `
-      <div class="table-container-card table-breakout" id="tab:governance_benchmark">
-        <div class="table-card-toolbar">
-          <div class="table-card-title-group">
-            <span class="table-badge">表 2-1</span>
-            <span class="table-title">全球主要法域 CCUS 治理对标表（2026）</span>
-          </div>
-          <div class="table-card-controls">
-            <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部 7 法域</span>
-            <div class="table-nav-btns">
-              <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动对标表" aria-label="向左滚动">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-              </button>
-              <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动对标表" aria-label="向右滚动">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="table-responsive-wrapper table-benchmark-wrapper" id="benchmark-table-wrapper">
-          <table class="table-benchmark">${inner}</table>
-        </div>
-      </div>
-    `
-  );
-}
-
-// 3. 重构附录 A 全球 CCUS 项目分布与统计口径数据表 (tab:global_ccus_distribution)
-const distRegex =
-  /<div id="tab:global_ccus_distribution">\s*<table>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>\s*<\/div>(?:\s*<p>(<strong>(?:口径说明|口径与筛选说明)：<\/strong>[\s\S]*?)<\/p>)?/;
-bodyHtml = bodyHtml.replace(distRegex, (m, caption, innerTable, notesP) => {
-  // 表头单元格通用归一化：把 \shortstack 产生的多个 <strong> 片段折叠为 <br/> 分隔，
-  // 并去除内层 <strong>，避免因列名文案改版（如“项目数”→“项目记录数”）而失配。
-  let formattedInner = innerTable.replace(
-    /<th\b([^>]*)>([\s\S]*?)<\/th>/g,
-    (m, attrs, cell) => {
-      const joined = cell
-        .replace(/<\/strong>\s*<strong>/g, '<br/>')
-        .replace(/<\/?strong>/g, '')
-        .replace(
-          /<span class="math inline">\\?\(_2\\?\)<\/span>/g,
-          '<sub>2</sub>'
-        );
-      return `<th${attrs}>${joined}</th>`;
-    }
-  );
-
-  const notesHtml = notesP
-    ? `
-    <div class="table-notes-footer">
-      <span class="note-tag">注</span>
-      <div class="note-text">${notesP}</div>
-    </div>`
-    : '';
-
-  return `
-    <div class="table-container-card" id="tab:global_ccus_distribution">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">附录 A 表</span>
-          <span class="table-title">${caption.trim()}</span>
-        </div>
-        <span class="table-scroll-hint-pill">全球 6 大重点法域及其他地区汇总</span>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table class="table-dist-data">
-          ${formattedInner}
-        </table>
-      </div>
-      ${notesHtml}
-    </div>
-  `;
-});
-
-// 4. 重构附录 B 关键主张与证据边界映射表：彻底消除重复表头，构建高阶 4 列语义映射矩阵
-// 以 caption 的语义特征（含“核心主张”与“证据边界”）结构锚定，标题直接取自 caption，
-// 避免 TeX 改版调整 caption 文案后匹配失败。
-const claimsRegex =
-  /<table[^>]*>\s*<caption>([^<]*核心主张[^<]*证据边界[^<]*)<\/caption>([\s\S]*?)<\/table>/;
-bodyHtml = bodyHtml.replace(claimsRegex, (m, caption, inner) => {
-  const rows = [...inner.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((r) => r[0]);
-  // 严格过滤掉所有表头行，杜绝任何重复表头进入 tbody
-  const dataRows = rows.filter((r) => !r.includes('<strong>核心主张</strong>'));
-  const claimsTitle = caption.trim();
-  const claimsCount = dataRows.length;
-
-  return `
-    <div class="table-container-card" id="tab:appendix_b_claims_mapping">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">附录 B 表</span>
-          <span class="table-title">${claimsTitle}</span>
-        </div>
-        <span class="table-scroll-hint-pill">${claimsCount} 项核心论断与证据映射</span>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table class="standard-table table-claims-mapping">
-          <thead>
-            <tr>
-              <th style="width: 22%;">核心主张</th>
-              <th style="width: 26%;">规则、标准或方法学依据</th>
-              <th style="width: 24%;">案例事实或正文分析位置</th>
-              <th style="width: 28%;">支持程度与证据边界</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${dataRows.join('\n')}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `;
-});
-
-// 5. 为正文中的每一张数据表注入卡片式表头（含表号徽标），
-// 使正文交叉引用与表格本体一一对应，避免“有引用、无表号”或“未被当作表格”的断层。
-// 表号按章节内出现顺序编排（表 2-x / 表 3-x / 表 4-x）。
-const numberedTables = {
-  'tab:dmrv_minimum_fields': '表 3-1',
-  'tab:continuous_evidence_monitoring': '表 3-2',
-  'tab:dmrv_governance_mapping': '表 3-3',
-  'tab:case_evidence_comparison': '表 4-1',
-};
-// 少数表格在 TeX 中未加 \label，仅能依据 caption 文案匹配表号并补一个锚点 id。
-const captionBadges = {
-  '中国 CCUS 集群治理的现实基础与待补功能': {
-    badge: '表 2-2',
-    id: 'tab:china_cluster_governance',
+/**
+ * 逐表专属 tweak：只声明“视觉差异化”所必需的内容（表格 class、横向滚动控件、说明 pill）。
+ * 表头、表号、注释、锚点一律由下方通用引擎生成，脚本内不再维护 label->表号 的硬编码映射，
+ * 因此 TeX 新增表格时不会出现“有引用、无表号”的断层。
+ */
+const tableTweaks = {
+  // 全球治理对标矩阵：7 列超宽表，需要横向滚动视口与左右滚动按钮
+  'tab:governance_benchmark': {
+    tableClass: 'table-benchmark',
+    wrapperClass: 'table-responsive-wrapper table-benchmark-wrapper',
+    wrapperId: 'benchmark-table-wrapper',
+    breakout: true,
+    controls: '左右滑动查看全部法域',
+    scrollHintId: 'table-scroll-hint-pill',
+  },
+  // 附录 B 关键主张—证据边界映射矩阵
+  'tab:claims_evidence_mapping': {
+    tableClass: 'standard-table table-claims-mapping',
+    hint: (inner) => `${countDataRows(inner)} 项核心论断与证据映射`,
+  },
+  // 附录 A 全球 CCUS 项目分布与统计口径数据表
+  'tab:global_ccus_distribution': {
+    tableClass: 'table-dist-data',
+    hint: '全球 6 大重点法域及其他地区汇总',
   },
 };
 
-function buildTableCard(idAttr, badge, caption, inner) {
-  const badgeHtml = badge ? `<span class="table-badge">${badge}</span>` : '';
-  return `
-    <div class="table-container-card"${idAttr}>
+/**
+ * 表头单元格归一化：\shortstack 在预处理阶段被折叠为空格分隔，Pandoc 会渲染成
+ * 一串相邻的 <strong> 片段，这里还原为 <br/> 换行并去掉内层 <strong>，
+ * 使多行表头（如“已运行 / 项目记录数”）保持可读。
+ */
+function normalizeHeaderCells(inner) {
+  return inner.replace(/<th\b([^>]*)>([\s\S]*?)<\/th>/g, (m, attrs, cell) => {
+    const joined = cell
+      .replace(/<\/strong>\s*<strong>/g, '<br/>')
+      .replace(/<\/?strong>/g, '');
+    return `<th${attrs}>${joined}</th>`;
+  });
+}
+
+// 统计 tbody 数据行数（不含表头），用于“共 N 项”类说明 pill
+function countDataRows(inner) {
+  const body = inner.match(/<tbody>([\s\S]*)<\/tbody>/);
+  return body ? (body[1].match(/<tr\b/g) || []).length : 0;
+}
+
+/**
+ * 通用表头提升：若表格没有 <thead>，且 <tbody> 首行的所有单元格都是 <strong> 包裹，
+ * 则把该行提升为 <thead>（longtable / tabularx 在 Pandoc 中的典型输出形态）。
+ * 这样 TeX 侧即使新增表格也不会渲染出“无表头”的裸表。
+ */
+function ensureThead(inner) {
+  if (/<thead>/.test(inner)) return inner;
+  const bodyM = inner.match(/<tbody>([\s\S]*)<\/tbody>/);
+  if (!bodyM) return inner;
+  const rowM = bodyM[1].match(/^\s*(<tr\b[\s\S]*?<\/tr>)/);
+  if (!rowM) return inner;
+  const cells = [...rowM[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/g)].map(
+    (c) => c[1]
+  );
+  if (
+    !cells.length ||
+    !cells.every((c) => /^\s*<strong>[\s\S]*<\/strong>\s*$/.test(c))
+  ) {
+    return inner;
+  }
+  const thRow = rowM[1].replace(
+    /<td\b([^>]*)>([\s\S]*?)<\/td>/g,
+    '<th$1>$2</th>'
+  );
+  return inner.replace(
+    bodyM[0],
+    `<thead>\n            ${thRow}\n          </thead>\n          <tbody>${bodyM[1].slice(
+      rowM[0].length
+    )}</tbody>`
+  );
+}
+
+// 3. 通用表格引擎：按文档顺序扫描全部 <table>，自动分配表号
+//    （正文按章“表 N-x”，附录按“附录 X 表”），吸收紧随其后的注释段落，
+//    并复用 Pandoc 生成的锚点（<div id="tab:*"> 或 <span id="tab:*">），不产生嵌套空壳。
+const tableNumbering = new Map(); // label -> 表号文案
+const tableTitleByLabel = new Map();
+
+function topSectionNumberAt(index) {
+  const before = bodyHtml.slice(0, index);
+  let last = null;
+  for (const m of before.matchAll(/<h1\s+data-number="([^"]+)"/g)) last = m[1];
+  return last;
+}
+
+function badgeForTable(sectionNumber, chapterCounters) {
+  const letter = sectionNumber && appendixSectionLetters[sectionNumber];
+  if (letter) return `附录 ${letter} 表`;
+  const chapter = sectionNumber && sectionNumber.match(/^(\d+)$/);
+  if (!chapter) return null;
+  const n = (chapterCounters.get(chapter[1]) || 0) + 1;
+  chapterCounters.set(chapter[1], n);
+  return `表 ${chapter[1]}-${n}`;
+}
+
+{
+  const blocks = [];
+  const re = /<table\b[^>]*>([\s\S]*?)<\/table>/g;
+  let m;
+  while ((m = re.exec(bodyHtml))) {
+    blocks.push({
+      start: m.index,
+      end: m.index + m[0].length,
+      inner: m[1],
+    });
+  }
+
+  // 表号依赖文档顺序，必须正序算出全部元信息
+  const chapterCounters = new Map();
+  const metas = blocks.map((b) => {
+    const capM = b.inner.match(/<caption>([\s\S]*?)<\/caption>/);
+    let inner = capM ? b.inner.replace(capM[0], '') : b.inner;
+
+    // 向前吸收锚点：<div id="tab:X">…<table> 或 <p><span id="tab:X"></span></p><table>
+    const before = bodyHtml.slice(0, b.start);
+    let regionStart = b.start;
+    let label = null;
+    let hadDivWrapper = false;
+    const divM = before.match(/<div id="(tab:[^"]+)">\s*$/);
+    const spanM = divM
+      ? null
+      : before.match(/<p><span id="(tab:[^"]+)"[^>]*><\/span><\/p>\s*$/);
+    if (divM) {
+      label = divM[1];
+      hadDivWrapper = true;
+      regionStart = b.start - divM[0].length;
+    } else if (spanM) {
+      label = spanM[1];
+      regionStart = b.start - spanM[0].length;
+    }
+
+    // 计算需要闭合的包裹层深度（tab:X 外层 div + landscape/center 外层 div）
+    let depth = hadDivWrapper ? 1 : 0;
+    const outerM = bodyHtml
+      .slice(0, regionStart)
+      .match(/(?:<div class="(?:landscape|center)">\s*)+$/);
+    if (outerM) {
+      depth += (outerM[0].match(/<div /g) || []).length;
+      regionStart -= outerM[0].length;
+    }
+
+    // 向后吸收注释段落与配对的闭合标签。
+    // 注释可能落在 </table> 与 </div> 之间（对标表）或 </div> 之后（附录 A），
+    // 两种顺序都要覆盖，否则注释会漏到正文里，形成版式不一致。
+    let cursor = b.end;
+    const notes = [];
+    let closed = 0;
+    for (;;) {
+      const rest = bodyHtml.slice(cursor);
+      const noteM = rest.match(/^\s*(<p\b[^>]*>[\s\S]*?<\/p>)/);
+      if (noteM && isNoteBlock(noteM[1])) {
+        notes.push(normalizeNote(noteM[1]));
+        cursor += noteM[0].length;
+        continue;
+      }
+      if (closed >= depth) break;
+      const closeM = rest.match(/^\s*<\/div>/);
+      if (!closeM) break;
+      cursor += closeM[0].length;
+      closed++;
+    }
+    if (closed < depth) {
+      console.warn(
+        `[sync-paper-report] ⚠️ 表格 ${label || '(无 label)'} 的包裹层未闭合，已按原样保留剩余标记。`
+      );
+    }
+
+    // Pandoc 丢 caption 时回读 TeX（float 外的 \captionof 会被整段丢弃）
+    let title = capM ? capM[1].trim() : '';
+    if (!title && label) {
+      const texCaption = texCaptionForLabel(texContent, label);
+      if (texCaption) {
+        title = texCaptionToText(texCaption);
+        console.log(
+          `[sync-paper-report] 已从 TeX 回读 ${label} 的表题: ${title}`
+        );
+      }
+    }
+
+    return {
+      regionStart,
+      regionEnd: cursor,
+      inner: normalizeHeaderCells(ensureThead(inner)),
+      title,
+      noteHtml: notes.join(' '),
+      label,
+      badge: label
+        ? badgeForTable(topSectionNumberAt(b.start), chapterCounters)
+        : null,
+    };
+  });
+
+  // 逆序替换，避免前面的替换影响后面的偏移
+  for (let i = metas.length - 1; i >= 0; i--) {
+    const meta = metas[i];
+    const label = meta.label;
+    const tweak = label ? tableTweaks[label] : null;
+    const tableClass = (tweak && tweak.tableClass) || 'standard-table';
+    const wrapperClass =
+      (tweak && tweak.wrapperClass) || 'table-responsive-wrapper';
+    const title = meta.title;
+
+    if (!label) {
+      console.warn(
+        `[sync-paper-report] ⚠️ 存在无 \\label 的表格（caption="${title}"），将不注入表号锚点。`
+      );
+    }
+    if (!title) {
+      console.warn(
+        `[sync-paper-report] ⚠️ 表格 ${label || '(无 label)'} 缺少 caption，将以空标题渲染。`
+      );
+    }
+    if (!meta.badge) {
+      console.warn(
+        `[sync-paper-report] ⚠️ 表格 ${label || '(无 label)'} 未能确定表号（未识别所属章节）。`
+      );
+    }
+    if (label && meta.badge) {
+      tableNumbering.set(label, meta.badge);
+      tableTitleByLabel.set(label, title);
+    }
+
+    const hint =
+      tweak && tweak.hint
+        ? typeof tweak.hint === 'function'
+          ? tweak.hint(meta.inner)
+          : tweak.hint
+        : null;
+
+    const controlsHtml =
+      tweak && tweak.controls
+        ? `
+        <div class="table-card-controls">
+          <span class="table-scroll-hint-pill"${
+            tweak.scrollHintId ? ` id="${tweak.scrollHintId}"` : ''
+          }>↔️ ${tweak.controls}</span>
+          <div class="table-nav-btns">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动表格" aria-label="向左滚动">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动表格" aria-label="向右滚动">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>`
+        : hint
+          ? `<span class="table-scroll-hint-pill">${hint}</span>`
+          : '';
+
+    const cardHtml = `
+    <div class="table-container-card${
+      tweak && tweak.breakout ? ' table-breakout' : ''
+    }"${label ? ` id="${label}"` : ''}>
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
-          ${badgeHtml}
-          <span class="table-title">${caption.trim()}</span>
+          ${meta.badge ? `<span class="table-badge">${meta.badge}</span>` : ''}
+          <span class="table-title">${title}</span>
         </div>
+        ${controlsHtml}
       </div>
-      <div class="table-responsive-wrapper">
-        <table class="standard-table table-numbered">
-          ${inner}
+      <div class="${wrapperClass}"${
+        tweak && tweak.wrapperId ? ` id="${tweak.wrapperId}"` : ''
+      }>
+        <table class="${tableClass}">
+          ${meta.inner}
         </table>
       </div>
+      ${renderNote(meta.noteHtml, 'table-notes-footer')}
     </div>
   `;
-}
-
-// 5a. 带 \label 的表（Pandoc 输出形如 <div id="tab:X"><table><caption>…</caption>…）
-for (const [label, badge] of Object.entries(numberedTables)) {
-  const re = new RegExp(
-    `<div id="${label}">\\s*<table[^>]*>\\s*<caption>([\\s\\S]*?)<\\/caption>([\\s\\S]*?)<\\/table>\\s*<\\/div>`
-  );
-  bodyHtml = bodyHtml.replace(re, (m, caption, inner) =>
-    buildTableCard(` id="${label}"`, badge, caption, inner)
-  );
-}
-
-// 5b. 未加 \label 但有 caption 的表（如“中国 CCUS 集群治理的现实基础与待补功能”）
-bodyHtml = bodyHtml.replace(
-  /<table[^>]*>\s*<caption>([\s\S]*?)<\/caption>([\s\S]*?)<\/table>/g,
-  (m, caption, inner) => {
-    const meta = captionBadges[caption.trim()];
-    if (!meta) return m;
-    return buildTableCard(` id="${meta.id}"`, meta.badge, caption, inner);
+    bodyHtml =
+      bodyHtml.slice(0, meta.regionStart) +
+      cardHtml +
+      bodyHtml.slice(meta.regionEnd);
   }
-);
 
-// 6. 将所有其它未包裹的 <table> 包裹进响应式容器
-bodyHtml = bodyHtml.replace(/<table>([\s\S]*?)<\/table>/g, (match, inner) => {
-  return `<div class="table-responsive-wrapper"><table class="standard-table">${inner}</table></div>`;
-});
+  expectHits('表格卡片化', metas.length, countContentTables(texContent));
+  console.log(
+    `[sync-paper-report] 已卡片化 ${metas.length} 张表：${[
+      ...tableNumbering.entries(),
+    ]
+      .map(([k, v]) => `${k}=${v}`)
+      .join(', ')}`
+  );
+}
 
-// 4. 修复正文中的图表交叉引用标签 (data-reference)
-// 注意：TeX 原文写作“表~\ref{...}”“图~\ref{...}”，Pandoc 会生成独立链接。
-// 因此需连同前置的“表/图”一并替换，避免出现“表 表 2-1”式重复。
-// 引用模式使用 \d+ 匹配 Pandoc 编号，避免表格增删导致编号漂移后失配。
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:governance_benchmark"[^>]*>\[tab:governance_benchmark\]<\/a>/g,
-  '<a href="#tab:governance_benchmark" class="table-ref-link" title="点击查看表 2-1 全球治理对标表">表 2-1（全球治理对标表）</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:china_basis_gaps"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:china_basis_gaps" class="table-ref-link" title="点击查看表 2-2 中国 CCUS 集群治理的现实基础与待补功能">表 2-2</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:dmrv_minimum_fields"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1">表 3-1</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:continuous_evidence_monitoring"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2">表 3-2</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:dmrv_governance_mapping"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3">表 3-3</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /表[\s\u00a0]*<a href="#tab:case_evidence_comparison"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1">表 4-1</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /附录 A 表[\s\u00a0]*<a href="#tab:global_ccus_distribution"[^>]*>\d+<\/a>/g,
-  '<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 全球 CCUS 项目分布与统计口径">附录 A 表</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /图[\s\u00a0]*<a\s+href="#fig:global_ccus_scale"[^>]*>\d+<\/a>/g,
-  '<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1：全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距">图 1</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /图[\s\u00a0]*<a\s+href="#fig:cluster_stages"[^>]*>\d+<\/a>/g,
-  '<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2：集群形成的阶段推进、TIS 功能与两类约束">图 2</a>'
-);
-bodyHtml = bodyHtml.replace(
-  /图[\s\u00a0]*<a\s+href="#fig:dmrv_house"[^>]*>\d+<\/a>/g,
-  '<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3：从工程事实到制度用途 CCUS dMRV 的证据基础设施定位">图 3</a>'
+// TeX 中真正会产生表格的环境数量（tabular/tabularx/longtable），用于校验卡片化是否漏表。
+// 封面 titlepage 内的 tabular 只是元数据排版（Pandoc 会整体丢弃），不计入内容表。
+function countContentTables(tex) {
+  const content = tex.replace(
+    /\\begin\{titlepage\}[\s\S]*?\\end\{titlepage\}/g,
+    ''
+  );
+  return (
+    (content.match(/\\begin\{tabular\*?\}/g) || []).length +
+    (content.match(/\\begin\{tabularx\}/g) || []).length +
+    (content.match(/\\begin\{longtable\}/g) || []).length
+  );
+}
+
+// 4. 图表交叉引用：按实际分配的图号/表号统一改写为可点击锚点。
+//    TeX 原文写作“表~\ref{...}”“图~\ref{...}”，Pandoc 会生成独立链接，
+//    因此需连同前置的“表/图/附录 X 表”一并替换，避免出现“表 表 2-1”式重复。
+//    链接文字既可能是 Pandoc 解析出的序号，也可能是未解析的 [tab:xxx] 占位符。
+function rewriteCrossRefs(entries, cssClass) {
+  for (const [refLabel, { badge, title }] of entries) {
+    bodyHtml = bodyHtml.replace(
+      new RegExp(
+        `(?:附录\\s*[A-Z]\\s*表|表|图)?[\\s\\u00a0]*<a\\s+href="#${escapeRegExp(
+          refLabel
+        )}"[^>]*>\\s*(?:\\d+|\\[[^\\]]*\\])\\s*<\\/a>`,
+        'g'
+      ),
+      `<a href="#${refLabel}" class="${cssClass}" title="${attr(
+        `点击查看${badge} ${title}`
+      )}">${badge}</a>`
+    );
+  }
+}
+const tableRefs = [...tableNumbering.entries()].map(([k, badge]) => [
+  k,
+  { badge, title: tableTitleByLabel.get(k) || '' },
+]);
+rewriteCrossRefs(tableRefs, 'table-ref-link');
+rewriteCrossRefs([...figureNumbering.entries()], 'fig-ref-link');
+console.log(
+  `[sync-paper-report] 已改写 ${tableNumbering.size + figureNumbering.size} 组图表交叉引用`
 );
 
 // --- 5. 深度处理参考文献与正文引用关联 ---
@@ -898,35 +1482,87 @@ console.log(
 
 // --- 6. 附录体系重构与关键术语/缩略语高阶排版 ---
 console.log(
-  `[sync-paper-report] 正在重塑附录体系 (附录 A/B/C/D) 与规范化术语词典...`
+  `[sync-paper-report] 正在重塑附录体系 (${Object.keys(appendixSectionLetters)
+    .map((num) => appendixSectionLetters[num])
+    .join('/')}) 与规范化术语词典...`
 );
 
-// 1. 将章节 7, 8, 9, 10 修正为标准的附录编号 附录 A, B, C, D
-const appendixMapping = [
-  { num: '7', letter: 'A', title: '全球 CCUS 项目分布与统计口径' },
-  { num: '8', letter: 'B', title: '关键主张与证据边界' },
-  { num: '9', letter: 'C', title: '关键术语与缩略语' },
-  { num: '10', letter: 'D', title: '研究局限与后续验证方向' },
-];
-
-for (const app of appendixMapping) {
-  const titlePattern = app.title.replace(/\s+/g, '\\s+');
-  const regex = new RegExp(
-    `<h1\\s+data-number="${app.num}"[^>]*><span[\\s\\S]*?class="header-section-number"[^>]*>${app.num}<\\/span>[\\s\\S]*?${titlePattern}<\\/h1>`
+// 1. 把正文末尾的附录章节重编号为 附录 A/B/C…
+//    章节号与标题均取自 Pandoc 输出本身（appendixSectionLetters 已在前面按 TeX 的
+//    \appendix 位置推导），脚本内不再硬编码章节号与标题，改版不会失配。
+const appendixHeadings = [];
+for (const [num, letter] of Object.entries(appendixSectionLetters)) {
+  const re = new RegExp(
+    `<h1\\s+data-number="${num}"([^>]*)><span class="header-section-number">${num}<\\/span>([\\s\\S]*?)<\\/h1>`
   );
-  const replacement = `<h1 data-number="附录 ${app.letter}" id="appendix-${app.letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${app.letter}</span> ${app.title}</h1>`;
-  bodyHtml = bodyHtml.replace(regex, replacement);
+  const m = bodyHtml.match(re);
+  if (!m) {
+    console.warn(
+      `[sync-paper-report] ⚠️ 未找到章节 ${num} 的顶层标题，附录 ${letter} 编号跳过。`
+    );
+    continue;
+  }
+  const title = m[2].trim();
+  bodyHtml = bodyHtml.replace(
+    re,
+    `<h1 data-number="附录 ${letter}" id="appendix-${letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${letter}</span>${title ? ` ${title}` : ''}</h1>`
+  );
+  appendixHeadings.push({ letter, title });
+}
+expectHits(
+  '附录重编号',
+  appendixHeadings.length,
+  Object.keys(appendixSectionLetters).length
+);
+
+/**
+ * 消除“附录标题与其唯一表格 caption 语义重复”的视觉冗余。
+ * 典型场景：附录 A 的章节名“全球 CCUS 项目分布与统计口径”与其表格 caption
+ * “全球 CCUS 已运行及预计于 2026 年底前投运的在建项目记录分布”上下堆叠，
+ * 读者会看到两个标题描述同一张表。规则：若某附录正文只包含一张表格卡片、
+ * 没有其它段落，则章节标题只保留编号，标题语义交由表格卡片承载。
+ */
+for (const { letter } of appendixHeadings) {
+  const headRe = new RegExp(
+    `<h1 data-number="附录 ${letter}"[^>]*>[\\s\\S]*?<\\/h1>`
+  );
+  const hm = bodyHtml.match(headRe);
+  if (!hm || hm.index === undefined) continue;
+  const afterHead = hm.index + hm[0].length;
+  const sectionEnd = bodyHtml.indexOf('</section>', afterHead);
+  if (sectionEnd === -1) continue;
+  const inner = bodyHtml.slice(afterHead, sectionEnd);
+  const cardCount = (inner.match(/<div class="table-container-card"/g) || [])
+    .length;
+  const cardStart = inner.search(/<div class="table-container-card"/);
+  if (cardCount !== 1 || cardStart === -1) continue;
+  const cardEnd = findDivEnd(inner, cardStart);
+  if (cardEnd === -1) continue;
+  if (
+    inner.slice(0, cardStart).trim() !== '' ||
+    inner.slice(cardEnd).trim() !== ''
+  ) {
+    continue;
+  }
+  bodyHtml =
+    bodyHtml.slice(0, hm.index) +
+    `<h1 data-number="附录 ${letter}" id="appendix-${letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${letter}</span></h1>` +
+    bodyHtml.slice(afterHead);
+  console.log(
+    `[sync-paper-report] 附录 ${letter} 仅含一张表，章节标题已精简为“附录 ${letter}”，标题语义由表格卡片承载。`
+  );
 }
 
-// 2. 重构 附录 C：关键术语与缩略语 (排版为现代紧凑高密度学术对标规范表，含分类过滤与即时检索)
-const termsStart = texContent.indexOf('\\section{关键术语与缩略语}');
-const termsEnd = texContent.indexOf('\\section{研究局限与后续验证方向}');
-if (termsStart !== -1 && termsEnd !== -1) {
-  const termsSection = texContent.slice(termsStart, termsEnd);
+// 2. 重构术语/缩略语附录（description 环境 -> 可分类、可检索的紧凑学术规范表）
+//    Pandoc 会丢弃 \item[词条] 的方括号标签（只剩释义），因此术语名与释义必须回到 TeX 原文提取；
+//    这里按 \begin{description}…\end{description} 定位，不再硬编码章节标题，改版不会失配。
+const descStart = texContent.indexOf('\\begin{description}');
+const descEnd =
+  descStart === -1 ? -1 : texContent.indexOf('\\end{description}', descStart);
+if (descStart !== -1 && descEnd !== -1) {
+  const termsSection = texContent.slice(descStart, descEnd);
   const termMatches = [
-    ...termsSection.matchAll(
-      /\\item\[([^\]]+)\]([\s\S]*?)(?=\\item\[|\\end\{description\})/g
-    ),
+    ...termsSection.matchAll(/\\item\[([^\]]+)\]([\s\S]*?)(?=\\item\[|$)/g),
   ];
 
   if (termMatches.length > 0) {
@@ -1067,30 +1703,46 @@ if (termsStart !== -1 && termsEnd !== -1) {
     </div>
   </div>`;
 
-    bodyHtml = bodyHtml.replace(
-      /<div class="description">[\s\S]*?<\/div>/,
-      newGlossaryHtml
-    );
+    // 精确替换 description 块本身（description 内不含嵌套 div，非贪婪匹配即完整块），
+    // 避免误伤其它同类容器。
+    const descBlockRe = /<div class="description">[\s\S]*?<\/div>/;
+    const descHit = descBlockRe.exec(bodyHtml);
+    if (!descHit) {
+      console.warn(
+        `[sync-paper-report] ⚠️ 未在正文中定位到 description 容器，术语表未替换。`
+      );
+    } else {
+      bodyHtml =
+        bodyHtml.slice(0, descHit.index) +
+        newGlossaryHtml +
+        bodyHtml.slice(descHit.index + descHit[0].length);
+      expectHits('术语表替换', 1, 1);
+    }
   }
 }
 
 // --- 7. 视觉与版式深度精修 (Visual Hierarchy & Component Upgrades) ---
 console.log(
-  `[sync-paper-report] 正在执行正文版式精修（图文摘要、核心问题卡片、路线图与规范图表）...`
+  `[sync-paper-report] 正在执行正文版式精修（图文摘要卡片、阶段路线图与政策建议标题）...`
 );
 
-// 1. 移除 Pandoc 冗余 titlepage 与重复关键词，注入全新高保真图文摘要总览卡片 (Graphical Abstract)
-// 图片紧随其后的“注：…”说明原本会被 Pandoc 落到正文，这里一并捕获并收纳进图文摘要卡片内。
-const titlepageRegex =
-  /<div class="titlepage">[\s\S]*?<\/div>\s*<p><strong>关键词[：:]<\/strong>[\s\S]*?<\/p>\s*<p><img src="\.\/data\/图文摘要2\.png"[^>]*><\/p>(?:\s*<p>(注：[\s\S]*?)<\/p>)?/;
-bodyHtml = bodyHtml.replace(titlepageRegex, (match, gaNote) => {
-  const gaNoteHtml = gaNote
-    ? `
-  <div class="figure-notes ga-notes">
-    <span class="note-tag">注</span>
-    <div class="note-text">${gaNote.replace(/^注：\s*/, '')}</div>
-  </div>`
-    : '';
+// 1. 移除 Pandoc 冗余 titlepage 与重复关键词，注入高保真图文摘要卡片 (Graphical Abstract)
+// 图片文件名不再硬编码：TeX 侧从“图文摘要2.png”改到“图文摘要4.png”时，
+// 旧实现整条正则失配 -> titlepage 空壳残留、卡片消失、关键词重复、注掉进正文。
+// 现在按“titlepage + 关键词段 + 首张图文摘要图片”的结构识别，与文件名无关。
+const gaRegex =
+  /<div class="titlepage">[\s\S]*?<\/div>\s*<p><strong>关键词[：:]<\/strong>[\s\S]*?<\/p>\s*(<p><img\b[^>]*\ssrc="([^"]+)"[^>]*\/?><\/p>)(?:\s*(<p\b[^>]*>[\s\S]*?<\/p>))?/;
+const gaMatched = gaRegex.test(bodyHtml);
+if (!gaMatched) {
+  console.warn(
+    `[sync-paper-report] ⚠️ 未定位到图文摘要区（titlepage/关键词/首图），页面将保留 Pandoc 默认摘要块。`
+  );
+}
+bodyHtml = bodyHtml.replace(gaRegex, (match, imgTag, src, trailingP) => {
+  const gaNoteHtml =
+    trailingP && isNoteBlock(trailingP)
+      ? renderNote(normalizeNote(trailingP), 'figure-notes ga-notes')
+      : '';
   return `
 <div class="graphical-abstract-card" id="graphical-abstract">
   <div class="ga-header">
@@ -1101,219 +1753,97 @@ bodyHtml = bodyHtml.replace(titlepageRegex, (match, gaNote) => {
     <span class="ga-tip">🔍 点击图片可放大高清原图</span>
   </div>
   <div class="ga-img-wrap">
-    <img src="./data/图文摘要2.png" alt="CCUS 规模化治理与 dMRV 架构图文摘要" />
+    <img src="${src}" alt="${attr('CCUS 规模化治理与 dMRV 架构图文摘要')}" />
   </div>${gaNoteHtml}
 </div>`;
 });
+expectHits('图文摘要卡片', gaMatched ? 1 : 0, 1);
 
-// 2. 将 Pandoc 生成的伪数学公式标记清洗为原生超轻量 HTML，消除公式渲染延迟与抖动
-bodyHtml = bodyHtml.replace(
-  /<span\s+class="math inline">\s*\\?\(_2\\?\)\s*<\/span>/g,
-  '<sub>2</sub>'
-);
-bodyHtml = bodyHtml.replace(
-  /<span\s+class="math inline">\s*\\?\((\^\\circ|\\circ)\\?\)\s*<\/span>/g,
-  '°'
-);
-bodyHtml = bodyHtml.replace(/\\\(_2\\\)/g, '<sub>2</sub>');
-bodyHtml = bodyHtml.replace(/\\\((\^\\circ|\\circ)\\\)/g, '°');
-
-// 3. 重构 1.4 节下 1.4.0.1 ~ 1.4.0.3 伪 4 级标题为系统问题分析卡片 (.systemic-question-card)
-const qData = [
-  {
-    num: '1.4.0.1',
-    id: 'q1-value-chain',
-    badge: '核心问题 01',
-    title: '价值如何形成并在全链条分配？',
-  },
-  {
-    num: '1.4.0.2',
-    id: 'q2-network-sync',
-    badge: '核心问题 02',
-    title: '价值链如何同步投资并稳定运行？',
-  },
-  {
-    num: '1.4.0.3',
-    id: 'q3-evidence-trust',
-    badge: '核心问题 03',
-    title: '工程结果如何获得制度采信？',
-  },
-];
-for (const q of qData) {
-  const qRegex = new RegExp(
-    `<h4 data-number="${q.num}"[^>]*>[\\s\\S]*?<\\/h4>\\s*(<p>[\\s\\S]*?<\\/p>)`
-  );
-  bodyHtml = bodyHtml.replace(qRegex, (match, pTag) => {
-    return `
-      <div class="systemic-question-card" id="${q.id}">
-        <div class="sq-header">
-          <span class="sq-badge">${q.badge}</span>
-          <span class="sq-title">${q.title}</span>
-        </div>
-        <div class="sq-body">
-          ${pTag}
-        </div>
-      </div>
-    `;
+// 2. 重构阶段描述为“三阶段演化路线图” (.roadmap-container)
+//    阶段标题直接取自 \paragraph 小标题原文，不再在脚本里另写一份文案。
+//    必须在剥离 \paragraph 伪编号之前执行：编号是本步骤唯一的定位依据。
+const roadmapStageRe =
+  /<h4\s+data-number="(\d+)\.0\.0\.(\d+)"[^>]*>([\s\S]*?)<\/h4>\s*<p>([\s\S]*?)<\/p>/g;
+const roadmapStages = [];
+let rm;
+while ((rm = roadmapStageRe.exec(bodyHtml))) {
+  roadmapStages.push({
+    num: Number(rm[2]),
+    title: rm[3]
+      .replace(/<span\s+class="header-section-number">[\s\S]*?<\/span>/, '')
+      .replace(/[。.]\s*$/, '')
+      .trim(),
+    desc: rm[4],
+    start: rm.index,
+    end: rm.index + rm[0].length,
   });
 }
+const CN_NUM = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
 
-// 4. 重构 5.0 节下 5.0.0.1 ~ 5.0.0.3 阶段描述为“三阶段演化路线图” (.roadmap-container)
-const stage1Regex =
-  /<h4 data-number="5\.0\.0\.1"[^>]*>[\s\S]*?<\/h4>\s*<p>([\s\S]*?)<\/p>/;
-const stage2Regex =
-  /<h4 data-number="5\.0\.0\.2"[^>]*>[\s\S]*?<\/h4>\s*<p>([\s\S]*?)<\/p>/;
-const stage3Regex =
-  /<h4 data-number="5\.0\.0\.3"[^>]*>[\s\S]*?<\/h4>\s*<p>([\s\S]*?)<\/p>/;
-const s1 = bodyHtml.match(stage1Regex);
-const s2 = bodyHtml.match(stage2Regex);
-const s3 = bodyHtml.match(stage3Regex);
-
-if (s1 && s2 && s3) {
+if (roadmapStages.length >= 2) {
+  const cards = roadmapStages
+    .map((s, i) => {
+      const n = i + 1;
+      return `
+      <div class="roadmap-card stage-${n}">
+        <div class="roadmap-step">
+          <span class="step-num">${String(n).padStart(2, '0')}</span>
+          <span class="step-phase">阶段${CN_NUM[i] || n}</span>
+        </div>
+        <div class="roadmap-content">
+          <h4 class="stage-title">${s.title}</h4>
+          <p class="stage-desc">${s.desc}</p>
+        </div>
+      </div>`;
+    })
+    .join('\n');
   const roadmapHtml = `
     <div class="roadmap-container">
-      <div class="roadmap-card stage-1">
-        <div class="roadmap-step">
-          <span class="step-num">01</span>
-          <span class="step-phase">阶段一</span>
-        </div>
-        <div class="roadmap-content">
-          <h4 class="stage-title">探索与示范阶段</h4>
-          <p class="stage-desc">${s1[1]}</p>
-        </div>
-      </div>
-      <div class="roadmap-card stage-2">
-        <div class="roadmap-step">
-          <span class="step-num">02</span>
-          <span class="step-phase">阶段二</span>
-        </div>
-        <div class="roadmap-content">
-          <h4 class="stage-title">集群形成阶段</h4>
-          <p class="stage-desc">${s2[1]}</p>
-        </div>
-      </div>
-      <div class="roadmap-card stage-3">
-        <div class="roadmap-step">
-          <span class="step-num">03</span>
-          <span class="step-phase">阶段三</span>
-        </div>
-        <div class="roadmap-content">
-          <h4 class="stage-title">规模扩张阶段</h4>
-          <p class="stage-desc">${s3[1]}</p>
-        </div>
-      </div>
+${cards}
     </div>
   `;
-  const entireStagesRegex =
-    /<h4 data-number="5\.0\.0\.1"[^>]*>[\s\S]*?<h4 data-number="5\.0\.0\.3"[^>]*>[\s\S]*?<\/p>/;
-  bodyHtml = bodyHtml.replace(entireStagesRegex, roadmapHtml);
+  // 用收集到的区间整体替换，避免正则再写一遍章节号
+  bodyHtml =
+    bodyHtml.slice(0, roadmapStages[0].start) +
+    roadmapHtml +
+    bodyHtml.slice(roadmapStages[roadmapStages.length - 1].end);
+  expectHits('三阶段路线图', roadmapStages.length, 3);
 }
 
-// 5. 规范图 1、图 2 与图 3 学术排版（置顶标题、高清防变形、注释独立微排版）
-const fig1Regex =
-  /<div class="landscape">\s*<figure id="fig:global_ccus_scale">\s*<img src="([^"]+)"[^>]*\/>\s*(<p><em>注：<\/em>[\s\S]*?<\/p>)\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>\s*<\/div>/;
-bodyHtml = bodyHtml.replace(fig1Regex, (match, src, pNotes, caption) => {
-  const cleanNotes = pNotes
-    .replace(/<p><em>注：<\/em>\s*/, '')
-    .replace(/<\/p>$/, '');
-  return `
-    <figure class="academic-figure" id="fig:global_ccus_scale">
-      <div class="figure-header">
-        <div class="figure-title-group">
-          <span class="figure-label">图 1</span>
-          <span class="figure-title">${caption.trim()}</span>
-        </div>
-        <span class="figure-tip">🔍 点击放大</span>
-      </div>
-      <div class="figure-img-wrap">
-        <img src="${src}" alt="${caption.trim()}" loading="lazy" />
-      </div>
-      <div class="figure-notes">
-        <span class="note-tag">注</span>
-        <div class="note-text">${cleanNotes}</div>
-      </div>
-    </figure>
-  `;
-});
+// 3. 将伪 4 级标题（TeX \paragraph，Pandoc 编号形如 1.4.0.1）还原为无编号小标题。
+//    LaTeX 的 \paragraph 本身不带编号，"1.4.0.1" 这类编号是 --number-sections 的产物，
+//    直接显示既冗余又难看，因此移除编号徽标、保留标题文字。
+let unnumberedParagraphs = 0;
+bodyHtml = bodyHtml.replace(
+  /<h4\s+data-number="\d+\.\d+\.0\.\d+"([^>]*)>([\s\S]*?)<\/h4>/g,
+  (match, attrs, inner) => {
+    unnumberedParagraphs++;
+    const title = inner
+      .replace(/<span\s+class="header-section-number">[\s\S]*?<\/span>/, '')
+      .trim();
+    return `<h4${attrs}>${title}</h4>`;
+  }
+);
+console.log(
+  `[sync-paper-report] 已还原 ${unnumberedParagraphs} 个 \\paragraph 小标题（移除伪编号）`
+);
 
-const fig2Regex =
-  /<figure id="fig:cluster_stages">\s*<img src="([^"]+)"[^>]*\/>\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>/;
-bodyHtml = bodyHtml.replace(fig2Regex, (match, src, caption) => {
-  const full = caption.trim();
-  const dotIdx = full.indexOf('。');
-  const title = dotIdx > 0 ? full.slice(0, dotIdx) : full;
-  const notes = dotIdx > 0 ? full.slice(dotIdx + 1).trim() : '';
-  return `
-    <figure class="academic-figure" id="fig:cluster_stages">
-      <div class="figure-header">
-        <div class="figure-title-group">
-          <span class="figure-label">图 2</span>
-          <span class="figure-title">${title}</span>
-        </div>
-        <span class="figure-tip">🔍 点击放大</span>
-      </div>
-      <div class="figure-img-wrap">
-        <img src="${src}" alt="${title}" loading="lazy" />
-      </div>
-      <div class="figure-notes">
-        <span class="note-tag">注</span>
-        <div class="note-text">${notes}</div>
-      </div>
-    </figure>
-  `;
-});
-
-const fig3Regex =
-  /<figure id="fig:dmrv_house">\s*<img src="([^"]+)"[^>]*\/>\s*<figcaption>([\s\S]*?)<\/figcaption>\s*<\/figure>/;
-bodyHtml = bodyHtml.replace(fig3Regex, (match, src, caption) => {
-  return `
-    <figure class="academic-figure" id="fig:dmrv_house">
-      <div class="figure-header">
-        <div class="figure-title-group">
-          <span class="figure-label">图 3</span>
-          <span class="figure-title">${caption.trim()}</span>
-        </div>
-        <span class="figure-tip">🔍 点击放大</span>
-      </div>
-      <div class="figure-img-wrap">
-        <img src="${src}" alt="${caption.trim()}" loading="lazy" />
-      </div>
-      <div class="figure-notes">
-        <span class="note-tag">注</span>
-        <div class="note-text">展示了规范性框架（监管/标准/方法学）、工程事实、证据组织接口与制度用途（核证、结算、金融、责任接续）之间的四层映射体系与证据支撑网络。</div>
-      </div>
-    </figure>
-  `;
-});
-
-// 6. 统一 5.1 ~ 5.3 核心政策建议标题的版式与间距（不注入冗余编号徽章）
-const policyData = [
-  {
-    num: '5.1',
-    id: '政策建议一将证据要求前置到集群遴选与可研设计',
-  },
-  {
-    num: '5.2',
-    id: '政策建议二建立连接工程事实与制度使用的接口',
-  },
-  {
-    num: '5.3',
-    id: '政策建议三通过影子评估检验长期责任审查的证据要求',
-  },
-];
-for (const p of policyData) {
-  const pRegex = new RegExp(
-    `<h2 data-number="${p.num}"\\s*id="${p.id}"><span\\s*class="header-section-number">${p.num}<\\/span>\\s*([^<]+)<\\/h2>`
-  );
-  bodyHtml = bodyHtml.replace(pRegex, (m, title) => {
+// 4. 统一政策建议章节标题的版式与间距（不注入冗余编号徽章）
+//    按标题语义（以“政策建议”开头）识别，不再硬编码章节号与 Pandoc 生成的 id。
+let policyHeadings = 0;
+bodyHtml = bodyHtml.replace(
+  /<h2\s+data-number="([^"]+)"([^>]*)><span\s+class="header-section-number">[^<]*<\/span>\s*([^<]*政策建议[^<]*)<\/h2>/g,
+  (m, num, attrs, title) => {
+    policyHeadings++;
     return `
-      <h2 data-number="${p.num}" id="${p.id}" class="policy-rec-heading">
-        <span class="header-section-number">${p.num}</span>
+      <h2 data-number="${num}"${attrs} class="policy-rec-heading">
+        <span class="header-section-number">${num}</span>
         <span class="policy-title">${title.trim()}</span>
       </h2>
     `;
-  });
-}
+  }
+);
+console.log(`[sync-paper-report] 已统一 ${policyHeadings} 个政策建议标题版式`);
 
 // 7. 美化文末 Footnotes 脚注容器
 bodyHtml = bodyHtml.replace(
@@ -1325,6 +1855,19 @@ bodyHtml = bodyHtml.replace(
     </div>
 `
 );
+
+// ============================================================================
+// 结构自检（写盘前的硬门禁）
+//
+// 背景：本脚本过去所有版面改写都是“正则静默 no-op”——TeX 改版后一旦失配就
+// 原样跳过、不报错、不计数，导致页面静默腐烂并直接上线。已实际发生过的后果：
+//   · 图文摘要卡片整体消失（文件名从 图文摘要2.png 改为 图文摘要4.png）
+//   · 图 2 丢失图头（img 与 figcaption 之间多了“注：”段落）
+//   · 表 5-1 无表头（新表未登记进硬编码映射）
+// 现在改为两道闸：(1) 上面各步骤登记的命中数必须与 TeX 实际数量一致；
+// (2) 由 lib/report-structure.mjs 对最终正文做结构体检。
+// 任何一项不通过即退出码 1，绝不产出页面。
+// ============================================================================
 
 // 统计字数
 const pureText = bodyHtml.replace(/<[^>]+>/g, '').replace(/\s+/g, '');
@@ -1842,6 +2385,29 @@ const template = `<!DOCTYPE html>
       display: flex;
       align-items: baseline;
     }
+    /* \\paragraph 级小标题（TeX 中本身不带编号） */
+    .article-content h4 {
+      font-family: var(--font-sans);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-top: 1.75rem;
+      margin-bottom: 0.6rem;
+      padding-left: 0.75rem;
+      border-left: 3px solid var(--brand-blue);
+      color: var(--text-main);
+      line-height: 1.5;
+      scroll-margin-top: 80px;
+    }
+    .article-content h4 + p {
+      margin-top: 0;
+    }
+    /* 路线图卡片内的阶段标题不重复左侧色条 */
+    .roadmap-content h4.stage-title {
+      border-left: none;
+      padding-left: 0;
+      margin-top: 0;
+      font-size: 1.05rem;
+    }
 
     /* 章节数字徽章样式 (Header Number Badge) */
     .header-section-number {
@@ -2234,6 +2800,11 @@ const template = `<!DOCTYPE html>
       min-width: 920px;
       table-layout: fixed;
     }
+    /* 四列宽度比例：表头由 ensureThead 从 TeX 提升而来，比例统一在 CSS 维护 */
+    .table-claims-mapping th:nth-child(1) { width: 22%; }
+    .table-claims-mapping th:nth-child(2) { width: 26%; }
+    .table-claims-mapping th:nth-child(3) { width: 24%; }
+    .table-claims-mapping th:nth-child(4) { width: 28%; }
     .table-claims-mapping th {
       background: var(--table-header);
       padding: 0.75rem 1rem;
@@ -2870,55 +3441,6 @@ const template = `<!DOCTYPE html>
       background: var(--bg-secondary);
       text-align: justify;
     }
-
-    /* 核心系统问题卡片 (Systemic Question Cards in Section 1.4) */
-    .systemic-question-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--brand-blue);
-      border-radius: 0.75rem;
-      margin: 1.75rem 0;
-      padding: 1.35rem 1.6rem;
-      transition: all 0.2s ease;
-    }
-    .systemic-question-card:hover {
-      background: var(--bg-tertiary);
-      border-color: var(--brand-blue);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
-      transform: translateY(-1px);
-    }
-    .sq-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px dashed var(--border-color);
-    }
-    .sq-badge {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--brand-blue);
-      background: rgba(37, 99, 235, 0.1);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      padding: 0.15rem 0.55rem;
-      border-radius: 0.35rem;
-      white-space: nowrap;
-    }
-    .sq-title {
-      font-family: var(--font-sans);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .sq-body p {
-      margin-bottom: 0 !important;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      text-indent: 0 !important;
-    }
-
     /* 三阶段演化路线图 (3-Stage Evolution Roadmap in Section 5) */
     .roadmap-container {
       display: flex;
@@ -3113,6 +3635,12 @@ const template = `<!DOCTYPE html>
     .note-text {
       flex: 1;
       text-align: justify;
+    }
+    /* 注释正文里的语义标签（如“口径与筛选说明”），由 normalizeNote 生成 */
+    .note-lead {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-right: 0.15rem;
     }
     .fig-ref-link {
       color: var(--brand-blue);
@@ -3699,7 +4227,7 @@ const template = `<!DOCTYPE html>
         margin-bottom: 2rem !important;
       }
       figure, .academic-figure, table, .table-responsive-wrapper,
-      .roadmap-container, .systemic-question-card, .graphical-abstract-card, .glossary-card-container, .glossary-table {
+      .roadmap-container, .graphical-abstract-card, .glossary-card-container, .glossary-table {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
       }
@@ -3848,7 +4376,7 @@ const template = `<!DOCTYPE html>
     <!-- TOC Sidebar (Desktop) -->
     <aside class="toc-sidebar" id="toc-sidebar">
       <div class="toc-title">
-        <span>报告大纲 (TOC)</span>
+        <span>报告大纲</span>
         <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="收起目录以拓宽正文 (快捷键: [)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
@@ -3870,10 +4398,9 @@ const template = `<!DOCTYPE html>
           <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
         </div>
 
-        <div class="reading-stats">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>正文约 ${Math.round(charCount / 1000)}k 字</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>建议阅读时间 ${readMinutes} 分钟</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>支持 XeLaTeX 原始矢量 PDF 下载</span>
+<div class="reading-stats">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 ${Math.round(charCount / 1000)}k 字</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${readMinutes} 分钟</span>
         </div>
 
         <div class="abstract-box">
@@ -4395,22 +4922,26 @@ const template = `<!DOCTYPE html>
         }
       }
 
-      // 实时包裹高亮 mark
-      let wrapped = false;
+      // 实时包裹高亮 mark。
+      // 跨段落选区不能交给 surroundContents（会抛 InvalidStateError），统一用
+      // wrapRangeWithMarks 逐文本节点包裹；失败时再按引文文本兜底定位一次。
+      let segments = 0;
       if (currentSelectionRange) {
-        try {
-          const mark = document.createElement('mark');
-          mark.className = 'comment-highlight';
-          mark.setAttribute('data-comment-id', id);
-          mark.id = 'mark-' + id;
-          mark.title = '批注：' + commentBody;
-          currentSelectionRange.surroundContents(mark);
-          wrapped = true;
-        } catch (err) {
-          wrapped = highlightTextInElement(document.getElementById('report-content'), currentSelectedText, id, commentBody);
-        }
-      } else {
-        wrapped = highlightTextInElement(document.getElementById('report-content'), currentSelectedText, id, commentBody);
+        segments = wrapRangeWithMarks(
+          currentSelectionRange,
+          id,
+          commentBody,
+          'mark-' + id
+        );
+      }
+      if (!segments) {
+        segments = wrapRangeWithMarks(
+          findTextRange(document.getElementById('report-content'), currentSelectedText) ||
+            document.createRange(),
+          id,
+          commentBody,
+          'mark-' + id
+        );
       }
 
       const newComment = {
@@ -4428,7 +4959,13 @@ const template = `<!DOCTYPE html>
       closeCommentModal();
       attachMarkListeners();
       openCommentsDrawer(id);
-      showToast('✅ 批注已成功保存至本地！');
+      // 高亮片段为 0 说明引文无法在正文中定位（例如文本已变动）。
+      // 批注本身仍然保存，但必须明确告知，否则用户会看到"存了却没划线"且毫无线索。
+      showToast(
+        segments
+          ? \`✅ 批注已保存（\${segments > 1 ? \`跨段落 \${segments} 处已划线\` : '已划线'}）\`
+          : '⚠️ 批注已保存，但未能在正文中定位该引文（文本可能已变动），刷新后也不会划线'
+      );
     }
 
     // 抽屉开关交互
@@ -4523,35 +5060,45 @@ const template = `<!DOCTYPE html>
       });
     }
 
+// 定位原文高亮 Mark。跨段落批注会有多个片段，按 data-comment-id 全部取出。
+    function marksForComment(id) {
+      return [...document.querySelectorAll(\`mark[data-comment-id="\${id}"]\`)];
+    }
+
+    // 解构（去掉 <mark> 保留文字）
+    function unwrapMark(mark) {
+      const parent = mark.parentNode;
+      if (!parent) return;
+      while (mark.firstChild) {
+        parent.insertBefore(mark.firstChild, mark);
+      }
+      parent.removeChild(mark);
+    }
+
     // 定位原文高亮 Mark
     function scrollToMark(id) {
-      const mark = document.getElementById('mark-' + id) || document.querySelector(\`mark[data-comment-id="\${id}"]\`);
-      if (!mark) {
+      const marks = marksForComment(id);
+      if (!marks.length) {
         showToast('⚠️ 未能在当前页面定位到该引用片段（可能文本变动）');
         return;
       }
-      mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      mark.classList.remove('pulse-highlight');
-      void mark.offsetWidth;
-      mark.classList.add('pulse-highlight');
+      marks[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      marks.forEach(mark => {
+        mark.classList.remove('pulse-highlight');
+        void mark.offsetWidth;
+        mark.classList.add('pulse-highlight');
+      });
     }
 
     // 删除单条批注
     function deleteComment(id) {
-      if (!confirm('确定删除该条审阅批注吗？')) return;
+      if (!confirm('确定删除这条审阅批注吗？')) return;
       let comments = getStoredComments();
       comments = comments.filter(c => c.id !== id);
       saveStoredComments(comments);
 
-      // 解构正文中的 mark
-      const mark = document.getElementById('mark-' + id) || document.querySelector(\`mark[data-comment-id="\${id}"]\`);
-      if (mark) {
-        const parent = mark.parentNode;
-        while (mark.firstChild) {
-          parent.insertBefore(mark.firstChild, mark);
-        }
-        parent.removeChild(mark);
-      }
+      // 解构正文中该批注的全部高亮片段（跨段落批注不止一个 <mark>）
+      marksForComment(id).forEach(unwrapMark);
       showToast('🗑️ 批注已删除');
     }
 
@@ -4562,13 +5109,7 @@ const template = `<!DOCTYPE html>
       if (!confirm(\`确定清空全部 \${comments.length} 条审阅批注吗？此操作不可逆。\`)) return;
 
       localStorage.removeItem(STORAGE_KEY);
-      document.querySelectorAll('.comment-highlight').forEach(mark => {
-        const parent = mark.parentNode;
-        while (mark.firstChild) {
-          parent.insertBefore(mark.firstChild, mark);
-        }
-        parent.removeChild(mark);
-      });
+      document.querySelectorAll('.comment-highlight').forEach(unwrapMark);
       updateCommentBadges(0);
       renderCommentsList([]);
       showToast('🗑️ 全部批注已清空');
@@ -4659,43 +5200,180 @@ const template = `<!DOCTYPE html>
       attachMarkListeners();
     }
 
-    // 文本树深度遍历恢复高亮
-    function highlightTextInElement(container, quote, id, commentText) {
-      if (!quote || quote.length < 2) return false;
-      const target = quote.trim();
+    /**
+     * 批注高亮底层工具
+     *
+     * 历史实现有两个缺陷，导致"跨自然段划词"完全失效（批注存进了 localStorage，
+     * 但正文不出现下划线）：
+     *   1) 实时高亮用 Range.surroundContents()。按 DOM 规范，只要 Range **部分包含**
+     *      任何非文本节点就抛 InvalidStateError —— 跨段落选区必然部分包含 <p>，
+     *      于是每次都进catch 分支。
+     *   2) catch 里的兜底 highlightTextInElement 只在**单个文本节点**内做
+     *      indexOf 查找。跨段落的引文在 DOM 里根本不属于同一个文本节点，永远匹配不到，
+     *      返回 false，页面无任何高亮也没有报错。
+     * 刷新后恢复（rehydrateComments）走的是同一个函数，因此跨段落批注在重载后
+     * 同样无法还原。
+     *
+     * 现在改为：跨文本节点定位 Range + 逐文本节点包裹 <mark>。
+     * 这样跨段落、跨 <strong>/<sup> 的选区都能正确落笔，且不再产生
+     * "<mark> 里套 <p>" 这种非法结构（同一批注可以有多个高亮片段，
+     * 通过 data-comment-id 关联）。
+     */
 
-      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
-      let node;
-      while ((node = walker.nextNode())) {
-        if (node.parentElement && (
-          node.parentElement.classList.contains('comment-highlight') ||
-          ['SCRIPT', 'STYLE', 'BUTTON'].includes(node.parentElement.tagName)
-        )) {
+    // 高亮禁区：脚本/按钮/已有批注内部不允许再次包裹
+    const HIGHLIGHT_SKIP_SELECTOR = 'script, style, button, .comment-highlight';
+
+    /**
+     * 逐文本节点把 Range 包进 <mark>。返回生成的片段数。
+     * 先固化 range 的起止锚点再改 DOM，避免 splitText 让偏移失效。
+     */
+    function wrapRangeWithMarks(range, id, commentText, markIdBase) {
+      if (!range || range.collapsed) return 0;
+      const root =
+        range.commonAncestorContainer.nodeType === Node.ELEMENT_NODE
+          ? range.commonAncestorContainer
+          : range.commonAncestorContainer.parentElement;
+      if (!root) return 0;
+
+      const startNode = range.startContainer;
+      const startOffset = range.startOffset;
+      const endNode = range.endContainer;
+      const endOffset = range.endOffset;
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const p = node.parentElement;
+          if (!p || p.closest(HIGHLIGHT_SKIP_SELECTOR)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (!range.intersectsNode(node)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const targets = [];
+      let n;
+      while ((n = walker.nextNode())) targets.push(n);
+
+      let segments = 0;
+      for (const t of targets) {
+        let s = 0;
+        let e = t.nodeValue.length;
+        if (t === startNode) s = startOffset;
+        if (t === endNode) e = endOffset;
+        if (e <= s) continue;
+
+        let sub;
+        try {
+          sub = document.createRange();
+          sub.setStart(t, s);
+          sub.setEnd(t, e);
+        } catch (err) {
           continue;
         }
+        if (sub.collapsed) continue;
 
-        const val = node.nodeValue;
-        const idx = val.indexOf(target);
-        if (idx !== -1) {
-          try {
-            const mark = document.createElement('mark');
-            mark.className = 'comment-highlight';
-            mark.setAttribute('data-comment-id', id);
-            mark.id = 'mark-' + id;
-            mark.title = '批注：' + (commentText || '');
+        const mark = document.createElement('mark');
+        mark.className = 'comment-highlight';
+        mark.setAttribute('data-comment-id', id);
+        mark.id = markIdBase + (segments ? '-' + segments : '');
+        mark.title = '批注：' + (commentText || '');
+        // 先把内容搬进游离的 mark，再插入 DOM：appendChild 作用于脱离文档的节点，
+        // 不会影响 sub.range 的位置。
+        mark.appendChild(sub.extractContents());
+        sub.insertNode(mark);
+        segments++;
+      }
+      return segments;
+    }
 
-            const targetNode = node.splitText(idx);
-            targetNode.splitText(target.length);
+    /**
+     * 在容器内按引文文本定位 Range，支持跨文本节点与跨段落。
+     *
+     * 空白处理是这个函数的关键。Selection.toString() 在跨段落时会插入换行，
+     * 而 DOM 里两个 <p> 之间根本没有空白文本节点，"上一段结尾"与"下一段开头"
+     * 是直接相接的。因此这里对两侧统一做**全量去空白**再比对，
+     * 同时维护"去空白后的字符 -> 源位置"映射，把命中位置还原回真实 Range。
+     */
+    function findTextRange(container, needle) {
+      if (!container || !needle) return null;
+      // 注意：本文件整体被包在模板字符串里，正则里的空白类（反斜杠 + s）
+      // 必须写成双反斜杠，否则模板字面量会把它吞成字母 s，生成出 /s+/ 这种坏正则。
+      const target = needle.replace(/\\s+/g, '');
+      if (target.length < 2) return null;
 
-            mark.appendChild(targetNode.cloneNode(true));
-            targetNode.parentNode.replaceChild(mark, targetNode);
-            return true;
-          } catch (e) {
-            console.warn('Rehydration wrap failed:', e);
+      const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) {
+            return NodeFilter.FILTER_REJECT;
           }
+          const p = node.parentElement;
+          if (!p || p.closest(HIGHLIGHT_SKIP_SELECTOR)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const nodes = [];
+      const map = [];
+      let norm = '';
+      let n;
+      while ((n = walker.nextNode())) {
+        const v = n.nodeValue;
+        const nodeIdx = nodes.length;
+        nodes.push(n);
+        for (let i = 0; i < v.length; i++) {
+          const ch = v[i];
+          if (/\\s/.test(ch)) continue; // 空白一律丢弃，跨段落才能对上
+          norm += ch;
+          map.push([nodeIdx, i]);
         }
       }
-      return false;
+      if (!norm) return null;
+
+      let idx = norm.indexOf(target);
+      if (idx === -1) return null;
+      // 多次出现时取最后一次，便于与"就地高亮"的直觉一致
+      while (norm.indexOf(target, idx + 1) !== -1) {
+        idx = norm.indexOf(target, idx + 1);
+      }
+
+      const startPos = map[idx];
+      let endPos = map[idx + target.length - 1];
+      if (!startPos || !endPos) return null;
+      // 命中末位若是代理对的高代理（emoji 等），不能从中间切断
+      while (
+        endPos &&
+        nodes[endPos[0]].nodeValue.charCodeAt(endPos[1]) >= 0xd800 &&
+        nodes[endPos[0]].nodeValue.charCodeAt(endPos[1]) <= 0xdbff
+      ) {
+        const at = map.indexOf(endPos);
+        endPos = at >= 0 ? map[at + 1] : null;
+        if (!endPos) break;
+      }
+
+      try {
+        const range = document.createRange();
+        range.setStart(nodes[startPos[0]], startPos[1]);
+        range.setEnd(
+          nodes[endPos[0]],
+          Math.min(endPos[1] + 1, nodes[endPos[0]].nodeValue.length)
+        );
+        return range.collapsed ? null : range;
+      } catch (err) {
+        return null;
+      }
+    }
+
+    // 文本树深度遍历恢复高亮（刷新后按引文重新定位，跨段落同样有效）
+    function highlightTextInElement(container, quote, id, commentText) {
+      const range = findTextRange(container, quote);
+      if (!range) return false;
+      return wrapRangeWithMarks(range, id, commentText, 'mark-' + id) > 0;
     }
 
     // 为所有 Mark 绑定点击事件（打开抽屉并聚焦该批注）
@@ -4926,6 +5604,23 @@ const template = `<!DOCTYPE html>
 </html>`;
 
 const finalOut = path.join(outDir, 'index.html');
+
+// 写盘前硬门禁：任何结构问题都必须让流水线失败，而不是产出一个"看起来正常"的页面
+const reportProblems = verifyReportStructure(template, texContent, {
+  dataDir: outDir,
+  stats: qcStats,
+});
+if (reportProblems.length) {
+  console.error(
+    `[sync-paper-report] ❌ 结构自检未通过（${reportProblems.length} 项），已中止写盘：`
+  );
+  for (const p of reportProblems) console.error(`  · ${p}`);
+  process.exit(1);
+}
+console.log(
+  `[sync-paper-report] ✅ 结构自检通过（${qcStats.length} 项改写命中数 + 正文结构体检）`
+);
+
 fs.writeFileSync(finalOut, template, 'utf8');
 
 console.log(`[sync-paper-report] 全部流水线执行完毕！`);
@@ -4933,14 +5628,28 @@ console.log(`[sync-paper-report] 最终报告页面已保存至: ${finalOut}`);
 
 // --- check --strict 模式：对整页做逐字节重生成比对（需与本机 Pandoc 版本一致） ---
 if (checkMode && args.includes('--strict')) {
-  if (!fs.existsSync(committedHtmlPath)) {
-    console.error(
-      `[sync-paper-report][check] 未找到已提交页面: ${committedHtmlPath}`
-    );
-    process.exit(1);
-  }
-  const committed = fs.readFileSync(committedHtmlPath, 'utf8');
+  const committed = fs.existsSync(committedHtmlPath)
+    ? fs.readFileSync(committedHtmlPath, 'utf8')
+    : null;
   const regenerated = fs.readFileSync(finalOut, 'utf8');
+
+  // 素材指纹也逐项比对：只比 HTML 会漏掉"文字没变但配图换了"的情况。
+  const committedManifestPath = path.join(
+    path.dirname(committedHtmlPath),
+    'assets-manifest.json'
+  );
+  const readManifestAssets = (p) => {
+    try {
+      return JSON.parse(fs.readFileSync(p, 'utf8')).assets || [];
+    } catch {
+      return null;
+    }
+  };
+  const committedAssets = readManifestAssets(committedManifestPath);
+  const regeneratedAssets = assetManifest;
+  const assetsMatch =
+    committedAssets !== null &&
+    JSON.stringify(committedAssets) === JSON.stringify(regeneratedAssets);
 
   const committedPdfPath = path.join(
     path.dirname(committedHtmlPath),
@@ -4955,35 +5664,43 @@ if (checkMode && args.includes('--strict')) {
         .equals(fs.readFileSync(regeneratedPdfPath))
     : null;
 
-  if (committed === regenerated && pdfMatches !== false) {
-    if (pdfMatches === null) {
-      console.warn(
-        `[sync-paper-report][check] ⚠️ 未能同时取得已提交与应生成的 PDF，跳过 PDF 比对。`
-      );
-    }
+  const htmlMatches = committed === regenerated;
+  if (htmlMatches && assetsMatch && pdfMatches !== false) {
     console.log(
       `[sync-paper-report][check] ✅ 已提交页面与最新 paper draft 一致 (paper draft sha256:${texSha})`
     );
     process.exit(0);
   }
 
+  if (committed === null) {
+    console.error(
+      `[sync-paper-report][check] ❌ 未找到已提交页面: ${committedHtmlPath}`
+    );
+    process.exit(1);
+  }
+
   console.error(
     `[sync-paper-report][check] ❌ 检测到漂移：已提交产物与最新 paper draft 不一致。`
   );
-  if (committed !== regenerated) {
-    const committedSha = crypto
-      .createHash('sha256')
-      .update(committed)
-      .digest('hex');
-    const regeneratedSha = crypto
-      .createHash('sha256')
-      .update(regenerated)
-      .digest('hex');
+  if (!htmlMatches) {
+    const sha = (s) =>
+      crypto.createHash('sha256').update(s).digest('hex').slice(0, 16);
     console.error(
-      `[sync-paper-report][check]   index.html 已提交 : ${committedSha}`
+      `[sync-paper-report][check]   index.html 已提交 : ${sha(committed)}`
     );
     console.error(
-      `[sync-paper-report][check]   index.html 应生成 : ${regeneratedSha}`
+      `[sync-paper-report][check]   index.html 应生成 : ${sha(regenerated)}`
+    );
+  }
+  if (!assetsMatch) {
+    console.error(
+      `[sync-paper-report][check]   assets-manifest.json 不一致（配图来源/指纹漂移）`
+    );
+    console.error(
+      `[sync-paper-report][check]     已提交: ${JSON.stringify(committedAssets)}`
+    );
+    console.error(
+      `[sync-paper-report][check]     应生成: ${JSON.stringify(regeneratedAssets)}`
     );
   }
   if (pdfMatches === false) {
@@ -4992,7 +5709,7 @@ if (checkMode && args.includes('--strict')) {
     );
   }
   console.error(
-    `[sync-paper-report][check]   请运行 \`pnpm report:sync:full\` 重新生成并提交 public/reports/${slug}/ 下的 index.html 与 paper_draft.pdf。`
+    `[sync-paper-report][check]   请运行 \`pnpm report:sync\` 重新生成并提交 public/reports/${slug}/ 下的 index.html、assets-manifest.json 与 paper_draft.pdf。`
   );
   process.exit(1);
 }

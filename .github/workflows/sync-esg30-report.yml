@@ -112,7 +112,10 @@ jobs:
         if: steps.gate.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
-        run: pnpm report:sync:full
+        # 默认就是"远端权威"（与本机 report:sync 同一模式）。
+        # 历史上 CI 会先探测维护者本机目录；探测不到就静默沿用从 git 检出的旧配图，
+        # 导致"文字更新了、图还是旧的"这类线上不一致。
+        run: node scripts/sync-paper-report.mjs
 
       - name: Guard against LaTeX parse artifacts
         if: steps.gate.outputs.changed == 'true'
@@ -124,11 +127,25 @@ jobs:
             exit 1
           fi
 
+      - name: Verify report page structure and asset manifest
+        if: steps.gate.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: pnpm report:verify
+
       - name: Verify no drift remains
         if: steps.gate.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
         run: pnpm report:check
+
+      - name: Verify generated page matches a clean regeneration
+        if: steps.gate.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        # 逐字节重生成比对：证明刚落盘的产物与"从零再跑一次"完全相同，
+        # 不存在只在本次运行里成立的临时状态。
+        run: node scripts/sync-paper-report.mjs --check --strict
 
       - name: Record synced revision
         if: steps.gate.outputs.changed == 'true'

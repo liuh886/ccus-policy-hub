@@ -1,5 +1,6 @@
 // @ts-check
 import eslintPluginAstro from 'eslint-plugin-astro';
+import globals from 'globals';
 import typescriptParser from '@typescript-eslint/parser';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
@@ -42,10 +43,25 @@ export default [
   // Plain ESM (scripts, agent logic, src/lib): light-touch but real.
   {
     files: ['**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: { ...globals.node },
+    },
     rules: {
       'no-alert': 'error',
       'no-useless-escape': 'error',
       'no-prototype-builtins': 'error',
+      // no-undef 曾缺席，导致 scripts/ 里删掉一个函数后要到运行时才炸
+      // （findDivEnd 被误删，eslint 全绿，运行时 ReferenceError）。
+      'no-undef': 'error',
+    },
+  },
+  // src/lib 下的模块运行在浏览器里（DOM 操作），需要浏览器全局。
+  {
+    files: ['src/lib/**/*.mjs'],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.browser },
     },
   },
   {

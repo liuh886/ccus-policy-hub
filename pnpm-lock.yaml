@@ -63,6 +63,9 @@ importers:
       eslint-plugin-astro:
         specifier: ^1.5.0
         version: 1.5.0(eslint@9.39.2(jiti@2.6.1))
+      globals:
+        specifier: ^16.5.0
+        version: 16.5.0
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3

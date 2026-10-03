@@ -80,6 +80,59 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Install Pandoc (pinned) and pdfinfo
+        # report:parity 会用 CI 的默认路径重新生成一份报告再逐字节比对，因此需要
+        # Pandoc。版本必须与 sync-esg30-report.yml 一致，否则比对必然失败。
+        env:
+          PANDOC_VERSION: '3.1.12.3'
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y poppler-utils
+          curl -fsSL -o /tmp/pandoc.tar.gz \
+            "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz"
+          sudo tar -xzf /tmp/pandoc.tar.gz -C /usr/local --strip-components=1
+          INSTALLED=$(pandoc --version | head -n 1 | awk '{print $2}')
+          echo "pandoc: $INSTALLED"
+          if [ "$INSTALLED" != "$PANDOC_VERSION" ]; then
+            echo "::error::Pandoc 版本不匹配（期望 $PANDOC_VERSION，实际 $INSTALLED）"
+            exit 1
+          fi
+
+      - name: Detect ESG30 token availability
+        id: esg30
+        env:
+          ESG30_REPO_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: |
+          if [ -z "${ESG30_REPO_TOKEN}" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::未配置 ESG30_REPO_TOKEN，跳过本机/CI 一致性比对（结构体检仍会执行）。"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify report page structure and asset manifest
+        # 无条件执行，不依赖 ESG30 仓库是否更新：本仓库里改坏报告产物或
+        # 生成脚本时，这里能立刻拦住，而不是等下一次定时同步"顺带"发现。
+        # 没有 ESG30 token 时自动跳过 TeX 交叉校验，结构体检仍然生效。
+        run: pnpm report:verify
+
+      - name: Verify report page matches a clean regeneration (advisory)
+        # 复现 CI 的默认（远端权威）生成路径并逐字节比对已提交产物。
+        #
+        # 这里刻意"只告警、不拦人"：ESG30 源仓库是仓库外的输入，且上游在活跃
+        # 编辑（本 PR 验证期间 draft 连续变了 4 次：f4adb395 -> b77209a ->
+        # 4a26e5d9 -> 363275da）。任何时刻推送，都可能因为"拉到的 tex 恰好比
+        # 已提交产物更新"而误报，把 PR 卡死在红色上——这与产物是否正确无关。
+        #
+        # 因此逐字节一致性的**强制**检查放在 sync-esg30-report.yml：它在拉取某个
+        # 具体 rev 之后、落盘之后立刻重生成比对，那里才是顺序正确、没有竞态的位置。
+        # 本步骤保留为可见的漂移信号（黄色告警），用于观察上游编辑节奏。
+        if: steps.esg30.outputs.available == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: pnpm report:parity
+
       - name: Astro Check
         run: pnpm astro check
 
