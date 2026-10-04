@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 | CCUS Policy Hub</title>
   <meta name="description" content="ESG30 青年学者计划（二期）：从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础" />
-  <meta name="paper-source" content="paper_draft.tex sha256:19bec9e6cfb44fb3" />
+  <meta name="paper-source" content="paper_draft.tex sha256:f56f82b573ddd77b" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -41,22 +41,22 @@
     }
 
     [data-theme="dark"] {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-tertiary: #334155;
-      --text-main: #f1f5f9;
+      --bg-primary: #0b1120;
+      --bg-secondary: #131b2e;
+      --bg-tertiary: #1e293b;
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-light: #64748b;
-      --border-color: #334155;
+      --border-color: #1e293b;
       --brand-blue: #3b82f6;
       --brand-blue-hover: #60a5fa;
       --brand-emerald: #10b981;
-      --card-bg: #1e293b;
-      --table-header: #1e293b;
-      --table-stripe: #151e2e;
-      --table-border: #334155;
-      --popover-bg: #1e293b;
-      --popover-text: #f1f5f9;
+      --card-bg: #111827;
+      --table-header: #151f32;
+      --table-stripe: #0f172a;
+      --table-border: #1e293b;
+      --popover-bg: #131b2e;
+      --popover-text: #f8fafc;
       --highlight-flash: rgba(59, 130, 246, 0.25);
     }
 
@@ -67,6 +67,9 @@
       font-family: var(--font-sans);
       line-height: 1.85;
       font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       transition: background-color 0.2s, color 0.2s;
     }
 
@@ -83,15 +86,41 @@
       background: rgba(59, 130, 246, 0.38);
     }
 
+    /* 现代实体键帽微设计 */
+    kbd, .kbd-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-bottom-width: 2px;
+      border-radius: 0.3rem;
+      padding: 0.15rem 0.4rem;
+      min-width: 1.25rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+    [data-theme="dark"] kbd, [data-theme="dark"] .kbd-key {
+      background: #1e293b;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
     /* 顶部滚动进度指示条 */
     #progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      height: 3.5px;
-      background: linear-gradient(90deg, #2563eb, #10b981);
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--brand-blue), #10b981);
       width: 0%;
       z-index: 9999;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
       transition: width 0.08s ease-out;
     }
 
@@ -109,7 +138,7 @@
       padding: 0.75rem 2rem;
     }
     [data-theme="dark"] .navbar {
-      background-color: rgba(15, 23, 42, 0.88);
+      background-color: rgba(11, 17, 32, 0.88);
     }
     .nav-brand {
       display: flex;
@@ -139,28 +168,38 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
+      gap: 0.45rem;
+      padding: 0.42rem 0.85rem;
       border-radius: 0.5rem;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
       text-decoration: none;
       cursor: pointer;
       border: 1px solid var(--border-color);
       background: var(--bg-primary);
       color: var(--text-main);
-      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn:hover {
-      background: var(--bg-tertiary);
+      background: var(--bg-secondary);
+      border-color: var(--text-light);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.08);
+    }
+    .btn:active {
+      transform: translateY(0);
     }
     .btn-primary {
       background: var(--brand-blue);
       color: #ffffff;
       border-color: var(--brand-blue);
+      box-shadow: 0 2px 8px -1px rgba(37, 99, 235, 0.35);
     }
     .btn-primary:hover {
       background: var(--brand-blue-hover);
+      border-color: var(--brand-blue-hover);
+      box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.45);
     }
 
     /* 移动端点导航收敛：图标优先、单行不换行、隐藏冗余文字 */
@@ -287,45 +326,81 @@
       transform: translateX(3px);
       box-shadow: 3px 6px 18px rgba(37, 99, 235, 0.18);
     }
+    .toc-nav {
+      position: relative;
+    }
     .toc-nav ul {
       list-style: none;
       padding-left: 0;
+      position: relative;
+    }
+    .toc-nav > ul::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--border-color);
+      border-radius: 9999px;
     }
     .toc-nav li {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
+      position: relative;
     }
     .toc-nav a {
       display: block;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.45;
-      padding: 0.35rem 0.6rem;
-      border-radius: 0.375rem;
-      transition: all 0.15s ease;
-      border-left: 2px solid transparent;
+      padding: 0.35rem 0.65rem 0.35rem 1.35rem;
+      border-radius: 0.45rem;
+      transition: all 0.16s ease;
+      position: relative;
+    }
+    .toc-nav a::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-light);
+      opacity: 0;
+      transition: all 0.16s ease;
     }
     .toc-nav a:hover {
       color: var(--brand-blue);
       background: var(--bg-secondary);
     }
+    .toc-nav a:hover::before {
+      opacity: 0.5;
+    }
     .toc-nav a.active {
       color: var(--brand-blue);
       font-weight: 600;
       background: rgba(37, 99, 235, 0.08);
-      border-left-color: var(--brand-blue);
+    }
+    .toc-nav a.active::before {
+      opacity: 1;
+      background: var(--brand-blue);
+      transform: translateY(-50%) scale(1.3);
+      box-shadow: 0 0 6px rgba(37, 99, 235, 0.6);
     }
     .toc-nav .toc-h1 {
       font-weight: 600;
       color: var(--text-main);
     }
     .toc-nav .toc-h2 {
-      padding-left: 1.3rem;
-      font-size: 0.82rem;
+      padding-left: 1.9rem;
+      font-size: 0.81rem;
     }
     .toc-nav .toc-h3 {
-      padding-left: 2.2rem;
-      font-size: 0.78rem;
+      padding-left: 2.6rem;
+      font-size: 0.77rem;
       color: var(--text-light);
     }
 
@@ -336,11 +411,28 @@
       padding: 3.5rem 4.5rem 6rem;
       max-width: 980px;
       margin: 0 auto;
+      position: relative;
       transition: max-width 0.28s cubic-bezier(0.4, 0, 0.2, 1), padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .article-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 980px;
+      height: 420px;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(37, 99, 235, 0.07), transparent 75%);
+      pointer-events: none;
+      z-index: 0;
     }
     body.toc-collapsed .article-wrap {
       max-width: 1320px;
       padding: 3.5rem 3.5rem 6rem;
+    }
+    body.toc-collapsed .article-wrap::before {
+      max-width: 1320px;
     }
     @media (max-width: 768px) {
       .article-wrap {
@@ -357,48 +449,74 @@
 
     /* 报告封面 Hero */
     .paper-hero {
+      position: relative;
+      z-index: 1;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 2.5rem;
-      margin-bottom: 3rem;
+      padding-bottom: 2.75rem;
+      margin-bottom: 3.25rem;
     }
     .paper-type {
-      color: var(--brand-blue);
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6rem;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
     .paper-title {
       font-family: var(--font-serif);
-      font-size: 2.25rem;
+      font-size: 2.35rem;
       font-weight: 900;
-      line-height: 1.35;
+      line-height: 1.34;
+      letter-spacing: -0.02em;
       color: var(--text-main);
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.5rem;
     }
     .paper-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.92rem;
-      color: var(--text-muted);
+      gap: 0.65rem 0.85rem;
       margin-bottom: 1.5rem;
     }
-    .meta-item strong {
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 0.5rem;
+      color: var(--text-muted);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .meta-chip svg {
+      color: var(--brand-blue);
+      flex-shrink: 0;
+    }
+    .meta-chip .meta-label {
+      color: var(--text-light);
+      font-size: 0.78rem;
+    }
+    .meta-chip .meta-value {
       color: var(--text-main);
+      font-weight: 600;
     }
     .reading-stats {
       display: inline-flex;
-      gap: 1rem;
-      font-size: 0.82rem;
+      gap: 1.1rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      background: var(--bg-tertiary);
-      padding: 0.35rem 0.8rem;
-      border-radius: 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
       margin-bottom: 2rem;
     }
     .reading-stats span {
@@ -429,41 +547,51 @@
         margin-bottom: 1rem;
       }
       .paper-meta {
-        gap: 0.4rem 1.25rem;
-        font-size: 0.88rem;
-        margin-bottom: 1.25rem;
+        gap: 0.4rem 0.6rem;
+      }
+      .meta-chip {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
       }
     }
 
     /* 摘要卡片 */
     .abstract-box {
+      position: relative;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-left: 4px solid var(--brand-blue);
-      border-radius: 0.75rem;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 2rem;
+      border-radius: 0.85rem;
+      padding: 1.65rem 1.85rem;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="dark"] .abstract-box {
+      box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
     }
     .abstract-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--brand-blue);
-      margin-bottom: 0.75rem;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.03em;
+      color: var(--brand-blue);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
     }
     .abstract-content {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-main);
-      line-height: 1.85;
-      text-align: justify;
+      line-height: 1.88;
+      text-align: left;
     }
     .keywords {
-      margin-top: 1rem;
+      margin-top: 1.15rem;
       padding-top: 1rem;
       border-top: 1px dashed var(--border-color);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
 
@@ -480,7 +608,7 @@
       margin-top: 3.5rem;
       margin-bottom: 1.25rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
       color: var(--text-main);
       scroll-margin-top: 80px;
       display: flex;
@@ -549,10 +677,11 @@
     }
 
     .article-content p {
-      margin-bottom: 1.45rem;
-      line-height: 1.95;
-      text-indent: 2em;
-      text-align: justify;
+      margin-bottom: 1.55rem;
+      line-height: 1.88;
+      text-indent: 0;
+      text-align: left;
+      word-break: break-word;
     }
     .article-content ul, .article-content ol {
       margin-bottom: 1.45rem;
@@ -600,17 +729,17 @@
     .table-container-card {
       background: var(--card-bg);
       border: 1px solid var(--table-border);
-      border-radius: 0.75rem;
+      border-radius: 0.85rem;
       margin: 2.75rem 0;
       overflow: hidden;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.08);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .table-container-card:hover {
-      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
     }
     [data-theme="dark"] .table-container-card {
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.06);
     }
 
     /* 卡片顶部工具栏 */
@@ -746,6 +875,7 @@
       border-collapse: collapse;
       font-family: var(--font-sans);
       font-size: 0.88rem;
+      font-variant-numeric: tabular-nums;
       min-width: 780px;
     }
     table caption {
@@ -767,6 +897,9 @@
       text-align: left;
       font-size: 0.86rem;
     }
+    tbody tr {
+      transition: background-color 0.15s ease;
+    }
     td {
       padding: 0.8rem 1rem;
       border-bottom: 1px solid var(--table-border);
@@ -776,8 +909,11 @@
     tr:nth-child(even) td {
       background-color: var(--table-stripe);
     }
-    tr:hover td {
-      background-color: rgba(37, 99, 235, 0.04);
+    tbody tr:hover td {
+      background-color: rgba(37, 99, 235, 0.05) !important;
+    }
+    [data-theme="dark"] tbody tr:hover td {
+      background-color: rgba(59, 130, 246, 0.1) !important;
     }
 
     /* 针对全球 CCUS 治理对标表 (tab:governance_benchmark) 专属紧凑对标排版 */
@@ -1116,20 +1252,46 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(10px);
       z-index: 10000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 2rem;
       cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    #lightbox-modal.active {
+      opacity: 1;
     }
     #lightbox-modal img {
       max-width: 95%;
       max-height: 90vh;
-      border-radius: 0.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-radius: 0.75rem;
+      box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7);
+      transform: scale(0.96);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #lightbox-modal.active img {
+      transform: scale(1);
+    }
+    .lightbox-hint {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      pointer-events: none;
     }
 
     /* 移动端目录抽屉 */
@@ -1871,16 +2033,18 @@
       position: absolute;
       z-index: 1000;
       transform: translateX(-50%);
-      background: #0f172a;
+      background: rgba(11, 17, 32, 0.94);
+      backdrop-filter: blur(8px);
       color: #ffffff;
-      padding: 0.35rem 0.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      padding: 0.3rem 0.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.35), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       gap: 0.4rem;
       pointer-events: auto;
-      animation: popover-fade 0.15s ease;
+      animation: popover-fade 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .selection-toolbar::after {
       content: '';
@@ -1890,7 +2054,7 @@
       transform: translateX(-50%);
       border-width: 6px 6px 0;
       border-style: solid;
-      border-color: #0f172a transparent transparent;
+      border-color: rgba(11, 17, 32, 0.94) transparent transparent;
       display: block;
       width: 0;
     }
@@ -1904,13 +2068,13 @@
       font-family: var(--font-sans);
       font-size: 0.82rem;
       font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
       cursor: pointer;
       transition: background-color 0.15s ease;
     }
     .selection-action-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.18);
     }
 
     /* 正文划线高亮 Mark */
@@ -2077,8 +2241,8 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
       z-index: 998;
     }
     .comments-drawer {
@@ -2090,7 +2254,7 @@
       height: 100vh;
       background: var(--bg-primary);
       border-left: 1px solid var(--border-color);
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.22);
       z-index: 999;
       display: flex;
       flex-direction: column;
@@ -2379,7 +2543,7 @@
 <body>
   <div id="progress-bar"></div>
   <div id="citation-popover"></div>
-  <div id="lightbox-modal"><img src="" id="lightbox-img" alt="zoom"></div>
+  <div id="lightbox-modal"><span class="lightbox-hint"><kbd>Esc</kbd> 点击关闭</span><img src="" id="lightbox-img" alt="zoom"></div>
   <div id="comment-toast"></div>
 
   <!-- Floating Text Selection Toolbar -->
@@ -2414,7 +2578,8 @@
         <button id="btn-cancel-comment" class="btn">取消</button>
         <button id="btn-save-comment" class="btn btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>保存批注 (Ctrl+Enter)</span>
+          <span>保存批注</span>
+          <kbd class="kbd-key" style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); color: #fff;">Ctrl+Enter</kbd>
         </button>
       </div>
     </div>
@@ -2474,6 +2639,7 @@
       <button class="btn" id="btn-toggle-toc" title="折叠/展开大纲 ([)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
         <span id="btn-toggle-toc-text">折叠大纲</span>
+        <kbd class="kbd-key">[</kbd>
       </button>
       <button class="btn" id="btn-toggle-comments" title="打开批注抽屉" aria-label="打开批注抽屉">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -2481,7 +2647,7 @@
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
       <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><span class="btn-label">主题</span></button>
-      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载原版 PDF (34 页)" aria-label="下载原版 PDF">
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载原版 PDF (35 页)" aria-label="下载原版 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="btn-label">下载原版 PDF</span>
       </a>
@@ -2494,6 +2660,7 @@
     <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开大纲 ([)" aria-label="展开大纲">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>展开大纲</span>
+      <kbd class="kbd-key">[</kbd>
     </button>
 
     <!-- TOC Sidebar (Desktop) -->
@@ -2516,12 +2683,24 @@
         </div>
         <h1 class="paper-title">从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础</h1>
         <div class="paper-meta">
-          <div class="meta-item"><strong>作者：</strong>刘志豪、崔博宇、吴俊军、施闻如</div>
-          <div class="meta-item"><strong>发布日期：</strong>2026年10月2日</div>
-          <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="meta-label">作者</span>
+            <span class="meta-value">刘志豪、崔博宇、吴俊军、施闻如</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="meta-label">发布日期</span>
+            <span class="meta-value">2026年10月2日</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span class="meta-label">DOI</span>
+            <span class="meta-value">10.5281/zenodo.21110615</span>
+          </div>
         </div>
 
-<div class="reading-stats">
+        <div class="reading-stats">
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 52k 字</span>
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>65 分钟</span>
         </div>
@@ -2568,7 +2747,7 @@
 <h1 data-number="1" id="ccus-规模化的系统障碍与治理转型"><span class="header-section-number">1</span> CCUS 规模化的系统障碍与治理转型</h1>
 <h2 data-number="1.1" id="从吉吨级需求到交付鸿沟"><span class="header-section-number">1.1</span> 从吉吨级需求到交付鸿沟</h2>
 <p>风光水核、终端电气化和能效提升将承担净零转型的主体减排任务，但钢铁、水泥、化工等行业仍存在难以消除的过程排放和高温工艺需求；部分低排放能源生产仍可能形成 CO<sub>2</sub> 捕集需求，航空、航运和农业等领域难以消除的剩余排放则需要碳移除加以抵消。因此，主流净零情景对碳捕集、利用与封存（CCUS）提出了吉吨级部署要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-nze2023" data-cite="iea-nze2023" data-index="22" id="cite-return-iea-nze2023" title="IEA. (2023). Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach – 2023 Update. IEA, Paris. https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach">22</a>]</sup>。这一要求进一步进入国家规划、产业目标和政策工具：欧盟设置 CO<sub>2</sub> 注入能力目标，英国推进集群排序和输送封存商业模式，美国以《美国国内税收法典》第45Q条（45Q）税收抵免改善项目收益预期，挪威和加拿大则依托油气工程、公共资本和长期责任安排发展共享封存能力<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1" id="cite-return-epa-class6" title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2" id="cite-return-usc45q" title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4" id="cite-return-eu-nzia" title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29" id="cite-return-uk-energy-act2023" title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a>]</sup>。</p>
-<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1 全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）">图 1</a> 以规划项目与已运行/在建项目之间的规模差距，近似反映项目从规划走向交付的转化程度。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计仅约为 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 表 已运行与在建项目分布">附录 A 表</a>）。按已披露的投运时间表，至 2036 年前后，前瞻性规划规模约为 2,243 MtCO<sub>2</sub>/yr，而已进入运行或建设阶段的项目累计仅约为 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
+<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1 全球 CCUS 规划项目与建设、运行项目的规模差距（2020–2036）">图 1</a> 通过比较规划项目与已进入建设、运行阶段项目的规模，反映项目由储备向工程实施转化的程度。按 2026 年 3 月年处理能力统计，预计于 2026 年底前投运的规划项目规模约为 954 MtCO<sub>2</sub>/yr，其中已运行以及已进入建设阶段、预计同期投运的项目合计约 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 表 已运行与在建项目分布">附录 A 表</a>）。按当前披露时间表估算，到 2036 年前后，规划项目累计规模预计达到 2,243 MtCO<sub>2</sub>/yr，而预计建设或运行阶段的项目仅约 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
 <p>规划规模快速增长，并不意味着捕集、运输和封存能力能够同步到位。捕集项目较容易形成规划储备，而运输网络、封存库容、注入井体系、监测设施和长期责任安排往往需要更长建设周期和更复杂的跨主体协调。以美国为例，Princeton Net-Zero America 研究显示，实现净零情景所需 CO<sub>2</sub> 输送网络规模可能达到约 10 万公里，说明 CCUS 规模化不仅依赖捕集设施建设，也依赖跨区域运输和共享基础设施的同步建成<sup class="citation-cluster">[<a class="cite-ref" href="#ref-larson2020nza" data-cite="larson2020nza" data-index="25" id="cite-return-larson2020nza" title="Larson, E., et al. (2020). Net-Zero America: Potential Pathways, Infrastructure, and Impacts. Princeton University. https://netzeroamerica.princeton.edu/the-report">25</a>]</sup>。只有当运输封存服务、收入机制、核证和长期责任安排同时到位，捕集能力才能转化为稳定交付。</p>
 <p>这种交付鸿沟并不意味着单体工程尚不可行。加拿大、挪威等地已有百万吨级 CCUS 项目持续运行，并形成长期监测、跨主体交付和公开披露实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO2. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="9" id="cite-return-shellquest2024" title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-status2025" data-cite="gccsi-status2025" data-index="54" id="cite-return-gccsi-status2025" title="Global CCS Institute. (2025). Global Status of CCS 2025: Staying the Course. https://www.globalccsinstitute.com/resources/global-status-report/">54</a>]</sup>。这些项目证明，CCUS 工程可以在特定条件下建成并持续运行；但产业形成并不是单体项目的简单复制，还要求价值机制、基础设施、资源投入、参与主体和制度规则能够彼此衔接、相互强化。规模化的关键问题，也因此从“能否建成”转向“能否长期运行、能否组织为网络、能否形成可信减排结果”。</p>
 <p>中国尤其值得观察：大型能源和工业企业、公共组织资源以及较完整的工程供应链，使中国具备较强的项目动员和工程实施能力，但捕集源、运输封存设施和长期责任往往跨行业、跨区域和跨部门。如何把工程动员能力转化为稳定的跨主体治理能力，可为理解不同于成熟市场体系的 CCUS 集群形成路径提供另一类样本。</p>
@@ -2578,17 +2757,17 @@
       <div class="figure-header">
         <div class="figure-title-group">
           <span class="figure-label">图 1</span>
-          <span class="figure-title">全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）</span>
+          <span class="figure-title">全球 CCUS 规划项目与建设、运行项目的规模差距（2020–2036）</span>
         </div>
         <span class="figure-tip">🔍 点击放大</span>
       </div>
       <div class="figure-img-wrap">
-        <img src="./data/Figure_cn_2.jpg" alt="全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）" loading="lazy" />
+        <img src="./data/Figure_cn_2.jpg" alt="全球 CCUS 规划项目与建设、运行项目的规模差距（2020–2036）" loading="lazy" />
       </div>
       
       <div class="figure-notes">
         <span class="note-tag">注</span>
-        <div class="note-text">数据引自 CCUS Policy Hub，基于 IEA <em>CCUS Projects Database</em> 2026 年 3 月版本整理，共收录全球 1,110 个 CCUS 项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65"  title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。图中容量采用数据库记录的预计年处理能力（<em>estimated capacity</em>）；前瞻性项目规划不包括已取消、已暂停或已退役项目，并仅纳入披露预计投运时间的项目；预期交付仅包括已运行或在建项目。主图按公开投运时间表累计项目容量，其中 2020–2026 年数据来自同一数据库快照，2027–2036 年反映项目方披露的前瞻性项目规划时间表，并非对实际投产能力的预测。图中“交付”“历史交付”均包含在建记录；“转化缺口”为前瞻性项目规划与预期交付规模之差。右侧按地区及 IEA 项目类型展示 2026 年项目构成；Capture、Transport、T&amp;S、Storage、Full chain 与 CCU/Utilisation 分别对应价值链不同环节，其记录容量不代表已经匹配的端到端系统能力，Transport 容量亦不应解释为可直接累加的系统输送能力。</div>
+        <div class="note-text">数据基于 IEA <em>CCUS Projects Database</em> 2026 年 3 月快照整理，规模按数据库登记的预计年处理能力统计。主图依据项目披露的投运年份组织，因此 2020–2026 年并非各历史年份当时的数据库快照，2027–2036 年也仅反映当前披露的项目时间表，并非实际投产预测。数据库项目覆盖捕集、运输、封存等不同价值链环节，所示规模用于观察项目规划向工程实施转化的总体差距，不代表已经完成源汇匹配的端到端系统能力。</div>
       </div>
     </figure>
 <h2 data-number="1.2" id="地质封存的结构性约束"><span class="header-section-number">1.2</span> 地质封存的结构性约束</h2>
@@ -2765,7 +2944,7 @@
 <p>跨法域经验表明，在集群形成初期，CCUS 的专业化分工通常难以仅靠市场机制自发形成。首发风险主要集中于开发准备、投资决策和网络启动阶段；随着项目进入稳定运行、扩张和关闭，治理重点逐步转向履约协调、容量管理和长期责任。因此，政策支持与治理工具也需要随生命周期调整。政策组合最终需要同时保障捕集端的持续减排收益、运输封存端的长期现金流，并明确建设、运行与关闭后的责任边界，使“源—网—库”具备同步投资和稳定运行的条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
 <p>在开发准备阶段，储层评价、封存权取得与管输论证面临高沉没成本。公共地质调查与先导投资降低了前期风险，封存权配置明确了开发权与法定义务（如阿尔伯塔枢纽化配置与挪威全链条支持<sup class="citation-cluster">[<a class="cite-ref" href="#ref-alberta-ccus" data-cite="alberta-ccus" data-index="10"  title="Government of Alberta. (未注明发布日期，2026年3月25日访问). Carbon capture, utilization and storage. https://www.alberta.ca/carbon-capture-and-storage">10</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-norway-longship2020" data-cite="norway-longship2020" data-index="38"  title="Norwegian Ministry of Petroleum and Energy. (2020). Longship – Carbon capture and storage. https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/">38</a>]</sup>）。前期重点是尽早降低储层可行性的关键不确定性，并结合捕集进度与客户承诺确定建设规模和时点。</p>
 <p>在投资决策阶段，政策与合同需连接捕集端减排收益与管网端服务收入。税费减免、碳约束与低碳溢价支持捕集方付费，资本补助与投资抵免降低初始门槛。锚定用户的长期合同提供收入预期，但其兑现依赖各环节按期投运。英国通过优先集群遴选和差异化商业模式，将这种相互依赖纳入同一推进机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ofgem-co2ts" data-cite="ofgem-co2ts" data-index="30"  title="Ofgem. (2026年访问). How we regulate carbon dioxide transport and storage networks. https://www.ofgem.gov.uk/energy-regulation/low-carbon/carbon-capture-and-storage/how-we-regulate-carbon-dioxide-transport-and-storage-networks">30</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-cluster-sequencing2026" data-cite="uk-cluster-sequencing2026" data-index="68"  title="UK Department for Energy Security and Net Zero. (2026年访问). Cluster sequencing for carbon capture, usage and storage deployment. https://www.gov.uk/government/publications/cluster-sequencing-for-carbon-capture-usage-and-storage-ccus-deployment-phase-1-expressions-of-interest">68</a>]</sup>。</p>
-<p>风险分担需落实为可执行的责任划分。储层失误、工期延误、供应不足及关闭后长期责任，需经政策与合同分别界定承担主体与公共救济边界。首批示范项目中的合同安排，也可在实际履约中检验责任规则并为政策调整提供反馈<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。封存孔隙权属、关闭条件、监测期限与财务保障若不明确，将增加责任定价和长期合同订立的难度，因此属于集群形成期需要优先明确的基础制度条件。</p>
+<p>风险分担需落实为可执行的责任划分。储层失误、工期延误、供应不足及关闭后长期责任，需经政策与合同分别界定承担主体与公共救济边界。首批示范项目中的合同安排，也可在实际履约中检验责任规则并为政策调整提供反馈<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。孔隙空间权属、关闭条件、监测期限与财务保障若不明确，将增加责任定价和长期合同订立的难度，因此属于集群形成期需要优先明确的基础制度条件。</p>
 <p>进入建设投运与协同履约阶段，治理重点开始转向各环节同步建设和实际履约。捕集、运输与封存设施需要按合同节点衔接，计量交接、流质控制、异常处置、信息披露和减排归因等规则则需要在投运爬坡和实际履约中接受检验。</p>
 <p>进入运行扩张期后，新增接入、容量分配与扩容规则成为关键。随着网络利用率提升、需求与收入预期趋稳，公共支持可逐步减少，并更多用于覆盖特定风险。越过初始投资门槛后，能源惩罚、运行维护成本和长期管护责任仍持续影响项目经济性和运行条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-rogge2016" data-cite="rogge2016" data-index="76" id="cite-return-rogge2016" title="Rogge, K. S., &amp; Reichardt, K. (2016). Policy mixes for sustainability transitions: An extended concept and framework for analysis. Research Policy, 45(8), 1620–1635. https://doi.org/10.1016/j.respol.2016.04.004">76</a>]</sup>。进入关闭后阶段，长期环境与风险监测、财务保障和责任接续则成为治理重点。</p>
 <p>为比较不同生命周期阶段的系统瓶颈，本文进一步从 TIS 功能视角观察产业形成所需功能能否协同形成并相互强化。集群启动通常同时依赖方向引导、资源动员和市场形成：明确的政策预期与公共先导投入需要与锚定用户、长期合同共同形成投资条件；封存开发则既依赖地质知识积累，也依赖许可、权属和长期责任规则提供制度确定性。不同功能之间相互影响：市场形成不足会削弱收入预期和资源动员，许可、权属与责任规则不明确则增加融资和长期合同安排难度。因此，本文重点识别阻塞产业形成的关键功能及其相互作用。</p>
@@ -2788,14 +2967,14 @@
         <div class="note-text">上部展示 CCUS 集群形成面临的两项关键约束——能源惩罚（Energy Penalty）与首发风险（First-mover Risk）；下部从技术创新系统（TIS）视角归纳产业形成过程中不同生命周期阶段的治理任务，并以颜色反映中国当前在相应任务上的相对基础。下部四列对正文所述生命周期阶段作适度合并，以突出治理重点，与第 5 章“探索示范—集群形成—规模扩张”的治理推进阶段不作一一对应；颜色标注为定性诊断，不表示任务优先级，也不构成量化评分。资料来源：作者根据 TIS 功能文献、IEA 关于 CCUS 法律监管、商业模式与融资的研究，以及本文跨法域比较综合归纳<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccus-legal2022" data-cite="iea-ccus-legal2022" data-index="41" id="cite-return-iea-ccus-legal2022" title="IEA. (2022年7月25日). Legal and Regulatory Frameworks for CCUS: An IEA CCUS Handbook. IEA, Paris. https://www.iea.org/reports/legal-and-regulatory-frameworks-for-ccus">41</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hekkert2007" data-cite="hekkert2007" data-index="72"  title="Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). Functions of innovation systems: A new approach for analysing technological change. Technological Forecasting and Social Change, 74(4), 413–432. https://doi.org/10.1016/j.techfore.2006.03.002">72</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bergek2008" data-cite="bergek2008" data-index="73"  title="Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). Analyzing the functional dynamics of technological innovation systems: A scheme of analysis. Research Policy, 37(3), 407–429. https://doi.org/10.1016/j.respol.2007.12.003">73</a>]</sup>。</div>
       </div>
     </figure>
-<p><a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 将上述治理组合进一步落到项目生命周期。定性诊断显示，中国在方向引导和工程实施方面已有较强基础，而市场形成、孔隙权与封存区块获取、长期责任以及社会与环境接受等任务仍存在不同程度的制度缺口。下文据此进一步梳理中国的现实起点与制度窗口。</p>
+<p><a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 将上述治理组合进一步落到项目生命周期。定性诊断显示，中国在方向引导和工程实施方面已有较强基础，而市场形成、孔隙空间权属与封存区块获取、长期责任以及社会与环境接受等任务仍存在不同程度的制度缺口。下文据此进一步梳理中国的现实起点与制度窗口。</p>
 <h2 data-number="2.4" id="中国治理体系的现实起点与制度窗口"><span class="header-section-number">2.4</span> 中国治理体系的现实起点与制度窗口</h2>
 <h3 data-number="2.4.1" id="现实起点政策支持与工程标准进展"><span class="header-section-number">2.4.1</span> 现实起点：政策支持与工程、标准进展</h3>
 <p>中国将 CCUS 定位为实现深度减排和碳中和的“兜底”与末端固碳技术储备<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ndrc-green-demo-qa2023" data-cite="ndrc-green-demo-qa2023" data-index="81" id="cite-return-ndrc-green-demo-qa2023" title="国家发展改革委. (2023年8月22日). 国家发展改革委有关负责同志就《绿色低碳先进技术示范工程实施方案》答记者问. https://www.ndrc.gov.cn/xxgk/jd/jd/202308/t20230822_1360007_ext.html">81</a>]</sup>。《科技支撑碳达峰碳中和实施方案（2022—2030年）》明确部署了低能耗百万吨级成套工艺研发、大型油气田示范及工业流程与清洁能源耦合研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-most2022tech" data-cite="most2022tech" data-index="71"  title="科技部, 国家发展改革委, 工业和信息化部, 等. (2022). 科技支撑碳达峰碳中和实施方案（2022—2030年）. https://www.gov.cn/zhengce/zhengceku/2022-08/18/5705865/files/94318119b8464e2583a3d4284df9c855.pdf">71</a>]</sup>。</p>
 <p>CCUS 示范正从单项工程向规模化、跨行业场景扩展。2023 年示范方案提出建设全流程规模化项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-ndrc-green-demo2023" data-cite="ndrc-green-demo2023" data-index="15"  title="国家发展改革委等十部门. (2023年8月4日). 关于印发《绿色低碳先进技术示范工程实施方案》的通知. 发改环资〔2023〕1093号. https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230822_1359995.html">15</a>]</sup>；2026 年《美丽中国建设“十五五”规划》与《“十五五”碳达峰行动方案》持续部署示范工程<sup class="citation-cluster">[<a class="cite-ref" href="#ref-beautiful-china-15fyp" data-cite="beautiful-china-15fyp" data-index="16" id="cite-return-beautiful-china-15fyp" title="国务院. (2026年6月21日). 国务院关于印发《美丽中国建设“十五五”规划》的通知. 国发〔2026〕20号. https://www.gov.cn/zhengce/content/202607/content_7074199.htm">16</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-carbon-peak2026" data-cite="china-carbon-peak2026" data-index="82" id="cite-return-china-carbon-peak2026" title="国务院. (2026年7月5日). 国务院关于印发《“十五五”碳达峰行动方案》的通知. 国发〔2026〕22号. https://www.mee.gov.cn/zcwj/gwywj/202607/t20260714_1161655.shtml">82</a>]</sup>；工信部绿色能源应用场景明确培育全流程集群与氢碳耦合<sup class="citation-cluster">[<a class="cite-ref" href="#ref-miit-ccus-scenes2026" data-cite="miit-ccus-scenes2026" data-index="83" id="cite-return-miit-ccus-scenes2026" title="工业和信息化部节能与综合利用司. (2026年9月4日). 工业和信息化领域绿色能源应用典型场景与案例申报要求. https://www.miit.gov.cn/jgsj/jns/nyjy/art/2026/art_8037974bb73f470caaf1127337f0ece7.html">83</a>]</sup>。这些部署表明，政策关注正从单项技术示范扩展至全流程规模化、跨行业集群和氢碳耦合等系统场景。</p>
-<p>工程示范已从油气田场景扩展至煤电、钢铁与水泥等行业。油气与地质封存方面，齐鲁石化—胜利油田百万吨级项目、恩平 15-1 海上封存示范已投入运行，大庆敖南 CCUS-EOR 集输系统于 2025 年投运，大亚湾多排放源集群于同年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc2024" data-cite="cnooc2024" data-index="18"  title="CNOOC Limited. (2024). 2023 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf">18</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnpc-aonan2025" data-cite="cnpc-aonan2025" data-index="19" id="cite-return-cnpc-aonan2025" title="中国石油天然气集团有限公司. (2025年7月28日). 我国首个百万吨级非混相驱 CCUS 全产业链示范基地核心工程投产. https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml">19</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="27" id="cite-return-cnooc-results2026" title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-sinopec-qilu2022" data-cite="sinopec-qilu2022" data-index="88" id="cite-return-sinopec-qilu2022" title="国家能源局. (2022年9月2日). 我国首个百万吨级 CCUS 项目全面建成投产. https://www.nea.gov.cn/2022-09/02/c_1310658658.htm">88</a>]</sup>。煤电方面，华能正宁 150 万吨/年工程于 2025 年投运；钢铁与水泥领域也已开展工业示范<sup class="citation-cluster">[<a class="cite-ref" href="#ref-huaneng-zhengning2025" data-cite="huaneng-zhengning2025" data-index="85" id="cite-return-huaneng-zhengning2025" title="国务院国资委. (2025年9月28日). 全球最大煤电碳捕集示范工程在华能投运. http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html">85</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hegang-ccus2026" data-cite="hegang-ccus2026" data-index="86" id="cite-return-hegang-ccus2026" title="河北省人民政府. (2026年1月7日). 河钢CCUS技术工业示范项目在唐钢新区全线贯通. https://www.hebei.gov.cn/columns/580d0301-2e0b-4152-9dd1-7d7f4e0f4980/202601/07/f4cf9f76-33e1-456e-9e92-3ea52a646a69.html">86</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-qingzhou-ccus2025" data-cite="qingzhou-ccus2025" data-index="87" id="cite-return-qingzhou-ccus2025" title="国家发展改革委办公厅. (2025年4月16日). 关于印发《绿色低碳先进技术示范项目清单（第二批）》的通知（发改办环资〔2025〕396号）. https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20500">87</a>]</sup>。</p>
+<p>工程示范已从油气田场景扩展至煤电、钢铁与水泥等行业。油气与地质封存方面，齐鲁石化—胜利油田百万吨级项目、恩平 15-1 海上封存示范已投入运行，大庆敖南 CCUS-EOR 集输系统于 2025 年投运，大亚湾多排放源集群于同年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc2024" data-cite="cnooc2024" data-index="18"  title="CNOOC Limited. (2024). 2023 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf">18</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnpc-aonan2025" data-cite="cnpc-aonan2025" data-index="19" id="cite-return-cnpc-aonan2025" title="中国石油天然气集团有限公司. (2025年7月28日). 我国首个百万吨级非混相驱 CCUS 全产业链示范基地核心工程投产. https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml">19</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="27" id="cite-return-cnooc-results2026" title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">27</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-sinopec-qilu2022" data-cite="sinopec-qilu2022" data-index="88" id="cite-return-sinopec-qilu2022" title="国家能源局. (2022年9月2日). 我国首个百万吨级 CCUS 项目全面建成投产. https://www.nea.gov.cn/2022-09/02/c_1310658658.htm">88</a>]</sup>。煤电方面，华能正宁 150 万吨/年工程于 2025 年投运；钢铁领域已有工业示范项目贯通，水泥领域也已有项目进入国家绿色低碳先进技术示范清单<sup class="citation-cluster">[<a class="cite-ref" href="#ref-huaneng-zhengning2025" data-cite="huaneng-zhengning2025" data-index="85" id="cite-return-huaneng-zhengning2025" title="国务院国资委. (2025年9月28日). 全球最大煤电碳捕集示范工程在华能投运. http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html">85</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-hegang-ccus2026" data-cite="hegang-ccus2026" data-index="86" id="cite-return-hegang-ccus2026" title="河北省人民政府. (2026年1月7日). 河钢CCUS技术工业示范项目在唐钢新区全线贯通. https://www.hebei.gov.cn/columns/580d0301-2e0b-4152-9dd1-7d7f4e0f4980/202601/07/f4cf9f76-33e1-456e-9e92-3ea52a646a69.html">86</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-qingzhou-ccus2025" data-cite="qingzhou-ccus2025" data-index="87" id="cite-return-qingzhou-ccus2025" title="国家发展改革委办公厅. (2025年4月16日). 关于印发《绿色低碳先进技术示范项目清单（第二批）》的通知（发改办环资〔2025〕396号）. https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20500">87</a>]</sup>。</p>
 <p>标准体系已覆盖管输、介质质量、地质封存和驱油封存等关键环节。GB/T 42797-2023 规范管输系统，GB/T 46872-2025、GB/T 46875-2025、GB/T 46878-2025 与 GB/T 46871-2025（2026年7月实施）分别规范共性术语、管输介质、地质封存与驱油封存<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gbt46872-2025" data-cite="gbt46872-2025" data-index="13" id="cite-return-gbt46872-2025" title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46872-2025: 二氧化碳捕集、运输和地质封存 词汇 共性术语. 发布日期：2025-12-31；实施日期：2026-07-01. https://std.samr.gov.cn/gb/search/gbDetailed?id=wPHTYrjhhLY%3D&amp;mode=p">13</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46875-2025" data-cite="gbt46875-2025" data-index="14"  title="国家数字标准馆. (2025). GB/T 46875-2025: 进入二氧化碳长输管道介质质量要求. 发布日期：2025-12-31；实施日期：2026-07-01. https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479">14</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt42797-2023" data-cite="gbt42797-2023" data-index="89" id="cite-return-gbt42797-2023" title="国家市场监督管理总局, 国家标准化管理委员会. (2023). GB/T 42797-2023: 二氧化碳捕集、输送和地质封存 管道输送系统. 2023年9月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=FC816D04FEBF62EBE05397BE0A0AD5FA">89</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46878-2025" data-cite="gbt46878-2025" data-index="90"  title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46878-2025: 二氧化碳捕集、运输和地质封存 地质封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A">90</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gbt46871-2025" data-cite="gbt46871-2025" data-index="91"  title="国家市场监督管理总局, 国家标准化管理委员会. (2025). GB/T 46871-2025: 二氧化碳捕集、运输和地质封存 提高原油采收率的二氧化碳封存. 2026年7月1日起实施. https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A">91</a>]</sup>，为工程实施提供了较完整的标准基础；封存许可、孔隙空间权属与使用安排、责任接续仍待进一步制度建设。</p>
-<p>配套制度方面，《绿色金融支持项目目录（2025年版）》纳入了捕集、利用与封存项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17"  title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a>]</sup>；全国碳市场 2026 年要求对重点行业实施月度信息化存证与核查<sup class="citation-cluster">[<a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63"  title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a>]</sup>。总体看，中国工程示范推进较快，但跨主体协同规则仍不完整。现有制度安排更多围绕单体项目展开，CCUS 减排价值确认、服务定价、长期责任和网络型基础设施协调机制仍待完善，专业化捕集、运输与封存服务所需的制度基础尚不完整。</p>
+<p>配套制度方面，《绿色金融支持项目目录（2025年版）》纳入了捕集、利用与封存项目<sup class="citation-cluster">[<a class="cite-ref" href="#ref-pboc-green-finance-2025" data-cite="pboc-green-finance-2025" data-index="17"  title="中国人民银行、金融监管总局、中国证监会. (2025年7月15日). 绿色金融支持项目目录（2025年版）. https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf">17</a>]</sup>；全国碳市场 2026 年进一步强化数据质量管理，重点行业碳排放数据实行月度信息化存证，年度排放报告按规定核查<sup class="citation-cluster">[<a class="cite-ref" href="#ref-china-ets-work2026" data-cite="china-ets-work2026" data-index="63"  title="生态环境部办公厅. (2026年2月9日). 关于做好2026年全国碳排放权交易市场有关工作的通知. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html">63</a>]</sup>。总体看，中国工程示范推进较快，但跨主体协同规则仍不完整。现有制度安排更多围绕单体项目展开，CCUS 减排价值确认、服务定价、长期责任和网络型基础设施协调机制仍待完善，专业化捕集、运输与封存服务所需的制度基础尚不完整。</p>
 <p>下一阶段制度建设需要重点处理 CO<sub>2</sub> 监管属性、深部孔隙空间权属及使用安排、封存区块配置与获取机制，以及停注后的风险评估、长期责任接续和公共管护机制<sup class="citation-cluster">[<a class="cite-ref" href="#ref-gccsi-gap2024" data-cite="gccsi-gap2024" data-index="20"  title="Global CCS Institute. (2024年4月16日). A Gap Analysis of China’s Regulatory Framework for CO2 Geological Storage. Research report. https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/">20</a>]</sup>。</p>
 <h3 data-number="2.4.2" id="制度窗口在集群形成期同步塑造规则"><span class="header-section-number">2.4.2</span> 制度窗口：在集群形成期同步塑造规则</h3>
 <p>工程示范、标准实施和应用场景培育，为检验跨主体合作规则提供了条件。多个企业共用设施后，服务合同需要明确交付和付费，公共支持需要核验实施效果，长期责任审查需要持续的监测与风险记录。这些制度用途共同提出了证据需求。因此，可在集群遴选、可研和许可衔接阶段同步明确计量边界、交接记录和数据责任，并将证据要求与接入规则、责任分工及后续审查相衔接，再依据运行结果校准相关规则与证据要求。在<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 的生命周期诊断基础上，<a href="#tab:china_basis_gaps" class="table-ref-link" title="点击查看表 2-2 中国 CCUS 集群治理的现实基础与待补功能">表 2-2</a> 进一步将中国的现实基础与待补功能归纳为三类系统问题和两项关键约束。</p>
@@ -3221,7 +3400,7 @@
         <span class="policy-title">政策建议三：通过影子评估检验长期责任审查的证据要求</span>
       </h2>
     
-<p>建议在封存试点中开展长期责任影子评估。所谓影子评估，是在不改变现行法定责任安排的条件下，使用项目材料开展的模拟审查。其目的在于检验证据要求是否清楚、材料是否充分，以及不同专业人员能否据此形成可解释的判断，并识别潜在证据缺口，不对项目能否移交责任作出具有法律效力的结论。</p>
+<p>建议在封存试点中开展长期责任影子评估。所谓影子评估，是在不改变现行法定责任安排的条件下，使用项目材料开展的模拟审查。其目的在于检验证据要求是否清楚、材料是否充分，以及不同专业人员能否据此形成可解释的判断，并识别潜在证据缺口，不对项目能否移交责任作出具有法律效力的结论。影子评估开始前，应先明确所模拟的项目阶段和审查目的，并区分现有工程证据、情景假设和仍需长期验证的问题。</p>
 <p>模拟审查可围绕四类审查问题展开：</p>
 <ul>
 <li><p>许可边界：封存活动是否持续处于许可边界内；</p></li>
@@ -5175,7 +5354,7 @@
 }</code></pre>
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 1rem;">
           <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX</button>
-          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF (34 页)</a>
+          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF (35 页)</a>
         </div>
       </div>
     </main>
@@ -5376,14 +5555,27 @@
     // 7. 图片全屏放大 (Lightbox)
     const modal = document.getElementById('lightbox-modal');
     const modalImg = document.getElementById('lightbox-img');
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => { modal.style.display = 'none'; }, 180);
+    }
+    function openModal(src) {
+      modalImg.src = src;
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => {
+        modal.classList.add('active');
+      });
+    }
     document.querySelectorAll('.article-content img').forEach(img => {
       img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modal.style.display = 'flex';
+        openModal(img.src);
       });
     });
-    modal.addEventListener('click', () => {
-      modal.style.display = 'none';
+    modal.addEventListener('click', closeModal);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
     });
 
     // 8. 复制 BibTeX
@@ -5392,7 +5584,7 @@
       navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('copy-bibtex-btn');
         btn.textContent = '✅ 已成功复制到剪贴板！';
-        setTimeout(() => { btn.textContent = '📋 复制 BibTeX 引用代码'; }, 2000);
+        setTimeout(() => { btn.textContent = '📋 复制 BibTeX'; }, 2000);
       });
     });
 

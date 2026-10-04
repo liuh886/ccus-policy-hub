@@ -1885,22 +1885,22 @@ const template = `<!DOCTYPE html>
     }
 
     [data-theme="dark"] {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-tertiary: #334155;
-      --text-main: #f1f5f9;
+      --bg-primary: #0b1120;
+      --bg-secondary: #131b2e;
+      --bg-tertiary: #1e293b;
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-light: #64748b;
-      --border-color: #334155;
+      --border-color: #1e293b;
       --brand-blue: #3b82f6;
       --brand-blue-hover: #60a5fa;
       --brand-emerald: #10b981;
-      --card-bg: #1e293b;
-      --table-header: #1e293b;
-      --table-stripe: #151e2e;
-      --table-border: #334155;
-      --popover-bg: #1e293b;
-      --popover-text: #f1f5f9;
+      --card-bg: #111827;
+      --table-header: #151f32;
+      --table-stripe: #0f172a;
+      --table-border: #1e293b;
+      --popover-bg: #131b2e;
+      --popover-text: #f8fafc;
       --highlight-flash: rgba(59, 130, 246, 0.25);
     }
 
@@ -1911,6 +1911,9 @@ const template = `<!DOCTYPE html>
       font-family: var(--font-sans);
       line-height: 1.85;
       font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       transition: background-color 0.2s, color 0.2s;
     }
 
@@ -1927,15 +1930,41 @@ const template = `<!DOCTYPE html>
       background: rgba(59, 130, 246, 0.38);
     }
 
+    /* 现代实体键帽微设计 */
+    kbd, .kbd-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--text-muted);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      border-bottom-width: 2px;
+      border-radius: 0.3rem;
+      padding: 0.15rem 0.4rem;
+      min-width: 1.25rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+    [data-theme="dark"] kbd, [data-theme="dark"] .kbd-key {
+      background: #1e293b;
+      border-color: #334155;
+      color: #94a3b8;
+    }
+
     /* 顶部滚动进度指示条 */
     #progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      height: 3.5px;
-      background: linear-gradient(90deg, #2563eb, #10b981);
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--brand-blue), #10b981);
       width: 0%;
       z-index: 9999;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
       transition: width 0.08s ease-out;
     }
 
@@ -1953,7 +1982,7 @@ const template = `<!DOCTYPE html>
       padding: 0.75rem 2rem;
     }
     [data-theme="dark"] .navbar {
-      background-color: rgba(15, 23, 42, 0.88);
+      background-color: rgba(11, 17, 32, 0.88);
     }
     .nav-brand {
       display: flex;
@@ -1983,28 +2012,38 @@ const template = `<!DOCTYPE html>
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
+      gap: 0.45rem;
+      padding: 0.42rem 0.85rem;
       border-radius: 0.5rem;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 500;
       text-decoration: none;
       cursor: pointer;
       border: 1px solid var(--border-color);
       background: var(--bg-primary);
       color: var(--text-main);
-      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn:hover {
-      background: var(--bg-tertiary);
+      background: var(--bg-secondary);
+      border-color: var(--text-light);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.08);
+    }
+    .btn:active {
+      transform: translateY(0);
     }
     .btn-primary {
       background: var(--brand-blue);
       color: #ffffff;
       border-color: var(--brand-blue);
+      box-shadow: 0 2px 8px -1px rgba(37, 99, 235, 0.35);
     }
     .btn-primary:hover {
       background: var(--brand-blue-hover);
+      border-color: var(--brand-blue-hover);
+      box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.45);
     }
 
     /* 移动端点导航收敛：图标优先、单行不换行、隐藏冗余文字 */
@@ -2131,45 +2170,81 @@ const template = `<!DOCTYPE html>
       transform: translateX(3px);
       box-shadow: 3px 6px 18px rgba(37, 99, 235, 0.18);
     }
+    .toc-nav {
+      position: relative;
+    }
     .toc-nav ul {
       list-style: none;
       padding-left: 0;
+      position: relative;
+    }
+    .toc-nav > ul::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--border-color);
+      border-radius: 9999px;
     }
     .toc-nav li {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.2rem;
+      position: relative;
     }
     .toc-nav a {
       display: block;
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.45;
-      padding: 0.35rem 0.6rem;
-      border-radius: 0.375rem;
-      transition: all 0.15s ease;
-      border-left: 2px solid transparent;
+      padding: 0.35rem 0.65rem 0.35rem 1.35rem;
+      border-radius: 0.45rem;
+      transition: all 0.16s ease;
+      position: relative;
+    }
+    .toc-nav a::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-light);
+      opacity: 0;
+      transition: all 0.16s ease;
     }
     .toc-nav a:hover {
       color: var(--brand-blue);
       background: var(--bg-secondary);
     }
+    .toc-nav a:hover::before {
+      opacity: 0.5;
+    }
     .toc-nav a.active {
       color: var(--brand-blue);
       font-weight: 600;
       background: rgba(37, 99, 235, 0.08);
-      border-left-color: var(--brand-blue);
+    }
+    .toc-nav a.active::before {
+      opacity: 1;
+      background: var(--brand-blue);
+      transform: translateY(-50%) scale(1.3);
+      box-shadow: 0 0 6px rgba(37, 99, 235, 0.6);
     }
     .toc-nav .toc-h1 {
       font-weight: 600;
       color: var(--text-main);
     }
     .toc-nav .toc-h2 {
-      padding-left: 1.3rem;
-      font-size: 0.82rem;
+      padding-left: 1.9rem;
+      font-size: 0.81rem;
     }
     .toc-nav .toc-h3 {
-      padding-left: 2.2rem;
-      font-size: 0.78rem;
+      padding-left: 2.6rem;
+      font-size: 0.77rem;
       color: var(--text-light);
     }
 
@@ -2180,11 +2255,28 @@ const template = `<!DOCTYPE html>
       padding: 3.5rem 4.5rem 6rem;
       max-width: 980px;
       margin: 0 auto;
+      position: relative;
       transition: max-width 0.28s cubic-bezier(0.4, 0, 0.2, 1), padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .article-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 980px;
+      height: 420px;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(37, 99, 235, 0.07), transparent 75%);
+      pointer-events: none;
+      z-index: 0;
     }
     body.toc-collapsed .article-wrap {
       max-width: 1320px;
       padding: 3.5rem 3.5rem 6rem;
+    }
+    body.toc-collapsed .article-wrap::before {
+      max-width: 1320px;
     }
     @media (max-width: 768px) {
       .article-wrap {
@@ -2201,48 +2293,74 @@ const template = `<!DOCTYPE html>
 
     /* 报告封面 Hero */
     .paper-hero {
+      position: relative;
+      z-index: 1;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 2.5rem;
-      margin-bottom: 3rem;
+      padding-bottom: 2.75rem;
+      margin-bottom: 3.25rem;
     }
     .paper-type {
-      color: var(--brand-blue);
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.6rem;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
     .paper-title {
       font-family: var(--font-serif);
-      font-size: 2.25rem;
+      font-size: 2.35rem;
       font-weight: 900;
-      line-height: 1.35;
+      line-height: 1.34;
+      letter-spacing: -0.02em;
       color: var(--text-main);
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.5rem;
     }
     .paper-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.92rem;
-      color: var(--text-muted);
+      gap: 0.65rem 0.85rem;
       margin-bottom: 1.5rem;
     }
-    .meta-item strong {
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.84rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 0.5rem;
+      color: var(--text-muted);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .meta-chip svg {
+      color: var(--brand-blue);
+      flex-shrink: 0;
+    }
+    .meta-chip .meta-label {
+      color: var(--text-light);
+      font-size: 0.78rem;
+    }
+    .meta-chip .meta-value {
       color: var(--text-main);
+      font-weight: 600;
     }
     .reading-stats {
       display: inline-flex;
-      gap: 1rem;
-      font-size: 0.82rem;
+      gap: 1.1rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      background: var(--bg-tertiary);
-      padding: 0.35rem 0.8rem;
-      border-radius: 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
       margin-bottom: 2rem;
     }
     .reading-stats span {
@@ -2273,41 +2391,51 @@ const template = `<!DOCTYPE html>
         margin-bottom: 1rem;
       }
       .paper-meta {
-        gap: 0.4rem 1.25rem;
-        font-size: 0.88rem;
-        margin-bottom: 1.25rem;
+        gap: 0.4rem 0.6rem;
+      }
+      .meta-chip {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
       }
     }
 
     /* 摘要卡片 */
     .abstract-box {
+      position: relative;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-left: 4px solid var(--brand-blue);
-      border-radius: 0.75rem;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 2rem;
+      border-radius: 0.85rem;
+      padding: 1.65rem 1.85rem;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="dark"] .abstract-box {
+      box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
     }
     .abstract-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--brand-blue);
-      margin-bottom: 0.75rem;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.03em;
+      color: var(--brand-blue);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 0.25rem 0.65rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
     }
     .abstract-content {
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-main);
-      line-height: 1.85;
-      text-align: justify;
+      line-height: 1.88;
+      text-align: left;
     }
     .keywords {
-      margin-top: 1rem;
+      margin-top: 1.15rem;
       padding-top: 1rem;
       border-top: 1px dashed var(--border-color);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
 
@@ -2324,7 +2452,7 @@ const template = `<!DOCTYPE html>
       margin-top: 3.5rem;
       margin-bottom: 1.25rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
       color: var(--text-main);
       scroll-margin-top: 80px;
       display: flex;
@@ -2393,10 +2521,11 @@ const template = `<!DOCTYPE html>
     }
 
     .article-content p {
-      margin-bottom: 1.45rem;
-      line-height: 1.95;
-      text-indent: 2em;
-      text-align: justify;
+      margin-bottom: 1.55rem;
+      line-height: 1.88;
+      text-indent: 0;
+      text-align: left;
+      word-break: break-word;
     }
     .article-content ul, .article-content ol {
       margin-bottom: 1.45rem;
@@ -2444,17 +2573,17 @@ const template = `<!DOCTYPE html>
     .table-container-card {
       background: var(--card-bg);
       border: 1px solid var(--table-border);
-      border-radius: 0.75rem;
+      border-radius: 0.85rem;
       margin: 2.75rem 0;
       overflow: hidden;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.08);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .table-container-card:hover {
-      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
     }
     [data-theme="dark"] .table-container-card {
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.06);
     }
 
     /* 卡片顶部工具栏 */
@@ -2590,6 +2719,7 @@ const template = `<!DOCTYPE html>
       border-collapse: collapse;
       font-family: var(--font-sans);
       font-size: 0.88rem;
+      font-variant-numeric: tabular-nums;
       min-width: 780px;
     }
     table caption {
@@ -2611,6 +2741,9 @@ const template = `<!DOCTYPE html>
       text-align: left;
       font-size: 0.86rem;
     }
+    tbody tr {
+      transition: background-color 0.15s ease;
+    }
     td {
       padding: 0.8rem 1rem;
       border-bottom: 1px solid var(--table-border);
@@ -2620,8 +2753,11 @@ const template = `<!DOCTYPE html>
     tr:nth-child(even) td {
       background-color: var(--table-stripe);
     }
-    tr:hover td {
-      background-color: rgba(37, 99, 235, 0.04);
+    tbody tr:hover td {
+      background-color: rgba(37, 99, 235, 0.05) !important;
+    }
+    [data-theme="dark"] tbody tr:hover td {
+      background-color: rgba(59, 130, 246, 0.1) !important;
     }
 
     /* 针对全球 CCUS 治理对标表 (tab:governance_benchmark) 专属紧凑对标排版 */
@@ -2960,20 +3096,46 @@ const template = `<!DOCTYPE html>
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(8px);
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(10px);
       z-index: 10000;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 2rem;
       cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    #lightbox-modal.active {
+      opacity: 1;
     }
     #lightbox-modal img {
       max-width: 95%;
       max-height: 90vh;
-      border-radius: 0.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-radius: 0.75rem;
+      box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7);
+      transform: scale(0.96);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #lightbox-modal.active img {
+      transform: scale(1);
+    }
+    .lightbox-hint {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      pointer-events: none;
     }
 
     /* 移动端目录抽屉 */
@@ -3715,16 +3877,18 @@ const template = `<!DOCTYPE html>
       position: absolute;
       z-index: 1000;
       transform: translateX(-50%);
-      background: #0f172a;
+      background: rgba(11, 17, 32, 0.94);
+      backdrop-filter: blur(8px);
       color: #ffffff;
-      padding: 0.35rem 0.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      padding: 0.3rem 0.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.35), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       gap: 0.4rem;
       pointer-events: auto;
-      animation: popover-fade 0.15s ease;
+      animation: popover-fade 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .selection-toolbar::after {
       content: '';
@@ -3734,7 +3898,7 @@ const template = `<!DOCTYPE html>
       transform: translateX(-50%);
       border-width: 6px 6px 0;
       border-style: solid;
-      border-color: #0f172a transparent transparent;
+      border-color: rgba(11, 17, 32, 0.94) transparent transparent;
       display: block;
       width: 0;
     }
@@ -3748,13 +3912,13 @@ const template = `<!DOCTYPE html>
       font-family: var(--font-sans);
       font-size: 0.82rem;
       font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
       cursor: pointer;
       transition: background-color 0.15s ease;
     }
     .selection-action-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.18);
     }
 
     /* 正文划线高亮 Mark */
@@ -3921,8 +4085,8 @@ const template = `<!DOCTYPE html>
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
       z-index: 998;
     }
     .comments-drawer {
@@ -3934,7 +4098,7 @@ const template = `<!DOCTYPE html>
       height: 100vh;
       background: var(--bg-primary);
       border-left: 1px solid var(--border-color);
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.22);
       z-index: 999;
       display: flex;
       flex-direction: column;
@@ -4223,7 +4387,7 @@ const template = `<!DOCTYPE html>
 <body>
   <div id="progress-bar"></div>
   <div id="citation-popover"></div>
-  <div id="lightbox-modal"><img src="" id="lightbox-img" alt="zoom"></div>
+  <div id="lightbox-modal"><span class="lightbox-hint"><kbd>Esc</kbd> 点击关闭</span><img src="" id="lightbox-img" alt="zoom"></div>
   <div id="comment-toast"></div>
 
   <!-- Floating Text Selection Toolbar -->
@@ -4258,7 +4422,8 @@ const template = `<!DOCTYPE html>
         <button id="btn-cancel-comment" class="btn">取消</button>
         <button id="btn-save-comment" class="btn btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>保存批注 (Ctrl+Enter)</span>
+          <span>保存批注</span>
+          <kbd class="kbd-key" style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); color: #fff;">Ctrl+Enter</kbd>
         </button>
       </div>
     </div>
@@ -4318,6 +4483,7 @@ const template = `<!DOCTYPE html>
       <button class="btn" id="btn-toggle-toc" title="折叠/展开大纲 ([)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
         <span id="btn-toggle-toc-text">折叠大纲</span>
+        <kbd class="kbd-key">[</kbd>
       </button>
       <button class="btn" id="btn-toggle-comments" title="打开批注抽屉" aria-label="打开批注抽屉">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -4338,6 +4504,7 @@ const template = `<!DOCTYPE html>
     <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开大纲 ([)" aria-label="展开大纲">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>展开大纲</span>
+      <kbd class="kbd-key">[</kbd>
     </button>
 
     <!-- TOC Sidebar (Desktop) -->
@@ -4360,12 +4527,24 @@ const template = `<!DOCTYPE html>
         </div>
         <h1 class="paper-title">${docTitle}</h1>
         <div class="paper-meta">
-          <div class="meta-item"><strong>作者：</strong>${docAuthor}</div>
-          <div class="meta-item"><strong>发布日期：</strong>${docDate}</div>
-          <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="meta-label">作者</span>
+            <span class="meta-value">${docAuthor}</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="meta-label">发布日期</span>
+            <span class="meta-value">${docDate}</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span class="meta-label">DOI</span>
+            <span class="meta-value">10.5281/zenodo.21110615</span>
+          </div>
         </div>
 
-<div class="reading-stats">
+        <div class="reading-stats">
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 ${Math.round(charCount / 1000)}k 字</span>
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${readMinutes} 分钟</span>
         </div>
@@ -4606,14 +4785,27 @@ const template = `<!DOCTYPE html>
     // 7. 图片全屏放大 (Lightbox)
     const modal = document.getElementById('lightbox-modal');
     const modalImg = document.getElementById('lightbox-img');
+    function closeModal() {
+      modal.classList.remove('active');
+      setTimeout(() => { modal.style.display = 'none'; }, 180);
+    }
+    function openModal(src) {
+      modalImg.src = src;
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => {
+        modal.classList.add('active');
+      });
+    }
     document.querySelectorAll('.article-content img').forEach(img => {
       img.addEventListener('click', () => {
-        modalImg.src = img.src;
-        modal.style.display = 'flex';
+        openModal(img.src);
       });
     });
-    modal.addEventListener('click', () => {
-      modal.style.display = 'none';
+    modal.addEventListener('click', closeModal);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
     });
 
     // 8. 复制 BibTeX
@@ -4622,7 +4814,7 @@ const template = `<!DOCTYPE html>
       navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('copy-bibtex-btn');
         btn.textContent = '✅ 已成功复制到剪贴板！';
-        setTimeout(() => { btn.textContent = '📋 复制 BibTeX 引用代码'; }, 2000);
+        setTimeout(() => { btn.textContent = '📋 复制 BibTeX'; }, 2000);
       });
     });
 
