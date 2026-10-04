@@ -25,7 +25,7 @@ export function extractArticle(html) {
 const stripTags = (html) => html.replace(/<[^>]+>/g, '');
 
 /** 供 CLI/测试复用的纯函数式体检：只依赖页面与 TeX 文本 */
-export function verifyReportStructure(html, tex, options = {}) {
+export function verifyReportStructure(html, tex = '', options = {}) {
   const { dataDir = null, stats = [] } = options;
   const problems = [];
   const add = (msg) => problems.push(msg);
@@ -125,11 +125,13 @@ export function verifyReportStructure(html, tex, options = {}) {
   if (dupes.length) add(`重复 id: ${dupes.join(', ')}`);
 
   // TeX 的每个 \label 都必须在页面里留下锚点；每个 \ref 都必须指向已存在的锚点
-  for (const m of tex.matchAll(/\\label\{((?:tab|fig):[^}]+)\}/g)) {
-    if (!ids.has(m[1])) add(`TeX 标签 ${m[1]} 在页面中缺少锚点`);
-  }
-  for (const m of tex.matchAll(/\\(?:ref|autoref|cref)\{([^}]+)\}/g)) {
-    if (!ids.has(m[1])) add(`交叉引用 ${m[1]} 指向不存在的锚点`);
+  if (tex) {
+    for (const m of tex.matchAll(/\\label\{((?:tab|fig):[^}]+)\}/g)) {
+      if (!ids.has(m[1])) add(`TeX 标签 ${m[1]} 在页面中缺少锚点`);
+    }
+    for (const m of tex.matchAll(/\\(?:ref|autoref|cref)\{([^}]+)\}/g)) {
+      if (!ids.has(m[1])) add(`交叉引用 ${m[1]} 指向不存在的锚点`);
+    }
   }
 
   // 图片文件必须真实存在（dataDir 指向 index.html 所在目录，img src 形如 ./data/x.png）
@@ -188,7 +190,7 @@ export function verifyAssetManifest(manifestPath, dataDir) {
 }
 
 /** 供 CLI 复检已提交产物的薄封装：读取页面文件并做体检 */
-export function verifyReportFile(htmlPath, tex, options = {}) {
+export function verifyReportFile(htmlPath, tex = '', options = {}) {
   if (!fs.existsSync(htmlPath)) {
     return [`未找到报告页: ${htmlPath}`];
   }

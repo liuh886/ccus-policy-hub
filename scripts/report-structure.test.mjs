@@ -6,6 +6,7 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   verifyAssetManifest,
+  verifyReportFile,
   verifyReportStructure,
 } from './lib/report-structure.mjs';
 
@@ -329,6 +330,13 @@ test('清单登记的素材缺失、清单本身缺失或损坏都会被拦截',
     )
   );
   fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('TeX 参数缺省或为空时不应抛出 TypeError', () => {
+  // 验证纯 HTML 校验在无 TeX 源码或 tex 为空/null 时安全执行
+  assert.doesNotThrow(() => verifyReportStructure(page(GOOD_BODY)));
+  assert.doesNotThrow(() => verifyReportStructure(page(GOOD_BODY), ''));
+  assert.doesNotThrow(() => verifyReportStructure(page(GOOD_BODY), null));
 });
 
 test.after(() => fs.rmSync(dataDir, { recursive: true, force: true }));
