@@ -874,16 +874,17 @@
       width: 100%;
       border-collapse: collapse;
       font-family: var(--font-sans);
-      font-size: 0.88rem;
+      font-size: 0.81rem;
+      line-height: 1.55;
       font-variant-numeric: tabular-nums;
       min-width: 780px;
     }
     table caption {
       font-family: var(--font-sans);
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: var(--text-main);
-      padding: 1rem 1.25rem 0.6rem;
+      padding: 0.75rem 1rem 0.5rem;
       text-align: left;
       background: var(--table-header);
       border-bottom: 1px solid var(--table-border);
@@ -892,19 +893,21 @@
       background-color: var(--table-header);
       color: var(--text-main);
       font-weight: 700;
-      padding: 0.85rem 1rem;
+      padding: 0.52rem 0.8rem;
       border-bottom: 2px solid var(--table-border);
       text-align: left;
-      font-size: 0.86rem;
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
     tbody tr {
       transition: background-color 0.15s ease;
     }
     td {
-      padding: 0.8rem 1rem;
+      padding: 0.58rem 0.8rem;
       border-bottom: 1px solid var(--table-border);
       color: var(--text-main);
-      line-height: 1.65;
+      font-size: 0.81rem;
+      line-height: 1.55;
     }
     tr:nth-child(even) td {
       background-color: var(--table-stripe);
@@ -914,6 +917,17 @@
     }
     [data-theme="dark"] tbody tr:hover td {
       background-color: rgba(59, 130, 246, 0.1) !important;
+    }
+    /* 正文各表首列增强结构可读性，向表 2-1 首列看齐 */
+    .standard-table th:first-child,
+    .standard-table td:first-child {
+      font-weight: 600;
+      color: var(--text-main);
+      background-color: rgba(37, 99, 235, 0.015);
+    }
+    [data-theme="dark"] .standard-table th:first-child,
+    [data-theme="dark"] .standard-table td:first-child {
+      background-color: rgba(59, 130, 246, 0.03);
     }
 
     /* 针对全球 CCUS 治理对标表 (tab:governance_benchmark) 专属紧凑对标排版 */
@@ -981,24 +995,24 @@
       background-color: rgba(37, 99, 235, 0.04);
     }
 
-    /* 表格卡片底部说明 */
+    /* 表格卡片底部说明：紧凑精致，与表头呼应 */
     .table-notes-footer {
-      padding: 0.85rem 1.25rem;
+      padding: 0.65rem 1rem;
       background: var(--bg-secondary);
       border-top: 1px solid var(--table-border);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      line-height: 1.65;
+      line-height: 1.55;
       display: flex;
-      gap: 0.75rem;
+      gap: 0.65rem;
       align-items: flex-start;
     }
     .table-notes-footer .note-tag {
       background: var(--border-color);
       color: var(--text-main);
-      padding: 0.15rem 0.45rem;
+      padding: 0.12rem 0.42rem;
       border-radius: 0.25rem;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       white-space: nowrap;
       flex-shrink: 0;
@@ -1008,7 +1022,7 @@
       flex: 1;
     }
 
-    /* 附录 A 全球 CCUS 项目分布与统计口径数据表专属样式 */
+    /* 附录 A 全球 CCUS 项目分布与统计口径数据表专属样式：对齐表 2-1 紧凑度 */
     .table-dist-data {
       width: 100% !important;
       border-collapse: collapse;
@@ -1016,8 +1030,8 @@
     }
     .table-dist-data th {
       text-align: center;
-      padding: 0.65rem 0.8rem;
-      font-size: 0.84rem;
+      padding: 0.52rem 0.75rem;
+      font-size: 0.82rem;
       line-height: 1.35;
       background: var(--table-header);
       border-bottom: 2px solid var(--table-border);
@@ -1027,15 +1041,16 @@
       text-align: left;
     }
     .table-dist-data td {
-      padding: 0.75rem 0.8rem;
-      font-size: 0.88rem;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.81rem;
+      line-height: 1.5;
       border-bottom: 1px solid var(--table-border);
     }
     .table-dist-data td:not(:first-child) {
       text-align: center;
       font-variant-numeric: tabular-nums;
       font-family: var(--font-mono);
-      font-size: 0.86rem;
+      font-size: 0.81rem;
     }
     .table-dist-data tr:last-child td {
       background: var(--bg-tertiary);
@@ -1052,7 +1067,7 @@
       box-shadow: none;
     }
 
-    /* 附录 B 关键主张与证据边界映射表专属样式 */
+    /* 附录 B 关键主张与证据边界映射表专属样式：对齐表 2-1 紧凑度 */
     .table-claims-mapping {
       width: 100% !important;
       border-collapse: collapse;
@@ -1066,16 +1081,17 @@
     .table-claims-mapping th:nth-child(4) { width: 28%; }
     .table-claims-mapping th {
       background: var(--table-header);
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
+      padding: 0.52rem 0.8rem;
+      font-size: 0.82rem;
+      line-height: 1.35;
       font-weight: 700;
       border-bottom: 2px solid var(--table-border);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
     }
     .table-claims-mapping td {
-      padding: 0.95rem 1.1rem;
-      font-size: 0.88rem;
-      line-height: 1.65;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.81rem;
+      line-height: 1.55;
       vertical-align: top;
       border-bottom: 1px solid var(--table-border);
     }
@@ -1088,15 +1104,15 @@
       background-color: rgba(59, 130, 246, 0.04);
     }
     .table-claims-mapping td:nth-child(2) {
-      font-size: 0.85rem;
+      font-size: 0.81rem;
       color: var(--text-muted);
     }
     .table-claims-mapping td:nth-child(3) {
-      font-size: 0.85rem;
+      font-size: 0.81rem;
     }
     .table-claims-mapping td:nth-child(4) {
-      font-size: 0.85rem;
-      line-height: 1.6;
+      font-size: 0.81rem;
+      line-height: 1.55;
     }
 
     .table-ref-link {
@@ -1494,11 +1510,11 @@
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.88rem;
+      font-size: 0.81rem;
     }
     .glossary-table thead th {
       background: var(--table-header);
-      padding: 0.55rem 0.95rem;
+      padding: 0.52rem 0.85rem;
       font-family: var(--font-sans);
       font-size: 0.78rem;
       font-weight: 700;
@@ -1522,19 +1538,19 @@
       border-bottom: none;
     }
     .col-term-name {
-      padding: 0.6rem 0.95rem;
+      padding: 0.52rem 0.85rem;
       vertical-align: top;
       white-space: nowrap;
     }
     .term-code {
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.86rem;
       color: var(--text-main);
       display: inline-block;
     }
     .col-term-type {
-      padding: 0.6rem 0.5rem;
+      padding: 0.52rem 0.45rem;
       vertical-align: top;
       white-space: nowrap;
     }
@@ -1557,10 +1573,10 @@
       border: 1px solid rgba(37, 99, 235, 0.2);
     }
     .col-term-desc {
-      padding: 0.6rem 1rem;
+      padding: 0.55rem 0.85rem;
       vertical-align: top;
-      line-height: 1.6;
-      font-size: 0.88rem;
+      line-height: 1.55;
+      font-size: 0.81rem;
     }
     .term-lead {
       font-weight: 700;
