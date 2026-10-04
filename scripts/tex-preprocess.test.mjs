@@ -164,4 +164,23 @@ test('端到端：label 改名不影响预处理结果（不再锚定任何 labe
     '预处理结果不应随 label 改名而变化（掩去 label 本身后比较）'
   );
   assert.ok(!a.includes('\\shortstack'));
+  assert.ok(
+    a.includes('\\begin{tabular}{lccc}'),
+    '包含 *{3} 的 tabularx 应被自动转换为标准 tabular{lccc}'
+  );
+});
+
+test('cleanTabularxBlocks 将含 *{6} 重复列修饰符的 tabularx 转换为 tabular{lcccccc}', () => {
+  const tex = `\\begin{tabularx}{\\linewidth}{@{}>{\\raggedright\\arraybackslash}p{0.13\\linewidth}*{6}{>{\\centering\\arraybackslash}X}@{}}
+\\toprule
+A & B & C & D & E & F & G \\\\
+\\midrule
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\\\
+\\bottomrule
+\\end{tabularx}`;
+  const r = preprocessTex(tex);
+  assert.equal(r.tabularxTouched, 1);
+  assert.ok(r.tex.includes('\\begin{tabular}{lcccccc}'));
+  assert.ok(r.tex.includes('\\end{tabular}'));
+  assert.ok(!r.tex.includes('\\begin{tabularx}'));
 });

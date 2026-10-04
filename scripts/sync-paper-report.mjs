@@ -1052,18 +1052,19 @@ const tableTweaks = {
     wrapperClass: 'table-responsive-wrapper table-benchmark-wrapper',
     wrapperId: 'benchmark-table-wrapper',
     breakout: true,
-    controls: '左右滑动查看全部法域',
+    controls: '左右滑动查看全部',
     scrollHintId: 'table-scroll-hint-pill',
   },
   // 附录 B 关键主张—证据边界映射矩阵
   'tab:claims_evidence_mapping': {
     tableClass: 'standard-table table-claims-mapping',
-    hint: (inner) => `${countDataRows(inner)} 项核心论断与证据映射`,
+    hint: (inner) => `${countDataRows(inner)} 项核心论断`,
   },
   // 附录 A 全球 CCUS 项目分布与统计口径数据表
   'tab:global_ccus_distribution': {
     tableClass: 'table-dist-data',
-    hint: '全球 6 大重点法域及其他地区汇总',
+    title: '已运行与在建项目分布',
+    hint: '6 大重点法域及其他地区汇总',
   },
 };
 
@@ -1247,7 +1248,7 @@ function badgeForTable(sectionNumber, chapterCounters) {
     const tableClass = (tweak && tweak.tableClass) || 'standard-table';
     const wrapperClass =
       (tweak && tweak.wrapperClass) || 'table-responsive-wrapper';
-    const title = meta.title;
+    const title = (tweak && tweak.title) || meta.title;
 
     if (!label) {
       console.warn(
@@ -1284,10 +1285,10 @@ function badgeForTable(sectionNumber, chapterCounters) {
             tweak.scrollHintId ? ` id="${tweak.scrollHintId}"` : ''
           }>↔️ ${tweak.controls}</span>
           <div class="table-nav-btns">
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动表格" aria-label="向左滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动" aria-label="向左滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动表格" aria-label="向右滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动" aria-label="向右滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -1416,7 +1417,7 @@ if (theBibMatch) {
         <div class="ref-content-col">
           <div class="ref-body">${item.html}</div>
           <div class="ref-actions">
-            <a href="#cite-return-${key}" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-${key}" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -1427,7 +1428,7 @@ if (theBibMatch) {
   referencesHtml = `
     <section id="references-container" class="references-container">
       <h1 class="unnumbered" id="参考文献">
-        参考文献 (References)
+        参考文献
       </h1>
       <div class="references-list">
         ${refListItems}
@@ -1502,7 +1503,11 @@ for (const [num, letter] of Object.entries(appendixSectionLetters)) {
     );
     continue;
   }
-  const title = m[2].trim();
+  let title = m[2].trim();
+  // 附录 A 标题简明化：去除冗余前缀“全球 CCUS ”，提炼为紧凑的“项目分布与统计口径”
+  if (letter === 'A') {
+    title = title.replace(/^全球\s*CCUS\s*/, '');
+  }
   bodyHtml = bodyHtml.replace(
     re,
     `<h1 data-number="附录 ${letter}" id="appendix-${letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${letter}</span>${title ? ` ${title}` : ''}</h1>`
@@ -1514,44 +1519,6 @@ expectHits(
   appendixHeadings.length,
   Object.keys(appendixSectionLetters).length
 );
-
-/**
- * 消除“附录标题与其唯一表格 caption 语义重复”的视觉冗余。
- * 典型场景：附录 A 的章节名“全球 CCUS 项目分布与统计口径”与其表格 caption
- * “全球 CCUS 已运行及预计于 2026 年底前投运的在建项目记录分布”上下堆叠，
- * 读者会看到两个标题描述同一张表。规则：若某附录正文只包含一张表格卡片、
- * 没有其它段落，则章节标题只保留编号，标题语义交由表格卡片承载。
- */
-for (const { letter } of appendixHeadings) {
-  const headRe = new RegExp(
-    `<h1 data-number="附录 ${letter}"[^>]*>[\\s\\S]*?<\\/h1>`
-  );
-  const hm = bodyHtml.match(headRe);
-  if (!hm || hm.index === undefined) continue;
-  const afterHead = hm.index + hm[0].length;
-  const sectionEnd = bodyHtml.indexOf('</section>', afterHead);
-  if (sectionEnd === -1) continue;
-  const inner = bodyHtml.slice(afterHead, sectionEnd);
-  const cardCount = (inner.match(/<div class="table-container-card"/g) || [])
-    .length;
-  const cardStart = inner.search(/<div class="table-container-card"/);
-  if (cardCount !== 1 || cardStart === -1) continue;
-  const cardEnd = findDivEnd(inner, cardStart);
-  if (cardEnd === -1) continue;
-  if (
-    inner.slice(0, cardStart).trim() !== '' ||
-    inner.slice(cardEnd).trim() !== ''
-  ) {
-    continue;
-  }
-  bodyHtml =
-    bodyHtml.slice(0, hm.index) +
-    `<h1 data-number="附录 ${letter}" id="appendix-${letter.toLowerCase()}" class="appendix-h1"><span class="header-section-number">附录 ${letter}</span></h1>` +
-    bodyHtml.slice(afterHead);
-  console.log(
-    `[sync-paper-report] 附录 ${letter} 仅含一张表，章节标题已精简为“附录 ${letter}”，标题语义由表格卡片承载。`
-  );
-}
 
 // 2. 重构术语/缩略语附录（description 环境 -> 可分类、可检索的紧凑学术规范表）
 //    Pandoc 会丢弃 \item[词条] 的方括号标签（只剩释义），因此术语名与释义必须回到 TeX 原文提取；
@@ -1726,7 +1693,7 @@ console.log(
   `[sync-paper-report] 正在执行正文版式精修（图文摘要卡片、阶段路线图与政策建议标题）...`
 );
 
-// 1. 移除 Pandoc 冗余 titlepage 与重复关键词，注入高保真图文摘要卡片 (Graphical Abstract)
+// 1. 移除 Pandoc 冗余 titlepage 与重复关键词，注入图文摘要卡片
 // 图片文件名不再硬编码：TeX 侧从“图文摘要2.png”改到“图文摘要4.png”时，
 // 旧实现整条正则失配 -> titlepage 空壳残留、卡片消失、关键词重复、注掉进正文。
 // 现在按“titlepage + 关键词段 + 首张图文摘要图片”的结构识别，与文件名无关。
@@ -1748,9 +1715,9 @@ bodyHtml = bodyHtml.replace(gaRegex, (match, imgTag, src, trailingP) => {
   <div class="ga-header">
     <div class="ga-title">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <span>图文摘要 (Graphical Abstract)</span>
+      <span>图文摘要</span>
     </div>
-    <span class="ga-tip">🔍 点击图片可放大高清原图</span>
+    <span class="ga-tip">🔍 点击放大</span>
   </div>
   <div class="ga-img-wrap">
     <img src="${src}" alt="${attr('CCUS 规模化治理与 dMRV 架构图文摘要')}" />
@@ -2847,7 +2814,7 @@ const template = `<!DOCTYPE html>
       text-underline-offset: 2px;
     }
 
-    /* --- 核心优化：高保真超紧凑学术引文系统 (Ultra-Compact Citation System) --- */
+    /* --- 学术引文系统 --- */
     .citation-cluster {
       font-family: var(--font-sans);
       font-size: 0.72em;
@@ -3364,7 +3331,7 @@ const template = `<!DOCTYPE html>
       color: var(--text-main);
     }
 
-    /* 图文摘要卡片 (Graphical Abstract) - 优雅尺寸与学术居中约束 */
+    /* 图文摘要卡片 */
     .graphical-abstract-card {
       max-width: 860px;
       margin: 2.25rem auto 3rem;
@@ -4273,7 +4240,7 @@ const template = `<!DOCTYPE html>
       <div class="comment-modal-header">
         <div class="comment-modal-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>添加审阅批注 (Add Comment)</span>
+          <span>添加批注</span>
         </div>
         <button id="btn-close-comment-modal" class="modal-close-btn" title="关闭">✕</button>
       </div>
@@ -4283,8 +4250,8 @@ const template = `<!DOCTYPE html>
           <p id="modal-quoted-text" class="modal-quoted-content"></p>
         </div>
         <div class="comment-input-wrap">
-          <label for="comment-textarea" class="comment-input-label">审阅批注 / 建议意见：</label>
-          <textarea id="comment-textarea" rows="4" placeholder="在此记录针对该段落的审阅见解、数据核实建议或讨论问题... (支持快捷键 Ctrl+Enter 提交)"></textarea>
+          <label for="comment-textarea" class="comment-input-label">批注内容：</label>
+          <textarea id="comment-textarea" rows="4" placeholder="输入针对该段落的审阅意见... (Ctrl+Enter 提交)"></textarea>
         </div>
       </div>
       <div class="comment-modal-footer">
@@ -4299,26 +4266,26 @@ const template = `<!DOCTYPE html>
 
   <!-- Comments Slide-out Drawer -->
   <div id="comments-drawer-backdrop" class="comments-drawer-backdrop" style="display: none;"></div>
-  <aside id="comments-drawer" class="comments-drawer" aria-label="审阅批注清单">
+  <aside id="comments-drawer" class="comments-drawer" aria-label="批注列表">
     <div class="drawer-header">
       <div class="drawer-header-left">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span class="drawer-header-title">审阅批注清单</span>
+        <span class="drawer-header-title">批注列表</span>
         <span id="drawer-comments-count" class="badge">0</span>
       </div>
       <button id="btn-close-comments-drawer" class="btn" style="padding: 0.25rem 0.55rem;">✕ 关闭</button>
     </div>
 
     <div class="drawer-actions-bar">
-      <button id="btn-export-markdown" class="btn btn-sm btn-primary" title="导出为结构化 Markdown 文本并下载">
+      <button id="btn-export-markdown" class="btn btn-sm btn-primary" title="导出 Markdown">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span>导出 Markdown</span>
       </button>
-      <button id="btn-copy-comments" class="btn btn-sm" title="一键复制全部结构化批注文本到剪贴板">
+      <button id="btn-copy-comments" class="btn btn-sm" title="复制全部批注">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span>复制全部</span>
       </button>
-      <button id="btn-clear-all-comments" class="btn btn-sm btn-danger" title="清空全部本地批注">
+      <button id="btn-clear-all-comments" class="btn btn-sm btn-danger" title="清空全部批注">
         <span>清空</span>
       </button>
     </div>
@@ -4341,24 +4308,24 @@ const template = `<!DOCTYPE html>
 
   <!-- Navbar -->
   <header class="navbar">
-    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回 CCUS Policy Hub 首页" aria-label="返回 CCUS Policy Hub 首页">
+    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回首页" aria-label="返回首页">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
       <span class="brand-text">CCUS Policy Hub</span>
       <span class="brand-text-short">CCUS</span>
       <span class="badge">智库报告</span>
     </a>
     <div class="nav-actions">
-      <button class="btn" id="btn-toggle-toc" title="收起/展开左侧目录大纲 (快捷键: [)">
+      <button class="btn" id="btn-toggle-toc" title="折叠/展开大纲 ([)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
         <span id="btn-toggle-toc-text">折叠大纲</span>
       </button>
-      <button class="btn" id="btn-toggle-comments" title="打开审阅批注抽屉 (支持选中文本添加批注与结构化导出)" aria-label="打开批注抽屉">
+      <button class="btn" id="btn-toggle-comments" title="打开批注抽屉" aria-label="打开批注抽屉">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span class="btn-label">批注</span>
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
       <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><span class="btn-label">主题</span></button>
-      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版${pdfPageCount ? ` ${pdfPageCount} 页` : ''}高保真 PDF" aria-label="下载原版 PDF">
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载原版 PDF${pdfPageCount ? ` (${pdfPageCount} 页)` : ''}" aria-label="下载原版 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="btn-label">下载原版 PDF</span>
       </a>
@@ -4368,7 +4335,7 @@ const template = `<!DOCTYPE html>
   <!-- Container -->
   <div class="container">
     <!-- Floating Tab to re-open TOC when collapsed -->
-    <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开目录大纲 (快捷键: [)" aria-label="展开目录大纲">
+    <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开大纲 ([)" aria-label="展开大纲">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>展开大纲</span>
     </button>
@@ -4377,7 +4344,7 @@ const template = `<!DOCTYPE html>
     <aside class="toc-sidebar" id="toc-sidebar">
       <div class="toc-title">
         <span>报告大纲</span>
-        <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="收起目录以拓宽正文 (快捷键: [)">
+        <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="折叠大纲 ([)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
@@ -4393,7 +4360,7 @@ const template = `<!DOCTYPE html>
         </div>
         <h1 class="paper-title">${docTitle}</h1>
         <div class="paper-meta">
-          <div class="meta-item"><strong>作者团队：</strong>${docAuthor}</div>
+          <div class="meta-item"><strong>作者：</strong>${docAuthor}</div>
           <div class="meta-item"><strong>发布日期：</strong>${docDate}</div>
           <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
         </div>
@@ -4406,7 +4373,7 @@ const template = `<!DOCTYPE html>
         <div class="abstract-box">
           <div class="abstract-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            <span>报告摘要 (Abstract)</span>
+            <span>报告摘要</span>
           </div>
           <div class="abstract-content">
             ${abstractText}
@@ -4424,7 +4391,7 @@ const template = `<!DOCTYPE html>
 
       <!-- Citation Card -->
       <div class="citation-card">
-        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">引用本研究报告 (Citation)</h4>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">引用本报告</h4>
         <p style="font-size: 0.88rem; color: var(--text-muted);">
           刘志豪, 崔博宇, 吴俊军, 施闻如. (2026). 从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 (ESG30 青年学者计划课题报告 v3.4). CCUS Policy Hub. https://doi.org/10.5281/zenodo.21110615
         </p>
@@ -4437,8 +4404,8 @@ const template = `<!DOCTYPE html>
   url={https://liuh886.github.io/ccus-policy-hub/reports/${slug}/}
 }</code></pre>
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 1rem;">
-          <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX 引用代码</button>
-          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF${pdfPageCount ? ` (${pdfPageCount}页)` : ''}</a>
+          <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX</button>
+          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF${pdfPageCount ? ` (${pdfPageCount} 页)` : ''}</a>
         </div>
       </div>
     </main>
@@ -5007,8 +4974,8 @@ const template = `<!DOCTYPE html>
         commentsListContainer.innerHTML = \`
           <div class="empty-comments">
             <div class="empty-icon">📝</div>
-            <p style="font-weight: 600; font-size: 1rem;">暂无审阅批注</p>
-            <p class="empty-tip">在正文任意段落滑动选中文字，即可唤起“添加批注”气泡记录见解，刷新或重开网页自动恢复，支持一键导出结构化报告。</p>
+            <p style="font-weight: 600; font-size: 1rem;">暂无批注</p>
+            <p class="empty-tip">在正文中选中文字即可添加批注，支持本地保存与导出。</p>
           </div>
         \`;
         return;
@@ -5030,7 +4997,7 @@ const template = `<!DOCTYPE html>
                 <span>\${timeStr}</span>
                 \${sectionBadge}
               </div>
-              <button class="btn-delete-comment" data-delete-id="\${c.id}" title="删除该条批注">🗑️</button>
+              <button class="btn-delete-comment" data-delete-id="\${c.id}" title="删除批注">🗑️</button>
             </div>
             <div class="comment-card-quote">“\${quoteEscaped}”</div>
             <div class="comment-card-body">\${commentEscaped}</div>
@@ -5092,7 +5059,7 @@ const template = `<!DOCTYPE html>
 
     // 删除单条批注
     function deleteComment(id) {
-      if (!confirm('确定删除这条审阅批注吗？')) return;
+      if (!confirm('确定删除该条批注吗？')) return;
       let comments = getStoredComments();
       comments = comments.filter(c => c.id !== id);
       saveStoredComments(comments);
@@ -5106,7 +5073,7 @@ const template = `<!DOCTYPE html>
     document.getElementById('btn-clear-all-comments').addEventListener('click', () => {
       const comments = getStoredComments();
       if (comments.length === 0) return;
-      if (!confirm(\`确定清空全部 \${comments.length} 条审阅批注吗？此操作不可逆。\`)) return;
+      if (!confirm(\`确定清空全部 \${comments.length} 条批注吗？\`)) return;
 
       localStorage.removeItem(STORAGE_KEY);
       document.querySelectorAll('.comment-highlight').forEach(unwrapMark);
@@ -5126,7 +5093,7 @@ const template = `<!DOCTYPE html>
       const now = new Date();
       const dateStr = now.toISOString().replace('T', ' ').substring(0, 19);
 
-      let md = \`# CCUS 规模化治理与 dMRV 报告 · 审阅研讨批注备忘录\\n\\n\`;
+      let md = \`# CCUS 报告批注备忘录\\n\\n\`;
       md += \`> **报告标题**：\${document.title}\\n\`;
       md += \`> **导出时间**：\${dateStr}\\n\`;
       md += \`> **批注总计**：\${comments.length} 条\\n\\n\`;
@@ -5140,12 +5107,12 @@ const template = `<!DOCTYPE html>
         }
         md += \`- **引述原文**：\\n\`;
         md += \`  > “\${c.quote}”\\n\`;
-        md += \`- **审阅意见 / Comments**：\\n\`;
+        md += \`- **审阅意见**：\\n\`;
         md += \`  \${c.comment}\\n\\n\`;
       });
 
       md += \`---\\n\`;
-      md += \`*本文档由 CCUS Policy Hub 学术智库审阅系统自动生成*\\n\`;
+      md += \`*本文档由 CCUS Policy Hub 导出*\\n\`;
 
       const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
       const url = URL.createObjectURL(blob);
@@ -5169,7 +5136,7 @@ const template = `<!DOCTYPE html>
 
       const now = new Date();
       const dateStr = now.toISOString().replace('T', ' ').substring(0, 19);
-      let text = \`【CCUS 规模化治理与 dMRV 报告 · 审阅批注清单】\\n时间：\${dateStr} | 共 \${comments.length} 条\\n\\n\`;
+      let text = \`【CCUS 报告批注】\\n时间：\${dateStr} | 共 \${comments.length} 条\\n\\n\`;
 
       comments.forEach((c, idx) => {
         text += \`[批注 \${idx + 1}] (\${c.sectionTitle || '正文'})\\n\`;

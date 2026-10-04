@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 | CCUS Policy Hub</title>
   <meta name="description" content="ESG30 青年学者计划（二期）：从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础" />
-  <meta name="paper-source" content="paper_draft.tex sha256:f75c5ec16f8ef84e" />
+  <meta name="paper-source" content="paper_draft.tex sha256:19bec9e6cfb44fb3" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -970,7 +970,7 @@
       text-underline-offset: 2px;
     }
 
-    /* --- 核心优化：高保真超紧凑学术引文系统 (Ultra-Compact Citation System) --- */
+    /* --- 学术引文系统 --- */
     .citation-cluster {
       font-family: var(--font-sans);
       font-size: 0.72em;
@@ -1487,7 +1487,7 @@
       color: var(--text-main);
     }
 
-    /* 图文摘要卡片 (Graphical Abstract) - 优雅尺寸与学术居中约束 */
+    /* 图文摘要卡片 */
     .graphical-abstract-card {
       max-width: 860px;
       margin: 2.25rem auto 3rem;
@@ -2396,7 +2396,7 @@
       <div class="comment-modal-header">
         <div class="comment-modal-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>添加审阅批注 (Add Comment)</span>
+          <span>添加批注</span>
         </div>
         <button id="btn-close-comment-modal" class="modal-close-btn" title="关闭">✕</button>
       </div>
@@ -2406,8 +2406,8 @@
           <p id="modal-quoted-text" class="modal-quoted-content"></p>
         </div>
         <div class="comment-input-wrap">
-          <label for="comment-textarea" class="comment-input-label">审阅批注 / 建议意见：</label>
-          <textarea id="comment-textarea" rows="4" placeholder="在此记录针对该段落的审阅见解、数据核实建议或讨论问题... (支持快捷键 Ctrl+Enter 提交)"></textarea>
+          <label for="comment-textarea" class="comment-input-label">批注内容：</label>
+          <textarea id="comment-textarea" rows="4" placeholder="输入针对该段落的审阅意见... (Ctrl+Enter 提交)"></textarea>
         </div>
       </div>
       <div class="comment-modal-footer">
@@ -2422,26 +2422,26 @@
 
   <!-- Comments Slide-out Drawer -->
   <div id="comments-drawer-backdrop" class="comments-drawer-backdrop" style="display: none;"></div>
-  <aside id="comments-drawer" class="comments-drawer" aria-label="审阅批注清单">
+  <aside id="comments-drawer" class="comments-drawer" aria-label="批注列表">
     <div class="drawer-header">
       <div class="drawer-header-left">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span class="drawer-header-title">审阅批注清单</span>
+        <span class="drawer-header-title">批注列表</span>
         <span id="drawer-comments-count" class="badge">0</span>
       </div>
       <button id="btn-close-comments-drawer" class="btn" style="padding: 0.25rem 0.55rem;">✕ 关闭</button>
     </div>
 
     <div class="drawer-actions-bar">
-      <button id="btn-export-markdown" class="btn btn-sm btn-primary" title="导出为结构化 Markdown 文本并下载">
+      <button id="btn-export-markdown" class="btn btn-sm btn-primary" title="导出 Markdown">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span>导出 Markdown</span>
       </button>
-      <button id="btn-copy-comments" class="btn btn-sm" title="一键复制全部结构化批注文本到剪贴板">
+      <button id="btn-copy-comments" class="btn btn-sm" title="复制全部批注">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span>复制全部</span>
       </button>
-      <button id="btn-clear-all-comments" class="btn btn-sm btn-danger" title="清空全部本地批注">
+      <button id="btn-clear-all-comments" class="btn btn-sm btn-danger" title="清空全部批注">
         <span>清空</span>
       </button>
     </div>
@@ -2464,24 +2464,24 @@
 
   <!-- Navbar -->
   <header class="navbar">
-    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回 CCUS Policy Hub 首页" aria-label="返回 CCUS Policy Hub 首页">
+    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回首页" aria-label="返回首页">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
       <span class="brand-text">CCUS Policy Hub</span>
       <span class="brand-text-short">CCUS</span>
       <span class="badge">智库报告</span>
     </a>
     <div class="nav-actions">
-      <button class="btn" id="btn-toggle-toc" title="收起/展开左侧目录大纲 (快捷键: [)">
+      <button class="btn" id="btn-toggle-toc" title="折叠/展开大纲 ([)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
         <span id="btn-toggle-toc-text">折叠大纲</span>
       </button>
-      <button class="btn" id="btn-toggle-comments" title="打开审阅批注抽屉 (支持选中文本添加批注与结构化导出)" aria-label="打开批注抽屉">
+      <button class="btn" id="btn-toggle-comments" title="打开批注抽屉" aria-label="打开批注抽屉">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span class="btn-label">批注</span>
         <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
       </button>
       <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><span class="btn-label">主题</span></button>
-      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载 XeLaTeX 原版 34 页高保真 PDF" aria-label="下载原版 PDF">
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载原版 PDF (34 页)" aria-label="下载原版 PDF">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span class="btn-label">下载原版 PDF</span>
       </a>
@@ -2491,7 +2491,7 @@
   <!-- Container -->
   <div class="container">
     <!-- Floating Tab to re-open TOC when collapsed -->
-    <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开目录大纲 (快捷键: [)" aria-label="展开目录大纲">
+    <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开大纲 ([)" aria-label="展开大纲">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>展开大纲</span>
     </button>
@@ -2500,7 +2500,7 @@
     <aside class="toc-sidebar" id="toc-sidebar">
       <div class="toc-title">
         <span>报告大纲</span>
-        <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="收起目录以拓宽正文 (快捷键: [)">
+        <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="折叠大纲 ([)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
       </div>
@@ -2516,7 +2516,7 @@
         </div>
         <h1 class="paper-title">从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础</h1>
         <div class="paper-meta">
-          <div class="meta-item"><strong>作者团队：</strong>刘志豪、崔博宇、吴俊军、施闻如</div>
+          <div class="meta-item"><strong>作者：</strong>刘志豪、崔博宇、吴俊军、施闻如</div>
           <div class="meta-item"><strong>发布日期：</strong>2026年10月2日</div>
           <div class="meta-item"><strong>DOI：</strong>10.5281/zenodo.21110615</div>
         </div>
@@ -2529,7 +2529,7 @@
         <div class="abstract-box">
           <div class="abstract-title">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            <span>报告摘要 (Abstract)</span>
+            <span>报告摘要</span>
           </div>
           <div class="abstract-content">
             碳捕集、利用与封存（CCUS）是难减排工业深度脱碳、部分低排放能源生产和工程化碳移除的重要路径。净零路径已经提出吉吨级 CCUS 部署需求，全球项目储备也在快速扩张，但大量规划项目尚未跨过最终投资决策和工程建设门槛。随着 CCUS 由单一企业内部的一体化示范走向多排放源接入、共享网络和集中封存，单点工程可行并不会自然转化为成熟产业。进入多主体协作后，规模化不再是单体项目的简单复制，而要求价值机制、基础设施、参与主体与制度规则彼此衔接、相互支撑；产业治理对象也由此从单个项目扩展为跨主体、跨环节和跨周期的运行网络。
@@ -2551,9 +2551,9 @@
   <div class="ga-header">
     <div class="ga-title">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <span>图文摘要 (Graphical Abstract)</span>
+      <span>图文摘要</span>
     </div>
-    <span class="ga-tip">🔍 点击图片可放大高清原图</span>
+    <span class="ga-tip">🔍 点击放大</span>
   </div>
   <div class="ga-img-wrap">
     <img src="./data/图文摘要4.png" alt="CCUS 规模化治理与 dMRV 架构图文摘要" />
@@ -2568,7 +2568,7 @@
 <h1 data-number="1" id="ccus-规模化的系统障碍与治理转型"><span class="header-section-number">1</span> CCUS 规模化的系统障碍与治理转型</h1>
 <h2 data-number="1.1" id="从吉吨级需求到交付鸿沟"><span class="header-section-number">1.1</span> 从吉吨级需求到交付鸿沟</h2>
 <p>风光水核、终端电气化和能效提升将承担净零转型的主体减排任务，但钢铁、水泥、化工等行业仍存在难以消除的过程排放和高温工艺需求；部分低排放能源生产仍可能形成 CO<sub>2</sub> 捕集需求，航空、航运和农业等领域难以消除的剩余排放则需要碳移除加以抵消。因此，主流净零情景对碳捕集、利用与封存（CCUS）提出了吉吨级部署要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-nze2023" data-cite="iea-nze2023" data-index="22" id="cite-return-iea-nze2023" title="IEA. (2023). Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach – 2023 Update. IEA, Paris. https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach">22</a>]</sup>。这一要求进一步进入国家规划、产业目标和政策工具：欧盟设置 CO<sub>2</sub> 注入能力目标，英国推进集群排序和输送封存商业模式，美国以《美国国内税收法典》第45Q条（45Q）税收抵免改善项目收益预期，挪威和加拿大则依托油气工程、公共资本和长期责任安排发展共享封存能力<sup class="citation-cluster">[<a class="cite-ref" href="#ref-epa-class6" data-cite="epa-class6" data-index="1" id="cite-return-epa-class6" title="U.S. Environmental Protection Agency. (2024). Class VI Wells Used for Geologic Sequestration of Carbon Dioxide. https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide">1</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-usc45q" data-cite="usc45q" data-index="2" id="cite-return-usc45q" title="U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). 26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration. https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim">2</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-nzia" data-cite="eu-nzia" data-index="4" id="cite-return-eu-nzia" title="European Union. (2024). Regulation (EU) 2024/1735 (Net-Zero Industry Act). https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735">4</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-energy-act2023" data-cite="uk-energy-act2023" data-index="29" id="cite-return-uk-energy-act2023" title="UK Parliament. (2023). Energy Act 2023. https://www.legislation.gov.uk/ukpga/2023/52/contents">29</a>]</sup>。</p>
-<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1 全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）">图 1</a> 以规划项目与已运行/在建项目之间的规模差距，近似反映项目从规划走向交付的转化程度。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计仅约为 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 表 全球 CCUS 已运行及预计于 2026 年底前投运的在建项目记录分布">附录 A 表</a>）。按已披露的投运时间表，至 2036 年前后，前瞻性规划规模约为 2,243 MtCO<sub>2</sub>/yr，而已进入运行或建设阶段的项目累计仅约为 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
+<p>在政策推动下，全球 CCUS 项目规划迅速扩张，但规划储备与工程落地之间仍存在显著差距。本文所称“交付鸿沟”，指规模化部署需求与实际工程交付能力之间的落差。<a href="#fig:global_ccus_scale" class="fig-ref-link" title="点击查看图 1 全球 CCUS 前瞻性项目规划与已进入工程实施阶段记录规模的转化差距（2020–2036）">图 1</a> 以规划项目与已运行/在建项目之间的规模差距，近似反映项目从规划走向交付的转化程度。按 2026 年 3 月数据库快照口径，预计于 2026 年底前投运的全球 CCUS 前瞻性项目规划记录规模约为 954 MtCO<sub>2</sub>/yr；其中，86 个已运行项目与 37 个预计于 2026 年底前投运的在建项目合计仅约为 150.3 MtCO<sub>2</sub>/yr（详见<a href="#tab:global_ccus_distribution" class="table-ref-link" title="点击查看附录 A 表 已运行与在建项目分布">附录 A 表</a>）。按已披露的投运时间表，至 2036 年前后，前瞻性规划规模约为 2,243 MtCO<sub>2</sub>/yr，而已进入运行或建设阶段的项目累计仅约为 224 MtCO<sub>2</sub>/yr<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23" id="cite-return-iea-ccusdb2026" title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ccuspolicyhub" data-cite="ccuspolicyhub" data-index="65" id="cite-return-ccuspolicyhub" title="刘志豪. (2026). CCUS Policy Hub: 全球 CCUS 法规与政策数据库. DOI: 10.5281/zenodo.21110615. https://liuh886.github.io/ccus-policy-hub/">65</a>]</sup>。</p>
 <p>规划规模快速增长，并不意味着捕集、运输和封存能力能够同步到位。捕集项目较容易形成规划储备，而运输网络、封存库容、注入井体系、监测设施和长期责任安排往往需要更长建设周期和更复杂的跨主体协调。以美国为例，Princeton Net-Zero America 研究显示，实现净零情景所需 CO<sub>2</sub> 输送网络规模可能达到约 10 万公里，说明 CCUS 规模化不仅依赖捕集设施建设，也依赖跨区域运输和共享基础设施的同步建成<sup class="citation-cluster">[<a class="cite-ref" href="#ref-larson2020nza" data-cite="larson2020nza" data-index="25" id="cite-return-larson2020nza" title="Larson, E., et al. (2020). Net-Zero America: Potential Pathways, Infrastructure, and Impacts. Princeton University. https://netzeroamerica.princeton.edu/the-report">25</a>]</sup>。只有当运输封存服务、收入机制、核证和长期责任安排同时到位，捕集能力才能转化为稳定交付。</p>
 <p>这种交付鸿沟并不意味着单体工程尚不可行。加拿大、挪威等地已有百万吨级 CCUS 项目持续运行，并形成长期监测、跨主体交付和公开披露实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7" id="cite-return-northernlights2025" title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO2. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="9" id="cite-return-shellquest2024" title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-ccusdb2026" data-cite="iea-ccusdb2026" data-index="23"  title="IEA. (2026年3月27日). CCUS Projects Database: March 2026 edition. CC BY 4.0. https://www.iea.org/data-and-statistics/data-product/ccus-projects-database">23</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gccsi-status2025" data-cite="gccsi-status2025" data-index="54" id="cite-return-gccsi-status2025" title="Global CCS Institute. (2025). Global Status of CCS 2025: Staying the Course. https://www.globalccsinstitute.com/resources/global-status-report/">54</a>]</sup>。这些项目证明，CCUS 工程可以在特定条件下建成并持续运行；但产业形成并不是单体项目的简单复制，还要求价值机制、基础设施、资源投入、参与主体和制度规则能够彼此衔接、相互强化。规模化的关键问题，也因此从“能否建成”转向“能否长期运行、能否组织为网络、能否形成可信减排结果”。</p>
 <p>中国尤其值得观察：大型能源和工业企业、公共组织资源以及较完整的工程供应链，使中国具备较强的项目动员和工程实施能力，但捕集源、运输封存设施和长期责任往往跨行业、跨区域和跨部门。如何把工程动员能力转化为稳定的跨主体治理能力，可为理解不同于成熟市场体系的 CCUS 集群形成路径提供另一类样本。</p>
@@ -2631,12 +2631,12 @@
         </div>
         
         <div class="table-card-controls">
-          <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部法域</span>
+          <span class="table-scroll-hint-pill" id="table-scroll-hint-pill">↔️ 左右滑动查看全部</span>
           <div class="table-nav-btns">
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动表格" aria-label="向左滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-left" title="向左滚动" aria-label="向左滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
-            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动表格" aria-label="向右滚动">
+            <button type="button" class="table-nav-btn" id="btn-scroll-table-right" title="向右滚动" aria-label="向右滚动">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
@@ -2833,7 +2833,7 @@
 <tr class="odd">
 <td style="text-align: left;">制度采信</td>
 <td style="text-align: left;">术语、管输、流质、地质封存和驱油封存国家标准；碳市场数据管理基础</td>
-<td style="text-align: left;">专项封存许可、孔隙确权与封存区块获取规则、关闭证书、长期责任接续与财务保障</td>
+<td style="text-align: left;">专项封存许可、孔隙空间权属与使用安排、封存区块获取规则、关闭证书、长期责任接续与财务保障</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">能源惩罚（物理约束）</td>
@@ -3295,103 +3295,94 @@
 <p>当集群进入多主体运行后，交付与归因、风险与责任、金融与外部信任构成三类主要的证据使用场景。dMRV 通过规则字段化、连续证据和差异化证据输出，把来源、交接、能源投入、链条排放、注入封存、异常处置和责任状态组织为可追溯的共同事实。本文将这种跨主体复核和复用工程证据的能力概括为“产业信用基础设施”。这种能力使政策执行、商业结算和监管审查能够基于同一组真实运行证据开展复核，并为规则调整提供运行反馈。若仍以各主体分别留档、事后补件为主，协调成本将随参与主体增多而上升，工程能力也难以转化为可复制的网络规则。</p>
 <p>中国下一阶段可从具备条件的先行集群开展三类验证：将证据要求前置到项目设计，试用跨主体证据输出与制度衔接机制，并开展长期责任影子评估。统一平台建设应建立在规则和数据接口经过实际验证之后。在此基础上，政策支持、长期契约和真实运行证据可以逐步形成闭环：政策支持降低初始门槛，长期契约组织跨主体协同，运行证据支撑结算和监管，并反过来推动规则完善。由此推动中国 CCUS 跨越交付鸿沟，迈向可投资、可核证、可治理的产业系统。</p>
 <section id="全球-ccus-项目分布与统计口径" data-number="7">
-<h1 data-number="附录 A" id="appendix-a" class="appendix-h1"><span class="header-section-number">附录 A</span></h1>
+<h1 data-number="附录 A" id="appendix-a" class="appendix-h1"><span class="header-section-number">附录 A</span> 项目分布与统计口径</h1>
 
     <div class="table-container-card" id="tab:global_ccus_distribution">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
           <span class="table-badge">附录 A 表</span>
-          <span class="table-title">全球 CCUS 已运行及预计于 2026 年底前投运的在建项目记录分布</span>
+          <span class="table-title">已运行与在建项目分布</span>
         </div>
-        <span class="table-scroll-hint-pill">全球 6 大重点法域及其他地区汇总</span>
+        <span class="table-scroll-hint-pill">6 大重点法域及其他地区汇总</span>
       </div>
       <div class="table-responsive-wrapper">
         <table class="table-dist-data">
           
 
-<colgroup>
-<col />
-<col />
-<col />
-<col />
-<col />
-<col />
-<col />
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">地区</th>
-<th style="text-align: left;">已运行<br/>项目记录数</th>
-<th style="text-align: left;">已运行项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
-<th style="text-align: left;">在建<br/>项目记录数</th>
-<th style="text-align: left;">在建项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
-<th style="text-align: left;">合计<br/>项目记录数</th>
-<th style="text-align: left;">合计项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: center;">已运行<br/>项目记录数</th>
+<th style="text-align: center;">已运行项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: center;">在建<br/>项目记录数</th>
+<th style="text-align: center;">在建项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
+<th style="text-align: center;">合计<br/>项目记录数</th>
+<th style="text-align: center;">合计项目记录<br/>年处理能力<br/>（MtCO<sub>2</sub>/年）</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">美国</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">35.326</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">9.662</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">44.988</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">欧盟及英国</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1.635</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">32.279</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">33.914</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">其他地区</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">24.491</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.030</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">27.521</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">加拿大</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">23.104</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7.732</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">30.836</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">挪威</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.600</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.600</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">中国</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">6.980</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2.500</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">9.480</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>合计</strong></td>
-<td style="text-align: left;"><strong>86</strong></td>
-<td style="text-align: left;"><strong>95.136</strong></td>
-<td style="text-align: left;"><strong>37</strong></td>
-<td style="text-align: left;"><strong>55.203</strong></td>
-<td style="text-align: left;"><strong>123</strong></td>
-<td style="text-align: left;"><strong>150.339</strong></td>
+<td style="text-align: center;"><strong>86</strong></td>
+<td style="text-align: center;"><strong>95.136</strong></td>
+<td style="text-align: center;"><strong>37</strong></td>
+<td style="text-align: center;"><strong>55.203</strong></td>
+<td style="text-align: center;"><strong>123</strong></td>
+<td style="text-align: center;"><strong>150.339</strong></td>
 </tr>
 </tbody>
 
@@ -3415,7 +3406,7 @@
           <span class="table-badge">附录 B 表</span>
           <span class="table-title">核心主张—规则依据—案例事实或正文分析—证据边界映射</span>
         </div>
-        <span class="table-scroll-hint-pill">11 项核心论断与证据映射</span>
+        <span class="table-scroll-hint-pill">11 项核心论断</span>
       </div>
       <div class="table-responsive-wrapper">
         <table class="standard-table table-claims-mapping">
@@ -3939,7 +3930,7 @@
 
     <section id="references-container" class="references-container">
       <h1 class="unnumbered" id="参考文献">
-        参考文献 (References)
+        参考文献
       </h1>
       <div class="references-list">
         
@@ -3950,7 +3941,7 @@
         <div class="ref-content-col">
           <div class="ref-body">U.S. Environmental Protection Agency. (2024). <em>Class VI Wells Used for Geologic Sequestration of Carbon Dioxide</em>. <a href="https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide" class="uri">https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-carbon-dioxide</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-epa-class6" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-epa-class6" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -3963,7 +3954,7 @@
         <div class="ref-content-col">
           <div class="ref-body">U.S. House of Representatives, Office of the Law Revision Counsel. (2026年访问). <em>26 U.S.C. §45Q: Credit for Carbon Oxide Sequestration</em>. <a href="https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim" class="uri">https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section45Q&amp;num=0&amp;edition=prelim</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-usc45q" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-usc45q" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -3976,7 +3967,7 @@
         <div class="ref-content-col">
           <div class="ref-body">European Union. (2009). <em>Directive 2009/31/EC on the geological storage of carbon dioxide</em>. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031" class="uri">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0031</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-eu-ccs" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-eu-ccs" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -3989,7 +3980,7 @@
         <div class="ref-content-col">
           <div class="ref-body">European Union. (2024). <em>Regulation (EU) 2024/1735 (Net-Zero Industry Act)</em>. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735" class="uri">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1735</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-eu-nzia" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-eu-nzia" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4002,7 +3993,7 @@
         <div class="ref-content-col">
           <div class="ref-body">International Maritime Organization. (2025). <em>Carbon Capture and Storage and the London Protocol</em>. <a href="https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx" class="uri">https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-imo-ccs" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-imo-ccs" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4015,7 +4006,7 @@
         <div class="ref-content-col">
           <div class="ref-body">International Maritime Organization. (2009). <em>Resolution LP.3(4): Amendment to Article 6 of the London Protocol</em>. <a href="https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/LCLPDocuments/LP.3(4).pdf" class="uri">https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/LCLPDocuments/LP.3(4).pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-london-article6" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-london-article6" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4028,7 +4019,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Northern Lights JV. (2025年8月25日). <em>Northern Lights JV has successfully stored first CO<sub>2</sub></em>. <a href="https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/" class="uri">https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-northernlights2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-northernlights2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4041,7 +4032,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Northern Lights JV. (2025年12月8日). <em>Northern Lights has issued first CO<sub>2</sub> storage certificates</em>. <a href="https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/" class="uri">https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-northernlights-certs" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-northernlights-certs" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4054,7 +4045,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Shell Canada. (未注明发布日期，2026年3月25日访问). <em>Quest Carbon Capture and Storage</em>. <a href="https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html" class="uri">https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-shellquest2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-shellquest2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4067,7 +4058,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Government of Alberta. (未注明发布日期，2026年3月25日访问). <em>Carbon capture, utilization and storage</em>. <a href="https://www.alberta.ca/carbon-capture-and-storage" class="uri">https://www.alberta.ca/carbon-capture-and-storage</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-alberta-ccus" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-alberta-ccus" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4080,7 +4071,7 @@
         <div class="ref-content-col">
           <div class="ref-body">ISO. (2026). <em>ISO 27914:2026: Carbon dioxide capture, transportation and storage – Geological storage</em>. <a href="https://www.iso.org/standard/84578.html" class="uri">https://www.iso.org/standard/84578.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iso27914" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iso27914" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4093,7 +4084,7 @@
         <div class="ref-content-col">
           <div class="ref-body">ISO. (2024). <em>ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems</em>. <a href="https://www.iso.org/standard/84840.html" class="uri">https://www.iso.org/standard/84840.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iso27913" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iso27913" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4106,7 +4097,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家市场监督管理总局, 国家标准化管理委员会. (2025). <em>GB/T 46872-2025: 二氧化碳捕集、运输和地质封存 词汇 共性术语</em>. 发布日期：2025-12-31；实施日期：2026-07-01. <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=wPHTYrjhhLY%3D&amp;mode=p" class="uri">https://std.samr.gov.cn/gb/search/gbDetailed?id=wPHTYrjhhLY%3D&amp;mode=p</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gbt46872-2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gbt46872-2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4119,7 +4110,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家数字标准馆. (2025). <em>GB/T 46875-2025: 进入二氧化碳长输管道介质质量要求</em>. 发布日期：2025-12-31；实施日期：2026-07-01. <a href="https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479" class="uri">https://www.ndls.org.cn/standard/detail/b00512a92bb3adb21c432173175e6479</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gbt46875-2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gbt46875-2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4132,7 +4123,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家发展改革委等十部门. (2023年8月4日). <em>关于印发《绿色低碳先进技术示范工程实施方案》的通知</em>. 发改环资〔2023〕1093号. <a href="https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230822_1359995.html" class="uri">https://www.ndrc.gov.cn/xxgk/zcfb/tz/202308/t20230822_1359995.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ndrc-green-demo2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ndrc-green-demo2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4145,7 +4136,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国务院. (2026年6月21日). <em>国务院关于印发《美丽中国建设“十五五”规划》的通知</em>. 国发〔2026〕20号. <a href="https://www.gov.cn/zhengce/content/202607/content_7074199.htm" class="uri">https://www.gov.cn/zhengce/content/202607/content_7074199.htm</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-beautiful-china-15fyp" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-beautiful-china-15fyp" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4158,7 +4149,7 @@
         <div class="ref-content-col">
           <div class="ref-body">中国人民银行、金融监管总局、中国证监会. (2025年7月15日). <em>绿色金融支持项目目录（2025年版）</em>. <a href="https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf" class="uri">https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/5779612/2025071418513641380.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-pboc-green-finance-2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-pboc-green-finance-2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4171,7 +4162,7 @@
         <div class="ref-content-col">
           <div class="ref-body">CNOOC Limited. (2024). <em>2023 Environmental, Social and Governance Report</em>. <a href="https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf" class="uri">https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202409/P020241216473769449925.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cnooc2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cnooc2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4184,7 +4175,7 @@
         <div class="ref-content-col">
           <div class="ref-body">中国石油天然气集团有限公司. (2025年7月28日). <em>我国首个百万吨级非混相驱 CCUS 全产业链示范基地核心工程投产</em>. <a href="https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml" class="uri">https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cnpc-aonan2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cnpc-aonan2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4197,7 +4188,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Global CCS Institute. (2024年4月16日). <em>A Gap Analysis of China’s Regulatory Framework for CO<sub>2</sub> Geological Storage</em>. Research report. <a href="https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/" class="uri">https://www.globalccsinstitute.com/publications/a-gap-analysis-of-chinas-regulatory-framework-for-co2-geological-storage/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gccsi-gap2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gccsi-gap2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4210,7 +4201,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2023). <em>CCUS Policies and Business Models: Building a Commercial Market</em>. <a href="https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market" class="uri">https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea2023ccuspolicy" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea2023ccuspolicy" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4223,7 +4214,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2023). <em>Net Zero Roadmap: A Global Pathway to Keep the 1.5 °C Goal in Reach – 2023 Update</em>. IEA, Paris. <a href="https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach" class="uri">https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea-nze2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea-nze2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4236,7 +4227,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2026年3月27日). <em>CCUS Projects Database: March 2026 edition</em>. CC BY 4.0. <a href="https://www.iea.org/data-and-statistics/data-product/ccus-projects-database" class="uri">https://www.iea.org/data-and-statistics/data-product/ccus-projects-database</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea-ccusdb2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea-ccusdb2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4249,7 +4240,7 @@
         <div class="ref-content-col">
           <div class="ref-body">European Commission. (2024). <em>Communication from the Commission to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions: Towards an ambitious Industrial Carbon Management for the EU (COM(2024) 62 final)</em>. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2024:62:FIN" class="uri">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2024:62:FIN</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ec-icm2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ec-icm2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4262,7 +4253,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Larson, E., et al. (2020). <em>Net-Zero America: Potential Pathways, Infrastructure, and Impacts</em>. Princeton University. <a href="https://netzeroamerica.princeton.edu/the-report" class="uri">https://netzeroamerica.princeton.edu/the-report</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-larson2020nza" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-larson2020nza" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4275,7 +4266,7 @@
         <div class="ref-content-col">
           <div class="ref-body">CNOOC Limited. (2025年4月8日). <em>2024 Environmental, Social and Governance Report</em>. <a href="https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202504/P020250408542745334285.pdf" class="uri">https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202504/P020250408542745334285.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cnooc-esg2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cnooc-esg2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4288,7 +4279,7 @@
         <div class="ref-content-col">
           <div class="ref-body">CNOOC Limited. (2026年3月26日). <em>中国海油公布2025年全年业绩</em>. <a href="https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html" class="uri">https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cnooc-results2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cnooc-results2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4301,7 +4292,7 @@
         <div class="ref-content-col">
           <div class="ref-body">中国石油天然气集团有限公司. (2025). <em>企业社会责任报告 2024</em>. <a href="https://www.cnpc.com.cn/cnpc/lncbw/202505/55347d1f8d2843c79e99fd61d180067b/files/4dc524c14cd949fb941e2e16986b8fb6.pdf" class="uri">https://www.cnpc.com.cn/cnpc/lncbw/202505/55347d1f8d2843c79e99fd61d180067b/files/4dc524c14cd949fb941e2e16986b8fb6.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cnpc-sr2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cnpc-sr2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4314,7 +4305,7 @@
         <div class="ref-content-col">
           <div class="ref-body">UK Parliament. (2023). <em>Energy Act 2023</em>. <a href="https://www.legislation.gov.uk/ukpga/2023/52/contents" class="uri">https://www.legislation.gov.uk/ukpga/2023/52/contents</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-energy-act2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-energy-act2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4327,7 +4318,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Ofgem. (2026年访问). <em>How we regulate carbon dioxide transport and storage networks</em>. <a href="https://www.ofgem.gov.uk/energy-regulation/low-carbon/carbon-capture-and-storage/how-we-regulate-carbon-dioxide-transport-and-storage-networks" class="uri">https://www.ofgem.gov.uk/energy-regulation/low-carbon/carbon-capture-and-storage/how-we-regulate-carbon-dioxide-transport-and-storage-networks</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ofgem-co2ts" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ofgem-co2ts" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4340,7 +4331,7 @@
         <div class="ref-content-col">
           <div class="ref-body">UK Department for Energy Security and Net Zero. (2025). <em>CCS Network Code</em>. <a href="https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf" class="uri">https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-ccs-code2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-ccs-code2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4353,7 +4344,7 @@
         <div class="ref-content-col">
           <div class="ref-body">European Commission. (2024). <em>Commission Implementing Regulation (EU) 2024/2493 amending Implementing Regulation (EU) 2018/2066 as regards the monitoring and reporting of greenhouse gas emissions pursuant to Directive 2003/87/EC</em>. <a href="https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj" class="uri">https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-eu-mrr2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-eu-mrr2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4366,7 +4357,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2025). <em>CCUS projects around the world are reaching new milestones</em>. <a href="https://www.iea.org/commentaries/ccus-projects-around-the-world-are-reaching-new-milestones" class="uri">https://www.iea.org/commentaries/ccus-projects-around-the-world-are-reaching-new-milestones</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea-clusters2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea-clusters2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4379,7 +4370,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Shell Canada. (2024). <em>Quest CCS Project: 2023 Annual Knowledge Sharing Report – MMV Performance</em>. Project knowledge-sharing report. <a href="https://open.alberta.ca/publications/quest-carbon-capture-and-storage-project-annual-knowledge-sharing-report" class="uri">https://open.alberta.ca/publications/quest-carbon-capture-and-storage-project-annual-knowledge-sharing-report</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-shellquest-mmv2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-shellquest-mmv2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4392,7 +4383,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Brown, C. F., Lackey, G., Mitchell, N., Baek, S., Schwartz, B., Dean, M., Dilmore, R., Blanke, H., O’Brien, S., &amp; Rowe, C. (2023). <em>Integrating risk assessment methods for carbon storage: A case study for the Quest carbon capture and storage facility</em>. International Journal of Greenhouse Gas Control, 129, 103972. <a href="https://doi.org/10.1016/j.ijggc.2023.103972" class="uri">https://doi.org/10.1016/j.ijggc.2023.103972</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-brown2023quest" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-brown2023quest" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4405,7 +4396,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Government of Alberta. (2011, current consolidation). <em>Carbon Sequestration Tenure Regulation</em>, Alta Reg 68/2011. <a href="https://www.canlii.org/en/ab/laws/regu/alta-reg-68-2011/latest/alta-reg-68-2011.html" class="uri">https://www.canlii.org/en/ab/laws/regu/alta-reg-68-2011/latest/alta-reg-68-2011.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-alberta-closure2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-alberta-closure2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4418,7 +4409,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Canada Revenue Agency. (2026年访问). <em>Carbon Capture, Utilization, and Storage (CCUS) Investment Tax Credit</em>. <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/business-tax-credits/clean-economy-itc/carbon-capture-itc/about-ccus-itc.html" class="uri">https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/corporations/business-tax-credits/clean-economy-itc/carbon-capture-itc/about-ccus-itc.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-canada-ccus-itc" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-canada-ccus-itc" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4431,7 +4422,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Norwegian Ministry of Petroleum and Energy. (2020). <em>Longship – Carbon capture and storage</em>. <a href="https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/" class="uri">https://www.regjeringen.no/en/documents/meld.-st.-33-20192020/id2765361/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-norway-longship2020" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-norway-longship2020" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4444,7 +4435,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). <em>Exploring paths and innovation in Norwegian carbon capture and storage policy</em>. Environmental Policy and Governance, 34(2), 125–136. <a href="https://doi.org/10.1002/eet.2068" class="uri">https://doi.org/10.1002/eet.2068</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-wettestad2024norway" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-wettestad2024norway" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4457,7 +4448,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Norwegian Offshore Directorate. (2026年访问). <em>Regulations relating to exploitation of subsea reservoirs on the continental shelf for storage of CO<sub>2</sub> and relating to transportation of CO<sub>2</sub> on the continental shelf</em>. <a href="https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/" class="uri">https://www.sodir.no/en/regulations/regulations/exploitation-of-subsea-reservoirs-on-the-continental-shelf-for-storage-of-and-transportation-of-co/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-norway-co2-regs" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-norway-co2-regs" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4470,7 +4461,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2022年7月25日). <em>Legal and Regulatory Frameworks for CCUS: An IEA CCUS Handbook</em>. IEA, Paris. <a href="https://www.iea.org/reports/legal-and-regulatory-frameworks-for-ccus" class="uri">https://www.iea.org/reports/legal-and-regulatory-frameworks-for-ccus</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea-ccus-legal2022" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea-ccus-legal2022" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4483,7 +4474,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IPCC. (2005). <em>IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage</em>. <a href="https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/" class="uri">https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ipcc-srccs2005" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ipcc-srccs2005" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4496,7 +4487,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Clarke, L., Y.-M. Wei, A. De La Vega Navarro, A. Garg, N. K. Hahmann, S. Khennas, I. M. L. Azevedo, A. Löschel, K. A. K. Singh, G. Streck, C. Stratou, &amp; Yanda, W. (2022). Energy systems. In IPCC, <em>Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report</em>, Chapter 6. <a href="https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/" class="uri">https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ipcc-ar6-wg3-ch6" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ipcc-ar6-wg3-ch6" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4509,7 +4500,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO<sub>2</sub> capture, cogeneration and hybridization. <em>Energy</em>, 91, 306–323. <a href="https://doi.org/10.1016/j.energy.2015.08.038" class="uri">https://doi.org/10.1016/j.energy.2015.08.038</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-hagi2015" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-hagi2015" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4522,7 +4513,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEAGHG. (2024). <em>Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems</em> (Report 2024-03). <a href="https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/" class="uri">https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ieaghg-specca2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ieaghg-specca2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4535,7 +4526,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEAGHG. (2024). <em>Geological Storage of CO<sub>2</sub>: Seal Integrity Review</em>. <a href="https://ieaghg.org/publications/geological-storage-of-co2-seal-integrity-review/" class="uri">https://ieaghg.org/publications/geological-storage-of-co2-seal-integrity-review/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ieaghg-seal2024" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ieaghg-seal2024" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4548,7 +4539,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEAGHG. (2020). <em>Monitoring and Modelling of CO<sub>2</sub> Storage: The Potential for Improving the Cost-Benefit Ratio of Reducing Risk</em> (2020-01). <a href="https://ieaghg.org/publications/monitoring-and-modelling-of-co2-storage/" class="uri">https://ieaghg.org/publications/monitoring-and-modelling-of-co2-storage/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ieaghg-monitoring2020" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ieaghg-monitoring2020" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4561,7 +4552,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Mateeva, A., et al. (2014). <em>Distributed acoustic sensing for reservoir monitoring with VSP</em>. Geophysical Prospecting, 62(4), 679-692. <a href="https://doi.org/10.1111/1365-2478.12116" class="uri">https://doi.org/10.1111/1365-2478.12116</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-mateeva2014" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-mateeva2014" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4574,7 +4565,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). <em>A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada</em>. International Journal of Greenhouse Gas Control, 26, 109–126. <a href="https://doi.org/10.1016/j.ijggc.2014.04.026" class="uri">https://doi.org/10.1016/j.ijggc.2014.04.026</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-bourne2014quest" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-bourne2014quest" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4587,7 +4578,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Harvey, S., et al. (2022). <em>Quest CCS facility: Time-lapse seismic campaigns</em>. International Journal of Greenhouse Gas Control, 117, 103665. <a href="https://doi.org/10.1016/j.ijggc.2022.103665" class="uri">https://doi.org/10.1016/j.ijggc.2022.103665</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-harvey2022quest" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-harvey2022quest" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4600,7 +4591,7 @@
         <div class="ref-content-col">
           <div class="ref-body">OECD. (2020). <em>Cracking the Code: Rulemaking for Humans and Machines</em>. OECD Publishing. <a href="https://doi.org/10.1787/3afe6ba5-en" class="uri">https://doi.org/10.1787/3afe6ba5-en</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-oecd-rac2020" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-oecd-rac2020" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4613,7 +4604,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Gahlot, A. P., et al. (2025). <em>An uncertainty-aware digital shadow for underground multimodal CO<sub>2</sub> storage monitoring</em>. Geophysical Journal International, 242(1), ggaf176. <a href="https://doi.org/10.1093/gji/ggaf176" class="uri">https://doi.org/10.1093/gji/ggaf176</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gahlot2025shadow" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gahlot2025shadow" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4626,7 +4617,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Verra. (2025). <em>June 2025 Release of Additional Digitalized Methodologies</em>. <a href="https://verra.org/june-2025-release-of-additional-digitalized-methodologies/" class="uri">https://verra.org/june-2025-release-of-additional-digitalized-methodologies/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-verra2025digital" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-verra2025digital" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4639,7 +4630,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Global CCS Institute. (2025). <em>Global Status of CCS 2025: Staying the Course</em>. <a href="https://www.globalccsinstitute.com/resources/global-status-report/" class="uri">https://www.globalccsinstitute.com/resources/global-status-report/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gccsi-status2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gccsi-status2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4652,7 +4643,7 @@
         <div class="ref-content-col">
           <div class="ref-body">World Bank. (2022). <em>Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets</em>. <a href="https://hdl.handle.net/10986/37622" class="uri">https://hdl.handle.net/10986/37622</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-worldbank-dmrv2022" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-worldbank-dmrv2022" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4665,7 +4656,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Veen, P., Winkler, M., Oh, S., &amp; Michaelowa, A. (2025). <em>Can digital monitoring, reporting, and verification (dMRV) unlock industrial CO<sub>2</sub> capture and removal in carbon markets?</em> Environmental Research Letters, 20(12), 121002. <a href="https://doi.org/10.1088/1748-9326/ae20ad" class="uri">https://doi.org/10.1088/1748-9326/ae20ad</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-veen-dmrv2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-veen-dmrv2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4678,7 +4669,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Verra. (2026年2月19日). <em>Verra Approves First Credits under DMRV Pilot for High-Frequency Issuances</em>. <a href="https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/" class="uri">https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-verra-dmrv2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-verra-dmrv2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4691,7 +4682,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Climate Action Data Trust. (2026年1月7日). <em>CAD Trust launches Data Model 2.0 Public API Documentation</em>. <a href="https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/" class="uri">https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-cadtrust-api2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-cadtrust-api2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4704,7 +4695,7 @@
         <div class="ref-content-col">
           <div class="ref-body">UNFCCC. (2026年1月23日). <em>Development of Paris Agreement Article 6 registry infrastructure begins</em>. <a href="https://unfccc.int/news/development-of-paris-agreement-article-6-registry-infrastructure-begins" class="uri">https://unfccc.int/news/development-of-paris-agreement-article-6-registry-infrastructure-begins</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-unfccc-a6registry2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-unfccc-a6registry2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4717,7 +4708,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Verra. (2024年6月27日). <em>VM0049 Carbon Capture and Storage, v1.0</em>. <a href="https://verra.org/methodologies/vm0049-carbon-capture-and-storage/" class="uri">https://verra.org/methodologies/vm0049-carbon-capture-and-storage/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-verra-vm0049" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-verra-vm0049" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4730,7 +4721,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Verra. (2025年4月22日，2026年7月14日更新说明). <em>VT0012 Accounting Non-VCS CO<sub>2</sub> in CCS Projects, v1.0</em>. <a href="https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/" class="uri">https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-verra-vt0012" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-verra-vt0012" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4743,7 +4734,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Puro.earth. (2026年访问). <em>dMRV Connect (Beta): API Documentation</em>. <a href="https://docs.api.puro.earth/dmrv/overview/" class="uri">https://docs.api.puro.earth/dmrv/overview/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-puro-dmrv-api-docs" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-puro-dmrv-api-docs" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4756,7 +4747,7 @@
         <div class="ref-content-col">
           <div class="ref-body">生态环境部办公厅. (2026年2月9日). <em>关于做好2026年全国碳排放权交易市场有关工作的通知</em>. <a href="https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html" class="uri">https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202602/t20260209_1143900.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-china-ets-work2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-china-ets-work2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4769,7 +4760,7 @@
         <div class="ref-content-col">
           <div class="ref-body">生态环境部, 市场监管总局. (2023年10月19日). <em>温室气体自愿减排交易管理办法（试行）</em>. <a href="https://www.mee.gov.cn/gzk/gz/202310/t20231020_1043695.shtml" class="uri">https://www.mee.gov.cn/gzk/gz/202310/t20231020_1043695.shtml</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-china-ccer-rules2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-china-ccer-rules2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4782,7 +4773,7 @@
         <div class="ref-content-col">
           <div class="ref-body">刘志豪. (2026). <em>CCUS Policy Hub: 全球 CCUS 法规与政策数据库</em>. DOI: 10.5281/zenodo.21110615. <a href="https://liuh886.github.io/ccus-policy-hub/" class="uri">https://liuh886.github.io/ccus-policy-hub/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ccuspolicyhub" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ccuspolicyhub" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4795,7 +4786,7 @@
         <div class="ref-content-col">
           <div class="ref-body">IEA. (2026年3月30日). <em>Financing CCUS at Scale</em>. <a href="https://www.iea.org/reports/financing-ccus-at-scale" class="uri">https://www.iea.org/reports/financing-ccus-at-scale</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-iea-financing2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-iea-financing2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4808,7 +4799,7 @@
         <div class="ref-content-col">
           <div class="ref-body">European Commission. (2026年访问). <em>Innovation Fund</em>. <a href="https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en" class="uri">https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-eu-innovation-fund2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-eu-innovation-fund2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4821,7 +4812,7 @@
         <div class="ref-content-col">
           <div class="ref-body">UK Department for Energy Security and Net Zero. (2026年访问). <em>Cluster sequencing for carbon capture, usage and storage deployment</em>. <a href="https://www.gov.uk/government/publications/cluster-sequencing-for-carbon-capture-usage-and-storage-ccus-deployment-phase-1-expressions-of-interest" class="uri">https://www.gov.uk/government/publications/cluster-sequencing-for-carbon-capture-usage-and-storage-ccus-deployment-phase-1-expressions-of-interest</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-cluster-sequencing2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-cluster-sequencing2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4834,7 +4825,7 @@
         <div class="ref-content-col">
           <div class="ref-body">North Sea Transition Authority. (2026年访问). <em>Energy Integration</em>. <a href="https://www.nstauthority.co.uk/the-move-to-net-zero/energy-integration/" class="uri">https://www.nstauthority.co.uk/the-move-to-net-zero/energy-integration/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-nsta-energy-integration2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-nsta-energy-integration2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4847,7 +4838,7 @@
         <div class="ref-content-col">
           <div class="ref-body">UK Department for Energy Security and Net Zero, Office of Gas and Electricity Markets. (2025年8月6日). <em>Evolution of economic regulation for CO<sub>2</sub> storage: call for evidence (accessible webpage)</em>. <a href="https://www.gov.uk/government/calls-for-evidence/evolution-of-economic-regulation-for-co2-storage/evolution-of-economic-regulation-for-co2-storage-call-for-evidence-accessible-webpage" class="uri">https://www.gov.uk/government/calls-for-evidence/evolution-of-economic-regulation-for-co2-storage/evolution-of-economic-regulation-for-co2-storage-call-for-evidence-accessible-webpage</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-co2-econ-reg2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-co2-econ-reg2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4860,7 +4851,7 @@
         <div class="ref-content-col">
           <div class="ref-body">科技部, 国家发展改革委, 工业和信息化部, 等. (2022). <em>科技支撑碳达峰碳中和实施方案（2022—2030年）</em>. <a href="https://www.gov.cn/zhengce/zhengceku/2022-08/18/5705865/files/94318119b8464e2583a3d4284df9c855.pdf" class="uri">https://www.gov.cn/zhengce/zhengceku/2022-08/18/5705865/files/94318119b8464e2583a3d4284df9c855.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-most2022tech" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-most2022tech" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4873,7 +4864,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Hekkert, M. P., Suurs, R. A. A., Negro, S. O., Kuhlmann, S., &amp; Smits, R. E. H. M. (2007). <em>Functions of innovation systems: A new approach for analysing technological change</em>. Technological Forecasting and Social Change, 74(4), 413–432. <a href="https://doi.org/10.1016/j.techfore.2006.03.002" class="uri">https://doi.org/10.1016/j.techfore.2006.03.002</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-hekkert2007" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-hekkert2007" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4886,7 +4877,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Bergek, A., Jacobsson, S., Carlsson, B., Lindmark, S., &amp; Rickne, S. (2008). <em>Analyzing the functional dynamics of technological innovation systems: A scheme of analysis</em>. Research Policy, 37(3), 407–429. <a href="https://doi.org/10.1016/j.respol.2007.12.003" class="uri">https://doi.org/10.1016/j.respol.2007.12.003</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-bergek2008" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-bergek2008" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4899,7 +4890,7 @@
         <div class="ref-content-col">
           <div class="ref-body">van Alphen, K., Hekkert, M. P., &amp; Turkenburg, W. C. (2010). <em>Accelerating the deployment of carbon capture and storage technologies by strengthening the innovation system</em>. International Journal of Greenhouse Gas Control, 4(2), 396–409. <a href="https://doi.org/10.1016/j.ijggc.2009.09.019" class="uri">https://doi.org/10.1016/j.ijggc.2009.09.019</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-vanalphen2010" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-vanalphen2010" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4912,7 +4903,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Lai, X., Ye, Z., Xu, Z., Holmes, M. H., &amp; Lambright, W. H. (2012). <em>Carbon capture and sequestration technological innovation system in China: Structure, function evaluation and policy implication</em>. Energy Policy, 50, 635–646. <a href="https://doi.org/10.1016/j.enpol.2012.08.004" class="uri">https://doi.org/10.1016/j.enpol.2012.08.004</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-lai2012" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-lai2012" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4925,7 +4916,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Rogge, K. S., &amp; Reichardt, K. (2016). <em>Policy mixes for sustainability transitions: An extended concept and framework for analysis</em>. Research Policy, 45(8), 1620–1635. <a href="https://doi.org/10.1016/j.respol.2016.04.004" class="uri">https://doi.org/10.1016/j.respol.2016.04.004</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-rogge2016" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-rogge2016" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4938,7 +4929,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Office of the Federal Register. (2026年访问). <em>40 CFR §146.93: Post-injection site care and site closure</em>. <a href="https://www.ecfr.gov/current/title-40/chapter-I/subchapter-D/part-146/subpart-H/section-146.93" class="uri">https://www.ecfr.gov/current/title-40/chapter-I/subchapter-D/part-146/subpart-H/section-146.93</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-us-pisc-rule" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-us-pisc-rule" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4951,7 +4942,7 @@
         <div class="ref-content-col">
           <div class="ref-body">United Kingdom. (2011). <em>The Storage of Carbon Dioxide (Termination of Licences) Regulations 2011</em>, S.I. 2011/1483, and Explanatory Memorandum. <a href="https://www.legislation.gov.uk/uksi/2011/1483/pdfs/uksiem_20111483_en.pdf" class="uri">https://www.legislation.gov.uk/uksi/2011/1483/pdfs/uksiem_20111483_en.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-storage-termination" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-storage-termination" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4964,7 +4955,7 @@
         <div class="ref-content-col">
           <div class="ref-body">North Sea Transition Authority. (2026年访问). <em>Guidance on Applications for a Carbon Storage Permit</em>. <a href="https://www.nstauthority.co.uk/media/oxuhiqtb/guidance-on-applications-for-a-carbon-storage-permit.pdf" class="uri">https://www.nstauthority.co.uk/media/oxuhiqtb/guidance-on-applications-for-a-carbon-storage-permit.pdf</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-uk-storage-rights" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-uk-storage-rights" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4977,7 +4968,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Alberta Energy Regulator. (2023). <em>Directive 065: Resources Applications for Oil and Gas Reservoirs</em>. <a href="https://www.aer.ca/providing-information/regulatory-frameworks/directive-065" class="uri">https://www.aer.ca/providing-information/regulatory-frameworks/directive-065</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-alberta-directive065" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-alberta-directive065" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -4990,7 +4981,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家发展改革委. (2023年8月22日). <em>国家发展改革委有关负责同志就《绿色低碳先进技术示范工程实施方案》答记者问</em>. <a href="https://www.ndrc.gov.cn/xxgk/jd/jd/202308/t20230822_1360007_ext.html" class="uri">https://www.ndrc.gov.cn/xxgk/jd/jd/202308/t20230822_1360007_ext.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-ndrc-green-demo-qa2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-ndrc-green-demo-qa2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5003,7 +4994,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国务院. (2026年7月5日). <em>国务院关于印发《“十五五”碳达峰行动方案》的通知</em>. 国发〔2026〕22号. <a href="https://www.mee.gov.cn/zcwj/gwywj/202607/t20260714_1161655.shtml" class="uri">https://www.mee.gov.cn/zcwj/gwywj/202607/t20260714_1161655.shtml</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-china-carbon-peak2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-china-carbon-peak2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5016,7 +5007,7 @@
         <div class="ref-content-col">
           <div class="ref-body">工业和信息化部节能与综合利用司. (2026年9月4日). <em>工业和信息化领域绿色能源应用典型场景与案例申报要求</em>. <a href="https://www.miit.gov.cn/jgsj/jns/nyjy/art/2026/art_8037974bb73f470caaf1127337f0ece7.html" class="uri">https://www.miit.gov.cn/jgsj/jns/nyjy/art/2026/art_8037974bb73f470caaf1127337f0ece7.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-miit-ccus-scenes2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-miit-ccus-scenes2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5029,7 +5020,7 @@
         <div class="ref-content-col">
           <div class="ref-body">全国人民代表大会. (2026年3月12日). <em>中华人民共和国生态环境法典</em>. 2026年8月15日起施行. <a href="https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml" class="uri">https://www.mee.gov.cn/ywgz/fgbz/fl/202603/t20260313_1146496.shtml</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-china-ecocode2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-china-ecocode2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5042,7 +5033,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国务院国资委. (2025年9月28日). <em>全球最大煤电碳捕集示范工程在华能投运</em>. <a href="http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html" class="uri">http://wap.sasac.gov.cn/n2588025/n2588124/c34533488/content.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-huaneng-zhengning2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-huaneng-zhengning2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5055,7 +5046,7 @@
         <div class="ref-content-col">
           <div class="ref-body">河北省人民政府. (2026年1月7日). <em>河钢CCUS技术工业示范项目在唐钢新区全线贯通</em>. <a href="https://www.hebei.gov.cn/columns/580d0301-2e0b-4152-9dd1-7d7f4e0f4980/202601/07/f4cf9f76-33e1-456e-9e92-3ea52a646a69.html" class="uri">https://www.hebei.gov.cn/columns/580d0301-2e0b-4152-9dd1-7d7f4e0f4980/202601/07/f4cf9f76-33e1-456e-9e92-3ea52a646a69.html</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-hegang-ccus2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-hegang-ccus2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5068,7 +5059,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家发展改革委办公厅. (2025年4月16日). <em>关于印发《绿色低碳先进技术示范项目清单（第二批）》的通知</em>（发改办环资〔2025〕396号）. <a href="https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20500" class="uri">https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20500</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-qingzhou-ccus2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-qingzhou-ccus2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5081,7 +5072,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家能源局. (2022年9月2日). <em>我国首个百万吨级 CCUS 项目全面建成投产</em>. <a href="https://www.nea.gov.cn/2022-09/02/c_1310658658.htm" class="uri">https://www.nea.gov.cn/2022-09/02/c_1310658658.htm</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-sinopec-qilu2022" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-sinopec-qilu2022" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5094,7 +5085,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家市场监督管理总局, 国家标准化管理委员会. (2023). <em>GB/T 42797-2023: 二氧化碳捕集、输送和地质封存 管道输送系统</em>. 2023年9月1日起实施. <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=FC816D04FEBF62EBE05397BE0A0AD5FA" class="uri">https://std.samr.gov.cn/gb/search/gbDetailed?id=FC816D04FEBF62EBE05397BE0A0AD5FA</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gbt42797-2023" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gbt42797-2023" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5107,7 +5098,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家市场监督管理总局, 国家标准化管理委员会. (2025). <em>GB/T 46878-2025: 二氧化碳捕集、运输和地质封存 地质封存</em>. 2026年7月1日起实施. <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A" class="uri">https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D766455EE06397BE0A0ABB9A</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gbt46878-2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gbt46878-2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5120,7 +5111,7 @@
         <div class="ref-content-col">
           <div class="ref-body">国家市场监督管理总局, 国家标准化管理委员会. (2025). <em>GB/T 46871-2025: 二氧化碳捕集、运输和地质封存 提高原油采收率的二氧化碳封存</em>. 2026年7月1日起实施. <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A" class="uri">https://std.samr.gov.cn/gb/search/gbDetailed?id=473EBB99D761455EE06397BE0A0ABB9A</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-gbt46871-2025" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-gbt46871-2025" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5133,7 +5124,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Natural Resources Canada. (2026年访问). <em>Shell Canada Energy Quest Project</em>. <a href="https://natural-resources.canada.ca/funding-partnerships/shell-canada-energy-quest-project" class="uri">https://natural-resources.canada.ca/funding-partnerships/shell-canada-energy-quest-project</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-nrcan-quest" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-nrcan-quest" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5146,7 +5137,7 @@
         <div class="ref-content-col">
           <div class="ref-body">Yara International. (2026年9月7日). <em>Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands</em>. <a href="https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/" class="uri">https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/</a></div>
           <div class="ref-actions">
-            <a href="#cite-return-yara-sluiskil2026" class="ref-back-link" title="返回正文引用位置">↩ 返回正文</a>
+            <a href="#cite-return-yara-sluiskil2026" class="ref-back-link" title="返回正文">↩ 返回正文</a>
           </div>
         </div>
       </div>
@@ -5170,7 +5161,7 @@
 
       <!-- Citation Card -->
       <div class="citation-card">
-        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">引用本研究报告 (Citation)</h4>
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">引用本报告</h4>
         <p style="font-size: 0.88rem; color: var(--text-muted);">
           刘志豪, 崔博宇, 吴俊军, 施闻如. (2026). 从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 (ESG30 青年学者计划课题报告 v3.4). CCUS Policy Hub. https://doi.org/10.5281/zenodo.21110615
         </p>
@@ -5183,8 +5174,8 @@
   url={https://liuh886.github.io/ccus-policy-hub/reports/2601_ESG30/}
 }</code></pre>
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 1rem;">
-          <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX 引用代码</button>
-          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF (34页)</a>
+          <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX</button>
+          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF (34 页)</a>
         </div>
       </div>
     </main>
@@ -5753,8 +5744,8 @@
         commentsListContainer.innerHTML = `
           <div class="empty-comments">
             <div class="empty-icon">📝</div>
-            <p style="font-weight: 600; font-size: 1rem;">暂无审阅批注</p>
-            <p class="empty-tip">在正文任意段落滑动选中文字，即可唤起“添加批注”气泡记录见解，刷新或重开网页自动恢复，支持一键导出结构化报告。</p>
+            <p style="font-weight: 600; font-size: 1rem;">暂无批注</p>
+            <p class="empty-tip">在正文中选中文字即可添加批注，支持本地保存与导出。</p>
           </div>
         `;
         return;
@@ -5776,7 +5767,7 @@
                 <span>${timeStr}</span>
                 ${sectionBadge}
               </div>
-              <button class="btn-delete-comment" data-delete-id="${c.id}" title="删除该条批注">🗑️</button>
+              <button class="btn-delete-comment" data-delete-id="${c.id}" title="删除批注">🗑️</button>
             </div>
             <div class="comment-card-quote">“${quoteEscaped}”</div>
             <div class="comment-card-body">${commentEscaped}</div>
@@ -5838,7 +5829,7 @@
 
     // 删除单条批注
     function deleteComment(id) {
-      if (!confirm('确定删除这条审阅批注吗？')) return;
+      if (!confirm('确定删除该条批注吗？')) return;
       let comments = getStoredComments();
       comments = comments.filter(c => c.id !== id);
       saveStoredComments(comments);
@@ -5852,7 +5843,7 @@
     document.getElementById('btn-clear-all-comments').addEventListener('click', () => {
       const comments = getStoredComments();
       if (comments.length === 0) return;
-      if (!confirm(`确定清空全部 ${comments.length} 条审阅批注吗？此操作不可逆。`)) return;
+      if (!confirm(`确定清空全部 ${comments.length} 条批注吗？`)) return;
 
       localStorage.removeItem(STORAGE_KEY);
       document.querySelectorAll('.comment-highlight').forEach(unwrapMark);
@@ -5872,7 +5863,7 @@
       const now = new Date();
       const dateStr = now.toISOString().replace('T', ' ').substring(0, 19);
 
-      let md = `# CCUS 规模化治理与 dMRV 报告 · 审阅研讨批注备忘录\n\n`;
+      let md = `# CCUS 报告批注备忘录\n\n`;
       md += `> **报告标题**：${document.title}\n`;
       md += `> **导出时间**：${dateStr}\n`;
       md += `> **批注总计**：${comments.length} 条\n\n`;
@@ -5886,12 +5877,12 @@
         }
         md += `- **引述原文**：\n`;
         md += `  > “${c.quote}”\n`;
-        md += `- **审阅意见 / Comments**：\n`;
+        md += `- **审阅意见**：\n`;
         md += `  ${c.comment}\n\n`;
       });
 
       md += `---\n`;
-      md += `*本文档由 CCUS Policy Hub 学术智库审阅系统自动生成*\n`;
+      md += `*本文档由 CCUS Policy Hub 导出*\n`;
 
       const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
       const url = URL.createObjectURL(blob);
@@ -5915,7 +5906,7 @@
 
       const now = new Date();
       const dateStr = now.toISOString().replace('T', ' ').substring(0, 19);
-      let text = `【CCUS 规模化治理与 dMRV 报告 · 审阅批注清单】\n时间：${dateStr} | 共 ${comments.length} 条\n\n`;
+      let text = `【CCUS 报告批注】\n时间：${dateStr} | 共 ${comments.length} 条\n\n`;
 
       comments.forEach((c, idx) => {
         text += `[批注 ${idx + 1}] (${c.sectionTitle || '正文'})\n`;

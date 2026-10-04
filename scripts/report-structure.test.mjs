@@ -339,4 +339,17 @@ test('TeX 参数缺省或为空时不应抛出 TypeError', () => {
   assert.doesNotThrow(() => verifyReportStructure(page(GOOD_BODY), null));
 });
 
+test('表格大面积空数据行会被拦截（防止 Pandoc 解析失误导致空列）', () => {
+  // 模拟 Pandoc 解析含 *{6} 的 tabularx 时出现的空数据行
+  const hollowBody = GOOD_BODY.replace(
+    '<tbody><tr><td>1</td></tr></tbody>',
+    '<tbody><tr><td>美国</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>'
+  );
+  const problems = verify(hollowBody);
+  assert.ok(
+    problems.some((p) => p.includes('空数据行')),
+    `应拦截空数据行，实际返回: ${JSON.stringify(problems)}`
+  );
+});
+
 test.after(() => fs.rmSync(dataDir, { recursive: true, force: true }));

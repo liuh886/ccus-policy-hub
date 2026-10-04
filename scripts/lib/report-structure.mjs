@@ -101,6 +101,26 @@ export function verifyReportStructure(html, tex = '', options = {}) {
     ) {
       add(`表格 .${cls} 未被 table-container-card 包裹`);
     }
+
+    // 数据完整性：tbody 数据行不得大面积为空（捕获 Pandoc 解析失真导致的空列）
+    const tbody = m[2].match(/<tbody>([\s\S]*?)<\/tbody>/);
+    if (tbody) {
+      const rows = [...tbody[1].matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/g)];
+      for (const r of rows) {
+        const cells = [...r[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/g)].map(
+          (c) => stripTags(c[1]).trim()
+        );
+        if (cells.length > 2) {
+          const emptyCount = cells.filter((c) => !c).length;
+          if (emptyCount >= cells.length - 1) {
+            add(
+              `表格 .${cls} 存在空数据行（${emptyCount}/${cells.length} 单元格为空，数据列可能丢失）`
+            );
+            break;
+          }
+        }
+      }
+    }
   }
 
   for (const [re, label] of [

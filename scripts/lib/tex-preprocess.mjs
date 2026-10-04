@@ -5,10 +5,11 @@
  * （历史上正因为它被内联在 5800 行脚本里、无法单测，一处 label 硬编码就让整条
  * 流水线在作者改名后产出"缺表头"的页面）。抽出来后可直接用 node:test 覆盖。
  *
- * 三条规则各自对应一个**实测确认**的 Pandoc 缺陷，不是猜的：
+ * 四条规则各自对应一个**实测确认**的 Pandoc 缺陷，不是猜的：
  *  1. 表头里的 \shortstack  → Pandoc 3.1.x 整行丢弃 <thead>
  *  2. longtable 的 \rowcolors 与 \endfirsthead 重复表头 → 表头重复两次且无 <thead>
- *  3. 行首的中文方括号标记 [本文分析] → 被当作可选参数静默吞掉
+ *  3. tabularx 里的 *{N} 重复列修饰符（如 *{6}{...}） → Pandoc 丢失列定义导致数据单元格全为空
+ *  4. 行首的中文方括号标记 [本文分析] → 被当作可选参数静默吞掉
  */
 
 /** 读取 str[openIdx] 处的花括号分组（跳过被反斜杠转义的字符），返回内容与结束位置 */
@@ -93,6 +94,43 @@ function cleanLongtable(block) {
 }
 
 /**
+ * 转换包含复杂列修饰或 *{N} 重复列的 tabularx 表格为标准 tabular{...}。
+ * Pandoc 3.1.x 解析含 *{6}{>{\centering\arraybackslash}X} 的 tabularx 时会丢失列定义，
+ * 导致所有数据行的数据单元格全被解析为空。
+ */
+export function cleanTabularxBlocks(tex) {
+  const tabularxBlocks = matchBalancedBlocks(
+    tex,
+    '\\begin{tabularx}',
+    '\\end{tabularx}'
+  );
+  let out = tex;
+  let count = 0;
+  // 逆序替换，避免前面的块改动后面的偏移
+  for (let k = tabularxBlocks.length - 1; k >= 0; k--) {
+    const b = tabularxBlocks[k];
+    const g1 = readBalancedGroup(b.text, '\\begin{tabularx}'.length);
+    if (!g1) continue;
+    const g2 = readBalancedGroup(b.text, g1.end);
+    if (!g2) continue;
+    const repMatch = g2.text.match(/\*\{(\d+)\}/);
+    if (repMatch) {
+      const n = parseInt(repMatch[1], 10);
+      const colSpec = 'l' + 'c'.repeat(n);
+      const newBegin = '\\begin{tabular}{' + colSpec + '}';
+      const body = b.text.slice(
+        g2.end,
+        b.text.length - '\\end{tabularx}'.length
+      );
+      const newBlock = newBegin + body + '\\end{tabular}';
+      out = out.slice(0, b.start) + newBlock + out.slice(b.end);
+      count++;
+    }
+  }
+  return { tex: out, count };
+}
+
+/**
  * 完整预处理。返回净化后的 TeX 与各条规则的命中计数（供日志与自检使用）。
  */
 export function preprocessTex(tex) {
@@ -117,6 +155,9 @@ export function preprocessTex(tex) {
     }
   }
 
+  const tabularxResult = cleanTabularxBlocks(out);
+  out = tabularxResult.tex;
+
   // 行首中文方括号标记：[本文分析] / [项目披露] / [本文建议]
   const bracketed = out.match(/\[([一-鿿][^\]\r\n]{0,20})\]/g);
   out = out.replace(/\[([一-鿿][^\]\r\n]{0,20})\]/g, '{[}$1{]}');
@@ -126,6 +167,7 @@ export function preprocessTex(tex) {
     shortstackCount: shortstacks.count,
     longtableCount: longtables.length,
     longtableTouched,
+    tabularxTouched: tabularxResult.count,
     bracketGuardCount: bracketed ? bracketed.length : 0,
   };
 }
