@@ -55,11 +55,12 @@ if (!fs.existsSync(htmlPath)) {
 }
 
 const ghApiToText = (remotePath) => {
+  const normalizedPath = remotePath.replace(/\\/g, '/');
   const r = spawnSync(
     'gh',
     [
       'api',
-      `repos/${repo}/contents/${remotePath}`,
+      `repos/${repo}/contents/${encodeURI(normalizedPath)}`,
       '-H',
       'Accept: application/vnd.github.v3.raw',
     ],

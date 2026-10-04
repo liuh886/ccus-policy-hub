@@ -131,11 +131,12 @@ const defaultLocalDataDir = path.join(localRootDir, 'data');
  * 嵌套、在 CI 又依赖 `python` 恰好存在——两个环境都只是"碰巧能用"。这里改成 argv 直传。
  */
 function ghApiToFile(remotePath, destPath) {
+  const normalizedPath = remotePath.replace(/\\/g, '/');
   const res = spawnSync(
     'gh',
     [
       'api',
-      `repos/${repo}/contents/${remotePath}`,
+      `repos/${repo}/contents/${encodeURI(normalizedPath)}`,
       '-H',
       'Accept: application/vnd.github.v3.raw',
     ],
@@ -153,11 +154,12 @@ function ghApiToFile(remotePath, destPath) {
 }
 
 function ghApiToText(remotePath) {
+  const normalizedPath = remotePath.replace(/\\/g, '/');
   const res = spawnSync(
     'gh',
     [
       'api',
-      `repos/${repo}/contents/${remotePath}`,
+      `repos/${repo}/contents/${encodeURI(normalizedPath)}`,
       '-H',
       'Accept: application/vnd.github.v3.raw',
     ],
@@ -505,6 +507,27 @@ const assetManifest = [];
     return acc;
   }, {});
   console.log(`[sync-paper-report] 配图来源统计: ${JSON.stringify(bySource)}`);
+
+  // 清理不再引用的历史遗留配图（防止配图重命名后旧图长期滞留在磁盘与 git 中）
+  const targetDataDir = path.join(outDir, 'data');
+  if (fs.existsSync(targetDataDir)) {
+    const keepBasenames = new Set(
+      referencedImages.map((img) => path.basename(img))
+    );
+    for (const f of fs.readdirSync(targetDataDir)) {
+      const p = path.join(targetDataDir, f);
+      if (fs.statSync(p).isFile() && !keepBasenames.has(f)) {
+        try {
+          fs.unlinkSync(p);
+          console.log(`[sync-paper-report] 🗑️ 已清理过期配图: data/${f}`);
+        } catch (e) {
+          console.warn(
+            `[sync-paper-report] ⚠️ 清理过期配图失败: data/${f} (${e.message})`
+          );
+        }
+      }
+    }
+  }
 }
 
 // --- 2. 提取 TeX 元数据 ---
@@ -2603,14 +2626,20 @@ const template = `<!DOCTYPE html>
       gap: 0.6rem;
     }
     .table-badge {
-      background: var(--brand-blue);
-      color: #ffffff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.2rem 0.5rem;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--brand-blue);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 0.18rem 0.52rem;
       border-radius: 0.375rem;
       font-family: var(--font-mono);
       letter-spacing: 0.02em;
+    }
+    [data-theme="dark"] .table-badge {
+      background: rgba(59, 130, 246, 0.14);
+      color: #93c5fd;
+      border-color: rgba(59, 130, 246, 0.28);
     }
     .table-title {
       font-size: 0.95rem;
@@ -3702,14 +3731,20 @@ const template = `<!DOCTYPE html>
     }
     .figure-label {
       font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #ffffff;
-      background: var(--brand-blue);
-      padding: 0.2rem 0.55rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      padding: 0.18rem 0.52rem;
       border-radius: 0.35rem;
       white-space: nowrap;
       flex-shrink: 0;
+    }
+    [data-theme="dark"] .figure-label {
+      background: rgba(59, 130, 246, 0.14);
+      color: #93c5fd;
+      border-color: rgba(59, 130, 246, 0.28);
     }
     .figure-title {
       font-family: var(--font-sans);

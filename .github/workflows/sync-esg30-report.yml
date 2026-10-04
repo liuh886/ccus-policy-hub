@@ -49,10 +49,12 @@ jobs:
           set -euo pipefail
           TEX_SHA=$(gh api "repos/liuh886/2601_ESG30/commits?path=paper_draft.tex&per_page=1" --jq '.[0].sha')
           OUT_SHA=$(gh api "repos/liuh886/2601_ESG30/commits?path=output&per_page=1" --jq '.[0].sha')
-          REV="${TEX_SHA}:${OUT_SHA}"
+          DATA_SHA=$(gh api "repos/liuh886/2601_ESG30/commits?path=data&per_page=1" --jq '.[0].sha')
+          REV="${TEX_SHA}:${OUT_SHA}:${DATA_SHA}"
           echo "rev=$REV" >> "$GITHUB_OUTPUT"
           echo "tex_sha=$TEX_SHA" >> "$GITHUB_OUTPUT"
           echo "out_sha=$OUT_SHA" >> "$GITHUB_OUTPUT"
+          echo "data_sha=$DATA_SHA" >> "$GITHUB_OUTPUT"
           echo "tex_short=${TEX_SHA:0:12}" >> "$GITHUB_OUTPUT"
           echo "ESG30 revision: $REV"
 
@@ -156,6 +158,7 @@ jobs:
               rev: '${{ steps.rev.outputs.rev }}',
               texSha: '${{ steps.rev.outputs.tex_sha }}',
               outputSha: '${{ steps.rev.outputs.out_sha }}',
+              dataSha: '${{ steps.rev.outputs.data_sha }}',
               syncedAt: new Date().toISOString()
             }, null, 2) + '\n');
           "
