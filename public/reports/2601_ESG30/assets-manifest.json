@@ -1,10 +1,10 @@
 {
   "slug": "2601_ESG30",
-  "texSha": "7a7ba98027c673d2",
+  "texSha": "8872f19141de69c7",
   "texSource": "remote",
   "remoteOnly": true,
   "pandocVersion": "3.1.12.3",
-  "generatedAt": "2026-10-07T23:06:25.036Z",
+  "generatedAt": "2026-10-08T13:32:10.769Z",
   "assets": [
     {
       "path": "data/图文摘要.png",
@@ -33,8 +33,8 @@
     {
       "path": "paper_draft.pdf",
       "source": "remote",
-      "bytes": 4744566,
-      "sha256": "035c1872b7eb9935"
+      "bytes": 4744735,
+      "sha256": "a09257dce998542d"
     }
   ]
 }
