@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 | CCUS Policy Hub</title>
   <meta name="description" content="ESG30 青年学者计划（二期）：从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础" />
-  <meta name="paper-source" content="paper_draft.tex sha256:8872f19141de69c7" />
+  <meta name="paper-source" content="paper_draft.tex sha256:2191704bd7f3d32c" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -2729,7 +2729,7 @@
         </div>
 
         <div class="reading-stats">
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 52k 字</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 53k 字</span>
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>66 分钟</span>
         </div>
 
@@ -3061,227 +3061,17 @@
     </div>
   
 <p>结合前文比较，中国集群治理可进一步归结为三个具体问题：一是减排价值如何确认，并在捕集、运输、封存及长期责任承担主体之间合理分配；二是多主体共用设施下，由谁组织集群，准入、容量、计量交接、异常与扩容按什么规则运行；三是封存许可、孔隙空间权属、关闭与责任接续的审查依据什么证据、由谁以什么权限复核。三个问题在进入实际运行与制度执行后，都对跨主体可复核的工程证据提出要求。</p>
-<p>上述缺口涉及市场机制、基础设施组织、许可确权、长期责任与证据能力等多个层面，并不能由单一工具解决。其中，价值形成和法定责任安排仍有赖于政策、合同与制度建设；相比之下，跨主体证据机制可以较早嵌入现有示范和集群设计，在不预设最终制度形态的条件下先行验证。下文因此聚焦 dMRV，讨论工程事实如何被组织为可复核、可跨主体使用的制度证据。</p>
-<h1 data-number="3" id="从工程事实到可复核证据"><span class="header-section-number">3</span> 从工程事实到可复核证据</h1>
-<p>前述价值形成、跨主体协调和制度采信仍需通过相应的政策、合同和法律制度安排加以解决，但在进入项目运行和制度执行后，三者共享一个前提：关键工程事实能够被相关主体持续复核。随着 CCUS 从企业内部的一体化工程走向跨主体专业化协作，原本可以在企业内部核对的交付、能耗、监测和责任记录开始跨越系统与法人边界，交接计量误差、能耗与链条排放核算、跨期责任追溯都需要在不同系统之间核对；如果合同履约缺少可追溯的工程记录，结算、核证和争议处理成本都会上升。本文所讨论的 dMRV，重点在于使同一组工程事实能够被不同主体持续追溯、复核，并进入核算、结算和责任审查。</p>
-<p>本文将 dMRV 界定为：<strong>在既定法规、标准、许可、合同和方法学要求下，利用数字技术与结构化流程，对关键活动数据和监测结果进行采集、处理、质量控制、版本留痕和报告，并为独立核证及后续制度使用提供可追溯数字证据的系统与治理过程。</strong>dMRV 的制度功能是组织和传递证据，监管决定、方法学规则和独立核证仍由相应制度主体完成。传统 MRV 同样可以使用数字工具。本文更关注数字化带来的三类增量能力：将规则要求转化为结构化、可校核的字段与计算逻辑；为工程证据保留身份、时间戳、版本和影响追踪；通过权限受控的数据交换支持跨主体复核和后续制度使用。以下沿三个问题展开：规则字段化回答“需要证明什么”，证据组织回答“工程事实如何连续记录”，制度衔接回答“这些证据由谁、在什么场景下使用”。</p>
-
-    <figure class="academic-figure" id="fig:dmrv_house">
-      <div class="figure-header">
-        <div class="figure-title-group">
-          <span class="figure-label">图 3</span>
-          <span class="figure-title">从工程事实到制度用途：CCUS dMRV 的证据基础设施定位</span>
-        </div>
-        <span class="figure-tip">🔍 点击放大</span>
-      </div>
-      <div class="figure-img-wrap">
-        <img src="./data/图3.png" alt="从工程事实到制度用途：CCUS dMRV 的证据基础设施定位" loading="lazy" />
-      </div>
-      
-    </figure>
-<p>如<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3 从工程事实到制度用途：CCUS dMRV 的证据基础设施定位">图 3</a> 所示，这些能力使工程数据具备跨主体复核和复用的条件。本文所称产业信用，是不同主体能够基于同一组可复核工程事实开展交付确认、减排核证、监管审查和责任判断，并由此形成协作所需的可信基础。支撑这些工程事实跨主体、跨制度过程持续组织、追溯和复用的证据能力，本文称为“产业信用基础设施”。当这种证据机制具备共同语义、全流程追溯、差异化证据输出与制度可用性，并实际服务于结算、核证或监管过程时，即构成本文所讨论的产业信用基础设施。</p>
-<h2 data-number="3.1" id="规则字段化明确什么必须被证明"><span class="header-section-number">3.1</span> 规则字段化：明确什么必须被证明</h2>
-<p>规范性框架首先回答“什么必须被证明”。法规和许可规定项目边界、安全要求、监测义务和责任条件；方法学规定核算边界、参数、公式、数据质量和不确定性处理；合同和网络规则规定交付标准、容量分配、损耗分摊、异常处置和违约责任；技术标准则统一术语、计量、流质和工程接口。dMRV 的第一项工作，是将这些要求转化为可记录、可校核、可追溯的数据字段、计算逻辑和事件规则。</p>
-<p><a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 3-1 CCUS 集群 dMRV 的核心证据字段框架">表 3-1</a> 归纳了 CCUS 集群 dMRV 的五项核心证据域。具体字段应根据项目边界、适用方法学、许可和合同要求确定，并按不同用途输出。例如，能源消耗作为物理活动数据、能源碳强度作为核算参数，共同进入净减排核算；而能源价格与机会成本属于外部经济评价参数而非工程监测事实，应与活动数据及适用规则版本建立关联，并与底层工程证据分层保存。</p>
-
-    <div class="table-container-card" id="tab:dmrv_minimum_fields">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">表 3-1</span>
-          <span class="table-title">CCUS 集群 dMRV 的核心证据字段框架</span>
-        </div>
-        
-      </div>
-      <div class="table-responsive-wrapper">
-        <table class="standard-table">
-          
-
-<thead>
-<tr class="header">
-<th style="text-align: left;">字段类别</th>
-<th style="text-align: left;">主要记录内容</th>
-<th style="text-align: left;">主要制度用途</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>身份与边界</strong></td>
-<td style="text-align: left;">项目、设施、排放源、运营主体、交接点、批次或时间窗、许可与合同标识</td>
-<td style="text-align: left;">确认数据属于哪个项目、主体、环节和责任边界</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>计量与核算</strong></td>
-<td style="text-align: left;">捕集量、交付量、运输量、注入量、管存变化、损耗、分环节电力、蒸汽、燃料与余热消耗，能源来源及碳强度，基准系统能耗，产品或服务产出，服务链排放、计量不确定度</td>
-<td style="text-align: left;">支撑质量平衡、服务结算、全链条能耗约束评估、附加排放与净减排核算和跨主体分摊；结合经济评价参数可进一步开展成本分析</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>监测与模型</strong></td>
-<td style="text-align: left;">基线、压力、羽流、井筒完整性、环境监测、模型版本、预测偏差和不确定性</td>
-<td style="text-align: left;">判断运行是否处于许可边界内，识别封闭性和长期风险变化</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>事件与责任</strong></td>
-<td style="text-align: left;">告警、异常、人工确认、处置、复核、恢复、关闭准备、责任主体和责任阶段</td>
-<td style="text-align: left;">形成异常处置、复核与恢复记录，为责任留痕和责任接续审查提供依据</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>外部状态</strong></td>
-<td style="text-align: left;">许可、核证、交付、数据质量、重大偏差、责任阶段和凭证状态</td>
-<td style="text-align: left;">向监管、核证、客户、金融和保险机构提供权限受控的状态信息与证据摘要</td>
-</tr>
-</tbody>
-
-        </table>
-      </div>
-      
-    </div>
-  
-<p>例如，若合同按月确认合格交付量，就需要明确交接计量点、统计时间窗、流质判定条件、计量更正方式和确认主体。规则字段化的作用，是使这些要求能够在日常记录和后续复核中得到一致执行。传统流程中，捕集方、运输方和封存方可能分别汇总数据后再进行人工对账；在 dMRV 场景中，同一交接点、时间窗和规则版本通过共同标识保持关联，计量更正可以明确追踪其对结算和后续核证材料的影响。</p>
-<p>这一过程可借鉴“规则即代码”（Rules as Code, RaC）的思路，以人和机器均可读取的方式表达参数、阈值和触发条件，并保留规则版本与人工批准记录<sup class="citation-cluster">[<a class="cite-ref" href="#ref-oecd-rac2020" data-cite="oecd-rac2020" data-index="51" id="cite-return-oecd-rac2020" title="OECD. (2020). Cracking the Code: Rulemaking for Humans and Machines. OECD Publishing. https://doi.org/10.1787/3afe6ba5-en">51</a>]</sup>。数字系统承担执行支持和审计留痕，规则制定权和解释权仍属于有权主体。</p>
-<p>方法学在制定和修订时，宜明确字段语义、单位与精度，区分直接测量与模型推断，规定采样与报告频率、设备校准、数据质量以及缺测、异常和不确定性的处理，并说明规则版本变化对既有结果的影响。数字化实施可在此基础上进一步确定面向核证和登记系统的最小输出字段与数据交换要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra2025digital" data-cite="verra2025digital" data-index="53" id="cite-return-verra2025digital" title="Verra. (2025). June 2025 Release of Additional Digitalized Methodologies. https://verra.org/june-2025-release-of-additional-digitalized-methodologies/">53</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55" id="cite-return-worldbank-dmrv2022" title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62" id="cite-return-puro-dmrv-api-docs" title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>，以减少数据解释和核证转换成本。</p>
-<h2 data-number="3.2" id="证据组织连接能源流碳流与风险状态"><span class="header-section-number">3.2</span> 证据组织：连接能源流、碳流与风险状态</h2>
-<p>证据组织需要解决的是：静态规则如何落实为持续运行中的数据和记录，并使来源、交接、状态和责任变化彼此关联、可以复核。CCUS 地质封存的证据链至少需要覆盖三类判断：一是物料平衡，即查明有多少 CO<sub>2</sub> 被捕集、交接和实际注入，主要由流量、交接和注入记录支持；二是储层动态，即羽流和压力响应是否符合预测，主要由压力、时移地震、井下数据和模型校准支持；三是封闭性与环境安全，即井筒、浅层环境和潜在受体是否出现异常，需要结合井筒完整性、地下水、大气通量和受体监测判断。单一传感器、单次调查或单一模型均不足以独立支撑对长期封存状态的判断。</p>
-<p>捕集量、交付量和注入量是净减排核算的输入，而非最终结果。全链条净减排量必须在一致系统边界下，扣减捕集、压缩、运输与注入封存等环节的相关排放，其中能源惩罚引致的附加排放是重要组成部分。dMRV 在净减排核算中的作用，是完整留存全环节能耗活动数据、对应时段的能源碳强度、计算规则版本与不确定性调整记录，使最终的净减排结论能够逐级回溯至原始工程记录。碳信用签发另适用相应机制的合格性规则。</p>
-<h3 data-number="3.2.1" id="从传感器到证据链风险导向的监测组合"><span class="header-section-number">3.2.1</span> 从传感器到证据链：风险导向的监测组合</h3>
-<p>CCUS 封存监测通常采用风险导向的组合设计。项目应依据场地风险和监测计划，在注入前建立基线，在运行期间开展持续或定期观测，并在发现异常时启动针对性调查。按计划开展的重复观测与异常触发的追加监测共同支持风险判断。证据“连续”并不要求所有数据实时上传，而是要求每项关键风险均有明确的数据来源、更新频率、触发阈值、升级路径和处置记录。Quest 等项目的 MMV 计划覆盖注入设施、井筒、储层、地下水、地表和大气等监测域，并根据风险变化调整技术组合<sup class="citation-cluster">[<a class="cite-ref" href="#ref-shellquest-mmv2024" data-cite="shellquest-mmv2024" data-index="34" id="cite-return-shellquest-mmv2024" title="Shell Canada. (2024). Quest CCS Project: 2023 Annual Knowledge Sharing Report – MMV Performance. Project knowledge-sharing report. https://open.alberta.ca/publications/quest-carbon-capture-and-storage-project-annual-knowledge-sharing-report">34</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49" id="cite-return-bourne2014quest" title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a>]</sup>。</p>
-<p>连续证据链应覆盖三个相互衔接的状态。基线状态记录注入前的环境和地下系统初始条件；运行状态说明注入量、压力响应、流质变化和设备运行是否处于许可边界内；风险状态记录羽流迁移、井筒完整性、浅层环境和受体暴露是否出现偏离或异常。统一时间戳、版本记录、触发阈值和处置留痕将三类状态连接起来，使监管部门和第三方核证机构能够还原项目各阶段的运行状态及当时可用的证据依据。连续证据的作用，是使风险状态能够随新证据持续更新，并为监测调整、关闭判断和责任接续保留可追溯的依据。<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 3-2 CCUS 连续证据链的主要监测层级、证据功能与边界">表 3-2</a> 列示了各层级监测的核心功能与证据边界；其中模型符合性关注实测地下行为与预测是否一致，封闭性判断则需综合储层、井筒与环境等多维证据相互印证。</p>
-
-    <div class="table-container-card" id="tab:continuous_evidence_monitoring">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">表 3-2</span>
-          <span class="table-title">CCUS 连续证据链的主要监测层级、证据功能与边界</span>
-        </div>
-        
-      </div>
-      <div class="table-responsive-wrapper">
-        <table class="standard-table">
-          
-
-<thead>
-<tr class="header">
-<th style="text-align: left;">监测层级</th>
-<th style="text-align: left;">常见数据或技术</th>
-<th style="text-align: left;">主要回答的问题</th>
-<th style="text-align: left;">证据边界 / 需补充证据</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>计量与运行</strong></td>
-<td style="text-align: left;">捕集量、交接流量、注入量、井口压力与温度</td>
-<td style="text-align: left;">有多少 CO<sub>2</sub> 进入管网和封存端；运行是否超出许可参数</td>
-<td style="text-align: left;">不能仅凭注入量证明 CO<sub>2</sub> 在地下的具体位置或长期封闭状态</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>井筒完整性</strong></td>
-<td style="text-align: left;">环空压力、井温、套管与水泥评价、DTS/DAS、井口气体检测</td>
-<td style="text-align: left;">井筒这一主要潜在通道是否出现异常；异常发生在何时、何处</td>
-<td style="text-align: left;">主要反映井周和井筒状态，不能单独描绘整个储层中的羽流分布</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>储层与盖层</strong></td>
-<td style="text-align: left;">井下压力、时移地震、VSP、DAS、微地震与储层模拟</td>
-<td style="text-align: left;">CO<sub>2</sub> 羽流和压力是否按模型预期演化，即“一致性（Conformance）”</td>
-<td style="text-align: left;">地震响应通常需要反演解释并存在探测阈值，不能被等同于 CO<sub>2</sub> 质量的直接计量</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>浅层与受体</strong></td>
-<td style="text-align: left;">地下水、土壤气、大气通量、生态监测、InSAR 地表形变</td>
-<td style="text-align: left;">是否存在影响地下水、地表环境或公众安全的迹象，即“封闭性（Containment）”</td>
-<td style="text-align: left;">易受季节、气象和人类活动干扰，异常信号仍需溯源确认</td>
-</tr>
-</tbody>
-
-        </table>
-      </div>
-      
-    </div>
-  
-<p>分布式声学传感（DAS）和数字孪生/数字影子说明了技术工具在证据链中的具体定位。DAS 可通过光纤信号记录振动或应变，配合地震观测推断地下变化，但不能直接等同于地下 CO<sub>2</sub> 质量；Quest 的 DAS-VSP 实践表明，其结果仍需结合基线、采集条件和储层模型反演解释。数字孪生或数字影子可支持“预测—观测—偏差识别—模型校准”的迭代过程，其证据价值在于完整保留输入数据、校准记录、模型版本和不确定性。技术工具能够提高数据获取与分析效率，但不能替代校准记录、版本控制、解释依据与专业人员的人工复核<sup class="citation-cluster">[<a class="cite-ref" href="#ref-mateeva2014" data-cite="mateeva2014" data-index="48" id="cite-return-mateeva2014" title="Mateeva, A., et al. (2014). Distributed acoustic sensing for reservoir monitoring with VSP. Geophysical Prospecting, 62(4), 679-692. https://doi.org/10.1111/1365-2478.12116">48</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49"  title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-harvey2022quest" data-cite="harvey2022quest" data-index="50" id="cite-return-harvey2022quest" title="Harvey, S., et al. (2022). Quest CCS facility: Time-lapse seismic campaigns. International Journal of Greenhouse Gas Control, 117, 103665. https://doi.org/10.1016/j.ijggc.2022.103665">50</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gahlot2025shadow" data-cite="gahlot2025shadow" data-index="52" id="cite-return-gahlot2025shadow" title="Gahlot, A. P., et al. (2025). An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring. Geophysical Journal International, 242(1), ggaf176. https://doi.org/10.1093/gji/ggaf176">52</a>]</sup>。</p>
-<h3 data-number="3.2.2" id="跨主体证据链交接批次与责任边界"><span class="header-section-number">3.2.2</span> 跨主体证据链：交接、批次与责任边界</h3>
-<p>集群场景中的证据链需要跨越多个法人主体和物理节点。多源 CO<sub>2</sub> 依次经过捕集端、管网入口、压缩站、运输区段、封存接收端和注入井，每次交接均涉及流量、流质、计量不确定度、运行排放、与交付相关的责任边界和数据版本。统一的来源标识、批次或时间窗规则、节点质量平衡和交接追溯链（chain of custody），可使工程记录在跨主体流转中保持可归因性，并为结算、核证和责任判断提供连续底账<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12" id="cite-return-iso27913" title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-ccs-code2025" data-cite="uk-ccs-code2025" data-index="31"  title="UK Department for Energy Security and Net Zero. (2025). CCS Network Code. https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf">31</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-mrr2024" data-cite="eu-mrr2024" data-index="32"  title="European Commission. (2024). Commission Implementing Regulation (EU) 2024/2493 amending Implementing Regulation (EU) 2018/2066 as regards the monitoring and reporting of greenhouse gas emissions pursuant to Directive 2003/87/EC. https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj">32</a>]</sup>。</p>
-<p>多源 CO<sub>2</sub> 进入共享设施后，统一标识可以保留来源关联，但各来源的交付量、服务链排放和减排成果归属，仍需依据各自适用的计量、核算和合同规则确定。例如，Verra VT0012 明确了共享设施中非 VCS 碳流的排放分摊与核算边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61" id="cite-return-verra-vt0012" title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。系统应保存分摊所采用的时间窗、数据、规则版本和确认记录，使相关结果能够复算和核查。物理数量的分摊与合同权益的分配应分别说明，不能仅凭来源标识推定。</p>
-<p>跨主体证据链不仅需要保存修订历史，还需要识别修订影响了哪些后续结果。例如，某排放源的交付计量经复核发生更正，应检查相应分摊计算、客户凭证和核证材料是否需要调整，并记录修订原因、确认主体和处理状态。已出具结果的更正，应按适用程序由相应主体确认，不能由系统直接覆盖。只有保留这些版本及其影响关系，后续争议处理和责任追溯才有可靠依据。</p>
-<h2 data-number="3.3" id="制度衔接让证据进入核证结算与责任判断"><span class="header-section-number">3.3</span> 制度衔接：让证据进入核证、结算与责任判断</h2>
-<p>制度衔接的核心，是将连续工程记录组织为可用于核证、结算、责任判断和外部评估的证据输出。证据输出应按主体职责、权限和信息需求有所区分，而不是无差别开放原始工程数据。不同主体的审查重点也各不相同：</p>
-<ul>
-<li><p><strong>核证机构</strong>：复核核算是否符合方法学要求，重点查看原始活动数据、计算过程、不确定性处理及异常处置记录。</p></li>
-<li><p><strong>服务客户</strong>：确认交付与履约状态，重点查看交付数量、流质指标、计费期间以及更正记录。</p></li>
-<li><p><strong>监管部门</strong>：审查许可条件、运行安全和责任安排，重点查看监测数据、模型符合性、重大偏差与补救记录。</p></li>
-<li><p><strong>银行与保险机构</strong>：将工程和履约记录作为风险评估的部分依据，具体数据需求依据其尽调、授信或核保目的确定。</p></li>
-</ul>
-<p>不同用途可以共享底层事实，但采用的核算边界、证明要求和最终判断并不相同。对外证据输出应说明数据所属期间、适用规则、版本及复核状态，并保留结论与底层依据之间的可追溯关系，而不是只输出孤立的最终结果。原始地震数据、压力曲线和商业敏感信息可以保留在项目系统或受控数据空间中，外部主体可通过受控数据交换获取核证摘要、交付凭证、事件状态或责任档案等履职所需信息。</p>
-<p>需要说明的是，三类证据使用场景并非前述价值形成、跨主体协调和制度采信三类系统问题的一一映射，而是这些治理问题进入项目运行与制度执行后，工程证据被实际调用的主要场景。<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 3-3 dMRV 支持 CCUS 集群三类证据使用场景的作用及边界">表 3-3</a> 列示这三类场景，以及 dMRV 的证据功能和现有制度主体保留的最终判断。三类场景面向不同使用者，但共享同一组工程事实和审计底账。</p>
-
-    <div class="table-container-card" id="tab:dmrv_governance_mapping">
-      <div class="table-card-toolbar">
-        <div class="table-card-title-group">
-          <span class="table-badge">表 3-3</span>
-          <span class="table-title">dMRV 支持 CCUS 集群三类证据使用场景的作用及边界</span>
-        </div>
-        
-      </div>
-      <div class="table-responsive-wrapper">
-        <table class="standard-table">
-          
-
-<thead>
-<tr class="header">
-<th style="text-align: left;">证据使用场景</th>
-<th style="text-align: left;">dMRV 的核心作用</th>
-<th style="text-align: left;">主要证据输出</th>
-<th style="text-align: left;">仍由现有制度完成的判断</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>交付与归因</strong></td>
-<td style="text-align: left;">建立来源标识、交接计量、质量平衡、交接追溯链和分摊记录</td>
-<td style="text-align: left;">交付量、流质、容量占用、管存变化、损耗、运行排放、异常和责任映射</td>
-<td style="text-align: left;">合同结算、减排量归属、违约责任和争议处理仍依据网络规则、方法学和合同作出</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>风险与责任</strong></td>
-<td style="text-align: left;">将基线、运行状态、模型符合性、封闭性和异常处置与复核记录组织为长期证据</td>
-<td style="text-align: left;">压力与羽流状态、井筒完整性、环境监测、模型偏差、事件处置、关闭准备和资金安排</td>
-<td style="text-align: left;">监测调整、关闭批准和责任移交仍由监管机关依据法律、许可条件和证据门槛决定</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>金融与外部信任</strong></td>
-<td style="text-align: left;">将复杂工程信息组织为标准化、权限受控、可持续更新的风险信息与证据摘要</td>
-<td style="text-align: left;">许可与核证状态、证据完整性、重大偏差、履约趋势、服务凭证和责任边界</td>
-<td style="text-align: left;">核证、信用签发、贷款、核保、定价和投资决策仍由相应机构独立完成</td>
-</tr>
-</tbody>
-
-        </table>
-      </div>
-      
-    </div>
-  
-<p>在交付与归因层面，dMRV 通过交接记录、质量平衡与追溯链，保持物理碳流、核算结果与归属之间的可追溯关系。当项目成果进入碳信用登记或国际转移时，该证据链还可与登记簿序列号、CAD Trust 元数据以及《巴黎协定》第 6 条的授权与相应调整机制衔接，降低重复签发、重复使用和重复主张的风险<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58" id="cite-return-cadtrust-api2026" title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-unfccc-a6registry2026" data-cite="unfccc-a6registry2026" data-index="59" id="cite-return-unfccc-a6registry2026" title="UNFCCC. (2026年1月23日). Development of Paris Agreement Article 6 registry infrastructure begins. https://unfccc.int/news/development-of-paris-agreement-article-6-registry-infrastructure-begins">59</a>]</sup>。</p>
-<p>在风险与责任层面，证据的增量在于保留项目在运行期与关闭后的风险演化轨迹，使风险状态及其不确定性的变化过程可被追溯。</p>
-<p>在金融与外部信任层面，dMRV 将许可、运行、核证与履约趋势组织为可供外部使用的风险信息，可为金融机构和承保人的风险评估提供过程留痕与审计底账，减少对期末集中解释和一次性申报材料的依赖<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
-<h3 data-number="3.3.1" id="国际实践规则核证与系统衔接"><span class="header-section-number">3.3.1</span> 国际实践：规则、核证与系统衔接</h3>
-<p>在与 CCS 直接相关的核算规则标准化方面，VM0049、VT0012 等方法学开始标准化共享基础设施下的核算与分摊规则：VM0049 建立覆盖捕集、运输和封存全流程的模块化核算框架，通过模块组合量化各环节的相关排放<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60" id="cite-return-verra-vm0049" title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a>]</sup>；VT0012 针对非 VCS CO<sub>2</sub> 进入项目边界的情形，规定项目排放和泄漏排放的分摊要求，以支持基础设施共享<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。</p>
-<p>在数字化核证与签发流程方面，现有实践展示了监测数据数字化提交、独立核证与签发之间的流程衔接，其对 CCUS 集群的启示主要在流程与证据交换设计层面<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-dmrv2026" data-cite="verra-dmrv2026" data-index="57" id="cite-return-verra-dmrv2026" title="Verra. (2026年2月19日). Verra Approves First Credits under DMRV Pilot for High-Frequency Issuances. https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/">57</a>]</sup>。</p>
-<p>在项目数据与外部系统连接方面，项目端数据接口和跨登记系统开始探索共同语义、唯一标识与状态同步<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58"  title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62"  title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>。</p>
-<p>对 CCUS 而言，这些实践的价值主要在规则结构化、证据交换和制度衔接设计，而非提供一套可以直接照搬的平台方案。</p>
-<h3 data-number="3.3.2" id="技术边界工具服务于证据链与制度衔接"><span class="header-section-number">3.3.2</span> 技术边界：工具服务于证据链与制度衔接</h3>
-<p>dMRV 跨越企业、监管和第三方机构，数据治理应从系统设计阶段同步纳入。项目需要明确数据管理责任、使用权限和共享边界，按照最小权限原则设置访问范围，区分原始工程数据、核证材料、对外凭证和公开信息，并保留调用日志、授权变更和撤销记录。商业秘密、关键基础设施数据和个人信息应进入受控环境，跨境调用还需满足适用的数据安全与网络安全要求。对需要长期保存的监测和责任记录，宜提前约定保存期限、迁移方式和承接主体，避免运营主体变更或平台停止服务后，历史证据无法继续查询和复核。</p>
-<p>规则、模型和算法同样需要版本治理。系统应保存规则版本、计算路径、模型参数、校准数据与人工批准记录；重大变更应评估对历史结果、合同结算与责任状态的影响。技术方案应以记录能否追溯、结果能否复核、权限能否控制和证据能否长期使用为评价依据，具体工具的选择应服从审计可溯、权限受控与人工监督等基本要求。</p>
-<p>本章的核心，是使规则要求、工程记录与制度用途之间形成可持续追溯和复核的证据链，具体数字平台只是实现这一能力的技术载体。下一章将进一步观察这种证据机制在长期责任、开放式封存服务、多源集群和油田生产系统等不同场景中的表现、需求与边界。</p>
-<h1 data-number="4" id="证据机制的案例与场景观察"><span class="header-section-number">4</span> 证据机制的案例与场景观察</h1>
-<p>本章按不同证据任务选取四个案例与工程场景。Quest 用于观察连续监测与模型更新如何为长期风险和责任审查积累证据；Northern Lights 用于观察开放式运输封存服务中的交接、归因与凭证形成；大亚湾用于识别多源集群形成期需要前置的规则和证据要求；大庆敖南则用于观察碳流记录如何嵌入既有油田生产系统。前两者重点考察已经运行的证据实践，后两者基于公开工程信息识别尚待验证的证据需求。</p>
-<h2 data-number="4.1" id="壳牌-quest加拿大长期监测与责任安排"><span class="header-section-number">4.1</span> 壳牌 Quest（加拿大）：长期监测与责任安排</h2>
+<p>上述缺口涉及市场机制、基础设施组织、许可确权、长期责任与证据能力等多个层面，并不能由单一工具解决。其中，价值形成和法定责任安排仍有赖于政策、合同与制度建设；跨主体证据问题则已经能够在现有项目和集群设计中被具体观察。下文先通过长期责任、开放式封存服务、多源集群和油田生产系统四类场景，考察这些证据需求在实际工程中如何出现，再据此归纳其共同的证据组织机制。</p>
+<h1 data-number="3" id="证据机制的案例与场景观察"><span class="header-section-number">3</span> 证据机制的案例与场景观察</h1>
+<p>前章表明，中国 CCUS 的治理瓶颈正在从单体工程能力转向价值形成、跨主体协调和制度采信。进入项目运行后，这些治理问题并不会以抽象概念出现，而会具体表现为监测记录能否支持长期责任判断、跨主体交付如何计量和归因、多源接入如何提前明确数据与责任，以及生产系统中的碳流如何连续核对。基于此，本章按不同证据任务选取四个案例与工程场景。Quest 用于观察连续监测与模型更新如何为长期风险和责任审查积累证据；Northern Lights 用于观察开放式运输封存服务中的交接、归因与凭证形成；大亚湾用于识别多源集群形成期需要前置的规则和证据要求；大庆敖南则用于观察碳流记录如何嵌入既有油田生产系统。前两者重点考察已经运行的证据实践，后两者基于公开工程信息识别尚待验证的证据需求。</p>
+<h2 data-number="3.1" id="壳牌-quest加拿大长期监测与责任安排"><span class="header-section-number">3.1</span> 壳牌 Quest（加拿大）：长期监测与责任安排</h2>
 <p>Quest 的运行监测、关闭准备和后续责任安排被置于同一制度框架下。Shell Canada 与阿尔伯塔政府公开资料显示，Quest 自 2015 年投入商业化运行，主要捕集阿尔伯塔省 Scotford 升级厂制氢环节产生的 CO<sub>2</sub>，并通过管道输送至约 2 千米深的基底寒武系砂岩（Basal Cambrian Sands）深部咸水层<sup class="citation-cluster">[<a class="cite-ref" href="#ref-shellquest2024" data-cite="shellquest2024" data-index="9"  title="Shell Canada. (未注明发布日期，2026年3月25日访问). Quest Carbon Capture and Storage. https://www.shell.ca/en_ca/about-us/projects-and-sites/quest-carbon-capture-and-storage-project.html">9</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-alberta-ccus" data-cite="alberta-ccus" data-index="10"  title="Government of Alberta. (未注明发布日期，2026年3月25日访问). Carbon capture, utilization and storage. https://www.alberta.ca/carbon-capture-and-storage">10</a>]</sup>。阿尔伯塔要求运营方按注入量缴纳关闭后管理基金，并通过运营期监测义务、资金准备和关闭证书等制度安排，为未来关闭评估和责任接续建立制度基础<sup class="citation-cluster">[<a class="cite-ref" href="#ref-alberta-ccus" data-cite="alberta-ccus" data-index="10"  title="Government of Alberta. (未注明发布日期，2026年3月25日访问). Carbon capture, utilization and storage. https://www.alberta.ca/carbon-capture-and-storage">10</a>]</sup>。</p>
 <p>Quest 将井下压力、温度及地下水位等监测记录接入生产信息系统，通过监控与数据采集系统汇入生产信息数据库，为后续监测分析和风险评估提供数据基础<sup class="citation-cluster">[<a class="cite-ref" href="#ref-nrcan-quest" data-cite="nrcan-quest" data-index="92" id="cite-return-nrcan-quest" title="Natural Resources Canada. (2026年访问). Shell Canada Energy Quest Project. https://natural-resources.canada.ca/funding-partnerships/shell-canada-energy-quest-project">92</a>]</sup>。由 PNNL、NETL、宾夕法尼亚州立大学与项目方共同完成的研究，使用 NRAP-Open-IAM 对潜在井筒泄漏和地下水影响开展定量分析<sup class="citation-cluster">[<a class="cite-ref" href="#ref-brown2023quest" data-cite="brown2023quest" data-index="35" id="cite-return-brown2023quest" title="Brown, C. F., Lackey, G., Mitchell, N., Baek, S., Schwartz, B., Dean, M., Dilmore, R., Blanke, H., O’Brien, S., &amp; Rowe, C. (2023). Integrating risk assessment methods for carbon storage: A case study for the Quest carbon capture and storage facility. International Journal of Greenhouse Gas Control, 129, 103972. https://doi.org/10.1016/j.ijggc.2023.103972">35</a>]</sup>。该研究通过定量模拟将评估关注区域由约 460 平方公里缩小至约 100 平方公里，该分析用于支持风险导向的监测优化；实际监测调整和责任移交仍由法定监管程序决定。这表明，封存项目需要从运营期开始持续积累监测结果、模型更新、偏差解释和处置记录，为后续关闭评估与责任审查准备可追溯的证据底账。</p>
-<h2 data-number="4.2" id="北极光northern-lights开放式运输封存服务与跨境接入"><span class="header-section-number">4.2</span> 北极光（Northern Lights）：开放式运输封存服务与跨境接入</h2>
+<h2 data-number="3.2" id="北极光northern-lights开放式运输封存服务与跨境接入"><span class="header-section-number">3.2</span> 北极光（Northern Lights）：开放式运输封存服务与跨境接入</h2>
 <p>Northern Lights 将船运、陆上接收、中转、海底管输、地质封存及交付证明整合为一项完整的运输封存服务。该项目由 Equinor、Shell 和 TotalEnergies 共同组建，是 Longship 框架下的 CO<sub>2</sub> 运输与封存运营主体，同时以开放接入模式服务欧洲其他排放源，首期设计接收与封存能力为 150 万吨/年<sup class="citation-cluster">[<a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="39"  title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">39</a>]</sup>。</p>
 <p>项目官方披露显示，Northern Lights 于 2025 年 8 月宣布完成首次 CO<sub>2</sub> 注入，首批来源为挪威 Brevik 水泥厂<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights2025" data-cite="northernlights2025" data-index="7"  title="Northern Lights JV. (2025年8月25日). Northern Lights JV has successfully stored first CO2. https://norlights.com/news/northern-lights-jv-has-successfully-stored-first-co%E2%82%82/">7</a>]</sup>。CO<sub>2</sub> 在 Øygarden 接收站汇集后，经约 100 公里海底管道输送至海床下约 2600 米的 Aurora 储层。同年 12 月，公司宣布签发首批封存凭证（storage certificates）<sup class="citation-cluster">[<a class="cite-ref" href="#ref-northernlights-certs" data-cite="northernlights-certs" data-index="8" id="cite-return-northernlights-certs" title="Northern Lights JV. (2025年12月8日). Northern Lights has issued first CO2 storage certificates. https://norlights.com/news/northern-lights-has-issued-first-co%E2%82%82-storage-certificates/">8</a>]</sup>，以特定船次货载为记录单元关联封存量与链条排放分摊，将物理交付转化为可核对的封存服务凭证。2026 年 9 月，随着荷兰 Yara Sluiskil 捕集设施正式启用，该项目首次将荷兰工业排放源接入挪威运输与封存设施，成为开放接入模式的一次跨境商业实践<sup class="citation-cluster">[<a class="cite-ref" href="#ref-yara-sluiskil2026" data-cite="yara-sluiskil2026" data-index="93" id="cite-return-yara-sluiskil2026" title="Yara International. (2026年9月7日). Europe’s largest carbon capture facility officially inaugurated at Yara Sluiskil in the Netherlands. https://www.yara.com/corporate-releases/europes-largest-carbon-capture-facility-officially-inaugurated-at-yara-sluiskil-in-the-netherlands/">93</a>]</sup>。</p>
 <p>开放式基础设施使证据链必须跨越捕集方、运输方、接收端、封存运营方和核证主体。交付记录需要通过批次或时间窗、交接计量和质量平衡等方式，将来源、数量、流质、运输过程、注入记录、损耗和服务链排放保持可核对的关联。多源 CO<sub>2</sub> 混合进入共享设施后，证据链维持的是计量与归因关系，而不是对特定 CO<sub>2</sub> 分子在地下位置的逐批物理追踪。数字化交付记录需要与许可、客户合同和跨境规则衔接，才能支撑封存服务的交付确认与结算<sup class="citation-cluster">[<a class="cite-ref" href="#ref-imo-ccs" data-cite="imo-ccs" data-index="5"  title="International Maritime Organization. (2025). Carbon Capture and Storage and the London Protocol. https://www.imo.org/en/OurWork/Environment/Pages/CCS-Default.aspx">5</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-london-article6" data-cite="london-article6" data-index="6" id="cite-return-london-article6" title="International Maritime Organization. (2009). Resolution LP.3(4): Amendment to Article 6 of the London Protocol. https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/LCLPDocuments/LP.3(4).pdf">6</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-wettestad2024norway" data-cite="wettestad2024norway" data-index="39"  title="Wettestad, J., Inderberg, T. H. J., &amp; Gulbrandsen, L. H. (2024). Exploring paths and innovation in Norwegian carbon capture and storage policy. Environmental Policy and Governance, 34(2), 125–136. https://doi.org/10.1002/eet.2068">39</a>]</sup>。封存凭证主要确认服务交付和特定货载的封存事实；碳信用签发、长期责任接续和全链条净减排核定分别受相应方法学、法律程序和核算边界约束。Northern Lights 表明，开放式封存服务需要把物理交付、计量归因和服务凭证连接起来，而凭证本身并不替代减排核证、长期责任判断或全链条净减排核算。</p>
-<h2 data-number="4.3" id="大亚湾集群中国沿海场景形成期的制度需求识别"><span class="header-section-number">4.3</span> 大亚湾集群（中国沿海场景）：形成期的制度需求识别</h2>
+<h2 data-number="3.3" id="大亚湾集群中国沿海场景形成期的制度需求识别"><span class="header-section-number">3.3</span> 大亚湾集群（中国沿海场景）：形成期的制度需求识别</h2>
 <p>中国海油披露，大亚湾区 CCS/CCUS 集群示范项目于 2025 年完成技术可行性研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc-results2026" data-cite="cnooc-results2026" data-index="27"  title="CNOOC Limited. (2026年3月26日). 中国海油公布2025年全年业绩. https://www.cnoocltd.com/xwzx/gsxw/2026/202603/t20260326_120620.html">27</a>]</sup>。此前，中国海油在恩平 15-1 先后实施了海上咸水层封存示范与驱油工程，为离岸封存积累了工程与监测经验<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnooc-esg2024" data-cite="cnooc-esg2024" data-index="26" id="cite-return-cnooc-esg2024" title="CNOOC Limited. (2025年4月8日). 2024 Environmental, Social and Governance Report. https://www.cnoocltd.com/english/sustainability/environmentalsocialandgovernancereports/202504/P020250408542745334285.pdf">26</a>]</sup>。大亚湾项目面向石化区多排放源与珠江口盆地离岸集中封存，体现了沿海 CCUS 从单点工程示范走向多主体集群治理的过渡场景。</p>
 <p>多排放源接入后，治理边界将扩展到来源身份、流量与流质、交接计量、运输责任、容量占用、损耗分摊、注入安排和异常处置。若这些事项在联合研究和方案设计阶段没有形成共同规则，后续核证、结算和监管协同的成本将相应增加。</p>
 <p>从这一场景可以识别三类需要在可研和前期设计阶段提前明确的证据事项：</p>
@@ -3290,17 +3080,17 @@
 <li><p><strong>交接差异处理</strong>：交付量与接收量不一致、流质不符合要求时，由谁复核，以及如何调整记录和分摊损失；</p></li>
 <li><p><strong>核算边界与对账规则</strong>：不同主体能否基于同一组数据形成一致记录。</p></li>
 </ul>
-<h2 data-number="4.4" id="大庆敖南及中国油田场景工程放大与生产系统嵌入"><span class="header-section-number">4.4</span> 大庆敖南及中国油田场景：工程放大与生产系统嵌入</h2>
+<h2 data-number="3.4" id="大庆敖南及中国油田场景工程放大与生产系统嵌入"><span class="header-section-number">3.4</span> 大庆敖南及中国油田场景：工程放大与生产系统嵌入</h2>
 <p>大庆敖南体现了中国油田型 CCUS 从工程试验向规模化运行扩展的场景。中国石油公开信息显示，大庆油田采油七厂敖南油田 CCUS-EOR 扩大试验区集输系统于 2025 年 7 月 18 日投运，核心工程进入运行阶段。项目自 2024 年 7 月开工，日注入能力达到 800 吨，配置 22 口注入井和 38 口采出井；集输系统投产前累计注入 CO<sub>2</sub> 7.9 万吨。针对采出液含气量大、冲击原集输系统的问题，项目采用了两级分离工艺<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cnpc-aonan2025" data-cite="cnpc-aonan2025" data-index="19"  title="中国石油天然气集团有限公司. (2025年7月28日). 我国首个百万吨级非混相驱 CCUS 全产业链示范基地核心工程投产. https://news.cnpc.com.cn/system/2025/07/28/030169582.shtml">19</a>]</sup>。</p>
 <p>油田型 CCUS 除需监测地下 CO<sub>2</sub> 的迁移与封存状态外，还需追踪伴随油气生产发生的采出、分离、回收和循环回注。上述两级分离工艺提示，油田型 CCUS 的碳流记录需要与分离设备、注采调控及异常工况记录对应。这意味着，同一核算期内需要对注入、采出、回收和循环回注量进行交叉核对，并完整记录相关能耗与异常排放。</p>
-<p>核算上需要首先区分外部新增 CO<sub>2</sub> 与循环回注量，避免将同一批 CO<sub>2</sub> 的重复注入累计为新增封存；其次，应分别报告封存量与在明确边界下计算的净减排量，并说明能耗、损耗及增产原油相关排放的处理方式。这一场景也表明，dMRV 的有效实施需要与既有生产和安全环保体系衔接，而非形成与生产系统割裂的独立平台。CCUS-EOR 的净减排结果还取决于适用核算规则如何处理增产原油及其基准情景。不同政策工具和方法学可能采用不同核算边界，因此 dMRV 应保留基准产量、外部新增 CO<sub>2</sub>、循环量、相关能耗及所采用的规则版本，使地质封存量和净减排量能够分别复核。</p>
-<h2 data-number="4.5" id="案例比较与制度含义"><span class="header-section-number">4.5</span> 案例比较与制度含义</h2>
-<p><a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 4-1 案例与工程场景的证据机制、制度用途与公开证据边界">表 4-1</a> 从主要证据任务与组织方式、制度用途和公开证据边界三个方面，汇总上述案例与工程场景的比较结果。</p>
+<p>核算上需要首先区分外部新增 CO<sub>2</sub> 与循环回注量，避免将同一批 CO<sub>2</sub> 的重复注入累计为新增封存；其次，应分别报告封存量与在明确边界下计算的净减排量，并说明能耗、损耗及增产原油相关排放的处理方式。这一场景也表明，跨主体证据机制需要与既有生产和安全环保体系衔接，而不能形成与生产系统割裂的独立记录体系。CCUS-EOR 的净减排结果还取决于适用核算规则如何处理增产原油及其基准情景。不同政策工具和方法学可能采用不同核算边界，因此，相关记录应保留基准产量、外部新增 CO<sub>2</sub>、循环量、相关能耗及所采用的规则版本，使地质封存量和净减排量能够分别复核。</p>
+<h2 data-number="3.5" id="案例比较与制度含义"><span class="header-section-number">3.5</span> 案例比较与制度含义</h2>
+<p><a href="#tab:case_evidence_comparison" class="table-ref-link" title="点击查看表 3-1 案例与工程场景的证据机制、制度用途与公开证据边界">表 3-1</a> 从主要证据任务与组织方式、制度用途和公开证据边界三个方面，汇总上述案例与工程场景的比较结果。</p>
 
     <div class="table-container-card" id="tab:case_evidence_comparison">
       <div class="table-card-toolbar">
         <div class="table-card-title-group">
-          <span class="table-badge">表 4-1</span>
+          <span class="table-badge">表 3-1</span>
           <span class="table-title">案例与工程场景的证据机制、制度用途与公开证据边界</span>
         </div>
         
@@ -3353,9 +3143,219 @@
       </div>
     </div>
   
-<p>四个场景对应的技术路径不同，但共同说明，dMRV 的数据架构需要服务于具体治理任务：规则要求需要在项目设计中前置，工程事实需要沿真实业务过程持续留痕，证据输出则需要与具体制度用途相衔接。其中可以跨项目复用的是证据组织原则，具体系统架构和技术参数仍需因地制宜。技术阈值和量化标准需要更多长期运行数据验证；关闭条件、责任接续方式及相关期限则需要在工程证据基础上，结合监管目标和法律制度进一步论证。制度衔接需要经过真实业务周期检验，才能进一步判断哪些证据要求具有跨项目复用价值，并适合进入正式规则。</p>
+<p>四个场景对应的工程类型和制度任务不同，但共同暴露出三项证据要求。首先，许可、合同、核算和责任规则需要在项目设计和运行中落实为明确的数据、计量和事件要求；其次，工程记录需要沿时间、设施和主体边界保持关联，使交接、更正、异常和模型变化能够持续追溯；最后，同一组工程事实还需要根据结算、核证、监管和责任审查等不同用途形成相应的证据输出。可以跨项目复用的主要是这些证据组织原则，具体监测组合、技术参数和制度门槛仍取决于项目条件与适用规则。下一章将在这些场景观察基础上进一步归纳其共同机制，讨论如何将工程事实组织为可复核、可跨主体使用的制度证据。</p>
+<h1 data-number="4" id="从工程事实到可复核证据"><span class="header-section-number">4</span> 从工程事实到可复核证据</h1>
+<p>前章四个场景虽然对应不同工程类型和治理任务，但都指向同一个问题：分散在不同设施、系统和主体中的工程记录，只有能够持续关联、追溯并按照具体制度用途被复核，才能支持跨主体协作。Quest 强调跨周期监测与风险记录，Northern Lights 强调交接、归因与服务凭证，大亚湾强调规则和数据责任前置，敖南则表明证据记录必须嵌入真实生产过程。差异背后存在一条共同的证据链。 本文所讨论的 dMRV，正是对这条证据链的数字化组织。它并不替代政策、合同、方法学或监管判断，而是使同一组工程事实能够被不同主体持续追溯和复核，并进入核算、结算、监管和责任审查。随着 CCUS 从企业内部的一体化工程走向跨主体专业化协作，原本可以在企业内部核对的交付、能耗、监测和责任记录开始跨越系统与法人边界，交接计量误差、能耗与链条排放核算、跨期责任追溯都需要在不同系统之间核对；如果合同履约缺少可追溯的工程记录，结算、核证和争议处理成本都会上升。本文所讨论的 dMRV，重点在于使同一组工程事实能够被不同主体持续追溯、复核，并进入核算、结算和责任审查。</p>
+<p>本文将 dMRV 界定为：<strong>在既定法规、标准、许可、合同和方法学要求下，利用数字技术与结构化流程，对关键活动数据和监测结果进行采集、处理、质量控制、版本留痕和报告，并为独立核证及后续制度使用提供可追溯数字证据的系统与治理过程。</strong>dMRV 的制度功能是组织和传递证据，监管决定、方法学规则和独立核证仍由相应制度主体完成。传统 MRV 同样可以使用数字工具。本文更关注数字化带来的三类增量能力：将规则要求转化为结构化、可校核的字段与计算逻辑；为工程证据保留身份、时间戳、版本和影响追踪；通过权限受控的数据交换支持跨主体复核和后续制度使用。以下沿三个问题展开：规则字段化回答“需要证明什么”，证据组织回答“工程事实如何连续记录”，制度衔接回答“这些证据由谁、在什么场景下使用”。</p>
+
+    <figure class="academic-figure" id="fig:dmrv_house">
+      <div class="figure-header">
+        <div class="figure-title-group">
+          <span class="figure-label">图 3</span>
+          <span class="figure-title">CCUS dMRV：共同工程事实与差异化制度用途的衔接</span>
+        </div>
+        <span class="figure-tip">🔍 点击放大</span>
+      </div>
+      <div class="figure-img-wrap">
+        <img src="./data/图3.png" alt="CCUS dMRV：共同工程事实与差异化制度用途的衔接" loading="lazy" />
+      </div>
+      
+    </figure>
+<p>如<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3 CCUS dMRV：共同工程事实与差异化制度用途的衔接">图 3</a> 所示，dMRV 连接的是具有共通性的工程事实与具有差异性的制度用途。捕集、交接、能耗、注入、监测和异常处置等记录构成共同的工程事实基础；合同结算、减排核证、监管审查和长期责任判断则依据不同规则调用其中不同证据。dMRV 通过统一标识、版本追踪和权限受控的证据输出，使不同主体能够从各自制度需求出发，回溯并复核同一组工程事实。本文将这种跨主体、跨制度过程持续组织、追溯和复用工程证据的能力概括为“产业信用基础设施”。</p>
+<h2 data-number="4.1" id="规则字段化明确什么必须被证明"><span class="header-section-number">4.1</span> 规则字段化：明确什么必须被证明</h2>
+<p>规范性框架首先回答“什么必须被证明”。法规和许可规定项目边界、安全要求、监测义务和责任条件；方法学规定核算边界、参数、公式、数据质量和不确定性处理；合同和网络规则规定交付标准、容量分配、损耗分摊、异常处置和违约责任；技术标准则统一术语、计量、流质和工程接口。dMRV 的第一项工作，是将这些要求转化为可记录、可校核、可追溯的数据字段、计算逻辑和事件规则。</p>
+<p><a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 4-1 CCUS 集群 dMRV 的核心证据字段框架">表 4-1</a> 归纳了 CCUS 集群 dMRV 的五类核心证据字段。具体字段应根据项目边界、适用方法学、许可和合同要求确定，并按不同用途输出。例如，能源消耗作为物理活动数据、能源碳强度作为核算参数，共同进入净减排核算；而能源价格与机会成本属于外部经济评价参数而非工程监测事实，应与活动数据及适用规则版本建立关联，并与底层工程证据分层保存。</p>
+
+    <div class="table-container-card" id="tab:dmrv_minimum_fields">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">表 4-1</span>
+          <span class="table-title">CCUS 集群 dMRV 的核心证据字段框架</span>
+        </div>
+        
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table">
+          
+
+<thead>
+<tr class="header">
+<th style="text-align: left;">字段类别</th>
+<th style="text-align: left;">主要记录内容</th>
+<th style="text-align: left;">主要制度用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>身份与边界</strong></td>
+<td style="text-align: left;">项目、设施、排放源、运营主体、交接点、批次或时间窗、许可与合同标识</td>
+<td style="text-align: left;">确认数据属于哪个项目、主体、环节和责任边界</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>计量与核算</strong></td>
+<td style="text-align: left;">捕集量、交付量、运输量、注入量、管存变化、损耗、分环节电力、蒸汽、燃料与余热消耗，能源来源及碳强度，基准系统能耗，产品或服务产出，服务链排放、计量不确定度</td>
+<td style="text-align: left;">支撑质量平衡、服务结算、全链条能耗约束评估、附加排放与净减排核算和跨主体分摊；结合经济评价参数可进一步开展成本分析</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>监测与模型</strong></td>
+<td style="text-align: left;">基线、压力、羽流、井筒完整性、环境监测、模型版本、预测偏差和不确定性</td>
+<td style="text-align: left;">判断运行是否处于许可边界内，识别封闭性和长期风险变化</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>事件与责任</strong></td>
+<td style="text-align: left;">告警、异常、人工确认、处置、复核、恢复、关闭准备、责任主体和责任阶段</td>
+<td style="text-align: left;">形成异常处置、复核与恢复记录，为责任留痕和责任接续审查提供依据</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>许可、核证与履约状态</strong></td>
+<td style="text-align: left;">许可、核证、交付、数据质量、重大偏差、责任阶段和凭证状态</td>
+<td style="text-align: left;">向监管、核证、客户、金融和保险机构提供权限受控的状态信息与证据摘要</td>
+</tr>
+</tbody>
+
+        </table>
+      </div>
+      
+    </div>
+  
+<p>例如，若合同按月确认合格交付量，就需要明确交接计量点、统计时间窗、流质判定条件、计量更正方式和确认主体。规则字段化的作用，是使这些要求能够在日常记录和后续复核中得到一致执行。传统流程中，捕集方、运输方和封存方可能分别汇总数据后再进行人工对账；在 dMRV 场景中，同一交接点、时间窗和规则版本通过共同标识保持关联，计量更正可以明确追踪其对结算和后续核证材料的影响。</p>
+<p>这一过程可借鉴“规则即代码”（Rules as Code, RaC）的思路，以人和机器均可读取的方式表达参数、阈值和触发条件，并保留规则版本与人工批准记录<sup class="citation-cluster">[<a class="cite-ref" href="#ref-oecd-rac2020" data-cite="oecd-rac2020" data-index="51" id="cite-return-oecd-rac2020" title="OECD. (2020). Cracking the Code: Rulemaking for Humans and Machines. OECD Publishing. https://doi.org/10.1787/3afe6ba5-en">51</a>]</sup>。数字系统承担执行支持和审计留痕，规则制定权和解释权仍属于有权主体。例如，许可压力上限、合同流质门槛或异常触发条件，都可以转成明确字段和事件规则。</p>
+<p>要使同一字段可以跨项目、跨版本复核，至少需要明确字段语义、单位与精度，区分直接测量与模型推断，并规定缺测、异常与不确定性的处理及规则版本。数字化实施可在此基础上进一步确定面向核证和登记系统的最小输出字段与数据交换要求<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra2025digital" data-cite="verra2025digital" data-index="53" id="cite-return-verra2025digital" title="Verra. (2025). June 2025 Release of Additional Digitalized Methodologies. https://verra.org/june-2025-release-of-additional-digitalized-methodologies/">53</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55" id="cite-return-worldbank-dmrv2022" title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62" id="cite-return-puro-dmrv-api-docs" title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>，以减少数据解释和核证转换成本。</p>
+<h2 data-number="4.2" id="证据组织连接能源流碳流与风险状态"><span class="header-section-number">4.2</span> 证据组织：连接能源流、碳流与风险状态</h2>
+<p>证据组织需要解决的是：静态规则如何落实为持续运行中的数据和记录，并使来源、交接、状态和责任变化彼此关联、可以复核。CCUS 地质封存的证据链至少需要覆盖三类判断：一是物料平衡，即查明有多少 CO<sub>2</sub> 被捕集、交接和实际注入，主要由流量、交接和注入记录支持；二是储层动态，即羽流和压力响应是否符合预测，主要由压力、时移地震、井下数据和模型校准支持；三是封闭性与环境安全，即井筒、浅层环境和潜在受体是否出现异常，需要结合井筒完整性、地下水、大气通量和受体监测判断。单一传感器、单次调查或单一模型均不足以独立支撑对长期封存状态的判断。</p>
+<p>捕集量、交付量和注入量是净减排核算的输入，而非最终结果。全链条净减排量必须在一致系统边界下，扣减捕集、压缩、运输与注入封存等环节的相关排放，其中能源惩罚引致的附加排放是重要组成部分。dMRV 在净减排核算中的作用，是完整留存全环节能耗活动数据、对应时段的能源碳强度、计算规则版本与不确定性调整记录，使最终的净减排结论能够逐级回溯至原始工程记录。碳信用签发另适用相应机制的合格性规则。</p>
+<h3 data-number="4.2.1" id="从传感器到证据链风险导向的监测组合"><span class="header-section-number">4.2.1</span> 从传感器到证据链：风险导向的监测组合</h3>
+<p>CCUS 封存监测通常采用风险导向的组合设计。项目应依据场地风险和监测计划，在注入前建立基线，在运行期间开展持续或定期观测，并在发现异常时启动针对性调查。按计划开展的重复观测与异常触发的追加监测共同支持风险判断。证据“连续”并不要求所有数据实时上传，而是要求每项关键风险均有明确的数据来源、更新频率、触发阈值、升级路径和处置记录。Quest 等项目的 MMV 计划覆盖注入设施、井筒、储层、地下水、地表和大气等监测域，并根据风险变化调整技术组合<sup class="citation-cluster">[<a class="cite-ref" href="#ref-shellquest-mmv2024" data-cite="shellquest-mmv2024" data-index="34" id="cite-return-shellquest-mmv2024" title="Shell Canada. (2024). Quest CCS Project: 2023 Annual Knowledge Sharing Report – MMV Performance. Project knowledge-sharing report. https://open.alberta.ca/publications/quest-carbon-capture-and-storage-project-annual-knowledge-sharing-report">34</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49" id="cite-return-bourne2014quest" title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a>]</sup>。</p>
+<p>连续证据链应覆盖三个相互衔接的状态。基线状态记录注入前的环境和地下系统初始条件；运行状态说明注入量、压力响应、流质变化和设备运行是否处于许可边界内；风险状态记录羽流迁移、井筒完整性、浅层环境和受体暴露是否出现偏离或异常。统一时间戳、版本记录、触发阈值和处置留痕将三类状态连接起来，使监管部门和第三方核证机构能够还原项目各阶段的运行状态及当时可用的证据依据。连续证据的作用，是使风险状态能够随新证据持续更新，并为监测调整、关闭判断和责任接续保留可追溯的依据。<a href="#tab:continuous_evidence_monitoring" class="table-ref-link" title="点击查看表 4-2 CCUS 连续证据链的主要监测层级、证据功能与边界">表 4-2</a> 列示了各层级监测的核心功能与证据边界；其中模型符合性关注实测地下行为与预测是否一致，封闭性判断则需综合储层、井筒与环境等多维证据相互印证。</p>
+
+    <div class="table-container-card" id="tab:continuous_evidence_monitoring">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">表 4-2</span>
+          <span class="table-title">CCUS 连续证据链的主要监测层级、证据功能与边界</span>
+        </div>
+        
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table">
+          
+
+<thead>
+<tr class="header">
+<th style="text-align: left;">监测层级</th>
+<th style="text-align: left;">常见数据或技术</th>
+<th style="text-align: left;">主要回答的问题</th>
+<th style="text-align: left;">证据边界 / 需补充证据</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>计量与运行</strong></td>
+<td style="text-align: left;">捕集量、交接流量、注入量、井口压力与温度</td>
+<td style="text-align: left;">有多少 CO<sub>2</sub> 进入管网和封存端；运行是否超出许可参数</td>
+<td style="text-align: left;">不能仅凭注入量证明 CO<sub>2</sub> 在地下的具体位置或长期封闭状态</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>井筒完整性</strong></td>
+<td style="text-align: left;">环空压力、井温、套管与水泥评价、DTS/DAS、井口气体检测</td>
+<td style="text-align: left;">井筒这一主要潜在通道是否出现异常；异常发生在何时、何处</td>
+<td style="text-align: left;">主要反映井周和井筒状态，不能单独描绘整个储层中的羽流分布</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>储层与盖层</strong></td>
+<td style="text-align: left;">井下压力、时移地震、VSP、DAS、微地震与储层模拟</td>
+<td style="text-align: left;">CO<sub>2</sub> 羽流和压力是否按模型预期演化，即“一致性（Conformance）”</td>
+<td style="text-align: left;">地震响应通常需要反演解释并存在探测阈值，不能被等同于 CO<sub>2</sub> 质量的直接计量</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>浅层与受体</strong></td>
+<td style="text-align: left;">地下水、土壤气、大气通量、生态监测、InSAR 地表形变</td>
+<td style="text-align: left;">是否存在影响地下水、地表环境或公众安全的迹象，即“封闭性（Containment）”</td>
+<td style="text-align: left;">易受季节、气象和人类活动干扰，异常信号仍需溯源确认</td>
+</tr>
+</tbody>
+
+        </table>
+      </div>
+      
+    </div>
+  
+<p>分布式声学传感（DAS）和数字孪生/数字影子说明了技术工具在证据链中的具体定位。DAS 可通过光纤信号记录振动或应变，配合地震观测推断地下变化，但不能直接等同于地下 CO<sub>2</sub> 质量；Quest 的 DAS-VSP 实践表明，其结果仍需结合基线、采集条件和储层模型反演解释。数字孪生或数字影子可支持“预测—观测—偏差识别—模型校准”的迭代过程，其证据价值在于完整保留输入数据、校准记录、模型版本和不确定性。技术工具能够提高数据获取与分析效率，但不能替代校准记录、版本控制、解释依据与专业人员的人工复核<sup class="citation-cluster">[<a class="cite-ref" href="#ref-mateeva2014" data-cite="mateeva2014" data-index="48" id="cite-return-mateeva2014" title="Mateeva, A., et al. (2014). Distributed acoustic sensing for reservoir monitoring with VSP. Geophysical Prospecting, 62(4), 679-692. https://doi.org/10.1111/1365-2478.12116">48</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-bourne2014quest" data-cite="bourne2014quest" data-index="49"  title="Bourne, S. J., Crouch, S., &amp; Smith, M. (2014). A risk-based framework for measurement, monitoring and verification of the Quest CCS Project, Alberta, Canada. International Journal of Greenhouse Gas Control, 26, 109–126. https://doi.org/10.1016/j.ijggc.2014.04.026">49</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-harvey2022quest" data-cite="harvey2022quest" data-index="50" id="cite-return-harvey2022quest" title="Harvey, S., et al. (2022). Quest CCS facility: Time-lapse seismic campaigns. International Journal of Greenhouse Gas Control, 117, 103665. https://doi.org/10.1016/j.ijggc.2022.103665">50</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-gahlot2025shadow" data-cite="gahlot2025shadow" data-index="52" id="cite-return-gahlot2025shadow" title="Gahlot, A. P., et al. (2025). An uncertainty-aware digital shadow for underground multimodal CO2 storage monitoring. Geophysical Journal International, 242(1), ggaf176. https://doi.org/10.1093/gji/ggaf176">52</a>]</sup>。</p>
+<h3 data-number="4.2.2" id="跨主体证据链交接批次与责任边界"><span class="header-section-number">4.2.2</span> 跨主体证据链：交接、批次与责任边界</h3>
+<p>集群场景中的证据链需要跨越多个法人主体和物理节点。多源 CO<sub>2</sub> 依次经过捕集端、管网入口、压缩站、运输区段、封存接收端和注入井，每次交接均涉及流量、流质、计量不确定度、运行排放、与交付相关的责任边界和数据版本。统一的来源标识、批次或时间窗规则、节点质量平衡和交接追溯链（chain of custody），可使工程记录在跨主体流转中保持可归因性，并为结算、核证和责任判断提供连续底账<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iso27913" data-cite="iso27913" data-index="12" id="cite-return-iso27913" title="ISO. (2024). ISO 27913:2024: Carbon dioxide capture, transportation and geological storage – Pipeline transportation systems. https://www.iso.org/standard/84840.html">12</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-uk-ccs-code2025" data-cite="uk-ccs-code2025" data-index="31"  title="UK Department for Energy Security and Net Zero. (2025). CCS Network Code. https://assets.publishing.service.gov.uk/media/67865847f029f40e5088175f/ccs-network-code-2025.pdf">31</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-eu-mrr2024" data-cite="eu-mrr2024" data-index="32"  title="European Commission. (2024). Commission Implementing Regulation (EU) 2024/2493 amending Implementing Regulation (EU) 2018/2066 as regards the monitoring and reporting of greenhouse gas emissions pursuant to Directive 2003/87/EC. https://eur-lex.europa.eu/eli/reg_impl/2024/2493/oj">32</a>]</sup>。</p>
+<p>多源 CO<sub>2</sub> 进入共享设施后，统一标识可以保留来源关联，但各来源的交付量、服务链排放和减排成果归属，仍需依据各自适用的计量、核算和合同规则确定。例如，Verra VT0012 明确了共享设施中非 VCS 碳流的排放分摊与核算边界<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61" id="cite-return-verra-vt0012" title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。系统应保存分摊所采用的时间窗、数据、规则版本和确认记录，使相关结果能够复算和核查。物理数量的分摊与合同权益的分配应分别说明，不能仅凭来源标识推定。</p>
+<p>跨主体证据链不仅需要保存修订历史，还需要识别修订影响了哪些后续结果。例如，某排放源的交付计量经复核发生更正，应检查相应分摊计算、客户凭证和核证材料是否需要调整，并记录修订原因、确认主体和处理状态。已出具结果的更正，应按适用程序由相应主体确认，不能由系统直接覆盖。只有保留这些版本及其影响关系，后续争议处理和责任追溯才有可靠依据。</p>
+<h2 data-number="4.3" id="制度衔接让证据进入核证结算与责任判断"><span class="header-section-number">4.3</span> 制度衔接：让证据进入核证、结算与责任判断</h2>
+<p>同一组工程数据不应原样提供给所有主体。制度衔接要解决的，是不同使用者如何按权限取得所需证据，同时仍能回溯到同一组工程事实。证据输出应按主体职责、权限和信息需求有所区分，而不是无差别开放原始工程数据。不同主体的审查重点也各不相同：</p>
+<ul>
+<li><p><strong>核证机构</strong>：复核核算是否符合方法学要求，重点查看原始活动数据、计算过程、不确定性处理及异常处置记录。</p></li>
+<li><p><strong>服务客户</strong>：确认交付与履约状态，重点查看交付数量、流质指标、计费期间以及更正记录。</p></li>
+<li><p><strong>监管部门</strong>：审查许可条件、运行安全和责任安排，重点查看监测数据、模型符合性、重大偏差与补救记录。</p></li>
+<li><p><strong>银行与保险机构</strong>：将工程和履约记录作为风险评估的部分依据，具体数据需求依据其尽调、授信或核保目的确定。</p></li>
+</ul>
+<p>不同用途可以共享底层事实，但采用的核算边界、证明要求和最终判断并不相同。对外证据输出应说明数据所属期间、适用规则、版本及复核状态，并保留结论与底层依据之间的可追溯关系，而不是只输出孤立的最终结果。原始地震数据、压力曲线和商业敏感信息可以保留在项目系统或受控数据空间中，外部主体可通过受控数据交换获取核证摘要、交付凭证、事件状态或责任档案等履职所需信息。</p>
+<p>三类证据使用场景并非前述价值形成、跨主体协调和制度采信三类系统问题的一一映射，而是这些治理问题进入项目运行与制度执行后，工程证据被实际调用的主要场景。<a href="#tab:dmrv_governance_mapping" class="table-ref-link" title="点击查看表 4-3 dMRV 支持 CCUS 集群三类证据使用场景的作用及边界">表 4-3</a> 列示这三类场景，以及 dMRV 的证据功能和现有制度主体保留的最终判断。三类场景面向不同使用者，但共享同一组工程事实和审计底账。</p>
+
+    <div class="table-container-card" id="tab:dmrv_governance_mapping">
+      <div class="table-card-toolbar">
+        <div class="table-card-title-group">
+          <span class="table-badge">表 4-3</span>
+          <span class="table-title">dMRV 支持 CCUS 集群三类证据使用场景的作用及边界</span>
+        </div>
+        
+      </div>
+      <div class="table-responsive-wrapper">
+        <table class="standard-table">
+          
+
+<thead>
+<tr class="header">
+<th style="text-align: left;">证据使用场景</th>
+<th style="text-align: left;">dMRV 的核心作用</th>
+<th style="text-align: left;">主要证据输出</th>
+<th style="text-align: left;">仍由现有制度完成的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>交付与归因</strong></td>
+<td style="text-align: left;">建立来源标识、交接计量、质量平衡、交接追溯链和分摊记录</td>
+<td style="text-align: left;">交付量、流质、容量占用、管存变化、损耗、运行排放、异常和责任映射</td>
+<td style="text-align: left;">合同结算、减排量归属、违约责任和争议处理仍依据网络规则、方法学和合同作出</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>风险与责任</strong></td>
+<td style="text-align: left;">将基线、运行状态、模型符合性、封闭性和异常处置与复核记录组织为长期证据</td>
+<td style="text-align: left;">压力与羽流状态、井筒完整性、环境监测、模型偏差、事件处置、关闭准备和资金安排</td>
+<td style="text-align: left;">监测调整、关闭批准和责任移交仍由监管机关依据法律、许可条件和证据门槛决定</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>金融与外部信任</strong></td>
+<td style="text-align: left;">将复杂工程信息组织为标准化、权限受控、可持续更新的风险信息与证据摘要</td>
+<td style="text-align: left;">许可与核证状态、证据完整性、重大偏差、履约趋势、服务凭证和责任边界</td>
+<td style="text-align: left;">核证、信用签发、贷款、核保、定价和投资决策仍由相应机构独立完成</td>
+</tr>
+</tbody>
+
+        </table>
+      </div>
+      
+    </div>
+  
+<p>在交付与归因层面，dMRV 通过交接记录、质量平衡与追溯链，保持物理碳流、核算结果与归属之间的可追溯关系。当项目成果进入碳信用登记或国际转移时，该证据链还可与登记簿序列号、CAD Trust 元数据以及《巴黎协定》第 6 条的授权与相应调整机制衔接，降低重复签发、重复使用和重复主张的风险<sup class="citation-cluster">[<a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58" id="cite-return-cadtrust-api2026" title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-unfccc-a6registry2026" data-cite="unfccc-a6registry2026" data-index="59" id="cite-return-unfccc-a6registry2026" title="UNFCCC. (2026年1月23日). Development of Paris Agreement Article 6 registry infrastructure begins. https://unfccc.int/news/development-of-paris-agreement-article-6-registry-infrastructure-begins">59</a>]</sup>。</p>
+<p>在风险与责任层面，证据的增量在于保留项目在运行期与关闭后的风险演化轨迹，使风险状态及其不确定性的变化过程可被追溯。例如，关闭评估不仅判断某一时点压力是否正常，还能回看异常何时出现、模型为何修订、采取了什么措施以及之后是否恢复稳定。</p>
+<p>在金融与外部信任层面，dMRV 将许可、运行、核证与履约趋势组织为可供外部使用的风险信息，可为金融机构和承保人的风险评估提供过程留痕与审计底账，减少对期末集中解释和一次性申报材料的依赖<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>。</p>
+<h3 data-number="4.3.1" id="国际实践规则核证与系统衔接"><span class="header-section-number">4.3.1</span> 国际实践：规则、核证与系统衔接</h3>
+<p>在与 CCS 直接相关的核算规则标准化方面，VM0049、VT0012 等方法学开始标准化共享基础设施下的核算与分摊规则：VM0049 建立覆盖捕集、运输和封存全流程的模块化核算框架，通过模块组合量化各环节的相关排放<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vm0049" data-cite="verra-vm0049" data-index="60" id="cite-return-verra-vm0049" title="Verra. (2024年6月27日). VM0049 Carbon Capture and Storage, v1.0. https://verra.org/methodologies/vm0049-carbon-capture-and-storage/">60</a>]</sup>；VT0012 针对非 VCS CO<sub>2</sub> 进入项目边界的情形，规定项目排放和泄漏排放的分摊要求，以支持基础设施共享<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-vt0012" data-cite="verra-vt0012" data-index="61"  title="Verra. (2025年4月22日，2026年7月14日更新说明). VT0012 Accounting Non-VCS CO2 in CCS Projects, v1.0. https://verra.org/methodologies/vt0012-accounting-non-vcs-co2-in-ccs-projects-v1-0/">61</a>]</sup>。</p>
+<p>在数字化核证与签发流程方面，现有实践展示了监测数据数字化提交、独立核证与签发之间的流程衔接，其对 CCUS 集群的启示主要在流程与证据交换设计层面<sup class="citation-cluster">[<a class="cite-ref" href="#ref-verra-dmrv2026" data-cite="verra-dmrv2026" data-index="57" id="cite-return-verra-dmrv2026" title="Verra. (2026年2月19日). Verra Approves First Credits under DMRV Pilot for High-Frequency Issuances. https://verra.org/verra-approves-first-credits-under-dmrv-pilot-for-high-frequency-issuances/">57</a>]</sup>。</p>
+<p>在项目数据与外部系统连接方面，项目端数据接口和跨登记系统开始探索共同语义、唯一标识与状态同步<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-cadtrust-api2026" data-cite="cadtrust-api2026" data-index="58"  title="Climate Action Data Trust. (2026年1月7日). CAD Trust launches Data Model 2.0 Public API Documentation. https://climateactiondata.org/cad-trust-launches-data-model-2-0-public-api-documentation/">58</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-puro-dmrv-api-docs" data-cite="puro-dmrv-api-docs" data-index="62"  title="Puro.earth. (2026年访问). dMRV Connect (Beta): API Documentation. https://docs.api.puro.earth/dmrv/overview/">62</a>]</sup>。</p>
+<p>对 CCUS 而言，这些实践的价值主要在规则结构化、证据交换和制度衔接设计，而非提供一套可以直接照搬的平台方案。</p>
+<h3 data-number="4.3.2" id="技术边界工具服务于证据链与制度衔接"><span class="header-section-number">4.3.2</span> 技术边界：工具服务于证据链与制度衔接</h3>
+<p>dMRV 跨越企业、监管和第三方机构，数据治理应从系统设计阶段同步纳入。项目需要明确数据管理责任、使用权限和共享边界，按照最小权限原则设置访问范围，区分原始工程数据、核证材料、对外凭证和公开信息，并保留调用日志、授权变更和撤销记录。商业秘密、关键基础设施数据和个人信息应进入受控环境，跨境调用还需满足适用的数据安全与网络安全要求。对需要长期保存的监测和责任记录，宜提前约定保存期限、迁移方式和承接主体，避免运营主体变更或平台停止服务后，历史证据无法继续查询和复核。</p>
+<p>规则、模型和算法同样需要版本治理。系统应保存规则版本、计算路径、模型参数、校准数据与人工批准记录；重大变更应评估对历史结果、合同结算与责任状态的影响。技术方案应以记录能否追溯、结果能否复核、权限能否控制和证据能否长期使用为评价依据，具体工具的选择应服从审计可溯、权限受控与人工监督等基本要求。</p>
+<p>因此，评价这一证据机制的关键，不在于是否建设了某一种数字平台，而在于一项交付量、一次计量更正或一个风险判断，能否追溯到原始记录、适用规则、版本变化和责任主体。规则字段化、证据组织与制度衔接共同构成这种能力，具体数字平台只是其技术载体。下一章进一步讨论如何在现有项目中验证这些机制，并将可复用的结果逐步转化为治理规则。</p>
 <h1 data-number="5" id="从试点验证到集群治理规则形成"><span class="header-section-number">5</span> 从试点验证到集群治理规则形成</h1>
-<p>前文分别从治理组合和证据机制两个层面梳理了集群化问题。下一步需要通过真实项目试点，检验证据机制能否进入项目评审、商业履约和长期责任审查。第 4 章的案例与场景观察表明，多源接入、生产系统嵌入、服务化交付和长期责任审查分别提出不同的证据要求。本章不按案例逐一设置试点，而是结合<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 所列市场、基础设施、许可、责任和证据等治理任务，从中选取可嵌入现有项目、无需预设最终制度形态且能在真实业务周期中获得反馈的共性机制，整合为三项相互衔接的验证任务。</p>
+<p>前文已经完成两步收敛：第3章通过案例与工程场景识别了长期责任、服务化交付、多源接入和生产系统嵌入中的证据需求，第4章进一步将这些需求归纳为规则字段化、证据组织和制度衔接三类共性机制。下一步需要通过真实项目检验这些机制能否进入项目评审、商业履约和长期责任审查。本章不按案例逐一设置试点，而是结合<a href="#fig:cluster_stages" class="fig-ref-link" title="点击查看图 2 CCUS 集群形成的关键约束与阶段性治理任务">图 2</a> 所列市场、基础设施、许可、责任和证据等治理任务，从中选取可嵌入现有项目、无需预设最终制度形态且能在真实业务周期中获得反馈的机制，整合为三项相互衔接的验证任务。</p>
 <p>中国已具备工程示范、标准规范与生产数字化等基础，但跨主体证据和制度衔接机制仍需在真实项目中验证。从产业治理成熟度看，探索与示范阶段重点降低地质与工程不确定性，并在项目设计阶段明确基本证据要求；进入集群形成阶段后，重点转向锚定用户、共享设施以及交接、对账和异常处理规则的验证；规模扩张阶段则需要通过多项目运行比较，识别可以跨项目复用的规则及其适用条件。三项试点可以根据项目成熟度跨阶段组合实施，并不与上述三个阶段一一对应，每项均经历“设计—试用—评估”的验证过程，并优先复用既有生产和监管系统。</p>
 <h2 data-number="5.1" id="将证据要求前置到集群遴选与可研设计"><span class="header-section-number">5.1</span> 将证据要求前置到集群遴选与可研设计</h2>
 <p>建议在 CCUS 集群示范项目遴选和可研评审中明确基本证据形成与复核能力要求，并与后续许可、核证和商业履约需求相衔接。这些要求主要用于示范项目比较和政策学习，不作为全国统一准入条件。</p>
@@ -3597,7 +3597,7 @@
 <tr class="even">
 <td style="text-align: left;">全链条能源惩罚是 CCUS 运行中的重要物理约束；本文以单位净避免排放额外一次能源投入这一 SPECCA 类指标对其进行表征。能源价格和碳强度分别将其转化为成本与排放后果，首发风险则集中于启动阶段。</td>
 <td style="text-align: left;">IPCC CCS 评估（含仍沿用 energy penalty 术语的成本核算）、IEA 政策与融资分析及本文全链条边界框架<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-srccs2005" data-cite="ipcc-srccs2005" data-index="42"  title="IPCC. (2005). IPCC Special Report on Carbon Dioxide Capture and Storage: Chapter 5, Underground Geological Storage. https://www.ipcc.ch/report/carbon-dioxide-capture-and-storage/underground-geological-storage/">42</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ipcc-ar6-wg3-ch6" data-cite="ipcc-ar6-wg3-ch6" data-index="43" id="cite-return-ipcc-ar6-wg3-ch6" title="Clarke, L., Y.-M. Wei, A. De La Vega Navarro, A. Garg, N. K. Hahmann, S. Khennas, I. M. L. Azevedo, A. Löschel, K. A. K. Singh, G. Streck, C. Stratou, &amp; Yanda, W. (2022). Energy systems. In IPCC, Climate Change 2022: Mitigation of Climate Change. Contribution of Working Group III to the Sixth Assessment Report, Chapter 6. https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/">43</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-financing2026" data-cite="iea-financing2026" data-index="66"  title="IEA. (2026年3月30日). Financing CCUS at Scale. https://www.iea.org/reports/financing-ccus-at-scale">66</a>]</sup>；SPECCA 类指标定义<sup class="citation-cluster">[<a class="cite-ref" href="#ref-hagi2015" data-cite="hagi2015" data-index="44" id="cite-return-hagi2015" title="Hagi, H., Neveux, T., &amp; Le Moullec, Y. (2015). Efficiency evaluation procedure of coal-fired power plants with CO2 capture, cogeneration and hybridization. Energy, 91, 306–323. https://doi.org/10.1016/j.energy.2015.08.038">44</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-ieaghg-specca2024" data-cite="ieaghg-specca2024" data-index="45" id="cite-return-ieaghg-specca2024" title="IEAGHG. (2024). Baseline Techno-Economic Assessment of Small-Scale Carbon Capture for Industrial and Power Systems (Report 2024-03). https://ieaghg.org/publications/techno-economic-assessment-of-small-scale-carbon-capture-for-industrial-and-power-systems/">45</a>]</sup></td>
-<td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第一章能源惩罚的定义与全链条边界；第三章能源投入核算与碳流字段；第五章工程绩效与证据能力评价</td>
+<td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第一章能源惩罚的定义与全链条边界；第四章能源投入核算与碳流字段；第五章工程绩效与证据能力评价</td>
 <td style="text-align: left;">支持识别工艺、能源结构和集群协同方向，但项目经济性评价还需结合投资与运行成本、设施利用率、融资条件和减排价值；公开项目数据尚不足以形成统一数值阈值或跨行业横向排名。</td>
 </tr>
 <tr class="odd">
@@ -3609,7 +3609,7 @@
 <tr class="even">
 <td style="text-align: left;">dMRV 的制度功能是组织和传递证据，而不是替代监管、方法学或独立核证。</td>
 <td style="text-align: left;">世界银行 dMRV 框架及 dMRV 专业研究<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="55"  title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">55</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-veen-dmrv2025" data-cite="veen-dmrv2025" data-index="56" id="cite-return-veen-dmrv2025" title="Veen, P., Winkler, M., Oh, S., &amp; Michaelowa, A. (2025). Can digital monitoring, reporting, and verification (dMRV) unlock industrial CO2 capture and removal in carbon markets? Environmental Research Letters, 20(12), 121002. https://doi.org/10.1088/1748-9326/ae20ad">56</a>]</sup></td>
-<td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第三章提出的规则字段化、连续证据和差异化证据输出</td>
+<td style="text-align: left;"><span>[</span>本文分析<span>]</span> 第四章提出的规则字段化、连续证据和差异化证据输出</td>
 <td style="text-align: left;">支持“产业信用基础设施”的功能定位；该定位是本文的治理综合，不赋予平台法定采信或信用签发权限。</td>
 </tr>
 <tr class="odd">
