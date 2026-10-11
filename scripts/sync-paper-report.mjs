@@ -2551,12 +2551,33 @@ const template = `<!DOCTYPE html>
       word-break: break-word;
     }
     .article-content ul, .article-content ol {
-      margin-bottom: 1.45rem;
-      padding-left: 2rem;
+      margin-top: 0.6rem;
+      margin-bottom: 1.55rem;
+      padding-left: 1.75rem;
     }
     .article-content li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
       line-height: 1.85;
+      color: var(--text-main);
+    }
+    .article-content li:last-child {
+      margin-bottom: 0;
+    }
+    .article-content li > p {
+      margin-bottom: 0 !important;
+      line-height: inherit;
+    }
+    .article-content li > p + p {
+      margin-top: 0.45rem;
+    }
+    .article-content ul > li::marker {
+      color: var(--brand-blue);
+      font-size: 1.05em;
+    }
+    .article-content ol > li::marker {
+      color: var(--brand-blue);
+      font-weight: 700;
+      font-family: var(--font-mono);
     }
 
     /* 图表 Figure 通用约束与居中排版 */
