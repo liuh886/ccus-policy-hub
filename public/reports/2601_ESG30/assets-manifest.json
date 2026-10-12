@@ -1,40 +1,40 @@
 {
   "slug": "2601_ESG30",
-  "texSha": "c5a4c1f65fb5e38e",
-  "texSource": "remote",
-  "remoteOnly": true,
+  "texSha": "480a745c6d167ab0",
+  "texSource": "local",
+  "remoteOnly": false,
   "pandocVersion": "3.1.12.3",
-  "generatedAt": "2026-10-11T21:59:16.192Z",
+  "generatedAt": "2026-10-12T04:16:41.974Z",
   "assets": [
     {
       "path": "data/图文摘要.png",
-      "source": "remote",
+      "source": "local",
       "bytes": 1447711,
       "sha256": "c4a5c2274d122a8e"
     },
     {
       "path": "data/图1.jpg",
-      "source": "remote",
+      "source": "local",
       "bytes": 396050,
       "sha256": "4246d80733af13cc"
     },
     {
       "path": "data/图2.png",
-      "source": "remote",
+      "source": "local",
       "bytes": 1423327,
       "sha256": "55dde658c99e1223"
     },
     {
       "path": "data/图3.png",
-      "source": "remote",
+      "source": "local",
       "bytes": 1139646,
       "sha256": "1fc18ebc9ab7698d"
     },
     {
       "path": "paper_draft.pdf",
-      "source": "remote",
-      "bytes": 4740843,
-      "sha256": "9a23c28cc46c3d97"
+      "source": "local",
+      "bytes": 4741833,
+      "sha256": "980f1df68b6ff76b"
     }
   ]
 }
