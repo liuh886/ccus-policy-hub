@@ -2961,18 +2961,15 @@ const template = `<!DOCTYPE html>
       box-shadow: none;
     }
 
-    /* 附录 B 关键主张与证据边界映射表专属样式：对齐表 2-1 紧凑度 */
+    /* 附录 B 核心判断与证据索引表专属样式 */
     .table-claims-mapping {
       width: 100% !important;
       border-collapse: collapse;
-      min-width: 920px;
       table-layout: fixed;
     }
-    /* 四列宽度比例：表头由 ensureThead 从 TeX 提升而来，比例统一在 CSS 维护 */
-    .table-claims-mapping th:nth-child(1) { width: 22%; }
-    .table-claims-mapping th:nth-child(2) { width: 26%; }
-    .table-claims-mapping th:nth-child(3) { width: 24%; }
-    .table-claims-mapping th:nth-child(4) { width: 28%; }
+    /* 双列宽度比例：核心判断 68%，正文位置与证据索引 32% */
+    .table-claims-mapping th:nth-child(1) { width: 68%; }
+    .table-claims-mapping th:nth-child(2) { width: 32%; }
     .table-claims-mapping th {
       background: var(--table-header);
       padding: 0.52rem 0.8rem;
@@ -2990,7 +2987,6 @@ const template = `<!DOCTYPE html>
       border-bottom: 1px solid var(--table-border);
     }
     .table-claims-mapping td:first-child {
-      font-weight: 600;
       color: var(--text-main);
       background-color: rgba(37, 99, 235, 0.02);
     }
@@ -3000,12 +2996,6 @@ const template = `<!DOCTYPE html>
     .table-claims-mapping td:nth-child(2) {
       font-size: 0.81rem;
       color: var(--text-muted);
-    }
-    .table-claims-mapping td:nth-child(3) {
-      font-size: 0.81rem;
-    }
-    .table-claims-mapping td:nth-child(4) {
-      font-size: 0.81rem;
       line-height: 1.55;
     }
 
