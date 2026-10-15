@@ -637,7 +637,8 @@
       align-items: baseline;
     }
     /* \paragraph 级小标题（TeX 中本身不带编号） */
-    .article-content h4 {
+    .article-content h4,
+    .article-content p.report-lead {
       font-family: var(--font-sans);
       font-size: 1.02rem;
       font-weight: 700;
@@ -649,7 +650,8 @@
       line-height: 1.5;
       scroll-margin-top: 80px;
     }
-    .article-content h4 + p {
+    .article-content h4 + p,
+    .article-content p.report-lead + p {
       margin-top: 0;
     }
     /* 路线图卡片内的阶段标题不重复左侧色条 */
@@ -2829,7 +2831,7 @@
 <p>捕集方与运输封存运营商面临投资上的双向等待：前者在缺少可靠运输和封存服务时不愿率先改造，后者在没有锚定客户和确定流量前也难以启动建设。储层评价、管网建设、捕集改造、许可审批和客户签约周期不同，单靠双边交易难以确保全链条同步达到投资条件<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea2023ccuspolicy" data-cite="iea2023ccuspolicy" data-index="21"  title="IEA. (2023). CCUS Policies and Business Models: Building a Commercial Market. https://www.iea.org/reports/ccus-policies-and-business-models-building-a-commercial-market">21</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-iea-clusters2025" data-cite="iea-clusters2025" data-index="34"  title="IEA. (2025). CCUS projects around the world are reaching new milestones. https://www.iea.org/commentaries/ccus-projects-around-the-world-are-reaching-new-milestones">34</a>]</sup>。集群规划、政府主导的公共地质调查、先导投资和锚定用户承诺，有助于降低开发不确定性并协调投资；开放接入和网络运营规则则支持共享设施稳定运行<sup class="citation-cluster">[<a class="cite-ref" href="#ref-iea-ccus-deployment2020" data-cite="iea-ccus-deployment2020" data-index="101" id="cite-return-iea-ccus-deployment2020" title="International Energy Agency. (2020). CCUS in Clean Energy Transitions: Accelerating deployment. https://www.iea.org/reports/ccus-in-clean-energy-transitions/accelerating-deployment">101</a>]</sup>。</p>
 <h4 id="工程结果如何获得制度采信">工程结果如何获得制度采信。</h4>
 <p>网络投运后，来源身份、交接计量、损耗与排放分摊、地下风险、异常处置和责任阶段需要被不同主体持续复核。核证机构、客户、监管部门、银行和保险机构并不需要完全相同的数据，却需要能够回溯到同一组工程事实。传统依赖周期性报送、人工核对和独立核证的流程，往往需要重复整理资料，增加复核成本<sup class="citation-cluster">[<a class="cite-ref" href="#ref-worldbank-dmrv2022" data-cite="worldbank-dmrv2022" data-index="57" id="cite-return-worldbank-dmrv2022" title="World Bank. (2022). Digital Monitoring, Reporting, and Verification Systems and Their Application in Future Carbon Markets. https://hdl.handle.net/10986/37622">57</a>]</sup>。在依赖碳信用收入的项目中，核证与签发周期还可能影响资金回流<sup class="citation-cluster">[<a class="cite-ref" href="#ref-veen-dmrv2025" data-cite="veen-dmrv2025" data-index="58" id="cite-return-veen-dmrv2025" title="Veen, P., Winkler, M., Oh, S., &amp; Michaelowa, A. (2025). Can digital monitoring, reporting, and verification (dMRV) unlock industrial CO2 capture and removal in carbon markets? Environmental Research Letters, 20(12), 121002. https://doi.org/10.1088/1748-9326/ae20ad">58</a>]</sup>；进入多主体共享网络后，交付确认、计量更正和长期责任审查进一步要求相关证据能够持续关联和复核。</p>
-<p><strong>贯穿上述系统问题的，还有两项性质不同的关键约束：能源惩罚与首发风险。</strong></p>
+<p class="report-lead"><strong>贯穿上述系统问题的，还有两项性质不同的关键约束：能源惩罚与首发风险。</strong></p>
 <p>能源惩罚贯穿项目运行期。捕集、压缩、运输和注入封存都需要额外用能<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，这些投入既增加运行费用，也产生与能源碳强度相关的附加排放。衡量这一物理代价，关键是在一致边界下，核对每避免一吨排放需要增加多少一次能源投入<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。能源价格影响这些投入的费用，碳价、税收激励和低碳产品溢价等条件则影响减排收益。</p>
 <p>能源惩罚较高时，应检查捕集工艺、热集成和压缩运输效率，并考察低碳能源供给的可用性；若能源惩罚已较低而项目仍缺乏经济性，则需进一步检查能源价格、建设运营成本、设施利用率、融资条件及减排收益的兑现方式。</p>
 <p>首发风险主要集中于集群启动和网络形成阶段。共享运输封存设施前期投资较大，建设周期与客户接入时序又难以完全同步；在需求、容量和长期合同尚未锁定时，先行投资者面临设施闲置和收入不足的风险。公共资本分担早期风险，网络统筹协调建设时序，长期合同落实客户承诺，共同为网络启动创造条件。</p>
