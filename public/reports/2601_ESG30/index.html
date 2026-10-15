@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础 | CCUS Policy Hub</title>
   <meta name="description" content="ESG30 青年学者计划（二期）：从单点技术示范到集群化枢纽治理：CCUS 规模化的治理组合与 dMRV 证据基础" />
-  <meta name="paper-source" content="paper_draft.tex sha256:21594950241aaf43" />
+  <meta name="paper-source" content="paper_draft.tex sha256:e1b6a8d486508c02" />
   
   <!-- MathJax 3 实时渲染公式 -->
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
@@ -3097,7 +3097,7 @@
 <h1 data-number="4" id="从工程事实到可复核证据"><span class="header-section-number">4</span> 从工程事实到可复核证据</h1>
 <p>风险判断需要回溯所依据的模型版本，封存凭证需要关联交付与封存记录；计量更正需要追踪其对上下游结算与核证的影响，碳流核对则需要嵌入既有生产和安全环保体系。这些任务都要求分散在不同设施和主体中的记录能够相互核对，并保留判断与更正的依据。</p>
 <p>dMRV 通过数字化组织、版本追踪和受控调用，将这些记录连接为可用于核算、结算、监管和责任审查的证据。传统 MRV 同样可以使用数字工具。共享网络进一步要求把规则转化为可校核的字段，关联不同主体的工程记录及其版本，并按权限向结算、核证与监管提供证据。</p>
-<p>本文将 dMRV 界定为：<strong>在既定法规、标准、许可、合同和方法学要求下，利用数字技术与结构化流程，对关键活动数据和监测结果进行采集、处理、质量控制、版本留痕和报告的系统与治理过程。它为独立核证及后续制度使用提供可追溯的数字证据。</strong></p>
+<p>本文将 dMRV 界定为：<strong>在既定法规、标准、许可、合同和方法学要求下，利用数字技术与结构化流程，对关键活动数据和监测结果进行采集、处理、质量控制、版本留痕和报告的系统与治理过程。它为独立核证及后续制度使用提供可追溯的数字证据（<a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3 CCUS dMRV：共同工程事实与差异化制度用途的衔接">图 3</a>）。</strong></p>
 
     <figure class="academic-figure" id="fig:dmrv_house">
       <div class="figure-header">
@@ -3111,8 +3111,11 @@
         <img src="./data/图3.png" alt="CCUS dMRV：共同工程事实与差异化制度用途的衔接" loading="lazy" />
       </div>
       
+      <div class="figure-notes">
+        <span class="note-tag">注</span>
+        <div class="note-text">展示共同工程事实与差异化制度判断的关系：客户、核证机构和监管部门可以回溯同一组工程记录，但分别依据合同、方法学和监管规则形成判断，并按权限确认、复核和更正相关结果。本文将这种跨主体组织、复核和使用工程证据的能力概括为“产业信用基础设施”。可追溯的记录与依规则进行的确认、复核和更正构成其可信性基础，也使这些记录与程序能够跨主体、跨业务用途持续复用。</div>
+      </div>
     </figure>
-<p><a href="#fig:dmrv_house" class="fig-ref-link" title="点击查看图 3 CCUS dMRV：共同工程事实与差异化制度用途的衔接">图 3</a> 展示了共同工程事实与差异化制度判断的关系：客户、核证机构和监管部门可以回溯同一组工程记录，但分别依据合同、方法学和监管规则形成判断，并按权限确认、复核和更正相关结果。本文将这种跨主体组织、复核和使用工程证据的能力概括为“产业信用基础设施”。可追溯的记录与依规则进行的确认、复核和更正构成其可信性基础，也使这些记录与程序能够跨主体、跨业务用途持续复用。</p>
 <h2 data-number="4.1" id="规则字段化明确什么必须被证明"><span class="header-section-number">4.1</span> 规则字段化：明确什么必须被证明</h2>
 <p>规范性框架首先回答“什么必须被证明”。法规和许可规定项目边界、安全要求、监测义务和责任条件；方法学规定核算边界、参数、公式、数据质量和不确定性处理；合同和网络规则规定交付标准、容量分配、损耗分摊、异常处置和违约责任；技术标准则统一术语、计量、流质和工程接口。dMRV 的第一项工作，是将这些要求转化为可记录、可校核、可追溯的数据字段、计算逻辑和事件规则。</p>
 <p>CCUS 集群的核心证据字段见<a href="#tab:dmrv_minimum_fields" class="table-ref-link" title="点击查看表 4-1 CCUS 集群 dMRV 的核心证据字段框架">表 4-1</a>。能源消耗是工程活动数据，能源碳强度是核算参数，两者共同用于评价能源投入对净减排结果的影响。采用绿电直连或绿电交易时，还需依适用核算规则关联用电量、供电来源、计量时段、排放因子及绿电归属凭证<sup class="citation-cluster">[<a class="cite-ref" href="#ref-china-green-direct2026" data-cite="china-green-direct2026" data-index="68"  title="国家发展改革委, 国家能源局. (2026年5月14日). 关于有序推动多用户绿电直连发展有关事项的通知. 发改能源〔2026〕688号. https://www.ndrc.gov.cn/xwdt/tzgg/202605/t20260520_1405314.html">68</a><span class="cite-sep">, </span><a class="cite-ref" href="#ref-china-nonfossil-accounting2026" data-cite="china-nonfossil-accounting2026" data-index="69" id="cite-return-china-nonfossil-accounting2026" title="国家能源局. (2026年6月1日). 国家能源局有关负责同志就《非化石能源电力消费核算指南（试行）》答记者问. https://www.ndrc.gov.cn/xxgk/jd/jd/202606/t20260601_1405604.html">69</a>]</sup>。能源价格与机会成本属于外部经济评价参数，应关联相应工程记录和规则版本，并与底层工程证据分层保存。</p>

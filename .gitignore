@@ -84,6 +84,7 @@ video/
 # --- Node/Astro/Editor ---
 node_modules/
 dist/
+artifacts/
 .astro/
 .vscode/
 

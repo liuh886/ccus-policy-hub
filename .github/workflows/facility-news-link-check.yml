@@ -76,3 +76,4 @@ jobs:
             agent/ccus-ai-agent/governance/reports/facility_news_link_health.json
             agent/ccus-ai-agent/governance/reports/facility_news_link_health.md
           if-no-files-found: warn
+          retention-days: 1
