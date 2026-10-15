@@ -1818,6 +1818,13 @@ console.log(
   `[sync-paper-report] 已还原 ${unnumberedParagraphs} 个 \\paragraph 小标题（移除伪编号）`
 );
 
+// Keep the constraints transition as a paragraph, with the same visual treatment
+// as the preceding unnumbered leads. Do not add a heading or a TOC entry.
+bodyHtml = bodyHtml.replace(
+  /<p>\s*<strong>(贯穿上述系统问题的，还有两项性质不同的关键约束：能源惩罚与首发风险。)<\/strong>\s*<\/p>/g,
+  '<p class="report-lead"><strong>$1</strong></p>'
+);
+
 // 4. 统一政策建议章节标题的版式与间距（不注入冗余编号徽章）
 //    按标题语义（以“政策建议”开头）识别，不再硬编码章节号与 Pandoc 生成的 id。
 let policyHeadings = 0;
@@ -2504,7 +2511,8 @@ const template = `<!DOCTYPE html>
       align-items: baseline;
     }
     /* \\paragraph 级小标题（TeX 中本身不带编号） */
-    .article-content h4 {
+    .article-content h4,
+    .article-content p.report-lead {
       font-family: var(--font-sans);
       font-size: 1.02rem;
       font-weight: 700;
@@ -2516,7 +2524,8 @@ const template = `<!DOCTYPE html>
       line-height: 1.5;
       scroll-margin-top: 80px;
     }
-    .article-content h4 + p {
+    .article-content h4 + p,
+    .article-content p.report-lead + p {
       margin-top: 0;
     }
     /* 路线图卡片内的阶段标题不重复左侧色条 */
