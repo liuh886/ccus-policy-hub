@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-09-23",
-  "totalPolicies": 129,
+  "asOf": "2026-10-21",
+  "totalPolicies": 130,
   "severityCounts": {
     "critical": 0,
     "high": 3,
     "medium": 38,
-    "healthy": 88
+    "healthy": 89
   },
   "verifiedNeedsWork": 41,
   "lowestScore": 45,
@@ -1948,6 +1948,37 @@
       "titles": {
         "en": "Chile Green Hydrogen and CCUS Roadmap 2025",
         "zh": "智利绿氢与 CCUS 路线图 2025"
+      }
+    },
+    {
+      "id": "cn-bj-ccus-measures-2026",
+      "country": "China",
+      "year": 2026,
+      "reviewStatus": "draft",
+      "category": "Strategic",
+      "score": 100,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 2266,
+        "zhDescriptionLength": 560,
+        "enScopeLength": 337,
+        "zhScopeLength": 114,
+        "enTags": 7,
+        "zhTags": 7,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Beijing Municipal Measures on Cultivating and Expanding the CCUS Industry (2026)",
+        "zh": "北京市关于推动碳捕集利用与封存产业培育壮大的若干措施 (2026)"
       }
     },
     {
