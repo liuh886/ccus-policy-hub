@@ -44,7 +44,11 @@ const uniqueCountries = Array.from(new Set(policies.map((p) => p.data.country)))
     display: countryMap[canon]?.[isEn ? 'en' : 'zh'] || canon,
   }));
 const uniqueSectors = Array.from(
-  new Set(policies.flatMap((p) => p.data.sectors || []))
+  new Set(
+    policies.flatMap((p) =>
+      p.data.sectors?.length ? p.data.sectors : p.data.tags || []
+    )
+  )
 ).sort();
 const uniqueCategories = Array.from(
   new Set(policies.map((p) => p.data.category))
@@ -78,7 +82,7 @@ const copy = isEn
         'CCUS policies from major economies worldwide, covering five dimensions: economic incentives, statutory and regulatory, market mechanisms, strategic planning and MRV & data governance.',
       searchPlaceholder: 'Search titles, content or tags...',
       allCountries: 'All Countries',
-      allSectors: 'All Sectors',
+      allSectors: 'All Tags',
       allCategories: 'All Categories',
       rankingToggle: 'Weighted Ranking',
       weightsTitle: 'Custom Evaluation Weights (FSRTM 5.0)',
@@ -97,7 +101,7 @@ const copy = isEn
         '收录全球主要经济体的 CCUS 相关政策，涵盖经济激励、法规制度、市场机制、战略规划及 MRV 与数据治理五大维度。',
       searchPlaceholder: '搜索政策标题、内容或标签...',
       allCountries: '所有国家和地区',
-      allSectors: '所有行业',
+      allSectors: '所有标签',
       allCategories: '所有类型',
       rankingToggle: '加权排名',
       weightsTitle: '自定义评价权重 (FSRTM 5.0)',
@@ -263,7 +267,12 @@ const copy = isEn
               data-title={policy.data.title}
               data-country={policy.data.country}
               data-category={displayCategory}
-              data-sectors={policy.data.sectors?.join(',') || ''}
+              data-sectors={
+                (policy.data.sectors?.length
+                  ? policy.data.sectors
+                  : policy.data.tags
+                )?.join(',') || ''
+              }
               data-year={policy.data.year}
               data-analysis={JSON.stringify({
                 incentive: policy.data.analysis?.incentive?.score || 0,
@@ -362,7 +371,9 @@ const copy = isEn
         const year = parseInt(htmlItem.dataset.year || '0');
         const analysis = JSON.parse(htmlItem.dataset.analysis || '{}');
 
-        const matchesSearch = title.includes(searchTerm);
+        const matchesSearch =
+          title.includes(searchTerm) ||
+          itemSectors.toLowerCase().includes(searchTerm);
         const matchesCountry = !country || itemCountry === country;
         const matchesCategory = !category || itemCategory === category;
         const matchesIndustry =

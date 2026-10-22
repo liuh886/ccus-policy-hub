@@ -110,6 +110,7 @@ export async function dbExportMd(
         description: (i.description || '')
           .substring(0, 500)
           .replace(/\n/g, ' '),
+        tags: JSON.parse(i.tags_json || '[]'),
         analysis,
         impactAnalysis: JSON.parse(i.impact_analysis_json || '{}'),
         evolution: JSON.parse(i.evolution_json || '{}'),

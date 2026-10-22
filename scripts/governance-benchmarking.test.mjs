@@ -48,6 +48,25 @@ test('governance capability uses peak active-policy strength and a 0-100 average
       strategic: 100,
       mrv: 100,
     }),
+    {
+      ...policy('unverified-draft', 'Active', {
+        incentive: 100,
+        statutory: 100,
+        market: 100,
+        strategic: 100,
+        mrv: 100,
+      }),
+      data: {
+        ...policy('unverified-draft', 'Active', {
+          incentive: 100,
+          statutory: 100,
+          market: 100,
+          strategic: 100,
+          mrv: 100,
+        }).data,
+        reviewStatus: 'draft',
+      },
+    },
   ]);
 
   assert.deepEqual(result.scores, [90, 80, 55, 50, 65]);

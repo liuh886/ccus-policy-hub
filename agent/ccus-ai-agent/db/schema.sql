@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS policy_i18n (
   interpretation TEXT,
   evolution_json TEXT,
   regulatory_json TEXT,
+  mrv_criteria TEXT,
   PRIMARY KEY(policy_id, lang),
   FOREIGN KEY(policy_id) REFERENCES policies(id) ON DELETE CASCADE
 );
@@ -139,7 +140,11 @@ CREATE TABLE IF NOT EXISTS facilities (
 
   provenance_author TEXT,
   provenance_reviewer TEXT,
-  provenance_last_audit_date TEXT
+  provenance_last_audit_date TEXT,
+  mrv_json TEXT,
+  address TEXT,
+  estimated_lat REAL,
+  estimated_lng REAL
 );
 
 CREATE TABLE IF NOT EXISTS facility_i18n (

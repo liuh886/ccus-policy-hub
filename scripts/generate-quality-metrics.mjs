@@ -169,7 +169,8 @@ async function generateMetrics() {
     );
     metrics.facility_policy_links.country_level = byType.country || 0;
     metrics.facility_policy_links.sector_level = byType.sector || 0;
-    metrics.facility_policy_links.evidence_level = byType.evidence || 0;
+    metrics.facility_policy_links.evidence_level =
+      (byType.evidence || 0) + (byType.subnational_region || 0);
   } else {
     // Currently all links are country-level (no link_type column yet)
     metrics.facility_policy_links.country_level =

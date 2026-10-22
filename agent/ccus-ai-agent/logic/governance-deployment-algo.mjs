@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { atomicWriteDb } from '../../../scripts/lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
@@ -74,6 +75,11 @@ export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
     return;
   }
 
+  const hasReviewStatus = hasColumn(db, 'policies', 'review_status');
+  const reviewClause = hasReviewStatus
+    ? "AND LOWER(COALESCE(p.review_status, 'verified')) != 'draft'"
+    : '';
+
   const peakQuery = db.prepare(`
     SELECT
       COALESCE(MAX(CASE WHEN a.dimension = 'incentive' THEN a.score END), 0) AS incentive,
@@ -83,7 +89,9 @@ export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
       COALESCE(MAX(CASE WHEN a.dimension = 'mrv' THEN a.score END), 0) AS mrv
     FROM policy_analysis a
     JOIN policies p ON a.policy_id = p.id
-    WHERE p.country = ? AND p.status IN ('Active', 'Operational', '运行中', '现行')
+    WHERE p.country = ?
+      AND p.status IN ('Active', 'Operational', '运行中', '现行')
+      ${reviewClause}
   `);
   const capacityQuery = db.prepare(`
     SELECT COALESCE(SUM(${capacityExpression}), 0) AS committed_capacity
@@ -142,7 +150,7 @@ export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
   }
 
   const data = db.export();
-  fs.writeFileSync(dbPath, new Uint8Array(data));
+  atomicWriteDb(dbPath, data);
   db.close();
   console.log('Governance–deployment metrics updated.');
 }

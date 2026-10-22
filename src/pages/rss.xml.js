@@ -10,7 +10,7 @@ export async function GET(context) {
     items: policies.map((policy) => ({
       title: policy.data.title,
       pubDate: policy.data.pubDate,
-      description: policy.data.description,
+      description: policy.body?.trim() || policy.data.description,
       link: `/policy/${policy.id.replace(/^zh\//, '')}/`,
     })),
     customData: `<language>zh-cn</language>`,

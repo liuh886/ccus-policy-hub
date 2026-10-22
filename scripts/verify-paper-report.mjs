@@ -74,23 +74,31 @@ const ghApiToText = (remotePath) => {
   return r.stdout;
 };
 
-// 取 TeX 源码用于标签/引用交叉校验；拿不到就跳过这部分（结构体检仍然执行）
+// 取 TeX 源码用于标签/引用交叉校验；默认远端权威（与 sync-paper-report.mjs 一致），仅在 --prefer-local / --local-tex 或网络不可用时回退本机
 let tex = '';
 if (!skipTex) {
-  const localTex = getArg(
-    '--local-tex',
-    path.join(localRootDir, 'paper_draft.tex')
-  );
-  if (localTex && fs.existsSync(localTex)) {
-    tex = fs.readFileSync(localTex, 'utf8').replace(/\r\n/g, '\n');
+  const explicitLocalTex = getArg('--local-tex', '');
+  const preferLocal =
+    args.includes('--prefer-local') || Boolean(explicitLocalTex);
+  const fallbackLocalTex =
+    explicitLocalTex || path.join(localRootDir, 'paper_draft.tex');
+
+  if (preferLocal && fallbackLocalTex && fs.existsSync(fallbackLocalTex)) {
+    tex = fs.readFileSync(fallbackLocalTex, 'utf8').replace(/\r\n/g, '\n');
   } else if (!noNetwork) {
     try {
       tex = ghApiToText('paper_draft.tex').replace(/\r\n/g, '\n');
     } catch (err) {
-      console.warn(
-        `[verify-paper-report] ⚠️ 无法获取 paper draft 源码（本机与 GitHub 均不可用），跳过标签/引用交叉校验：${err.message}`
-      );
+      if (fallbackLocalTex && fs.existsSync(fallbackLocalTex)) {
+        tex = fs.readFileSync(fallbackLocalTex, 'utf8').replace(/\r\n/g, '\n');
+      } else {
+        console.warn(
+          `[verify-paper-report] ⚠️ 无法获取 paper draft 源码（本机与 GitHub 均不可用），跳过标签/引用交叉校验：${err.message}`
+        );
+      }
     }
+  } else if (fallbackLocalTex && fs.existsSync(fallbackLocalTex)) {
+    tex = fs.readFileSync(fallbackLocalTex, 'utf8').replace(/\r\n/g, '\n');
   }
 }
 

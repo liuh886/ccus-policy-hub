@@ -41,6 +41,16 @@ export function normalizePolicyStatus(value) {
 }
 
 export function isActivePolicy(policy) {
+  const reviewStatus = String(
+    policy?.data?.reviewStatus ??
+      policy?.reviewStatus ??
+      policy?.review_status ??
+      'verified'
+  )
+    .trim()
+    .toLowerCase();
+  if (reviewStatus === 'draft') return false;
+
   const rawStatus = policy?.data?.status ?? policy?.status;
   const normalized = normalizePolicyStatus(rawStatus);
   return (

@@ -165,6 +165,7 @@ export function expectedMarkdownPolicy(policy, localized, lang, dictionary) {
       description: (localized.description || '')
         .substring(0, 500)
         .replace(/\n/g, ' '),
+      tags: parseJsonSafe(localized.tags_json, []),
       analysis,
       impactAnalysis: parseJsonSafe(localized.impact_analysis_json, {}),
       evolution: parseJsonSafe(localized.evolution_json, {}),

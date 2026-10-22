@@ -20,8 +20,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  check:
     if: (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.gate.outputs.should_deploy }}
+    steps:
+      - name: Check whether workflow run produced a deployable change
+        id: gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ] && [ "${{ github.event.workflow_run.name }}" = "Sync ESG30 report" ]; then
+            MAIN_SHA=$(git ls-remote "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" refs/heads/main | awk '{print $1}')
+            if [ "$MAIN_SHA" = "${{ github.event.workflow_run.head_sha }}" ]; then
+              echo "Sync ESG30 report finished without pushing a new commit ($MAIN_SHA); skipping Pages rebuild."
+              echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.should_deploy == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

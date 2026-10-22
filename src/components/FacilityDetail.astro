@@ -91,6 +91,9 @@ const estimatedPct = (estCap / maxCap) * 100;
 const copy = isEn
   ? {
       title: `${name} | CCUS Asset Map`,
+      description:
+        entry.data.description ||
+        `${name} — ${country} (${sector || type || 'CCUS'}, ${status})`,
       narrative: 'Asset Description',
       directLink: 'Direct Link',
       reference: 'Reference',
@@ -98,6 +101,20 @@ const copy = isEn
       ieaModel: 'IEA Model',
       investmentRestricted: 'Restricted',
       breadcrumb: 'Facilities',
+      phasePrefix: 'Phase:',
+      hubPrefix: 'Hub:',
+      consortiumPartners: 'Consortium Partners:',
+      policyEcosystem: 'Governing Policy Ecosystem',
+      capturePerformance: 'Capture Performance & Lifecycle',
+      technicalParameters: 'Technical Parameters',
+      assetType: 'Asset Type',
+      industrialSector: 'Industrial Sector',
+      fateOfCarbonLabel: 'Fate of Carbon',
+      assetOperator: 'Asset Operator',
+      captureTechLabel: 'Capture Tech',
+      storageTypeLabel: 'Storage Type',
+      investmentScaleLabel: 'Investment Scale',
+      verifiedAsset: 'Verified Asset',
       newsHeading: 'Press Releases & Coverage',
       newsPrimary: 'Primary Source',
       newsOfficial: 'Official & Press Releases',
@@ -109,13 +126,30 @@ const copy = isEn
     }
   : {
       title: `${name} | CCUS 设施数据库`,
-      narrative: '项目详情 Narrative',
+      description:
+        entry.data.description ||
+        `${name} — ${country}（${sector || type || 'CCUS'}，${status}）`,
+      narrative: '项目详情',
       directLink: '直接关联',
       reference: '属地参考',
-      announced: 'Announced',
-      ieaModel: 'IEA Model',
-      investmentRestricted: 'Restricted',
-      breadcrumb: 'Facilities',
+      announced: '宣布规模',
+      ieaModel: 'IEA 估算规模',
+      investmentRestricted: '未公开',
+      breadcrumb: '设施数据库',
+      phasePrefix: '项目阶段：',
+      hubPrefix: '所属集群：',
+      consortiumPartners: '联合体合作伙伴：',
+      policyEcosystem: '适用政策生态',
+      capturePerformance: '捕集规模与生命周期',
+      technicalParameters: '核心技术参数',
+      assetType: '设施类型',
+      industrialSector: '所属行业',
+      fateOfCarbonLabel: '碳去向',
+      assetOperator: '项目运营方',
+      captureTechLabel: '捕集技术',
+      storageTypeLabel: '封存类型',
+      investmentScaleLabel: '投资规模',
+      verifiedAsset: '已核验设施',
       newsHeading: '新闻与引用来源',
       newsPrimary: '一手来源',
       newsOfficial: '官方与一手发布',
@@ -129,12 +163,7 @@ const copy = isEn
 // Timeline Logic
 const timelineLabels = isEn
   ? ['Announcement', 'FID', 'Operation Start', 'Suspension/End']
-  : [
-      '项目启动 Announcement',
-      '投资决策 FID',
-      '投入运行 Operation',
-      '项目中止/结束 Suspension',
-    ];
+  : ['项目启动', '最终投资决策 (FID)', '投入运行', '项目中止/结束'];
 const timeline = [
   { label: timelineLabels[0], date: announcement, active: !!announcement },
   { label: timelineLabels[1], date: fid, active: !!fid },
@@ -182,7 +211,7 @@ const newsCount = newsGroups.reduce(
 );
 ---
 
-<Layout title={copy.title}>
+<Layout title={copy.title} description={copy.description}>
   <div
     class="bg-white dark:bg-slate-950 min-h-screen font-sans selection:bg-emerald-500 selection:text-white pb-20"
   >
@@ -220,14 +249,14 @@ const newsCount = newsGroups.reduce(
               {
                 phase && (
                   <span class="px-3 py-1 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-black uppercase rounded">
-                    Phase: {phase}
+                    {copy.phasePrefix} {phase}
                   </span>
                 )
               }
               {
                 hub && (
                   <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase rounded border border-blue-100 dark:border-blue-800">
-                    Hub: {hub}
+                    {copy.hubPrefix} {hub}
                   </span>
                 )
               }
@@ -237,7 +266,7 @@ const newsCount = newsGroups.reduce(
               partners.length > 0 && (
                 <div class="flex flex-wrap gap-2 mt-6">
                   <span class="text-[9px] font-black text-slate-400 uppercase self-center mr-2">
-                    Consortium Partners:
+                    {copy.consortiumPartners}
                   </span>
                   {partners.map((p: string) => (
                     <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-900/50 text-[10px] font-bold text-slate-600 dark:text-slate-400 rounded border border-slate-100 dark:border-slate-800">
@@ -344,7 +373,7 @@ const newsCount = newsGroups.reduce(
             (applicablePolicies.length > 0 || suggestedPolicies.length > 0) && (
               <section class="pt-12 border-t border-slate-100 dark:border-slate-900">
                 <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">
-                  Governing Policy Ecosystem
+                  {copy.policyEcosystem}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {applicablePolicies.map((p) => (
@@ -402,7 +431,7 @@ const newsCount = newsGroups.reduce(
             <h3
               class="text-[10px] font-black tracking-[0.2em] opacity-40 mb-8 uppercase text-center"
             >
-              Capture Performance & Lifecycle
+              {copy.capturePerformance}
             </h3>
 
             <div class="space-y-8 mb-10 pb-8 border-b border-white/5">
@@ -472,7 +501,7 @@ const newsCount = newsGroups.reduce(
             <h2
               class="text-[10px] font-black uppercase tracking-widest text-slate-400"
             >
-              Technical Parameters
+              {copy.technicalParameters}
             </h2>
 
             <div class="space-y-6 text-sm">
@@ -480,7 +509,7 @@ const newsCount = newsGroups.reduce(
                 <div>
                   <span
                     class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                    >Asset Type</span
+                    >{copy.assetType}</span
                   >
                   <span class="font-bold text-slate-900 dark:text-white"
                     >{type}</span
@@ -489,7 +518,7 @@ const newsCount = newsGroups.reduce(
                 <div>
                   <span
                     class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                    >Industrial Sector</span
+                    >{copy.industrialSector}</span
                   >
                   <span class="font-bold text-slate-900 dark:text-white"
                     >{sector}</span
@@ -500,7 +529,7 @@ const newsCount = newsGroups.reduce(
               <div>
                 <span
                   class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                  >Fate of Carbon</span
+                  >{copy.fateOfCarbonLabel}</span
                 >
                 <span class="font-bold text-blue-600"
                   >{fateOfCarbon || 'N/A'}</span
@@ -511,7 +540,7 @@ const newsCount = newsGroups.reduce(
                 operator && (
                   <div>
                     <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">
-                      Asset Operator
+                      {copy.assetOperator}
                     </span>
                     <span class="font-bold text-slate-900 dark:text-white">
                       {operator}
@@ -526,7 +555,7 @@ const newsCount = newsGroups.reduce(
                 <div>
                   <span
                     class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                    >Capture Tech</span
+                    >{copy.captureTechLabel}</span
                   >
                   <span class="font-bold text-slate-900 dark:text-white"
                     >{captureTechnology || 'N/A'}</span
@@ -535,7 +564,7 @@ const newsCount = newsGroups.reduce(
                 <div>
                   <span
                     class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                    >Storage Type</span
+                    >{copy.storageTypeLabel}</span
                   >
                   <span class="font-bold text-slate-900 dark:text-white"
                     >{storageType || storageTechnology || 'N/A'}</span
@@ -546,7 +575,7 @@ const newsCount = newsGroups.reduce(
               <div>
                 <span
                   class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                  >Investment Scale</span
+                  >{copy.investmentScaleLabel}</span
                 >
                 <span class="font-bold text-emerald-600"
                   >{investmentScale || copy.investmentRestricted}</span
@@ -558,7 +587,7 @@ const newsCount = newsGroups.reduce(
           <div
             class="flex justify-between items-center px-4 text-[9px] font-black text-slate-400 uppercase tracking-widest"
           >
-            <span>Verified Asset</span>
+            <span>{copy.verifiedAsset}</span>
             <span>{provenance?.lastAuditDate || '2026-02-08'}</span>
           </div>
         </aside>

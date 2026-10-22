@@ -6,6 +6,7 @@ import RadarChart from './RadarChart.astro';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 import { GOVERNANCE_DIMENSION_LABELS } from '../lib/governanceCopy.mjs';
+import { localizeLegalWeight } from '../lib/comparePresentation.mjs';
 
 interface Props {
   lang?: 'zh' | 'en';
@@ -19,6 +20,7 @@ const { Content } = await render(entry);
 const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
 const {
   title,
+  description,
   country: rawCountry,
   year,
   category,
@@ -26,6 +28,7 @@ const {
   url,
   analysis = {},
   sectors = [],
+  tags = [],
   status,
   legalWeight,
   reviewStatus,
@@ -33,6 +36,7 @@ const {
 } = entry.data;
 const { interpretation, evolution, impactAnalysis } = entry.data;
 const isVerified = reviewStatus === 'verified';
+const displayTags = sectors.length > 0 ? sectors : tags;
 
 // Country Aggregation Logic
 const normalizeCountry = (c: string) =>
@@ -129,17 +133,77 @@ const relatedFacilities = allFacilities.filter(
     f.data.relatedPolicies?.includes(entry.id.replace(/^(zh|en)\//, ''))
 );
 
-const t = (key: string) => {
-  const dict = i18nDict.ui as any;
-  return dict[key] || key;
-};
+const getDimensionLabel = (dimKey: string) =>
+  (i18nDict.ui.dimensions as any)?.[dimKey]?.label?.[lang] || dimKey;
+
+const copy = isEn
+  ? {
+      breadcrumb: 'Database',
+      verified: 'Verified',
+      govContext: 'National Governance Context',
+      overviewSuffix: 'Overview',
+      maturitySubtitle: 'Aggregate National Maturity Index (Peak Strength)',
+      governedPolicies: 'Governed Policies',
+      identifiedProjects: 'Identified Projects',
+      operationalCap: 'Operational Cap',
+      constructionCap: 'Under Construction Cap',
+      plannedCap: 'Planned Cap',
+      relatedNetwork: 'Related Policy Network',
+      lineageTitle: 'Evolutionary Lineage',
+      superseded: 'Superseded',
+      activeContext: 'Active Context',
+      currentDoc: 'Current Document',
+      successor: 'Successor',
+      peerFrameworks: 'Peer Frameworks',
+      linkedAssets: 'Directly Linked Assets',
+      policyClassification: 'Policy Classification',
+      strategicImpact: 'Strategic Impact Analysis',
+      technicalMetadata: 'Technical Metadata',
+      leadInstitution: 'Lead Institution',
+      releaseDate: 'Release Date',
+      targetSectors: 'Policy Tags',
+      legalWeightLabel: 'Legal Weight',
+      standardWeight: 'Standard',
+      originalDoc: 'Original Document',
+      lastAudit: 'Last Intelligence Audit',
+    }
+  : {
+      breadcrumb: '政策数据库',
+      verified: '已核验',
+      govContext: '国家治理背景',
+      overviewSuffix: '概览',
+      maturitySubtitle: '国家综合治理成熟度指数（各维度峰值强度）',
+      governedPolicies: '收录政策数',
+      identifiedProjects: '识别设施项目',
+      operationalCap: '运行中产能',
+      constructionCap: '建设中产能',
+      plannedCap: '规划中产能',
+      relatedNetwork: '关联政策网络',
+      lineageTitle: '政策演进脉络',
+      superseded: '前序政策',
+      activeContext: '当前有效',
+      currentDoc: '当前政策文本',
+      successor: '后续政策',
+      peerFrameworks: '同国别平行框架',
+      linkedAssets: '关联工程设施',
+      policyClassification: '政策五维评估',
+      strategicImpact: '战略影响分析',
+      technicalMetadata: '技术与治理元数据',
+      leadInstitution: '发布与牵头机构',
+      releaseDate: '发布日期',
+      targetSectors: '政策主题标签',
+      legalWeightLabel: '法律效力层级',
+      standardWeight: '标准文件',
+      originalDoc: '查看政策原文',
+      lastAudit: '最近情报审校',
+    };
 
 const chartLabels = [
   ...GOVERNANCE_DIMENSION_LABELS[lang === 'en' ? 'en' : 'zh'].full,
 ];
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description || interpretation}>
   <div
     class="bg-white dark:bg-slate-950 min-h-screen font-sans selection:bg-slate-900 selection:text-white"
   >
@@ -154,7 +218,7 @@ const chartLabels = [
               <a
                 href={`${SITE_BASE}/${isEn ? 'en/policy' : 'policy'}`}
                 class="hover:text-slate-900 dark:hover:text-white transition-colors"
-                >Database</a
+                >{copy.breadcrumb}</a
               >
               <span class="text-slate-200 dark:text-slate-800">/</span>
               <span>{country}</span>
@@ -193,7 +257,7 @@ const chartLabels = [
                     >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Verified
+                    {copy.verified}
                   </span>
                 )
               }
@@ -228,17 +292,18 @@ const chartLabels = [
                 <h2
                   class="text-xs font-black uppercase tracking-[0.2em] text-blue-600 mb-2"
                 >
-                  National Governance Context
+                  {copy.govContext}
                 </h2>
                 <h3
                   class="text-3xl font-bold text-slate-900 dark:text-white mb-2"
                 >
-                  {country} Overview
+                  {country}
+                  {copy.overviewSuffix}
                 </h3>
                 <p
                   class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-8 italic"
                 >
-                  Aggregate National Maturity Index (Peak Strength)
+                  {copy.maturitySubtitle}
                 </p>
 
                 <div class="grid grid-cols-2 gap-6">
@@ -246,7 +311,7 @@ const chartLabels = [
                     <p
                       class="text-[10px] font-black text-slate-400 uppercase mb-1"
                     >
-                      Governed Policies
+                      {copy.governedPolicies}
                     </p>
                     <p
                       class="text-2xl font-black text-slate-900 dark:text-white"
@@ -258,7 +323,7 @@ const chartLabels = [
                     <p
                       class="text-[10px] font-black text-slate-400 uppercase mb-1"
                     >
-                      Identified Projects
+                      {copy.identifiedProjects}
                     </p>
                     <p
                       class="text-2xl font-black text-slate-900 dark:text-white"
@@ -272,7 +337,7 @@ const chartLabels = [
                     <div class="flex justify-between items-center">
                       <span
                         class="text-[10px] font-bold text-slate-500 uppercase"
-                        >Operational Cap</span
+                        >{copy.operationalCap}</span
                       >
                       <span class="text-sm font-black text-emerald-600"
                         >{stats.operational.toFixed(1)} Mtpa</span
@@ -281,7 +346,7 @@ const chartLabels = [
                     <div class="flex justify-between items-center">
                       <span
                         class="text-[10px] font-bold text-slate-500 uppercase"
-                        >Under Construction Cap</span
+                        >{copy.constructionCap}</span
                       >
                       <span class="text-sm font-black text-amber-600"
                         >{stats.construction.toFixed(1)} Mtpa</span
@@ -290,7 +355,7 @@ const chartLabels = [
                     <div class="flex justify-between items-center">
                       <span
                         class="text-[10px] font-bold text-slate-500 uppercase"
-                        >Planned Cap</span
+                        >{copy.plannedCap}</span
                       >
                       <span class="text-sm font-black text-blue-600"
                         >{stats.planned.toFixed(1)} Mtpa</span
@@ -317,7 +382,7 @@ const chartLabels = [
             <h2
               class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8"
             >
-              Related Policy Network
+              {copy.relatedNetwork}
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* 1. Lineage Card */}
@@ -339,7 +404,7 @@ const chartLabels = [
                           <path d="m16 8-4 4-4-4" />
                         </>
                       </svg>
-                      Evolutionary Lineage
+                      {copy.lineageTitle}
                     </h3>
                     <div class="space-y-6">
                       {supersededPolicies.map((p) => (
@@ -348,7 +413,7 @@ const chartLabels = [
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-slate-400 uppercase mb-1">
-                            {p.data.year} - Superseded
+                            {p.data.year} - {copy.superseded}
                           </div>
                           <p class="text-xs font-bold text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-1">
                             {p.data.title}
@@ -357,10 +422,10 @@ const chartLabels = [
                       ))}
                       <div class="relative pl-4 border-l-2 border-blue-500 py-1">
                         <div class="text-[9px] font-black text-blue-600 uppercase mb-1">
-                          {year} - Active Context
+                          {year} - {copy.activeContext}
                         </div>
                         <p class="text-xs font-black text-slate-900 dark:text-white">
-                          Current Document
+                          {copy.currentDoc}
                         </p>
                       </div>
                       {successorPolicy && (
@@ -369,7 +434,7 @@ const chartLabels = [
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-emerald-500 uppercase mb-1">
-                            {successorPolicy.data.year} - Successor
+                            {successorPolicy.data.year} - {copy.successor}
                           </div>
                           <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors line-clamp-1">
                             {successorPolicy.data.title}
@@ -401,7 +466,7 @@ const chartLabels = [
                           <path d="M15 2v4a4.8 4.8 0 0 1-1 3.5L7 16.5a4.8 4.8 0 0 1-3.5 1H2" />
                         </>
                       </svg>
-                      Peer Frameworks
+                      {copy.peerFrameworks}
                     </h3>
                     <div class="space-y-4">
                       {countryPolicies
@@ -437,7 +502,7 @@ const chartLabels = [
             relatedFacilities.length > 0 && (
               <section class="mt-20 pt-12 border-t border-slate-100 dark:border-slate-900">
                 <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">
-                  Directly Linked Assets
+                  {copy.linkedAssets}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {relatedFacilities.map((f) => (
@@ -469,7 +534,7 @@ const chartLabels = [
               <h2
                 class="text-[10px] font-black uppercase tracking-widest text-slate-400"
               >
-                Policy Classification
+                {copy.policyClassification}
               </h2>
               <span class="text-[10px] font-mono text-slate-400">FSRTM 5.0</span
               >
@@ -491,7 +556,7 @@ const chartLabels = [
                         <div class="flex-1">
                           <div class="flex justify-between items-baseline border-b border-slate-200/50 dark:border-slate-800 pb-1">
                             <h3 class="text-[10px] font-black uppercase text-slate-500 tracking-tighter">
-                              {t(`dimensions.${d.key}`)}
+                              {getDimensionLabel(d.key)}
                             </h3>
                             <span class="font-mono text-xs font-black text-slate-900 dark:text-white opacity-40 group-hover:opacity-100 transition-opacity">
                               {dim.score}
@@ -525,7 +590,7 @@ const chartLabels = [
                     >
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
                     </svg>
-                    Strategic Impact Analysis
+                    {copy.strategicImpact}
                   </h3>
                   <div class="space-y-5">
                     {[
@@ -574,14 +639,14 @@ const chartLabels = [
             <h2
               class="text-[10px] font-black uppercase tracking-widest text-slate-400"
             >
-              Technical Metadata
+              {copy.technicalMetadata}
             </h2>
 
             <div class="space-y-6 text-sm">
               <div>
                 <span
                   class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                  >Lead Institution</span
+                  >{copy.leadInstitution}</span
                 >
                 <span class="font-bold text-slate-900 dark:text-white"
                   >{source || 'N/A'}</span
@@ -592,7 +657,7 @@ const chartLabels = [
                 entry.data.pubDate && (
                   <div>
                     <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">
-                      Release Date
+                      {copy.releaseDate}
                     </span>
                     <span class="font-mono font-bold text-slate-900 dark:text-white">
                       {entry.data.pubDate}
@@ -602,13 +667,13 @@ const chartLabels = [
               }
 
               {
-                sectors.length > 0 && (
+                displayTags.length > 0 && (
                   <div>
                     <span class="block text-[10px] font-black text-slate-400 uppercase mb-1">
-                      Target Sectors
+                      {copy.targetSectors}
                     </span>
                     <div class="flex flex-wrap gap-1 mt-1">
-                      {sectors.map((s: string) => (
+                      {displayTags.map((s: string) => (
                         <span class="px-2 py-0.5 bg-slate-50 dark:bg-slate-900 text-[10px] font-bold text-slate-600 dark:text-slate-400 rounded border border-slate-100 dark:border-slate-800">
                           {s}
                         </span>
@@ -621,10 +686,13 @@ const chartLabels = [
               <div>
                 <span
                   class="block text-[10px] font-black text-slate-400 uppercase mb-1"
-                  >Legal Weight</span
+                  >{copy.legalWeightLabel}</span
                 >
                 <span class="font-bold text-blue-600"
-                  >{legalWeight || 'Standard'}</span
+                  >{
+                    localizeLegalWeight(legalWeight, lang) ||
+                      copy.standardWeight
+                  }</span
                 >
               </div>
 
@@ -637,7 +705,7 @@ const chartLabels = [
                       rel="noopener noreferrer"
                       class="flex items-center justify-between p-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition-all group/doc"
                     >
-                      Original Document
+                      {copy.originalDoc}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="14"
@@ -663,7 +731,7 @@ const chartLabels = [
             <div
               class="pt-6 border-t border-slate-50 dark:border-slate-900 flex justify-between items-center text-[9px] font-black text-slate-400 uppercase"
             >
-              <span>Last Intelligence Audit</span>
+              <span>{copy.lastAudit}</span>
               <span class="text-blue-500 font-mono"
                 >{entry.data.provenance?.lastAuditDate || '2026-02-08'}</span
               >

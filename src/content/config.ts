@@ -40,6 +40,7 @@ const policySchema = z.object({
   source: z.string().optional().default(''),
   url: z.string().optional().default(''),
   sectors: z.array(z.string()).default([]),
+  tags: z.array(z.string()).default([]),
   description: z.string().optional().default(''),
   interpretation: z.string().optional(),
   evolution: z
