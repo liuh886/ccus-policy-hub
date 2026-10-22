@@ -4,7 +4,7 @@
   "texSource": "remote",
   "remoteOnly": true,
   "pandocVersion": "3.1.12.3",
-  "generatedAt": "2026-10-22T03:39:16.052Z",
+  "generatedAt": "2026-10-22T04:08:10.359Z",
   "assets": [
     {
       "path": "data/图文摘要.png",
@@ -33,8 +33,8 @@
     {
       "path": "paper_draft.pdf",
       "source": "remote",
-      "bytes": 5010135,
-      "sha256": "82c3649e867444b8"
+      "bytes": 5006405,
+      "sha256": "314aebd1bd1ad36a"
     }
   ]
 }
