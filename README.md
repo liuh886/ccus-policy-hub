@@ -35,7 +35,7 @@ The platform is designed for researchers, policymakers, market analysts, investo
 | --------------------------- | ---------------: |
 | Policies                    |          **130** |
 | Facility records            |        **1,110** |
-| Country governance profiles |           **66** |
+| Country governance profiles |           **65** |
 | Facility dataset version    |      **2026-Q2** |
 | Policy review status        |       **Active** |
 | Last checked                |   **2026-06-24** |
@@ -190,13 +190,12 @@ Static endpoints are available for AI agents, researchers, and scripts:
 | `/data/manifest.json`         | Dataset, schema, and documentation index               |
 | `/data/policies.json`         | 130 policy records with analysis data                  |
 | `/data/facilities.json`       | 1,110 facility records with capacity and location data |
-| `/data/countries.json`        | 66 governance profiles with regulatory pillars         |
+| `/data/countries.json`        | 65 governance profiles with regulatory pillars         |
 | `/data/quality.json`          | Quality metrics and audit status                       |
 | `/data/dataset-versions.json` | Dataset version and last-checked metadata              |
 | `/data/schemas/`              | JSON Schemas for validation                            |
 | `/llms.txt`                   | Concise AI-agent documentation                         |
 | `/llms-full.txt`              | Extended data and field documentation                  |
-| `/api/policies.json`          | 260 bilingual policy records with `lang` markers       |
 | `/api/policies.csv`           | 130 zh policy records as flat CSV extract              |
 
 Recommended usage:

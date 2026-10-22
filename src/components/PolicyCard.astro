@@ -33,7 +33,6 @@ const canonicalCountry = dictCountries[rawCountry] || rawCountry;
 const country =
   (countryData as any)[canonicalCountry]?.[lang] || canonicalCountry;
 
-const implementationDetails = (policy.data as any).implementationDetails;
 const isEn = lang === 'en';
 const tu = (key: UiKey) => translateUi(lang, key);
 const tp = makePair(lang);
@@ -173,19 +172,6 @@ const activeDimensions = dimensions.filter(
               }
             </div>
           </div>
-
-          {
-            implementationDetails?.fundingScale && (
-              <div class="max-w-[42%] text-right">
-                <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
-                  {tu('policy.card.funding')}
-                </div>
-                <div class="mt-1 truncate text-[11px] font-semibold text-teal-700 dark:text-teal-300">
-                  {implementationDetails.fundingScale}
-                </div>
-              </div>
-            )
-          }
         </div>
       </div>
     </article>

@@ -257,14 +257,9 @@ export async function dbExportMd(
           co2_definition: i.co2_definition,
           cross_border_rules: i.cross_border_rules,
         },
-        maturity: {
-          x: c.maturity_x || 0,
-          y: c.maturity_y || 0,
-        },
-        strategicTargets: {
-          capture2030: c.capture_2030,
-          storage2050: c.storage_2050,
-          netZeroYear: c.net_zero_year,
+        governanceDeployment: {
+          deploymentCapacityMtpa: c.deployment_capacity_mtpa || 0,
+          governanceCapabilityIndex: c.governance_capability_index || 0,
         },
         provenance: {
           author: c.provenance_author || 'System',

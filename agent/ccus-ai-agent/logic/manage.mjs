@@ -13,12 +13,7 @@ import { acquireDbLock } from '../../../scripts/lib/db-write.mjs';
 import { dbAuditDeep } from './commands/audit.mjs';
 import { dbExportI18n, dbExportMd } from './commands/export.mjs';
 import { dbGeocodeFacilities } from './commands/geocode.mjs';
-import {
-  dbImportIeaLinks,
-  dbImportI18n,
-  dbImportMdReverse,
-  dbInit,
-} from './commands/import.mjs';
+import { dbImportI18n, dbImportMdReverse, dbInit } from './commands/import.mjs';
 import {
   dbComputeMaturity,
   dbFixRelationships,
@@ -58,8 +53,9 @@ async function main() {
           'db:import:legacy is retired. Facilities legacy JSON import has been removed from the active workflow.'
         );
       case 'db:import:iea:links':
-        await dbImportIeaLinks(SQL, args.slice(1));
-        break;
+        throw new Error(
+          'db:import:iea:links is retired. Use `pnpm manage:db:import:iea:facilities` instead.'
+        );
       case 'db:import:md':
         throw new Error(
           'db:import:md is deprecated for daily use. Reverse sync is migration-only; use db:import:md:migration with explicit acknowledgement.'

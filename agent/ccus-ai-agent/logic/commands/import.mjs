@@ -9,7 +9,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import XLSX from 'xlsx';
 import {
   LEGACY_I18N_PATH,
   LOGIC_DIR,
@@ -76,48 +75,6 @@ export async function dbImportI18n(SQL) {
   });
   db.save();
   console.log('IMPORT I18N DONE.');
-}
-
-export async function dbImportIeaLinks(SQL, args = []) {
-  const excelPath = args.includes('--excel')
-    ? args[args.indexOf('--excel') + 1]
-    : path.join(LOGIC_DIR, '../assets/IEA CCUS Projects Database 2025.xlsx');
-  if (!fs.existsSync(excelPath)) return;
-  const workbook = XLSX.readFile(excelPath);
-  const data = XLSX.utils.sheet_to_json(
-    workbook.Sheets['CCUS Projects Database']
-  );
-  const db = loadDb(SQL);
-  db.transaction(() => {
-    for (const row of data) {
-      const id = row['ID']?.toString();
-      if (!id) continue;
-      db.run(
-        `UPDATE facilities SET announced_capacity_max = ?, estimated_capacity = ? WHERE id = ?`,
-        [
-          row['Announced capacity (Mt CO2/yr)'],
-          row['Estimated capacity by IEA (Mt CO2/yr)'],
-          id,
-        ]
-      );
-      db.run(
-        `UPDATE facility_i18n SET type = ?, sector = ?, fate_of_carbon = ?, hub = ?, region = ?, operator = ?, capture_technology = ?, storage_type = ? WHERE facility_id = ?`,
-        [
-          row['Project type'],
-          row['Sector'],
-          row['Fate of carbon'],
-          row['Part of CCUS hub'],
-          row['Region'],
-          row['Operator'],
-          row['Capture technology'],
-          row['Storage type'],
-          id,
-        ]
-      );
-    }
-  });
-  db.save();
-  console.log('IMPORT IEA DONE.');
 }
 
 export async function dbImportMdReverse(

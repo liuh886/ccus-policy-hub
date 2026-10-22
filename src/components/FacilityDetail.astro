@@ -43,8 +43,7 @@ const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
 const dictCountries: Record<string, string> = i18nDict.countries;
 
 // Compatible Capacity Fields
-const annCap =
-  announcedCapacityMax || (entry.data as any).announcedCapacity || 0;
+const annCap = announcedCapacityMax || 0;
 const estCap = estimatedCapacity || 0;
 
 // Applicable Policies: Direct links from facility data

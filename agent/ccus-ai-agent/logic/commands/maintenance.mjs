@@ -8,6 +8,7 @@
  */
 
 import { loadDb } from '../db.mjs';
+import { computeGovernanceDeployment } from '../governance-deployment-algo.mjs';
 import { dbAuditDeep } from './audit.mjs';
 import { dbExportMd } from './export.mjs';
 import { dbGeocodeFacilities } from './geocode.mjs';
@@ -96,10 +97,7 @@ export async function dbFixRelationships(SQL, args = []) {
 }
 
 export async function dbComputeMaturity() {
-  const { execSync } = await import('child_process');
-  execSync('node agent/ccus-ai-agent/logic/maturity-algo.mjs', {
-    stdio: 'inherit',
-  });
+  await computeGovernanceDeployment();
 }
 
 export async function dbPipeline(SQL, argv = []) {

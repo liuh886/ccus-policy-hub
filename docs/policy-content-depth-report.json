@@ -246,37 +246,6 @@
       }
     },
     {
-      "id": "jp-ccs-business-act-2024",
-      "country": "Japan",
-      "year": 2024,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 67,
-      "severity": "medium",
-      "flags": ["missing-or-thin-scope"],
-      "metrics": {
-        "enDescriptionLength": 565,
-        "zhDescriptionLength": 194,
-        "enScopeLength": 0,
-        "zhScopeLength": 0,
-        "enTags": 0,
-        "zhTags": 0,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 4,
-        "zhMilestones": 4,
-        "enRegulatoryFields": 7,
-        "zhRegulatoryFields": 7,
-        "analysisDimensions": 6,
-        "specificAnalysisCount": 6,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)",
-        "zh": "日本《二氧化碳储存业务法》（CCS 业务法）"
-      }
-    },
-    {
       "id": "vn-decree-119-2025",
       "country": "Vietnam",
       "year": 2025,
@@ -1238,6 +1207,37 @@
       }
     },
     {
+      "id": "jp-ccs-business-act-2024",
+      "country": "Japan",
+      "year": 2024,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 75,
+      "severity": "medium",
+      "flags": ["missing-or-thin-scope"],
+      "metrics": {
+        "enDescriptionLength": 565,
+        "zhDescriptionLength": 194,
+        "enScopeLength": 0,
+        "zhScopeLength": 0,
+        "enTags": 0,
+        "zhTags": 0,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 7,
+        "zhRegulatoryFields": 7,
+        "analysisDimensions": 5,
+        "specificAnalysisCount": 5,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)",
+        "zh": "日本《二氧化碳储存业务法》（CCS 业务法）"
+      }
+    },
+    {
       "id": "my-ccus-act-2025",
       "country": "Malaysia",
       "year": 2025,
@@ -1359,6 +1359,37 @@
       "titles": {
         "en": "Brazilian Emissions Trading System (SBCE) — Law No. 15,042/2024",
         "zh": "巴西排放交易体系（SBCE）——第15,042/2024号法律"
+      }
+    },
+    {
+      "id": "uk-ccs-network-code",
+      "country": "United Kingdom",
+      "year": 2023,
+      "reviewStatus": "verified",
+      "category": "Regulatory",
+      "score": 90,
+      "severity": "healthy",
+      "flags": [],
+      "metrics": {
+        "enDescriptionLength": 1160,
+        "zhDescriptionLength": 324,
+        "enScopeLength": 283,
+        "zhScopeLength": 78,
+        "enTags": 6,
+        "zhTags": 6,
+        "enImpactFields": 3,
+        "zhImpactFields": 3,
+        "enMilestones": 4,
+        "zhMilestones": 4,
+        "enRegulatoryFields": 0,
+        "zhRegulatoryFields": 0,
+        "analysisDimensions": 4,
+        "specificAnalysisCount": 4,
+        "placeholderAnalysisCount": 0
+      },
+      "titles": {
+        "en": "UK CCS Network Code Framework (Planned)",
+        "zh": "英国CCS网络代码框架（规划中）"
       }
     },
     {
@@ -3684,37 +3715,6 @@
       "titles": {
         "en": "Climate Law (No. 7552 of 2025)",
         "zh": "气候法 (2025年第7552号)"
-      }
-    },
-    {
-      "id": "uk-ccs-network-code",
-      "country": "United Kingdom",
-      "year": 2023,
-      "reviewStatus": "verified",
-      "category": "Regulatory",
-      "score": 100,
-      "severity": "healthy",
-      "flags": [],
-      "metrics": {
-        "enDescriptionLength": 1160,
-        "zhDescriptionLength": 324,
-        "enScopeLength": 283,
-        "zhScopeLength": 78,
-        "enTags": 6,
-        "zhTags": 6,
-        "enImpactFields": 3,
-        "zhImpactFields": 3,
-        "enMilestones": 4,
-        "zhMilestones": 4,
-        "enRegulatoryFields": 0,
-        "zhRegulatoryFields": 0,
-        "analysisDimensions": 5,
-        "specificAnalysisCount": 5,
-        "placeholderAnalysisCount": 0
-      },
-      "titles": {
-        "en": "UK CCS Network Code Framework (Planned)",
-        "zh": "英国CCS网络代码框架（规划中）"
       }
     },
     {

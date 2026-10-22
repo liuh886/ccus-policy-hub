@@ -23,7 +23,6 @@ As of **2026-10-21**. This audit evaluates the explanatory depth of policy recor
 |    66 | medium   | `hr-hydrocarbon-act-ccs` — Croatia Hydrocarbon Act (CCS Amendments)                                  | Croatia              | verified | missing-or-thin-scope, missing-evolution                             |
 |    67 | medium   | `cn-mee-env-guidance-2024` — China MEE Guidance on CCUS Environmental Oversight (2024 Update)        | China                | verified | missing-or-thin-scope, missing-evolution, thin-analysis-evidence     |
 |    67 | medium   | `eu-ccs-directive` — EU Directive 2009/31/EC on the Geological Storage of Carbon Dioxide             | European Union       | verified | missing-or-thin-scope, missing-evolution                             |
-|    67 | medium   | `jp-ccs-business-act-2024` — Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)       | Japan                | verified | missing-or-thin-scope                                                |
 |    67 | medium   | `vn-decree-119-2025` — Vietnam Decree 119/2025: GHG & Carbon Management                              | Vietnam              | verified | missing-or-thin-scope, missing-evolution                             |
 |    68 | medium   | `imo-marpol-occs-2024` — IMO Onboard Carbon Capture & Storage (OCCS) Framework                       | International        | verified | missing-or-thin-scope, missing-evolution                             |
 |    69 | medium   | `cn-miit-industrial-plan-2022` — China MIIT Action Plan for Industrial Carbon Peaking                | China                | verified | missing-or-thin-scope, missing-evolution                             |
@@ -55,6 +54,7 @@ As of **2026-10-21**. This audit evaluates the explanatory depth of policy recor
 |    72 | medium   | `th-boi-incentives` — Thailand BOI CCUS Investment Promotion Incentives                              | Thailand             | verified | missing-or-thin-scope, missing-evolution                             |
 |    72 | medium   | `uae-adnoc-ccs-2030` — ADNOC 2030 Carbon Capture & Decarbonization Strategy                          | United Arab Emirates | verified | missing-or-thin-scope, missing-evolution                             |
 |    72 | medium   | `uk-energy-act-2023` — UK Energy Act 2023 (CCUS Economic Regulation)                                 | United Kingdom       | verified | missing-or-thin-scope, missing-evolution                             |
+|    75 | medium   | `jp-ccs-business-act-2024` — Japan Act on Carbon Dioxide Storage Businesses (CCS Business Act)       | Japan                | verified | missing-or-thin-scope                                                |
 |    75 | medium   | `my-ccus-act-2025` — Malaysia Carbon Capture, Utilisation and Storage Act 2025 (Act 870)             | Malaysia             | verified | missing-or-thin-scope                                                |
 
 ## Scoring principles

@@ -211,25 +211,10 @@ const countrySchema = z.object({
     cross_border_rules: z.string().default('Pending'),
   }),
   // Strategic Outlook
-  strategicTargets: z
-    .object({
-      capture2030: z.string().optional().nullable(),
-      storage2050: z.string().optional().nullable(),
-      netZeroYear: z.coerce.number().optional().nullable(),
-    })
-    .optional()
-    .nullable(),
   governanceDeployment: z
     .object({
       deploymentCapacityMtpa: z.number().min(0).default(0),
       governanceCapabilityIndex: z.number().min(0).max(100).default(0),
-    })
-    .optional(),
-  // Deprecated compatibility alias for pre-migration exports.
-  maturity: z
-    .object({
-      x: z.number().min(0).default(0),
-      y: z.number().min(0).max(500).default(0),
     })
     .optional(),
   provenance: provenanceSchema.optional(),

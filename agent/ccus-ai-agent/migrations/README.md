@@ -19,8 +19,7 @@ Do not execute a migration solely because it exists. Routine changes should use 
 ## Lifecycle (convergence rule)
 
 Executed one-off code does not accumulate here. After a batch is merged and
-pushed, move its `*.mjs` scripts and `.test.mjs` files to
-`_archive/<batch>/`; the batch `manifest.md` stays in place as the execution
-record with a pointer to the archive. Only dated batch directories directly
-under `migrations/` participate in `pnpm test` — `_archive/` is history, not
-coverage.
+pushed, remove its `*.mjs` scripts and `.test.mjs` files; the batch
+`manifest.md` stays in place as the permanent execution record alongside git
+history. Only active, unretired batches under `migrations/` keep executable
+`.mjs` and `.test.mjs` files.

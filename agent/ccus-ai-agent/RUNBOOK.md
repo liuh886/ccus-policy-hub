@@ -65,7 +65,7 @@ After import, run parity audit, deep audit, exports, public-data generation, tes
 
 ### Facility news / source list
 
-`facility_news` holds a tiered, deduplicated source list per facility (`official` → `press_release` → `media` → `reference`; see `METHODOLOGY.md` §9). It is seeded from the existing `facility_links` by the one-off migration `migrations/2026-09/seed-facility-news-from-links-2026-09.mjs` (idempotent, preserves `agent-research` rows). The export pipeline emits it automatically, so routine refreshes only need `pnpm gen`. Adding new evidence-backed items means inserting `origin='agent-research'` rows with a `verified_at` date and a real URL, then regenerating.
+`facility_news` holds a tiered, deduplicated source list per facility (`official` → `press_release` → `media` → `reference`; see `METHODOLOGY.md` §9). It was seeded from `facility_links` in the 2026-09 migration (`migrations/2026-09/manifest.md`). The export pipeline emits it automatically, so routine refreshes only need `pnpm gen`. Adding new evidence-backed items means inserting `origin='agent-research'` rows with a `verified_at` date and a real URL, then regenerating.
 
 Real page titles/dates are populated by a data-preparation step (never in the build):
 

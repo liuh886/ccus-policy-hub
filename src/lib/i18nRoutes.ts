@@ -3,16 +3,18 @@
  * LanguagePicker.astro and SEO.astro (hreflang alternates).
  *
  * Routes under /en/ are a subset of the zh routes. Any path whose first
- * segment is not listed here (or /policy/country/*) has no English
- * counterpart; language switchers must fall back to the English homepage
- * and SEO must not emit a mismatched alternate.
+ * segment is not listed here has no English counterpart; language switchers
+ * must fall back to the English homepage and SEO must not emit a mismatched
+ * alternate.
  */
 
 export const EN_ROUTE_SEGMENTS = new Set([
   'about',
+  'changelog',
   'compare',
   'docs',
   'facilities',
+  'legal',
   'policy',
   'quality',
   'search',
@@ -31,11 +33,7 @@ export function stripSiteBase(pathname: string, siteBase: string): string {
 export function hasEnCounterpart(pathWithoutBase: string): boolean {
   if (pathWithoutBase === '/') return true;
   const segments = pathWithoutBase.replace(/^\/+/, '').split('/');
-  return (
-    segments.length > 0 &&
-    EN_ROUTE_SEGMENTS.has(segments[0]) &&
-    !(segments[0] === 'policy' && segments[1] === 'country')
-  );
+  return segments.length > 0 && EN_ROUTE_SEGMENTS.has(segments[0]);
 }
 
 /** Ensure a base-relative path ends with a trailing slash. */
