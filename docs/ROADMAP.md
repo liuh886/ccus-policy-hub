@@ -1,33 +1,66 @@
 # Roadmap
 
-Single aggregation point for open work items. Sources of truth for details:
-the linked audit reports and issues. Keep each item's status current.
+Single aggregation point for current work. SQLite is the structured authority;
+this document records delivery scope and remaining editorial work.
 
-Last updated: 2026-09-23
+Last updated: 2026-10-28
 
-## In review / blocked on governance approval
+## Current delivery — awaiting review
 
-None. Every item previously listed here has landed (see Done): content schema
-tightening ([#69](https://github.com/liuh886/ccus-policy-hub/issues/69)), the
-facility–policy relationship model Phase 2, and the bulk of the policy
-content-depth remediation.
+- Relationship trust: country, subnational, sector and direct-evidence matches
+  are counted separately. The 509 subnational matches no longer inflate the
+  direct-evidence count. No confidence values or scoring formulas changed.
+  A typed `relationships.json` endpoint, schema and bilingual detail labels
+  preserve the distinction alongside the legacy linked-ID arrays.
+- Policy depth: 130 records now meet the existing content-depth threshold;
+  verified records below threshold fell from 41 to 0. Bilingual scope,
+  lifecycle information and source-specific corrections were added. This is
+  an editorial completeness result, not universal legal re-verification.
+- Source corrections: Italy's small-project exception is not a blanket EIA
+  exemption; Denmark's three funds have separate terms; Saskatchewan credit
+  reporting is distinct from storage approvals. Romania, Croatia and Vietnam
+  now cite specific sources. The supposed Chinese 2024 environmental update
+  is corrected to the verifiable 2016 trial guideline; IMO OCCS is described
+  as regulatory work in progress rather than enacted automatic crediting.
+- Analysis localization: source-bound Chinese versions for 40 of 649 existing
+  dimensions across eight reviewed policies. Canonical scores are unchanged.
+  Changed source sentences invalidate translations; missing Chinese versions
+  display an explicit English fallback, expandable by touch or keyboard.
+- Facility sources: curated coverage increased from 339 to 345 facilities,
+  using the dated supplementary research input. Adding sources did not change
+  facility status, capacity, coordinates or operational dates.
+- Maintenance: a read-only queue records drafts, stale reviews, specific-source
+  gaps, missing analysis and translation work. A weekly advisory workflow
+  samples rotating source URLs and retains review reports; a fetch never
+  marks a policy verified or refreshes its factual review date.
+- Performance: `facilities.json` preserves every field and all 1,110 records,
+  while compact serialization reduces the payload from 2,707,559 to 2,072,451
+  bytes (23.5%). The existing compact map payload remains in use. Detail-page
+  copy now lives in a shared bilingual catalogue. Home-only editorial rules
+  are no longer loaded on every route; shared dark tokens remain global.
+  Tablet navigation switches to the mobile menu below 1024 px, preventing
+  overflow of the English navigation. Capacity charts initialize once per live
+  canvas so duplicate page-load events cannot leave stale filter listeners.
+  Decorative hero backgrounds no longer create horizontal page scrolling.
 
-## Editorial backlog
+## Remaining editorial work
 
-| Item                        | Detail                                                                                                                                                                                      |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Policy content depth (tail) | `docs/policy-content-depth-report.md` — 41 of 129 verified policies still below bar (3 high, 38 medium; median 100/100, critical 0). Editorial scheduling only; no schema or approval gate. |
+| Priority | Item                                                | Evidence / next action                                                                                                                                                                                    |
+| -------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | Six composite draft policies                        | `scripts/data/policy-reviews-2026-10.json` records a primary source and review disposition for each. Reconcile law/implementation/project claims before graduating a draft.                               |
+| 1        | Chinese analysis completion                         | 609 of 649 existing dimensions still need reviewed Chinese versions. The quality dashboard exposes this separately from bilingual record parity.                                                          |
+| 2        | Factual currency                                    | Run `pnpm manage:review:queue`; intervals of 90 days for policies and 180 days for facilities are reminders, not legal-validity tests. Do not advance the whole-dataset check date after a partial batch. |
+| 2        | Remaining facility curation                         | Prioritize the 65 operational/under-construction records without curated sources, then extend planned-project coverage.                                                                                   |
+| 2        | Lifecycle/source depth beyond the scoring threshold | Meeting the threshold does not fill every missing milestone or establish current legal applicability. Use explicit sources; never add milestones merely to raise a score.                                 |
+| 3        | Canonical analytical review                         | Source corrections preserve existing numerical scores. Any rescoring requires its own methodology review and comparison. `uk-ccs-network-code` currently has four canonical dimensions.                   |
+| 3        | Wider i18n consolidation                            | Detail catalogues and relationship labels are centralized; page-specific and governance catalogues still exist. Migrate shared strings when their consumers change.                                       |
 
-## Engineering backlog
+## Validation and handoff
 
-| Item                                  | Detail                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 339 facilities already enriched (operational + under-construction ≥0.5 Mtpa, plus planned ≥1 Mtpa) toward the remaining operational/under-construction set. See `agent/ccus-ai-agent/METHODOLOGY.md` §9                                                                                       |
-| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                                                                                                           |
-| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales (zh not yet translated). The reverse leak — CJK fragments in en content — was fixed 2026-09-23 (9 → 0); `content_localization` in quality output now tracks it. 20 en files still carry CJK only in the native-language `source` (by design) |
-| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                                                                                                         |
-| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                                                                                                            |
-| Performance polish                    | `light-editorial-capacity.css` loaded site-wide but only used on home (Inter font weights resolved via variable axis)                                                                                                                                                                                                            |
+Use `agent/ccus-ai-agent/RUNBOOK.md` for commands. The policy review importer
+is dry-run by default, applies a transaction, locks writes and keeps an external
+backup. Generated publication data is not committed. Human review and passing
+required CI remain prerequisites for merging this delivery.
 
 ## Done (2026-09 sessions, for context)
 
