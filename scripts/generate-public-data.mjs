@@ -212,17 +212,50 @@ async function generatePublicData() {
 
   fs.writeFileSync(
     path.join(PUBLIC_DATA_DIR, 'facilities.json'),
-    JSON.stringify(
-      {
-        data_as_of: dataAsOf,
-        count: facilities.length,
-        records: facilities,
-      },
-      null,
-      2
-    ) + '\n'
+    JSON.stringify({
+      data_as_of: dataAsOf,
+      count: facilities.length,
+      records: facilities,
+    }) + '\n'
   );
   console.log(`  facilities.json: ${facilities.length} records`);
+
+  // Preserve legacy linked_policies IDs; publish typed evidence separately.
+  const relationships = queryRows(
+    db,
+    `SELECT policy_id, facility_id, link_type,
+    confidence, evidence, source_url, review_status, created_at, updated_at
+    FROM policy_facility_links ORDER BY policy_id, facility_id`
+  );
+  fs.writeFileSync(
+    path.join(PUBLIC_DATA_DIR, 'relationships.json'),
+    JSON.stringify({
+      data_as_of: dataAsOf,
+      count: relationships.length,
+      records: relationships,
+    }) + '\n'
+  );
+
+  const hasAnalysisLocales = queryRows(
+    db,
+    "SELECT name FROM sqlite_master WHERE name='policy_analysis_i18n'"
+  ).length;
+  const analysisLocales = hasAnalysisLocales
+    ? queryRows(
+        db,
+        `SELECT t.* FROM policy_analysis_i18n t
+    JOIN policy_analysis a USING(policy_id, dimension) WHERE t.source_evidence=a.evidence
+    ORDER BY t.policy_id, t.dimension, t.lang`
+      )
+    : [];
+  fs.writeFileSync(
+    path.join(PUBLIC_DATA_DIR, 'policy-analysis-localizations.json'),
+    JSON.stringify({
+      data_as_of: dataAsOf,
+      count: analysisLocales.length,
+      records: analysisLocales,
+    }) + '\n'
+  );
 
   // --- Generate countries.json ---
   console.log('Generating countries.json...');
@@ -345,6 +378,18 @@ async function generatePublicData() {
         count: facilities.length,
         description: 'Global CCUS facilities with capacity and location data',
       },
+      'policy-analysis-localizations': {
+        file: `${BASE_URL}/data/policy-analysis-localizations.json`,
+        count: analysisLocales.length,
+        description:
+          'Reviewed translations tied to canonical source evidence; missing translations fall back explicitly',
+      },
+      relationships: {
+        file: `${BASE_URL}/data/relationships.json`,
+        count: relationships.length,
+        description:
+          'Typed facility-policy associations with evidence and review status',
+      },
       countries: {
         file: `${BASE_URL}/data/countries.json`,
         count: countries.length,
@@ -360,6 +405,8 @@ async function generatePublicData() {
       },
     },
     schemas: {
+      'policy-analysis-localization': `${BASE_URL}/data/schemas/policy-analysis-localization.schema.json`,
+      relationship: `${BASE_URL}/data/schemas/relationship.schema.json`,
       policy: `${BASE_URL}/data/schemas/policy.schema.json`,
       facility: `${BASE_URL}/data/schemas/facility.schema.json`,
       country: `${BASE_URL}/data/schemas/country.schema.json`,
@@ -370,7 +417,7 @@ async function generatePublicData() {
       'llms-full': `${BASE_URL}/llms-full.txt`,
     },
     known_limitations: [
-      'Facility-policy links are currently country-level only (low confidence)',
+      'Country and subnational matches provide geographic context, not verified project-specific legal applicability; inspect relationships.json',
       'Coordinate precision varies: exact, state, or country-level',
       'Some policies may be missing source or URL',
       'Chinese translations may not cover all fields',

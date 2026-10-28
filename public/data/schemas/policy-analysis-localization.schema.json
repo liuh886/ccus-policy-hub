@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source-bound policy analysis localization",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "dimension",
+    "lang",
+    "label",
+    "evidence",
+    "source_evidence",
+    "reviewed_at"
+  ],
+  "properties": {
+    "policy_id": { "type": "string" },
+    "dimension": { "type": "string" },
+    "lang": { "const": "zh" },
+    "label": { "type": "string" },
+    "evidence": { "type": "string" },
+    "source_evidence": {
+      "type": "string",
+      "description": "Must exactly match the current canonical English evidence; otherwise the translation is stale."
+    },
+    "reviewed_at": { "type": "string", "format": "date" }
+  }
+}
