@@ -162,6 +162,7 @@ export function expectedMarkdownPolicy(policy, localized, lang, dictionary) {
       legalWeight: policy.legal_weight,
       source: policy.source,
       url: policy.url,
+      scope: localized.scope,
       description: (localized.description || '')
         .substring(0, 500)
         .replace(/\n/g, ' '),

@@ -1,0 +1,745 @@
+{
+  "as_of": "2026-10-28",
+  "policies": [
+    {
+      "id": "ro-law-114-2013-ccs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://namr.ro/legislatie/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Romanian geological CO2 storage, including exploration and storage authorisations, site monitoring and closure responsibilities."
+        },
+        "zh": {
+          "scope": "适用于罗马尼亚二氧化碳地质封存，涵盖勘探和封存许可、场址监测以及关闭阶段责任。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "hr-hydrocarbon-act-ccs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.azu.hr/en/legislation/act-on-the-exploration-and-exploitation-of-hydrocarbons/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Croatian subsurface resource legislation covering hydrocarbons, geothermal resources, gas storage and permanent CO2 disposal."
+        },
+        "zh": {
+          "scope": "适用于克罗地亚地下资源活动，包括油气、地热、天然气储存及二氧化碳永久处置。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-mee-env-guidance-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Environmental risk assessment for Chinese CO2 capture, utilisation and storage projects across the project chain."
+        },
+        "zh": {
+          "scope": "适用于中国二氧化碳捕集、利用与封存项目全流程的环境风险识别和评估工作。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "eu-ccs-directive",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/eli/dir/2009/31/oj",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "EU geological CO2 storage site selection, exploration and storage permits, monitoring, closure and responsibility transfer."
+        },
+        "zh": {
+          "scope": "适用于欧盟地质封存场址选择、勘探和封存许可、监测、关闭以及责任移交。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "vn-decree-119-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://netzero.vn/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Vietnamese greenhouse-gas mitigation and ozone-layer protection rules, including carbon-market administration."
+        },
+        "zh": {
+          "scope": "适用于越南温室气体减排和臭氧层保护相关管理，包括碳市场行政制度。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "imo-marpol-occs-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.imo.org/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "International maritime work on shipboard CO2 capture, emissions accounting, safety and interfaces with onshore reception."
+        },
+        "zh": {
+          "scope": "适用于国际海事组织关于船载碳捕集、排放核算、安全及岸上接收接口的规则制定工作。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-miit-industrial-plan-2022",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Chinese industrial carbon-peaking measures and technology development relevant to energy-intensive manufacturing and CCUS."
+        },
+        "zh": {
+          "scope": "面向中国工业碳达峰及相关技术发展，涉及高耗能制造行业和碳捕集利用封存。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-gd-carbon-inclusive",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://gdee.gd.gov.cn/zwgk/content/post_4281415.html",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Guangdong carbon-market offset and carbon-inclusive arrangements; eligibility must be checked against an approved methodology."
+        },
+        "zh": {
+          "scope": "涉及广东碳市场抵销和碳普惠安排，具体项目是否适用应核对正式发布的方法学。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "eu-crcf-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3012",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "EU voluntary certification of permanent removals, carbon farming and carbon storage in products under Regulation 2024/3012."
+        },
+        "zh": {
+          "scope": "适用于欧盟第2024/3012号条例下的永久碳移除、碳农业与产品碳储存自愿认证。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "no-tax-deduction-ccs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.norskpetroleum.no/en/framework/taxes/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Norwegian petroleum taxation relevant to offshore activities; tax treatment depends on the taxpayer and applicable activity."
+        },
+        "zh": {
+          "scope": "涉及挪威离岸活动相关石油税制，具体税务待遇应依据纳税主体和业务性质分别判断。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "tx-hb-1284-ccus",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=87R&Bill=HB1284",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Texas allocation of state regulatory authority over anthropogenic CO2 injection and geological storage activities."
+        },
+        "zh": {
+          "scope": "适用于得克萨斯州对人为二氧化碳注入和地质封存活动的州级监管权限安排。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "us-la-primacy-rules",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Louisiana Class VI injection-well permitting and oversight for geological CO2 sequestration under state and federal requirements."
+        },
+        "zh": {
+          "scope": "适用于路易斯安那州地质封存二氧化碳的第VI类注入井许可和监管，须结合州级与联邦要求。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "us-nd-century-code-38-22",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.ndlegis.gov/cencode/t38c22.pdf",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "North Dakota geological CO2 sequestration permits, operation, project completion and associated responsibility provisions."
+        },
+        "zh": {
+          "scope": "适用于北达科他州二氧化碳地质封存许可、运营、项目完结和相关责任条款。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-sd-eco-plan-14fym",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.shandong.gov.cn/art/2022/12/29/art_2259_4281415.html",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Shandong provincial ecological-environmental planning and its support for industrial low-carbon and CCUS demonstrations."
+        },
+        "zh": {
+          "scope": "涉及山东省生态环境规划及其对工业低碳转型和碳捕集利用封存示范的支持安排。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "intl-gcca-net-zero-2050",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://gccassociation.org/concretefuture/net-zero-roadmap/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Global cement and concrete industry decarbonisation pathways; an industry roadmap rather than a binding national permit regime."
+        },
+        "zh": {
+          "scope": "适用于全球水泥与混凝土行业减碳路径，是行业路线图，应与国家法定许可制度区分。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "au-offshore-ghg-safety-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.legislation.gov.au/Details/C2024A00042",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Safety management for Australian offshore petroleum and greenhouse-gas storage operations and their associated facilities."
+        },
+        "zh": {
+          "scope": "适用于澳大利亚离岸石油与温室气体封存作业及其相关设施的安全管理。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "ca-ab-sequestration-tenure",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://kings-printer.alberta.ca/1266.cfm?page=2011_068.cfm&leg_type=Regs&isbncln=9780779758418",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Alberta Crown pore-space tenure for geological CO2 sequestration, distinct from separate environmental and injection approvals."
+        },
+        "zh": {
+          "scope": "适用于阿尔伯塔省王室所属孔隙空间的地质封存权安排，需与环境和注入许可分别核对。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "ca-sk-spii",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/oil-and-gas-incentives-royalties-and-taxes/saskatchewan-petroleum-innovation-incentive",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Saskatchewan petroleum innovation investment incentives, subject to eligible technology, expenditure and project conditions."
+        },
+        "zh": {
+          "scope": "适用于萨省石油技术创新投资激励，须满足相关技术、支出和项目资格条件。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-hb-ets-offset",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.hubei.gov.cn/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Hubei regional emissions-trading offset rules; CCUS eligibility depends on accepted project types and methodologies."
+        },
+        "zh": {
+          "scope": "涉及湖北区域碳交易抵销规则，碳捕集利用封存资格应以获认可的项目类型和方法学为准。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "cn-js-industrial-decarb-2022",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://gxt.jiangsu.gov.cn/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Jiangsu industrial carbon-peaking and green transformation measures relevant to industrial CCUS development."
+        },
+        "zh": {
+          "scope": "适用于江苏工业碳达峰和绿色转型措施中与碳捕集利用封存技术发展相关的安排。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "eu-ets-mrr-2018",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "EU ETS greenhouse-gas monitoring and reporting, including applicable CO2 transfer and geological-storage accounting provisions."
+        },
+        "zh": {
+          "scope": "适用于欧盟碳市场温室气体监测和报告，包括相关二氧化碳转移及地质封存核算条款。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "eu-nzia",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/1735/oj",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "EU net-zero technology manufacturing and CO2 injection-capacity measures, with obligations defined by the applicable articles."
+        },
+        "zh": {
+          "scope": "涉及欧盟净零技术制造及二氧化碳注入能力相关措施，具体义务应按适用条款判断。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "icao-corsia-ccu-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.icao.int/environmental-protection/CORSIA/Pages/CORSIA-Eligible-Fuels.aspx",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "CORSIA fuel eligibility and lifecycle emissions criteria; capture or utilisation alone does not establish fuel-credit eligibility."
+        },
+        "zh": {
+          "scope": "适用于CORSIA燃料资格及生命周期排放标准，单独捕集或利用碳不等于获得燃料减排资格。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "id-presidential-reg-14-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Indonesian CCS implementation, including eligible storage areas and authorisation arrangements under Presidential Regulation 14/2024."
+        },
+        "zh": {
+          "scope": "适用于印度尼西亚第14/2024号总统条例下的CCS实施，包括封存区域及相关授权安排。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "in-ccus-roadmap",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Indian CCUS policy and deployment recommendations for industry; distinguish roadmap proposals from enacted financial entitlements."
+        },
+        "zh": {
+          "scope": "面向印度工业CCUS政策和部署建议，须区分路线图倡议与已依法生效的财政待遇。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "intl-ccs-plus-framework",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.ccsplus.org/methodologies/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Carbon-accounting methodologies for capture, transport and storage chains; credit eligibility follows the selected standard and modules."
+        },
+        "zh": {
+          "scope": "适用于捕集、运输和封存链条的碳核算方法，积分资格须按所选标准及模块判断。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "intl-paris-art-6-4-ccs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://unfccc.int/process-and-meetings/the-paris-agreement/article-64-mechanism",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Paris Agreement Article 6.4 crediting rules for eligible mitigation and removal activities, subject to approved methodologies."
+        },
+        "zh": {
+          "scope": "适用于《巴黎协定》第6.4条机制下符合资格的减排和移除活动，须满足认可方法学。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "jp-jogmec-advanced-ccs-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.jogmec.go.jp/english/news/release/news_10_00037.html",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "JOGMEC support for advanced CCS project preparation and development in domestic and cross-border value chains."
+        },
+        "zh": {
+          "scope": "适用于JOGMEC对先进CCS项目前期准备和开发的支持，涉及日本国内及跨境价值链。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "netherlands-sde",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://english.rvo.nl/subsidies-programmes/sde",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Dutch SDE++ support for eligible emission-reduction technologies, with CCS conditions determined by the relevant application round."
+        },
+        "zh": {
+          "scope": "适用于荷兰SDE++对合格减排技术的支持，CCS具体条件应以相关申请轮次文件为准。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "nl-porthos-sde-subsidy",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.rvo.nl/subsidies-financiering/sde",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "SDE++ support associated with eligible Porthos industrial capture customers; distinguish customer awards from network financing."
+        },
+        "zh": {
+          "scope": "涉及Porthos工业捕集客户适用的SDE++支持，应区分客户授标与运输封存网络融资。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "no-storage-framework",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.offshoredirectorate.no/en/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Norwegian offshore CO2 transport and geological-storage licensing, operation, monitoring, closure and responsibility arrangements."
+        },
+        "zh": {
+          "scope": "适用于挪威离岸二氧化碳运输和地质封存许可、运营、监测、关闭及责任安排。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "sa-megi-ccus",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.moenergy.gov.sa/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Saudi circular-carbon-economy strategy and CCS hub ambitions; announced targets are distinct from delivered storage capacity."
+        },
+        "zh": {
+          "scope": "涉及沙特循环碳经济战略及CCS枢纽发展目标，应将宣布目标与实际投运封存能力区分。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "th-boi-incentives",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.boi.go.th/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Thai Board of Investment promotion for eligible CCUS-related investment; tax benefits depend on the approved activity and conditions."
+        },
+        "zh": {
+          "scope": "涉及泰国投资促进委员会对合格CCUS相关投资的促进，税收待遇取决于获批业务和条件。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "uae-adnoc-ccs-2030",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.adnoc.ae/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "ADNOC corporate carbon-capture and decarbonisation strategy; corporate targets do not constitute a national legal obligation."
+        },
+        "zh": {
+          "scope": "涉及ADNOC企业碳捕集与减碳战略，应区分公司发展目标与国家法定义务。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "uk-energy-act-2023",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.legislation.gov.uk/ukpga/2023/67/contents",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "UK statutory provisions for CO2 transport and storage economic regulation and carbon-capture revenue support."
+        },
+        "zh": {
+          "scope": "适用于英国二氧化碳运输封存经济监管及碳捕集收入支持的相关法定条款。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "jp-ccs-business-act-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.meti.go.jp/english/press/2026/0424_002.html",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Japanese CO2 storage businesses, exploratory drilling rights, storage operations and regulated pipeline transport."
+        },
+        "zh": {
+          "scope": "适用于日本二氧化碳封存业务、勘探钻井权、封存运营及受监管的管道运输。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    },
+    {
+      "id": "my-ccus-act-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://myccus.ekonomi.gov.my/activities/",
+          "finding": "Editorial scope clarification based on the accepted record; does not establish a fresh legal verification or add a new implementation milestone."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Malaysian federal CCUS administration and supervision under Act 870; territorial application and state law must be checked separately."
+        },
+        "zh": {
+          "scope": "涉及马来西亚第870号法下联邦CCUS行政和监管，地域适用及州级法律应另行核对。"
+        }
+      },
+      "review_disposition": "editorial_scope_only",
+      "review_note": "Bilingual scope clarified; substantive source review and missing lifecycle evidence remain in the review queue."
+    }
+  ]
+}
