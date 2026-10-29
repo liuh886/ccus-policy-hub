@@ -1,0 +1,4 @@
+policy_id,url,review_status,reviewer,source_edition,candidate_type,review_note
+uk-energy-act-2023,https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf,pending,,original_enacted,original_enacted_legislation,Review chapter 52 identity and edition before approval
+us-epa-class-vi-primacy,https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program,pending,,current_webpage,regulator_guidance,Programme guidance not legislation
+us-cifia-lpo,https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program,pending,,current_webpage,programme_overview,DOE overview not statutory original
