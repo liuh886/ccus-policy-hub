@@ -33,7 +33,7 @@ MAX_BYTES = 300 * 1024 * 1024
 RECHECK_DAYS = 45  # An existing file older than this can be checked again for updated bytes.
 REQUEST_TIMEOUT = (10, 35)  # connection and socket read: retries happen on later incremental runs
 PUBLISHER_DELAY_SECONDS = 0.6
-USER_AGENT = 'CCUSPolicyHubSourceArchiver/2.0 (research source preservation; low request rate)'
+USER_AGENT = 'CCUSPolicyHubSourceArchiver/3.0 (research source preservation; low request rate)'
 
 
 def utcnow():
@@ -197,10 +197,13 @@ def retrieve(session,url,workdir,allow_html=False,host_validator=None,headers=No
         if info['status']!='downloaded' and tmp.exists():tmp.unlink()
 
 
-def create_upload(drive, local_file, folder_id, name, url, sha256, policy_id, kind, mime_type, headers):
+def create_upload(drive, local_file, folder_id, name, url, sha256, policy_id, kind, mime_type, headers, provenance=None):
     from googleapiclient.http import MediaFileUpload
     meta={'sha256':sha256,'source_url_sha256':sha_text(url),'checked_at':utcnow()}
     if policy_id: meta['policy_id']=str(policy_id)[:90]
+    provenance=provenance or {}
+    for prop in ('source_edition','target_origin'):
+        if provenance.get(prop):meta[prop]=str(provenance[prop])[:120]
     if headers.get('etag'): meta['etag']=headers['etag']
     if headers.get('last_modified'): meta['last_modified']=headers['last_modified']
     media=MediaFileUpload(str(local_file),mimetype=mime_type,resumable=True,chunksize=4*1024*1024)
@@ -253,6 +256,8 @@ def capture_targets(drive,session,folder_id,targets,kind,recheck_days=RECHECK_DA
              'status':'','http_status':'','format':'','bytes':'','sha256':'',
              'drive_file_id':'','resolved_url':'','error':'',
              'url_scope':url_scope(url or item.get('url','')),
+             'target_origin':item.get('target_origin','canonical_db'),
+             'source_edition':item.get('source_edition',''),
              'instrument_verification':policy_source_relevance_status(url or item.get('url',''),kind)}
         if not url:
             original=(item.get('url') or '').strip()
@@ -319,7 +324,7 @@ def capture_targets(drive,session,folder_id,targets,kind,recheck_days=RECHECK_DA
                         stem,ext=os.path.splitext(basename)
                         basename=f'{stem}__{info["sha256"][:12]}{ext}'
                     try:
-                        created=create_upload(drive,local,folder_id,basename,url,info['sha256'],row['policy_id'],kind,info['mime_type'],info)
+                        created=create_upload(drive,local,folder_id,basename,url,info['sha256'],row['policy_id'],kind,info['mime_type'],info,row)
                         row.update(status='uploaded_original',drive_file_id=created['id'])
                         by_url[sha_text(url)]=created;by_sha[info['sha256']]=created;names.add(basename);new_count+=1
                     except Exception as exc:
@@ -339,7 +344,7 @@ def export_audit(drive,rows,prefix):
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     path=ROOT/f'{prefix}_Audit_{stamp}.csv'
     keys=['collected_at','policy_id','country','title','publisher','source_type','inventory_sha256','url','status','http_status',
-          'format','bytes','sha256','drive_file_id','resolved_url','error','url_scope','instrument_verification']
+          'format','bytes','sha256','drive_file_id','resolved_url','error','url_scope','instrument_verification','target_origin','source_edition']
     with path.open('w',encoding='utf-8-sig',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=keys,extrasaction='ignore');writer.writeheader();writer.writerows(rows)
     media=MediaFileUpload(str(path),mimetype='text/csv',resumable=True)
