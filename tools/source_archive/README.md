@@ -34,3 +34,19 @@
 - Source discovery is bounded (publications pages, WP API page limits). Absence from results does not prove a source does not exist.
 - `createdTime` is a fallback for legacy GCCSI files lacking `checked_at`, so initial v2 run may recheck old files; rechecks are deduplicated by SHA-256.
 - Transient HTTP 403/429 can represent bot mitigation rather than membership restrictions. HTML snapshot is raw evidence; no interpretation or content extraction is attempted.
+
+
+## First live Policy Colab audit: remediation (2026-10-30)
+
+Input: `Policy_Primary_Source_Audit_20261029T191752Z.csv` in the connected Google Drive metadata folder; immutable inventory SHA-256 `1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d`.
+
+- 130 policies evaluated: 34 downloaded files; 65 old host-allowlist rejects; 7 HTTP 404; 6 HTTP 202/8 HTTP-error total; 4 network errors; 5 insecure HTTP URLs; 3 blocked HTML, 3 403 and 1 too-short HTML.
+- 65 rejects decomposed: **20 official host false negatives** accepted by v2.2 acquisition filter; **32 generic publisher homepages** now `source_too_broad` and not considered originals; **13 issuer/source cases** remain for manual review.
+- **8 of the 34 already uploaded sources** pointed at publisher homepages; pre-existing files are *not* deleted, but must not be counted as primary policy texts or indexed as legal instruments.
+- Source authenticity requires policy-to-instrument matching, legal title/number, official issuer, applicable edition/effective date, and evidence of document content. `uploaded_original` is only a file-transfer status, not policy evidence verification.
+- The 5 non-HTTPS URLs remain in the backlog, now explicitly `non_https_source`; the source inventory still contains 130 nonempty `p.url` values but only 125 initially valid HTTPS URLs.
+- `http_202_not_document` records upstream 202 responses (not a PDF or HTML body); don't infer permanent link death.
+- `google_auth_httplib2` timeout warning addressed by constructing `AuthorizedHttp` with `httplib2.Http(timeout=90)`; request read timeout now bounded, leaving transient retrieval errors for the next incremental run instead of holding the session for multiple 110-second waits.
+- Before repeating, use latest updated Google Drive policy notebook. The first new run after v2.2 is **not yet live verified**; compare its CSV with this queue before approving any primary-source coverage KPI.
+
+Repair CSV: `Policy_Source_Repair_Queue_20261030.csv`, columns `queue_bucket`, `priority`, `action`, `policy_id`, original source URL and the canonical SQLite hash. Treat all `archived_unverified` as needing content validation, even though the file exists in private Drive. This CSV is a planning aid and must not modify the policy database.
