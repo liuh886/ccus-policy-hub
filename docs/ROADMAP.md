@@ -1,120 +1,64 @@
-# Roadmap
+# CCUS Policy Hub — Active Roadmap
 
-Single aggregation point for open work items. Sources of truth for details:
-the linked audit reports and issues. Keep each item's status current.
+> Last reviewed: 2026-10-30. This is the single active task queue. Product scope, architectural responsibilities and stop rules are defined in [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md).
 
-Last updated: 2026-09-23
+## Goal and baseline
 
-## In review / blocked on governance approval
+CCUS Policy Hub is a bilingual evidence-grounded research and data platform. It publishes verifiable static Agent-ready data for downstream consumers; it **does not build or evaluate a professional Q&A Agent**.
 
-None. Every item previously listed here has landed (see Done): content schema
-tightening ([#69](https://github.com/liuh886/ccus-policy-hub/issues/69)), the
-facility–policy relationship model Phase 2, and the bulk of the policy
-content-depth remediation.
+The mainline baseline reviewed at `aa68b45f` contains 130 policy records, 1,110 facility records and 65 country profiles. SQLite is the authoritative maintenance source; public JSON, Markdown and Astro pages are generated projections.
 
-## Editorial backlog
+The current implementation PR chain is **#102 → #103 → #104**. Each is an independent checkpoint; code passing CI on a feature branch is not proof of public release. #101 is a separate draft specification requiring revision before merging.
 
-| Item                        | Detail                                                                                                                                                                                      |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Policy content depth (tail) | `docs/policy-content-depth-report.md` — 41 of 129 verified policies still below bar (3 high, 38 medium; median 100/100, critical 0). Editorial scheduling only; no schema or approval gate. |
+## P0 — Align and deliver the existing work
 
-## Engineering backlog
+- **Inputs:** #102 open, #101 draft, #103 open on #102, #104 draft on #103.
+- **Work:** Review and integrate #102 data quality, source review, relationship and i18n fixes; remove Q&A acceptance criteria from #101; retarget #103 to updated main, rerun CI and verify publishing; keep #104 in evidence review.
+- **Done:** Mainline, published data, README and the active roadmap describe the same capabilities. The verified project-policy direct evidence count must not be invented from geographic matches.
+- **Stop:** Do not introduce chat, agent inference, new databases or new services.
 
-| Item                                  | Detail                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facility news — Phase E (remaining)   | Extend curated coverage beyond the 339 facilities already enriched (operational + under-construction ≥0.5 Mtpa, plus planned ≥1 Mtpa) toward the remaining operational/under-construction set. See `agent/ccus-ai-agent/METHODOLOGY.md` §9                                                                                       |
-| Consolidate i18n copy                 | Three parallel systems: `src/i18n/ui.ts` (~30 keys), ~48 inline `isEn ? :` ternaries, per-component copy objects (`governanceComparisonCopy.mjs` etc.)                                                                                                                                                                           |
-| Analyze block localization            | Policy five-dimension `analysis` blocks are the same English source in both locales (zh not yet translated). The reverse leak — CJK fragments in en content — was fixed 2026-09-23 (9 → 0); `content_localization` in quality output now tracks it. 20 en files still carry CJK only in the native-language `source` (by design) |
-| Remaining zh/en page pairs            | Only decorative/standalone pages remain unmerged (`index` hero, `about`, thin shells elsewhere are done)                                                                                                                                                                                                                         |
-| Facilitate `facilities.json` slimming | 2.8 MB public payload; consider field pruning or per-country lazy loading for the map                                                                                                                                                                                                                                            |
-| Performance polish                    | `light-editorial-capacity.css` loaded site-wide but only used on home (Inter font weights resolved via variable axis)                                                                                                                                                                                                            |
+## P1 — Publish a consumable Agent-ready data contract
 
-## Done (2026-09 sessions, for context)
+- **Input:** Completed P0 and #103's static 45Q policy/family bundle implementation.
+- **Work:** Verify manifest discovery, JSON Schema, stable IDs, deterministic JSON/Markdown output, source references, evidence type, time, translation status and explicit gaps; test invalid IDs and languages.
+- **Done:** An independent consumer can discover, validate, read and cite data using public resources only, without the site's private runtime. The same inputs give byte-identical outputs.
+- **Stop:** Do not implement Q&A, prompt orchestration, RAG, MCP or answer-accuracy benchmarks.
 
-- Content schema tightened to `z.enum(POLICY_CATEGORIES/POLICY_STATUSES)` on
-  the en collection after the governed taxonomy normalization migration;
-  `categoryMap` compatibility patch removed and a taxonomy guard test added
-  ([#69](https://github.com/liuh886/ccus-policy-hub/issues/69))
-- Facility–policy relationship model Phase 2 executed:
-  `link_type`/`confidence`/`evidence`/`source_url`/`review_status`/timestamps
-  added to `policy_facility_links` and all 6,938 links backfilled country/0.3;
-  `schema.sql` aligned with the live schema
-- Policy content depth remediated: critical 103 → 0, median 44 → 100 across the
-  Phase 1A–3K batches; residual editorial tail tracked separately
-- Compare governance–deployment quadrant split moved from the median to the
-  75th percentile (`BENCHMARK_QUANTILE`), so "integrated leaders" reflects the
-  top band instead of a crowded mid-point; timeline groups restyled with a
-  colour rail (#97)
-- Compare heatmap header no longer pinned mid-table: the sticky `thead` rule
-  is scoped to the regulatory detail table (#90)
-- PR #80 closed as superseded — its contributor-toggle and facility-filter
-  fixes were already on `main`
-- Facility profiles: added `facility_news`, a deduplicated, tier-classified
-  external source list (official → press_release → media → reference), seeded
-  from the existing IEA links and rendered as a formal "Press Releases &
-  Coverage" section (Phase A–C)
-- Facility news titles/dates fetched for ~1,100 of ~1,840 distinct source URLs
-  (anti-bot/paywall/spam titles rejected → publisher fallback), plus a
-  `facility_news` coverage block in the quality metrics (Phase D, partial)
-- Curated research ingest (`scripts/data/facility-news-research.json` +
-  `manage:db:import:facility-news-research`); all 17 operational ≥1 Mtpa
-  facilities enriched (51 curated items) (Phase D)
-- Facility-news link-rot checker (`manage:db:audit:facility-news-links`,
-  read-only report) (Phase D)
-- Curated coverage extended to 35 facilities / 122 items: all 17 operational
-  ≥1 Mtpa + the top 18 under-construction ≥2 Mtpa (Phase E)
-- Pruned 524 rows for 150 confirmed-dead links
-  (`manage:db:prune:facility-news-dead-links`) (Phase E)
-- Curated coverage extended to 73 facilities / 271 items: added the remaining
-  under-construction ≥1 Mtpa and planned ≥10 Mtpa projects (Phase E)
-- Curated coverage extended to 101 facilities / 381 items: added planned
-  ≥5.4 Mtpa projects (Phase E)
-- Curated coverage extended to 117 facilities / 441 items: added planned
-  ≥4 Mtpa projects (Phase E)
-- Curated coverage extended to 139 facilities / 527 items: added planned
-  ≥3 Mtpa projects (Phase E)
-- Curated coverage extended to 158 facilities / 601 items: added planned
-  ≥2.5 Mtpa projects (Phase E)
-- Curated coverage extended to 196 facilities / 751 items: added planned
-  ≥2 Mtpa projects (Phase E)
-- Curated coverage extended to 234 facilities / 896 items: added planned
-  ≥1.5 Mtpa projects (Phase E)
-- Curated coverage extended to 251 facilities / 960 items: added planned
-  ≥1.3 Mtpa projects (Phase E)
-- Curated coverage extended to 262 facilities / 1002 items: added planned
-  ≥1.1 Mtpa projects (Phase E)
-- Curated coverage extended to 301 facilities / 1154 items: added planned
-  ≥1 Mtpa projects (Phase E)
-- Curated coverage extended to 339 facilities: the earlier ≥0.5 Mtpa batch left
-  16 operational/under-construction facilities uncurated (e.g. Gorgon, Century,
-  Petrobras Santos, Trailblazer); these were added. On a URL collision the
-  curated tier/title/date now **upgrade the seeded row in place** instead of
-  being dropped — 118 rows upgraded, 48 tier corrections (Phase E)
-- Facility-news link health runs on a monthly schedule
-  (`.github/workflows/facility-news-link-check.yml`, advisory artifact);
-  facility-news titles are now included in site search
-- CI projection diff gate closed (quality metrics + public data), deterministic
-  `data_as_of` timestamps, volatile audit fields removed from generated output
-- zh/en page consolidation (8 pairs), Base-path literals eliminated (guard test),
-  shared helpers (`db-write`, `sqlite-query`, `i18n-translate`)
-- `manage.mjs` split from a ~1,233-line monolith into a thin router plus
-  `logic/commands/*` modules (`db.mjs` access layer), with direct tests for the
-  heart paths `dbExportMd`, `dbImportMdReverse`, and `dbAuditDeep` (2026-09)
-- Home world map driven from the policies collection; every bubble links to a
-  real, current policy detail page
-- IEA worktree: audited and rejected (0 unique value, 912 precision
-  regressions); 2026 workbook replaced by provenance manifest + SHA256 gate
-- DB snapshot archaeology removed; 2026-07 migrations archived with manifest
+## P2 — Verify one versioned primary-source evidence path
 
-## Proposed Agent context layer
+- **Input:** P1 and the reviewed candidates in #104.
+- **Work:** Freeze one official 45Q source version and review at least one clause locator. Confirm source/extractor changes invalidate dependent anchors. State historical/current-law coverage boundaries.
+- **Done:** A consumer can trace an approved reference to one immutable source version, valid locator and human review state; tampered or stale evidence cannot be silently used as verified.
+- **Stop:** No automatic eligibility decisions, exhaustive 45Q ingestion, bulk condition cards or unapproved SQLite schema changes. Test whether versioned Git evidence files plus existing structured fields suffice before adding tables or duplicating source text.
 
-The confirmed first user is the maintainer's Agent; the first task is US 45Q
-policy Q&A using static JSON/Markdown. The human-facing research platform remains.
-See the [functional specification](context-layer-functional-spec.md) for F01–F08,
-contracts and acceptance cases, and the [phase map](context-layer-roadmap.md) for
-sequencing. This ROADMAP remains the single backlog index.
+## P3 — Demonstrate limited cross-jurisdiction reuse
 
-The first implementation slice is S1: discoverable bilingual policy/family bundles
-from the SQLite SSOT, explicit summary-only evidence and temporal/project gaps,
-and deterministic read-only generation. It depends on PR #102; clause-level
-eligibility questions remain gated by the later document/condition review slices.
+- **Input:** P2 evidence contract and current governance-comparison methodology.
+- **Work:** Apply the same evidence and projection contract to no more than two or three important policy instruments from different jurisdictions.
+- **Done:** New records retain source, version, caveats and citation semantics without creating a second truth source or special-case answer workflow.
+- **Stop:** No universal legal graph, automated policy applicability engine or indiscriminate bulk ingestion.
+
+## P4 — Sustain data quality and the existing research experience
+
+- **Input:** Actual consumer feedback and maintenance needs from P1–P3.
+- **Work:** Prioritize reviewed Chinese analysis, policy-source fixes, selected facility evidence, source-change review signals, deployment/report version checks and targeted navigation or performance improvements.
+- **Done:** Scoped validation and published artifacts remain reliable; the human-facing comparison, facility pages and ESG30 academic reading experience remain intact.
+- **Stop:** No new CMS, broad redesign, redundant CI chains or new backend without a demonstrated requirement.
+
+## Existing maintenance queue
+
+- **Policy depth:** #102 reports that 41 below-threshold verified records were corrected; confirm this on main after merge rather than claiming completion from an open PR.
+- **Analysis translation:** #102 reports 609 of 649 analytical dimensions still require reviewed Chinese versions; prioritize by use, while retaining explicit source language.
+- **Facility curation:** #102 identifies 65 remaining active-facility records; prioritize sources by value, not by an arbitrary universal news coverage target.
+- **Relationship evidence:** #102 distinguishes 4,287 country and 509 subnational contextual links; it reports zero directly evidenced project-policy relationships.
+- **Publication and CI:** Keep ESG30 upstream synchronization and structural checks; run expensive data audits when authoritative inputs change, not for unrelated cosmetic edits.
+
+## Required evidence for each implementation PR
+
+- State the accepted authority input and generated output.
+- Document schema/field meanings, missing-value states, source versions, review and language status.
+- Verify citation integrity, negative cases and deterministic generation.
+- Confirm SQLite consistency and the correct release state: implemented on branch, merged on main, or published on Pages.
+- Explain why any new service, table, dependency or subsystem is necessary for a tested consumer or maintenance need.
+
+See [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md) for full ownership, exclusion and stop criteria. Do not maintain another status queue inside drafts or component documentation.

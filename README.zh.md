@@ -19,6 +19,8 @@
 
 ## 项目概览
 
+> **产品定位（2026-10-30）**：CCUS Policy Hub 为研究者和外部 AI Agent 提供**循证、可追溯、结构化的 CCUS 政策与项目数据**。网站负责展示和发布 Agent-ready 静态接口，**不建设站内专业问答 Agent、自动资格判断或 LLM 推理服务**。具体开发职责与停止边界见[产品与架构边界](docs/PRODUCT_BOUNDARIES.md)，实施顺序以[唯一开发路线图](docs/ROADMAP.md)为准。
+
 **CCUS Policy Hub** 是一个面向全球 CCUS（碳捕集、利用与封存）领域的开源研究与数据平台，用于比较不同国家和地区的政策框架、设施部署、项目记录能力与治理成熟度。
 
 平台将过去往往被割裂研究的三类信息连接起来：
@@ -307,10 +309,3 @@ AI 生成的修改不会仅因为能够编译就被接受。数据定义、证�
   <p><a href="https://ko-fi.com/F1F7WYJ6B">☕ 在 Ko-fi 支持 CCUS Policy Hub</a></p>
   <sub>由 <b>liuh886</b> 为全球气候与 CCUS 研究社区构建</sub>
 </div>
-
-## Agent 上下文层开发
-
-在现有研究平台之上，计划增加面向 CCUS Agent 的任务型上下文。首版优先供维护者自己的
-Agent 使用，通过静态 JSON/Markdown 支持美国 45Q 政策问答。详见
-[功能与架构规格](docs/context-layer-functional-spec.md)和[路线图](docs/context-layer-roadmap.md)。
-这些文件描述开发计划；本提案不宣称条款级检索或 MCP 已经实现。
