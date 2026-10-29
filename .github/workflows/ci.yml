@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       governed_data: ${{ steps.scope.outputs.governed_data }}
+      source_archive: ${{ steps.scope.outputs.source_archive }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -34,6 +35,7 @@ jobs:
           set -euo pipefail
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
             echo "governed_data=true" >> "$GITHUB_OUTPUT"
+            echo "source_archive=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -47,6 +49,29 @@ jobs:
           else
             echo "governed_data=false" >> "$GITHUB_OUTPUT"
           fi
+          if grep -Eq '^(tools/source_archive/|\.github/workflows/ci\.yml$)' changed-files.txt; then
+            echo "source_archive=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "source_archive=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  source-archive:
+    name: Source archive Python regression tests
+    needs: detect-scope
+    if: needs.detect-scope.outputs.source_archive == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install existing archive dependency
+        run: python -m pip install 'requests>=2.32,<3'
+      - name: Verify core archive and source discovery
+        run: |
+          python tools/source_archive/test_archive_core.py
+          python tools/source_archive/test_source_discovery_v3.py
+          python tools/source_archive/test_source_discovery_v4.py
 
   build:
     name: Fast quality and production build
