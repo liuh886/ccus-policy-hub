@@ -42,7 +42,9 @@
     "report:check:strict": "node scripts/sync-paper-report.mjs --check --strict",
     "report:verify": "node scripts/verify-paper-report.mjs",
     "report:parity": "node scripts/verify-paper-report.mjs --parity",
-    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs",
+    "manage:review:queue": "node scripts/maintenance-review.mjs",
+    "manage:policy:review": "node scripts/apply-policy-review.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

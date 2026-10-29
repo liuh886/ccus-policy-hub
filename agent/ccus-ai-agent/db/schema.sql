@@ -111,6 +111,19 @@ CREATE TABLE IF NOT EXISTS policy_analysis (
   FOREIGN KEY(policy_id) REFERENCES policies(id) ON DELETE CASCADE
 );
 
+-- Source-bound Chinese translations; scores remain canonical in policy_analysis.
+CREATE TABLE IF NOT EXISTS policy_analysis_i18n (
+  policy_id TEXT NOT NULL,
+  dimension TEXT NOT NULL,
+  lang TEXT NOT NULL CHECK(lang IN ('zh')),
+  label TEXT NOT NULL,
+  evidence TEXT NOT NULL,
+  source_evidence TEXT NOT NULL,
+  reviewed_at TEXT NOT NULL,
+  PRIMARY KEY(policy_id, dimension, lang),
+  FOREIGN KEY(policy_id, dimension) REFERENCES policy_analysis(policy_id, dimension) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS policy_analysis_extra (
   policy_id TEXT NOT NULL,
   dimension TEXT NOT NULL,

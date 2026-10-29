@@ -107,6 +107,7 @@ export async function dbExportMd(
         legalWeight: p.legal_weight,
         source: p.source,
         url: p.url,
+        scope: i.scope,
         description: (i.description || '')
           .substring(0, 500)
           .replace(/\n/g, ' '),

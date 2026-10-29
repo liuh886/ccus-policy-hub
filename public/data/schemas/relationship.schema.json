@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Facility-policy association",
+  "type": "object",
+  "required": [
+    "policy_id",
+    "facility_id",
+    "link_type",
+    "confidence",
+    "review_status"
+  ],
+  "properties": {
+    "policy_id": { "type": "string" },
+    "facility_id": { "type": "string" },
+    "link_type": {
+      "type": "string",
+      "description": "country, subnational_region and sector are contextual matches; evidence is project-specific"
+    },
+    "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "evidence": { "type": ["string", "null"] },
+    "source_url": { "type": ["string", "null"] },
+    "review_status": {
+      "type": ["string", "null"],
+      "description": "Review of this recorded match, not proof of project-specific legal applicability"
+    },
+    "created_at": { "type": ["string", "null"] },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

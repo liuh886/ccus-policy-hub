@@ -1,5 +1,5 @@
 ---
-import '../styles/light-editorial-capacity.css';
+import '../styles/light-editorial-home.css';
 import '../styles/interaction-controls.css';
 import { getCollection } from 'astro:content';
 import {
@@ -412,6 +412,10 @@ const metricClose = lang === 'zh' ? '）' : ')';
       'capacityChart'
     ) as HTMLCanvasElement | null;
     if (!canvas) return;
+    // Both window.load and astro:page-load can fire on the initial visit.
+    // Replacing an existing chart leaves filter listeners pointing at a
+    // destroyed instance, so initialise each live canvas only once.
+    if (Chart.getChart(canvas)) return;
 
     const root = canvas.closest('[data-capacity-trend]') || document;
     const minSlider = root.querySelector(
@@ -437,7 +441,6 @@ const metricClose = lang === 'zh' ? '）' : ')';
     const typeCheckboxes = Array.from(
       root.querySelectorAll('[data-capacity-type]')
     ) as HTMLInputElement[];
-    Chart.getChart(canvas)?.destroy();
 
     try {
       const allSeries = JSON.parse(

@@ -30,3 +30,8 @@ Thumbs.db
 
 # --- Other ---
 LICENSE
+
+# Compact generated wire payloads
+public/data/facilities.json
+public/data/relationships.json
+public/data/policy-analysis-localizations.json

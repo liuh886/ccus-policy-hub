@@ -13,7 +13,7 @@
     ".github/workflows/ci.yml"
   ],
   "release_workflows": [".github/workflows/deploy.yml"],
-  "advisory_workflows": [],
+  "advisory_workflows": [".github/workflows/maintenance-review.yml"],
   "artifact_retention_days": {
     "pr_diagnostics": 14,
     "deployable_build": 7,

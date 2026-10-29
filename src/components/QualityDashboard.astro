@@ -358,7 +358,7 @@ const links = metrics.facility_policy_links;
           </div>
         )
       }
-      <div class="grid grid-cols-3 gap-4 mt-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
         <div class="text-center">
           <div class="text-sm text-slate-500 mb-1">
             {t('国家级', 'Country-Level')}
@@ -368,6 +368,20 @@ const links = metrics.facility_policy_links;
           </div>
           <div class="text-xs text-slate-400">
             {t('低置信度', 'Low Confidence')}
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-sm text-slate-500 mb-1">
+            {t('地方行政区匹配', 'Subnational Match')}
+          </div>
+          <div class="text-lg font-bold">{links.subnational_level}</div>
+          <div class="text-xs text-slate-400">
+            {
+              t(
+                '地域背景，不代表项目适用',
+                'Geographic context, not project applicability'
+              )
+            }
           </div>
         </div>
         <div class="text-center">
@@ -389,13 +403,40 @@ const links = metrics.facility_policy_links;
             {links.evidence_level}
           </div>
           <div class="text-xs text-slate-400">
-            {t('高置信度', 'High Confidence')}
+            {t('已核验项目证据', 'Verified project evidence')}: {
+              links.verified_project_evidence
+            }
           </div>
         </div>
       </div>
     </section>
 
     <!-- Back link -->
+    <section
+      class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 mb-8"
+    >
+      <h2 class="text-lg font-bold mb-3">
+        {t('分析文本本地化', 'Analysis Localization')}
+      </h2>
+      <p class="text-sm text-slate-500">
+        {t('已完成中文译述', 'Chinese versions available')}: {
+          metrics.content_localization.zh_translated_dimensions
+        } / {metrics.content_localization.analysis_dimensions}
+      </p>
+      <p class="text-sm text-slate-500">
+        {t('中文译述待核', 'Chinese versions pending')}: {
+          metrics.content_localization.zh_pending_dimensions
+        }
+      </p>
+      <p class="text-xs text-slate-400 mt-2">
+        {
+          t(
+            '译文与英文依据绑定；依据变化后回退至明确标注的英文原文。双语记录数量相等不代表所有分析段落已翻译。',
+            'Translations are tied to canonical evidence. Changed evidence falls back to explicitly labelled English. Equal record counts do not imply complete analytical translation.'
+          )
+        }
+      </p>
+    </section>
     <div class="text-center">
       <a
         href={homeHref}

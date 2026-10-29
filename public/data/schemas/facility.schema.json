@@ -91,7 +91,7 @@
     },
     "linked_policies": {
       "type": "array",
-      "description": "IDs of linked policies (currently country-level only)",
+      "description": "IDs of associated policies; inspect relationships.json for match type, evidence and review status",
       "items": {
         "type": "string"
       }
