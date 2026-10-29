@@ -41,7 +41,7 @@ def test_review_queue_includes_all():
          'url':'https://www.gov.uk/'}
     r = review_candidates_from_archives(None, [p], [
         {'policy_id':p['policy_id'],'status':'source_too_broad'}], [])
-    assert len(r) == 1 and r[0]['candidate_type'] == 'no_candidate_yet'
+    assert len(r) == 1 and r[0]['candidate_type'] == 'no_new_link_candidate'
 
 if __name__ == '__main__':
     for k,v in list(globals().items()):
