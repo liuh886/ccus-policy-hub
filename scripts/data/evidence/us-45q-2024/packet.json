@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "us-45q-usc-2024",
+  "policy_id": "us-45q-ira",
+  "title": {
+    "en": "26 USC 45Q — United States Code, 2024 Edition",
+    "zh": "美国法典第26编45Q条：2024年版"
+  },
+  "source_url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartD-sec45Q.htm",
+  "edition": "2024",
+  "fetched_at": "2026-10-29T11:25:37Z",
+  "published_at": null,
+  "source_current_through": "2025-01-06",
+  "raw_file": "source.html",
+  "raw_sha256": "1a5f12bac2314d5cad5bd99495ddf5dd9502d46bcbaf184841865d20f4fc2200",
+  "normalized_sha256": "4503dd2f085456ef627c532648cac986414eb77f0ed0c2485932bb631f2f2f3b",
+  "extractor_version": "govinfo-usc-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "qualified-facility",
+      "locator": "26 USC 45Q(d), 2024 edition",
+      "exact_quote": "(d) Qualified facility\nFor purposes of this section, the term \"qualified facility\" means any industrial facility or direct air capture facility—\n(1) the construction of which begins before January 1, 2033, and either—\n(A) construction of carbon capture equipment begins before such date, or\n(B) the original planning and design for such facility includes installation of carbon capture equipment, and\n(2) which—\n(A) in the case of a direct air capture facility, captures not less than 1,000 metric tons of qualified carbon oxide during the taxable year,\n(B) in the case of an electricity generating facility—\n(i) captures not less than 18,750 metric tons of qualified carbon oxide during the taxable year, and\n(ii) with respect to any carbon capture equipment for the applicable electric generating unit at such facility, has a capture design capacity of not less than 75 percent of the baseline carbon oxide production of such unit, or\n(C) in the case of any other facility, captures not less than 12,500 metric tons of qualified carbon oxide during the taxable year.",
+      "version_sha256": "1a5f12bac2314d5cad5bd99495ddf5dd9502d46bcbaf184841865d20f4fc2200",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "dac-definition",
+      "locator": "26 USC 45Q(e)(3), 2024 edition",
+      "exact_quote": "(3) Direct air capture facility\n(A) In general\nSubject to subparagraph (B), the term \"direct air capture facility\" means any facility which uses carbon capture equipment to capture carbon dioxide directly from the ambient air.\n(B) Exception\nThe term \"direct air capture facility\" shall not include any facility which captures carbon dioxide—\n(i) which is deliberately released from naturally occurring subsurface springs, or\n(ii) using natural photosynthesis.",
+      "version_sha256": "1a5f12bac2314d5cad5bd99495ddf5dd9502d46bcbaf184841865d20f4fc2200",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "reviewed_at": null
+      }
+    }
+  ],
+  "condition_drafts": [
+    {
+      "id": "construction-timing",
+      "anchor_id": "qualified-facility",
+      "requirement": {
+        "en": "Review the construction-start requirement and the alternative equipment/planning clauses together in this historical edition.",
+        "zh": "在此历史版本中一并核对开工要求及捕集设备开工或原始规划设计的备选条款。"
+      },
+      "required_inputs": [
+        "facility-construction-start",
+        "capture-equipment-construction-start",
+        "original-design-includes-capture"
+      ],
+      "applicable_period": "not_reviewed",
+      "exceptions": "not_reviewed",
+      "status": "draft"
+    },
+    {
+      "id": "capture-threshold",
+      "anchor_id": "qualified-facility",
+      "requirement": {
+        "en": "Identify the facility category and review its annual capture threshold; electric generation also has a capture-design requirement.",
+        "zh": "先确定设施类别，再核对对应年度捕集门槛；发电设施还存在捕集设计要求。"
+      },
+      "required_inputs": [
+        "facility-category",
+        "tax-year-captured-tonnes",
+        "capture-design-capacity",
+        "baseline-carbon-oxide-production"
+      ],
+      "applicable_period": "not_reviewed",
+      "exceptions": "not_reviewed",
+      "status": "draft"
+    },
+    {
+      "id": "dac-scope",
+      "anchor_id": "dac-definition",
+      "requirement": {
+        "en": "Review the DAC definition and its exclusions before classifying the facility.",
+        "zh": "确定设施属于直接空气捕集前，核对DAC定义及其排除项。"
+      },
+      "required_inputs": ["capture-feedstock-origin", "capture-method"],
+      "applicable_period": "not_reviewed",
+      "exceptions": "not_reviewed",
+      "status": "draft"
+    }
+  ]
+}

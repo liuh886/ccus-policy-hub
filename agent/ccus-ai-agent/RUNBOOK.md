@@ -226,3 +226,22 @@ context directory is excluded from Prettier and ignored by Git; do not hand-edit
 it. The pilot does not provide clause-verified current-law or project tax
 eligibility answers, and does not change scores, confidence semantics or review
 dates. Unknown history and missing project/translation evidence remain explicit.
+
+## 12. Versioned source evidence preparation (approval pending)
+
+The offline pilot validates frozen official source bytes, exact-text anchors and
+candidate condition cards without changing accepted policy data:
+
+```bash
+pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json
+pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json --preview-migration
+```
+
+See `docs/source-evidence-pilot.md` and
+`migrations/2026-10-source-evidence/manifest.md`. The preview stages one document,
+one version and two draft anchors in a disposable in-memory clone. It cannot
+write the active SQLite file or promote evidence to verified. Three proposed
+new tables require explicit schema approval before any live migration; the
+canonical schema reference and existing public bundles remain unchanged.
+The archived 2024 edition has coverage through 2025-01-06 and does not establish
+current 45Q conditions. Condition drafts remain unknown and unpublished.

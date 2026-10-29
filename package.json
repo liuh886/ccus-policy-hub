@@ -47,7 +47,8 @@
     "manage:policy:review": "node scripts/apply-policy-review.mjs",
     "context:build": "node scripts/generate-policy-context.mjs",
     "context:read": "node scripts/generate-policy-context.mjs",
-    "context:check": "node scripts/generate-policy-context.mjs --check"
+    "context:check": "node scripts/generate-policy-context.mjs --check",
+    "evidence:inspect": "node scripts/inspect-source-evidence.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
