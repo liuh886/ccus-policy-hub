@@ -4,7 +4,7 @@ This directory defines a reusable CCUS maintenance agent for CCUS Policy Hub. It
 
 ## 1. Read order
 
-Read these files before editing the repository:
+Read these files before editing the repository. The [product boundaries](../../docs/PRODUCT_BOUNDARIES.md) govern module responsibilities, Agent-ready scope and stop criteria; [ROADMAP](../../docs/ROADMAP.md) is the only active task queue. In particular, an external Agent's Q&A workflow is not a deliverable of this repository.
 
 1. `AGENTS.md` — operating contract and task routing.
 2. `SAFETY.md` — approval boundaries and prohibited operations.

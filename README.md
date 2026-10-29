@@ -19,6 +19,8 @@
 
 ## Overview
 
+> **Product scope (2026-10-30):** CCUS Policy Hub publishes evidence-grounded CCUS research data for human readers and **Agent-ready static consumers**. It does **not** provide an in-site professional Q&A Agent, automatic eligibility decisions, or an LLM inference service. Development scope, architecture boundaries and stop criteria are defined in [Product Boundaries](docs/PRODUCT_BOUNDARIES.md); current execution order is tracked only in the [Roadmap](docs/ROADMAP.md).
+
 **CCUS Policy Hub** is an open-source research and data platform for comparing CCUS policy frameworks, facility deployment, project-record capacity, and governance maturity across countries and regions.
 
 It connects three layers that are usually studied separately:
