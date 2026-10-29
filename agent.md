@@ -4,9 +4,10 @@
 
 ## Start here
 
-1. Read [`agent/ccus-ai-agent/AGENTS.md`](./agent/ccus-ai-agent/AGENTS.md).
-2. Read [`agent/ccus-ai-agent/SAFETY.md`](./agent/ccus-ai-agent/SAFETY.md).
-3. Select the task-specific guide:
+1. Read [`docs/PRODUCT_BOUNDARIES.md`](./docs/PRODUCT_BOUNDARIES.md) for the product contract; [`docs/ROADMAP.md`](./docs/ROADMAP.md) is the only active queue.
+2. Read [`agent/ccus-ai-agent/AGENTS.md`](./agent/ccus-ai-agent/AGENTS.md).
+3. Read [`agent/ccus-ai-agent/SAFETY.md`](./agent/ccus-ai-agent/SAFETY.md).
+4. Select the task-specific guide:
    - domain and evidence rules: [`SKILL.md`](./agent/ccus-ai-agent/SKILL.md)
    - data and software structure: [`ARCHITECTURE.md`](./agent/ccus-ai-agent/ARCHITECTURE.md)
    - analytical definitions: [`METHODOLOGY.md`](./agent/ccus-ai-agent/METHODOLOGY.md)
