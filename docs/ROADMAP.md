@@ -10,11 +10,11 @@ The mainline baseline reviewed at `aa68b45f` contains 130 policy records, 1,110 
 
 The current implementation PR chain is **#102 → #103 → #104**. Each is an independent checkpoint; code passing CI on a feature branch is not proof of public release. #101 is a separate draft specification requiring revision before merging.
 
-## P0 — Align and deliver the existing work
+## P0 — Align existing work and audit original-source readiness
 
 - **Inputs:** #102 open, #101 draft, #103 open on #102, #104 draft on #103.
-- **Work:** Review and integrate #102 data quality, source review, relationship and i18n fixes; remove Q&A acceptance criteria from #101; retarget #103 to updated main, rerun CI and verify publishing; keep #104 in evidence review.
-- **Done:** Mainline, published data, README and the active roadmap describe the same capabilities. The verified project-policy direct evidence count must not be invented from geographic matches.
+- **Work:** Review and integrate #102 data quality, source review, relationship and i18n fixes; review updated #101 data-consumption criteria; retarget #103 to updated main, rerun CI and verify publishing; keep #104 in evidence review. Start [#106 original-source readiness audit](https://github.com/liuh886/ccus-policy-hub/issues/106) against the full policy inventory.
+- **Done:** Mainline, published data, README and this roadmap describe the same capabilities. Every policy ID is represented in a reproducible source-readiness inventory; separate counts disclose policy records, distinct original documents, editions and human-reviewed anchors. Existing geographic project-policy matches never count as direct evidence.
 - **Stop:** Do not introduce chat, agent inference, new databases or new services.
 
 ## P1 — Publish a consumable Agent-ready data contract
@@ -24,12 +24,12 @@ The current implementation PR chain is **#102 → #103 → #104**. Each is an in
 - **Done:** An independent consumer can discover, validate, read and cite data using public resources only, without the site's private runtime. The same inputs give byte-identical outputs.
 - **Stop:** Do not implement Q&A, prompt orchestration, RAG, MCP or answer-accuracy benchmarks.
 
-## P2 — Verify one versioned primary-source evidence path
+## P2 — Verify original-source evidence and seed a priority corpus
 
-- **Input:** P1 and the reviewed candidates in #104.
-- **Work:** Freeze one official 45Q source version and review at least one clause locator. Confirm source/extractor changes invalidate dependent anchors. State historical/current-law coverage boundaries.
-- **Done:** A consumer can trace an approved reference to one immutable source version, valid locator and human review state; tampered or stale evidence cannot be silently used as verified.
-- **Stop:** No automatic eligibility decisions, exhaustive 45Q ingestion, bulk condition cards or unapproved SQLite schema changes. Test whether versioned Git evidence files plus existing structured fields suffice before adding tables or duplicating source text.
+- **Input:** P1, source gaps and priority order from #106, and candidate frozen evidence in #104.
+- **Work:** Finish the 45Q historical frozen-source plus human-reviewed locator pilot, then acquire and review a small cohort of high-impact official originals from the #106 inventory. Keep original/current/consolidated editions separate where relevant. Test more than one source format before generalizing extraction; respect source redistribution restrictions.
+- **Done:** A consumer can trace approved references to immutable source versions, valid locators and review states. The priority-corpus denominator, missing originals and unknown currentness remain visible; tampered, stale or unreviewed evidence cannot be silently represented as verified.
+- **Stop:** A single historical example proves the mechanism, not readiness of 130 policies. No automatic eligibility decisions, bulk condition cards, generic crawler or unapproved SQLite schema changes. Prefer versioned Git evidence files with existing SQLite records; do not duplicate full text in BLOB storage.
 
 ## P3 — Demonstrate limited cross-jurisdiction reuse
 
@@ -47,6 +47,7 @@ The current implementation PR chain is **#102 → #103 → #104**. Each is an in
 
 ## Existing maintenance queue
 
+- **Source completeness:** [#106](https://github.com/liuh886/ccus-policy-hub/issues/106) is P0: the 2026-07-22 source/URL gap report shows zero missing fields but does not check original document text, hash, version or human review. The single historical 45Q file in draft #104 cannot count as full coverage.
 - **Policy depth:** #102 reports that 41 below-threshold verified records were corrected; confirm this on main after merge rather than claiming completion from an open PR.
 - **Analysis translation:** #102 reports 609 of 649 analytical dimensions still require reviewed Chinese versions; prioritize by use, while retaining explicit source language.
 - **Facility curation:** #102 identifies 65 remaining active-facility records; prioritize sources by value, not by an arbitrary universal news coverage target.
