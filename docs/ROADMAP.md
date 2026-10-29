@@ -1,78 +1,64 @@
 # CCUS Policy Hub — Active Roadmap
 
-> Updated: 2026-10-30 · Status: implementation planning. This is the **only active task queue**.
->
-> **Normative scope and stop rules**: [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md). Historical delivery logs live in Git history and merged PRs, not in this file.
+> Last reviewed: 2026-10-30. This is the single active task queue. Product scope, architectural responsibilities and stop rules are defined in [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md).
 
-## Product objective
+## Goal and baseline
 
-Provide **evidence-grounded CCUS policy/facility/governance data** to people through the existing bilingual research site and to downstream agents through **static, documented, verifiable Agent-ready interfaces**. This repository **does not build or evaluate a professional Q&A Agent**.
+CCUS Policy Hub is a bilingual evidence-grounded research and data platform. It publishes verifiable static Agent-ready data for downstream consumers; it **does not build or evaluate a professional Q&A Agent**.
 
-An external consumer must be able to discover → validate → read → cite → identify gaps using public structured data. No on-site chat, Q&A API, RAG, MCP service, eligibility engine or new backend is needed to pass this milestone.
+The mainline baseline reviewed at `aa68b45f` contains 130 policy records, 1,110 facility records and 65 country profiles. SQLite is the authoritative maintenance source; public JSON, Markdown and Astro pages are generated projections.
 
-## Verified baseline vs. proposed changes
+The current implementation PR chain is **#102 → #103 → #104**. Each is an independent checkpoint; code passing CI on a feature branch is not proof of public release. #101 is a separate draft specification requiring revision before merging.
 
-- `main` assessed at `aa68b45f` (2026-10-28); README snapshot: **130 policies, 1,110 facility records, 65 country profiles**. Counts are record counts, not proof of current law or independent projects.
-- Main already has SQLite SSOT, governed exports, Astro bilingual site, comparison/facility workspaces, public JSON/Schema and ESG30 publication sync.
-- **#102 open**, data/content/source/relationship/UX reliability repairs not yet merged.
-- **#101 draft**, Agent context specification must be revised to the product scope in PRODUCT_BOUNDARIES before merging. Its `us_45q_policy_qa` and Q&A-specific acceptance language are not the product's success measures.
-- **#103 open**, static bilingual 45Q bundles implemented and CI-verified on stacked branch `feature/static-policy-context`, **not deployed from main**. Depends on #102.
-- **#104 draft**, versioned source/anchor candidate and dry-run schema proposal CI-verified on stacked branch; **no approved production SQLite migration or published verified clause**. Depends on #103.
-- Dependency chain for relevant code: **#102 → #103 → #104**. #101 is a specification branch, not an implementation dependency or permission to expand scope.
-- Existing country/subnational facility-policy links provide geographic context; **direct verified project-policy evidence is zero** on the #102 audit baseline. Do not change this through inference.
+## P0 — Align and deliver the existing work
 
-## Work queue in execution order
+- **Inputs:** #102 open, #101 draft, #103 open on #102, #104 draft on #103.
+- **Work:** Review and integrate #102 data quality, source review, relationship and i18n fixes; remove Q&A acceptance criteria from #101; retarget #103 to updated main, rerun CI and verify publishing; keep #104 in evidence review.
+- **Done:** Mainline, published data, README and the active roadmap describe the same capabilities. The verified project-policy direct evidence count must not be invented from geographic matches.
+- **Stop:** Do not introduce chat, agent inference, new databases or new services.
 
-### P0 — Converge the mainline
+## P1 — Publish a consumable Agent-ready data contract
 
-- **Actions:** Review and merge #102 after source, relationship, i18n and deployment checks; revise #101 away from Q&A acceptance; retarget #103 onto updated main and verify CI/deployment; keep #104 draft.
-- **Release gate:** Mainline, documentation, public manifest and deployed site describe the same capabilities.
-- **Stop here:** No schema, service or chat UI changes are needed for this stage.
+- **Input:** Completed P0 and #103's static 45Q policy/family bundle implementation.
+- **Work:** Verify manifest discovery, JSON Schema, stable IDs, deterministic JSON/Markdown output, source references, evidence type, time, translation status and explicit gaps; test invalid IDs and languages.
+- **Done:** An independent consumer can discover, validate, read and cite data using public resources only, without the site's private runtime. The same inputs give byte-identical outputs.
+- **Stop:** Do not implement Q&A, prompt orchestration, RAG, MCP or answer-accuracy benchmarks.
 
-### P1 — Agent-ready data consumption contract
+## P2 — Verify one versioned primary-source evidence path
 
-- **Actions:** Finish #103 discovery/bundle schema, references, language, time, status and integrity semantics; document one external consumer smoke test, not a Q&A test.
-- **Release gate:** Manifest → schema → bundle → source works independently of a private runtime; deterministic bytes; invalid inputs fail explicitly.
-- **Stop here:** Do not grade agent-generated answers.
+- **Input:** P1 and the reviewed candidates in #104.
+- **Work:** Freeze one official 45Q source version and review at least one clause locator. Confirm source/extractor changes invalidate dependent anchors. State historical/current-law coverage boundaries.
+- **Done:** A consumer can trace an approved reference to one immutable source version, valid locator and human review state; tampered or stale evidence cannot be silently used as verified.
+- **Stop:** No automatic eligibility decisions, exhaustive 45Q ingestion, bulk condition cards or unapproved SQLite schema changes. Test whether versioned Git evidence files plus existing structured fields suffice before adding tables or duplicating source text.
 
-### P2 — Minimal versioned regulation evidence
+## P3 — Demonstrate limited cross-jurisdiction reuse
 
-- **Actions:** Use #104 as candidate; freeze and review one official 45Q document version and one clause locator; verify tamper/edition/extractor invalidation; test Git-hashed source files before approving any schema.
-- **Release gate:** Version, provenance, reviewer, locator and stale-state handling can be inspected; a proposed schema requires its own justified approval.
-- **Stop here:** No auto-eligibility, condition engine, full-statute ingestion, bulk cards or duplicate fulltext storage.
+- **Input:** P2 evidence contract and current governance-comparison methodology.
+- **Work:** Apply the same evidence and projection contract to no more than two or three important policy instruments from different jurisdictions.
+- **Done:** New records retain source, version, caveats and citation semantics without creating a second truth source or special-case answer workflow.
+- **Stop:** No universal legal graph, automated policy applicability engine or indiscriminate bulk ingestion.
 
-### P3 — Small cross-jurisdiction reuse
+## P4 — Sustain data quality and the existing research experience
 
-- **Actions:** Reuse the same evidence contract for 2–3 policy instruments across jurisdictions and keep the existing human comparison UI.
-- **Release gate:** No second data authority or policy-specific bypasses; citation/version limits survive export.
-- **Stop here:** No universal knowledge graph or bulk ingestion.
+- **Input:** Actual consumer feedback and maintenance needs from P1–P3.
+- **Work:** Prioritize reviewed Chinese analysis, policy-source fixes, selected facility evidence, source-change review signals, deployment/report version checks and targeted navigation or performance improvements.
+- **Done:** Scoped validation and published artifacts remain reliable; the human-facing comparison, facility pages and ESG30 academic reading experience remain intact.
+- **Stop:** No new CMS, broad redesign, redundant CI chains or new backend without a demonstrated requirement.
 
-### P4 — Maintainability and research UX
+## Existing maintenance queue
 
-- **Actions:** Improve high-use source data, selected facility records, reviewed Chinese analysis, source-change signals, publication consistency and small navigation/performance problems.
-- **Release gate:** Scoped CI, published output checks, no regression to the human site or ESG30 reading experience.
-- **Stop here:** No new CMS, redesign, extra analytics platform or indiscriminate enrichment.
+- **Policy depth:** #102 reports that 41 below-threshold verified records were corrected; confirm this on main after merge rather than claiming completion from an open PR.
+- **Analysis translation:** #102 reports 609 of 649 analytical dimensions still require reviewed Chinese versions; prioritize by use, while retaining explicit source language.
+- **Facility curation:** #102 identifies 65 remaining active-facility records; prioritize sources by value, not by an arbitrary universal news coverage target.
+- **Relationship evidence:** #102 distinguishes 4,287 country and 509 subnational contextual links; it reports zero directly evidenced project-policy relationships.
+- **Publication and CI:** Keep ESG30 upstream synchronization and structural checks; run expensive data audits when authoritative inputs change, not for unrelated cosmetic edits.
 
-### Existing maintenance work (not a competing product roadmap)
+## Required evidence for each implementation PR
 
-- **Content depth**: #102 reports prior 41 verified policies below the content threshold reduced to zero; confirm that result after merge. No mechanical demand for every policy to be at identical depth.
-- **Chinese analysis**: #102 reports 609 of 649 analytical dimensions still need reviewed Chinese versions; prioritize actual high-use content, explicitly expose original language in the interim.
-- **Facility curation**: #102 reports an active facility curation queue of 65 records; work by verified importance and source value, not artificial 100% news coverage.
-- **Relationship governance**: #102 distinguishes 4,287 `country` and 509 `subnational_region` contextual matches; the directly evidenced relation count remains 0.
-- **Report publishing**: preserve verified upstream ESG30 HTML/PDF sync and structural parity. An independent research report is not the Agent-ready implementation plan.
-- **CI**: retain full data audit for changed authority layers; avoid mutable validation runs and duplicated all-project checks for doc/CSS-only PRs.
+- State the accepted authority input and generated output.
+- Document schema/field meanings, missing-value states, source versions, review and language status.
+- Verify citation integrity, negative cases and deterministic generation.
+- Confirm SQLite consistency and the correct release state: implemented on branch, merged on main, or published on Pages.
+- Explain why any new service, table, dependency or subsystem is necessary for a tested consumer or maintenance need.
 
-## Mandatory acceptance checklist for data-feature PRs
-
-- [ ] Authority owner stated (official source / SQLite accepted record / derived projection).
-- [ ] Consumer field semantics, schema, supported values and `unknown` handling are explicit.
-- [ ] Source URL, source version/review dates and evidence level are traceable; published direct evidence is not inferred from geography.
-- [ ] Generated JSON/Markdown/site content stays in agreement with SQLite and external evidence snapshots.
-- [ ] Same inputs produce deterministic bytes; tampered/stale source versions fail closed for *verified evidence*.
-- [ ] Chinese/English missing translations are labeled, not fabricated.
-- [ ] CLI/public consumer positive and negative tests, CI result and deployment boundary are recorded.
-- [ ] No new runtime service, storage authority, redundant abstraction or answer-generation feature is added without an observed need.
-
-## Release rule
-
-A PR is **implemented on a branch**, **merged on main**, and **published on GitHub Pages** at three different checkpoints. Report each state separately. A green CI on a stacked feature branch does **not** imply public availability. The project's single product scope is in PRODUCT_BOUNDARIES; this file alone tracks work status and order.
+See [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md) for full ownership, exclusion and stop criteria. Do not maintain another status queue inside drafts or component documentation.
