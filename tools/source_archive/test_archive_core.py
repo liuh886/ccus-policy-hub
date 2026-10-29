@@ -47,6 +47,49 @@ def test_sniff_document_reject():
         file,info=x.retrieve(Session(),'https://www.epa.gov/rules.pdf',Path(d),True,x.is_official_url)
         assert file is None and info['status']=='blocked_html'
 
+
+def test_policy_source_gate():
+    assert x.is_official_url('https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation')
+    assert x.is_official_url('https://ens.dk/en/our-responsibilities/ccs')
+    assert x.is_official_url('https://wetten.overheid.nl/BWBR0014168/')
+    assert x.is_official_url('https://www.moccae.gov.ae/')
+    assert x.is_official_url('https://www.resmigazete.gov.tr/fihrist?tarih=2026')
+    assert not x.is_official_url('https://alberta.ca.evil.example/regulation')
+    assert not x.is_official_url('https://www.verra.org/methodology')  # private standards need separate issuer review
+    assert x.url_scope('https://www.mee.gov.cn/')=='site_homepage'
+    assert x.url_scope('https://www.mee.gov.cn/policy/detail/123.html')=='specific_document_or_page_candidate'
+    assert x.policy_source_relevance_status('https://www.mee.gov.cn/','primary_policy')=='not_an_instrument'
+    assert x.url_scope('http://www.shandong.gov.cn/')=='invalid_or_non_https'
+
+
+def test_http_202_and_limited_retries():
+    class Reply:
+        status_code=202; url='https://eur-lex.europa.eu/eli/dir/2009/31/oj'; headers={}
+        def __enter__(self):return self
+        def __exit__(self,*a):pass
+    class Session:
+        def get(self,*args,**kwargs):
+            assert kwargs['timeout']==x.REQUEST_TIMEOUT
+            return Reply()
+    with tempfile.TemporaryDirectory() as d:
+        file,info=x.retrieve(Session(),Reply.url,Path(d),True,x.is_official_url)
+        assert file is None and info['status']=='http_202_not_document'
+
+
+def test_reject_site_homepage_without_download():
+    class Drive:
+        class Files:
+            def list(self,**kwargs):return self
+            def execute(self):return {'files':[]}
+        def files(self):return self.Files()
+    class Session:
+        def get(self,*args,**kwargs):raise AssertionError('must never fetch government homepage')
+    data=[{'policy_id':'test','url':'https://www.mee.gov.cn/'}]
+    rows=x.capture_targets(Drive(),Session(),'test_folder',data,'primary_policy')
+    assert len(rows)==1 and rows[0]['status']=='source_too_broad'
+    assert rows[0]['instrument_verification']=='not_an_instrument'
+
+
 if __name__=='__main__':
     for key in list(globals()):
         if key.startswith('test_'):
