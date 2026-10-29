@@ -217,7 +217,7 @@ limits.
 
 ```bash
 pnpm context:build
-pnpm --silent context:read -- --id us-section-45q --lang zh --format json
+pnpm --silent context:read --id us-section-45q --lang zh --format json
 pnpm context:check
 ```
 
@@ -226,3 +226,27 @@ context directory is excluded from Prettier and ignored by Git; do not hand-edit
 it. The pilot does not provide clause-verified current-law or project tax
 eligibility answers, and does not change scores, confidence semantics or review
 dates. Unknown history and missing project/translation evidence remain explicit.
+
+## 12. Versioned source evidence and public data consumption
+
+Git owns the single frozen official source and its evidence-review input;
+SQLite retains existing accepted structured policy facts. No schema migration,
+BLOB storage, condition-card generation or evaluation engine is needed.
+
+```bash
+pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+pnpm evidence:consume --root public
+pnpm evidence:consume --root dist
+```
+
+`pnpm gen` publishes one historical source record, index, exact archived bytes
+as `.html.txt` (read as data, never execute as HTML) and normalized text. The
+consumer imports only standard Node and JSON Schema validators; it reads public
+resources and cannot access SQLite or private generators. The AJV development
+dependencies validate the published schemas rather than mirroring site code.
+
+See `docs/source-evidence-pilot.md`. The real anchor remains draft until a human
+explicitly reviews the exact quote/version and records their identity/date in
+Git. Contract tests do not count as human review. The 2024 snapshot covers
+through 2025-01-06 and never establishes current law. Source/extractor changes
+invalidate dependent review usability; no command writes SQLite.

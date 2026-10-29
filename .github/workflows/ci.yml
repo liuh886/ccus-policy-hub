@@ -74,8 +74,8 @@ jobs:
       - name: Verify published policy context bytes and hashes
         run: pnpm context:check
 
-      - name: Consume public context contracts independently
-        run: pnpm data:consume --root public
+      - name: Consume context and source evidence contracts independently
+        run: pnpm evidence:consume --root public
 
       - name: ESLint
         run: pnpm eslint .
@@ -147,8 +147,8 @@ jobs:
           PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: pnpm run build
 
-      - name: Verify built context resources and release identity
-        run: pnpm data:consume --root dist --expect-commit "$(git rev-parse HEAD)"
+      - name: Verify built context/source resources and release identity
+        run: pnpm evidence:consume --root dist --expect-commit "$(git rev-parse HEAD)"
 
       - name: Verify Cloudflare RUM when configured
         env:

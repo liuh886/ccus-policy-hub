@@ -48,7 +48,9 @@
     "context:build": "node scripts/generate-policy-context.mjs",
     "context:read": "node scripts/generate-policy-context.mjs",
     "context:check": "node scripts/generate-policy-context.mjs --check",
-    "data:consume": "node scripts/consume-agent-data.mjs"
+    "data:consume": "node scripts/consume-agent-data.mjs",
+    "evidence:inspect": "node scripts/inspect-source-evidence.mjs",
+    "evidence:consume": "node scripts/consume-source-evidence.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

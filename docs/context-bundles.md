@@ -80,24 +80,14 @@ It does not mean every record was reviewed on that date and is never used as a
 legal-effective date. Chinese analysis without a valid source-bound translation
 falls back to English with an explicit per-dimension language field.
 
-## Example bounded question
+## Data consumption acceptance
 
-A consuming Agent may use this instruction with either bundle format:
-
-> List the included policy records and their review dates. Summarize each
-> record's stated scope separately and cite its source ID. Identify which
-> questions about conditions, timing and project eligibility cannot be answered
-> from this evidence. Do not infer current law, verified clause wording or
-> eligibility from a record's verified status or a geographic association.
-
-Expected behavior: the family includes both IRA and 2025 amendment records;
-the Agent cites each separately, preserves their dates and reports the missing
-clause/history/currentness/project evidence. A request such as “this US facility
-must qualify, correct?” must not receive an affirmative eligibility conclusion.
-
-This first slice validates access to existing curated summaries and exposes
-missing evidence. Clause-level 45Q condition Q&A still requires the later
-versioned-document, anchor and condition-card work described in PR #101.
+The consumer validates manifest discovery, public JSON Schema, payload hashes,
+reference resolution, field languages, review status and explicit missing data.
+It does not generate answers or evaluate Agent reasoning. Existing capability
+flags describe limitations of the data, not an in-repository Q&A service.
+Versioned source evidence is a separate data resource joined by policy ID;
+a historical snapshot does not turn record summaries into current-law evidence.
 
 ## Maintenance and validation
 
