@@ -50,3 +50,14 @@ Input: `Policy_Primary_Source_Audit_20261029T191752Z.csv` in the connected Googl
 - Before repeating, use latest updated Google Drive policy notebook. The first new run after v2.2 is **not yet live verified**; compare its CSV with this queue before approving any primary-source coverage KPI.
 
 Repair CSV: `Policy_Source_Repair_Queue_20261030.csv`, columns `queue_bucket`, `priority`, `action`, `policy_id`, original source URL and the canonical SQLite hash. Treat all `archived_unverified` as needing content validation, even though the file exists in private Drive. This CSV is a planning aid and must not modify the policy database.
+
+
+## v3: read-only candidate discovery and reviewer gate
+
+The Policy Colab notebook now creates **two** CSVs in `00_Catalog_and_Metadata`: the usual `Policy_Primary_Source_Audit_<UTC>.csv` and `Policy_Source_Review_Candidates_<UTC>.csv`. Candidate discovery is bounded to official anchor links in previously archived HTML and three separately verified publisher reference seeds. All suggested links remain **pending**, even when they resemble statute URLs; no candidate is automatically downloaded or marked as law.
+
+For human-approved exact URLs, use the versioned `policy_approval_template.csv` with `policy_id,url,review_status,reviewer,source_edition`. Check the correct document and edition, change `pending` to `approved`, fill reviewer, upload the reviewed CSV privately to Drive, then set `POLICY_ADDITIONAL_TARGETS_CSV_ID`. The notebook validates canonical policy IDs and HTTPS official URLs; it never alters SQLite.
+
+The standalone Python collectors import adjacent `archive_core.py` in GitHub, while Drive scripts accept `ccus_archive_core.py`; both Colab notebooks embed the complete engine. Run `python tools/source_archive/test_source_discovery_v3.py` and the existing core tests before merging.
+
+**Evidence KPI:** 44 files currently preserved in the Policy Drive folder, but 36 non-homepage source candidates (not 36 legally verified originals). 44 broad canonical source URLs remain a provenance-repair backlog.
