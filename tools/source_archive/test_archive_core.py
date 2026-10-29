@@ -90,7 +90,97 @@ def test_reject_site_homepage_without_download():
     assert rows[0]['instrument_verification']=='not_an_instrument'
 
 
-if __name__=='__main__':
-    for key in list(globals()):
-        if key.startswith('test_'):
-            globals()[key]();print('PASS',key)
+
+
+def test_policy_discovery_links():
+    import ccus_policy_primary_archive as m
+    html=b'''<html><body>
+      <a href="/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf">Energy Act 2023 enacted original PDF</a>
+      <a href="https://evil.example/energy-act-2023.pdf">Energy Act 2023</a>
+      <a href="javascript:alert(1)">Energy Act 2023</a>
+      <a href="/">Energy Act 2023 homepage</a>
+      <a href="/about">About us</a>
+      </body></html>'''
+    policy={'policy_id':'uk-energy-act-2023','title':'Energy Act 2023','url':'https://www.legislation.gov.uk/'}
+    c=m.extract_official_link_candidates(html,policy['url'],policy,'D')
+    assert len(c)==1 and c[0]['candidate_url'].endswith('/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf')
+    assert c[0]['review_status']=='pending'
+    assert c[0]['source_drive_file_id']=='D'
+    assert c[0]['evidence_match_status']=='unverified'
+
+
+def test_policy_discovery_no_auto_fetch():
+    import ccus_policy_primary_archive as m
+    import hashlib
+    from urllib.parse import urlsplit
+    sample=b'<html><a href="/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf">Energy Act 2023 enacted PDF</a></html>'
+    policy={'policy_id':'uk-energy-act-2023','title':'Energy Act 2023','country':'United Kingdom',
+            'url':'https://www.legislation.gov.uk/ukpga/2023/67/contents','inventory_sha256':'h'*64}
+    class Request:
+        def execute(self):return sample
+    class Drive:
+        class Files:
+            def get_media(self,**kw):return Request()
+        def files(self):return self.Files()
+    file={'id':'DRIVE_ID','name':'archived.html','mimeType':'text/html','size':'5000',
+          'appProperties':{'policy_id':'uk-energy-act-2023'},
+          'description':'RAW source. URL: https://www.legislation.gov.uk/; SHA256: abc'}
+    rows=m.review_candidates_from_archives(Drive(),[policy],
+        [{'policy_id':'uk-energy-act-2023','status':'not_found','target_origin':'canonical_db'}],[file])
+    assert rows and {r['policy_id'] for r in rows}=={'uk-energy-act-2023'}
+    assert any(r['source_origin']=='archived_official_html_link' for r in rows)
+    assert any(r['source_origin']=='official_research_seed' for r in rows)
+    assert all(r['review_status']=='pending' for r in rows)
+
+
+def test_review_no_candidates_includes_all():
+    import ccus_policy_primary_archive as m
+    class Drive:
+        def files(self):raise AssertionError('No files should be fetched without source archive')
+    p={'policy_id':'unknown-law','title':'Unknown law','url':'https://www.gov.uk/'}
+    r=m.review_candidates_from_archives(Drive(),[p],[{'policy_id':p['policy_id'],'status':'source_too_broad'}],[])
+    assert len(r)==1 and r[0]['candidate_type']=='no_new_link_candidate'
+    assert r[0]['archive_audit_status']=='source_too_broad' and r[0]['archive_state']=='no_raw_file'
+
+
+def test_candidate_distinctive_terms():
+    import ccus_policy_primary_archive as m
+    assert m.score_candidate({'title':'Energy Act 2023','url':'https://www.legislation.gov.uk/'},
+           'https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf',
+           'Energy Act 2023 Original PDF')>=20
+    assert m.score_candidate({'title':'Energy Act 2023','url':'https://www.legislation.gov.uk/'},
+           'https://www.legislation.gov.uk/about','Contact')==-1
+    assert m.score_candidate({'title':'Energy Act 2023','url':'https://www.legislation.gov.uk/'},
+           'https://legislation.gov.uk.evil.example/ukpga/2023/52.pdf','Energy Act 2023')==-1
+
+
+def test_policy_approved_csv_is_reviewed():
+    import ccus_policy_primary_archive as m
+    import csv
+    from io import StringIO
+    data='policy_id,url,review_status,reviewer,source_edition\nuk-energy-act-2023,https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf,approved,analyst,original_enacted\n'
+    canonical=[{'policy_id':'uk-energy-act-2023','url':'https://www.legislation.gov.uk/ukpga/2023/67','title':'Energy Act 2023','country':'United Kingdom','inventory_sha256':'abc'}]
+    r=m.parse_approved_targets(csv.DictReader(StringIO(data)),canonical)
+    assert len(r)==1 and r[0]['target_origin']=='manual_approved'
+    assert r[0]['inventory_sha256']=='abc' and r[0]['source_edition']=='original_enacted'
+    bad='policy_id,url,review_status,reviewer,source_edition\nuk-energy-act-2023,https://evil.example/law.pdf,approved,analyst,current\n'
+    try:m.parse_approved_targets(csv.DictReader(StringIO(bad)),canonical)
+    except ValueError:pass
+    else:raise AssertionError('Nonofficial reviewed source accepted')
+    unknown='policy_id,url,review_status,reviewer,source_edition\nunknown-policy,https://www.legislation.gov.uk/x.pdf,approved,analyst,current\n'
+    try:m.parse_approved_targets(csv.DictReader(StringIO(unknown)),canonical)
+    except ValueError:pass
+    else:raise AssertionError('Unknown policy ID accepted')
+
+
+def test_no_generic_law_false_positive():
+    import ccus_policy_primary_archive as m
+    score=m.score_candidate({"title":"Poland Mining Law CCS 2024","url":"https://www.gov.pl/web/klimat"},
+        "https://www.gov.pl/web/klimat/nrl","Obudowa Zasobów Przyrody - Nature Restoration Law")
+    assert score==-1
+
+
+if __name__=="__main__":
+    for key,fn in list(globals().items()):
+        if key.startswith("test_") and callable(fn):
+            fn();print("PASS",key)
