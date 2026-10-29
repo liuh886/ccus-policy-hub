@@ -40,8 +40,8 @@ false: generating a projection does not re-review a statute or IRS guidance.
 pnpm context:build
 
 # Machine-readable stdout; --silent suppresses pnpm's script banner.
-pnpm --silent context:read -- --id us-section-45q --lang zh --format json
-pnpm --silent context:read -- --id us-section-45q --lang en --format md
+pnpm --silent context:read --id us-section-45q --lang zh --format json
+pnpm --silent context:read --id us-section-45q --lang en --format md
 
 # Compare all published bytes to a fresh read-only projection.
 pnpm context:check
@@ -114,3 +114,33 @@ hashes remain valid after `pnpm gen`. The directory remains ignored by Git.
 Source tests cover versions, draft status, unknown dates and sources, stale
 translations, relationship limits, reference resolution, path rejection,
 byte-identical output, drift detection and unchanged SQLite bytes.
+
+## Independent file and HTTP consumer
+
+```bash
+pnpm data:consume --root public
+pnpm data:consume --root dist --expect-commit <full-40-character-Git-SHA>
+pnpm data:consume --manifest-url https://liuh886.github.io/ccus-policy-hub/data/manifest.json --expect-commit <full-40-character-Git-SHA>
+```
+
+This summary consumer has no dependency on source-evidence resources or #104.
+It validates all six public bundles, schemas, payload/Markdown hashes and source
+references. HTTP mode preserves the publication base path, rejects failed status,
+redirects, wrong JSON/text content types, cross-base references and oversized
+responses. No server or model is part of the product.
+
+`release.json` is produced only in `dist/data` during `pnpm build`, after Astro
+has copied the public bytes. It records the actual Git commit, manifest hash and
+context-index/schema hashes (plus evidence index/schema when present). These
+fingerprints transitively bind payloads through their index hashes. There are
+no wall-clock timestamps or factual review-date updates. CI checks the built
+artifact against its actual checkout SHA. This identifies the release; it is
+not a substitute for reviewing the policy data.
+
+Release checking is explicit. Without `--expect-commit`, output says
+`release.verified: false` / `not_requested`; no release success is implied.
+With an expected commit, missing metadata, mismatched commits or changed public
+indexes/schemas fail. The verifier and consumer use the same cached resource
+bytes to avoid checking one manifest then consuming a newer one. A deployment
+is complete only after running HTTP consumption against the intended published
+commit; branch CI and local HTTP tests alone do not establish Pages deployment.
