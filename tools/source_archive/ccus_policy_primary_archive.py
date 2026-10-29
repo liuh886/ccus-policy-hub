@@ -1,4 +1,4 @@
-"""Policy source acquisition and review queue (v3).
+"""Policy source acquisition and review queue (v4).
 
 Run next to archive_core.py (GitHub) or ccus_archive_core.py (Google Drive).
 The Colab notebook embeds both modules and needs neither import.
@@ -25,6 +25,7 @@ POLICY_ADDITIONAL_TARGETS_CSV_ID = ''
 # An approved queue requires policy_id,url,review_status=approved,reviewer,source_edition.
 # The discovery CSV is NOT an approved-targets file; never pass it here without review.
 POLICY_REVIEW_CANDIDATES = True
+POLICY_RESEARCH_BACKLOG = True
 MAX_HTML_SNAPSHOTS_TO_SCAN = 55
 MAX_HTML_SOURCE_BYTES = 3500000
 MAX_CANDIDATES_PER_POLICY = 6
@@ -142,20 +143,35 @@ class _SafeAnchorParser(HTMLParser):
             self.href=None;self.caption=[]
 
 
+# Keep generic organization/financial words out of the title-identity evidence.
 STOP_TOKENS={'carbon','capture','storage','ccs','ccus','climate','change','energy','the','and',
-             'policy','scheme','national','government','for','with','framework','2024','2025',
-             '2026','programme','program','report','of','act','law','regulation','directive','decree',
-             'legislation','bill','policy','rules','framework','statute'}
+    'policy','scheme','national','government','for','with','framework','programme','program',
+    'report','of','act','law','regulation','directive','decree','legislation','bill','rules',
+    'statute','brazil','brazilian','india','indian','united','states','british','united',
+    'federal','agency','authority','ministry','resolution','tax','credit','incentive',
+    'anp','irs','epa','doe','government','net','zero','2024','2025','2026','2023',
+    '2022','2021','2020','2019','2027','2028','2029','2030','original','page'}
+IRRELEVANT_LINK_RE = re.compile(
+    r'(?i)(?:privacy|cookie|lgpd|governan[cç]a.{0,12}privacidade|termo[-_ ]?uso|'
+    r'tax[-_ ]fraud|tax fraud|scam|child[-_ ]tax|child tax credit|earned[-_ ]income|'
+    r'budget_at_glance|transfer.of.resources|contingency.fund|deficit.statistics|'
+    r'/report-fraud/|governanca-privacidade)')
+NAVIGATION_LINK_RE=re.compile(r'(?i)(?:expert.group|innovation.fund.projects|key.insights|calls.for.proposals|competitive.bidding|battery.booster)')
+SUBJECT_GUARDS = {
+    'br-anp-ccs-resolution': re.compile(r'(?i)(?:ccs|ccus|co2|carbon[o]?|captur[ae]|armazenamento|sequestro|14[._ -]?993)'),
+    'us-45q-ira': re.compile(r'(?i)(?:45[ _-]?q|carbon.{0,24}(?:sequest|capture)|(?:sequest|capture).{0,24}carbon)'),
+    'in-union-budget-2026-ccus': re.compile(r'(?i)(?:ccus|ccs|co2|carbon.{0,24}captur|captur.{0,24}carbon)'),
+}
 
 
 def _title_terms(value):
     return {v for v in re.findall(r'[a-z0-9]{3,}', (value or '').lower())
-            if v not in STOP_TOKENS}
+            if v not in STOP_TOKENS and not v.isdigit()}
 
 
 def candidate_kind(url, anchor):
     content=(urlsplit(url).path+' '+anchor).lower()
-    if re.search(r'\.(pdf|docx?)($|\?)',urlsplit(url).path,re.I):return 'document_file_candidate'
+    if re.search(r'\.(pdf|docx?)$',urlsplit(url).path,re.I):return 'document_file_candidate'
     if re.search(r'\b(act|statute|regulation|directive|decree|ordinance|legislation|law|code)\b', content):
         return 'legal_text_candidate'
     if re.search(r'\b(grant|subsidy|fund|programme|program|incentive|guidance)\b',content):
@@ -163,22 +179,58 @@ def candidate_kind(url, anchor):
     return 'unspecified_webpage_candidate'
 
 
+def candidate_version_alignment(policy, candidate_url, anchor):
+    """Heuristic labels only; cannot establish enactment/consolidation/legal effect."""
+    name=policy.get('title','')
+    raw=' '.join([anchor or '',urlsplit(candidate_url).path])
+    years=re.findall(r'(?<!\d)(?:19|20)\d{2}(?!\d)', name)
+    years_seen=set(re.findall(r'(?<!\d)(?:19|20)\d{2}(?!\d)', raw))
+    if not years:return 'no_policy_year'
+    target=years[-1]
+    if target in years_seen:return 'matching_year_in_link'
+    if years_seen and max(years_seen)<target:return 'earlier_document_year_review'
+    if years_seen:return 'other_document_year_review'
+    return 'publication_year_not_visible'
+
+
 def score_candidate(policy, candidate_url, anchor):
-    """Ranking, NOT legal-authenticity confidence. Do not use to auto-approve."""
+    """Candidate ranking only. Require identity clues; never use as legal authority score."""
     if not is_official_url(candidate_url) or url_scope(candidate_url)=='site_homepage':return -1
-    terms=_title_terms(policy.get('title',''))
-    context=(anchor+' '+urlsplit(candidate_url).path).lower()
-    matched=[t for t in terms if t in _title_terms(context)]
-    score=min(48,len(matched)*12)
+    path=urlsplit(candidate_url).path
+    # Do not award title matches from a long shared portal prefix (EU Innovation Fund, etc.).
+    # Only the anchor and the last URL path component are candidate-specific.
+    context=' '.join((anchor or '',path.rstrip('/').rsplit('/',1)[-1]))
+    if NAVIGATION_LINK_RE.search(context) and not NAVIGATION_LINK_RE.search(policy.get('title','')):return -1
+    if IRRELEVANT_LINK_RE.search(context) and not IRRELEVANT_LINK_RE.search(policy.get('title','')):
+        return -1
+    # An exact named instrument in the anchor is stronger than generic token overlap.
+    # Important for concise titles such as Energy Act 2023 (whose words are otherwise common).
+    exact_title=' '.join(policy.get('title','').casefold().split())
+    anchor_title=' '.join((anchor or '').casefold().split())
+    if len(exact_title)>=12 and exact_title in anchor_title:
+        edition=candidate_version_alignment(policy,candidate_url,anchor)
+        return 83 if edition!='earlier_document_year_review' else 45
+    guard=SUBJECT_GUARDS.get(policy.get('policy_id'))
+    if guard and not guard.search(context):return -1
+    matched=_title_terms(policy.get('title','')) & _title_terms(context)
     kind=candidate_kind(candidate_url,anchor)
-    if kind=='document_file_candidate':score+=22
-    if kind=='legal_text_candidate':score+=14
-    if kind=='programme_or_guidance_candidate':score+=5
-    if urlsplit(candidate_url).hostname==urlsplit(policy.get('url','')).hostname:score+=5
-    # Require distinctive title evidence, or file-like law/regulation hint; reject generic navigation.
-    if not matched:return -1  # Generic law/ministry keywords alone are never enough to link to a policy.
-    if len(matched)==1 and kind=='unspecified_webpage_candidate':return -1
-    return min(score,99)
+    # A generic document at the correct publisher is not evidence of a specific policy.
+    if len(matched)<2:
+        # Specific instrument identifiers, where supplied in the canonical title, may substitute for words.
+        identifiers=re.findall(r'(?<!\d)\d{2,5}(?:[.-]\d{1,5})?(?!\d)',policy.get('title',''))
+        identifiers=[x for x in identifiers if x not in {'2024','2025','2026','2023','2022','2021','2020'}]
+        exact=bool(identifiers and any(i in context for i in identifiers))
+        if not exact:return -1
+    score=min(65,len(matched)*18)
+    if kind=='document_file_candidate':score+=12
+    if kind=='legal_text_candidate':score+=9
+    if kind=='programme_or_guidance_candidate':score+=3
+    if urlsplit(candidate_url).hostname==urlsplit(policy.get('url','')).hostname:score+=3
+    edition=candidate_version_alignment(policy,candidate_url,anchor)
+    if edition=='earlier_document_year_review':score-=25
+    elif edition=='other_document_year_review':score-=15
+    elif edition=='matching_year_in_link':score+=6
+    return min(95,score) if score>=20 else -1
 
 
 def extract_official_link_candidates(html_bytes,base_url,policy,source_file_id,max_candidates=6):
@@ -202,6 +254,7 @@ def extract_official_link_candidates(html_bytes,base_url,policy,source_file_id,m
                    'candidate_type':candidate_kind(url,anchor),
                    'source_edition':'unknown','source_origin':'archived_official_html_link',
                    'source_drive_file_id':source_file_id,'match_score':score,
+                   'version_alignment':candidate_version_alignment(policy,url,anchor),
                    'review_status':'pending','evidence_match_status':'unverified',
                    'research_note':'Link extracted from archived official HTML; existence and identity not checked.',
                    'inventory_sha256':policy.get('inventory_sha256','')}
@@ -209,10 +262,74 @@ def extract_official_link_candidates(html_bytes,base_url,policy,source_file_id,m
     return sorted(results.values(),key=lambda r:(-r['match_score'],r['candidate_url']))[:max_candidates]
 
 
+def policy_archive_state(policy_id, rows, files):
+    """Archive transfer and candidate discovery are separate dimensions."""
+    audit=[r for r in rows if r.get('policy_id')==policy_id and
+           r.get('target_origin','canonical_db')=='canonical_db']
+    current=audit[-1] if audit else {}
+    attached=[f for f in files if (f.get('appProperties') or {}).get('policy_id')==policy_id]
+    fid=current.get('drive_file_id') or (attached[0].get('id') if attached else '')
+    status=current.get('status','unknown')
+    if not fid:return {'archive_state':'no_raw_file','archived_source_file_id':'',
+                       'source_role':'not_assessed','archive_audit_status':status}
+    # A historical ministry-homepage snapshot must remain identifiable but not count as text.
+    if status=='source_too_broad':
+        return {'archive_state':'raw_homepage_only','archived_source_file_id':fid,
+                'source_role':'institutional_context','archive_audit_status':status}
+    return {'archive_state':'raw_candidate_archived','archived_source_file_id':fid,
+            'source_role':'unverified_raw_source','archive_audit_status':status}
+
+
+def publisher_lookup_route(policy):
+    """An agent-ready research *hint*, never an invented search result or fetched URL."""
+    from urllib.parse import urlsplit
+    url=normalize_url(policy.get('url',''))
+    host=urlsplit(url).hostname if url else ''
+    country=(policy.get('country') or '').lower()
+    if country=='european union' or host in ('eur-lex.europa.eu','op.europa.eu'):
+        return 'eurlex_celex_or_eli_exact_identifier'
+    if country=='united kingdom' or host.endswith('legislation.gov.uk'):
+        return 'uk_legislation_exact_act_year_chapter'
+    if country=='netherlands' or host.endswith('overheid.nl'):
+        return 'nl_official_legislation_regulation_identifier'
+    if country=='united states':
+        return 'us_govinfo_ecfr_state_register_by_instrument'
+    if country=='china':
+        return 'cn_official_gazette_document_number_and_issuer'
+    return 'issuer_official_registry_exact_title_number'
+
+
+def make_research_backlog(canonical, rows, files, candidate_rows):
+    by_id={r['policy_id']:r for r in canonical}
+    number={}
+    for r in candidate_rows:
+        if r.get('candidate_url'):number[r['policy_id']]=number.get(r['policy_id'],0)+1
+    result=[]
+    for policy_id,policy in by_id.items():
+        status=policy_archive_state(policy_id,rows,files)
+        count=number.get(policy_id,0)
+        priority=('P0' if status['archive_state']=='no_raw_file' and
+                  status['archive_audit_status'] in ('source_too_broad','not_found','non_https_source')
+                  else 'P1' if status['archive_state']=='no_raw_file' else 'P2')
+        search_host=urlsplit(normalize_url(policy.get('url','')) or '').hostname or ''
+        result.append({'policy_id':policy_id,'country':policy.get('country',''),
+                       'policy_title':policy.get('title',''),'publisher':policy.get('publisher',''),
+                       'canonical_url':policy.get('url',''),**status,
+                       'source_candidate_count':count,
+                       'discovery_state':'suggestions_pending_review' if count else
+                          'no_new_link_but_archived_raw' if status['archive_state']!='no_raw_file'
+                          else 'exact_source_lookup_needed',
+                       'instrument_match_review_state':'not_reviewed',
+                       'research_priority':priority,'publisher_lookup_route':publisher_lookup_route(policy),
+                       'publisher_domain_hint':search_host,
+                       'research_query':policy.get('title','')+' | '+policy.get('publisher',''),
+                       'inventory_sha256':policy.get('inventory_sha256','')})
+    return sorted(result,key=lambda r:(r['research_priority'],r['policy_id']))
+
+
 def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HTML_SNAPSHOTS_TO_SCAN):
-    """Produce a non-executing, per-policy review queue; no SQLite or evidence-file writes."""
+    """Review-only: one row per policy minimum, with evidence state on every row."""
     by_id={p['policy_id']:p for p in canonical}
-    last_status={r['policy_id']:r['status'] for r in rows if r['policy_id'] in by_id and r.get('target_origin','canonical_db')=='canonical_db'}
     output=[];covered=set();seen_file=set()
     for file in sorted(files,key=lambda f:f.get('name','')):
         props=file.get('appProperties') or {}
@@ -224,7 +341,6 @@ def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HT
         fid=file.get('id')
         if fid in seen_file:continue
         seen_file.add(fid)
-        # Source URL must come from provenance written on initial upload, never from user HTML.
         description=file.get('description') or ''
         m=re.search(r'\bURL: (https://[^;\s]+); SHA256:', description)
         base_url=m.group(1) if m else by_id[policy_id]['url']
@@ -232,33 +348,40 @@ def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HT
         try:
             page=drive.files().get_media(fileId=fid).execute()
             if not isinstance(page,bytes):continue
-        except Exception:continue  # An inaccessible snapshot must not block the remaining queue.
+        except Exception:continue
         found=extract_official_link_candidates(page,base_url,by_id[policy_id],fid,MAX_CANDIDATES_PER_POLICY)
         output.extend(found);covered.update(r['policy_id'] for r in found)
-    # Three researched URLs are suggestions, not approved downloads.
     for seed in OFFICIAL_RESEARCH_SEEDS:
         policy=by_id.get(seed['policy_id'])
         if not policy:continue
-        output.append({**{k:policy.get(k,'') for k in ()},
-                       'policy_id':policy['policy_id'],'country':policy.get('country',''),
+        output.append({'policy_id':policy['policy_id'],'country':policy.get('country',''),
                        'policy_title':policy.get('title',''),'canonical_url':policy.get('url',''),
                        **seed,'source_origin':'official_research_seed',
                        'source_drive_file_id':'','match_score':'',
+                       'version_alignment':candidate_version_alignment(policy,seed['candidate_url'],seed['candidate_title']),
                        'review_status':'pending','evidence_match_status':'unverified',
                        'inventory_sha256':policy.get('inventory_sha256','')})
         covered.add(policy['policy_id'])
-    # Every canonical policy ID appears at least once, including no-candidate rows.
     for policy in canonical:
         if policy['policy_id'] in covered:continue
         output.append({'policy_id':policy['policy_id'],'country':policy.get('country',''),
             'policy_title':policy.get('title',''),'canonical_url':policy.get('url',''),
-            'candidate_url':'','candidate_title':'','candidate_type':'no_candidate_yet',
-            'source_edition':'','source_origin':'research_backlog','source_drive_file_id':'',
-            'match_score':'','review_status':'pending','evidence_match_status':'not_found',
-            'research_note':f'Latest archive status: {last_status.get(policy["policy_id"], "unknown")}. Research an exact source and edition.',
+            'candidate_url':'','candidate_title':'',
+            'candidate_type':'no_new_link_candidate', 'source_edition':'',
+            'source_origin':'research_backlog','source_drive_file_id':'',
+            'match_score':'','review_status':'pending','evidence_match_status':'not_reviewed',
+            'version_alignment':'not_applicable',
+            'research_note':'No new outbound link discovered. Raw archive status is a separate field.',
             'inventory_sha256':policy.get('inventory_sha256','')})
-    # Stable order, idempotent contents except timestamps in audit filename.
-    return sorted(output,key=lambda r:(r['policy_id'],str(r.get('match_score',''))== '',-(r['match_score'] or 0) if isinstance(r.get('match_score'),int) else 0,r.get('candidate_url','')))
+    for row in output:
+        state=policy_archive_state(row['policy_id'],rows,files)
+        row.update(state)
+        row['discovery_state']='suggestion_pending_review' if row.get('candidate_url') else (
+            'no_new_link_but_archived_raw' if state['archive_state']!='no_raw_file' else 'exact_source_lookup_needed')
+        row['instrument_match_review_state']='not_reviewed'
+        row['publisher_lookup_route']=publisher_lookup_route(by_id[row['policy_id']])
+    return sorted(output,key=lambda r:(r['policy_id'],not bool(r.get('candidate_url')),
+                  -(int(r['match_score']) if str(r.get('match_score','')).isdigit() else 0),r.get('candidate_url','')))
 
 
 def export_candidate_review_queue(drive,rows):
@@ -268,15 +391,34 @@ def export_candidate_review_queue(drive,rows):
     file=ROOT/f'Policy_Source_Review_Candidates_{stamp}.csv'
     fields=['policy_id','country','policy_title','canonical_url','candidate_url','candidate_title',
         'candidate_type','source_edition','source_origin','source_drive_file_id','match_score',
-        'review_status','evidence_match_status','research_note','inventory_sha256']
+        'review_status','evidence_match_status','research_note','inventory_sha256',
+        'archive_state','archive_audit_status','archived_source_file_id','source_role',
+        'discovery_state','instrument_match_review_state','version_alignment','publisher_lookup_route']
     with file.open('w',encoding='utf-8-sig',newline='') as out:
         writer=csv.DictWriter(out,fieldnames=fields,extrasaction='ignore')
         writer.writeheader();writer.writerows(rows)
     created=drive.files().create(body={'name':file.name,'parents':[METADATA_FOLDER_ID],
-        'description':'Read-only official source candidates. All entries pending human review; do NOT pass as approved targets.'},
+        'description':'Read-only evidence-aware source candidates. Always pending human review.'},
         media_body=MediaFileUpload(str(file),mimetype='text/csv',resumable=True),fields='id,name').execute()
     print(f'REVIEW QUEUE: {len(rows)} rows covering {len({x["policy_id"] for x in rows})} policy IDs; '
           f'https://drive.google.com/file/d/{created["id"]}/view')
+    return created
+
+
+def export_research_backlog(drive,records):
+    from googleapiclient.http import MediaFileUpload
+    stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+    path=ROOT/f'Policy_Official_Registry_Research_Backlog_{stamp}.csv'
+    fields=['policy_id','country','policy_title','publisher','canonical_url','archive_state',
+        'archive_audit_status','archived_source_file_id','source_role','source_candidate_count',
+        'discovery_state','instrument_match_review_state','research_priority',
+        'publisher_lookup_route','publisher_domain_hint','research_query','inventory_sha256']
+    with path.open('w',encoding='utf-8-sig',newline='') as out:
+        w=csv.DictWriter(out,fieldnames=fields);w.writeheader();w.writerows(records)
+    created=drive.files().create(body={'name':path.name,'parents':[METADATA_FOLDER_ID],
+        'description':'Official registry research hints; no unverified URLs generated or fetched.'},
+        media_body=MediaFileUpload(str(path),mimetype='text/csv',resumable=True),fields='id,name').execute()
+    print(f'RESEARCH BACKLOG: {len(records)} policies; https://drive.google.com/file/d/{created["id"]}/view')
     return created
 
 
@@ -295,6 +437,8 @@ def main():
         preserved=list_folder(drive,POLICY_FOLDER_ID)
         candidate_rows=review_candidates_from_archives(drive,canonical,rows,preserved)
         export_candidate_review_queue(drive,candidate_rows)
+        if POLICY_RESEARCH_BACKLOG:
+            export_research_backlog(drive,make_research_backlog(canonical,rows,preserved,candidate_rows))
     print('Primary evidence directory: https://drive.google.com/drive/folders/'+POLICY_FOLDER_ID)
     print('Important: source_too_broad / non_https_source / needs_official_source_review represent evidence gaps, not membership restrictions.')
     print('Any uploaded_original file is a raw archived source, not yet a legally verified policy instrument.')
