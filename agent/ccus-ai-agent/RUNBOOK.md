@@ -235,8 +235,8 @@ BLOB storage, condition-card generation or evaluation engine is needed.
 
 ```bash
 pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
-pnpm data:consume --root public
-pnpm data:consume --root dist
+pnpm evidence:consume --root public
+pnpm evidence:consume --root dist
 ```
 
 `pnpm gen` publishes one historical source record, index, exact archived bytes
