@@ -35,3 +35,6 @@ LICENSE
 public/data/facilities.json
 public/data/relationships.json
 public/data/policy-analysis-localizations.json
+
+# Context hashes cover the generator-owned JSON and Markdown bytes
+public/data/context/
