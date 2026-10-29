@@ -40,8 +40,8 @@ false: generating a projection does not re-review a statute or IRS guidance.
 pnpm context:build
 
 # Machine-readable stdout; --silent suppresses pnpm's script banner.
-pnpm --silent context:read -- --id us-section-45q --lang zh --format json
-pnpm --silent context:read -- --id us-section-45q --lang en --format md
+pnpm --silent context:read --id us-section-45q --lang zh --format json
+pnpm --silent context:read --id us-section-45q --lang en --format md
 
 # Compare all published bytes to a fresh read-only projection.
 pnpm context:check

@@ -217,7 +217,7 @@ limits.
 
 ```bash
 pnpm context:build
-pnpm --silent context:read -- --id us-section-45q --lang zh --format json
+pnpm --silent context:read --id us-section-45q --lang zh --format json
 pnpm context:check
 ```
 
@@ -234,9 +234,9 @@ SQLite retains existing accepted structured policy facts. No schema migration,
 BLOB storage, condition-card generation or evaluation engine is needed.
 
 ```bash
-pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json
-pnpm data:consume -- --root public
-pnpm data:consume -- --root dist
+pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+pnpm data:consume --root public
+pnpm data:consume --root dist
 ```
 
 `pnpm gen` publishes one historical source record, index, exact archived bytes

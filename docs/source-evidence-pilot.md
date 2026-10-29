@@ -62,9 +62,9 @@ clause evidence. No automatic project association or legal conclusion is added.
 
 ```bash
 pnpm gen
-pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json
-pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json --observed-file /path/to/download.html
-pnpm data:consume -- --root public
+pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json --observed-file /path/to/download.html
+pnpm data:consume --root public
 ```
 
 Commands print JSON; invalid input gives a nonzero exit and structured stderr.
