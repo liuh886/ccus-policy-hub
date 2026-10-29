@@ -44,7 +44,10 @@
     "report:parity": "node scripts/verify-paper-report.mjs --parity",
     "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs",
     "manage:review:queue": "node scripts/maintenance-review.mjs",
-    "manage:policy:review": "node scripts/apply-policy-review.mjs"
+    "manage:policy:review": "node scripts/apply-policy-review.mjs",
+    "context:build": "node scripts/generate-policy-context.mjs",
+    "context:read": "node scripts/generate-policy-context.mjs",
+    "context:check": "node scripts/generate-policy-context.mjs --check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

@@ -14,6 +14,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import {
+  contextFiles,
+  publishContextFiles,
+} from './generate-policy-context.mjs';
 import { queryScalar, queryRows, parseJsonSafe } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -357,6 +361,11 @@ async function generatePublicData() {
     console.log('  dataset-versions.json: skipped');
   }
 
+  // Context bundles share the exact same in-memory SSOT snapshot as the APIs.
+  const contextOutputs = contextFiles(db);
+  publishContextFiles(contextOutputs, path.join(PUBLIC_DATA_DIR, 'context'));
+  const contextIndex = JSON.parse(contextOutputs.get('index.json'));
+
   // --- Generate manifest.json ---
   console.log('Generating manifest.json...');
   const BASE_URL = 'https://liuh886.github.io/ccus-policy-hub';
@@ -368,6 +377,12 @@ async function generatePublicData() {
     base_url: BASE_URL,
     source_db: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
     datasets: {
+      context: {
+        file: `${BASE_URL}/data/context/index.json`,
+        count: contextIndex.count,
+        description:
+          'Bilingual policy-record context bundles; summary-level evidence only',
+      },
       policies: {
         file: `${BASE_URL}/data/policies.json`,
         count: policies.length,
@@ -405,6 +420,7 @@ async function generatePublicData() {
       },
     },
     schemas: {
+      context: `${BASE_URL}/data/schemas/context-bundle.schema.json`,
       'policy-analysis-localization': `${BASE_URL}/data/schemas/policy-analysis-localization.schema.json`,
       relationship: `${BASE_URL}/data/schemas/relationship.schema.json`,
       policy: `${BASE_URL}/data/schemas/policy.schema.json`,
@@ -417,6 +433,7 @@ async function generatePublicData() {
       'llms-full': `${BASE_URL}/llms-full.txt`,
     },
     known_limitations: [
+      'Context bundles contain maintained record summaries, not clause-verified current law or project tax-eligibility decisions',
       'Country and subnational matches provide geographic context, not verified project-specific legal applicability; inspect relationships.json',
       'Coordinate precision varies: exact, state, or country-level',
       'Some policies may be missing source or URL',

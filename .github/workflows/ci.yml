@@ -71,6 +71,9 @@ jobs:
       - name: Regenerate derived content from SQLite SSOT
         run: pnpm gen
 
+      - name: Verify published policy context bytes and hashes
+        run: pnpm context:check
+
       - name: ESLint
         run: pnpm eslint .
 
