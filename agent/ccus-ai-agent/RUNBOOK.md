@@ -206,3 +206,23 @@ The supplementary file updates only six named facilities. Do not change the old
 research file's batch date to imply that all historical URLs were rechecked.
 After changes, run deep audit, `pnpm gen`, consistency/parity/depth/coverage checks,
 tests, lint, Astro check, production build and bilingual rendered QA.
+
+## 11. Static policy context bundles
+
+`pnpm gen` now also publishes the initial English/Chinese 45Q policy and family
+bundles under `public/data/context`. This is a read-only, network-free projection
+of the same SQLite snapshot used for the public APIs, not a source-data update.
+See `docs/context-bundles.md` for the consumer contract, CLI errors and evidence
+limits.
+
+```bash
+pnpm context:build
+pnpm --silent context:read -- --id us-section-45q --lang zh --format json
+pnpm context:check
+```
+
+Run `context:check` after generation to verify every file and index hash. The
+context directory is excluded from Prettier and ignored by Git; do not hand-edit
+it. The pilot does not provide clause-verified current-law or project tax
+eligibility answers, and does not change scores, confidence semantics or review
+dates. Unknown history and missing project/translation evidence remain explicit.
