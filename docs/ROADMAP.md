@@ -105,3 +105,16 @@ content-depth remediation.
 - IEA worktree: audited and rejected (0 unique value, 912 precision
   regressions); 2026 workbook replaced by provenance manifest + SHA256 gate
 - DB snapshot archaeology removed; 2026-07 migrations archived with manifest
+
+## Proposed Agent context layer
+
+The confirmed first user is the maintainer's Agent; the first task is US 45Q
+policy Q&A using static JSON/Markdown. The human-facing research platform remains.
+See the [functional specification](context-layer-functional-spec.md) for F01–F08,
+contracts and acceptance cases, and the [phase map](context-layer-roadmap.md) for
+sequencing. This ROADMAP remains the single backlog index.
+
+The first implementation slice is S1: discoverable bilingual policy/family bundles
+from the SQLite SSOT, explicit summary-only evidence and temporal/project gaps,
+and deterministic read-only generation. It depends on PR #102; clause-level
+eligibility questions remain gated by the later document/condition review slices.
