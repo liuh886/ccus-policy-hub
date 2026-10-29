@@ -1,394 +1,13 @@
-"""Shared archive engine. Colab notebooks embed this file so they are self-contained.
+"""Policy source acquisition and review queue (v3).
 
-Boundaries: raw evidence backup to private Drive, never policy-DB writes or public republication.
+Run next to archive_core.py (GitHub) or ccus_archive_core.py (Google Drive).
+The Colab notebook embeds both modules and needs neither import.
+No changes to the canonical policy SQLite.
 """
-from __future__ import annotations
-import csv
-import hashlib
-import io
-import json
-import os
-import re
-import sqlite3
-import tempfile
-import time
-import zipfile
-from collections import Counter
-from datetime import datetime, timezone
-from pathlib import Path
-from urllib.parse import urlparse, urlsplit, urlunsplit, unquote
-
-import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-
-GCCSI_CATALOG_ID = '1Vh_cLBzI1skRBXqbqe4fv-oiycuOWDxPzVdORs9RfZQ'
-GCCSI_FOLDER_ID = '14oNNEBFEbx9piny8XdhUjpe3REcC8sgl'
-POLICY_FOLDER_ID = '1S07jkytGKENRvA7zwXjnGARiKVZr5Vnx'
-METADATA_FOLDER_ID = '12kOSesAeX367tV4gsx7GfH6JY_Q3X3Lo'
-GITHUB_DB_URL = 'https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/agent/ccus-ai-agent/db/ccus_master.sqlite'
-
-ROOT = Path('/content/ccus_archive_runtime') if Path('/content').exists() else Path(tempfile.gettempdir()) / 'ccus_archive_runtime'
-MAX_BYTES = 300 * 1024 * 1024
-RECHECK_DAYS = 45  # An existing file older than this can be checked again for updated bytes.
-REQUEST_TIMEOUT = (10, 35)  # connection and socket read: retries happen on later incremental runs
-PUBLISHER_DELAY_SECONDS = 0.6
-USER_AGENT = 'CCUSPolicyHubSourceArchiver/2.0 (research source preservation; low request rate)'
-
-
-def utcnow():
-    return datetime.now(timezone.utc).isoformat(timespec='seconds')
-
-
-def sha_text(value):
-    return hashlib.sha256(value.encode('utf-8')).hexdigest()
-
-
-def normalize_url(url):
-    if not isinstance(url, str):
-        return None
-    url = url.strip().rstrip(').,;]')
-    if not url or len(url) > 2048:
-        return None
-    p = urlsplit(url)
-    if p.scheme.lower() != 'https' or not p.hostname or p.username or p.password:
-        return None
-    return urlunsplit(('https', p.netloc.lower(), p.path or '/', p.query, ''))
-
-
-def safe_filename(name):
-    name = unquote(name or 'document').replace('\\', '/')
-    name = name.split('/')[-1]
-    name = re.sub(r'[^\w.()\- ]+', '_', name, flags=re.UNICODE).strip(' ._')[:145]
-    return name or 'document'
-
-
-def source_name(url, kind, policy_id=''):
-    stem = safe_filename(urlsplit(url).path.rsplit('/', 1)[-1])
-    if not re.search(r'\.(pdf|docx?|html?|txt)$', stem, re.I):
-        stem += '.html'
-    if kind == 'primary_policy':
-        return safe_filename(policy_id)[:65] + '__' + stem
-    return stem
-
-
-def session_factory():
-    s = requests.Session()
-    s.headers.update({'User-Agent': USER_AGENT, 'Accept': 'application/pdf,text/html,application/vnd.openxmlformats-officedocument.wordprocessingml.document,*/*;q=0.7'})
-    retry = Retry(total=1, connect=1, read=0, status=1, backoff_factor=1.5, status_forcelist=[429,500,502,503,504], allowed_methods=['GET'], respect_retry_after_header=True)
-    s.mount('https://', HTTPAdapter(max_retries=retry, pool_connections=3, pool_maxsize=3))
-    return s
-
-
-def colab_services():
-    from google.colab import auth
-    import google.auth
-    from googleapiclient.discovery import build
-    from google_auth_httplib2 import AuthorizedHttp
-    import httplib2
-    auth.authenticate_user()
-    creds, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/documents.readonly'])
-    drive_http = AuthorizedHttp(creds, http=httplib2.Http(timeout=90))
-    docs_http = AuthorizedHttp(creds, http=httplib2.Http(timeout=90))
-    return build('drive', 'v3', http=drive_http, cache_discovery=False), build('docs','v1',http=docs_http,cache_discovery=False)
-
-
-def list_folder(drive, folder_id):
-    result=[]; token=None
-    while True:
-        page = drive.files().list(q=f"'{folder_id}' in parents and trashed = false", pageSize=1000,
-            fields='nextPageToken,files(id,name,mimeType,size,createdTime,modifiedTime,appProperties,description)',pageToken=token).execute()
-        result.extend(page.get('files', []))
-        token=page.get('nextPageToken')
-        if not token: break
-    return result
-
-
-def existing_indices(files):
-    by_url={}; by_sha={}; filenames=set()
-    for obj in sorted(files, key=lambda v: v.get('createdTime','')):
-        props=obj.get('appProperties') or {}
-        h=props.get('source_url_sha256')
-        sha=props.get('sha256')
-        if h: by_url[h]=obj
-        for k,v in props.items():
-            if k.startswith('source_url_alias_') and len(v)==64:by_url[v]=obj
-        if sha: by_sha[sha]=obj
-        filenames.add(obj.get('name',''))
-    return by_url,by_sha,filenames
-
-
-def due_for_recheck(obj, days):
-    if days is None: return False
-    if days <= 0: return True
-    props=obj.get('appProperties') or {}
-    stamp=props.get('checked_at') or obj.get('createdTime') or obj.get('modifiedTime')
-    if not stamp: return False  # unknown legacy timestamps: skip instead of redownloading all
-    try:
-        stamp=datetime.fromisoformat(stamp.replace('Z','+00:00'))
-        return (datetime.now(timezone.utc)-stamp).total_seconds() >= days*86400
-    except ValueError:
-        return False
-
-
-def blob_type(filepath, first, content_type, allow_html):
-    if first.startswith(b'%PDF-'): return ('pdf','application/pdf')
-    if first.startswith(b'PK\x03\x04') and zipfile.is_zipfile(filepath):
-        with zipfile.ZipFile(filepath) as z:
-            if 'word/document.xml' in z.namelist(): return ('docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    if allow_html and (b'<!doctype html' in first.lower() or b'<html' in first.lower() or 'text/html' in content_type):
-        # Do not preserve access-control, CAPTCHA, generic error or bot-check pages as authoritative text.
-        data=filepath.read_bytes()[:120000].lower()
-        blocked=(b'captcha', b'cf-chl-', b'just a moment', b'access denied', b'please enable javascript', b'cloudflare ray id', b'type="password"', b'log in to view', b'sign in to continue')
-        if any(x in data for x in blocked): return ('blocked_html',None)
-        if len(data) < 700: return ('html_too_short',None)
-        return ('html','text/html')
-    return ('not_document',None)
-
-
-def retrieve(session,url,workdir,allow_html=False,host_validator=None,headers=None):
-    """Return (local path, info dict). Any status other than downloaded leaves no local file."""
-    tmp=workdir/(sha_text(url)[:20]+'.part'); tmp.parent.mkdir(parents=True,exist_ok=True)
-    info={'http_status':'','status':'','bytes':0,'sha256':'','format':'','etag':'','last_modified':'','resolved_url':'','error':''}
-    try:
-        with session.get(url, stream=True, timeout=REQUEST_TIMEOUT, allow_redirects=True, headers=headers or {}) as res:
-            info['http_status']=res.status_code; info['resolved_url']=res.url
-            info['etag']=(res.headers.get('ETag') or '')[:115]
-            info['last_modified']=(res.headers.get('Last-Modified') or '')[:115]
-            if res.status_code==304:
-                info['status']='not_modified';return None,info
-            if res.status_code in (401,403,407,412,419,429):
-                info['status']='access_blocked';return None,info
-            if res.status_code in (404,410):
-                info['status']='not_found';return None,info
-            if res.status_code==202:
-                info['status']='http_202_not_document';return None,info
-            if res.status_code!=200:
-                info['status']='http_error';return None,info
-            if host_validator and not host_validator(res.url):
-                info['status']='redirect_outside_official';return None,info
-            try: length=int(res.headers.get('Content-Length') or '0')
-            except ValueError:length=0
-            if length>MAX_BYTES:
-                info['status']='too_large';return None,info
-            digest=hashlib.sha256();total=0;first=b''
-            with tmp.open('wb') as f:
-                for block in res.iter_content(chunk_size=1024*1024):
-                    if not block: continue
-                    total+=len(block)
-                    if total>MAX_BYTES:
-                        info['status']='too_large';return None,info
-                    if len(first)<1024:first=(first+block)[:1024]
-                    digest.update(block);f.write(block)
-            fmt,mime=blob_type(tmp,first,(res.headers.get('Content-Type') or '').lower(),allow_html)
-            if not mime:
-                info['status']=fmt;return None,info
-            if total<500:
-                info['status']='too_short';return None,info
-            info.update(status='downloaded',bytes=total,sha256=digest.hexdigest(),format=fmt,mime_type=mime)
-            return tmp,info
-    except requests.RequestException as exc:
-        info['status']='network_error';info['error']=f'{type(exc).__name__}: {str(exc)[:200]}'
-        return None,info
-    except Exception as exc:
-        info['status']='validation_error';info['error']=f'{type(exc).__name__}: {str(exc)[:200]}'
-        return None,info
-    finally:
-        if info['status']!='downloaded' and tmp.exists():tmp.unlink()
-
-
-def create_upload(drive, local_file, folder_id, name, url, sha256, policy_id, kind, mime_type, headers):
-    from googleapiclient.http import MediaFileUpload
-    meta={'sha256':sha256,'source_url_sha256':sha_text(url),'checked_at':utcnow()}
-    if policy_id: meta['policy_id']=str(policy_id)[:90]
-    if headers.get('etag'): meta['etag']=headers['etag']
-    if headers.get('last_modified'): meta['last_modified']=headers['last_modified']
-    media=MediaFileUpload(str(local_file),mimetype=mime_type,resumable=True,chunksize=4*1024*1024)
-    return drive.files().create(body={'name':name,'parents':[folder_id],
-             'description':f'RAW {kind} source. URL: {url}; SHA256: {sha256}. Not approved for public redistribution.',
-             'appProperties':meta},media_body=media,fields='id,name,mimeType,size,createdTime,appProperties').execute()
-
-
-def mark_checked(drive,obj,headers):
-    props=dict(obj.get('appProperties') or {})
-    props['checked_at']=utcnow()
-    if headers.get('etag'):props['etag']=headers['etag']
-    if headers.get('last_modified'):props['last_modified']=headers['last_modified']
-    drive.files().update(fileId=obj['id'],body={'appProperties':props},fields='id,appProperties').execute()
-    obj['appProperties']=props
-
-
-def url_scope(url):
-    """URL-level specificity only; never claim the file is the named instrument."""
-    if not url or not normalize_url(url): return 'invalid_or_non_https'
-    p=urlsplit(url)
-    path=p.path.strip('/')
-    if not path or path.lower() in ('en','en/','english','home','index.html','index.htm','web','about'):
-        return 'site_homepage'
-    if re.search(r'\.(pdf|docx|doc|html?|shtml|aspx)$', path, re.I):
-        return 'specific_document_or_page_candidate'
-    if len(path.split('/'))<=1:
-        return 'section_or_landing_page'
-    return 'specific_page_candidate'
-
-
-def policy_source_relevance_status(url, kind):
-    if kind!='primary_policy': return 'not_applicable'
-    scope=url_scope(url)
-    if scope=='site_homepage': return 'not_an_instrument'
-    if scope=='invalid_or_non_https': return 'url_needs_repair'
-    return 'needs_instrument_content_review'
-
-
-def capture_targets(drive,session,folder_id,targets,kind,recheck_days=RECHECK_DAYS,max_new=None):
-    """Idempotent: incremental discovery, stale recheck, content dedup, immutable versions."""
-    by_url,by_sha,names=existing_indices(list_folder(drive,folder_id))
-    result=[];seen=set();new_count=0
-    workdir=ROOT/kind;workdir.mkdir(parents=True,exist_ok=True)
-    for position, item in enumerate(targets,1):
-        url=normalize_url(item.get('url'))
-        row={'collected_at':utcnow(),'policy_id':item.get('policy_id',''),
-             'country':item.get('country',''),'title':item.get('title',''),
-             'publisher':item.get('publisher',''),'source_type':kind,'inventory_sha256':item.get('inventory_sha256',''), 'url':url or item.get('url',''),
-             'status':'','http_status':'','format':'','bytes':'','sha256':'',
-             'drive_file_id':'','resolved_url':'','error':'',
-             'url_scope':url_scope(url or item.get('url','')),
-             'instrument_verification':policy_source_relevance_status(url or item.get('url',''),kind)}
-        if not url:
-            original=(item.get('url') or '').strip()
-            status=('non_https_source' if original.lower().startswith('http://') else
-                    'missing_source_url' if kind=='primary_policy' and not original else 'invalid_url')
-            row.update(status=status,error='Preserved original URL; manual HTTPS verification required' if status=='non_https_source' else '')
-            result.append(row);continue
-        if (item.get('policy_id',''),url) in seen:continue
-        seen.add((item.get('policy_id',''),url))
-        # Broad ministry homepages are useful pointers, but not a policy's original text.
-        # Never let HTTP 200 on a generic homepage inflate primary-evidence coverage.
-        if kind=='primary_policy' and row['url_scope']=='site_homepage':
-            row.update(status='source_too_broad',error='Institution homepage, not an identifiable policy instrument')
-            result.append(row);continue
-        if kind=='primary_policy' and not is_official_url(url):
-            row.update(status='needs_official_source_review',error='Host not in conservative government/institutional allowlist');result.append(row);continue
-        old=by_url.get(sha_text(url))
-        if old and not due_for_recheck(old,recheck_days):
-            props=old.get('appProperties') or {}
-            row.update(status='already_archived',drive_file_id=old['id'],sha256=props.get('sha256',''),bytes=old.get('size',''))
-            result.append(row);continue
-        if max_new is not None and new_count>=max_new and old is None:
-            row.update(status='new_item_limit');result.append(row);continue
-        head={}
-        if old:
-            props=old.get('appProperties') or {}
-            if props.get('etag'):head['If-None-Match']=props['etag']
-            if props.get('last_modified'):head['If-Modified-Since']=props['last_modified']
-        local,info=retrieve(session,url,workdir,allow_html=(kind=='primary_policy'),
-                            host_validator=is_official_url if kind=='primary_policy' else is_gccsi_url, headers=head)
-        row.update({k:info.get(k,'') for k in ('http_status','format','bytes','sha256','resolved_url','error')})
-        row['status']=info['status']
-        try:
-            if info['status']=='not_modified' and old:
-                try:mark_checked(drive,old,info)
-                except Exception as e:row['error']='mark_checked: '+str(e)[:180]
-                row.update(status='not_modified',drive_file_id=old['id'],sha256=(old.get('appProperties') or {}).get('sha256',''))
-            elif local:
-                if old and (old.get('appProperties') or {}).get('sha256')==info['sha256']:
-                    try:mark_checked(drive,old,info)
-                    except Exception as e:row['error']='mark_checked: '+str(e)[:180]
-                    row.update(status='unchanged_content',drive_file_id=old['id'])
-                elif info['sha256'] in by_sha:
-                    existing=by_sha[info['sha256']]
-                    row.update(status='duplicate_content',drive_file_id=existing['id'])
-                    # Persist alias for future runs, otherwise a deduplicated URL would be re-downloaded forever.
-                    alias='source_url_alias_'+sha_text(url)[:14]
-                    try:
-                        props=dict(existing.get('appProperties') or {})
-                        props[alias]=sha_text(url)
-                        drive.files().update(fileId=existing['id'],body={'appProperties':props},fields='id,appProperties').execute()
-                        existing['appProperties']=props
-                        by_url[sha_text(url)]=existing
-                    except Exception as exc:
-                        row['error']='alias_persistence_failed: '+str(exc)[:160]
-                else:
-                    basename=source_name(url,kind,row['policy_id'])
-                    # Actual source format is authoritative even if the landing URL has a misleading extension.
-                    stem,ext=os.path.splitext(basename)
-                    expected_ext='.'+info['format']
-                    if ext.lower()!=expected_ext:
-                        basename=stem+expected_ext
-                    if basename in names:
-                        stem,ext=os.path.splitext(basename)
-                        basename=f'{stem}__{info["sha256"][:12]}{ext}'
-                    try:
-                        created=create_upload(drive,local,folder_id,basename,url,info['sha256'],row['policy_id'],kind,info['mime_type'],info)
-                        row.update(status='uploaded_original',drive_file_id=created['id'])
-                        by_url[sha_text(url)]=created;by_sha[info['sha256']]=created;names.add(basename);new_count+=1
-                    except Exception as exc:
-                        row.update(status='drive_upload_failed',error=f'{type(exc).__name__}: {str(exc)[:220]}')
-        finally:
-            if local and local.exists():local.unlink()
-        result.append(row)
-        if position%10==0:print(f'{kind} {position}: {Counter(x["status"] for x in result)}')
-        time.sleep(PUBLISHER_DELAY_SECONDS)
-    return result
-
-
-def export_audit(drive,rows,prefix):
-    if not rows:raise ValueError('Empty audit')
-    from googleapiclient.http import MediaFileUpload
-    ROOT.mkdir(parents=True,exist_ok=True)
-    stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-    path=ROOT/f'{prefix}_Audit_{stamp}.csv'
-    keys=['collected_at','policy_id','country','title','publisher','source_type','inventory_sha256','url','status','http_status',
-          'format','bytes','sha256','drive_file_id','resolved_url','error','url_scope','instrument_verification']
-    with path.open('w',encoding='utf-8-sig',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=keys,extrasaction='ignore');writer.writeheader();writer.writerows(rows)
-    media=MediaFileUpload(str(path),mimetype='text/csv',resumable=True)
-    created=drive.files().create(body={'name':path.name,'parents':[METADATA_FOLDER_ID],
-         'description':f'Immutable per-run {prefix} source archive audit with successful, skipped and failed sources'},
-         media_body=media,fields='id,name,webViewLink').execute()
-    print(f'COMPLETE: {len(rows)} source attempts; statuses: {dict(Counter(r["status"] for r in rows))}')
-    print(f'AUDIT: https://drive.google.com/file/d/{created["id"]}/view')
-    return created
-
-
-def is_gccsi_url(url):
-    p=urlsplit(url)
-    return p.scheme=='https' and (p.hostname or '').lower() in ('globalccsinstitute.com','www.globalccsinstitute.com')
-
-
-# Conservative official-host policy. This is a starting review filter, not evidence of legal authority.
-OFFICIAL_HOSTS={
- 'eur-lex.europa.eu','ec.europa.eu','commission.europa.eu','op.europa.eu',
- 'legislation.gov.uk','www.legislation.gov.uk','gov.uk','www.gov.uk',
- 'regjeringen.no','www.regjeringen.no','lovdata.no','www.lovdata.no',
- 'canada.ca','www.canada.ca','laws-lois.justice.gc.ca','gazette.gc.ca',
- 'ato.gov.au','legislation.gov.au','www.legislation.gov.au',
- 'austlii.edu.au','www.austlii.edu.au','govinfo.gov','www.govinfo.gov',
- 'gov.cn','www.gov.cn','mee.gov.cn','www.mee.gov.cn',
- 'english.www.gov.cn','mof.gov.cn','ndrc.gov.cn',
- 'meti.go.jp','www.meti.go.jp','e-gov.go.jp','elaws.e-gov.go.jp',
- 'law.go.kr','www.law.go.kr','moleg.go.kr','www.moleg.go.kr',
- 'gov.sg','www.gov.sg','sso.agc.gov.sg',
- 'wipo.int','www.wipo.int','unfccc.int','www.unfccc.int',
- 'alberta.ca','www.alberta.ca','kings-printer.alberta.ca',
- 'saskatchewan.ca','www.saskatchewan.ca',
- 'ens.dk','www.ens.dk','wetten.overheid.nl',
- 'u.ae','www.u.ae','www.bmwk.de','www.government.nl',
- 'www.rvo.nl','english.rvo.nl','www.sodir.no',
- 'www25.senado.leg.br','www.boletinoficial.gob.ar','www.althingi.is',
- 'imo.org','www.imo.org','un.org','www.un.org',
-}
-OFFICIAL_SUFFIXES=('.gov','.gov.uk','.gov.cn','.gov.au','.gov.sg','.gov.ca','.gouv.fr','.gob.mx','.go.jp','.go.kr','.europa.eu','.gc.ca','.admin.ch','.gov.br','.gov.in','.gov.za','.gov.ie','.gov.no',
- '.gov.ae','.gov.qa','.gov.kz','.gov.pl','.gov.ph','.gov.tr','.gov.ro','.gov.sa','.gov.ng','.gov.eg','.gov.my','.gov.om','.gov.co',
- '.gob.ar','.gob.cl','.gob.es','.gob.pe','.go.th','.go.id','.gov.vn','.go.ug','.gov.gr')
-EXTRA_OFFICIAL_HOSTS=set()  # Add hostnames only after manually verifying their source authority.
-
-def is_official_url(url):
-    p=urlsplit(url)
-    if p.scheme!='https' or p.username or p.password:return False
-    host=(p.hostname or '').lower()
-    return (host in OFFICIAL_HOSTS or host in EXTRA_OFFICIAL_HOSTS
-            or any(host.endswith(suffix) or host==suffix.lstrip('.') for suffix in OFFICIAL_SUFFIXES))
+try:
+    from archive_core import *
+except ImportError:
+    from ccus_archive_core import *
 
 
 # ==== COLLECTION-SPECIFIC MODE ====
@@ -403,6 +22,12 @@ POLICY_MAX_NEW_PER_RUN = None
 # Optional Drive CSV with headers: policy_id,country,title,url,publisher.
 # Put verified regulator/legislature primary-source URLs in this manual source queue.
 POLICY_ADDITIONAL_TARGETS_CSV_ID = ''
+# An approved queue requires policy_id,url,review_status=approved,reviewer,source_edition.
+# The discovery CSV is NOT an approved-targets file; never pass it here without review.
+POLICY_REVIEW_CANDIDATES = True
+MAX_HTML_SNAPSHOTS_TO_SCAN = 55
+MAX_HTML_SOURCE_BYTES = 3500000
+MAX_CANDIDATES_PER_POLICY = 6
 
 
 def fetch_canonical_policies(session):
@@ -444,25 +69,215 @@ def fetch_canonical_policies(session):
     return out
 
 
-def manual_targets(drive):
+def parse_approved_targets(reader, canonical_targets):
+    required={'policy_id','url','review_status','reviewer','source_edition'}
+    if not required.issubset(set(reader.fieldnames or [])):
+        raise ValueError('Approved source CSV must have: '+', '.join(sorted(required)))
+    ids={x['policy_id']:x for x in canonical_targets}
+    data=[]
+    for row in reader:
+        policy_id=row.get('policy_id','').strip()
+        if not policy_id:continue
+        if policy_id not in ids:raise ValueError('Unknown policy ID in approval CSV: '+policy_id)
+        if row.get('review_status','').strip().lower()!='approved':continue
+        if not row.get('reviewer','').strip() or not row.get('source_edition','').strip():
+            raise ValueError('Approved target needs reviewer + source_edition: '+policy_id)
+        url=normalize_url(row.get('url',''))
+        if not url or not is_official_url(url) or url_scope(url)=='site_homepage':
+            raise ValueError('Approved target URL must be HTTPS, official and document-specific: '+policy_id)
+        source=ids[policy_id]
+        data.append({**source,'url':url,'target_origin':'manual_approved',
+                     'source_edition':row['source_edition'].strip(),
+                     'reviewer':row['reviewer'].strip()})
+    return data
+
+
+def manual_targets(drive, canonical_targets):
+    """Only reviewed exact URLs, with policy IDs bound to canonical SQLite."""
     if not POLICY_ADDITIONAL_TARGETS_CSV_ID:return []
     from googleapiclient.http import MediaIoBaseDownload
-    import io
     request=drive.files().get_media(fileId=POLICY_ADDITIONAL_TARGETS_CSV_ID)
     buf=io.BytesIO();downloader=MediaIoBaseDownload(buf,request)
     done=False
     while not done:_,done=downloader.next_chunk()
     reader=csv.DictReader(io.StringIO(buf.getvalue().decode('utf-8-sig')))
-    required={'policy_id','url'}
-    if not required.issubset(set(reader.fieldnames or [])):
-        raise ValueError('Manual CSV must have policy_id and url headers')
-    data=[]
-    for row in reader:
-        if row.get('policy_id','').strip() and row.get('url','').strip():
-            data.append({'policy_id':row['policy_id'].strip(),'url':row['url'].strip(),
-                        'country':row.get('country',''),'title':row.get('title',''),
-                        'publisher':row.get('publisher','')})
-    return data
+    return parse_approved_targets(reader,canonical_targets)
+
+
+# Official verified reference candidates, kept in **review queue only**.
+# They are NOT downloaded or inserted into SQLite automatically.
+OFFICIAL_RESEARCH_SEEDS = [
+    {'policy_id':'uk-energy-act-2023',
+     'candidate_url':'https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf',
+     'candidate_title':'Energy Act 2023 — chapter 52 (original enacted PDF)',
+     'candidate_type':'original_enacted_legislation','source_edition':'original_enacted',
+     'research_note':'Corrects invalid canonical 2023/67; confirm the required original vs current consolidated edition.'},
+    {'policy_id':'us-epa-class-vi-primacy',
+     'candidate_url':'https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program',
+     'candidate_title':'US EPA UIC primacy programme explanation',
+     'candidate_type':'regulator_guidance','source_edition':'current_webpage',
+     'research_note':'Supporting context only. Not the statute, 40 CFR regulation or individual primacy approval.'},
+    {'policy_id':'us-cifia-lpo',
+     'candidate_url':'https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program',
+     'candidate_title':'US DOE CIFIA programme overview',
+     'candidate_type':'programme_overview','source_edition':'current_webpage',
+     'research_note':'Programme explanation, not legislative original. Do not reuse for us-iija-hubs without identity review.'},
+]
+
+from html.parser import HTMLParser
+from urllib.parse import urljoin
+
+class _SafeAnchorParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.links=[];self.href=None;self.caption=[]
+    def handle_starttag(self, tag, attrs):
+        if tag.lower()=='a':
+            attrs=dict(attrs);self.href=attrs.get('href');self.caption=[]
+    def handle_data(self, data):
+        if self.href is not None and len(' '.join(self.caption))<280:self.caption.append(data)
+    def handle_endtag(self, tag):
+        if tag.lower()=='a' and self.href is not None:
+            self.links.append((self.href,' '.join(' '.join(self.caption).split())[:240]))
+            self.href=None;self.caption=[]
+
+
+STOP_TOKENS={'carbon','capture','storage','ccs','ccus','climate','change','energy','the','and',
+             'policy','scheme','national','government','for','with','framework','2024','2025',
+             '2026','programme','program','report','of','act','law','regulation','directive','decree',
+             'legislation','bill','policy','rules','framework','statute'}
+
+
+def _title_terms(value):
+    return {v for v in re.findall(r'[a-z0-9]{3,}', (value or '').lower())
+            if v not in STOP_TOKENS}
+
+
+def candidate_kind(url, anchor):
+    content=(urlsplit(url).path+' '+anchor).lower()
+    if re.search(r'\.(pdf|docx?)($|\?)',urlsplit(url).path,re.I):return 'document_file_candidate'
+    if re.search(r'\b(act|statute|regulation|directive|decree|ordinance|legislation|law|code)\b', content):
+        return 'legal_text_candidate'
+    if re.search(r'\b(grant|subsidy|fund|programme|program|incentive|guidance)\b',content):
+        return 'programme_or_guidance_candidate'
+    return 'unspecified_webpage_candidate'
+
+
+def score_candidate(policy, candidate_url, anchor):
+    """Ranking, NOT legal-authenticity confidence. Do not use to auto-approve."""
+    if not is_official_url(candidate_url) or url_scope(candidate_url)=='site_homepage':return -1
+    terms=_title_terms(policy.get('title',''))
+    context=(anchor+' '+urlsplit(candidate_url).path).lower()
+    matched=[t for t in terms if t in _title_terms(context)]
+    score=min(48,len(matched)*12)
+    kind=candidate_kind(candidate_url,anchor)
+    if kind=='document_file_candidate':score+=22
+    if kind=='legal_text_candidate':score+=14
+    if kind=='programme_or_guidance_candidate':score+=5
+    if urlsplit(candidate_url).hostname==urlsplit(policy.get('url','')).hostname:score+=5
+    # Require distinctive title evidence, or file-like law/regulation hint; reject generic navigation.
+    if not matched:return -1  # Generic law/ministry keywords alone are never enough to link to a policy.
+    if len(matched)==1 and kind=='unspecified_webpage_candidate':return -1
+    return min(score,99)
+
+
+def extract_official_link_candidates(html_bytes,base_url,policy,source_file_id,max_candidates=6):
+    """Read already-archived HTML once, do not crawl or fetch linked sites."""
+    if not base_url or not is_official_url(base_url):return []
+    parser=_SafeAnchorParser()
+    try:parser.feed(html_bytes.decode('utf-8',errors='replace'))
+    except Exception:return []
+    results={}
+    for href,anchor in parser.links[:2500]:
+        if not href or len(href)>1600:continue
+        url=normalize_url(urljoin(base_url,href))
+        if not url or url==normalize_url(base_url):continue
+        # Anchor suggestions are for human review; neither cross-domain navigation nor SSL failure may trigger downloads.
+        score=score_candidate(policy,url,anchor)
+        if score<20:continue
+        # A law may reside on a different official publisher host, but still requires manual verification.
+        candidate={'policy_id':policy['policy_id'],'country':policy.get('country',''),
+                   'policy_title':policy.get('title',''),'canonical_url':policy.get('url',''),
+                   'candidate_url':url,'candidate_title':anchor,
+                   'candidate_type':candidate_kind(url,anchor),
+                   'source_edition':'unknown','source_origin':'archived_official_html_link',
+                   'source_drive_file_id':source_file_id,'match_score':score,
+                   'review_status':'pending','evidence_match_status':'unverified',
+                   'research_note':'Link extracted from archived official HTML; existence and identity not checked.',
+                   'inventory_sha256':policy.get('inventory_sha256','')}
+        if url not in results or results[url]['match_score']<score:results[url]=candidate
+    return sorted(results.values(),key=lambda r:(-r['match_score'],r['candidate_url']))[:max_candidates]
+
+
+def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HTML_SNAPSHOTS_TO_SCAN):
+    """Produce a non-executing, per-policy review queue; no SQLite or evidence-file writes."""
+    by_id={p['policy_id']:p for p in canonical}
+    last_status={r['policy_id']:r['status'] for r in rows if r['policy_id'] in by_id and r.get('target_origin','canonical_db')=='canonical_db'}
+    output=[];covered=set();seen_file=set()
+    for file in sorted(files,key=lambda f:f.get('name','')):
+        props=file.get('appProperties') or {}
+        policy_id=props.get('policy_id','')
+        if policy_id not in by_id or file.get('mimeType')!='text/html':continue
+        if len(seen_file)>=read_limit:break
+        size=int(file.get('size') or 0)
+        if size<500 or size>MAX_HTML_SOURCE_BYTES:continue
+        fid=file.get('id')
+        if fid in seen_file:continue
+        seen_file.add(fid)
+        # Source URL must come from provenance written on initial upload, never from user HTML.
+        description=file.get('description') or ''
+        m=re.search(r'\bURL: (https://[^;\s]+); SHA256:', description)
+        base_url=m.group(1) if m else by_id[policy_id]['url']
+        if not is_official_url(base_url):continue
+        try:
+            page=drive.files().get_media(fileId=fid).execute()
+            if not isinstance(page,bytes):continue
+        except Exception:continue  # An inaccessible snapshot must not block the remaining queue.
+        found=extract_official_link_candidates(page,base_url,by_id[policy_id],fid,MAX_CANDIDATES_PER_POLICY)
+        output.extend(found);covered.update(r['policy_id'] for r in found)
+    # Three researched URLs are suggestions, not approved downloads.
+    for seed in OFFICIAL_RESEARCH_SEEDS:
+        policy=by_id.get(seed['policy_id'])
+        if not policy:continue
+        output.append({**{k:policy.get(k,'') for k in ()},
+                       'policy_id':policy['policy_id'],'country':policy.get('country',''),
+                       'policy_title':policy.get('title',''),'canonical_url':policy.get('url',''),
+                       **seed,'source_origin':'official_research_seed',
+                       'source_drive_file_id':'','match_score':'',
+                       'review_status':'pending','evidence_match_status':'unverified',
+                       'inventory_sha256':policy.get('inventory_sha256','')})
+        covered.add(policy['policy_id'])
+    # Every canonical policy ID appears at least once, including no-candidate rows.
+    for policy in canonical:
+        if policy['policy_id'] in covered:continue
+        output.append({'policy_id':policy['policy_id'],'country':policy.get('country',''),
+            'policy_title':policy.get('title',''),'canonical_url':policy.get('url',''),
+            'candidate_url':'','candidate_title':'','candidate_type':'no_candidate_yet',
+            'source_edition':'','source_origin':'research_backlog','source_drive_file_id':'',
+            'match_score':'','review_status':'pending','evidence_match_status':'not_found',
+            'research_note':f'Latest archive status: {last_status.get(policy["policy_id"], "unknown")}. Research an exact source and edition.',
+            'inventory_sha256':policy.get('inventory_sha256','')})
+    # Stable order, idempotent contents except timestamps in audit filename.
+    return sorted(output,key=lambda r:(r['policy_id'],str(r.get('match_score',''))== '',-(r['match_score'] or 0) if isinstance(r.get('match_score'),int) else 0,r.get('candidate_url','')))
+
+
+def export_candidate_review_queue(drive,rows):
+    from googleapiclient.http import MediaFileUpload
+    stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+    ROOT.mkdir(parents=True,exist_ok=True)
+    file=ROOT/f'Policy_Source_Review_Candidates_{stamp}.csv'
+    fields=['policy_id','country','policy_title','canonical_url','candidate_url','candidate_title',
+        'candidate_type','source_edition','source_origin','source_drive_file_id','match_score',
+        'review_status','evidence_match_status','research_note','inventory_sha256']
+    with file.open('w',encoding='utf-8-sig',newline='') as out:
+        writer=csv.DictWriter(out,fieldnames=fields,extrasaction='ignore')
+        writer.writeheader();writer.writerows(rows)
+    created=drive.files().create(body={'name':file.name,'parents':[METADATA_FOLDER_ID],
+        'description':'Read-only official source candidates. All entries pending human review; do NOT pass as approved targets.'},
+        media_body=MediaFileUpload(str(file),mimetype='text/csv',resumable=True),fields='id,name').execute()
+    print(f'REVIEW QUEUE: {len(rows)} rows covering {len({x["policy_id"] for x in rows})} policy IDs; '
+          f'https://drive.google.com/file/d/{created["id"]}/view')
+    return created
 
 
 def main():
@@ -470,13 +285,19 @@ def main():
     try:targets=fetch_canonical_policies(sess)
     except Exception as exc:
         raise RuntimeError('Canonical policy DB is unavailable: cannot infer missing sources; no archive attempt.') from exc
-    targets+=manual_targets(drive)
+    approved=manual_targets(drive,targets)
+    canonical=targets
+    targets=canonical+approved
     rows=capture_targets(drive,sess,POLICY_FOLDER_ID,targets,'primary_policy',
                          recheck_days=POLICY_RECHECK_DAYS,max_new=POLICY_MAX_NEW_PER_RUN)
     export_audit(drive,rows,'Policy_Primary_Source')
+    if POLICY_REVIEW_CANDIDATES:
+        preserved=list_folder(drive,POLICY_FOLDER_ID)
+        candidate_rows=review_candidates_from_archives(drive,canonical,rows,preserved)
+        export_candidate_review_queue(drive,candidate_rows)
     print('Primary evidence directory: https://drive.google.com/drive/folders/'+POLICY_FOLDER_ID)
     print('Important: source_too_broad / non_https_source / needs_official_source_review represent evidence gaps, not membership restrictions.')
     print('Any uploaded_original file is a raw archived source, not yet a legally verified policy instrument.')
-    print('No automated SQLite mutation, legal-status inference or public republication is performed.')
+    print('Review candidates are pending, never auto-downloaded or approved. No SQLite mutation or public republication.')
 
 if __name__=='__main__':main()
