@@ -31,6 +31,7 @@ GITHUB_DB_URL = 'https://raw.githubusercontent.com/liuh886/ccus-policy-hub/main/
 ROOT = Path('/content/ccus_archive_runtime') if Path('/content').exists() else Path(tempfile.gettempdir()) / 'ccus_archive_runtime'
 MAX_BYTES = 300 * 1024 * 1024
 RECHECK_DAYS = 45  # An existing file older than this can be checked again for updated bytes.
+REQUEST_TIMEOUT = (10, 35)  # connection and socket read: retries happen on later incremental runs
 PUBLISHER_DELAY_SECONDS = 0.6
 USER_AGENT = 'CCUSPolicyHubSourceArchiver/2.0 (research source preservation; low request rate)'
 
@@ -74,7 +75,7 @@ def source_name(url, kind, policy_id=''):
 def session_factory():
     s = requests.Session()
     s.headers.update({'User-Agent': USER_AGENT, 'Accept': 'application/pdf,text/html,application/vnd.openxmlformats-officedocument.wordprocessingml.document,*/*;q=0.7'})
-    retry = Retry(total=2, backoff_factor=1.2, status_forcelist=[429,500,502,503,504], allowed_methods=['GET'], respect_retry_after_header=True)
+    retry = Retry(total=1, connect=1, read=0, status=1, backoff_factor=1.5, status_forcelist=[429,500,502,503,504], allowed_methods=['GET'], respect_retry_after_header=True)
     s.mount('https://', HTTPAdapter(max_retries=retry, pool_connections=3, pool_maxsize=3))
     return s
 
@@ -83,9 +84,13 @@ def colab_services():
     from google.colab import auth
     import google.auth
     from googleapiclient.discovery import build
+    from google_auth_httplib2 import AuthorizedHttp
+    import httplib2
     auth.authenticate_user()
     creds, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/documents.readonly'])
-    return build('drive', 'v3', credentials=creds, cache_discovery=False), build('docs','v1',credentials=creds, cache_discovery=False)
+    drive_http = AuthorizedHttp(creds, http=httplib2.Http(timeout=90))
+    docs_http = AuthorizedHttp(creds, http=httplib2.Http(timeout=90))
+    return build('drive', 'v3', http=drive_http, cache_discovery=False), build('docs','v1',http=docs_http,cache_discovery=False)
 
 
 def list_folder(drive, folder_id):
@@ -146,16 +151,18 @@ def retrieve(session,url,workdir,allow_html=False,host_validator=None,headers=No
     tmp=workdir/(sha_text(url)[:20]+'.part'); tmp.parent.mkdir(parents=True,exist_ok=True)
     info={'http_status':'','status':'','bytes':0,'sha256':'','format':'','etag':'','last_modified':'','resolved_url':'','error':''}
     try:
-        with session.get(url, stream=True, timeout=(12,110), allow_redirects=True, headers=headers or {}) as res:
+        with session.get(url, stream=True, timeout=REQUEST_TIMEOUT, allow_redirects=True, headers=headers or {}) as res:
             info['http_status']=res.status_code; info['resolved_url']=res.url
             info['etag']=(res.headers.get('ETag') or '')[:115]
             info['last_modified']=(res.headers.get('Last-Modified') or '')[:115]
             if res.status_code==304:
                 info['status']='not_modified';return None,info
-            if res.status_code in (401,403,407,429):
+            if res.status_code in (401,403,407,412,419,429):
                 info['status']='access_blocked';return None,info
             if res.status_code in (404,410):
                 info['status']='not_found';return None,info
+            if res.status_code==202:
+                info['status']='http_202_not_document';return None,info
             if res.status_code!=200:
                 info['status']='http_error';return None,info
             if host_validator and not host_validator(res.url):
@@ -211,9 +218,30 @@ def mark_checked(drive,obj,headers):
     obj['appProperties']=props
 
 
+def url_scope(url):
+    """URL-level specificity only; never claim the file is the named instrument."""
+    if not url or not normalize_url(url): return 'invalid_or_non_https'
+    p=urlsplit(url)
+    path=p.path.strip('/')
+    if not path or path.lower() in ('en','en/','english','home','index.html','index.htm','web','about'):
+        return 'site_homepage'
+    if re.search(r'\.(pdf|docx|doc|html?|shtml|aspx)$', path, re.I):
+        return 'specific_document_or_page_candidate'
+    if len(path.split('/'))<=1:
+        return 'section_or_landing_page'
+    return 'specific_page_candidate'
+
+
+def policy_source_relevance_status(url, kind):
+    if kind!='primary_policy': return 'not_applicable'
+    scope=url_scope(url)
+    if scope=='site_homepage': return 'not_an_instrument'
+    if scope=='invalid_or_non_https': return 'url_needs_repair'
+    return 'needs_instrument_content_review'
+
+
 def capture_targets(drive,session,folder_id,targets,kind,recheck_days=RECHECK_DAYS,max_new=None):
     """Idempotent: incremental discovery, stale recheck, content dedup, immutable versions."""
-    from googleapiclient.http import MediaFileUpload
     by_url,by_sha,names=existing_indices(list_folder(drive,folder_id))
     result=[];seen=set();new_count=0
     workdir=ROOT/kind;workdir.mkdir(parents=True,exist_ok=True)
@@ -223,11 +251,22 @@ def capture_targets(drive,session,folder_id,targets,kind,recheck_days=RECHECK_DA
              'country':item.get('country',''),'title':item.get('title',''),
              'publisher':item.get('publisher',''),'source_type':kind,'inventory_sha256':item.get('inventory_sha256',''), 'url':url or item.get('url',''),
              'status':'','http_status':'','format':'','bytes':'','sha256':'',
-             'drive_file_id':'','resolved_url':'','error':''}
+             'drive_file_id':'','resolved_url':'','error':'',
+             'url_scope':url_scope(url or item.get('url','')),
+             'instrument_verification':policy_source_relevance_status(url or item.get('url',''),kind)}
         if not url:
-            row.update(status='missing_source_url' if kind=='primary_policy' else 'invalid_url');result.append(row);continue
+            original=(item.get('url') or '').strip()
+            status=('non_https_source' if original.lower().startswith('http://') else
+                    'missing_source_url' if kind=='primary_policy' and not original else 'invalid_url')
+            row.update(status=status,error='Preserved original URL; manual HTTPS verification required' if status=='non_https_source' else '')
+            result.append(row);continue
         if (item.get('policy_id',''),url) in seen:continue
         seen.add((item.get('policy_id',''),url))
+        # Broad ministry homepages are useful pointers, but not a policy's original text.
+        # Never let HTTP 200 on a generic homepage inflate primary-evidence coverage.
+        if kind=='primary_policy' and row['url_scope']=='site_homepage':
+            row.update(status='source_too_broad',error='Institution homepage, not an identifiable policy instrument')
+            result.append(row);continue
         if kind=='primary_policy' and not is_official_url(url):
             row.update(status='needs_official_source_review',error='Host not in conservative government/institutional allowlist');result.append(row);continue
         old=by_url.get(sha_text(url))
@@ -300,7 +339,7 @@ def export_audit(drive,rows,prefix):
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     path=ROOT/f'{prefix}_Audit_{stamp}.csv'
     keys=['collected_at','policy_id','country','title','publisher','source_type','inventory_sha256','url','status','http_status',
-          'format','bytes','sha256','drive_file_id','resolved_url','error']
+          'format','bytes','sha256','drive_file_id','resolved_url','error','url_scope','instrument_verification']
     with path.open('w',encoding='utf-8-sig',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=keys,extrasaction='ignore');writer.writeheader();writer.writerows(rows)
     media=MediaFileUpload(str(path),mimetype='text/csv',resumable=True)
@@ -331,9 +370,17 @@ OFFICIAL_HOSTS={
  'law.go.kr','www.law.go.kr','moleg.go.kr','www.moleg.go.kr',
  'gov.sg','www.gov.sg','sso.agc.gov.sg',
  'wipo.int','www.wipo.int','unfccc.int','www.unfccc.int',
+ 'alberta.ca','www.alberta.ca','kings-printer.alberta.ca',
+ 'saskatchewan.ca','www.saskatchewan.ca',
+ 'ens.dk','www.ens.dk','wetten.overheid.nl',
+ 'u.ae','www.u.ae','www.bmwk.de','www.government.nl',
+ 'www.rvo.nl','english.rvo.nl','www.sodir.no',
+ 'www25.senado.leg.br','www.boletinoficial.gob.ar','www.althingi.is',
  'imo.org','www.imo.org','un.org','www.un.org',
 }
-OFFICIAL_SUFFIXES=('.gov','.gov.uk','.gov.cn','.gov.au','.gov.sg','.gov.ca','.gouv.fr','.gob.mx','.go.jp','.go.kr','.europa.eu','.gc.ca','.admin.ch','.gov.br','.gov.in','.gov.za','.gov.ie','.gov.no')
+OFFICIAL_SUFFIXES=('.gov','.gov.uk','.gov.cn','.gov.au','.gov.sg','.gov.ca','.gouv.fr','.gob.mx','.go.jp','.go.kr','.europa.eu','.gc.ca','.admin.ch','.gov.br','.gov.in','.gov.za','.gov.ie','.gov.no',
+ '.gov.ae','.gov.qa','.gov.kz','.gov.pl','.gov.ph','.gov.tr','.gov.ro','.gov.sa','.gov.ng','.gov.eg','.gov.my','.gov.om','.gov.co',
+ '.gob.ar','.gob.cl','.gob.es','.gob.pe','.go.th','.go.id','.gov.vn','.go.ug','.gov.gr')
 EXTRA_OFFICIAL_HOSTS=set()  # Add hostnames only after manually verifying their source authority.
 
 def is_official_url(url):
