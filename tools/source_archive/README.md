@@ -61,3 +61,14 @@ For human-approved exact URLs, use the versioned `policy_approval_template.csv` 
 The standalone Python collectors import adjacent `archive_core.py` in GitHub, while Drive scripts accept `ccus_archive_core.py`; both Colab notebooks embed the complete engine. Run `python tools/source_archive/test_source_discovery_v3.py` and the existing core tests before merging.
 
 **Evidence KPI:** 44 files currently preserved in the Policy Drive folder, but 36 non-homepage source candidates (not 36 legally verified originals). 44 broad canonical source URLs remain a provenance-repair backlog.
+
+
+## v4 policy discovery precision and evidence-state split (2026-10-30)
+
+The updated [Policy Colab notebook](https://drive.google.com/file/d/1rzFS8pcSsVocD1FlJXuSKRSHGv9fbEVH/view) now emits **three** private CSV reports: (1) archive audit, (2) candidate review, (3) `Policy_Official_Registry_Research_Backlog_<UTC>.csv`. The third CSV is a per-policy publisher/registry research instruction list (official domain hint, canonical ID, source status, priority and lookup route); it does **not** execute publisher searches or invent direct-document URLs. All 130 policies remain represented.
+
+The reviewer CSV distinguishes `archive_state` (including raw archival of a legacy agency homepage), `archived_source_file_id`, `discovery_state` (new URL suggestion vs no outbound link), `instrument_match_review_state` and `version_alignment`. No outbound suggestion never implies an archived file is missing. Candidate scoring excludes unrelated ANP privacy documents, IRS personal-credit pages, generic India budget reports and EU navigation, using exact title evidence, instrument identifiers and policy-specific terms. Older editions remain pending **historical** candidates.
+
+Offline: 23 tests pass, including 20 actual v3 bad-link fixtures; embedded Colab cell is parsed and executed with main disabled as a self-contained smoke test. This is **not a live Colab v4 success claim**. Run once and validate all three CSV exports and reviewer semantics before merging. Do not alter SQLite or auto-approve linked policies.
+
+See `V4_DISCOVERY_RELEASE_NOTES.md` for full scope and future publisher adapter boundary.
