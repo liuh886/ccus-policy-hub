@@ -23,13 +23,35 @@ An external consumer must be able to discover → validate → read → cite →
 
 ## Work queue in execution order
 
-| Priority | Deliverable | Concrete actions | Merge / release gate | Explicit stop point |
-| --- | --- | --- | --- | --- |
-| **P0** | Converge the mainline | Review #102 for source integrity, relation semantics, i18n and deployment; integrate on passing CI. Revise #101 to remove in-repository Q&A goals, point to product contract, and close/rescope conflicts. Retarget #103 onto updated main, run full CI and deploy. Keep #104 draft. | `main`, docs, public manifest and site agree; PR dependence clean; no speculative capabilities in README. | No schema, service or chat UI changes to finish this step. |
-| **P1** | Agent-ready **data consumption contract** | Verify/finish #103 bundles and discovery endpoints; validate schema, references, language fallbacks, statuses, timestamps, integrity/hash and negative cases. Document one **external consumer smoke test**, not a Q&A test. | Manifest → schema → bundle → source can be read without private runtime; identical input yields identical bytes; unsupported ID/lang fail explicitly. | Stop when data is consumable; do not grade agent-generated answers. |
-| **P2** | Minimal versioned regulation evidence | With #104 as candidate, freeze and review **one** official 45Q document version and **one** clause locator; report historical/current coverage limits. Verify tampering or extractor changes invalidate dependent anchors. Decide whether Git-hashed files plus existing structured metadata suffice **before** changing SQLite schema. | Primary source version + review + locator resolve; stale/altered evidence is rejected. Schema changes require separate justification and explicit approval. | No auto eligibility, condition engine, full statute coverage, bulk card generation or redundant fulltext storage. |
-| **P3** | Small cross-jurisdiction reuse | Add **2–3** high-value policy instruments from different legal designs through the **same** source/review/projection contract; preserve the existing human comparison pages. | No duplicate source of truth or jurisdiction-specific bypasses; citations/versions/caveats survive export; comparison methodology unchanged. | No universal legal knowledge graph, bulk ingestion or all-jurisdiction exhaustiveness. |
-| **P4** | Maintainability and research UX | Prioritize high-use policy-source fixes, selected facility records, missing reviewed Chinese analysis, source-change signals, publish-version consistency, small navigation/performance fixes. | Evidence-driven editorial queue, deterministic CI, deployed output checks, no regressions to human site or ESG30 reading. | No redesign, new CMS, additional analytics platform or blanket data enrichment without demonstrated value. |
+### P0 — Converge the mainline
+
+- **Actions:** Review and merge #102 after source, relationship, i18n and deployment checks; revise #101 away from Q&A acceptance; retarget #103 onto updated main and verify CI/deployment; keep #104 draft.
+- **Release gate:** Mainline, documentation, public manifest and deployed site describe the same capabilities.
+- **Stop here:** No schema, service or chat UI changes are needed for this stage.
+
+### P1 — Agent-ready data consumption contract
+
+- **Actions:** Finish #103 discovery/bundle schema, references, language, time, status and integrity semantics; document one external consumer smoke test, not a Q&A test.
+- **Release gate:** Manifest → schema → bundle → source works independently of a private runtime; deterministic bytes; invalid inputs fail explicitly.
+- **Stop here:** Do not grade agent-generated answers.
+
+### P2 — Minimal versioned regulation evidence
+
+- **Actions:** Use #104 as candidate; freeze and review one official 45Q document version and one clause locator; verify tamper/edition/extractor invalidation; test Git-hashed source files before approving any schema.
+- **Release gate:** Version, provenance, reviewer, locator and stale-state handling can be inspected; a proposed schema requires its own justified approval.
+- **Stop here:** No auto-eligibility, condition engine, full-statute ingestion, bulk cards or duplicate fulltext storage.
+
+### P3 — Small cross-jurisdiction reuse
+
+- **Actions:** Reuse the same evidence contract for 2–3 policy instruments across jurisdictions and keep the existing human comparison UI.
+- **Release gate:** No second data authority or policy-specific bypasses; citation/version limits survive export.
+- **Stop here:** No universal knowledge graph or bulk ingestion.
+
+### P4 — Maintainability and research UX
+
+- **Actions:** Improve high-use source data, selected facility records, reviewed Chinese analysis, source-change signals, publication consistency and small navigation/performance problems.
+- **Release gate:** Scoped CI, published output checks, no regression to the human site or ESG30 reading experience.
+- **Stop here:** No new CMS, redesign, extra analytics platform or indiscriminate enrichment.
 
 ### Existing maintenance work (not a competing product roadmap)
 
