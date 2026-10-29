@@ -12,10 +12,12 @@ The current implementation PR chain is **#102 → #103 → #104**. Each is an in
 
 ## P0 — Align existing work and audit original-source readiness
 
-- **Inputs:** #102 open, #101 draft, #103 open on #102, #104 draft on #103.
-- **Work:** Review and integrate #102 data quality, source review, relationship and i18n fixes; review updated #101 data-consumption criteria; retarget #103 to updated main, rerun CI and verify publishing; keep #104 in evidence review. Start [#106 original-source readiness audit](https://github.com/liuh886/ccus-policy-hub/issues/106) against the full policy inventory.
-- **Done:** Mainline, published data, README and this roadmap describe the same capabilities. Every policy ID is represented in a reproducible source-readiness inventory; separate counts disclose policy records, distinct original documents, editions and human-reviewed anchors. Existing geographic project-policy matches never count as direct evidence.
-- **Stop:** Do not introduce chat, agent inference, new databases or new services.
+- **Inputs:** #102 open, #101 draft, #103 open on #102, #104 draft on #103, [#106 original-source coverage](https://github.com/liuh886/ccus-policy-hub/issues/106), [#107 private acquisition and curation](https://github.com/liuh886/ccus-policy-hub/pull/107).
+- **Work — integration:** Review/merge this product-boundary PR (#105), then #102; finish #101 contract review; retarget #103 to `main`, rerun CI and verify Pages. Keep #104 draft until actual original/locator human review.
+- **Work — #107 source collector:** Fix the latest HEAD CI (Prettier); ensure Python tests for the shared collector, review-candidate scoring and notebook/source drift run in changed-scope CI. Preserve one authoritative Python module and prove the embedded Colab version is synchronized. Validate the v4 policy archive/candidate/research queue through an actual Colab run, without modifying SQLite.
+- **Work — #106 readiness inventory:** From canonical SQLite plus **observed** archival audit and reviewed evidence packets, generate a read-only per-policy report. Baseline after second Colab run: 130 policy IDs, 44 private Drive files (including broad pages), 36 non-homepage **unverified** candidates, 44 too-broad source URLs. Distinguish policies, unique original documents, editions and reviewed anchors. Record `unknown` explicitly.
+- **Done:** Mainline, published data, README and this roadmap agree. #107 has green **current-HEAD** CI covering Python + notebook sync, with real post-change Colab audit readback. All 130 policy IDs appear once in a reproducible source-readiness report: document identities/versions/anchors are distinct denominators; upload count or `policy.url` alone never means verified primary evidence. Geographic facility matches never count as direct evidence.
+- **Stop:** Do not introduce chat, agent inference, new databases, universal crawlers or new services. The private Drive archive is acquisition staging, not the public Agent-ready source of truth.
 
 ## P1 — Publish a consumable Agent-ready data contract
 
@@ -24,12 +26,14 @@ The current implementation PR chain is **#102 → #103 → #104**. Each is an in
 - **Done:** An independent consumer can discover, validate, read and cite data using public resources only, without the site's private runtime. The same inputs give byte-identical outputs.
 - **Stop:** Do not implement Q&A, prompt orchestration, RAG, MCP or answer-accuracy benchmarks.
 
-## P2 — Verify original-source evidence and seed a priority corpus
+## P2 — Review and publish citable original-source evidence
 
-- **Input:** P1, source gaps and priority order from #106, and candidate frozen evidence in #104.
-- **Work:** Finish the 45Q historical frozen-source plus human-reviewed locator pilot, then acquire and review a small cohort of high-impact official originals from the #106 inventory. Keep original/current/consolidated editions separate where relevant. Test more than one source format before generalizing extraction; respect source redistribution restrictions.
-- **Done:** A consumer can trace approved references to immutable source versions, valid locators and review states. The priority-corpus denominator, missing originals and unknown currentness remain visible; tampered, stale or unreviewed evidence cannot be silently represented as verified.
-- **Stop:** A single historical example proves the mechanism, not readiness of 130 policies. No automatic eligibility decisions, bulk condition cards, generic crawler or unapproved SQLite schema changes. Prefer versioned Git evidence files with existing SQLite records; do not duplicate full text in BLOB storage.
+- **Input:** P1, #106 audited source gaps, #107 verified originals/approval queue, #104's 45Q history pilot, and [#108 source-to-citable-context research](https://github.com/liuh886/ccus-policy-hub/pull/108).
+- **Work — source repair:** First validate identity/issuer/instrument/edition for the 26 archived candidates from the first run; compare the 10 new non-homepage candidates from the second run separately, using actual original bytes. Repair 44 broad homepage URLs to precise official documents through reviewed SQLite changes; separately triage 20 newly accepted official hosts, 7 initial 404s, six EUR-Lex HTTP 202 results and five legacy HTTP sources. **No guessing or silent URL rewriting.**
+- **Work — research and prototype (#108):** Compare Drive-only vs Git-backed version evidence + existing SQLite + static JSON vs new data store; demonstrate three **different** source types: historical 45Q HTML, one EU/UK regulation and one GCCSI PDF report. Define document identity/version/anchor/claim review relationships, independent consumers and permissions. Prefer reuse of #104's existing manifest and source packet.
+- **Work — publication:** Only after issuer, edition, quote/page or clause, and human-review scope are confirmed, publish minimal citable evidence. Report summaries remain **secondary sources**; neither PDFs nor web pages automatically substantiate legal applicability. Preserve historical editions and reject stale/altered/unreviewed citations.
+- **Done:** The #108 decision record includes concrete 45Q/EU-or-UK/GCCSI specimens with evidence identities, format-specific locators, licensing and review scope; an independent consumer can resolve approved references to immutable version/hash/locator and see draft/restricted/currentness gaps. For #106 each policy's source readiness remains visible; previously verified evidence regressions fail validation, not-yet-reviewed legacy records remain known backlog.
+- **Stop:** A single historical example proves the mechanism, not readiness of 130 policies. Do **not** copy licensed/private Drive PDFs into public Git or publish large text without permission. No automatic eligibility, bulk condition cards, generic crawler or unapproved SQLite migration. Prefer versioned Git evidence files (when redistributable) + existing SQLite records; no duplicate BLOB full text.
 
 ## P3 — Demonstrate limited cross-jurisdiction reuse
 
@@ -47,7 +51,8 @@ The current implementation PR chain is **#102 → #103 → #104**. Each is an in
 
 ## Existing maintenance queue
 
-- **Source completeness:** [#106](https://github.com/liuh886/ccus-policy-hub/issues/106) is P0: the 2026-07-22 source/URL gap report shows zero missing fields but does not check original document text, hash, version or human review. The single historical 45Q file in draft #104 cannot count as full coverage.
+- **Source completeness:** [#106](https://github.com/liuh886/ccus-policy-hub/issues/106) is P0: the 2026-07-22 source/URL gap report shows zero missing fields but does not check original bytes/hash/version/review. #107 second-run audit confirms 44 archived private files / 36 non-homepage policy candidates / 44 broad URLs, **not** verified legal-instrument coverage; the draft #104 historical 45Q is an isolated evidence pilot.
+- **Source-asset-to-context architecture:** [#108](https://github.com/liuh886/ccus-policy-hub/pull/108) researches report vs legal-primary-source provenance, authority/version/anchor relationships, public rights and independent Agent consumers. Implement only after actual three-source experiments and explicit scoped design decision.
 - **Policy depth:** #102 reports that 41 below-threshold verified records were corrected; confirm this on main after merge rather than claiming completion from an open PR.
 - **Analysis translation:** #102 reports 609 of 649 analytical dimensions still require reviewed Chinese versions; prioritize by use, while retaining explicit source language.
 - **Facility curation:** #102 identifies 65 remaining active-facility records; prioritize sources by value, not by an arbitrary universal news coverage target.
