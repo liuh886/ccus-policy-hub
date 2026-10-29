@@ -74,6 +74,9 @@ jobs:
       - name: Verify published policy context bytes and hashes
         run: pnpm context:check
 
+      - name: Consume public Agent-ready contracts independently
+        run: pnpm data:consume -- --root public
+
       - name: ESLint
         run: pnpm eslint .
 

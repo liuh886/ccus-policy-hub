@@ -9,11 +9,9 @@ import {
 } from './lib/source-evidence.mjs';
 import {
   loadEvidencePacket,
-  stageEvidenceCandidate,
-  previewEvidenceMigration,
   parseEvidenceArgs,
 } from './inspect-source-evidence.mjs';
-import { queryRows } from './lib/sqlite-query.mjs';
+import { sourceEvidenceFiles } from './lib/source-evidence-files.mjs';
 
 const packetPath = new URL(
   './data/evidence/us-45q-2024/packet.json',
@@ -30,7 +28,7 @@ test('frozen official pilot resolves unique versioned anchors and keeps historic
   const report = inspectEvidence(input, raw);
   assert.equal(report.source_current_through, '2025-01-06');
   assert.equal(report.source_currentness_verified, false);
-  assert.equal(report.anchors.length, 2);
+  assert.equal(report.anchors.length, 1);
   for (const a of report.anchors) {
     assert.equal(
       report.normalized_text.slice(a.start_offset, a.end_offset),
@@ -38,11 +36,8 @@ test('frozen official pilot resolves unique versioned anchors and keeps historic
     );
     assert.equal(a.offset_unit, 'utf16_code_units');
     assert.equal(a.state, 'needs_review');
-    assert.equal(a.publishable, false);
+    assert.equal(a.usable_as_reviewed_reference, false);
   }
-  assert.ok(
-    report.conditions.every((c) => c.state === 'unknown' && !c.publishable)
-  );
 });
 
 test('changed source or extractor invalidates previously reviewed anchor usability', () => {
@@ -51,24 +46,30 @@ test('changed source or extractor invalidates previously reviewed anchor usabili
     status: 'verified',
     reviewer: 'Fixture reviewer',
     reviewed_at: '2026-10-29',
+    method: 'human',
   };
   input.anchors.forEach((a) => (a.review = input.review));
-  assert.ok(inspectEvidence(input, raw).anchors.every((a) => a.publishable));
+  assert.ok(
+    inspectEvidence(input, raw).anchors.every(
+      (a) => a.usable_as_reviewed_reference
+    )
+  );
   const changed = inspectEvidence(input, raw, {
     observedRaw: Buffer.concat([raw, Buffer.from('changed')]),
   });
   assert.ok(
-    changed.anchors.every((a) => a.state === 'source_changed' && !a.publishable)
+    changed.anchors.every(
+      (a) => a.state === 'source_changed' && !a.usable_as_reviewed_reference
+    )
   );
   const parsed = inspectEvidence(input, raw, {
     extractorVersion: 'another-profile',
   });
   assert.ok(
     parsed.anchors.every(
-      (a) => a.state === 'extractor_changed' && !a.publishable
+      (a) => a.state === 'extractor_changed' && !a.usable_as_reviewed_reference
     )
   );
-  assert.ok(parsed.conditions.every((c) => c.state === 'unknown'));
 });
 
 test('corrupt raw bytes, extraction hashes, anchors and wrong editions fail closed', () => {
@@ -103,21 +104,11 @@ test('corrupt raw bytes, extraction hashes, anchors and wrong editions fail clos
   });
 });
 
-test('duplicate IDs, orphan conditions and unsupported source paths are rejected', () => {
+test('duplicate IDs and unsupported source paths are rejected', () => {
   let p = fresh();
   p.input.anchors.push(p.input.anchors[0]);
   assert.throws(() => inspectEvidence(p.input, p.raw), {
     code: 'DUPLICATE_ANCHOR',
-  });
-  p = fresh();
-  p.input.condition_drafts[0].anchor_id = 'missing';
-  assert.throws(() => inspectEvidence(p.input, p.raw), {
-    code: 'DANGLING_CONDITION',
-  });
-  p = fresh();
-  p.input.condition_drafts.push(p.input.condition_drafts[0]);
-  assert.throws(() => inspectEvidence(p.input, p.raw), {
-    code: 'DUPLICATE_CONDITION',
   });
   for (const field of ['source_url', 'raw_file']) {
     p = fresh();
@@ -150,90 +141,50 @@ test('normalization rejects unsupported entities and bounded source sizes', () =
   assert.throws(() => normalizeOfficialHtml(Buffer.from([0xff])));
 });
 
-test('draft staging is transactional, idempotent and retains all existing policy data', async () => {
+test('Git snapshot publication joins an existing policy, is deterministic and leaves SQLite unchanged', async () => {
   const SQL = await initSqlJs();
   const db = new SQL.Database();
   try {
     db.run(
-      "CREATE TABLE policies(id TEXT PRIMARY KEY, note TEXT); INSERT INTO policies VALUES ('us-45q-ira','unchanged')"
+      "CREATE TABLE policies(id TEXT PRIMARY KEY); INSERT INTO policies VALUES ('us-45q-ira')"
     );
-    const { input, raw } = load();
-    stageEvidenceCandidate(db, input, raw);
-    stageEvidenceCandidate(db, input, raw);
-    assert.equal(
-      queryRows(db, 'SELECT COUNT(*) n FROM source_document_versions')[0].n,
-      1
-    );
-    assert.equal(
-      queryRows(db, 'SELECT COUNT(*) n FROM source_document_anchors')[0].n,
-      2
-    );
-    assert.deepEqual(queryRows(db, 'SELECT * FROM policies'), [
-      { id: 'us-45q-ira', note: 'unchanged' },
-    ]);
-    const version = queryRows(db, 'SELECT * FROM source_document_versions')[0];
-    assert.equal(version.review_status, 'draft');
-    assert.equal(digest(version.raw_content), input.raw_sha256);
-    const conflict = structuredClone(input);
-    conflict.title.en = 'Another title';
-    assert.throws(() => stageEvidenceCandidate(db, conflict, raw), {
-      code: 'DOCUMENT_ID_CONFLICT',
-    });
-    assert.equal(queryRows(db, 'PRAGMA foreign_key_check').length, 0);
-    assert.throws(() =>
-      db.run("UPDATE source_document_versions SET review_status='verified'")
-    );
+    const before = digest(db.export());
+    const first = sourceEvidenceFiles(db),
+      second = sourceEvidenceFiles(db);
+    assert.deepEqual([...first.keys()], [...second.keys()]);
+    for (const [name, bytes] of first)
+      assert.equal(digest(bytes), digest(second.get(name)));
+    assert.equal(first.size, 4);
+    assert.equal(digest(db.export()), before);
+    db.run('DELETE FROM policies');
+    assert.throws(() => sourceEvidenceFiles(db), { code: 'POLICY_NOT_FOUND' });
   } finally {
     db.close();
   }
 });
 
-test('unknown policy rolls back DDL and candidates cannot self-promote', async () => {
-  const SQL = await initSqlJs();
-  const db = new SQL.Database();
-  try {
-    db.run('CREATE TABLE policies(id TEXT PRIMARY KEY)');
-    const { input, raw } = fresh();
-    assert.throws(() => stageEvidenceCandidate(db, input, raw));
-    assert.equal(
-      queryRows(db, "SELECT name FROM sqlite_master WHERE name LIKE 'source_%'")
-        .length,
-      0
-    );
-    input.review = {
-      status: 'verified',
-      reviewer: 'Fixture reviewer',
-      reviewed_at: '2026-10-29',
-    };
-    assert.throws(() => stageEvidenceCandidate(db, input, raw), {
-      code: 'REVIEW_PROMOTION_FORBIDDEN',
-    });
-  } finally {
-    db.close();
-  }
-});
-
-test('real SSOT preview creates only a disposable copy and leaves bytes unchanged', async () => {
+test('real policy database remains byte-identical during source projection', async () => {
   const dbPath = new URL(
     '../agent/ccus-ai-agent/db/ccus_master.sqlite',
     import.meta.url
   );
-  const before = digest(fs.readFileSync(dbPath));
-  const { input, raw } = load();
-  const result = await previewEvidenceMigration(dbPath, input, raw);
-  assert.equal(result.source_database_written, false);
-  assert.equal(result.schema_approval_required, true);
-  assert.equal(result.added_tables.length, 3);
-  assert.deepEqual(Object.values(result.candidate_table_rows), [1, 1, 2]);
-  assert.equal(digest(fs.readFileSync(dbPath)), before);
+  const bytes = fs.readFileSync(dbPath);
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(bytes);
+  try {
+    sourceEvidenceFiles(db);
+    assert.equal(digest(fs.readFileSync(dbPath)), digest(bytes));
+  } finally {
+    db.close();
+  }
 });
 
-test('CLI rejects writes, network fetches and unsupported or incomplete options', () => {
+test('CLI rejects migration, write, network and incomplete options', () => {
   for (const args of [
+    ['--preview-migration'],
     ['--write'],
     ['--fetch'],
     ['--file'],
-    ['--file', 'x', '--observed-file', 'y', '--preview-migration'],
   ])
     assert.throws(() => parseEvidenceArgs(args), { code: 'INVALID_ARGUMENT' });
 });

@@ -1,106 +1,95 @@
-# Versioned source evidence: 45Q pilot
+# Minimal versioned source evidence
 
-Status: **review preparation; schema approval pending**. This implements the
-offline validation and migration-preview part of S2 in [PR #101](https://github.com/liuh886/ccus-policy-hub/pull/101).
-It does not enable clause-level answers in the public S1 bundles.
+This revision follows the confirmed [product boundary in PR #105](https://github.com/liuh886/ccus-policy-hub/pull/105)
+and the owner review on #104. It supplies static Agent-ready source data,
+not a Q&A Agent or a qualification engine. The only active task queue remains
+`docs/ROADMAP.md` from #105; this guide documents the data interface and review.
 
-## Reviewable input
+## Storage decision
 
-The frozen input is the [official 2024 edition of 26 USC 45Q](https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartD-sec45Q.htm).
-Its embedded metadata says `currentthrough:20250106`; this is coverage through
-2025-01-06, not current law as of the retrieval date. The publication date is
-unknown in the packet and remains null. Retrieval date, edition, legal coverage
-date and project applicability are different concepts.
+The pilot needs one existing policy ID, one frozen original and one exact-text
+anchor. Git-versioned evidence files and the current SQLite policy record fully
+support that consumption path; no observed query/maintenance need justifies
+three new tables. The previous migration proposal, staging implementation and
+condition cards have been removed. There is no migration request to approve.
 
-- Frozen bytes: `scripts/data/evidence/us-45q-2024/source.html` (44,489 bytes).
-- Review input: `scripts/data/evidence/us-45q-2024/packet.json`.
-- Two exact-text anchors: section 45Q(d), and section 45Q(e)(3), including the
-  surrounding alternatives and exclusions rather than a detached threshold.
-- Three bilingual condition drafts: construction timing, category-dependent
-  capture thresholds, and DAC definition. Each names required inputs, but its
-  applicability period and exceptions remain `not_reviewed`.
-- Document and anchors remain `draft`, with no fabricated reviewer or approval.
-  Every condition reports `unknown` and `publishable: false`.
+- SQLite is the sole editable authority for accepted policy facts and analysis.
+- `scripts/data/evidence/us-45q-2024/source.html` is the sole archived original
+  input (44,489 bytes). Git preserves exact bytes; it is excluded from formatting.
+- Its sibling `packet.json` owns only snapshot identity, hashes, dates, locator
+  and source-review metadata. It does not duplicate or overwrite policy facts.
+- `public/data/evidence/` is a deterministic publication projection of those
+  inputs and an existing-policy join. Published copies are never maintenance
+  inputs. No original text or metadata is copied into SQLite BLOB storage.
 
-These inputs are an unaccepted review proposal. After approved import, SQLite
-holds accepted document metadata, original bytes, normalized text and anchors;
-the candidate files are replay inputs, never a second editable source of truth.
-No generator currently reads these candidates or publishes them to the website.
+Revisit storage only if actual multi-document/version queries or review
+maintenance cannot be managed reliably. Do not add a compatibility layer,
+service, legal corpus, graph or speculative tables for this single sample.
 
-## Commands
+## Provenance and historical scope
+
+The input is the [official 2024 edition of 26 USC 45Q](https://www.govinfo.gov/content/pkg/USCODE-2024-title26/html/USCODE-2024-title26-subtitleA-chap1-subchapA-partIV-subpartD-sec45Q.htm).
+The embedded `currentthrough:20250106` is coverage through 2025-01-06. It is not
+current law as of retrieval. Publication date remains null; retrieval time,
+code edition, coverage cutoff and legal-effective dates are distinct.
+No later amendment or guidance coverage is asserted.
+
+The 2025-edition endpoint previously returned an HTTP 200 error page; the
+validator rejected it instead of accepting transport success as source validity.
+The existing 2025 record's foreign-entity timing still needs review against
+[Public Law 119-21, section 70522(a)/(d)](https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm).
+This change does not alter that record or resolve legal interpretation.
+
+## Consumer path
+
+1. Read manifest `datasets.source_evidence.file` and `schemas.source_evidence`.
+2. Read the index, select the policy/document ID and resolve the record URL
+   relative to the index (preserving the site's base path).
+3. Validate the JSON with the published schema and verify its index hash.
+4. Read `raw_file` and `normalized_file`, both relative to the index. Verify
+   their SHA-256 against the record. Original HTML is served as `.html.txt` so
+   consumers read bytes as data rather than execute them as same-origin HTML.
+5. Resolve the anchor by document ID, raw hash, extractor version and anchor ID.
+   Its UTF-16 offsets must reproduce the exact quote from normalized text.
+6. Read review state, `usable_as_reviewed_reference`, historical coverage and
+   gaps. A draft is available for inspection, never presented as reviewed evidence.
+
+The record is `source_document` evidence. The frozen original and one locator
+are sufficient to test reference mechanics; they do not make database summaries
+clause evidence. No automatic project association or legal conclusion is added.
+
+## Commands and negative checks
 
 ```bash
+pnpm gen
 pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json
-
-# Stage the proposed schema and draft rows in a disposable in-memory clone.
-pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json --preview-migration
-
-# Compare independently downloaded bytes without accepting or replacing them.
-pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json --observed-file /path/to/new-source.html
+pnpm --silent evidence:inspect -- --file scripts/data/evidence/us-45q-2024/packet.json --observed-file /path/to/download.html
+pnpm data:consume -- --root public
 ```
 
-Successful commands print JSON. Errors print `error.code` and `error.message`
-on stderr and exit nonzero. No command fetches sources or writes SQLite. There
-is intentionally no `--write` option before schema approval. Invalid IDs, file
-names, source URLs, duplicate references, missing quote text, malformed UTF-8,
-unsupported entities and hash mismatches fail explicitly.
+Commands print JSON; invalid input gives a nonzero exit and structured stderr.
+No command fetches sources, writes SQLite or accepts `--write`/`--preview-migration`.
+An observed raw hash change yields `source_changed`; extractor changes yield
+`extractor_changed`. Neither can silently reuse review of the old extraction.
+Historical bytes remain available. Raw/text tampering, unsupported entities,
+wrong editions, invalid paths, non-unique quotes and dangling policy IDs fail.
 
-## Version and anchor contract
+The standalone consumer uses only public resources and standard JSON Schema
+validation (AJV/ajv-formats, development dependencies). It imports no SQLite,
+Astro, private source parser or generator and produces no Agent answer. It also
+validates all six bilingual context bundles and their references/hashes.
 
-1. SHA-256 pins the exact archived HTTP response bytes. Git line-ending
-   conversion and Prettier are disabled for those bytes.
-2. `govinfo-usc-html-v1` accepts the specific GPO USC 45Q HTML profile. It checks
-   document markers, removes non-content markup, decodes supported entities,
-   normalizes NFC/whitespace and retains visible content and headings. It is
-   not a general-purpose scraper. An HTTP 200 error page fails validation.
-3. A second hash pins the normalized text. Changing the extractor requires a
-   new extraction version and new review, even if the source bytes are equal.
-4. A quote must resolve exactly once in that text. Offsets are explicitly
-   UTF-16 code units, so JavaScript consumers can reproduce `slice(start,end)`.
-5. Changing observed source bytes yields `source_changed`; changing the
-   extractor yields `extractor_changed`. Both make dependent anchors unusable
-   for the newly observed state. Historical evidence is retained, not deleted.
-6. Only an explicitly reviewed document and anchor can be usable as a reviewed
-   historical citation. This does not prove currentness, legal interpretation,
-   a condition's satisfaction, or tax eligibility. Candidate staging forbids
-   promoting either document or anchor to `verified`.
+## Human review gate
 
-## Proposed storage
+The real document and the single `26 USC 45Q(d), 2024 edition` anchor remain
+`draft`, `method: not_reviewed`, with null reviewer/date. The pending review is
+visible in both the public record and consumer output; P2 is **not complete**.
+Positive verified-state tests use explicit synthetic review records only.
 
-The [migration manifest](../agent/ccus-ai-agent/migrations/2026-10-source-evidence/manifest.md)
-and `proposed-schema.sql` describe three additive tables:
-
-| Table                      | Responsibility                                                                                       |
-| -------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `source_documents`         | Stable document identity, policy association, bilingual title and official URL                       |
-| `source_document_versions` | Exact bytes, raw/text hashes, extractor version, edition, retrieval/coverage dates and review record |
-| `source_document_anchors`  | Version-bound quote, locator, offsets and independent review record                                  |
-
-The composite version key is `(document_id, raw_sha256, extractor_version)`.
-Foreign keys prevent orphan anchors; staging rejects replacement of a pinned
-version or anchor, is transactional and can be replayed without duplicate rows.
-Existing policies, analyses, scores and relationship semantics do not change.
-`db/schema.sql` remains unchanged until approval and actual migration.
-Condition drafts are not imported by this proposal; their eventual governed
-storage and condition-evaluation workflow are a later S3 change.
-
-## Review findings and remaining work
-
-- The 2024 snapshot predates the 2025 amendment and cannot answer present-law
-  questions by itself. Attempts to retrieve a 2025 edition returned an error
-  page despite HTTP 200; that response was rejected rather than archived as law.
-- The existing 2025 record's phased foreign-entity timing needs review against
-  [Public Law 119-21, section 70522(a) and (d)](https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm).
-  No database narrative or timeline was silently corrected in this proposal.
-- Before publishing clause evidence, freeze the enacted amendment and applicable
-  regulations/guidance, review the extraction against the original, record a
-  real reviewer/date, and review the conditions' time boundaries and exceptions.
-- Project-specific evidence remains absent; no facility association is inferred.
-
-## Verification
-
-Tests cover exact quote recovery, byte/hash integrity, source/parser invalidation,
-draft review gates, null publication date, error-page rejection, duplicate and
-orphan references, foreign keys, transactional rollback, idempotent staging,
-and byte-identical preservation of the real SSOT during preview. None of those
-tests substitutes for legal-content review by the approving maintainer.
+A human reviewer must inspect the original and the complete section (including
+alternatives and category-specific requirements), compare the exact normalized
+quote and offsets, and confirm this historical edition's coverage. Only after
+explicit human approval may the packet record `method: human`, reviewer/date
+and verified status for the reviewed document and anchor. Approval of the data
+locator is not approval of current-law interpretation, tax eligibility or an
+Agent-generated answer. No automatic review promotion is implemented.

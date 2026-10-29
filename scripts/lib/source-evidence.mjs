@@ -20,11 +20,14 @@ const review = z
   .object({
     status: z.enum(['draft', 'verified']),
     reviewer: z.string().trim().min(1).nullable(),
+    method: z.enum(['not_reviewed', 'human']),
     reviewed_at: date.nullable(),
   })
   .strict()
   .refine(
-    (v) => v.status !== 'verified' || (v.reviewer && v.reviewed_at),
+    (v) =>
+      v.status !== 'verified' ||
+      (v.method === 'human' && v.reviewer && v.reviewed_at),
     'Verified evidence requires a named reviewer and date.'
   );
 export const evidencePacketSchema = z
@@ -65,21 +68,6 @@ export const evidencePacketSchema = z
           .strict()
       )
       .min(1),
-    condition_drafts: z.array(
-      z
-        .object({
-          id,
-          anchor_id: id,
-          requirement: z
-            .object({ en: z.string().min(1), zh: z.string().min(1) })
-            .strict(),
-          required_inputs: z.array(id).min(1),
-          applicable_period: z.literal('not_reviewed'),
-          exceptions: z.literal('not_reviewed'),
-          status: z.literal('draft'),
-        })
-        .strict()
-    ),
   })
   .strict();
 
@@ -207,20 +195,9 @@ export function inspectEvidence(
       end_offset: start + anchor.exact_quote.length,
       offset_unit: 'utf16_code_units',
       state,
-      publishable: state === 'verified',
+      usable_as_reviewed_reference: state === 'verified',
     };
   });
-  const conditionIds = new Set();
-  for (const card of packet.condition_drafts) {
-    if (!ids.has(card.anchor_id))
-      throw new EvidenceError('DANGLING_CONDITION', 'Condition has no anchor.');
-    if (conditionIds.has(card.id))
-      throw new EvidenceError(
-        'DUPLICATE_CONDITION',
-        'Condition IDs must be unique.'
-      );
-    conditionIds.add(card.id);
-  }
   const currentThrough = /currentthrough:(\d{4})(\d{2})(\d{2})/.exec(
     new TextDecoder().decode(raw)
   );
@@ -251,13 +228,8 @@ export function inspectEvidence(
     source_current_through: packet.source_current_through,
     source_currentness_verified: false,
     observed_source_changed: changed,
-    requires_review: anchors.some((a) => !a.publishable),
+    requires_review: anchors.some((a) => !a.usable_as_reviewed_reference),
     anchors,
-    conditions: packet.condition_drafts.map((card) => ({
-      ...card,
-      state: 'unknown',
-      publishable: false,
-    })),
     normalized_text: text,
   };
 }
