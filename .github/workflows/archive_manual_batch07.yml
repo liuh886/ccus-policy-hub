@@ -1,0 +1,31 @@
+name: Manual official-policy source acquisition 07
+on:
+  push:
+    paths:
+      - '.github/workflows/archive_manual_batch07.yml'
+      - 'tools/source_archive/manual_acquisition_batch07.csv'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch07.yml'
+      - 'tools/source_archive/manual_acquisition_batch07.csv'
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire document originals and compute hashes
+        run: POLICY_OUTPUT=policy_source_evidence_batch07 python tools/source_archive/manual_acquire_batch04.py tools/source_archive/manual_acquisition_batch07.csv
+      - name: Retain audited candidates without approval
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-source-evidence-batch07
+          path: policy_source_evidence_batch07/
+          retention-days: 7
+          if-no-files-found: error
