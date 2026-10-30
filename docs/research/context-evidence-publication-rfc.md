@@ -263,6 +263,262 @@ GET /ccus-policy-hub/data/manifest.json
 - [ ] public 产物没有私有 Drive ID、登录 token 或无权公开的原件全文。
 - [ ] 证明新表/检索服务确属必要前不加；项目仍不实现站内 Agent 问答。
 
+## 9A. Round 1 专题：跨报告与法规的资料发现优先（2026-10-30）
+
+**用户已明确选择**：第一阶段不是先给定一个 policy ID 再取引用，而是由
+**研究问题 → 跨政策、法规、行业报告与本站研究的候选发现 → 候选核验 → 可引用证据**。
+这是产品需求优先级的已确认决定，**不是**“首阶段必须引入语义向量搜索”
+或“检索命中自动构成已审核证据”的授权。
+
+### 9A.1. 现有仓库对搜索已经做了什么
+
+本轮实际检查 \`main@5333279c\`：
+
+- \`package.json\` 已直接依赖 \`pagefind@^1.4.0\`，\`build\` 是
+  \`astro build && ... && pagefind --site dist --output-path dist/pagefind\`。
+- \`src/components/Search.astro\` 已通过 PagefindUI 提供网站全文搜索和建议词；
+  \`SearchPage.astro\` 当前宣称检索政策、标准、设施，但实际以**构建后的 HTML**为
+  索引对象，不能由此推断私有 Drive 原始 PDF 或未公开的法规文件已被索引。
+- \`src/components/DocsIndex.astro\` 提供 ESG30 等报告入口；
+  \`public/reports/2601_ESG30/index.html\` 是可公开阅读的同步论文页面。
+  网页可被 Pagefind 索引不等于它引用的**所有原始 PDF / 法律文书**都可被检索。
+- \`scripts/generate-public-data.mjs\` 生成 \`policies.json\` 等静态数据，
+  \`#103/#104\` 有尚未合并主干的 context/source evidence 索引与独立消费路径；
+  **发现服务必须复用这些已有投影，而不是维护第二张手填文献库**。
+- \`#107\` 的私有 Drive 原始归档不是 public corpus；\`#111\` 的 readiness 是审计，
+  不是文献检索索引。二者不能自动成为对外可搜索的全文。
+
+**外部工具能力已核实**：Pagefind 官方 Node API 的 \`createIndex\`、
+\`addDirectory\`、\`addCustomRecord\`、\`writeFiles\` 能将网站 HTML
+与非 HTML 的**合法公开文本投影**写入**同一个**静态索引。
+\`addCustomRecord\` 支持 \`url\`、\`content\`、\`language\`、
+\`meta\` 和 \`filters\`；官方 JavaScript API 支持全文搜索及筛选；
+支持中英文分语言索引和中文分词。参考：
+
+- https://pagefind.app/docs/node-api/
+- https://pagefind.app/docs/js-api-filtering/
+- https://pagefind.app/docs/multilingual/
+- https://pagefind.app/docs/sub-results/
+- https://pagefind.app/docs/metadata/
+
+**重要的运行约束**：Pagefind 现有文档承诺的是**浏览器 JS 搜索 API**，
+以及构建时 Node 的**索引 API**，不是可供任意服务器 HTTP GET
+\`/search?q=\` 的现成 REST 服务，也未在本项目证明 Node 脚本能直接运行
+生产 Pagefind 的浏览器查询 API。不能把“网站能搜”偷换成“任何外部 Agent
+通过普通 HTTP 可以提交关键词查询”。以下设计必须分别验收人类浏览器搜索、
+外部 Agent 的可消费发现清单与真实检索动作。
+
+### 9A.2. 三种检索对象，不能只做一个 PDF 大文本库
+
+**第一类：catalog / 目录记录（可大范围发现）**
+
+- 来自已接受的 \`policy_id\` 结构化记录、真正存在的 GCCSI/ESG30 报告、
+  已确认的 \`source_document_id\`，只读生成，不凭 URL 字符串虚构法规身份。
+- 最少包含稳定对象 ID、title、publisher/issuer、language、jurisdiction、
+  year/date（字段口径明确）、\`kind\`（policy / legal_primary /
+  secondary_report / site_research）、原来源 URL、\`evidence_level\`
+  和 \`readiness\`。无对应原始资料时可以发现政策摘要，必须标
+  \`record_summary_only\`。
+- 目录级命中回答**“可能在哪里”**，不是**“哪一条法条已证明”**。
+
+**第二类：discoverable passage / 可定位文本片段（精确发现）**
+
+- 仅从合法允许**公开编入搜索索引**、来源身份和版次可追溯的输入生成。
+  一个片段保留 \`source_version_id\`、\`anchor_id\`、
+  \`parent_id\`、\`language\`、\`locator\`、\`raw_sha256\`、
+  原文短引文或已允许公开的文本、\`review_scope\`。
+- 法规优先按**条/款/编号标题**切；报告优先按
+  **章节段落或 PDF 物理页 + 图/表编号**切；
+  不跨不相干页面/法条做固定字符数滑窗，不以切块编号代替法律锚点。
+- PDF 的 page_index、显示页码、表题、单位、统计期、脚注应由
+  原始 PDF 对照；仅获得提取器输出时保留 \`locator_review=pending\`。
+  一个版本可以有多个 passage，**不是每个 passage 都已被审核为合法引用**。
+
+**第三类：claim / 已发表的具体事实或研究判断（证据关系）**
+
+- 例如政策分析的某一条判断或报告的某个数据点；只能在已经有
+  \`claim_id → exact source anchor\` 的受审关联时显示
+  \`reviewed_support\`。没有这个关联时，搜索摘要的关键词命中
+  仍只返回“候选来源”，不转换成证据结论。
+- 报告里的结论默认是**二次研究证据**，不能自动晋级
+  \`legal_primary\`；法规原文提到某项目，也不证明该项目资格成立。
+
+最小可公开 \`DiscoveryRecord\` 应是**投影**，不是新权威实体表：
+
+~~~json
+{
+  "record_id": "illustration:policy:us-45q-ira",
+  "kind": "policy_summary",
+  "parent_id": "us-45q-ira",
+  "lang": "en",
+  "title": "Section 45Q — policy record",
+  "query_text": "carbon capture tax credit qualified facility 45Q",
+  "evidence_level": "record_summary",
+  "review_status": "not_reviewed_as_clause",
+  "source_version_id": null,
+  "anchor_id": null,
+  "access": "public_metadata_only",
+  "resolve_ref": "policy:us-45q-ira"
+}
+~~~
+
+本例是字段论证，**不是已生产的记录，也未证明政策文字已审核**。
+\`query_text\` 是可公开的目录描述，而不是偷偷抄录受版权限制的全文。
+
+### 9A.3. 推荐的最小实现：一个受治理发现投影，复用一个 Pagefind
+
+~~~text
+SQLite accepted policies / 已发布研究元数据 / Git reviewed packets
+                  │                     ▲
+#107 Drive archives + review queue ─────┘（经显式审核后才可入公开输入）
+                  │
+         只读 deterministic discovery projection
+           ├── catalog entries（政策/报告/已确认文书）
+           └── permitted anchored excerpts（已定位、许可范围内）
+                  │
+       生成静态 metadata / record ID → source evidence refs
+                  ├── public JSON 发现清单（外部机器只读）
+                  └── 同一批可公开记录进入 Pagefind 索引
+                         │
+     Astro HTML（现有页面） + addCustomRecord（非 HTML 文本）
+                         │
+             dist/pagefind（仍然只有一个索引输出）
+                  │
+       人类搜索结果 / 浏览器内 Agent 调用 Pagefind JS
+                  │
+       resolve record → evidence manifest / context bundle
+                  │
+          版本与权限校验 → cite 或 explicit gap
+~~~
+
+**优先复用现有依赖**：将现有构建末尾的 Pagefind CLI
+改成最小的 Node build wrapper（前提是 E0 smoke test 通过）：
+创建**一个** index → \`index.addDirectory({path:"dist"})\`
+→ 对**仅允许公开**的非 HTML 目录/片段用 \`addCustomRecord\`
+→ \`index.writeFiles({outputPath:"dist/pagefind"})\`。
+不并行保留旧 CLI 和新索引输出两套权威。
+Pagefind \`meta\` / \`filters\` 使用 \`kind\`、
+\`jurisdiction\`、\`language\`、\`document_edition\`、
+\`evidence_level\`、\`review_status\` 等单值/多值标签；
+稳定 source/anchor ID 另由公开 JSON 与真实 resolver 检查。
+
+**候选 URL 必须真正可访问**：每条自定义记录 \`url\` 应指向已发布的
+来源卡片/报告页/政策页及可核验的片段锚点。
+先验证 \`addCustomRecord\` 返回结果 URL、子片段锚点、
+GitHub Pages \`/ccus-policy-hub/\` base path 的实际行为；
+不能给不存在的 \`/sources/...\` 页面编造链接，也不能假设 URL
+中带 \`#fragment\` 就能令 Pagefind 把两个记录区分为不同页面。
+遇到同一来源的多个 passage，先试现有 HTML heading ID + Pagefind
+\`sub_results\`，必要时为**可公开**片段生成轻量静态详情页。
+
+**版权与秘密有一个容易忽略的漏洞**：Pagefind 索引文件也会被公开下载。
+即使正文页面被隐藏，若把 Drive 中受限 PDF 的全文放进
+\`addCustomRecord.content\`，等同于公开分发。
+因此权限判定在**构建索引前**执行：
+\`unknown/restricted\` → 只允许授权公开的目录书目信息或明确可用的摘要；
+不可索引私有 PDF 正文、长段摘录、Drive ID、token 或仅供内部审核文本。
+\`preview_snippet\` 不能因为搜索需要就绕过再分发许可。
+
+### 9A.4. 外部 Agent 怎样从研究问题发起检索？
+
+本轮**分别定义两条消费路径**，使用相同公开记录及审核边界：
+
+**路径 A：浏览器搜索（现有能力直接延伸）**
+
+用户或有浏览器能力的 Agent 在已有搜索页输入
+“CCS saline aquifer monitoring”“碳封存 监测”“45Q qualified facility”
+等，Pagefind 返回跨网站页面 + 已授权文书/报告片段。
+结果附 \`kind\`、日期、证据等级、版次、审核、可达链接；
+点击后读取 source evidence，再确认是否可引用。
+
+**路径 B：纯 HTTP/Node 的外部 Agent（仍需 E0 确认）**
+
+Agent 可 \`GET\` 静态的**发现清单和 Schema**，根据下载的公开字段
+在自己的计算环境进行词项匹配/候选选择，按 ID 取完整来源凭条。
+这至少是**可机器发现**，但若仅能下载大 JSON 全表再自己搜索，
+并不等于项目提供了一个高效的远程**检索 API**。
+第一轮必须用真实外部 Node 客户端试验：
+能否直接复用 Pagefind 已生成索引完成查询；
+如果不支持，则评估**按 kind/lang 分片的 JSON 目录**，
+在本地只做一次检索的实际网络代价；禁止为了文档漂亮而虚构
+\`GET /api/search?q=\`。若实测证明高效 HTTP 查询不可避免，
+作为**另一个经验证的问题**讨论最小动态服务，而非第一阶段预设。
+
+**跨语言与领域术语**：Pagefind 的多语言索引通常按页面 \`lang\`
+分开，中文检索与英文检索不一定自然互通；不能承诺单次中文问题
+直接召回全部英文法规。E0/E1 用中英两语分别对照，
+必要时**复用已有已审双语政策标题/术语映射**构造轻量
+\`query_aliases\`，例如 CCS/CCUS/碳捕集封存、
+DAS-VSP、45Q、Class VI、SDE++。引用引文始终保留
+**来源原语言**，未经审校的自动翻译不得当原文片段。
+
+### 9A.5. 检索阶段的排序与可信度严格分开
+
+- **相关性**由检索器负责（主题词匹配、标题、已知法条编号、
+  文档版次、领域术语）；**证据可信度**由 review/status/rights
+  来源凭条负责。两者禁止相乘成“法律可靠度 93%”。
+- 类别/发布方/法域/版次/语言/审核状态为可筛选元数据；
+  \`legal_primary\`、\`secondary_report\` 和 \`policy_summary\`
+  即使命中相同关键词也不可合并成同类证据。
+- 查询结果必须展示**哪个 record 被命中**、属于哪个
+  \`document_id/source_version_id/anchor_id\`；
+  缺少来源锚点时返回目录候选及缺口，而不是伪造精确页码。
+- 同一法律 2024、2025 版可都被发现，但默认搜索不能
+  自动将“更晚抓取”排为“当前现行法”；旧版必须显式 \`historical\`。
+- 对同一 PDF 跨多段命中的重复结果，先按 source/version 汇聚展示；
+  保留片段级 match 列表；绝不丢失其各自 locator。
+
+### 9A.6. E0–E2 可执行实验：先证明发现值得信赖
+
+**E0 — 当前 baseline 和 Node API 可行性（不动生产库）**
+
+- 固定同一 Git commit、Pagefind 版本和已有 \`dist\`；
+  记录只索引 HTML 时的索引页数、文件大小、
+  中英两种查询及截图/结果，不用主观“效果不错”代替证据。
+- 用 \`pagefind.createIndex/addDirectory/addCustomRecord/writeFiles\`
+  只加入**3 条允许公开的合成记录**：
+  法条、报告段落、仅有元数据的 restricted 报告。
+  验证结果 URL、base path、lang、filter、无重复网页命中、
+  不包含禁止发布的测试原文。只检验合成数据和排序行为，不称真实内容已审。
+- 验证纯 Node 外部消费者能否直接对生产索引搜索；
+  若不能，记录失败原因及最小 JSON 目录消费成本。
+  不能以“Pagefind Node 可以建索引”证明“Node 可以远程搜索”。
+
+**E1 — 三类真实资料的目录发现**
+
+- 取一条已接受政策摘要、#104 的历史 45Q 文书、
+  一份有合法书目信息的 GCCSI 报告，形成**3 个目录记录**。
+  再仅对许可和定位条件通过者选一条 passage，
+  把 pending 与 reviewed 分别展示。
+- 五组故意刁钻的查询：
+  \`45Q qualified facility\` / \`Class VI primacy\` /
+  \`CCS Progress in China\` / \`咸水层 二氧化碳封存\` /
+  \`2009/31/EC\`。每组明确 expected corpus、允许的结果证据类型
+  和是否存在真实原文。找不到不能编结果；搜索命中不能自动通过 review。
+- 至少一组跨英文法规与中文报告的**不匹配对照**，
+  检验 query alias 扩展是否误把不同术语指向错误法规。
+
+**E2 — 发现 → 凭条 → 可复核引用闭环**
+
+- 消费者从**未知 ID 的研究问题**检索，拿到候选 record ID；
+  跳转同一版本 source packet/manifest，检查哈希、权限、review、
+  locator，成功则形成 citation receipt，否则明确 \`candidate_only\`。
+- 负例：官方主页误当法规、PDF 索引泄露全文、HTTP 200 错误页、
+  两个版本内容混用、已审页面但未审 claim、zh 片段拿 en 原句冒名、
+  index 中孤儿 URL、索引对应旧 release SHA。
+- 对搜索质量只统计**候选发现效果**：
+  top-5 是否有事先标注的相关来源、搜索结果能否 resolve、
+  误命中率、重复率、索引大小/首查加载量/生成耗时、
+  权限泄露数（必须 0）与 reviewed 自动晋级数（必须 0）。
+  不在本站评测 Agent 最终回答准确率。
+
+**停止/升级门槛**：如果现有 Pagefind + 审核后的公开片段能满足
+上述小样本发现及外部 Agent 的可用读取能力，批准最小构建插件，
+不引入向量库。只有观察到**跨概念/跨语种召回无法通过术语映射解决**，
+或对外纯 HTTP 关键词检索确有无法满足的消费者要求，
+才记录反例，比较轻量语义检索或托管检索服务，并在 ROADMAP
+明确成本、权限、延迟、可复现性后单独决策。
+
 ## 10. 持续讨论与决策日志
 
 **记录规则**：PR Conversation 是主讨论记录；本节仅保存可归纳的**结论与其证据**，保留争论和被否决方案的链接。状态必须是 proposed / accepted / rejected / superseded，不能仅因提交文档便写 accepted。每次关键修改应追加日期、问题、备选方案、决定依据、具体变更 SHA、待验证反例；旧决定如果失效，只标 superseded，不悄悄改写历史。一个 PR 讨论到达真实实验验证、被用户确认的最小实现方向后，才将实施任务回填 docs/ROADMAP.md 并建立代码 PR。
@@ -271,9 +527,13 @@ GET /ccus-policy-hub/data/manifest.json
 - **D-002** — 问题：公开 Agent 能拿到什么；初始立场：可读元数据 + 审核强度 + 版本 + locator；原文字节取决于许可；状态：proposed；所需证据：一份可公有、一份 restricted PDF 样例
 - **D-003** — 问题：政策/文书关系怎样表达；初始立场：版本化 source 与现有 policy ID 的经审核显式关联；多对多，投影生成索引；状态：proposed；所需证据：两份文书服务同政策 / 一份文书对应两政策
 - **D-004** — 问题：Citation 精度；初始立场：HTML 用原句/定位，PDF 用物理页 + 短引文/表号；不得只有 document URL；状态：proposed；所需证据：PDF 与 HTML 的独立消费测试
-- **D-005** — 问题：是否要全文索引/向量检索；初始立场：不纳入本轮 P0/P1；先测试按 ID/目录取证；需求不足不加；状态：proposed；所需证据：实际外部 Agent 消费任务的检索失败日志
+- **D-005** — 问题：是否要全文索引/向量检索；初始立场（Round 0）：只按已知 ID/目录取证，不先试文献检索；**状态：superseded by D-008**；理由：用户已明确第一阶段资料发现优先；来源链接：本 PR Round 1 评论。是否引入向量检索仍是独立的待验证问题
 - **D-006** — 问题：Muse 分享页究竟有什么值得复用；初始立场：用户提供链接，**尚未可读取内容**，具体设计待验证；状态：open；所需证据：可见页面内容或来源明确的截图
 - **D-007** — 问题：“审核通过”审核到哪一级；初始立场：文书身份、版次、定位、具体主张支持分别审核；状态：proposed；所需证据：一条 draft locator 与已审 locator 的反例演示
+- **D-008** — 问题：首期检索任务优先级；决定：研究问题驱动的**跨报告/法规资料发现优先**，然后做核验与引用；状态：**accepted (product priority only)**；依据：用户在本 PR 后续对话直接选择“资料发现优先”；这不是自动晋级引用或向量数据库授权
+- **D-009** — 问题：首期检索引擎与索引；建议：复用项目已安装的 Pagefind Node API 在同一 `dist/pagefind` 中索引 HTML + 经许可、带版本/定位的非 HTML 投影；状态：**proposed**；证据：Pagefind 官方 Node API/过滤/多语言文档，尚未运行本仓库 E0
+- **D-010** — 问题：非浏览器外部 Agent 如何按研究问题检索；建议：发布明确可读的静态目录并实测独立 Node 客户端；**不宣称 Pagefind 浏览器索引本身是 HTTP Search API**；状态：**proposed**；证据：E0 对当前 Node/JS 构建与网络消费的实测
+- **D-011** — 问题：哪些文档允许进入公开全文索引；建议：将原文再分发与索引权限一并审核；受限来源只能索引合法元数据；状态：**proposed**；证据：一例 private GCCSI PDF 和一例公开法规的真实权限/泄露负例
 
 ### 2026-10-30 / Round 0 — 初版问题定义
 
@@ -282,9 +542,17 @@ GET /ccus-policy-hub/data/manifest.json
 - **本轮建议**：先完成 **citation receipt 的版本/定位/审查/权限含义**，再实现一份 HTML + 一份 PDF 的最小端到端数据路径；条件卡、RAG、问答和图谱不属于本站首个闭环。
 - **没有完成**：Muse 具体页面内容审查；三份真实原文的身份/许可审核；PDF extractor 的跨版定位测试；线上消费发布。不会将这些标记为 shipped。
 
+### 2026-10-30 / Round 1 — 用户明确选择资料发现优先
+
+- **产品决定已接受（D-008）**：外部 Agent 首期应能从研究问题出发，跨 GCCSI 报告、法律原文、已接受政策记录与本站研究定位**候选资料**；之后再验证来源版本和引文。Round 0 的“先按已知 ID 精准引用”优先级被此决定取代。
+- **仓库核查**：主干已安装 Pagefind；现有 `build` 仅索引 `dist` HTML；PDF/法规私有 Drive 文件不在当前公开索引。官方 Node API 有 `addCustomRecord`，可研究复用相同索引，但还没有本项目实测证明跨语种/跨文书检索质量。
+- **本轮新增论证**：第 9A 节的目录/片段/claim 三层发现数据、单一 Pagefind 索引方案、静态 Agent 入口限制、许可/审核防泄露、E0–E2 检索负例及性能测量。
+- **状态边界**：D-008 是已经确认的需求优先级；D-009、D-010、D-011 是待实验证明的技术方案。没有声称 Pagefind custom records 已落地或公开索引已有任何 GCCSI PDF 原文。
+- **下一轮必须回答**：真实外部 Agent 用何种工具提交研究问题？首个报告 passage 是否允许对公众全文索引？这两个问题决定是否仅需构建端插件，以及机器消费者的最低网络成本。
+
 ### 需要下一轮讨论的核心问题
 
-1. **主产品形态**：你希望外部 Agent 首先按已知政策 ID 精准引用，还是需要像文献检索工具那样按自然语言从所有报告中发现具体数据段落？这两种需求会改变是否必须做全文检索，但不改变证据审核基础。
+1. **首个用户任务已定**：研究问题驱动的跨报告/法规发现优先，后续不重复征询是否退回仅按已知 ID 查询；需要检验的是发现索引的质量及非浏览器外部 Agent 的可操作接口。
 2. **报告引用粒度**：首个报告目标是“报告级目录 + 页码 + 原句”，还是“将表格统计作为可机器运算的数据点”？第二种需要多一层字段/单位/口径的人工核对。
 3. **公开权限**：CCUS Policy Hub 希望只公开引文卡片/元数据，还是对版权允许的文件公开重现原始 PDF/HTML？需要逐份确认许可。
 
