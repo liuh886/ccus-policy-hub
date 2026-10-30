@@ -345,7 +345,7 @@ GET /ccus-policy-hub/data/manifest.json
 
 最小可公开 \`DiscoveryRecord\` 应是**投影**，不是新权威实体表：
 
-~~~json
+```json
 {
   "record_id": "illustration:policy:us-45q-ira",
   "kind": "policy_summary",
@@ -360,14 +360,14 @@ GET /ccus-policy-hub/data/manifest.json
   "access": "public_metadata_only",
   "resolve_ref": "policy:us-45q-ira"
 }
-~~~
+```
 
 本例是字段论证，**不是已生产的记录，也未证明政策文字已审核**。
 \`query_text\` 是可公开的目录描述，而不是偷偷抄录受版权限制的全文。
 
 ### 9A.3. 推荐的最小实现：一个受治理发现投影，复用一个 Pagefind
 
-~~~text
+```text
 SQLite accepted policies / 已发布研究元数据 / Git reviewed packets
                   │                     ▲
 #107 Drive archives + review queue ─────┘（经显式审核后才可入公开输入）
@@ -389,7 +389,7 @@ SQLite accepted policies / 已发布研究元数据 / Git reviewed packets
        resolve record → evidence manifest / context bundle
                   │
           版本与权限校验 → cite 或 explicit gap
-~~~
+```
 
 **优先复用现有依赖**：将现有构建末尾的 Pagefind CLI
 改成最小的 Node build wrapper（前提是 E0 smoke test 通过）：
