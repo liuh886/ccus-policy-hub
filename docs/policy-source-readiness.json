@@ -1,0 +1,5657 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-10-30",
+  "inventory_sha256": "1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d",
+  "inputs": {
+    "evidence_packet_manifests": [],
+    "archive_observation_provenance": {
+      "audit_sha256": "f8990ac91f9a443ed81117efe9b87b0099c16c5dda90d8a66f83ecf0f4922909",
+      "backlog_sha256": "e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74",
+      "private_file_ids_redacted": true
+    },
+    "network_checked": false,
+    "sqlite_written": false,
+    "private_originals_redistributed": false
+  },
+  "totals": {
+    "policy_records": 130,
+    "url_present": 130,
+    "archive_rows_bound_to_current_inventory": 130,
+    "observed_private_raw_candidates": 36,
+    "observed_private_homepage_only": 8,
+    "git_document_identities_recorded": 0,
+    "git_byte_versions_validated": 0,
+    "human_locator_review_records": 0,
+    "validated_human_reviewed_anchors": 0,
+    "primary_instrument_identity_reviewed_policies": 0,
+    "cumulative_private_raw_candidate_policies": 55,
+    "policies_without_raw_candidate": 75,
+    "manual_locally_hash_checked_unique_blobs": 28
+  },
+  "limitations": [
+    "Transfer states and nonempty URLs are not verified primary-document coverage.",
+    "Document kind and current legal applicability remain unknown without explicit scoped review.",
+    "Private file IDs and original content are excluded. A missing local packet does not prove there is no private archive."
+  ],
+  "triage": [
+    {
+      "policy_id": "ae-federal-climate-law-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ar-rigi-ccus-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "au-wa-petroleum-amendment-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "be-ccus-strategy-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ca-sk-spii",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "california-lcfs",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ch-co2-act-ccs-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cl-green-hydrogen-ccs-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-co2-transport-status-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-gd-carbon-inclusive",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-hb-ets-offset",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-js-industrial-decarb-2022",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-mee-env-guidance-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-miit-industrial-plan-2022",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-national-standards",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-ordos-pilot-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-sd-eco-plan-14fym",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "co-ccus-regulatory-decree-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "co-law-2099-energy-transition",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "denmark-ccfd",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "dk-ccs-subsidy-scheme-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "eg-carbon-market-framework-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "es-climate-law-ccs-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "fr-ccus-strategy-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "gr-ccs-regulatory-framework-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "gr-climate-law-2022-update",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "imo-marpol-occs-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "in-national-mission-ccus-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "in-union-budget-2026-ccus",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "is-carbfix-act",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "is-onshore-storage-permit-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "it-law-11-2024-modernization",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "kr-motie-cluster-district-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "kw-kpc-net-zero-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "my-netr-ccus-2023",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ng-nuprc-decarb-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "nl-cdr-roadmap-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "no-storage-framework",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "om-ccus-roadmap-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ph-ccus-policy-framework-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ph-doe-ccus-roadmap-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "qa-national-climate-strategy-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ro-emergency-ordinance-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ru-climate-doctrine-2023",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "sa-circular-carbon-economy-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sa-hydrogen-strategy-ccus",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sa-megi-ccus",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sg-carbon-tax-ccus-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "th-boi-incentives",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "th-draft-climate-change-act-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "tr-climate-law-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "uae-adnoc-ccs-2030",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "uk-energy-act-2023",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-cifia-lpo",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-epa-class-vi-primacy",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-iija-hubs",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "vn-carbon-market-decree-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "vn-decree-119-2025",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "za-climate-change-act-2024",
+      "priority": "P0",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ae-carbon-strategy",
+      "priority": "P1",
+      "blockers": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "alberta-tier",
+      "priority": "P1",
+      "blockers": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "au-safeguard-mechanism",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "br-law-14993-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "br-sbce-law-15042-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ca-ccus-itc",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ccus-national-standards-2026",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ccus-roadmap-2025",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "de-carbon-management-strategy-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "de-icm-strategy",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-cbam",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-ccs-directive",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-crcf-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-ets-mrr-2018",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-industrial-carbon-management-strategy-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-nzia",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "gold-standard",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "hr-hydrocarbon-act-ccs",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "icao-corsia-ccu-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "id-presidential-reg-14-2024",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "intl-ccs-plus-framework",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "intl-gcca-net-zero-2050",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "intl-paris-art-6-4-ccs",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ipcc-guidelines",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "is-cdr-framework",
+      "priority": "P1",
+      "blockers": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "iso-standards",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "jp-ccs-business-act-2024",
+      "priority": "P1",
+      "blockers": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "jp-jogmec-advanced-ccs-2024",
+      "priority": "P1",
+      "blockers": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "no-14th-licensing-round-2025",
+      "priority": "P1",
+      "blockers": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "no-tax-deduction-ccs",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "norway-longship",
+      "priority": "P1",
+      "blockers": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "puro-earth",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ro-law-114-2013-ccs",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-la-primacy-rules",
+      "priority": "P1",
+      "blockers": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "verra-vm0049",
+      "priority": "P1",
+      "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    }
+  ],
+  "regressions": [],
+  "policies": [
+    {
+      "policy_id": "ae-carbon-strategy",
+      "country": "United Arab Emirates",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://u.ae/en/about-the-uae/strategies-initiatives-and-awards/strategies-plans-and-visions/environment-and-energy/the-uae-net-zero-2050-strategy",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "blocked_html",
+        "observed_at": "2026-10-30T04:21:59+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ae-federal-climate-law-2024",
+      "country": "United Arab Emirates",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.moccae.gov.ae/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:22:02+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "alberta-tier",
+      "country": "Canada",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.alberta.ca/technology-innovation-and-emissions-reduction-regulation",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "blocked_html",
+        "observed_at": "2026-10-30T04:22:02+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ar-rigi-ccus-2024",
+      "country": "Argentina",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.boletinoficial.gob.ar/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:22:03+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "au-offshore-ghg-act",
+      "country": "Australia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.legislation.gov.au/C2006A00014/latest",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:22:03+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "9fd32180560e62e2a1dffd37ee4b183833e93a6c7fe01f8d08c7d98b9fc68f31",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "au-offshore-ghg-safety-2024",
+      "country": "Australia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.legislation.gov.au/Details/C2024A00042",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:22:03+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "e8dbcddf0de9cb7ca0302a8c91f60777b25fa334e913a644f783392640d35229",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "au-safeguard-mechanism",
+      "country": "Australia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.dcceew.gov.au/climate-change/emissions-reporting/national-greenhouse-energy-reporting-scheme/safeguard-mechanism",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "network_error",
+        "observed_at": "2026-10-30T04:22:03+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "au-wa-petroleum-amendment-2024",
+      "country": "Australia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:22:39+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "be-ccus-strategy-2025",
+      "country": "Belgium",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://economie.fgov.be/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:22:41+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "br-anp-ccs-resolution",
+      "country": "Brazil",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.br/anp/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:22:41+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "ab5d1b859b0d9457b4fbdab90d05c625d2344455343d984e9bf9e4c2fee8fa8f",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "br-bill-1425-2022",
+      "country": "Brazil",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www25.senado.leg.br/web/atividade/materias/-/materia/153342",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:22:41+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "502961bd6127b05530e8bd0c619ad1936673e46c5c23f6fcaf18fcf601a4befe",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "br-law-14993-2024",
+      "country": "Brazil",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14993.htm",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "network_error",
+        "observed_at": "2026-10-30T04:22:41+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "br-sbce-law-15042-2024",
+      "country": "Brazil",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l15042.htm",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "network_error",
+        "observed_at": "2026-10-30T04:22:42+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ca-ab-sequestration-tenure",
+      "country": "Canada",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://kings-printer.alberta.ca/1266.cfm?page=2011_068.cfm&leg_type=Regs&isbncln=9780779758418",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:22:43+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "fe26967f5884f4742171da98257d8fbb0d275dd05ed6e938e965dd5fe1f43b45",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ca-ccus-itc",
+      "country": "Canada",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "network_error",
+        "observed_at": "2026-10-30T04:22:43+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ca-sk-ccs-directives",
+      "country": "Canada",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:19+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "c39a32c4b2b95f8bd925afccb2e6424e4743909884162a9bc0a7d3f8884406ed",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ca-sk-spii",
+      "country": "Canada",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/oil-and-gas-incentives-royalties-and-taxes/saskatchewan-petroleum-innovation-incentive",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:19+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "california-lcfs",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://ww2.arb.ca.gov/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ch-co2-act-ccs-2024",
+      "country": "Switzerland",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.bafu.admin.ch/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cl-green-hydrogen-ccs-2025",
+      "country": "Chile",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.energia.gob.cl/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-bj-ccus-measures-2026",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202603/t20260324_4564707.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "029d413957070d06079f663db3dfea053c577e617d11d8936f041a80bbf43c0b",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ccer",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "65326b8c3e348c3f90d0efce200ae4ec0a5c1cdb4fc5dfa53b5c55c6b07bae0a",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ccus-national-standards-2026",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ndls.org.cn/standard/detail/ae26325c989bc2b059b0178279e40c1b",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ccus-roadmap-2025",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.acca21.org.cn/trs/00010004/17430.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-co2-transport-status-2025",
+      "country": "China",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "http://chinacpc.com.cn/info/2023-07-11/news_7555.html",
+        "protocol": "http:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "non_https_source",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "invalid_or_non_https",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-demo-tech-2024",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "6a1d1503bea16f4f1c564a616b94f7f9137226547321cf8da55f9c6f8e67d8da",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-gd-carbon-inclusive",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://gdee.gd.gov.cn/zwgk/content/post_4281415.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:20+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-hb-ets-offset",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.hubei.gov.cn/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:22+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-js-industrial-decarb-2022",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "http://gxt.jiangsu.gov.cn/",
+        "protocol": "http:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "non_https_source",
+        "observed_at": "2026-10-30T04:23:22+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "invalid_or_non_https",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-mee-env-guidance-2024",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mee.gov.cn/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:22+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-miit-industrial-plan-2022",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:22+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-national-ets-expansion-2025",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202503/t20250326_1104736.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "581881c26c04bee43065a06613160ccc32300b78aca43eb7086aab0cd46814cb",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-national-standards",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://std.samr.gov.cn/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "cn-ordos-pilot-2024",
+      "country": "China",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "http://www.ordos.gov.cn/",
+        "protocol": "http:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "non_https_source",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "invalid_or_non_https",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-pboc-cerf",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.pbc.gov.cn/zhengcehuobisi/125207/125227/125963/dd1c12d33cab49bd8895c7a5d100aa4f/index.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "3d92c4033d3c93d4cd4682f5de8abdc28e2eb065b6a3d552b8856c05b9b8762f",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-sd-eco-plan-14fym",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "http://www.shandong.gov.cn/art/2022/12/29/art_2259_4281415.html",
+        "protocol": "http:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "non_https_source",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "invalid_or_non_https",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-standards-2024",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.samr.gov.cn/xw/sj/art/2026/art_c4ebd8a52d154378b28595b96823b843.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "116dcdef01c3ce8961fba74021dc2e2b536a7907ea2b28a926689c02f8c8f44c",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-zero-carbon-parks",
+      "country": "China",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "0263b5f435ecbda45f392bea42b8fc022866a407fdc04554d9b51701677b7d3e",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "co-ccus-regulatory-decree-2025",
+      "country": "Colombia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.minenergia.gov.co/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "co-law-2099-energy-transition",
+      "country": "Colombia",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.minenergia.gov.co/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "de-carbon-management-strategy-2024",
+      "country": "Germany",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.bmwk.de/Redaktion/EN/Pressemitteilungen/2024/02/20240226-habeck-paves-the-way-for-ccs-in-germany.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "redirect_outside_official",
+        "observed_at": "2026-10-30T04:23:27+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "de-icm-strategy",
+      "country": "Germany",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.bmwk.de/Redaktion/EN/Downloads/E/240226-eckpunkte-cms-en.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "redirect_outside_official",
+        "observed_at": "2026-10-30T04:23:28+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "denmark-ccfd",
+      "country": "Denmark",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://ens.dk/en/our-responsibilities/ccs",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:29+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "dk-ccs-subsidy-scheme-2025",
+      "country": "Denmark",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://ens.dk/en/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:30+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "eg-carbon-market-framework-2024",
+      "country": "Egypt",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://fra.gov.eg/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:30+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "es-climate-law-ccs-2025",
+      "country": "Spain",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.miteco.gob.es/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:30+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "eu-cbam",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/eli/reg/2023/956/oj",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:30+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-ccs-directive",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/eli/dir/2009/31/oj",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:31+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-crcf-2024",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3012",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:31+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-ets-mrr-2018",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:32+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-industrial-carbon-management-strategy-2024",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52024DC0062",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:33+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:33+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "4d27881ea1242d2fea5bcb8f3c211a2feace009b5290d8b06d0f3aefb53cc3f8",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-nzia",
+      "country": "European Union",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://eur-lex.europa.eu/eli/reg/2024/1735/oj",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "http_202_not_document",
+        "observed_at": "2026-10-30T04:23:33+00:00",
+        "http_status": "202",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "HTTP_202_NOT_DOCUMENT",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "fr-ccus-roadmap",
+      "country": "France",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.entreprises.gouv.fr/la-dge/actualites/deploiement-de-la-capture-du-stockage-et-de-la-valorisation-du-carbone-ccus-en",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "708443cd9060500781b3d9943bdfa28ed9b80f6c44c1c571c6405f7f3289a73e",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "fr-ccus-strategy-2024",
+      "country": "France",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ecologie.gouv.fr/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "gold-standard",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.goldstandard.org/news/gold-standard-publishes-engineered-removals-activity-requirements",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "gr-ccs-regulatory-framework-2025",
+      "country": "Greece",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://ypen.gov.gr/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "gr-climate-law-2022-update",
+      "country": "Greece",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://ypen.gov.gr",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "hr-hydrocarbon-act-ccs",
+      "country": "Croatia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.azu.hr/en/legislation/act-on-the-exploration-and-exploitation-of-hydrocarbons/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "icao-corsia-ccu-2024",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.icao.int/environmental-protection/CORSIA/Pages/CORSIA-Eligible-Fuels.aspx",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "id-presidential-reg-14-2024",
+      "country": "Indonesia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://jdih.setkab.go.id/PUUdoc/177032/Perpres_Nomor_14_Tahun_2024.pdf",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "network_error",
+        "observed_at": "2026-10-30T04:23:34+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "imo-marpol-occs-2024",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.imo.org/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "in-ccus-roadmap",
+      "country": "India",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.niti.gov.in/sites/default/files/2022-11/CCUS-Report.pdf",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "2562038fcaad4260323ac12cdb56b12456b3e56daad3b26dcf36574b19a8d651",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "in-national-mission-ccus-2024",
+      "country": "India",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://niti.gov.in/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "in-union-budget-2026-ccus",
+      "country": "India",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.indiabudget.gov.in/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "intl-ccs-plus-framework",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ccsplus.org/methodologies/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "intl-gcca-net-zero-2050",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://gccassociation.org/concretefuture/net-zero-roadmap/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "intl-paris-art-6-4-ccs",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://unfccc.int/process-and-meetings/the-paris-agreement/article-64-mechanism",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "html_too_short",
+        "observed_at": "2026-10-30T04:23:35+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ipcc-guidelines",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ipcc-nggip.iges.or.jp/public/2019rf/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "is-carbfix-act",
+      "country": "Iceland",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.carbfix.com/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "is-cdr-framework",
+      "country": "Iceland",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.althingi.is/altext/stjt/2022.067.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "access_blocked",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": "403",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "is-onshore-storage-permit-2025",
+      "country": "Iceland",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ust.is/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "iso-standards",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.iso.org/committee/648607.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "it-law-11-2024-modernization",
+      "country": "Italy",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mase.gov.it/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "jp-ccs-business-act-2024",
+      "country": "Japan",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.meti.go.jp/english/press/2026/0424_002.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "access_blocked",
+        "observed_at": "2026-10-30T04:23:36+00:00",
+        "http_status": "403",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "jp-jogmec-advanced-ccs-2024",
+      "country": "Japan",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.jogmec.go.jp/english/news/release/news_10_00037.html",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "blocked_html",
+        "observed_at": "2026-10-30T04:23:37+00:00",
+        "http_status": "200",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "kr-ccus-act",
+      "country": "South Korea",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=259701",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "809aa50254d8832f14637f07708a324130feb1d308539bb1330d03e44947815b",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "kr-ccus-act-enforcement-decree-2025",
+      "country": "South Korea",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&lsId=014834",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "cc40d830a9a6728334ae5af7d28da708c94840b5d1f832627479c47282102398",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "kr-motie-cluster-district-2025",
+      "country": "South Korea",
+      "policy_review_status": "draft",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.motie.go.kr/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "kw-kpc-net-zero-2024",
+      "country": "Kuwait",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.kpc.com.kw/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "kz-ecology-code-ccus-2024",
+      "country": "Kazakhstan",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.kz/memleket/entities/ecogeo",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "42638b39df7975f3fb3de36426a28e4f32092025fcf4cd50ce6eaf46d75e4b79",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "mx-sener-ccus-2025",
+      "country": "Mexico",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gob.mx/sener",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "fa0a4f5aed7222dd33f214beae9f424883666053c5c613227866eecbcc25bf21",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "my-ccus-act-2025",
+      "country": "Malaysia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://myccus.ekonomi.gov.my/activities/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "4ab1b15f7397cc81cf2788ad1a58d14679e5ba7a6209533d313a930e8e2d5c1b",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "my-mida-incentives",
+      "country": "Malaysia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mida.gov.my/equilibrium-through-carbon-capture-malaysias-path-to-net-zero-emissions/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "76afd0d7395922ec6d18c3c945c966fa8f09bf1a629f09f4fd9665580d3890e1",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "my-netr-ccus-2023",
+      "country": "Malaysia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ekonomi.gov.my/en/netr",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:39+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "netherlands-sde",
+      "country": "Netherlands",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://english.rvo.nl/subsidies-programmes/sde",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "9e92fb02092db38f6faf2077b5d1a666546193f4f5b1316481a0baac1e872839",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ng-nuprc-decarb-2024",
+      "country": "Nigeria",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://nuprc.gov.ng/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "nl-cdr-roadmap-2025",
+      "country": "Netherlands",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.government.nl/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "nl-mining-act-co2-storage-2011",
+      "country": "Netherlands",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://wetten.overheid.nl/BWBR0014168/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "2eccb057f3777b7075a78f3e9b93abd3c06be844ffaea308cb758408c6f0a6c3",
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "nl-porthos-sde-subsidy",
+      "country": "Netherlands",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.rvo.nl/subsidies-financiering/sde",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "6fd698776c40dde65c65578c1fe30c0e9073c4927325d9270c9dc2b87141795c",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "no-14th-licensing-round-2025",
+      "country": "Norway",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "access_blocked",
+        "observed_at": "2026-10-30T04:23:43+00:00",
+        "http_status": "403",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "no-storage-framework",
+      "country": "Norway",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.offshoredirectorate.no/en/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "no-tax-deduction-ccs",
+      "country": "Norway",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.norskpetroleum.no/en/framework/taxes/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "norway-longship",
+      "country": "Norway",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.regjeringen.no/en/topics/energy/landingssider/ny-side/sporsmal-og-svar-om-langskip-prosjektet/id2863902/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "access_blocked",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": "403",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "om-ccus-roadmap-2024",
+      "country": "Oman",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://mem.gov.om/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ph-ccus-policy-framework-2025",
+      "country": "Philippines",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.doe.gov.ph/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ph-doe-ccus-roadmap-2024",
+      "country": "Philippines",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.doe.gov.ph",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "pl-mining-law-ccs-2024",
+      "country": "Poland",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.pl/web/klimat",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "b439b19a0cf546cdd624164abf3fe35f1ab2cc8de4951220c4c15719b3fba522",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "puro-earth",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://puro.earth/cdr-infrastructure/methodologies/puro-standard/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "qa-national-climate-strategy-2024",
+      "country": "Qatar",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.mecc.gov.qa/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ro-emergency-ordinance-2024",
+      "country": "Romania",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.energie.gov.ro",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "ro-law-114-2013-ccs",
+      "country": "Romania",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://namr.ro/legislatie/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "section_or_landing_page",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ru-climate-doctrine-2023",
+      "country": "Russia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "http://kremlin.ru/",
+        "protocol": "http:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "non_https_source",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "invalid_or_non_https",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NON_HTTPS_SOURCE",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "sa-circular-carbon-economy-2024",
+      "country": "Saudi Arabia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.moenergy.gov.sa/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sa-hydrogen-strategy-ccus",
+      "country": "Saudi Arabia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.moenergy.gov.sa/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sa-megi-ccus",
+      "country": "Saudi Arabia",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.moenergy.gov.sa/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "sg-carbon-tax-ccus-2025",
+      "country": "Singapore",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.nea.gov.sg/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "th-boi-incentives",
+      "country": "Thailand",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.boi.go.th/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "th-draft-climate-change-act-2025",
+      "country": "Thailand",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.dmf.go.th/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "tr-climate-law-2025",
+      "country": "Turkey",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.resmigazete.gov.tr/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "tx-hb-1284-ccus",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=87R&Bill=HB1284",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "71ab1f05120ca23ca5403104ec2215f0d550cf41166a71e98b6dc98f731d4cde",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "uae-adnoc-ccs-2030",
+      "country": "United Arab Emirates",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.adnoc.ae/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "uk-ccs-network-code",
+      "country": "United Kingdom",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "a7ec67374624b2b286514d0300cfa5c996ef36ae88f7ba6b8b6ebf1580689e14",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "uk-ccus-vision",
+      "country": "United Kingdom",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "874aa06eae4caeb1d5998a087e8ab55da0c2fb0f29933949c530d5d11337f072",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "uk-energy-act-2023",
+      "country": "United Kingdom",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.legislation.gov.uk/ukpga/2023/67/contents",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:44+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "uk-industrial-carbon-capture-business-model-2025",
+      "country": "United Kingdom",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-ccus-business-models",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:45+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "a93c933403480b28309b84e96c1782f9ebacbe9ba3fa15817886e63a49300522",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-45q-ira",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.irs.gov/irb/2022-47_IRB",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:45+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "cbe460a1da02b323725a230ffe354be0873c1fc7d1d6bc8496209abb2d2f68ea",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-cifia-lpo",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.energy.gov/lpo/carbon-dioxide-transportation-infrastructure-finance-and-innovation-act-cifia",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:45+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-doe-carbon-management-strategy",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.energy.gov/hgeo/does-carbon-management-strategy",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:46+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "4e9b98845eba1ae2e57d461118dc0e972f596dcbb9660f9e60396c8f8fef8eeb",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-epa-class-vi-primacy",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.epa.gov/uic/primary-enforcement-authority-uic-program",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:46+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-iija-hubs",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "not_found",
+        "observed_at": "2026-10-30T04:23:46+00:00",
+        "http_status": "404",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NOT_FOUND",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-la-primacy-rules",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "access_blocked",
+        "observed_at": "2026-10-30T04:23:47+00:00",
+        "http_status": "403",
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-nd-century-code-38-22",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.ndlegis.gov/cencode/t38c22.pdf",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "cdf74fc1626164c8e0c6137a6d78d4b200878919b10c2b3a542ef24304f878f9",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-obbba-45q-2025",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.govinfo.gov/app/details/PLAW-119publ21",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "6f82fe09df0003ab71a99552ea9aaa3afe84471cdb683503b176325b4d888a3c",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-tx-natural-resources-121",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "dbfba8a96dc3cd584157ca66aaafdf67e0ed15dd5a0c8a58f3d4bd0f109fc646",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-wy-hb-0200",
+      "country": "United States",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://wyoleg.gov/2020/Enroll/HB0200.pdf",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_candidate_archived",
+        "transfer_status": "already_archived",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": "43be9baa1c62b3164d2136283d373e69829cf62f74a7a6d87e3bf0219bdae3cf",
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_document_or_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P2",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "verra-vm0049",
+      "country": "International",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://verra.org/methodologies/vm0049-carbon-capture-and-storage/",
+        "protocol": "https:",
+        "scope": "unknown",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "needs_official_source_review",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "specific_page_candidate",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P1",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "vn-carbon-market-decree-2025",
+      "country": "Vietnam",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://monre.gov.vn/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "vn-decree-119-2025",
+      "country": "Vietnam",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://netzero.vn/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "no_raw_file",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": false,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    },
+    {
+      "policy_id": "za-climate-change-act-2024",
+      "country": "South Africa",
+      "policy_review_status": "verified",
+      "source_url": {
+        "present": true,
+        "reference": "https://www.gov.za/",
+        "protocol": "https:",
+        "scope": "homepage_like",
+        "primary_document_identified": "unknown"
+      },
+      "document_kind": "unknown",
+      "archive": {
+        "state": "raw_homepage_only",
+        "transfer_status": "source_too_broad",
+        "observed_at": "2026-10-30T04:23:48+00:00",
+        "http_status": null,
+        "has_private_file": true,
+        "reported_content_sha256": null,
+        "recorded_edition": "unknown",
+        "source_url_scope": "site_homepage",
+        "local_original_integrity": "not_checked",
+        "content_identity": "not_reviewed"
+      },
+      "documents": [],
+      "evidence_level": "record_summary",
+      "currentness": "unknown",
+      "priority": "P0",
+      "gaps": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+        "SOURCE_TOO_BROAD"
+      ]
+    }
+  ],
+  "manual_acquisition": {
+    "provenance": {
+      "manifest_sha256": "595e52b1357613b09d50140ecf3692d35a37a574357a401cf5c47829fa22997a",
+      "private_file_ids_redacted": true
+    },
+    "transfer_attempts": 52,
+    "locally_hash_checked_unique_blobs": 28,
+    "manual_candidate_policy_ids": [
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ccus-itc",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-miit-industrial-plan-2022",
+      "cn-ordos-pilot-2024",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "jp-jogmec-advanced-ccs-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "uk-energy-act-2023",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "supporting_only_policy_ids": [
+      "ch-co2-act-ccs-2024",
+      "cn-js-industrial-decarb-2022",
+      "dk-ccs-subsidy-scheme-2025",
+      "eg-carbon-market-framework-2024",
+      "hr-hydrocarbon-act-ccs",
+      "qa-national-climate-strategy-2024"
+    ],
+    "added_candidate_policy_ids": [
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ccus-itc",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-miit-industrial-plan-2022",
+      "cn-ordos-pilot-2024",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "jp-jogmec-advanced-ccs-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "uk-energy-act-2023",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "cumulative_candidate_policy_ids": [
+      "au-offshore-ghg-act",
+      "au-offshore-ghg-safety-2024",
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-anp-ccs-resolution",
+      "br-bill-1425-2022",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ab-sequestration-tenure",
+      "ca-ccus-itc",
+      "ca-sk-ccs-directives",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-bj-ccus-measures-2026",
+      "cn-ccer",
+      "cn-demo-tech-2024",
+      "cn-miit-industrial-plan-2022",
+      "cn-national-ets-expansion-2025",
+      "cn-ordos-pilot-2024",
+      "cn-pboc-cerf",
+      "cn-standards-2024",
+      "cn-zero-carbon-parks",
+      "eu-innovation-fund",
+      "fr-ccus-roadmap",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "in-ccus-roadmap",
+      "jp-jogmec-advanced-ccs-2024",
+      "kr-ccus-act",
+      "kr-ccus-act-enforcement-decree-2025",
+      "kz-ecology-code-ccus-2024",
+      "mx-sener-ccus-2025",
+      "my-ccus-act-2025",
+      "my-mida-incentives",
+      "my-netr-ccus-2023",
+      "netherlands-sde",
+      "nl-mining-act-co2-storage-2011",
+      "nl-porthos-sde-subsidy",
+      "no-storage-framework",
+      "pl-mining-law-ccs-2024",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "tx-hb-1284-ccus",
+      "uk-ccs-network-code",
+      "uk-ccus-vision",
+      "uk-energy-act-2023",
+      "uk-industrial-carbon-capture-business-model-2025",
+      "us-45q-ira",
+      "us-doe-carbon-management-strategy",
+      "us-nd-century-code-38-22",
+      "us-obbba-45q-2025",
+      "us-tx-natural-resources-121",
+      "us-wy-hb-0200",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "policies_without_raw_candidate": [
+      "ae-carbon-strategy",
+      "ae-federal-climate-law-2024",
+      "alberta-tier",
+      "ar-rigi-ccus-2024",
+      "be-ccus-strategy-2025",
+      "ch-co2-act-ccs-2024",
+      "cl-green-hydrogen-ccs-2025",
+      "cn-ccus-national-standards-2026",
+      "cn-ccus-roadmap-2025",
+      "cn-co2-transport-status-2025",
+      "cn-gd-carbon-inclusive",
+      "cn-hb-ets-offset",
+      "cn-js-industrial-decarb-2022",
+      "cn-mee-env-guidance-2024",
+      "cn-national-standards",
+      "cn-sd-eco-plan-14fym",
+      "co-ccus-regulatory-decree-2025",
+      "co-law-2099-energy-transition",
+      "de-carbon-management-strategy-2024",
+      "de-icm-strategy",
+      "denmark-ccfd",
+      "dk-ccs-subsidy-scheme-2025",
+      "eg-carbon-market-framework-2024",
+      "es-climate-law-ccs-2025",
+      "eu-cbam",
+      "eu-ccs-directive",
+      "eu-crcf-2024",
+      "eu-ets-mrr-2018",
+      "eu-industrial-carbon-management-strategy-2024",
+      "eu-nzia",
+      "gr-ccs-regulatory-framework-2025",
+      "gr-climate-law-2022-update",
+      "hr-hydrocarbon-act-ccs",
+      "icao-corsia-ccu-2024",
+      "id-presidential-reg-14-2024",
+      "imo-marpol-occs-2024",
+      "in-national-mission-ccus-2024",
+      "in-union-budget-2026-ccus",
+      "intl-ccs-plus-framework",
+      "intl-gcca-net-zero-2050",
+      "intl-paris-art-6-4-ccs",
+      "ipcc-guidelines",
+      "is-carbfix-act",
+      "is-cdr-framework",
+      "is-onshore-storage-permit-2025",
+      "iso-standards",
+      "it-law-11-2024-modernization",
+      "jp-ccs-business-act-2024",
+      "kr-motie-cluster-district-2025",
+      "kw-kpc-net-zero-2024",
+      "ng-nuprc-decarb-2024",
+      "nl-cdr-roadmap-2025",
+      "no-14th-licensing-round-2025",
+      "no-tax-deduction-ccs",
+      "norway-longship",
+      "om-ccus-roadmap-2024",
+      "ph-ccus-policy-framework-2025",
+      "ph-doe-ccus-roadmap-2024",
+      "puro-earth",
+      "qa-national-climate-strategy-2024",
+      "ro-emergency-ordinance-2024",
+      "ro-law-114-2013-ccs",
+      "sa-circular-carbon-economy-2024",
+      "sa-hydrogen-strategy-ccus",
+      "sa-megi-ccus",
+      "sg-carbon-tax-ccus-2025",
+      "th-boi-incentives",
+      "th-draft-climate-change-act-2025",
+      "uae-adnoc-ccs-2030",
+      "us-cifia-lpo",
+      "us-epa-class-vi-primacy",
+      "us-iija-hubs",
+      "us-la-primacy-rules",
+      "verra-vm0049",
+      "vn-carbon-market-decree-2025"
+    ],
+    "legal_identity_review": "not_reviewed",
+    "current_drive_presence": "not_rechecked"
+  }
+}
