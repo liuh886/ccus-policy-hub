@@ -150,6 +150,9 @@ jobs:
       - name: Verify built context/source resources and release identity
         run: pnpm evidence:consume --root dist --expect-commit "$(git rev-parse HEAD)"
 
+      - name: Verify real source catalog receipts and release identity
+        run: pnpm catalog:consume --root dist --expect-commit "$(git rev-parse HEAD)"
+
       - name: Verify Cloudflare RUM when configured
         env:
           CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}

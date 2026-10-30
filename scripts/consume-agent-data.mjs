@@ -253,6 +253,11 @@ export async function verifyRelease(manifestUrl, read, expectedCommit) {
       manifest.datasets.source_evidence.file,
       manifest.schemas.source_evidence
     );
+  if (manifest.datasets.discovery_catalog)
+    required.push(
+      manifest.datasets.discovery_catalog.file,
+      manifest.schemas.discovery_catalog
+    );
   for (const value of required) {
     const url = new URL(value, manifestUrl).href;
     check(

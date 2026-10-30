@@ -39,6 +39,11 @@ if (
       parsed.datasets.source_evidence.file,
       parsed.schemas.source_evidence
     );
+  if (parsed.datasets.discovery_catalog)
+    urls.push(
+      parsed.datasets.discovery_catalog.file,
+      parsed.schemas.discovery_catalog
+    );
   const prefix = new URL('data/', parsed.base_url.replace(/\/$/, '') + '/');
   const resources = {};
   for (const value of urls) {
