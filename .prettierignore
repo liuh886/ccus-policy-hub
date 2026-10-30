@@ -44,3 +44,6 @@ scripts/data/evidence/**/source.html
 
 # Evidence hashes cover generator-owned bytes
 public/data/evidence/
+
+# Discovery catalog hashes cover generator-owned bytes
+public/data/discovery/

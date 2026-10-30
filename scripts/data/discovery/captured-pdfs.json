@@ -1,0 +1,83 @@
+{
+  "capture_type": "explicit_private_pdf_metadata_only",
+  "records": [
+    {
+      "document_id": "uk-energy-act-2023-enacted",
+      "title": {
+        "en": "Energy Act 2023, chapter 52 — original enactment",
+        "zh": "英国《2023年能源法》（2023 c.52）：原始制定文本"
+      },
+      "publisher": "legislation.gov.uk",
+      "source_kind": "legislation",
+      "language": "en",
+      "edition": "2023 original enactment",
+      "source_url": "https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf",
+      "policy_ids": ["uk-energy-act-2023"],
+      "coverage": "original_enactment",
+      "raw_sha256": "2dbf9edc060777a2d775c80f1e93b9f63f85e185e6d5a100e2283d32610c71fa",
+      "bytes": 5319583,
+      "physical_pages": 494,
+      "locator": {
+        "id": "selected-heading-or-caption",
+        "physical_page": 24,
+        "printed_page": "4",
+        "description": "Section 2, heading",
+        "exact_quote": "Prohibition on unlicensed activities",
+        "page_text_sha256": "a005b824f049d4eaba630080bea3cef2d45cdb6dd9f904191af043715dbd7d08",
+        "normalization": "NFC-whitespace-v1",
+        "review_status": "draft"
+      },
+      "capture": {
+        "tool": "Poppler pdftotext -layout",
+        "version": "24.04.0",
+        "original_bytes_checked": true,
+        "full_page_text_published": false,
+        "selected_page_warnings": 0,
+        "full_document_warnings": 26,
+        "selected_page_characters": 2372,
+        "full_document_characters": 1445242,
+        "selected_page_ms": 337,
+        "full_document_ms": 1649
+      }
+    },
+    {
+      "document_id": "gccsi-ccus-progress-china-en",
+      "title": {
+        "en": "CCUS Progress in China — A Status Report",
+        "zh": "中国 CCUS 进展：状况报告（英文版）"
+      },
+      "publisher": "Global CCS Institute publication listing",
+      "source_kind": "secondary_report",
+      "language": "en",
+      "edition": null,
+      "source_url": "https://www.globalccsinstitute.com/wp-content/uploads/2025/10/CCUS-Progress-in-China.pdf",
+      "policy_ids": [],
+      "coverage": "edition_unknown",
+      "raw_sha256": "60991a814ab98ef9fa5dd3b96ea47785a560b27c3028689ca6e9f5506baf92e4",
+      "bytes": 12777865,
+      "physical_pages": 32,
+      "locator": {
+        "id": "selected-heading-or-caption",
+        "physical_page": 16,
+        "printed_page": "6",
+        "description": "Figure 1-3, caption",
+        "exact_quote": "Figure 1-3. CCUS technology system",
+        "page_text_sha256": "c8a34d32d4d2d54241c364ceba6b7a1aa5f0d4a3c9c35e95bfdda85dae520ccb",
+        "normalization": "NFC-whitespace-v1",
+        "review_status": "draft"
+      },
+      "capture": {
+        "tool": "Poppler pdftotext -layout",
+        "version": "24.04.0",
+        "original_bytes_checked": true,
+        "full_page_text_published": false,
+        "selected_page_warnings": 0,
+        "full_document_warnings": 0,
+        "selected_page_characters": 1591,
+        "full_document_characters": 79885,
+        "selected_page_ms": 346,
+        "full_document_ms": 725
+      }
+    }
+  ]
+}

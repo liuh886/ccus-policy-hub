@@ -340,3 +340,15 @@ Index hashes bind record JSON; raw/text hashes bind the archived and normalized
 bytes; UTF-16 offsets locate the quote. Raw HTML is provided as `.html.txt` and
 must be treated as data. This resource does not establish current law or provide
 an in-repository Q&A Agent. No SQLite migration or duplicated BLOB authority.
+
+## Source discovery catalog (three-source-type prototype)
+
+The manifest dataset `discovery_catalog` discovers `/data/discovery/catalog.json`
+with schema `/data/discovery/catalog.schema.json`. It inventories three frozen
+source candidates (`us-45q-usc-2024`, `uk-energy-act-2023-enacted`,
+`gccsi-ccus-progress-china-en`). Only `us-45q-usc-2024` has publicly resolvable
+frozen text and a bounded historical snapshot/locator review; both PDF entries
+expose metadata, page locators and explicit gaps (`ORIGINAL_BYTES_NOT_PUBLICLY_RESOLVED`,
+`IDENTITY_AND_LOCATOR_REVIEW_PENDING`, and `EDITION_UNKNOWN` for the GCCSI report)
+without publishing private PDF bytes or performing semantic knowledge extraction.
+See `docs/source-catalog.md` and `pnpm catalog:consume`.

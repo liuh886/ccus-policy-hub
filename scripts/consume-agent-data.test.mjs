@@ -62,6 +62,12 @@ async function withPublication(callback) {
                         'schemas/source-evidence.schema.json',
                       ]
                     : []),
+                  ...(JSON.parse(diskManifest).datasets.discovery_catalog
+                    ? [
+                        'discovery/catalog.json',
+                        'discovery/catalog.schema.json',
+                      ]
+                    : []),
                 ].map((relative) => [
                   relative,
                   hash(fs.readFileSync(path.join(root, 'data', relative))),
