@@ -378,6 +378,9 @@ export function renderReadiness(report) {
       .map(([key, value]) => `- ${key}: ${value}`)
       .join('\n') +
     `\n\nPrivate transfer observations are not verified document identities. Zero accepted primary identities here is a verification baseline, not proof that official sources do not exist.\n\n` +
+    (report.manual_acquisition
+      ? `Cumulative reconciliation adds ${report.manual_acquisition.added_candidate_policy_ids.length} policy candidates from ${report.manual_acquisition.locally_hash_checked_unique_blobs} locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the canonical-URL run's observations; cumulative policy-ID lists are in the JSON report.\n\n`
+      : '') +
     `| Policy ID | Record review | Private archive observation | Priority | Evidence gaps |\n| --- | --- | --- | --- | --- |\n` +
     report.policies
       .map(

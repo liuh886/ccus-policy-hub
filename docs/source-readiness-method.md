@@ -21,14 +21,39 @@ Product scope and scheduling remain exclusively in `PRODUCT_BOUNDARIES.md` and
   currentness, copyright permission or reviewed clauses. Neither an official
   URL nor a verified database policy proves those properties.
 
-The actual observed exports are `Policy_Primary_Source_Audit_20261029T202058Z.csv`
-and `Policy_Official_Registry_Research_Backlog_20261029T202118Z.csv`. Their raw
-SHA-256 values are `066d5aab4e2da2ad9da4a407431b95e8fe9ef5a8115c999c02872c1d83ad5997`
-and `4047d663b5e6138759993d4b7a3596d2ab7b563dc89f2bd664d53478f5f6a25b`.
+The actual observed exports are `Policy_Primary_Source_Audit_20261030T042348Z.csv`
+and `Policy_Official_Registry_Research_Backlog_20261030T042408Z.csv`. Their raw
+SHA-256 values are `f8990ac91f9a443ed81117efe9b87b0099c16c5dda90d8a66f83ecf0f4922909`
+and `e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74`.
 Both cover 130 unique IDs and bind to the report's original SQLite checksum.
 The [owner's v4 acceptance review](https://github.com/liuh886/ccus-policy-hub/pull/107#issuecomment-6507527963)
 also reports 44 total archived files. This is not 44 verified documents, nor a
 count of new uploads performed by this audit.
+
+## Cumulative manual reconciliation
+
+`manual-transfer-observations.json` captures the actual 52-row private manifest
+`Policy_Manual_Acquisition_Cumulative_20261030_R3.csv`, SHA-256
+`595e52b1357613b09d50140ecf3692d35a37a574357a401cf5c47829fa22997a`.
+At capture time, all 28 retained source files were read locally and checked against
+their full manifest SHA-256 and byte length. Candidate files must be in the private
+primary directory; supporting files must be in the metadata directory. Filename
+prefix alone is insufficient. Symlink escape, missing/ambiguous files, wrong hashes,
+unknown policy IDs, stale inventory checksums and duplicate observations fail.
+No source bytes, local paths, Drive IDs or private links enter the committed capture.
+
+The 19 added policy candidates plus 36 canonical-run candidates produce 55 unique
+policy IDs, leaving 75 without raw candidates. Nine supporting files and one
+rejected non-document do not add coverage; retry rows do not add policy counts.
+The retained 28 blobs include the 19 candidate files and nine supporting files.
+This is a capture of local byte integrity, not a fresh Drive-presence check,
+instrument/edition approval or acceptance of the source-role descriptions as law.
+The baseline table/triage continues to describe canonical-URL observations;
+`manual_acquisition` holds cumulative ID lists separately and does not clear gaps.
+
+```bash
+node scripts/audit-policy-source-readiness.mjs --capture-manual <private-manifest.csv> --private-primary-root <private-primary-directory> --private-supporting-root <private-metadata-directory>
+```
 
 ## Commands
 

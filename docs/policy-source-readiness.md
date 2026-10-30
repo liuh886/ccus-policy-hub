@@ -13,8 +13,13 @@ No network verification or factual review date update was performed.
 - human_locator_review_records: 0
 - validated_human_reviewed_anchors: 0
 - primary_instrument_identity_reviewed_policies: 0
+- cumulative_private_raw_candidate_policies: 55
+- policies_without_raw_candidate: 75
+- manual_locally_hash_checked_unique_blobs: 28
 
 Private transfer observations are not verified document identities. Zero accepted primary identities here is a verification baseline, not proof that official sources do not exist.
+
+Cumulative reconciliation adds 19 policy candidates from 28 locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the canonical-URL run's observations; cumulative policy-ID lists are in the JSON report.
 
 | Policy ID                                        | Record review | Private archive observation | Priority | Evidence gaps                                                                                                |
 | ------------------------------------------------ | ------------- | --------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |

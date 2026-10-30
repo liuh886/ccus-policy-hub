@@ -6,6 +6,10 @@ import initSqlJs from 'sql.js';
 import { format } from 'prettier';
 import { queryRows } from './lib/sqlite-query.mjs';
 import {
+  captureManualObservations,
+  reconcileManualObservations,
+} from './lib/manual-source-observations.mjs';
+import {
   sha256,
   captureObservations,
   buildReadiness,
@@ -16,6 +20,10 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SNAPSHOT = path.join(
   ROOT,
   'scripts/data/source-readiness/v4-transfer-observations.json'
+);
+const MANUAL = path.join(
+  ROOT,
+  'scripts/data/source-readiness/manual-transfer-observations.json'
 );
 export function loadPackets(directory) {
   if (!fs.existsSync(directory)) return [];
@@ -67,13 +75,30 @@ export async function generateReadiness({
     const observations = fs.existsSync(SNAPSHOT)
       ? JSON.parse(fs.readFileSync(SNAPSHOT, 'utf8'))
       : null;
-    return buildReadiness({
+    const report = buildReadiness({
       policies,
       inventorySha: sha256(bytes),
       observations,
       packets: loadPackets(evidenceRoot),
       asOf,
     });
+    report.manual_acquisition = reconcileManualObservations(
+      fs.existsSync(MANUAL)
+        ? JSON.parse(fs.readFileSync(MANUAL, 'utf8'))
+        : null,
+      policies,
+      sha256(bytes),
+      report.policies
+    );
+    if (report.manual_acquisition) {
+      report.totals.cumulative_private_raw_candidate_policies =
+        report.manual_acquisition.cumulative_candidate_policy_ids.length;
+      report.totals.policies_without_raw_candidate =
+        report.manual_acquisition.policies_without_raw_candidate.length;
+      report.totals.manual_locally_hash_checked_unique_blobs =
+        report.manual_acquisition.locally_hash_checked_unique_blobs;
+    }
+    return report;
   } finally {
     db.close();
   }
@@ -92,12 +117,32 @@ async function main() {
         '--evidence-root',
         '--capture-audit',
         '--capture-backlog',
+        '--capture-manual',
+        '--private-primary-root',
+        '--private-supporting-root',
       ].includes(arg)
     ) {
       if (!args[i + 1] || args[i + 1].startsWith('--'))
         throw new Error(`${arg} requires a value`);
       options[arg.slice(2)] = args[++i];
     } else throw new Error(`Unknown argument ${arg}`);
+  }
+  if (options['capture-manual']) {
+    if (
+      check ||
+      !options['private-primary-root'] ||
+      !options['private-supporting-root']
+    )
+      throw new Error(
+        'Manual capture requires both private byte directories and cannot use --check.'
+      );
+    const snapshot = captureManualObservations(
+      fs.readFileSync(options['capture-manual']),
+      options['private-primary-root'],
+      options['private-supporting-root']
+    );
+    fs.mkdirSync(path.dirname(MANUAL), { recursive: true });
+    fs.writeFileSync(MANUAL, JSON.stringify(snapshot, null, 2) + '\n');
   }
   if (options['capture-audit'] || options['capture-backlog']) {
     if (check || !options['capture-audit'] || !options['capture-backlog'])

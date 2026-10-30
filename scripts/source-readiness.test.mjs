@@ -4,6 +4,10 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {
+  captureManualObservations,
+  reconcileManualObservations,
+} from './lib/manual-source-observations.mjs';
+import {
   buildReadiness,
   captureObservations,
   parseCsv,
@@ -218,5 +222,67 @@ test('real inventory is reproducible, complete and byte-read-only', async () => 
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
   assert.equal(a.totals.observed_private_raw_candidates, 36);
   assert.equal(a.totals.observed_private_homepage_only, 8);
+  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 55);
+  assert.equal(a.totals.policies_without_raw_candidate, 75);
+  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 28);
   assert.equal(sha256(fs.readFileSync(file)), before);
+});
+
+test('manual capture checks actual bytes and keeps supporting/rejected sources outside coverage', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'manual-bytes-'));
+  const raw = Buffer.from('%PDF-fixture source bytes');
+  const hash = sha256(raw);
+  const file = path.join(dir, `one__${hash.slice(0, 14)}.pdf`);
+  const headers =
+    'batch,policy_id,canonical_db_sha256,download_status,archive_class,source_role,edition,sha256,file_size_bytes,drive_file_id';
+  const csv = Buffer.from(
+    `${headers}\n1,one,${inventory},saved_candidate,new_nonhomepage_source_candidate,partial_section,2024,${hash},${raw.length},PRIVATE_ID\n2,two,${inventory},saved_candidate,supporting_material_only,related,2023,${hash},${raw.length},PRIVATE_SUPPORT\n3,two,${inventory},saved_candidate,rejected_non_document,blocked,unknown,,,\n`
+  );
+  const support = path.join(dir, `two__${hash.slice(0, 14)}.pdf`);
+  try {
+    fs.writeFileSync(file, raw);
+    fs.writeFileSync(support, raw);
+    const captured = captureManualObservations(csv, dir, dir);
+    assert.ok(!JSON.stringify(captured).includes('PRIVATE_'));
+    const reconciled = reconcileManualObservations(
+      captured,
+      policies,
+      inventory,
+      []
+    );
+    assert.equal(reconciled.locally_hash_checked_unique_blobs, 1);
+    assert.deepEqual(reconciled.cumulative_candidate_policy_ids, ['one']);
+    assert.deepEqual(reconciled.policies_without_raw_candidate, ['two']);
+    assert.equal(reconciled.legal_identity_review, 'not_reviewed');
+    assert.deepEqual(
+      reconcileManualObservations(captured, policies, inventory, [
+        { policy_id: 'one', archive: { state: 'raw_candidate_archived' } },
+      ]).added_candidate_policy_ids,
+      []
+    );
+    assert.throws(
+      () => reconcileManualObservations(captured, policies, 'b'.repeat(64), []),
+      /inventory/
+    );
+    assert.throws(
+      () =>
+        reconcileManualObservations(captured, policies.slice(1), inventory, []),
+      /Orphan/
+    );
+    const duplicate = {
+      ...captured,
+      rows: [...captured.rows, captured.rows[0]],
+    };
+    assert.throws(
+      () => reconcileManualObservations(duplicate, policies, inventory, []),
+      /Duplicate/
+    );
+    fs.writeFileSync(file, 'changed bytes');
+    assert.throws(
+      () => captureManualObservations(csv, dir, dir),
+      /hash or byte length/
+    );
+  } finally {
+    fs.rmSync(dir, { recursive: true });
+  }
 });

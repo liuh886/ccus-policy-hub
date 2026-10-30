@@ -5,8 +5,8 @@
   "inputs": {
     "evidence_packet_manifests": [],
     "archive_observation_provenance": {
-      "audit_sha256": "066d5aab4e2da2ad9da4a407431b95e8fe9ef5a8115c999c02872c1d83ad5997",
-      "backlog_sha256": "4047d663b5e6138759993d4b7a3596d2ab7b563dc89f2bd664d53478f5f6a25b",
+      "audit_sha256": "f8990ac91f9a443ed81117efe9b87b0099c16c5dda90d8a66f83ecf0f4922909",
+      "backlog_sha256": "e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74",
       "private_file_ids_redacted": true
     },
     "network_checked": false,
@@ -23,7 +23,10 @@
     "git_byte_versions_validated": 0,
     "human_locator_review_records": 0,
     "validated_human_reviewed_anchors": 0,
-    "primary_instrument_identity_reviewed_policies": 0
+    "primary_instrument_identity_reviewed_policies": 0,
+    "cumulative_private_raw_candidate_policies": 55,
+    "policies_without_raw_candidate": 75,
+    "manual_locally_hash_checked_unique_blobs": 28
   },
   "limitations": [
     "Transfer states and nonempty URLs are not verified primary-document coverage.",
@@ -973,7 +976,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
-        "observed_at": "2026-10-29T20:19:10+00:00",
+        "observed_at": "2026-10-30T04:21:59+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1008,7 +1011,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:19:14+00:00",
+        "observed_at": "2026-10-30T04:22:02+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1043,7 +1046,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
-        "observed_at": "2026-10-29T20:19:14+00:00",
+        "observed_at": "2026-10-30T04:22:02+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1078,7 +1081,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:19:15+00:00",
+        "observed_at": "2026-10-30T04:22:03+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1113,7 +1116,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:19:15+00:00",
+        "observed_at": "2026-10-30T04:22:03+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "9fd32180560e62e2a1dffd37ee4b183833e93a6c7fe01f8d08c7d98b9fc68f31",
@@ -1147,7 +1150,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:19:15+00:00",
+        "observed_at": "2026-10-30T04:22:03+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "e8dbcddf0de9cb7ca0302a8c91f60777b25fa334e913a644f783392640d35229",
@@ -1181,7 +1184,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "network_error",
-        "observed_at": "2026-10-29T20:19:15+00:00",
+        "observed_at": "2026-10-30T04:22:03+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1216,7 +1219,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:19:51+00:00",
+        "observed_at": "2026-10-30T04:22:39+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1251,7 +1254,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:19:52+00:00",
+        "observed_at": "2026-10-30T04:22:41+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1286,7 +1289,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:19:52+00:00",
+        "observed_at": "2026-10-30T04:22:41+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "ab5d1b859b0d9457b4fbdab90d05c625d2344455343d984e9bf9e4c2fee8fa8f",
@@ -1320,7 +1323,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:19:52+00:00",
+        "observed_at": "2026-10-30T04:22:41+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "502961bd6127b05530e8bd0c619ad1936673e46c5c23f6fcaf18fcf601a4befe",
@@ -1354,7 +1357,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "network_error",
-        "observed_at": "2026-10-29T20:19:52+00:00",
+        "observed_at": "2026-10-30T04:22:41+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1389,7 +1392,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "network_error",
-        "observed_at": "2026-10-29T20:19:54+00:00",
+        "observed_at": "2026-10-30T04:22:42+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1424,7 +1427,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:19:55+00:00",
+        "observed_at": "2026-10-30T04:22:43+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "fe26967f5884f4742171da98257d8fbb0d275dd05ed6e938e965dd5fe1f43b45",
@@ -1458,7 +1461,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "network_error",
-        "observed_at": "2026-10-29T20:19:55+00:00",
+        "observed_at": "2026-10-30T04:22:43+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1493,7 +1496,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:31+00:00",
+        "observed_at": "2026-10-30T04:23:19+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "c39a32c4b2b95f8bd925afccb2e6424e4743909884162a9bc0a7d3f8884406ed",
@@ -1527,7 +1530,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:31+00:00",
+        "observed_at": "2026-10-30T04:23:19+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1562,7 +1565,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1597,7 +1600,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1632,7 +1635,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1667,7 +1670,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "029d413957070d06079f663db3dfea053c577e617d11d8936f041a80bbf43c0b",
@@ -1701,7 +1704,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "65326b8c3e348c3f90d0efce200ae4ec0a5c1cdb4fc5dfa53b5c55c6b07bae0a",
@@ -1735,7 +1738,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1769,7 +1772,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1803,7 +1806,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1838,7 +1841,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "6a1d1503bea16f4f1c564a616b94f7f9137226547321cf8da55f9c6f8e67d8da",
@@ -1872,7 +1875,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:32+00:00",
+        "observed_at": "2026-10-30T04:23:20+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1907,7 +1910,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:34+00:00",
+        "observed_at": "2026-10-30T04:23:22+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1942,7 +1945,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
-        "observed_at": "2026-10-29T20:20:34+00:00",
+        "observed_at": "2026-10-30T04:23:22+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -1977,7 +1980,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:34+00:00",
+        "observed_at": "2026-10-30T04:23:22+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -2012,7 +2015,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:34+00:00",
+        "observed_at": "2026-10-30T04:23:22+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2047,7 +2050,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "581881c26c04bee43065a06613160ccc32300b78aca43eb7086aab0cd46814cb",
@@ -2081,7 +2084,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2116,7 +2119,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2151,7 +2154,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "3d92c4033d3c93d4cd4682f5de8abdc28e2eb065b6a3d552b8856c05b9b8762f",
@@ -2185,7 +2188,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2220,7 +2223,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "116dcdef01c3ce8961fba74021dc2e2b536a7907ea2b28a926689c02f8c8f44c",
@@ -2254,7 +2257,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "0263b5f435ecbda45f392bea42b8fc022866a407fdc04554d9b51701677b7d3e",
@@ -2288,7 +2291,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2323,7 +2326,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2358,7 +2361,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "redirect_outside_official",
-        "observed_at": "2026-10-29T20:20:36+00:00",
+        "observed_at": "2026-10-30T04:23:27+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2392,7 +2395,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "redirect_outside_official",
-        "observed_at": "2026-10-29T20:20:37+00:00",
+        "observed_at": "2026-10-30T04:23:28+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2426,7 +2429,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:38+00:00",
+        "observed_at": "2026-10-30T04:23:29+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2461,7 +2464,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:39+00:00",
+        "observed_at": "2026-10-30T04:23:30+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2496,7 +2499,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:39+00:00",
+        "observed_at": "2026-10-30T04:23:30+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2531,7 +2534,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:39+00:00",
+        "observed_at": "2026-10-30T04:23:30+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2566,7 +2569,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:39+00:00",
+        "observed_at": "2026-10-30T04:23:30+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2601,7 +2604,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:40+00:00",
+        "observed_at": "2026-10-30T04:23:31+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2636,7 +2639,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:40+00:00",
+        "observed_at": "2026-10-30T04:23:31+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2671,7 +2674,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:41+00:00",
+        "observed_at": "2026-10-30T04:23:32+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2706,7 +2709,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:42+00:00",
+        "observed_at": "2026-10-30T04:23:33+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2741,7 +2744,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:42+00:00",
+        "observed_at": "2026-10-30T04:23:33+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "4d27881ea1242d2fea5bcb8f3c211a2feace009b5290d8b06d0f3aefb53cc3f8",
@@ -2775,7 +2778,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
-        "observed_at": "2026-10-29T20:20:42+00:00",
+        "observed_at": "2026-10-30T04:23:33+00:00",
         "http_status": "202",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2810,7 +2813,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "708443cd9060500781b3d9943bdfa28ed9b80f6c44c1c571c6405f7f3289a73e",
@@ -2844,7 +2847,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -2879,7 +2882,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2913,7 +2916,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2948,7 +2951,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -2983,7 +2986,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3017,7 +3020,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3051,7 +3054,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "network_error",
-        "observed_at": "2026-10-29T20:20:43+00:00",
+        "observed_at": "2026-10-30T04:23:34+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3086,7 +3089,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -3121,7 +3124,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "2562038fcaad4260323ac12cdb56b12456b3e56daad3b26dcf36574b19a8d651",
@@ -3155,7 +3158,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -3190,7 +3193,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -3225,7 +3228,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3259,7 +3262,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3293,7 +3296,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "html_too_short",
-        "observed_at": "2026-10-29T20:20:45+00:00",
+        "observed_at": "2026-10-30T04:23:35+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3327,7 +3330,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3361,7 +3364,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3396,7 +3399,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": "403",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3431,7 +3434,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3466,7 +3469,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3500,7 +3503,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3535,7 +3538,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
-        "observed_at": "2026-10-29T20:20:46+00:00",
+        "observed_at": "2026-10-30T04:23:36+00:00",
         "http_status": "403",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3570,7 +3573,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
-        "observed_at": "2026-10-29T20:20:47+00:00",
+        "observed_at": "2026-10-30T04:23:37+00:00",
         "http_status": "200",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3605,7 +3608,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "809aa50254d8832f14637f07708a324130feb1d308539bb1330d03e44947815b",
@@ -3639,7 +3642,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "cc40d830a9a6728334ae5af7d28da708c94840b5d1f832627479c47282102398",
@@ -3673,7 +3676,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -3708,7 +3711,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3743,7 +3746,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "42638b39df7975f3fb3de36426a28e4f32092025fcf4cd50ce6eaf46d75e4b79",
@@ -3777,7 +3780,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "fa0a4f5aed7222dd33f214beae9f424883666053c5c613227866eecbcc25bf21",
@@ -3811,7 +3814,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "4ab1b15f7397cc81cf2788ad1a58d14679e5ba7a6209533d313a930e8e2d5c1b",
@@ -3845,7 +3848,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "76afd0d7395922ec6d18c3c945c966fa8f09bf1a629f09f4fd9665580d3890e1",
@@ -3879,7 +3882,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:49+00:00",
+        "observed_at": "2026-10-30T04:23:39+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3914,7 +3917,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "9e92fb02092db38f6faf2077b5d1a666546193f4f5b1316481a0baac1e872839",
@@ -3948,7 +3951,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -3983,7 +3986,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4018,7 +4021,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "2eccb057f3777b7075a78f3e9b93abd3c06be844ffaea308cb758408c6f0a6c3",
@@ -4052,7 +4055,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "6fd698776c40dde65c65578c1fe30c0e9073c4927325d9270c9dc2b87141795c",
@@ -4086,7 +4089,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:43+00:00",
         "http_status": "403",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4121,7 +4124,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4156,7 +4159,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4190,7 +4193,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
-        "observed_at": "2026-10-29T20:20:53+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": "403",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4225,7 +4228,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4260,7 +4263,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4295,7 +4298,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4330,7 +4333,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "b439b19a0cf546cdd624164abf3fe35f1ab2cc8de4951220c4c15719b3fba522",
@@ -4364,7 +4367,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4398,7 +4401,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4433,7 +4436,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4468,7 +4471,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4502,7 +4505,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4537,7 +4540,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4572,7 +4575,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4607,7 +4610,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4642,7 +4645,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -4677,7 +4680,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4712,7 +4715,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4747,7 +4750,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4782,7 +4785,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "71ab1f05120ca23ca5403104ec2215f0d550cf41166a71e98b6dc98f731d4cde",
@@ -4816,7 +4819,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4851,7 +4854,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "a7ec67374624b2b286514d0300cfa5c996ef36ae88f7ba6b8b6ebf1580689e14",
@@ -4885,7 +4888,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "874aa06eae4caeb1d5998a087e8ab55da0c2fb0f29933949c530d5d11337f072",
@@ -4919,7 +4922,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:54+00:00",
+        "observed_at": "2026-10-30T04:23:44+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -4954,7 +4957,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:55+00:00",
+        "observed_at": "2026-10-30T04:23:45+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "a93c933403480b28309b84e96c1782f9ebacbe9ba3fa15817886e63a49300522",
@@ -4988,7 +4991,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:55+00:00",
+        "observed_at": "2026-10-30T04:23:45+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "cbe460a1da02b323725a230ffe354be0873c1fc7d1d6bc8496209abb2d2f68ea",
@@ -5022,7 +5025,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:55+00:00",
+        "observed_at": "2026-10-30T04:23:45+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5057,7 +5060,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:56+00:00",
+        "observed_at": "2026-10-30T04:23:46+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "4e9b98845eba1ae2e57d461118dc0e972f596dcbb9660f9e60396c8f8fef8eeb",
@@ -5091,7 +5094,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:56+00:00",
+        "observed_at": "2026-10-30T04:23:46+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5126,7 +5129,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "not_found",
-        "observed_at": "2026-10-29T20:20:56+00:00",
+        "observed_at": "2026-10-30T04:23:46+00:00",
         "http_status": "404",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5161,7 +5164,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
-        "observed_at": "2026-10-29T20:20:57+00:00",
+        "observed_at": "2026-10-30T04:23:47+00:00",
         "http_status": "403",
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5196,7 +5199,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "cdf74fc1626164c8e0c6137a6d78d4b200878919b10c2b3a542ef24304f878f9",
@@ -5230,7 +5233,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "6f82fe09df0003ab71a99552ea9aaa3afe84471cdb683503b176325b4d888a3c",
@@ -5264,7 +5267,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "dbfba8a96dc3cd584157ca66aaafdf67e0ed15dd5a0c8a58f3d4bd0f109fc646",
@@ -5298,7 +5301,7 @@
       "archive": {
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": "43be9baa1c62b3164d2136283d373e69829cf62f74a7a6d87e3bf0219bdae3cf",
@@ -5332,7 +5335,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5366,7 +5369,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5401,7 +5404,7 @@
       "archive": {
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": false,
         "reported_content_sha256": null,
@@ -5436,7 +5439,7 @@
       "archive": {
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-29T20:20:58+00:00",
+        "observed_at": "2026-10-30T04:23:48+00:00",
         "http_status": null,
         "has_private_file": true,
         "reported_content_sha256": null,
@@ -5456,5 +5459,199 @@
         "SOURCE_TOO_BROAD"
       ]
     }
-  ]
+  ],
+  "manual_acquisition": {
+    "provenance": {
+      "manifest_sha256": "595e52b1357613b09d50140ecf3692d35a37a574357a401cf5c47829fa22997a",
+      "private_file_ids_redacted": true
+    },
+    "transfer_attempts": 52,
+    "locally_hash_checked_unique_blobs": 28,
+    "manual_candidate_policy_ids": [
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ccus-itc",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-miit-industrial-plan-2022",
+      "cn-ordos-pilot-2024",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "jp-jogmec-advanced-ccs-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "uk-energy-act-2023",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "supporting_only_policy_ids": [
+      "ch-co2-act-ccs-2024",
+      "cn-js-industrial-decarb-2022",
+      "dk-ccs-subsidy-scheme-2025",
+      "eg-carbon-market-framework-2024",
+      "hr-hydrocarbon-act-ccs",
+      "qa-national-climate-strategy-2024"
+    ],
+    "added_candidate_policy_ids": [
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ccus-itc",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-miit-industrial-plan-2022",
+      "cn-ordos-pilot-2024",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "jp-jogmec-advanced-ccs-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "uk-energy-act-2023",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "cumulative_candidate_policy_ids": [
+      "au-offshore-ghg-act",
+      "au-offshore-ghg-safety-2024",
+      "au-safeguard-mechanism",
+      "au-wa-petroleum-amendment-2024",
+      "br-anp-ccs-resolution",
+      "br-bill-1425-2022",
+      "br-law-14993-2024",
+      "br-sbce-law-15042-2024",
+      "ca-ab-sequestration-tenure",
+      "ca-ccus-itc",
+      "ca-sk-ccs-directives",
+      "ca-sk-spii",
+      "california-lcfs",
+      "cn-bj-ccus-measures-2026",
+      "cn-ccer",
+      "cn-demo-tech-2024",
+      "cn-miit-industrial-plan-2022",
+      "cn-national-ets-expansion-2025",
+      "cn-ordos-pilot-2024",
+      "cn-pboc-cerf",
+      "cn-standards-2024",
+      "cn-zero-carbon-parks",
+      "eu-innovation-fund",
+      "fr-ccus-roadmap",
+      "fr-ccus-strategy-2024",
+      "gold-standard",
+      "in-ccus-roadmap",
+      "jp-jogmec-advanced-ccs-2024",
+      "kr-ccus-act",
+      "kr-ccus-act-enforcement-decree-2025",
+      "kz-ecology-code-ccus-2024",
+      "mx-sener-ccus-2025",
+      "my-ccus-act-2025",
+      "my-mida-incentives",
+      "my-netr-ccus-2023",
+      "netherlands-sde",
+      "nl-mining-act-co2-storage-2011",
+      "nl-porthos-sde-subsidy",
+      "no-storage-framework",
+      "pl-mining-law-ccs-2024",
+      "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
+      "tx-hb-1284-ccus",
+      "uk-ccs-network-code",
+      "uk-ccus-vision",
+      "uk-energy-act-2023",
+      "uk-industrial-carbon-capture-business-model-2025",
+      "us-45q-ira",
+      "us-doe-carbon-management-strategy",
+      "us-nd-century-code-38-22",
+      "us-obbba-45q-2025",
+      "us-tx-natural-resources-121",
+      "us-wy-hb-0200",
+      "vn-decree-119-2025",
+      "za-climate-change-act-2024"
+    ],
+    "policies_without_raw_candidate": [
+      "ae-carbon-strategy",
+      "ae-federal-climate-law-2024",
+      "alberta-tier",
+      "ar-rigi-ccus-2024",
+      "be-ccus-strategy-2025",
+      "ch-co2-act-ccs-2024",
+      "cl-green-hydrogen-ccs-2025",
+      "cn-ccus-national-standards-2026",
+      "cn-ccus-roadmap-2025",
+      "cn-co2-transport-status-2025",
+      "cn-gd-carbon-inclusive",
+      "cn-hb-ets-offset",
+      "cn-js-industrial-decarb-2022",
+      "cn-mee-env-guidance-2024",
+      "cn-national-standards",
+      "cn-sd-eco-plan-14fym",
+      "co-ccus-regulatory-decree-2025",
+      "co-law-2099-energy-transition",
+      "de-carbon-management-strategy-2024",
+      "de-icm-strategy",
+      "denmark-ccfd",
+      "dk-ccs-subsidy-scheme-2025",
+      "eg-carbon-market-framework-2024",
+      "es-climate-law-ccs-2025",
+      "eu-cbam",
+      "eu-ccs-directive",
+      "eu-crcf-2024",
+      "eu-ets-mrr-2018",
+      "eu-industrial-carbon-management-strategy-2024",
+      "eu-nzia",
+      "gr-ccs-regulatory-framework-2025",
+      "gr-climate-law-2022-update",
+      "hr-hydrocarbon-act-ccs",
+      "icao-corsia-ccu-2024",
+      "id-presidential-reg-14-2024",
+      "imo-marpol-occs-2024",
+      "in-national-mission-ccus-2024",
+      "in-union-budget-2026-ccus",
+      "intl-ccs-plus-framework",
+      "intl-gcca-net-zero-2050",
+      "intl-paris-art-6-4-ccs",
+      "ipcc-guidelines",
+      "is-carbfix-act",
+      "is-cdr-framework",
+      "is-onshore-storage-permit-2025",
+      "iso-standards",
+      "it-law-11-2024-modernization",
+      "jp-ccs-business-act-2024",
+      "kr-motie-cluster-district-2025",
+      "kw-kpc-net-zero-2024",
+      "ng-nuprc-decarb-2024",
+      "nl-cdr-roadmap-2025",
+      "no-14th-licensing-round-2025",
+      "no-tax-deduction-ccs",
+      "norway-longship",
+      "om-ccus-roadmap-2024",
+      "ph-ccus-policy-framework-2025",
+      "ph-doe-ccus-roadmap-2024",
+      "puro-earth",
+      "qa-national-climate-strategy-2024",
+      "ro-emergency-ordinance-2024",
+      "ro-law-114-2013-ccs",
+      "sa-circular-carbon-economy-2024",
+      "sa-hydrogen-strategy-ccus",
+      "sa-megi-ccus",
+      "sg-carbon-tax-ccus-2025",
+      "th-boi-incentives",
+      "th-draft-climate-change-act-2025",
+      "uae-adnoc-ccs-2030",
+      "us-cifia-lpo",
+      "us-epa-class-vi-primacy",
+      "us-iija-hubs",
+      "us-la-primacy-rules",
+      "verra-vm0049",
+      "vn-carbon-market-decree-2025"
+    ],
+    "legal_identity_review": "not_reviewed",
+    "current_drive_presence": "not_rechecked"
+  }
 }
