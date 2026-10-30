@@ -20,7 +20,8 @@ ALLOW_HOSTS = {
  'www.parliament.gov.za','www.boletinoficial.gob.ar','laws.e-gov.go.jp',
  'uscode.house.gov','globalgoals.goldstandard.org','www.jogmec.go.jp',
  'narodne-novine.nn.hr','www.fra.gov.eg','www.epa.gov','www.govinfo.gov',
- 'open.alberta.ca','ens.dk','www.boe.es',
+ 'open.alberta.ca','ens.dk','www.boe.es', 'www.ecologie.gouv.fr','www.bafu.admin.ch',
+ 'www.mecc.gov.qa','legacy.doe.gov.ph',
 }
 MAX_BYTES=40*1024*1024
 OUTPUT=Path(os.environ.get('POLICY_OUTPUT','policy_source_evidence'))
