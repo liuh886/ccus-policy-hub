@@ -4,6 +4,11 @@ on:
     paths:
       - '.github/workflows/archive_manual_batch01.yml'
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch01.yml'
+      - 'tools/source_archive/manual_acquire.py'
+      - 'tools/source_archive/manual_acquisition_batch01.csv'
 permissions:
   contents: read
 jobs:
