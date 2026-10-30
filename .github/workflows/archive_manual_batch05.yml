@@ -1,0 +1,31 @@
+name: Manual policy primary-source batch 05 (read-only acquisition)
+on:
+  push:
+    paths:
+      - '.github/workflows/archive_manual_batch05.yml'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch05.yml'
+      - 'tools/source_archive/manual_acquire_batch05.py'
+      - 'tools/source_archive/manual_acquisition_batch05.csv'
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and hash approved official-source candidates
+        run: POLICY_OUTPUT=policy_source_evidence_batch05 python tools/source_archive/manual_acquire_batch05.py tools/source_archive/manual_acquisition_batch05.csv
+      - name: Upload original bytes and manifest as private-run artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-official-candidates-batch05
+          path: policy_source_evidence_batch05/
+          retention-days: 7
+          if-no-files-found: error
