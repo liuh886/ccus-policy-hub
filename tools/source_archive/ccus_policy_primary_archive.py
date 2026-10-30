@@ -1,4 +1,4 @@
-"""Policy source acquisition and review queue (v4.1).
+"""Policy source acquisition and review queue (v4).
 
 Run next to archive_core.py (GitHub) or ccus_archive_core.py (Google Drive).
 The Colab notebook embeds both modules and needs neither import.
@@ -187,45 +187,15 @@ def candidate_version_alignment(policy, candidate_url, anchor):
     years_seen=set(re.findall(r'(?<!\d)(?:19|20)\d{2}(?!\d)', raw))
     if not years:return 'no_policy_year'
     target=years[-1]
-    if target in years_seen:return 'year_token_match_unverified'
+    if target in years_seen:return 'matching_year_in_link'
     if years_seen and max(years_seen)<target:return 'earlier_document_year_review'
     if years_seen:return 'other_document_year_review'
     return 'publication_year_not_visible'
 
 
-# These are candidate-stage descriptions, never legal identity/version approval.
-LANGUAGE_SELECTOR_RE = re.compile(r'(?i)^\s*(?:bg|cs|da|de|el|en|es|et|fi|fr|ga|hr|hu|it|lt|lv|mt|nl|pl|pt|ro|sk|sl|sv)\s+[^/]{2,45}$')
-
-def candidate_relation(policy, candidate_url, anchor, base_url=None):
-    caption=' '.join((anchor or '').split())
-    parsed=urlsplit(candidate_url)
-    if LANGUAGE_SELECTOR_RE.fullmatch(caption):
-        return 'navigation'
-    if re.search(r'(?i)(?:select[-_ /]?language|language[-_ /]?selector)', parsed.path+' '+caption):
-        return 'navigation'
-    # Same registry identity with another internal HTML route is not a new Act.
-    original=urlsplit(base_url or policy.get('url',''))
-    if parsed.hostname==original.hostname and parsed.hostname in ('www.legislation.gov.au','legislation.gov.au'):
-        identity=lambda path: re.search(r'(?i)/(C\d{4}[AC]\d+|F\d{4}[LC]\d+)(?:/|$)',path)
-        left,right=identity(original.path),identity(parsed.path)
-        if left and right and left[1].casefold()==right[1].casefold():
-            return 'same_instrument_internal_section'
-    if policy.get('policy_id')=='uk-industrial-carbon-capture-business-model-2025':
-        text=caption+' '+parsed.path.rsplit('/',1)[-1]
-        if not re.search(r'(?i)(?:industrial[ _-]+carbon[ _-]+capture|\bICC\b)',text):
-            return 'related_secondary' if re.search(r'(?i)(?:dispatchable|transport|storage|business.model)',text) else 'unknown'
-    if candidate_version_alignment(policy,candidate_url,anchor)=='earlier_document_year_review':
-        return 'historical_version'
-    title=' '.join(policy.get('title','').casefold().split())
-    if len(title)>=12 and title in caption.casefold():
-        return 'exact_instrument'
-    return 'unknown'
-
-
 def score_candidate(policy, candidate_url, anchor):
     """Candidate ranking only. Require identity clues; never use as legal authority score."""
     if not is_official_url(candidate_url) or url_scope(candidate_url)=='site_homepage':return -1
-    if candidate_relation(policy,candidate_url,anchor)=='navigation':return -1
     path=urlsplit(candidate_url).path
     # Do not award title matches from a long shared portal prefix (EU Innovation Fund, etc.).
     # Only the anchor and the last URL path component are candidate-specific.
@@ -259,7 +229,7 @@ def score_candidate(policy, candidate_url, anchor):
     edition=candidate_version_alignment(policy,candidate_url,anchor)
     if edition=='earlier_document_year_review':score-=25
     elif edition=='other_document_year_review':score-=15
-    elif edition=='year_token_match_unverified':score+=6
+    elif edition=='matching_year_in_link':score+=6
     return min(95,score) if score>=20 else -1
 
 
@@ -285,8 +255,6 @@ def extract_official_link_candidates(html_bytes,base_url,policy,source_file_id,m
                    'source_edition':'unknown','source_origin':'archived_official_html_link',
                    'source_drive_file_id':source_file_id,'match_score':score,
                    'version_alignment':candidate_version_alignment(policy,url,anchor),
-                   'candidate_relation':candidate_relation(policy,url,anchor,base_url),
-                   'relation_review_status':'not_reviewed',
                    'review_status':'pending','evidence_match_status':'unverified',
                    'research_note':'Link extracted from archived official HTML; existence and identity not checked.',
                    'inventory_sha256':policy.get('inventory_sha256','')}
@@ -300,8 +268,18 @@ def policy_archive_state(policy_id, rows, files):
            r.get('target_origin','canonical_db')=='canonical_db']
     current=audit[-1] if audit else {}
     attached=[f for f in files if (f.get('appProperties') or {}).get('policy_id')==policy_id]
-    fid=current.get('drive_file_id') or (attached[0].get('id') if attached else '')
+    # Reviewed manual batch imports intentionally have no Drive appProperties.
+    # Their immutable SHA-prefixed names are a discovery hint, NOT legal verification.
+    # The separate validated acquisition manifest binds file ID, URL and full SHA-256.
+    manual=[f for f in files if re.fullmatch(re.escape(policy_id)+
+             r'__[0-9a-f]{14}\.(?:pdf|html)', f.get('name',''))]
     status=current.get('status','unknown')
+    if manual:
+        return {'archive_state':'raw_candidate_archived',
+                'archived_source_file_id':manual[0].get('id',''),
+                'source_role':'manual_source_candidate_manifest_review_needed',
+                'archive_audit_status':status}
+    fid=current.get('drive_file_id') or (attached[0].get('id') if attached else '')
     if not fid:return {'archive_state':'no_raw_file','archived_source_file_id':'',
                        'source_role':'not_assessed','archive_audit_status':status}
     # A historical ministry-homepage snapshot must remain identifiable but not count as text.
@@ -340,17 +318,16 @@ def make_research_backlog(canonical, rows, files, candidate_rows):
     for policy_id,policy in by_id.items():
         status=policy_archive_state(policy_id,rows,files)
         count=number.get(policy_id,0)
-        instrument_gap=status['archive_state'] in ('no_raw_file','raw_homepage_only')
-        priority=('P0' if instrument_gap and
+        gap=status['archive_state'] in ('no_raw_file','raw_homepage_only')
+        priority=('P0' if gap and
                   status['archive_audit_status'] in ('source_too_broad','not_found','non_https_source')
-                  else 'P1' if instrument_gap else 'P2')
+                  else 'P1' if gap else 'P2')
         search_host=urlsplit(normalize_url(policy.get('url','')) or '').hostname or ''
         result.append({'policy_id':policy_id,'country':policy.get('country',''),
                        'policy_title':policy.get('title',''),'publisher':policy.get('publisher',''),
                        'canonical_url':policy.get('url',''),**status,
                        'source_candidate_count':count,
                        'discovery_state':'suggestions_pending_review' if count else
-                          'homepage_only_exact_source_lookup_needed' if status['archive_state']=='raw_homepage_only' else
                           'no_new_link_but_archived_raw' if status['archive_state']!='no_raw_file'
                           else 'exact_source_lookup_needed',
                        'instrument_match_review_state':'not_reviewed',
@@ -393,8 +370,6 @@ def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HT
                        **seed,'source_origin':'official_research_seed',
                        'source_drive_file_id':'','match_score':'',
                        'version_alignment':candidate_version_alignment(policy,seed['candidate_url'],seed['candidate_title']),
-                       'candidate_relation':candidate_relation(policy,seed['candidate_url'],seed['candidate_title']),
-                       'relation_review_status':'not_reviewed',
                        'review_status':'pending','evidence_match_status':'unverified',
                        'inventory_sha256':policy.get('inventory_sha256','')})
         covered.add(policy['policy_id'])
@@ -406,8 +381,7 @@ def review_candidates_from_archives(drive,canonical,rows,files,read_limit=MAX_HT
             'candidate_type':'no_new_link_candidate', 'source_edition':'',
             'source_origin':'research_backlog','source_drive_file_id':'',
             'match_score':'','review_status':'pending','evidence_match_status':'not_reviewed',
-            'version_alignment':'not_applicable','candidate_relation':'unknown',
-            'relation_review_status':'not_reviewed',
+            'version_alignment':'not_applicable',
             'research_note':'No new outbound link discovered. Raw archive status is a separate field.',
             'inventory_sha256':policy.get('inventory_sha256','')})
     for row in output:
@@ -430,7 +404,7 @@ def export_candidate_review_queue(drive,rows):
         'candidate_type','source_edition','source_origin','source_drive_file_id','match_score',
         'review_status','evidence_match_status','research_note','inventory_sha256',
         'archive_state','archive_audit_status','archived_source_file_id','source_role',
-        'discovery_state','instrument_match_review_state','version_alignment','candidate_relation','relation_review_status','publisher_lookup_route']
+        'discovery_state','instrument_match_review_state','version_alignment','publisher_lookup_route']
     with file.open('w',encoding='utf-8-sig',newline='') as out:
         writer=csv.DictWriter(out,fieldnames=fields,extrasaction='ignore')
         writer.writeheader();writer.writerows(rows)
