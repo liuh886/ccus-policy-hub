@@ -1,0 +1,4 @@
+policy_id,url,expected_format,source_role,title,edition,identity_assessment,inventory_sha256
+ro-emergency-ordinance-2024,https://legislatie.just.ro/Public/DetaliiDocument/292046,html,official_2024_amendment,Romanian GEO No 139/2024,2024 original,2024 amendment to GEO 64/2011,1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d
+ro-law-114-2013-ccs,https://legislatie.just.ro/Public/DetaliiDocument/147404,html,official_2013_amendment,Romanian Law No 114/2013,2013 original,approval of 2011 storage ordinance,1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d
+is-cdr-framework,https://www.althingi.is/altext/stjt/2022.067.html,html,official_law,Iceland Law 67/2022,2022 original,CO2 storage framework amendment,1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d
