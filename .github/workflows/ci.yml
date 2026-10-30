@@ -77,6 +77,7 @@ jobs:
       - name: RFC format diagnostic (temporary)
         run: |
           pnpm prettier --write docs/research/context-evidence-publication-rfc.md
+          python -c "import base64; s=base64.b64encode(open('docs/research/context-evidence-publication-rfc.md','rb').read()).decode(); print('RFC_FORMAT_BEGIN'); [print('RFC_CHUNK='+s[i:i+3000]) for i in range(0,len(s),3000)]; print('RFC_FORMAT_END')"
           git diff -- docs/research/context-evidence-publication-rfc.md
           git checkout -- docs/research/context-evidence-publication-rfc.md
 
