@@ -18,14 +18,13 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 ### 已存在、无需重写的组件
 
-| 层 | 实际来源 | 当前状态 | 在本 RFC 中怎样复用 |
-| --- | --- | --- | --- |
-| 已接受政策事实 | agent/ccus-ai-agent/db/ccus_master.sqlite | main 上唯一结构化维护权威，130 条 policy | 读取 policy ID、现有事实，不复制维护政策描述 |
-| 来源覆盖基线 | [#111](https://github.com/liuh886/ccus-policy-hub/pull/111) / [#106](https://github.com/liuh886/ccus-policy-hub/issues/106) | #111 分支候选，按 130 ID 审计，当前 main 尚未合入 | 使用审计状态，不把归档、候选、验证混计 |
-| GCCSI/法规原件采集 | [#107](https://github.com/liuh886/ccus-policy-hub/pull/107) | 私有 Drive 原件、增量归档和候选审核；draft | 上游采集输入，不能自动晋级法律事实 |
-| 静态 Context | [#103](https://github.com/liuh886/ccus-policy-hub/pull/103) | 分支上的 manifest / JSON Schema / bundle / 独立消费者 | 复用同一发布与读取入口，不另设一套 HTTP/API |
-| 固定版本法条 | [#104](https://github.com/liuh886/ccus-policy-hub/pull/104) | 2024 年 45Q HTML、packet/hash/locator；human review 仍 draft | 作为 HTML 证据最小实验，不重新发明存储结构 |
-| 数据资产架构边界 | [#108](https://github.com/liuh886/ccus-policy-hub/pull/108)、[消费契约 #109](https://github.com/liuh886/ccus-policy-hub/pull/109) | 已合并 main | 遵守权威，不把规范讨论误当已实现 |
+- **已接受政策事实** — 实际来源：agent/ccus-ai-agent/db/ccus_master.sqlite；当前状态：main 上唯一结构化维护权威，130 条 policy；在本 RFC 中怎样复用：读取 policy ID、现有事实，不复制维护政策描述
+- **来源覆盖基线** — 实际来源：[#111](https://github.com/liuh886/ccus-policy-hub/pull/111) / [#106](https://github.com/liuh886/ccus-policy-hub/issues/106)；当前状态：#111 分支候选，按 130 ID 审计，当前 main 尚未合入；在本 RFC 中怎样复用：使用审计状态，不把归档、候选、验证混计
+- **GCCSI/法规原件采集** — 实际来源：[#107](https://github.com/liuh886/ccus-policy-hub/pull/107)；当前状态：私有 Drive 原件、增量归档和候选审核；draft；在本 RFC 中怎样复用：上游采集输入，不能自动晋级法律事实
+- **静态 Context** — 实际来源：[#103](https://github.com/liuh886/ccus-policy-hub/pull/103)；当前状态：分支上的 manifest / JSON Schema / bundle / 独立消费者；在本 RFC 中怎样复用：复用同一发布与读取入口，不另设一套 HTTP/API
+- **固定版本法条** — 实际来源：[#104](https://github.com/liuh886/ccus-policy-hub/pull/104)；当前状态：2024 年 45Q HTML、packet/hash/locator；human review 仍 draft；在本 RFC 中怎样复用：作为 HTML 证据最小实验，不重新发明存储结构
+- **数据资产架构边界** — 实际来源：[#108](https://github.com/liuh886/ccus-policy-hub/pull/108)、[消费契约 #109](https://github.com/liuh886/ccus-policy-hub/pull/109)；当前状态：已合并 main；在本 RFC 中怎样复用：遵守权威，不把规范讨论误当已实现
+
 
 注意：#111 的“30/36/44 等”数量只代表某次归档审计，**不是法律原文核验覆盖率**。后续每次引用计数需区分政策数、文书数、版次数、经审锚点数。
 
@@ -54,7 +53,7 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 ## 2. 最短闭环：五步、三个权威、零个新后台
 
-~~~text
+```text
 [发行方：官方法规 / GCCSI 报告 / ESG30 论文]
            │ ① 发现 + 采集原件（#107）
            ▼
@@ -71,7 +70,7 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
            │ ⑤ 外部 Agent：resolve → validate → cite / explicit gap
            ▼
 [引用凭条 + 可读来源卡片；不调用本站问答 Agent]
-~~~
+```
 
 **三个权威彼此不冲突：**外部发行方是法律/报告的事实依据；**SQLite** 是 CCUS Policy Hub 已接受的结构化政策/设施事实的唯一修改入口；**Git 证据 packet** 是不可变原文版本、源位置及受审证据记录的唯一维护入口（不拥有或重写政策事实）。Drive 仅是采集与私有存档运行区；static JSON、Markdown、Astro 页面是确定性投影。ESG30 正文继续以论文上游仓库为唯一权威。
 
@@ -81,15 +80,14 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 建议先用**一个受审 JSON packet**定义来源版本及锚点。现在 #104 的 packet 已含 document_id、policy_id、edition、raw_sha256、normalized_sha256、extractor_version、review、anchors。先沿用这些字段及静态生成器，测试缺失项，仅在有真实样例时增加：
 
-| 字段或对象 | 语义及维护者 | 为什么需要 | 拒绝的简化 |
-| --- | --- | --- | --- |
-| document identity | 人工确认的文书标识、发行方、种类、官方原始 URL | 报告/政策记录可能映射多份文书、同一文书被多政策引用 | 以文件名/政策标题模糊匹配为权威 |
-| source version | edition + 官方版本标记 + raw SHA + covered-through | 版本、抓取、公布、生效是不同时间 | raw SHA 或下载时间直接表示法条现行 |
-| access and rights | public_original / publisher_only / restricted / unknown | 数据能公开引用≠原件可再分发 | 把 Drive 私有 URL 发给 Agent |
-| locator | html_text_quote / statute_section / pdf_page_quote / pdf_table（按真实格式） | 提供原文可复核位置 | HTML UTF-16 offset 直接套到 PDF |
-| review scope | identity / version / locator / support（分别可 pending/reviewed） | 防止来源 ID 已审即自动晋级具体断言 | 只有一个全局 verified 布尔值 |
-| relationship | policy_id + source_version_id + role / report_id + source_version_id | 一对多、多对一，区分法律原文、法规释义、报告观点 | 同国家或同关键词即可关联 |
-| claim support | 可选，特定已发表的事实/论断 + 审核过的 source anchor | Agent 引用的对象是具体主张，不能由文档存在推导 | 把整篇报告/原文自动视为对全部政策结论的支持 |
+- **document identity** — 语义及维护者：人工确认的文书标识、发行方、种类、官方原始 URL；为什么需要：报告/政策记录可能映射多份文书、同一文书被多政策引用；拒绝的简化：以文件名/政策标题模糊匹配为权威
+- **source version** — 语义及维护者：edition + 官方版本标记 + raw SHA + covered-through；为什么需要：版本、抓取、公布、生效是不同时间；拒绝的简化：raw SHA 或下载时间直接表示法条现行
+- **access and rights** — 语义及维护者：public_original / publisher_only / restricted / unknown；为什么需要：数据能公开引用≠原件可再分发；拒绝的简化：把 Drive 私有 URL 发给 Agent
+- **locator** — 语义及维护者：html_text_quote / statute_section / pdf_page_quote / pdf_table（按真实格式）；为什么需要：提供原文可复核位置；拒绝的简化：HTML UTF-16 offset 直接套到 PDF
+- **review scope** — 语义及维护者：identity / version / locator / support（分别可 pending/reviewed）；为什么需要：防止来源 ID 已审即自动晋级具体断言；拒绝的简化：只有一个全局 verified 布尔值
+- **relationship** — 语义及维护者：policy_id + source_version_id + role / report_id + source_version_id；为什么需要：一对多、多对一，区分法律原文、法规释义、报告观点；拒绝的简化：同国家或同关键词即可关联
+- **claim support** — 语义及维护者：可选，特定已发表的事实/论断 + 审核过的 source anchor；为什么需要：Agent 引用的对象是具体主张，不能由文档存在推导；拒绝的简化：把整篇报告/原文自动视为对全部政策结论的支持
+
 
 **第一次实际实现的最小数据包**仍然是“一个 source document 版本 + 一处定位 + 一个已知 policy_id + 公开 schema/index”，不需要把全部对象一次造出来。尤其“claim”不单独创建新事实表；既有已发表的 SQLite 分析文本先保留当前 record_summary 等级。只有事实文本与 anchor 被**人工逐项关联**后才提高具体引用的证据等级。
 
@@ -97,7 +95,7 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 以下数值用 #104 真实的 2024 历史 packet，但**字段结构只是 RFC 提案**；所有审核仍为 pending，不能从该例认定 2026 年法律现状。
 
-~~~json
+```json
 {
   "policy_id": "us-45q-ira",
   "source": {
@@ -127,7 +125,7 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
     "can_claim_current_law": false
   }
 }
-~~~
+```
 
 示意字段 **raw_publicly_available** 及 **redistribution_permission** 待真实核验；即使 #104 的 Git 历史 HTML 可供当前候选消费者读取，也不意味着所有其他发行方的 PDF 可公开复制。样例从现有 packet 导出，不从两个地方编辑。
 
@@ -135,14 +133,13 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 建议对每个文书版本维持彼此独立的维度，避免一个万能 confidence score：
 
-| 维度 | 可接受状态 | 谁改变它 |
-| --- | --- | --- |
-| acquisition | missing / archived / inaccessible | #107 的确定性采集日志 |
-| identity_review | pending / reviewed / rejected | 人工核对文书标题、文号、发行方与政策关系 |
-| version_review | pending / reviewed / historical / unknown | 人工确认版次、来源覆盖与法域；historical 不是“差” |
-| locator_review | pending / reviewed / invalidated | 原文段落/页码短引文与提取 hash 校验 |
-| claim_support_review | not_reviewed / reviewed / rejected | 人工确认具体主张与具体原文的支持关系 |
-| public_access | public_raw / public_metadata_only / restricted / unknown | 许可/访问审核，不随采集成功自动变化 |
+- **acquisition** — 可接受状态：missing / archived / inaccessible；谁改变它：#107 的确定性采集日志
+- **identity_review** — 可接受状态：pending / reviewed / rejected；谁改变它：人工核对文书标题、文号、发行方与政策关系
+- **version_review** — 可接受状态：pending / reviewed / historical / unknown；谁改变它：人工确认版次、来源覆盖与法域；historical 不是“差”
+- **locator_review** — 可接受状态：pending / reviewed / invalidated；谁改变它：原文段落/页码短引文与提取 hash 校验
+- **claim_support_review** — 可接受状态：not_reviewed / reviewed / rejected；谁改变它：人工确认具体主张与具体原文的支持关系
+- **public_access** — 可接受状态：public_raw / public_metadata_only / restricted / unknown；谁改变它：许可/访问审核，不随采集成功自动变化
+
 
 “来源可引用”应是**派生判断**，不得由导入脚本写入一个可被误改写的 review 字段：
 
@@ -188,7 +185,7 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 
 第一版建议用 #103/#104 已存在的 manifest / evidence 索引、schema、发布指纹、只读 CLI / HTTP 消费者，**不是**另建 /api/search：
 
-~~~text
+```text
 GET /ccus-policy-hub/data/manifest.json
   -> datasets.context / datasets.source_evidence (仅在 #103/#104 已合并时)
   -> schemas.context / schemas.source_evidence
@@ -196,7 +193,7 @@ GET /ccus-policy-hub/data/manifest.json
   -> evidence/index.json
   -> evidence/source_document/{document_id}.json
   -> approved source bytes (where lawfully public) OR publisher URL + restricted flag
-~~~
+```
 
 这是**逻辑路径说明**；最终准确文件名和 relative URL 由 #103/#104 当前代码和 manifest 生成，RFC **不得另行规定一套不兼容的新 URL**。
 
@@ -211,14 +208,13 @@ GET /ccus-policy-hub/data/manifest.json
 
 ### 允许发布什么？
 
-| 状态/材料 | public static 可以给出 | 不应声称 |
-| --- | --- | --- |
-| 仅有政策摘要 | 结构化摘要、原 URL、source gaps、record_summary | “经核验法律条款” |
-| 只有 Drive 原文归档 | 允许公开的元数据/出处、acquisition 状态 | “公开可获取原文字节 / 文书已审” |
-| 已核验身份/版本，无锚点 | 明确文书及版本、许可、来源 URL | “已复核具体条款与政策结论” |
-| 已核验历史原文及 locator | 带版本、限定审核范围的可引用位置与历史警告 | “现行法律仍适用” |
-| GCCSI PDF 统计/观点已核验 | 具页码、报表口径的 secondary research citation | “一手法规依据” |
-| 有权限限制的原文 | 元数据、公开发行方 URL、rights/status/缺口 | 把私有 Drive 链接当开放 CDN |
+- **仅有政策摘要** — public static 可以给出：结构化摘要、原 URL、source gaps、record_summary；不应声称：“经核验法律条款”
+- **只有 Drive 原文归档** — public static 可以给出：允许公开的元数据/出处、acquisition 状态；不应声称：“公开可获取原文字节 / 文书已审”
+- **已核验身份/版本，无锚点** — public static 可以给出：明确文书及版本、许可、来源 URL；不应声称：“已复核具体条款与政策结论”
+- **已核验历史原文及 locator** — public static 可以给出：带版本、限定审核范围的可引用位置与历史警告；不应声称：“现行法律仍适用”
+- **GCCSI PDF 统计/观点已核验** — public static 可以给出：具页码、报表口径的 secondary research citation；不应声称：“一手法规依据”
+- **有权限限制的原文** — public static 可以给出：元数据、公开发行方 URL、rights/status/缺口；不应声称：把私有 Drive 链接当开放 CDN
+
 
 ## 7. 真实用户使用路径（不需要本站聊天）
 
@@ -241,13 +237,12 @@ GET /ccus-policy-hub/data/manifest.json
 
 ## 8. 研究必须检验的五个设计分歧
 
-| 争议问题 | 默认建议 | 可能推翻它的实测证据 |
-| --- | --- | --- |
-| Git 证据 packet vs SQLite 新来源表 | Git packet 是来源/版次/定位维护权威，SQLite 事实照旧 | 多文档审核维护实测发现一致性、查询或并发更新不可控 |
-| 静态索引 vs 向量/RAG | 静态 manifest + 按政策/报告 ID 读取优先；外部 Agent 自己检索 | 真实消费者无法按已知 ID/目录找到相关材料且关键词检索也不够 |
-| PDF 通用分块 vs 页/表定位 | page + quote/table number，format-specific parser | 真实 PDF 样本证明必须更细的布局结构才能可靠定位 |
-| 私有 Drive 原件 vs 公共备份 | Drive 私有保存；可公有分发的受审原件再存 Git | 权利许可、体积、检索效率等明确不同需求 |
-| 自动抽取 + 审核 vs 自动 promoted verified | 解析器只建议候选；审核是明确人工决定 | 不接受用概率置信度代替证据身份/法律解释审查 |
+- **Git 证据 packet vs SQLite 新来源表** — 默认建议：Git packet 是来源/版次/定位维护权威，SQLite 事实照旧；可能推翻它的实测证据：多文档审核维护实测发现一致性、查询或并发更新不可控
+- **静态索引 vs 向量/RAG** — 默认建议：静态 manifest + 按政策/报告 ID 读取优先；外部 Agent 自己检索；可能推翻它的实测证据：真实消费者无法按已知 ID/目录找到相关材料且关键词检索也不够
+- **PDF 通用分块 vs 页/表定位** — 默认建议：page + quote/table number，format-specific parser；可能推翻它的实测证据：真实 PDF 样本证明必须更细的布局结构才能可靠定位
+- **私有 Drive 原件 vs 公共备份** — 默认建议：Drive 私有保存；可公有分发的受审原件再存 Git；可能推翻它的实测证据：权利许可、体积、检索效率等明确不同需求
+- **自动抽取 + 审核 vs 自动 promoted verified** — 默认建议：解析器只建议候选；审核是明确人工决定；可能推翻它的实测证据：不接受用概率置信度代替证据身份/法律解释审查
+
 
 如有不同意见，应在 PR 讨论回复中**点名争议编号或字段**，说明为什么它不能满足真实消费者需求，并将反例更新到 RFC，而不是扩建新的方案体系。
 
@@ -277,15 +272,14 @@ GET /ccus-policy-hub/data/manifest.json
 
 **记录规则**：PR Conversation 是主讨论记录；本节仅保存可归纳的**结论与其证据**，保留争论和被否决方案的链接。状态必须是 proposed / accepted / rejected / superseded，不能仅因提交文档便写 accepted。每次关键修改应追加日期、问题、备选方案、决定依据、具体变更 SHA、待验证反例；旧决定如果失效，只标 superseded，不悄悄改写历史。一个 PR 讨论到达真实实验验证、被用户确认的最小实现方向后，才将实施任务回填 docs/ROADMAP.md 并建立代码 PR。
 
-| ID | 问题 | 初始立场 | 状态 | 所需证据 |
-| --- | --- | --- | --- | --- |
-| D-001 | 引用资产的维护权威 | 原文/版次/locator 属 Git 证据 packet，已接受结构化事实仍是 SQLite | proposed | 3 份真实来源的完整生产/消费回路 |
-| D-002 | 公开 Agent 能拿到什么 | 可读元数据 + 审核强度 + 版本 + locator；原文字节取决于许可 | proposed | 一份可公有、一份 restricted PDF 样例 |
-| D-003 | 政策/文书关系怎样表达 | 版本化 source 与现有 policy ID 的经审核显式关联；多对多，投影生成索引 | proposed | 两份文书服务同政策 / 一份文书对应两政策 |
-| D-004 | Citation 精度 | HTML 用原句/定位，PDF 用物理页 + 短引文/表号；不得只有 document URL | proposed | PDF 与 HTML 的独立消费测试 |
-| D-005 | 是否要全文索引/向量检索 | 不纳入本轮 P0/P1；先测试按 ID/目录取证；需求不足不加 | proposed | 实际外部 Agent 消费任务的检索失败日志 |
-| D-006 | Muse 分享页究竟有什么值得复用 | 用户提供链接，**尚未可读取内容**，具体设计待验证 | open | 可见页面内容或来源明确的截图 |
-| D-007 | “审核通过”审核到哪一级 | 文书身份、版次、定位、具体主张支持分别审核 | proposed | 一条 draft locator 与已审 locator 的反例演示 |
+- **D-001** — 问题：引用资产的维护权威；初始立场：原文/版次/locator 属 Git 证据 packet，已接受结构化事实仍是 SQLite；状态：proposed；所需证据：3 份真实来源的完整生产/消费回路
+- **D-002** — 问题：公开 Agent 能拿到什么；初始立场：可读元数据 + 审核强度 + 版本 + locator；原文字节取决于许可；状态：proposed；所需证据：一份可公有、一份 restricted PDF 样例
+- **D-003** — 问题：政策/文书关系怎样表达；初始立场：版本化 source 与现有 policy ID 的经审核显式关联；多对多，投影生成索引；状态：proposed；所需证据：两份文书服务同政策 / 一份文书对应两政策
+- **D-004** — 问题：Citation 精度；初始立场：HTML 用原句/定位，PDF 用物理页 + 短引文/表号；不得只有 document URL；状态：proposed；所需证据：PDF 与 HTML 的独立消费测试
+- **D-005** — 问题：是否要全文索引/向量检索；初始立场：不纳入本轮 P0/P1；先测试按 ID/目录取证；需求不足不加；状态：proposed；所需证据：实际外部 Agent 消费任务的检索失败日志
+- **D-006** — 问题：Muse 分享页究竟有什么值得复用；初始立场：用户提供链接，**尚未可读取内容**，具体设计待验证；状态：open；所需证据：可见页面内容或来源明确的截图
+- **D-007** — 问题：“审核通过”审核到哪一级；初始立场：文书身份、版次、定位、具体主张支持分别审核；状态：proposed；所需证据：一条 draft locator 与已审 locator 的反例演示
+
 
 ### 2026-10-30 / Round 0 — 初版问题定义
 
