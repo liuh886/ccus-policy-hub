@@ -179,6 +179,15 @@ Windows 可将示意 `/tmp/ccus-e0` 换成自己的临时目录。对两组索�
 
 ## 对 RFC 的影响
 
+Round 3 纠错与后续代码回归：旧 HTML fixture 的逗号过滤属性被解析成了
+`kind=["catalog, review:draft"]`，而不是两个过滤器，因此其过滤查询不是有效的
+等价对照；此前记录保持可追溯，但撤销据此作出的过滤层结论。custom-record
+负例和未过滤观测不受影响。后续 [代码候选](https://github.com/liuh886/ccus-policy-hub/tree/feature/search-regressions)
+`4aca68c9` 用分开的 HTML 属性/元素重测，并从原生 fragment 证明 CJK 与 ICU
+边界不一致。两个实测术语的查询适配、显式语言、真实浏览器 Worker 以及完整
+语料 HTTP 回归均通过；它仍未完成真实发现投影与已审引用，不能将本节的
+历史失败观测改写成当时已经验收成功。详细过程见主 RFC Round 3。
+
 - **D-009 仍 proposed**：构建 API 能加入记录，URL 规则已实测；1.5.2 隔离对照消除一个英文漏召回负例，中文回归仍待解决，不批准生产插件。
 - **D-010 仍 proposed，补充可行性证据**：Node 可下载公开 SDK 并从 HTTP 索引查询，无须新增 REST 服务；还缺 release 固定、真实候选目录与消费契约测试。
 - **D-011 仍 proposed**：本轮只用合成文本测试索引输出。真实 GCCSI 仅核验元数据、字节和页面，没有获得全文发布许可。
