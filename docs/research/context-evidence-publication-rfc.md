@@ -25,7 +25,6 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 - **固定版本法条** — 实际来源：[#104](https://github.com/liuh886/ccus-policy-hub/pull/104)；当前状态：2024 年 45Q HTML、packet/hash/locator；human review 仍 draft；在本 RFC 中怎样复用：作为 HTML 证据最小实验，不重新发明存储结构
 - **数据资产架构边界** — 实际来源：[#108](https://github.com/liuh886/ccus-policy-hub/pull/108)、[消费契约 #109](https://github.com/liuh886/ccus-policy-hub/pull/109)；当前状态：已合并 main；在本 RFC 中怎样复用：遵守权威，不把规范讨论误当已实现
 
-
 注意：#111 的“30/36/44 等”数量只代表某次归档审计，**不是法律原文核验覆盖率**。后续每次引用计数需区分政策数、文书数、版次数、经审锚点数。
 
 ## 1. 从用户视角倒推：怎样才叫「Agent 可以引用」？
@@ -88,7 +87,6 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 - **relationship** — 语义及维护者：policy_id + source_version_id + role / report_id + source_version_id；为什么需要：一对多、多对一，区分法律原文、法规释义、报告观点；拒绝的简化：同国家或同关键词即可关联
 - **claim support** — 语义及维护者：可选，特定已发表的事实/论断 + 审核过的 source anchor；为什么需要：Agent 引用的对象是具体主张，不能由文档存在推导；拒绝的简化：把整篇报告/原文自动视为对全部政策结论的支持
 
-
 **第一次实际实现的最小数据包**仍然是“一个 source document 版本 + 一处定位 + 一个已知 policy_id + 公开 schema/index”，不需要把全部对象一次造出来。尤其“claim”不单独创建新事实表；既有已发表的 SQLite 分析文本先保留当前 record_summary 等级。只有事实文本与 anchor 被**人工逐项关联**后才提高具体引用的证据等级。
 
 ### 可消费数据的例子（示意，不是已发布 Schema）
@@ -139,7 +137,6 @@ https://muse.ai/s/space-2-xlxe64u6xlxhn09/xs0cU6ExUNomLYLV1pCQEDF6FTETS-ofnh2WOI
 - **locator_review** — 可接受状态：pending / reviewed / invalidated；谁改变它：原文段落/页码短引文与提取 hash 校验
 - **claim_support_review** — 可接受状态：not_reviewed / reviewed / rejected；谁改变它：人工确认具体主张与具体原文的支持关系
 - **public_access** — 可接受状态：public_raw / public_metadata_only / restricted / unknown；谁改变它：许可/访问审核，不随采集成功自动变化
-
 
 “来源可引用”应是**派生判断**，不得由导入脚本写入一个可被误改写的 review 字段：
 
@@ -215,7 +212,6 @@ GET /ccus-policy-hub/data/manifest.json
 - **GCCSI PDF 统计/观点已核验** — public static 可以给出：具页码、报表口径的 secondary research citation；不应声称：“一手法规依据”
 - **有权限限制的原文** — public static 可以给出：元数据、公开发行方 URL、rights/status/缺口；不应声称：把私有 Drive 链接当开放 CDN
 
-
 ## 7. 真实用户使用路径（不需要本站聊天）
 
 **使用场景 A：外部 Agent 研究美国 45Q 如何定义某种设施。**
@@ -242,7 +238,6 @@ GET /ccus-policy-hub/data/manifest.json
 - **PDF 通用分块 vs 页/表定位** — 默认建议：page + quote/table number，format-specific parser；可能推翻它的实测证据：真实 PDF 样本证明必须更细的布局结构才能可靠定位
 - **私有 Drive 原件 vs 公共备份** — 默认建议：Drive 私有保存；可公有分发的受审原件再存 Git；可能推翻它的实测证据：权利许可、体积、检索效率等明确不同需求
 - **自动抽取 + 审核 vs 自动 promoted verified** — 默认建议：解析器只建议候选；审核是明确人工决定；可能推翻它的实测证据：不接受用概率置信度代替证据身份/法律解释审查
-
 
 如有不同意见，应在 PR 讨论回复中**点名争议编号或字段**，说明为什么它不能满足真实消费者需求，并将反例更新到 RFC，而不是扩建新的方案体系。
 
@@ -279,7 +274,6 @@ GET /ccus-policy-hub/data/manifest.json
 - **D-005** — 问题：是否要全文索引/向量检索；初始立场：不纳入本轮 P0/P1；先测试按 ID/目录取证；需求不足不加；状态：proposed；所需证据：实际外部 Agent 消费任务的检索失败日志
 - **D-006** — 问题：Muse 分享页究竟有什么值得复用；初始立场：用户提供链接，**尚未可读取内容**，具体设计待验证；状态：open；所需证据：可见页面内容或来源明确的截图
 - **D-007** — 问题：“审核通过”审核到哪一级；初始立场：文书身份、版次、定位、具体主张支持分别审核；状态：proposed；所需证据：一条 draft locator 与已审 locator 的反例演示
-
 
 ### 2026-10-30 / Round 0 — 初版问题定义
 
