@@ -74,6 +74,12 @@ jobs:
       - name: ESLint
         run: pnpm eslint .
 
+      - name: RFC format diagnostic (temporary)
+        run: |
+          pnpm prettier --write docs/research/context-evidence-publication-rfc.md
+          git diff -- docs/research/context-evidence-publication-rfc.md
+          git checkout -- docs/research/context-evidence-publication-rfc.md
+
       - name: Prettier Check
         run: pnpm prettier --check .
 
