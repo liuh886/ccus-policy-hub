@@ -4,22 +4,22 @@
 
 ## Observed first-run results
 
-| First-run status | Policies |
-| --- | ---: |
-| `uploaded_original` (raw-source files; **not** policy-identity verification) | 34 |
-| `needs_official_source_review` | 65 |
-| `not_found` | 7 |
-| `http_error` (6 HTTP 202 + 412/419) | 8 |
-| `missing_source_url` (actually HTTP-only original URL) | 5 |
-| `network_error` | 4 |
-| `blocked_html` | 3 |
-| `access_blocked` | 3 |
-| `html_too_short` | 1 |
-| **Total** | **130** |
+| First-run status                                                             | Policies |
+| ---------------------------------------------------------------------------- | -------: |
+| `uploaded_original` (raw-source files; **not** policy-identity verification) |       34 |
+| `needs_official_source_review`                                               |       65 |
+| `not_found`                                                                  |        7 |
+| `http_error` (6 HTTP 202 + 412/419)                                          |        8 |
+| `missing_source_url` (actually HTTP-only original URL)                       |        5 |
+| `network_error`                                                              |        4 |
+| `blocked_html`                                                               |        3 |
+| `access_blocked`                                                             |        3 |
+| `html_too_short`                                                             |        1 |
+| **Total**                                                                    |  **130** |
 
 Detailed breakdown of **65** `needs_official_source_review` records under the **v2.2 URL prefilter**:
 
-- **20** have government/institutional hostnames now admitted to the *acquisition* prefilter, so may be retried.
+- **20** have government/institutional hostnames now admitted to the _acquisition_ prefilter, so may be retried.
 - **32** are publisher homepages and need an instrument-specific original URL. Permitting their domains is not a solution.
 - **13** are not admitted and still need source/issuer verification (including private registries and standards organizations).
 

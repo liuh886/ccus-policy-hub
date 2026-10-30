@@ -30,3 +30,6 @@ Thumbs.db
 
 # --- Other ---
 LICENSE
+
+# Generated notebook derivatives are checked against canonical Python bytes
+tools/source_archive/notebooks/

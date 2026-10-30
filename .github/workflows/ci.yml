@@ -72,6 +72,9 @@ jobs:
           python tools/source_archive/test_archive_core.py
           python tools/source_archive/test_source_discovery_v3.py
           python tools/source_archive/test_source_discovery_v4.py
+          python tools/source_archive/test_source_discovery_v41.py
+          python tools/source_archive/build_notebooks.py --check
+          python tools/source_archive/test_notebook_sync.py
 
   build:
     name: Fast quality and production build

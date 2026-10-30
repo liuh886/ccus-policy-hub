@@ -35,14 +35,13 @@
 - `createdTime` is a fallback for legacy GCCSI files lacking `checked_at`, so initial v2 run may recheck old files; rechecks are deduplicated by SHA-256.
 - Transient HTTP 403/429 can represent bot mitigation rather than membership restrictions. HTML snapshot is raw evidence; no interpretation or content extraction is attempted.
 
-
 ## First live Policy Colab audit: remediation (2026-10-30)
 
 Input: `Policy_Primary_Source_Audit_20261029T191752Z.csv` in the connected Google Drive metadata folder; immutable inventory SHA-256 `1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d`.
 
 - 130 policies evaluated: 34 downloaded files; 65 old host-allowlist rejects; 7 HTTP 404; 6 HTTP 202/8 HTTP-error total; 4 network errors; 5 insecure HTTP URLs; 3 blocked HTML, 3 403 and 1 too-short HTML.
 - 65 rejects decomposed: **20 official host false negatives** accepted by v2.2 acquisition filter; **32 generic publisher homepages** now `source_too_broad` and not considered originals; **13 issuer/source cases** remain for manual review.
-- **8 of the 34 already uploaded sources** pointed at publisher homepages; pre-existing files are *not* deleted, but must not be counted as primary policy texts or indexed as legal instruments.
+- **8 of the 34 already uploaded sources** pointed at publisher homepages; pre-existing files are _not_ deleted, but must not be counted as primary policy texts or indexed as legal instruments.
 - Source authenticity requires policy-to-instrument matching, legal title/number, official issuer, applicable edition/effective date, and evidence of document content. `uploaded_original` is only a file-transfer status, not policy evidence verification.
 - The 5 non-HTTPS URLs remain in the backlog, now explicitly `non_https_source`; the source inventory still contains 130 nonempty `p.url` values but only 125 initially valid HTTPS URLs.
 - `http_202_not_document` records upstream 202 responses (not a PDF or HTML body); don't infer permanent link death.
@@ -50,7 +49,6 @@ Input: `Policy_Primary_Source_Audit_20261029T191752Z.csv` in the connected Googl
 - Before repeating, use latest updated Google Drive policy notebook. The first new run after v2.2 is **not yet live verified**; compare its CSV with this queue before approving any primary-source coverage KPI.
 
 Repair CSV: `Policy_Source_Repair_Queue_20261030.csv`, columns `queue_bucket`, `priority`, `action`, `policy_id`, original source URL and the canonical SQLite hash. Treat all `archived_unverified` as needing content validation, even though the file exists in private Drive. This CSV is a planning aid and must not modify the policy database.
-
 
 ## v3: read-only candidate discovery and reviewer gate
 
@@ -62,7 +60,6 @@ The standalone Python collectors import adjacent `archive_core.py` in GitHub, wh
 
 **Evidence KPI:** 44 files currently preserved in the Policy Drive folder, but 36 non-homepage source candidates (not 36 legally verified originals). 44 broad canonical source URLs remain a provenance-repair backlog.
 
-
 ## v4 policy discovery precision and evidence-state split (2026-10-30)
 
 The updated [Policy Colab notebook](https://drive.google.com/file/d/1rzFS8pcSsVocD1FlJXuSKRSHGv9fbEVH/view) now emits **three** private CSV reports: (1) archive audit, (2) candidate review, (3) `Policy_Official_Registry_Research_Backlog_<UTC>.csv`. The third CSV is a per-policy publisher/registry research instruction list (official domain hint, canonical ID, source status, priority and lookup route); it does **not** execute publisher searches or invent direct-document URLs. All 130 policies remain represented.
@@ -72,3 +69,33 @@ The reviewer CSV distinguishes `archive_state` (including raw archival of a lega
 Offline: 23 tests pass, including 20 actual v3 bad-link fixtures; embedded Colab cell is parsed and executed with main disabled as a self-contained smoke test. This is **not a live Colab v4 success claim**. Run once and validate all three CSV exports and reviewer semantics before merging. Do not alter SQLite or auto-approve linked policies.
 
 See `V4_DISCOVERY_RELEASE_NOTES.md` for full scope and future publisher adapter boundary.
+
+## v4.1 corrective patch and notebook authority
+
+The canonical Python modules in this directory own execution code. Build the
+self-contained derivatives with `python tools/source_archive/build_notebooks.py`;
+CI runs `--check` and mutation/compilation checks. Generated notebooks are in
+`tools/source_archive/notebooks/`; never maintain their embedded Python separately.
+A downloaded Drive export can be checked with
+`python tools/source_archive/build_notebooks.py --verify-export <file.ipynb> --collector policy`
+(or `gccsi`). Runtime outputs are ignored; any changed executable cell fails parity.
+
+The v4.1 patch makes homepage-only legacy archives P0 source gaps, rejects EU
+language-selector suggestions, separates candidate relations (including same-Act
+internal sections and related business models), and labels year-token matches
+as unverified. A candidate relation is heuristic and stays `not_reviewed`;
+no ranking, identity label or archive transfer state grants acquisition approval.
+
+The 8-case homepage fixture uses all eight policy IDs observed in the actual
+v4 backlog; private file IDs are replaced by fixture-only values. Replaying the
+three retained v4 CSVs through v4.1 changes P0/P1/P2 from 51/35/44 to 59/35/36,
+identifies five navigation links and four same-Act internal sections, and leaves
+all approvals unchanged. Input SHA-256 values and exact commands are recorded in
+`V41_OFFLINE_REPLAY.md`. This is an offline replay, not a new cloud run.
+
+The generated v4.1 notebooks have **not** been deployed to the existing Drive
+notebook IDs or executed in a post-change Colab session by this patch. Source
+parity checking does not imply cloud synchronization or live acceptance. Before
+merge, run the chosen generated notebook in the authorized Colab/Drive session,
+read back all three policy CSV exports, compare the canonical SQLite checksum,
+and verify no unintended file replacement or automatic approval occurred.

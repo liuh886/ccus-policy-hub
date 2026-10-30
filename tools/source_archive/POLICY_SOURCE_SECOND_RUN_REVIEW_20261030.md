@@ -8,41 +8,41 @@
 ## Grounded outcome (do not conflate these denominators)
 
 - Existing raw files: **44 Drive files** (=34 first run +10 second run); first audit had 34 `uploaded_original`; second audit: 26 `already_archived`, 10 `uploaded_original`, 8 historically uploaded broad institutional homepages reclassified to `source_too_broad`.
-- 36 unique policy IDs now point to a newly saved or previously retained **non-homepage *candidate***; 36/130 = 27.7%. This is **NOT** legal-instrument verified coverage. 44/130 = 33.8% is raw-file retention, and includes the 8 historical broad homepages.
+- 36 unique policy IDs now point to a newly saved or previously retained **non-homepage _candidate_**; 36/130 = 27.7%. This is **NOT** legal-instrument verified coverage. 44/130 = 33.8% is raw-file retention, and includes the 8 historical broad homepages.
 - 44 policy records (33.8%) have `source_too_broad`; 50 remaining records have other unavailable/blocked/review statuses. All 130 IDs appear in the audit.
 - All 36 `already_archived`/`uploaded_original` audit IDs were checked against actual files in the target Google Drive folder; **0 missing**. The folder held 41 HTML and 3 PDF files. The 10 newly downloaded files were all HTML.
 
-| Second run status | Count |
-| --- | ---: |
-| `source_too_broad` | 44 |
-| `already_archived` | 26 |
-| `needs_official_source_review` | 13 |
-| `not_found` | 10 |
-| `uploaded_original` | 10 |
-| `http_202_not_document` | 6 |
-| `non_https_source` | 5 |
-| `access_blocked` | 5 |
-| `network_error` | 5 |
-| `blocked_html` | 3 |
-| `redirect_outside_official` | 2 |
-| `html_too_short` | 1 |
+| Second run status              | Count |
+| ------------------------------ | ----: |
+| `source_too_broad`             |    44 |
+| `already_archived`             |    26 |
+| `needs_official_source_review` |    13 |
+| `not_found`                    |    10 |
+| `uploaded_original`            |    10 |
+| `http_202_not_document`        |     6 |
+| `non_https_source`             |     5 |
+| `access_blocked`               |     5 |
+| `network_error`                |     5 |
+| `blocked_html`                 |     3 |
+| `redirect_outside_official`    |     2 |
+| `html_too_short`               |     1 |
 
 ## Actual HTML-title spot-check of the 10 newly uploaded files
 
 The checks below inspect the saved HTML's `<title>`/`<h1>`, **not** an external summary. These files are retained even if they are not the target legal instrument.
 
-| Policy ID | Observed document/page | Preliminary result |
-| --- | --- | --- |
-| `br-bill-1425-2022` | Brazilian Senate title **PL 1425/2022** | Specific bill docket candidate; bill status still needs confirmation |
-| `ca-ab-sequestration-tenure` | Alberta King's Printer | Publisher catalog/entry; regulations text not established |
-| `ca-sk-ccs-directives` | Government of Saskatchewan: **Oil and Gas** | Generic category page, **not the directive** |
-| `kz-ecology-code-ccus-2024` | Kazakhstan Ministry of Ecology home | Agency page, **not Ecology Code** |
-| `my-ccus-act-2025` | MyCCUS **Activities & Initiatives** | Portal activities, **not CCUS Act** |
-| `my-mida-incentives` | MIDA **Equilibrium Through Carbon Capture** | Promotional/sector article, not the formal incentive text |
-| `netherlands-sde` | RVO **SDE++ programme** | Official program overview, not necessarily its regulation |
-| `nl-mining-act-co2-storage-2011` | wetten.nl **Mijnbouwwet — BWBR0014168** | Legal statute text candidate; provisions and version still need verification |
-| `nl-porthos-sde-subsidy` | RVO **SDE++ programme** | Scheme overview, not proof of the Porthos award |
-| `pl-mining-law-ccs-2024` | Gov.pl **Ministry of Climate and Environment** | Ministry portal, **not mining law** |
+| Policy ID                        | Observed document/page                         | Preliminary result                                                           |
+| -------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------- |
+| `br-bill-1425-2022`              | Brazilian Senate title **PL 1425/2022**        | Specific bill docket candidate; bill status still needs confirmation         |
+| `ca-ab-sequestration-tenure`     | Alberta King's Printer                         | Publisher catalog/entry; regulations text not established                    |
+| `ca-sk-ccs-directives`           | Government of Saskatchewan: **Oil and Gas**    | Generic category page, **not the directive**                                 |
+| `kz-ecology-code-ccus-2024`      | Kazakhstan Ministry of Ecology home            | Agency page, **not Ecology Code**                                            |
+| `my-ccus-act-2025`               | MyCCUS **Activities & Initiatives**            | Portal activities, **not CCUS Act**                                          |
+| `my-mida-incentives`             | MIDA **Equilibrium Through Carbon Capture**    | Promotional/sector article, not the formal incentive text                    |
+| `netherlands-sde`                | RVO **SDE++ programme**                        | Official program overview, not necessarily its regulation                    |
+| `nl-mining-act-co2-storage-2011` | wetten.nl **Mijnbouwwet — BWBR0014168**        | Legal statute text candidate; provisions and version still need verification |
+| `nl-porthos-sde-subsidy`         | RVO **SDE++ programme**                        | Scheme overview, not proof of the Porthos award                              |
+| `pl-mining-law-ccs-2024`         | Gov.pl **Ministry of Climate and Environment** | Ministry portal, **not mining law**                                          |
 
 ## Confirmed source repair and manual research candidates
 
