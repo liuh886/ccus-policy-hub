@@ -276,13 +276,34 @@ export async function runConsumerCli(
   const options = parseConsumerArgs(args);
   let manifestUrl, reader;
   if (options.root) {
-    const root = fs.realpathSync(options.root);
-    const manifest = JSON.parse(
-      fs.readFileSync(path.join(root, 'data/manifest.json'), 'utf8')
-    );
-    const base = new URL(manifest.base_url.replace(/\/$/, '') + '/');
-    manifestUrl = new URL('data/manifest.json', base);
-    reader = (value) => {
+    ({ manifestUrl, reader } = filesystemPublication(options.root));
+  } else {
+    manifestUrl = new URL(options.manifestUrl);
+    reader = httpReader(manifestUrl);
+  }
+  reader = publicClient(reader).read;
+  const release = options.expectedCommit
+    ? await verifyRelease(manifestUrl, reader, options.expectedCommit)
+    : { verified: false, reason: 'not_requested' };
+  const result = await consume(manifestUrl, reader);
+  console.log(
+    JSON.stringify(
+      { ...result, transport: options.root ? 'filesystem' : 'http', release },
+      null,
+      2
+    )
+  );
+}
+
+export function filesystemPublication(directory) {
+  const root = fs.realpathSync(directory);
+  const manifest = JSON.parse(
+    fs.readFileSync(path.join(root, 'data/manifest.json'), 'utf8')
+  );
+  const base = new URL(manifest.base_url.replace(/\/$/, '') + '/');
+  return {
+    manifestUrl: new URL('data/manifest.json', base),
+    reader(value) {
       const parsed = new URL(value);
       check(
         parsed.origin === base.origin &&
@@ -300,23 +321,8 @@ export async function runConsumerCli(
         'Resource escapes the publication directory.'
       );
       return fs.readFileSync(target);
-    };
-  } else {
-    manifestUrl = new URL(options.manifestUrl);
-    reader = httpReader(manifestUrl);
-  }
-  reader = publicClient(reader).read;
-  const release = options.expectedCommit
-    ? await verifyRelease(manifestUrl, reader, options.expectedCommit)
-    : { verified: false, reason: 'not_requested' };
-  const result = await consume(manifestUrl, reader);
-  console.log(
-    JSON.stringify(
-      { ...result, transport: options.root ? 'filesystem' : 'http', release },
-      null,
-      2
-    )
-  );
+    },
+  };
 }
 export function consumerFailure(error) {
   process.stderr.write(
