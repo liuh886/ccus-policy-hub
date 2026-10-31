@@ -1,0 +1,36 @@
+[
+  {
+    "id": "45q-historical-facility-definition",
+    "document_id": "us-45q-usc-2024",
+    "task": "Extract an atomic description of the historical qualified-facility definition. Preserve conjunctions, categories, quantities and timing. Do not infer project eligibility or current law. State dependencies outside the provided section.",
+    "risks": [
+      "lost conjunction or condition",
+      "wrong category or quantity",
+      "historical text presented as current law",
+      "external definitions missing"
+    ],
+    "layout_required_for_relations": false
+  },
+  {
+    "id": "uk-original-licensing-activities",
+    "document_id": "uk-energy-act-2023-enacted",
+    "task": "Extract an atomic description of an activity named in original section 2 and its stated licensing context. Preserve the subsection boundaries. Do not infer current commencement, later regulations or project-specific applicability.",
+    "risks": [
+      "original enactment confused with current law",
+      "licensing qualifier dropped",
+      "cross-reference treated as fully provided"
+    ],
+    "layout_required_for_relations": false
+  },
+  {
+    "id": "gccsi-report-figure-boundary",
+    "document_id": "gccsi-ccus-progress-china-en",
+    "task": "Describe only what the provided evidence supports. The input is flat extracted text containing figure captions and labels, without a provenance-checked image. Identify the figure if supported; abstain from interpreting diagram relations, rankings, quantities or legal obligations that require missing evidence.",
+    "risks": [
+      "flat labels converted into invented diagram relations",
+      "report presented as legal authority",
+      "unknown edition invented from URL"
+    ],
+    "layout_required_for_relations": true
+  }
+]
