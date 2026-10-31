@@ -1,0 +1,2 @@
+policy_id,url,expected_format,source_role,title,edition,identity_assessment,inventory_sha256
+ipcc-guidelines,https://www.ipcc-nggip.iges.or.jp/public/2019rf/pdf/2019rf_all_in.zip,zip,official_complete_publication_package,IPCC 2019 Refinement to the 2006 IPCC Guidelines full five-volume package,2019_refinement_with_corrigenda,Full original 2019 Refinement; companion 2006 Guidelines separately required,1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d

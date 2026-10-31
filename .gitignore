@@ -92,3 +92,7 @@ artifacts/
 !agent.md
 !README.md
 !README.zh.md
+
+# Python execution caches are not source artifacts
+__pycache__/
+*.pyc

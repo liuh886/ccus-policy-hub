@@ -1,0 +1,31 @@
+name: Manually verified policy sources batch 06
+on:
+  push:
+    paths:
+      - '.github/workflows/archive_manual_batch06.yml'
+      - 'tools/source_archive/manual_acquisition_batch06.csv'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch06.yml'
+      - 'tools/source_archive/manual_acquisition_batch06.csv'
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preserve source bytes without approval or SQLite writes
+        run: POLICY_OUTPUT=policy_source_evidence_batch06 python tools/source_archive/manual_acquire_batch04.py tools/source_archive/manual_acquisition_batch06.csv
+      - name: Upload raw bytes and SHA-256 manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-source-evidence-batch06
+          path: policy_source_evidence_batch06/
+          retention-days: 7
+          if-no-files-found: error

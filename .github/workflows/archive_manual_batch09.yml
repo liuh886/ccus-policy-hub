@@ -1,0 +1,31 @@
+name: Manual primary policy acquisition batch 09
+on:
+  push:
+    paths:
+      - '.github/workflows/archive_manual_batch09.yml'
+      - 'tools/source_archive/manual_acquisition_batch09.csv'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch09.yml'
+      - 'tools/source_archive/manual_acquisition_batch09.csv'
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preserve manually located primary source bytes
+        run: POLICY_OUTPUT=policy_source_evidence_batch09 python tools/source_archive/manual_acquire_batch09.py tools/source_archive/manual_acquisition_batch09.csv
+      - name: Upload source bytes and SHA-256 manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-source-evidence-batch09
+          path: policy_source_evidence_batch09/
+          retention-days: 7
+          if-no-files-found: error

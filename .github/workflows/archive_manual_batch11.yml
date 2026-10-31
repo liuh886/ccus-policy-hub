@@ -1,0 +1,31 @@
+name: Dutch CDR official source acquisition batch 11
+on:
+  push:
+    paths:
+      - '.github/workflows/archive_manual_batch11.yml'
+      - 'tools/source_archive/manual_acquisition_batch11.csv'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch11.yml'
+      - 'tools/source_archive/manual_acquisition_batch11.csv'
+permissions:
+  contents: read
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire Netherlands government 2025 CDR original with SHA-256
+        run: POLICY_OUTPUT=policy_source_evidence_batch11 python tools/source_archive/manual_acquire_batch09.py tools/source_archive/manual_acquisition_batch11.csv
+      - name: Preserve source and manifest for approval
+        uses: actions/upload-artifact@v4
+        with:
+          name: policy-source-evidence-batch11
+          path: policy_source_evidence_batch11/
+          retention-days: 7
+          if-no-files-found: error

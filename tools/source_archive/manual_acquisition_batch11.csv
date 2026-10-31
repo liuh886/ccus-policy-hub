@@ -1,0 +1,2 @@
+policy_id,url,expected_format,source_role,title,edition,identity_assessment,inventory_sha256
+nl-cdr-roadmap-2025,https://www.government.nl/site/binaries/site-content/collections/documents/2025/03/14/netherlands-carbon-dioxide-removal-roadmap/2025-Netherlands%2BRoadmap%2Bon%2Bcarbon%2Bdioxide%2Bremovals.pdf,pdf,official_original_strategy,Netherlands Carbon Dioxide Removal Roadmap 57 page full English edition,2025-03-14,exact_ministry_CDR_roadmap,1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d
