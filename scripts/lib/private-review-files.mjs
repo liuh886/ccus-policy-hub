@@ -11,7 +11,12 @@ function futureRealPath(value) {
   return path.join(fs.realpathSync(parent), ...tail);
 }
 
-export function writePrivateReviewFiles(repository, output, files) {
+export function writePrivateReviewFiles(
+  repository,
+  output,
+  files,
+  { overwrite = true } = {}
+) {
   const allowed = path.join(
     fs.realpathSync(repository),
     '.codex/private-extraction'
@@ -30,6 +35,14 @@ export function writePrivateReviewFiles(repository, output, files) {
     if (fs.lstatSync(file, { throwIfNoEntry: false })?.isSymbolicLink())
       throw new Error('Private output files must not be symbolic links.');
   }
+  if (!overwrite)
+    for (const [name, value] of files) {
+      const file = path.join(target, name);
+      if (fs.existsSync(file) && fs.readFileSync(file, 'utf8') !== value)
+        throw new Error(
+          'Existing private review content differs; choose a new output folder to preserve annotations.'
+        );
+    }
   fs.writeFileSync(path.join(target, '.gitignore'), '*\n');
   for (const [name, value] of files)
     fs.writeFileSync(path.join(target, name), value);
