@@ -27,7 +27,7 @@ export function writePrivateReviewFiles(repository, output, files) {
   fs.mkdirSync(target, { recursive: true });
   for (const name of ['.gitignore', ...files.keys()]) {
     const file = path.join(target, name);
-    if (fs.existsSync(file) && fs.lstatSync(file).isSymbolicLink())
+    if (fs.lstatSync(file, { throwIfNoEntry: false })?.isSymbolicLink())
       throw new Error('Private output files must not be symbolic links.');
   }
   fs.writeFileSync(path.join(target, '.gitignore'), '*\n');

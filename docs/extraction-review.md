@@ -1,6 +1,6 @@
 # Private knowledge-extraction evaluation protocol
 
-This is an internal experiment format, **not an accepted production knowledge schema**, Q&A Agent or semantic-accuracy benchmark. It implements the review-readiness part of [the extraction study](research/knowledge-extraction-engineering.md). No new dependency, service or database is required.
+This is an internal experiment format, **not an accepted production knowledge schema**, Q&A Agent or semantic-accuracy benchmark. It implements the review-readiness part of [the extraction study in RFC #112](https://github.com/liuh886/ccus-policy-hub/blob/docs/rfc-evidence-to-agent-context-pipeline-20261030/docs/research/knowledge-extraction-engineering.md). No new dependency, service or database is required.
 
 The exporter reuses the three records in the existing [source catalog](source-catalog.md): historical 45Q HTML, original UK Energy Act 2023 and a GCCSI report. It validates the static publication through its existing consumer. HTML uses the existing anchored quotation. PDFs use the named, already saved Poppler text caches; selected normalized pages must match the captured page hashes. It does not crawl, download, re-extract PDFs, execute models or index private text.
 
