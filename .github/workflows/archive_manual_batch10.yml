@@ -5,6 +5,10 @@ on:
       - '.github/workflows/archive_manual_batch10.yml'
       - 'tools/source_archive/manual_acquisition_batch10.csv'
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/archive_manual_batch10.yml'
+      - 'tools/source_archive/manual_acquisition_batch10.csv'
 permissions:
   contents: read
 jobs:
