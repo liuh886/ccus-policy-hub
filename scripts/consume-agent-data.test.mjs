@@ -56,6 +56,12 @@ async function withPublication(callback) {
                   'context/index.json',
                   'schemas/context-bundle.schema.json',
                   'schemas/manifest.schema.json',
+                  ...(JSON.parse(diskManifest).datasets.source_evidence
+                    ? [
+                        'evidence/index.json',
+                        'schemas/source-evidence.schema.json',
+                      ]
+                    : []),
                 ].map((relative) => [
                   relative,
                   hash(fs.readFileSync(path.join(root, 'data', relative))),

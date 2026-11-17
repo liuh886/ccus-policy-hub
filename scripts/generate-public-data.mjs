@@ -15,6 +15,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import {
+  sourceEvidenceFiles,
+  publishSourceEvidence,
+} from './lib/source-evidence-files.mjs';
+import {
   contextFiles,
   publishContextFiles,
 } from './generate-policy-context.mjs';
@@ -365,6 +369,11 @@ async function generatePublicData() {
   const contextOutputs = contextFiles(db);
   publishContextFiles(contextOutputs, path.join(PUBLIC_DATA_DIR, 'context'));
   const contextIndex = JSON.parse(contextOutputs.get('index.json'));
+  const evidenceOutputs = sourceEvidenceFiles(db);
+  publishSourceEvidence(
+    evidenceOutputs,
+    path.join(PUBLIC_DATA_DIR, 'evidence')
+  );
 
   // --- Generate manifest.json ---
   console.log('Generating manifest.json...');
@@ -382,6 +391,12 @@ async function generatePublicData() {
         'Build-only commit and manifest fingerprint; not a factual review date',
     },
     datasets: {
+      source_evidence: {
+        file: `${BASE_URL}/data/evidence/index.json`,
+        count: 1,
+        description:
+          'Historical official source snapshot; inspect human anchor review status',
+      },
       context: {
         file: `${BASE_URL}/data/context/index.json`,
         count: contextIndex.count,
@@ -425,6 +440,7 @@ async function generatePublicData() {
       },
     },
     schemas: {
+      source_evidence: `${BASE_URL}/data/schemas/source-evidence.schema.json`,
       context: `${BASE_URL}/data/schemas/context-bundle.schema.json`,
       'policy-analysis-localization': `${BASE_URL}/data/schemas/policy-analysis-localization.schema.json`,
       relationship: `${BASE_URL}/data/schemas/relationship.schema.json`,

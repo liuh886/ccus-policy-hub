@@ -3,7 +3,12 @@
   "as_of": "2026-10-30",
   "inventory_sha256": "0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d",
   "inputs": {
-    "evidence_packet_manifests": [],
+    "evidence_packet_manifests": [
+      {
+        "document_id": "us-45q-usc-2024",
+        "manifest_sha256": "4dd05b85084c66e964262f0a4dd23b7753d0fc8c7602a1ca4c8d0ad11bb3e233"
+      }
+    ],
     "archive_observation_provenance": {
       "audit_sha256": "f8990ac91f9a443ed81117efe9b87b0099c16c5dda90d8a66f83ecf0f4922909",
       "backlog_sha256": "e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74",
@@ -36,10 +41,10 @@
     "archive_rows_quarantined_url_changed": 14,
     "observed_private_raw_candidates": 34,
     "observed_private_homepage_only": 5,
-    "git_document_identities_recorded": 0,
-    "git_byte_versions_validated": 0,
-    "human_locator_review_records": 0,
-    "validated_human_reviewed_anchors": 0,
+    "git_document_identities_recorded": 1,
+    "git_byte_versions_validated": 1,
+    "human_locator_review_records": 1,
+    "validated_human_reviewed_anchors": 1,
     "primary_instrument_identity_reviewed_policies": 0,
     "cumulative_private_raw_candidate_policies": 51,
     "superseded_url_candidate_policies": 4,
@@ -5214,13 +5219,32 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "us-45q-usc-2024",
+          "raw_sha256": "1a5f12bac2314d5cad5bd99495ddf5dd9502d46bcbaf184841865d20f4fc2200",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "2024",
+          "source_current_through": "2025-01-06",
+          "coverage": "not_established",
+          "extractor_version": "govinfo-usc-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
+          "currentness": "unknown",
+          "gaps": [
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },

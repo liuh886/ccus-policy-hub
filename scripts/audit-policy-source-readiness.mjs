@@ -9,6 +9,7 @@ import {
   captureManualObservations,
   reconcileManualObservations,
 } from './lib/manual-source-observations.mjs';
+import { EXTRACTOR_VERSION, inspectEvidence } from './lib/source-evidence.mjs';
 import {
   sha256,
   captureObservations,
@@ -72,11 +73,27 @@ export function loadPackets(directory) {
             throw new Error('Evidence file escapes its packet directory.');
           return fs.readFileSync(real);
         };
+        const raw = read(data.raw_file);
+        let normalized = read(data.normalized_file);
+        let packetData = data;
+        if (
+          !normalized &&
+          raw &&
+          data.extractor_version === EXTRACTOR_VERSION
+        ) {
+          try {
+            const checked = inspectEvidence(data, raw);
+            normalized = Buffer.from(checked.normalized_text, 'utf8');
+            packetData = { ...data, anchors: checked.anchors };
+          } catch {
+            // Leave normalized null so packetState flags integrity regressions.
+          }
+        }
         result.push({
           manifest_sha256: sha256(manifestBytes),
-          data,
-          raw: read(data.raw_file),
-          normalized: read(data.normalized_file),
+          data: packetData,
+          raw,
+          normalized,
         });
       }
     }

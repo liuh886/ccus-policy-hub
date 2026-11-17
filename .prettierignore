@@ -38,3 +38,9 @@ public/data/policy-analysis-localizations.json
 
 # Context hashes cover the generator-owned JSON and Markdown bytes
 public/data/context/
+
+# Frozen official source bytes must retain their reviewed hash
+scripts/data/evidence/**/source.html
+
+# Evidence hashes cover generator-owned bytes
+public/data/evidence/

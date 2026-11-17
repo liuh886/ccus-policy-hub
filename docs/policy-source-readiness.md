@@ -9,10 +9,10 @@ No network verification or factual review date update was performed.
 - archive_rows_quarantined_url_changed: 14
 - observed_private_raw_candidates: 34
 - observed_private_homepage_only: 5
-- git_document_identities_recorded: 0
-- git_byte_versions_validated: 0
-- human_locator_review_records: 0
-- validated_human_reviewed_anchors: 0
+- git_document_identities_recorded: 1
+- git_byte_versions_validated: 1
+- human_locator_review_records: 1
+- validated_human_reviewed_anchors: 1
 - primary_instrument_identity_reviewed_policies: 0
 - cumulative_private_raw_candidate_policies: 51
 - superseded_url_candidate_policies: 4
@@ -143,7 +143,7 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | uk-ccus-vision                                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | uk-energy-act-2023                               | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
 | uk-industrial-carbon-capture-business-model-2025 | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| us-45q-ira                                       | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
+| us-45q-ira                                       | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                                             |
 | us-cifia-lpo                                     | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
 | us-doe-carbon-management-strategy                | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | us-epa-class-vi-primacy                          | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |

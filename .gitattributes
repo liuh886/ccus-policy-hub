@@ -10,3 +10,6 @@
 *.jpg binary
 *.xlsx binary
 *.pdf binary
+
+# Evidence pins cover the exact HTTP response bytes, including line endings.
+scripts/data/evidence/**/source.html -text

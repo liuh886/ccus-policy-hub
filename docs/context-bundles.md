@@ -134,7 +134,11 @@ pnpm data:consume --manifest-url https://liuh886.github.io/ccus-policy-hub/data/
 
 This summary consumer has no dependency on source-evidence resources or #104.
 It validates all six public bundles, schemas, payload/Markdown hashes and source
-references. HTTP mode preserves the publication base path, rejects failed status,
+references. Versioned source evidence (`datasets.source_evidence`) is a separate
+data resource joined by policy ID and validated via `pnpm evidence:consume`
+(see [source-evidence-pilot.md](source-evidence-pilot.md)); a historical
+snapshot does not turn record summaries into current-law evidence. HTTP mode
+preserves the publication base path, rejects failed status,
 redirects, wrong JSON/text content types, cross-base references and oversized
 responses. No server or model is part of the product.
 
