@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "as_of": "2026-10-30",
-  "inventory_sha256": "0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d",
+  "inventory_sha256": "1bf0cfaaabf772ba974ce8153c6151807b3778d62c1d0b2e99d823351dc4f69d",
   "inputs": {
     "evidence_packet_manifests": [
       {
@@ -16,8 +16,8 @@
     },
     "archive_binding": {
       "exact_inventory_sha256": 0,
-      "policy_url_match": 116,
-      "url_changed_since_capture": 14,
+      "policy_url_match": 106,
+      "url_changed_since_capture": 24,
       "policy_added_since_capture": 0,
       "inventory_mismatch": 0,
       "unbound": 0
@@ -37,8 +37,8 @@
   "totals": {
     "policy_records": 130,
     "url_present": 130,
-    "archive_rows_bound_to_current_inventory": 116,
-    "archive_rows_quarantined_url_changed": 14,
+    "archive_rows_bound_to_current_inventory": 106,
+    "archive_rows_quarantined_url_changed": 24,
     "observed_private_raw_candidates": 34,
     "observed_private_homepage_only": 5,
     "git_document_identities_recorded": 1,
@@ -46,10 +46,10 @@
     "human_locator_review_records": 1,
     "validated_human_reviewed_anchors": 1,
     "primary_instrument_identity_reviewed_policies": 0,
-    "cumulative_private_raw_candidate_policies": 51,
-    "superseded_url_candidate_policies": 4,
-    "policies_without_raw_candidate": 79,
-    "manual_locally_hash_checked_unique_blobs": 24
+    "cumulative_private_raw_candidate_policies": 45,
+    "superseded_url_candidate_policies": 10,
+    "policies_without_raw_candidate": 85,
+    "manual_locally_hash_checked_unique_blobs": 17
   },
   "limitations": [
     "Transfer states and nonempty URLs are not verified primary-document coverage.",
@@ -58,27 +58,52 @@
   ],
   "superseded_url_candidates": {
     "policy_ids": [
+      "au-wa-petroleum-amendment-2024",
       "br-anp-ccs-resolution",
+      "ca-ccus-itc",
       "ca-sk-ccs-directives",
+      "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "uk-energy-act-2023",
       "vn-decree-119-2025"
     ],
     "v4_policy_ids": ["br-anp-ccs-resolution", "ca-sk-ccs-directives"],
-    "manual_policy_ids": ["cn-ordos-pilot-2024", "vn-decree-119-2025"],
+    "manual_policy_ids": [
+      "au-wa-petroleum-amendment-2024",
+      "ca-ccus-itc",
+      "cn-miit-industrial-plan-2022",
+      "cn-ordos-pilot-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "uk-energy-act-2023",
+      "vn-decree-119-2025"
+    ],
     "url_changed_quarantined_policy_ids": [
+      "au-wa-petroleum-amendment-2024",
       "br-anp-ccs-resolution",
+      "ca-ccus-itc",
       "ca-sk-ccs-directives",
       "cn-co2-transport-status-2025",
       "cn-mee-env-guidance-2024",
+      "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
       "co-law-2099-energy-transition",
       "denmark-ccfd",
+      "dk-ccs-subsidy-scheme-2025",
       "hr-hydrocarbon-act-ccs",
       "imo-marpol-occs-2024",
       "is-carbfix-act",
       "it-law-11-2024-modernization",
       "kr-motie-cluster-district-2025",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
       "ro-law-114-2013-ccs",
+      "uk-energy-act-2023",
+      "us-cifia-lpo",
+      "us-epa-class-vi-primacy",
+      "us-iija-hubs",
       "vn-decree-119-2025"
     ]
   },
@@ -101,16 +126,6 @@
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
         "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "au-wa-petroleum-amendment-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -194,16 +209,6 @@
       ]
     },
     {
-      "policy_id": "cn-miit-industrial-plan-2022",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
       "policy_id": "cn-national-standards",
       "priority": "P0",
       "blockers": [
@@ -225,16 +230,6 @@
     },
     {
       "policy_id": "co-ccus-regulatory-decree-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "dk-ccs-subsidy-scheme-2025",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -334,16 +329,6 @@
       ]
     },
     {
-      "policy_id": "my-netr-ccus-2023",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
       "policy_id": "ng-nuprc-decarb-2024",
       "priority": "P0",
       "blockers": [
@@ -355,16 +340,6 @@
     },
     {
       "policy_id": "nl-cdr-roadmap-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "no-storage-framework",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -514,46 +489,6 @@
       ]
     },
     {
-      "policy_id": "uk-energy-act-2023",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
-      "policy_id": "us-cifia-lpo",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
-      "policy_id": "us-epa-class-vi-primacy",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
-      "policy_id": "us-iija-hubs",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
       "policy_id": "vn-carbon-market-decree-2025",
       "priority": "P0",
       "blockers": [
@@ -604,6 +539,17 @@
       ]
     },
     {
+      "policy_id": "au-wa-petroleum-amendment-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "br-anp-ccs-resolution",
       "priority": "P1",
       "blockers": [
@@ -638,8 +584,9 @@
       "policy_id": "ca-ccus-itc",
       "priority": "P1",
       "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NETWORK_ERROR",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -696,6 +643,17 @@
       ]
     },
     {
+      "policy_id": "cn-miit-industrial-plan-2022",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "cn-ordos-pilot-2024",
       "priority": "P1",
       "blockers": [
@@ -737,6 +695,17 @@
     },
     {
       "policy_id": "denmark-ccfd",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "dk-ccs-subsidy-scheme-2025",
       "priority": "P1",
       "blockers": [
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
@@ -965,10 +934,32 @@
       ]
     },
     {
+      "policy_id": "my-netr-ccus-2023",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "no-14th-licensing-round-2025",
       "priority": "P1",
       "blockers": [
         "ACCESS_BLOCKED",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "no-storage-framework",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -1004,6 +995,50 @@
     },
     {
       "policy_id": "ro-law-114-2013-ccs",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "uk-energy-act-2023",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-cifia-lpo",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-epa-class-vi-primacy",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "us-iija-hubs",
       "priority": "P1",
       "blockers": [
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
@@ -1302,32 +1337,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.wa.gov.au/government/announcements/petroleum-legislation-amendment-act-2024",
+        "reference": "https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_47094.pdf",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:22:39+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -1553,22 +1589,22 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.canada.ca/en/department-finance/news/2023/11/investment-tax-credit-for-carbon-capture-utilization-and-storage.html",
+        "reference": "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "network_error",
-        "observed_at": "2026-10-30T04:22:43+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_document_or_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
@@ -1577,8 +1613,9 @@
       "currentness": "unknown",
       "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NETWORK_ERROR",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -2127,32 +2164,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.miit.gov.cn/jgsj/jns/wjfb/art/2022/art_0e86e068060446008800ba8800088000.html",
+        "reference": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202208/t20220802_990575.html",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:22+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_document_or_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -2592,34 +2630,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://ens.dk/en/",
+        "reference": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:30+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -4057,32 +4096,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.ekonomi.gov.my/en/netr",
+        "reference": "https://ekonomi.gov.my/sites/default/files/2023-08/National%20Energy%20Transition%20Roadmap.pdf",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:39+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -4306,34 +4346,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.offshoredirectorate.no/en/",
+        "reference": "https://lovdata.no/dokument/SF/forskrift/2014-12-05-1517",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -5129,32 +5170,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.legislation.gov.uk/ukpga/2023/67/contents",
+        "reference": "https://www.legislation.gov.uk/ukpga/2023/52/contents",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:44+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -5254,32 +5296,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.energy.gov/lpo/carbon-dioxide-transportation-infrastructure-finance-and-innovation-act-cifia",
+        "reference": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:45+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -5325,32 +5368,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.epa.gov/uic/primary-enforcement-authority-uic-program",
+        "reference": "https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:46+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -5361,32 +5405,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.energy.gov/edf/carbon-dioxide-transportation-infrastructure-finance-and-innovation-program",
+        "reference": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:46+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -5718,71 +5763,55 @@
       "private_file_ids_redacted": true
     },
     "transfer_attempts": 52,
-    "bound_transfer_attempts": 45,
-    "quarantined_url_changed_transfer_attempts": 7,
-    "locally_hash_checked_unique_blobs": 24,
-    "superseded_url_locally_hash_checked_unique_blobs": 4,
+    "bound_transfer_attempts": 36,
+    "quarantined_url_changed_transfer_attempts": 16,
+    "locally_hash_checked_unique_blobs": 17,
+    "superseded_url_locally_hash_checked_unique_blobs": 11,
     "manual_candidate_policy_ids": [
       "au-safeguard-mechanism",
-      "au-wa-petroleum-amendment-2024",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
-      "ca-ccus-itc",
       "ca-sk-spii",
       "california-lcfs",
-      "cn-miit-industrial-plan-2022",
       "fr-ccus-strategy-2024",
       "gold-standard",
       "jp-jogmec-advanced-ccs-2024",
-      "my-netr-ccus-2023",
-      "no-storage-framework",
       "ru-climate-doctrine-2023",
       "tr-climate-law-2025",
-      "uk-energy-act-2023",
       "za-climate-change-act-2024"
     ],
     "supporting_only_policy_ids": [
       "ch-co2-act-ccs-2024",
       "cn-js-industrial-decarb-2022",
-      "dk-ccs-subsidy-scheme-2025",
       "eg-carbon-market-framework-2024",
       "qa-national-climate-strategy-2024"
     ],
     "added_candidate_policy_ids": [
       "au-safeguard-mechanism",
-      "au-wa-petroleum-amendment-2024",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
-      "ca-ccus-itc",
       "ca-sk-spii",
       "california-lcfs",
-      "cn-miit-industrial-plan-2022",
       "fr-ccus-strategy-2024",
       "gold-standard",
       "jp-jogmec-advanced-ccs-2024",
-      "my-netr-ccus-2023",
-      "no-storage-framework",
       "ru-climate-doctrine-2023",
       "tr-climate-law-2025",
-      "uk-energy-act-2023",
       "za-climate-change-act-2024"
     ],
     "cumulative_candidate_policy_ids": [
       "au-offshore-ghg-act",
       "au-offshore-ghg-safety-2024",
       "au-safeguard-mechanism",
-      "au-wa-petroleum-amendment-2024",
       "br-bill-1425-2022",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
       "ca-ab-sequestration-tenure",
-      "ca-ccus-itc",
       "ca-sk-spii",
       "california-lcfs",
       "cn-bj-ccus-measures-2026",
       "cn-ccer",
       "cn-demo-tech-2024",
-      "cn-miit-industrial-plan-2022",
       "cn-national-ets-expansion-2025",
       "cn-pboc-cerf",
       "cn-standards-2024",
@@ -5799,18 +5828,15 @@
       "mx-sener-ccus-2025",
       "my-ccus-act-2025",
       "my-mida-incentives",
-      "my-netr-ccus-2023",
       "netherlands-sde",
       "nl-mining-act-co2-storage-2011",
       "nl-porthos-sde-subsidy",
-      "no-storage-framework",
       "pl-mining-law-ccs-2024",
       "ru-climate-doctrine-2023",
       "tr-climate-law-2025",
       "tx-hb-1284-ccus",
       "uk-ccs-network-code",
       "uk-ccus-vision",
-      "uk-energy-act-2023",
       "uk-industrial-carbon-capture-business-model-2025",
       "us-45q-ira",
       "us-doe-carbon-management-strategy",
@@ -5825,8 +5851,10 @@
       "ae-federal-climate-law-2024",
       "alberta-tier",
       "ar-rigi-ccus-2024",
+      "au-wa-petroleum-amendment-2024",
       "be-ccus-strategy-2025",
       "br-anp-ccs-resolution",
+      "ca-ccus-itc",
       "ca-sk-ccs-directives",
       "ch-co2-act-ccs-2024",
       "cl-green-hydrogen-ccs-2025",
@@ -5837,6 +5865,7 @@
       "cn-hb-ets-offset",
       "cn-js-industrial-decarb-2022",
       "cn-mee-env-guidance-2024",
+      "cn-miit-industrial-plan-2022",
       "cn-national-standards",
       "cn-ordos-pilot-2024",
       "cn-sd-eco-plan-14fym",
@@ -5874,9 +5903,11 @@
       "jp-ccs-business-act-2024",
       "kr-motie-cluster-district-2025",
       "kw-kpc-net-zero-2024",
+      "my-netr-ccus-2023",
       "ng-nuprc-decarb-2024",
       "nl-cdr-roadmap-2025",
       "no-14th-licensing-round-2025",
+      "no-storage-framework",
       "no-tax-deduction-ccs",
       "norway-longship",
       "om-ccus-roadmap-2024",
@@ -5893,6 +5924,7 @@
       "th-boi-incentives",
       "th-draft-climate-change-act-2025",
       "uae-adnoc-ccs-2030",
+      "uk-energy-act-2023",
       "us-cifia-lpo",
       "us-epa-class-vi-primacy",
       "us-iija-hubs",
@@ -5902,20 +5934,36 @@
       "vn-decree-119-2025"
     ],
     "superseded_url_manual_candidate_policy_ids": [
+      "au-wa-petroleum-amendment-2024",
+      "ca-ccus-itc",
+      "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "uk-energy-act-2023",
       "vn-decree-119-2025"
     ],
-    "superseded_url_supporting_only_policy_ids": ["hr-hydrocarbon-act-ccs"],
+    "superseded_url_supporting_only_policy_ids": [
+      "dk-ccs-subsidy-scheme-2025",
+      "hr-hydrocarbon-act-ccs"
+    ],
     "superseded_url_failed_only_policy_ids": [
       "co-law-2099-energy-transition",
-      "ro-law-114-2013-ccs"
+      "ro-law-114-2013-ccs",
+      "us-cifia-lpo"
     ],
     "legal_identity_review": "not_reviewed",
     "current_drive_presence": "not_rechecked",
     "superseded_url_candidates": [
+      "au-wa-petroleum-amendment-2024",
       "br-anp-ccs-resolution",
+      "ca-ccus-itc",
       "ca-sk-ccs-directives",
+      "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
+      "my-netr-ccus-2023",
+      "no-storage-framework",
+      "uk-energy-act-2023",
       "vn-decree-119-2025"
     ]
   }

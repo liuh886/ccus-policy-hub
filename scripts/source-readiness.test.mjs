@@ -231,39 +231,46 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.deepEqual(a, b);
   assert.equal(
     a.inventory_sha256,
-    '0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d'
+    '1bf0cfaaabf772ba974ce8153c6151807b3778d62c1d0b2e99d823351dc4f69d'
   );
   assert.equal(a.policies.length, 130);
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
-  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 116);
-  assert.equal(a.totals.archive_rows_quarantined_url_changed, 14);
+  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 106);
+  assert.equal(a.totals.archive_rows_quarantined_url_changed, 24);
   assert.equal(a.totals.git_document_identities_recorded, 1);
   assert.equal(a.totals.git_byte_versions_validated, 1);
   assert.equal(a.totals.validated_human_reviewed_anchors, 1);
   assert.equal(a.regressions.length, 0);
   assert.equal(a.totals.observed_private_raw_candidates, 34);
   assert.equal(a.totals.observed_private_homepage_only, 5);
-  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 51);
-  assert.equal(a.totals.superseded_url_candidate_policies, 4);
-  assert.equal(a.totals.policies_without_raw_candidate, 79);
-  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 24);
+  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 45);
+  assert.equal(a.totals.superseded_url_candidate_policies, 10);
+  assert.equal(a.totals.policies_without_raw_candidate, 85);
+  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 17);
   assert.deepEqual(a.superseded_url_candidates.policy_ids, [
+    'au-wa-petroleum-amendment-2024',
     'br-anp-ccs-resolution',
+    'ca-ccus-itc',
     'ca-sk-ccs-directives',
+    'cn-miit-industrial-plan-2022',
     'cn-ordos-pilot-2024',
+    'my-netr-ccus-2023',
+    'no-storage-framework',
+    'uk-energy-act-2023',
     'vn-decree-119-2025',
   ]);
   assert.equal(
     a.manual_acquisition.superseded_url_locally_hash_checked_unique_blobs,
-    4
+    11
   );
   assert.deepEqual(
     a.manual_acquisition.superseded_url_supporting_only_policy_ids,
-    ['hr-hydrocarbon-act-ccs']
+    ['dk-ccs-subsidy-scheme-2025', 'hr-hydrocarbon-act-ccs']
   );
   assert.deepEqual(a.manual_acquisition.superseded_url_failed_only_policy_ids, [
     'co-law-2099-energy-transition',
     'ro-law-114-2013-ccs',
+    'us-cifia-lpo',
   ]);
   const quarantined = a.policies.find(
     (p) => p.policy_id === 'br-anp-ccs-resolution'
@@ -272,6 +279,9 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.equal(quarantined.archive.state, 'unknown');
   assert.ok(quarantined.gaps.includes('ARCHIVE_URL_CHANGED_SINCE_CAPTURE'));
   assert.ok(quarantined.gaps.includes('ARCHIVE_OBSERVATION_UNAVAILABLE'));
+  const repaired = a.policies.find((p) => p.policy_id === 'uk-energy-act-2023');
+  assert.equal(repaired.archive.binding_mode, 'url_changed_since_capture');
+  assert.ok(repaired.gaps.includes('ARCHIVE_URL_CHANGED_SINCE_CAPTURE'));
   assert.equal(sha256(fs.readFileSync(file)), before);
 });
 

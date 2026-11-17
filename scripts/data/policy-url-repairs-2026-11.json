@@ -1,0 +1,155 @@
+{
+  "as_of": "2026-11-17",
+  "policies": [
+    {
+      "id": "uk-energy-act-2023",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.legislation.gov.uk/ukpga/2023/52/contents",
+          "finding": "Corrected chapter number from ukpga/2023/67 (HTTP 404) to Energy Act 2023, Chapter 52 (ukpga/2023/52/contents), matching the catalogued uk-energy-act-2023-enacted PDF (ukpga_20230052_en.pdf); live legislation.gov.uk endpoint serves a CloudFront WAF 202 challenge to automated fetchers. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.legislation.gov.uk/ukpga/2023/52/contents"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired broken Chapter 67 URL to Chapter 52 (Energy Act 2023); analysis dimensions not re-audited."
+    },
+    {
+      "id": "ca-ccus-itc",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html",
+          "finding": "Previous Department of Finance news URL returned HTTP 404. Verified live HTTP 200 on Justice Laws Website for Income Tax Act section 127.44 (enacted CCUS Investment Tax Credit). Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 news release URL to statutory Income Tax Act section 127.44 (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "no-storage-framework",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://lovdata.no/dokument/SF/forskrift/2014-12-05-1517",
+          "finding": "Replaced homepage-only offshoredirectorate.no/en/ with verified live HTTP 200 Lovdata official regulation FOR-2014-12-05-1517 (CO2 Storage and Transport Regulations). Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://lovdata.no/dokument/SF/forskrift/2014-12-05-1517"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage URL with official Lovdata Regulation No. 1517 page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "dk-ccs-subsidy-scheme-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "finding": "Replaced homepage-only ens.dk/en/ with verified live HTTP 200 Danish Energy Agency page covering the CCUS Fund, NECCS Fund, and CCS Fund. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage URL with dedicated Danish Energy Agency CCS funding page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "au-wa-petroleum-amendment-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_47094.pdf",
+          "finding": "Previous wa.gov.au announcement URL returned HTTP 404. Verified live HTTP 302 -> 200 PDF (1,953,655 bytes) on Western Australian Legislation for Petroleum Legislation Amendment Act 2024. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_47094.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 announcement URL to official WA Legislation Act PDF (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "us-epa-class-vi-primacy",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program",
+          "finding": "Previous abbreviated /uic/primary-enforcement-authority-uic-program URL returned HTTP 404. Verified live HTTP 200 on current US EPA UIC Primary Enforcement Authority page covering Class VI primacy. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 EPA URL to live UIC Primary Enforcement Authority page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "cn-miit-industrial-plan-2022",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202208/t20220802_990575.html",
+          "finding": "Previous miit.gov.cn URL returned HTTP 404. Verified live HTTP 200 on co-issuing Ministry of Ecology and Environment (MEE) official release for the Implementation Plan for Carbon Peaking in the Industrial Sector (工信部联节〔2022〕88号). Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202208/t20220802_990575.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 MIIT URL to co-issuing MEE official publication (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "my-netr-ccus-2023",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://ekonomi.gov.my/sites/default/files/2023-08/National%20Energy%20Transition%20Roadmap.pdf",
+          "finding": "Previous ekonomi.gov.my/en/netr URL returned HTTP 404. Verified live HTTP 200 official PDF (20,407,295 bytes) of the National Energy Transition Roadmap on Ministry of Economy Malaysia. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://ekonomi.gov.my/sites/default/files/2023-08/National%20Energy%20Transition%20Roadmap.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 NETR landing URL to official Ministry of Economy NETR PDF (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "us-cifia-lpo",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia",
+          "finding": "Previous energy.gov/lpo CIFIA URL returned HTTP 404. Verified live HTTP 200 on US DOE CIFIA Future Growth Grants page referencing Bipartisan Infrastructure Law Section 40304. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 DOE LPO CIFIA URL to live DOE CIFIA funding notice page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "us-iija-hubs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia",
+          "finding": "Previous energy.gov/edf CIFIA URL returned HTTP 404. Verified live HTTP 200 on US DOE CIFIA Future Growth Grants page referencing Bipartisan Infrastructure Law Section 40304. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired 404 DOE CIFIA URL to live DOE CIFIA funding notice page (HTTP 200); analysis dimensions not re-audited."
+    }
+  ]
+}

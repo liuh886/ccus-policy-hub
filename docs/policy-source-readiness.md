@@ -1,12 +1,12 @@
 # Policy original-source readiness
 
-Generated read-only as of 2026-10-30; SQLite SHA-256: 0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d.
+Generated read-only as of 2026-10-30; SQLite SHA-256: 1bf0cfaaabf772ba974ce8153c6151807b3778d62c1d0b2e99d823351dc4f69d.
 No network verification or factual review date update was performed.
 
 - policy_records: 130
 - url_present: 130
-- archive_rows_bound_to_current_inventory: 116
-- archive_rows_quarantined_url_changed: 14
+- archive_rows_bound_to_current_inventory: 106
+- archive_rows_quarantined_url_changed: 24
 - observed_private_raw_candidates: 34
 - observed_private_homepage_only: 5
 - git_document_identities_recorded: 1
@@ -14,16 +14,16 @@ No network verification or factual review date update was performed.
 - human_locator_review_records: 1
 - validated_human_reviewed_anchors: 1
 - primary_instrument_identity_reviewed_policies: 0
-- cumulative_private_raw_candidate_policies: 51
-- superseded_url_candidate_policies: 4
-- policies_without_raw_candidate: 79
-- manual_locally_hash_checked_unique_blobs: 24
+- cumulative_private_raw_candidate_policies: 45
+- superseded_url_candidate_policies: 10
+- policies_without_raw_candidate: 85
+- manual_locally_hash_checked_unique_blobs: 17
 
 Private transfer observations are not verified document identities. Zero accepted primary identities here is a verification baseline, not proof that official sources do not exist.
 
-Cumulative reconciliation adds 17 current-URL-aligned policy candidates from 24 locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the current-URL-bound baseline observations; cumulative policy-ID lists are in the JSON report.
+Cumulative reconciliation adds 11 current-URL-aligned policy candidates from 17 locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the current-URL-bound baseline observations; cumulative policy-ID lists are in the JSON report.
 
-URL-change quarantine excludes 14 policies whose canonical URL changed since the 2026-10-30 capture (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`), including 4 superseded prior-URL candidates (br-anp-ccs-resolution, ca-sk-ccs-directives, cn-ordos-pilot-2024, vn-decree-119-2025).
+URL-change quarantine excludes 24 policies whose canonical URL changed since the 2026-10-30 capture (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`), including 10 superseded prior-URL candidates (au-wa-petroleum-amendment-2024, br-anp-ccs-resolution, ca-ccus-itc, ca-sk-ccs-directives, cn-miit-industrial-plan-2022, cn-ordos-pilot-2024, my-netr-ccus-2023, no-storage-framework, uk-energy-act-2023, vn-decree-119-2025).
 
 | Policy ID                                        | Record review | Private archive observation | Priority | Evidence gaps                                                                                                                                             |
 | ------------------------------------------------ | ------------- | --------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,14 +34,14 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | au-offshore-ghg-act                              | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | au-offshore-ghg-safety-2024                      | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | au-safeguard-mechanism                           | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NETWORK_ERROR, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                      |
-| au-wa-petroleum-amendment-2024                   | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| au-wa-petroleum-amendment-2024                   | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | be-ccus-strategy-2025                            | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | br-anp-ccs-resolution                            | draft         | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | br-bill-1425-2022                                | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | br-law-14993-2024                                | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NETWORK_ERROR, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                      |
 | br-sbce-law-15042-2024                           | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NETWORK_ERROR, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                      |
 | ca-ab-sequestration-tenure                       | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| ca-ccus-itc                                      | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NETWORK_ERROR, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                      |
+| ca-ccus-itc                                      | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | ca-sk-ccs-directives                             | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | ca-sk-spii                                       | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
 | california-lcfs                                  | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
@@ -57,7 +57,7 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | cn-hb-ets-offset                                 | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | cn-js-industrial-decarb-2022                     | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NON_HTTPS_SOURCE, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                   |
 | cn-mee-env-guidance-2024                         | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
-| cn-miit-industrial-plan-2022                     | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| cn-miit-industrial-plan-2022                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | cn-national-ets-expansion-2025                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | cn-national-standards                            | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | cn-ordos-pilot-2024                              | draft         | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
@@ -70,7 +70,7 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | de-carbon-management-strategy-2024               | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | de-icm-strategy                                  | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | denmark-ccfd                                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
-| dk-ccs-subsidy-scheme-2025                       | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
+| dk-ccs-subsidy-scheme-2025                       | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | eg-carbon-market-framework-2024                  | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | es-climate-law-ccs-2025                          | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | eu-cbam                                          | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, HTTP_202_NOT_DOCUMENT, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                              |
@@ -111,14 +111,14 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | mx-sener-ccus-2025                               | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | my-ccus-act-2025                                 | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | my-mida-incentives                               | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| my-netr-ccus-2023                                | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| my-netr-ccus-2023                                | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | netherlands-sde                                  | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | ng-nuprc-decarb-2024                             | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | nl-cdr-roadmap-2025                              | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | nl-mining-act-co2-storage-2011                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | nl-porthos-sde-subsidy                           | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | no-14th-licensing-round-2025                     | verified      | no_raw_file                 | P1       | ACCESS_BLOCKED, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                     |
-| no-storage-framework                             | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
+| no-storage-framework                             | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | no-tax-deduction-ccs                             | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | norway-longship                                  | verified      | no_raw_file                 | P1       | ACCESS_BLOCKED, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                     |
 | om-ccus-roadmap-2024                             | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
@@ -141,13 +141,13 @@ URL-change quarantine excludes 14 policies whose canonical URL changed since the
 | uae-adnoc-ccs-2030                               | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | uk-ccs-network-code                              | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | uk-ccus-vision                                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| uk-energy-act-2023                               | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| uk-energy-act-2023                               | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | uk-industrial-carbon-capture-business-model-2025 | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | us-45q-ira                                       | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                                             |
-| us-cifia-lpo                                     | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| us-cifia-lpo                                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | us-doe-carbon-management-strategy                | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| us-epa-class-vi-primacy                          | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
-| us-iija-hubs                                     | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NOT_FOUND, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                          |
+| us-epa-class-vi-primacy                          | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
+| us-iija-hubs                                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | us-la-primacy-rules                              | verified      | no_raw_file                 | P1       | ACCESS_BLOCKED, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                     |
 | us-nd-century-code-38-22                         | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | us-obbba-45q-2025                                | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
