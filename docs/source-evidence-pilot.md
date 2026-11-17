@@ -81,18 +81,20 @@ validates all six bilingual context bundles and their references/hashes.
 
 ## Human review gate
 
-The real document and the single `26 USC 45Q(d), 2024 edition` anchor remain
-`draft`, `method: not_reviewed`, with null reviewer/date. The pending review is
-visible in both the public record and consumer output; P2 is **not complete**.
-Positive verified-state tests use explicit synthetic review records only.
+The frozen 2024 historical snapshot (`us-45q-usc-2024`) and its single
+`26 USC 45Q(d), 2024 edition` anchor (UTF-16 offsets `8139–9207`) were
+explicitly reviewed by `liuh886` on `2026-11-17` (`review.status: verified`,
+`method: human`). This approval is bounded strictly to that 2024 historical
+snapshot and locator; `source_currentness_verified` remains `false` and P2
+broader coverage remains **not complete**. Negative-case tests explicitly verify
+that unreviewed (`draft`) packets and any source/extractor change fail closed.
 
-A human reviewer must inspect the original and the complete section (including
-alternatives and category-specific requirements), compare the exact normalized
-quote and offsets, and confirm this historical edition's coverage. Only after
-explicit human approval may the packet record `method: human`, reviewer/date
-and verified status for the reviewed document and anchor. Approval of the data
-locator is not approval of current-law interpretation, tax eligibility or an
-Agent-generated answer. No automatic review promotion is implemented.
+Any new document or changed snapshot must undergo human inspection of the
+original, complete quoted section, offsets, and historical coverage before
+recording `method: human`, reviewer/date, and `verified` status in Git.
+Approval of a historical data locator is not approval of current-law
+interpretation, tax eligibility, or an Agent-generated answer. No automatic
+review promotion is implemented.
 
 The human-review packet is consolidated in [source-evidence-review-sheet.md](source-evidence-review-sheet.md).
 The summary consumer is now owned by #103 and works without this evidence resource.

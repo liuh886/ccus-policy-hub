@@ -28,6 +28,7 @@ test('frozen official pilot resolves unique versioned anchors and keeps historic
   const report = inspectEvidence(input, raw);
   assert.equal(report.source_current_through, '2025-01-06');
   assert.equal(report.source_currentness_verified, false);
+  assert.equal(report.requires_review, false);
   assert.equal(report.anchors.length, 1);
   for (const a of report.anchors) {
     assert.equal(
@@ -35,9 +36,28 @@ test('frozen official pilot resolves unique versioned anchors and keeps historic
       a.exact_quote
     );
     assert.equal(a.offset_unit, 'utf16_code_units');
-    assert.equal(a.state, 'needs_review');
-    assert.equal(a.usable_as_reviewed_reference, false);
+    assert.equal(a.state, 'verified');
+    assert.equal(a.usable_as_reviewed_reference, true);
   }
+});
+
+test('unreviewed draft packets stay non-usable until explicit human review', () => {
+  const { input, raw } = fresh();
+  const draft = {
+    status: 'draft',
+    reviewer: null,
+    reviewed_at: null,
+    method: 'not_reviewed',
+  };
+  input.review = draft;
+  input.anchors.forEach((a) => (a.review = draft));
+  const report = inspectEvidence(input, raw);
+  assert.equal(report.requires_review, true);
+  assert.ok(
+    report.anchors.every(
+      (a) => a.state === 'needs_review' && !a.usable_as_reviewed_reference
+    )
+  );
 });
 
 test('changed source or extractor invalidates previously reviewed anchor usability', () => {

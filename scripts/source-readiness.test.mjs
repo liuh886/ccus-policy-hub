@@ -189,9 +189,18 @@ test('orphan packets, duplicate observations and packet path escape are rejected
       JSON.stringify({ raw_file: '../outside.html' })
     );
     assert.throws(() => loadPackets(dir), /sibling/);
+    const pilotDir = new URL('./data/evidence/us-45q-2024', import.meta.url);
+    const packetJson = JSON.parse(
+      fs.readFileSync(new URL('./packet.json', pilotDir + '/'), 'utf8')
+    );
+    packetJson.policy_id = 'one';
+    fs.writeFileSync(path.join(dir, 'packet.json'), JSON.stringify(packetJson));
+    fs.writeFileSync(path.join(dir, 'source.html'), Buffer.from('tampered'));
+    const tampered = report({ packets: loadPackets(dir) });
+    assert.equal(tampered.regressions.length, 1);
+    assert.equal(tampered.totals.validated_human_reviewed_anchors, 0);
   } finally {
-    fs.unlinkSync(path.join(dir, 'packet.json'));
-    fs.rmdirSync(dir);
+    fs.rmSync(dir, { recursive: true, force: true });
   }
 });
 
@@ -228,6 +237,10 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
   assert.equal(a.totals.archive_rows_bound_to_current_inventory, 116);
   assert.equal(a.totals.archive_rows_quarantined_url_changed, 14);
+  assert.equal(a.totals.git_document_identities_recorded, 1);
+  assert.equal(a.totals.git_byte_versions_validated, 1);
+  assert.equal(a.totals.validated_human_reviewed_anchors, 1);
+  assert.equal(a.regressions.length, 0);
   assert.equal(a.totals.observed_private_raw_candidates, 34);
   assert.equal(a.totals.observed_private_homepage_only, 5);
   assert.equal(a.totals.cumulative_private_raw_candidate_policies, 51);

@@ -6,7 +6,7 @@
     "evidence_packet_manifests": [
       {
         "document_id": "us-45q-usc-2024",
-        "manifest_sha256": "ac4a6ede97e1c7230b7bbfa96bb5fd4235d5278116a18518cc5ae18a6d2c6aca"
+        "manifest_sha256": "4dd05b85084c66e964262f0a4dd23b7753d0fc8c7602a1ca4c8d0ad11bb3e233"
       }
     ],
     "archive_observation_provenance": {
@@ -43,8 +43,8 @@
     "observed_private_homepage_only": 5,
     "git_document_identities_recorded": 1,
     "git_byte_versions_validated": 1,
-    "human_locator_review_records": 0,
-    "validated_human_reviewed_anchors": 0,
+    "human_locator_review_records": 1,
+    "validated_human_reviewed_anchors": 1,
     "primary_instrument_identity_reviewed_policies": 0,
     "cumulative_private_raw_candidate_policies": 51,
     "superseded_url_candidate_policies": 4,
@@ -5231,13 +5231,10 @@
           "coverage": "not_established",
           "extractor_version": "govinfo-usc-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "NORMALIZED_TEXT_NOT_REVALIDATED",
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -5248,9 +5245,6 @@
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
-        "NORMALIZED_TEXT_NOT_REVALIDATED",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },

@@ -45,13 +45,13 @@ function consumer() {
   };
 }
 
-test('independent public consumer validates all bundles, schemas and references and reports pending human review', async () => {
+test('independent public consumer validates all bundles, schemas and references and reports bounded human review', async () => {
   const result = await consumer().run();
   assert.equal(result.context_bundles, 6);
   assert.equal(result.source_documents, 1);
   assert.ok(result.resolved_references > 0);
-  assert.equal(result.reviewed_anchors, 0);
-  assert.equal(result.human_review_pending, true);
+  assert.equal(result.reviewed_anchors, 1);
+  assert.equal(result.human_review_pending, false);
   assert.equal(result.source_currentness_verified, false);
 });
 
@@ -65,12 +65,24 @@ test('schema validation rejects forged capability and reviewed-state claims even
   );
   await assert.rejects(c.run(), /Public schema rejected/);
   c = consumer();
-  c.changeRecord(
-    'source_evidence',
-    'file',
-    'sha256',
-    (record) => (record.anchors[0].usable_as_reviewed_reference = true)
-  );
+  c.changeRecord('source_evidence', 'file', 'sha256', (record) => {
+    record.review = {
+      status: 'draft',
+      reviewer: null,
+      reviewed_at: null,
+      method: 'not_reviewed',
+    };
+  });
+  await assert.rejects(c.run(), /Public schema rejected/);
+  c = consumer();
+  c.changeRecord('source_evidence', 'file', 'sha256', (record) => {
+    record.anchors[0].review = {
+      status: 'draft',
+      reviewer: null,
+      reviewed_at: null,
+      method: 'not_reviewed',
+    };
+  });
   await assert.rejects(c.run(), /Public schema rejected/);
   c = consumer();
   c.changeRecord(

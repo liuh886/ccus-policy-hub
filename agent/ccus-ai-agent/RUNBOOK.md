@@ -245,8 +245,10 @@ consumer imports only standard Node and JSON Schema validators; it reads public
 resources and cannot access SQLite or private generators. The AJV development
 dependencies validate the published schemas rather than mirroring site code.
 
-See `docs/source-evidence-pilot.md`. The real anchor remains draft until a human
+See `docs/source-evidence-pilot.md`. An anchor remains draft until a human
 explicitly reviews the exact quote/version and records their identity/date in
-Git. Contract tests do not count as human review. The 2024 snapshot covers
-through 2025-01-06 and never establishes current law. Source/extractor changes
-invalidate dependent review usability; no command writes SQLite.
+Git (`us-45q-usc-2024` / `qualified-facility` has human snapshot/locator review
+by `liuh886` on `2026-11-17`, bounded to the 2024 historical snapshot). Contract
+tests do not count as human review. The 2024 snapshot covers through 2025-01-06
+and never establishes current law. Source/extractor changes invalidate dependent
+review usability; no command writes SQLite.
