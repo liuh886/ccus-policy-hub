@@ -39,6 +39,7 @@ export async function consumeEvidenceRecord(
     'Evidence source hash mismatch.'
   );
   let reviewedAnchors = 0;
+  let unreviewedAnchors = 0;
   for (const anchor of record.anchors) {
     check(
       anchor.version_sha256 === record.raw_sha256,
@@ -50,9 +51,18 @@ export async function consumeEvidenceRecord(
       'Anchor quote mismatch.'
     );
     check(anchor.end_offset > anchor.start_offset, 'Invalid anchor range.');
-    if (anchor.usable_as_reviewed_reference) reviewedAnchors++;
+    if (anchor.usable_as_reviewed_reference) {
+      check(
+        record.review.status === 'verified' &&
+          anchor.review.status === 'verified',
+        'Usable anchor requires verified document and anchor review.'
+      );
+      reviewedAnchors++;
+    } else {
+      unreviewedAnchors++;
+    }
   }
-  return { record, reviewedAnchors };
+  return { record, reviewedAnchors, unreviewedAnchors };
 }
 
 export async function consumeSourceEvidence(manifestUrl, readBytes) {
@@ -69,20 +79,39 @@ export async function consumeSourceEvidence(manifestUrl, readBytes) {
   const indexUrl = new URL(manifest.datasets.source_evidence.file, manifestUrl);
   const index = await json(indexUrl);
   check(index.count === index.records.length, 'Evidence count mismatch.');
+  if (typeof manifest.datasets.source_evidence.count === 'number')
+    check(
+      manifest.datasets.source_evidence.count === index.count,
+      'Manifest source_evidence count mismatch.'
+    );
   let reviewedAnchors = 0;
+  let unreviewedAnchors = 0;
+  let reviewedDocuments = 0;
+  let draftDocuments = 0;
   for (const entry of index.records) {
-    reviewedAnchors += (
-      await consumeEvidenceRecord(indexUrl, entry, client, {
-        policyIds,
-        schemaUrl: manifest.schemas.source_evidence,
-      })
-    ).reviewedAnchors;
+    const item = await consumeEvidenceRecord(indexUrl, entry, client, {
+      policyIds,
+      schemaUrl: manifest.schemas.source_evidence,
+    });
+    if (entry.review_status)
+      check(
+        entry.review_status === item.record.review.status,
+        'Evidence index review status mismatch.'
+      );
+    reviewedAnchors += item.reviewedAnchors;
+    unreviewedAnchors += item.unreviewedAnchors;
+    if (item.record.review.status === 'verified' && item.reviewedAnchors > 0)
+      reviewedDocuments++;
+    else draftDocuments++;
   }
   return {
     ...base,
     source_documents: index.count,
+    reviewed_documents: reviewedDocuments,
+    draft_documents: draftDocuments,
     reviewed_anchors: reviewedAnchors,
-    human_review_pending: reviewedAnchors === 0,
+    unreviewed_anchors: unreviewedAnchors,
+    human_review_pending: draftDocuments > 0 || unreviewedAnchors > 0,
     source_currentness_verified: false,
   };
 }

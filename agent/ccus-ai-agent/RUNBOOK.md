@@ -209,10 +209,12 @@ tests, lint, Astro check, production build and bilingual rendered QA.
 
 ## 11. Static policy context bundles
 
-`pnpm gen` now also publishes the initial English/Chinese 45Q policy and family
-bundles under `public/data/context`. This is a read-only, network-free projection
-of the same SQLite snapshot used for the public APIs, not a source-data update.
-See `docs/context-bundles.md` for the consumer contract, CLI errors and evidence
+`pnpm gen` now also publishes the English/Chinese policy and family bundles
+(`us-45q-ira`, `us-obbba-45q-2025`, `us-section-45q`, `ca-ccus-itc`,
+`no-storage-framework`, `denmark-ccfd`; `12` bundles total) under
+`public/data/context`. This is a read-only, network-free projection of the same
+SQLite snapshot used for the public APIs, not a source-data update. See
+`docs/context-bundles.md` for the consumer contract, CLI errors and evidence
 limits.
 
 ```bash
@@ -235,22 +237,27 @@ BLOB storage, condition-card generation or evaluation engine is needed.
 
 ```bash
 pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+pnpm --silent evidence:inspect --file scripts/data/evidence/ca-ccus-itc-2026/packet.json
+pnpm --silent evidence:inspect --file scripts/data/evidence/no-for-2014-1517/packet.json
+pnpm --silent evidence:inspect --file scripts/data/evidence/dk-ens-ccs-funds/packet.json
 pnpm evidence:consume --root public
 pnpm catalog:consume --root public
 pnpm evidence:consume --root dist
 pnpm catalog:consume --root dist
 ```
 
-`pnpm gen` publishes one historical source record, index, exact archived bytes
-as `.html.txt` (read as data, never execute as HTML) and normalized text. The
-consumer imports only standard Node and JSON Schema validators; it reads public
-resources and cannot access SQLite or private generators. The AJV development
-dependencies validate the published schemas rather than mirroring site code.
+`pnpm gen` publishes all registered source records (`4` frozen packets), index,
+exact archived bytes as `.html.txt` (read as data, never execute as HTML) and
+normalized text. The consumer imports only standard Node and JSON Schema
+validators; it reads public resources and cannot access SQLite or private
+generators. The AJV development dependencies validate the published schemas
+rather than mirroring site code.
 
-See `docs/source-evidence-pilot.md`. An anchor remains draft until a human
-explicitly reviews the exact quote/version and records their identity/date in
-Git (`us-45q-usc-2024` / `qualified-facility` has human snapshot/locator review
-by `liuh886` on `2026-11-17`, bounded to the 2024 historical snapshot). Contract
-tests do not count as human review. The 2024 snapshot covers through 2025-01-06
-and never establishes current law. Source/extractor changes invalidate dependent
-review usability; no command writes SQLite.
+See `docs/source-evidence-pilot.md` and `docs/source-evidence-review-sheet-p3.md`.
+An anchor remains draft until a human explicitly reviews the exact quote/version
+and records their identity/date in Git (`us-45q-usc-2024` / `qualified-facility`
+has human snapshot/locator review by `liuh886` on `2026-11-17`, bounded to the
+2024 historical snapshot; the 3 P3 packets remain `draft` pending human review).
+Contract tests do not count as human review. `source_currentness_verified`
+remains `false` across all packets. Source/extractor changes invalidate
+dependent review usability; no command writes SQLite.

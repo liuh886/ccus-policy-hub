@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "dk-ens-ccs-funds",
+  "policy_id": "denmark-ccfd",
+  "title": {
+    "en": "Danish Energy Agency — CCS tenders and other funding for CCS development",
+    "zh": "丹麦能源署——CCS招标与CCS发展支持基金"
+  },
+  "source_url": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+  "source_language": "en",
+  "edition": null,
+  "fetched_at": "2026-11-17T16:22:22Z",
+  "published_at": null,
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "4a314c1b1d322ac531e1054551a2fb2794f7090c85544a7025f45c3888af065e",
+  "normalized_sha256": "5347e0524f7536f267bd8856806aafb86fac2313572c17b23512124ea927610b",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "reviewed_at": null,
+    "method": "not_reviewed"
+  },
+  "anchors": [
+    {
+      "id": "ccus-fund-overview",
+      "locator": "Danish Energy Agency — General information on the CCUS Fund",
+      "exact_quote": "General information on the CCUS Fund\nThe CCUS Fund is a market-based, technology-neutral fund aimed at supporting carbon capture, storage and utilization. The first disbursement from the fund is planned to be from 2025/2026. Once the fund is fully implemented, a maximum of DKK 815 million per year can be disbursed to recipients. The fund is expected to support the achievement of 0.9 million tonnes of CO2 reductions per year from 2030.",
+      "version_sha256": "4a314c1b1d322ac531e1054551a2fb2794f7090c85544a7025f45c3888af065e",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "reviewed_at": null,
+        "method": "not_reviewed"
+      }
+    }
+  ]
+}

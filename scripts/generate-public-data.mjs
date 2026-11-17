@@ -377,6 +377,7 @@ async function generatePublicData() {
     evidenceOutputs,
     path.join(PUBLIC_DATA_DIR, 'evidence')
   );
+  const evidenceIndex = JSON.parse(evidenceOutputs.get('index.json'));
   const discovery = catalogFiles(db, evidenceOutputs, hash(dbBytes));
   publishCatalog(discovery, path.join(PUBLIC_DATA_DIR, 'discovery'));
   const catalog = JSON.parse(discovery.get('catalog.json'));
@@ -407,9 +408,9 @@ async function generatePublicData() {
       },
       source_evidence: {
         file: `${BASE_URL}/data/evidence/index.json`,
-        count: 1,
+        count: evidenceIndex.count,
         description:
-          'Historical official source snapshot; inspect human anchor review status',
+          'Frozen official source snapshots; inspect per-document human anchor review status',
       },
       context: {
         file: `${BASE_URL}/data/context/index.json`,

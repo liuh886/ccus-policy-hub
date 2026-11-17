@@ -59,11 +59,12 @@
       "const": "source_document"
     },
     "source_language": {
-      "const": "en"
+      "type": "string",
+      "pattern": "^[a-z]{2}(?:-[a-zA-Z0-9]+)?$"
     },
     "edition": {
-      "type": "string",
-      "pattern": "^[0-9]{4}$"
+      "type": ["string", "null"],
+      "minLength": 1
     },
     "fetched_at": {
       "type": "string",
@@ -74,7 +75,7 @@
       "format": "date"
     },
     "source_current_through": {
-      "type": "string",
+      "type": ["string", "null"],
       "format": "date"
     },
     "coverage": {

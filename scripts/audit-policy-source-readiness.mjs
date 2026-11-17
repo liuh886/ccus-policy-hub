@@ -9,7 +9,7 @@ import {
   captureManualObservations,
   reconcileManualObservations,
 } from './lib/manual-source-observations.mjs';
-import { EXTRACTOR_VERSION, inspectEvidence } from './lib/source-evidence.mjs';
+import { EXTRACTORS, inspectEvidence } from './lib/source-evidence.mjs';
 import {
   sha256,
   captureObservations,
@@ -79,7 +79,7 @@ export function loadPackets(directory) {
         if (
           !normalized &&
           raw &&
-          data.extractor_version === EXTRACTOR_VERSION
+          Object.hasOwn(EXTRACTORS, data.extractor_version)
         ) {
           try {
             const checked = inspectEvidence(data, raw);
@@ -99,6 +99,12 @@ export function loadPackets(directory) {
     }
   };
   visit(directory);
+  result.sort((a, b) =>
+    String(a.data.document_id || '').localeCompare(
+      String(b.data.document_id || ''),
+      'en'
+    )
+  );
   return result;
 }
 

@@ -13,7 +13,18 @@ export const CONTEXT_TARGETS = Object.freeze([
     id: 'us-section-45q',
     kind: 'policy_family',
     policy_ids: ['us-45q-ira', 'us-obbba-45q-2025'],
+    title: {
+      en: 'US Section 45Q policy-record context',
+      zh: '美国45Q政策记录上下文',
+    },
   },
+  { id: 'ca-ccus-itc', kind: 'policy', policy_ids: ['ca-ccus-itc'] },
+  {
+    id: 'no-storage-framework',
+    kind: 'policy',
+    policy_ids: ['no-storage-framework'],
+  },
+  { id: 'denmark-ccfd', kind: 'policy', policy_ids: ['denmark-ccfd'] },
 ]);
 export const MAX_RELATIONSHIPS = 20;
 export const MAX_BUNDLE_BYTES = 128 * 1024;
@@ -276,9 +287,7 @@ export function buildPolicyContext(db, id, lang = 'en') {
     identity: {
       title:
         target.kind === 'policy_family'
-          ? isZh
-            ? '美国45Q政策记录上下文'
-            : 'US Section 45Q policy-record context'
+          ? target.title?.[lang] || target.title?.en || records[0].title
           : records[0].title,
       records: records.map(
         ({
