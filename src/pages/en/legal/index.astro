@@ -30,20 +30,24 @@ import Layout from '../../../layouts/Layout.astro';
         <ul class="list-disc pl-5 space-y-2">
           <li>
             <strong>Data collection</strong>: The Platform currently requires no
-            user registration. We only collect basic access data (such as page
-            views and visiting countries) through anonymous analytics to improve
-            the user experience.
+            user registration. We collect basic aggregate usage telemetry (such
+            as page views, route transitions, and visiting regions) via Google
+            Analytics 4 and, when configured at build time, Cloudflare Web
+            Analytics to improve the user experience.
           </li>
           <li>
-            <strong>Cookie usage</strong>: We only use essential cookies to
-            store your preferences (such as dark-mode state and the policy
-            comparison list).
+            <strong>Local storage &amp; cookies</strong>: The Platform stores
+            your UI preferences (such as theme preference and your policy
+            comparison selection) in browser <code>localStorage</code>; Google
+            Analytics 4 may set analytics identifiers or cookies under its
+            measurement configuration.
           </li>
           <li>
-            <strong>Third-party services</strong>: The Platform may use
-            third-party services (such as Google Fonts and OpenStreetMap) to
-            provide specific features; these services may collect anonymous
-            information under their own privacy policies.
+            <strong>Third-party services</strong>: The Platform relies on
+            third-party services including Google Fonts (webfonts), Esri ArcGIS
+            Online (basemap tiles on the facility map), and Google Analytics 4 /
+            Cloudflare Web Analytics (traffic measurement); each provider
+            handles request metadata under its own privacy policy.
           </li>
         </ul>
       </section>
@@ -58,7 +62,7 @@ import Layout from '../../../layouts/Layout.astro';
       </section>
 
       <div class="mt-12 pt-8 text-sm text-slate-500 italic">
-        Last updated: February 5, 2026
+        Last updated: November 17, 2026
       </div>
     </div>
   </div>

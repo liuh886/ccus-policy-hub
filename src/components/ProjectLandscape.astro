@@ -19,10 +19,10 @@ const text =
           '在增长趋势之外，进一步观察当前有效项目组合的成熟阶段、区域分布，以及公开管线中已经进入在建或在运阶段的比例。',
         snapshot: '2026 数据快照',
         statusTitle: '项目状态构成',
-        statusDescription: '按当前有效项目记录数量统计',
+        statusDescription: '按当前有效项目记录数量统计（全年份口径）',
         activePortfolio: '有效项目组合',
         operational: '在运',
-        construction: '在建',
+        construction: '在建（全年份）',
         planned: '规划',
         excluded: '未纳入有效组合',
         excludedSuffix: '条取消、暂停或退役记录',
@@ -39,7 +39,7 @@ const text =
         insightCommittedRegion: '最大确定性能力区域',
         capacityCoverage: '能力数据覆盖',
         coverageSuffix: '个有效项目具有记录能力',
-        note: '口径：Pipeline = Planned + Under construction + Operational；Committed = Under construction + Operational。状态图按项目记录数量统计。容量视图仅汇总具有已披露或估算项目记录能力的记录，不代表净可交付捕集能力或净封存能力。',
+        note: '口径：Pipeline = Planned + Under construction + Operational；Committed = Under construction + Operational。状态图按全年份有效项目记录数量统计（含 2026 年后投运的在建项目，故多于上方 ≤2026 投运窗口卡片）。容量视图仅汇总具有已披露或估算项目记录能力的记录，不代表净可交付捕集能力或净封存能力。',
         otherRegions: '其他区域',
       }
     : {
@@ -49,10 +49,11 @@ const text =
           'Beyond cumulative growth, this snapshot shows the maturity, regional concentration and committed share of the current active project portfolio.',
         snapshot: '2026 Dataset Snapshot',
         statusTitle: 'Projects by Status',
-        statusDescription: 'Current active project records by count',
+        statusDescription:
+          'Current active project records by count (all years)',
         activePortfolio: 'Active portfolio',
         operational: 'Operational',
-        construction: 'Under construction',
+        construction: 'Under construction (all years)',
         planned: 'Planned',
         excluded: 'Outside active portfolio',
         excludedSuffix: 'cancelled, suspended or decommissioned records',
@@ -70,7 +71,7 @@ const text =
         insightCommittedRegion: 'Largest committed region',
         capacityCoverage: 'Capacity-data coverage',
         coverageSuffix: 'active projects report recorded capacity',
-        note: 'Method: Pipeline = Planned + Under construction + Operational; Committed = Under construction + Operational. The status view uses project-record counts. The capacity view includes only disclosed or estimated project-record capacity and should not be read as net deliverable capture or storage capacity.',
+        note: 'Method: Pipeline = Planned + Under construction + Operational; Committed = Under construction + Operational. The status view counts active project records across all operation years (including under-construction records operating after 2026, unlike the ≤2026 hero/trend window above). The capacity view includes only disclosed or estimated project-record capacity and should not be read as net deliverable capture or storage capacity.',
         otherRegions: 'Other regions',
       };
 

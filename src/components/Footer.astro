@@ -68,6 +68,11 @@ const isEn = lang === 'en';
           <li><a href={`${prefix}/compare/`}>{t('nav.compare')}</a></li>
           <li><a href={`${prefix}/docs/`}>{t('nav.docs')}</a></li>
           <li>
+            <a href={`${prefix}/quality/`}
+              >{isEn ? 'Data Quality' : '质量看板'}</a
+            >
+          </li>
+          <li>
             <a href={`${prefix}/changelog/`}
               >{isEn ? 'Changelog' : '更新日志'}</a
             >

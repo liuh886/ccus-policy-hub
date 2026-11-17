@@ -3,6 +3,7 @@ import '../styles/light-editorial-home.css';
 import '../styles/interaction-controls.css';
 import { getCollection } from 'astro:content';
 import {
+  UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
   normalizeFacilityStatus,
   normalizeFacilityType,
@@ -84,14 +85,14 @@ const text = {
       : 'Operational facilities (project-record scale)',
   constructionTitle:
     lang === 'zh'
-      ? '在建设施（项目记录规模）'
-      : 'Under-construction facilities (project-record scale)',
+      ? `在建设施（预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运）`
+      : `Under-construction facilities (operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF})`,
   storageSubsetLabel:
     lang === 'zh' ? '其中封存相关' : 'Storage-related subset',
   storageSubsetNote:
     lang === 'zh'
-      ? '封存相关包括 T&S、Storage 与 Full chain 项目记录；不等于净可交付地质封存能力。'
-      : 'Storage-related includes T&S, Storage and Full chain project records; it is not net deliverable geological storage capacity.',
+      ? `封存相关包括 T&S、Storage 与 Full chain 项目记录；不等于净可交付地质封存能力。在建卡仅统计预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运记录，全量在建项目见下方项目格局面板。`
+      : `Storage-related includes T&S, Storage and Full chain project records; it is not net deliverable geological storage capacity. The under-construction card counts records operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF}; see Project Landscape below for all active under-construction records.`,
   chartNote:
     lang === 'zh'
       ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。筛选项覆盖 capture、transport、T&S、storage、full-chain、CCU。数值为跨类型项目记录能力加总，不代表净可交付捕集能力或净封存能力。'

@@ -10,7 +10,7 @@ Policy records distinguish identity and legal status from analytical interpretat
 - statutory;
 - market;
 - strategic;
-- technical.
+- mrv (MRV & data governance).
 
 Scores require evidence and must not be changed solely to improve a country's comparative position. A country governance profile is not the arithmetic identity of one policy score; it synthesizes evidence across the applicable policy framework.
 
