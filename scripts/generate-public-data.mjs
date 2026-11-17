@@ -23,6 +23,8 @@ import {
   publishContextFiles,
 } from './generate-policy-context.mjs';
 import { queryScalar, queryRows, parseJsonSafe } from './lib/sqlite-query.mjs';
+import { catalogFiles, publishCatalog } from './lib/source-catalog.mjs';
+import { hash } from './consume-agent-data.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -66,7 +68,8 @@ async function generatePublicData() {
   }
 
   const SQL = await initSqlJs();
-  const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
+  const dbBytes = fs.readFileSync(DB_PATH);
+  const db = new SQL.Database(new Uint8Array(dbBytes));
 
   // Deterministic timestamp derived from the database itself so that the
   // generated files only change when governed data actually changes.
@@ -374,6 +377,9 @@ async function generatePublicData() {
     evidenceOutputs,
     path.join(PUBLIC_DATA_DIR, 'evidence')
   );
+  const discovery = catalogFiles(db, evidenceOutputs, hash(dbBytes));
+  publishCatalog(discovery, path.join(PUBLIC_DATA_DIR, 'discovery'));
+  const catalog = JSON.parse(discovery.get('catalog.json'));
 
   // --- Generate manifest.json ---
   console.log('Generating manifest.json...');
@@ -385,12 +391,20 @@ async function generatePublicData() {
     version: '1.0.0',
     base_url: BASE_URL,
     source_db: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
+    source_db_sha256: hash(dbBytes),
     publication: {
       file: `${BASE_URL}/data/release.json`,
       description:
         'Build-only commit and manifest fingerprint; not a factual review date',
     },
     datasets: {
+      discovery_catalog: {
+        file: `${BASE_URL}/data/discovery/catalog.json`,
+        count: catalog.count,
+        sha256: hash(discovery.get('catalog.json')),
+        description:
+          'Three real frozen source candidates; metadata discovery is not reviewed knowledge',
+      },
       source_evidence: {
         file: `${BASE_URL}/data/evidence/index.json`,
         count: 1,
@@ -440,6 +454,7 @@ async function generatePublicData() {
       },
     },
     schemas: {
+      discovery_catalog: `${BASE_URL}/data/discovery/catalog.schema.json`,
       source_evidence: `${BASE_URL}/data/schemas/source-evidence.schema.json`,
       context: `${BASE_URL}/data/schemas/context-bundle.schema.json`,
       'policy-analysis-localization': `${BASE_URL}/data/schemas/policy-analysis-localization.schema.json`,
