@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import FacilitiesIndex from '../../../components/FacilitiesIndex.astro';
+import { SITE_BASE } from '../../../lib/siteBase';
 import {
   facilitiesPageCount,
   facilitiesPageSlice,
@@ -19,7 +20,7 @@ const total = facilitiesPageCount(sorted.length);
         current: 1,
         total,
         prevUrl: undefined,
-        nextUrl: total >= 2 ? `/en/facilities/page/2` : undefined,
+        nextUrl: total >= 2 ? `${SITE_BASE}/en/facilities/page/2/` : undefined,
       }
     : undefined}
 />

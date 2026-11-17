@@ -25,6 +25,7 @@ import {
   escapeHtml,
   renderFacilityCardHtml,
 } from '../src/lib/facilityCard.mjs';
+import { facilitiesPageUrls } from '../src/lib/facilityPagination.mjs';
 
 const item = (overrides) => ({
   id: '1',
@@ -224,5 +225,21 @@ describe('renderFacilityCardHtml', () => {
 
   it('escapeHtml handles all sensitive characters', () => {
     assert.equal(escapeHtml(`&<>"'`), '&amp;&lt;&gt;&quot;&#39;');
+  });
+});
+
+describe('facilitiesPageUrls', () => {
+  it('preserves site base and trailingSlash: always on prev/next URLs', () => {
+    assert.deepEqual(facilitiesPageUrls('/ccus-policy-hub/facilities', 2, 5), {
+      prevUrl: '/ccus-policy-hub/facilities/',
+      nextUrl: '/ccus-policy-hub/facilities/page/3/',
+    });
+    assert.deepEqual(
+      facilitiesPageUrls('/ccus-policy-hub/en/facilities/', 3, 3),
+      {
+        prevUrl: '/ccus-policy-hub/en/facilities/page/2/',
+        nextUrl: undefined,
+      }
+    );
   });
 });

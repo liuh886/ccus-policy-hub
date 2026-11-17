@@ -26,16 +26,21 @@ import Layout from '../layouts/Layout.astro';
         <ul class="list-disc pl-5 space-y-2">
           <li>
             <strong>数据收集</strong
-            >：本平台目前不强制要求用户注册。我们仅通过匿名分析工具收集基础的访问数据（如页面浏览量、访问国家），以优化用户体验。
+            >：本平台目前不强制要求用户注册。我们通过匿名分析工具（Google
+            Analytics 4，以及在配置时启用的 Cloudflare Web
+            Analytics）收集基础的聚合访问数据（如页面浏览量、路由跳转与访问地区），以优化用户体验。
           </li>
           <li>
-            <strong>Cookie 使用</strong>：我们仅使用必要的 Cookie
-            来存储您的偏好设置（如暗黑模式状态、政策对比列表）。
+            <strong>本地存储与 Cookie 使用</strong
+            >：本平台仅通过浏览器本地存储（localStorage）保存您的界面偏好（如深浅色模式状态与政策对比列表）；Google
+            Analytics 4 可能会根据其分析机制设置统计标识符或 Cookie。
           </li>
           <li>
-            <strong>第三方服务</strong>：本平台可能使用第三方服务（如 Google
-            Fonts,
-            OpenStreetMap）来提供特定功能，这些服务可能会根据其自身的隐私政策收集匿名信息。
+            <strong>第三方服务</strong
+            >：本平台使用第三方服务来提供特定功能，包括 Google
+            Fonts（字体加载）、Esri ArcGIS Online（设施地图底图瓦片服务）以及
+            Google Analytics 4 / Cloudflare Web
+            Analytics（访问统计），这些服务可能会根据其各自的隐私政策处理基础请求信息。
           </li>
         </ul>
       </section>
@@ -49,7 +54,7 @@ import Layout from '../layouts/Layout.astro';
       </section>
 
       <div class="mt-12 pt-8 text-sm text-slate-500 italic">
-        最后更新日期：2026年2月5日
+        最后更新日期：2026年11月17日
       </div>
     </div>
   </div>

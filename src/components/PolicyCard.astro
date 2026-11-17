@@ -4,6 +4,7 @@ import '../styles/interaction-controls.css';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
 import { t as translateUi, makePair, type UiKey } from '../i18n/ui';
+import { GOVERNANCE_DIMENSION_LABELS } from '../lib/governanceCopy.mjs';
 
 type PolicyEntry =
   | CollectionEntry<'policies_zh'>
@@ -47,15 +48,28 @@ const href = isEn
 
 const categoryData = (i18nDict.ui.categories as any)[category];
 const displayCategory = categoryData ? categoryData[lang] : category;
-const getDimensionLabel = (dimKey: string) =>
-  (i18nDict.ui.dimensions as any)?.[dimKey]?.label?.[lang] || dimKey;
+const dimensionIndexMap: Record<string, number> = {
+  incentive: 0,
+  statutory: 1,
+  market: 2,
+  strategic: 3,
+  mrv: 4,
+};
+
+const getDimensionLabel = (dimKey: string) => {
+  const idx = dimensionIndexMap[dimKey];
+  if (idx !== undefined) {
+    return GOVERNANCE_DIMENSION_LABELS[isEn ? 'en' : 'zh'].full[idx];
+  }
+  return (i18nDict.ui.dimensions as any)?.[dimKey]?.label?.[lang] || dimKey;
+};
 
 const dimensions = [
   { key: 'incentive', icon: 'I', color: 'bg-emerald-500' },
   { key: 'statutory', icon: 'R', color: 'bg-blue-500' },
   { key: 'market', icon: 'M', color: 'bg-amber-500' },
   { key: 'strategic', icon: 'S', color: 'bg-purple-500' },
-  { key: 'mrv', icon: 'T', color: 'bg-slate-500' },
+  { key: 'mrv', icon: 'MRV', color: 'bg-slate-500' },
 ];
 
 const activeDimensions = dimensions.filter(

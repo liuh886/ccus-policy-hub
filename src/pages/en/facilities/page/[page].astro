@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import FacilitiesIndex from '../../../../components/FacilitiesIndex.astro';
+import { SITE_BASE } from '../../../../lib/siteBase';
 import {
   facilitiesPageCount,
   facilitiesPageSlice,
@@ -21,7 +22,11 @@ const { page: pageParam } = Astro.params;
 const page = Number(pageParam);
 const sorted = sortFacilities(await getCollection('facilities_en'));
 const total = facilitiesPageCount(sorted.length);
-const { prevUrl, nextUrl } = facilitiesPageUrls('/en/facilities', page, total);
+const { prevUrl, nextUrl } = facilitiesPageUrls(
+  `${SITE_BASE}/en/facilities`,
+  page,
+  total
+);
 ---
 
 <FacilitiesIndex

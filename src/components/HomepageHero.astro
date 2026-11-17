@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { SITE_BASE } from '../lib/siteBase';
 import {
+  UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
   normalizeFacilityStatus,
   summarizeFacilities,
@@ -64,10 +65,10 @@ const text =
         yearSuffix: '估',
         totalScope: '规划 + 在运 + 在建',
         operational: '在运 (2026)',
-        construction: '在建 (2026)',
+        construction: `在建（≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 投运）`,
         storageRelated: '其中封存相关：',
         facilityUnit: '个',
-        note: '项目记录口径；排除取消、退役与暂停项目。',
+        note: `项目记录口径；在建卡仅计预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运项目，排除取消、退役与暂停记录。`,
       }
     : {
         eyebrow: 'Global CCUS Intelligence Hub 2026',
@@ -83,10 +84,10 @@ const text =
         yearSuffix: ' Est.',
         totalScope: 'Planned + operational + under construction',
         operational: 'Operational (2026)',
-        construction: 'Under construction (2026)',
+        construction: `Under construction (op. ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF})`,
         storageRelated: 'Storage-related:',
         facilityUnit: ' facilities',
-        note: 'Project-record basis; cancelled, decommissioned and suspended records excluded.',
+        note: `Project-record basis; under-construction card counts records operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF}; cancelled, decommissioned and suspended records excluded.`,
       };
 ---
 
