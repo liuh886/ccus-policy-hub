@@ -23,13 +23,14 @@ export function facilitiesPageSlice(sorted, page) {
 }
 
 export function facilitiesPageUrls(base, page, total) {
+  const normalizedBase = base.replace(/\/$/, '');
   return {
     prevUrl:
       page === 2
-        ? `${base}/`
+        ? `${normalizedBase}/`
         : page > 2
-          ? `${base}/page/${page - 1}`
+          ? `${normalizedBase}/page/${page - 1}/`
           : undefined,
-    nextUrl: page < total ? `${base}/page/${page + 1}` : undefined,
+    nextUrl: page < total ? `${normalizedBase}/page/${page + 1}/` : undefined,
   };
 }

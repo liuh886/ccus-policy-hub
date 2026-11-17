@@ -490,7 +490,7 @@ const copy = isEn
       const path =
         page <= 1
           ? `${siteBase}${listPath}/`
-          : `${siteBase}${listPath}/page/${page}`;
+          : `${siteBase}${listPath}/page/${page}/`;
       const url = `${path}${query ? `?${query}` : ''}`;
       window.history.replaceState(window.history.state, '', url);
     };

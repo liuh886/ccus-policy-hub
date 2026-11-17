@@ -13,10 +13,10 @@ order: 1
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1d4ed8; font-size: 1.15rem; font-weight: 700;">📖 报告核心通道</h3>
   <p style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #475569;">本报告已完成全新学术交互工程化重构，提供沉浸式阅读与批注研讨工具：</p>
   <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-    <a href="/reports/2601_ESG30/" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #2563eb; color: #ffffff; text-decoration: none; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
+    <a href="/ccus-policy-hub/reports/2601_ESG30/" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #2563eb; color: #ffffff; text-decoration: none; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
       <span>进入交互式研讨报告 ↗</span>
     </a>
-    <a href="/reports/2601_ESG30/paper_draft.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #f1f5f9; color: #1e293b; text-decoration: none; border: 1px solid #cbd5e1; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
+    <a href="/ccus-policy-hub/reports/2601_ESG30/paper_draft.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #f1f5f9; color: #1e293b; text-decoration: none; border: 1px solid #cbd5e1; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
       <span>下载原版 31 页 PDF</span>
     </a>
   </div>

@@ -13,10 +13,10 @@ order: 1
   <h3 style="margin-top: 0; margin-bottom: 0.75rem; color: #1d4ed8; font-size: 1.15rem; font-weight: 700;">📖 Access the Report</h3>
   <p style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.6; color: #475569;">The report has been compiled into a standalone interactive web publication with built-in annotation tools:</p>
   <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-    <a href="/reports/2601_ESG30/" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #2563eb; color: #ffffff; text-decoration: none; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
+    <a href="/ccus-policy-hub/reports/2601_ESG30/" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #2563eb; color: #ffffff; text-decoration: none; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
       <span>Open Interactive Web Report ↗</span>
     </a>
-    <a href="/reports/2601_ESG30/paper_draft.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #f1f5f9; color: #1e293b; text-decoration: none; border: 1px solid #cbd5e1; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
+    <a href="/ccus-policy-hub/reports/2601_ESG30/paper_draft.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #f1f5f9; color: #1e293b; text-decoration: none; border: 1px solid #cbd5e1; border-radius: 0.6rem; font-weight: 600; font-size: 0.9rem;">
       <span>Download PDF (31 Pages)</span>
     </a>
   </div>
