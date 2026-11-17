@@ -74,8 +74,14 @@ jobs:
       - name: Verify published policy context bytes and hashes
         run: pnpm context:check
 
-      - name: Consume public Agent-ready contracts independently
+      - name: Inspect frozen source evidence packet
+        run: pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+
+      - name: Consume public context contracts independently
         run: pnpm data:consume --root public
+
+      - name: Consume context and source evidence contracts independently
+        run: pnpm evidence:consume --root public
 
       - name: ESLint
         run: pnpm eslint .
@@ -85,6 +91,9 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Verify read-only source readiness inventory
+        run: pnpm manage:db:audit:source-readiness --check
 
       - name: Install Pandoc (pinned) and pdfinfo
         # report:parity 会用 CI 的默认路径重新生成一份报告再逐字节比对，因此需要
@@ -146,6 +155,15 @@ jobs:
         env:
           PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: pnpm run build
+
+      - name: Verify static search runtime against the built corpus
+        run: pnpm search:verify
+
+      - name: Verify built context resources and release identity
+        run: pnpm data:consume --root dist --expect-commit "$(git rev-parse HEAD)"
+
+      - name: Verify built context/source resources and release identity
+        run: pnpm evidence:consume --root dist --expect-commit "$(git rev-parse HEAD)"
 
       - name: Verify Cloudflare RUM when configured
         env:

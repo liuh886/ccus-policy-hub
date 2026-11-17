@@ -4,6 +4,8 @@
 
 CCUS Policy Hub combines a governed CCUS policy/facility dataset with a bilingual Astro website, analytical workspaces, public JSON endpoints, and an agent-readable maintenance layer.
 
+The authoritative **product/module boundary** is [PRODUCT_BOUNDARIES.md](../../docs/PRODUCT_BOUNDARIES.md). External agents consume verified static JSON/Markdown and own their own question answering, retrieval orchestration and conclusions. This repository does not implement an in-site Q&A Agent or LLM runtime. Stage-specific implementation order belongs to [ROADMAP.md](../../docs/ROADMAP.md).
+
 ## 2. Data and publication flow
 
 ```text

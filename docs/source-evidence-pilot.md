@@ -64,7 +64,7 @@ clause evidence. No automatic project association or legal conclusion is added.
 pnpm gen
 pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
 pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json --observed-file /path/to/download.html
-pnpm data:consume --root public
+pnpm evidence:consume --root public
 ```
 
 Commands print JSON; invalid input gives a nonzero exit and structured stderr.
@@ -93,3 +93,11 @@ explicit human approval may the packet record `method: human`, reviewer/date
 and verified status for the reviewed document and anchor. Approval of the data
 locator is not approval of current-law interpretation, tax eligibility or an
 Agent-generated answer. No automatic review promotion is implemented.
+
+The human-review packet is consolidated in [source-evidence-review-sheet.md](source-evidence-review-sheet.md).
+The summary consumer is now owned by #103 and works without this evidence resource.
+`evidence:consume` reuses its transport, Schema validation and context checks,
+then verifies original/normalized bytes and the locator; there is no second
+HTTP or release-validation implementation. Both consumers support `--manifest-url`
+and `--expect-commit`. Real Pages verification waits for the approved release;
+a local HTTP fixture or successful branch build is not a deployment.

@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/inject-cloudflare-analytics.mjs && pagefind --site dist --output-path dist/pagefind",
+    "build": "astro build && node scripts/generate-release-metadata.mjs && node scripts/inject-cloudflare-analytics.mjs && pagefind --site dist --output-path dist/pagefind && node scripts/prepare-search-runtime.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
@@ -43,13 +43,16 @@
     "report:verify": "node scripts/verify-paper-report.mjs",
     "report:parity": "node scripts/verify-paper-report.mjs --parity",
     "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs",
+    "search:verify": "node scripts/verify-search-runtime.mjs",
     "manage:review:queue": "node scripts/maintenance-review.mjs",
     "manage:policy:review": "node scripts/apply-policy-review.mjs",
+    "manage:db:audit:source-readiness": "node scripts/audit-policy-source-readiness.mjs",
     "context:build": "node scripts/generate-policy-context.mjs",
     "context:read": "node scripts/generate-policy-context.mjs",
     "context:check": "node scripts/generate-policy-context.mjs --check",
+    "data:consume": "node scripts/consume-agent-data.mjs",
     "evidence:inspect": "node scripts/inspect-source-evidence.mjs",
-    "data:consume": "node scripts/consume-agent-data.mjs"
+    "evidence:consume": "node scripts/consume-source-evidence.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -60,7 +63,7 @@
     "chart.js": "^4.5.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "pagefind": "^1.4.0",
+    "pagefind": "1.5.2",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
@@ -70,8 +73,6 @@
     "@types/leaflet.markercluster": "^1.5.6",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
-    "ajv": "^8",
-    "ajv-formats": "^3",
     "eslint": "^9.39.2",
     "eslint-plugin-astro": "^1.5.0",
     "globals": "^16.5.0",
@@ -81,6 +82,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "sql.js": "^1.13.0",
     "typescript": "^5.9.3",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "ajv": "^8",
+    "ajv-formats": "^3"
   }
 }

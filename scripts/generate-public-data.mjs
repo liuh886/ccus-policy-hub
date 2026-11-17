@@ -385,6 +385,11 @@ async function generatePublicData() {
     version: '1.0.0',
     base_url: BASE_URL,
     source_db: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
+    publication: {
+      file: `${BASE_URL}/data/release.json`,
+      description:
+        'Build-only commit and manifest fingerprint; not a factual review date',
+    },
     datasets: {
       source_evidence: {
         file: `${BASE_URL}/data/evidence/index.json`,
