@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Policy Context Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "lang",
+    "data_as_of",
+    "identity",
+    "relationships",
+    "time",
+    "sources",
+    "legal_context",
+    "definitions",
+    "capabilities",
+    "gaps",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": ["policy", "policy_family"]
+    },
+    "lang": {
+      "enum": ["en", "zh"]
+    },
+    "data_as_of": {
+      "type": ["string", "null"],
+      "description": "Latest record review date in this bundle; not a source-wide review or legal-effective date."
+    },
+    "identity": {
+      "type": "object",
+      "required": ["title", "records"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/policyRecord"
+          }
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "required": [
+        "total",
+        "by_type",
+        "returned",
+        "truncated",
+        "records",
+        "chain_status"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "by_type": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "returned": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "records": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "required": [
+              "policy_id",
+              "facility_id",
+              "link_type",
+              "review_status"
+            ],
+            "properties": {
+              "policy_id": {
+                "type": "string"
+              },
+              "facility_id": {
+                "type": "string"
+              },
+              "link_type": {
+                "type": ["string", "null"]
+              },
+              "confidence": {
+                "type": ["number", "null"]
+              },
+              "review_status": {
+                "type": ["string", "null"]
+              },
+              "evidence": {
+                "type": ["string", "null"]
+              },
+              "source_url": {
+                "type": ["string", "null"]
+              }
+            }
+          }
+        },
+        "chain_status": {
+          "const": "not_assessed"
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "required": ["historical_state_available", "records"],
+      "properties": {
+        "historical_state_available": {
+          "const": false
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/policyRecord"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "policy_id", "url", "evidence_level"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "evidence_level": {
+            "const": "record_summary"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "record_last_reviewed": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "legal_context": {
+      "type": "object",
+      "required": ["evidence_level", "records"],
+      "properties": {
+        "evidence_level": {
+          "const": "record_summary"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/policyRecord"
+          }
+        }
+      }
+    },
+    "definitions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "required": [
+        "summary_qa",
+        "clause_level_qa",
+        "project_eligibility",
+        "historical_state",
+        "source_currentness_verified"
+      ],
+      "properties": {
+        "summary_qa": {
+          "const": true
+        },
+        "clause_level_qa": {
+          "const": false
+        },
+        "project_eligibility": {
+          "const": false
+        },
+        "historical_state": {
+          "const": false
+        },
+        "source_currentness_verified": {
+          "const": false
+        }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "policy_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "definitions": {
+    "policyRecord": {
+      "type": "object",
+      "required": ["policy_id"],
+      "properties": {
+        "policy_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
