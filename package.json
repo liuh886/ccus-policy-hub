@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/inject-cloudflare-analytics.mjs && pagefind --site dist --output-path dist/pagefind",
+    "build": "astro build && node scripts/inject-cloudflare-analytics.mjs && pagefind --site dist --output-path dist/pagefind && node scripts/prepare-search-runtime.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
@@ -42,7 +42,8 @@
     "report:check:strict": "node scripts/sync-paper-report.mjs --check --strict",
     "report:verify": "node scripts/verify-paper-report.mjs",
     "report:parity": "node scripts/verify-paper-report.mjs --parity",
-    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs"
+    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs",
+    "search:verify": "node scripts/verify-search-runtime.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -53,7 +54,7 @@
     "chart.js": "^4.5.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "pagefind": "^1.4.0",
+    "pagefind": "1.5.2",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

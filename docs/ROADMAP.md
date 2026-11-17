@@ -21,6 +21,8 @@ The current implementation PR chain is **#102 → #103 → #104**, with #107 as 
 
 ## P1 — Publish a consumable Agent-ready data contract
 
+- **Discovery prerequisite (#112):** The accepted product priority is research-question-driven discovery. A scoped search-runtime candidate pins Pagefind 1.5.2, honors explicit SDK languages and aligns the tested CCUS terms with native CJK boundaries. Full-corpus HTTP regressions cover Node, while browser Worker and existing search-page checks cover the user entry point. This is an implementation branch pending review, not a published discovery catalog or completed E1/E2 evidence workflow; no private PDFs are indexed.
+
 - **Input:** Completed P0 and #103's static 45Q policy/family bundle implementation.
 - **Work:** Verify manifest discovery, JSON Schema, stable IDs, deterministic JSON/Markdown output, source references, evidence type, time, translation status and explicit gaps; test invalid IDs and languages.
 - **Done:** An independent consumer can discover, validate, read and cite data using public resources only, without the site's private runtime. The same inputs give byte-identical outputs.
