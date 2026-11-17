@@ -260,6 +260,23 @@ textarea:hover {
   box-shadow: var(--shadow-panel);
 }
 
+/* The full English navigation needs more room than the tablet breakpoint.
+   Keep display rules outside utility layers, like .site-icon-button. */
+.site-desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .site-desktop-nav {
+    display: flex;
+  }
+
+  #mobile-menu-toggle,
+  #mobile-menu {
+    display: none;
+  }
+}
+
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--border-subtle);

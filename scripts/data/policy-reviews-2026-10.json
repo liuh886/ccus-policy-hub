@@ -1,0 +1,409 @@
+{
+  "as_of": "2026-10-28",
+  "policies": [
+    {
+      "id": "it-law-11-2024-modernization",
+      "sources": [
+        {
+          "url": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+        "source": "Gazzetta Ufficiale — Law 11/2024, coordinated Decree-Law 181/2023, Article 7",
+        "pub_date": "2024-02-07"
+      },
+      "locales": {
+        "en": {
+          "description": "Law 11/2024 converts Decree-Law 181/2023. Article 7 updates Italy’s geological CO2 storage framework, including authorisation of offshore experimental programmes in depleted hydrocarbon reservoirs. It coordinates approvals through MASE and specifies technical capability, environmental assessment, monitoring and financial-security requirements. The exemption below 100,000 tonnes concerns specified financial-security provisions; it is not a blanket exemption from environmental assessment. Project approval and long-term responsibility remain governed by the applicable storage legislation and permit.",
+          "scope": "Italian geological CO2 storage authorisations, especially offshore experimental programmes in depleted hydrocarbon reservoirs.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "Coordinated authorisation can reduce administrative fragmentation; the article does not itself guarantee project revenue.",
+            "technical": "Experimental permits require operator capability and a defined programme, with statutory limits on duration and extensions.",
+            "environmental": "Environmental assessment and monitoring remain part of the authorisation conditions for experimental storage."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2023-12-09",
+                "event": "Decree-Law 181/2023 adopted."
+              },
+              {
+                "date": "2024-02-08",
+                "event": "Conversion law enters into force."
+              }
+            ]
+          },
+          "regulatory_json": {
+            "permitting_lead_time": "Experimental authorisation: up to three years, with statutory extensions; this is permit duration, not approval processing time.",
+            "financial_assurance": "Selected financial-security exceptions apply below 100,000 tonnes; environmental assessment is addressed separately."
+          }
+        },
+        "zh": {
+          "description": "意大利第11/2024号法律将第181/2023号紧急法令转化为法律。其第7条修订地质封存制度，为在领海、专属经济区和大陆架的枯竭油气藏内开展限期试验提供许可程序。环境与能源安全部统筹相关行政同意，并要求申请人具备技术、组织和经济能力。低于10万吨的例外针对特定财务担保规定，不能理解为一概免除环境评价。试验许可通常最长三年，可按法定条件申请延期；监测、报告及场址保护要求仍须落实。该修法提供制度路径，不直接证明某个项目已经获批，也不应被解释为新设统一补贴或全面改写封场后责任制度。",
+          "scope": "适用于意大利地质二氧化碳封存许可，重点涉及离岸枯竭油气藏内的限期试验项目。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "统一许可程序有助于减少行政环节割裂，但本条本身不构成对单个项目收益或融资成功的保证。",
+            "technical": "试验项目需要证明技术、组织和经济能力，并在许可中明确试验安排、实施期限和延期理由。",
+            "environmental": "试验封存仍须遵守适用环境评价、监测和报告要求，不能将小规模财务担保例外理解为普遍环保豁免。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2023-12-09",
+                "event": "第181/2023号紧急法令出台。"
+              },
+              {
+                "date": "2024-02-08",
+                "event": "第11/2024号转化法律生效。"
+              }
+            ]
+          },
+          "regulatory_json": {
+            "permitting_lead_time": "试验许可最长三年，并可依法延期；这是许可期限，不是审批办理时限。",
+            "financial_assurance": "低于10万吨适用特定财务担保例外，环境评价另有规定。"
+          }
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "Article 7 concerns permitting and selected financial-security rules, rather than an automatic per-tonne subsidy.",
+          "zh": "第7条主要规定许可和特定财务担保安排，并未由此创设自动按吨发放的补贴。",
+          "label_zh": "激励机制",
+          "citation": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "The conversion law amends Legislative Decree 162/2011 through coordinated storage-authorisation provisions.",
+          "zh": "转化法律通过地质封存许可条款修订第162/2011号立法法令。",
+          "label_zh": "法定制度",
+          "citation": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Experimental storage and related transport works receive public-utility treatment under the amended provisions.",
+          "zh": "修订条款将试验封存及其所需运输工程纳入公共利益工程安排。",
+          "label_zh": "市场机制",
+          "citation": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The amendments enable controlled experimentation in depleted offshore hydrocarbon reservoirs within the storage framework.",
+          "zh": "修法在地质封存制度内为离岸枯竭油气藏的受控试验提供实施路径。",
+          "label_zh": "战略定位",
+          "citation": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Experimental permits include approved monitoring plans, reporting duties and conditions on injection and CO2 streams.",
+          "zh": "试验许可涵盖批准的监测计划、报告义务以及注入和二氧化碳流组成条件。",
+          "label_zh": "监测与核算",
+          "citation": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "denmark-ccfd",
+      "sources": [
+        {
+          "url": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+        "source": "Danish Energy Agency",
+        "pub_date": "2024-04-17"
+      },
+      "locales": {
+        "en": {
+          "description": "Denmark operates separate CCUS, NECCS and CCS support funds. NECCS targets biogenic removals; awards announced in April 2024 cover 160,350 tonnes annually during 2026–2032. The earlier CCUS award to Ørsted uses a different, twenty-year support arrangement. These programmes should not be merged into one universal contract or subsidy rate. Funding supports a capture-to-storage chain, while geological storage and environmental permissions remain separate.",
+          "scope": "Danish competitive support for capture and permanent storage; eligibility and duration depend on the specific fund.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "Competitive support addresses the cost gap; individual awards determine payments rather than a universal subsidy rate.",
+            "technical": "Projects must connect capture with transport and permanent storage instead of treating capture equipment as a complete chain.",
+            "environmental": "NECCS funds biogenic removals, while the CCUS and CCS funds also cover eligible fossil CO2 reductions."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2023-05-15",
+                "event": "CCUS fund contract awarded to Ørsted."
+              },
+              {
+                "date": "2024-04-17",
+                "event": "NECCS awards announced for 2026–2032."
+              }
+            ]
+          },
+          "title": "Denmark CCUS, NECCS and CCS Support Funds",
+          "regulatory_json": {}
+        },
+        "zh": {
+          "description": "丹麦能源署分别管理CCUS、NECCS和CCS支持基金。NECCS面向生物源二氧化碳捕集与永久封存，其2024年公布的授标项目对应2026至2032年每年160350吨的合同规模。此前授予Ørsted的CCUS基金合同采用不同的二十年支持安排。各基金在碳源资格、期限和招标条件上存在区别，因此不能合并表述为一项统一的二十年负排放差价合约，也不能套用统一的每吨补贴价格。对项目经济性的分析应逐项检查招标文件和合同；获得财政支持本身不替代捕集设施环境许可、运输安排或地质封存许可。",
+          "scope": "适用于丹麦捕集与永久封存竞争性支持项目，资格和期限应按具体基金分别判断。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "竞争性支持用于弥补成本缺口，具体支付须依据授标和合同，不能把个别价格当成全行业统一补贴。",
+            "technical": "项目需要衔接捕集、运输和永久封存环节，捕集装置建成不等于整条价值链已具备运行条件。",
+            "environmental": "NECCS支持生物源碳移除，CCUS及CCS基金还涉及符合条件的化石源减排，二者核算含义应区分。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2023-05-15",
+                "event": "CCUS基金合同授予Ørsted。"
+              },
+              {
+                "date": "2024-04-17",
+                "event": "公布NECCS授标结果，合同覆盖2026至2032年。"
+              }
+            ]
+          },
+          "title": "丹麦CCUS、NECCS与CCS支持基金",
+          "regulatory_json": {}
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "Support is awarded through distinct competitive funds with programme-specific eligibility and contract conditions.",
+          "zh": "支持通过不同的竞争性基金配置，项目资格与合同条件需按基金分别核对。",
+          "label_zh": "激励机制",
+          "citation": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "Funding contracts do not replace the separate legal requirements for capture, transport and storage permissions.",
+          "zh": "财政支持合同不替代捕集、运输及封存各环节另行适用的法定许可要求。",
+          "label_zh": "法定制度",
+          "citation": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "NECCS awarded biogenic-removal contracts; its 2026–2032 delivery period differs from the earlier Ørsted CCUS contract.",
+          "zh": "NECCS授予生物源碳移除合同，2026至2032年的交付期限有别于此前Ørsted的CCUS合同。",
+          "label_zh": "市场机制",
+          "citation": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The three funds form differentiated instruments for developing CCS value chains and meeting Danish climate goals.",
+          "zh": "三个基金以不同支持对象和条件推动CCS价值链建设，服务丹麦气候目标。",
+          "label_zh": "战略定位",
+          "citation": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Funded output depends on capture and permanent storage; biogenic removals must be distinguished from fossil emission reductions.",
+          "zh": "支持的交付结果涉及捕集和永久封存，生物源碳移除应与化石源避免排放分别理解。",
+          "label_zh": "监测与核算",
+          "citation": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "ca-sk-ccs-directives",
+      "sources": [
+        {
+          "url": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        },
+        {
+          "url": "https://publications.saskatchewan.ca/api/v1/products/126251/formats/147937/download",
+          "finding": "Gazette dated 23 May 2025 publishes ministerial order dated 17 May 2024 amending the CCUS Credit Standard."
+        }
+      ],
+      "record": {
+        "url": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+        "source": "Government of Saskatchewan — Guidance for Emitters",
+        "pub_date": "2024-05-17"
+      },
+      "locales": {
+        "en": {
+          "description": "Saskatchewan’s official emitter guidance provides a CCUS credit registration and reporting pathway. Developers may register eligible projects under the CCUS Credit Standard and submit a credit plan. A registered project must submit a credit report for each compliance year with the required verification materials. This credit pathway should be distinguished from well and storage approvals and from federal legislation. The guidance does not establish a universal capture rate or a uniform century-long post-closure obligation.",
+          "scope": "Saskatchewan CCUS project registration, credit plans and annual verified credit reporting under the provincial credit standard.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "Credit participation can support project economics, but eligibility and verified output do not guarantee a fixed market price.",
+            "technical": "Registration and credit plans establish an administrative reporting pathway; storage engineering approvals require separate review.",
+            "environmental": "Annual credit reports and verification materials support accountable claims; capture alone is not proof of permanent storage."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2024-05-17",
+                "event": "Ministerial order amended the CCUS Credit Standard."
+              },
+              {
+                "date": "2025-05-23",
+                "event": "The order appeared in the Saskatchewan Gazette."
+              }
+            ]
+          },
+          "title": "Saskatchewan CCUS Credit Registration and Reporting",
+          "regulatory_json": {}
+        },
+        "zh": {
+          "description": "萨斯喀彻温省政府的排放主体指南列明了CCUS积分项目登记和报告程序。符合条件的开发者可依据《CCUS积分标准》自愿登记项目，提交项目登记表和积分计划；登记后的项目须按合规年度提交积分报告，并配套规定的报告与核查材料。该路径属于省级排放管理和积分核算安排，应与注入井许可、地质封存许可及联邦法规分别核对。不能仅凭该指南推定所有项目享有固定收入、达到统一捕集率，或承担统一的一百年封场后责任。此前记录中关于联邦煤电法规不适用及统一责任期限的表述缺乏该来源支持，本次不再保留为本政策结论。",
+          "scope": "适用于萨省CCUS积分项目登记、积分计划及按合规年度提交的积分报告和核查材料。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "积分参与可为项目提供经济支持，但项目资格和经核查的产出并不等于固定市场价格或保证收益。",
+            "technical": "项目登记和积分计划形成行政报告路径，不能由此替代井筒、注入和地质封存工程方面的另行审查。",
+            "environmental": "按年度提交积分报告及核查材料有助于约束减排声明，单独捕集二氧化碳并不证明已经实现永久封存。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2024-05-17",
+                "event": "部长令修订CCUS积分标准。"
+              },
+              {
+                "date": "2025-05-23",
+                "event": "上述命令刊载于萨省公报。"
+              }
+            ]
+          },
+          "title": "萨斯喀彻温省CCUS积分登记与报告制度",
+          "regulatory_json": {}
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The credit standard provides a registration route, while eligibility and credit reporting determine participation.",
+          "zh": "积分标准提供项目登记路径，参与资格和积分报告要求决定项目如何进入该体系。",
+          "label_zh": "激励机制",
+          "citation": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "Official guidance places CCUS credit reporting within provincial greenhouse-gas management and compliance instruments.",
+          "zh": "官方指南将CCUS积分报告纳入省级温室气体管理和合规工具体系。",
+          "label_zh": "法定制度",
+          "citation": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Projects register and submit credit plans before credit reports; the guidance does not promise a universal credit price.",
+          "zh": "项目需先登记并提交积分计划，再提交积分报告；指南并不承诺统一的积分价格。",
+          "label_zh": "市场机制",
+          "citation": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The framework connects project-level carbon management with provincial emissions-compliance administration.",
+          "zh": "该框架将项目层面的碳管理与省级排放合规行政程序衔接。",
+          "label_zh": "战略定位",
+          "citation": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Registered CCUS projects submit a credit report for each compliance year with accompanying verification documentation.",
+          "zh": "已登记CCUS项目须按每个合规年度提交积分报告，并提供配套核查文件。",
+          "label_zh": "监测与核算",
+          "citation": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "br-anp-ccs-resolution",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.gov.br/anp/pt-br/assuntos/ccs/ccs",
+          "finding": "ANP CCUS authorisation guidance is available. The old record combines law, decree and a purported resolution; the specific resolution identity and every composite claim still require reconciliation."
+        }
+      ],
+      "record": {
+        "url": "https://www.gov.br/anp/pt-br/assuntos/ccs/ccs"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "ANP CCUS authorisation guidance is available. The old record combines law, decree and a purported resolution; the specific resolution identity and every composite claim still require reconciliation."
+    },
+    {
+      "id": "cn-ordos-pilot-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.ndrc.gov.cn/fggz/hjyzy/tdftzh/202407/t20240722_1391843.html",
+          "finding": "Official reproduction confirms plan issued 29 April 2024, published by NDRC 22 July 2024. Its narrative also combines a later pollution-carbon plan; keep draft until the two instruments are separated."
+        }
+      ],
+      "record": {
+        "url": "https://www.ndrc.gov.cn/fggz/hjyzy/tdftzh/202407/t20240722_1391843.html"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "Official reproduction confirms plan issued 29 April 2024, published by NDRC 22 July 2024. Its narrative also combines a later pollution-carbon plan; keep draft until the two instruments are separated."
+    },
+    {
+      "id": "co-law-2099-energy-transition",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166326",
+          "finding": "Official text confirms Law 2099 and Article 22. Tax entitlement and amendments in the composite narrative require article-by-article review before graduation."
+        }
+      ],
+      "record": {
+        "url": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166326"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "Official text confirms Law 2099 and Article 22. Tax entitlement and amendments in the composite narrative require article-by-article review before graduation."
+    },
+    {
+      "id": "is-carbfix-act",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.althingi.is/altext/stjt/2021.012.html",
+          "finding": "Law 12/2021 confirms geological injection and mineralisation provisions. The old record describes a separate project permit and ESA opinion; do not call this a Carbfix-specific act or mark all permit claims verified."
+        }
+      ],
+      "record": {
+        "url": "https://www.althingi.is/altext/stjt/2021.012.html"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "Law 12/2021 confirms geological injection and mineralisation provisions. The old record describes a separate project permit and ESA opinion; do not call this a Carbfix-specific act or mark all permit claims verified."
+    },
+    {
+      "id": "kr-motie-cluster-district-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=&chrClsCd=010202&efYd=20250207&lsiSeq=268977&urlMode=lsInfoP",
+          "finding": "Official enforcement decree exists. Actual cluster designations and the old record’s project examples must be checked independently; existence of designation powers does not prove a district was designated."
+        }
+      ],
+      "record": {
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=&chrClsCd=010202&efYd=20250207&lsiSeq=268977&urlMode=lsInfoP"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "Official enforcement decree exists. Actual cluster designations and the old record’s project examples must be checked independently; existence of designation powers does not prove a district was designated."
+    },
+    {
+      "id": "cn-co2-transport-status-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0324/2024032400046_c.pdf",
+          "finding": "Sinopec 2023 sustainability report confirms pipeline commissioning on 11 July 2023 and 109 km length. This is infrastructure evidence, not proof of a dedicated transport legal framework; later standards and programme claims require separate verification."
+        }
+      ],
+      "record": {
+        "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0324/2024032400046_c.pdf"
+      },
+      "review_disposition": "remain_draft",
+      "review_note": "Sinopec 2023 sustainability report confirms pipeline commissioning on 11 July 2023 and 109 km length. This is infrastructure evidence, not proof of a dedicated transport legal framework; later standards and programme claims require separate verification."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "as_of": "2026-10-28",
+  "facilities": {
+    "201": [
+      {
+        "url": "https://www.heidelbergmaterials.com/en/media/brevik-media",
+        "title": "Pioneering CCS in the cement industry",
+        "publisher": "Heidelberg Materials",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://www.regjeringen.no/no/aktuelt/tale-under-langskip-markeringen-i-brevik/id3109708/",
+        "title": "Tale under Langskip-markeringen i Brevik",
+        "publisher": "Government of Norway",
+        "date": "2025-06-18",
+        "tier": "official",
+        "itemLang": "no"
+      }
+    ],
+    "335": [
+      {
+        "url": "https://eng.nordsoefonden.dk/news/2024/december/nordsoefonden-invests-in-greensand-future",
+        "title": "Nordsøfonden invests in Greensand Future",
+        "publisher": "Nordsøfonden",
+        "date": "2024-12-10",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ],
+    "302": [
+      {
+        "url": "https://www.hafslund.no/no/om-oss/presse/karbonfangst-i-oslo-realiseres",
+        "title": "Karbonfangst i Oslo realiseres!",
+        "publisher": "Hafslund",
+        "date": "2025-01-27",
+        "tier": "press_release",
+        "itemLang": "no"
+      }
+    ],
+    "756": [
+      {
+        "url": "https://orsted.com/en/other-energy-sources/bioenergy/carbon-capture-and-storage",
+        "title": "Carbon capture and storage",
+        "publisher": "Ørsted",
+        "tier": "press_release",
+        "itemLang": "en"
+      },
+      {
+        "url": "https://mst.dk/annonceringer/2024/december/oersted-bioenergy-thermal-as-asnaesvaerket-miljoegodkendelse",
+        "title": "Ørsted Bioenergy & Thermal A/S, Asnæsværket: Miljøgodkendelse",
+        "publisher": "Danish Environmental Protection Agency",
+        "tier": "official",
+        "itemLang": "da"
+      }
+    ],
+    "1313": [
+      {
+        "url": "https://www.mtxb.com.cn/cn/article/id/571511ca-6d40-486b-b17f-e83cfb1b45b0",
+        "title": "陕煤集团400万t/a CO2捕集与封存技术研究与探索",
+        "publisher": "煤炭学报",
+        "tier": "reference",
+        "itemLang": "zh"
+      }
+    ],
+    "209": [
+      {
+        "url": "https://www.cnrl.com/content/uploads/2026/04/V_Corp-Pres_Apr.pdf",
+        "title": "Carbon Capture & Sequestration / Storage Technology",
+        "publisher": "Canadian Natural",
+        "tier": "press_release",
+        "itemLang": "en"
+      }
+    ]
+  }
+}
