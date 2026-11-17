@@ -76,30 +76,54 @@ export function applyPolicyReview(db, input) {
         }
       }
       for (const [dimension, item] of Object.entries(patch.analysis || {})) {
-        // Numerical scores are excluded. Descriptive labels may be corrected
-        // with their evidence, e.g. removing an unsupported subsidy amount.
-        db.run(
-          'UPDATE policy_analysis SET evidence=?, citation=?, audit_note=? WHERE policy_id=? AND dimension=?',
-          [
-            item.en,
-            item.citation,
-            `Source text reviewed ${input.as_of}; score unchanged.`,
-            patch.id,
-            dimension,
-          ]
-        );
-        if (!db.getRowsModified())
-          throw new Error(`Unknown dimension ${dimension}`);
-        if (item.label_en)
+        // Numerical scores are excluded. Canonical evidence, citation, label
+        // and audit_note are only updated when primary sources were reviewed.
+        const existing = queryRows(
+          db,
+          'SELECT evidence FROM policy_analysis WHERE policy_id=? AND dimension=?',
+          [patch.id, dimension]
+        )[0];
+        if (!existing) throw new Error(`Unknown dimension ${dimension}`);
+
+        const sourceReviewed = patch.source_reviewed === true;
+        const sourceEvidence = sourceReviewed
+          ? item.en
+          : (item.en ?? existing.evidence);
+
+        if (sourceReviewed) {
           db.run(
-            'UPDATE policy_analysis SET label=? WHERE policy_id=? AND dimension=?',
-            [item.label_en, patch.id, dimension]
+            'UPDATE policy_analysis SET evidence=?, citation=?, audit_note=? WHERE policy_id=? AND dimension=?',
+            [
+              item.en,
+              item.citation,
+              `Source text reviewed ${input.as_of}; score unchanged.`,
+              patch.id,
+              dimension,
+            ]
           );
+          if (item.label_en)
+            db.run(
+              'UPDATE policy_analysis SET label=? WHERE policy_id=? AND dimension=?',
+              [item.label_en, patch.id, dimension]
+            );
+        } else if (item.en !== undefined && item.en !== existing.evidence) {
+          throw new Error(
+            `Cannot modify canonical evidence for ${patch.id}.${dimension} without source_reviewed: true`
+          );
+        }
+
         db.run(
           `INSERT INTO policy_analysis_i18n VALUES (?, ?, 'zh', ?, ?, ?, ?)
           ON CONFLICT(policy_id,dimension,lang) DO UPDATE SET label=excluded.label,
           evidence=excluded.evidence, source_evidence=excluded.source_evidence, reviewed_at=excluded.reviewed_at`,
-          [patch.id, dimension, item.label_zh, item.zh, item.en, input.as_of]
+          [
+            patch.id,
+            dimension,
+            item.label_zh,
+            item.zh,
+            sourceEvidence,
+            input.as_of,
+          ]
         );
       }
       if (patch.source_reviewed === true) {
