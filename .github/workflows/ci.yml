@@ -80,6 +80,9 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Verify read-only source readiness inventory
+        run: pnpm manage:db:audit:source-readiness --check
+
       - name: Install Pandoc (pinned) and pdfinfo
         # report:parity 会用 CI 的默认路径重新生成一份报告再逐字节比对，因此需要
         # Pandoc。版本必须与 sync-esg30-report.yml 一致，否则比对必然失败。
