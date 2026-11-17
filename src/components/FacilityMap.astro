@@ -1,100 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
 import { t as translateUi, type UiKey } from '../i18n/ui';
-import { toMapFacility } from '../lib/mapPayload.mjs';
+import { getLocaleDataIndex } from '../lib/dataIndex';
+import { SITE_BASE } from '../lib/siteBase';
 
 interface Props {
   lang?: 'zh' | 'en';
 }
 
 const { lang = 'zh' } = Astro.props;
-const isEn = lang === 'en';
 const t = (key: UiKey) => translateUi(lang, key);
-
-const facilities = await getCollection(
-  isEn ? 'facilities_en' : 'facilities_zh'
-);
-
-const hasRenderableCoordinates = (
-  coordinates: unknown
-): coordinates is [number, number] => {
-  if (!Array.isArray(coordinates) || coordinates.length < 2) {
-    return false;
-  }
-
-  const lat = Number(coordinates[0]);
-  const lng = Number(coordinates[1]);
-
-  if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-    return false;
-  }
-
-  // `0.001, 0.001` is used in the dataset as a placeholder for missing coordinates.
-  return !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01);
-};
-
-const countryPrecisionTotals = new Map<
-  string,
-  { lat: number; lng: number; count: number }
->();
-
-for (const facility of facilities) {
-  const { precision, country, coordinates } = facility.data;
-  if (precision !== 'country' || !hasRenderableCoordinates(coordinates)) {
-    continue;
-  }
-
-  const key = String(country || '');
-  const current = countryPrecisionTotals.get(key) || {
-    lat: 0,
-    lng: 0,
-    count: 0,
-  };
-
-  current.lat += coordinates[0];
-  current.lng += coordinates[1];
-  current.count += 1;
-  countryPrecisionTotals.set(key, current);
-}
-
-const canonicalCountryCoordinates = new Map(
-  [...countryPrecisionTotals.entries()].map(([country, totals]) => [
-    country,
-    [
-      Number((totals.lat / totals.count).toFixed(4)),
-      Number((totals.lng / totals.count).toFixed(4)),
-    ] as [number, number],
-  ])
-);
-
-const mapFacilities = facilities.map((facility) => {
-  const { id, data } = facility;
-  const isCountryPrecision = data.precision === 'country';
-  const coordinates =
-    isCountryPrecision && canonicalCountryCoordinates.has(String(data.country))
-      ? canonicalCountryCoordinates.get(String(data.country))
-      : hasRenderableCoordinates(data.coordinates)
-        ? data.coordinates
-        : null;
-
-  return toMapFacility({
-    id,
-    name: data.name,
-    coordinates,
-    precision: data.precision,
-    status: data.status,
-    estimatedCapacity: data.estimatedCapacity,
-    announcedCapacityMax: data.announcedCapacityMax,
-    type: data.type,
-  });
-});
-
-const mapData = { mapFacilities, isEn };
-const mapDataJson = JSON.stringify(mapData);
+const { directoryMeta } = await getLocaleDataIndex(lang);
+const mapUrl = `${SITE_BASE}/api/facilities-map.${lang}.json`;
 ---
 
 <div
   class="facility-map-container h-[600px] w-full rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative bg-slate-100 dark:bg-slate-950"
+  data-map-url={mapUrl}
+  data-lang={lang}
+  data-site-base={SITE_BASE}
+  data-map-count={directoryMeta.mapData.length}
 >
   <div id="map" class="h-full w-full z-0"></div>
 
@@ -177,13 +101,6 @@ const mapDataJson = JSON.stringify(mapData);
   </div>
 </div>
 
-<script
-  is:inline
-  type="application/json"
-  id="facility-map-data"
-  set:html={mapDataJson}
-/>
-
 <style is:global>
   .legend-item.disabled {
     opacity: 0.3;
@@ -241,6 +158,8 @@ const mapDataJson = JSON.stringify(mapData);
 <script>
   import type * as Leaflet from 'leaflet';
   import { t as translateUi, type UiKey } from '../i18n/ui';
+  import { fetchCachedJson } from '../lib/cachedJsonFetch';
+  import { hasRenderableCoordinates } from '../lib/dataIndexCore.mjs';
 
   interface MapFacility {
     id: string | number;
@@ -253,11 +172,7 @@ const mapDataJson = JSON.stringify(mapData);
     type: string;
   }
 
-  interface MapPayload {
-    mapFacilities: MapFacility[];
-    isEn: boolean;
-    payloadError?: boolean;
-  }
+  let activeMapObserver: IntersectionObserver | null = null;
 
   const escapeHtml = (value: unknown) =>
     String(value ?? '').replace(
@@ -274,59 +189,41 @@ const mapDataJson = JSON.stringify(mapData);
         )[char] || char
     );
 
-  function getMapPayload(): MapPayload {
-    const mapDataEl = document.getElementById(
-      'facility-map-data'
-    ) as HTMLScriptElement | null;
-    const rawPayload = mapDataEl?.textContent?.trim() || '';
-
-    if (!rawPayload) {
-      return { mapFacilities: [], isEn: false };
-    }
-
-    let mapData: { mapFacilities?: unknown; isEn?: unknown };
-    try {
-      mapData = JSON.parse(rawPayload) as {
-        mapFacilities?: unknown;
-        isEn?: unknown;
-      };
-    } catch (parseError) {
-      console.warn(
-        'Facility map payload is not valid JSON; rendering an error state.',
-        parseError
-      );
-      return { mapFacilities: [], isEn: false, payloadError: true };
-    }
-
-    return {
-      mapFacilities: Array.isArray(mapData.mapFacilities)
-        ? (mapData.mapFacilities as MapFacility[])
-        : [],
-      isEn: Boolean(mapData.isEn),
-    };
-  }
-
-  function hasRenderableCoordinates(
-    coordinates: unknown
-  ): coordinates is [number, number] {
-    if (!Array.isArray(coordinates) || coordinates.length < 2) {
-      return false;
-    }
-
-    const lat = Number(coordinates[0]);
-    const lng = Number(coordinates[1]);
-
-    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-      return false;
-    }
-
-    return !(Math.abs(lat) < 0.01 && Math.abs(lng) < 0.01);
+  function renderMapErrorHtml(
+    title: string,
+    note: string,
+    actionLabel: string,
+    actionHref: string
+  ) {
+    return `
+      <div class="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 text-center p-8">
+        <div class="text-2xl" aria-hidden="true">⚠️</div>
+        <p class="font-bold text-slate-900 dark:text-white">${title}</p>
+        ${note ? `<p class="text-sm text-slate-500 dark:text-slate-400">${note}</p>` : ''}
+        <a
+          href="${actionHref}"
+          class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
+        >
+          ${actionLabel}
+        </a>
+      </div>`;
   }
 
   async function initMap() {
-    const mapShell = document.querySelector('.facility-map-container');
+    const mapShell = document.querySelector(
+      '.facility-map-container'
+    ) as HTMLElement | null;
     const mapNode = document.getElementById('map');
-    if (!mapShell || !mapNode || mapNode.dataset.mapReady === '1') return;
+    if (
+      !mapShell ||
+      !mapNode ||
+      mapNode.dataset.mapReady === '1' ||
+      mapNode.dataset.mapLoading === '1'
+    ) {
+      return;
+    }
+
+    mapNode.dataset.mapLoading = '1';
 
     const mapDiv = mapNode as HTMLElement & { _leaflet_id?: unknown };
     if (mapDiv._leaflet_id && !mapNode.dataset.mapReady) {
@@ -334,34 +231,48 @@ const mapDataJson = JSON.stringify(mapData);
       mapNode.innerHTML = '';
     }
 
-    const { mapFacilities, isEn, payloadError } = getMapPayload();
-    const lang = isEn ? 'en' : 'zh';
+    const lang = mapShell.dataset.lang === 'en' ? 'en' : 'zh';
+    const isEn = lang === 'en';
+    const siteBase = (mapShell.dataset.siteBase || '').replace(/\/$/, '');
+    const mapUrl =
+      mapShell.dataset.mapUrl || `${siteBase}/api/facilities-map.${lang}.json`;
+    const directoryHref = `${siteBase}/${isEn ? 'en/facilities' : 'facilities'}/`;
     const t = (key: UiKey) => translateUi(lang, key);
 
-    if (payloadError) {
-      mapShell.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 text-center p-8">
-          <div class="text-2xl" aria-hidden="true">⚠️</div>
-          <p class="font-bold text-slate-900 dark:text-white">
-            ${t('map.error.title')}
-          </p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">
-            ${t('map.error.note')}
-          </p>
-          <a
-            href="${import.meta.env.BASE_URL}/${
-              isEn ? 'en/facilities' : 'facilities'
-            }/"
-            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
-          >
-            ${t('map.error.action')}
-          </a>
-        </div>`;
-      return;
-    }
-
     try {
-      const leafletModule = await import('leaflet');
+      const payloadPromise = fetchCachedJson<unknown>(mapUrl)
+        .then((data) => {
+          if (!Array.isArray(data)) {
+            throw new Error('Facility map payload is not an array.');
+          }
+          return { ok: true as const, items: data as MapFacility[] };
+        })
+        .catch((parseError) => {
+          console.warn(
+            'Facility map payload could not be loaded; rendering an error state.',
+            parseError
+          );
+          return { ok: false as const, items: [] as MapFacility[] };
+        });
+
+      const [leafletModule, payloadResult] = await Promise.all([
+        import('leaflet'),
+        payloadPromise,
+      ]);
+
+      if (!document.body.contains(mapNode)) return;
+
+      if (!payloadResult.ok) {
+        mapShell.innerHTML = renderMapErrorHtml(
+          t('map.error.title'),
+          t('map.error.note'),
+          t('map.error.action'),
+          directoryHref
+        );
+        return;
+      }
+
+      const mapFacilities = payloadResult.items;
       const L = leafletModule.default;
       (window as unknown as { L: typeof L }).L = L;
 
@@ -493,7 +404,12 @@ const mapDataJson = JSON.stringify(mapData);
           announcedCapacityMax,
           type,
         } = f;
-        if (!hasRenderableCoordinates(coordinates)) return;
+        if (
+          !Array.isArray(coordinates) ||
+          !hasRenderableCoordinates(coordinates)
+        ) {
+          return;
+        }
 
         const isOperational = status === '运行中' || status === 'Operational';
         const isConstruction =
@@ -552,7 +468,7 @@ const mapDataJson = JSON.stringify(mapData);
           </div>
           <div class="text-sm font-black text-slate-900 dark:text-white mb-2">${safeName}</div>
           <div class="text-xs font-bold text-slate-500">${displayCap} Mtpa | ${safeStatus}</div>
-          <a href="${import.meta.env.BASE_URL}/${isEn ? 'en/facilities' : 'facilities'}/${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">${t('map.popup.details')}</a>
+          <a href="${directoryHref}${safeId}/" class="block mt-3 text-center py-1.5 bg-slate-900 text-white text-[9px] font-black uppercase rounded-lg transition-transform hover:scale-[1.02]">${t('map.popup.details')}</a>
         </div>
       `);
 
@@ -594,31 +510,23 @@ const mapDataJson = JSON.stringify(mapData);
           });
         }
       });
+      mapNode.dataset.mapReady = '1';
     } catch (error) {
       console.error('Map Init Error:', error);
       mapNode.dataset.mapReady = '';
-      mapShell.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-full min-h-[320px] gap-3 text-center p-8">
-          <div class="text-2xl" aria-hidden="true">⚠️</div>
-          <p class="font-bold text-slate-900 dark:text-white">
-            ${t('map.error.fail')}
-          </p>
-          <a
-            href="${import.meta.env.BASE_URL}/${
-              isEn ? 'en/facilities' : 'facilities'
-            }/"
-            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
-          >
-            ${t('map.error.action')}
-          </a>
-        </div>`;
+      mapShell.innerHTML = renderMapErrorHtml(
+        t('map.error.fail'),
+        '',
+        t('map.error.action'),
+        directoryHref
+      );
     } finally {
+      mapNode.dataset.mapLoading = '';
       const loader = document.getElementById('map-loader');
       if (loader) {
         loader.style.opacity = '0';
         setTimeout(() => (loader.style.display = 'none'), 500);
       }
-      mapNode.dataset.mapReady = '1';
     }
   }
 
@@ -639,19 +547,31 @@ const mapDataJson = JSON.stringify(mapData);
       return;
     }
 
+    activeMapObserver?.disconnect();
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           observer.disconnect();
+          if (activeMapObserver === observer) activeMapObserver = null;
           start();
         }
       },
       { rootMargin: '200px 0px' }
     );
-
+    activeMapObserver = observer;
     observer.observe(mapShell);
   }
 
-  document.addEventListener('astro:page-load', setupMap);
+  const globalMapState = globalThis as {
+    __ccusFacilityMapEventsBound?: boolean;
+  };
+  if (!globalMapState.__ccusFacilityMapEventsBound) {
+    document.addEventListener('astro:before-swap', () => {
+      activeMapObserver?.disconnect();
+      activeMapObserver = null;
+    });
+    document.addEventListener('astro:page-load', setupMap);
+    globalMapState.__ccusFacilityMapEventsBound = true;
+  }
   setupMap();
 </script>
