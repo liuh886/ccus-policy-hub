@@ -2,6 +2,131 @@ import crypto from 'node:crypto';
 
 export const sha256 = (bytes) =>
   crypto.createHash('sha256').update(bytes).digest('hex');
+
+export function parseVerifiedBaseline(
+  rawText,
+  { expectedInventorySha, expectedFileSha }
+) {
+  const normalizedText = rawText.replace(/\r\n/g, '\n');
+  if (
+    expectedFileSha &&
+    sha256(Buffer.from(normalizedText, 'utf8')) !== expectedFileSha
+  )
+    throw new Error('Inventory URL baseline file SHA-256 mismatch.');
+  const doc = JSON.parse(normalizedText);
+  if (
+    !doc ||
+    doc.inventory_sha256 !== expectedInventorySha ||
+    !Array.isArray(doc.rows) ||
+    doc.rows.length !== doc.policy_count
+  )
+    throw new Error('Invalid inventory URL baseline structure.');
+  if (sha256(Buffer.from(JSON.stringify(doc.rows), 'utf8')) !== doc.rows_sha256)
+    throw new Error('Inventory URL baseline rows SHA-256 mismatch.');
+  const urlsById = new Map();
+  for (const row of doc.rows) {
+    if (!row?.policy_id || urlsById.has(row.policy_id))
+      throw new Error('Duplicate or missing baseline policy ID.');
+    urlsById.set(row.policy_id, row.url ?? null);
+  }
+  return {
+    inventory_sha256: doc.inventory_sha256,
+    rows_sha256: doc.rows_sha256,
+    file_sha256: expectedFileSha || null,
+    policy_count: urlsById.size,
+    urlsById,
+  };
+}
+
+export function normalizeBaselineMap(baselines) {
+  const map = new Map();
+  if (!baselines) return map;
+  const entries =
+    baselines instanceof Map ? baselines.entries() : Object.entries(baselines);
+  for (const [sha, value] of entries) {
+    if (value instanceof Map) {
+      map.set(sha, {
+        urlsById: new Map(value),
+        metadata: {
+          inventory_sha256: sha,
+          policy_count: value.size,
+          rows_sha256: null,
+          file_sha256: null,
+        },
+      });
+      continue;
+    }
+    if (value?.urlsById instanceof Map) {
+      map.set(sha, {
+        urlsById: value.urlsById,
+        metadata: {
+          inventory_sha256: value.inventory_sha256 || sha,
+          policy_count: value.urlsById.size,
+          rows_sha256: value.rows_sha256 || null,
+          file_sha256: value.file_sha256 || null,
+        },
+      });
+      continue;
+    }
+    if (Array.isArray(value?.rows)) {
+      if (
+        value.rows_sha256 &&
+        sha256(Buffer.from(JSON.stringify(value.rows), 'utf8')) !==
+          value.rows_sha256
+      )
+        throw new Error('Inventory URL baseline rows SHA-256 mismatch.');
+      const urlsById = new Map(
+        value.rows.map((row) => [row.policy_id, row.url ?? null])
+      );
+      map.set(sha, {
+        urlsById,
+        metadata: {
+          inventory_sha256: value.inventory_sha256 || sha,
+          policy_count: urlsById.size,
+          rows_sha256: value.rows_sha256 || null,
+          file_sha256: value.file_sha256 || null,
+        },
+      });
+    }
+  }
+  return map;
+}
+
+export function resolvePolicyBinding({
+  policy,
+  capturedInventorySha,
+  currentInventorySha,
+  baselineMap,
+}) {
+  if (!capturedInventorySha)
+    return {
+      bound: false,
+      mode: 'inventory_mismatch',
+      reason: 'ARCHIVE_INVENTORY_MISMATCH',
+    };
+  if (capturedInventorySha === currentInventorySha)
+    return { bound: true, mode: 'exact_inventory_sha256', reason: null };
+  const baseline = baselineMap?.get(capturedInventorySha);
+  if (!baseline)
+    return {
+      bound: false,
+      mode: 'inventory_mismatch',
+      reason: 'ARCHIVE_INVENTORY_MISMATCH',
+    };
+  if (!baseline.urlsById.has(policy.id))
+    return {
+      bound: false,
+      mode: 'policy_added_since_capture',
+      reason: 'ARCHIVE_OBSERVATION_UNAVAILABLE',
+    };
+  if (baseline.urlsById.get(policy.id) === (policy.url ?? null))
+    return { bound: true, mode: 'policy_url_match', reason: null };
+  return {
+    bound: false,
+    mode: 'url_changed_since_capture',
+    reason: 'ARCHIVE_URL_CHANGED_SINCE_CAPTURE',
+  };
+}
 export function parseCsv(text) {
   const rows = [];
   let row = [],
@@ -191,12 +316,14 @@ export function buildReadiness({
   observations = null,
   packets = [],
   asOf,
+  baselines = null,
 }) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(asOf))
     throw new Error('Explicit as-of date required.');
   const ids = new Set(policies.map((p) => p.id));
   if (ids.size !== policies.length)
     throw new Error('Duplicate canonical policy ID.');
+  const baselineMap = normalizeBaselineMap(baselines);
   const observed = new Map();
   for (const row of observations?.rows || []) {
     if (!ids.has(row.policy_id) || observed.has(row.policy_id))
@@ -206,7 +333,17 @@ export function buildReadiness({
   const documentIds = new Set(),
     versions = new Set(),
     perPolicy = new Map(),
-    regressions = [];
+    regressions = [],
+    urlChangedPolicyIds = [],
+    v4SupersededCandidateIds = [];
+  const bindingCounts = {
+    exact_inventory_sha256: 0,
+    policy_url_match: 0,
+    url_changed_since_capture: 0,
+    policy_added_since_capture: 0,
+    inventory_mismatch: 0,
+    unbound: 0,
+  };
   for (const packet of packets) {
     const linked = packet.data.policy_ids || [packet.data.policy_id];
     if (
@@ -238,8 +375,20 @@ export function buildReadiness({
     .map((policy) => {
       const docs = perPolicy.get(policy.id) || [];
       const input = observed.get(policy.id);
-      const observation =
-        input?.inventory_sha256 === inventorySha ? input : null;
+      const binding = input
+        ? resolvePolicyBinding({
+            policy,
+            capturedInventorySha: input.inventory_sha256,
+            currentInventorySha: inventorySha,
+            baselineMap,
+          })
+        : {
+            bound: false,
+            mode: 'unbound',
+            reason: 'ARCHIVE_OBSERVATION_UNAVAILABLE',
+          };
+      bindingCounts[binding.mode] = (bindingCounts[binding.mode] || 0) + 1;
+      const observation = binding.bound ? input : null;
       const gaps = [...new Set(docs.flatMap((d) => d.gaps))];
       if (!docs.length)
         gaps.push(
@@ -247,8 +396,19 @@ export function buildReadiness({
           'PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED',
           'CURRENTNESS_UNKNOWN'
         );
-      if (input && !observation) gaps.push('ARCHIVE_INVENTORY_MISMATCH');
+      if (
+        input &&
+        !binding.bound &&
+        binding.reason &&
+        binding.reason !== 'ARCHIVE_OBSERVATION_UNAVAILABLE'
+      )
+        gaps.push(binding.reason);
       if (!observation) gaps.push('ARCHIVE_OBSERVATION_UNAVAILABLE');
+      if (binding.mode === 'url_changed_since_capture') {
+        urlChangedPolicyIds.push(policy.id);
+        if (input?.archive_state === 'raw_candidate_archived')
+          v4SupersededCandidateIds.push(policy.id);
+      }
       const url = sourceUrl(policy.url);
       const archiveState = observation?.archive_state || 'unknown';
       if (
@@ -284,6 +444,7 @@ export function buildReadiness({
         source_url: url,
         document_kind: 'unknown',
         archive: {
+          binding_mode: binding.mode,
           state: archiveState,
           transfer_status: observation?.status || 'unknown',
           observed_at: observation?.observed_at || null,
@@ -321,6 +482,15 @@ export function buildReadiness({
         }))
         .sort((a, b) => a.document_id.localeCompare(b.document_id)),
       archive_observation_provenance: observations?.provenance || null,
+      archive_binding: bindingCounts,
+      inventory_url_baselines: [...baselineMap.entries()]
+        .map(([sha, entry]) => ({
+          inventory_sha256: sha,
+          policy_count: entry.urlsById.size,
+          rows_sha256: entry.metadata?.rows_sha256 || null,
+          file_sha256: entry.metadata?.file_sha256 || null,
+        }))
+        .sort((a, b) => a.inventory_sha256.localeCompare(b.inventory_sha256)),
       network_checked: false,
       sqlite_written: false,
       private_originals_redistributed: false,
@@ -331,6 +501,7 @@ export function buildReadiness({
       archive_rows_bound_to_current_inventory: rows.filter(
         (p) => p.archive.state !== 'unknown'
       ).length,
+      archive_rows_quarantined_url_changed: urlChangedPolicyIds.length,
       observed_private_raw_candidates: rows.filter(
         (p) => p.archive.state === 'raw_candidate_archived'
       ).length,
@@ -354,6 +525,12 @@ export function buildReadiness({
       'Document kind and current legal applicability remain unknown without explicit scoped review.',
       'Private file IDs and original content are excluded. A missing local packet does not prove there is no private archive.',
     ],
+    superseded_url_candidates: {
+      policy_ids: [...v4SupersededCandidateIds].sort(),
+      v4_policy_ids: [...v4SupersededCandidateIds].sort(),
+      manual_policy_ids: [],
+      url_changed_quarantined_policy_ids: [...urlChangedPolicyIds].sort(),
+    },
     triage: rows
       .filter((row) => row.priority !== 'P2')
       .map((row) => ({
@@ -372,6 +549,9 @@ export function buildReadiness({
 }
 
 export function renderReadiness(report) {
+  const supersededIds = report.superseded_url_candidates?.policy_ids || [];
+  const quarantinedCount =
+    report.totals.archive_rows_quarantined_url_changed || 0;
   return (
     `# Policy original-source readiness\n\nGenerated read-only as of ${report.as_of}; SQLite SHA-256: ${report.inventory_sha256}.\nNo network verification or factual review date update was performed.\n\n` +
     Object.entries(report.totals)
@@ -379,7 +559,10 @@ export function renderReadiness(report) {
       .join('\n') +
     `\n\nPrivate transfer observations are not verified document identities. Zero accepted primary identities here is a verification baseline, not proof that official sources do not exist.\n\n` +
     (report.manual_acquisition
-      ? `Cumulative reconciliation adds ${report.manual_acquisition.added_candidate_policy_ids.length} policy candidates from ${report.manual_acquisition.locally_hash_checked_unique_blobs} locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the canonical-URL run's observations; cumulative policy-ID lists are in the JSON report.\n\n`
+      ? `Cumulative reconciliation adds ${report.manual_acquisition.added_candidate_policy_ids.length} current-URL-aligned policy candidates from ${report.manual_acquisition.locally_hash_checked_unique_blobs} locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the current-URL-bound baseline observations; cumulative policy-ID lists are in the JSON report.\n\n`
+      : '') +
+    (quarantinedCount
+      ? `URL-change quarantine excludes ${quarantinedCount} policies whose canonical URL changed since the 2026-10-30 capture (\`ARCHIVE_URL_CHANGED_SINCE_CAPTURE\`), including ${supersededIds.length} superseded prior-URL candidates (${supersededIds.join(', ')}).\n\n`
       : '') +
     `| Policy ID | Record review | Private archive observation | Priority | Evidence gaps |\n| --- | --- | --- | --- | --- |\n` +
     report.policies

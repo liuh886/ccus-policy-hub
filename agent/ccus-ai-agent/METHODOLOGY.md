@@ -81,6 +81,14 @@ Relationship strength depends on evidence:
 - inferred/low-confidence association.
 
 Country-level association must not be worded as verified project-specific legal applicability.
+Subnational-region matching is also geographic context, even if the match itself
+has been verified. Publication metrics count it separately from direct evidence.
+See `docs/facility-policy-relationship-model.md` for fields and current counts.
+
+Chinese analytical versions are translations of canonical evidence, not an
+independent rescoring. Their source sentence is retained so changes invalidate
+stale translations. Missing Chinese versions remain explicit English fallbacks.
+Editorial completeness scores do not establish legal validity or factual currency.
 
 ## 9. Facility news and source tiers
 

@@ -2,6 +2,11 @@
 import { SITE_BASE } from '../lib/siteBase';
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { policyDetailCopy } from '../i18n/detailCopy.mjs';
+import relationships from '../../public/data/relationships.json';
+import analysisLocales from '../../public/data/policy-analysis-localizations.json';
+import { localizeAnalysis } from '../../scripts/lib/policy-localization.mjs';
+import { relationshipLabel } from '../lib/relationshipTrust.mjs';
 import RadarChart from './RadarChart.astro';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
@@ -26,7 +31,7 @@ const {
   category,
   source,
   url,
-  analysis = {},
+  analysis: canonicalAnalysis = {},
   sectors = [],
   tags = [],
   status,
@@ -35,6 +40,11 @@ const {
   relatedFacilities: policyRelatedFacilities = [],
 } = entry.data;
 const { interpretation, evolution, impactAnalysis } = entry.data;
+const analysis = localizeAnalysis(
+  canonicalAnalysis,
+  analysisLocales.records.filter((r) => r.policy_id === entry.id),
+  lang
+);
 const isVerified = reviewStatus === 'verified';
 const displayTags = sectors.length > 0 ? sectors : tags;
 
@@ -136,67 +146,7 @@ const relatedFacilities = allFacilities.filter(
 const getDimensionLabel = (dimKey: string) =>
   (i18nDict.ui.dimensions as any)?.[dimKey]?.label?.[lang] || dimKey;
 
-const copy = isEn
-  ? {
-      breadcrumb: 'Database',
-      verified: 'Verified',
-      govContext: 'National Governance Context',
-      overviewSuffix: 'Overview',
-      maturitySubtitle: 'Aggregate National Maturity Index (Peak Strength)',
-      governedPolicies: 'Governed Policies',
-      identifiedProjects: 'Identified Projects',
-      operationalCap: 'Operational Cap',
-      constructionCap: 'Under Construction Cap',
-      plannedCap: 'Planned Cap',
-      relatedNetwork: 'Related Policy Network',
-      lineageTitle: 'Evolutionary Lineage',
-      superseded: 'Superseded',
-      activeContext: 'Active Context',
-      currentDoc: 'Current Document',
-      successor: 'Successor',
-      peerFrameworks: 'Peer Frameworks',
-      linkedAssets: 'Directly Linked Assets',
-      policyClassification: 'Policy Classification',
-      strategicImpact: 'Strategic Impact Analysis',
-      technicalMetadata: 'Technical Metadata',
-      leadInstitution: 'Lead Institution',
-      releaseDate: 'Release Date',
-      targetSectors: 'Policy Tags',
-      legalWeightLabel: 'Legal Weight',
-      standardWeight: 'Standard',
-      originalDoc: 'Original Document',
-      lastAudit: 'Last Intelligence Audit',
-    }
-  : {
-      breadcrumb: '政策数据库',
-      verified: '已核验',
-      govContext: '国家治理背景',
-      overviewSuffix: '概览',
-      maturitySubtitle: '国家综合治理成熟度指数（各维度峰值强度）',
-      governedPolicies: '收录政策数',
-      identifiedProjects: '识别设施项目',
-      operationalCap: '运行中产能',
-      constructionCap: '建设中产能',
-      plannedCap: '规划中产能',
-      relatedNetwork: '关联政策网络',
-      lineageTitle: '政策演进脉络',
-      superseded: '前序政策',
-      activeContext: '当前有效',
-      currentDoc: '当前政策文本',
-      successor: '后续政策',
-      peerFrameworks: '同国别平行框架',
-      linkedAssets: '关联工程设施',
-      policyClassification: '政策五维评估',
-      strategicImpact: '战略影响分析',
-      technicalMetadata: '技术与治理元数据',
-      leadInstitution: '发布与牵头机构',
-      releaseDate: '发布日期',
-      targetSectors: '政策主题标签',
-      legalWeightLabel: '法律效力层级',
-      standardWeight: '标准文件',
-      originalDoc: '查看政策原文',
-      lastAudit: '最近情报审校',
-    };
+const copy = policyDetailCopy(lang);
 
 const chartLabels = [
   ...GOVERNANCE_DIMENSION_LABELS[lang === 'en' ? 'en' : 'zh'].full,
@@ -280,6 +230,14 @@ const chartLabels = [
             prose-p:text-lg prose-p:leading-relaxed prose-p:text-slate-600 dark:prose-p:text-slate-400
             prose-strong:text-slate-900 dark:prose-strong:text-white mb-20"
           >
+            {
+              entry.data.scope && (
+                <p class="border-l-4 border-blue-500 pl-4 text-sm">
+                  <strong>{isEn ? 'Scope: ' : '适用范围：'}</strong>
+                  {entry.data.scope}
+                </p>
+              )
+            }
             <Content />
           </article>
 
@@ -510,6 +468,15 @@ const chartLabels = [
                       href={`${SITE_BASE}/${isEn ? 'en/facilities' : 'facilities'}/${f.id}/`}
                       class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group"
                     >
+                      <p class="text-xs text-slate-500 mb-2">
+                        {relationshipLabel(
+                          relationships.records.find(
+                            (r) =>
+                              r.policy_id === entry.id && r.facility_id === f.id
+                          ),
+                          lang
+                        )}
+                      </p>
                       <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">
                         {f.data.name}
                       </h3>
@@ -546,8 +513,8 @@ const chartLabels = [
                   const dim = analysis?.[d.key as keyof typeof analysis];
                   if (!dim) return null;
                   return (
-                    <div class="group cursor-default">
-                      <div class="flex items-center gap-3">
+                    <details class="group">
+                      <summary class="flex items-center gap-3 cursor-pointer">
                         <div
                           class={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-black text-white ${d.color} flex-shrink-0 shadow-sm`}
                         >
@@ -563,13 +530,22 @@ const chartLabels = [
                             </span>
                           </div>
                         </div>
-                      </div>
-                      <div class="max-h-0 opacity-0 overflow-hidden group-hover:max-h-40 group-hover:opacity-100 group-hover:pt-3 transition-all duration-500 ease-in-out pl-9 border-l border-slate-200 dark:border-slate-800 ml-3">
+                      </summary>
+                      <div class="pt-3 pl-9 border-l border-slate-200 dark:border-slate-800 ml-3">
                         <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                          {dim.evidence}
+                          {!isEn && !dim.sourceLanguage && (
+                            <span class="block text-xs text-amber-700">
+                              英文原文 · 中文译述待核
+                            </span>
+                          )}
+                          <span
+                            lang={!isEn && dim.sourceLanguage ? 'zh' : 'en'}
+                          >
+                            {dim.evidence}
+                          </span>
                         </p>
                       </div>
-                    </div>
+                    </details>
                   );
                 })
               }

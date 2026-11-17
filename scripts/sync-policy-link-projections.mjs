@@ -195,10 +195,7 @@ function inspectPublicJson(expectedLinks, { write = false } = {}) {
     }
   }
   if (write && changed) {
-    fs.writeFileSync(
-      PUBLIC_FACILITIES_PATH,
-      `${JSON.stringify(payload, null, 2)}\n`
-    );
+    fs.writeFileSync(PUBLIC_FACILITIES_PATH, `${JSON.stringify(payload)}\n`);
   }
   return {
     mismatches,

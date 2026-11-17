@@ -145,3 +145,64 @@ A PR should state:
 - bilingual impact;
 - validation commands and CI result;
 - risks, rollback path, and any deferred cleanup.
+
+## 9. Review queue and source monitoring
+
+```bash
+pnpm manage:review:queue -- --as-of 2026-10-28
+pnpm manage:review:queue -- --check-sources --limit 25
+```
+
+The first command is deterministic for an explicit date and reads SQLite only.
+Reports live under `governance/reports/maintenance-review.json`. Policy review
+reminders use 90 days; active facility reminders use 180 days. These intervals
+are editorial scheduling, not a legal-expiry or quality score rule. The queue
+also records the most recent source-review attempt, including reasons a draft
+was retained, missing canonical dimensions and stale/missing Chinese versions.
+
+The weekly `maintenance-review.yml` workflow checks a rotating URL sample.
+Successful response fingerprints persist through an Actions cache. Changed
+bytes mean **review needed**, not confirmed policy amendment (dynamic pages
+can change for unrelated reasons). Blocked/time-out responses are unavailable,
+not dead; only 404/410 indicate dead links. A failed response preserves the last
+successful fingerprint. No job edits SQLite, promotes drafts or pushes changes.
+
+Keep `src/data/dataset_versions.json:last_checked_date` as the whole-dataset
+check date. A partial source batch or passing database audit must not advance it.
+Facility-news `verified_at` means source curation, not re-verification of status,
+capacity or location.
+
+## 10. Source-backed policy review patches
+
+The user-authorized 2026-10 delivery adds `policy_analysis_i18n` for source-bound
+Chinese analysis. The additive schema is reflected in `db/schema.sql`; canonical
+scores remain in `policy_analysis`. Chinese text falls back explicitly to English
+when its stored `source_evidence` differs from the current canonical sentence.
+The generator publishes valid translations in `policy-analysis-localizations.json`.
+
+```bash
+pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json
+pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json --write
+```
+
+Default execution is a dry run. Inspect the input and summary before `--write`.
+The importer locks the database, applies a transaction, allows only named fields,
+keeps an external content-addressed backup in the user's `.codex/backups` folder,
+and atomically writes the result. It cannot set scores. Only patches explicitly
+marked `source_reviewed: true` update factual audit dates. Editorial scope-only
+patches and draft source attempts retain existing factual dates and statuses.
+Review attempts and evidence sources are retained in `db_meta`.
+
+For replay of this delivery, use these inputs in order: `policy-reviews-2026-10.json`,
+`policy-scope-clarifications-2026-10.json`, `policy-tail-reviews-2026-10.json`.
+Supplementary facility research is separately scoped:
+
+```bash
+pnpm manage:db:import:facility-news-research -- --file scripts/data/facility-news-research-2026-10.json --dry-run
+pnpm manage:db:import:facility-news-research -- --file scripts/data/facility-news-research-2026-10.json
+```
+
+The supplementary file updates only six named facilities. Do not change the old
+research file's batch date to imply that all historical URLs were rechecked.
+After changes, run deep audit, `pnpm gen`, consistency/parity/depth/coverage checks,
+tests, lint, Astro check, production build and bilingual rendered QA.

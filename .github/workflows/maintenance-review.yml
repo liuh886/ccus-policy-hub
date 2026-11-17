@@ -1,0 +1,43 @@
+name: Maintenance review queue
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: maintenance-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/cache/restore@v4
+        with:
+          path: artifacts/source-baseline.json
+          key: source-review-${{ github.run_id }}
+          restore-keys: source-review-
+      - name: Generate read-only queue and rotating source sample
+        run: pnpm manage:review:queue -- --check-sources --limit 25
+      - uses: actions/cache/save@v4
+        with:
+          path: artifacts/source-baseline.json
+          key: source-review-${{ github.run_id }}
+      - name: Summarize review work
+        run: |
+          node --input-type=module -e "import fs from 'node:fs'; const r=JSON.parse(fs.readFileSync('agent/ccus-ai-agent/governance/reports/maintenance-review.json')); fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '## Review queue\n\n'+r.note+'\n\n'+JSON.stringify(r.summary,null,2)+'\n');"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: maintenance-review
+          path: agent/ccus-ai-agent/governance/reports/maintenance-review.json
+          retention-days: 14

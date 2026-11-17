@@ -292,3 +292,20 @@ These are strategic and secondary analytical sources. Where an official law, reg
 GitHub: https://github.com/liuh886/ccus-policy-hub
 
 Citation and DOI information are available in the repository README and Zenodo record.
+
+## Typed relationships and localized analysis
+
+Use `/data/relationships.json` with `/data/schemas/relationship.schema.json`.
+Country and subnational-region matches provide geographic context. A verified
+geographic match is not direct evidence of project-specific legal applicability.
+The existing linked-ID arrays do not encode this distinction. Quality metrics
+now count `subnational_level` separately from `evidence_level` and report
+`verified_project_evidence` only for reviewed direct links with an explanation
+and source URL.
+
+`/data/policy-analysis-localizations.json` publishes available source-bound
+Chinese analytical versions. `source_evidence` must match the current canonical
+English sentence. Missing translations remain explicit English fallbacks.
+`content_localization.zh_translated_dimensions` and `zh_pending_dimensions`
+measure actual analytical coverage; bilingual record parity does not prove that
+all analytical text is translated. Canonical scores are unchanged.

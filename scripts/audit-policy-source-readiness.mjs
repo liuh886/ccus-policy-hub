@@ -13,6 +13,7 @@ import {
   sha256,
   captureObservations,
   buildReadiness,
+  parseVerifiedBaseline,
   renderReadiness,
 } from './lib/source-readiness.mjs';
 
@@ -25,6 +26,32 @@ const MANUAL = path.join(
   ROOT,
   'scripts/data/source-readiness/manual-transfer-observations.json'
 );
+export const VERIFIED_INVENTORY_BASELINES = [
+  {
+    inventory_sha256:
+      '1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d',
+    file: path.join(
+      ROOT,
+      'scripts/data/source-readiness/inventory-url-baseline-1aa9c830.json'
+    ),
+    file_sha256:
+      '0470ac7cc70d867b5082afb5c03a82e8ef4380db29c617e732a3448adef8d6ad',
+  },
+];
+
+export function loadVerifiedBaselines(specs = VERIFIED_INVENTORY_BASELINES) {
+  const baselines = new Map();
+  for (const spec of specs) {
+    if (!fs.existsSync(spec.file))
+      throw new Error(`Missing inventory baseline snapshot: ${spec.file}`);
+    const parsed = parseVerifiedBaseline(fs.readFileSync(spec.file, 'utf8'), {
+      expectedInventorySha: spec.inventory_sha256,
+      expectedFileSha: spec.file_sha256,
+    });
+    baselines.set(spec.inventory_sha256, parsed);
+  }
+  return baselines;
+}
 export function loadPackets(directory) {
   if (!fs.existsSync(directory)) return [];
   const result = [];
@@ -61,10 +88,12 @@ export function loadPackets(directory) {
 export async function generateReadiness({
   evidenceRoot = path.join(ROOT, 'scripts/data/evidence'),
   asOf = '2026-10-30',
+  baselines = loadVerifiedBaselines(),
 } = {}) {
   const bytes = fs.readFileSync(
     path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite')
   );
+  const inventorySha = sha256(bytes);
   const SQL = await initSqlJs();
   const db = new SQL.Database(bytes);
   try {
@@ -77,22 +106,37 @@ export async function generateReadiness({
       : null;
     const report = buildReadiness({
       policies,
-      inventorySha: sha256(bytes),
+      inventorySha,
       observations,
       packets: loadPackets(evidenceRoot),
       asOf,
+      baselines,
     });
     report.manual_acquisition = reconcileManualObservations(
       fs.existsSync(MANUAL)
         ? JSON.parse(fs.readFileSync(MANUAL, 'utf8'))
         : null,
       policies,
-      sha256(bytes),
-      report.policies
+      inventorySha,
+      report.policies,
+      baselines
     );
     if (report.manual_acquisition) {
+      const manualSuperseded =
+        report.manual_acquisition.superseded_url_manual_candidate_policy_ids;
+      const combinedSuperseded = [
+        ...new Set([
+          ...report.superseded_url_candidates.v4_policy_ids,
+          ...manualSuperseded,
+        ]),
+      ].sort();
+      report.superseded_url_candidates.manual_policy_ids = manualSuperseded;
+      report.superseded_url_candidates.policy_ids = combinedSuperseded;
+      report.manual_acquisition.superseded_url_candidates = combinedSuperseded;
       report.totals.cumulative_private_raw_candidate_policies =
         report.manual_acquisition.cumulative_candidate_policy_ids.length;
+      report.totals.superseded_url_candidate_policies =
+        combinedSuperseded.length;
       report.totals.policies_without_raw_candidate =
         report.manual_acquisition.policies_without_raw_candidate.length;
       report.totals.manual_locally_hash_checked_unique_blobs =

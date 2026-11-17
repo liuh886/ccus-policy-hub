@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "as_of": "2026-10-30",
-  "inventory_sha256": "1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d",
+  "inventory_sha256": "0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d",
   "inputs": {
     "evidence_packet_manifests": [],
     "archive_observation_provenance": {
@@ -9,6 +9,22 @@
       "backlog_sha256": "e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74",
       "private_file_ids_redacted": true
     },
+    "archive_binding": {
+      "exact_inventory_sha256": 0,
+      "policy_url_match": 116,
+      "url_changed_since_capture": 14,
+      "policy_added_since_capture": 0,
+      "inventory_mismatch": 0,
+      "unbound": 0
+    },
+    "inventory_url_baselines": [
+      {
+        "inventory_sha256": "1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d",
+        "policy_count": 130,
+        "rows_sha256": "85771283505baab7a9483f0d63a3cd02a1b5b021a6609a6fe13c0b33cd20614b",
+        "file_sha256": "0470ac7cc70d867b5082afb5c03a82e8ef4380db29c617e732a3448adef8d6ad"
+      }
+    ],
     "network_checked": false,
     "sqlite_written": false,
     "private_originals_redistributed": false
@@ -16,23 +32,51 @@
   "totals": {
     "policy_records": 130,
     "url_present": 130,
-    "archive_rows_bound_to_current_inventory": 130,
-    "observed_private_raw_candidates": 36,
-    "observed_private_homepage_only": 8,
+    "archive_rows_bound_to_current_inventory": 116,
+    "archive_rows_quarantined_url_changed": 14,
+    "observed_private_raw_candidates": 34,
+    "observed_private_homepage_only": 5,
     "git_document_identities_recorded": 0,
     "git_byte_versions_validated": 0,
     "human_locator_review_records": 0,
     "validated_human_reviewed_anchors": 0,
     "primary_instrument_identity_reviewed_policies": 0,
-    "cumulative_private_raw_candidate_policies": 55,
-    "policies_without_raw_candidate": 75,
-    "manual_locally_hash_checked_unique_blobs": 28
+    "cumulative_private_raw_candidate_policies": 51,
+    "superseded_url_candidate_policies": 4,
+    "policies_without_raw_candidate": 79,
+    "manual_locally_hash_checked_unique_blobs": 24
   },
   "limitations": [
     "Transfer states and nonempty URLs are not verified primary-document coverage.",
     "Document kind and current legal applicability remain unknown without explicit scoped review.",
     "Private file IDs and original content are excluded. A missing local packet does not prove there is no private archive."
   ],
+  "superseded_url_candidates": {
+    "policy_ids": [
+      "br-anp-ccs-resolution",
+      "ca-sk-ccs-directives",
+      "cn-ordos-pilot-2024",
+      "vn-decree-119-2025"
+    ],
+    "v4_policy_ids": ["br-anp-ccs-resolution", "ca-sk-ccs-directives"],
+    "manual_policy_ids": ["cn-ordos-pilot-2024", "vn-decree-119-2025"],
+    "url_changed_quarantined_policy_ids": [
+      "br-anp-ccs-resolution",
+      "ca-sk-ccs-directives",
+      "cn-co2-transport-status-2025",
+      "cn-mee-env-guidance-2024",
+      "cn-ordos-pilot-2024",
+      "co-law-2099-energy-transition",
+      "denmark-ccfd",
+      "hr-hydrocarbon-act-ccs",
+      "imo-marpol-occs-2024",
+      "is-carbfix-act",
+      "it-law-11-2024-modernization",
+      "kr-motie-cluster-district-2025",
+      "ro-law-114-2013-ccs",
+      "vn-decree-119-2025"
+    ]
+  },
   "triage": [
     {
       "policy_id": "ae-federal-climate-law-2024",
@@ -115,16 +159,6 @@
       ]
     },
     {
-      "policy_id": "cn-co2-transport-status-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NON_HTTPS_SOURCE",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
       "policy_id": "cn-gd-carbon-inclusive",
       "priority": "P0",
       "blockers": [
@@ -155,16 +189,6 @@
       ]
     },
     {
-      "policy_id": "cn-mee-env-guidance-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "cn-miit-industrial-plan-2022",
       "priority": "P0",
       "blockers": [
@@ -185,16 +209,6 @@
       ]
     },
     {
-      "policy_id": "cn-ordos-pilot-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NON_HTTPS_SOURCE",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
-      ]
-    },
-    {
       "policy_id": "cn-sd-eco-plan-14fym",
       "priority": "P0",
       "blockers": [
@@ -212,26 +226,6 @@
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
         "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "co-law-2099-energy-transition",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "denmark-ccfd",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -295,16 +289,6 @@
       ]
     },
     {
-      "policy_id": "imo-marpol-occs-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "in-national-mission-ccus-2024",
       "priority": "P0",
       "blockers": [
@@ -325,37 +309,7 @@
       ]
     },
     {
-      "policy_id": "is-carbfix-act",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "is-onshore-storage-permit-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "it-law-11-2024-modernization",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "kr-motie-cluster-district-2025",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -605,16 +559,6 @@
       ]
     },
     {
-      "policy_id": "vn-decree-119-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "za-climate-change-act-2024",
       "priority": "P0",
       "blockers": [
@@ -655,6 +599,17 @@
       ]
     },
     {
+      "policy_id": "br-anp-ccs-resolution",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "br-law-14993-2024",
       "priority": "P1",
       "blockers": [
@@ -685,6 +640,17 @@
       ]
     },
     {
+      "policy_id": "ca-sk-ccs-directives",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "cn-ccus-national-standards-2026",
       "priority": "P1",
       "blockers": [
@@ -703,6 +669,50 @@
       ]
     },
     {
+      "policy_id": "cn-co2-transport-status-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-mee-env-guidance-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "cn-ordos-pilot-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "co-law-2099-energy-transition",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "de-carbon-management-strategy-2024",
       "priority": "P1",
       "blockers": [
@@ -715,6 +725,17 @@
       "policy_id": "de-icm-strategy",
       "priority": "P1",
       "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "denmark-ccfd",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -793,6 +814,8 @@
       "policy_id": "hr-hydrocarbon-act-ccs",
       "priority": "P1",
       "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -813,6 +836,17 @@
       "blockers": [
         "CURRENTNESS_UNKNOWN",
         "NETWORK_ERROR",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "imo-marpol-occs-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -854,6 +888,17 @@
       ]
     },
     {
+      "policy_id": "is-carbfix-act",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "is-cdr-framework",
       "priority": "P1",
       "blockers": [
@@ -867,6 +912,17 @@
       "policy_id": "iso-standards",
       "priority": "P1",
       "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "it-law-11-2024-modernization",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -887,6 +943,17 @@
       "priority": "P1",
       "blockers": [
         "BLOCKED_HTML",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "kr-motie-cluster-district-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -934,6 +1001,8 @@
       "policy_id": "ro-law-114-2013-ccs",
       "priority": "P1",
       "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -957,6 +1026,17 @@
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
+    },
+    {
+      "policy_id": "vn-decree-119-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
     }
   ],
   "regressions": [],
@@ -974,6 +1054,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
         "observed_at": "2026-10-30T04:21:59+00:00",
@@ -1009,6 +1090,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:22:02+00:00",
@@ -1044,6 +1126,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
         "observed_at": "2026-10-30T04:22:02+00:00",
@@ -1079,6 +1162,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:22:03+00:00",
@@ -1114,6 +1198,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:22:03+00:00",
@@ -1148,6 +1233,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:22:03+00:00",
@@ -1182,6 +1268,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "network_error",
         "observed_at": "2026-10-30T04:22:03+00:00",
@@ -1217,6 +1304,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:22:39+00:00",
@@ -1252,6 +1340,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:22:41+00:00",
@@ -1280,29 +1369,32 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "https://www.gov.br/anp/",
+        "reference": "https://www.gov.br/anp/pt-br/assuntos/ccs/ccs",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "raw_candidate_archived",
-        "transfer_status": "already_archived",
-        "observed_at": "2026-10-30T04:22:41+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
-        "reported_content_sha256": "ab5d1b859b0d9457b4fbdab90d05c625d2344455343d984e9bf9e4c2fee8fa8f",
+        "has_private_file": null,
+        "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "section_or_landing_page",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P2",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -1321,6 +1413,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:22:41+00:00",
@@ -1355,6 +1448,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "network_error",
         "observed_at": "2026-10-30T04:22:41+00:00",
@@ -1390,6 +1484,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "network_error",
         "observed_at": "2026-10-30T04:22:42+00:00",
@@ -1425,6 +1520,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:22:43+00:00",
@@ -1459,6 +1555,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "network_error",
         "observed_at": "2026-10-30T04:22:43+00:00",
@@ -1487,29 +1584,32 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/",
+        "reference": "https://www.saskatchewan.ca/business/environmental-protection-and-sustainability/a-made-in-saskatchewan-climate-change-strategy/guidance-for-emitters",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "raw_candidate_archived",
-        "transfer_status": "already_archived",
-        "observed_at": "2026-10-30T04:23:19+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
-        "reported_content_sha256": "c39a32c4b2b95f8bd925afccb2e6424e4743909884162a9bc0a7d3f8884406ed",
+        "has_private_file": null,
+        "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P2",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -1528,6 +1628,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:19+00:00",
@@ -1563,6 +1664,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1598,6 +1700,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1633,6 +1736,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1668,6 +1772,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1702,6 +1807,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1736,6 +1842,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1770,6 +1877,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1797,31 +1905,33 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "http://chinacpc.com.cn/info/2023-07-11/news_7555.html",
-        "protocol": "http:",
+        "reference": "https://www.hkexnews.hk/listedco/listconews/sehk/2024/0324/2024032400046_c.pdf",
+        "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "non_https_source",
-        "observed_at": "2026-10-30T04:23:20+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "invalid_or_non_https",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NON_HTTPS_SOURCE",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -1839,6 +1949,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1873,6 +1984,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:20+00:00",
@@ -1908,6 +2020,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:22+00:00",
@@ -1943,6 +2056,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
         "observed_at": "2026-10-30T04:23:22+00:00",
@@ -1971,33 +2085,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.mee.gov.cn/",
+        "reference": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "raw_homepage_only",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:22+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -2013,6 +2129,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:22+00:00",
@@ -2048,6 +2165,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2082,6 +2200,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2110,31 +2229,33 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "http://www.ordos.gov.cn/",
-        "protocol": "http:",
-        "scope": "homepage_like",
+        "reference": "https://www.ndrc.gov.cn/fggz/hjyzy/tdftzh/202407/t20240722_1391843.html",
+        "protocol": "https:",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "non_https_source",
-        "observed_at": "2026-10-30T04:23:27+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "invalid_or_non_https",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NON_HTTPS_SOURCE",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -2152,6 +2273,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2186,6 +2308,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2221,6 +2344,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2255,6 +2379,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2289,6 +2414,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2317,33 +2443,35 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "https://www.minenergia.gov.co/",
+        "reference": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=166326",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:27+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -2359,6 +2487,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "redirect_outside_official",
         "observed_at": "2026-10-30T04:23:27+00:00",
@@ -2393,6 +2522,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "redirect_outside_official",
         "observed_at": "2026-10-30T04:23:28+00:00",
@@ -2420,31 +2550,33 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://ens.dk/en/our-responsibilities/ccs",
+        "reference": "https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "not_found",
-        "observed_at": "2026-10-30T04:23:29+00:00",
-        "http_status": "404",
-        "has_private_file": false,
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
+        "http_status": null,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NOT_FOUND",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
@@ -2462,6 +2594,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:30+00:00",
@@ -2497,6 +2630,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:30+00:00",
@@ -2532,6 +2666,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:30+00:00",
@@ -2567,6 +2702,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:30+00:00",
@@ -2602,6 +2738,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:31+00:00",
@@ -2637,6 +2774,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:31+00:00",
@@ -2672,6 +2810,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:32+00:00",
@@ -2707,6 +2846,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:33+00:00",
@@ -2742,6 +2882,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:33+00:00",
@@ -2776,6 +2917,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "http_202_not_document",
         "observed_at": "2026-10-30T04:23:33+00:00",
@@ -2811,6 +2953,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -2845,6 +2988,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -2880,6 +3024,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -2914,6 +3059,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -2949,6 +3095,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -2977,21 +3124,22 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.azu.hr/en/legislation/act-on-the-exploration-and-exploitation-of-hydrocarbons/",
+        "reference": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-30T04:23:34+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
@@ -3000,6 +3148,8 @@
       "currentness": "unknown",
       "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -3018,6 +3168,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -3052,6 +3203,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "network_error",
         "observed_at": "2026-10-30T04:23:34+00:00",
@@ -3080,33 +3232,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.imo.org/",
+        "reference": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "raw_homepage_only",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:35+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3122,6 +3276,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3156,6 +3311,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3191,6 +3347,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3226,6 +3383,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3260,6 +3418,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3294,6 +3453,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "html_too_short",
         "observed_at": "2026-10-30T04:23:35+00:00",
@@ -3328,6 +3488,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:36+00:00",
@@ -3355,33 +3516,35 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "https://www.carbfix.com/",
+        "reference": "https://www.althingi.is/altext/stjt/2021.012.html",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:36+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3397,6 +3560,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
         "observed_at": "2026-10-30T04:23:36+00:00",
@@ -3432,6 +3596,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:36+00:00",
@@ -3467,6 +3632,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:36+00:00",
@@ -3494,33 +3660,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.mase.gov.it/",
+        "reference": "https://www.gazzettaufficiale.it/eli/id/2024/02/07/24A00786/sg",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:36+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3536,6 +3704,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
         "observed_at": "2026-10-30T04:23:36+00:00",
@@ -3571,6 +3740,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "blocked_html",
         "observed_at": "2026-10-30T04:23:37+00:00",
@@ -3606,6 +3776,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3640,6 +3811,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3667,33 +3839,35 @@
       "policy_review_status": "draft",
       "source_url": {
         "present": true,
-        "reference": "https://www.motie.go.kr/",
+        "reference": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=&chrClsCd=010202&efYd=20250207&lsiSeq=268977&urlMode=lsInfoP",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "raw_homepage_only",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:39+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3709,6 +3883,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3744,6 +3919,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3778,6 +3954,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3812,6 +3989,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3846,6 +4024,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3880,6 +4059,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:39+00:00",
@@ -3915,6 +4095,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -3949,6 +4130,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -3984,6 +4166,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -4019,6 +4202,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -4053,6 +4237,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -4087,6 +4272,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
         "observed_at": "2026-10-30T04:23:43+00:00",
@@ -4122,6 +4308,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4157,6 +4344,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4191,6 +4379,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4226,6 +4415,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4261,6 +4451,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4296,6 +4487,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4331,6 +4523,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4365,6 +4558,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4399,6 +4593,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4434,6 +4629,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4462,21 +4658,22 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://namr.ro/legislatie/",
+        "reference": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "needs_official_source_review",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "section_or_landing_page",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
@@ -4485,6 +4682,8 @@
       "currentness": "unknown",
       "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -4503,6 +4702,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "non_https_source",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4538,6 +4738,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4573,6 +4774,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4608,6 +4810,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4643,6 +4846,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4678,6 +4882,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4713,6 +4918,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4748,6 +4954,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4783,6 +4990,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4817,6 +5025,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4852,6 +5061,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4886,6 +5096,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4920,6 +5131,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:44+00:00",
@@ -4955,6 +5167,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:45+00:00",
@@ -4989,6 +5202,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:45+00:00",
@@ -5023,6 +5237,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:45+00:00",
@@ -5058,6 +5273,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:46+00:00",
@@ -5092,6 +5308,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:46+00:00",
@@ -5127,6 +5344,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "not_found",
         "observed_at": "2026-10-30T04:23:46+00:00",
@@ -5162,6 +5380,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "access_blocked",
         "observed_at": "2026-10-30T04:23:47+00:00",
@@ -5197,6 +5416,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5231,6 +5451,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5265,6 +5486,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5299,6 +5521,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_candidate_archived",
         "transfer_status": "already_archived",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5333,6 +5556,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "needs_official_source_review",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5367,6 +5591,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "no_raw_file",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5395,33 +5620,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://netzero.vn/",
+        "reference": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:48+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -5437,6 +5664,7 @@
       },
       "document_kind": "unknown",
       "archive": {
+        "binding_mode": "policy_url_match",
         "state": "raw_homepage_only",
         "transfer_status": "source_too_broad",
         "observed_at": "2026-10-30T04:23:48+00:00",
@@ -5466,7 +5694,10 @@
       "private_file_ids_redacted": true
     },
     "transfer_attempts": 52,
-    "locally_hash_checked_unique_blobs": 28,
+    "bound_transfer_attempts": 45,
+    "quarantined_url_changed_transfer_attempts": 7,
+    "locally_hash_checked_unique_blobs": 24,
+    "superseded_url_locally_hash_checked_unique_blobs": 4,
     "manual_candidate_policy_ids": [
       "au-safeguard-mechanism",
       "au-wa-petroleum-amendment-2024",
@@ -5476,7 +5707,6 @@
       "ca-sk-spii",
       "california-lcfs",
       "cn-miit-industrial-plan-2022",
-      "cn-ordos-pilot-2024",
       "fr-ccus-strategy-2024",
       "gold-standard",
       "jp-jogmec-advanced-ccs-2024",
@@ -5485,7 +5715,6 @@
       "ru-climate-doctrine-2023",
       "tr-climate-law-2025",
       "uk-energy-act-2023",
-      "vn-decree-119-2025",
       "za-climate-change-act-2024"
     ],
     "supporting_only_policy_ids": [
@@ -5493,7 +5722,6 @@
       "cn-js-industrial-decarb-2022",
       "dk-ccs-subsidy-scheme-2025",
       "eg-carbon-market-framework-2024",
-      "hr-hydrocarbon-act-ccs",
       "qa-national-climate-strategy-2024"
     ],
     "added_candidate_policy_ids": [
@@ -5505,7 +5733,6 @@
       "ca-sk-spii",
       "california-lcfs",
       "cn-miit-industrial-plan-2022",
-      "cn-ordos-pilot-2024",
       "fr-ccus-strategy-2024",
       "gold-standard",
       "jp-jogmec-advanced-ccs-2024",
@@ -5514,7 +5741,6 @@
       "ru-climate-doctrine-2023",
       "tr-climate-law-2025",
       "uk-energy-act-2023",
-      "vn-decree-119-2025",
       "za-climate-change-act-2024"
     ],
     "cumulative_candidate_policy_ids": [
@@ -5522,13 +5748,11 @@
       "au-offshore-ghg-safety-2024",
       "au-safeguard-mechanism",
       "au-wa-petroleum-amendment-2024",
-      "br-anp-ccs-resolution",
       "br-bill-1425-2022",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
       "ca-ab-sequestration-tenure",
       "ca-ccus-itc",
-      "ca-sk-ccs-directives",
       "ca-sk-spii",
       "california-lcfs",
       "cn-bj-ccus-measures-2026",
@@ -5536,7 +5760,6 @@
       "cn-demo-tech-2024",
       "cn-miit-industrial-plan-2022",
       "cn-national-ets-expansion-2025",
-      "cn-ordos-pilot-2024",
       "cn-pboc-cerf",
       "cn-standards-2024",
       "cn-zero-carbon-parks",
@@ -5571,7 +5794,6 @@
       "us-obbba-45q-2025",
       "us-tx-natural-resources-121",
       "us-wy-hb-0200",
-      "vn-decree-119-2025",
       "za-climate-change-act-2024"
     ],
     "policies_without_raw_candidate": [
@@ -5580,6 +5802,8 @@
       "alberta-tier",
       "ar-rigi-ccus-2024",
       "be-ccus-strategy-2025",
+      "br-anp-ccs-resolution",
+      "ca-sk-ccs-directives",
       "ch-co2-act-ccs-2024",
       "cl-green-hydrogen-ccs-2025",
       "cn-ccus-national-standards-2026",
@@ -5590,6 +5814,7 @@
       "cn-js-industrial-decarb-2022",
       "cn-mee-env-guidance-2024",
       "cn-national-standards",
+      "cn-ordos-pilot-2024",
       "cn-sd-eco-plan-14fym",
       "co-ccus-regulatory-decree-2025",
       "co-law-2099-energy-transition",
@@ -5649,9 +5874,25 @@
       "us-iija-hubs",
       "us-la-primacy-rules",
       "verra-vm0049",
-      "vn-carbon-market-decree-2025"
+      "vn-carbon-market-decree-2025",
+      "vn-decree-119-2025"
+    ],
+    "superseded_url_manual_candidate_policy_ids": [
+      "cn-ordos-pilot-2024",
+      "vn-decree-119-2025"
+    ],
+    "superseded_url_supporting_only_policy_ids": ["hr-hydrocarbon-act-ccs"],
+    "superseded_url_failed_only_policy_ids": [
+      "co-law-2099-energy-transition",
+      "ro-law-114-2013-ccs"
     ],
     "legal_identity_review": "not_reviewed",
-    "current_drive_presence": "not_rechecked"
+    "current_drive_presence": "not_rechecked",
+    "superseded_url_candidates": [
+      "br-anp-ccs-resolution",
+      "ca-sk-ccs-directives",
+      "cn-ordos-pilot-2024",
+      "vn-decree-119-2025"
+    ]
   }
 }

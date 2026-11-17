@@ -135,7 +135,11 @@ describe('Quality Metrics Generation', () => {
     assert.ok(links.sector_level >= 0, 'Should have sector_level count');
     assert.ok(links.evidence_level >= 0, 'Should have evidence_level count');
     assert.strictEqual(
-      links.country_level + links.sector_level + links.evidence_level,
+      links.country_level +
+        links.subnational_level +
+        links.sector_level +
+        links.evidence_level +
+        links.unclassified,
       links.total,
       'Link types should sum to total'
     );

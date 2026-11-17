@@ -1,6 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { parseCsv, sha256 } from './source-readiness.mjs';
+import {
+  normalizeBaselineMap,
+  parseCsv,
+  resolvePolicyBinding,
+  sha256,
+} from './source-readiness.mjs';
 
 // Private inputs are inspected only at capture time; committed output excludes
 // file IDs, paths, URLs and source text. Transfer roles are not legal approval.
@@ -80,10 +85,13 @@ export function reconcileManualObservations(
   manual,
   policies,
   inventorySha,
-  baseline
+  baseline,
+  baselines = null
 ) {
   if (!manual) return null;
-  const ids = new Set(policies.map((p) => p.id));
+  const baselineMap = normalizeBaselineMap(baselines);
+  const policyById = new Map(policies.map((p) => [p.id, p]));
+  const ids = new Set(policyById.keys());
   const baselineIds = new Set(
     baseline
       .filter((p) => p.archive.state === 'raw_candidate_archived')
@@ -91,29 +99,58 @@ export function reconcileManualObservations(
   );
   const candidateIds = new Set(),
     supportingIds = new Set(),
-    blobs = new Set();
+    blobs = new Set(),
+    quarantinedPolicyIds = new Set(),
+    quarantinedCandidateIds = new Set(),
+    quarantinedSupportingIds = new Set(),
+    quarantinedBlobs = new Set();
   const attempts = new Set();
+  let boundAttempts = 0,
+    quarantinedAttempts = 0;
   for (const row of manual.rows) {
-    if (!ids.has(row.policy_id))
-      throw new Error('Orphan manual acquisition policy ID.');
-    if (row.inventory_sha256 !== inventorySha)
-      throw new Error(
-        'Manual acquisition inventory hash mismatch; recapture required.'
-      );
+    const policy = policyById.get(row.policy_id);
+    if (!policy) throw new Error('Orphan manual acquisition policy ID.');
     const attempt = JSON.stringify(row);
     if (attempts.has(attempt))
       throw new Error('Duplicate manual acquisition observation.');
     attempts.add(attempt);
+    const binding = resolvePolicyBinding({
+      policy,
+      capturedInventorySha: row.inventory_sha256,
+      currentInventorySha: inventorySha,
+      baselineMap,
+    });
+    if (binding.mode === 'inventory_mismatch')
+      throw new Error(
+        'Manual acquisition inventory hash mismatch; recapture required.'
+      );
+    if (binding.mode === 'policy_added_since_capture')
+      throw new Error(
+        'Manual acquisition policy ID missing from inventory baseline.'
+      );
+    const saved =
+      row.download_status === 'saved_candidate' &&
+      !['rejected_non_document', 'retrieval_failed'].includes(
+        row.archive_class
+      );
     if (
-      row.download_status !== 'saved_candidate' ||
-      ['rejected_non_document', 'retrieval_failed'].includes(row.archive_class)
-    )
-      continue;
-    if (
-      row.local_byte_integrity !== 'pass' ||
-      !/^[a-f0-9]{64}$/.test(row.reported_sha256 || '')
+      saved &&
+      (row.local_byte_integrity !== 'pass' ||
+        !/^[a-f0-9]{64}$/.test(row.reported_sha256 || ''))
     )
       throw new Error('Saved manual source has not passed local byte checks.');
+    if (!binding.bound) {
+      quarantinedAttempts++;
+      quarantinedPolicyIds.add(row.policy_id);
+      if (!saved) continue;
+      quarantinedBlobs.add(row.reported_sha256);
+      if (row.archive_class === 'new_nonhomepage_source_candidate')
+        quarantinedCandidateIds.add(row.policy_id);
+      else quarantinedSupportingIds.add(row.policy_id);
+      continue;
+    }
+    boundAttempts++;
+    if (!saved) continue;
     blobs.add(row.reported_sha256);
     if (row.archive_class === 'new_nonhomepage_source_candidate')
       candidateIds.add(row.policy_id);
@@ -123,7 +160,12 @@ export function reconcileManualObservations(
   return {
     provenance: manual.provenance,
     transfer_attempts: manual.rows.length,
+    bound_transfer_attempts: boundAttempts,
+    quarantined_url_changed_transfer_attempts: quarantinedAttempts,
     locally_hash_checked_unique_blobs: blobs.size,
+    superseded_url_locally_hash_checked_unique_blobs: [
+      ...quarantinedBlobs,
+    ].filter((hash) => !blobs.has(hash)).length,
     manual_candidate_policy_ids: [...candidateIds].sort(),
     supporting_only_policy_ids: [...supportingIds]
       .filter((id) => !candidateIds.has(id))
@@ -134,6 +176,18 @@ export function reconcileManualObservations(
     cumulative_candidate_policy_ids: [...union].sort(),
     policies_without_raw_candidate: [...ids]
       .filter((id) => !union.has(id))
+      .sort(),
+    superseded_url_manual_candidate_policy_ids: [
+      ...quarantinedCandidateIds,
+    ].sort(),
+    superseded_url_supporting_only_policy_ids: [...quarantinedSupportingIds]
+      .filter((id) => !quarantinedCandidateIds.has(id))
+      .sort(),
+    superseded_url_failed_only_policy_ids: [...quarantinedPolicyIds]
+      .filter(
+        (id) =>
+          !quarantinedCandidateIds.has(id) && !quarantinedSupportingIds.has(id)
+      )
       .sort(),
     legal_identity_review: 'not_reviewed',
     current_drive_presence: 'not_rechecked',

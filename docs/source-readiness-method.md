@@ -25,10 +25,35 @@ The actual observed exports are `Policy_Primary_Source_Audit_20261030T042348Z.cs
 and `Policy_Official_Registry_Research_Backlog_20261030T042408Z.csv`. Their raw
 SHA-256 values are `f8990ac91f9a443ed81117efe9b87b0099c16c5dda90d8a66f83ecf0f4922909`
 and `e012e3adbda2b9ab5c146520e1e2b395034a5d083409efc208d57029b4c94c74`.
-Both cover 130 unique IDs and bind to the report's original SQLite checksum.
+Both cover 130 unique IDs and bind to the 2026-10-30 SQLite checksum
+`1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d`.
 The [owner's v4 acceptance review](https://github.com/liuh886/ccus-policy-hub/pull/107#issuecomment-6507527963)
-also reports 44 total archived files. This is not 44 verified documents, nor a
+also reports 44 total archived files at that capture. This is not 44 verified documents, nor a
 count of new uploads performed by this audit.
+
+## Per-policy `(id, url)` binding and URL-change quarantine
+
+When the current SQLite checksum matches a capture row's `inventory_sha256`,
+binding is direct (`exact_inventory_sha256`). When the database checksum changes
+(for example, after #102 merged on `main`, producing
+`0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d`), observations
+are never silently carried over by `inventory_sha256` guesswork or across
+changed URLs. Instead, the audit consults the SHA-256-verified `(id, url)`
+baseline snapshot
+`scripts/data/source-readiness/inventory-url-baseline-1aa9c830.json`
+(extracted read-only from `dd3a74d6`):
+
+- **116 policies with identical `(id, url)`**: bind their 2026-10-30 v4 and
+  manual observations via `policy_url_match` (`34` v4 raw candidates, `5` v4
+  homepage-only archives, `77` no raw file).
+- **14 policies whose canonical `url` changed in #102** (and any newly added
+  policy IDs not present in the baseline): quarantined with
+  `ARCHIVE_URL_CHANGED_SINCE_CAPTURE` and `ARCHIVE_OBSERVATION_UNAVAILABLE`
+  (`archive.state: "unknown"`). Old-URL transfer states, candidate counts and
+  local hash checks are never carried over to a new URL.
+- **Unrecognized `inventory_sha256`** without a matching verified baseline
+  snapshot: preserves strict failure (`ARCHIVE_INVENTORY_MISMATCH` in per-policy
+  readiness; error in manual reconciliation).
 
 ## Cumulative manual reconciliation
 
@@ -39,16 +64,24 @@ At capture time, all 28 retained source files were read locally and checked agai
 their full manifest SHA-256 and byte length. Candidate files must be in the private
 primary directory; supporting files must be in the metadata directory. Filename
 prefix alone is insufficient. Symlink escape, missing/ambiguous files, wrong hashes,
-unknown policy IDs, stale inventory checksums and duplicate observations fail.
+unknown policy IDs, stale unrecognized inventory checksums and duplicate observations fail.
 No source bytes, local paths, Drive IDs or private links enter the committed capture.
 
-The 19 added policy candidates plus 36 canonical-run candidates produce 55 unique
-policy IDs, leaving 75 without raw candidates. Nine supporting files and one
-rejected non-document do not add coverage; retry rows do not add policy counts.
-The retained 28 blobs include the 19 candidate files and nine supporting files.
+On the post-#102 inventory (`0ae85e19...`), 45 of the 52 captured attempts bind
+to unchanged `(id, url)` policies (`24` locally hash-checked unique blobs), while
+7 attempts belonging to 5 URL-changed policies (`cn-ordos-pilot-2024`,
+`vn-decree-119-2025`, `hr-hydrocarbon-act-ccs`, `co-law-2099-energy-transition`,
+`ro-law-114-2013-ccs`, covering `4` unique blobs) are quarantined from current-URL
+coverage. The 17 current-URL-aligned manual candidates plus 34 v4 candidates
+produce **51** current-URL-aligned cumulative candidates, leaving **79** policies
+without a current-URL-aligned raw candidate. Four previously captured candidate
+policies whose canonical URL changed in #102 (`br-anp-ccs-resolution`,
+`ca-sk-ccs-directives`, `cn-ordos-pilot-2024`, `vn-decree-119-2025`) are recorded
+separately in `superseded_url_candidates`. Supporting files and rejected
+non-documents do not add candidate coverage; retry rows do not add policy counts.
 This is a capture of local byte integrity, not a fresh Drive-presence check,
 instrument/edition approval or acceptance of the source-role descriptions as law.
-The baseline table/triage continues to describe canonical-URL observations;
+The baseline table/triage continues to describe current-URL-bound observations;
 `manual_acquisition` holds cumulative ID lists separately and does not clear gaps.
 
 ```bash
@@ -79,8 +112,16 @@ review date or a fresh network check.
 ## What the baseline establishes
 
 - All 130 policies appear once in the inventory; all have reference URLs.
-- Actual transfer observations identify 36 non-homepage raw candidates, 8
-  homepage-only archives and 86 records with no attached raw file in that run.
+- After #102's 14 URL updates (`0ae85e19...`), 116 policies retain identical
+  `(id, url)` binding to the 2026-10-30 capture (`34` v4 non-homepage raw
+  candidates, `5` v4 homepage-only archives, `77` no attached raw file in that
+  run; `17` additional current-URL-aligned manual candidates from `24` blobs),
+  giving **51** current-URL-aligned cumulative candidates and **79** policies
+  without a current-URL-aligned raw candidate.
+- The 14 URL-changed policies are quarantined (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`),
+  with the 4 prior-URL candidates (`br-anp-ccs-resolution`,
+  `ca-sk-ccs-directives`, `cn-ordos-pilot-2024`, `vn-decree-119-2025`) recorded
+  separately in `superseded_url_candidates`.
 - Main has no accepted Git evidence-packet directory at this baseline. Its
   recorded Git document/version/validated-human-anchor counts are therefore 0.
   The unmerged #104 pilot is a separate historical, draft specimen and is not
@@ -110,10 +151,13 @@ references. P1 covers unresolved acquisition/identity work; P2 candidates still
 need manual document review. The machine-readable `triage` sorts P0/P1 IDs with
 their blockers. These are evidence tasks, not executed registry searches.
 
-An archival observation with another SQLite checksum is excluded from current
-per-policy readiness and explicitly flagged `ARCHIVE_INVENTORY_MISMATCH`; it is
-not silently rebound after a factual database update. Re-run the collector or
-review the mismatch before recapturing a new baseline.
+An archival observation with an unrecognized SQLite checksum (or no matching
+verified `(id, url)` baseline snapshot) is excluded from current per-policy
+readiness and explicitly flagged `ARCHIVE_INVENTORY_MISMATCH`; an observation
+whose policy URL changed since capture is quarantined with
+`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`. Observations are never silently carried over
+across altered URLs or unverified database states. Re-run the collector or
+review the mismatch/URL change before recapturing a new baseline.
 
 Known error/login HTML, altered/missing original bytes, orphan policy links and
 invalid normalized quote ranges cannot masquerade as reviewed evidence. Broken

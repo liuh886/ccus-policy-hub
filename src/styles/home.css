@@ -31,6 +31,8 @@ body.home-page-shell .site-mobile-menu {
 }
 
 body.home-page-shell .site-main {
+  /* Decorative hero backgrounds extend beyond the content, not the viewport. */
+  overflow-x: clip;
   padding-top: 1.5rem;
 }
 

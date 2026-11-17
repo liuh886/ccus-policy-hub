@@ -1,0 +1,558 @@
+{
+  "as_of": "2026-10-28",
+  "policies": [
+    {
+      "id": "ro-law-114-2013-ccs",
+      "sources": [
+        {
+          "url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+        "source": "Romanian Parliament — official legislative portal",
+        "pub_date": "2013-04-26"
+      },
+      "locales": {
+        "en": {
+          "description": "Law 114 of 24 April 2013 approves and amends Emergency Ordinance 64/2011 on geological CO2 storage. Its territorial scope includes Romania, the Romanian Black Sea exclusive economic zone and the associated continental shelf. The law addresses exploration and storage authorisations and introduces requirements for activities in protected or sensitive areas. It belongs to the national storage framework and should be read with the underlying ordinance and subsequent amendments, rather than as proof that any individual project has a permit.",
+          "scope": "Romanian geological storage authorisations, including Black Sea jurisdiction and safeguards for protected and sensitive areas.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "A legal authorisation pathway supports investment planning but does not guarantee project financing or a fixed carbon price.",
+            "technical": "Exploration and storage activities must be checked against the ordinance and their individual authorisations.",
+            "environmental": "Sensitive-area authorisations require prior agreement from competent authorities in the relevant protection fields."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2011-06-29",
+                "event": "Emergency Ordinance 64/2011 adopted."
+              },
+              {
+                "date": "2013-04-26",
+                "event": "Law 114/2013 published in the official gazette."
+              }
+            ]
+          }
+        },
+        "zh": {
+          "description": "罗马尼亚2013年4月24日第114号法律批准并修订关于二氧化碳地质封存的第64/2011号紧急条例，刊载于2013年4月26日官方公报。其适用范围涵盖罗马尼亚领土、黑海专属经济区和相关大陆架。法律涉及勘探、封存及运输活动的授权，并对历史文化遗迹、自然保护区和水源保护范围等敏感地区的活动提出主管机关事先同意要求。该记录提供地质封存法律框架背景，具体项目仍须核对许可证和后续修法。法律本身不能证明某个设施已获批准，也不能把全国制度要求自动视作每个项目已经履行的合规事实。",
+          "scope": "适用于罗马尼亚地质封存授权，包括黑海相关海域管辖和受保护、敏感区域的保障要求。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "法定授权路径有助于项目投资安排，但不等于国家保证融资成功或提供固定碳价格。",
+            "technical": "勘探与封存活动应依据紧急条例及具体授权判断，不能仅凭法律存在推定项目合规。",
+            "environmental": "在受保护和敏感区域开展活动，需要取得相关保护领域主管机关的事先同意。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2011-06-29",
+                "event": "第64/2011号紧急条例出台。"
+              },
+              {
+                "date": "2013-04-26",
+                "event": "第114/2013号法律刊载于官方公报。"
+              }
+            ]
+          }
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The statute establishes an authorisation framework rather than a universal project subsidy or guaranteed tariff.",
+          "zh": "本法律确立授权框架，并非面向所有项目的普遍补贴或保证收费机制。",
+          "label_zh": "激励机制",
+          "citation": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "Law 114/2013 approves and amends Emergency Ordinance 64/2011 governing geological storage of carbon dioxide.",
+          "zh": "第114/2013号法律批准并修订规范二氧化碳地质封存的第64/2011号紧急条例。",
+          "label_zh": "法定制度",
+          "citation": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Exploration, storage and relevant transport authorisations must follow the statutory framework and protected-area conditions.",
+          "zh": "勘探、封存及相关运输授权应遵守法定框架和受保护区域条件。",
+          "label_zh": "市场机制",
+          "citation": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The law extends the stated framework to Romanian territory and the relevant Black Sea maritime jurisdictions.",
+          "zh": "法律将相关制度适用范围明确至罗马尼亚领土及其黑海相关管辖海域。",
+          "label_zh": "战略定位",
+          "citation": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "The authorisation framework requires attention to environmental and water-protection authorities in sensitive areas.",
+          "zh": "授权框架要求在敏感区域考虑环境保护与水资源保护主管机关的要求。",
+          "label_zh": "监测与核算",
+          "citation": "https://legislatie.just.ro/Public/DetaliiDocumentAfis/147404",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "hr-hydrocarbon-act-ccs",
+      "sources": [
+        {
+          "url": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+        "source": "Croatian Hydrocarbon Agency — legislative framework"
+      },
+      "locales": {
+        "en": {
+          "description": "Croatia’s Hydrocarbon Agency describes the 2018 Hydrocarbons Exploration and Exploitation Act and its 2019 and 2021 amendments as covering hydrocarbons, geothermal waters, underground gas storage and permanent CO2 disposal. The agency monitors implementation within its statutory remit. This is a subsurface-resource framework relevant to CCS, not a project-specific storage approval or a universal funding commitment. Individual storage rights and environmental obligations must be checked in the applicable legal text and permit.",
+          "scope": "Croatian subsurface-resource legislation and the agency’s role regarding permanent geological disposal of carbon dioxide.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "A defined statutory remit can support investment preparation; this overview does not itself award project funding.",
+            "technical": "Permanent CO2 disposal sits within a wider subsurface-resource regime alongside hydrocarbons, geothermal waters and gas storage.",
+            "environmental": "Individual projects require examination of applicable environmental obligations and their own authorisations."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2018",
+                "event": "New hydrocarbons legislation adopted."
+              },
+              {
+                "date": "2019",
+                "event": "Legislation amended."
+              },
+              {
+                "date": "2021",
+                "event": "Further amendments recorded by the agency."
+              }
+            ]
+          }
+        },
+        "zh": {
+          "description": "克罗地亚碳氢化合物管理局的立法框架说明确认，2018年出台的油气勘探开发法律及其2019年、2021年修订涵盖油气、地热水、地下天然气储存和二氧化碳永久处置。管理局依据法定职责跟踪相关活动实施情况。该框架为CCS提供地下资源活动的制度背景，但法律存在不等于某个项目获得封存权或环境许可。具体项目应核对现行法条、许可文件和相关环境要求，不能由此推导统一补贴、特定资金已经拨付或固定产业部署时点。记录中的法律演进以主管机构列明的法规版本为依据，未核验的个别项目和投资判断不作为本条结论。",
+          "scope": "涉及克罗地亚地下资源法律制度及管理局对二氧化碳永久地质处置的相关职责。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "清晰的法定职责有助于投资准备，但主管机构的框架说明本身并不授予项目资金。",
+            "technical": "二氧化碳永久处置纳入更广泛的地下资源制度，与油气、地热水和天然气储存并列管理。",
+            "environmental": "具体项目仍须核对适用的环境保护要求及自身授权文件，不能只以框架存在推定合规。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2018",
+                "event": "出台新的油气勘探开发法律。"
+              },
+              {
+                "date": "2019",
+                "event": "修订相关法律。"
+              },
+              {
+                "date": "2021",
+                "event": "管理局列明的法律再次修订。"
+              }
+            ]
+          }
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The agency overview describes a legal and administrative framework, not a universal per-tonne carbon-storage payment.",
+          "zh": "管理局说明描述法律和行政框架，而非普遍适用的按吨碳封存支付。",
+          "label_zh": "激励机制",
+          "citation": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "The 2018 Act and 2019 and 2021 amendments include permanent CO2 disposal within the subsurface-resource framework.",
+          "zh": "2018年法律及2019年、2021年修订将二氧化碳永久处置纳入地下资源制度。",
+          "label_zh": "法定制度",
+          "citation": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "A storage developer must distinguish statutory oversight from the rights and obligations granted in an individual authorisation.",
+          "zh": "封存开发者应区分法定监管职责与个别授权文件赋予的权利义务。",
+          "label_zh": "市场机制",
+          "citation": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The framework integrates permanent CO2 disposal with the governance of other subsurface-resource activities.",
+          "zh": "该框架将二氧化碳永久处置与其他地下资源活动的治理制度相衔接。",
+          "label_zh": "战略定位",
+          "citation": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "The agency monitors execution of relevant activities under its founding legislation; project monitoring terms require permit review.",
+          "zh": "管理局依据设立法律跟踪相关活动执行，项目监测条件仍需核对许可。",
+          "label_zh": "监测与核算",
+          "citation": "https://www.azu.hr/hr-hr/o-nama/zakonodavni-okvir/",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "cn-mee-env-guidance-2024",
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+        "source": "Ministry of Environmental Protection — Huanban Keji [2016] 64",
+        "pub_date": "2016-06-20",
+        "year": 2016,
+        "legal_weight": "Guideline"
+      },
+      "locales": {
+        "en": {
+          "description": "The 2016 trial technical guideline provides an environmental-risk assessment process for CO2 capture, utilisation and storage projects. Issued under the earlier environmental-protection notice for demonstration projects, it addresses risk sources, receptors, baseline conditions and assessment across the chain. The issuing notice asks relevant parties to use it as technical guidance. This record is not evidence of a separately enacted 2024 update, a storage permit or universal mandatory early-warning thresholds. Project-specific requirements must be checked against applicable approvals and current rules.",
+          "scope": "Technical environmental-risk assessment guidance for Chinese CO2 capture, utilisation and storage demonstration activities.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "Risk assessment supports project preparation and due diligence; the guideline does not itself establish a subsidy or payment right.",
+            "technical": "The technical process examines risk sources, receptors and environmental baseline conditions across the CCUS chain.",
+            "environmental": "Environmental protection is addressed through risk identification and assessment rather than a promise of zero project impacts."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2016-06-20",
+                "event": "Trial risk-assessment guideline issued."
+              },
+              {
+                "date": "2016-07-01",
+                "event": "Trial guideline implementation date."
+              }
+            ]
+          },
+          "title": "China CCUS Environmental Risk Assessment Technical Guideline (Trial, 2016)",
+          "regulatory_json": {}
+        },
+        "zh": {
+          "description": "原环境保护部于2016年发布《二氧化碳捕集、利用与封存环境风险评估技术指南（试行）》，文号为环办科技〔2016〕64号。指南落实此前关于试验示范项目环境保护的通知要求，为捕集、利用和封存项目提供环境风险评估工作程序，涉及风险源、风险受体、环境本底及全流程风险识别。发布通知明确供相关方参照实行。本记录所能核验的是2016年试行指南，不能作为另有一份2024年修订指引已经发布的证据，也不证明存在统一强制预警阈值。项目实际适用要求应结合环境审批、现行法律和场址条件判断，技术指导文件不能替代地质封存许可。",
+          "scope": "适用于中国二氧化碳捕集、利用和封存试验示范活动的环境风险评估技术指导。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "风险评估有助于项目前期准备和尽职调查，但指南本身不创设补贴或取得支付的权利。",
+            "technical": "技术程序涉及CCUS全流程风险源、风险受体和环境本底条件，不应仅评价单一设备。",
+            "environmental": "环境保护通过风险识别和评估落实，不能把开展评估理解为项目不会产生环境影响的保证。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2016-06-20",
+                "event": "发布环境风险评估技术指南（试行）。"
+              },
+              {
+                "date": "2016-07-01",
+                "event": "试行指南开始实施。"
+              }
+            ]
+          },
+          "title": "中国二氧化碳捕集、利用与封存环境风险评估技术指南（试行，2016）",
+          "regulatory_json": {}
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The issuing notice provides technical guidance; it does not award financial support to capture or storage operators.",
+          "zh": "发布通知提供技术指导，并未直接向捕集或封存运营者授予财政支持。",
+          "label_zh": "激励机制",
+          "citation": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "Huanban Keji [2016] 64 publishes a trial technical guideline for relevant parties to reference in environmental-risk assessment.",
+          "zh": "环办科技〔2016〕64号发布试行技术指南，供相关方开展环境风险评估时参照。",
+          "label_zh": "法定制度",
+          "citation": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Risk assessment can inform due diligence but does not establish carbon-credit eligibility or guaranteed project revenues.",
+          "zh": "风险评估可支持尽职调查，但不因此确立碳积分资格或保证项目收益。",
+          "label_zh": "市场机制",
+          "citation": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The guideline supports environmental management of CCUS demonstration activities under the earlier environmental-protection notice.",
+          "zh": "指南依据此前环境保护通知，为CCUS试验示范活动的环境管理提供技术支持。",
+          "label_zh": "战略定位",
+          "citation": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Assessment considers environmental baseline conditions, risk sources and receptors; project monitoring requirements need approval-specific review.",
+          "zh": "评估关注环境本底、风险源和风险受体，项目监测要求仍须结合具体审批核对。",
+          "label_zh": "监测与核算",
+          "citation": "https://www.mee.gov.cn/gkml/hbb/bgt/201606/t20160624_356016.htm",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "vn-decree-119-2025",
+      "sources": [
+        {
+          "url": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "finding": "Primary-source review; see bilingual description and dimension-specific citations. Scores retained pending separate methodological review."
+        }
+      ],
+      "record": {
+        "url": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+        "source": "Government of Vietnam — official gazette",
+        "pub_date": "2025-06-09"
+      },
+      "locales": {
+        "en": {
+          "description": "Decree 119/2025/ND-CP was issued on 9 June 2025 and took effect on 1 August 2025. It amends Decree 06/2022/ND-CP on greenhouse-gas mitigation and ozone-layer protection. It belongs to Vietnam’s broader emissions-management and carbon-market framework. Its existence should not be interpreted as automatic approval of a geological-storage project or automatic credit eligibility for captured CO2. A CCUS project must establish the applicable methodology, authorisations and reporting conditions before making any crediting claim.",
+          "scope": "Vietnam greenhouse-gas mitigation and ozone-protection amendments; project-specific CCUS permissions and credit eligibility require separate evidence.",
+          "tags_json": ["CCS", "Governance", "Monitoring", "Implementation"],
+          "impact_analysis_json": {
+            "economic": "An emissions-management framework can affect investment conditions, but it does not guarantee revenue for every CCUS project.",
+            "technical": "Project developers must identify the applicable measurement and reporting rules before treating captured CO2 as a credited outcome.",
+            "environmental": "The instrument concerns greenhouse-gas mitigation and ozone protection; it does not prove permanent storage of any project’s CO2."
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2025-06-09",
+                "event": "Decree 119/2025 issued to amend Decree 06/2022."
+              },
+              {
+                "date": "2025-08-01",
+                "event": "Amending decree enters into force."
+              }
+            ]
+          },
+          "regulatory_json": {}
+        },
+        "zh": {
+          "description": "越南第119/2025/ND-CP号政令于2025年6月9日发布、2025年8月1日生效，修订关于温室气体减排和臭氧层保护的第06/2022/ND-CP号政令。其定位是更广泛的排放管理和碳市场制度，而非单独针对地质封存项目的普遍许可。CCUS项目不能仅凭该政令存在，就认定捕集的二氧化碳已自动获得交易积分资格或海上封存活动已获批准。具体减排核算、信用签发、项目授权和报告条件仍须逐项查明。本条保留已核验的法律身份、修订关系和生效日期，不再沿用缺乏具体条款支持的自动抵销、统一项目收益或海上封存投资保证表述。",
+          "scope": "涉及越南温室气体减排和臭氧层保护制度修订，CCUS项目许可和积分资格需要另行证据。",
+          "tags_json": ["碳捕集封存", "治理", "监测", "实施"],
+          "impact_analysis_json": {
+            "economic": "排放管理制度可能影响投资条件，但不能由此推定每个CCUS项目均可取得保证收益。",
+            "technical": "开发者应先确定适用的计量和报告规则，再判断捕集二氧化碳能否被认定为合格减排结果。",
+            "environmental": "本政令涉及温室气体减排和臭氧层保护，不能据此证明单个项目的二氧化碳已经永久封存。"
+          },
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2025-06-09",
+                "event": "发布第119/2025号政令，修订第06/2022号政令。"
+              },
+              {
+                "date": "2025-08-01",
+                "event": "修订政令生效。"
+              }
+            ]
+          },
+          "regulatory_json": {}
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The amending decree belongs to the emissions-management framework, not an unconditional per-tonne subsidy for all CCUS projects.",
+          "zh": "修订政令属于排放管理制度，并非向所有CCUS项目无条件提供按吨补贴。",
+          "label_zh": "激励机制",
+          "citation": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "Decree 119/2025 amends Decree 06/2022 on greenhouse-gas mitigation and ozone-layer protection.",
+          "zh": "第119/2025号政令修订有关温室气体减排和臭氧层保护的第06/2022号政令。",
+          "label_zh": "法定制度",
+          "citation": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Any CCUS credit claim requires a separately established legal and methodological basis rather than inference from the decree title.",
+          "zh": "任何CCUS积分声明都需要另行确认法律和方法学依据，不能由政令名称推断。",
+          "label_zh": "市场机制",
+          "citation": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The amendments form part of Vietnam’s broader climate and carbon-market administration rather than a stand-alone storage law.",
+          "zh": "修订属于越南更广泛的气候和碳市场行政制度，并非一部独立的地质封存法律。",
+          "label_zh": "战略定位",
+          "citation": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Project-specific measurement, reporting and verification requirements must be identified before claiming eligible emission reductions.",
+          "zh": "在声称取得合格减排结果之前，应明确具体项目适用的计量、报告和核查要求。",
+          "label_zh": "监测与核算",
+          "citation": "https://congbao.chinhphu.vn/tai-ve-van-ban-so-119-2025-nd-cp-45046-56700",
+          "label_en": "Monitoring and accounting"
+        }
+      },
+      "source_reviewed": true
+    },
+    {
+      "id": "br-law-14993-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2024/lei/l14993.htm",
+          "finding": "Scope and topic tags extracted from the accepted law record; no new factual review date."
+        }
+      ],
+      "locales": {
+        "en": {
+          "scope": "Brazilian federal authorisations for geological CO2 capture, pipeline transport and storage, with the statutory exclusion for contracted enhanced recovery.",
+          "tags_json": ["CCS", "Authorisation", "ANP", "Monitoring"]
+        },
+        "zh": {
+          "scope": "适用于巴西二氧化碳捕集、管道运输和地质封存的联邦授权制度，须注意合同油气增采业务的法定例外。",
+          "tags_json": ["碳捕集封存", "授权制度", "ANP", "监测"]
+        }
+      }
+    },
+    {
+      "id": "eu-ccs-directive",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/eli/dir/2009/31/oj",
+          "finding": "Lifecycle dates structured from the already accepted description and currentConsolidatedVersion. Live source returns a bot challenge; no fresh verification claimed."
+        }
+      ],
+      "locales": {
+        "en": {
+          "evolution_json": {
+            "consolidatedFrom": ["eu-ccs-directive-2009"],
+            "currentConsolidatedVersion": "2018-12-24",
+            "milestones": [
+              {
+                "date": "2009-04-23",
+                "event": "Directive 2009/31/EC adopted."
+              },
+              {
+                "date": "2018-12-24",
+                "event": "Consolidated version date recorded in EUR-Lex."
+              }
+            ]
+          }
+        },
+        "zh": {
+          "evolution_json": {
+            "consolidatedFrom": ["eu-ccs-directive-2009"],
+            "currentConsolidatedVersion": "2018-12-24",
+            "milestones": [
+              {
+                "date": "2009-04-23",
+                "event": "通过第2009/31/EC号二氧化碳地质封存指令。"
+              },
+              {
+                "date": "2018-12-24",
+                "event": "EUR-Lex记录的现有整合文本日期。"
+              }
+            ]
+          }
+        }
+      },
+      "review_disposition": "editorial_lifecycle_only",
+      "review_note": "Known dates structured from existing accepted narrative; live EUR-Lex verification blocked by bot challenge."
+    },
+    {
+      "id": "imo-marpol-occs-2024",
+      "source_reviewed": true,
+      "sources": [
+        {
+          "url": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "finding": "IMO identifies ongoing regulatory work and the MEPC 83 work plan; removed unsupported assertion that 2024 LCA guidelines automatically grant capture credits."
+        }
+      ],
+      "record": {
+        "url": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+        "source": "International Maritime Organization",
+        "legal_weight": "Policy Roadmap"
+      },
+      "locales": {
+        "en": {
+          "title": "IMO Onboard Carbon Capture and Storage Regulatory Work Programme",
+          "description": "IMO is developing a regulatory framework for onboard carbon capture and storage (OCCS). MEPC 83 approved a work plan in April 2025 addressing technical testing, certification, emissions measurement and verification. These are rule-development activities, not evidence of a fully adopted 2024 system granting automatic carbon credits for shipboard capture. Captured CO2 may be offloaded for utilisation or permanent storage, but its accounting treatment and safe handling require the applicable rules to be established. Project announcements and classification rules should be distinguished from binding IMO requirements.",
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2025-04",
+                "event": "MEPC 83 approved an OCCS regulatory work plan."
+              }
+            ]
+          },
+          "regulatory_json": {}
+        },
+        "zh": {
+          "title": "国际海事组织船载碳捕集与封存监管工作计划",
+          "description": "国际海事组织正在制定船载碳捕集与封存（OCCS）监管框架。2025年4月召开的海洋环境保护委员会第83届会议批准相关工作计划，涉及捕集系统测试与认证、排放计量和核查等工作。这属于规则制定过程，不能表述为2024年已经通过一套完整制度，并自动赋予船载捕集二氧化碳以碳积分。船上捕集的二氧化碳可以卸岸后利用或永久封存，但核算处理、安全运输及后续去向仍需核对适用规则。船级社的技术规范和具体项目公告也应与具有约束力的国际海事组织要求分别判断，不能把设备安装或船上暂存本身等同于已经实现经认可的永久减排。",
+          "evolution_json": {
+            "milestones": [
+              {
+                "date": "2025-04",
+                "event": "MEPC第83届会议批准OCCS监管工作计划。"
+              }
+            ]
+          },
+          "regulatory_json": {}
+        }
+      },
+      "analysis": {
+        "incentive": {
+          "en": "The work plan develops regulatory conditions rather than awarding automatic subsidies or carbon credits.",
+          "zh": "工作计划用于制定监管条件，并未自动授予补贴或碳积分。",
+          "label_zh": "激励机制",
+          "citation": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "label_en": "Incentive mechanisms"
+        },
+        "statutory": {
+          "en": "IMO describes an OCCS regulatory framework under development; the work plan is not a complete enacted capture-credit regime.",
+          "zh": "国际海事组织将OCCS监管框架描述为制定中，工作计划并非已全面生效的捕集积分制度。",
+          "label_zh": "法定制度",
+          "citation": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "label_en": "Legal framework"
+        },
+        "market": {
+          "en": "Captured CO2 may be landed for utilisation or storage, but commercial handling does not itself establish credit eligibility.",
+          "zh": "捕集的二氧化碳可以卸岸利用或封存，但商业处理本身不确立积分资格。",
+          "label_zh": "市场机制",
+          "citation": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "label_en": "Market framework"
+        },
+        "strategic": {
+          "en": "The work programme integrates onboard capture into IMO consideration of shipping decarbonisation technologies.",
+          "zh": "该工作计划将船载捕集纳入国际海事组织对航运减碳技术的制度研究。",
+          "label_zh": "战略定位",
+          "citation": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "label_en": "Strategic role"
+        },
+        "mrv": {
+          "en": "Technical testing, certification and emissions measurement and verification are explicit subjects of the OCCS work programme.",
+          "zh": "技术测试、认证以及排放计量与核查是OCCS工作计划明确涉及的事项。",
+          "label_zh": "监测与核算",
+          "citation": "https://www.imo.org/en/mediacentre/hottopics/pages/carbon-capture-and-storage-%28ccs%29.aspx",
+          "label_en": "Monitoring and accounting"
+        }
+      }
+    }
+  ]
+}

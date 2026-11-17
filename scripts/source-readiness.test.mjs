@@ -11,11 +11,13 @@ import {
   buildReadiness,
   captureObservations,
   parseCsv,
+  parseVerifiedBaseline,
   sha256,
 } from './lib/source-readiness.mjs';
 import {
   generateReadiness,
   loadPackets,
+  loadVerifiedBaselines,
 } from './audit-policy-source-readiness.mjs';
 
 const inventory = 'a'.repeat(64);
@@ -209,7 +211,7 @@ test('observed CSV snapshot preserves input hashes while redacting private file 
   ]);
 });
 
-test('real inventory is reproducible, complete and byte-read-only', async () => {
+test('real post-#102 inventory is reproducible, complete, byte-read-only and reconciles URL changes truthfully', async () => {
   const file = new URL(
     '../agent/ccus-ai-agent/db/ccus_master.sqlite',
     import.meta.url
@@ -218,13 +220,45 @@ test('real inventory is reproducible, complete and byte-read-only', async () => 
   const a = await generateReadiness(),
     b = await generateReadiness();
   assert.deepEqual(a, b);
+  assert.equal(
+    a.inventory_sha256,
+    '0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d'
+  );
   assert.equal(a.policies.length, 130);
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
-  assert.equal(a.totals.observed_private_raw_candidates, 36);
-  assert.equal(a.totals.observed_private_homepage_only, 8);
-  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 55);
-  assert.equal(a.totals.policies_without_raw_candidate, 75);
-  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 28);
+  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 116);
+  assert.equal(a.totals.archive_rows_quarantined_url_changed, 14);
+  assert.equal(a.totals.observed_private_raw_candidates, 34);
+  assert.equal(a.totals.observed_private_homepage_only, 5);
+  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 51);
+  assert.equal(a.totals.superseded_url_candidate_policies, 4);
+  assert.equal(a.totals.policies_without_raw_candidate, 79);
+  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 24);
+  assert.deepEqual(a.superseded_url_candidates.policy_ids, [
+    'br-anp-ccs-resolution',
+    'ca-sk-ccs-directives',
+    'cn-ordos-pilot-2024',
+    'vn-decree-119-2025',
+  ]);
+  assert.equal(
+    a.manual_acquisition.superseded_url_locally_hash_checked_unique_blobs,
+    4
+  );
+  assert.deepEqual(
+    a.manual_acquisition.superseded_url_supporting_only_policy_ids,
+    ['hr-hydrocarbon-act-ccs']
+  );
+  assert.deepEqual(a.manual_acquisition.superseded_url_failed_only_policy_ids, [
+    'co-law-2099-energy-transition',
+    'ro-law-114-2013-ccs',
+  ]);
+  const quarantined = a.policies.find(
+    (p) => p.policy_id === 'br-anp-ccs-resolution'
+  );
+  assert.equal(quarantined.archive.binding_mode, 'url_changed_since_capture');
+  assert.equal(quarantined.archive.state, 'unknown');
+  assert.ok(quarantined.gaps.includes('ARCHIVE_URL_CHANGED_SINCE_CAPTURE'));
+  assert.ok(quarantined.gaps.includes('ARCHIVE_OBSERVATION_UNAVAILABLE'));
   assert.equal(sha256(fs.readFileSync(file)), before);
 });
 
@@ -285,4 +319,181 @@ test('manual capture checks actual bytes and keeps supporting/rejected sources o
   } finally {
     fs.rmSync(dir, { recursive: true });
   }
+});
+
+test('unrelated DB mutations preserve (id, url) binding while URL edits quarantine prior candidates and unrecognized baselines fail', () => {
+  const newInventory = 'c'.repeat(64);
+  const baselineRows = policies.map((p) => ({ policy_id: p.id, url: p.url }));
+  const baselines = new Map([
+    [
+      inventory,
+      {
+        inventory_sha256: inventory,
+        rows_sha256: sha256(Buffer.from(JSON.stringify(baselineRows), 'utf8')),
+        rows: baselineRows,
+      },
+    ],
+  ]);
+  const v4Rows = [
+    {
+      policy_id: 'one',
+      inventory_sha256: inventory,
+      status: 'already_archived',
+      archive_state: 'raw_candidate_archived',
+      has_private_file: true,
+    },
+    {
+      policy_id: 'two',
+      inventory_sha256: inventory,
+      status: 'needs_official_source_review',
+      archive_state: 'no_raw_file',
+      has_private_file: false,
+    },
+  ];
+  const manual = {
+    provenance: { manifest_sha256: 'd'.repeat(64) },
+    rows: [
+      {
+        policy_id: 'two',
+        inventory_sha256: inventory,
+        download_status: 'saved_candidate',
+        archive_class: 'new_nonhomepage_source_candidate',
+        reported_sha256: 'e'.repeat(64),
+        local_byte_integrity: 'pass',
+      },
+    ],
+  };
+
+  // Unrelated DB mutation (e.g., facility_news changed, policy URLs unchanged)
+  const unchangedReport = buildReadiness({
+    policies,
+    inventorySha: newInventory,
+    observations: { rows: v4Rows },
+    asOf: '2026-10-30',
+    baselines,
+  });
+  assert.equal(
+    unchangedReport.totals.archive_rows_bound_to_current_inventory,
+    2
+  );
+  assert.equal(unchangedReport.totals.archive_rows_quarantined_url_changed, 0);
+  assert.equal(unchangedReport.totals.observed_private_raw_candidates, 1);
+  assert.equal(
+    unchangedReport.policies[0].archive.binding_mode,
+    'policy_url_match'
+  );
+  const unchangedManual = reconcileManualObservations(
+    manual,
+    policies,
+    newInventory,
+    unchangedReport.policies,
+    baselines
+  );
+  assert.deepEqual(unchangedManual.cumulative_candidate_policy_ids, [
+    'one',
+    'two',
+  ]);
+  assert.equal(unchangedManual.locally_hash_checked_unique_blobs, 1);
+
+  // Changing policy URLs quarantines both v4 and manual candidates and adds new ID as unbound
+  const mutatedPolicies = [
+    { ...policies[0], url: 'https://example.org/new-law' },
+    { ...policies[1], url: 'https://example.org/new-programme' },
+    {
+      id: 'three',
+      country: 'Fixture',
+      url: 'https://example.org/added',
+      review_status: 'draft',
+    },
+  ];
+  const changedReport = buildReadiness({
+    policies: mutatedPolicies,
+    inventorySha: newInventory,
+    observations: { rows: v4Rows },
+    asOf: '2026-10-30',
+    baselines,
+  });
+  assert.equal(changedReport.totals.archive_rows_bound_to_current_inventory, 0);
+  assert.equal(changedReport.totals.archive_rows_quarantined_url_changed, 2);
+  assert.equal(changedReport.totals.observed_private_raw_candidates, 0);
+  assert.deepEqual(changedReport.superseded_url_candidates.v4_policy_ids, [
+    'one',
+  ]);
+  assert.ok(
+    changedReport.policies[0].gaps.includes('ARCHIVE_URL_CHANGED_SINCE_CAPTURE')
+  );
+  assert.ok(
+    changedReport.policies[0].gaps.includes('ARCHIVE_OBSERVATION_UNAVAILABLE')
+  );
+  const addedPolicy = changedReport.policies.find(
+    (p) => p.policy_id === 'three'
+  );
+  assert.equal(addedPolicy.archive.binding_mode, 'unbound');
+  assert.ok(addedPolicy.gaps.includes('ARCHIVE_OBSERVATION_UNAVAILABLE'));
+
+  const changedManual = reconcileManualObservations(
+    manual,
+    mutatedPolicies,
+    newInventory,
+    changedReport.policies,
+    baselines
+  );
+  assert.deepEqual(changedManual.cumulative_candidate_policy_ids, []);
+  assert.equal(changedManual.locally_hash_checked_unique_blobs, 0);
+  assert.equal(
+    changedManual.superseded_url_locally_hash_checked_unique_blobs,
+    1
+  );
+  assert.deepEqual(changedManual.superseded_url_manual_candidate_policy_ids, [
+    'two',
+  ]);
+  assert.deepEqual(changedManual.policies_without_raw_candidate, [
+    'one',
+    'three',
+    'two',
+  ]);
+
+  // Tampered/unrecognized inventory SHA without matching baseline still fails strictly
+  assert.throws(
+    () =>
+      reconcileManualObservations(
+        manual,
+        mutatedPolicies,
+        newInventory,
+        changedReport.policies,
+        new Map()
+      ),
+    /inventory/
+  );
+  const tamperedBaseline = {
+    ...baselines.get(inventory),
+    rows: [
+      { policy_id: 'one', url: 'https://tampered.example/' },
+      baselineRows[1],
+    ],
+  };
+  assert.throws(
+    () =>
+      buildReadiness({
+        policies,
+        inventorySha: newInventory,
+        observations: { rows: v4Rows },
+        asOf: '2026-10-30',
+        baselines: new Map([[inventory, tamperedBaseline]]),
+      }),
+    /SHA-256 mismatch/
+  );
+  assert.throws(
+    () =>
+      parseVerifiedBaseline('{"rows":[]}', {
+        expectedInventorySha: inventory,
+        expectedFileSha: 'f'.repeat(64),
+      }),
+    /SHA-256 mismatch/
+  );
+  assert.ok(
+    loadVerifiedBaselines().has(
+      '1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d'
+    )
+  );
 });
