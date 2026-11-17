@@ -141,6 +141,9 @@ jobs:
           PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: pnpm run build
 
+      - name: Verify static search runtime against the built corpus
+        run: pnpm search:verify
+
       - name: Verify Cloudflare RUM when configured
         env:
           CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
