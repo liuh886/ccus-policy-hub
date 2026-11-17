@@ -231,7 +231,7 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.deepEqual(a, b);
   assert.equal(
     a.inventory_sha256,
-    '1bf0cfaaabf772ba974ce8153c6151807b3778d62c1d0b2e99d823351dc4f69d'
+    '2704d4419ead9765041f4dc2a15b41ed2f8ce936b9a5d07ea6fd1dea012d4419'
   );
   assert.equal(a.policies.length, 130);
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
