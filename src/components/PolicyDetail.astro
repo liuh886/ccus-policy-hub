@@ -1,12 +1,20 @@
 ---
 import { SITE_BASE } from '../lib/siteBase';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { policyDetailCopy } from '../i18n/detailCopy.mjs';
-import relationships from '../../public/data/relationships.json';
-import analysisLocales from '../../public/data/policy-analysis-localizations.json';
 import { localizeAnalysis } from '../../scripts/lib/policy-localization.mjs';
 import { relationshipLabel } from '../lib/relationshipTrust.mjs';
+import {
+  POLICY_RELATED_FACILITIES_SSR_CAP,
+  type PolicyEntry,
+  getLocaleDataIndex,
+  getLocalizationsByPolicyId,
+  getRelationshipByPair,
+  normalizeCountryName,
+  normalizePolicySlug,
+  sliceRelatedFacilities,
+} from '../lib/dataIndex';
 import RadarChart from './RadarChart.astro';
 import i18nDict from '../data/i18n_dictionary.json';
 import countryData from '../data/countries.json';
@@ -21,8 +29,13 @@ interface Props {
 const { lang = 'zh', entry } = Astro.props;
 const isEn = lang === 'en';
 
-const { Content } = await render(entry);
-const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
+const [{ Content }, localeIndex] = await Promise.all([
+  render(entry),
+  getLocaleDataIndex(lang),
+]);
+const relationshipByPair = getRelationshipByPair();
+const localizationsByPolicyId = getLocalizationsByPolicyId();
+const entrySlug = normalizePolicySlug(entry.id);
 const {
   title,
   description,
@@ -37,76 +50,46 @@ const {
   status,
   legalWeight,
   reviewStatus,
-  relatedFacilities: policyRelatedFacilities = [],
 } = entry.data;
 const { interpretation, evolution, impactAnalysis } = entry.data;
 const analysis = localizeAnalysis(
   canonicalAnalysis,
-  analysisLocales.records.filter((r) => r.policy_id === entry.id),
+  localizationsByPolicyId.get(entry.id) ??
+    localizationsByPolicyId.get(entrySlug) ??
+    [],
   lang
 );
 const isVerified = reviewStatus === 'verified';
 const displayTags = sectors.length > 0 ? sectors : tags;
 
 // Country Aggregation Logic
-const normalizeCountry = (c: string) =>
-  i18nDict.countries[c as keyof typeof i18nDict.countries] || c;
-const canonicalCountry = normalizeCountry(rawCountry);
+const canonicalCountry = normalizeCountryName(
+  rawCountry,
+  i18nDict.countries as Record<string, string>
+);
 const country =
   (countryData as any)[canonicalCountry]?.[isEn ? 'en' : 'zh'] ||
   canonicalCountry;
-const targetCountry = canonicalCountry;
 
-const countryPolicies = allPolicies.filter(
-  (p) => normalizeCountry(p.data.country) === targetCountry
-);
-const allFacilities = await getCollection(
-  isEn ? 'facilities_en' : 'facilities_zh'
-);
-const countryFacilities = allFacilities.filter(
-  (f) => normalizeCountry(f.data.country) === targetCountry
-);
-
-const aggregateAnalysis = {
-  incentive: Math.max(
-    ...countryPolicies.map((p) => p.data.analysis?.incentive?.score || 0),
-    0
-  ),
-  statutory: Math.max(
-    ...countryPolicies.map((p) => p.data.analysis?.statutory?.score || 0),
-    0
-  ),
-  market: Math.max(
-    ...countryPolicies.map((p) => p.data.analysis?.market?.score || 0),
-    0
-  ),
-  strategic: Math.max(
-    ...countryPolicies.map((p) => p.data.analysis?.strategic?.score || 0),
-    0
-  ),
-  mrv: Math.max(
-    ...countryPolicies.map((p) => p.data.analysis?.mrv?.score || 0),
-    0
-  ),
-};
-
-const stats = {
-  policies: countryPolicies.length,
-  facilities: countryFacilities.length,
-  operational: countryFacilities
-    .filter(
-      (f) => f.data.status === 'Operational' || f.data.status === '运行中'
-    )
-    .reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0),
-  construction: countryFacilities
-    .filter(
-      (f) =>
-        f.data.status === 'Under construction' || f.data.status === '建设中'
-    )
-    .reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0),
-  planned: countryFacilities
-    .filter((f) => f.data.status === 'Planned' || f.data.status === '计划中')
-    .reduce((acc, f) => acc + (f.data.estimatedCapacity || 0), 0),
+const countryPolicies =
+  localeIndex.policiesByCountry.get(canonicalCountry) ?? [];
+const { aggregateAnalysis, stats } = localeIndex.countrySummaryByCountry.get(
+  canonicalCountry
+) ?? {
+  aggregateAnalysis: {
+    incentive: 0,
+    statutory: 0,
+    market: 0,
+    strategic: 0,
+    mrv: 0,
+  },
+  stats: {
+    policies: 0,
+    facilities: 0,
+    operational: 0,
+    construction: 0,
+    planned: 0,
+  },
 };
 
 const dimensionConfig = [
@@ -125,23 +108,36 @@ const activeDimensions = dimensionConfig.filter(
 const supersedes = evolution?.supersedes ?? [];
 const supersededBy = evolution?.supersededBy;
 
-const supersededPolicies =
-  supersedes.length > 0
-    ? allPolicies.filter((p) =>
-        supersedes.includes(p.id.replace(/^(zh|en)\//, ''))
-      )
-    : [];
+const supersededPolicies: PolicyEntry[] = (supersedes as string[])
+  .map((id: string) => localeIndex.policyById.get(id))
+  .filter((p: PolicyEntry | undefined): p is PolicyEntry => Boolean(p));
 
 const successorPolicy = supersededBy
-  ? allPolicies.find((p) => p.id.replace(/^(zh|en)\//, '') === supersededBy)
+  ? (localeIndex.policyById.get(supersededBy) ?? null)
   : null;
 
-// Combined Facility Linking Logic
-const relatedFacilities = allFacilities.filter(
-  (f) =>
-    policyRelatedFacilities.includes(f.id) ||
-    f.data.relatedPolicies?.includes(entry.id.replace(/^(zh|en)\//, ''))
+// Combined Facility Linking Logic (trust-prioritized + progressive disclosure cap)
+const relatedFacilitiesAll =
+  localeIndex.relatedFacilitiesByPolicyId.get(entrySlug) ?? [];
+const {
+  visible: relatedFacilities,
+  total: totalRelatedFacilities,
+  hasMore: hasMoreRelatedFacilities,
+} = sliceRelatedFacilities(
+  relatedFacilitiesAll,
+  POLICY_RELATED_FACILITIES_SSR_CAP
 );
+const matchedDirectoryCountry = localeIndex.directoryMeta.countries.find(
+  (c) =>
+    c.canon === rawCountry ||
+    c.canon === country ||
+    c.canon === canonicalCountry
+)?.canon;
+const directoryCtaHref = `${SITE_BASE}/${isEn ? 'en/facilities' : 'facilities'}/${
+  matchedDirectoryCountry
+    ? `?country=${encodeURIComponent(matchedDirectoryCountry)}`
+    : ''
+}`;
 
 const dimensionIndexMap: Record<string, number> = {
   incentive: 0,
@@ -471,7 +467,10 @@ const chartLabels = [
           <!-- Related Assets -->
           {
             relatedFacilities.length > 0 && (
-              <section class="mt-20 pt-12 border-t border-slate-100 dark:border-slate-900">
+              <section
+                class="mt-20 pt-12 border-t border-slate-100 dark:border-slate-900"
+                data-pagefind-ignore
+              >
                 <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8">
                   {copy.linkedAssets}
                 </h2>
@@ -483,10 +482,8 @@ const chartLabels = [
                     >
                       <p class="text-xs text-slate-500 mb-2">
                         {relationshipLabel(
-                          relationships.records.find(
-                            (r) =>
-                              r.policy_id === entry.id && r.facility_id === f.id
-                          ),
+                          relationshipByPair.get(`${entry.id}::${f.id}`) ??
+                            relationshipByPair.get(`${entrySlug}::${f.id}`),
                           lang
                         )}
                       </p>
@@ -499,6 +496,25 @@ const chartLabels = [
                     </a>
                   ))}
                 </div>
+                {hasMoreRelatedFacilities && (
+                  <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 px-6 py-4">
+                    <p class="text-xs font-bold text-slate-600 dark:text-slate-300">
+                      {copy.linkedAssetsShowingPrefix}{' '}
+                      <span class="font-mono font-black text-slate-900 dark:text-white">
+                        {relatedFacilities.length} / {totalRelatedFacilities}
+                      </span>{' '}
+                      {copy.linkedAssetsShowingSuffix}
+                    </p>
+                    <a
+                      href={directoryCtaHref}
+                      data-directory-cta
+                      class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-white px-4 py-2 text-xs font-black uppercase tracking-wider text-white dark:text-slate-900 hover:bg-blue-600 dark:hover:bg-blue-500 hover:text-white transition-colors shrink-0"
+                    >
+                      <span>{copy.linkedAssetsCta}</span>
+                      <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
+                )}
               </section>
             )
           }

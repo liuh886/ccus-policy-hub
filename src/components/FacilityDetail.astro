@@ -1,10 +1,14 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import { SITE_BASE } from '../lib/siteBase';
 import Layout from '../layouts/Layout.astro';
 import { facilityDetailCopy } from '../i18n/detailCopy.mjs';
-import relationships from '../../public/data/relationships.json';
 import { relationshipLabel } from '../lib/relationshipTrust.mjs';
+import {
+  getLocaleDataIndex,
+  getRelationshipByPair,
+  normalizeCountryName,
+} from '../lib/dataIndex';
 import i18nDict from '../data/i18n_dictionary.json';
 
 interface Props {
@@ -15,7 +19,11 @@ interface Props {
 const { lang = 'zh', entry } = Astro.props;
 const isEn = lang === 'en';
 
-const { Content } = await render(entry);
+const [{ Content }, localeIndex] = await Promise.all([
+  render(entry),
+  getLocaleDataIndex(lang),
+]);
+const relationshipByPair = getRelationshipByPair();
 const {
   name,
   country,
@@ -42,7 +50,6 @@ const {
   investmentScale,
 } = entry.data;
 
-const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
 const dictCountries: Record<string, string> = i18nDict.countries;
 
 // Compatible Capacity Fields
@@ -50,20 +57,22 @@ const annCap = announcedCapacityMax || 0;
 const estCap = estimatedCapacity || 0;
 
 // Recorded associations carry their own type; geographic matches are context.
-const applicablePolicies = allPolicies.filter((p) =>
-  relatedPolicies.includes(p.id)
-);
+const relatedPolicySet = new Set<string>(relatedPolicies);
+const applicablePolicies = Array.from(relatedPolicySet)
+  .map((pid) => localeIndex.policyById.get(pid))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
 // Auto-suggested Policies: Same country or international
-const suggestedPolicies = allPolicies.filter((p) => {
-  if (relatedPolicies.includes(p.id)) return false;
-
-  const pCountry = dictCountries[p.data.country] || p.data.country;
-  const fCountry = dictCountries[country] || country;
-
-  const isSameCountry = pCountry === fCountry;
-  return isSameCountry || pCountry === 'International';
-});
+const fCountry = normalizeCountryName(country, dictCountries);
+const countryCandidates = [
+  ...(localeIndex.policiesByCountry.get(fCountry) ?? []),
+  ...(fCountry !== 'International'
+    ? (localeIndex.policiesByCountry.get('International') ?? [])
+    : []),
+];
+const suggestedPolicies = countryCandidates.filter(
+  (p) => !relatedPolicySet.has(p.id)
+);
 
 const statusColors: Record<string, string> = {
   Operational:
@@ -329,11 +338,7 @@ const newsCount = newsGroups.reduce(
                       <div class="flex justify-between items-start mb-2">
                         <span class="text-[9px] font-black text-emerald-600 uppercase">
                           {relationshipLabel(
-                            relationships.records.find(
-                              (r) =>
-                                r.facility_id === entry.id &&
-                                r.policy_id === p.id
-                            ),
+                            relationshipByPair.get(`${p.id}::${entry.id}`),
                             lang
                           )}
                         </span>

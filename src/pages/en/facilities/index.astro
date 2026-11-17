@@ -1,14 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import FacilitiesIndex from '../../../components/FacilitiesIndex.astro';
+import { getLocaleDataIndex } from '../../../lib/dataIndex';
 import { SITE_BASE } from '../../../lib/siteBase';
 import {
   facilitiesPageCount,
   facilitiesPageSlice,
-  sortFacilities,
 } from '../../../lib/facilityPagination.mjs';
 
-const sorted = sortFacilities(await getCollection('facilities_en'));
+const { sortedFacilities: sorted } = await getLocaleDataIndex('en');
 const total = facilitiesPageCount(sorted.length);
 ---
 

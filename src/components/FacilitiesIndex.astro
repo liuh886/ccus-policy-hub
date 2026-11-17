@@ -1,16 +1,12 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import FacilityMap from './FacilityMap.astro';
 import FacilityCard from './FacilityCard.astro';
 import Pagination from './Pagination.astro';
 import DatasetVersion from './DatasetVersion.astro';
-import countryData from '../data/countries.json';
-import {
-  FACILITIES_PAGE_SIZE,
-  sortFacilities,
-} from '../lib/facilityPagination.mjs';
-import { toFacilityListItem } from '../lib/facilityListPayload.mjs';
+import { FACILITIES_PAGE_SIZE } from '../lib/facilityPagination.mjs';
+import { getLocaleDataIndex } from '../lib/dataIndex';
 import { SITE_BASE } from '../lib/siteBase';
 
 type FacilityEntry =
@@ -32,69 +28,13 @@ interface Props {
 const { lang = 'zh', items, pagination } = Astro.props;
 const isEn = lang === 'en';
 
-const facilities = await getCollection(
-  isEn ? 'facilities_en' : 'facilities_zh'
-);
+const { sortedFacilities, directoryMeta } = await getLocaleDataIndex(lang);
 // Paginated slice for the card grid. Filter dropdowns, the map and the
 // client-side filter all use the full collection; only the server-rendered
 // cards are sliced (progressive enhancement / SEO fallback).
-const pageItems = items ?? facilities;
-const countryMap: Record<string, any> = countryData;
-
-const specialCountryLabels: Record<string, string> = {
-  Unknown: '未知',
-  'Multiple Europe': '欧洲多国',
-  'Chinese Taipei': '中国台北',
-  International: '国际',
-  Transnational: '跨国',
-};
-
-const translateCountryLabel = (country: string) => {
-  const direct = countryMap[country]?.zh || specialCountryLabels[country];
-  if (direct) return direct;
-
-  if (!/[,\-/&，、]/.test(country)) return country;
-
-  return country
-    .split(/(\s*[-/,&，、]\s*)/)
-    .map((part) => {
-      if (/^\s*[-/,&，、]\s*$/.test(part)) return part;
-      const trimmed = part.trim();
-      return (
-        countryMap[trimmed]?.zh || specialCountryLabels[trimmed] || trimmed
-      );
-    })
-    .join('');
-};
-
-const countries = Array.from(new Set(facilities.map((f) => f.data.country)))
-  .sort()
-  .map((canon) => ({
-    canon,
-    display: isEn ? canon : translateCountryLabel(canon),
-  }));
-
-const normalizeTypeLabel = (t: string) =>
-  !isEn && (t === 'Full chain' || t === 'fullchain') ? '全产业链' : t;
-
-const sectors = Array.from(new Set(facilities.map((f) => f.data.sector)))
-  .filter(Boolean)
-  .sort();
-const types = Array.from(
-  new Set(facilities.map((f) => normalizeTypeLabel(f.data.type)))
-).sort();
-const statuses = Array.from(
-  new Set(facilities.map((f) => f.data.status))
-).sort();
-
-// Full compact dataset for client-side filter/sort/pagination. Canonical
-// order must match the server page slices so the first client render is
-// identical to the server-rendered fallback.
-const listItems = sortFacilities(facilities).map((facility) => ({
-  ...toFacilityListItem(facility),
-  type: normalizeTypeLabel(facility.data.type),
-}));
-const listDataJson = JSON.stringify({ items: listItems });
+const pageItems = items ?? sortedFacilities;
+const { countries, sectors, types, statuses, initialStats } = directoryMeta;
+const listUrl = `${SITE_BASE}/api/facilities-list.${lang}.json`;
 
 const listPath = isEn ? '/en/facilities' : '/facilities';
 const currentPage = pagination?.current ?? 1;
@@ -182,7 +122,7 @@ const copy = isEn
                 id="stat-count"
                 class="text-xl font-black text-white leading-none"
               >
-                0
+                {initialStats.count}
               </div>
             </div>
             <div class="w-px h-8 bg-white/10"></div>
@@ -195,7 +135,7 @@ const copy = isEn
                 id="stat-capacity"
                 class="text-xl font-black text-white leading-none"
               >
-                0.0
+                {initialStats.capacity.toFixed(1)}
               </div>
             </div>
             <div class="w-px h-8 bg-white/10"></div>
@@ -207,7 +147,8 @@ const copy = isEn
               <div class="flex items-baseline gap-1">
                 <span
                   id="stat-operational"
-                  class="text-xl font-black text-white leading-none">0</span
+                  class="text-xl font-black text-white leading-none"
+                  >{initialStats.operational}</span
                 >
                 <span class="text-[9px] font-bold text-slate-500 uppercase"
                   >{copy.active}</span
@@ -223,7 +164,8 @@ const copy = isEn
               <div class="flex items-baseline gap-1">
                 <span
                   id="stat-operational-cap"
-                  class="text-xl font-black text-white leading-none">0.0</span
+                  class="text-xl font-black text-white leading-none"
+                  >{initialStats.operationalCap.toFixed(1)}</span
                 >
                 <span class="text-[9px] font-bold text-slate-500 uppercase"
                   >{copy.mtpa}</span
@@ -239,7 +181,8 @@ const copy = isEn
               <div class="flex items-baseline gap-1">
                 <span
                   id="stat-construction-cap"
-                  class="text-xl font-black text-white leading-none">0.0</span
+                  class="text-xl font-black text-white leading-none"
+                  >{initialStats.constructionCap.toFixed(1)}</span
                 >
                 <span class="text-[9px] font-bold text-slate-500 uppercase"
                   >{copy.mtpa}</span
@@ -319,6 +262,7 @@ const copy = isEn
       data-page-size={pageSize}
       data-current-page={currentPage}
       data-list-path={listPath}
+      data-list-url={listUrl}
       data-site-base={SITE_BASE}
       data-lang={lang}
     >
@@ -357,13 +301,6 @@ const copy = isEn
   </div>
 </Layout>
 
-<script
-  is:inline
-  type="application/json"
-  id="facility-list-data"
-  set:html={listDataJson}
-/>
-
 <script>
   import { renderFacilityCardHtml } from '../lib/facilityCard.mjs';
   import {
@@ -372,6 +309,7 @@ const copy = isEn
     paginateFacilities,
     sortFacilityItems,
   } from '../lib/facilityListQuery.mjs';
+  import { fetchCachedJson } from '../lib/cachedJsonFetch';
   import { t as translateUi, makePair, type UiKey } from '../i18n/ui';
 
   interface FacilityListItem {
@@ -394,31 +332,30 @@ const copy = isEn
 
   let abortCurrent: AbortController | null = null;
 
-  function readListPayload(): FacilityListItem[] {
-    const el = document.getElementById(
-      'facility-list-data'
-    ) as HTMLScriptElement | null;
-    const raw = el?.textContent?.trim() || '';
-    if (!raw) return [];
-    try {
-      const parsed = JSON.parse(raw) as { items?: unknown };
-      return Array.isArray(parsed.items)
-        ? (parsed.items as FacilityListItem[])
-        : [];
-    } catch (error) {
-      console.warn('Facility list payload is not valid JSON.', error);
-      return [];
+  async function loadListItems(listUrl: string): Promise<FacilityListItem[]> {
+    const parsed = await fetchCachedJson<unknown>(listUrl);
+    if (!Array.isArray(parsed)) {
+      throw new Error('Facility list payload is not an array.');
     }
+    return parsed as FacilityListItem[];
   }
 
   function setupFacilityFiltering() {
     const grid = document.getElementById('facility-grid') as HTMLElement | null;
     if (!grid) return;
+    if (
+      grid.dataset.facilityBound === '1' &&
+      abortCurrent &&
+      !abortCurrent.signal.aborted
+    ) {
+      return;
+    }
 
     abortCurrent?.abort();
     const controller = new AbortController();
     abortCurrent = controller;
     const { signal } = controller;
+    grid.dataset.facilityBound = '1';
 
     const searchInput = document.getElementById(
       'search-input'
@@ -449,11 +386,12 @@ const copy = isEn
       'stat-construction-cap'
     );
 
-    const allItems = readListPayload();
     const pageSize = Number(grid.dataset.pageSize) || 48;
     const siteBase = grid.dataset.siteBase || '';
     const listPath = grid.dataset.listPath || '/facilities';
     const lang = grid.dataset.lang === 'en' ? 'en' : 'zh';
+    const listUrl =
+      grid.dataset.listUrl || `${siteBase}/api/facilities-list.${lang}.json`;
     const t = (key: UiKey) => translateUi(lang, key);
     const tp = makePair(lang);
     const cardCtx = { base: siteBase, lang, t, tp };
@@ -468,6 +406,15 @@ const copy = isEn
       sort: params.get('sort') || 'default',
       page: Number(grid.dataset.currentPage) || 1,
     };
+
+    const hasActiveQuery = Boolean(
+      state.q ||
+      state.country ||
+      state.status ||
+      state.sector ||
+      state.type ||
+      state.sort !== 'default'
+    );
 
     const applyStateToControls = () => {
       if (searchInput) searchInput.value = state.q;
@@ -495,7 +442,11 @@ const copy = isEn
       window.history.replaceState(window.history.state, '', url);
     };
 
-    const renderPagination = (page: number, total: number) => {
+    const renderPagination = (
+      page: number,
+      total: number,
+      allItems: FacilityListItem[]
+    ) => {
       if (!paginationHost) return;
       if (total <= 1) {
         paginationHost.innerHTML = '';
@@ -524,7 +475,7 @@ const copy = isEn
                 return;
               }
               state.page = target;
-              render();
+              render(allItems);
               grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             },
             { signal }
@@ -532,7 +483,7 @@ const copy = isEn
         });
     };
 
-    const render = () => {
+    const render = (allItems: FacilityListItem[]) => {
       const filtered = filterFacilities(allItems, state);
       const sorted = sortFacilityItems(filtered, state.sort);
       const paged = paginateFacilities(sorted, state.page, pageSize);
@@ -558,8 +509,35 @@ const copy = isEn
       if (noResults)
         noResults.style.display = stats.count === 0 ? 'block' : 'none';
 
-      renderPagination(paged.page, paged.total);
+      renderPagination(paged.page, paged.total, allItems);
       syncUrl(paged.page);
+    };
+
+    let latestRequestId = 0;
+
+    const triggerLoadAndRender = async () => {
+      const requestId = ++latestRequestId;
+      try {
+        const items = await loadListItems(listUrl);
+        if (signal.aborted || requestId !== latestRequestId) return;
+        render(items);
+      } catch (error) {
+        if (!signal.aborted) {
+          console.warn(
+            'Facility list payload could not be loaded; keeping SSR cards.',
+            error
+          );
+        }
+      }
+    };
+
+    const prefetchList = () => {
+      if (signal.aborted) return;
+      loadListItems(listUrl).catch((error) => {
+        if (!signal.aborted) {
+          console.warn('Facility list prefetch failed.', error);
+        }
+      });
     };
 
     const onFilterChange = () => {
@@ -570,32 +548,56 @@ const copy = isEn
       state.type = typeFilter?.value ?? '';
       state.sort = sortSelect?.value || 'default';
       state.page = 1;
-      render();
+      void triggerLoadAndRender();
     };
 
     applyStateToControls();
 
-    [
+    const controls = [
       searchInput,
       countryFilter,
       statusFilter,
       sectorFilter,
       typeFilter,
       sortSelect,
-    ]
-      .filter((el): el is HTMLInputElement | HTMLSelectElement => Boolean(el))
-      .forEach((el) => {
-        el.addEventListener('input', onFilterChange, { signal });
-        el.addEventListener('change', onFilterChange, { signal });
-      });
+    ].filter((el): el is HTMLInputElement | HTMLSelectElement => Boolean(el));
 
-    render();
+    controls.forEach((el) => {
+      el.addEventListener('input', onFilterChange, { signal });
+      el.addEventListener('change', onFilterChange, { signal });
+      el.addEventListener('focusin', prefetchList, { once: true, signal });
+      el.addEventListener('pointerdown', prefetchList, { once: true, signal });
+    });
+
+    if (hasActiveQuery) {
+      void triggerLoadAndRender();
+    } else if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(() => prefetchList(), {
+        timeout: 2000,
+      });
+      signal.addEventListener(
+        'abort',
+        () => window.cancelIdleCallback(idleId),
+        { once: true }
+      );
+    } else {
+      const timerId = globalThis.setTimeout(prefetchList, 800);
+      signal.addEventListener('abort', () => globalThis.clearTimeout(timerId), {
+        once: true,
+      });
+    }
   }
 
-  document.addEventListener('astro:before-swap', () => {
-    abortCurrent?.abort();
-    abortCurrent = null;
-  });
-  document.addEventListener('astro:page-load', setupFacilityFiltering);
+  const globalListState = globalThis as {
+    __ccusFacilitiesIndexEventsBound?: boolean;
+  };
+  if (!globalListState.__ccusFacilitiesIndexEventsBound) {
+    document.addEventListener('astro:before-swap', () => {
+      abortCurrent?.abort();
+      abortCurrent = null;
+    });
+    document.addEventListener('astro:page-load', setupFacilityFiltering);
+    globalListState.__ccusFacilitiesIndexEventsBound = true;
+  }
   setupFacilityFiltering();
 </script>
