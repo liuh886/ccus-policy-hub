@@ -32,6 +32,9 @@ function fixture() {
   for (const [id, year, review] of [
     ['us-45q-ira', 2022, 'verified'],
     ['us-obbba-45q-2025', 2025, 'draft'],
+    ['ca-ccus-itc', 2023, 'verified'],
+    ['no-storage-framework', 2024, 'verified'],
+    ['denmark-ccfd', 2024, 'verified'],
   ]) {
     db.run('INSERT INTO policies VALUES (?,?,?,?,?,?,?,?,?,?)', [
       id,
@@ -180,6 +183,11 @@ test('all narrative references resolve and Markdown contains no executable sourc
   for (const source of bundle.sources)
     assert.ok(markdown.includes(`[${source.id}]: <${source.url}>`));
   for (let i = 1; i <= 6; i++) assert.ok(markdown.includes(`## ${i}.`));
+  assert.equal(bundle.identity.title, 'US Section 45Q policy-record context');
+  assert.equal(
+    buildPolicyContext(db, 'us-section-45q', 'zh').identity.title,
+    '美国45Q政策记录上下文'
+  );
   db.close();
 });
 
@@ -235,7 +243,7 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
     const index = JSON.parse(
       fs.readFileSync(path.join(outputDir, 'index.json'))
     );
-    assert.equal(index.count, 6);
+    assert.equal(index.count, 12);
     for (const entry of index.records) {
       const json = fs.readFileSync(path.join(outputDir, entry.json));
       assert.equal(

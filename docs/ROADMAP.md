@@ -1,6 +1,6 @@
 # CCUS Policy Hub — Active Roadmap
 
-> Last reviewed: 2026-11-17. This is the single active task queue. Product scope, architectural responsibilities and stop rules are defined in [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md).
+> Last reviewed: 2026-11-19. This is the single active task queue. Product scope, architectural responsibilities and stop rules are defined in [PRODUCT_BOUNDARIES.md](PRODUCT_BOUNDARIES.md).
 
 ## Goal and baseline
 
@@ -36,11 +36,11 @@ Passing CI on a feature branch is not proof of public release. Product boundary 
 - **Done:** #104 and #114 demonstrate concrete 45Q/UK-law/GCCSI specimens with evidence identities, format-specific locators, licensing and review scope; independent consumers (`evidence:consume`, `catalog:consume`) resolve approved references to immutable version/hash/locator and surface draft/restricted/currentness gaps. For #106 each policy's source readiness remains visible; previously verified evidence regressions fail validation, not-yet-reviewed legacy records remain known backlog.
 - **Stop:** A single historical example and three-record catalog prove the mechanism, not readiness of 130 policies. Do **not** copy licensed/private Drive PDFs into public Git or publish large text without permission. No automatic eligibility, bulk condition cards, generic crawler or unapproved SQLite migration. Prefer versioned Git evidence files (when redistributable) + existing SQLite records; no duplicate BLOB full text.
 
-## P3 — Demonstrate limited cross-jurisdiction reuse
+## P3 — Demonstrate limited cross-jurisdiction reuse (Human Snapshot Review Signed Off)
 
 - **Input:** P2 evidence contract and current governance-comparison methodology.
-- **Work:** Apply the same evidence and projection contract to no more than two or three important policy instruments from different jurisdictions.
-- **Done:** New records retain source, version, caveats and citation semantics without creating a second truth source or special-case answer workflow.
+- **Work:** Apply the same generalized extractor registry (`EXTRACTORS`: `govinfo-usc-html-v1` + `official-html-v1`), multi-document evidence publication contract, and static bilingual context bundle contract to three non-US instruments (`ca-ccus-itc` / `ca-ccus-itc-2026`, `no-storage-framework` / `no-for-2014-1517`, `denmark-ccfd` / `dk-ens-ccs-funds`), emitting `12` context bundles (`6` targets × `2` languages) and `4` frozen evidence snapshots (`us-45q-usc-2024` reviewed by `liuh886` on `2026-11-17`, plus `ca-ccus-itc-2026`, `no-for-2014-1517`, and `dk-ens-ccs-funds` reviewed by `liuh886` on `2026-11-19` in [source-evidence-review-sheet-p3.md](source-evidence-review-sheet-p3.md)).
+- **Done:** New records retain source language, version/edition, caveats and citation semantics without creating a second truth source, SQLite mutation, or special-case answer workflow; `evidence:consume` reports `source_documents: 4`, `reviewed_documents: 4`, `draft_documents: 0`, `reviewed_anchors: 4`, `unreviewed_anchors: 0`, and `human_review_pending: false` (`source_currentness_verified: false`).
 - **Stop:** No universal legal graph, automated policy applicability engine or indiscriminate bulk ingestion.
 
 ## P4 — Sustain data quality and the existing research experience

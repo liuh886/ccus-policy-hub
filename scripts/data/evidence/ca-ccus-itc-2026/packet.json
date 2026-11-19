@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "ca-ccus-itc-2026",
+  "policy_id": "ca-ccus-itc",
+  "title": {
+    "en": "Income Tax Act (RSC 1985, c. 1 (5th Supp.)), Section 127.44 — CCUS Investment Tax Credit",
+    "zh": "加拿大《所得税法》第127.44条（CCUS投资税收抵免）"
+  },
+  "source_url": "https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html",
+  "source_language": "en",
+  "edition": "2026-10-29",
+  "fetched_at": "2026-11-17T16:22:14Z",
+  "published_at": null,
+  "source_current_through": "2026-10-29",
+  "raw_file": "source.html",
+  "raw_sha256": "81e39de5dcbbcad1d2b55d4de8eb19fafec40f0f48ce2c9a0c46d9fc367f7c16",
+  "normalized_sha256": "0f9061a579829ffb62b06ae0ac01a7a9a84a83503550d0abcae4d092ff04467c",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-19",
+    "method": "human"
+  },
+  "anchors": [
+    {
+      "id": "specified-percentage",
+      "locator": "Income Tax Act, RSC 1985, c. 1 (5th Supp.), s. 127.44(1) \"specified percentage\"",
+      "exact_quote": "specified percentage\nspecified percentage means, in respect of a\n(a) qualified carbon capture expenditure if incurred in respect of carbon capture\n(i) directly from ambient air\n(A) after 2021 and before 2036, 60%,\n(B) after 2035 and before 2041, 30%, or\n(C) after 2040, 0%, or\n(ii) other than directly from ambient air\n(A) after 2021 and before 2036, 50%,\n(B) after 2035 and before 2041, 25%, or\n(C) after 2040, 0%; and\n(b) qualified carbon transportation expenditure, qualified carbon storage expenditure or qualified carbon use expenditure if incurred\n(i) after 2021 and before 2036, 37 1/2%,\n(ii) after 2035 and before 2041, 18 3/4%, or\n(iii) after 2040, 0%. (pourcentage déterminé)",
+      "version_sha256": "81e39de5dcbbcad1d2b55d4de8eb19fafec40f0f48ce2c9a0c46d9fc367f7c16",
+      "review": {
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-19",
+        "method": "human"
+      }
+    }
+  ]
+}

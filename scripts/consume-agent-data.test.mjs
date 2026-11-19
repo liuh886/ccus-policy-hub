@@ -123,12 +123,18 @@ async function withPublication(callback) {
     await new Promise((resolve) => server.close(resolve));
   }
 }
-test('HTTP consumer validates six public contexts under a Pages base path without evidence data', async () => {
+test('HTTP consumer validates twelve public contexts under a Pages base path without evidence data', async () => {
   await withPublication(async ({ url, read }) => {
     const result = await consumeAgentData(url, read);
-    assert.equal(result.context_bundles, 6);
-    assert.equal(result.resolved_references, 48);
-    assert.deepEqual(result.policy_ids, ['us-45q-ira', 'us-obbba-45q-2025']);
+    assert.equal(result.context_bundles, 12);
+    assert.equal(result.resolved_references, 84);
+    assert.deepEqual(result.policy_ids, [
+      'ca-ccus-itc',
+      'denmark-ccfd',
+      'no-storage-framework',
+      'us-45q-ira',
+      'us-obbba-45q-2025',
+    ]);
     assert.equal(result.source_documents, undefined);
     assert.deepEqual(await verifyRelease(url, read, commit), {
       verified: true,
