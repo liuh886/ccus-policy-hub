@@ -32,12 +32,33 @@ export async function consumeEvidenceRecord(
     policyIds.has(record.policy_id),
     'Evidence policy is absent from policy records.'
   );
-  const raw = await read(new URL(record.raw_file, indexUrl));
-  const text = await read(new URL(record.normalized_file, indexUrl));
-  check(
-    hash(raw) === record.raw_sha256 && hash(text) === record.normalized_sha256,
-    'Evidence source hash mismatch.'
-  );
+  const storage = record.storage ?? 'git_inline';
+  let text = null;
+  if (storage === 'external_archive') {
+    check(
+      record.raw_file === null &&
+        typeof record.external_uri === 'string' &&
+        record.external_uri.startsWith('https://') &&
+        Number.isInteger(record.bytes) &&
+        record.bytes > 0,
+      'External archive record is missing required metadata.'
+    );
+    if (record.normalized_file !== null) {
+      text = await read(new URL(record.normalized_file, indexUrl));
+      check(
+        hash(text) === record.normalized_sha256,
+        'Evidence source hash mismatch.'
+      );
+    }
+  } else {
+    const raw = await read(new URL(record.raw_file, indexUrl));
+    text = await read(new URL(record.normalized_file, indexUrl));
+    check(
+      hash(raw) === record.raw_sha256 &&
+        hash(text) === record.normalized_sha256,
+      'Evidence source hash mismatch.'
+    );
+  }
   let reviewedAnchors = 0;
   let unreviewedAnchors = 0;
   for (const anchor of record.anchors) {
@@ -45,12 +66,14 @@ export async function consumeEvidenceRecord(
       anchor.version_sha256 === record.raw_sha256,
       'Anchor version mismatch.'
     );
-    check(
-      text.toString('utf8').slice(anchor.start_offset, anchor.end_offset) ===
-        anchor.exact_quote,
-      'Anchor quote mismatch.'
-    );
-    check(anchor.end_offset > anchor.start_offset, 'Invalid anchor range.');
+    if (text !== null) {
+      check(
+        text.toString('utf8').slice(anchor.start_offset, anchor.end_offset) ===
+          anchor.exact_quote,
+        'Anchor quote mismatch.'
+      );
+      check(anchor.end_offset > anchor.start_offset, 'Invalid anchor range.');
+    }
     if (anchor.usable_as_reviewed_reference) {
       check(
         record.review.status === 'verified' &&

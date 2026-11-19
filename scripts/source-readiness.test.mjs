@@ -520,4 +520,57 @@ test('unrelated DB mutations preserve (id, url) binding while URL edits quaranti
       '1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d'
     )
   );
+
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'readiness-baselines-'));
+  try {
+    const shaA = '11111111' + 'a'.repeat(56);
+    const shaB = '22222222' + 'b'.repeat(56);
+    const rows = [{ policy_id: 'one', url: 'https://example.org/law' }];
+    const rowsSha = sha256(Buffer.from(JSON.stringify(rows), 'utf8'));
+    fs.writeFileSync(
+      path.join(dir, 'inventory-url-baseline-11111111.json'),
+      JSON.stringify({
+        schema_version: '1.0.0',
+        observation_type: 'policy_inventory_url_baseline',
+        inventory_sha256: shaA,
+        policy_count: 1,
+        rows_sha256: rowsSha,
+        rows,
+      })
+    );
+    fs.writeFileSync(
+      path.join(dir, 'inventory-url-baseline-22222222.json'),
+      JSON.stringify({
+        schema_version: '1.0.0',
+        observation_type: 'policy_inventory_url_baseline',
+        inventory_sha256: shaB,
+        policy_count: 1,
+        rows_sha256: rowsSha,
+        rows,
+      })
+    );
+    fs.writeFileSync(path.join(dir, 'unrelated.json'), '{}');
+    const discovered = loadVerifiedBaselines(dir);
+    assert.equal(discovered.size, 2);
+    assert.ok(discovered.has(shaA) && discovered.has(shaB));
+
+    // Filename prefix mismatch fails closed
+    fs.writeFileSync(
+      path.join(dir, 'inventory-url-baseline-deadbeef.json'),
+      JSON.stringify({
+        schema_version: '1.0.0',
+        observation_type: 'policy_inventory_url_baseline',
+        inventory_sha256: 'cafe0000' + 'c'.repeat(56),
+        policy_count: 1,
+        rows_sha256: rowsSha,
+        rows,
+      })
+    );
+    assert.throws(
+      () => loadVerifiedBaselines(dir),
+      /Invalid inventory baseline/
+    );
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });

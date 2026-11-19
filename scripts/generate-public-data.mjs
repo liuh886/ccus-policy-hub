@@ -404,7 +404,7 @@ async function generatePublicData() {
         count: catalog.count,
         sha256: hash(discovery.get('catalog.json')),
         description:
-          'Three real frozen source candidates; metadata discovery is not reviewed knowledge',
+          'Frozen source discovery catalog across archived HTML snapshots and private PDF metadata; metadata discovery is not reviewed knowledge',
       },
       source_evidence: {
         file: `${BASE_URL}/data/evidence/index.json`,

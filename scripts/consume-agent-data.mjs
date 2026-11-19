@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
+export const DEFAULT_MAX_BYTES = 1024 * 1024;
 export const hash = (bytes) =>
   crypto.createHash('sha256').update(bytes).digest('hex');
 export class ConsumptionError extends Error {
@@ -18,27 +19,33 @@ export class ConsumptionError extends Error {
 export function check(ok, message, code = 'CONTRACT_VIOLATION') {
   if (!ok) throw new ConsumptionError(code, message);
 }
-export function publicClient(readBytes) {
+export function publicClient(readBytes, { maxBytes = DEFAULT_MAX_BYTES } = {}) {
   const cache = new Map(),
     validators = new Map();
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
-  const read = async (value) => {
+  const read = async (value, { maxBytes: overrideMaxBytes } = {}) => {
+    const budget = overrideMaxBytes ?? maxBytes;
     const url = String(value);
-    if (!cache.has(url))
-      cache.set(
-        url,
-        Promise.resolve(readBytes(url)).then((bytes) => {
-          check(
-            bytes.length <= 1024 * 1024,
-            'Resource exceeds the 1 MiB consumer budget.'
-          );
-          return Buffer.from(bytes);
-        })
-      );
-    return cache.get(url);
+    if (!cache.has(url)) {
+      const pending = Promise.resolve(readBytes(url, { maxBytes: budget }))
+        .then((bytes) => Buffer.from(bytes))
+        .catch((error) => {
+          cache.delete(url);
+          throw error;
+        });
+      cache.set(url, pending);
+    }
+    const buf = await cache.get(url);
+    check(
+      buf.length <= budget,
+      `Resource exceeds the ${budget} byte consumer budget.`,
+      'RESOURCE_TOO_LARGE'
+    );
+    return buf;
   };
-  const json = async (url) => JSON.parse((await read(url)).toString('utf8'));
+  const json = async (url, options) =>
+    JSON.parse((await read(url, options)).toString('utf8'));
   const validate = async (url, value) => {
     if (!validators.has(String(url)))
       validators.set(String(url), ajv.compile(await json(url)));
@@ -152,7 +159,7 @@ export function parseConsumerArgs(args) {
 
 export function httpReader(
   manifestUrl,
-  { timeoutMs = 15000, maxBytes = 1024 * 1024 } = {}
+  { timeoutMs = 15000, maxBytes = DEFAULT_MAX_BYTES } = {}
 ) {
   const manifest = new URL(manifestUrl);
   check(
@@ -163,7 +170,8 @@ export function httpReader(
     'INVALID_ARGUMENT'
   );
   const base = new URL('../', manifest);
-  return async (value) => {
+  return async (value, { maxBytes: overrideMaxBytes } = {}) => {
+    const budget = overrideMaxBytes ?? maxBytes;
     const url = new URL(value);
     check(
       url.origin === base.origin &&
@@ -196,7 +204,7 @@ export function httpReader(
         'CONTENT_TYPE'
       );
     check(
-      Number(response.headers.get('content-length') || 0) <= maxBytes,
+      Number(response.headers.get('content-length') || 0) <= budget,
       'HTTP resource exceeds the byte budget.',
       'RESOURCE_TOO_LARGE'
     );
@@ -204,7 +212,7 @@ export function httpReader(
     let size = 0;
     for await (const chunk of response.body) {
       size += chunk.length;
-      if (size > maxBytes)
+      if (size > budget)
         throw new ConsumptionError(
           'RESOURCE_TOO_LARGE',
           'HTTP resource exceeds the byte budget.'

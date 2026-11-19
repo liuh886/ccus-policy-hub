@@ -5,13 +5,11 @@ export const sha256 = (bytes) =>
 
 export function parseVerifiedBaseline(
   rawText,
-  { expectedInventorySha, expectedFileSha }
+  { expectedInventorySha, expectedFileSha } = {}
 ) {
   const normalizedText = rawText.replace(/\r\n/g, '\n');
-  if (
-    expectedFileSha &&
-    sha256(Buffer.from(normalizedText, 'utf8')) !== expectedFileSha
-  )
+  const actualFileSha = sha256(Buffer.from(normalizedText, 'utf8'));
+  if (expectedFileSha && actualFileSha !== expectedFileSha)
     throw new Error('Inventory URL baseline file SHA-256 mismatch.');
   const doc = JSON.parse(normalizedText);
   if (
@@ -32,7 +30,7 @@ export function parseVerifiedBaseline(
   return {
     inventory_sha256: doc.inventory_sha256,
     rows_sha256: doc.rows_sha256,
-    file_sha256: expectedFileSha || null,
+    file_sha256: actualFileSha,
     policy_count: urlsById.size,
     urlsById,
   };

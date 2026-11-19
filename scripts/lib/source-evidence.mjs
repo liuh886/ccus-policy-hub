@@ -203,6 +203,7 @@ const extractorVersionSchema = z.enum(Object.keys(EXTRACTORS));
 export const evidencePacketSchema = z
   .object({
     schema_version: z.literal('1.0.0'),
+    storage: z.enum(['git_inline', 'external_archive']).optional(),
     document_id: id,
     policy_id: id,
     title: z.object({ en: z.string().min(1), zh: z.string().min(1) }).strict(),
@@ -221,7 +222,16 @@ export const evidencePacketSchema = z
     fetched_at: z.string().datetime(),
     published_at: date.nullable(),
     source_current_through: date.nullable(),
-    raw_file: z.literal('source.html'),
+    external_uri: z
+      .string()
+      .url()
+      .refine(
+        (v) => v.startsWith('https://'),
+        'External archive URI must use HTTPS.'
+      )
+      .optional(),
+    bytes: z.number().int().positive().optional(),
+    raw_file: z.literal('source.html').nullable().optional(),
     raw_sha256: sha,
     normalized_sha256: sha,
     extractor_version: extractorVersionSchema,
@@ -234,6 +244,8 @@ export const evidencePacketSchema = z
             locator: z.string().min(1),
             exact_quote: z.string().min(1),
             version_sha256: sha,
+            start_offset: z.number().int().nonnegative().nullable().optional(),
+            end_offset: z.number().int().positive().nullable().optional(),
             review,
           })
           .strict()
@@ -242,6 +254,30 @@ export const evidencePacketSchema = z
   })
   .strict()
   .superRefine((val, ctx) => {
+    const storage = val.storage ?? 'git_inline';
+    if (storage === 'git_inline' && val.raw_file !== 'source.html') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['raw_file'],
+        message: 'git_inline evidence requires raw_file to be "source.html".',
+      });
+    }
+    if (storage === 'external_archive') {
+      if (!val.external_uri) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['external_uri'],
+          message: 'external_archive evidence requires an HTTPS external_uri.',
+        });
+      }
+      if (typeof val.bytes !== 'number') {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['bytes'],
+          message: 'external_archive evidence requires positive integer bytes.',
+        });
+      }
+    }
     if (val.extractor_version === 'govinfo-usc-html-v1') {
       if (!GOVINFO_URL_RE.test(val.source_url))
         ctx.addIssue({
@@ -281,23 +317,66 @@ export function normalizeOfficialHtml(
 
 export function inspectEvidence(
   input,
-  raw,
-  { observedRaw = raw, extractorVersion } = {}
+  raw = null,
+  { observedRaw, extractorVersion, normalizedText } = {}
 ) {
   const packet = evidencePacketSchema.parse(input);
-  if (digest(raw) !== packet.raw_sha256)
-    throw new EvidenceError(
-      'RAW_HASH_MISMATCH',
-      'Stored bytes do not match the frozen raw hash.'
-    );
-  const text = normalizeOfficialHtml(raw, packet.extractor_version);
-  if (digest(text) !== packet.normalized_sha256)
-    throw new EvidenceError(
-      'TEXT_HASH_MISMATCH',
-      'Normalized text differs from the frozen extraction.'
-    );
+  const storage = packet.storage ?? 'git_inline';
+  let text = null;
+  if (storage === 'git_inline') {
+    if (raw == null)
+      throw new EvidenceError(
+        'MISSING_RAW_SOURCE',
+        'git_inline evidence requires source.html bytes.'
+      );
+    if (digest(raw) !== packet.raw_sha256)
+      throw new EvidenceError(
+        'RAW_HASH_MISMATCH',
+        'Stored bytes do not match the frozen raw hash.'
+      );
+    text = normalizeOfficialHtml(raw, packet.extractor_version);
+    if (digest(text) !== packet.normalized_sha256)
+      throw new EvidenceError(
+        'TEXT_HASH_MISMATCH',
+        'Normalized text differs from the frozen extraction.'
+      );
+  } else {
+    if (raw != null) {
+      if (raw.length !== packet.bytes)
+        throw new EvidenceError(
+          'BYTES_MISMATCH',
+          'Stored bytes do not match the declared external archive byte count.'
+        );
+      if (digest(raw) !== packet.raw_sha256)
+        throw new EvidenceError(
+          'RAW_HASH_MISMATCH',
+          'Stored bytes do not match the frozen raw hash.'
+        );
+      text = normalizeOfficialHtml(raw, packet.extractor_version);
+      if (digest(text) !== packet.normalized_sha256)
+        throw new EvidenceError(
+          'TEXT_HASH_MISMATCH',
+          'Normalized text differs from the frozen extraction.'
+        );
+    } else if (normalizedText != null) {
+      text =
+        typeof normalizedText === 'string'
+          ? normalizedText
+          : Buffer.from(normalizedText).toString('utf8');
+      if (digest(text) !== packet.normalized_sha256)
+        throw new EvidenceError(
+          'TEXT_HASH_MISMATCH',
+          'Normalized text differs from the frozen extraction.'
+        );
+    }
+  }
   const ids = new Set();
-  const changed = digest(observedRaw) !== packet.raw_sha256;
+  const changed =
+    observedRaw !== undefined
+      ? digest(observedRaw) !== packet.raw_sha256
+      : raw != null
+        ? digest(raw) !== packet.raw_sha256
+        : false;
   const effectiveExtractor = extractorVersion ?? packet.extractor_version;
   const parserChanged = effectiveExtractor !== packet.extractor_version;
   const anchors = packet.anchors.map((anchor) => {
@@ -309,12 +388,17 @@ export function inspectEvidence(
         'ANCHOR_VERSION_MISMATCH',
         'Anchor references another source version.'
       );
-    const start = text.indexOf(anchor.exact_quote);
-    if (start < 0 || text.indexOf(anchor.exact_quote, start + 1) >= 0)
-      throw new EvidenceError(
-        'ANCHOR_NOT_UNIQUE',
-        'Each exact quote must resolve once in the frozen text.'
-      );
+    let start = anchor.start_offset ?? null;
+    let end = anchor.end_offset ?? null;
+    if (text !== null) {
+      start = text.indexOf(anchor.exact_quote);
+      if (start < 0 || text.indexOf(anchor.exact_quote, start + 1) >= 0)
+        throw new EvidenceError(
+          'ANCHOR_NOT_UNIQUE',
+          'Each exact quote must resolve once in the frozen text.'
+        );
+      end = start + anchor.exact_quote.length;
+    }
     const state = changed
       ? 'source_changed'
       : parserChanged
@@ -326,14 +410,18 @@ export function inspectEvidence(
     return {
       ...anchor,
       start_offset: start,
-      end_offset: start + anchor.exact_quote.length,
+      end_offset: end,
       offset_unit: 'utf16_code_units',
       state,
       usable_as_reviewed_reference: state === 'verified',
     };
   });
-  EXTRACTORS[packet.extractor_version].validateMetadata?.(packet, raw, text);
+  if (raw != null && text !== null)
+    EXTRACTORS[packet.extractor_version].validateMetadata?.(packet, raw, text);
   return {
+    storage,
+    external_uri: packet.external_uri ?? null,
+    bytes: packet.bytes ?? (raw ? raw.length : null),
     document_id: packet.document_id,
     policy_id: packet.policy_id,
     source_language: packet.source_language,

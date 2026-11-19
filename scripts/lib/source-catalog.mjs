@@ -38,7 +38,7 @@ export const catalogSchema = {
         title_translation_status: { const: 'draft' },
         publisher: text,
         source_kind: { enum: ['legislation', 'secondary_report'] },
-        language: { const: 'en' },
+        language: { type: 'string', pattern: '^[a-z]{2}(?:-[a-zA-Z0-9]+)?$' },
         edition: nullableText,
         source_url: { type: 'string', format: 'uri', pattern: '^https://' },
         raw_sha256: digest,
@@ -93,23 +93,31 @@ export const catalogSchema = {
   }),
 };
 
+export function deriveCatalogPublisher(source) {
+  if (typeof source.publisher === 'string' && source.publisher.trim()) {
+    return source.publisher.trim();
+  }
+  const hostname = new URL(source.source_url).hostname.toLowerCase();
+  if (hostname === 'govinfo.gov' || hostname.endsWith('.govinfo.gov')) {
+    return 'United States Government Publishing Office / govinfo';
+  }
+  return hostname.replace(/^www\./, '');
+}
+
 export function catalogFiles(db, evidenceOutputs, dbSha) {
   const evidenceIndex = JSON.parse(evidenceOutputs.get('index.json'));
-  const entry = evidenceIndex.records.find(
-    (r) => r.document_id === 'us-45q-usc-2024'
-  );
-  if (!entry) throw new Error('Selected historical evidence is absent.');
-  const source = JSON.parse(evidenceOutputs.get(entry.file));
-  const reviewPending =
-    source.review.status !== 'verified' ||
-    source.anchors.some((a) => a.review.status !== 'verified');
-  const records = [
-    {
+  const records = [];
+  for (const entry of evidenceIndex.records) {
+    const source = JSON.parse(evidenceOutputs.get(entry.file));
+    const reviewPending =
+      source.review.status !== 'verified' ||
+      source.anchors.some((a) => a.review.status !== 'verified');
+    records.push({
       document_id: source.document_id,
       title: source.title,
       title_translation_status: 'draft',
-      publisher: 'United States Government Publishing Office / govinfo',
-      source_kind: 'legislation',
+      publisher: deriveCatalogPublisher(source),
+      source_kind: source.source_kind ?? 'legislation',
       language: source.source_language,
       edition: source.edition,
       source_url: source.source_url,
@@ -147,9 +155,10 @@ export function catalogFiles(db, evidenceOutputs, dbSha) {
         ...(reviewPending ? ['IDENTITY_AND_LOCATOR_REVIEW_PENDING'] : []),
         'CURRENTNESS_NOT_VERIFIED',
         'CLAIM_SUPPORT_NOT_REVIEWED',
+        ...(source.edition === null ? ['EDITION_UNKNOWN'] : []),
       ],
-    },
-  ];
+    });
+  }
   const capturedBytes = fs.readFileSync(
     path.join(root, 'scripts/data/discovery/captured-pdfs.json')
   );
@@ -240,7 +249,7 @@ export function catalogFiles(db, evidenceOutputs, dbSha) {
     ['catalog.schema.json', JSON.stringify(catalogSchema, null, 2) + '\n'],
     [
       'README.md',
-      '# Source discovery catalog\n\nGenerated metadata for three frozen source candidates. Original PDF bytes remain private.\n\n' +
+      '# Source discovery catalog\n\nGenerated metadata for archived HTML evidence snapshots and captured private PDF metadata. Original PDF bytes remain private.\n\n' +
         catalog.records
           .map(
             (r) =>

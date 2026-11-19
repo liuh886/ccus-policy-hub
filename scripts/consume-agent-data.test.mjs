@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   consumeAgentData,
   httpReader,
+  publicClient,
   verifyRelease,
   parseConsumerArgs,
   hash,
@@ -229,4 +230,37 @@ test('transport selection is explicit and release fingerprints are deterministic
     releaseMetadata(commit, Buffer.from('same')).manifest_sha256,
     releaseMetadata(commit, Buffer.from('different')).manifest_sha256
   );
+});
+
+test('layered byte budgets reject >1 MiB manifests/bundles by default while allowing opted-in large dataset fetches', async () => {
+  await withPublication(async ({ url, read, changes, base }) => {
+    const oversizedCorpus = Buffer.from(
+      JSON.stringify({
+        count: 1,
+        records: [{ id: 'padded', payload: 'x'.repeat(1100 * 1024) }],
+      })
+    );
+    changes.set('data/policies.json', { bytes: oversizedCorpus });
+    const client = publicClient(read);
+    await assert.rejects(client.json(`${base}/data/policies.json`), {
+      code: 'RESOURCE_TOO_LARGE',
+    });
+    const parsed = await client.json(`${base}/data/policies.json`, {
+      maxBytes: 16 * 1024 * 1024,
+    });
+    assert.equal(parsed.count, 1);
+
+    // Oversized manifest or bundle still fails default 1 MiB budget
+    changes.set('data/manifest.json', {
+      bytes: Buffer.from(
+        JSON.stringify({
+          ...JSON.parse(diskManifest),
+          padding: 'x'.repeat(1100 * 1024),
+        })
+      ),
+    });
+    await assert.rejects(consumeAgentData(url, read), {
+      code: 'RESOURCE_TOO_LARGE',
+    });
+  });
 });

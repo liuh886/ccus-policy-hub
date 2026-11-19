@@ -6,8 +6,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import initSqlJs from 'sql.js';
 import {
+  CONTEXT_TARGETS,
   buildPolicyContext,
   contextBundleSchema,
+  loadContextTargets,
   renderContextMarkdown,
   MAX_RELATIONSHIPS,
 } from './lib/policy-context.mjs';
@@ -276,6 +278,82 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
     );
   } finally {
     db.close();
+    removeTestDirectory(dir);
+  }
+});
+
+test('context target registry validates declarative JSON targets and rejects invalid or duplicate entries', () => {
+  assert.equal(CONTEXT_TARGETS.length, 6);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-context-reg-'));
+  try {
+    const customPath = path.join(dir, 'targets.json');
+    fs.writeFileSync(
+      customPath,
+      JSON.stringify({
+        schema_version: '1.0.0',
+        targets: [
+          {
+            id: 'custom-target',
+            kind: 'policy',
+            policy_ids: ['ca-ccus-itc'],
+          },
+        ],
+      })
+    );
+    const customTargets = loadContextTargets(customPath);
+    assert.equal(customTargets.length, 1);
+    const db = fixture();
+    try {
+      const bundle = buildPolicyContext(db, 'custom-target', 'en', {
+        targets: customTargets,
+      });
+      assert.equal(bundle.id, 'custom-target');
+      assert.equal(bundle.identity.records[0].policy_id, 'ca-ccus-itc');
+    } finally {
+      db.close();
+    }
+
+    for (const bad of [
+      {
+        schema_version: '1.0.0',
+        targets: [
+          { id: 'dup', kind: 'policy', policy_ids: ['us-45q-ira'] },
+          { id: 'dup', kind: 'policy', policy_ids: ['ca-ccus-itc'] },
+        ],
+      },
+      {
+        schema_version: '1.0.0',
+        targets: [
+          { id: '../escape', kind: 'policy', policy_ids: ['us-45q-ira'] },
+        ],
+      },
+      {
+        schema_version: '1.0.0',
+        targets: [
+          {
+            id: 'family-no-title',
+            kind: 'policy_family',
+            policy_ids: ['us-45q-ira'],
+          },
+        ],
+      },
+      {
+        schema_version: '1.0.0',
+        targets: [
+          {
+            id: 'policy-two-ids',
+            kind: 'policy',
+            policy_ids: ['us-45q-ira', 'ca-ccus-itc'],
+          },
+        ],
+      },
+    ]) {
+      fs.writeFileSync(customPath, JSON.stringify(bad));
+      assert.throws(() => loadContextTargets(customPath), {
+        code: 'INVALID_TARGETS_REGISTRY',
+      });
+    }
+  } finally {
     removeTestDirectory(dir);
   }
 });

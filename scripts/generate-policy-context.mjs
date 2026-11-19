@@ -16,12 +16,12 @@ const DEFAULT_DB = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
 const DEFAULT_OUTPUT = path.join(ROOT, 'public/data/context');
 const sha256 = (text) => crypto.createHash('sha256').update(text).digest('hex');
 
-export function contextFiles(db) {
+export function contextFiles(db, { targets = CONTEXT_TARGETS } = {}) {
   const files = new Map();
   const entries = [];
-  for (const target of CONTEXT_TARGETS)
+  for (const target of targets)
     for (const lang of ['en', 'zh']) {
-      const bundle = buildPolicyContext(db, target.id, lang);
+      const bundle = buildPolicyContext(db, target.id, lang, { targets });
       const json = JSON.stringify(bundle, null, 2) + '\n';
       const markdown = renderContextMarkdown(bundle);
       const jsonPath = `policies/${target.id}.${lang}.json`;
@@ -85,18 +85,19 @@ export async function generatePolicyContexts({
   dbPath = DEFAULT_DB,
   outputDir = DEFAULT_OUTPUT,
   check = false,
+  targets = CONTEXT_TARGETS,
 } = {}) {
   const SQL = await initSqlJs();
   const db = new SQL.Database(new Uint8Array(fs.readFileSync(dbPath)));
   try {
-    const files = contextFiles(db);
+    const files = contextFiles(db, { targets });
     const mismatches = publishContextFiles(files, outputDir, { check });
     if (mismatches.length)
       throw new ContextError(
         'CONTEXT_DRIFT',
         `Generated context files differ: ${mismatches.join(', ')}`
       );
-    return { bundles: CONTEXT_TARGETS.length * 2, files: files.size, check };
+    return { bundles: targets.length * 2, files: files.size, check };
   } finally {
     db.close();
   }
