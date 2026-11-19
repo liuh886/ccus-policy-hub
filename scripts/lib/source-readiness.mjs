@@ -454,7 +454,9 @@ export function buildReadiness({
           local_original_integrity: 'not_checked',
           content_identity: 'not_reviewed',
         },
-        documents: docs.map(({ regression, ...document }) => document),
+        documents: docs.map(
+          ({ regression: _regression, ...document }) => document
+        ),
         evidence_level: 'record_summary',
         currentness: 'unknown',
         priority,

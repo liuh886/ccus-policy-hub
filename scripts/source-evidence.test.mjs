@@ -12,6 +12,8 @@ import {
   normalizeOfficialHtml,
 } from './lib/source-evidence.mjs';
 import {
+  DEFAULT_EVIDENCE_ROOT,
+  inspectAllEvidence,
   loadEvidencePacket,
   parseEvidenceArgs,
 } from './inspect-source-evidence.mjs';
@@ -284,8 +286,68 @@ test('CLI rejects migration, write, network and incomplete options', () => {
     ['--write'],
     ['--fetch'],
     ['--file'],
+    ['--all', '--file', 'packet.json'],
+    ['--all', '--observed-file', 'raw.html'],
+    ['--evidence-root', 'scripts/data/evidence'],
+    ['--observed-file', 'raw.html'],
+    ['--all', '--all'],
+    [],
   ])
     assert.throws(() => parseEvidenceArgs(args), { code: 'INVALID_ARGUMENT' });
+  assert.deepEqual(parseEvidenceArgs(['--all']), { all: true });
+});
+
+test('inspectAllEvidence inspects all frozen packets deterministically and fails closed on regressions', () => {
+  const summary = inspectAllEvidence(DEFAULT_EVIDENCE_ROOT);
+  assert.equal(summary.count, 4);
+  assert.equal(summary.requires_review_count, 0);
+  assert.deepEqual(
+    summary.packets.map((p) => p.document_id),
+    [
+      'ca-ccus-itc-2026',
+      'dk-ens-ccs-funds',
+      'no-for-2014-1517',
+      'us-45q-usc-2024',
+    ]
+  );
+  assert.ok(summary.packets.every((p) => p.normalized_characters > 0));
+
+  const emptyDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), 'ccus-evidence-empty-')
+  );
+  try {
+    assert.throws(() => inspectAllEvidence(emptyDir), {
+      code: 'EVIDENCE_NOT_FOUND',
+    });
+    assert.throws(
+      () => inspectAllEvidence(path.join(emptyDir, 'missing-subdir')),
+      { code: 'EVIDENCE_NOT_FOUND' }
+    );
+
+    const { input, raw } = load();
+    const dupA = path.join(emptyDir, 'a');
+    const dupB = path.join(emptyDir, 'b');
+    fs.mkdirSync(dupA);
+    fs.mkdirSync(dupB);
+    fs.writeFileSync(path.join(dupA, 'packet.json'), JSON.stringify(input));
+    fs.writeFileSync(path.join(dupA, 'source.html'), raw);
+    fs.writeFileSync(path.join(dupB, 'packet.json'), JSON.stringify(input));
+    fs.writeFileSync(path.join(dupB, 'source.html'), raw);
+    assert.throws(() => inspectAllEvidence(emptyDir), {
+      code: 'DUPLICATE_DOCUMENT',
+    });
+
+    fs.rmSync(dupB, { recursive: true, force: true });
+    fs.writeFileSync(
+      path.join(dupA, 'source.html'),
+      Buffer.concat([raw, Buffer.from('tamper')])
+    );
+    assert.throws(() => inspectAllEvidence(emptyDir), {
+      code: 'RAW_HASH_MISMATCH',
+    });
+  } finally {
+    fs.rmSync(emptyDir, { recursive: true, force: true });
+  }
 });
 
 test('external_archive seam validates without source.html, skips *.html.txt output, and rejects missing external_uri', async () => {

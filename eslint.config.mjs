@@ -55,6 +55,14 @@ export default [
       // no-undef 曾缺席，导致 scripts/ 里删掉一个函数后要到运行时才炸
       // （findDivEnd 被误删，eslint 全绿，运行时 ReferenceError）。
       'no-undef': 'error',
+      'no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   // src/lib 下的模块运行在浏览器里（DOM 操作），需要浏览器全局。

@@ -927,22 +927,6 @@ function attr(s) {
   return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 }
 
-// 定位与 from 处 div 配对的结束位置（返回 </div> 之后的下标）。
-// 用于"某附录是否只包含一张表卡片"这类结构判定，必须按嵌套深度配对而不是
-// 非贪婪正则——卡片内部还有多层 div。
-function findDivEnd(str, from) {
-  let depth = 0;
-  for (let i = from; i < str.length; i++) {
-    if (str.startsWith('<div', i) && !/[a-zA-Z-]/.test(str[i + 4] || ''))
-      depth++;
-    else if (str.startsWith('</div>', i)) {
-      depth--;
-      if (depth === 0) return i + 6;
-    }
-  }
-  return -1;
-}
-
 // 附录识别：以 TeX 中 \appendix 之后的 \section 数量为准，把正文末尾同样数量的顶层章节
 // 映射为附录 A/B/C…，脚本内不再硬编码章节号与标题。
 const appendixSectionLetters = (() => {

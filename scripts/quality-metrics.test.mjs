@@ -4,7 +4,7 @@
  * Tests for quality metrics generation and trust layer features.
  */
 
-import { describe, it, before, after } from 'node:test';
+import { describe, it, before } from 'node:test';
 import assert from 'node:assert';
 import fs from 'fs';
 import path from 'path';
