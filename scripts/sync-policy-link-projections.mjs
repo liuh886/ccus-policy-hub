@@ -206,11 +206,17 @@ function inspectPublicJson(expectedLinks, { write = false } = {}) {
   };
 }
 
-export async function syncPolicyLinkProjections({ write = false } = {}) {
-  if (!fs.existsSync(DB_PATH))
+export async function syncPolicyLinkProjections({
+  db: injectedDb = null,
+  write = false,
+} = {}) {
+  if (!injectedDb && !fs.existsSync(DB_PATH))
     throw new Error(`Database not found: ${DB_PATH}`);
-  const SQL = await initSqlJs();
-  const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
+  let db = injectedDb;
+  if (!db) {
+    const SQL = await initSqlJs();
+    db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
+  }
   try {
     assertNoOrphanLinks(db);
     const expectedLinks = loadExpectedLinks(db);
@@ -226,7 +232,7 @@ export async function syncPolicyLinkProjections({ write = false } = {}) {
       pass: write || mismatches.length === 0,
     };
   } finally {
-    db.close();
+    if (!injectedDb) db.close();
   }
 }
 

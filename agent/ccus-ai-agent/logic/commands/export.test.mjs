@@ -9,8 +9,12 @@ import path from 'node:path';
 import test from 'node:test';
 import matter from 'gray-matter';
 import initSqlJs from 'sql.js';
-import { REVIEWER_PLACEHOLDER } from '../../../../scripts/lib/i18n-translate.mjs';
+import {
+  REVIEWER_PLACEHOLDER,
+  createTranslator,
+} from '../../../../scripts/lib/i18n-translate.mjs';
 import { SCHEMA_PATH, SqlJsDatabase } from '../db.mjs';
+import { projectFacilityForLang } from '../facility-projector.mjs';
 import { dbExportMd } from './export.mjs';
 
 function makeDb(SQL) {
@@ -173,6 +177,64 @@ test('exports facilities with sorted links and reviewer fallback', async () => {
     // Determinism lock: missing audit dates inherit the dataset as-of date
     // (MAX over fixtures = f1's 2026-03-01), never the wall-clock date.
     assert.equal(fallback.provenance.lastAuditDate, '2026-03-01');
+  } finally {
+    db.close();
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test('dbExportMd matches projectFacilityForLang on description fallback and sorted relations', async () => {
+  const SQL = await initSqlJs();
+  const db = makeDb(SQL);
+  db.run(
+    `INSERT INTO facilities (id, country, status, lat, lng, precision, provenance_author, provenance_last_audit_date) VALUES (?,?,?,?,?,?,?,?)`,
+    ['f3', 'Brazil', 'Operational', -22.9, -43.2, 'exact', 'IEA', '2026-05-01']
+  );
+  for (const lang of ['en', 'zh']) {
+    db.run(
+      `INSERT INTO facility_i18n (facility_id, lang, name, description, region, type, sector, operator) VALUES (?,?,?,?,?,?,?,?)`,
+      [
+        'f3',
+        lang,
+        'Same Name',
+        'Same Name',
+        'Coast',
+        'Capture',
+        'Power',
+        'OpCo',
+      ]
+    );
+  }
+  db.run(
+    `INSERT INTO facility_partners (facility_id, lang, order_index, partner) VALUES (?,?,?,?), (?,?,?,?)`,
+    ['f3', 'en', 0, 'Zeta', 'f3', 'en', 1, 'Alpha']
+  );
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'export-test-'));
+  try {
+    const dictPath = writeDict(tmp);
+    await dbExportMd(SQL, { db, contentRoot: tmp, dictPath });
+    const parsed = matter(
+      fs.readFileSync(path.join(tmp, 'facilities/en/f3.md'), 'utf8')
+    );
+    const dict = JSON.parse(fs.readFileSync(dictPath, 'utf8'));
+    const projected = projectFacilityForLang({
+      f: db.get('SELECT * FROM facilities WHERE id = ?', ['f3']),
+      i: db.get(
+        'SELECT * FROM facility_i18n WHERE facility_id = ? AND lang = ?',
+        ['f3', 'en']
+      ),
+      lang: 'en',
+      partners: ['Zeta', 'Alpha'],
+      links: [],
+      news: [],
+      relatedPolicies: [],
+      translate: createTranslator(dict),
+      datasetAsOf: '2026-05-01',
+    });
+    assert.deepEqual(parsed.data, projected.frontmatter);
+    assert.equal(parsed.content.trim(), projected.body);
+    assert.deepEqual(parsed.data.partners, ['Alpha', 'Zeta']);
+    assert.match(parsed.content, /### Project Overview/);
   } finally {
     db.close();
     fs.rmSync(tmp, { recursive: true, force: true });

@@ -1,21 +1,25 @@
 /**
  * Export commands: publish the SQLite SSOT to derived artifacts.
  *
- * Moved verbatim from `logic/manage.mjs` (behavior-preserving split) with
- * two mechanical substitutions:
- * - `__dirname` -> `LOGIC_DIR` (same directory, see `logic/db.mjs`);
- * - the local `translate` closure -> shared `createTranslator` from
- *   `scripts/lib/i18n-translate.mjs` (identical semantics, single contract).
+ * Uses shared `projectFacilityForLang` from `logic/facility-projector.mjs`
+ * (single canonical projector shared with `audit-facilities-parity.mjs`) and
+ * bulk Map preloading to avoid per-row N+1 SQLite queries.
  */
 
 import fs from 'fs';
 import path from 'path';
-import { resolveFacilityCoordinates } from '../../../../scripts/content-export-utils.mjs';
 import {
   REVIEWER_PLACEHOLDER,
   createTranslator,
 } from '../../../../scripts/lib/i18n-translate.mjs';
-import { LEGACY_I18N_PATH, LOGIC_DIR, loadDb } from '../db.mjs';
+import { LEGACY_I18N_PATH, LOGIC_DIR, getDatasetAsOf, loadDb } from '../db.mjs';
+import {
+  deepClean,
+  groupBy,
+  indexBy,
+  normalizeBody,
+  projectFacilityForLang,
+} from '../facility-projector.mjs';
 
 export async function dbExportMd(
   SQL,
@@ -38,62 +42,60 @@ export async function dbExportMd(
     );
   }
 
-  const deepClean = (obj) => {
-    if (Array.isArray(obj)) return obj.map(deepClean);
-    if (obj !== null && typeof obj === 'object') {
-      const n = {};
-      Object.keys(obj)
-        .sort()
-        .forEach((k) => {
-          const v = deepClean(obj[k]);
-          if (v !== undefined) n[k] = v;
-        });
-      return Object.keys(n).length > 0 ? n : undefined;
-    }
-    return obj === null ? undefined : obj;
-  };
-  const cleanStr = (s) => (s || '').replace(/\n/g, '\n').trim();
-
   const dict = JSON.parse(fs.readFileSync(dictPath, 'utf8'));
   const translate = createTranslator(dict);
   // Deterministic audit-date fallback: records without their own
   // provenance_last_audit_date inherit the dataset as-of date (MAX over all
   // audit dates), never the wall-clock export date. Export output must be a
   // pure function of the database file, so regeneration is byte-identical.
-  const datasetAsOf =
-    db.get(`SELECT MAX(d) AS m FROM (
-      SELECT provenance_last_audit_date AS d FROM policies
-      UNION ALL SELECT provenance_last_audit_date FROM facilities
-      UNION ALL SELECT provenance_last_audit_date FROM country_profiles
-    )`)?.m ?? null;
+  const datasetAsOf = getDatasetAsOf(db);
   const CONTENT_ROOT =
     contentRoot ?? path.join(LOGIC_DIR, '../../../src/content');
 
+  for (const entity of ['policies', 'facilities', 'countries']) {
+    for (const lang of ['en', 'zh']) {
+      fs.mkdirSync(path.join(CONTENT_ROOT, entity, lang), { recursive: true });
+    }
+  }
+
+  // Bulk-preload all relation tables once to avoid per-row N+1 SQLite queries.
+  const allPolicyFacilityLinks = db.all(
+    'SELECT policy_id, facility_id FROM policy_facility_links ORDER BY policy_id, facility_id'
+  );
+  const facilitiesByPolicy = groupBy(
+    allPolicyFacilityLinks,
+    (r) => r.policy_id
+  );
+  const policiesByFacility = groupBy(allPolicyFacilityLinks, (r) =>
+    String(r.facility_id)
+  );
+
+  const policyAnalysisByPolicy = groupBy(
+    db.all('SELECT * FROM policy_analysis'),
+    (r) => r.policy_id
+  );
+  const policyI18nMap = indexBy(
+    db.all('SELECT * FROM policy_i18n'),
+    (r) => `${r.policy_id}::${r.lang}`
+  );
+
   db.all('SELECT * FROM policies').forEach((p) => {
     const analysis = {};
-    db.all('SELECT * FROM policy_analysis WHERE policy_id=?', [p.id]).forEach(
-      (a) => {
-        analysis[a.dimension] = {
-          score: a.score,
-          label: a.label,
-          evidence: a.evidence,
-          citation: a.citation,
-          auditNote: a.audit_note,
-        };
-      }
+    for (const a of policyAnalysisByPolicy.get(p.id) ?? []) {
+      analysis[a.dimension] = {
+        score: a.score,
+        label: a.label,
+        evidence: a.evidence,
+        citation: a.citation,
+        auditNote: a.audit_note,
+      };
+    }
+    const relatedFacilities = (facilitiesByPolicy.get(p.id) ?? []).map(
+      (r) => r.facility_id
     );
-    const relatedFacilities = db
-      .all(
-        'SELECT facility_id FROM policy_facility_links WHERE policy_id = ? ORDER BY facility_id',
-        [p.id]
-      )
-      .map((r) => r.facility_id);
 
     ['en', 'zh'].forEach((lang) => {
-      const i = db.get(
-        'SELECT * FROM policy_i18n WHERE policy_id=? AND lang=?',
-        [p.id, lang]
-      );
+      const i = policyI18nMap.get(`${p.id}::${lang}`);
       if (!i) return;
       const fm = deepClean({
         id: p.id,
@@ -123,126 +125,80 @@ export async function dbExportMd(
           lastAuditDate: p.provenance_last_audit_date,
         },
       });
-      const dir = path.join(CONTENT_ROOT, 'policies', lang);
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(
-        path.join(dir, `${p.id}.md`),
-        `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(i.description)}\n`
+        path.join(CONTENT_ROOT, 'policies', lang, `${p.id}.md`),
+        `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${normalizeBody(i.description)}\n`
       );
     });
   });
+
+  const facilityI18nMap = indexBy(
+    db.all('SELECT * FROM facility_i18n'),
+    (r) => `${r.facility_id}::${r.lang}`
+  );
+  const facilityPartnersMap = groupBy(
+    db.all(
+      'SELECT facility_id, lang, partner FROM facility_partners ORDER BY facility_id, lang, order_index'
+    ),
+    (r) => `${r.facility_id}::${r.lang}`
+  );
+  const facilityLinksMap = groupBy(
+    db.all(
+      'SELECT facility_id, lang, link FROM facility_links ORDER BY facility_id, lang, order_index'
+    ),
+    (r) => `${r.facility_id}::${r.lang}`
+  );
+  const facilityNewsMap = groupBy(
+    db.all(
+      `SELECT facility_id, lang, url, title, publisher, published_date, tier
+       FROM facility_news ORDER BY facility_id, lang, order_index`
+    ),
+    (r) => `${r.facility_id}::${r.lang}`
+  );
 
   db.all('SELECT * FROM facilities').forEach((f) => {
-    const relatedPolicies = db
-      .all('SELECT policy_id FROM policy_facility_links WHERE facility_id=?', [
-        f.id,
-      ])
-      .map((r) => r.policy_id);
+    const facilityKey = String(f.id);
+    const relatedPolicies = (policiesByFacility.get(facilityKey) ?? []).map(
+      (r) => r.policy_id
+    );
     ['en', 'zh'].forEach((lang) => {
-      const i = db.get(
-        'SELECT * FROM facility_i18n WHERE facility_id=? AND lang=?',
-        [f.id, lang]
-      );
+      const i = facilityI18nMap.get(`${facilityKey}::${lang}`);
       if (!i) return;
-      const partners = db
-        .all(
-          'SELECT partner FROM facility_partners WHERE facility_id=? AND lang=? ORDER BY order_index',
-          [f.id, lang]
-        )
-        .map((r) => r.partner);
-      const links = db
-        .all(
-          'SELECT link FROM facility_links WHERE facility_id=? AND lang=? ORDER BY order_index',
-          [f.id, lang]
-        )
-        .map((r) => r.link);
-      // Curated, tier-ordered news/source list. Order is meaningful here
-      // (press releases first), so it is NOT sorted like `links`.
-      const news = db
-        .all(
-          `SELECT url, title, publisher, published_date, tier
-           FROM facility_news WHERE facility_id=? AND lang=? ORDER BY order_index`,
-          [f.id, lang]
-        )
-        .map((r) => ({
-          url: r.url,
-          title: r.title,
-          publisher: r.publisher,
-          date: r.published_date,
-          tier: r.tier,
-        }));
+      const partners = (
+        facilityPartnersMap.get(`${facilityKey}::${lang}`) ?? []
+      ).map((r) => r.partner);
+      const links = (facilityLinksMap.get(`${facilityKey}::${lang}`) ?? []).map(
+        (r) => r.link
+      );
+      const news = facilityNewsMap.get(`${facilityKey}::${lang}`) ?? [];
 
-      const displayCountry = translate(f.country, 'country', lang);
-      const displayStatus = translate(f.status, 'status', lang);
-
-      let description = i.description;
-      if (!description || description.trim() === i.name) {
-        if (lang === 'zh') {
-          description = `### 项目概览\n\n该项目位于 ${displayCountry}${i.region ? ` (${i.region})` : ''}，属于 ${i.sector || 'CCUS'} 领域。设施类型为 ${i.type || '捕集设施'}，当前状态为 ${displayStatus}。${i.hub ? `作为 ${i.hub} 枢纽的一部分，` : ''}${i.operator ? `由 ${i.operator} 负责运营。` : ''}`;
-        } else {
-          description = `### Project Overview\n\nThis project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''}, within the ${i.sector || 'CCUS'} sector. The facility is classified as ${i.type || 'Capture'} and is currently ${displayStatus}. ${i.hub ? `As part of the ${i.hub} hub, ` : ''}${i.operator ? `it is operated by ${i.operator}.` : ''}`;
-        }
-      }
-
-      const coordinates = resolveFacilityCoordinates({
-        country: f.country,
-        precision: f.precision || 'country',
-        lat: f.lat,
-        lng: f.lng,
-        defaultFallback: null,
-      });
-
-      const fm = deepClean({
-        id: f.id,
-        name: i.name,
+      const projected = projectFacilityForLang({
+        f,
+        i,
         lang,
-        country: displayCountry,
-        region: i.region,
-        type: i.type,
-        status: displayStatus,
-        announcedCapacityMin: f.announced_capacity_min,
-        announcedCapacityMax: f.announced_capacity_max,
-        announcedCapacityRaw: f.announced_capacity_raw,
-        estimatedCapacity: f.estimated_capacity,
-        coordinates,
-        precision: f.precision || 'country',
-        sector: i.sector,
-        fateOfCarbon: i.fate_of_carbon,
-        hub: i.hub,
-        operator: i.operator,
-        captureTechnology: i.capture_technology,
-        storageType: i.storage_type,
-        investmentScale: f.investment_scale,
-        phase: i.phase,
-        announcement: i.announcement,
-        fid: i.fid,
-        operation: i.operation,
-        suspensionDate: i.suspension_date,
-        relatedPolicies: relatedPolicies.sort(),
-        partners: partners.sort(),
-        links: links.sort(),
+        partners,
+        links,
         news,
-        provenance: {
-          author: f.provenance_author || 'IEA Ingestion',
-          reviewer: f.provenance_reviewer || REVIEWER_PLACEHOLDER,
-          lastAuditDate: f.provenance_last_audit_date || datasetAsOf,
-        },
+        relatedPolicies,
+        translate,
+        datasetAsOf,
       });
-      const dir = path.join(CONTENT_ROOT, 'facilities', lang);
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
       fs.writeFileSync(
-        path.join(dir, `${f.id}.md`),
-        `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(description)}\n`
+        path.join(CONTENT_ROOT, 'facilities', lang, `${f.id}.md`),
+        `---\n${JSON.stringify(projected.frontmatter, null, 2)}\n---\n\n${projected.body}\n`
       );
     });
   });
+
+  const countryI18nMap = indexBy(
+    db.all('SELECT * FROM country_i18n'),
+    (r) => `${r.country_id}::${r.lang}`
+  );
 
   db.all('SELECT * FROM country_profiles').forEach((c) => {
     ['en', 'zh'].forEach((lang) => {
-      const i = db.get(
-        'SELECT * FROM country_i18n WHERE country_id=? AND lang=?',
-        [c.id, lang]
-      );
+      const i = countryI18nMap.get(`${c.id}::${lang}`);
       if (!i) return;
       const fm = deepClean({
         id: c.id,
@@ -272,11 +228,14 @@ export async function dbExportMd(
           lastAuditDate: c.provenance_last_audit_date || datasetAsOf,
         },
       });
-      const dir = path.join(CONTENT_ROOT, 'countries', lang);
-      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(
-        path.join(dir, `${c.id.toLowerCase().replace(/ /g, '-')}.md`),
-        `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${cleanStr(i.summary)}\n`
+        path.join(
+          CONTENT_ROOT,
+          'countries',
+          lang,
+          `${c.id.toLowerCase().replace(/ /g, '-')}.md`
+        ),
+        `---\n${JSON.stringify(fm, null, 2)}\n---\n\n${normalizeBody(i.summary)}\n`
       );
     });
   });
@@ -288,8 +247,11 @@ export async function dbExportMd(
   console.log('EXPORT DONE.');
 }
 
-export async function dbExportI18n(SQL) {
-  const db = loadDb(SQL);
+export async function dbExportI18n(
+  SQL,
+  { db: injectedDb = null, dictPath = LEGACY_I18N_PATH } = {}
+) {
+  const db = injectedDb ?? loadDb(SQL);
   console.log('EXPORTING I18N DICTIONARY...');
 
   const dict = {
@@ -334,6 +296,6 @@ export async function dbExportI18n(SQL) {
       })
   );
 
-  fs.writeFileSync(LEGACY_I18N_PATH, JSON.stringify(dict, null, 2));
+  fs.writeFileSync(dictPath, JSON.stringify(dict, null, 2));
   console.log('EXPORT I18N DONE.');
 }

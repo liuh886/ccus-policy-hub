@@ -50,6 +50,53 @@ export function buildAuditMetadata({
   };
 }
 
+export function stampAuditMetadataOnDb(
+  db,
+  { date = new Date(), revision = process.env.GITHUB_SHA } = {}
+) {
+  const row =
+    typeof db.get === 'function'
+      ? db.get(
+          "SELECT value FROM db_meta WHERE key = 'last_audit_pass' LIMIT 1"
+        )
+      : (() => {
+          const res = db.exec(
+            "SELECT value FROM db_meta WHERE key = 'last_audit_pass' LIMIT 1"
+          );
+          const value = res[0]?.values?.[0]?.[0];
+          return value !== undefined ? { value } : null;
+        })();
+
+  if (row?.value !== 'true') {
+    throw new Error(
+      'Refusing to stamp audit metadata because last_audit_pass is not true.'
+    );
+  }
+
+  const metadata = buildAuditMetadata({ date, revision });
+  if (typeof db.run === 'function' && typeof db.get === 'function') {
+    for (const [key, value] of Object.entries(metadata)) {
+      db.run('INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)', [
+        key,
+        value,
+      ]);
+    }
+  } else {
+    const statement = db.prepare(
+      'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)'
+    );
+    try {
+      for (const [key, value] of Object.entries(metadata)) {
+        statement.run([key, value]);
+      }
+    } finally {
+      statement.free();
+    }
+  }
+
+  return metadata;
+}
+
 async function stampAuditMetadata() {
   if (!fs.existsSync(DB_PATH)) {
     throw new Error(`Database not found at: ${DB_PATH}`);
@@ -59,30 +106,14 @@ async function stampAuditMetadata() {
   try {
     const SQL = await initSqlJs();
     const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
-    const passResult = db.exec(
-      "SELECT value FROM db_meta WHERE key = 'last_audit_pass' LIMIT 1"
-    );
-    const lastAuditPassed = passResult[0]?.values?.[0]?.[0] === 'true';
-
-    if (!lastAuditPassed) {
+    let metadata;
+    let bytes;
+    try {
+      metadata = stampAuditMetadataOnDb(db);
+      bytes = db.export();
+    } finally {
       db.close();
-      throw new Error(
-        'Refusing to stamp audit metadata because last_audit_pass is not true.'
-      );
     }
-
-    const metadata = buildAuditMetadata();
-    const statement = db.prepare(
-      'INSERT OR REPLACE INTO db_meta (key, value) VALUES (?, ?)'
-    );
-
-    for (const [key, value] of Object.entries(metadata)) {
-      statement.run([key, value]);
-    }
-    statement.free();
-
-    const bytes = db.export();
-    db.close();
     atomicWriteDb(DB_PATH, bytes);
 
     console.log(`Audit metadata stamped: ${metadata.last_audit_date}`);

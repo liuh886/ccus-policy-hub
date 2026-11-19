@@ -8,41 +8,33 @@ import {
   isMeaningfulCoordinatePair,
   resolveFacilityCoordinates,
 } from '../../../scripts/content-export-utils.mjs';
+import { createTranslator } from '../../../scripts/lib/i18n-translate.mjs';
 import {
-  createTranslator,
-  REVIEWER_PLACEHOLDER,
-} from '../../../scripts/lib/i18n-translate.mjs';
+  DB_PATH,
+  LEGACY_I18N_PATH,
+  REPORTS_DIR,
+  getDatasetAsOf,
+  loadDb,
+} from './db.mjs';
+import {
+  groupBy,
+  indexBy,
+  normalizeBody,
+  projectFacilityForLang,
+} from './facility-projector.mjs';
+
+export { normalizeBody, projectFacilityForLang };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, '..', '..', '..');
-const DB_PATH = path.join(
-  REPO_ROOT,
-  'agent',
-  'ccus-ai-agent',
-  'db',
-  'ccus_master.sqlite'
-);
-const REPORT_DIR = path.join(
-  REPO_ROOT,
-  'agent',
-  'ccus-ai-agent',
-  'governance',
-  'reports'
-);
-const REPORT_JSON = path.join(REPORT_DIR, 'facilities_parity_report.json');
-const REPORT_MD = path.join(REPORT_DIR, 'facilities_parity_report.md');
-const REPAIR_JSON = path.join(REPORT_DIR, 'facilities_db_repair_from_md.json');
-const REPAIR_MD = path.join(REPORT_DIR, 'facilities_db_repair_from_md.md');
+const REPORT_JSON = path.join(REPORTS_DIR, 'facilities_parity_report.json');
+const REPORT_MD = path.join(REPORTS_DIR, 'facilities_parity_report.md');
+const REPAIR_JSON = path.join(REPORTS_DIR, 'facilities_db_repair_from_md.json');
+const REPAIR_MD = path.join(REPORTS_DIR, 'facilities_db_repair_from_md.md');
 const FACILITY_MD_DIR = path.join(REPO_ROOT, 'src', 'content', 'facilities');
 
 const CJK_RE = /[\u4e00-\u9fff]/;
 const FLOAT_EPSILON = 1e-9;
-
-export function normalizeBody(input) {
-  return String(input ?? '')
-    .replace(/\r\n/g, '\n')
-    .trim();
-}
 
 export function normalizeValueForCompare(value) {
   if (value === undefined || value === null) return '';
@@ -67,32 +59,6 @@ export function compareStringArrays(dbArr = [], mdArr = []) {
   const sameOrder =
     db.length === md.length && db.every((v, idx) => v === md[idx]);
   return { sameSet, sameOrder, db, md };
-}
-
-class SqlJsDatabase {
-  constructor(SQL, buffer) {
-    this.db = new SQL.Database(buffer);
-  }
-  all(sql, params = []) {
-    const stmt = this.db.prepare(sql);
-    stmt.bind(params);
-    const rows = [];
-    const cols = stmt.getColumnNames();
-    while (stmt.step()) {
-      const vals = stmt.get();
-      const row = {};
-      for (let i = 0; i < cols.length; i++) row[cols[i]] = vals[i];
-      rows.push(row);
-    }
-    stmt.free();
-    return rows;
-  }
-  get(sql, params = []) {
-    return this.all(sql, params)[0] ?? null;
-  }
-  close() {
-    this.db.close();
-  }
 }
 
 function ensureDir(dir) {
@@ -123,132 +89,6 @@ function loadFacilityMarkdown(lang) {
     });
   }
   return { map, duplicateIds };
-}
-
-function buildMaps(rows, keyFn) {
-  const map = new Map();
-  for (const row of rows) map.set(keyFn(row), row);
-  return map;
-}
-
-function buildArrayMap(rows, keyFn) {
-  const map = new Map();
-  for (const row of rows) {
-    const key = keyFn(row);
-    if (!map.has(key)) map.set(key, []);
-    map.get(key).push(row);
-  }
-  return map;
-}
-
-function fallbackFacilityDescription({
-  lang,
-  displayCountry,
-  displayStatus,
-  i,
-}) {
-  if (lang === 'zh') {
-    return `### 项目概览
-
-该项目位于 ${displayCountry}${i.region ? ` (${i.region})` : ''}，属于 ${i.sector || 'CCUS'} 领域。设施类型为 ${i.type || '捕集设施'}，当前状态为 ${displayStatus}。${i.hub ? `作为 ${i.hub} 枢纽的一部分，` : ''}${i.operator ? `由 ${i.operator} 负责运营。` : ''}`;
-  }
-  return `### Project Overview
-
-This project is located in ${displayCountry}${i.region ? ` (${i.region})` : ''}, within the ${i.sector || 'CCUS'} sector. The facility is classified as ${i.type || 'Capture'} and is currently ${displayStatus}. ${i.hub ? `As part of the ${i.hub} hub, ` : ''}${i.operator ? `it is operated by ${i.operator}.` : ''}`;
-}
-
-/**
- * Mirror the export pipeline's news shape post deep-clean: `url`/`tier` are
- * always present, optional fields are omitted when null.
- */
-function projectFacilityNews(news = []) {
-  return news.map((r) => {
-    const item = { url: r.url, tier: r.tier };
-    if (r.title !== null && r.title !== undefined) item.title = r.title;
-    if (r.publisher !== null && r.publisher !== undefined) {
-      item.publisher = r.publisher;
-    }
-    if (r.published_date !== null && r.published_date !== undefined) {
-      item.date = r.published_date;
-    }
-    return item;
-  });
-}
-
-export function projectFacilityForLang({
-  f,
-  i,
-  lang,
-  partners,
-  links,
-  news = [],
-  relatedPolicies,
-  translate = (key) => key,
-}) {
-  // zh frontmatter carries localized display values produced by the same
-  // translator as the export pipeline (see scripts/lib/i18n-translate.mjs);
-  // en frontmatter keeps canonical values.
-  const displayCountry = translate(f.country ?? '', 'country', lang) ?? '';
-  const displayStatus = translate(f.status ?? '', 'status', lang) ?? '';
-  const coordinates =
-    resolveFacilityCoordinates({
-      country: f.country,
-      precision: f.precision,
-      lat: f.lat,
-      lng: f.lng,
-      defaultFallback: null,
-    }) ?? undefined;
-  const description =
-    i.description && String(i.description).trim()
-      ? i.description
-      : fallbackFacilityDescription({
-          lang,
-          displayCountry,
-          displayStatus,
-          i,
-        });
-
-  return {
-    frontmatter: {
-      id: String(f.id),
-      name: i.name ?? '',
-      lang,
-      country: displayCountry ?? '',
-      region: i.region ?? '',
-      type: i.type ?? '',
-      status: displayStatus ?? '',
-      announcedCapacityMin: f.announced_capacity_min ?? 0,
-      announcedCapacityMax: f.announced_capacity_max ?? 0,
-      announcedCapacityRaw: f.announced_capacity_raw ?? '',
-      estimatedCapacity: f.estimated_capacity ?? 0,
-      coordinates,
-      precision: f.precision || 'country',
-      sector: i.sector ?? '',
-      fateOfCarbon: i.fate_of_carbon ?? '',
-      hub: i.hub ?? '',
-      operator: i.operator ?? '',
-      captureTechnology: i.capture_technology ?? '',
-      storageType: i.storage_type ?? '',
-      investmentScale: f.investment_scale ?? '',
-      phase: i.phase ?? '',
-      announcement: i.announcement ?? '',
-      fid: i.fid ?? '',
-      operation: i.operation ?? '',
-      suspensionDate: i.suspension_date ?? '',
-      relatedPolicies: [...relatedPolicies].sort(),
-      partners: [...partners],
-      links: [...links],
-      news: projectFacilityNews(news),
-      provenance: {
-        author: f.provenance_author ?? '',
-        reviewer: f.provenance_reviewer ?? '',
-        lastAuditDate: f.provenance_last_audit_date ?? '',
-      },
-    },
-    body: normalizeBody(description),
-    displayCountry,
-    displayStatus,
-  };
 }
 
 export function resolveSharedMdValue(
@@ -581,9 +421,10 @@ async function runAudit() {
   }
 
   const SQL = await initSqlJs();
-  const db = new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
+  const db = loadDb(SQL);
 
   try {
+    const datasetAsOf = getDatasetAsOf(db);
     const facilities = db.all('SELECT * FROM facilities');
     const facilityI18n = db.all('SELECT * FROM facility_i18n');
     const partnersRows = db.all(
@@ -605,34 +446,21 @@ async function runAudit() {
     const { map: mdEn, duplicateIds: mdEnDup } = loadFacilityMarkdown('en');
     const { map: mdZh, duplicateIds: mdZhDup } = loadFacilityMarkdown('zh');
 
-    const dict = JSON.parse(
-      fs.readFileSync(
-        path.join(REPO_ROOT, 'src', 'data', 'i18n_dictionary.json'),
-        'utf8'
-      )
-    );
+    const dict = JSON.parse(fs.readFileSync(LEGACY_I18N_PATH, 'utf8'));
     const translate = createTranslator(dict);
 
-    const facilityMap = buildMaps(facilities, (r) => String(r.id));
-    const facilityI18nMap = buildMaps(
+    const facilityMap = indexBy(facilities, (r) => String(r.id));
+    const facilityI18nMap = indexBy(
       facilityI18n,
       (r) => `${r.facility_id}::${r.lang}`
     );
-    const partnersMap = buildArrayMap(
+    const partnersMap = groupBy(
       partnersRows,
       (r) => `${r.facility_id}::${r.lang}`
     );
-    const linksMap = buildArrayMap(
-      linksRows,
-      (r) => `${r.facility_id}::${r.lang}`
-    );
-    const newsMap = buildArrayMap(
-      newsRows,
-      (r) => `${r.facility_id}::${r.lang}`
-    );
-    const relatedPoliciesMap = buildArrayMap(relRows, (r) =>
-      String(r.facility_id)
-    );
+    const linksMap = groupBy(linksRows, (r) => `${r.facility_id}::${r.lang}`);
+    const newsMap = groupBy(newsRows, (r) => `${r.facility_id}::${r.lang}`);
+    const relatedPoliciesMap = groupBy(relRows, (r) => String(r.facility_id));
 
     const errors = [];
     const warnings = [];
@@ -773,6 +601,7 @@ async function runAudit() {
           news,
           relatedPolicies: relatedPoliciesRaw,
           translate,
+          datasetAsOf,
         });
 
         const mdFm = mdRec.frontmatter ?? {};
@@ -945,8 +774,7 @@ async function runAudit() {
           lang,
           field: 'provenance.reviewer',
           expected: projected.frontmatter.provenance.reviewer,
-          actual:
-            mdProv.reviewer === REVIEWER_PLACEHOLDER ? '' : mdProv.reviewer,
+          actual: mdProv.reviewer,
         });
         compareScalarField({
           mismatches: errors,
@@ -1016,7 +844,7 @@ async function runAudit() {
       repairPlanSummary: repairPlan.summary,
     };
 
-    ensureDir(REPORT_DIR);
+    ensureDir(REPORTS_DIR);
     fs.writeFileSync(REPORT_JSON, JSON.stringify(report, null, 2));
     fs.writeFileSync(REPORT_MD, markdownReport(report));
     fs.writeFileSync(REPAIR_JSON, JSON.stringify(repairPlan, null, 2));

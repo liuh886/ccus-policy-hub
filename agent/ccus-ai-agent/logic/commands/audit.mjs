@@ -9,7 +9,8 @@ import {
   hasMeaningfulCoordinates,
   resolveFacilityCoordinates,
 } from '../../../../scripts/content-export-utils.mjs';
-import { THRESHOLDS_PATH, loadDb } from '../db.mjs';
+import { THRESHOLDS_PATH, computeRegulatoryFillRate, loadDb } from '../db.mjs';
+import { stampAuditMetadataOnDb } from '../../../../scripts/stamp-audit-metadata.mjs';
 import { coordinatesEqual } from './geocode.mjs';
 
 export async function dbAuditDeep(
@@ -28,25 +29,7 @@ export async function dbAuditDeep(
   const pCount = db.get('SELECT COUNT(*) as c FROM policies').c;
   const fCount = db.get('SELECT COUNT(*) as c FROM facilities').c;
 
-  const regFields = [
-    'pore_space_rights',
-    'liability_transfer',
-    'liability_period',
-    'financial_assurance',
-    'permitting_lead_time',
-    'co2_definition',
-    'cross_border_rules',
-  ];
-  const totalCells =
-    db.get('SELECT COUNT(*) as c FROM country_i18n').c * regFields.length;
-  let filledCells = 0;
-  db.all('SELECT * FROM country_i18n').forEach((row) => {
-    regFields.forEach((f) => {
-      if (row[f] && !['Pending', '---', '待定', ''].includes(row[f]))
-        filledCells++;
-    });
-  });
-  const regFillRate = totalCells > 0 ? filledCells / totalCells : 0;
+  const { rate: regFillRate } = computeRegulatoryFillRate(db);
   const unresolvedFacilityCoordinates = db
     .all('SELECT id, country, precision, lat, lng FROM facilities')
     .filter((facility) => {
@@ -86,11 +69,22 @@ export async function dbAuditDeep(
     unresolvedFacilityCoordinates === 0 &&
     countryAnchorDrift === 0;
   if (!readOnly) {
-    db.run(
-      "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)",
-      [pass ? 'true' : 'false']
-    );
+    let metadata = null;
+    db.transaction(() => {
+      db.run(
+        "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)",
+        [pass ? 'true' : 'false']
+      );
+      if (pass) {
+        metadata = stampAuditMetadataOnDb(db);
+      }
+    });
     if (injectedDb == null) db.save();
+    if (metadata) {
+      console.log(`Audit metadata stamped: ${metadata.last_audit_date}`);
+      console.log(`Audit rule version: ${metadata.last_audit_rule_version}`);
+      console.log(`Source revision: ${metadata.last_audit_source_revision}`);
+    }
   }
   console.log(
     `AUDIT ${pass ? 'PASSED' : 'FAILED'} (Fill Rate: ${(regFillRate * 100).toFixed(1)}%, unresolved facility coordinates: ${unresolvedFacilityCoordinates}, country anchor drift: ${countryAnchorDrift})`
