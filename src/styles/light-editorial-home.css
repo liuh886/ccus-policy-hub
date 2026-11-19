@@ -114,6 +114,11 @@ html:not(.dark) [data-capacity-trend] {
   gap: 1.25rem !important;
 }
 
+html:not(.dark) [data-capacity-trend][data-show-summary='false'] {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 !important;
+}
+
 html:not(.dark) [data-capacity-trend] > div:first-child {
   gap: 1rem;
 }

@@ -99,6 +99,47 @@ export function loadDb(SQL) {
   return new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
 }
 
+export function getDatasetAsOf(db) {
+  return (
+    db.get(`SELECT MAX(d) AS m FROM (
+      SELECT provenance_last_audit_date AS d FROM policies
+      UNION ALL SELECT provenance_last_audit_date FROM facilities
+      UNION ALL SELECT provenance_last_audit_date FROM country_profiles
+    )`)?.m ?? null
+  );
+}
+
+export const REGULATORY_FIELDS = Object.freeze([
+  'pore_space_rights',
+  'liability_transfer',
+  'liability_period',
+  'financial_assurance',
+  'permitting_lead_time',
+  'co2_definition',
+  'cross_border_rules',
+]);
+
+export const REGULATORY_PLACEHOLDERS = new Set(['Pending', '---', '待定', '']);
+
+export function isFilledRegulatoryValue(value) {
+  return Boolean(value) && !REGULATORY_PLACEHOLDERS.has(value);
+}
+
+export function computeRegulatoryFillRate(db) {
+  const rows = db.all(
+    `SELECT ${REGULATORY_FIELDS.join(', ')} FROM country_i18n`
+  );
+  const totalCells = rows.length * REGULATORY_FIELDS.length;
+  let filledCells = 0;
+  for (const row of rows) {
+    for (const field of REGULATORY_FIELDS) {
+      if (isFilledRegulatoryValue(row[field])) filledCells++;
+    }
+  }
+  const rate = totalCells > 0 ? filledCells / totalCells : 0;
+  return { rate, filledCells, totalCells };
+}
+
 /**
  * Diagnostics allowlist for the read-only `db:peek` commands in
  * `logic/manage.mjs`. Table/column identifiers come from CLI argv and must

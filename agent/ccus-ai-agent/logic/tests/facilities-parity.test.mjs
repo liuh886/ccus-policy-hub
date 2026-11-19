@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
+import { REVIEWER_PLACEHOLDER } from '../../../../scripts/lib/i18n-translate.mjs';
 import {
   normalizeBody,
   normalizeValueForCompare,
@@ -35,32 +36,34 @@ test('floatEqual compares numbers with tolerance', () => {
   assert.equal(floatEqual(1.01, 1), false);
 });
 
-test('projectFacilityForLang keeps canonical country/status for zh in md-truth audit mode', () => {
+test('projectFacilityForLang reconciles sorted relations, description fallback, and provenance defaults', () => {
+  const inputPartners = ['Partner B', 'Partner A'];
+  const inputLinks = ['https://b.example', 'https://a.example'];
   const projected = projectFacilityForLang({
     f: {
       id: '1',
       country: 'United States',
       status: 'Planned',
-      announced_capacity_min: 0,
-      announced_capacity_max: 0,
+      announced_capacity_min: null,
+      announced_capacity_max: null,
       announced_capacity_raw: '',
-      estimated_capacity: 0,
+      estimated_capacity: null,
       lat: 0,
       lng: 0,
       precision: 'country',
-      investment_scale: '',
-      provenance_author: 'IEA',
-      provenance_reviewer: 'Human Audit Pending',
-      provenance_last_audit_date: '2026-02-01',
+      investment_scale: null,
+      provenance_author: '',
+      provenance_reviewer: null,
+      provenance_last_audit_date: null,
     },
     i: {
-      name: 'Test',
+      name: 'Test Facility',
       region: 'North America',
       type: 'Storage',
       sector: 'Storage',
       fate_of_carbon: 'Stored',
       hub: '',
-      operator: '',
+      operator: 'Acme',
       capture_technology: '',
       storage_type: '',
       phase: '',
@@ -68,20 +71,47 @@ test('projectFacilityForLang keeps canonical country/status for zh in md-truth a
       fid: '',
       operation: '',
       suspension_date: '',
-      description: '',
+      description: '  Test Facility  ',
     },
-    lang: 'zh',
-    partners: [],
-    links: [],
-    relatedPolicies: [],
+    lang: 'en',
+    partners: inputPartners,
+    links: inputLinks,
+    news: [
+      {
+        url: 'https://news.example/1',
+        title: null,
+        publisher: 'Pub',
+        published_date: null,
+        tier: 'press_release',
+      },
+      {
+        url: 'https://news.example/2',
+        title: 'Second',
+        publisher: null,
+        published_date: '2026-01-01',
+        tier: 'media',
+      },
+    ],
+    relatedPolicies: ['p2', 'p1'],
+    datasetAsOf: '2026-04-03',
   });
 
-  assert.equal(projected.frontmatter.country, 'United States');
-  assert.equal(projected.frontmatter.status, 'Planned');
-  assert.equal(
-    projected.frontmatter.provenance.reviewer,
-    'Human Audit Pending'
-  );
+  assert.deepEqual(projected.frontmatter.partners, ['Partner A', 'Partner B']);
+  assert.deepEqual(inputPartners, ['Partner B', 'Partner A']);
+  assert.deepEqual(projected.frontmatter.links, [
+    'https://a.example',
+    'https://b.example',
+  ]);
+  assert.deepEqual(inputLinks, ['https://b.example', 'https://a.example']);
+  assert.deepEqual(projected.frontmatter.relatedPolicies, ['p1', 'p2']);
+  assert.equal(projected.frontmatter.news[0].tier, 'press_release');
+  assert.equal('title' in projected.frontmatter.news[0], false);
+  assert.equal('announcedCapacityMin' in projected.frontmatter, false);
+  assert.equal(projected.frontmatter.provenance.author, 'IEA Ingestion');
+  assert.equal(projected.frontmatter.provenance.reviewer, REVIEWER_PLACEHOLDER);
+  assert.equal(projected.frontmatter.provenance.lastAuditDate, '2026-04-03');
+  assert.match(projected.body, /^### Project Overview/);
+  assert.match(projected.body, /operated by Acme/);
 });
 
 test('resolveSharedMdValue deduplicates matching en/zh values and rejects divergence', () => {

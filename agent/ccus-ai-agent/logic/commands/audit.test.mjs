@@ -32,7 +32,7 @@ function seedPassing(db) {
   );
 }
 
-test('passes and stamps metadata when all gates hold', async () => {
+test('passes and stamps metadata in one transaction when all gates hold', async () => {
   const SQL = await initSqlJs();
   const db = makeDb(SQL);
   try {
@@ -42,12 +42,20 @@ test('passes and stamps metadata when all gates hold', async () => {
       "SELECT value FROM db_meta WHERE key = 'last_audit_pass'"
     );
     assert.equal(meta.value, 'true');
+    const dateMeta = db.get(
+      "SELECT value FROM db_meta WHERE key = 'last_audit_date'"
+    );
+    const ruleMeta = db.get(
+      "SELECT value FROM db_meta WHERE key = 'last_audit_rule_version'"
+    );
+    assert.match(dateMeta.value, /^\d{4}-\d{2}-\d{2}$/);
+    assert.equal(ruleMeta.value, '2026-07-v1');
   } finally {
     db.close();
   }
 });
 
-test('fails loudly and stamps false when counts fall short', async () => {
+test('fails loudly, stamps false, and does not stamp audit date when counts fall short', async () => {
   const SQL = await initSqlJs();
   const db = makeDb(SQL);
   try {
@@ -63,6 +71,10 @@ test('fails loudly and stamps false when counts fall short', async () => {
       "SELECT value FROM db_meta WHERE key = 'last_audit_pass'"
     );
     assert.equal(meta.value, 'false');
+    const dateMeta = db.get(
+      "SELECT value FROM db_meta WHERE key = 'last_audit_date'"
+    );
+    assert.equal(dateMeta, null);
   } finally {
     db.close();
   }

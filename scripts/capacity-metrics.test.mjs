@@ -2,11 +2,15 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  CAPACITY_TREND_END_YEAR,
+  CAPACITY_TREND_START_YEAR,
   UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
   facilityOperationYear,
   normalizeFacilityStatus,
   normalizeFacilityType,
+  parseYear,
+  projectRecordYear,
   summarizeFacilities,
 } from '../src/lib/capacityMetrics.mjs';
 
@@ -114,4 +118,40 @@ test('counts only under-construction records operating in 2026 or earlier', () =
     storageRelatedCount: 1,
     storageRelatedCapacity: 1,
   });
+});
+
+test('parseYear and projectRecordYear extract years in operation -> fid -> announcement order', () => {
+  assert.equal(CAPACITY_TREND_START_YEAR, 1970);
+  assert.equal(CAPACITY_TREND_END_YEAR, 2040);
+
+  assert.equal(parseYear(2028), 2028);
+  assert.equal(parseYear(2028.9), 2028);
+  assert.equal(parseYear('Planned for 2031'), 2031);
+  assert.equal(parseYear(''), null);
+  assert.equal(parseYear('no digits'), null);
+  assert.equal(parseYear(null), null);
+  assert.equal(parseYear(undefined), null);
+  assert.equal(parseYear(Number.NaN), null);
+  assert.equal(parseYear(Number.POSITIVE_INFINITY), null);
+
+  assert.equal(
+    projectRecordYear({
+      data: { operation: '2029', fid: '2026', announcement: '2023' },
+    }),
+    2029
+  );
+  assert.equal(
+    projectRecordYear({
+      data: { operation: '', fid: '2026', announcement: '2023' },
+    }),
+    2026
+  );
+  assert.equal(
+    projectRecordYear({ operation: null, fid: null, announcement: '2022' }),
+    2022
+  );
+  assert.equal(
+    projectRecordYear({ data: { operation: '', fid: '', announcement: '' } }),
+    null
+  );
 });

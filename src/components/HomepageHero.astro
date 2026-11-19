@@ -2,9 +2,11 @@
 import { getCollection } from 'astro:content';
 import { SITE_BASE } from '../lib/siteBase';
 import {
+  CAPACITY_TREND_START_YEAR,
   UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
   normalizeFacilityStatus,
+  projectRecordYear,
   summarizeFacilities,
 } from '../lib/capacityMetrics.mjs';
 
@@ -23,24 +25,15 @@ const pipelineStatuses = new Set([
   'under-construction',
 ]);
 
-const parseYear = (value: unknown): number | null => {
-  if (typeof value === 'number' && Number.isFinite(value)) return value;
-  if (typeof value !== 'string') return null;
-  const match = value.match(/\d{4}/);
-  return match ? Number.parseInt(match[0], 10) : null;
-};
-
-const projectRecordYear = (
-  facility: (typeof facilities)[number]
-): number | null =>
-  parseYear(facility.data.operation) ??
-  parseYear(facility.data.fid) ??
-  parseYear(facility.data.announcement);
-
 const totalCapacity = facilities.reduce((sum, facility) => {
   const status = normalizeFacilityStatus(facility.data.status);
   const year = projectRecordYear(facility);
-  if (!year || year > defaultMaxYear || !pipelineStatuses.has(status))
+  if (
+    !year ||
+    year < CAPACITY_TREND_START_YEAR ||
+    year > defaultMaxYear ||
+    !pipelineStatuses.has(status)
+  )
     return sum;
   return sum + facilityCapacity(facility.data);
 }, 0);
@@ -119,7 +112,9 @@ const text =
     <div class="home-hero-total">
       <div class="home-hero-total-heading">
         <span>{text.totalLabel}</span>
-        <span data-home-capacity-year>({defaultMaxYear}{text.yearSuffix})</span>
+        <span data-home-capacity-year data-year-suffix={text.yearSuffix}>
+          ({defaultMaxYear}{text.yearSuffix})
+        </span>
       </div>
       <div class="home-hero-total-value">
         <span data-home-capacity-total>{formatCapacity(totalCapacity)}</span>
@@ -172,50 +167,63 @@ const text =
   </aside>
 </section>
 
-<script is:inline>
-  (() => {
-    const initHeroCapacitySync = () => {
-      const sourceValue = document.querySelector(
-        '[data-capacity-trend] [data-capacity-total]'
-      );
-      const sourceYear = document.querySelector(
-        '[data-capacity-trend] [data-capacity-total-year]'
-      );
-      const targetValue = document.querySelector('[data-home-capacity-total]');
-      const targetYear = document.querySelector('[data-home-capacity-year]');
+<script>
+  let heroSyncController: AbortController | null = null;
 
-      if (!sourceValue || !sourceYear || !targetValue || !targetYear) return;
+  const initHeroCapacitySync = () => {
+    heroSyncController?.abort();
+    heroSyncController = null;
 
-      const sync = () => {
-        targetValue.textContent = sourceValue.textContent;
-        targetYear.textContent = sourceYear.textContent;
-      };
+    const targetValue = document.querySelector<HTMLElement>(
+      '[data-home-capacity-total]'
+    );
+    const targetYear = document.querySelector<HTMLElement>(
+      '[data-home-capacity-year]'
+    );
 
-      sync();
+    if (!targetValue || !targetYear) return;
 
-      const observer = new MutationObserver(sync);
-      observer.observe(sourceValue, {
-        childList: true,
-        characterData: true,
-        subtree: true,
-      });
-      observer.observe(sourceYear, {
-        childList: true,
-        characterData: true,
-        subtree: true,
-      });
-      document.addEventListener(
-        'astro:before-swap',
-        () => observer.disconnect(),
-        {
-          once: true,
-        }
-      );
+    const yearSuffix = targetYear.dataset.yearSuffix || ' Est.';
+    const applySummary = (total: number, year: number) => {
+      if (!Number.isFinite(total) || !Number.isFinite(year)) return;
+      targetValue.textContent = Number(total).toFixed(1);
+      targetYear.textContent = `(${year}${yearSuffix})`;
     };
 
-    document.addEventListener('astro:page-load', initHeroCapacitySync);
-    if (document.readyState !== 'loading') initHeroCapacitySync();
-  })();
+    const trendRoot = document.querySelector<HTMLElement>(
+      '[data-capacity-trend]'
+    );
+    if (
+      trendRoot?.dataset.capacityTotal !== undefined &&
+      trendRoot?.dataset.capacityYear !== undefined
+    ) {
+      applySummary(
+        Number(trendRoot.dataset.capacityTotal),
+        Number(trendRoot.dataset.capacityYear)
+      );
+    }
+
+    const controller = new AbortController();
+    heroSyncController = controller;
+
+    document.addEventListener(
+      'ccus:capacity-summary-change',
+      (event: Event) => {
+        const detail = (event as CustomEvent<{ total: number; year: number }>)
+          .detail;
+        if (!detail) return;
+        applySummary(detail.total, detail.year);
+      },
+      { signal: controller.signal }
+    );
+  };
+
+  document.addEventListener('astro:page-load', initHeroCapacitySync);
+  document.addEventListener('astro:before-swap', () => {
+    heroSyncController?.abort();
+    heroSyncController = null;
+  });
+  if (document.readyState !== 'loading') initHeroCapacitySync();
 </script>
 
 <style>
@@ -441,19 +449,6 @@ const text =
     font-size: 0.65rem !important;
     font-weight: 550 !important;
     line-height: 1.45 !important;
-  }
-
-  :global([data-capacity-trend]) {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 0 !important;
-  }
-
-  :global([data-capacity-trend] > div:first-child) {
-    display: none !important;
-  }
-
-  :global([data-capacity-trend] > section:last-child) {
-    grid-column: 1 / -1 !important;
   }
 
   :global(.dark) .home-hero-summary {

@@ -9,7 +9,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { LOGIC_DIR, loadDb } from '../db.mjs';
+import { LOGIC_DIR, computeRegulatoryFillRate, loadDb } from '../db.mjs';
 import { computeGovernanceDeployment } from '../governance-deployment-algo.mjs';
 import { dbAuditDeep } from './audit.mjs';
 import { dbExportMd } from './export.mjs';
@@ -24,25 +24,11 @@ export async function dbStats(SQL) {
   const fCount = db.get('SELECT COUNT(*) as c FROM facilities').c;
   const cCount = db.get('SELECT COUNT(*) as c FROM country_profiles').c;
 
-  const regFields = [
-    'pore_space_rights',
-    'liability_transfer',
-    'liability_period',
-    'financial_assurance',
-    'permitting_lead_time',
-    'co2_definition',
-    'cross_border_rules',
-  ];
-  const totalCells =
-    db.get('SELECT COUNT(*) as c FROM country_i18n').c * regFields.length;
-  let filledCells = 0;
-  db.all('SELECT * FROM country_i18n').forEach((row) => {
-    regFields.forEach((f) => {
-      if (row[f] && !['Pending', '---', '待定', ''].includes(row[f]))
-        filledCells++;
-    });
-  });
-  const regFillRate = totalCells > 0 ? filledCells / totalCells : 0;
+  const {
+    rate: regFillRate,
+    filledCells,
+    totalCells,
+  } = computeRegulatoryFillRate(db);
 
   console.log('=== CCUS Policy Hub Database Stats ===');
   console.log(`Policies:   ${pCount}`);

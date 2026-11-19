@@ -1,5 +1,7 @@
 export const STORAGE_RELATED_TYPES = new Set(['ts', 'storage', 'full-chain']);
 export const UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF = 2026;
+export const CAPACITY_TREND_START_YEAR = 1970;
+export const CAPACITY_TREND_END_YEAR = 2040;
 
 export function normalizeFacilityStatus(status) {
   const value = String(status || '')
@@ -89,8 +91,7 @@ export function facilityCapacity(data = {}) {
   return minCapacity || maxCapacity || 0;
 }
 
-export function facilityOperationYear(data = {}) {
-  const value = data.operation;
+export function parseYear(value) {
   if (typeof value === 'number' && Number.isFinite(value)) {
     return Math.trunc(value);
   }
@@ -98,6 +99,19 @@ export function facilityOperationYear(data = {}) {
 
   const match = value.match(/\d{4}/);
   return match ? Number.parseInt(match[0], 10) : null;
+}
+
+export function projectRecordYear(facility) {
+  const data = facility?.data ?? facility ?? {};
+  return (
+    parseYear(data.operation) ??
+    parseYear(data.fid) ??
+    parseYear(data.announcement)
+  );
+}
+
+export function facilityOperationYear(data = {}) {
+  return parseYear(data.operation);
 }
 
 export function summarizeFacilities(

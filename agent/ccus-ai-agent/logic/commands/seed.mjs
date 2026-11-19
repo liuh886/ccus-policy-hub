@@ -7,7 +7,12 @@
 
 import fs from 'fs';
 import path from 'path';
-import { LOGIC_DIR, loadDb } from '../db.mjs';
+import {
+  LOGIC_DIR,
+  REGULATORY_FIELDS,
+  isFilledRegulatoryValue,
+  loadDb,
+} from '../db.mjs';
 
 export async function dbSeedCountries(
   SQL,
@@ -126,15 +131,6 @@ export async function dbSyncCountryProfiles(
   { db: injectedDb = null } = {}
 ) {
   const db = injectedDb ?? loadDb(SQL);
-  const fields = [
-    'pore_space_rights',
-    'liability_transfer',
-    'liability_period',
-    'financial_assurance',
-    'permitting_lead_time',
-    'co2_definition',
-    'cross_border_rules',
-  ];
   db.transaction(() => {
     db.all('SELECT id FROM country_profiles').forEach((c) => {
       ['en', 'zh'].forEach((lang) => {
@@ -168,9 +164,9 @@ export async function dbSyncCountryProfiles(
           }
         });
         const updates = {};
-        fields.forEach((f) => {
+        REGULATORY_FIELDS.forEach((f) => {
           for (const reg of parsedPolicies) {
-            if (reg[f] && !['Pending', '---', '待定', ''].includes(reg[f])) {
+            if (isFilledRegulatoryValue(reg[f])) {
               updates[f] = reg[f];
               break;
             }

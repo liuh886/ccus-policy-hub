@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
+import { dbExportMd } from '../agent/ccus-ai-agent/logic/commands/export.mjs';
+import { SqlJsDatabase } from '../agent/ccus-ai-agent/logic/db.mjs';
 import { queryRows } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -98,47 +99,49 @@ function buildExpectedMarkdownSets(db) {
   };
 }
 
-export async function runCleanExportSync() {
-  if (!fs.existsSync(DB_PATH)) {
+export async function runCleanExportSync({
+  SQL: injectedSql = null,
+  db: injectedDb = null,
+} = {}) {
+  if (!injectedDb && !fs.existsSync(DB_PATH)) {
     throw new Error(`Database file not found: ${DB_PATH}`);
   }
 
-  const SQL = await initSqlJs();
-  const db = new SQL.Database(new Uint8Array(fs.readFileSync(DB_PATH)));
-  const targets = buildExpectedMarkdownSets(db);
-  db.close();
+  const SQL = injectedSql ?? (await initSqlJs());
+  const db =
+    injectedDb ??
+    new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
 
-  const pruned = [];
-  for (const [dirPath, expectedFiles] of Object.entries(targets)) {
-    const result = pruneMarkdownDirectory(dirPath, expectedFiles);
-    pruned.push({
-      directory: path.relative(ROOT, dirPath).replace(/\\/g, '/'),
-      deleted_count: result.deleted.length,
-      deleted_files: result.deleted,
-    });
-  }
+  try {
+    const targets = buildExpectedMarkdownSets(db.db);
 
-  execFileSync(
-    'node',
-    ['agent/ccus-ai-agent/logic/manage.mjs', 'db:export:md'],
-    {
-      cwd: ROOT,
-      stdio: 'inherit',
+    const pruned = [];
+    for (const [dirPath, expectedFiles] of Object.entries(targets)) {
+      const result = pruneMarkdownDirectory(dirPath, expectedFiles);
+      pruned.push({
+        directory: path.relative(ROOT, dirPath).replace(/\\/g, '/'),
+        deleted_count: result.deleted.length,
+        deleted_files: result.deleted,
+      });
     }
-  );
 
-  const summary = {
-    // Run timestamp (console/return only, never persisted): this summary is
-    // not a governed artifact, so wall-clock is correct here. Named run_at
-    // to distinguish it from data_as_of (DB-derived) used by governed files.
-    run_at: new Date().toISOString(),
-    db_path: DB_PATH,
-    pruned,
-    total_deleted: pruned.reduce((sum, item) => sum + item.deleted_count, 0),
-  };
+    await dbExportMd(SQL, { db });
 
-  console.log(JSON.stringify(summary, null, 2));
-  return summary;
+    const summary = {
+      // Run timestamp (console/return only, never persisted): this summary is
+      // not a governed artifact, so wall-clock is correct here. Named run_at
+      // to distinguish it from data_as_of (DB-derived) used by governed files.
+      run_at: new Date().toISOString(),
+      db_path: DB_PATH,
+      pruned,
+      total_deleted: pruned.reduce((sum, item) => sum + item.deleted_count, 0),
+    };
+
+    console.log(JSON.stringify(summary, null, 2));
+    return summary;
+  } finally {
+    if (!injectedDb) db.close();
+  }
 }
 
 if (
