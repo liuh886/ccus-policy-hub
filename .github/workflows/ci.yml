@@ -74,8 +74,8 @@ jobs:
       - name: Verify published policy context bytes and hashes
         run: pnpm context:check
 
-      - name: Inspect frozen source evidence packet
-        run: pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
+      - name: Inspect frozen source evidence packets
+        run: pnpm --silent evidence:inspect --all
 
       - name: Consume public context contracts independently
         run: pnpm data:consume --root public

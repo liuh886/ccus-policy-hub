@@ -6,7 +6,6 @@ import path from 'node:path';
 import test from 'node:test';
 import {
   verifyAssetManifest,
-  verifyReportFile,
   verifyReportStructure,
 } from './lib/report-structure.mjs';
 

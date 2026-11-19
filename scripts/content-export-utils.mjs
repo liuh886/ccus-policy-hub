@@ -85,17 +85,6 @@ function splitCompositeCountry(country) {
     .filter(Boolean);
 }
 
-function averageCoordinatePairs(pairs) {
-  if (!pairs.length) return null;
-  if (pairs.length === 1) return [...pairs[0]];
-
-  const lat = pairs.reduce((sum, [pairLat]) => sum + pairLat, 0) / pairs.length;
-  const lng =
-    pairs.reduce((sum, [, pairLng]) => sum + pairLng, 0) / pairs.length;
-
-  return [Number(lat.toFixed(4)), Number(lng.toFixed(4))];
-}
-
 export function hasMeaningfulCoordinates(lat, lng) {
   const latNum = toFiniteNumber(lat);
   const lngNum = toFiniteNumber(lng);

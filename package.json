@@ -43,7 +43,7 @@
     "report:check:strict": "node scripts/sync-paper-report.mjs --check --strict",
     "report:verify": "node scripts/verify-paper-report.mjs",
     "report:parity": "node scripts/verify-paper-report.mjs --parity",
-    "test": "node --test scripts/*.test.mjs agent/ccus-ai-agent/logic/tests/*.test.mjs agent/ccus-ai-agent/logic/commands/*.test.mjs",
+    "test": "node --test \"scripts/**/*.test.mjs\" \"agent/ccus-ai-agent/logic/**/*.test.mjs\"",
     "search:verify": "node scripts/verify-search-runtime.mjs",
     "links:verify": "node scripts/verify-dist-links.mjs",
     "manage:review:queue": "node scripts/maintenance-review.mjs",

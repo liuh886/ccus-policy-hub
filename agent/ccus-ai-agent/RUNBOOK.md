@@ -1,6 +1,6 @@
 # CCUS Policy Hub | Maintenance Runbook
 
-Run commands from the repository root with Node.js 20 and pnpm 9.
+Run commands from the repository root with Node.js 24 and pnpm 9.
 
 ## 1. Establish current state
 
@@ -21,11 +21,13 @@ pnpm install --frozen-lockfile
 pnpm manage:help
 pnpm lint
 pnpm test
+pnpm gen
 pnpm astro check
+pnpm manage:db:audit:deep:check
 pnpm manage:db:audit:deep
-pnpm manage:db:quality:export
-pnpm manage:db:data:export
 pnpm build
+pnpm search:verify
+pnpm links:verify
 ```
 
 ## 3. Policy or country-governance update
@@ -44,11 +46,9 @@ Typical commands:
 ```bash
 pnpm manage:db:standardize
 pnpm manage:db:fix-relationships
-pnpm manage db:sync:country-profiles
-pnpm manage:db:audit:deep
-pnpm manage:db:export:md
-pnpm manage:db:quality:export
-pnpm manage:db:data:export
+pnpm manage -- db:sync:country-profiles
+pnpm manage:db:audit:deep:check
+pnpm gen
 ```
 
 ## 4. Facility dataset refresh
@@ -120,13 +120,13 @@ untouched. Idempotent.
 
 ## 6. Generated outputs
 
-Regenerate outputs after structured data changes:
+Regenerate outputs after structured data or reviewed evidence changes:
 
 ```bash
 pnpm gen
 ```
 
-Review diffs for unexpected record churn, deleted bilingual files, changed IDs, or methodology drift.
+`scripts/gen.mjs` acquires a single DB lock (`acquireDbLock()`) and deterministically runs `dbExportI18n` (`src/data/i18n_dictionary.json`), `runCleanExportSync` (`src/content/{policies,facilities,countries}`), `generateMetrics` (`src/data/quality_metrics.generated.json`), `generatePublicData` (`public/data/**`), and the read-only `syncPolicyLinkProjections` verification. Review diffs for unexpected record churn, deleted bilingual files, changed IDs, or methodology drift.
 
 ## 7. High-risk recovery and migration
 
@@ -183,14 +183,22 @@ The generator publishes valid translations in `policy-analysis-localizations.jso
 ```bash
 pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json
 pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json --write
+pnpm manage:policy:review -- --file <new-policies.json> --allow-insert --write
 ```
 
 Default execution is a dry run. Inspect the input and summary before `--write`.
-The importer locks the database, applies a transaction, allows only named fields,
-keeps an external content-addressed backup in the user's `.codex/backups` folder,
-and atomically writes the result. It cannot set scores. Only patches explicitly
-marked `source_reviewed: true` update factual audit dates. Editorial scope-only
-patches and draft source attempts retain existing factual dates and statuses.
+The importer locks the database (`acquireDbLock()`), applies a transaction,
+allows only named fields, keeps an external content-addressed backup in the
+user's `.codex/backups` folder, and atomically writes the result
+(`atomicWriteDb()`). Existing policies cannot have numerical scores changed;
+`source_reviewed: false` patches (translation/editorial-only mode) cannot alter
+canonical `policy_analysis.evidence` when it differs from SQLite and retain
+existing `audit_note` and `provenance_last_audit_date`. Only patches explicitly
+marked `source_reviewed: true` update factual audit dates and canonical
+evidence/citations. New policy inserts require `--allow-insert` with complete
+`record`, bilingual `locales`, and all 5 `analysis` dimensions, and default to
+`review_status: 'draft'` unless `record.review_status === 'verified'`,
+`source_reviewed: true`, and a non-empty `reviewer` are all provided.
 Review attempts and evidence sources are retained in `db_meta`.
 
 For replay of this delivery, use these inputs in order: `policy-reviews-2026-10.json`,
@@ -236,17 +244,19 @@ SQLite retains existing accepted structured policy facts. No schema migration,
 BLOB storage, condition-card generation or evaluation engine is needed.
 
 ```bash
+pnpm --silent evidence:inspect --all
 pnpm --silent evidence:inspect --file scripts/data/evidence/us-45q-2024/packet.json
-pnpm --silent evidence:inspect --file scripts/data/evidence/ca-ccus-itc-2026/packet.json
-pnpm --silent evidence:inspect --file scripts/data/evidence/no-for-2014-1517/packet.json
-pnpm --silent evidence:inspect --file scripts/data/evidence/dk-ens-ccs-funds/packet.json
+pnpm evidence:scaffold -- --policy-id <id> --document-id <doc> --url <https-url> --anchor-id <aid> --locator "<loc>" --query "<unique-quote>"
 pnpm evidence:consume --root public
 pnpm catalog:consume --root public
+pnpm build
+pnpm search:verify
+pnpm links:verify
 pnpm evidence:consume --root dist
 pnpm catalog:consume --root dist
 ```
 
-`pnpm gen` publishes all registered source records (`4` frozen packets), index,
+`evidence:scaffold` always initializes new packets in `review.status: "draft"` (`method: "not_reviewed"`). `pnpm gen` publishes all registered source records (`4` frozen packets), index,
 exact archived bytes as `.html.txt` (read as data, never execute as HTML) and
 normalized text. The consumer imports only standard Node and JSON Schema
 validators; it reads public resources and cannot access SQLite or private
