@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "targets": [
+    {
+      "document_id": "uk-energy-act-2023-enacted",
+      "sha256": "2dbf9edc060777a2d775c80f1e93b9f63f85e185e6d5a100e2283d32610c71fa",
+      "title": {
+        "en": "Energy Act 2023, chapter 52 — original enactment",
+        "zh": "英国《2023年能源法》（2023 c.52）：原始制定文本"
+      },
+      "publisher": "legislation.gov.uk",
+      "source_kind": "legislation",
+      "language": "en",
+      "edition": "2023 original enactment",
+      "source_url": "https://www.legislation.gov.uk/ukpga/2023/52/pdfs/ukpga_20230052_en.pdf",
+      "policy_ids": ["uk-energy-act-2023"],
+      "coverage": "original_enactment",
+      "page": 24,
+      "printed_page": "4",
+      "locator": "Section 2, heading",
+      "quote": "Prohibition on unlicensed activities",
+      "printed_pattern": "^\\s*4\\s+Energy Act"
+    },
+    {
+      "document_id": "gccsi-ccus-progress-china-en",
+      "sha256": "60991a814ab98ef9fa5dd3b96ea47785a560b27c3028689ca6e9f5506baf92e4",
+      "title": {
+        "en": "CCUS Progress in China — A Status Report",
+        "zh": "中国 CCUS 进展：状况报告（英文版）"
+      },
+      "publisher": "Global CCS Institute publication listing",
+      "source_kind": "secondary_report",
+      "language": "en",
+      "edition": null,
+      "source_url": "https://www.globalccsinstitute.com/wp-content/uploads/2025/10/CCUS-Progress-in-China.pdf",
+      "policy_ids": [],
+      "coverage": "edition_unknown",
+      "page": 16,
+      "printed_page": "6",
+      "locator": "Figure 1-3, caption",
+      "quote": "Figure 1-3. CCUS technology system",
+      "printed_pattern": "\\[\\s*6\\s*\\]\\s*$"
+    }
+  ]
+}

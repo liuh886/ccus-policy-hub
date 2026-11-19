@@ -1,31 +1,102 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { z } from 'astro/zod';
 import { queryRows } from './sqlite-query.mjs';
 import { isVerifiedProjectEvidence } from '../../src/lib/relationshipTrust.mjs';
 
-export const CONTEXT_TARGETS = Object.freeze([
-  { id: 'us-45q-ira', kind: 'policy', policy_ids: ['us-45q-ira'] },
-  {
-    id: 'us-obbba-45q-2025',
-    kind: 'policy',
-    policy_ids: ['us-obbba-45q-2025'],
-  },
-  {
-    id: 'us-section-45q',
-    kind: 'policy_family',
-    policy_ids: ['us-45q-ira', 'us-obbba-45q-2025'],
-    title: {
-      en: 'US Section 45Q policy-record context',
-      zh: '美国45Q政策记录上下文',
-    },
-  },
-  { id: 'ca-ccus-itc', kind: 'policy', policy_ids: ['ca-ccus-itc'] },
-  {
-    id: 'no-storage-framework',
-    kind: 'policy',
-    policy_ids: ['no-storage-framework'],
-  },
-  { id: 'denmark-ccfd', kind: 'policy', policy_ids: ['denmark-ccfd'] },
-]);
+const DEFAULT_TARGETS_PATH = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../data/context-targets.json'
+);
+
+const targetId = z.string().regex(/^[a-z0-9][a-z0-9-]*$/);
+export const contextTargetSchema = z
+  .object({
+    id: targetId,
+    kind: z.enum(['policy', 'policy_family']),
+    policy_ids: z.array(targetId).min(1),
+    title: z
+      .object({
+        en: z.string().trim().min(1),
+        zh: z.string().trim().min(1),
+      })
+      .strict()
+      .optional(),
+  })
+  .strict()
+  .superRefine((val, ctx) => {
+    if (val.kind === 'policy' && val.policy_ids.length !== 1) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['policy_ids'],
+        message: 'A policy target must reference exactly one policy_id.',
+      });
+    }
+    if (new Set(val.policy_ids).size !== val.policy_ids.length) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['policy_ids'],
+        message: 'policy_ids within a target must be unique.',
+      });
+    }
+    if (val.kind === 'policy_family' && !val.title) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['title'],
+        message: 'A policy_family target requires a bilingual title.',
+      });
+    }
+  });
+
+export const contextTargetsRegistrySchema = z
+  .object({
+    schema_version: z.literal('1.0.0'),
+    targets: z.array(contextTargetSchema).min(1),
+  })
+  .strict()
+  .superRefine((val, ctx) => {
+    const seen = new Set();
+    for (const [index, target] of val.targets.entries()) {
+      if (seen.has(target.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['targets', index, 'id'],
+          message: `Duplicate context target ID: ${target.id}`,
+        });
+      }
+      seen.add(target.id);
+    }
+  });
+
+export function loadContextTargets(filePath = DEFAULT_TARGETS_PATH) {
+  let raw;
+  try {
+    raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (error) {
+    throw new ContextError(
+      'INVALID_TARGETS_REGISTRY',
+      `Unable to read context targets registry: ${error.message}`
+    );
+  }
+  const parsed = contextTargetsRegistrySchema.safeParse(raw);
+  if (!parsed.success) {
+    throw new ContextError(
+      'INVALID_TARGETS_REGISTRY',
+      `Invalid context targets registry: ${parsed.error.issues.map((i) => i.message).join('; ')}`
+    );
+  }
+  return Object.freeze(parsed.data.targets);
+}
+
+export class ContextError extends Error {
+  constructor(code, message) {
+    super(message);
+    this.code = code;
+  }
+}
+
+export const CONTEXT_TARGETS = loadContextTargets();
 export const MAX_RELATIONSHIPS = 20;
 export const MAX_BUNDLE_BYTES = 128 * 1024;
 
@@ -87,13 +158,6 @@ export const contextBundleSchema = z
   })
   .strict();
 
-export class ContextError extends Error {
-  constructor(code, message) {
-    super(message);
-    this.code = code;
-  }
-}
-
 function jsonField(text, fallback) {
   if (!text) return fallback;
   try {
@@ -119,13 +183,18 @@ function isHttpUrl(value) {
 
 // A bounded read-only view of accepted records. No source fetching or factual
 // inference takes place here; record review is never clause verification.
-export function buildPolicyContext(db, id, lang = 'en') {
+export function buildPolicyContext(
+  db,
+  id,
+  lang = 'en',
+  { targets = CONTEXT_TARGETS } = {}
+) {
   if (!['en', 'zh'].includes(lang))
     throw new ContextError(
       'UNSUPPORTED_LANGUAGE',
       'Supported languages: en, zh.'
     );
-  const target = CONTEXT_TARGETS.find((item) => item.id === id);
+  const target = targets.find((item) => item.id === id);
   if (!target)
     throw new ContextError(
       'CONTEXT_NOT_FOUND',

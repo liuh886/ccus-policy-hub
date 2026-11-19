@@ -193,3 +193,30 @@ test('consumer detects original source tampering without importing the private e
   );
   await assert.rejects(c.run(), /Evidence source hash mismatch/);
 });
+
+test('consumer supports external_archive records without raw_file while rejecting missing external_uri', async () => {
+  const c = consumer();
+  const indexUrl = manifest.datasets.source_evidence.file;
+  const index = c.get(indexUrl);
+  const entry = index.records.find((r) => r.document_id === 'us-45q-usc-2024');
+  const recordUrl = new URL(entry.file, indexUrl).href;
+  const record = c.get(recordUrl);
+  record.storage = 'external_archive';
+  record.external_uri = 'https://archive.example.org/us-45q-usc-2024.html';
+  record.bytes = 12345;
+  record.raw_file = null;
+  c.set(recordUrl, record);
+  entry.sha256 = hash(c.overrides.get(recordUrl));
+  c.set(indexUrl, index);
+
+  const result = await c.run();
+  assert.equal(result.source_documents, 4);
+  assert.equal(result.reviewed_documents, 4);
+
+  // Missing external_uri fails schema validation even with recomputed hashes
+  delete record.external_uri;
+  c.set(recordUrl, record);
+  entry.sha256 = hash(c.overrides.get(recordUrl));
+  c.set(indexUrl, index);
+  await assert.rejects(c.run(), /Public schema rejected/);
+});

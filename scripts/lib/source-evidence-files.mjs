@@ -33,8 +33,16 @@ export function sourceEvidenceFiles(
     const input = JSON.parse(
       fs.readFileSync(path.join(dir, 'packet.json'), 'utf8')
     );
+    const storage = input.storage ?? 'git_inline';
+    if (storage === 'external_archive') {
+      const normalizedPath = path.join(dir, 'normalized.txt');
+      const normalizedText = fs.existsSync(normalizedPath)
+        ? fs.readFileSync(normalizedPath, 'utf8')
+        : null;
+      return { input, raw: null, normalizedText };
+    }
     const raw = fs.readFileSync(path.join(dir, 'source.html'));
-    return { input, raw };
+    return { input, raw, normalizedText: null };
   });
   loaded.sort((a, b) =>
     String(a.input.document_id || '').localeCompare(
@@ -45,8 +53,8 @@ export function sourceEvidenceFiles(
   const files = new Map();
   const indexRecords = [];
   const seenDocumentIds = new Set();
-  for (const { input, raw } of loaded) {
-    const checked = inspectEvidence(input, raw);
+  for (const { input, raw, normalizedText } of loaded) {
+    const checked = inspectEvidence(input, raw, { normalizedText });
     if (seenDocumentIds.has(checked.document_id))
       throw new EvidenceError(
         'DUPLICATE_DOCUMENT',
@@ -62,8 +70,16 @@ export function sourceEvidenceFiles(
         `Source refers to an unknown SQLite policy: ${input.policy_id}`
       );
     const stem = `${input.document_id}/${input.raw_sha256}`;
+    const isExternal = checked.storage === 'external_archive';
+    const rawFile = isExternal ? null : `${stem}.html.txt`;
+    const normalizedFile =
+      checked.normalized_text !== null ? `${stem}.normalized.txt` : null;
     const record = {
       schema_version: '1.0.0',
+      storage: checked.storage,
+      ...(isExternal
+        ? { external_uri: checked.external_uri, bytes: checked.bytes }
+        : {}),
       document_id: input.document_id,
       policy_id: input.policy_id,
       title: input.title,
@@ -80,19 +96,21 @@ export function sourceEvidenceFiles(
       extractor_version: input.extractor_version,
       raw_sha256: input.raw_sha256,
       normalized_sha256: input.normalized_sha256,
-      raw_file: `${stem}.html.txt`,
-      normalized_file: `${stem}.normalized.txt`,
+      raw_file: rawFile,
+      normalized_file: normalizedFile,
       anchors: checked.anchors,
       gaps: [
         ...(checked.requires_review ? ['HUMAN_ANCHOR_REVIEW_PENDING'] : []),
+        ...(isExternal ? ['EXTERNAL_ARCHIVE_ORIGINAL_BYTES_NOT_INLINE'] : []),
         'CURRENT_LAW_NOT_VERIFIED',
         'LATER_AMENDMENTS_AND_GUIDANCE_NOT_COVERED',
       ],
     };
     const json = JSON.stringify(record, null, 2) + '\n';
     files.set(`${input.document_id}.json`, json);
-    files.set(record.raw_file, raw);
-    files.set(record.normalized_file, checked.normalized_text);
+    if (rawFile !== null) files.set(rawFile, raw);
+    if (normalizedFile !== null)
+      files.set(normalizedFile, checked.normalized_text);
     indexRecords.push({
       document_id: input.document_id,
       policy_id: input.policy_id,

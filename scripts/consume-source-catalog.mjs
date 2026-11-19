@@ -10,6 +10,8 @@ import {
 } from './consume-agent-data.mjs';
 import { consumeEvidenceRecord } from './consume-source-evidence.mjs';
 
+export const CORPUS_MAX_BYTES = 16 * 1024 * 1024;
+
 const human = (review) =>
   review?.status === 'verified' &&
   review.method === 'human' &&
@@ -51,7 +53,8 @@ export async function consumeSourceCatalog(
     'POLICY_SNAPSHOT_MISMATCH'
   );
   const policies = await client.json(
-    new URL(manifest.datasets.policies.file, manifestUrl)
+    new URL(manifest.datasets.policies.file, manifestUrl),
+    { maxBytes: CORPUS_MAX_BYTES }
   );
   check(
     Array.isArray(policies.records) &&

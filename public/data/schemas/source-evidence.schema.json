@@ -30,6 +30,18 @@
     "schema_version": {
       "const": "1.0.0"
     },
+    "storage": {
+      "enum": ["git_inline", "external_archive"]
+    },
+    "external_uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "bytes": {
+      "type": "integer",
+      "minimum": 1
+    },
     "document_id": {
       "type": "string",
       "pattern": "^[a-z0-9][a-z0-9-]*$"
@@ -100,11 +112,11 @@
       "pattern": "^[a-f0-9]{64}$"
     },
     "raw_file": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^[a-z0-9-]+/[a-f0-9]{64}\\.html\\.txt$"
     },
     "normalized_file": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^[a-z0-9-]+/[a-f0-9]{64}\\.normalized\\.txt$"
     },
     "anchors": {
@@ -206,11 +218,11 @@
           "$ref": "#/definitions/review"
         },
         "start_offset": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "minimum": 0
         },
         "end_offset": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "minimum": 1
         },
         "offset_unit": {
@@ -266,6 +278,53 @@
     }
   },
   "allOf": [
+    {
+      "if": {
+        "required": ["storage"],
+        "properties": {
+          "storage": {
+            "const": "external_archive"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "external_uri",
+          "bytes",
+          "raw_sha256",
+          "normalized_sha256"
+        ],
+        "properties": {
+          "raw_file": {
+            "const": null
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "raw_file": {
+            "type": "string"
+          },
+          "normalized_file": {
+            "type": "string"
+          },
+          "anchors": {
+            "items": {
+              "properties": {
+                "start_offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end_offset": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     {
       "if": {
         "properties": {

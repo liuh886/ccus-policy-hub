@@ -19,32 +19,44 @@ import {
 } from './lib/source-readiness.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SNAPSHOT = path.join(
-  ROOT,
-  'scripts/data/source-readiness/v4-transfer-observations.json'
-);
-const MANUAL = path.join(
-  ROOT,
-  'scripts/data/source-readiness/manual-transfer-observations.json'
-);
-export const VERIFIED_INVENTORY_BASELINES = [
-  {
-    inventory_sha256:
-      '1aa9c830c7cd13dd026ebf6118bff9df590b05dc70bea1de0c8567aac15fa53d',
-    file: path.join(
-      ROOT,
-      'scripts/data/source-readiness/inventory-url-baseline-1aa9c830.json'
-    ),
-    file_sha256:
-      '0470ac7cc70d867b5082afb5c03a82e8ef4380db29c617e732a3448adef8d6ad',
-  },
-];
+const READINESS_DIR = path.join(ROOT, 'scripts/data/source-readiness');
+const SNAPSHOT = path.join(READINESS_DIR, 'v4-transfer-observations.json');
+const MANUAL = path.join(READINESS_DIR, 'manual-transfer-observations.json');
+const BASELINE_FILE_RE = /^inventory-url-baseline-([a-f0-9]+)\.json$/;
 
-export function loadVerifiedBaselines(specs = VERIFIED_INVENTORY_BASELINES) {
+export function discoverBaselineSpecs(directory = READINESS_DIR) {
+  if (!fs.existsSync(directory)) return [];
+  const files = fs
+    .readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && BASELINE_FILE_RE.test(entry.name))
+    .map((entry) => entry.name)
+    .sort();
+  return files.map((name) => {
+    const prefix = name.match(BASELINE_FILE_RE)[1];
+    const file = path.join(directory, name);
+    const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (
+      doc?.observation_type !== 'policy_inventory_url_baseline' ||
+      !/^[a-f0-9]{64}$/.test(doc.inventory_sha256 || '') ||
+      !doc.inventory_sha256.startsWith(prefix)
+    ) {
+      throw new Error(`Invalid inventory baseline file metadata: ${name}`);
+    }
+    return { inventory_sha256: doc.inventory_sha256, file };
+  });
+}
+
+export function loadVerifiedBaselines(source = READINESS_DIR) {
+  const specs =
+    typeof source === 'string' ? discoverBaselineSpecs(source) : source;
   const baselines = new Map();
   for (const spec of specs) {
     if (!fs.existsSync(spec.file))
       throw new Error(`Missing inventory baseline snapshot: ${spec.file}`);
+    if (baselines.has(spec.inventory_sha256))
+      throw new Error(
+        `Duplicate inventory baseline snapshot: ${spec.inventory_sha256}`
+      );
     const parsed = parseVerifiedBaseline(fs.readFileSync(spec.file, 'utf8'), {
       expectedInventorySha: spec.inventory_sha256,
       expectedFileSha: spec.file_sha256,

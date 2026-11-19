@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "targets": [
+    {
+      "id": "us-45q-ira",
+      "kind": "policy",
+      "policy_ids": ["us-45q-ira"]
+    },
+    {
+      "id": "us-obbba-45q-2025",
+      "kind": "policy",
+      "policy_ids": ["us-obbba-45q-2025"]
+    },
+    {
+      "id": "us-section-45q",
+      "kind": "policy_family",
+      "policy_ids": ["us-45q-ira", "us-obbba-45q-2025"],
+      "title": {
+        "en": "US Section 45Q policy-record context",
+        "zh": "美国45Q政策记录上下文"
+      }
+    },
+    {
+      "id": "ca-ccus-itc",
+      "kind": "policy",
+      "policy_ids": ["ca-ccus-itc"]
+    },
+    {
+      "id": "no-storage-framework",
+      "kind": "policy",
+      "policy_ids": ["no-storage-framework"]
+    },
+    {
+      "id": "denmark-ccfd",
+      "kind": "policy",
+      "policy_ids": ["denmark-ccfd"]
+    }
+  ]
+}

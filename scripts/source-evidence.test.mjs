@@ -1,7 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import initSqlJs from 'sql.js';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 import {
   digest,
   inspectEvidence,
@@ -282,4 +286,115 @@ test('CLI rejects migration, write, network and incomplete options', () => {
     ['--file'],
   ])
     assert.throws(() => parseEvidenceArgs(args), { code: 'INVALID_ARGUMENT' });
+});
+
+test('external_archive seam validates without source.html, skips *.html.txt output, and rejects missing external_uri', async () => {
+  const rawBytes = Buffer.from(
+    '<html><body><p>External archive synthetic statute text.</p></body></html>'
+  );
+  const normalized = normalizeOfficialHtml(rawBytes, 'official-html-v1');
+  const rawSha = digest(rawBytes);
+  const normSha = digest(normalized);
+  const draft = {
+    status: 'draft',
+    reviewer: null,
+    reviewed_at: null,
+    method: 'not_reviewed',
+  };
+  const externalPacket = {
+    schema_version: '1.0.0',
+    storage: 'external_archive',
+    external_uri: 'https://archive.example.org/snapshots/fixture.html',
+    bytes: rawBytes.length,
+    document_id: 'ext-archive-fixture',
+    policy_id: 'us-45q-ira',
+    title: { en: 'External Archive Fixture', zh: '外部归档测试' },
+    source_url: 'https://official.example.org/law',
+    source_language: 'en',
+    edition: '2026',
+    fetched_at: '2026-11-19T00:00:00Z',
+    published_at: null,
+    source_current_through: null,
+    raw_sha256: rawSha,
+    normalized_sha256: normSha,
+    extractor_version: 'official-html-v1',
+    review: draft,
+    anchors: [
+      {
+        id: 'clause-1',
+        locator: 'Section 1',
+        exact_quote: 'External archive synthetic statute text.',
+        version_sha256: rawSha,
+        review: draft,
+      },
+    ],
+  };
+
+  // Missing external_uri or http:// external_uri or missing bytes must fail packet schema
+  const missingUri = structuredClone(externalPacket);
+  delete missingUri.external_uri;
+  assert.throws(() => inspectEvidence(missingUri, null));
+
+  const httpUri = structuredClone(externalPacket);
+  httpUri.external_uri = 'http://archive.example.org/insecure.html';
+  assert.throws(() => inspectEvidence(httpUri, null));
+
+  const missingBytes = structuredClone(externalPacket);
+  delete missingBytes.bytes;
+  assert.throws(() => inspectEvidence(missingBytes, null));
+
+  // Valid external_archive without source.html on disk
+  const inspected = inspectEvidence(externalPacket, null);
+  assert.equal(inspected.storage, 'external_archive');
+  assert.equal(inspected.normalized_text, null);
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-ext-archive-'));
+  const packetDir = path.join(tmpDir, 'ext-archive-fixture');
+  fs.mkdirSync(packetDir);
+  fs.writeFileSync(
+    path.join(packetDir, 'packet.json'),
+    JSON.stringify(externalPacket)
+  );
+
+  const SQL = await initSqlJs();
+  const db = new SQL.Database();
+  const ajv = new Ajv({ allErrors: true, strict: false });
+  addFormats(ajv);
+  const schema = JSON.parse(
+    fs.readFileSync(
+      new URL(
+        '../public/data/schemas/source-evidence.schema.json',
+        import.meta.url
+      ),
+      'utf8'
+    )
+  );
+  const validateSchema = ajv.compile(schema);
+  try {
+    db.run('CREATE TABLE policies(id TEXT PRIMARY KEY)');
+    db.run('INSERT INTO policies VALUES (?)', ['us-45q-ira']);
+    const files = sourceEvidenceFiles(db, { rootDir: tmpDir });
+    assert.ok(!files.has(`ext-archive-fixture/${rawSha}.html.txt`));
+    assert.ok(!files.has(`ext-archive-fixture/${rawSha}.normalized.txt`));
+    const published = JSON.parse(files.get('ext-archive-fixture.json'));
+    assert.equal(published.storage, 'external_archive');
+    assert.equal(published.raw_file, null);
+    assert.equal(published.normalized_file, null);
+    assert.equal(
+      validateSchema(published),
+      true,
+      ajv.errorsText(validateSchema.errors)
+    );
+
+    // Public schema rejects external_archive record missing external_uri or setting non-null raw_file
+    const badSchemaRecord = structuredClone(published);
+    delete badSchemaRecord.external_uri;
+    assert.equal(validateSchema(badSchemaRecord), false);
+    const badRawFileRecord = structuredClone(published);
+    badRawFileRecord.raw_file = `ext-archive-fixture/${rawSha}.html.txt`;
+    assert.equal(validateSchema(badRawFileRecord), false);
+  } finally {
+    db.close();
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
 });
