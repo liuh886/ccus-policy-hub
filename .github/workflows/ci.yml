@@ -42,7 +42,7 @@ jobs:
           # Generated projections (src/content/*, public/data, src/data) are no
           # longer committed: they are pure functions of the SQLite SSOT and
           # are regenerated with `pnpm gen`. Watch the generators instead.
-          if grep -Eq '^(agent/ccus-ai-agent/(db|logic|migrations|governance)/|src/content/(config\.ts|enums\.generated\.ts)|src/data/countries\.json|docs/policy-(db-consistency|coverage|content-depth)|scripts/(export|generate|sync-policy|audit-policy|manage-db|content-export-utils|lib/)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
+          if grep -Eq '^(agent/ccus-ai-agent/(db|logic|migrations|governance)/|src/content/(config\.ts|enums\.generated\.ts)|src/data/countries\.json|docs/policy-(db-consistency|coverage|content-depth)|scripts/(export|generate|sync-policy|audit-policy|manage-db|content-export-utils|lib/|apply-policy-review|ingest-|prune-|stamp-audit|run-policy|capture-catalog|data/)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
             echo "governed_data=true" >> "$GITHUB_OUTPUT"
           else
             echo "governed_data=false" >> "$GITHUB_OUTPUT"
@@ -227,8 +227,10 @@ jobs:
           hash_trees > /tmp/gen-b.txt
           diff /tmp/gen-a.txt /tmp/gen-b.txt
 
-      - name: Deep Audit (blocking)
-        run: pnpm manage:db:audit:deep
+      - name: Deep Audit (blocking, read-only)
+        run: |
+          pnpm manage:db:audit:deep:check
+          git diff --exit-code -- agent/ccus-ai-agent/db/ccus_master.sqlite
 
       - name: Verify Policy Consistency (DB vs regenerated Markdown)
         run: pnpm manage:db:audit:policy-consistency
@@ -238,12 +240,11 @@ jobs:
 
       - name: Verify Policy Coverage Matrix
         run: |
+          trap 'rm -f docs/policy-coverage-matrix.json' EXIT
           pnpm manage:db:audit:policy-coverage
-          pnpm prettier --write \
-            docs/policy-coverage-matrix.md \
-            docs/policy-coverage-matrix.json
-          git diff --exit-code -- docs/policy-coverage-matrix.md
           rm -f docs/policy-coverage-matrix.json
+          pnpm prettier --write docs/policy-coverage-matrix.md
+          git diff --exit-code -- docs/policy-coverage-matrix.md
 
       - name: Verify Policy Content Depth Report
         run: |
@@ -255,9 +256,10 @@ jobs:
             docs/policy-content-depth-report.json \
             docs/policy-content-depth-report.md
 
-      - name: Require stable governance reports to remain current
+      - name: Require stable governance reports and SSOT DB to remain untouched
         run: |
           git diff --exit-code -- \
+            agent/ccus-ai-agent/db/ccus_master.sqlite \
             docs/policy-db-consistency-report.json \
             docs/policy-db-consistency-report.md \
             docs/policy-coverage-matrix.md \

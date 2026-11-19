@@ -126,7 +126,15 @@ export async function dbImportMdReverse(
         );
 
         db.run(
-          `INSERT OR REPLACE INTO policy_i18n (policy_id, lang, title, description, interpretation, impact_analysis_json, evolution_json, regulatory_json) VALUES (?,?,?,?,?,?,?,?)`,
+          `INSERT INTO policy_i18n (policy_id, lang, title, description, interpretation, impact_analysis_json, evolution_json, regulatory_json)
+          VALUES (?,?,?,?,?,?,?,?)
+          ON CONFLICT(policy_id, lang) DO UPDATE SET
+            title=excluded.title,
+            description=excluded.description,
+            interpretation=excluded.interpretation,
+            impact_analysis_json=excluded.impact_analysis_json,
+            evolution_json=excluded.evolution_json,
+            regulatory_json=excluded.regulatory_json`,
           [
             fileId,
             lang,
@@ -141,8 +149,17 @@ export async function dbImportMdReverse(
 
         if (data.analysis) {
           for (const [dim, v] of Object.entries(data.analysis)) {
+            // UPSERT, not REPLACE: REPLACE is DELETE + INSERT and would cascade
+            // into policy_analysis_i18n (ON DELETE CASCADE).
             db.run(
-              `INSERT OR REPLACE INTO policy_analysis (policy_id, dimension, score, label, evidence, citation, audit_note) VALUES (?,?,?,?,?,?,?)`,
+              `INSERT INTO policy_analysis (policy_id, dimension, score, label, evidence, citation, audit_note)
+              VALUES (?,?,?,?,?,?,?)
+              ON CONFLICT(policy_id, dimension) DO UPDATE SET
+                score=excluded.score,
+                label=excluded.label,
+                evidence=excluded.evidence,
+                citation=excluded.citation,
+                audit_note=excluded.audit_note`,
               [
                 fileId,
                 dim,
@@ -187,7 +204,24 @@ export async function dbImportMdReverse(
         );
 
         db.run(
-          `INSERT OR REPLACE INTO facility_i18n (facility_id, lang, name, description, region, type, sector, fate_of_carbon, hub, operator, capture_technology, storage_type, announcement, fid, operation, suspension_date, phase) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+          `INSERT INTO facility_i18n (facility_id, lang, name, description, region, type, sector, fate_of_carbon, hub, operator, capture_technology, storage_type, announcement, fid, operation, suspension_date, phase)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+          ON CONFLICT(facility_id, lang) DO UPDATE SET
+            name=excluded.name,
+            description=excluded.description,
+            region=excluded.region,
+            type=excluded.type,
+            sector=excluded.sector,
+            fate_of_carbon=excluded.fate_of_carbon,
+            hub=excluded.hub,
+            operator=excluded.operator,
+            capture_technology=excluded.capture_technology,
+            storage_type=excluded.storage_type,
+            announcement=excluded.announcement,
+            fid=excluded.fid,
+            operation=excluded.operation,
+            suspension_date=excluded.suspension_date,
+            phase=excluded.phase`,
           [
             fileId,
             lang,
@@ -240,19 +274,36 @@ export async function dbImportMdReverse(
                 `INSERT OR IGNORE INTO policy_facility_links (policy_id, facility_id) VALUES (?,?)`,
                 [String(pid), fileId]
               );
-            } catch (e) {}
+            } catch (err) {
+              const message = err instanceof Error ? err.message : String(err);
+              console.error(
+                JSON.stringify({
+                  level: 'error',
+                  command: 'db:import:md:migration',
+                  event: 'policy_facility_link_failed',
+                  facility_id: fileId,
+                  policy_id: String(pid),
+                  error: message,
+                })
+              );
+              if (!/FOREIGN KEY constraint failed/i.test(message)) {
+                throw err;
+              }
+            }
           });
         }
       }
     });
   };
 
-  ['en', 'zh'].forEach((l) =>
-    processDir(path.join(CONTENT_ROOT, 'policies', l), 'policy')
-  );
-  ['en', 'zh'].forEach((l) =>
-    processDir(path.join(CONTENT_ROOT, 'facilities', l), 'facility')
-  );
+  db.transaction(() => {
+    ['en', 'zh'].forEach((l) =>
+      processDir(path.join(CONTENT_ROOT, 'policies', l), 'policy')
+    );
+    ['en', 'zh'].forEach((l) =>
+      processDir(path.join(CONTENT_ROOT, 'facilities', l), 'facility')
+    );
+  });
 
   if (injectedDb == null) db.save();
   console.log('REVERSE IMPORT DONE AND DB WRITTEN TO DISK.');

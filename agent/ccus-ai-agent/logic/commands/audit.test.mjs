@@ -89,3 +89,18 @@ test('fails when coordinates cannot be resolved', async () => {
     db.close();
   }
 });
+
+test('readOnly mode passes without mutating db_meta', async () => {
+  const SQL = await initSqlJs();
+  const db = makeDb(SQL);
+  try {
+    seedPassing(db);
+    await dbAuditDeep(SQL, { db, thresholds: THRESHOLDS, readOnly: true });
+    const meta = db.get(
+      "SELECT value FROM db_meta WHERE key = 'last_audit_pass'"
+    );
+    assert.equal(meta, null);
+  } finally {
+    db.close();
+  }
+});

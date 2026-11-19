@@ -9,13 +9,15 @@ import fs from 'fs';
 import path from 'path';
 import { LOGIC_DIR, loadDb } from '../db.mjs';
 
-export async function dbSeedCountries(SQL) {
-  const db = loadDb(SQL);
+export async function dbSeedCountries(
+  SQL,
+  { db: injectedDb = null, countriesPath = null } = {}
+) {
+  const db = injectedDb ?? loadDb(SQL);
+  const resolvedCountriesPath =
+    countriesPath ?? path.join(LOGIC_DIR, '../../../src/data/countries.json');
   const countriesData = JSON.parse(
-    fs.readFileSync(
-      path.join(LOGIC_DIR, '../../../src/data/countries.json'),
-      'utf8'
-    )
+    fs.readFileSync(resolvedCountriesPath, 'utf8')
   );
   const MAJOR = {
     'United States': {
@@ -73,8 +75,11 @@ export async function dbSeedCountries(SQL) {
   };
   db.transaction(() => {
     for (const [id, trans] of Object.entries(countriesData)) {
+      // UPSERT, not REPLACE: REPLACE is DELETE + INSERT and would cascade
+      // into country_i18n (ON DELETE CASCADE) and wipe audit/deployment cols.
       db.run(
-        'INSERT OR REPLACE INTO country_profiles (id, region) VALUES (?,?)',
+        `INSERT INTO country_profiles (id, region) VALUES (?,?)
+        ON CONFLICT(id) DO UPDATE SET region=excluded.region`,
         [id, 'Global']
       );
       ['en', 'zh'].forEach((l) => {
@@ -83,7 +88,18 @@ export async function dbSeedCountries(SQL) {
           reg: {},
         };
         db.run(
-          `INSERT OR REPLACE INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules) VALUES (?,?,?,?,?,?,?,?,?,?,?)`,
+          `INSERT INTO country_i18n (country_id, lang, name, summary, pore_space_rights, liability_transfer, liability_period, financial_assurance, permitting_lead_time, co2_definition, cross_border_rules)
+          VALUES (?,?,?,?,?,?,?,?,?,?,?)
+          ON CONFLICT(country_id, lang) DO UPDATE SET
+            name=excluded.name,
+            summary=excluded.summary,
+            pore_space_rights=excluded.pore_space_rights,
+            liability_transfer=excluded.liability_transfer,
+            liability_period=excluded.liability_period,
+            financial_assurance=excluded.financial_assurance,
+            permitting_lead_time=excluded.permitting_lead_time,
+            co2_definition=excluded.co2_definition,
+            cross_border_rules=excluded.cross_border_rules`,
           [
             id,
             l,
@@ -101,12 +117,15 @@ export async function dbSeedCountries(SQL) {
       });
     }
   });
-  db.save();
+  if (injectedDb == null) db.save();
   console.log('SEED COUNTRIES DONE.');
 }
 
-export async function dbSyncCountryProfiles(SQL) {
-  const db = loadDb(SQL);
+export async function dbSyncCountryProfiles(
+  SQL,
+  { db: injectedDb = null } = {}
+) {
+  const db = injectedDb ?? loadDb(SQL);
   const fields = [
     'pore_space_rights',
     'liability_transfer',
@@ -120,19 +139,41 @@ export async function dbSyncCountryProfiles(SQL) {
     db.all('SELECT id FROM country_profiles').forEach((c) => {
       ['en', 'zh'].forEach((lang) => {
         const policies = db.all(
-          `SELECT i.regulatory_json FROM policies p JOIN policy_i18n i ON p.id = i.policy_id WHERE p.country = ? AND i.lang = ? ORDER BY p.year DESC`,
+          `SELECT p.id AS policy_id, i.regulatory_json
+           FROM policies p
+           JOIN policy_i18n i ON p.id = i.policy_id
+           WHERE p.country = ? AND i.lang = ?
+           ORDER BY p.year DESC`,
           [c.id, lang]
         );
+        const parsedPolicies = policies.map((p) => {
+          try {
+            return JSON.parse(p.regulatory_json || '{}');
+          } catch (err) {
+            const message = err instanceof Error ? err.message : String(err);
+            console.error(
+              JSON.stringify({
+                level: 'error',
+                command: 'db:sync:country-profiles',
+                event: 'malformed_regulatory_json',
+                country_id: c.id,
+                lang,
+                policy_id: p.policy_id,
+                error: message,
+              })
+            );
+            throw new Error(
+              `Malformed regulatory_json for policy ${p.policy_id} (${c.id}/${lang}): ${message}`
+            );
+          }
+        });
         const updates = {};
         fields.forEach((f) => {
-          for (const p of policies) {
-            try {
-              const reg = JSON.parse(p.regulatory_json || '{}');
-              if (reg[f] && !['Pending', '---', '待定', ''].includes(reg[f])) {
-                updates[f] = reg[f];
-                break;
-              }
-            } catch (e) {}
+          for (const reg of parsedPolicies) {
+            if (reg[f] && !['Pending', '---', '待定', ''].includes(reg[f])) {
+              updates[f] = reg[f];
+              break;
+            }
           }
         });
         if (Object.keys(updates).length > 0) {
@@ -144,6 +185,6 @@ export async function dbSyncCountryProfiles(SQL) {
       });
     });
   });
-  db.save();
+  if (injectedDb == null) db.save();
   console.log('SYNC COUNTRIES DONE.');
 }

@@ -7,7 +7,9 @@
  * functions, so orchestration can never drift from the real commands.
  */
 
-import { loadDb } from '../db.mjs';
+import fs from 'fs';
+import path from 'path';
+import { LOGIC_DIR, loadDb } from '../db.mjs';
 import { computeGovernanceDeployment } from '../governance-deployment-algo.mjs';
 import { dbAuditDeep } from './audit.mjs';
 import { dbExportMd } from './export.mjs';
@@ -52,30 +54,74 @@ export async function dbStats(SQL) {
   console.log('=======================================');
 }
 
-export const SUBNATIONAL_POLICY_MATCHERS = Object.freeze({
-  'au-wa-petroleum-amendment-2024': /\b(WA|Western Australia)\b/i,
-  'alberta-tier': /\b(AB|ALB|Alberta)\b/i,
-  'ca-ab-sequestration-tenure': /\b(AB|ALB|Alberta)\b/i,
-  'ca-sk-ccs-directives': /\b(SK|Saskatchewan)\b/i,
-  'ca-sk-spii': /\b(SK|Saskatchewan)\b/i,
-  'cn-bj-ccus-measures-2026': /\bBeijing\b|北京/i,
-  'cn-gd-carbon-inclusive': /\bGuangdong\b|广东|大亚湾|南海|惠州|深圳/i,
-  'cn-hb-ets-offset': /\bHubei\b|湖北|武汉|枝江|应城/i,
-  'cn-js-industrial-decarb-2022':
-    /\bJiangsu\b|江苏|泰州|南京|连云港|常州|扬州/i,
-  'cn-ordos-pilot-2024': /\b(Inner Mongolia|Ordos)\b|内蒙古|鄂尔多斯|包头/i,
-  'cn-sd-eco-plan-14fym':
-    /\bShandong\b|山东|胜利|齐鲁|东营|青岛|青州|淄博|烟台/i,
-  'california-lcfs': /\b(CA|California)\b/i,
-  'tx-hb-1284-ccus': /\b(TX|Texas)\b/i,
-  'us-tx-natural-resources-121': /\b(TX|Texas)\b/i,
-  'us-la-primacy-rules': /\b(LA|Louisiana)\b/i,
-  'us-nd-century-code-38-22': /\b(ND|North Dakota)\b/i,
-  'us-wy-hb-0200': /\b(WY|Wyoming)\b/i,
-});
+export const SUBNATIONAL_MATCHERS_PATH = path.join(
+  LOGIC_DIR,
+  '../../../scripts/data/subnational-matchers.json'
+);
 
-export async function dbFixRelationships(SQL, args = []) {
-  const db = loadDb(SQL);
+export function loadSubnationalMatchers(
+  matchersPath = SUBNATIONAL_MATCHERS_PATH
+) {
+  const raw = JSON.parse(fs.readFileSync(matchersPath, 'utf8'));
+  if (!raw || typeof raw.matchers !== 'object' || Array.isArray(raw.matchers)) {
+    throw new Error(`Invalid subnational matchers file: ${matchersPath}`);
+  }
+  const compiled = {};
+  for (const [policyId, spec] of Object.entries(raw.matchers)) {
+    if (!spec || typeof spec.structured_pattern !== 'string') {
+      throw new Error(
+        `Subnational matcher ${policyId} missing structured_pattern`
+      );
+    }
+    if (!spec.country || !spec.jurisdiction) {
+      throw new Error(
+        `Subnational matcher ${policyId} missing country or jurisdiction metadata`
+      );
+    }
+    const flags = typeof spec.flags === 'string' ? spec.flags : 'i';
+    compiled[policyId] = Object.freeze({
+      policyId,
+      country: spec.country,
+      jurisdiction: spec.jurisdiction,
+      level: spec.level || 'subnational',
+      structuredRegex: new RegExp(spec.structured_pattern, flags),
+      textRegex: spec.text_pattern
+        ? new RegExp(spec.text_pattern, flags)
+        : null,
+    });
+  }
+  return Object.freeze(compiled);
+}
+
+export const SUBNATIONAL_POLICY_MATCHERS = loadSubnationalMatchers();
+
+export function matchesSubnationalPolicy(matcher, facility) {
+  const structuredText = [
+    facility.address,
+    facility.en_hub,
+    facility.en_region,
+    facility.zh_region,
+  ]
+    .filter(Boolean)
+    .join(' ');
+  if (matcher.structuredRegex.test(structuredText)) return true;
+  if (!matcher.textRegex) return false;
+  const fullText = [structuredText, facility.en_name, facility.zh_name]
+    .filter(Boolean)
+    .join(' ');
+  return matcher.textRegex.test(fullText);
+}
+
+export async function dbFixRelationships(
+  SQL,
+  args = [],
+  { db: injectedDb = null, matchersPath = SUBNATIONAL_MATCHERS_PATH } = {}
+) {
+  const db = injectedDb ?? loadDb(SQL);
+  const matchers =
+    matchersPath === SUBNATIONAL_MATCHERS_PATH
+      ? SUBNATIONAL_POLICY_MATCHERS
+      : loadSubnationalMatchers(matchersPath);
   const force = args.includes('--force');
   console.log(
     force
@@ -85,10 +131,12 @@ export async function dbFixRelationships(SQL, args = []) {
 
   db.transaction(() => {
     if (force) {
-      db.run('DELETE FROM policy_facility_links');
+      db.run(
+        "DELETE FROM policy_facility_links WHERE link_type IN ('country', 'subnational_region')"
+      );
     } else {
       // Remove over-broad country-level links for subnational policies before re-linking.
-      for (const subId of Object.keys(SUBNATIONAL_POLICY_MATCHERS)) {
+      for (const subId of Object.keys(matchers)) {
         db.run(
           "DELETE FROM policy_facility_links WHERE policy_id = ? AND link_type = 'country'",
           [subId]
@@ -105,27 +153,35 @@ export async function dbFixRelationships(SQL, args = []) {
       SELECT
         f.id,
         f.country,
-        ${addrExpr} || ' ' ||
-        COALESCE(en.name, '') || ' ' ||
-        COALESCE(zh.name, '') || ' ' ||
-        COALESCE(en.hub, '') || ' ' ||
-        COALESCE(en.region, '') || ' ' ||
-        COALESCE(zh.region, '') AS location_text
+        ${addrExpr} AS address,
+        COALESCE(en.name, '') AS en_name,
+        COALESCE(zh.name, '') AS zh_name,
+        COALESCE(en.hub, '') AS en_hub,
+        COALESCE(en.region, '') AS en_region,
+        COALESCE(zh.region, '') AS zh_region
       FROM facilities f
       LEFT JOIN facility_i18n en ON f.id = en.facility_id AND en.lang = 'en'
       LEFT JOIN facility_i18n zh ON f.id = zh.facility_id AND zh.lang = 'zh'
     `);
 
+    const policiesByCountry = new Map();
+    for (const p of db.all('SELECT id, country FROM policies')) {
+      let list = policiesByCountry.get(p.country);
+      if (!list) {
+        list = [];
+        policiesByCountry.set(p.country, list);
+      }
+      list.push(p);
+    }
+
     let linkCount = 0;
     let subnationalCount = 0;
     for (const f of facilities) {
-      const policies = db.all('SELECT id FROM policies WHERE country = ?', [
-        f.country,
-      ]);
+      const policies = policiesByCountry.get(f.country) || [];
       for (const p of policies) {
-        const subMatcher = SUBNATIONAL_POLICY_MATCHERS[p.id];
+        const subMatcher = matchers[p.id];
         if (subMatcher) {
-          if (!subMatcher.test(f.location_text || '')) continue;
+          if (!matchesSubnationalPolicy(subMatcher, f)) continue;
           db.run(
             `INSERT INTO policy_facility_links (
               policy_id, facility_id, link_type, confidence, evidence, review_status
@@ -134,7 +190,8 @@ export async function dbFixRelationships(SQL, args = []) {
               link_type = 'subnational_region',
               confidence = 0.75,
               evidence = 'Subnational jurisdiction match',
-              review_status = 'verified'`,
+              review_status = 'verified'
+            WHERE COALESCE(policy_facility_links.link_type, 'country') IN ('country', 'subnational_region')`,
             [p.id, f.id]
           );
           subnationalCount++;
@@ -153,7 +210,7 @@ export async function dbFixRelationships(SQL, args = []) {
     );
   });
 
-  db.save();
+  if (injectedDb == null) db.save();
   console.log('FIX RELATIONSHIPS DONE.');
 }
 

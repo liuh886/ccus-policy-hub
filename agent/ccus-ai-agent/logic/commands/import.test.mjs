@@ -249,3 +249,66 @@ test('preserves both languages on bilingual import (no cascade loss)', async () 
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 });
+
+test('preserves policy_analysis_i18n on upsert and logs structured error on missing policy FK link', async () => {
+  const SQL = await initSqlJs();
+  const db = makeDb(SQL);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'import-test-'));
+  const originalError = console.error;
+  const logged = [];
+  console.error = (msg) => logged.push(String(msg));
+  try {
+    seedContent(tmp, { bilingualPolicy: true });
+    await dbImportMdReverse(SQL, [REVERSE_SYNC_MIGRATION_FLAG], {
+      db,
+      contentRoot: tmp,
+    });
+    db.run(
+      `INSERT INTO policy_analysis_i18n (policy_id, dimension, lang, label, evidence, source_evidence, reviewed_at)
+       VALUES (?, ?, 'zh', ?, ?, ?, ?)`,
+      ['p1', 'incentive', '经济激励', '中文翻译证据', 'E', '2026-11-18']
+    );
+
+    // Re-run import with an unknown relatedPolicies entry; must preserve
+    // policy_analysis_i18n and emit structured error instead of silent catch.
+    writeMd(
+      tmp,
+      'facilities/en/f1.md',
+      {
+        id: 'f1',
+        name: 'Facility en',
+        country: 'Brazil',
+        status: 'Operational',
+        coordinates: [-22.9, -43.2],
+        precision: 'exact',
+        relatedPolicies: ['p1', 'nonexistent-policy'],
+        provenance: {
+          author: 'tester',
+          reviewer: '',
+          lastAuditDate: '2026-01-01',
+        },
+      },
+      'Facility body'
+    );
+    await dbImportMdReverse(SQL, [REVERSE_SYNC_MIGRATION_FLAG], {
+      db,
+      contentRoot: tmp,
+    });
+
+    const preserved = db.get(
+      "SELECT evidence, reviewed_at FROM policy_analysis_i18n WHERE policy_id='p1' AND dimension='incentive' AND lang='zh'"
+    );
+    assert.deepEqual(preserved, {
+      evidence: '中文翻译证据',
+      reviewed_at: '2026-11-18',
+    });
+    assert.equal(logged.length, 1);
+    const parsedLog = JSON.parse(logged[0]);
+    assert.equal(parsedLog.event, 'policy_facility_link_failed');
+    assert.equal(parsedLog.policy_id, 'nonexistent-policy');
+  } finally {
+    console.error = originalError;
+    db.close();
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+});

@@ -82,7 +82,7 @@ async function main() {
         await dbFixRelationships(SQL, args.slice(1));
         break;
       case 'db:audit:deep':
-        await dbAuditDeep(SQL);
+        await dbAuditDeep(SQL, { readOnly: args.includes('--read-only') });
         break;
       case 'db:export:i18n':
         await dbExportI18n(SQL);
