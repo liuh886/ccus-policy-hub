@@ -14,7 +14,11 @@ import { coordinatesEqual } from './geocode.mjs';
 
 export async function dbAuditDeep(
   SQL,
-  { db: injectedDb = null, thresholds: injectedThresholds = null } = {}
+  {
+    db: injectedDb = null,
+    thresholds: injectedThresholds = null,
+    readOnly = false,
+  } = {}
 ) {
   // Test seam: pass { db, thresholds } to evaluate gates against an
   // in-memory database without touching the master file.
@@ -81,11 +85,13 @@ export async function dbAuditDeep(
     regFillRate >= (thresholds.min_regulatory_fill_rate || 0) &&
     unresolvedFacilityCoordinates === 0 &&
     countryAnchorDrift === 0;
-  db.run(
-    "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)",
-    [pass ? 'true' : 'false']
-  );
-  if (injectedDb == null) db.save();
+  if (!readOnly) {
+    db.run(
+      "INSERT OR REPLACE INTO db_meta (key, value) VALUES ('last_audit_pass', ?)",
+      [pass ? 'true' : 'false']
+    );
+    if (injectedDb == null) db.save();
+  }
   console.log(
     `AUDIT ${pass ? 'PASSED' : 'FAILED'} (Fill Rate: ${(regFillRate * 100).toFixed(1)}%, unresolved facility coordinates: ${unresolvedFacilityCoordinates}, country anchor drift: ${countryAnchorDrift})`
   );

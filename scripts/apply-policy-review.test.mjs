@@ -251,3 +251,261 @@ test('source_reviewed: true sets audit_note and provenance_last_audit_date while
   assert.equal(auditDate, '2026-11-17');
   db.close();
 });
+
+function makeValidInsertPatch(overrides = {}) {
+  return {
+    id: 'test-new-policy-2026',
+    sources: [
+      {
+        url: 'https://example.gov/ccus-act-2026',
+        finding: 'Enacted statutory text reviewed.',
+      },
+    ],
+    record: {
+      country: 'United States',
+      year: 2026,
+      status: 'Active',
+      category: 'Regulatory',
+      legal_weight: 'Primary Legislation',
+      source: 'Example Ministry',
+      url: 'https://example.gov/ccus-act-2026',
+      pub_date: '2026-05-01',
+      ...(overrides.record || {}),
+    },
+    locales: {
+      en: {
+        title: 'Example CCUS Storage Act 2026',
+        description: 'Establishes permitting and liability rules for storage.',
+        scope: 'National geological CO2 storage.',
+        ...(overrides.enLocale || {}),
+      },
+      zh: {
+        title: '2026年示例CCUS封存法案',
+        description: '确立二氧化碳地质封存许可与责任制度。',
+        scope: '全国二氧化碳地质封存。',
+        ...(overrides.zhLocale || {}),
+      },
+      ...(overrides.locales || {}),
+    },
+    analysis: overrides.analysis || {
+      incentive: {
+        score: 75,
+        en: 'Direct tax credit provided in Section 4.',
+        zh: '第四条提供直接税收抵免。',
+        label_zh: '经济激励',
+        citation: 'https://example.gov/ccus-act-2026#sec4',
+      },
+      market: {
+        score: 60,
+        en: 'Recognizes verified storage credits in compliance market.',
+        citation: 'https://example.gov/ccus-act-2026#sec7',
+      },
+      mrv: {
+        score: 85,
+        en: 'Annual third-party MRV reporting mandated.',
+        zh: '强制要求年度第三方MRV报告。',
+        citation: 'https://example.gov/ccus-act-2026#sec9',
+      },
+      statutory: {
+        score: 90,
+        en: 'Binding statutory permitting authority assigned.',
+        citation: 'https://example.gov/ccus-act-2026#sec2',
+      },
+      strategic: {
+        score: 70,
+        en: 'Aligns with 2035 national storage deployment target.',
+        citation: 'https://example.gov/ccus-act-2026#sec1',
+      },
+    },
+    ...overrides.top,
+  };
+}
+
+test('rejects score updates on existing policies in both default and --allow-insert modes', async () => {
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(
+    fs.readFileSync('agent/ccus-ai-agent/db/ccus_master.sqlite')
+  );
+  const patch = {
+    as_of: '2026-11-18',
+    policies: [
+      {
+        id: 'ca-ccus-itc',
+        source_reviewed: true,
+        sources: [
+          {
+            url: 'https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html',
+            finding: 'Attempted score mutation.',
+          },
+        ],
+        analysis: {
+          mrv: {
+            score: 99,
+            en: 'Updated text.',
+            zh: '更新文本。',
+            label_zh: '技术规范',
+            citation:
+              'https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html',
+          },
+        },
+      },
+    ],
+  };
+  assert.throws(
+    () => applyPolicyReview(db, patch, { allowInsert: false }),
+    /Cannot modify score/
+  );
+  assert.throws(
+    () => applyPolicyReview(db, patch, { allowInsert: true }),
+    /Cannot modify score/
+  );
+  db.close();
+});
+
+test('--allow-insert inserts draft by default and requires source_reviewed + reviewer for verified', async () => {
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(
+    fs.readFileSync('agent/ccus-ai-agent/db/ccus_master.sqlite')
+  );
+
+  // Requesting verified WITHOUT source_reviewed: true forces draft.
+  const draftPatch = makeValidInsertPatch({
+    record: { review_status: 'verified' },
+    top: {
+      id: 'test-draft-insert-2026',
+      source_reviewed: false,
+      reviewer: 'Alice',
+    },
+  });
+  const draftChanges = applyPolicyReview(
+    db,
+    { as_of: '2026-11-18', policies: [draftPatch] },
+    { allowInsert: true }
+  );
+  assert.equal(draftChanges[0].review_status, 'draft');
+  const draftRow = db.exec(
+    'SELECT review_status, provenance_reviewer, provenance_last_audit_date FROM policies WHERE id=?',
+    ['test-draft-insert-2026']
+  )[0].values[0];
+  assert.deepEqual(draftRow, ['draft', null, null]);
+
+  // Requesting verified WITH source_reviewed: true but empty reviewer ALSO forces draft.
+  const noReviewerPatch = makeValidInsertPatch({
+    record: { review_status: 'verified' },
+    top: {
+      id: 'test-no-reviewer-2026',
+      source_reviewed: true,
+      reviewer: '   ',
+    },
+  });
+  const noReviewerChanges = applyPolicyReview(
+    db,
+    { as_of: '2026-11-18', policies: [noReviewerPatch] },
+    { allowInsert: true }
+  );
+  assert.equal(noReviewerChanges[0].review_status, 'draft');
+
+  // Verified requires BOTH source_reviewed: true AND non-empty reviewer.
+  const verifiedPatch = makeValidInsertPatch({
+    record: { review_status: 'verified' },
+    top: {
+      id: 'test-verified-insert-2026',
+      source_reviewed: true,
+      reviewer: 'Dr. Jane Doe',
+    },
+  });
+  const verifiedChanges = applyPolicyReview(
+    db,
+    { as_of: '2026-11-18', policies: [verifiedPatch] },
+    { allowInsert: true }
+  );
+  assert.equal(verifiedChanges[0].action, 'insert');
+  assert.equal(verifiedChanges[0].review_status, 'verified');
+  assert.equal(verifiedChanges[0].translated_dimensions, 2);
+
+  const verifiedRow = db.exec(
+    'SELECT review_status, provenance_reviewer, provenance_last_audit_date FROM policies WHERE id=?',
+    ['test-verified-insert-2026']
+  )[0].values[0];
+  assert.deepEqual(verifiedRow, ['verified', 'Dr. Jane Doe', '2026-11-18']);
+
+  const analysisCount = db.exec(
+    'SELECT COUNT(*) FROM policy_analysis WHERE policy_id=?',
+    ['test-verified-insert-2026']
+  )[0].values[0][0];
+  assert.equal(analysisCount, 5);
+
+  const i18nRows = db.exec(
+    'SELECT dimension, evidence, source_evidence FROM policy_analysis_i18n WHERE policy_id=? ORDER BY dimension',
+    ['test-verified-insert-2026']
+  )[0].values;
+  assert.deepEqual(i18nRows, [
+    [
+      'incentive',
+      '第四条提供直接税收抵免。',
+      'Direct tax credit provided in Section 4.',
+    ],
+    [
+      'mrv',
+      '强制要求年度第三方MRV报告。',
+      'Annual third-party MRV reporting mandated.',
+    ],
+  ]);
+  db.close();
+});
+
+test('--allow-insert rejects missing citation, missing locale fields, or invalid scores and rolls back', async () => {
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(
+    fs.readFileSync('agent/ccus-ai-agent/db/ccus_master.sqlite')
+  );
+  const beforeCount = db.exec('SELECT COUNT(*) FROM policies')[0].values[0][0];
+
+  const missingCitation = makeValidInsertPatch({
+    top: { id: 'test-bad-citation' },
+  });
+  missingCitation.analysis.mrv.citation = '  ';
+  assert.throws(
+    () =>
+      applyPolicyReview(
+        db,
+        { as_of: '2026-11-18', policies: [missingCitation] },
+        { allowInsert: true }
+      ),
+    /citation/
+  );
+
+  const missingZh = makeValidInsertPatch({
+    top: { id: 'test-bad-locale' },
+  });
+  delete missingZh.locales.zh;
+  assert.throws(
+    () =>
+      applyPolicyReview(
+        db,
+        { as_of: '2026-11-18', policies: [missingZh] },
+        { allowInsert: true }
+      ),
+    /locales\.zh required/
+  );
+
+  const badScore = makeValidInsertPatch({
+    top: { id: 'test-bad-score' },
+  });
+  badScore.analysis.incentive.score = 105;
+  assert.throws(
+    () =>
+      applyPolicyReview(
+        db,
+        { as_of: '2026-11-18', policies: [badScore] },
+        { allowInsert: true }
+      ),
+    /integer 0-100/
+  );
+
+  assert.equal(
+    db.exec('SELECT COUNT(*) FROM policies')[0].values[0][0],
+    beforeCount
+  );
+  db.close();
+});

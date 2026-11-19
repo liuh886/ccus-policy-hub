@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0.0",
+  "matchers": {
+    "au-wa-petroleum-amendment-2024": {
+      "country": "Australia",
+      "jurisdiction": "Western Australia",
+      "level": "state",
+      "structured_pattern": "\\b(WA|Western Australia)\\b",
+      "text_pattern": "\\bWestern Australia\\b",
+      "flags": "i"
+    },
+    "alberta-tier": {
+      "country": "Canada",
+      "jurisdiction": "Alberta",
+      "level": "province",
+      "structured_pattern": "\\b(AB|ALB|Alberta)\\b",
+      "text_pattern": "\\bAlberta\\b",
+      "flags": "i"
+    },
+    "ca-ab-sequestration-tenure": {
+      "country": "Canada",
+      "jurisdiction": "Alberta",
+      "level": "province",
+      "structured_pattern": "\\b(AB|ALB|Alberta)\\b",
+      "text_pattern": "\\bAlberta\\b",
+      "flags": "i"
+    },
+    "ca-sk-ccs-directives": {
+      "country": "Canada",
+      "jurisdiction": "Saskatchewan",
+      "level": "province",
+      "structured_pattern": "\\b(SK|Saskatchewan)\\b",
+      "text_pattern": "\\bSaskatchewan\\b",
+      "flags": "i"
+    },
+    "ca-sk-spii": {
+      "country": "Canada",
+      "jurisdiction": "Saskatchewan",
+      "level": "province",
+      "structured_pattern": "\\b(SK|Saskatchewan)\\b",
+      "text_pattern": "\\bSaskatchewan\\b",
+      "flags": "i"
+    },
+    "cn-bj-ccus-measures-2026": {
+      "country": "China",
+      "jurisdiction": "Beijing",
+      "level": "municipality",
+      "structured_pattern": "\\bBeijing\\b|北京",
+      "text_pattern": "\\bBeijing\\b|北京",
+      "flags": "i"
+    },
+    "cn-gd-carbon-inclusive": {
+      "country": "China",
+      "jurisdiction": "Guangdong",
+      "level": "province",
+      "structured_pattern": "\\bGuangdong\\b|广东|大亚湾|南海|惠州|深圳",
+      "text_pattern": "\\bGuangdong\\b|广东|大亚湾|南海|惠州|深圳",
+      "flags": "i"
+    },
+    "cn-hb-ets-offset": {
+      "country": "China",
+      "jurisdiction": "Hubei",
+      "level": "province",
+      "structured_pattern": "\\bHubei\\b|湖北|武汉|枝江|应城",
+      "text_pattern": "\\bHubei\\b|湖北|武汉|枝江|应城",
+      "flags": "i"
+    },
+    "cn-js-industrial-decarb-2022": {
+      "country": "China",
+      "jurisdiction": "Jiangsu",
+      "level": "province",
+      "structured_pattern": "\\bJiangsu\\b|江苏|泰州|南京|连云港|常州|扬州",
+      "text_pattern": "\\bJiangsu\\b|江苏|泰州|南京|连云港|常州|扬州",
+      "flags": "i"
+    },
+    "cn-ordos-pilot-2024": {
+      "country": "China",
+      "jurisdiction": "Inner Mongolia (Ordos)",
+      "level": "autonomous_region",
+      "structured_pattern": "\\b(Inner Mongolia|Ordos)\\b|内蒙古|鄂尔多斯|包头",
+      "text_pattern": "\\b(Inner Mongolia|Ordos)\\b|内蒙古|鄂尔多斯|包头",
+      "flags": "i"
+    },
+    "cn-sd-eco-plan-14fym": {
+      "country": "China",
+      "jurisdiction": "Shandong",
+      "level": "province",
+      "structured_pattern": "\\bShandong\\b|山东|胜利|齐鲁|东营|青岛|青州|淄博|烟台",
+      "text_pattern": "\\bShandong\\b|山东|胜利|齐鲁|东营|青岛|青州|淄博|烟台",
+      "flags": "i"
+    },
+    "california-lcfs": {
+      "country": "United States",
+      "jurisdiction": "California",
+      "level": "state",
+      "structured_pattern": "\\b(CA|California)\\b",
+      "text_pattern": "\\bCalifornia\\b",
+      "flags": "i"
+    },
+    "tx-hb-1284-ccus": {
+      "country": "United States",
+      "jurisdiction": "Texas",
+      "level": "state",
+      "structured_pattern": "\\b(TX|Texas)\\b",
+      "text_pattern": "\\bTexas\\b",
+      "flags": "i"
+    },
+    "us-tx-natural-resources-121": {
+      "country": "United States",
+      "jurisdiction": "Texas",
+      "level": "state",
+      "structured_pattern": "\\b(TX|Texas)\\b",
+      "text_pattern": "\\bTexas\\b",
+      "flags": "i"
+    },
+    "us-la-primacy-rules": {
+      "country": "United States",
+      "jurisdiction": "Louisiana",
+      "level": "state",
+      "structured_pattern": "\\b(LA|Louisiana)\\b",
+      "text_pattern": "\\bLouisiana\\b",
+      "flags": "i"
+    },
+    "us-nd-century-code-38-22": {
+      "country": "United States",
+      "jurisdiction": "North Dakota",
+      "level": "state",
+      "structured_pattern": "\\b(ND|North Dakota)\\b",
+      "text_pattern": "\\bNorth Dakota\\b",
+      "flags": "i"
+    },
+    "us-wy-hb-0200": {
+      "country": "United States",
+      "jurisdiction": "Wyoming",
+      "level": "state",
+      "structured_pattern": "\\b(WY|Wyoming)\\b",
+      "text_pattern": "\\bWyoming\\b",
+      "flags": "i"
+    }
+  }
+}
