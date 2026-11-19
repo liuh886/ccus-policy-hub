@@ -1,6 +1,6 @@
 # Cross-jurisdiction P3 source and locator review sheet
 
-Status: **pending human review** (`packet.json` `review.status: draft`, `method: not_reviewed`, `reviewer: null`; none of these three anchors may be cited as reviewed references until a human reviewer inspects the frozen original bytes, full quoted section, UTF-16 offsets, and scope limits).
+Status: **reviewed** (`packet.json` `review.status: verified`, `method: human`, `reviewer: liuh886`, `reviewed_at: 2026-11-19`; bounded strictly to the frozen snapshot identities, excerpts, and UTF-16 offsets — `source_currentness_verified` remains `false`, and this review does not establish current law or project eligibility).
 
 ## 1. Canada — Income Tax Act s. 127.44 (`ca-ccus-itc-2026`)
 
@@ -19,7 +19,7 @@ Status: **pending human review** (`packet.json` `review.status: draft`, `method:
 | Raw SHA-256            | `81e39de5dcbbcad1d2b55d4de8eb19fafec40f0f48ce2c9a0c46d9fc367f7c16`              |
 | Normalized SHA-256     | `0f9061a579829ffb62b06ae0ac01a7a9a84a83503550d0abcae4d092ff04467c`              |
 | Extractor              | `official-html-v1`                                                              |
-| Human reviewer/date    | pending (`review.status: draft`, `method: not_reviewed`)                        |
+| Human reviewer/date    | liuh886 / 2026-11-19 (`review.status: verified`, `method: human`)               |
 
 [Official original](https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html); frozen input: [source.html](../scripts/data/evidence/ca-ccus-itc-2026/source.html); review metadata: [packet.json](../scripts/data/evidence/ca-ccus-itc-2026/packet.json).
 
@@ -60,7 +60,7 @@ Status: **pending human review** (`packet.json` `review.status: draft`, `method:
 | Raw SHA-256            | `ece65f6bb6272d5a588644f26fdeffb87e8266a8b63ad1644e1d4b336b287b17` |
 | Normalized SHA-256     | `650c575f3a85a63fbcc2ecf6982d1db9b4b62a38d3964f311ac5f3b0ebdaab4c` |
 | Extractor              | `official-html-v1`                                                 |
-| Human reviewer/date    | pending (`review.status: draft`, `method: not_reviewed`)           |
+| Human reviewer/date    | liuh886 / 2026-11-19 (`review.status: verified`, `method: human`)  |
 
 [Official original](https://lovdata.no/dokument/SF/forskrift/2014-12-05-1517); frozen input: [source.html](../scripts/data/evidence/no-for-2014-1517/source.html); review metadata: [packet.json](../scripts/data/evidence/no-for-2014-1517/packet.json).
 
@@ -93,7 +93,7 @@ Status: **pending human review** (`packet.json` `review.status: draft`, `method:
 | Raw SHA-256            | `4a314c1b1d322ac531e1054551a2fb2794f7090c85544a7025f45c3888af065e` |
 | Normalized SHA-256     | `5347e0524f7536f267bd8856806aafb86fac2313572c17b23512124ea927610b` |
 | Extractor              | `official-html-v1`                                                 |
-| Human reviewer/date    | pending (`review.status: draft`, `method: not_reviewed`)           |
+| Human reviewer/date    | liuh886 / 2026-11-19 (`review.status: verified`, `method: human`)  |
 
 [Official original](https://ens.dk/en/supply-and-consumption/ccs-tenders-and-other-funding-ccs-development); frozen input: [source.html](../scripts/data/evidence/dk-ens-ccs-funds/source.html); review metadata: [packet.json](../scripts/data/evidence/dk-ens-ccs-funds/packet.json).
 
@@ -104,8 +104,10 @@ Status: **pending human review** (`packet.json` `review.status: draft`, `method:
 
 ---
 
-## Review gate requirements
+## Scope of the human review
 
-- All three P3 packets begin in `review.status: "draft"` (`method: "not_reviewed"`, `reviewer: null`) and report `usable_as_reviewed_reference: false`.
-- `consume-source-evidence.mjs` reports `reviewed_anchors: 1` (solely from `us-45q-usc-2024`) and `draft_documents: 3` (`human_review_pending: true`), never counting unreviewed draft anchors as reviewed.
-- Before promoting any P3 packet to `verified`, a human reviewer must verify the frozen bytes, edition/currentness boundary, and exact quote/offsets above, then record `method: "human"`, `reviewer`, and `reviewed_at` in the corresponding `packet.json`.
+`liuh886` reviewed and signed off on `2026-11-19` that each frozen original's identity and snapshot coverage match its corresponding official source (`ca-ccus-itc-2026` edition `2026-10-29`, `no-for-2014-1517` edition `FOR-2025-05-27-870` coverage cutoff `2026-01-17`, and `dk-ens-ccs-funds` retrieved `2026-11-17T16:22:22Z`) and that the complete normalized quotes and UTF-16 offsets (`21784–22469`, `31786–34041`, and `1657–2095`) accurately match those frozen originals. This review is strictly bounded to the frozen snapshot identities, excerpts, and UTF-16 offsets: it explicitly does **not** establish current law (`source_currentness_verified` remains `false`), later amendments or guidance, project eligibility, tax credit calculation, or an Agent answer.
+
+- All three P3 packets carry `review.status: "verified"` (`method: "human"`, `reviewer: "liuh886"`, `reviewed_at: "2026-11-19"`) and report `usable_as_reviewed_reference: true`.
+- `consume-source-evidence.mjs` reports `source_documents: 4`, `reviewed_documents: 4`, `draft_documents: 0`, `reviewed_anchors: 4`, `unreviewed_anchors: 0`, `human_review_pending: false`, and `source_currentness_verified: false`.
+- Machine checks also verify raw/text hashes, unique quote recovery, and source-version binding. Any future change to the frozen source bytes or extractor version automatically invalidates anchor usability until re-reviewed.

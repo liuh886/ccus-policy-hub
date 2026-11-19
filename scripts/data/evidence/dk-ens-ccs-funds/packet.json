@@ -17,10 +17,10 @@
   "normalized_sha256": "5347e0524f7536f267bd8856806aafb86fac2313572c17b23512124ea927610b",
   "extractor_version": "official-html-v1",
   "review": {
-    "status": "draft",
-    "reviewer": null,
-    "reviewed_at": null,
-    "method": "not_reviewed"
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-19",
+    "method": "human"
   },
   "anchors": [
     {
@@ -29,10 +29,10 @@
       "exact_quote": "General information on the CCUS Fund\nThe CCUS Fund is a market-based, technology-neutral fund aimed at supporting carbon capture, storage and utilization. The first disbursement from the fund is planned to be from 2025/2026. Once the fund is fully implemented, a maximum of DKK 815 million per year can be disbursed to recipients. The fund is expected to support the achievement of 0.9 million tonnes of CO2 reductions per year from 2030.",
       "version_sha256": "4a314c1b1d322ac531e1054551a2fb2794f7090c85544a7025f45c3888af065e",
       "review": {
-        "status": "draft",
-        "reviewer": null,
-        "reviewed_at": null,
-        "method": "not_reviewed"
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-19",
+        "method": "human"
       }
     }
   ]

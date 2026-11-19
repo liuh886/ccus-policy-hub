@@ -17,10 +17,10 @@
   "normalized_sha256": "650c575f3a85a63fbcc2ecf6982d1db9b4b62a38d3964f311ac5f3b0ebdaab4c",
   "extractor_version": "official-html-v1",
   "review": {
-    "status": "draft",
-    "reviewer": null,
-    "reviewed_at": null,
-    "method": "not_reviewed"
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-19",
+    "method": "human"
   },
   "anchors": [
     {
@@ -29,10 +29,10 @@
       "exact_quote": "§ 4-1.Tillatelse til utnyttelse av undersjøisk reservoar til injeksjon og lagring av CO2\nKongen i Statsråd kan på nærmere bestemte vilkår tildele tillatelse til utnyttelse av et undersjøisk reservoar til injeksjon og lagring av CO2 (utnyttelsestillatelse). Tillatelsen skal angi området tillatelsen omfatter ved angivelse av lengdegrader og breddegrader, samt en stratigrafisk avgrensning av den/de geologiske enheter som omfattes.\nUtnyttelsestillatelse kan tildeles til en eller flere juridiske personer sammen som er stiftet i overensstemmelse med norsk lovgivning og registrert i Foretaksregisteret, når annet ikke følger av internasjonale avtaler. Er en tillatelse som nevnt tildelt til flere juridiske personer sammen, skal virksomheten etter tillatelsen utøves for deltakernes felles regning og risiko. Selskapet som derved oppstår, skal anses som rettighetshaver.\nTildeling av en tillatelse til utnyttelse av et undersjøisk reservoar til lagring av CO2 er betinget av at rettighetshaver har den finansielle styrke, tekniske og geologiske kompetanse og pålitelighet som anses påkrevet for å operere og kontrollere lagringslokaliteten, og alle kvalitetskrav til rettighetshaver og hans organisasjon er oppfylt. Tildeles en tillatelse som nevnt til flere juridiske personer sammen, må samtlige deltakere i rettighetshaverselskapet oppfylle de nevnte vilkår.\nDen rettighetshaver som innehar en letetillatelse som nevnt i § 3-1 og som innenfor tillatelsens gyldighetsperiode søker om en tillatelse til utnyttelse av et undersjøisk reservoar til injeksjon og lagring av CO2 i en bestemt lagringslokalitet, skal foretrekkes ved tildeling av en slik tillatelse såfremt arbeidsforpliktelsen nevnt i § 3-3 er fullført og vilkårene i letetillatelsen for øvrig er oppfylt. En tillatelse til utnyttelse av et undersjøisk reservoar til lagring av CO2 gir enerett til lagring av CO2 på det området som omfattes av tillatelsen.\nEn utnyttelsestillatelse skal tildeles på objektive, publiserte og ikke-diskriminerende kriterier.\nKongen kan sette som vilkår for tildeling av utnyttelsestillatelse at rettighetshaver som består av flere deltakere, skal inngå en selskapsavtale for virksomheten etter tillatelsen. Slik avtale er betinget av departementets godkjennelse.",
       "version_sha256": "ece65f6bb6272d5a588644f26fdeffb87e8266a8b63ad1644e1d4b336b287b17",
       "review": {
-        "status": "draft",
-        "reviewer": null,
-        "reviewed_at": null,
-        "method": "not_reviewed"
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-19",
+        "method": "human"
       }
     }
   ]

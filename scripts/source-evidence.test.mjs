@@ -161,7 +161,7 @@ test('normalization rejects unsupported entities and bounded source sizes', () =
   assert.throws(() => normalizeOfficialHtml(Buffer.from([0xff])));
 });
 
-test('P3 cross-jurisdiction official-html-v1 packets resolve unique anchors and stay draft', () => {
+test('P3 cross-jurisdiction official-html-v1 packets resolve unique anchors and record human snapshot review', () => {
   for (const [dir, expectedLang] of [
     ['ca-ccus-itc-2026', 'en'],
     ['no-for-2014-1517', 'no'],
@@ -173,7 +173,11 @@ test('P3 cross-jurisdiction official-html-v1 packets resolve unique anchors and 
     const report = inspectEvidence(input, raw);
     assert.equal(report.source_language, expectedLang);
     assert.equal(report.source_currentness_verified, false);
-    assert.equal(report.requires_review, true);
+    assert.equal(report.requires_review, false);
+    assert.equal(input.review.status, 'verified');
+    assert.equal(input.review.reviewer, 'liuh886');
+    assert.equal(input.review.reviewed_at, '2026-11-19');
+    assert.equal(input.review.method, 'human');
     assert.equal(report.anchors.length, 1);
     for (const a of report.anchors) {
       assert.equal(
@@ -181,8 +185,8 @@ test('P3 cross-jurisdiction official-html-v1 packets resolve unique anchors and 
         a.exact_quote
       );
       assert.equal(a.offset_unit, 'utf16_code_units');
-      assert.equal(a.state, 'needs_review');
-      assert.equal(a.usable_as_reviewed_reference, false);
+      assert.equal(a.state, 'verified');
+      assert.equal(a.usable_as_reviewed_reference, true);
     }
   }
 });

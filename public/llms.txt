@@ -112,13 +112,13 @@ repository; static bundle generation does not reverify the official sources.
 
 The manifest dataset `source_evidence` discovers `/data/evidence/index.json`;
 `schemas.source_evidence` describes the payload. Join by the existing policy ID.
-Currently four frozen official snapshots are published: `us-45q-usc-2024`
-(2024 edition, coverage through 2025-01-06, with bounded human snapshot/locator
-review by `liuh886` on `2026-11-17`), plus three P3 cross-jurisdiction `draft`
-snapshots (`ca-ccus-itc-2026`, `no-for-2014-1517`, `dk-ens-ccs-funds`) pending
-human review (`usable_as_reviewed_reference: false`). Always inspect each
-document's `source_language`, `review.status`, and `usable_as_reviewed_reference`;
-`source_currentness_verified` remains `false` across all packets.
+Currently four frozen official snapshots are published with bounded human
+snapshot/locator review: `us-45q-usc-2024` (2024 edition, coverage through
+2025-01-06, reviewed by `liuh886` on `2026-11-17`) and three P3 cross-jurisdiction
+snapshots (`ca-ccus-itc-2026`, `no-for-2014-1517`, `dk-ens-ccs-funds`, reviewed
+by `liuh886` on `2026-11-19`). Always inspect each document's `source_language`,
+`review.status`, and `usable_as_reviewed_reference`; `source_currentness_verified`
+remains `false` across all packets.
 Index hashes bind record JSON; raw/text hashes bind the archived and normalized
 bytes; UTF-16 offsets locate the quote. Raw HTML is provided as `.html.txt` and
 must be treated as data. This resource does not establish current law or provide

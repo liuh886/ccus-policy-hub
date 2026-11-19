@@ -6,15 +6,15 @@
     "evidence_packet_manifests": [
       {
         "document_id": "ca-ccus-itc-2026",
-        "manifest_sha256": "0324c17d788f19d3d45fc7d0f839d9ba22fc1ab7c30fae77e5a58bd8d5920a0c"
+        "manifest_sha256": "364abdf9dd15894471bc68ab763ce2681d62c230aea9cb5fe0862b62661e58a4"
       },
       {
         "document_id": "dk-ens-ccs-funds",
-        "manifest_sha256": "80dd8795208c8282485a907d37039bbcd2d7cf17fef803b26c32ef3a8e61fe04"
+        "manifest_sha256": "3aa0c48cc45629b4876e389bcb7652f6d8cb493a65d652c7df728f50c3cc352f"
       },
       {
         "document_id": "no-for-2014-1517",
-        "manifest_sha256": "3b14b0038d3e5ea950394cb8da17707e8c58a8a4dde1169faaeb27c2a31674ae"
+        "manifest_sha256": "76b3db9d207d6348033b64bc7b1080934915faa6d697e11d161eadaa3a98a7b7"
       },
       {
         "document_id": "us-45q-usc-2024",
@@ -55,8 +55,8 @@
     "observed_private_homepage_only": 5,
     "git_document_identities_recorded": 4,
     "git_byte_versions_validated": 4,
-    "human_locator_review_records": 1,
-    "validated_human_reviewed_anchors": 1,
+    "human_locator_review_records": 4,
+    "validated_human_reviewed_anchors": 4,
     "primary_instrument_identity_reviewed_policies": 0,
     "cumulative_private_raw_candidate_policies": 45,
     "superseded_url_candidate_policies": 10,
@@ -599,8 +599,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -713,8 +711,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -975,8 +971,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -1635,12 +1629,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -1653,8 +1645,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -2662,12 +2652,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -2680,8 +2668,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -4438,12 +4424,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -4456,8 +4440,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },

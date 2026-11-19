@@ -256,8 +256,10 @@ rather than mirroring site code.
 See `docs/source-evidence-pilot.md` and `docs/source-evidence-review-sheet-p3.md`.
 An anchor remains draft until a human explicitly reviews the exact quote/version
 and records their identity/date in Git (`us-45q-usc-2024` / `qualified-facility`
-has human snapshot/locator review by `liuh886` on `2026-11-17`, bounded to the
-2024 historical snapshot; the 3 P3 packets remain `draft` pending human review).
+has human snapshot/locator review by `liuh886` on `2026-11-17`, and the 3 P3
+packets — `ca-ccus-itc-2026`, `no-for-2014-1517`, and `dk-ens-ccs-funds` — have
+human snapshot/locator review by `liuh886` on `2026-11-19`, each bounded strictly
+to its frozen snapshot identity, excerpt, and UTF-16 offsets).
 Contract tests do not count as human review. `source_currentness_verified`
 remains `false` across all packets. Source/extractor changes invalidate
 dependent review usability; no command writes SQLite.

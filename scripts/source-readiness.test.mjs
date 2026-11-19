@@ -239,8 +239,8 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.equal(a.totals.archive_rows_quarantined_url_changed, 24);
   assert.equal(a.totals.git_document_identities_recorded, 4);
   assert.equal(a.totals.git_byte_versions_validated, 4);
-  assert.equal(a.totals.human_locator_review_records, 1);
-  assert.equal(a.totals.validated_human_reviewed_anchors, 1);
+  assert.equal(a.totals.human_locator_review_records, 4);
+  assert.equal(a.totals.validated_human_reviewed_anchors, 4);
   assert.equal(a.regressions.length, 0);
   assert.equal(a.totals.observed_private_raw_candidates, 34);
   assert.equal(a.totals.observed_private_homepage_only, 5);
