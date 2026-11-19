@@ -17,6 +17,10 @@ Product scope and scheduling remain exclusively in `PRODUCT_BOUNDARIES.md` and
   Default: `scripts/data/evidence` on the audited branch. Missing directories do
   not mean no private archive exists. Packet manifests and raw bytes are hashed;
   evidence files must be named siblings, with no path traversal or symlink escape.
+  Packets support a `storage` seam (`git_inline` default requiring sibling
+  `source.html`, or `external_archive` requiring an HTTPS `external_uri` and
+  positive `bytes` while omitting inline raw HTML and surfacing
+  `ORIGINAL_BYTES_UNAVAILABLE` when bytes are not locally present).
 - Captured transfer states never establish instrument identity, legal edition,
   currentness, copyright permission or reviewed clauses. Neither an official
   URL nor a verified database policy proves those properties.
@@ -35,22 +39,24 @@ count of new uploads performed by this audit.
 
 When the current SQLite checksum matches a capture row's `inventory_sha256`,
 binding is direct (`exact_inventory_sha256`). When the database checksum changes
-(for example, after #102 merged on `main`, producing
-`0ae85e1972c8131c45c573a036caac1f6f857b08300325154160d4658596f00d`), observations
+(for example, current `main` SQLite
+`2704d4419ead9765041f4dc2a15b41ed2f8ce936b9a5d07ea6fd1dea012d4419`), observations
 are never silently carried over by `inventory_sha256` guesswork or across
-changed URLs. Instead, the audit consults the SHA-256-verified `(id, url)`
-baseline snapshot
-`scripts/data/source-readiness/inventory-url-baseline-1aa9c830.json`
-(extracted read-only from `dd3a74d6`):
+changed URLs. Instead, `discoverBaselineSpecs` discovers every SHA-256-verified
+`(id, url)` baseline file matching `inventory-url-baseline-*.json` under
+`scripts/data/source-readiness/` (currently
+`inventory-url-baseline-1aa9c830.json`, extracted read-only from `dd3a74d6`,
+with `observation_type`, 64-hex `inventory_sha256`, and `rows_sha256` verified):
 
-- **116 policies with identical `(id, url)`**: bind their 2026-10-30 v4 and
-  manual observations via `policy_url_match` (`34` v4 raw candidates, `5` v4
-  homepage-only archives, `77` no raw file).
-- **14 policies whose canonical `url` changed in #102** (and any newly added
-  policy IDs not present in the baseline): quarantined with
-  `ARCHIVE_URL_CHANGED_SINCE_CAPTURE` and `ARCHIVE_OBSERVATION_UNAVAILABLE`
-  (`archive.state: "unknown"`). Old-URL transfer states, candidate counts and
-  local hash checks are never carried over to a new URL.
+- **106 policies with identical `(id, url)` on current `main`**: bind their
+  2026-10-30 v4 and manual observations via `policy_url_match` (`34` v4 raw
+  candidates, `5` v4 homepage-only archives).
+- **24 policies whose canonical `url` changed since the 2026-10-30 capture**
+  (and any newly added policy IDs not present in a verified baseline):
+  quarantined with `ARCHIVE_URL_CHANGED_SINCE_CAPTURE` and
+  `ARCHIVE_OBSERVATION_UNAVAILABLE` (`archive.state: "unknown"`). Old-URL
+  transfer states, candidate counts and local hash checks are never carried over
+  to a new URL.
 - **Unrecognized `inventory_sha256`** without a matching verified baseline
   snapshot: preserves strict failure (`ARCHIVE_INVENTORY_MISMATCH` in per-policy
   readiness; error in manual reconciliation).
@@ -59,7 +65,7 @@ baseline snapshot
 
 `manual-transfer-observations.json` captures the actual 52-row private manifest
 `Policy_Manual_Acquisition_Cumulative_20261030_R3.csv`, SHA-256
-`595e52b1357613b09d50140ecf3692d35a37a574357a401cf5c47829fa22997a`.
+`595e52b1357613b09d50140ecf3692d35a37a574357a401cf5c47829fa2297a`.
 At capture time, all 28 retained source files were read locally and checked against
 their full manifest SHA-256 and byte length. Candidate files must be in the private
 primary directory; supporting files must be in the metadata directory. Filename
@@ -67,18 +73,17 @@ prefix alone is insufficient. Symlink escape, missing/ambiguous files, wrong has
 unknown policy IDs, stale unrecognized inventory checksums and duplicate observations fail.
 No source bytes, local paths, Drive IDs or private links enter the committed capture.
 
-On the post-#102 inventory (`0ae85e19...`), 45 of the 52 captured attempts bind
-to unchanged `(id, url)` policies (`24` locally hash-checked unique blobs), while
-7 attempts belonging to 5 URL-changed policies (`cn-ordos-pilot-2024`,
-`vn-decree-119-2025`, `hr-hydrocarbon-act-ccs`, `co-law-2099-energy-transition`,
-`ro-law-114-2013-ccs`, covering `4` unique blobs) are quarantined from current-URL
-coverage. The 17 current-URL-aligned manual candidates plus 34 v4 candidates
-produce **51** current-URL-aligned cumulative candidates, leaving **79** policies
-without a current-URL-aligned raw candidate. Four previously captured candidate
-policies whose canonical URL changed in #102 (`br-anp-ccs-resolution`,
-`ca-sk-ccs-directives`, `cn-ordos-pilot-2024`, `vn-decree-119-2025`) are recorded
-separately in `superseded_url_candidates`. Supporting files and rejected
-non-documents do not add candidate coverage; retry rows do not add policy counts.
+On current `main` (`2704d441...`), `11` current-URL-aligned manual candidates
+(from `17` locally hash-checked unique blobs) plus `34` v4 candidates produce
+**45** current-URL-aligned cumulative candidates, leaving **85** policies without
+a current-URL-aligned raw candidate. Ten previously captured candidate policies
+whose canonical URL changed since 2026-10-30 (`au-wa-petroleum-amendment-2024`,
+`br-anp-ccs-resolution`, `ca-ccus-itc`, `ca-sk-ccs-directives`,
+`cn-miit-industrial-plan-2022`, `cn-ordos-pilot-2024`, `my-netr-ccus-2023`,
+`no-storage-framework`, `uk-energy-act-2023`, `vn-decree-119-2025` — `2` v4 and
+`8` manual) are recorded separately in `superseded_url_candidates`. Supporting
+files and rejected non-documents do not add candidate coverage; retry rows do not
+add policy counts.
 This is a capture of local byte integrity, not a fresh Drive-presence check,
 instrument/edition approval or acceptance of the source-role descriptions as law.
 The baseline table/triage continues to describe current-URL-bound observations;
@@ -112,25 +117,31 @@ review date or a fresh network check.
 ## What the baseline establishes
 
 - All 130 policies appear once in the inventory; all have reference URLs.
-- After #102's 14 URL updates (`0ae85e19...`), 116 policies retain identical
-  `(id, url)` binding to the 2026-10-30 capture (`34` v4 non-homepage raw
-  candidates, `5` v4 homepage-only archives, `77` no attached raw file in that
-  run; `17` additional current-URL-aligned manual candidates from `24` blobs),
-  giving **51** current-URL-aligned cumulative candidates and **79** policies
-  without a current-URL-aligned raw candidate.
-- The 14 URL-changed policies are quarantined (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`),
-  with the 4 prior-URL candidates (`br-anp-ccs-resolution`,
-  `ca-sk-ccs-directives`, `cn-ordos-pilot-2024`, `vn-decree-119-2025`) recorded
+- On current `main` (`2704d441...`), 106 policies retain identical `(id, url)`
+  binding to the 2026-10-30 capture (`34` v4 non-homepage raw candidates, `5`
+  v4 homepage-only archives; `11` additional current-URL-aligned manual
+  candidates from `17` locally hash-checked blobs), giving **45**
+  current-URL-aligned cumulative candidates and **85** policies without a
+  current-URL-aligned raw candidate.
+- The 24 URL-changed policies are quarantined (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`),
+  with the 10 prior-URL candidates (`au-wa-petroleum-amendment-2024`,
+  `br-anp-ccs-resolution`, `ca-ccus-itc`, `ca-sk-ccs-directives`,
+  `cn-miit-industrial-plan-2022`, `cn-ordos-pilot-2024`, `my-netr-ccus-2023`,
+  `no-storage-framework`, `uk-energy-act-2023`, `vn-decree-119-2025`) recorded
   separately in `superseded_url_candidates`.
-- Main has no accepted Git evidence-packet directory at this baseline. Its
-  recorded Git document/version/validated-human-anchor counts are therefore 0.
-  The unmerged #104 pilot is a separate historical, draft specimen and is not
-  silently counted as mainline evidence.
+- Main carries **4 reviewed Git evidence packets** under `scripts/data/evidence/`:
+  `us-45q-2024` (`us-45q-usc-2024` / `us-45q-ira`, reviewed by `liuh886` on
+  `2026-11-17`), plus the 3 P3 packets `ca-ccus-itc-2026` (`ca-ccus-itc`),
+  `no-for-2014-1517` (`no-storage-framework`), and `dk-ens-ccs-funds`
+  (`denmark-ccfd`), each reviewed by `liuh886` on `2026-11-19`. Recorded Git
+  totals are `git_document_identities_recorded: 4`,
+  `git_byte_versions_validated: 4`, `human_locator_review_records: 4`, and
+  `validated_human_reviewed_anchors: 4` (with `source_currentness_verified: false`).
 - There are no accepted policy-to-instrument identity attestations in these
   inputs. `primary_document_identified`, `document_kind` and currentness remain
-  unknown; the recorded accepted-identity count is 0. This does not assert that
-  official documents do not exist. Scope-limited locator review would not by
-  itself establish policy-to-instrument identity either.
+  unknown; the recorded `primary_instrument_identity_reviewed_policies` count is 0. This does not assert that official documents do not exist. Scope-limited
+  snapshot/locator review does not by itself establish full-instrument identity
+  or current law either.
 
 Policy records, distinct document IDs, raw hash/extractor versions and human
 locator records are separate denominators. One document may link multiple
