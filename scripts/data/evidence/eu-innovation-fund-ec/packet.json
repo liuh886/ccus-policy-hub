@@ -17,10 +17,10 @@
   "normalized_sha256": "354fdbe4b2d0c90c81afc6746d5bce6a1ad2b315707075c36a2eff85dc7e4fa0",
   "extractor_version": "official-html-v1",
   "review": {
-    "status": "draft",
-    "reviewer": null,
-    "method": "not_reviewed",
-    "reviewed_at": null
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-21",
+    "method": "human"
   },
   "anchors": [
     {
@@ -29,10 +29,10 @@
       "exact_quote": "The Innovation Fund was established by Article 10a(8) of Directive 2003/87/EC to support across all Member States innovation in low-carbon technologies and processes.",
       "version_sha256": "8619356bd3db5720b6efa85bdccbb8e3b6e24159a94d0a83ef29f85ca615b2b7",
       "review": {
-        "status": "draft",
-        "reviewer": null,
-        "method": "not_reviewed",
-        "reviewed_at": null
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-21",
+        "method": "human"
       }
     }
   ]

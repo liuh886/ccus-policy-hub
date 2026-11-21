@@ -17,10 +17,10 @@
   "normalized_sha256": "5f4e2df1d14d066ed6018ad9097affc6bf611475e998045603ab3fef2b2b6faf",
   "extractor_version": "official-html-v1",
   "review": {
-    "status": "draft",
-    "reviewer": null,
-    "method": "not_reviewed",
-    "reviewed_at": null
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-21",
+    "method": "human"
   },
   "anchors": [
     {
@@ -29,10 +29,10 @@
       "exact_quote": "Geologic Sequestration of Carbon Dioxide – Underground Injection Control (UIC) Program Class VI Primacy Manual for State Directors - provides procedural support to UIC Program Directors preparing the required UIC Class VI primacy application materials to submit to EPA for approval.",
       "version_sha256": "d983f5091f29385c6f5debf6ec162de6a171ec3bf48177da1be1301e3f20b6a7",
       "review": {
-        "status": "draft",
-        "reviewer": null,
-        "method": "not_reviewed",
-        "reviewed_at": null
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-21",
+        "method": "human"
       }
     }
   ]

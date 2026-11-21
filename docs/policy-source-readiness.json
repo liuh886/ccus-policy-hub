@@ -10,7 +10,7 @@
       },
       {
         "document_id": "cn-ccer-2026",
-        "manifest_sha256": "fe61f9f1bc57ee03880dc16e18f3dae1d49a4a8303472117cbc5c7e2724593de"
+        "manifest_sha256": "2735059b40bf2d2848e040aab452eef98b44b43d8b7dadfb899ba559e795fe71"
       },
       {
         "document_id": "dk-ens-ccs-funds",
@@ -18,7 +18,7 @@
       },
       {
         "document_id": "eu-innovation-fund-ec",
-        "manifest_sha256": "3b9366265a483ab6deccbdf4c87fbd494b685ab75df67a1e00e564c0c4c3abba"
+        "manifest_sha256": "869f1a90b8663451407d20a40f033cf2724ecfe07a5f1ddd97a293dd69169c79"
       },
       {
         "document_id": "no-for-2014-1517",
@@ -26,7 +26,7 @@
       },
       {
         "document_id": "uk-ccus-vision",
-        "manifest_sha256": "5bc36a0947b8362179867d7788bf1b01c479f1a0e0d65ca64ec69c1916c297a1"
+        "manifest_sha256": "3cef8f02970ddd83eedbc85e1e7649a3b8d584472c7f0225b44323ff67b52086"
       },
       {
         "document_id": "us-45q-usc-2024",
@@ -34,7 +34,7 @@
       },
       {
         "document_id": "us-epa-class-vi-primacy",
-        "manifest_sha256": "78533c9d5ce13f23b7bba39016bc56e393c38e2b555e57a14aba43ba1dc82d37"
+        "manifest_sha256": "bda5fcba7a2e1f61f1c12c13a0c03427b70c8cec479fe84ca2a1e80c3eb159ca"
       }
     ],
     "archive_observation_provenance": {
@@ -71,8 +71,8 @@
     "observed_private_homepage_only": 5,
     "git_document_identities_recorded": 8,
     "git_byte_versions_validated": 8,
-    "human_locator_review_records": 4,
-    "validated_human_reviewed_anchors": 4,
+    "human_locator_review_records": 8,
+    "validated_human_reviewed_anchors": 8,
     "primary_instrument_identity_reviewed_policies": 0,
     "cumulative_private_raw_candidate_policies": 43,
     "superseded_url_candidate_policies": 12,
@@ -645,8 +645,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -819,8 +817,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -1091,8 +1087,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -1951,12 +1945,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -1969,8 +1961,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -3072,12 +3062,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -3090,8 +3078,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5332,12 +5318,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -5348,8 +5332,6 @@
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5588,12 +5570,10 @@
           "coverage": "not_established",
           "extractor_version": "official-html-v1",
           "locator_candidates": 1,
-          "human_review_records": 0,
-          "validated_human_reviewed_anchors": 0,
+          "human_review_records": 1,
+          "validated_human_reviewed_anchors": 1,
           "currentness": "unknown",
           "gaps": [
-            "HUMAN_DOCUMENT_REVIEW_PENDING",
-            "HUMAN_LOCATOR_REVIEW_PENDING",
             "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
             "CURRENTNESS_UNKNOWN"
           ]
@@ -5606,8 +5586,6 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "HUMAN_DOCUMENT_REVIEW_PENDING",
-        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },

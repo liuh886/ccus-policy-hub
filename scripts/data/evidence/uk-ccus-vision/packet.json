@@ -17,10 +17,10 @@
   "normalized_sha256": "31943dd149f0d3d942b82f4355f336098919e158f66feb46bee45206a9f80be4",
   "extractor_version": "official-html-v1",
   "review": {
-    "status": "draft",
-    "reviewer": null,
-    "method": "not_reviewed",
-    "reviewed_at": null
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-21",
+    "method": "human"
   },
   "anchors": [
     {
@@ -29,10 +29,10 @@
       "exact_quote": "This document sets out government’s vision for the UK CCUS sector in the 2030s.",
       "version_sha256": "27146e709de0761e3c25ac49a1b195a9eb08715afbb7519cb2d1131a1cffdddd",
       "review": {
-        "status": "draft",
-        "reviewer": null,
-        "method": "not_reviewed",
-        "reviewed_at": null
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-21",
+        "method": "human"
       }
     }
   ]

@@ -308,7 +308,7 @@ test('CLI rejects migration, write, network and incomplete options', () => {
 test('inspectAllEvidence inspects all frozen packets deterministically and fails closed on regressions', () => {
   const summary = inspectAllEvidence(DEFAULT_EVIDENCE_ROOT);
   assert.equal(summary.count, 8);
-  assert.equal(summary.requires_review_count, 4);
+  assert.equal(summary.requires_review_count, 0);
   assert.deepEqual(
     summary.packets.map((p) => p.document_id),
     [

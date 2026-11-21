@@ -51,16 +51,16 @@ function consumer() {
   };
 }
 
-test('independent public consumer validates all bundles, schemas and references and confirms 4 reviewed and 4 draft packets', async () => {
+test('independent public consumer validates all bundles, schemas and references and confirms all 8 reviewed packets', async () => {
   const result = await consumer().run();
   assert.equal(result.context_bundles, 20);
   assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 4);
-  assert.equal(result.draft_documents, 4);
+  assert.equal(result.reviewed_documents, 8);
+  assert.equal(result.draft_documents, 0);
   assert.ok(result.resolved_references > 0);
-  assert.equal(result.reviewed_anchors, 4);
-  assert.equal(result.unreviewed_anchors, 4);
-  assert.equal(result.human_review_pending, true);
+  assert.equal(result.reviewed_anchors, 8);
+  assert.equal(result.unreviewed_anchors, 0);
+  assert.equal(result.human_review_pending, false);
   assert.equal(result.source_currentness_verified, false);
 });
 
@@ -88,10 +88,10 @@ test('consumer separates valid draft packets from reviewed packets when a packet
   c.set(indexUrl, index);
   const result = await c.run();
   assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 3);
-  assert.equal(result.draft_documents, 5);
-  assert.equal(result.reviewed_anchors, 3);
-  assert.equal(result.unreviewed_anchors, 5);
+  assert.equal(result.reviewed_documents, 7);
+  assert.equal(result.draft_documents, 1);
+  assert.equal(result.reviewed_anchors, 7);
+  assert.equal(result.unreviewed_anchors, 1);
   assert.equal(result.human_review_pending, true);
   assert.equal(result.source_currentness_verified, false);
 });
@@ -211,7 +211,7 @@ test('consumer supports external_archive records without raw_file while rejectin
 
   const result = await c.run();
   assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 4);
+  assert.equal(result.reviewed_documents, 8);
 
   // Missing external_uri fails schema validation even with recomputed hashes
   delete record.external_uri;
