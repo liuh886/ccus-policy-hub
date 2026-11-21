@@ -34,6 +34,26 @@
       "id": "denmark-ccfd",
       "kind": "policy",
       "policy_ids": ["denmark-ccfd"]
+    },
+    {
+      "id": "cn-ccer",
+      "kind": "policy",
+      "policy_ids": ["cn-ccer"]
+    },
+    {
+      "id": "us-epa-class-vi-primacy",
+      "kind": "policy",
+      "policy_ids": ["us-epa-class-vi-primacy"]
+    },
+    {
+      "id": "uk-ccus-vision",
+      "kind": "policy",
+      "policy_ids": ["uk-ccus-vision"]
+    },
+    {
+      "id": "eu-innovation-fund",
+      "kind": "policy",
+      "policy_ids": ["eu-innovation-fund"]
     }
   ]
 }

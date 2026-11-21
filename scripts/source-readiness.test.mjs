@@ -231,30 +231,32 @@ test('real post-#102 inventory is reproducible, complete, byte-read-only and rec
   assert.deepEqual(a, b);
   assert.equal(
     a.inventory_sha256,
-    'fa043cd73d92af80948a31cec767130be6dc97426caa3337b516ce9b1d4f82dc'
+    'efc3293c96045c01766e72c22a8b208ee00d336755753aa84bd7e7c7140a6b9f'
   );
   assert.equal(a.policies.length, 130);
   assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
-  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 106);
-  assert.equal(a.totals.archive_rows_quarantined_url_changed, 24);
-  assert.equal(a.totals.git_document_identities_recorded, 4);
-  assert.equal(a.totals.git_byte_versions_validated, 4);
+  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 104);
+  assert.equal(a.totals.archive_rows_quarantined_url_changed, 26);
+  assert.equal(a.totals.git_document_identities_recorded, 8);
+  assert.equal(a.totals.git_byte_versions_validated, 8);
   assert.equal(a.totals.human_locator_review_records, 4);
   assert.equal(a.totals.validated_human_reviewed_anchors, 4);
   assert.equal(a.regressions.length, 0);
-  assert.equal(a.totals.observed_private_raw_candidates, 34);
+  assert.equal(a.totals.observed_private_raw_candidates, 32);
   assert.equal(a.totals.observed_private_homepage_only, 5);
-  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 45);
-  assert.equal(a.totals.superseded_url_candidate_policies, 10);
-  assert.equal(a.totals.policies_without_raw_candidate, 85);
+  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 43);
+  assert.equal(a.totals.superseded_url_candidate_policies, 12);
+  assert.equal(a.totals.policies_without_raw_candidate, 87);
   assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 17);
   assert.deepEqual(a.superseded_url_candidates.policy_ids, [
     'au-wa-petroleum-amendment-2024',
     'br-anp-ccs-resolution',
     'ca-ccus-itc',
     'ca-sk-ccs-directives',
+    'cn-ccer',
     'cn-miit-industrial-plan-2022',
     'cn-ordos-pilot-2024',
+    'eu-innovation-fund',
     'my-netr-ccus-2023',
     'no-storage-framework',
     'uk-energy-act-2023',

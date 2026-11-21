@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "us-epa-class-vi-primacy",
+  "policy_id": "us-epa-class-vi-primacy",
+  "title": {
+    "en": "US EPA Primary Enforcement Authority for the Underground Injection Control (UIC) Program",
+    "zh": "美国 EPA 地下注水控制（UIC）项目主要执法权（Primacy）页面"
+  },
+  "source_url": "https://www.epa.gov/uic/primary-enforcement-authority-underground-injection-control-program",
+  "source_language": "en",
+  "edition": null,
+  "fetched_at": "2026-11-21T10:40:25Z",
+  "published_at": null,
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "d983f5091f29385c6f5debf6ec162de6a171ec3bf48177da1be1301e3f20b6a7",
+  "normalized_sha256": "5f4e2df1d14d066ed6018ad9097affc6bf611475e998045603ab3fef2b2b6faf",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "class-vi-primacy-manual",
+      "locator": "US EPA — Primary Enforcement Authority for the UIC Program (Class VI Primacy Manual for State Directors)",
+      "exact_quote": "Geologic Sequestration of Carbon Dioxide – Underground Injection Control (UIC) Program Class VI Primacy Manual for State Directors - provides procedural support to UIC Program Directors preparing the required UIC Class VI primacy application materials to submit to EPA for approval.",
+      "version_sha256": "d983f5091f29385c6f5debf6ec162de6a171ec3bf48177da1be1301e3f20b6a7",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}

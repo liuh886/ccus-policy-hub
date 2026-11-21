@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "as_of": "2026-10-30",
-  "inventory_sha256": "fa043cd73d92af80948a31cec767130be6dc97426caa3337b516ce9b1d4f82dc",
+  "inventory_sha256": "efc3293c96045c01766e72c22a8b208ee00d336755753aa84bd7e7c7140a6b9f",
   "inputs": {
     "evidence_packet_manifests": [
       {
@@ -9,16 +9,32 @@
         "manifest_sha256": "364abdf9dd15894471bc68ab763ce2681d62c230aea9cb5fe0862b62661e58a4"
       },
       {
+        "document_id": "cn-ccer-2026",
+        "manifest_sha256": "fe61f9f1bc57ee03880dc16e18f3dae1d49a4a8303472117cbc5c7e2724593de"
+      },
+      {
         "document_id": "dk-ens-ccs-funds",
         "manifest_sha256": "3aa0c48cc45629b4876e389bcb7652f6d8cb493a65d652c7df728f50c3cc352f"
+      },
+      {
+        "document_id": "eu-innovation-fund-ec",
+        "manifest_sha256": "3b9366265a483ab6deccbdf4c87fbd494b685ab75df67a1e00e564c0c4c3abba"
       },
       {
         "document_id": "no-for-2014-1517",
         "manifest_sha256": "76b3db9d207d6348033b64bc7b1080934915faa6d697e11d161eadaa3a98a7b7"
       },
       {
+        "document_id": "uk-ccus-vision",
+        "manifest_sha256": "5bc36a0947b8362179867d7788bf1b01c479f1a0e0d65ca64ec69c1916c297a1"
+      },
+      {
         "document_id": "us-45q-usc-2024",
         "manifest_sha256": "4dd05b85084c66e964262f0a4dd23b7753d0fc8c7602a1ca4c8d0ad11bb3e233"
+      },
+      {
+        "document_id": "us-epa-class-vi-primacy",
+        "manifest_sha256": "78533c9d5ce13f23b7bba39016bc56e393c38e2b555e57a14aba43ba1dc82d37"
       }
     ],
     "archive_observation_provenance": {
@@ -28,8 +44,8 @@
     },
     "archive_binding": {
       "exact_inventory_sha256": 0,
-      "policy_url_match": 106,
-      "url_changed_since_capture": 24,
+      "policy_url_match": 104,
+      "url_changed_since_capture": 26,
       "policy_added_since_capture": 0,
       "inventory_mismatch": 0,
       "unbound": 0
@@ -49,18 +65,18 @@
   "totals": {
     "policy_records": 130,
     "url_present": 130,
-    "archive_rows_bound_to_current_inventory": 106,
-    "archive_rows_quarantined_url_changed": 24,
-    "observed_private_raw_candidates": 34,
+    "archive_rows_bound_to_current_inventory": 104,
+    "archive_rows_quarantined_url_changed": 26,
+    "observed_private_raw_candidates": 32,
     "observed_private_homepage_only": 5,
-    "git_document_identities_recorded": 4,
-    "git_byte_versions_validated": 4,
+    "git_document_identities_recorded": 8,
+    "git_byte_versions_validated": 8,
     "human_locator_review_records": 4,
     "validated_human_reviewed_anchors": 4,
     "primary_instrument_identity_reviewed_policies": 0,
-    "cumulative_private_raw_candidate_policies": 45,
-    "superseded_url_candidate_policies": 10,
-    "policies_without_raw_candidate": 85,
+    "cumulative_private_raw_candidate_policies": 43,
+    "superseded_url_candidate_policies": 12,
+    "policies_without_raw_candidate": 87,
     "manual_locally_hash_checked_unique_blobs": 17
   },
   "limitations": [
@@ -74,14 +90,21 @@
       "br-anp-ccs-resolution",
       "ca-ccus-itc",
       "ca-sk-ccs-directives",
+      "cn-ccer",
       "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
+      "eu-innovation-fund",
       "my-netr-ccus-2023",
       "no-storage-framework",
       "uk-energy-act-2023",
       "vn-decree-119-2025"
     ],
-    "v4_policy_ids": ["br-anp-ccs-resolution", "ca-sk-ccs-directives"],
+    "v4_policy_ids": [
+      "br-anp-ccs-resolution",
+      "ca-sk-ccs-directives",
+      "cn-ccer",
+      "eu-innovation-fund"
+    ],
     "manual_policy_ids": [
       "au-wa-petroleum-amendment-2024",
       "ca-ccus-itc",
@@ -97,6 +120,7 @@
       "br-anp-ccs-resolution",
       "ca-ccus-itc",
       "ca-sk-ccs-directives",
+      "cn-ccer",
       "cn-co2-transport-status-2025",
       "cn-mee-env-guidance-2024",
       "cn-miit-industrial-plan-2022",
@@ -104,6 +128,7 @@
       "co-law-2099-energy-transition",
       "denmark-ccfd",
       "dk-ccs-subsidy-scheme-2025",
+      "eu-innovation-fund",
       "hr-hydrocarbon-act-ccs",
       "imo-marpol-occs-2024",
       "is-carbfix-act",
@@ -614,6 +639,18 @@
       ]
     },
     {
+      "policy_id": "cn-ccer",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "cn-ccus-national-standards-2026",
       "priority": "P1",
       "blockers": [
@@ -772,6 +809,18 @@
         "CURRENTNESS_UNKNOWN",
         "HTTP_202_NOT_DOCUMENT",
         "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -1042,7 +1091,8 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -1870,32 +1920,57 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202310/t20231020_1043693.shtml",
+        "reference": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202310/t20231020_1043694.html",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "raw_candidate_archived",
-        "transfer_status": "already_archived",
-        "observed_at": "2026-10-30T04:23:20+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
-        "reported_content_sha256": "65326b8c3e348c3f90d0efce200ae4ec0a5c1cdb4fc5dfa53b5c55c6b07bae0a",
+        "has_private_file": null,
+        "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_document_or_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "cn-ccer-2026",
+          "raw_sha256": "a1670f2fd669a9c9a93cc1aabd6bc48b68dccbbd74622d14930a99526239ab4f",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "2026-09-20",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P2",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -2966,32 +3041,57 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://climate.ec.europa.eu/eu-action/eu-funding-climate-action/innovation-fund_en",
+        "reference": "https://climate.ec.europa.eu/areas-action/eu-funding-climate-action/innovation-fund_en",
         "protocol": "https:",
         "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "raw_candidate_archived",
-        "transfer_status": "already_archived",
-        "observed_at": "2026-10-30T04:23:33+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": true,
-        "reported_content_sha256": "4d27881ea1242d2fea5bcb8f3c211a2feace009b5290d8b06d0f3aefb53cc3f8",
+        "has_private_file": null,
+        "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "specific_page_candidate",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "eu-innovation-fund-ec",
+          "raw_sha256": "8619356bd3db5720b6efa85bdccbb8e3b6e24159a94d0a83ef29f85ca615b2b7",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P2",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5220,13 +5320,36 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "uk-ccus-vision",
+          "raw_sha256": "27146e709de0761e3c25ac49a1b195a9eb08715afbb7519cb2d1131a1cffdddd",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5453,7 +5576,29 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "us-epa-class-vi-primacy",
+          "raw_sha256": "d983f5091f29385c6f5debf6ec162de6a171ec3bf48177da1be1301e3f20b6a7",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P1",
@@ -5461,7 +5606,8 @@
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
         "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5876,13 +6022,11 @@
       "ca-sk-spii",
       "california-lcfs",
       "cn-bj-ccus-measures-2026",
-      "cn-ccer",
       "cn-demo-tech-2024",
       "cn-national-ets-expansion-2025",
       "cn-pboc-cerf",
       "cn-standards-2024",
       "cn-zero-carbon-parks",
-      "eu-innovation-fund",
       "fr-ccus-roadmap",
       "fr-ccus-strategy-2024",
       "gold-standard",
@@ -5924,6 +6068,7 @@
       "ca-sk-ccs-directives",
       "ch-co2-act-ccs-2024",
       "cl-green-hydrogen-ccs-2025",
+      "cn-ccer",
       "cn-ccus-national-standards-2026",
       "cn-ccus-roadmap-2025",
       "cn-co2-transport-status-2025",
@@ -5948,6 +6093,7 @@
       "eu-crcf-2024",
       "eu-ets-mrr-2018",
       "eu-industrial-carbon-management-strategy-2024",
+      "eu-innovation-fund",
       "eu-nzia",
       "gr-ccs-regulatory-framework-2025",
       "gr-climate-law-2022-update",
@@ -6025,8 +6171,10 @@
       "br-anp-ccs-resolution",
       "ca-ccus-itc",
       "ca-sk-ccs-directives",
+      "cn-ccer",
       "cn-miit-industrial-plan-2022",
       "cn-ordos-pilot-2024",
+      "eu-innovation-fund",
       "my-netr-ccus-2023",
       "no-storage-framework",
       "uk-energy-act-2023",

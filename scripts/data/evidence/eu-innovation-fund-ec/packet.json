@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "eu-innovation-fund-ec",
+  "policy_id": "eu-innovation-fund",
+  "title": {
+    "en": "European Commission DG Climate Action — Innovation Fund",
+    "zh": "欧盟委员会气候行动总司（DG CLIMA）——创新基金（Innovation Fund）"
+  },
+  "source_url": "https://climate.ec.europa.eu/areas-action/eu-funding-climate-action/innovation-fund_en",
+  "source_language": "en",
+  "edition": null,
+  "fetched_at": "2026-11-21T10:42:31Z",
+  "published_at": null,
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "8619356bd3db5720b6efa85bdccbb8e3b6e24159a94d0a83ef29f85ca615b2b7",
+  "normalized_sha256": "354fdbe4b2d0c90c81afc6746d5bce6a1ad2b315707075c36a2eff85dc7e4fa0",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "legislative-framework",
+      "locator": "European Commission DG Climate Action — Innovation Fund (Legislative framework)",
+      "exact_quote": "The Innovation Fund was established by Article 10a(8) of Directive 2003/87/EC to support across all Member States innovation in low-carbon technologies and processes.",
+      "version_sha256": "8619356bd3db5720b6efa85bdccbb8e3b6e24159a94d0a83ef29f85ca615b2b7",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}

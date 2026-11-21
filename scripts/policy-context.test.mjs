@@ -37,6 +37,10 @@ function fixture() {
     ['ca-ccus-itc', 2023, 'verified'],
     ['no-storage-framework', 2024, 'verified'],
     ['denmark-ccfd', 2024, 'verified'],
+    ['cn-ccer', 2023, 'verified'],
+    ['us-epa-class-vi-primacy', 2024, 'verified'],
+    ['uk-ccus-vision', 2023, 'verified'],
+    ['eu-innovation-fund', 2024, 'verified'],
   ]) {
     db.run('INSERT INTO policies VALUES (?,?,?,?,?,?,?,?,?,?)', [
       id,
@@ -245,7 +249,7 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
     const index = JSON.parse(
       fs.readFileSync(path.join(outputDir, 'index.json'))
     );
-    assert.equal(index.count, 12);
+    assert.equal(index.count, 20);
     for (const entry of index.records) {
       const json = fs.readFileSync(path.join(outputDir, entry.json));
       assert.equal(
@@ -283,7 +287,7 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
 });
 
 test('context target registry validates declarative JSON targets and rejects invalid or duplicate entries', () => {
-  assert.equal(CONTEXT_TARGETS.length, 6);
+  assert.equal(CONTEXT_TARGETS.length, 10);
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-context-reg-'));
   try {
     const customPath = path.join(dir, 'targets.json');

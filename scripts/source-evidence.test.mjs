@@ -226,7 +226,7 @@ test('official-html-v1 rejects WAF/soft-404 shells and unknown entities while no
   assert.equal(normalized, 'Français 2×3 café line\n');
 });
 
-test('Git snapshot publication joins existing policies, is deterministic across all 4 packets and leaves SQLite unchanged', async () => {
+test('Git snapshot publication joins existing policies, is deterministic across all 8 packets and leaves SQLite unchanged', async () => {
   const SQL = await initSqlJs();
   const db = new SQL.Database();
   try {
@@ -236,6 +236,10 @@ test('Git snapshot publication joins existing policies, is deterministic across 
       'ca-ccus-itc',
       'no-storage-framework',
       'denmark-ccfd',
+      'cn-ccer',
+      'us-epa-class-vi-primacy',
+      'uk-ccus-vision',
+      'eu-innovation-fund',
     ])
       db.run('INSERT INTO policies VALUES (?)', [id]);
     const before = digest(db.export());
@@ -244,16 +248,20 @@ test('Git snapshot publication joins existing policies, is deterministic across 
     assert.deepEqual([...first.keys()], [...second.keys()]);
     for (const [name, bytes] of first)
       assert.equal(digest(bytes), digest(second.get(name)));
-    assert.equal(first.size, 13);
+    assert.equal(first.size, 25);
     const index = JSON.parse(first.get('index.json'));
-    assert.equal(index.count, 4);
+    assert.equal(index.count, 8);
     assert.deepEqual(
       index.records.map((r) => r.document_id),
       [
         'ca-ccus-itc-2026',
+        'cn-ccer-2026',
         'dk-ens-ccs-funds',
+        'eu-innovation-fund-ec',
         'no-for-2014-1517',
+        'uk-ccus-vision',
         'us-45q-usc-2024',
+        'us-epa-class-vi-primacy',
       ]
     );
     assert.equal(digest(db.export()), before);
@@ -299,15 +307,19 @@ test('CLI rejects migration, write, network and incomplete options', () => {
 
 test('inspectAllEvidence inspects all frozen packets deterministically and fails closed on regressions', () => {
   const summary = inspectAllEvidence(DEFAULT_EVIDENCE_ROOT);
-  assert.equal(summary.count, 4);
-  assert.equal(summary.requires_review_count, 0);
+  assert.equal(summary.count, 8);
+  assert.equal(summary.requires_review_count, 4);
   assert.deepEqual(
     summary.packets.map((p) => p.document_id),
     [
       'ca-ccus-itc-2026',
+      'cn-ccer-2026',
       'dk-ens-ccs-funds',
+      'eu-innovation-fund-ec',
       'no-for-2014-1517',
+      'uk-ccus-vision',
       'us-45q-usc-2024',
+      'us-epa-class-vi-primacy',
     ]
   );
   assert.ok(summary.packets.every((p) => p.normalized_characters > 0));
