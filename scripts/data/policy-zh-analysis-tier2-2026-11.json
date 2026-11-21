@@ -1,0 +1,1325 @@
+{
+  "as_of": "2026-11-19",
+  "policies": [
+    {
+      "id": "us-iija-hubs",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.energy.gov/hgeo/funding-notice-carbon-dioxide-transportation-infrastructure-finance-and-innovation-cifia",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "CIFIA provides federal loans and grants for eligible large-capacity common-carrier CO2 transportation projects.",
+          "zh": "CIFIA为符合条件的大容量公共承运人二氧化碳运输项目提供联邦贷款和赠款支持。",
+          "label_zh": "21亿美元运输融资计划",
+          "citation": "Infrastructure Investment and Jobs Act; DOE CIFIA programme page."
+        },
+        "market": {
+          "en": "Eligibility prioritises large-capacity common-carrier infrastructure with demonstrated demand from associated capture projects.",
+          "zh": "项目准入资格优先考虑具备相关捕集项目明确需求的大容量公共承运人基础设施。",
+          "label_zh": "共享公共承运人基础设施",
+          "citation": "DOE CIFIA eligible-use criteria."
+        },
+        "mrv": {
+          "en": "Projects must document eligibility, demand and use of federal funds, while emissions-accounting and storage MRV are governed by separate regimes.",
+          "zh": "项目须记录并证明资格条件、需求情况及联邦资金用途，而排放核算与封存监测、报告和核查（MRV）则由单独制度予以规范。",
+          "label_zh": "项目融资与报告管控",
+          "citation": "DOE CIFIA programme requirements."
+        },
+        "statutory": {
+          "en": "The programme was authorised by the Infrastructure Investment and Jobs Act and implemented by DOE.",
+          "zh": "该计划由《基础设施投资与就业法案》授权设立，并由美国能源部（DOE）组织实施。",
+          "label_zh": "联邦法定融资授权",
+          "citation": "Infrastructure Investment and Jobs Act, CIFIA provisions."
+        },
+        "strategic": {
+          "en": "CIFIA is the dedicated federal financing mechanism for expanding shared CO2 transportation infrastructure across emitting regions.",
+          "zh": "CIFIA是专门用于跨排放区域扩展共享二氧化碳运输基础设施的联邦融资机制。",
+          "label_zh": "国家二氧化碳运输网络建设",
+          "citation": "DOE CIFIA programme overview."
+        }
+      }
+    },
+    {
+      "id": "us-doe-carbon-management-strategy",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.energy.gov/hgeo/does-carbon-management-strategy",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "About $12 billion of Bipartisan Infrastructure Law funding over 2022-2026 plus the IRA-reformed 45Q credit jointly underwrite demonstrations, storage hubs and transport networks; CIFIA adds $2.1 billion in loan guarantees and grants for oversized CO2 transport infrastructure.",
+          "zh": "2022—2026年约120亿美元的《两党基础设施法》（BIL）资金与经《通胀削减法案》（IRA）改革的45Q税收抵免共同为示范项目、封存枢纽及运输网络提供资金托底；CIFIA另为超大规模二氧化碳运输基础设施增加21亿美元贷款担保和赠款。",
+          "label_zh": "BIL与45Q叠加激励",
+          "citation": "DOE Carbon Management Strategy (Oct 2024 draft)"
+        },
+        "market": {
+          "en": "The strategy funds regional transport and storage clusters anchored by capture projects, with FEED studies for multi-source networks and CIFIA support for shared infrastructure sized for future capacity additions.",
+          "zh": "该战略资助以捕集项目为依托的区域运输与封存集群，包括多源网络的前端工程设计（FEED）研究，以及由CIFIA支持的、按未来扩容需求预留规模的共享基础设施。",
+          "label_zh": "区域集群建设",
+          "citation": "DOE Carbon Management Strategy (Oct 2024 draft)"
+        },
+        "mrv": {
+          "en": "Strategy-wide analysis activities cover techno-economics, life-cycle accounting and energy-systems modelling; storage-side MRV builds on the Class VI monitoring regime and CarbonSTORE field validation of pressure and plume behaviour.",
+          "zh": "战略层面的分析工作涵盖技术经济评估、全生命周期核算及能源系统建模；封存端MRV依托VI类井监测体系以及CarbonSTORE对压力与羽流行为的现场验证。",
+          "label_zh": "全生命周期核算基础",
+          "citation": "DOE Carbon Management Strategy (Oct 2024 draft)"
+        },
+        "statutory": {
+          "en": "Funding authority flows from the Bipartisan Infrastructure Law and the Inflation Reduction Act; permitting interfaces run through the Safe Drinking Water Act Class VI programme and coordinated task forces on CCUS permitting reform.",
+          "zh": "资金授权源于《两党基础设施法》与《通胀削减法案》；许可审批衔接《安全饮用水法》VI类井计划以及负责CCUS许可改革的跨部门协调工作组。",
+          "label_zh": "BIL与IRA法定授权",
+          "citation": "DOE Carbon Management Strategy (Oct 2024 draft)"
+        },
+        "strategic": {
+          "en": "Five intertwined objectives to 2030: priority use cases, regional infrastructure clusters, effective policy frameworks, community and workforce engagement, and global cooperation, targeting 25-30 Mt/yr of technological carbon removal.",
+          "zh": "面向2030年提出五大相互关联目标：优先应用场景、区域基础设施集群、有效政策框架、社区与劳动力参与以及全球合作，目标实现2500万—3000万吨/年的技术碳移除能力。",
+          "label_zh": "2030年五大战略目标",
+          "citation": "DOE Carbon Management Strategy (Oct 2024 draft)"
+        }
+      }
+    },
+    {
+      "id": "uk-ccus-vision",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.gov.uk/government/publications/carbon-capture-usage-and-storage-a-vision-to-establish-a-competitive-market",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "£21.7 billion committed over 25 years (October 2024) for the first clusters, following the March 2023 envelope of up to £20 billion; capture revenue support runs through ICC, Dispatchable Power Agreement, hydrogen and waste business models.",
+          "zh": "继2023年3月宣布最高200亿英镑资金框架后，英国于2024年10月承诺在25年内为首批集群投入217亿英镑；捕集端收入支持通过ICC、可调度电力协议（Dispatchable Power Agreement）、氢能及垃圾处理商业模式实施。",
+          "label_zh": "217亿英镑专项资金",
+          "citation": "GOV.UK UK CCUS collection (Apr 2025)"
+        },
+        "market": {
+          "en": "Track-1/Track-2 cluster sequencing with bilateral negotiation moves toward competitive allocation and a Transition Access Agreement for limited-support users; Track-1 expansion opened to unsupported users signalling the self-sustaining market direction.",
+          "zh": "Track-1与Track-2集群在双边谈判基础上逐步转向竞争性配置，并为仅需有限支持的用户引入过渡准入协议；Track-1扩建向无补贴用户开放，释放出迈向自我维持市场的方向信号。",
+          "label_zh": "竞争性配置机制",
+          "citation": "CCUS Vision (Dec 2023); TAA position statement (Jul 2026)"
+        },
+        "mrv": {
+          "en": "Measurement, impurity monitoring and compliance demonstration sit in the CCS Network Code Measurement Requirements Annexure per acceding network, under Ofgem economic-licence oversight.",
+          "zh": "各接入网络的计量、杂质监测及合规证明要求载于《CCS网络准则》计量要求附件，并受Ofgem经济许可监管。",
+          "label_zh": "运输与封存网络准则",
+          "citation": "CCS Network Code (Jan 2025)"
+        },
+        "statutory": {
+          "en": "The Energy Act 2023 created the economic licensing regime for CO2 transport and storage with Ofgem as regulator, underpinning Track-1 licences, financial assistance powers and the counterparty framework.",
+          "zh": "《2023年能源法》设立了以Ofgem为监管机构的二氧化碳运输与封存经济许可制度，为Track-1许可证颁发、财政资助授权及交易对手方框架提供支撑。",
+          "label_zh": "《2023年能源法》",
+          "citation": "Energy Act 2023; Track-1 accounting officer assessment (Mar 2025)"
+        },
+        "strategic": {
+          "en": "Four clusters by 2030 storing 20-30 Mtpa with at least 50 Mtpa by the mid-2030s; both Track-1 networks reached financial close (December 2024, April 2025) and six expansion projects entered negotiations in July 2025.",
+          "zh": "目标到2030年建成四个集群、年封存2000万—3000万吨，到2030年代中期达到至少5000万吨/年；两个Track-1网络已分别于2024年12月和2025年4月完成融资交割，六个扩建项目于2025年7月进入谈判阶段。",
+          "label_zh": "2030年2000万—3000万吨/年目标",
+          "citation": "CCUS Vision (Dec 2023); GOV.UK UK CCUS collection (Apr 2025)"
+        }
+      }
+    },
+    {
+      "id": "us-tx-natural-resources-121",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://statutes.capitol.texas.gov/Docs/NR/htm/NR.121.htm",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Consolidated RRC jurisdiction with primacy collapses the dual-track timeline that priced delay into Gulf Coast projects, and operator ownership plus trust-funded stewardship de-risks pore-space assembly.",
+          "zh": "将监管权整合至拥有首要执法权（primacy）的RRC，大幅压缩了此前令墨西哥湾沿岸项目计入延期成本的双轨审批周期，而运营商所有权加信托基金托管机制降低了孔隙空间整合风险。",
+          "label_zh": "单一机构审批通道",
+          "citation": "Tex. Nat. Resources Code Ch.121; HB 1284 (2021)"
+        },
+        "market": {
+          "en": "Class II EOR injection continues under Statewide Rule 46 with severance-tax relief while new non-EOR storage permits directly, letting the extensive Texas CO2-EOR network graduate into dedicated storage.",
+          "zh": "II类提高石油采收率（EOR）注气继续依据全州第46号规则执行并享有开采税减免，而新建非EOR封存项目可直接获批许可，使德克萨斯州庞大的CO2-EOR管网得以过渡至专用地质封存。",
+          "label_zh": "EOR向封存过渡桥梁",
+          "citation": "RRC CO2 storage programme; Statewide Rule 46/50"
+        },
+        "mrv": {
+          "en": "Facility permits demand Texas-licensed professional seals on area-of-review and closure-cost estimates, completion reporting, inspection sign-off and strat-test conversion verification to Class VI construction standards.",
+          "zh": "设施许可要求由德克萨斯州注册专业人士对影响区评估及封井成本估算加盖执业印章，并需提交完井报告、检查签认及地层测试井按VI类井建设标准转用的核查证明。",
+          "label_zh": "RRC监测核查标准",
+          "citation": "16 TAC Chapter 5, §§5.202-5.203"
+        },
+        "statutory": {
+          "en": "Chapter 121 ownership, trust-fund and extraction statutes with HB 1284 single-agency consolidation and December 2025 federal primacy give Texas end-to-end sovereignty over non-EOR storage.",
+          "zh": "第121章关于所有权、信托基金与开采条款的规定，结合HB 1284单一机构整合及2025年12月生效的联邦首要执法权，赋予德克萨斯州对非EOR封存的端到端完整管辖权。",
+          "label_zh": "德克萨斯州封存管辖主权",
+          "citation": "Tex. Nat. Resources Code Ch.121; EPA Texas final rule (Nov 2025)"
+        },
+        "strategic": {
+          "en": "The framework anchors the largest US storage fairway: primacy plus 45Q parity positions Texas to absorb the EOR-to-storage migration and host multi-Mt hub buildout through 2030.",
+          "zh": "该框架锚定了美国最大的封存走廊：首要执法权叠加45Q抵免平权，使德克萨斯州在2030年前具备承接EOR向专用封存迁移并承载百万吨级多枢纽建设的区位优势。",
+          "label_zh": "墨西哥湾沿岸核心枢纽",
+          "citation": "RRC primacy record; 45Q parity (OBBBA §70522)"
+        }
+      }
+    },
+    {
+      "id": "tx-hb-1284-ccus",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=87R&Bill=HB1284",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Streamlines permitting by creating a 'one-stop-shop' at the RRC.",
+          "zh": "通过在RRC设立“一站式”审批窗口精简许可流程。",
+          "label_zh": "监管审批效率",
+          "citation": "Section 1: RRC Authority"
+        },
+        "market": {
+          "en": "Critical for attracting major offshore CCS hubs to the Texas Gulf Coast.",
+          "zh": "对于吸引大型海上CCS枢纽落地德克萨斯州墨西哥湾沿岸具有关键作用。",
+          "label_zh": "枢纽集聚吸引力",
+          "citation": "Bill Intent"
+        },
+        "mrv": {
+          "en": "Matches or exceeds EPA Class VI monitoring standards to enable primacy.",
+          "zh": "监测标准达到或高于EPA VI类井要求，为获取州级首要执法权奠定基础。",
+          "label_zh": "UIC标准对齐",
+          "citation": "RRC Implementation Rules"
+        },
+        "statutory": {
+          "en": "Grants RRC sole jurisdiction over onshore and offshore CO2 sequestration.",
+          "zh": "授予RRC对陆上及海上二氧化碳封存的唯一管辖权。",
+          "label_zh": "统一集中管辖权",
+          "citation": "HB 1284, Section 2"
+        },
+        "strategic": {
+          "en": "HB 1284 single-agency consolidation under the RRC with December 2025 primacy makes Texas permitting the fastest state track in the US.",
+          "zh": "HB 1284确立的RRC单一机构整合叠加2025年12月生效的首要执法权，使德克萨斯州成为全美审批速度最快的州级许可轨道。",
+          "label_zh": "RRC管辖权整合",
+          "citation": "HB 1284 (2021); EPA Texas final rule (Nov 2025)"
+        }
+      }
+    },
+    {
+      "id": "ca-ab-sequestration-tenure",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://kings-printer.alberta.ca/1266.cfm?page=2011_068.cfm&leg_type=Regs&isbncln=9780779758418",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Grants 15-year renewable leases specifically for carbon sequestration, providing tenure security.",
+          "zh": "专门针对碳封存授予可续期15年的租赁权，提供矿权期限保障。",
+          "label_zh": "租约期限确定性",
+          "citation": "Section 10: Sequestration Leases"
+        },
+        "market": {
+          "en": "Uses a competitive tenure process to enable multi-user hub infrastructure, reducing unit costs.",
+          "zh": "通过竞争性矿权授予程序推动多用户共享枢纽基础设施建设，从而降低单位成本。",
+          "label_zh": "枢纽竞标租赁体系",
+          "citation": "Part 2: Evaluation of Proposals"
+        },
+        "mrv": {
+          "en": "Requires detailed Monitoring, Measurement and Verification (MMV) plans for each hub to ensure containment.",
+          "zh": "要求每个枢纽制定详尽的监测、计量与核查（MMV）计划，以确保封存密封性。",
+          "label_zh": "强制性监测要求",
+          "citation": "Section 14"
+        },
+        "statutory": {
+          "en": "Alberta's Mines and Minerals Act explicitly vests all pore space in the Crown, eliminating landowner disputes.",
+          "zh": "阿尔伯塔省《矿产与矿业法》明确规定所有孔隙空间归属省政府（Crown），消除土地所有权争议。",
+          "label_zh": "孔隙空间国有主权",
+          "citation": "Section 15.1 of MMA"
+        },
+        "strategic": {
+          "en": "Central to Alberta's 2050 Carbon Neutral roadmap and TIER framework integration.",
+          "zh": "是阿尔伯塔省2050年碳中和路线图及TIER框架整合的核心支柱。",
+          "label_zh": "工业脱碳核心支柱",
+          "citation": "Alberta CCUS Roadmap"
+        }
+      }
+    },
+    {
+      "id": "us-la-primacy-rules",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.dnr.louisiana.gov/assets/OC/uic_rule_comp/29N6FinalRule.pdf",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Decentralized state-level permitting reduces federal lead times.",
+          "zh": "下放至州级实施的许可审批缩短了联邦前置等待时间。",
+          "label_zh": "许可审批提速",
+          "citation": "LAC 43:XVII.3601"
+        },
+        "market": {
+          "en": "Designed to underpin the Louisiana DAC Hub and Blue Hydrogen infrastructure.",
+          "zh": "旨在为路易斯安那州DAC枢纽及蓝氢基础设施提供制度支撑。",
+          "label_zh": "枢纽赋能支撑",
+          "citation": "Chapter 36 Policy Goals"
+        },
+        "mrv": {
+          "en": "Requires continuous plume tracking and seismic integrity verification.",
+          "zh": "要求开展连续羽流追踪及地震完整性验证。",
+          "label_zh": "实时监测核查",
+          "citation": "LAC 43:XVII.3615"
+        },
+        "statutory": {
+          "en": "Full enforcement authority granted by EPA.",
+          "zh": "由EPA授予完整执法权。",
+          "label_zh": "联邦授权首要执法权",
+          "citation": "40 CFR Part 147 Subpart T"
+        },
+        "strategic": {
+          "en": "Louisiana primacy administration (effective February 2024) with LDNR permitting localises Gulf Coast storage oversight where the geology is.",
+          "zh": "路易斯安那州首要执法权（2024年2月生效）及LDNR许可机制将墨西哥湾沿岸封存监管本土化至地质条件所在的州域。",
+          "label_zh": "LDNR州级监管实施",
+          "citation": "EPA Louisiana final rule (Jan 2024)"
+        }
+      }
+    },
+    {
+      "id": "no-14th-licensing-round-2025",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.sodir.no/en/facts/carbon-storage/co2-storage-licences/announcement-2025-round-1/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "State-run acreage with direct awards to majors plus post-closure state stewardship socialises exploration risk while Northern Lights merchant tariffs monetise the stores.",
+          "zh": "国家统筹区块分配并向大型企业直接授标，叠加闭井后国家托管，实现勘探风险社会化分担，同时依托Northern Lights商业收费机制实现封存库变现。",
+          "label_zh": "国家风险共担机制",
+          "citation": "Ministry of Energy licensing record (2025)"
+        },
+        "market": {
+          "en": "Licensed acreage feeds European majors (Equinor, Shell, TotalEnergies lineages) and advanced French-emitter contract talks, making Norwegian capacity a traded European storage commodity.",
+          "zh": "获批区块对接欧洲能源巨头（Equinor、Shell、TotalEnergies系项目）以及与法国排放企业的深入合同谈判，使挪威封存能力成为欧洲可交易的封存商品。",
+          "label_zh": "跨国合资协作",
+          "citation": "FR DGEC stocktake (Jul 2024); licensing record"
+        },
+        "mrv": {
+          "en": "NPD-supervised characterisation with high-resolution seismic and pressure monitoring from exploration through injection, inside thirty years of Sleipner-to-Northern-Lights operating practice.",
+          "zh": "在NPD监督下将高分辨率地震与压力监测贯穿勘探至注气全过程，延续从Sleipner到Northern Lights三十年来的运行实践。",
+          "label_zh": "高分辨率地震监测",
+          "citation": "NPD resource regulations; PSA oversight regime"
+        },
+        "statutory": {
+          "en": "CO2 Storage Regulations with Ministry of Energy awards, NPD resource discipline, PSA safety enforcement and post-closure state stewardship with liability transition — the complete licensing-to-surrender ladder.",
+          "zh": "《二氧化碳封存条例》构建了由能源部授标、NPD资源监管、PSA安全执法及闭井后责任移交国家托管组成的完整“许可—退还”监管阶梯。",
+          "label_zh": "主权级全链条执法",
+          "citation": "CO2 Storage Regulations; EXL014 award (Jun 2025)"
+        },
+        "strategic": {
+          "en": "Sequenced rounds (Smeaheia, Havstjerne, Luna, Trudvang, Poseidon pipeline) build licensed capacity toward Norwegian 40 Mt/yr-plus 2030 horizons behind Northern Lights Phase 2.",
+          "zh": "分批次推进的许可轮次（Smeaheia、Havstjerne、Luna、Trudvang及Poseidon管道项目）在Northern Lights二期之后持续扩充已授证产能，面向挪威2030年超4000万吨/年的远景目标。",
+          "label_zh": "2030年封存产能输送链",
+          "citation": "FR DGEC stocktake storage table (Jul 2024)"
+        }
+      }
+    },
+    {
+      "id": "no-tax-deduction-ccs",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.norskpetroleum.no/en/framework/taxes/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Full exemption from CO2 tax for captured and stored volumes.",
+          "zh": "对已捕集并封存的二氧化碳量免征全额二氧化碳税。",
+          "label_zh": "直接税收抵扣",
+          "citation": "CO2 Tax Act on Petroleum Activities"
+        },
+        "market": {
+          "en": "Makes CCS the low-cost compliance option for North Sea operators.",
+          "zh": "使CCS成为北海运营商成本更低的合规选择。",
+          "label_zh": "合规成本竞争拉力",
+          "citation": "Economic Impact Study"
+        },
+        "mrv": {
+          "en": "Uses high-precision flow meters calibrated for tax compliance.",
+          "zh": "采用经税务合规校准的高精度流量计。",
+          "label_zh": "财税级计量MRV",
+          "citation": "NORSOK Standards"
+        },
+        "statutory": {
+          "en": "Embedded in the national petroleum tax framework.",
+          "zh": "嵌入国家石油税收法定框架之中。",
+          "label_zh": "税制一体化嵌入",
+          "citation": "2023 Budget Agreement"
+        },
+        "strategic": {
+          "en": "Tax-deduction treatment recognises capture capex inside the petroleum fiscal frame that funds the Norwegian state — incentive through the tax code.",
+          "zh": "税收抵扣安排在支撑挪威国家财政的石油税制内部认可捕集资本支出，即通过税法实现激励。",
+          "label_zh": "资本支出税制认可",
+          "citation": "Norway fiscal record"
+        }
+      }
+    },
+    {
+      "id": "cn-national-standards",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://std.samr.gov.cn/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Standing red lines cut diligence costs fleet-wide; the system role complements the package record dated instruments.",
+          "zh": "常设技术红线在全行业范围降低了尽职调查成本；其体系性角色与汇编记录中带具体日期的专项文件形成互补。",
+          "label_zh": "降低全行业尽调成本",
+          "citation": "GB/T system record"
+        },
+        "market": {
+          "en": "ISO alignment as export strategy keeps Chinese equipment competitive abroad while the domestic fleet runs on common specs.",
+          "zh": "将与ISO对接作为出口战略，既保持中国装备的海外竞争力，又使国内项目群在统一规范下运行。",
+          "label_zh": "国际标准对接",
+          "citation": "GB/T system record"
+        },
+        "mrv": {
+          "en": "The methodology base for carbon-market accounting with monitoring duties across capture, pipeline and storage.",
+          "zh": "构成碳市场核算的方法学基础，明确覆盖捕集、管道与封存全环节的监测义务。",
+          "label_zh": "核算方法学基础",
+          "citation": "GB/T system record"
+        },
+        "statutory": {
+          "en": "Standing technical rules with constitutional pore-space ownership — system constants beside the package dated tools.",
+          "zh": "常设技术规则结合宪法层面的孔隙空间国有权，成为配套带日期政策工具之外的体系常量。",
+          "label_zh": "体系性技术规则",
+          "citation": "GB/T system record"
+        },
+        "strategic": {
+          "en": "One compliance handbook for every Mt-class demo — the system entry that makes the package instruments usable.",
+          "zh": "为所有百万吨级示范项目提供统一的合规手册，是使各项配套政策工具具备可操作性的体系入口。",
+          "label_zh": "示范项目合规手册",
+          "citation": "GB/T system record"
+        }
+      }
+    },
+    {
+      "id": "cn-zero-carbon-parks",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20523",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "National demonstration status unlocks special funds and green finance, with Mengsu output doubling to ¥20 billion as the commercial proof point — park-level, not CCUS-specific.",
+          "zh": "国家级示范资质可解锁专项资金与绿色金融，蒙苏园区产值翻倍至200亿元人民币成为商业验证案例——该支持面向园区层面，并非CCUS专属。",
+          "label_zh": "示范资金与绿色金融渠道",
+          "citation": "2025 zero-carbon park notice; Mengsu reporting (Apr 2025)"
+        },
+        "market": {
+          "en": "Product footprint management with green-product certification lets park firms monetise low-carbon production in export markets sensitive to embedded carbon.",
+          "zh": "产品碳足迹管理结合绿色产品认证，使园区企业能够在对隐含碳敏感的出口市场中将低碳生产转化为商业收益。",
+          "label_zh": "绿色产品溢价",
+          "citation": "Mengsu certification practice (2024-2025)"
+        },
+        "mrv": {
+          "en": "Fifty-two metered firms on the energy-carbon platform with local emission factors give park claims a measured base most industrial zones lack.",
+          "zh": "能碳平台接入52家安装计量表计的企业并采用本地排放因子，为园区声明提供了多数工业区所缺乏的实测基础。",
+          "label_zh": "园区实测核算账户",
+          "citation": "Mengsu platform reporting (Apr 2025)"
+        },
+        "statutory": {
+          "en": "The June 2025 NDRC/MIIT/NEA notice with application, indicator evaluation and acceptance rules gives parks an administrative-law track from application to acceptance.",
+          "zh": "2025年6月国家发改委/工信部/国家能源局（NDRC/MIIT/NEA）联合通知明确了申报、指标评价与验收规则，为园区提供了从申报到验收的行政法轨道。",
+          "label_zh": "三部门联合通知",
+          "citation": "Zero-carbon park notice (Jun 2025)"
+        },
+        "strategic": {
+          "en": "The programme templates industrial greening for coal regions with CCUS honestly optional — the right scope, since forcing CCS into every park would discredit both.",
+          "zh": "该计划为煤炭地区打造工业绿色转型模板，并务实地将CCUS列为可选项——这一定位十分恰当，因为强行在所有园区推行CCS反而会损害双方公信力。",
+          "label_zh": "工业绿色转型模板",
+          "citation": "2025 zero-carbon park notice"
+        }
+      }
+    },
+    {
+      "id": "cn-demo-tech-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20266",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Direct award funding for seven CCS projects plus the demonstration-plan pipeline converts policy eligibility into disbursed first-of-kind capital.",
+          "zh": "针对七个CCS项目的直接专项资金拨付叠加示范计划项目库，将政策资格转化为首台套项目实际到位资本。",
+          "label_zh": "示范项目专项资助",
+          "citation": "MOST award round (Apr 2025)"
+        },
+        "market": {
+          "en": "Power, cement, fertiliser, battery and pipeline awards spread demand signals across industries instead of concentrating on one state-owned champion.",
+          "zh": "电力、水泥、化肥、电池及管道领域的立项资助将需求信号分散至多个行业，而非集中于单一国有龙头企业。",
+          "label_zh": "跨行业需求扩散",
+          "citation": "MOST award round (Apr 2025)"
+        },
+        "mrv": {
+          "en": "Funded demonstrations generate the metered operating records (capture rates, transport integrity, storage behaviour) that standards GB/T 46876-46880 then codify.",
+          "zh": "获资助的示范项目生成实测运行记录（捕集率、运输完整性、封存行为），随后由GB/T 46876—46880国家标准加以规范固化。",
+          "label_zh": "示范级运行实证记录",
+          "citation": "Demonstration plan; GB/T package (Jan 2026)"
+        },
+        "statutory": {
+          "en": "A ten-department implementation plan with published project lists gives demo funding administrative regularity one notch below legislation.",
+          "zh": "由十部门联合印发并附带公开项目清单的实施方案，赋予示范资金安排仅次于立法的行政规范性。",
+          "label_zh": "十部门实施方案",
+          "citation": "NDRC ten-department plan (Aug 2023)"
+        },
+        "strategic": {
+          "en": "With no dedicated CCUS law, this award pipeline is the de-facto deployment strategy to 2030, seeding the integrated projects the 15th Five-Year Plan will scale.",
+          "zh": "在尚无专门CCUS立法的情况下，该资助项目库构成至2030年事实上的部署战略，为“十五五”规划规模化推广培育一体化项目种子。",
+          "label_zh": "专门立法前的项目孵化器",
+          "citation": "GCCSI China review (2026)"
+        }
+      }
+    },
+    {
+      "id": "cn-miit-industrial-plan-2022",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202208/t20220802_990575.html",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Encourages financial institutions to support industrial CCUS demonstration via green finance.",
+          "zh": "鼓励金融机构通过绿色金融支持工业CCUS示范项目。",
+          "label_zh": "绿色金融扶持导向",
+          "citation": "Section 5: Policy Support"
+        },
+        "market": {
+          "en": "Aims to create low-carbon industrial supply chains, providing a market pull for CCUS products.",
+          "zh": "旨在打造低碳工业供应链，为CCUS产品提供市场拉动。",
+          "label_zh": "供应链需求拉动",
+          "citation": "Section 3.2"
+        },
+        "mrv": {
+          "en": "Mandates the establishment of carbon emission management systems in key enterprises.",
+          "zh": "要求重点企业建立碳排放管理体系。",
+          "label_zh": "标准化碳排放报告",
+          "citation": "Section 4: Capacity Building"
+        },
+        "statutory": {
+          "en": "Sets specific efficiency and emission reduction targets for key sectors (Steel, Cement).",
+          "zh": "为钢铁、水泥等重点行业设定具体的能效与减排目标。",
+          "label_zh": "重点行业约束指标",
+          "citation": "Section 3: Key Actions"
+        },
+        "strategic": {
+          "en": "MIIT industrial planning embeds capture in manufacturing upgrade pathways, tying technology support to plant-level deployment.",
+          "zh": "工信部工业规划将碳捕集嵌入制造业升级路径，将技术支持与工厂级部署紧密挂钩。",
+          "label_zh": "工信部工业转型轨道",
+          "citation": "MIIT plan record (2022)"
+        }
+      }
+    },
+    {
+      "id": "cn-ccus-roadmap-2025",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.acca21.org.cn/trs/00010004/17430.html",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "The roadmap recommends financing, demonstration support and business-model development, but it does not allocate funds or create an automatic project entitlement.",
+          "zh": "该路线图建议加强融资、示范支持与商业模式培育，但其本身不分配资金，也不创设自动的项目资助资格。",
+          "label_zh": "政策支持建议",
+          "citation": "ACCA21, China CCUS Technology Development Roadmap (2025)."
+        },
+        "market": {
+          "en": "The roadmap explicitly shifts attention toward commercial-scale deployment, shared hubs, infrastructure coordination and viable business models.",
+          "zh": "路线图明确将关注重点转向商业化规模部署、共享枢纽、基础设施协同以及可行商业模式。",
+          "label_zh": "商业化与枢纽议程",
+          "citation": "ACCA21 release notice, 24 October 2025."
+        },
+        "mrv": {
+          "en": "The roadmap calls for refined technical evaluation, lifecycle assessment, standards and data support, but it is not itself a mandatory cross-chain MRV method.",
+          "zh": "路线图呼吁完善技术评价、全生命周期评估、标准与数据支撑，但其本身并非强制性的跨链条MRV方法。",
+          "label_zh": "评价与标准研究议程",
+          "citation": "ACCA21 formal publication summary, 8 January 2026."
+        },
+        "statutory": {
+          "en": "The document is an expert-led technology roadmap and does not establish capture, transport or storage permitting, pore-space rights or long-term liability.",
+          "zh": "该文件为专家主导的技术路线图，并未确立捕集、运输或封存许可制度、孔隙空间权利或长期责任机制。",
+          "label_zh": "非约束性战略路线图",
+          "citation": "ACCA21 publication notice, 8 January 2026."
+        },
+        "strategic": {
+          "en": "It provides China’s updated long-term technology positioning, staged objectives and policy recommendations for CCUS under the dual-carbon goals.",
+          "zh": "该文件在“双碳”目标下提供了中国更新后的CCUS长期技术定位、分阶段目标及政策建议。",
+          "label_zh": "第三版国家CCUS技术路线图",
+          "citation": "ACCA21, China CCUS Technology Development Roadmap (2025)."
+        }
+      }
+    },
+    {
+      "id": "au-offshore-ghg-safety-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.legislation.gov.au/Details/C2024A00042",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Focuses on safety and labor compliance rather than fiscal subsidy.",
+          "zh": "重点关注安全与劳工合规，而非财政补贴。",
+          "label_zh": "聚焦安全运行稳定",
+          "citation": "Schedule 1: Safety Management"
+        },
+        "market": {
+          "en": "Ensures Australian offshore storage remains attractive via world-class safety standards.",
+          "zh": "通过世界一流的安全标准确保澳大利亚海上封存持续具备市场吸引力。",
+          "label_zh": "高标准支撑区域枢纽",
+          "citation": "Explanatory Memorandum"
+        },
+        "mrv": {
+          "en": "Mandates rigorous safety management documents and reviews for injection activities.",
+          "zh": "强制要求针对注入作业编制严格的安全管理文件并开展审查。",
+          "label_zh": "安全挂钩的监测审查",
+          "citation": "Schedule 2: Diving and Safety"
+        },
+        "statutory": {
+          "en": "Modernizes the 2006 baseline to support massive offshore GHG hubs.",
+          "zh": "对2006年基准法制进行现代化修订，以支撑大型海上温室气体封存枢纽。",
+          "label_zh": "封存安全法制更新",
+          "citation": "Part 1: Amendments to the 2006 Act"
+        },
+        "strategic": {
+          "en": "The 2024 Safety Regulations with NOPSEMA oversight carry the offshore safety spine that lets Commonwealth-waters storage scale without re-litigating risk controls per project.",
+          "zh": "《2024年安全条例》结合NOPSEMA监管构建了海上安全主干，使联邦海域封存得以规模化推进而无需逐个项目重申风险控制规则。",
+          "label_zh": "OPGGS海上安全主干",
+          "citation": "OPGGS Safety Regulations 2024"
+        }
+      }
+    },
+    {
+      "id": "fr-ccus-strategy-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.ecologie.gouv.fr/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "The deep-decarbonisation support scheme tendered from the June 2024 consultation funds two-to-four port hubs, with EU Innovation Fund and carbon-market revenues as co-financing beside national support.",
+          "zh": "自2024年6月公众咨询起启动招标的深度脱碳支持计划资助2至4个港口枢纽，除国家支持外，还引入欧盟创新基金及碳市场收益作为联合融资。",
+          "label_zh": "枢纽资助计划",
+          "citation": "DGEC stocktake (Jul 2024)"
+        },
+        "market": {
+          "en": "NaTran 16.7 Mt/yr transport corridor with regulated per-tonne tariffs and shared liquefaction/pipeline/shipping specs turns capture into contracted midstream demand across refining, petrochemicals and steel.",
+          "zh": "NaTran 1670万吨/年运输走廊通过受监管的按吨费率及共享液化/管道/航运规范，将炼化、石化与钢铁领域的捕集转化为已签约的中游需求。",
+          "label_zh": "NaTran运输走廊",
+          "citation": "NaTran corridor planning; DGEC stocktake (Jul 2024)"
+        },
+        "mrv": {
+          "en": "External storage under EU CCS Directive monitoring duties via Northern Lights, Aramis, Callisto and Prinos routes, with BRGM subsurface assessment building the domestic MRV knowledge base.",
+          "zh": "经由Northern Lights、Aramis、Callisto及Prinos路径开展的境外封存适用《欧盟CCS指令》监测义务，同时BRGM地下评估正构建本土MRV知识基础。",
+          "label_zh": "欧盟封存MRV体系",
+          "citation": "EU CCS Directive; DGEC stocktake (Jul 2024)"
+        },
+        "statutory": {
+          "en": "London Protocol amendment ratification (Assembly June 2025) plus the July 2025 France-Norway export agreement and the Franco-Danish maritime bilateral give cross-border storage full treaty cover; Green Industry Act streamlines subsurface permitting.",
+          "zh": "《伦敦议定书》修正案批准（2025年6月国民议会通过）叠加2025年7月法挪出口协议及法丹海运双边协议，为跨境封存提供完整条约保障；《绿色工业法》精简了地下许可流程。",
+          "label_zh": "议定书批约与绿色工业法",
+          "citation": "London Protocol amendment; Green Industry Act"
+        },
+        "strategic": {
+          "en": "Phase 1 hubs target 4-8 Mt/yr by 2030 (first possibly 2028) inside the EU 50 Mt 2030 storage obligation, with ADEME bounding the strategy to hard-to-abate volumes after efficiency and renewables.",
+          "zh": "在欧盟2030年5000万吨封存义务框架下，第一阶段枢纽目标到2030年实现400万—800万吨/年（首批最快或于2028年投运），同时ADEME将战略限定于能效提升和可再生能源替代后的难减排排放量。",
+          "label_zh": "400万—800万吨/年枢纽",
+          "citation": "DGEC stocktake (Jul 2024); ADEME costing"
+        }
+      }
+    },
+    {
+      "id": "us-wy-hb-0200",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://wyoleg.gov/2020/Enroll/HB0200.pdf",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "CCUS cost recovery with higher return on equity, pre-collectible 2% bill surcharge and CO2-sale revenue sharing convert the mandate into ratepayer-funded project finance no other US state offers coal CCUS.",
+          "zh": "CCUS成本回收叠加更高股本回报率、可预先征收的2%账单附加费及二氧化碳销售收益分成，将该强制指令转化为其他美国州未向煤电CCUS提供的、由用户电费托底的项目融资。",
+          "label_zh": "强制性成本回收",
+          "citation": "W.S. 37-18-102(c); HB0200 Enrolled Act 79"
+        },
+        "market": {
+          "en": "The portfolio standard with IRP demonstration compels Wyoming utilities to procure CCUS power, creating captive in-state demand, though the market stays confined to the regulated utility footprint.",
+          "zh": "附带综合资源规划（IRP）论证的组合标准强制怀俄明州公用事业公司采购CCUS电力，创造州内锁定需求，但市场仍局限于受监管公用事业服务范围之内。",
+          "label_zh": "锁定内部需求",
+          "citation": "W.S. 37-18-102(a); PSC IRP rules"
+        },
+        "mrv": {
+          "en": "The sub-650-lbs/MWh performance line with IRP progress demonstration, reliability baselines and biennial legislative reporting makes low-carbon claims auditable inside the rate case.",
+          "zh": "低于650磅/兆瓦时的绩效红线结合IRP进展论证、可靠性基准及每两年一次的立法报告，使低碳声明可在电价费率审查案件中接受审计。",
+          "label_zh": "PSC审计核查",
+          "citation": "W.S. 37-18-102(a)(v),(d),(e)"
+        },
+        "statutory": {
+          "en": "Statute with PSC rulemaking, coal-replacement recovery ban and civil penalties to $100,000/day gives the standard hard enforcement teeth rare in US state clean-energy law.",
+          "zh": "该成文法配套PSC规则制定、煤电替代成本回收禁令及最高每日10万美元民事罚款，赋予该标准在美国州级清洁能源法中罕见的硬性执法约束力。",
+          "label_zh": "组合标准强制令",
+          "citation": "W.S. 37-18-101/102; HB0200"
+        },
+        "strategic": {
+          "en": "Wyoming bets regulated cost recovery can keep coal economical with capture against the 2030 deadline; the failed 2025 repeal (House 60-1, died in Senate) shows the gamble is politically live, not settled.",
+          "zh": "怀俄明州押注受监管成本回收能在2030年期限前维持加装捕集煤电的经济性；2025年废除法案流产（众议院60-1通过但止步于参议院）表明这场博弈在政治上仍处于动态交锋而非尘埃落定。",
+          "label_zh": "产煤州战略博弈",
+          "citation": "HB0209 legislative history (2025); PSC interim compilations"
+        }
+      }
+    },
+    {
+      "id": "de-carbon-management-strategy-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.bmwk.de/Redaktion/EN/Pressemitteilungen/2024/02/20240226-habeck-paves-the-way-for-ccs-in-germany.html",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "The KSpTG creates investible permitting and overriding-public-interest acceleration but no dedicated funding line; a 2025 federal industrial decarbonisation programme (EUR 6 billion, CCS-eligible) is the adjacent support route.",
+          "zh": "KSpTG创设了可投资的许可机制及“压倒性公共利益”加速地位，但未设专门资金线；2025年联邦工业脱碳计划（60亿欧元，CCS符合资格）构成毗邻支持路径。",
+          "label_zh": "有框架但无专属预算",
+          "citation": "KSpTG (in force Nov 2025); federal decarbonisation programme (Oct 2025)"
+        },
+        "market": {
+          "en": "With no Land opt-in exercised and EEZ planning crowded, the operative near-term market is CO2 export to Norwegian and Danish stores under the January 2026 London Protocol legislation, feeding the 50 Mt EU 2030 injection obligation.",
+          "zh": "在尚无联邦州行使陆上选择权且专属经济区（EEZ）规划拥挤的情况下，近期实际运行的市场是依据2026年1月《伦敦议定书》立法向挪威和丹麦封存库出口二氧化碳，服务欧盟2030年5000万吨注入义务。",
+          "label_zh": "出口导向需求",
+          "citation": "London Protocol ratification laws (Jan 2026); NZIA 50 Mt obligation"
+        },
+        "mrv": {
+          "en": "Licensing embeds marine-protection distances, porpoise noise windows, wind/hydrogen priority checks and BGR-assessed formation suitability, carrying EU CCS Directive monitoring duties into the commercial regime.",
+          "zh": "许可审批嵌入海洋保护距离、鼠海豚噪声窗口期、风电/氢能优先核查及BGR评估的地层适宜性要求，将《欧盟CCS指令》监测义务引入商业监管体系。",
+          "label_zh": "海上环境与MRV条件",
+          "citation": "KSpTG licensing conditions; EU CCS Directive 2009/31/EC"
+        },
+        "statutory": {
+          "en": "Bundestag and Bundesrat passage (November 2025) replaced the research-only KSpG with commercial offshore storage plus the first uniform CO2 pipeline-transport regime, ending the special national path toward EU-law compatibility.",
+          "zh": "德国联邦议院与联邦参议院于2025年11月通过法案，以商业化海上封存及首个统一的二氧化碳管道运输制度取代仅限科研的KSpG，结束了偏离欧盟法兼容性的国家特殊路径。",
+          "label_zh": "KSpTG正式颁布",
+          "citation": "KSpTG (BGBl. 2025 I No. 282)"
+        },
+        "strategic": {
+          "en": "The 2024 CMS key points plus the KSpTG lift the ban for unavoidable industrial emissions (cement, lime, chemicals, waste), while strategy, funding, storage-access and acceptance gaps keep deployment dependent on pending political decisions.",
+          "zh": "2024年CMS要点及KSpTG解除了水泥、石灰、化工和垃圾处理等不可避免工业排放的封存禁令，但战略、资金、封存准入及公众接受度缺口使实际部署仍取决于待定的政治决策。",
+          "label_zh": "禁令解除但缺口尚存",
+          "citation": "CMS key points (2024); BMWK cabinet draft (Aug 2025)"
+        }
+      }
+    },
+    {
+      "id": "jp-jogmec-advanced-ccs-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.jogmec.go.jp/english/news/release/news_10_00037.html",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Provides integrated subsidies for design, exploration, and construction of the full CCS chain.",
+          "zh": "为CCS全链条的设计、勘探与建设提供一体化补贴。",
+          "label_zh": "全链条资本补贴",
+          "citation": "JOGMEC FY2024 Selection Criteria"
+        },
+        "market": {
+          "en": "Focuses on creating hubs that link Japanese industry to overseas storage sites.",
+          "zh": "重点建设将日本工业与海外封存库相连接的枢纽网络。",
+          "label_zh": "枢纽辐射协同",
+          "citation": "Cross-border CCS Handbook"
+        },
+        "mrv": {
+          "en": "Requires high-frequency reporting to JOGMEC to maintain subsidy eligibility.",
+          "zh": "要求向JOGMEC高频报送数据以维持补贴资格。",
+          "label_zh": "严格运行MRV",
+          "citation": "Technical Guidelines"
+        },
+        "statutory": {
+          "en": "Guidelines create a de facto regulatory path for commercial scale-up.",
+          "zh": "指南为商业化规模扩展形成了事实上的监管路径。",
+          "label_zh": "示范引领路径",
+          "citation": "Advanced CCS Project Support Policy"
+        },
+        "strategic": {
+          "en": "JOGMEC advanced-CCS work with public-private survey funding de-risks Japanese storage characterisation ahead of commercial licensing.",
+          "zh": "JOGMEC先进CCS工作配合公私联合勘查资金，在商业许可之前先行降低了日本封存地质评价风险。",
+          "label_zh": "JOGMEC先进示范轨道",
+          "citation": "JOGMEC record (2024)"
+        }
+      }
+    },
+    {
+      "id": "ca-sk-spii",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/oil-and-gas-incentives-royalties-and-taxes/saskatchewan-petroleum-innovation-incentive",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Offers a 25% credit on eligible project costs, including CCUS.",
+          "zh": "为包括CCUS在内的合格项目成本提供25%的税收抵免。",
+          "label_zh": "25%可转让抵免",
+          "citation": "The Financial Administration Act, SK"
+        },
+        "market": {
+          "en": "Integrates CCUS into the core fiscal logic of the provincial oil industry.",
+          "zh": "将CCUS融入萨斯喀彻温省石油工业的核心财税逻辑。",
+          "label_zh": "矿区使用费整合",
+          "citation": "SK Royalty Framework"
+        },
+        "mrv": {
+          "en": "Mandatory reporting of storage performance to claim Innovation Incentive.",
+          "zh": "申领创新激励必须强制报告封存绩效。",
+          "label_zh": "封存绩效报告标准",
+          "citation": "SPII Program Guidelines"
+        },
+        "statutory": {
+          "en": "Managed under provincial petroleum and natural gas regulations.",
+          "zh": "依据省级石油与天然气法规进行管理。",
+          "label_zh": "省级油气法规管辖",
+          "citation": "Petroleum and Natural Gas Regulations, 1969"
+        },
+        "strategic": {
+          "en": "The Saskatchewan Petroleum Innovation Incentive channels oil-sector innovation funding toward capture-adjacent technology inside producing operations.",
+          "zh": "萨斯喀彻温省石油创新激励计划将石油行业创新资金引导至在产作业内部的捕集相关技术。",
+          "label_zh": "石油创新通道",
+          "citation": "SPII programme record"
+        }
+      }
+    },
+    {
+      "id": "au-wa-petroleum-amendment-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.legislation.wa.gov.au/legislation/statutes.nsf/RedirectURL?OpenAgent&query=mrdoc_47094.pdf",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Direct access converts petroleum titleholders to storage licensees without acreage re-bidding or duplicate work commitments — the fastest licensing economics in Australia.",
+          "zh": "直接准入机制允许石油矿权人无需重新竞标区块或重复工作承诺即可转为封存许可持有人，构成澳大利亚审批最快的许可经济模式。",
+          "label_zh": "矿权人快速通道",
+          "citation": "PLAB 2023 (passed May 7, 2024); Allens note (May 2024)"
+        },
+        "market": {
+          "en": "State-waters storage for LNG-adjacent emitters with Commonwealth-mirrored rules positions WA as the Indo-Pacific capture-and-storage hub for Safeguard-driven demand.",
+          "zh": "凭借与联邦规则镜像对齐的州属海域封存服务LNG周边排放源，将西澳大利亚州（WA）打造为承接保障机制（Safeguard）需求驱动的印太碳捕集与封存枢纽。",
+          "label_zh": "区域枢纽出口定位",
+          "citation": "Allens note (May 2024)"
+        },
+        "mrv": {
+          "en": "Work-programme permits with DEMIRS-monitored commitments, 5-year use-it-or-lose-it licences and strat-test conversion verification enforce measured development.",
+          "zh": "由DEMIRS监督承诺的工作计划许可、5年期“不用即作废”许可证及地层测试井转用核查，强制推进量化开发。",
+          "label_zh": "地层与作业报告",
+          "citation": "PLAB 2023 GHG title provisions"
+        },
+        "statutory": {
+          "en": "Three amended Acts with dual licensing paths, title coexistence, site closing and capped state indemnity — a complete state-waters statute mirroring the Commonwealth model.",
+          "zh": "修订三部法案确立双轨许可路径、矿权共存、场地封存关闭及设上限的州政府赔偿机制，构成镜像对接联邦模式的完整州属海域成文法。",
+          "label_zh": "州属海域封存立法权",
+          "citation": "PGERA/SLA/Pipelines Acts (as amended 2024)"
+        },
+        "strategic": {
+          "en": "State-waters storage supply timed for Safeguard Mechanism 4.9% baselines gives WA LNG and industrial emitters a jurisdictional compliance outlet.",
+          "zh": "州属海域封存供给与保障机制（Safeguard Mechanism）4.9%基线节奏衔接，为WA液化天然气与工业排放方提供本辖区合规出口。",
+          "label_zh": "保障机制合规供给",
+          "citation": "Allens note (May 2024)"
+        }
+      }
+    },
+    {
+      "id": "us-nd-century-code-38-22",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.ndlegis.gov/cencode/t38c22.pdf",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "North Dakota was the first state to receive Class VI primacy, dramatically reducing permitting costs.",
+          "zh": "北达科他州是首个获得VI类井首要执法权的州，显著降低了许可审批成本。",
+          "label_zh": "首要执法权提速",
+          "citation": "NDCC 38-22-01"
+        },
+        "market": {
+          "en": "Designed to preserve the state's coal-fired power industry via carbon management.",
+          "zh": "旨在通过碳管理维系该州的燃煤发电产业。",
+          "label_zh": "煤电与CCS协同",
+          "citation": "NDCC 38-22-01 Policy Statement"
+        },
+        "mrv": {
+          "en": "State monitoring rules meet or exceed federal mass balance requirements.",
+          "zh": "州级监测规则达到或高于联邦质量平衡要求。",
+          "label_zh": "VI类井加强标准",
+          "citation": "NDCC 38-22-12"
+        },
+        "statutory": {
+          "en": "Comprehensive state-level authority delegated by EPA.",
+          "zh": "由EPA授予的全面州级监管授权。",
+          "label_zh": "州级首要执法权先行者",
+          "citation": "NDCC 38-22-03"
+        },
+        "strategic": {
+          "en": "North Dakota pioneering primacy code (2018, first state) wrote the template every later state application followed.",
+          "zh": "北达科他州开创性的首要执法权法典（2018年，全美首州）书写了此后所有州申请所沿用的模板。",
+          "label_zh": "首部首要执法权法典",
+          "citation": "ND primacy record (2018)"
+        }
+      }
+    },
+    {
+      "id": "ae-federal-climate-law-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.moccae.gov.ae/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Article 10 incentives (offsetting facilitation, emissions trading, shadow pricing) with NRCC credit certificates, now pointed at an organised Abu Dhabi hub awaiting its tariff methodology.",
+          "zh": "第10条激励措施（抵消便利化、排放交易、影子定价）结合NRCC信用凭证，现正对接尚待明确费率方法学的有组织阿布扎比枢纽。",
+          "label_zh": "登记簿与实施政策激励",
+          "citation": "Decree-Law 11/2024 Art.10; Galadari compliance note (2026)"
+        },
+        "market": {
+          "en": "SCFEA-approved procedures, designated Transport System Operator and storage concessions organise hub access; connection standards and tariffs are the pending market terms.",
+          "zh": "经SCFEA批准的程序、指定运输系统运营商及封存特许权组织起枢纽准入；接入标准与费率则是待明确的商业条款。",
+          "label_zh": "枢纽市场组织",
+          "citation": "Abu Dhabi General Policy (May 2026)"
+        },
+        "mrv": {
+          "en": "Designated-source MRV from May 2025 with 0.5 Mt registration threshold, verification and a national register — the strictest Gulf measurement spine.",
+          "zh": "自2025年5月起实施指定排放源MRV，设50万吨（0.5 Mt）登记门槛、核查与国家登记簿，构成海湾地区最严格的计量主干。",
+          "label_zh": "强制性MRV制度",
+          "citation": "Decree-Law 11/2024 Art.6; NRCC Resolution 67/2024"
+        },
+        "statutory": {
+          "en": "A federal framework law with eight named mitigation means, register mandate and incentive machinery, extended by the 2026 Abu Dhabi implementing policy.",
+          "zh": "一部包含八项列名减缓手段、登记强制义务及激励机制的联邦框架法，并由2026年阿布扎比实施政策加以延伸。",
+          "label_zh": "联邦法令基础",
+          "citation": "Decree-Law 11/2024 (uaelegislation.gov.ae)"
+        },
+        "strategic": {
+          "en": "The NDC treats CCUS as material for hard-to-abate industry and oil and gas itself — source and sink inside one national strategy with EOR/EGR as the commercial bridge.",
+          "zh": "NDC将CCUS视为难减排工业及油气行业自身的实质性工具——在单一国家战略内统筹排放源与封存汇，并以EOR/EGR作为商业过渡桥梁。",
+          "label_zh": "NDC实质性工具",
+          "citation": "UAE NDC; Galadari compliance note (2026)"
+        }
+      }
+    },
+    {
+      "id": "uae-adnoc-ccs-2030",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.adnoc.ae/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "ADNOC allocated $23 billion for low-carbon tech including CCUS expansion.",
+          "zh": "ADNOC划拨230亿美元用于包括CCUS扩建在内的低碳技术。",
+          "label_zh": "国有资本注资",
+          "citation": "ADNOC 2024 Strategy Update"
+        },
+        "market": {
+          "en": "Strongly linked to hydrogen and ammonia export markets to Japan/Europe.",
+          "zh": "与面向日本和欧洲的氢氨出口市场紧密挂钩。",
+          "label_zh": "国际能源贸易衔接",
+          "citation": "Bilateral Agreements"
+        },
+        "mrv": {
+          "en": "First to achieve bulk shipment of certified low-carbon ammonia via CCS.",
+          "zh": "率先实现依托CCS的经认证低碳氨散货装船出口。",
+          "label_zh": "经认证低碳货轮",
+          "citation": "ISCC Certification Report"
+        },
+        "statutory": {
+          "en": "Leverages national oil company mandates to drive storage infrastructure.",
+          "zh": "依托国家石油公司的授权任务推动封存基础设施建设。",
+          "label_zh": "企业主导型治理",
+          "citation": "UAE Energy Strategy 2050"
+        },
+        "strategic": {
+          "en": "Mandatory 2030 target of 10 million tonnes per annum with high-level executive backing.",
+          "zh": "在高层大力支持下设定2030年1000万吨/年的强制性目标。",
+          "label_zh": "1000万吨/年目标",
+          "citation": "ADNOC Sustainability Roadmap"
+        }
+      }
+    },
+    {
+      "id": "kr-ccus-act",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=259701",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Cluster designation with creation subsidies, rent relief, R&D grants, loans, tax reduction and climate-fund investment channels support through designated complexes and certified specialised companies.",
+          "zh": "通过指定集聚区及经认证专业企业，以集群认定叠加建设补贴、租金减免、研发补助、贷款、减税及气候基金投资渠道提供支持。",
+          "label_zh": "集群化政策支持",
+          "citation": "CCUS Act arts. 29-44; Kim Chang briefing (Apr 2024)"
+        },
+        "market": {
+          "en": "NDC-anchored demand (4.8 Mt/yr CCS by 2030, 11.2-20.3 Mt/yr CCUS by 2035) plus the Donghae hub and Daesan cross-border chain give the statute contracted storage outlets; the first basic plan will set allocation detail.",
+          "zh": "锚定NDC的需求（2030年CCS达480万吨/年、2035年CCUS达1120万—2030万吨/年）加上东海枢纽与大山跨境链条，为该法提供了签约封存出路；首部基本规划将设定配置细节。",
+          "label_zh": "NDC驱动需求",
+          "citation": "KNOC CCS programme (Jan 2026); 2035 NDC"
+        },
+        "mrv": {
+          "en": "Storage operators need approved monitoring plans with continuous post-closure marine monitoring, dual-ministry site selection, and an optional national public monitoring system for storage facilities.",
+          "zh": "封存运营商须具备经批准的监测计划并开展闭井后持续海洋监测，实行双部门联合选址，并设有可选的国家封存设施公共监测体系。",
+          "label_zh": "15年强制监测要求",
+          "citation": "CCUS Act arts. 14, 18, 25, 45"
+        },
+        "statutory": {
+          "en": "One statute with capture registration, transport approval and storage licensing (Act No. 20203, effective February 7, 2025, Enforcement Decree January 31, 2025) replaces some forty mutatis-mutandis provisions with a licensing ladder.",
+          "zh": "一部整合捕集登记、运输核准与封存许可的成文法（第20203号法案，2025年2月7日生效，施行令2025年1月31日发布），以清晰的许可阶梯取代了约四十项准用条款。",
+          "label_zh": "统一CCUS许可制度",
+          "citation": "CCUS Act (No. 20203); Enforcement Decree (Jan 2025)"
+        },
+        "strategic": {
+          "en": "The Act is the legal pillar of the carbon-neutrality roadmap for hard-to-abate industry, defining captured carbon as a usable resource and establishing whole-lifecycle governance from capture to utilisation.",
+          "zh": "该法案是难减排工业碳中和路线图的法律支柱，将捕集碳界定为可利用资源，并建立从捕集到利用的全生命周期治理体系。",
+          "label_zh": "韩国CCUS路线图支柱",
+          "citation": "Kim (2026) CCUS Act assessment; MSIT enforcement notice (Feb 2025)"
+        }
+      }
+    },
+    {
+      "id": "sa-circular-carbon-economy-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://www.moenergy.gov.sa/",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Jubail 9 Mt/yr anchor with EOR revenue, blue-ammonia exports and prospective GCOM credits stacks monetisation behind shared infrastructure.",
+          "zh": "朱拜勒（Jubail）900万吨/年锚定枢纽叠加EOR收益、蓝氨出口及预期GCOM信用，为共享基础设施构建多层次变现支撑。",
+          "label_zh": "枢纽集聚变现",
+          "citation": "Aramco Jubail release (Dec 2024); 2nd NDC (Dec 2025)"
+        },
+        "market": {
+          "en": "Blue hydrogen and ammonia exports with Fertiglobe low-carbon ammonia shipments (including to Japan for power) turn stored carbon into traded products.",
+          "zh": "蓝氢与蓝氨出口以及Fertiglobe低碳氨船货（包括运往日本用于发电）将已封存的碳转化为可贸易商品。",
+          "label_zh": "蓝氢蓝氨产品出口",
+          "citation": "ADNOC/Fertiglobe ammonia record (2024)"
+        },
+        "mrv": {
+          "en": "The 2nd NDC documents measured capture (1.3 Mt) with DNV-certified aquifer storage, putting operating tonnes inside national accounting.",
+          "zh": "第二版NDC记录了实测捕集量（130万吨）及获DNV认证的咸水层封存量，将在运吨位纳入国家核算。",
+          "label_zh": "NDC核算纳入",
+          "citation": "2nd KSA NDC (Dec 2025)"
+        },
+        "statutory": {
+          "en": "G20-endorsed doctrine with NDC documentation but no dedicated CCS statute — direction with delivery vehicles, not codified licensing.",
+          "zh": "拥有获G20背书的纲领及NDC文件记录，但尚无专门CCS法律——属于配有交付载体的战略方向，而非成文化许可制度。",
+          "label_zh": "政策纲领加交付载体",
+          "citation": "G20 Riyadh record (2020); 2nd NDC (Dec 2025)"
+        },
+        "strategic": {
+          "en": "The reduce-reuse-recycle-remove doctrine operationalised through Jubail/Yanbu hubs makes hydrocarbons investible under the 2060 pledge — strategy as operating system.",
+          "zh": "通过Jubail/Yanbu枢纽落地的“减量—再利用—再循环—移除”纲领使油气在2060年承诺下仍具可投资性——以国家战略充当运行体系。",
+          "label_zh": "CCE运行体系底座",
+          "citation": "KAPSARC CCE roadmap (2024)"
+        }
+      }
+    },
+    {
+      "id": "eu-ets-mrr-2018",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32018R2066",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "High carbon prices (EUA) drive CCUS adoption via cost avoidance, specifically exempting stored CO2 from allowance surrender.",
+          "zh": "高碳价（EUA）通过成本规避驱动CCUS应用，并明确豁免已封存二氧化碳的配额清缴义务。",
+          "label_zh": "2026年EUA碳价超90欧元/吨",
+          "citation": "EU ETS Directive (2023/959)"
+        },
+        "market": {
+          "en": "World's most mature mandatory carbon market with full linkage to CCUS deployment.",
+          "zh": "全球最成熟的强制性碳市场，且与CCUS部署实现全面衔接。",
+          "label_zh": "全球碳市场标杆",
+          "citation": "EU ETS Phase 4 Framework"
+        },
+        "mrv": {
+          "en": "Most precise rules for uncertainty thresholds and verification of captured CO2 globally.",
+          "zh": "拥有全球针对捕集二氧化碳不确定度阈值与核查最精密的规则。",
+          "label_zh": "黄金标准MRV",
+          "citation": "Annex IV: CCUS Monitoring"
+        },
+        "statutory": {
+          "en": "Legally mandates high-precision monitoring for CCUS, now covering ships and trucks via the 2024 amendment.",
+          "zh": "从法律上强制要求对CCUS实施高精度监测，并通过2024年修订将适用范围覆盖至船舶与卡车。",
+          "label_zh": "2024年MRR合规约束",
+          "citation": "Regulation (EU) 2024/2493"
+        },
+        "strategic": {
+          "en": "Primary lever for EU Industrial Carbon Management strategy, aligned with 2030 50Mtpa target.",
+          "zh": "欧盟工业碳管理战略的主要杠杆，与2030年5000万吨/年目标保持一致。",
+          "label_zh": "ICM战略支柱",
+          "citation": "ICM Communication (2024)"
+        }
+      }
+    },
+    {
+      "id": "eu-cbam",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/eli/reg/2023/956/oj",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "CBAM does not subsidise CCUS, but lower verified embedded emissions reduce certificate exposure and can improve the competitiveness of cleaner production routes.",
+          "zh": "CBAM并不补贴CCUS，但更低的经核查隐含排放可减少证书敞口，并有助于提升清洁生产路线的竞争力。",
+          "label_zh": "间接低碳生产激励",
+          "citation": "Regulation (EU) 2023/956, Articles 1, 7 and 21."
+        },
+        "market": {
+          "en": "CBAM certificate prices are linked to EU ETS auctions, while qualifying carbon prices paid in the country of origin may be credited against the obligation.",
+          "zh": "CBAM证书价格与EU ETS拍卖挂钩，而在原产国已支付的符合条件碳价可抵扣相应履约义务。",
+          "label_zh": "挂钩EU ETS的边境碳价",
+          "citation": "Regulation (EU) 2023/956, Articles 9, 20 and 21."
+        },
+        "mrv": {
+          "en": "The framework requires detailed installation data and verification; CO2 sent to long-term geological storage is deductible only with monitored chain-of-custody evidence.",
+          "zh": "该框架要求提供详尽的设施数据并接受核查；送往长期地质封存的二氧化碳仅在具备受监测的产销监管链证据时方可扣减。",
+          "label_zh": "经核查的隐含排放核算",
+          "citation": "Commission Implementing Regulation (EU) 2023/1773, Annex III, Sections B.8.2-B.8.3."
+        },
+        "statutory": {
+          "en": "The Regulation creates authorisation, reporting, verification and certificate obligations for importers of covered goods in the EU customs territory.",
+          "zh": "该条例为进入欧盟关税区的受覆盖货物进口商创设了授权、报告、核查及证书清缴义务。",
+          "label_zh": "具约束力的欧盟贸易与气候法规",
+          "citation": "Regulation (EU) 2023/956."
+        },
+        "strategic": {
+          "en": "CBAM aligns the treatment of covered imports with the phase-out of free EU ETS allocation and encourages cleaner industrial production outside the EU.",
+          "zh": "CBAM使受覆盖进口货物的待遇与EU ETS免费配额退出保持一致，并鼓励欧盟境外的清洁工业生产。",
+          "label_zh": "防碳泄漏与产业政策工具",
+          "citation": "European Commission CBAM overview; Regulation (EU) 2023/956."
+        }
+      }
+    },
+    {
+      "id": "eu-crcf-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R3012",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "Provides a state-backed seal of quality, enabling high-value credit sales.",
+          "zh": "提供政府背书的质量印章，助力高价值碳信用销售。",
+          "label_zh": "认证质量溢价",
+          "citation": "Regulation (EU) 2024/3012, Article 1"
+        },
+        "market": {
+          "en": "Designed to underpin the future removal market in EU ETS.",
+          "zh": "旨在为未来欧盟排放交易体系（EU ETS）中的碳移除市场奠定基础。",
+          "label_zh": "自愿与合规市场桥梁",
+          "citation": "Article 12"
+        },
+        "mrv": {
+          "en": "Mandatory independent quantification and verification by certification bodies.",
+          "zh": "强制要求由认证机构开展独立量化与核查。",
+          "label_zh": "严格认证核查",
+          "citation": "Chapter III"
+        },
+        "statutory": {
+          "en": "Binding EU law establishing standardized criteria for carbon removal activities.",
+          "zh": "具约束力的欧盟法律，为碳移除活动确立标准化准则。",
+          "label_zh": "欧盟绑定性条例",
+          "citation": "Article 4: QU.A.L.ITY Criteria"
+        },
+        "strategic": {
+          "en": "The Carbon Removal Certification Framework gives removals (including BECCS/DACCS with storage) an EU-wide integrity currency that national policies plug into.",
+          "zh": "《碳移除认证框架》为碳移除（包括带封存的BECCS/DACCS）提供了供成员国政策直接接入的全欧盟统一完整性通证。",
+          "label_zh": "碳移除统一认证通证",
+          "citation": "EU CRCF Regulation (2024)"
+        }
+      }
+    },
+    {
+      "id": "eu-industrial-carbon-management-strategy-2024",
+      "source_reviewed": false,
+      "review_disposition": "translation_only",
+      "review_note": "Tier-2 verified policy Chinese localization batch (canonical English text and numerical scores unchanged).",
+      "sources": [
+        {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52024DC0062",
+          "finding": "Bilingual localization of existing verified policy_analysis dimensions (canonical text and scores unchanged)."
+        }
+      ],
+      "analysis": {
+        "incentive": {
+          "en": "The strategy coordinates EU and national funding, risk reduction and market-building measures but does not itself appropriate a new dedicated subsidy.",
+          "zh": "该战略统筹协调欧盟及成员国资金、降险与市场培育措施，但其本身并不拨付新的专项补贴。",
+          "label_zh": "投资框架路线图",
+          "citation": "COM(2024) 62, Sections 4 and 5."
+        },
+        "market": {
+          "en": "The strategy seeks a single market for industrial carbon management and competitive CO2 transport and storage services, including demand-supply coordination.",
+          "zh": "该战略力求建立工业碳管理单一市场以及具竞争力的二氧化碳运输与封存服务，包括供需协调机制。",
+          "label_zh": "欧盟二氧化碳服务市场路线图",
+          "citation": "COM(2024) 62, Sections 3 and 4."
+        },
+        "mrv": {
+          "en": "The strategy calls for robust accounting and certification across CCS, CCU and removals, while detailed MRV obligations remain in separate legal instruments and methodologies.",
+          "zh": "该战略呼吁在CCS、CCU及碳移除领域建立稳健的核算与认证，而具体MRV义务仍载于单独的法律文书与方法学中。",
+          "label_zh": "协同核算议程",
+          "citation": "COM(2024) 62, Sections 4.3 and 5."
+        },
+        "statutory": {
+          "en": "COM(2024) 62 is a strategic Commission communication; binding obligations arise from separate instruments such as the EU ETS, CCS Directive and Net-Zero Industry Act.",
+          "zh": "COM(2024) 62属于欧委会战略通报；具约束力的义务源于EU ETS、《CCS指令》及《净零工业法案》等单独文书。",
+          "label_zh": "非约束性欧委会通报",
+          "citation": "COM(2024) 62 final."
+        },
+        "strategic": {
+          "en": "The communication establishes the EU-wide roadmap for CCS, CCU and permanent removals and links it to the 2030 storage-capacity objective and climate neutrality.",
+          "zh": "该通报确立了覆盖全欧盟的CCS、CCU及永久性碳移除路线图，并将其与2030年封存能力目标及气候中和相衔接。",
+          "label_zh": "欧盟专门碳管理战略",
+          "citation": "COM(2024) 62, Sections 1-3."
+        }
+      }
+    }
+  ]
+}
