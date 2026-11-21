@@ -1,6 +1,6 @@
 # Policy original-source readiness
 
-Generated read-only as of 2026-10-30; SQLite SHA-256: eb6809bcddf74f8386b7ce11aee5a1b1a70f043c20af31c0bba91b5c5496e9cf.
+Generated read-only as of 2026-10-30; SQLite SHA-256: fa043cd73d92af80948a31cec767130be6dc97426caa3337b516ce9b1d4f82dc.
 No network verification or factual review date update was performed.
 
 - policy_records: 130
