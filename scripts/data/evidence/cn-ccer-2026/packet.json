@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "cn-ccer-2026",
+  "policy_id": "cn-ccer",
+  "title": {
+    "en": "Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial) (2026-09-20 amendment)",
+    "zh": "温室气体自愿减排交易管理办法（试行）（2026年9月20日修正）"
+  },
+  "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202310/t20231020_1043694.html",
+  "source_language": "zh",
+  "edition": "2026-09-20",
+  "fetched_at": "2026-11-21T10:40:23Z",
+  "published_at": "2023-10-19",
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "a1670f2fd669a9c9a93cc1aabd6bc48b68dccbbd74622d14930a99526239ab4f",
+  "normalized_sha256": "e5a25348f62d22275f2c84a6da934b86511ad2ed539969d5db58dff4254ea968",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "verified",
+    "reviewer": "liuh886",
+    "reviewed_at": "2026-11-21",
+    "method": "human"
+  },
+  "anchors": [
+    {
+      "id": "article-1-purpose",
+      "locator": "《温室气体自愿减排交易管理办法（试行）》第一章 第一条",
+      "exact_quote": "第一条 为了推动实现我国碳达峰碳中和目标，控制和减少人为活动产生的温室气体排放，鼓励温室气体自愿减排行为，规范全国温室气体自愿减排交易及相关活动，根据党中央、国务院关于建设全国温室气体自愿减排交易市场的决策部署以及相关法律法规，制定本办法。",
+      "version_sha256": "a1670f2fd669a9c9a93cc1aabd6bc48b68dccbbd74622d14930a99526239ab4f",
+      "review": {
+        "status": "verified",
+        "reviewer": "liuh886",
+        "reviewed_at": "2026-11-21",
+        "method": "human"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "as_of": "2026-11-21",
+  "policies": [
+    {
+      "id": "cn-ccer",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202310/t20231020_1043694.html",
+          "finding": "Previous MEE xxgk03/t20231020_1043693.shtml URL soft-redirected to mee.gov.cn/404/index.shtml. Verified live HTTP 200 (72,646 bytes) on the canonical MEE xxgk02 ministerial decree page for Administrative Measures for Greenhouse Gas Voluntary Emission Reduction Trading (Trial) (Order No. 31, noting 2026-09-20 amendment decision). Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202310/t20231020_1043694.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired soft-404 MEE URL to canonical xxgk02 Order No. 31 HTML page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "eu-innovation-fund",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://climate.ec.europa.eu/areas-action/eu-funding-climate-action/innovation-fund_en",
+          "finding": "Previous /eu-action/eu-funding-climate-action/innovation-fund_en URL redirected to /areas-action/eu-funding-climate-action/innovation-fund_en. Verified live HTTP 200 (103,260 bytes) directly on the canonical DG Climate Action Innovation Fund page. Full 5-dimension text not re-audited here."
+        }
+      ],
+      "record": {
+        "url": "https://climate.ec.europa.eu/areas-action/eu-funding-climate-action/innovation-fund_en"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Updated redirected /eu-action/ URL to canonical /areas-action/ Innovation Fund page (HTTP 200); analysis dimensions not re-audited."
+    }
+  ]
+}

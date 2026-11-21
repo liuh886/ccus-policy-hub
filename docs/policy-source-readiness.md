@@ -1,29 +1,29 @@
 # Policy original-source readiness
 
-Generated read-only as of 2026-10-30; SQLite SHA-256: fa043cd73d92af80948a31cec767130be6dc97426caa3337b516ce9b1d4f82dc.
+Generated read-only as of 2026-10-30; SQLite SHA-256: efc3293c96045c01766e72c22a8b208ee00d336755753aa84bd7e7c7140a6b9f.
 No network verification or factual review date update was performed.
 
 - policy_records: 130
 - url_present: 130
-- archive_rows_bound_to_current_inventory: 106
-- archive_rows_quarantined_url_changed: 24
-- observed_private_raw_candidates: 34
+- archive_rows_bound_to_current_inventory: 104
+- archive_rows_quarantined_url_changed: 26
+- observed_private_raw_candidates: 32
 - observed_private_homepage_only: 5
-- git_document_identities_recorded: 4
-- git_byte_versions_validated: 4
-- human_locator_review_records: 4
-- validated_human_reviewed_anchors: 4
+- git_document_identities_recorded: 8
+- git_byte_versions_validated: 8
+- human_locator_review_records: 8
+- validated_human_reviewed_anchors: 8
 - primary_instrument_identity_reviewed_policies: 0
-- cumulative_private_raw_candidate_policies: 45
-- superseded_url_candidate_policies: 10
-- policies_without_raw_candidate: 85
+- cumulative_private_raw_candidate_policies: 43
+- superseded_url_candidate_policies: 12
+- policies_without_raw_candidate: 87
 - manual_locally_hash_checked_unique_blobs: 17
 
 Private transfer observations are not verified document identities. Zero accepted primary identities here is a verification baseline, not proof that official sources do not exist.
 
 Cumulative reconciliation adds 11 current-URL-aligned policy candidates from 17 locally hash-checked manual blobs. Supporting/rejected materials are excluded from policy coverage. Current Drive presence and legal identity were not rechecked. The table and triage below retain the current-URL-bound baseline observations; cumulative policy-ID lists are in the JSON report.
 
-URL-change quarantine excludes 24 policies whose canonical URL changed since the 2026-10-30 capture (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`), including 10 superseded prior-URL candidates (au-wa-petroleum-amendment-2024, br-anp-ccs-resolution, ca-ccus-itc, ca-sk-ccs-directives, cn-miit-industrial-plan-2022, cn-ordos-pilot-2024, my-netr-ccus-2023, no-storage-framework, uk-energy-act-2023, vn-decree-119-2025).
+URL-change quarantine excludes 26 policies whose canonical URL changed since the 2026-10-30 capture (`ARCHIVE_URL_CHANGED_SINCE_CAPTURE`), including 12 superseded prior-URL candidates (au-wa-petroleum-amendment-2024, br-anp-ccs-resolution, ca-ccus-itc, ca-sk-ccs-directives, cn-ccer, cn-miit-industrial-plan-2022, cn-ordos-pilot-2024, eu-innovation-fund, my-netr-ccus-2023, no-storage-framework, uk-energy-act-2023, vn-decree-119-2025).
 
 | Policy ID                                        | Record review | Private archive observation | Priority | Evidence gaps                                                                                                                                             |
 | ------------------------------------------------ | ------------- | --------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ URL-change quarantine excludes 24 policies whose canonical URL changed since the
 | ch-co2-act-ccs-2024                              | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | cl-green-hydrogen-ccs-2025                       | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | cn-bj-ccus-measures-2026                         | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| cn-ccer                                          | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
+| cn-ccer                                          | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                         |
 | cn-ccus-national-standards-2026                  | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | cn-ccus-roadmap-2025                             | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | cn-co2-transport-status-2025                     | draft         | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
@@ -78,7 +78,7 @@ URL-change quarantine excludes 24 policies whose canonical URL changed since the
 | eu-crcf-2024                                     | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, HTTP_202_NOT_DOCUMENT, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                              |
 | eu-ets-mrr-2018                                  | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, HTTP_202_NOT_DOCUMENT, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                              |
 | eu-industrial-carbon-management-strategy-2024    | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, HTTP_202_NOT_DOCUMENT, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                              |
-| eu-innovation-fund                               | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
+| eu-innovation-fund                               | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                         |
 | eu-nzia                                          | verified      | no_raw_file                 | P1       | CURRENTNESS_UNKNOWN, HTTP_202_NOT_DOCUMENT, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                              |
 | fr-ccus-roadmap                                  | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | fr-ccus-strategy-2024                            | verified      | raw_homepage_only           | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
@@ -140,13 +140,13 @@ URL-change quarantine excludes 24 policies whose canonical URL changed since the
 | tx-hb-1284-ccus                                  | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | uae-adnoc-ccs-2030                               | verified      | no_raw_file                 | P0       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED, SOURCE_TOO_BROAD                                                   |
 | uk-ccs-network-code                              | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| uk-ccus-vision                                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
+| uk-ccus-vision                                   | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                                             |
 | uk-energy-act-2023                               | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | uk-industrial-carbon-capture-business-model-2025 | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
 | us-45q-ira                                       | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                                             |
 | us-cifia-lpo                                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | us-doe-carbon-management-strategy                | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |
-| us-epa-class-vi-primacy                          | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
+| us-epa-class-vi-primacy                          | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                         |
 | us-iija-hubs                                     | verified      | unknown                     | P1       | ARCHIVE_OBSERVATION_UNAVAILABLE, ARCHIVE_URL_CHANGED_SINCE_CAPTURE, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED |
 | us-la-primacy-rules                              | verified      | no_raw_file                 | P1       | ACCESS_BLOCKED, CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                     |
 | us-nd-century-code-38-22                         | verified      | raw_candidate_archived      | P2       | CURRENTNESS_UNKNOWN, NO_GIT_FROZEN_ORIGINAL, PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED                                                                     |

@@ -47,10 +47,10 @@ function consumer() {
   };
 }
 
-test('all 6 catalog records resolve versions/locators and keep knowledge and citations pending', async () => {
+test('all 10 catalog records resolve versions/locators and keep knowledge and citations pending', async () => {
   const result = await consumer().run();
-  assert.equal(result.catalog_records, 6);
-  assert.equal(result.reviewed_catalog_references, 4);
+  assert.equal(result.catalog_records, 10);
+  assert.equal(result.reviewed_catalog_references, 8);
   assert.equal(result.semantic_knowledge_extraction, 'not_performed');
   assert.ok(
     result.receipts.every(
@@ -63,6 +63,10 @@ test('all 6 catalog records resolve versions/locators and keep knowledge and cit
     'ca-ccus-itc-2026',
     'no-for-2014-1517',
     'dk-ens-ccs-funds',
+    'cn-ccer-2026',
+    'us-epa-class-vi-primacy',
+    'uk-ccus-vision',
+    'eu-innovation-fund-ec',
   ]) {
     const html = result.receipts.find((r) => r.document_id === id);
     assert.equal(html.source_bytes_and_anchor_checked, true);
@@ -195,8 +199,8 @@ test('public HTTP consumer follows only static resources; private originals are 
     const read = (value) =>
       transport(new URL(new URL(value).pathname, address));
     const result = await consumeSourceCatalog(manifestUrl, read);
-    assert.equal(result.catalog_records, 6);
-    assert.equal(result.reviewed_catalog_references, 4);
+    assert.equal(result.catalog_records, 10);
+    assert.equal(result.reviewed_catalog_references, 8);
     assert.ok(
       requested.every((url) => url.startsWith('/ccus-policy-hub/data/'))
     );
@@ -260,7 +264,7 @@ test('catalog consumer succeeds when policies.json exceeds 1 MiB while rejecting
     const read = (value, opts) =>
       transport(new URL(new URL(value).pathname, address), opts);
     const result = await consumeSourceCatalog(manifestUrl, read);
-    assert.equal(result.catalog_records, 6);
+    assert.equal(result.catalog_records, 10);
 
     // Oversized catalog.json still fails the default 1 MiB budget
     client.mutate((c) => {
