@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "as_of": "2026-10-30",
-  "inventory_sha256": "1e41ef21e5d2114d124209ca32788daa85e706e437fde1ed98c647cfebb37acc",
+  "inventory_sha256": "eb6809bcddf74f8386b7ce11aee5a1b1a70f043c20af31c0bba91b5c5496e9cf",
   "inputs": {
     "evidence_packet_manifests": [
       {

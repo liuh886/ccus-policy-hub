@@ -48,6 +48,7 @@
     "links:verify": "node scripts/verify-dist-links.mjs",
     "manage:review:queue": "node scripts/maintenance-review.mjs",
     "manage:policy:review": "node scripts/apply-policy-review.mjs",
+    "manage:relationships:evidence": "node scripts/apply-relationship-evidence.mjs",
     "manage:db:audit:source-readiness": "node scripts/audit-policy-source-readiness.mjs",
     "context:build": "node scripts/generate-policy-context.mjs",
     "context:read": "node scripts/generate-policy-context.mjs",

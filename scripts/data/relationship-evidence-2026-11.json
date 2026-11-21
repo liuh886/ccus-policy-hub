@@ -1,0 +1,115 @@
+{
+  "as_of": "2026-11-21",
+  "links": [
+    {
+      "policy_id": "eu-innovation-fund",
+      "facility_id": "1461",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Vicat Group announced on 30 March 2026 that its VAIA project at the Montalieu-Vercieu cement plant (France) was officially awarded a €149,998,000 grant under the EU Innovation Fund 2024 programme (selected 3 November 2025).",
+      "source_url": "https://www.vicat.com/en/news/vicat-group-has-officially-been-awarded-innovation-fund-grant-its-vaia-project",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "facility_id": "772",
+      "link_type": "evidence",
+      "confidence": 0.98,
+      "evidence": "European Commission (CINEA) Innovation Fund project factsheet (InnovFund-2023-NZT, project 101191516) documents a EUR 225,000,000 grant for STARFISH Phase 1 offshore CO2 storage at the Havstjerne reservoir (participants: Harbour Energy Norge AS, Stella Maris CCS AS, Havstjerne ANS).",
+      "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101191516.pdf",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "facility_id": "1012",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Heidelberg Materials press release (13 July 2023) reports that the EU Innovation Fund selected the GeZero CCS project at its Geseke cement plant (Germany, ~700,000 t CO2/yr) for Grant Agreement Preparation under its third large-scale call.",
+      "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-07-13",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "facility_id": "560",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Heidelberg Materials press release (20 January 2023) reports the official signing in Brussels of the EU Innovation Fund Grant Agreement (~€190 million financing) for the ANRAV full-chain CCUS project at Devnya Cement in Bulgaria (~800,000 t CO2/yr).",
+      "source_url": "https://www.heidelbergmaterials.com/en/pr-2023-01-20",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "eu-innovation-fund",
+      "facility_id": "557",
+      "link_type": "evidence",
+      "confidence": 0.98,
+      "evidence": "European Commission (CINEA) Innovation Fund project factsheet (project 101132807) documents a EUR 230,000,000 Innovation Fund grant for Holcim Belgique SA's GO4ZERO oxy-combustion CCS project at the Obourg cement plant in Wallonia, Belgium.",
+      "source_url": "https://ec.europa.eu/assets/cinea/project_fiches/innovation_fund/101132807.pdf",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "norway-longship",
+      "facility_id": "302",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Gassnova's November 2020 Longship report (p. 7) states that Norway's Longship full-scale CCS project covers CO2 capture at Fortum Oslo Varme's (now Hafslund Oslo Celsio) waste-to-energy plant at Klemetsrud in Oslo.",
+      "source_url": "https://gassnova.no/app/uploads/2020/11/Gassnova-Developing-Longship-FINAL-1.pdf",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "norway-longship",
+      "facility_id": "201",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Heidelberg Materials press release (18 June 2025) reports the inauguration of Brevik CCS in Norway (~400,000 t CO2/yr at the Brevik cement plant) and states that the facility is part of the Norwegian government's Longship project.",
+      "source_url": "https://www.heidelbergmaterials.com/en/pr-2025-06-18",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "denmark-ccfd",
+      "facility_id": "1153",
+      "link_type": "evidence",
+      "confidence": 0.95,
+      "evidence": "Danish Energy Agency press release (17 April 2024) reports that BioCirc CO2 ApS entered into a binding NECCS fund contract for capture and geological storage of 130,700 tonnes of biogenic CO2 per year (968.5 DKK/t; 126,582,950 DKK/yr) over 2026–2032.",
+      "source_url": "https://ens.dk/en/press/three-new-ccs-projects-have-been-pledged-support-capture-and-store-biogenic-co2",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "ca-ccus-itc",
+      "facility_id": "1184",
+      "link_type": "evidence",
+      "confidence": 0.9,
+      "evidence": "Department of Finance Canada news release (11 July 2024) states that the up to $2 billion Canada Growth Fund–Strathcona Resources oil sands CCS partnership in Saskatchewan and Alberta 'was made possible by and will benefit from the federal government's Carbon Capture, Utilization, and Storage investment tax credit'.",
+      "source_url": "https://www.canada.ca/en/department-finance/news/2024/07/deputy-prime-minister-welcomes-2-billion-partnership-between-canada-growth-fund-and-strathcona-resources-to-secure-canadas-carbon-capture-leadership.html",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    {
+      "policy_id": "uk-industrial-carbon-capture-business-model-2025",
+      "facility_id": "303",
+      "link_type": "evidence",
+      "confidence": 0.9,
+      "evidence": "UK DESNZ/BEIS Phase-2 cluster sequencing shortlist explicitly classifies 'Hanson Padeswood Cement Works carbon capture and storage project' (HyNet) under the Industrial carbon capture (ICC) track (distinct from Power CCUS and Hydrogen).",
+      "source_url": "https://www.gov.uk/government/publications/cluster-sequencing-phase-2-eligible-projects-power-ccus-hydrogen-and-icc/cluster-sequencing-phase-2-shortlisted-projects-power-ccus-hydrogen-and-icc-august-2022",
+      "review_status": "draft",
+      "reviewer": null,
+      "reviewed_at": null
+    }
+  ]
+}
