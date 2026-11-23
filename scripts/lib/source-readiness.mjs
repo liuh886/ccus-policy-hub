@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { isErrorOrLoginHtml, isHumanReviewed } from './source-evidence.mjs';
 
 export const sha256 = (bytes) =>
   crypto.createHash('sha256').update(bytes).digest('hex');
@@ -216,11 +217,6 @@ export function captureObservations(auditBytes, backlogBytes) {
   };
 }
 
-const reviewed = (value) =>
-  value?.status === 'verified' &&
-  value.method === 'human' &&
-  Boolean(value.reviewer?.trim()) &&
-  /^\d{4}-\d{2}-\d{2}$/.test(value.reviewed_at || '');
 function sourceUrl(value) {
   try {
     const url = new URL(value);
@@ -247,32 +243,50 @@ function sourceUrl(value) {
 }
 function packetState({ data, raw, normalized }) {
   const gaps = [];
+  const isExternal = data.storage === 'external_archive';
+  const validRawSha = /^[a-f0-9]{64}$/.test(data.raw_sha256 || '');
+  const externalMetadataOk =
+    isExternal &&
+    typeof data.external_uri === 'string' &&
+    data.external_uri.startsWith('https://') &&
+    Number.isInteger(data.bytes) &&
+    data.bytes > 0 &&
+    validRawSha;
   const rawOk = Boolean(
     raw &&
-    /^[a-f0-9]{64}$/.test(data.raw_sha256 || '') &&
-    sha256(raw) === data.raw_sha256
+    validRawSha &&
+    sha256(raw) === data.raw_sha256 &&
+    (!isExternal || raw.length === data.bytes)
   );
-  if (!raw) gaps.push('ORIGINAL_BYTES_UNAVAILABLE');
-  else if (!rawOk) gaps.push('RAW_HASH_MISMATCH');
+  if (isExternal) {
+    if (!raw) gaps.push('EXTERNAL_ARCHIVE_ORIGINAL_BYTES_NOT_INLINE');
+    else if (!rawOk) gaps.push('RAW_HASH_MISMATCH');
+    if (!externalMetadataOk) gaps.push('EXTERNAL_ARCHIVE_METADATA_INVALID');
+  } else {
+    if (!raw) gaps.push('ORIGINAL_BYTES_UNAVAILABLE');
+    else if (!rawOk) gaps.push('RAW_HASH_MISMATCH');
+  }
   const snippet = raw?.subarray(0, 65536).toString('utf8') || '';
-  const errorPage =
-    /<(?:html|title)\b/i.test(snippet) &&
-    /(?:<title[^>]*>[^<]*(?:page not found|access denied|sign in|error)|captcha|<input[^>]*type=["']password)/i.test(
-      snippet
-    );
+  const errorPage = isErrorOrLoginHtml(snippet);
   if (errorPage) gaps.push('ERROR_OR_LOGIN_BODY');
   const textOk = Boolean(
-    normalized && sha256(normalized) === data.normalized_sha256
+    normalized &&
+    /^[a-f0-9]{64}$/.test(data.normalized_sha256 || '') &&
+    sha256(normalized) === data.normalized_sha256
   );
   if (!textOk) gaps.push('NORMALIZED_TEXT_NOT_REVALIDATED');
+  const sourceReady = isExternal
+    ? externalMetadataOk && (!raw || rawOk)
+    : rawOk;
   let signedAnchors = 0,
     validAnchors = 0;
   for (const anchor of data.anchors || []) {
-    if (!reviewed(data.review) || !reviewed(anchor.review)) continue;
+    if (!isHumanReviewed(data.review) || !isHumanReviewed(anchor.review))
+      continue;
     signedAnchors++;
     const text = normalized?.toString('utf8') || '';
     if (
-      rawOk &&
+      sourceReady &&
       !errorPage &&
       textOk &&
       anchor.version_sha256 === data.raw_sha256 &&
@@ -283,14 +297,23 @@ function packetState({ data, raw, normalized }) {
     )
       validAnchors++;
   }
-  if (!reviewed(data.review)) gaps.push('HUMAN_DOCUMENT_REVIEW_PENDING');
+  if (!isHumanReviewed(data.review)) gaps.push('HUMAN_DOCUMENT_REVIEW_PENDING');
   if ((data.anchors || []).length && !validAnchors)
     gaps.push('HUMAN_LOCATOR_REVIEW_PENDING');
   gaps.push('PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED', 'CURRENTNESS_UNKNOWN');
+  const rawIntegrity = raw
+    ? rawOk
+      ? 'pass'
+      : 'mismatch'
+    : isExternal
+      ? externalMetadataOk
+        ? 'external_archive'
+        : 'mismatch'
+      : 'not_available';
   return {
     document_id: data.document_id,
     raw_sha256: data.raw_sha256 || null,
-    raw_integrity: !raw ? 'not_available' : rawOk ? 'pass' : 'mismatch',
+    raw_integrity: rawIntegrity,
     content_validity: errorPage ? 'rejected_error_or_login' : 'not_reviewed',
     public_redistribution_permission: 'unknown',
     edition: data.edition || 'unknown',
@@ -303,8 +326,11 @@ function packetState({ data, raw, normalized }) {
     currentness: 'unknown',
     gaps,
     regression:
-      reviewed(data.review) &&
-      (!rawOk || errorPage || signedAnchors > validAnchors),
+      isHumanReviewed(data.review) &&
+      (!sourceReady ||
+        (isExternal && !textOk) ||
+        errorPage ||
+        signedAnchors > validAnchors),
   };
 }
 

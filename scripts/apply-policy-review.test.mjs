@@ -509,3 +509,209 @@ test('--allow-insert rejects missing citation, missing locale fields, or invalid
   );
   db.close();
 });
+
+test('policy_review_attempt preserves last_source_review, records idempotent history, and migrates legacy rows', async () => {
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(
+    fs.readFileSync('agent/ccus-ai-agent/db/ccus_master.sqlite')
+  );
+  const readMetaRaw = (id) =>
+    db.exec('SELECT value FROM db_meta WHERE key=?', [
+      `policy_review_attempt:${id}`,
+    ])[0]?.values[0]?.[0] ?? null;
+
+  // 1. source_reviewed: true followed by source_reviewed: false (translation_only)
+  const policyId = 'ca-ccus-itc';
+  db.run('DELETE FROM db_meta WHERE key=?', [
+    `policy_review_attempt:${policyId}`,
+  ]);
+  const primarySources = [
+    {
+      url: 'https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html',
+      finding: 'Primary statutory section 127.44 verified.',
+    },
+  ];
+  applyPolicyReview(db, {
+    as_of: '2026-11-10',
+    policies: [
+      {
+        id: policyId,
+        source_reviewed: true,
+        reviewer: 'Dr. Alice Chen',
+        review_disposition: 'source_reviewed',
+        review_note: 'Primary statutory text verified.',
+        sources: primarySources,
+        analysis: {
+          mrv: {
+            en: 'Verified statutory reporting requirement under section 127.44.',
+            zh: '根据第127.44条核对的法定报告要求。',
+            label_zh: '技术规范',
+            citation: primarySources[0].url,
+          },
+        },
+      },
+    ],
+  });
+
+  const translationSources = [
+    {
+      url: 'https://laws-lois.justice.gc.ca/eng/acts/I-3.3/section-127.44.html',
+      finding:
+        'Translation-only wording refinement anchored to canonical text.',
+    },
+  ];
+  const translationPatch = {
+    as_of: '2026-11-18',
+    policies: [
+      {
+        id: policyId,
+        source_reviewed: false,
+        review_disposition: 'translation_only',
+        review_note: 'Refined Chinese MRV phrasing only.',
+        sources: translationSources,
+        analysis: {
+          mrv: {
+            en: 'Verified statutory reporting requirement under section 127.44.',
+            zh: '依据第127.44条执行的法定监测与报告要求。',
+            label_zh: '技术规范',
+          },
+        },
+      },
+    ],
+  };
+  applyPolicyReview(db, translationPatch);
+
+  const afterTranslationRaw = readMetaRaw(policyId);
+  const afterTranslation = JSON.parse(afterTranslationRaw);
+  assert.equal(afterTranslation.reviewed_at, '2026-11-18');
+  assert.equal(afterTranslation.source_reviewed, false);
+  assert.equal(afterTranslation.disposition, 'translation_only');
+  assert.equal(afterTranslation.note, 'Refined Chinese MRV phrasing only.');
+  assert.deepEqual(afterTranslation.sources, translationSources);
+  assert.deepEqual(afterTranslation.last_source_review, {
+    reviewed_at: '2026-11-10',
+    reviewer: 'Dr. Alice Chen',
+    disposition: 'source_reviewed',
+    note: 'Primary statutory text verified.',
+    sources: primarySources,
+  });
+  assert.equal(afterTranslation.history.length, 2);
+  assert.deepEqual(afterTranslation.history[0], {
+    reviewed_at: '2026-11-10',
+    source_reviewed: true,
+    reviewer: 'Dr. Alice Chen',
+    disposition: 'source_reviewed',
+    note: 'Primary statutory text verified.',
+    sources: primarySources,
+  });
+  assert.deepEqual(afterTranslation.history[1], {
+    reviewed_at: '2026-11-18',
+    source_reviewed: false,
+    reviewer: null,
+    disposition: 'translation_only',
+    note: 'Refined Chinese MRV phrasing only.',
+    sources: translationSources,
+  });
+
+  // 2. Re-applying the exact same source_reviewed: false patch is idempotent
+  applyPolicyReview(db, translationPatch);
+  const afterReplayRaw = readMetaRaw(policyId);
+  assert.equal(afterReplayRaw, afterTranslationRaw);
+  assert.equal(JSON.parse(afterReplayRaw).history.length, 2);
+
+  // 3. Updating a legacy policy_review_attempt row (no history/last_source_review)
+  // promotes the prior source_reviewed: true record into last_source_review and history[0].
+  const legacyPolicyId = db.exec(
+    'SELECT id FROM policies WHERE id != ? ORDER BY id LIMIT 1',
+    [policyId]
+  )[0].values[0][0];
+  const legacySources = [
+    {
+      url: 'https://example.gov/ccus-legacy-source',
+      finding: 'Primary statutory source verified in legacy review.',
+    },
+  ];
+  const legacyMeta = {
+    reviewed_at: '2026-10-05',
+    source_reviewed: true,
+    disposition: 'source_reviewed',
+    note: 'Legacy primary-source review.',
+    sources: legacySources,
+  };
+  db.run(
+    `INSERT INTO db_meta(key,value) VALUES (?,?)
+    ON CONFLICT(key) DO UPDATE SET value=excluded.value`,
+    [`policy_review_attempt:${legacyPolicyId}`, JSON.stringify(legacyMeta)]
+  );
+
+  const urlRepairSources = [
+    {
+      url: 'https://example.gov/ccus-legacy-source',
+      finding: 'Canonical statutory URL verified without factual re-audit.',
+    },
+  ];
+  applyPolicyReview(db, {
+    as_of: '2026-11-20',
+    policies: [
+      {
+        id: legacyPolicyId,
+        source_reviewed: false,
+        review_disposition: 'url_repair_only',
+        review_note: 'URL repair only; factual text untouched.',
+        sources: urlRepairSources,
+        record: { url: 'https://example.gov/ccus-legacy-source' },
+      },
+    ],
+  });
+
+  const migrated = JSON.parse(readMetaRaw(legacyPolicyId));
+  assert.equal(migrated.reviewed_at, '2026-11-20');
+  assert.equal(migrated.source_reviewed, false);
+  assert.equal(migrated.disposition, 'url_repair_only');
+  assert.deepEqual(migrated.last_source_review, {
+    reviewed_at: '2026-10-05',
+    reviewer: null,
+    disposition: 'source_reviewed',
+    note: 'Legacy primary-source review.',
+    sources: legacySources,
+  });
+  assert.equal(migrated.history.length, 2);
+  assert.deepEqual(migrated.history[0], {
+    reviewed_at: '2026-10-05',
+    source_reviewed: true,
+    reviewer: null,
+    disposition: 'source_reviewed',
+    note: 'Legacy primary-source review.',
+    sources: legacySources,
+  });
+  assert.deepEqual(migrated.history[1], {
+    reviewed_at: '2026-11-20',
+    source_reviewed: false,
+    reviewer: null,
+    disposition: 'url_repair_only',
+    note: 'URL repair only; factual text untouched.',
+    sources: urlRepairSources,
+  });
+
+  // 4. Insert path (--allow-insert) also uses writeReviewAttempt and sets last_source_review + history
+  const insertedPatch = makeValidInsertPatch({
+    record: { review_status: 'verified' },
+    top: {
+      id: 'test-insert-provenance-2026',
+      source_reviewed: true,
+      reviewer: 'Dr. Jane Doe',
+    },
+  });
+  applyPolicyReview(
+    db,
+    { as_of: '2026-11-18', policies: [insertedPatch] },
+    { allowInsert: true }
+  );
+  const insertedMeta = JSON.parse(readMetaRaw('test-insert-provenance-2026'));
+  assert.equal(insertedMeta.disposition, 'insert_verified');
+  assert.equal(insertedMeta.last_source_review.reviewed_at, '2026-11-18');
+  assert.equal(insertedMeta.last_source_review.reviewer, 'Dr. Jane Doe');
+  assert.equal(insertedMeta.history.length, 1);
+
+  db.close();
+});

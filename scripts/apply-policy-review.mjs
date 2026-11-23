@@ -8,7 +8,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import initSqlJs from 'sql.js';
 import { acquireDbLock, atomicWriteDb } from './lib/db-write.mjs';
-import { queryRows } from './lib/sqlite-query.mjs';
+import { parseJsonSafe, queryRows } from './lib/sqlite-query.mjs';
 
 export const localizationSchema = `CREATE TABLE IF NOT EXISTS policy_analysis_i18n (
   policy_id TEXT NOT NULL, dimension TEXT NOT NULL, lang TEXT NOT NULL CHECK(lang IN ('zh')),
@@ -102,6 +102,80 @@ function loadAllowedEnumValues(db, tableName) {
 function serializeLocaleValue(value) {
   if (value === undefined || value === null) return null;
   return typeof value === 'object' ? JSON.stringify(value) : value;
+}
+
+const MAX_REVIEW_ATTEMPT_HISTORY = 20;
+
+function parseExistingReviewAttempt(raw) {
+  const parsed = parseJsonSafe(raw, null);
+  return parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+    ? parsed
+    : null;
+}
+
+function toSourceReviewSummary(entry) {
+  return {
+    reviewed_at: entry.reviewed_at ?? null,
+    reviewer: entry.reviewer ?? null,
+    disposition: entry.disposition ?? null,
+    note: entry.note ?? null,
+    sources: entry.sources ?? [],
+  };
+}
+
+function toAttemptEntry(entry) {
+  return {
+    reviewed_at: entry.reviewed_at ?? null,
+    source_reviewed: entry.source_reviewed === true,
+    reviewer: entry.reviewer ?? null,
+    disposition: entry.disposition ?? null,
+    note: entry.note ?? null,
+    sources: entry.sources ?? [],
+  };
+}
+
+export function writeReviewAttempt(db, policyId, nextAttempt) {
+  const key = `policy_review_attempt:${policyId}`;
+  const existingRow = queryRows(db, 'SELECT value FROM db_meta WHERE key=?', [
+    key,
+  ])[0];
+  const existing = parseExistingReviewAttempt(existingRow?.value);
+
+  const lastSourceReview =
+    nextAttempt.source_reviewed === true
+      ? toSourceReviewSummary(nextAttempt)
+      : existing?.last_source_review &&
+          typeof existing.last_source_review === 'object' &&
+          !Array.isArray(existing.last_source_review)
+        ? existing.last_source_review
+        : existing?.source_reviewed === true
+          ? toSourceReviewSummary(existing)
+          : null;
+
+  const priorHistory = Array.isArray(existing?.history)
+    ? existing.history
+    : existing
+      ? [toAttemptEntry(existing)]
+      : [];
+  const nextEntry = toAttemptEntry(nextAttempt);
+  const lastEntry = priorHistory[priorHistory.length - 1];
+  const history =
+    lastEntry && JSON.stringify(lastEntry) === JSON.stringify(nextEntry)
+      ? priorHistory.slice(-MAX_REVIEW_ATTEMPT_HISTORY)
+      : [...priorHistory, nextEntry].slice(-MAX_REVIEW_ATTEMPT_HISTORY);
+
+  const payload = {
+    ...nextAttempt,
+    ...(lastSourceReview ? { last_source_review: lastSourceReview } : {}),
+    history,
+  };
+
+  db.run(
+    `INSERT INTO db_meta(key,value) VALUES (?,?)
+    ON CONFLICT(key) DO UPDATE SET value=excluded.value`,
+    [key, JSON.stringify(payload)]
+  );
+  return payload;
 }
 
 function insertPolicyRecord(db, patch, input, dimensionLabels) {
@@ -348,32 +422,25 @@ export function applyPolicyReview(db, input, { allowInsert = false } = {}) {
       if (!exists) {
         if (!allowInsert) throw new Error(`Unknown policy ${patch.id}`);
         const inserted = insertPolicyRecord(db, patch, input, dimensionLabels);
-        db.run(
-          `INSERT INTO db_meta(key,value) VALUES (?,?)
-          ON CONFLICT(key) DO UPDATE SET value=excluded.value`,
-          [
-            `policy_review_attempt:${patch.id}`,
-            JSON.stringify({
-              reviewed_at: input.as_of,
-              source_reviewed: patch.source_reviewed === true,
-              reviewer:
-                typeof patch.reviewer === 'string' && patch.reviewer.trim()
-                  ? patch.reviewer.trim()
-                  : null,
-              disposition:
-                patch.review_disposition ||
-                (inserted.reviewStatus === 'verified'
-                  ? 'insert_verified'
-                  : 'insert_draft'),
-              note:
-                patch.review_note ||
-                (inserted.reviewStatus === 'verified'
-                  ? 'New policy inserted after primary-source review.'
-                  : 'New policy inserted as draft pending full verification.'),
-              sources: patch.sources,
-            }),
-          ]
-        );
+        writeReviewAttempt(db, patch.id, {
+          reviewed_at: input.as_of,
+          source_reviewed: patch.source_reviewed === true,
+          reviewer:
+            typeof patch.reviewer === 'string' && patch.reviewer.trim()
+              ? patch.reviewer.trim()
+              : null,
+          disposition:
+            patch.review_disposition ||
+            (inserted.reviewStatus === 'verified'
+              ? 'insert_verified'
+              : 'insert_draft'),
+          note:
+            patch.review_note ||
+            (inserted.reviewStatus === 'verified'
+              ? 'New policy inserted after primary-source review.'
+              : 'New policy inserted as draft pending full verification.'),
+          sources: patch.sources,
+        });
         changes.push({
           id: patch.id,
           action: 'insert',
@@ -467,28 +534,26 @@ export function applyPolicyReview(db, input, { allowInsert = false } = {}) {
           patch.id,
         ]);
       }
-      db.run(
-        `INSERT INTO db_meta(key,value) VALUES (?,?)
-        ON CONFLICT(key) DO UPDATE SET value=excluded.value`,
-        [
-          `policy_review_attempt:${patch.id}`,
-          JSON.stringify({
-            reviewed_at: input.as_of,
-            source_reviewed: patch.source_reviewed === true,
-            disposition:
-              patch.review_disposition ||
-              (patch.source_reviewed === true
-                ? 'source_reviewed'
-                : 'editorial_only'),
-            note:
-              patch.review_note ||
-              (patch.source_reviewed === true
-                ? 'Bilingual text corrected against cited primary sources; canonical scores retained.'
-                : 'Editorial structuring only; factual sources not reverified.'),
-            sources: patch.sources,
-          }),
-        ]
-      );
+      const reviewer =
+        typeof patch.reviewer === 'string' && patch.reviewer.trim()
+          ? patch.reviewer.trim()
+          : undefined;
+      writeReviewAttempt(db, patch.id, {
+        reviewed_at: input.as_of,
+        source_reviewed: patch.source_reviewed === true,
+        ...(reviewer ? { reviewer } : {}),
+        disposition:
+          patch.review_disposition ||
+          (patch.source_reviewed === true
+            ? 'source_reviewed'
+            : 'editorial_only'),
+        note:
+          patch.review_note ||
+          (patch.source_reviewed === true
+            ? 'Bilingual text corrected against cited primary sources; canonical scores retained.'
+            : 'Editorial structuring only; factual sources not reverified.'),
+        sources: patch.sources,
+      });
       changes.push({
         id: patch.id,
         sources: patch.sources.length,

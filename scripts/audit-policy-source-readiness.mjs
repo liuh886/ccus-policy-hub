@@ -11,6 +11,10 @@ import {
 } from './lib/manual-source-observations.mjs';
 import { EXTRACTORS, inspectEvidence } from './lib/source-evidence.mjs';
 import {
+  DEFAULT_EVIDENCE_ROOT,
+  loadEvidencePackets,
+} from './lib/source-evidence-files.mjs';
+import {
   sha256,
   captureObservations,
   buildReadiness,
@@ -66,62 +70,44 @@ export function loadVerifiedBaselines(source = READINESS_DIR) {
   return baselines;
 }
 export function loadPackets(directory) {
-  if (!fs.existsSync(directory)) return [];
-  const result = [];
-  const visit = (dir) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if (entry.isDirectory()) visit(path.join(dir, entry.name));
-      else if (entry.name === 'packet.json') {
-        const manifestBytes = fs.readFileSync(path.join(dir, entry.name));
-        const data = JSON.parse(manifestBytes.toString('utf8'));
-        const read = (name) => {
-          if (!name) return null;
-          if (path.basename(name) !== name || name === '.' || name === '..')
-            throw new Error('Evidence inputs must be explicit sibling files.');
-          const file = path.join(dir, name);
-          if (!fs.existsSync(file)) return null;
-          const real = fs.realpathSync(file);
-          if (path.dirname(real) !== fs.realpathSync(dir))
-            throw new Error('Evidence file escapes its packet directory.');
-          return fs.readFileSync(real);
-        };
-        const raw = read(data.raw_file);
-        let normalized = read(data.normalized_file);
-        let packetData = data;
-        if (
-          !normalized &&
-          raw &&
-          Object.hasOwn(EXTRACTORS, data.extractor_version)
-        ) {
-          try {
-            const checked = inspectEvidence(data, raw);
+  return loadEvidencePackets(directory, { allowMissingRaw: true }).map(
+    ({
+      manifest_sha256,
+      input: data,
+      raw,
+      normalizedBytes,
+      normalizedText,
+    }) => {
+      let normalized = normalizedBytes;
+      let packetData = data;
+      const isExternal = data.storage === 'external_archive';
+      if (
+        Object.hasOwn(EXTRACTORS, data.extractor_version) &&
+        ((!normalized && raw) ||
+          (isExternal && (raw || normalizedText !== null)))
+      ) {
+        try {
+          const checked = inspectEvidence(data, raw, { normalizedText });
+          if (checked.normalized_text !== null) {
             normalized = Buffer.from(checked.normalized_text, 'utf8');
-            packetData = { ...data, anchors: checked.anchors };
-          } catch {
-            // Leave normalized null so packetState flags integrity regressions.
           }
+          packetData = { ...data, anchors: checked.anchors };
+        } catch {
+          // Leave normalized as-is (or null) so packetState flags integrity regressions.
         }
-        result.push({
-          manifest_sha256: sha256(manifestBytes),
-          data: packetData,
-          raw,
-          normalized,
-        });
       }
+      return {
+        manifest_sha256,
+        data: packetData,
+        raw,
+        normalized,
+      };
     }
-  };
-  visit(directory);
-  result.sort((a, b) =>
-    String(a.data.document_id || '').localeCompare(
-      String(b.data.document_id || ''),
-      'en'
-    )
   );
-  return result;
 }
 
 export async function generateReadiness({
-  evidenceRoot = path.join(ROOT, 'scripts/data/evidence'),
+  evidenceRoot = DEFAULT_EVIDENCE_ROOT,
   asOf = '2026-10-30',
   baselines = loadVerifiedBaselines(),
 } = {}) {

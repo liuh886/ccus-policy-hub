@@ -24,6 +24,27 @@ let SQL;
 before(async () => {
   SQL = await initSqlJs();
 });
+const FIXTURE_TARGETS = Object.freeze([
+  {
+    id: 'us-45q-ira',
+    kind: 'policy',
+    policy_ids: ['us-45q-ira'],
+  },
+  {
+    id: 'us-obbba-45q-2025',
+    kind: 'policy',
+    policy_ids: ['us-obbba-45q-2025'],
+  },
+  {
+    id: 'us-section-45q',
+    kind: 'policy_family',
+    policy_ids: ['us-45q-ira', 'us-obbba-45q-2025'],
+    title: {
+      en: 'US Section 45Q policy-record context',
+      zh: '美国45Q政策记录上下文',
+    },
+  },
+]);
 function fixture() {
   const db = new SQL.Database();
   db.run(`CREATE TABLE policies(id TEXT PRIMARY KEY, country TEXT, year INTEGER, status TEXT, review_status TEXT, legal_weight TEXT, source TEXT, url TEXT, pub_date TEXT, provenance_last_audit_date TEXT);
@@ -34,13 +55,6 @@ function fixture() {
   for (const [id, year, review] of [
     ['us-45q-ira', 2022, 'verified'],
     ['us-obbba-45q-2025', 2025, 'draft'],
-    ['ca-ccus-itc', 2023, 'verified'],
-    ['no-storage-framework', 2024, 'verified'],
-    ['denmark-ccfd', 2024, 'verified'],
-    ['cn-ccer', 2023, 'verified'],
-    ['us-epa-class-vi-primacy', 2024, 'verified'],
-    ['uk-ccus-vision', 2023, 'verified'],
-    ['eu-innovation-fund', 2024, 'verified'],
   ]) {
     db.run('INSERT INTO policies VALUES (?,?,?,?,?,?,?,?,?,?)', [
       id,
@@ -90,7 +104,9 @@ function removeTestDirectory(dir) {
 
 test('family bundles preserve versions, draft status, unknown time and evidence boundaries', () => {
   const db = fixture();
-  const bundle = buildPolicyContext(db, 'us-section-45q');
+  const bundle = buildPolicyContext(db, 'us-section-45q', 'en', {
+    targets: FIXTURE_TARGETS,
+  });
   assert.deepEqual(
     bundle.identity.records.map((r) => r.policy_id),
     ['us-45q-ira', 'us-obbba-45q-2025']
@@ -122,18 +138,22 @@ test('translations are language-labelled and stale translations are ignored', ()
   db.run(
     "INSERT INTO policy_analysis_i18n VALUES ('us-45q-ira','mrv','zh','监测','已核对译述','Canonical evidence')"
   );
-  let bundle = buildPolicyContext(db, 'us-45q-ira', 'zh');
+  let bundle = buildPolicyContext(db, 'us-45q-ira', 'zh', {
+    targets: FIXTURE_TARGETS,
+  });
   assert.equal(bundle.legal_context.records[0].analysis[0].language, 'zh');
   db.run(
     "UPDATE policy_analysis SET evidence='Changed evidence' WHERE policy_id='us-45q-ira'"
   );
-  bundle = buildPolicyContext(db, 'us-45q-ira', 'zh');
+  bundle = buildPolicyContext(db, 'us-45q-ira', 'zh', {
+    targets: FIXTURE_TARGETS,
+  });
   assert.equal(bundle.legal_context.records[0].analysis[0].language, 'en');
   assert.ok(codes(bundle).includes('ANALYSIS_TRANSLATION_INCOMPLETE'));
   db.run("DELETE FROM policy_i18n WHERE policy_id='us-45q-ira' AND lang='zh'");
   assert.equal(
-    buildPolicyContext(db, 'us-45q-ira', 'zh').legal_context.records[0]
-      .language,
+    buildPolicyContext(db, 'us-45q-ira', 'zh', { targets: FIXTURE_TARGETS })
+      .legal_context.records[0].language,
     'en'
   );
   db.close();
@@ -144,7 +164,9 @@ test('missing sources and unknown dates remain explicit rather than manufactured
   db.run(
     'UPDATE policies SET url=NULL, provenance_last_audit_date=NULL, pub_date=NULL'
   );
-  const bundle = buildPolicyContext(db, 'us-45q-ira');
+  const bundle = buildPolicyContext(db, 'us-45q-ira', 'en', {
+    targets: FIXTURE_TARGETS,
+  });
   assert.equal(bundle.data_as_of, null);
   assert.deepEqual(bundle.sources, []);
   assert.deepEqual(bundle.legal_context.records[0].source_refs, []);
@@ -168,7 +190,9 @@ test('bounded relationships retain complete counts and surface direct evidence f
   db.run(
     "INSERT INTO policy_facility_links VALUES ('us-45q-ira','z-direct','evidence',0.9,'A source names this project','https://example.org/award','verified')"
   );
-  const bundle = buildPolicyContext(db, 'us-45q-ira');
+  const bundle = buildPolicyContext(db, 'us-45q-ira', 'en', {
+    targets: FIXTURE_TARGETS,
+  });
   assert.equal(bundle.relationships.total, MAX_RELATIONSHIPS + 5);
   assert.equal(bundle.relationships.returned, MAX_RELATIONSHIPS);
   assert.equal(bundle.relationships.truncated, true);
@@ -180,7 +204,9 @@ test('bounded relationships retain complete counts and surface direct evidence f
 test('all narrative references resolve and Markdown contains no executable source HTML', () => {
   const db = fixture();
   db.run("UPDATE policy_i18n SET description='<script>untrusted()</script>'");
-  const bundle = buildPolicyContext(db, 'us-section-45q');
+  const bundle = buildPolicyContext(db, 'us-section-45q', 'en', {
+    targets: FIXTURE_TARGETS,
+  });
   const ids = new Set(bundle.sources.map((s) => s.id));
   for (const record of bundle.legal_context.records)
     for (const ref of record.source_refs) assert.ok(ids.has(ref));
@@ -191,7 +217,9 @@ test('all narrative references resolve and Markdown contains no executable sourc
   for (let i = 1; i <= 6; i++) assert.ok(markdown.includes(`## ${i}.`));
   assert.equal(bundle.identity.title, 'US Section 45Q policy-record context');
   assert.equal(
-    buildPolicyContext(db, 'us-section-45q', 'zh').identity.title,
+    buildPolicyContext(db, 'us-section-45q', 'zh', {
+      targets: FIXTURE_TARGETS,
+    }).identity.title,
     '美国45Q政策记录上下文'
   );
   db.close();
@@ -199,12 +227,22 @@ test('all narrative references resolve and Markdown contains no executable sourc
 
 test('invalid inputs fail explicitly, with no partial publication', () => {
   const db = fixture();
-  assert.throws(() => buildPolicyContext(db, '../../escape'), {
-    code: 'CONTEXT_NOT_FOUND',
-  });
-  assert.throws(() => buildPolicyContext(db, 'us-45q-ira', 'fr'), {
-    code: 'UNSUPPORTED_LANGUAGE',
-  });
+  assert.throws(
+    () =>
+      buildPolicyContext(db, '../../escape', 'en', {
+        targets: FIXTURE_TARGETS,
+      }),
+    {
+      code: 'CONTEXT_NOT_FOUND',
+    }
+  );
+  assert.throws(
+    () =>
+      buildPolicyContext(db, 'us-45q-ira', 'fr', { targets: FIXTURE_TARGETS }),
+    {
+      code: 'UNSUPPORTED_LANGUAGE',
+    }
+  );
   assert.throws(() => parseContextArgs(['--as-of', '2020-01-01']), {
     code: 'INVALID_ARGUMENT',
   });
@@ -212,7 +250,9 @@ test('invalid inputs fail explicitly, with no partial publication', () => {
     code: 'INVALID_ARGUMENT',
   });
   db.run("DELETE FROM policies WHERE id='us-obbba-45q-2025'");
-  assert.throws(() => contextFiles(db), { code: 'POLICY_NOT_FOUND' });
+  assert.throws(() => contextFiles(db, { targets: FIXTURE_TARGETS }), {
+    code: 'POLICY_NOT_FOUND',
+  });
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-context-path-'));
   try {
     assert.throws(
@@ -243,13 +283,22 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
       crypto.createHash('sha256').update(fs.readFileSync(dbPath)).digest('hex');
     const before = hash();
     const outputDir = path.join(dir, 'output');
-    await generatePolicyContexts({ dbPath, outputDir });
-    await generatePolicyContexts({ dbPath, outputDir, check: true });
+    await generatePolicyContexts({
+      dbPath,
+      outputDir,
+      targets: FIXTURE_TARGETS,
+    });
+    await generatePolicyContexts({
+      dbPath,
+      outputDir,
+      check: true,
+      targets: FIXTURE_TARGETS,
+    });
     assert.equal(hash(), before);
     const index = JSON.parse(
       fs.readFileSync(path.join(outputDir, 'index.json'))
     );
-    assert.equal(index.count, 20);
+    assert.equal(index.count, FIXTURE_TARGETS.length * 2);
     for (const entry of index.records) {
       const json = fs.readFileSync(path.join(outputDir, entry.json));
       assert.equal(
@@ -277,7 +326,12 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
     );
     fs.appendFileSync(path.join(outputDir, index.records[0].json), ' ');
     await assert.rejects(
-      generatePolicyContexts({ dbPath, outputDir, check: true }),
+      generatePolicyContexts({
+        dbPath,
+        outputDir,
+        check: true,
+        targets: FIXTURE_TARGETS,
+      }),
       { code: 'CONTEXT_DRIFT' }
     );
   } finally {
@@ -286,8 +340,86 @@ test('production-schema bundles and generated index hashes are stable; the SQLit
   }
 });
 
+test('publishContextFiles reports stale files as drift in check mode and prunes them on publish', async () => {
+  const db = fixture();
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-context-clean-'));
+  try {
+    const dbPath = path.join(dir, 'fixture.sqlite');
+    fs.writeFileSync(dbPath, db.export());
+    const outputDir = path.join(dir, 'output');
+    const files = contextFiles(db, { targets: FIXTURE_TARGETS });
+    publishContextFiles(files, outputDir);
+    assert.deepEqual(
+      publishContextFiles(files, outputDir, { check: true }),
+      []
+    );
+
+    const stalePath = path.join(outputDir, 'policies/stale-policy.en.json');
+    fs.writeFileSync(stalePath, '{"stale":true}\n');
+
+    const mismatches = publishContextFiles(files, outputDir, { check: true });
+    assert.ok(
+      mismatches.some((entry) =>
+        entry.includes('policies/stale-policy.en.json')
+      )
+    );
+    await assert.rejects(
+      generatePolicyContexts({
+        dbPath,
+        outputDir,
+        check: true,
+        targets: FIXTURE_TARGETS,
+      }),
+      { code: 'CONTEXT_DRIFT' }
+    );
+
+    publishContextFiles(files, outputDir);
+    assert.equal(fs.existsSync(stalePath), false);
+    assert.deepEqual(
+      publishContextFiles(files, outputDir, { check: true }),
+      []
+    );
+    for (const [name, content] of files) {
+      assert.equal(
+        fs.readFileSync(path.join(outputDir, name), 'utf8'),
+        content
+      );
+    }
+  } finally {
+    db.close();
+    removeTestDirectory(dir);
+  }
+});
+
 test('context target registry validates declarative JSON targets and rejects invalid or duplicate entries', () => {
-  assert.equal(CONTEXT_TARGETS.length, 10);
+  assert.ok(CONTEXT_TARGETS.length >= 1);
+  assert.equal(
+    new Set(CONTEXT_TARGETS.map((t) => t.id)).size,
+    CONTEXT_TARGETS.length
+  );
+  const realDbPath = new URL(
+    '../agent/ccus-ai-agent/db/ccus_master.sqlite',
+    import.meta.url
+  );
+  const realDb = new SQL.Database(new Uint8Array(fs.readFileSync(realDbPath)));
+  try {
+    const existingIds = new Set(
+      (realDb.exec('SELECT id FROM policies')[0]?.values ?? []).map(
+        ([id]) => id
+      )
+    );
+    for (const target of CONTEXT_TARGETS) {
+      for (const policyId of target.policy_ids) {
+        assert.ok(
+          existingIds.has(policyId),
+          `Context target ${target.id} references missing SQLite policy: ${policyId}`
+        );
+      }
+    }
+  } finally {
+    realDb.close();
+  }
+
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-context-reg-'));
   try {
     const customPath = path.join(dir, 'targets.json');
@@ -299,7 +431,7 @@ test('context target registry validates declarative JSON targets and rejects inv
           {
             id: 'custom-target',
             kind: 'policy',
-            policy_ids: ['ca-ccus-itc'],
+            policy_ids: ['us-45q-ira'],
           },
         ],
       })
@@ -312,7 +444,7 @@ test('context target registry validates declarative JSON targets and rejects inv
         targets: customTargets,
       });
       assert.equal(bundle.id, 'custom-target');
-      assert.equal(bundle.identity.records[0].policy_id, 'ca-ccus-itc');
+      assert.equal(bundle.identity.records[0].policy_id, 'us-45q-ira');
     } finally {
       db.close();
     }
@@ -322,7 +454,7 @@ test('context target registry validates declarative JSON targets and rejects inv
         schema_version: '1.0.0',
         targets: [
           { id: 'dup', kind: 'policy', policy_ids: ['us-45q-ira'] },
-          { id: 'dup', kind: 'policy', policy_ids: ['ca-ccus-itc'] },
+          { id: 'dup', kind: 'policy', policy_ids: ['us-obbba-45q-2025'] },
         ],
       },
       {
@@ -347,7 +479,7 @@ test('context target registry validates declarative JSON targets and rejects inv
           {
             id: 'policy-two-ids',
             kind: 'policy',
-            policy_ids: ['us-45q-ira', 'ca-ccus-itc'],
+            policy_ids: ['us-45q-ira', 'us-obbba-45q-2025'],
           },
         ],
       },

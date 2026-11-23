@@ -2,6 +2,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  CORPUS_MAX_BYTES,
   publicClient,
   consumeContextData,
   check,
@@ -98,7 +99,22 @@ export async function consumeSourceEvidence(manifestUrl, readBytes) {
     'Source evidence is not advertised by this publication.',
     'DATASET_NOT_AVAILABLE'
   );
-  const policyIds = new Set(base.policy_ids);
+  check(
+    manifest.datasets?.policies?.file,
+    'Policies dataset is not advertised by this publication.',
+    'DATASET_NOT_AVAILABLE'
+  );
+  const policies = await json(
+    new URL(manifest.datasets.policies.file, manifestUrl),
+    { maxBytes: CORPUS_MAX_BYTES }
+  );
+  check(
+    Array.isArray(policies.records) &&
+      policies.count === policies.records.length,
+    'Policy inventory count mismatch.'
+  );
+  const policyIds = new Set(policies.records.map((p) => p.id));
+  check(policyIds.size === policies.count, 'Duplicate policy identity.');
   const indexUrl = new URL(manifest.datasets.source_evidence.file, manifestUrl);
   const index = await json(indexUrl);
   check(index.count === index.records.length, 'Evidence count mismatch.');

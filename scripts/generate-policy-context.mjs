@@ -10,6 +10,7 @@ import {
   buildPolicyContext,
   renderContextMarkdown,
 } from './lib/policy-context.mjs';
+import { listRelativeFiles, pruneStaleFiles } from './lib/publish-clean.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DEFAULT_DB = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
@@ -77,6 +78,12 @@ export function publishContextFiles(files, outputDir, { check = false } = {}) {
         if (fs.existsSync(temporary)) fs.unlinkSync(temporary);
       }
     }
+  }
+  if (check) {
+    for (const existing of listRelativeFiles(outputDir))
+      if (!files.has(existing)) mismatches.push(existing);
+  } else {
+    pruneStaleFiles(outputDir, files);
   }
   return mismatches;
 }

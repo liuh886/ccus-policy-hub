@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import initSqlJs from 'sql.js';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
@@ -17,7 +18,11 @@ import {
   loadEvidencePacket,
   parseEvidenceArgs,
 } from './inspect-source-evidence.mjs';
-import { sourceEvidenceFiles } from './lib/source-evidence-files.mjs';
+import {
+  loadEvidencePackets,
+  publishSourceEvidence,
+  sourceEvidenceFiles,
+} from './lib/source-evidence-files.mjs';
 
 const packetPath = new URL(
   './data/evidence/us-45q-2024/packet.json',
@@ -226,21 +231,31 @@ test('official-html-v1 rejects WAF/soft-404 shells and unknown entities while no
   assert.equal(normalized, 'Français 2×3 café line\n');
 });
 
-test('Git snapshot publication joins existing policies, is deterministic across all 8 packets and leaves SQLite unchanged', async () => {
+test('Git snapshot publication joins existing policies, is deterministic across all packets and leaves SQLite unchanged', async () => {
+  const expectedPackets = loadEvidencePackets(DEFAULT_EVIDENCE_ROOT);
+  assert.ok(expectedPackets.length >= 8);
+  const expectedPolicyIds = [
+    ...new Set(expectedPackets.map((p) => p.input.policy_id)),
+  ];
+  const expectedDocIds = expectedPackets
+    .map((p) => p.input.document_id)
+    .sort((a, b) => a.localeCompare(b, 'en'));
+  const expectedFileCount =
+    1 +
+    expectedPackets.reduce((sum, p) => {
+      const isExternal =
+        (p.input.storage ?? 'git_inline') === 'external_archive';
+      const hasRaw = !isExternal;
+      const hasNorm =
+        !isExternal || p.raw !== null || p.normalizedText !== null;
+      return sum + 1 + (hasRaw ? 1 : 0) + (hasNorm ? 1 : 0);
+    }, 0);
+
   const SQL = await initSqlJs();
   const db = new SQL.Database();
   try {
     db.run('CREATE TABLE policies(id TEXT PRIMARY KEY)');
-    for (const id of [
-      'us-45q-ira',
-      'ca-ccus-itc',
-      'no-storage-framework',
-      'denmark-ccfd',
-      'cn-ccer',
-      'us-epa-class-vi-primacy',
-      'uk-ccus-vision',
-      'eu-innovation-fund',
-    ])
+    for (const id of expectedPolicyIds)
       db.run('INSERT INTO policies VALUES (?)', [id]);
     const before = digest(db.export());
     const first = sourceEvidenceFiles(db),
@@ -248,21 +263,12 @@ test('Git snapshot publication joins existing policies, is deterministic across 
     assert.deepEqual([...first.keys()], [...second.keys()]);
     for (const [name, bytes] of first)
       assert.equal(digest(bytes), digest(second.get(name)));
-    assert.equal(first.size, 25);
+    assert.equal(first.size, expectedFileCount);
     const index = JSON.parse(first.get('index.json'));
-    assert.equal(index.count, 8);
+    assert.equal(index.count, expectedPackets.length);
     assert.deepEqual(
       index.records.map((r) => r.document_id),
-      [
-        'ca-ccus-itc-2026',
-        'cn-ccer-2026',
-        'dk-ens-ccs-funds',
-        'eu-innovation-fund-ec',
-        'no-for-2014-1517',
-        'uk-ccus-vision',
-        'us-45q-usc-2024',
-        'us-epa-class-vi-primacy',
-      ]
+      expectedDocIds
     );
     assert.equal(digest(db.export()), before);
     db.run('DELETE FROM policies');
@@ -306,23 +312,39 @@ test('CLI rejects migration, write, network and incomplete options', () => {
 });
 
 test('inspectAllEvidence inspects all frozen packets deterministically and fails closed on regressions', () => {
+  const expectedPackets = loadEvidencePackets(DEFAULT_EVIDENCE_ROOT);
+  assert.ok(expectedPackets.length >= 8);
+  const expectedDocIds = expectedPackets
+    .map((p) => p.input.document_id)
+    .sort((a, b) => a.localeCompare(b, 'en'));
+  const expectedRequiresReview = expectedPackets.filter(
+    (p) =>
+      p.input.review.status !== 'verified' ||
+      p.input.anchors.some((a) => a.review.status !== 'verified')
+  ).length;
+  const packetHasText = new Map(
+    expectedPackets.map((p) => [
+      p.input.document_id,
+      (p.input.storage ?? 'git_inline') !== 'external_archive' ||
+        p.raw !== null ||
+        p.normalizedText !== null,
+    ])
+  );
+
   const summary = inspectAllEvidence(DEFAULT_EVIDENCE_ROOT);
-  assert.equal(summary.count, 8);
-  assert.equal(summary.requires_review_count, 0);
+  assert.equal(summary.count, expectedPackets.length);
+  assert.equal(summary.requires_review_count, expectedRequiresReview);
   assert.deepEqual(
     summary.packets.map((p) => p.document_id),
-    [
-      'ca-ccus-itc-2026',
-      'cn-ccer-2026',
-      'dk-ens-ccs-funds',
-      'eu-innovation-fund-ec',
-      'no-for-2014-1517',
-      'uk-ccus-vision',
-      'us-45q-usc-2024',
-      'us-epa-class-vi-primacy',
-    ]
+    expectedDocIds
   );
-  assert.ok(summary.packets.every((p) => p.normalized_characters > 0));
+  assert.ok(
+    summary.packets.every((p) =>
+      packetHasText.get(p.document_id)
+        ? p.normalized_characters > 0
+        : p.normalized_characters === null
+    )
+  );
 
   const emptyDir = fs.mkdtempSync(
     path.join(os.tmpdir(), 'ccus-evidence-empty-')
@@ -359,6 +381,56 @@ test('inspectAllEvidence inspects all frozen packets deterministically and fails
     });
   } finally {
     fs.rmSync(emptyDir, { recursive: true, force: true });
+  }
+});
+
+test('publishSourceEvidence prunes stale files and empty directories while preserving published outputs', async () => {
+  const SQL = await initSqlJs();
+  const db = new SQL.Database();
+  const outputDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), 'ccus-evidence-publish-')
+  );
+  try {
+    db.run('CREATE TABLE policies(id TEXT PRIMARY KEY)');
+    db.run('INSERT INTO policies VALUES (?)', ['us-45q-ira']);
+    const files = sourceEvidenceFiles(db, {
+      directory: path.dirname(fileURLToPath(packetPath)),
+    });
+
+    const staleJson = path.join(outputDir, 'old-doc.json');
+    const staleVersion = path.join(
+      outputDir,
+      `us-45q-usc-2024/${'0'.repeat(64)}.html.txt`
+    );
+    const staleSubdir = path.join(outputDir, 'obsolete-doc');
+    const staleSubdirFile = path.join(
+      staleSubdir,
+      `${'1'.repeat(64)}.html.txt`
+    );
+    fs.mkdirSync(path.dirname(staleVersion), { recursive: true });
+    fs.mkdirSync(staleSubdir, { recursive: true });
+    fs.writeFileSync(staleJson, '{"stale":true}\n');
+    fs.writeFileSync(staleVersion, 'stale html');
+    fs.writeFileSync(staleSubdirFile, 'stale subdir html');
+
+    publishSourceEvidence(files, outputDir);
+
+    assert.equal(fs.existsSync(staleJson), false);
+    assert.equal(fs.existsSync(staleVersion), false);
+    assert.equal(fs.existsSync(staleSubdirFile), false);
+    assert.equal(fs.existsSync(staleSubdir), false);
+    for (const [name, content] of files) {
+      const expected = Buffer.isBuffer(content)
+        ? content
+        : Buffer.from(content, 'utf8');
+      assert.equal(
+        digest(fs.readFileSync(path.join(outputDir, name))),
+        digest(expected)
+      );
+    }
+  } finally {
+    db.close();
+    fs.rmSync(outputDir, { recursive: true, force: true });
   }
 });
 

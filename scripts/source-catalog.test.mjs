@@ -1,14 +1,38 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import http from 'node:http';
 import { fileURLToPath } from 'node:url';
 import initSqlJs from 'sql.js';
 import { hash, httpReader } from './consume-agent-data.mjs';
-import { catalogFiles } from './lib/source-catalog.mjs';
-import { sourceEvidenceFiles } from './lib/source-evidence-files.mjs';
+import { catalogFiles, publishCatalog } from './lib/source-catalog.mjs';
+import { isHumanReviewed } from './lib/source-evidence.mjs';
+import {
+  DEFAULT_EVIDENCE_ROOT,
+  loadEvidencePackets,
+  sourceEvidenceFiles,
+} from './lib/source-evidence-files.mjs';
 import { consumeSourceCatalog } from './consume-source-catalog.mjs';
+
+const capturedPdfs = JSON.parse(
+  fs.readFileSync(
+    new URL('./data/discovery/captured-pdfs.json', import.meta.url),
+    'utf8'
+  )
+);
+const expectedHtmlPackets = loadEvidencePackets(DEFAULT_EVIDENCE_ROOT);
+const expectedReviewedHtmlCount = expectedHtmlPackets.reduce(
+  (sum, p) =>
+    sum +
+    (isHumanReviewed(p.input.review)
+      ? (p.input.anchors || []).filter((a) => isHumanReviewed(a.review)).length
+      : 0),
+  0
+);
+const expectedCatalogRecords =
+  expectedHtmlPackets.length + capturedPdfs.records.length;
 
 const root = fileURLToPath(new URL('../public/', import.meta.url));
 const manifest = JSON.parse(
@@ -47,10 +71,12 @@ function consumer() {
   };
 }
 
-test('all 10 catalog records resolve versions/locators and keep knowledge and citations pending', async () => {
+test('all catalog records resolve versions/locators and keep knowledge and citations pending', async () => {
+  assert.ok(expectedHtmlPackets.length >= 8);
+  assert.ok(capturedPdfs.records.length >= 2);
   const result = await consumer().run();
-  assert.equal(result.catalog_records, 10);
-  assert.equal(result.reviewed_catalog_references, 8);
+  assert.equal(result.catalog_records, expectedCatalogRecords);
+  assert.equal(result.reviewed_catalog_references, expectedReviewedHtmlCount);
   assert.equal(result.semantic_knowledge_extraction, 'not_performed');
   assert.ok(
     result.receipts.every(
@@ -58,20 +84,40 @@ test('all 10 catalog records resolve versions/locators and keep knowledge and ci
         !r.currentness_verified && r.claim_support_review === 'not_performed'
     )
   );
-  for (const id of [
-    'us-45q-usc-2024',
-    'ca-ccus-itc-2026',
-    'no-for-2014-1517',
-    'dk-ens-ccs-funds',
-    'cn-ccer-2026',
-    'us-epa-class-vi-primacy',
-    'uk-ccus-vision',
-    'eu-innovation-fund-ec',
-  ]) {
-    const html = result.receipts.find((r) => r.document_id === id);
-    assert.equal(html.source_bytes_and_anchor_checked, true);
-    assert.equal(html.reference_status, 'reviewed_historical_locator');
-    assert.ok(!html.reasons.includes('IDENTITY_AND_LOCATOR_REVIEW_PENDING'));
+  for (const packet of expectedHtmlPackets) {
+    const docReviewed = isHumanReviewed(packet.input.review);
+    const receipts = result.receipts.filter(
+      (r) => r.document_id === packet.input.document_id
+    );
+    assert.equal(receipts.length, packet.input.anchors.length);
+    for (const anchor of packet.input.anchors) {
+      const receipt = receipts.find((r) => r.locator_id === anchor.id);
+      assert.ok(receipt);
+      assert.equal(receipt.source_bytes_and_anchor_checked, true);
+      const reviewed = docReviewed && isHumanReviewed(anchor.review);
+      assert.equal(
+        receipt.reference_status,
+        reviewed ? 'reviewed_historical_locator' : 'candidate_only'
+      );
+      assert.equal(
+        receipt.reasons.includes('IDENTITY_AND_LOCATOR_REVIEW_PENDING'),
+        !reviewed
+      );
+      if (packet.input.edition === null)
+        assert.ok(receipt.reasons.includes('EDITION_UNKNOWN'));
+    }
+  }
+  for (const pdf of capturedPdfs.records) {
+    const receipt = result.receipts.find(
+      (r) => r.document_id === pdf.document_id
+    );
+    assert.ok(receipt);
+    assert.equal(receipt.source_bytes_and_anchor_checked, false);
+    assert.equal(receipt.reference_status, 'candidate_only');
+    assert.equal(receipt.reference.physical_page, pdf.locator.physical_page);
+    assert.equal(receipt.reference.printed_page, pdf.locator.printed_page);
+    if (pdf.edition === null)
+      assert.ok(receipt.reasons.includes('EDITION_UNKNOWN'));
   }
   const dk = result.receipts.find((r) => r.document_id === 'dk-ens-ccs-funds');
   assert.ok(dk.reasons.includes('EDITION_UNKNOWN'));
@@ -199,8 +245,8 @@ test('public HTTP consumer follows only static resources; private originals are 
     const read = (value) =>
       transport(new URL(new URL(value).pathname, address));
     const result = await consumeSourceCatalog(manifestUrl, read);
-    assert.equal(result.catalog_records, 10);
-    assert.equal(result.reviewed_catalog_references, 8);
+    assert.equal(result.catalog_records, expectedCatalogRecords);
+    assert.equal(result.reviewed_catalog_references, expectedReviewedHtmlCount);
     assert.ok(
       requested.every((url) => url.startsWith('/ccus-policy-hub/data/'))
     );
@@ -264,7 +310,7 @@ test('catalog consumer succeeds when policies.json exceeds 1 MiB while rejecting
     const read = (value, opts) =>
       transport(new URL(new URL(value).pathname, address), opts);
     const result = await consumeSourceCatalog(manifestUrl, read);
-    assert.equal(result.catalog_records, 10);
+    assert.equal(result.catalog_records, expectedCatalogRecords);
 
     // Oversized catalog.json still fails the default 1 MiB budget
     client.mutate((c) => {
@@ -275,5 +321,40 @@ test('catalog consumer succeeds when policies.json exceeds 1 MiB while rejecting
     });
   } finally {
     await new Promise((resolve) => server.close(resolve));
+  }
+});
+
+test('publishCatalog validates all keys before writing and prunes stale files', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-catalog-pub-'));
+  try {
+    const emptyDir = path.join(dir, 'empty');
+    fs.mkdirSync(emptyDir);
+    assert.throws(() =>
+      publishCatalog(
+        new Map([
+          ['catalog.json', '{}'],
+          ['../escape.json', 'bad'],
+        ]),
+        emptyDir
+      )
+    );
+    assert.deepEqual(fs.readdirSync(emptyDir), []);
+
+    const pubDir = path.join(dir, 'published');
+    fs.mkdirSync(pubDir);
+    const stale = path.join(pubDir, 'obsolete.json');
+    fs.writeFileSync(stale, '{"stale":true}\n');
+    const files = new Map([
+      ['catalog.json', '{"count":0}\n'],
+      ['catalog.schema.json', '{}\n'],
+      ['README.md', '# Catalog\n'],
+    ]);
+    publishCatalog(files, pubDir);
+    assert.equal(fs.existsSync(stale), false);
+    for (const [name, content] of files) {
+      assert.equal(fs.readFileSync(path.join(pubDir, name), 'utf8'), content);
+    }
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
   }
 });
