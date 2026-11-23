@@ -10,9 +10,11 @@ import {
   assertKnownColumn,
   assertKnownTable,
   computeRegulatoryFillRate,
+  getDatasetAsOf,
   isFilledRegulatoryValue,
   knownTables,
 } from '../db.mjs';
+import { getDatasetAsOfIso } from '../../../../scripts/lib/sqlite-query.mjs';
 
 async function makeDb() {
   const SQL = await initSqlJs();
@@ -97,6 +99,49 @@ test('computeRegulatoryFillRate ignores placeholders and handles empty tables', 
     assert.equal(res.totalCells, 7);
     assert.equal(res.filledCells, 2);
     assert.equal(res.rate, 2 / 7);
+  } finally {
+    db.close();
+  }
+});
+
+test('getDatasetAsOf and getDatasetAsOfIso support raw sql.js and SqlJsDatabase across all 3 tables', async () => {
+  const SQL = await initSqlJs();
+  const db = new SqlJsDatabase(SQL);
+  db.exec(`
+    CREATE TABLE policies (id TEXT PRIMARY KEY, provenance_last_audit_date TEXT);
+    CREATE TABLE facilities (id TEXT PRIMARY KEY, provenance_last_audit_date TEXT);
+    CREATE TABLE country_profiles (id TEXT PRIMARY KEY, provenance_last_audit_date TEXT);
+  `);
+  try {
+    // Empty tables fallback
+    assert.equal(getDatasetAsOf(db), null);
+    assert.equal(getDatasetAsOf(db.db), null);
+    assert.equal(getDatasetAsOfIso(db), '1970-01-01T00:00:00.000Z');
+    assert.equal(getDatasetAsOfIso(db.db), '1970-01-01T00:00:00.000Z');
+
+    // Empty-string and NULL values still fall back cleanly
+    db.run('INSERT INTO policies VALUES (?, ?)', ['p1', '']);
+    db.run('INSERT INTO facilities VALUES (?, ?)', ['f1', null]);
+    db.run('INSERT INTO country_profiles VALUES (?, ?)', ['c1', '']);
+    assert.equal(getDatasetAsOf(db), null);
+    assert.equal(getDatasetAsOf(db.db), null);
+    assert.equal(getDatasetAsOfIso(db), '1970-01-01T00:00:00.000Z');
+    assert.equal(getDatasetAsOfIso(db.db), '1970-01-01T00:00:00.000Z');
+
+    // Picks latest date across policies and facilities
+    db.run('INSERT INTO policies VALUES (?, ?)', ['p2', '2026-08-01']);
+    db.run('INSERT INTO facilities VALUES (?, ?)', ['f2', '2026-09-15']);
+    assert.equal(getDatasetAsOf(db), '2026-09-15');
+    assert.equal(getDatasetAsOf(db.db), '2026-09-15');
+    assert.equal(getDatasetAsOfIso(db), '2026-09-15T00:00:00.000Z');
+    assert.equal(getDatasetAsOfIso(db.db), '2026-09-15T00:00:00.000Z');
+
+    // Picks latest date when country_profiles holds the newest audit date
+    db.run('INSERT INTO country_profiles VALUES (?, ?)', ['c2', '2026-11-23']);
+    assert.equal(getDatasetAsOf(db), '2026-11-23');
+    assert.equal(getDatasetAsOf(db.db), '2026-11-23');
+    assert.equal(getDatasetAsOfIso(db), '2026-11-23T00:00:00.000Z');
+    assert.equal(getDatasetAsOfIso(db.db), '2026-11-23T00:00:00.000Z');
   } finally {
     db.close();
   }

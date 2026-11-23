@@ -99,15 +99,7 @@ export function loadDb(SQL) {
   return new SqlJsDatabase(SQL, new Uint8Array(fs.readFileSync(DB_PATH)));
 }
 
-export function getDatasetAsOf(db) {
-  return (
-    db.get(`SELECT MAX(d) AS m FROM (
-      SELECT provenance_last_audit_date AS d FROM policies
-      UNION ALL SELECT provenance_last_audit_date FROM facilities
-      UNION ALL SELECT provenance_last_audit_date FROM country_profiles
-    )`)?.m ?? null
-  );
-}
+export { getDatasetAsOf } from '../../../scripts/lib/sqlite-query.mjs';
 
 export const REGULATORY_FIELDS = Object.freeze([
   'pore_space_rights',

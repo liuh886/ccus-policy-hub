@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { hash } from './consume-agent-data.mjs';
+import { sha256 } from './lib/crypto-utils.mjs';
 import {
   DEFAULT_TARGETS_PATH,
   loadPdfTargets,
@@ -135,7 +135,7 @@ test('captureCatalogPdfs verifies hashes, page counts, unique quotes, and writes
         targets: [
           {
             document_id: 'fixture-doc',
-            sha256: hash(pdfBytes),
+            sha256: sha256(pdfBytes),
             title: { en: 'Fixture PDF', zh: '测试 PDF' },
             publisher: 'example.org',
             source_kind: 'legislation',

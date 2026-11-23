@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import initSqlJs from 'sql.js';
 import { applyPolicyReview } from './apply-policy-review.mjs';
-import { localizeAnalysis } from './lib/policy-localization.mjs';
+import { localizeAnalysis } from '../src/lib/policyLocalization.mjs';
 
 test('policy review preserves scores, applies source-bound translations and is idempotent', async () => {
   const SQL = await initSqlJs();

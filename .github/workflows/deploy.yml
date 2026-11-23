@@ -58,20 +58,35 @@ jobs:
           repository: liuh886/ccus-policy-hub
           run-id: ${{ github.event.workflow_run.id }}
 
+      - name: Checkout current main
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.name != 'CI')
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          path: repository
+
+      - name: Install pnpm
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.name != 'CI')
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.name != 'CI')
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+          cache-dependency-path: repository/pnpm-lock.yaml
+
       - name: Build current main from source
         if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.name != 'CI')
+        working-directory: repository
         shell: bash
         env:
           PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
-          git clone --depth=1 --branch main https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git repository
-          cd repository
-          corepack enable
-          corepack prepare pnpm@9 --activate
-          pnpm install --frozen-lockfile
-          pnpm gen
-          pnpm build
-          cp -R dist ../dist
+          pnpm install --frozen-lockfile && pnpm gen && pnpm build && cp -R dist ../dist
 
       - name: Verify deployment artifact
         run: |

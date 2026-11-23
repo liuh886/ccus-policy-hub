@@ -42,7 +42,7 @@ jobs:
         run: python scripts/check-ci-policy.py --policy .github/ci-policy.json --output artifacts/ci-policy-report.json --enforce
       - name: Retain governance inventory
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ci-policy-report
           path: artifacts/ci-policy-report.json

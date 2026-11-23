@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import { z } from 'astro/zod';
-import { hash } from './consume-agent-data.mjs';
+import { sha256 } from './lib/crypto-utils.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const DEFAULT_TARGETS_PATH = path.join(
@@ -252,7 +252,7 @@ export function captureCatalogPdfs({
     const pdfPath = inputPaths.get(input.document_id);
     const bytes = fs.readFileSync(pdfPath);
     if (
-      hash(bytes) !== input.sha256 ||
+      sha256(bytes) !== input.sha256 ||
       bytes.subarray(0, 5).toString() !== '%PDF-'
     )
       throw new Error(`Frozen PDF hash mismatch: ${input.document_id}`);
@@ -282,7 +282,7 @@ export function captureCatalogPdfs({
     const fullResult = runCommand('pdftotext', ['-layout', pdfPath, '-']);
     const full = fullResult.stdout;
     const {
-      sha256,
+      sha256: rawSha256,
       filename: ignoredFilename,
       page,
       quote,
@@ -295,7 +295,7 @@ export function captureCatalogPdfs({
     void ignoredPattern;
     records.push({
       ...metadata,
-      raw_sha256: sha256,
+      raw_sha256: rawSha256,
       bytes: bytes.length,
       physical_pages: pages,
       locator: {
@@ -304,7 +304,7 @@ export function captureCatalogPdfs({
         printed_page,
         description: locator,
         exact_quote: quote,
-        page_text_sha256: hash(text),
+        page_text_sha256: sha256(text),
         normalization: 'NFC-whitespace-v1',
         review_status: 'draft',
       },

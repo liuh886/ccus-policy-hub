@@ -132,6 +132,6 @@ const isDirectRun =
 if (isDirectRun) {
   stampAuditMetadata().catch((error) => {
     console.error(`Failed to stamp audit metadata: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

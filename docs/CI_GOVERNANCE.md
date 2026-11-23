@@ -6,4 +6,4 @@ This repository participates in the shared cross-repository CI policy.
 
 The policy enforces read-only pull-request authority, concurrency cancellation, bounded artifact retention, no hard-coded historical run IDs in required PR gates, and one declared package manager with one lockfile. Production High/Critical dependency risk is blocking; development and tooling risk is advisory.
 
-Stable core workflows are listed in `.github/ci-policy.json`. Other workflows remain inventoried and should be promoted into the governed set when materially edited. Recommended branch-protection checks are documented in the manifest; GitHub repository settings remain an external administrative action.
+All 6 repository workflows are governed in `.github/ci-policy.json`, covering required PR gates, release deployment, scheduled synchronization, and advisory maintenance checks. Any new workflow added under `.github/workflows/` must be registered in the manifest. Recommended branch-protection checks are documented in the manifest; GitHub repository settings remain an external administrative action.

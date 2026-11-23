@@ -64,6 +64,6 @@ if (
 ) {
   runGen().catch((error) => {
     console.error(`pnpm gen failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

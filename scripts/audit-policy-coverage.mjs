@@ -353,6 +353,6 @@ const isDirectRun =
 if (isDirectRun) {
   auditPolicyCoverage().catch((error) => {
     console.error(`Policy coverage audit failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

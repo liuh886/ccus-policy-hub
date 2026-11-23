@@ -1,12 +1,17 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import test from 'node:test';
 import initSqlJs from 'sql.js';
+import { acquireDbLock } from '../../../../scripts/lib/db-write.mjs';
 import { SCHEMA_PATH, SqlJsDatabase } from '../db.mjs';
+import { computeGovernanceDeployment } from '../governance-deployment-algo.mjs';
 import {
   SUBNATIONAL_MATCHERS_PATH,
   SUBNATIONAL_POLICY_MATCHERS,
   dbFixRelationships,
+  dbPipeline,
   loadSubnationalMatchers,
 } from './maintenance.mjs';
 
@@ -144,5 +149,89 @@ test('dbFixRelationships tightens 2-letter codes, preserves evidence links on --
     ]);
   } finally {
     db.close();
+  }
+});
+
+test('dbPipeline rejects with retired-flag error when --with-imports is passed', async () => {
+  const SQL = await initSqlJs();
+  await assert.rejects(
+    () => dbPipeline(SQL, ['--with-imports']),
+    /--with-imports is retired/
+  );
+});
+
+test('computeGovernanceDeployment manages its sibling .lock standalone and allows caller-held lock with acquireLock: false', async (t) => {
+  const SQL = await initSqlJs();
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ccus-maintenance-'));
+  const tmpDbPath = path.join(tempDir, 'test.sqlite');
+  const lockPath = path.join(tempDir, '.lock');
+  t.after(() => fs.rmSync(tempDir, { recursive: true, force: true }));
+
+  const seedDb = makeDb(SQL);
+  try {
+    seedDb.run(`INSERT INTO country_profiles (id) VALUES (?)`, ['Testland']);
+    seedDb.run(
+      `INSERT INTO policies (id, country, year, status, review_status) VALUES (?,?,?,?,?)`,
+      ['p1', 'Testland', 2024, 'Active', 'verified']
+    );
+    for (const [dimension, score] of [
+      ['incentive', 80],
+      ['statutory', 60],
+      ['market', 40],
+      ['strategic', 70],
+      ['mrv', 50],
+    ]) {
+      seedDb.run(
+        `INSERT INTO policy_analysis (policy_id, dimension, score) VALUES (?,?,?)`,
+        ['p1', dimension, score]
+      );
+    }
+    seedDb.run(
+      `INSERT INTO facilities (id, country, status, estimated_capacity) VALUES (?,?,?,?)`,
+      ['f1', 'Testland', 'Operational', 12.5]
+    );
+    fs.writeFileSync(tmpDbPath, new Uint8Array(seedDb.db.export()));
+  } finally {
+    seedDb.close();
+  }
+
+  assert.equal(fs.existsSync(lockPath), false);
+
+  // Standalone call acquires and cleanly releases its sibling .lock.
+  await computeGovernanceDeployment(tmpDbPath);
+  assert.equal(fs.existsSync(lockPath), false);
+
+  // When a caller (such as manage.mjs) already holds the lock:
+  // - default acquireLock: true rejects rather than clobbering the lock
+  // - acquireLock: false succeeds without deadlock and leaves the caller's lock intact.
+  const release = acquireDbLock(lockPath);
+  try {
+    assert.equal(fs.existsSync(lockPath), true);
+    await assert.rejects(
+      () => computeGovernanceDeployment(tmpDbPath),
+      /Database is locked/
+    );
+
+    await computeGovernanceDeployment(tmpDbPath, { SQL, acquireLock: false });
+    assert.equal(fs.existsSync(lockPath), true);
+  } finally {
+    release();
+  }
+  assert.equal(fs.existsSync(lockPath), false);
+
+  const verifyDb = new SqlJsDatabase(
+    SQL,
+    new Uint8Array(fs.readFileSync(tmpDbPath))
+  );
+  try {
+    const row = verifyDb.get(
+      `SELECT deployment_capacity_mtpa, governance_capability_index
+       FROM country_profiles WHERE id = ?`,
+      ['Testland']
+    );
+    assert.equal(row.deployment_capacity_mtpa, 12.5);
+    assert.equal(row.governance_capability_index, 60);
+  } finally {
+    verifyDb.close();
   }
 });

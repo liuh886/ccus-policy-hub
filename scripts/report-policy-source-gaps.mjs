@@ -12,7 +12,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
-import { queryRows } from './lib/sqlite-query.mjs';
+import { queryRows, getDatasetAsOfIso } from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -178,21 +178,7 @@ export async function generatePolicySourceGapReport({
   // Deterministic timestamp derived from the database itself so that the
   // generated files only change when governed data actually changes
   // (same derivation as generate-public-data.mjs).
-  const lastPolicyAudit = queryRows(
-    db,
-    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM policies"
-  )[0]?.value;
-  const lastFacilityAudit = queryRows(
-    db,
-    "SELECT MAX(COALESCE(provenance_last_audit_date, '')) AS value FROM facilities"
-  )[0]?.value;
-  const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
-    .filter(Boolean)
-    .sort()
-    .pop();
-  const dataAsOf = lastAuditDate
-    ? `${lastAuditDate}T00:00:00.000Z`
-    : '1970-01-01T00:00:00.000Z';
+  const dataAsOf = getDatasetAsOfIso(db);
   db.close();
 
   const records = rows.map(classifyPolicySourceGap);
@@ -217,6 +203,6 @@ if (
 ) {
   generatePolicySourceGapReport().catch((error) => {
     console.error(`Error: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

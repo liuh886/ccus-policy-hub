@@ -326,6 +326,6 @@ const isDirectRun =
 if (isDirectRun) {
   main().catch((error) => {
     console.error(`Policy content-depth audit failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

@@ -22,9 +22,13 @@ import {
   contextFiles,
   publishContextFiles,
 } from './generate-policy-context.mjs';
-import { queryScalar, queryRows, parseJsonSafe } from './lib/sqlite-query.mjs';
+import {
+  queryRows,
+  parseJsonSafe,
+  getDatasetAsOfIso,
+} from './lib/sqlite-query.mjs';
 import { catalogFiles, publishCatalog } from './lib/source-catalog.mjs';
-import { hash } from './consume-agent-data.mjs';
+import { sha256 } from './lib/crypto-utils.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -41,18 +45,6 @@ const DATASET_VERSIONS_PATH = path.join(
   __dirname,
   '../src/data/dataset_versions.json'
 );
-
-/**
- * Helper: run a query that returns a single scalar value
- */
-
-/**
- * Helper: run a query that returns rows as objects
- */
-
-/**
- * Helper: parse JSON field safely
- */
 
 function groupRowsBy(rows, keyFn) {
   const map = new Map();
@@ -94,21 +86,7 @@ async function generatePublicData({
   try {
     // Deterministic timestamp derived from the database itself so that the
     // generated files only change when governed data actually changes.
-    const lastPolicyAudit = queryScalar(
-      db,
-      "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM policies"
-    );
-    const lastFacilityAudit = queryScalar(
-      db,
-      "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM facilities"
-    );
-    const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
-      .filter(Boolean)
-      .sort()
-      .pop();
-    const dataAsOf = lastAuditDate
-      ? `${lastAuditDate}T00:00:00.000Z`
-      : '1970-01-01T00:00:00.000Z';
+    const dataAsOf = getDatasetAsOfIso(db);
 
     // --- Generate policies.json ---
     console.log('Generating policies.json...');
@@ -421,7 +399,7 @@ async function generatePublicData({
       path.join(PUBLIC_DATA_DIR, 'evidence')
     );
     const evidenceIndex = JSON.parse(evidenceOutputs.get('index.json'));
-    const discovery = catalogFiles(db, evidenceOutputs, hash(dbBytes));
+    const discovery = catalogFiles(db, evidenceOutputs, sha256(dbBytes));
     publishCatalog(discovery, path.join(PUBLIC_DATA_DIR, 'discovery'));
     const catalog = JSON.parse(discovery.get('catalog.json'));
 
@@ -435,7 +413,7 @@ async function generatePublicData({
       version: '1.0.0',
       base_url: BASE_URL,
       source_db: 'agent/ccus-ai-agent/db/ccus_master.sqlite',
-      source_db_sha256: hash(dbBytes),
+      source_db_sha256: sha256(dbBytes),
       publication: {
         file: `${BASE_URL}/data/release.json`,
         description:
@@ -445,7 +423,7 @@ async function generatePublicData({
         discovery_catalog: {
           file: `${BASE_URL}/data/discovery/catalog.json`,
           count: catalog.count,
-          sha256: hash(discovery.get('catalog.json')),
+          sha256: sha256(discovery.get('catalog.json')),
           description:
             'Frozen source discovery catalog across archived HTML snapshots and private PDF metadata; metadata discovery is not reviewed knowledge',
         },
@@ -536,7 +514,7 @@ async function generatePublicData({
 if (process.argv[1] && process.argv[1].includes('generate-public-data')) {
   generatePublicData().catch((err) => {
     console.error('Failed to generate public data:', err.message);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }
 
