@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hash } from '../consume-agent-data.mjs';
+import { sha256 } from './crypto-utils.mjs';
 import { pruneStaleFiles } from './publish-clean.mjs';
 import { queryRows } from './sqlite-query.mjs';
 import Ajv from 'ajv';
@@ -232,8 +232,8 @@ export function catalogFiles(db, evidenceOutputs, dbSha) {
     schema_version: '1.0.0',
     source_db_sha256: dbSha,
     inputs: {
-      captured_pdf_metadata_sha256: hash(capturedBytes),
-      existing_evidence_index_sha256: hash(evidenceOutputs.get('index.json')),
+      captured_pdf_metadata_sha256: sha256(capturedBytes),
+      existing_evidence_index_sha256: sha256(evidenceOutputs.get('index.json')),
     },
     count: records.length,
     records: records.sort((a, b) =>

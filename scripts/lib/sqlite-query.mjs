@@ -39,3 +39,30 @@ export function parseJsonSafe(value, fallback = null) {
     return fallback;
   }
 }
+
+/**
+ * Return the latest non-empty `provenance_last_audit_date` across policies,
+ * facilities, and country_profiles, or `null` when none is set.
+ * Accepts either a raw sql.js `Database` or a `SqlJsDatabase` wrapper.
+ */
+export function getDatasetAsOf(db) {
+  const rawDb = typeof db?.prepare === 'function' ? db : db?.db;
+  const rows = queryRows(
+    rawDb,
+    `SELECT MAX(d) AS m FROM (
+      SELECT NULLIF(provenance_last_audit_date, '') AS d FROM policies
+      UNION ALL SELECT NULLIF(provenance_last_audit_date, '') FROM facilities
+      UNION ALL SELECT NULLIF(provenance_last_audit_date, '') FROM country_profiles
+    )`
+  );
+  return rows[0]?.m ?? null;
+}
+
+/**
+ * Return the deterministic ISO-8601 `data_as_of` timestamp derived from
+ * `getDatasetAsOf(db)`, falling back to Unix epoch when no audit date exists.
+ */
+export function getDatasetAsOfIso(db) {
+  const date = getDatasetAsOf(db);
+  return date ? `${date}T00:00:00.000Z` : '1970-01-01T00:00:00.000Z';
+}

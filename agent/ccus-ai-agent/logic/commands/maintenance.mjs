@@ -200,24 +200,21 @@ export async function dbFixRelationships(
   console.log('FIX RELATIONSHIPS DONE.');
 }
 
-export async function dbComputeMaturity() {
-  await computeGovernanceDeployment();
+export async function dbComputeMaturity(SQL) {
+  await computeGovernanceDeployment(undefined, { SQL, acquireLock: false });
 }
 
 export async function dbPipeline(SQL, argv = []) {
-  const run = async (_name, fn) => {
-    await fn();
-  };
-  if (argv.includes('--init')) await run('db:init', () => dbInit(SQL));
+  if (argv.includes('--init')) await dbInit(SQL);
   if (argv.includes('--with-imports')) {
     throw new Error(
       '--with-imports is retired. Legacy JSON facilities import was removed; run explicit SQLite-native ingest/bootstrap steps before db:pipeline.'
     );
   }
-  await run('db:standardize', () => dbStandardize(SQL));
-  await run('db:geocode:facilities', () => dbGeocodeFacilities(SQL));
-  await run('db:sync:country-profiles', () => dbSyncCountryProfiles(SQL));
-  await run('db:compute:maturity', () => dbComputeMaturity(SQL));
-  await run('db:audit:deep', () => dbAuditDeep(SQL));
-  await run('db:export:md', () => dbExportMd(SQL));
+  await dbStandardize(SQL);
+  await dbGeocodeFacilities(SQL);
+  await dbSyncCountryProfiles(SQL);
+  await dbComputeMaturity(SQL);
+  await dbAuditDeep(SQL);
+  await dbExportMd(SQL);
 }

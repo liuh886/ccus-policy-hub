@@ -240,7 +240,7 @@ async function main() {
   const write = process.argv.includes('--write');
   const result = await syncPolicyLinkProjections({ write });
   console.log(JSON.stringify(result, null, 2));
-  if (!write && !result.pass) process.exit(2);
+  if (!write && !result.pass) process.exitCode = 2;
 }
 
 const isDirectRun =
@@ -251,6 +251,6 @@ const isDirectRun =
 if (isDirectRun) {
   main().catch((error) => {
     console.error(`Policy-link projection sync failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

@@ -867,10 +867,10 @@ export async function main() {
     console.log(`MD report: ${path.relative(REPO_ROOT, REPORT_MD)}`);
     console.log(`Repair JSON: ${path.relative(REPO_ROOT, REPAIR_JSON)}`);
     console.log(`Repair MD: ${path.relative(REPO_ROOT, REPAIR_MD)}`);
-    if (!summary.pass) process.exit(2);
+    if (!summary.pass) process.exitCode = 2;
   } catch (error) {
     console.error(`Facilities parity audit error: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   }
 }
 

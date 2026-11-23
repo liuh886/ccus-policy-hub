@@ -185,6 +185,6 @@ const isDirectRun =
 if (isDirectRun) {
   main().catch((error) => {
     console.error(`Facility news link check failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }

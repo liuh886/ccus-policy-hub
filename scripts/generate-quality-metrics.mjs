@@ -15,7 +15,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
 import { summarizeRelationships } from '../src/lib/relationshipTrust.mjs';
-import { queryScalar, queryRows } from './lib/sqlite-query.mjs';
+import {
+  queryScalar,
+  queryRows,
+  getDatasetAsOfIso,
+} from './lib/sqlite-query.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(
@@ -30,14 +34,6 @@ const CONTENT_EN_POLICY_DIR = path.join(
   __dirname,
   '../src/content/policies/en'
 );
-
-/**
- * Helper: run a query that returns a single scalar value
- */
-
-/**
- * Helper: run a query that returns rows as objects
- */
 
 async function generateMetrics({ db: injectedDb = null } = {}) {
   if (!injectedDb && !fs.existsSync(DB_PATH)) {
@@ -66,22 +62,7 @@ async function generateMetrics({ db: injectedDb = null } = {}) {
   try {
     // Deterministic timestamp derived from the database itself so that the
     // generated file only changes when governed data actually changes.
-    const lastPolicyAudit = queryScalar(
-      db,
-      "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM policies"
-    );
-    const lastFacilityAudit = queryScalar(
-      db,
-      "SELECT MAX(COALESCE(provenance_last_audit_date, '')) FROM facilities"
-    );
-    const lastAuditDate = [lastPolicyAudit, lastFacilityAudit]
-      .filter(Boolean)
-      .sort()
-      .pop();
-
-    metrics.data_as_of = lastAuditDate
-      ? `${lastAuditDate}T00:00:00.000Z`
-      : '1970-01-01T00:00:00.000Z';
+    metrics.data_as_of = getDatasetAsOfIso(db);
 
     // --- Total counts ---
     metrics.counts.policies = queryScalar(db, 'SELECT COUNT(*) FROM policies');
@@ -334,7 +315,7 @@ async function generateMetrics({ db: injectedDb = null } = {}) {
 if (process.argv[1] && process.argv[1].includes('generate-quality-metrics')) {
   generateMetrics().catch((err) => {
     console.error('Failed to generate quality metrics:', err.message);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }
 

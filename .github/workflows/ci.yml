@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       governed_data: ${{ steps.scope.outputs.governed_data }}
+      report_changed: ${{ steps.scope.outputs.report_changed }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -34,6 +35,7 @@ jobs:
           set -euo pipefail
           if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
             echo "governed_data=true" >> "$GITHUB_OUTPUT"
+            echo "report_changed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -42,14 +44,21 @@ jobs:
           # Generated projections (src/content/*, public/data, src/data) are no
           # longer committed: they are pure functions of the SQLite SSOT and
           # are regenerated with `pnpm gen`. Watch the generators instead.
-          if grep -Eq '^(agent/ccus-ai-agent/(db|logic|migrations|governance)/|src/content/(config\.ts|enums\.generated\.ts)|src/data/countries\.json|docs/policy-(db-consistency|coverage|content-depth)|scripts/(export|generate|sync-policy|audit-policy|manage-db|content-export-utils|lib/|apply-policy-review|ingest-|prune-|stamp-audit|run-policy|capture-catalog|data/)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
+          if grep -Eq '^(agent/ccus-ai-agent/(db|logic|migrations|governance)/|src/content/(config\.ts|enums\.generated\.ts)|src/data/(countries|dataset_versions)\.json|src/lib/relationshipTrust\.mjs|public/data/schemas/|docs/policy-(db-consistency|coverage|content-depth)|scripts/(gen\.mjs|export|generate|sync-policy|audit-policy|content-export-utils|lib/|apply-|ingest-|enrich-|prune-|stamp-audit|run-policy|report-policy-source-gaps|maintenance-review|capture-catalog|data/)|.*\.(db|sqlite|sql)$|package\.json$|pnpm-lock\.yaml$|\.github/workflows/ci\.yml$)' changed-files.txt; then
             echo "governed_data=true" >> "$GITHUB_OUTPUT"
           else
             echo "governed_data=false" >> "$GITHUB_OUTPUT"
           fi
 
+          if grep -Eq '^(public/reports/|scripts/(sync-paper-report|verify-paper-report|lib/report-structure|lib/tex-preprocess)|\.esg30-sync\.json$|\.github/workflows/(ci|sync-esg30-report)\.yml$)' changed-files.txt; then
+            echo "report_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "report_changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
     name: Fast quality and production build
+    needs: detect-scope
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -98,9 +107,22 @@ jobs:
       - name: Verify read-only source readiness inventory
         run: pnpm manage:db:audit:source-readiness --check
 
+      - name: Detect ESG30 token availability
+        id: esg30
+        env:
+          ESG30_REPO_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
+        run: |
+          if [ -z "${ESG30_REPO_TOKEN}" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::未配置 ESG30_REPO_TOKEN，跳过本机/CI 一致性比对（结构体检仍会执行）。"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install Pandoc (pinned) and pdfinfo
         # report:parity 会用 CI 的默认路径重新生成一份报告再逐字节比对，因此需要
         # Pandoc。版本必须与 sync-esg30-report.yml 一致，否则比对必然失败。
+        if: needs.detect-scope.outputs.report_changed == 'true' && steps.esg30.outputs.available == 'true'
         env:
           PANDOC_VERSION: '3.1.12.3'
         run: |
@@ -114,18 +136,6 @@ jobs:
           if [ "$INSTALLED" != "$PANDOC_VERSION" ]; then
             echo "::error::Pandoc 版本不匹配（期望 $PANDOC_VERSION，实际 $INSTALLED）"
             exit 1
-          fi
-
-      - name: Detect ESG30 token availability
-        id: esg30
-        env:
-          ESG30_REPO_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}
-        run: |
-          if [ -z "${ESG30_REPO_TOKEN}" ]; then
-            echo "available=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::未配置 ESG30_REPO_TOKEN，跳过本机/CI 一致性比对（结构体检仍会执行）。"
-          else
-            echo "available=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Verify report page structure and asset manifest
@@ -145,7 +155,7 @@ jobs:
         # 因此逐字节一致性的**强制**检查放在 sync-esg30-report.yml：它在拉取某个
         # 具体 rev 之后、落盘之后立刻重生成比对，那里才是顺序正确、没有竞态的位置。
         # 本步骤保留为可见的漂移信号（黄色告警），用于观察上游编辑节奏。
-        if: steps.esg30.outputs.available == 'true'
+        if: needs.detect-scope.outputs.report_changed == 'true' && steps.esg30.outputs.available == 'true'
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.ESG30_REPO_TOKEN }}

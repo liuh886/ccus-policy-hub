@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import initSqlJs from 'sql.js';
-import { atomicWriteDb } from '../../../scripts/lib/db-write.mjs';
+import {
+  DB_LOCK_PATH,
+  acquireDbLock,
+  atomicWriteDb,
+} from '../../../scripts/lib/db-write.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_DB_PATH = path.join(__dirname, '../db/ccus_master.sqlite');
@@ -42,117 +46,134 @@ const capacityExpression = `
   END
 `;
 
-export async function computeGovernanceDeployment(dbPath = DEFAULT_DB_PATH) {
-  const SQL = await initSqlJs();
-  const buffer = fs.readFileSync(dbPath);
-  const db = new SQL.Database(buffer);
-
-  ensureColumn(db, 'deployment_capacity_mtpa', 'REAL NOT NULL DEFAULT 0');
-  ensureColumn(db, 'governance_capability_index', 'REAL NOT NULL DEFAULT 0');
-
-  // Keep the previous fields as one-release compatibility aliases. They are
-  // written from the explicit fields and should no longer be used by new code.
-  ensureColumn(db, 'maturity_x', 'REAL NOT NULL DEFAULT 0');
-  ensureColumn(db, 'maturity_y', 'REAL NOT NULL DEFAULT 0');
-
-  db.run(`
-    UPDATE country_profiles
-    SET deployment_capacity_mtpa = COALESCE(
-      NULLIF(deployment_capacity_mtpa, 0),
-      maturity_x,
-      0
-    ),
-    governance_capability_index = COALESCE(
-      NULLIF(governance_capability_index, 0),
-      maturity_y / ${DIMENSIONS.length}.0,
-      0
-    )
-  `);
-
-  const countries = db.exec('SELECT id FROM country_profiles ORDER BY id');
-  if (!countries.length) {
-    db.close();
-    return;
-  }
-
-  const hasReviewStatus = hasColumn(db, 'policies', 'review_status');
-  const reviewClause = hasReviewStatus
-    ? "AND LOWER(COALESCE(p.review_status, 'verified')) != 'draft'"
-    : '';
-
-  const peakQuery = db.prepare(`
-    SELECT
-      COALESCE(MAX(CASE WHEN a.dimension = 'incentive' THEN a.score END), 0) AS incentive,
-      COALESCE(MAX(CASE WHEN a.dimension = 'statutory' THEN a.score END), 0) AS statutory,
-      COALESCE(MAX(CASE WHEN a.dimension = 'market' THEN a.score END), 0) AS market,
-      COALESCE(MAX(CASE WHEN a.dimension = 'strategic' THEN a.score END), 0) AS strategic,
-      COALESCE(MAX(CASE WHEN a.dimension = 'mrv' THEN a.score END), 0) AS mrv
-    FROM policy_analysis a
-    JOIN policies p ON a.policy_id = p.id
-    WHERE p.country = ?
-      AND p.status IN ('Active', 'Operational', '运行中', '现行')
-      ${reviewClause}
-  `);
-  const capacityQuery = db.prepare(`
-    SELECT COALESCE(SUM(${capacityExpression}), 0) AS committed_capacity
-    FROM facilities
-    WHERE country = ?
-      AND status IN ('Operational', 'Under construction', '运行中', '建设中')
-  `);
-  const update = db.prepare(`
-    UPDATE country_profiles
-    SET deployment_capacity_mtpa = ?,
-        governance_capability_index = ?,
-        maturity_x = ?,
-        maturity_y = ?
-    WHERE id = ?
-  `);
-
-  db.run('BEGIN TRANSACTION');
+export async function computeGovernanceDeployment(
+  dbPath = DEFAULT_DB_PATH,
+  { SQL: injectedSql = null, acquireLock = true } = {}
+) {
+  const lockPath =
+    path.resolve(dbPath) === path.resolve(DEFAULT_DB_PATH)
+      ? DB_LOCK_PATH
+      : path.join(path.dirname(dbPath), '.lock');
+  const release = acquireLock ? acquireDbLock(lockPath) : null;
   try {
-    for (const [countryId] of countries[0].values) {
-      peakQuery.bind([countryId]);
-      const peaks = rowObject(peakQuery) || {};
-      peakQuery.reset();
-
-      const scores = DIMENSIONS.map((dimension) =>
-        Math.min(100, Math.max(0, Number(peaks[dimension] || 0)))
+    const SQL = injectedSql ?? (await initSqlJs());
+    const buffer = fs.readFileSync(dbPath);
+    const db = new SQL.Database(buffer);
+    try {
+      ensureColumn(db, 'deployment_capacity_mtpa', 'REAL NOT NULL DEFAULT 0');
+      ensureColumn(
+        db,
+        'governance_capability_index',
+        'REAL NOT NULL DEFAULT 0'
       );
-      const governanceIndex =
-        scores.reduce((sum, score) => sum + score, 0) / DIMENSIONS.length;
 
-      capacityQuery.bind([countryId]);
-      const capacity = Number(
-        rowObject(capacityQuery)?.committed_capacity || 0
-      );
-      capacityQuery.reset();
+      // Keep the previous fields as one-release compatibility aliases. They are
+      // written from the explicit fields and should no longer be used by new code.
+      ensureColumn(db, 'maturity_x', 'REAL NOT NULL DEFAULT 0');
+      ensureColumn(db, 'maturity_y', 'REAL NOT NULL DEFAULT 0');
 
-      update.run([
-        capacity,
-        governanceIndex,
-        capacity,
-        governanceIndex * DIMENSIONS.length,
-        countryId,
-      ]);
-      update.reset();
-      console.log(
-        `${String(countryId).padEnd(24)} deployment=${capacity.toFixed(2)} Mtpa governance=${governanceIndex.toFixed(1)}/100`
-      );
+      db.run(`
+        UPDATE country_profiles
+        SET deployment_capacity_mtpa = COALESCE(
+          NULLIF(deployment_capacity_mtpa, 0),
+          maturity_x,
+          0
+        ),
+        governance_capability_index = COALESCE(
+          NULLIF(governance_capability_index, 0),
+          maturity_y / ${DIMENSIONS.length}.0,
+          0
+        )
+      `);
+
+      const countries = db.exec('SELECT id FROM country_profiles ORDER BY id');
+      if (!countries.length) {
+        return;
+      }
+
+      const hasReviewStatus = hasColumn(db, 'policies', 'review_status');
+      const reviewClause = hasReviewStatus
+        ? "AND LOWER(COALESCE(p.review_status, 'verified')) != 'draft'"
+        : '';
+
+      const peakQuery = db.prepare(`
+        SELECT
+          COALESCE(MAX(CASE WHEN a.dimension = 'incentive' THEN a.score END), 0) AS incentive,
+          COALESCE(MAX(CASE WHEN a.dimension = 'statutory' THEN a.score END), 0) AS statutory,
+          COALESCE(MAX(CASE WHEN a.dimension = 'market' THEN a.score END), 0) AS market,
+          COALESCE(MAX(CASE WHEN a.dimension = 'strategic' THEN a.score END), 0) AS strategic,
+          COALESCE(MAX(CASE WHEN a.dimension = 'mrv' THEN a.score END), 0) AS mrv
+        FROM policy_analysis a
+        JOIN policies p ON a.policy_id = p.id
+        WHERE p.country = ?
+          AND p.status IN ('Active', 'Operational', '运行中', '现行')
+          ${reviewClause}
+      `);
+      const capacityQuery = db.prepare(`
+        SELECT COALESCE(SUM(${capacityExpression}), 0) AS committed_capacity
+        FROM facilities
+        WHERE country = ?
+          AND status IN ('Operational', 'Under construction', '运行中', '建设中')
+      `);
+      const update = db.prepare(`
+        UPDATE country_profiles
+        SET deployment_capacity_mtpa = ?,
+            governance_capability_index = ?,
+            maturity_x = ?,
+            maturity_y = ?
+        WHERE id = ?
+      `);
+
+      db.run('BEGIN TRANSACTION');
+      try {
+        for (const [countryId] of countries[0].values) {
+          peakQuery.bind([countryId]);
+          const peaks = rowObject(peakQuery) || {};
+          peakQuery.reset();
+
+          const scores = DIMENSIONS.map((dimension) =>
+            Math.min(100, Math.max(0, Number(peaks[dimension] || 0)))
+          );
+          const governanceIndex =
+            scores.reduce((sum, score) => sum + score, 0) / DIMENSIONS.length;
+
+          capacityQuery.bind([countryId]);
+          const capacity = Number(
+            rowObject(capacityQuery)?.committed_capacity || 0
+          );
+          capacityQuery.reset();
+
+          update.run([
+            capacity,
+            governanceIndex,
+            capacity,
+            governanceIndex * DIMENSIONS.length,
+            countryId,
+          ]);
+          update.reset();
+          console.log(
+            `${String(countryId).padEnd(24)} deployment=${capacity.toFixed(2)} Mtpa governance=${governanceIndex.toFixed(1)}/100`
+          );
+        }
+        db.run('COMMIT');
+      } catch (error) {
+        db.run('ROLLBACK');
+        throw error;
+      } finally {
+        peakQuery.free();
+        capacityQuery.free();
+        update.free();
+      }
+
+      const data = db.export();
+      atomicWriteDb(dbPath, data);
+      console.log('Governance–deployment metrics updated.');
+    } finally {
+      db.close();
     }
-    db.run('COMMIT');
-  } catch (error) {
-    db.run('ROLLBACK');
-    throw error;
   } finally {
-    peakQuery.free();
-    capacityQuery.free();
-    update.free();
+    release?.();
   }
-
-  const data = db.export();
-  atomicWriteDb(dbPath, data);
-  db.close();
-  console.log('Governance–deployment metrics updated.');
 }
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {

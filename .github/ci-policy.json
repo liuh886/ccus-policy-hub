@@ -6,14 +6,20 @@
   "governed_workflows": [
     ".github/workflows/ci-governance.yml",
     ".github/workflows/ci.yml",
-    ".github/workflows/deploy.yml"
+    ".github/workflows/deploy.yml",
+    ".github/workflows/facility-news-link-check.yml",
+    ".github/workflows/maintenance-review.yml",
+    ".github/workflows/sync-esg30-report.yml"
   ],
   "required_pr_workflows": [
     ".github/workflows/ci-governance.yml",
     ".github/workflows/ci.yml"
   ],
   "release_workflows": [".github/workflows/deploy.yml"],
-  "advisory_workflows": [".github/workflows/maintenance-review.yml"],
+  "advisory_workflows": [
+    ".github/workflows/facility-news-link-check.yml",
+    ".github/workflows/maintenance-review.yml"
+  ],
   "artifact_retention_days": {
     "pr_diagnostics": 14,
     "deployable_build": 7,

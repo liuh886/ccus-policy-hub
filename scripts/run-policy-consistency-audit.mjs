@@ -126,6 +126,6 @@ const isDirectRun =
 if (isDirectRun) {
   runPolicyConsistencyAudit().catch((error) => {
     console.error(`Policy consistency audit failed: ${error.message}`);
-    process.exit(1);
+    process.exitCode = 1;
   });
 }
