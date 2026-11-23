@@ -2,6 +2,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  CORPUS_MAX_BYTES,
   publicClient,
   check,
   hash,
@@ -10,7 +11,7 @@ import {
 } from './consume-agent-data.mjs';
 import { consumeEvidenceRecord } from './consume-source-evidence.mjs';
 
-export const CORPUS_MAX_BYTES = 16 * 1024 * 1024;
+export { CORPUS_MAX_BYTES };
 
 const human = (review) =>
   review?.status === 'verified' &&

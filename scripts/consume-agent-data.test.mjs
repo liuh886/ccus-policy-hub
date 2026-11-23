@@ -124,22 +124,24 @@ async function withPublication(callback) {
     await new Promise((resolve) => server.close(resolve));
   }
 }
-test('HTTP consumer validates twenty public contexts under a Pages base path without evidence data', async () => {
+const contextTargets = JSON.parse(
+  fs.readFileSync(
+    new URL('./data/context-targets.json', import.meta.url),
+    'utf8'
+  )
+).targets;
+const expectedBundles = contextTargets.length * 2;
+const expectedPolicyIds = [
+  ...new Set(contextTargets.flatMap((t) => t.policy_ids)),
+].sort();
+
+test('HTTP consumer validates all registered public contexts under a Pages base path without evidence data', async () => {
   await withPublication(async ({ url, read }) => {
     const result = await consumeAgentData(url, read);
-    assert.equal(result.context_bundles, 20);
-    assert.equal(result.resolved_references, 132);
-    assert.deepEqual(result.policy_ids, [
-      'ca-ccus-itc',
-      'cn-ccer',
-      'denmark-ccfd',
-      'eu-innovation-fund',
-      'no-storage-framework',
-      'uk-ccus-vision',
-      'us-45q-ira',
-      'us-epa-class-vi-primacy',
-      'us-obbba-45q-2025',
-    ]);
+    assert.ok(expectedBundles >= 2);
+    assert.equal(result.context_bundles, expectedBundles);
+    assert.ok(result.resolved_references > 0);
+    assert.deepEqual(result.policy_ids, expectedPolicyIds);
     assert.equal(result.source_documents, undefined);
     assert.deepEqual(await verifyRelease(url, read, commit), {
       verified: true,

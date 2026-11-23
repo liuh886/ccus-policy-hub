@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { hash } from '../consume-agent-data.mjs';
+import { pruneStaleFiles } from './publish-clean.mjs';
 import { queryRows } from './sqlite-query.mjs';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
@@ -262,10 +263,12 @@ export function catalogFiles(db, evidenceOutputs, dbSha) {
 }
 
 export function publishCatalog(files, directory) {
-  for (const [name, bytes] of files) {
+  for (const name of files.keys())
     if (!['catalog.json', 'catalog.schema.json', 'README.md'].includes(name))
       throw new Error('Invalid catalog output path.');
+  for (const [name, bytes] of files) {
     fs.mkdirSync(directory, { recursive: true });
     fs.writeFileSync(path.join(directory, name), bytes);
   }
+  pruneStaleFiles(directory, files);
 }

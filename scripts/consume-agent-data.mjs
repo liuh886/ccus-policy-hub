@@ -8,6 +8,7 @@ import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
 export const DEFAULT_MAX_BYTES = 1024 * 1024;
+export const CORPUS_MAX_BYTES = 16 * 1024 * 1024;
 export const hash = (bytes) =>
   crypto.createHash('sha256').update(bytes).digest('hex');
 export class ConsumptionError extends Error {

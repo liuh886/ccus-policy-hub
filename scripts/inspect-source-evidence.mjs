@@ -3,30 +3,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inspectEvidence, EvidenceError } from './lib/source-evidence.mjs';
+import {
+  DEFAULT_EVIDENCE_ROOT,
+  loadEvidencePacket,
+  loadEvidencePackets,
+} from './lib/source-evidence-files.mjs';
 
-export const DEFAULT_EVIDENCE_ROOT = path.resolve(
-  path.dirname(fileURLToPath(import.meta.url)),
-  'data/evidence'
-);
-
-export function loadEvidencePacket(file) {
-  file = file instanceof URL ? fileURLToPath(file) : file;
-  const dir = path.dirname(file);
-  const input = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const rawPath = path.join(dir, 'source.html');
-  if (input.storage === 'external_archive') {
-    const normPath = path.join(dir, 'normalized.txt');
-    return {
-      input,
-      raw: fs.existsSync(rawPath) ? fs.readFileSync(rawPath) : null,
-      normalizedText: fs.existsSync(normPath)
-        ? fs.readFileSync(normPath, 'utf8')
-        : null,
-    };
-  }
-  const raw = fs.readFileSync(rawPath);
-  return { input, raw, normalizedText: null };
-}
+export { DEFAULT_EVIDENCE_ROOT, loadEvidencePacket };
 
 function formatInspectionReport(input, raw, options = {}) {
   const { normalized_text: text, ...report } = inspectEvidence(
@@ -48,13 +31,8 @@ export function inspectAllEvidence(evidenceRoot = DEFAULT_EVIDENCE_ROOT) {
       `Evidence directory does not exist: ${rootDir}`
     );
   }
-  const packetFiles = fs
-    .readdirSync(rootDir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => path.join(rootDir, entry.name, 'packet.json'))
-    .filter((file) => fs.existsSync(file))
-    .sort();
-  if (!packetFiles.length) {
+  const loaded = loadEvidencePackets(rootDir);
+  if (!loaded.length) {
     throw new EvidenceError(
       'EVIDENCE_NOT_FOUND',
       `No evidence packets found under ${rootDir}`
@@ -62,8 +40,7 @@ export function inspectAllEvidence(evidenceRoot = DEFAULT_EVIDENCE_ROOT) {
   }
   const packets = [];
   const seenDocumentIds = new Set();
-  for (const packetFile of packetFiles) {
-    const { input, raw, normalizedText } = loadEvidencePacket(packetFile);
+  for (const { input, raw, normalizedText } of loaded) {
     const report = formatInspectionReport(input, raw, { normalizedText });
     if (seenDocumentIds.has(report.document_id)) {
       throw new EvidenceError(

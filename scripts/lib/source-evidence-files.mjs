@@ -3,53 +3,124 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inspectEvidence, digest, EvidenceError } from './source-evidence.mjs';
 import { queryRows } from './sqlite-query.mjs';
+import { pruneStaleFiles } from './publish-clean.mjs';
 
 const ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '../..'
 );
-const defaultEvidenceRoot = path.join(ROOT, 'scripts/data/evidence');
+export const DEFAULT_EVIDENCE_ROOT = path.join(ROOT, 'scripts/data/evidence');
 
-function collectPacketDirectories(rootDir) {
-  if (!fs.existsSync(rootDir)) return [];
-  const dirs = [];
-  for (const entry of fs.readdirSync(rootDir, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
-    const candidate = path.join(rootDir, entry.name);
-    if (fs.existsSync(path.join(candidate, 'packet.json')))
-      dirs.push(candidate);
+function readSiblingFile(dir, name, { required = false } = {}) {
+  if (!name) return null;
+  if (path.basename(name) !== name || name === '.' || name === '..')
+    throw new EvidenceError(
+      'INVALID_INPUT_PATH',
+      'Evidence inputs must be explicit sibling files.'
+    );
+  const file = path.join(dir, name);
+  if (!fs.existsSync(file)) {
+    if (required) {
+      throw new EvidenceError(
+        'MISSING_RAW_SOURCE',
+        `Missing required evidence file: ${name}`
+      );
+    }
+    return null;
   }
-  return dirs.sort();
+  const real = fs.realpathSync(file);
+  if (path.dirname(real) !== fs.realpathSync(dir))
+    throw new EvidenceError(
+      'INVALID_INPUT_PATH',
+      'Evidence file escapes its packet directory.'
+    );
+  return fs.readFileSync(real);
+}
+
+export function collectPacketFiles(rootDir) {
+  if (!fs.existsSync(rootDir)) return [];
+  const files = [];
+  const visit = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) visit(full);
+      else if (entry.name === 'packet.json') files.push(full);
+    }
+  };
+  visit(rootDir);
+  return files.sort();
+}
+
+export function loadEvidencePacket(
+  packetFile,
+  { allowMissingRaw = false } = {}
+) {
+  const file =
+    packetFile instanceof URL ? fileURLToPath(packetFile) : packetFile;
+  const dir = path.dirname(file);
+  const manifestBytes = fs.readFileSync(file);
+  const input = JSON.parse(manifestBytes.toString('utf8'));
+  const storage = input.storage ?? 'git_inline';
+  let raw = null;
+  let normalizedBytes = null;
+
+  if (storage === 'external_archive') {
+    const rawName =
+      input.raw_file !== undefined ? input.raw_file : 'source.html';
+    raw = readSiblingFile(dir, rawName, { required: false });
+    const normName =
+      input.normalized_file !== undefined
+        ? input.normalized_file
+        : 'normalized.txt';
+    normalizedBytes = readSiblingFile(dir, normName, { required: false });
+  } else {
+    const rawName =
+      input.raw_file !== undefined ? input.raw_file : 'source.html';
+    raw = readSiblingFile(dir, rawName, { required: !allowMissingRaw });
+    if (input.normalized_file) {
+      normalizedBytes = readSiblingFile(dir, input.normalized_file, {
+        required: false,
+      });
+    }
+  }
+
+  return {
+    file,
+    dir,
+    manifestBytes,
+    manifest_sha256: digest(manifestBytes),
+    input,
+    raw,
+    normalizedBytes,
+    normalizedText: normalizedBytes ? normalizedBytes.toString('utf8') : null,
+  };
+}
+
+export function loadEvidencePackets(
+  rootDir = DEFAULT_EVIDENCE_ROOT,
+  options = {}
+) {
+  const resolvedRoot =
+    rootDir instanceof URL ? fileURLToPath(rootDir) : rootDir;
+  return collectPacketFiles(resolvedRoot)
+    .map((file) => loadEvidencePacket(file, options))
+    .sort((a, b) =>
+      String(a.input.document_id || '').localeCompare(
+        String(b.input.document_id || ''),
+        'en'
+      )
+    );
 }
 
 // SQLite owns accepted policy facts; Git owns these evidence snapshots and review
 // inputs. Original text is never copied into a second database storage authority.
 export function sourceEvidenceFiles(
   db,
-  { rootDir = defaultEvidenceRoot, directory } = {}
+  { rootDir = DEFAULT_EVIDENCE_ROOT, directory } = {}
 ) {
-  const dirs = directory ? [directory] : collectPacketDirectories(rootDir);
-  const loaded = dirs.map((dir) => {
-    const input = JSON.parse(
-      fs.readFileSync(path.join(dir, 'packet.json'), 'utf8')
-    );
-    const storage = input.storage ?? 'git_inline';
-    if (storage === 'external_archive') {
-      const normalizedPath = path.join(dir, 'normalized.txt');
-      const normalizedText = fs.existsSync(normalizedPath)
-        ? fs.readFileSync(normalizedPath, 'utf8')
-        : null;
-      return { input, raw: null, normalizedText };
-    }
-    const raw = fs.readFileSync(path.join(dir, 'source.html'));
-    return { input, raw, normalizedText: null };
-  });
-  loaded.sort((a, b) =>
-    String(a.input.document_id || '').localeCompare(
-      String(b.input.document_id || ''),
-      'en'
-    )
-  );
+  const loaded = directory
+    ? [loadEvidencePacket(path.join(directory, 'packet.json'))]
+    : loadEvidencePackets(rootDir);
   const files = new Map();
   const indexRecords = [];
   const seenDocumentIds = new Set();
@@ -152,4 +223,5 @@ export function publishSourceEvidence(files, outputDir) {
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, content);
   }
+  pruneStaleFiles(outputDir, files);
 }

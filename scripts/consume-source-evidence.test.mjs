@@ -51,26 +51,82 @@ function consumer() {
   };
 }
 
-test('independent public consumer validates all bundles, schemas and references and confirms all 8 reviewed packets', async () => {
+const contextTargets = JSON.parse(
+  fs.readFileSync(
+    new URL('./data/context-targets.json', import.meta.url),
+    'utf8'
+  )
+).targets;
+const expectedBundles = contextTargets.length * 2;
+const liveEvidenceIndex = JSON.parse(
+  fs.readFileSync(path.join(root, 'data/evidence/index.json'), 'utf8')
+);
+const liveEvidenceRecords = liveEvidenceIndex.records.map((entry) =>
+  JSON.parse(
+    fs.readFileSync(path.join(root, 'data/evidence', entry.file), 'utf8')
+  )
+);
+const expectedDocs = liveEvidenceIndex.records.length;
+const expectedReviewedAnchors = liveEvidenceRecords.reduce(
+  (sum, rec) =>
+    sum + rec.anchors.filter((a) => a.usable_as_reviewed_reference).length,
+  0
+);
+const expectedUnreviewedAnchors = liveEvidenceRecords.reduce(
+  (sum, rec) =>
+    sum + rec.anchors.filter((a) => !a.usable_as_reviewed_reference).length,
+  0
+);
+const expectedReviewedDocs = liveEvidenceRecords.filter(
+  (rec) =>
+    rec.review.status === 'verified' &&
+    rec.anchors.some((a) => a.usable_as_reviewed_reference)
+).length;
+const expectedDraftDocs = expectedDocs - expectedReviewedDocs;
+const liveBaseline = {
+  context_bundles: expectedBundles,
+  source_documents: expectedDocs,
+  reviewed_documents: expectedReviewedDocs,
+  draft_documents: expectedDraftDocs,
+  reviewed_anchors: expectedReviewedAnchors,
+  unreviewed_anchors: expectedUnreviewedAnchors,
+  human_review_pending: expectedDraftDocs > 0 || expectedUnreviewedAnchors > 0,
+};
+
+test('independent public consumer validates all bundles, schemas, references and published evidence packets', async () => {
   const result = await consumer().run();
-  assert.equal(result.context_bundles, 20);
-  assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 8);
-  assert.equal(result.draft_documents, 0);
+  assert.ok(expectedDocs >= 8);
+  assert.equal(result.context_bundles, expectedBundles);
+  assert.equal(result.source_documents, expectedDocs);
+  assert.equal(result.reviewed_documents, expectedReviewedDocs);
+  assert.equal(result.draft_documents, expectedDraftDocs);
+  assert.equal(
+    result.reviewed_documents + result.draft_documents,
+    result.source_documents
+  );
   assert.ok(result.resolved_references > 0);
-  assert.equal(result.reviewed_anchors, 8);
-  assert.equal(result.unreviewed_anchors, 0);
-  assert.equal(result.human_review_pending, false);
+  assert.equal(result.reviewed_anchors, expectedReviewedAnchors);
+  assert.equal(result.unreviewed_anchors, expectedUnreviewedAnchors);
+  assert.equal(result.human_review_pending, liveBaseline.human_review_pending);
   assert.equal(result.source_currentness_verified, false);
 });
 
 test('consumer separates valid draft packets from reviewed packets when a packet is unreviewed', async () => {
+  const baseline = await consumer().run();
   const c = consumer();
   const indexUrl = manifest.datasets.source_evidence.file;
   const index = c.get(indexUrl);
-  const entry = index.records.find((r) => r.document_id === 'ca-ccus-itc-2026');
+  const entry =
+    index.records.find(
+      (r) =>
+        r.document_id === 'ca-ccus-itc-2026' && r.review_status === 'verified'
+    ) || index.records.find((r) => r.review_status === 'verified');
+  assert.ok(entry, 'Expected at least one verified evidence record.');
   const recordUrl = new URL(entry.file, indexUrl).href;
   const record = c.get(recordUrl);
+  const flippedAnchors = record.anchors.filter(
+    (a) => a.usable_as_reviewed_reference
+  ).length;
   const draft = {
     status: 'draft',
     reviewer: null,
@@ -78,20 +134,28 @@ test('consumer separates valid draft packets from reviewed packets when a packet
     method: 'not_reviewed',
   };
   record.review = draft;
-  record.anchors[0].state = 'needs_review';
-  record.anchors[0].review = { ...draft };
-  record.anchors[0].usable_as_reviewed_reference = false;
-  record.gaps = ['HUMAN_ANCHOR_REVIEW_PENDING', ...record.gaps];
+  for (const anchor of record.anchors) {
+    anchor.state = 'needs_review';
+    anchor.review = { ...draft };
+    anchor.usable_as_reviewed_reference = false;
+  }
+  record.gaps = [...new Set(['HUMAN_ANCHOR_REVIEW_PENDING', ...record.gaps])];
   c.set(recordUrl, record);
   entry.sha256 = hash(c.overrides.get(recordUrl));
   entry.review_status = 'draft';
   c.set(indexUrl, index);
   const result = await c.run();
-  assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 7);
-  assert.equal(result.draft_documents, 1);
-  assert.equal(result.reviewed_anchors, 7);
-  assert.equal(result.unreviewed_anchors, 1);
+  assert.equal(result.source_documents, baseline.source_documents);
+  assert.equal(result.reviewed_documents, baseline.reviewed_documents - 1);
+  assert.equal(result.draft_documents, baseline.draft_documents + 1);
+  assert.equal(
+    result.reviewed_anchors,
+    baseline.reviewed_anchors - flippedAnchors
+  );
+  assert.equal(
+    result.unreviewed_anchors,
+    baseline.unreviewed_anchors + flippedAnchors
+  );
   assert.equal(result.human_review_pending, true);
   assert.equal(result.source_currentness_verified, false);
 });
@@ -195,6 +259,7 @@ test('consumer detects original source tampering without importing the private e
 });
 
 test('consumer supports external_archive records without raw_file while rejecting missing external_uri', async () => {
+  const baseline = await consumer().run();
   const c = consumer();
   const indexUrl = manifest.datasets.source_evidence.file;
   const index = c.get(indexUrl);
@@ -210,8 +275,8 @@ test('consumer supports external_archive records without raw_file while rejectin
   c.set(indexUrl, index);
 
   const result = await c.run();
-  assert.equal(result.source_documents, 8);
-  assert.equal(result.reviewed_documents, 8);
+  assert.equal(result.source_documents, baseline.source_documents);
+  assert.equal(result.reviewed_documents, baseline.reviewed_documents);
 
   // Missing external_uri fails schema validation even with recomputed hashes
   delete record.external_uri;
@@ -219,4 +284,44 @@ test('consumer supports external_archive records without raw_file while rejectin
   entry.sha256 = hash(c.overrides.get(recordUrl));
   c.set(indexUrl, index);
   await assert.rejects(c.run(), /Public schema rejected/);
+});
+
+test('consumer validates evidence policy_id against the full policy corpus rather than context targets', async () => {
+  const contextPolicyIds = new Set(contextTargets.flatMap((t) => t.policy_ids));
+  const policies = JSON.parse(
+    fs.readFileSync(path.join(root, 'data/policies.json'), 'utf8')
+  );
+  const nonContextPolicy = policies.records.find(
+    (p) => !contextPolicyIds.has(p.id)
+  );
+  assert.ok(
+    nonContextPolicy,
+    'Expected at least one policy in public/data/policies.json outside context-targets.json'
+  );
+
+  const c = consumer();
+  const indexUrl = manifest.datasets.source_evidence.file;
+  const index = c.get(indexUrl);
+  const entry = index.records[0];
+  const recordUrl = new URL(entry.file, indexUrl).href;
+  const record = c.get(recordUrl);
+
+  record.policy_id = nonContextPolicy.id;
+  entry.policy_id = nonContextPolicy.id;
+  c.set(recordUrl, record);
+  entry.sha256 = hash(c.overrides.get(recordUrl));
+  c.set(indexUrl, index);
+
+  const result = await c.run();
+  assert.equal(result.source_documents, liveBaseline.source_documents);
+
+  record.policy_id = 'nonexistent-policy-id';
+  entry.policy_id = 'nonexistent-policy-id';
+  c.set(recordUrl, record);
+  entry.sha256 = hash(c.overrides.get(recordUrl));
+  c.set(indexUrl, index);
+  await assert.rejects(
+    c.run(),
+    /Evidence policy is absent from policy records/
+  );
 });

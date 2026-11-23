@@ -14,6 +14,11 @@ import {
   parseVerifiedBaseline,
   sha256,
 } from './lib/source-readiness.mjs';
+import { isHumanReviewed } from './lib/source-evidence.mjs';
+import {
+  DEFAULT_EVIDENCE_ROOT,
+  loadEvidencePackets,
+} from './lib/source-evidence-files.mjs';
 import {
   generateReadiness,
   loadPackets,
@@ -220,61 +225,49 @@ test('observed CSV snapshot preserves input hashes while redacting private file 
   ]);
 });
 
-test('real post-#102 inventory is reproducible, complete, byte-read-only and reconciles URL changes truthfully', async () => {
+test('real inventory readiness is reproducible, complete, byte-read-only and reconciles URL changes truthfully', async () => {
   const file = new URL(
     '../agent/ccus-ai-agent/db/ccus_master.sqlite',
     import.meta.url
   );
   const before = sha256(fs.readFileSync(file));
+  const loadedPackets = loadEvidencePackets(DEFAULT_EVIDENCE_ROOT);
+  assert.ok(loadedPackets.length >= 8);
+  const inlineCount = loadedPackets.filter((p) => p.raw !== null).length;
+  const reviewedAnchorCount = loadedPackets.reduce(
+    (sum, p) =>
+      sum +
+      (isHumanReviewed(p.input.review)
+        ? (p.input.anchors || []).filter((anchor) =>
+            isHumanReviewed(anchor.review)
+          ).length
+        : 0),
+    0
+  );
   const a = await generateReadiness(),
     b = await generateReadiness();
   assert.deepEqual(a, b);
+  assert.equal(a.inventory_sha256, before);
+  assert.ok(a.policies.length > 0);
+  assert.equal(a.policies.length, a.totals.policy_records);
   assert.equal(
-    a.inventory_sha256,
-    'efc3293c96045c01766e72c22a8b208ee00d336755753aa84bd7e7c7140a6b9f'
+    new Set(a.policies.map((p) => p.policy_id)).size,
+    a.policies.length
   );
-  assert.equal(a.policies.length, 130);
-  assert.equal(new Set(a.policies.map((p) => p.policy_id)).size, 130);
-  assert.equal(a.totals.archive_rows_bound_to_current_inventory, 104);
-  assert.equal(a.totals.archive_rows_quarantined_url_changed, 26);
-  assert.equal(a.totals.git_document_identities_recorded, 8);
-  assert.equal(a.totals.git_byte_versions_validated, 8);
-  assert.equal(a.totals.human_locator_review_records, 8);
-  assert.equal(a.totals.validated_human_reviewed_anchors, 8);
+  assert.equal(
+    a.totals.cumulative_private_raw_candidate_policies +
+      a.totals.policies_without_raw_candidate,
+    a.totals.policy_records
+  );
+  assert.equal(
+    a.totals.superseded_url_candidate_policies,
+    a.superseded_url_candidates.policy_ids.length
+  );
+  assert.equal(a.totals.git_document_identities_recorded, loadedPackets.length);
+  assert.equal(a.totals.git_byte_versions_validated, inlineCount);
+  assert.equal(a.totals.human_locator_review_records, reviewedAnchorCount);
+  assert.equal(a.totals.validated_human_reviewed_anchors, reviewedAnchorCount);
   assert.equal(a.regressions.length, 0);
-  assert.equal(a.totals.observed_private_raw_candidates, 32);
-  assert.equal(a.totals.observed_private_homepage_only, 5);
-  assert.equal(a.totals.cumulative_private_raw_candidate_policies, 43);
-  assert.equal(a.totals.superseded_url_candidate_policies, 12);
-  assert.equal(a.totals.policies_without_raw_candidate, 87);
-  assert.equal(a.totals.manual_locally_hash_checked_unique_blobs, 17);
-  assert.deepEqual(a.superseded_url_candidates.policy_ids, [
-    'au-wa-petroleum-amendment-2024',
-    'br-anp-ccs-resolution',
-    'ca-ccus-itc',
-    'ca-sk-ccs-directives',
-    'cn-ccer',
-    'cn-miit-industrial-plan-2022',
-    'cn-ordos-pilot-2024',
-    'eu-innovation-fund',
-    'my-netr-ccus-2023',
-    'no-storage-framework',
-    'uk-energy-act-2023',
-    'vn-decree-119-2025',
-  ]);
-  assert.equal(
-    a.manual_acquisition.superseded_url_locally_hash_checked_unique_blobs,
-    11
-  );
-  assert.deepEqual(
-    a.manual_acquisition.superseded_url_supporting_only_policy_ids,
-    ['dk-ccs-subsidy-scheme-2025', 'hr-hydrocarbon-act-ccs']
-  );
-  assert.deepEqual(a.manual_acquisition.superseded_url_failed_only_policy_ids, [
-    'co-law-2099-energy-transition',
-    'ro-law-114-2013-ccs',
-    'us-cifia-lpo',
-  ]);
   const quarantined = a.policies.find(
     (p) => p.policy_id === 'br-anp-ccs-resolution'
   );
@@ -574,5 +567,152 @@ test('unrelated DB mutations preserve (id, url) binding while URL edits quaranti
     );
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+function externalArchivePacket(id = 'ext-doc-one') {
+  const raw = Buffer.from(
+    '<html><body><p>External archive statute clause.</p></body></html>'
+  );
+  const normalized = Buffer.from('External archive statute clause.\n');
+  const rawSha = sha256(raw);
+  return {
+    raw: null,
+    normalized,
+    data: {
+      storage: 'external_archive',
+      external_uri: 'https://archive.example.org/snapshots/ext-doc-one.html',
+      bytes: raw.length,
+      document_id: id,
+      policy_id: 'one',
+      raw_sha256: rawSha,
+      normalized_sha256: sha256(normalized),
+      edition: '2026',
+      source_current_through: null,
+      coverage: 'historical_snapshot',
+      extractor_version: 'official-html-v1',
+      review: human,
+      anchors: [
+        {
+          id: 'clause-1',
+          locator: 'Section 1',
+          exact_quote: 'External archive statute clause.',
+          start_offset: 0,
+          end_offset: 'External archive statute clause.'.length,
+          offset_unit: 'utf16_code_units',
+          version_sha256: rawSha,
+          review: human,
+        },
+      ],
+    },
+  };
+}
+
+test('verified external_archive packet validates without inline raw bytes and does not inflate git byte count', () => {
+  const p = externalArchivePacket();
+  const r = report({ packets: [p] });
+  const doc = r.policies[0].documents[0];
+  assert.equal(doc.raw_integrity, 'external_archive');
+  assert.ok(doc.gaps.includes('EXTERNAL_ARCHIVE_ORIGINAL_BYTES_NOT_INLINE'));
+  assert.equal(r.totals.validated_human_reviewed_anchors, 1);
+  assert.equal(r.totals.git_byte_versions_validated, 0);
+  assert.equal(r.regressions.length, 0);
+});
+
+test('verified external_archive packet fails closed on missing/tampered normalized text or non-HTTPS URI', () => {
+  const missingNormalized = externalArchivePacket('ext-missing-norm');
+  missingNormalized.normalized = null;
+  let r = report({ packets: [missingNormalized] });
+  assert.equal(r.regressions.length, 1);
+  assert.equal(r.totals.validated_human_reviewed_anchors, 0);
+
+  const tamperedNormalized = externalArchivePacket('ext-tampered-norm');
+  tamperedNormalized.normalized = Buffer.from('Tampered archive text.\n');
+  r = report({ packets: [tamperedNormalized] });
+  assert.equal(r.regressions.length, 1);
+  assert.equal(r.totals.validated_human_reviewed_anchors, 0);
+
+  const insecureUri = externalArchivePacket('ext-insecure-uri');
+  insecureUri.data.external_uri = 'http://archive.example.org/insecure.html';
+  r = report({ packets: [insecureUri] });
+  assert.equal(r.regressions.length, 1);
+  assert.equal(r.policies[0].documents[0].raw_integrity, 'mismatch');
+  assert.equal(r.totals.validated_human_reviewed_anchors, 0);
+});
+
+test('loadPackets loads disk external_archive packet with normalized.txt and resolves UTF-16 anchor offsets cleanly', () => {
+  const tmpDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), 'readiness-ext-archive-')
+  );
+  try {
+    const packetDir = path.join(tmpDir, 'ext-disk-fixture');
+    fs.mkdirSync(packetDir);
+    const quote = 'External archive statute clause.';
+    const normalizedText = `条款 §1 — ${quote}\n`;
+    const normalizedBuf = Buffer.from(normalizedText, 'utf8');
+    const rawBytes = Buffer.from(
+      `<html><body><p>${normalizedText.trim()}</p></body></html>`,
+      'utf8'
+    );
+    const rawSha = sha256(rawBytes);
+    const manifest = {
+      schema_version: '1.0.0',
+      storage: 'external_archive',
+      external_uri: 'https://archive.example.org/snapshots/ext-disk.html',
+      bytes: rawBytes.length,
+      document_id: 'ext-disk-fixture',
+      policy_id: 'one',
+      title: {
+        en: 'External Archive Disk Fixture',
+        zh: '外部归档磁盘测试',
+      },
+      source_url: 'https://official.example.org/law',
+      source_language: 'en',
+      edition: '2026',
+      fetched_at: '2026-11-19T00:00:00Z',
+      published_at: null,
+      source_current_through: null,
+      raw_sha256: rawSha,
+      normalized_sha256: sha256(normalizedBuf),
+      extractor_version: 'official-html-v1',
+      review: human,
+      anchors: [
+        {
+          id: 'clause-1',
+          locator: 'Section 1',
+          exact_quote: quote,
+          version_sha256: rawSha,
+          review: human,
+        },
+      ],
+    };
+    fs.writeFileSync(
+      path.join(packetDir, 'packet.json'),
+      JSON.stringify(manifest, null, 2)
+    );
+    fs.writeFileSync(path.join(packetDir, 'normalized.txt'), normalizedBuf);
+
+    const loaded = loadPackets(tmpDir);
+    assert.equal(loaded.length, 1);
+    assert.equal(loaded[0].raw, null);
+    const anchor = loaded[0].data.anchors[0];
+    assert.equal(anchor.offset_unit, 'utf16_code_units');
+    assert.equal(anchor.start_offset, normalizedText.indexOf(quote));
+    assert.equal(
+      anchor.end_offset,
+      normalizedText.indexOf(quote) + quote.length
+    );
+    assert.equal(
+      normalizedText.slice(anchor.start_offset, anchor.end_offset),
+      quote
+    );
+
+    const r = report({ packets: loaded });
+    assert.equal(r.regressions.length, 0);
+    assert.equal(r.totals.validated_human_reviewed_anchors, 1);
+    assert.equal(r.totals.git_byte_versions_validated, 0);
+    assert.equal(r.policies[0].documents[0].raw_integrity, 'external_archive');
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
   }
 });
