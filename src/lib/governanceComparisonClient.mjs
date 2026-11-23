@@ -34,6 +34,7 @@ import {
   clearGovernanceAnalytics,
   renderGovernanceAnalytics,
 } from './governanceWorkspaceVisuals.mjs';
+import { escapeHtml } from './html.mjs';
 
 const colors = [
   { border: 'rgb(37, 99, 235)', bg: 'rgba(37, 99, 235, 0.1)' },
@@ -43,19 +44,6 @@ const colors = [
   { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' },
   { border: 'rgb(14, 165, 183)', bg: 'rgba(14, 165, 183, 0.1)' },
 ];
-
-const escapeHtml = (value) =>
-  String(value ?? '').replace(
-    /[&<>"']/g,
-    (character) =>
-      ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;',
-      })[character] || character
-  );
 
 const formatCapacity = (value) => Number(value || 0).toFixed(1);
 
@@ -68,10 +56,10 @@ const readCompareList = () => {
   }
 };
 
-const countryDisplayName = (canonical, countryMap, lang) => {
-  if (lang === 'en') return countryMap[canonical]?.en || canonical;
-  return countryMap[canonical]?.zh || canonical;
-};
+export function countryDisplayName(canonical, countryMap, lang) {
+  if (lang === 'en') return countryMap?.[canonical]?.en || canonical;
+  return countryMap?.[canonical]?.zh || canonical;
+}
 
 const getData = (id, key) => {
   const node = document.getElementById(id);
@@ -106,7 +94,7 @@ const readWeightState = () => {
 
 // Shareable weight scenarios: `?weights=30,20,20,15,15` in
 // GOVERNANCE_DIMENSIONS order. Invalid payloads fall back to equal weights.
-const readWeightsFromUrl = (params) => {
+export function readWeightsFromUrl(params) {
   const raw = String(params.get('weights') || '').trim();
   if (!raw) return null;
   const values = raw.split(',').map((token) => Number(token.trim()));
@@ -121,7 +109,7 @@ const readWeightsFromUrl = (params) => {
       values[position],
     ])
   );
-};
+}
 
 const applyWeightsToSliders = (weights) => {
   if (!weights) return false;
@@ -141,36 +129,50 @@ const applyWeightsToSliders = (weights) => {
 // Persist the explorable view state (weights + planned toggle) next to
 // `countries` so a copied URL reproduces the exact scenario. Defaults are
 // omitted to keep shared links short.
-const syncViewParamsToUrl = () => {
-  const url = new URL(window.location.href);
-  const weights = readWeightState();
+export function serializeCompareViewParams(
+  searchParams,
+  weights,
+  includePlanned
+) {
+  const next = new URLSearchParams(searchParams);
   if (weights) {
     const values = GOVERNANCE_DIMENSIONS.map(
       (dimension) => Number(weights[dimension]) || 0
     );
     const uniform = values.every((value) => value === values[0]);
-    if (uniform) url.searchParams.delete('weights');
-    else url.searchParams.set('weights', values.join(','));
+    if (uniform) next.delete('weights');
+    else next.set('weights', values.join(','));
   }
-  if (readIncludePlanned()) url.searchParams.set('planned', '1');
-  else url.searchParams.delete('planned');
+  if (includePlanned) next.set('planned', '1');
+  else next.delete('planned');
+  return next;
+}
+
+const syncViewParamsToUrl = () => {
+  const url = new URL(window.location.href);
+  const nextParams = serializeCompareViewParams(
+    url.searchParams,
+    readWeightState(),
+    readIncludePlanned()
+  );
+  url.search = nextParams.toString();
   window.history.replaceState(null, '', url.toString());
 };
 
 const readIncludePlanned = () =>
   document.getElementById('include-planned')?.checked === true;
 
-const buildCountrySystem = ({
+export function buildCountrySystem({
   canonical,
-  policies,
-  facilities,
-  countryMap,
-  profiles,
-  lang,
-  index,
-  weights,
-  includePlanned,
-}) => {
+  policies = [],
+  facilities = [],
+  countryMap = {},
+  profiles = [],
+  lang = 'zh',
+  index = 0,
+  weights = null,
+  includePlanned = false,
+}) {
   const governance = calculateGovernanceCapability(policies, weights);
   const deployment = calculateDeploymentMetrics(facilities);
   deployment.matrixX = includePlanned
@@ -200,15 +202,15 @@ const buildCountrySystem = ({
     facilityList: facilities,
     regulatory,
   };
-};
+}
 
-const buildGlobalSystems = (
+export function buildGlobalSystems(
   allPolicies,
   allFacilities,
   countryMap,
   weights,
   includePlanned
-) => {
+) {
   const countries = [
     ...new Set(
       allPolicies
@@ -238,12 +240,14 @@ const buildGlobalSystems = (
       includePlanned,
     })
   );
-};
+}
 
-const regulatoryClarity = (regulatory, regKeys) =>
-  regKeys.filter(([, key]) => !isPendingRegulatory(regulatory?.[key])).length;
+export function regulatoryClarity(regulatory, regKeys) {
+  return regKeys.filter(([, key]) => !isPendingRegulatory(regulatory?.[key]))
+    .length;
+}
 
-const classifyQuadrant = (country, benchmarks) => {
+export function classifyQuadrant(country, benchmarks) {
   const governanceHigh =
     Number(country.governance.index) >= Number(benchmarks.governance);
   const deploymentHigh =
@@ -252,7 +256,7 @@ const classifyQuadrant = (country, benchmarks) => {
   if (governanceHigh) return 'policy-led';
   if (deploymentHigh) return 'deployment-led';
   return 'foundation-building';
-};
+}
 
 const verificationBadge = (policy, lang) => {
   const ui = visualCopy[lang] || visualCopy.zh;
@@ -478,10 +482,10 @@ const downloadFile = (filename, content, mime) => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 
-const csvCell = (value) => {
+export function csvCell(value) {
   const text = String(value ?? '');
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
-};
+}
 
 const exportScorecardCsv = (countrySystems, benchmarks, text) => {
   const header = [

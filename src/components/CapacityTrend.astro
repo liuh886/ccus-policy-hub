@@ -308,7 +308,9 @@ const metricClose = lang === 'zh' ? '）' : ')';
           min={startYear}
           max={endYear}
           value={defaultMinYear}
-          aria-label={lang === 'zh' ? '起始年份' : 'Start year'}
+          aria-label={lang === 'en'
+            ? 'Minimum year in active range'
+            : '有效时间范围起始年份'}
         />
         <input
           type="range"
@@ -316,7 +318,9 @@ const metricClose = lang === 'zh' ? '）' : ')';
           min={startYear}
           max={endYear}
           value={defaultMaxYear}
-          aria-label={lang === 'zh' ? '结束年份' : 'End year'}
+          aria-label={lang === 'en'
+            ? 'Maximum year in active range'
+            : '有效时间范围结束年份'}
         />
       </div>
     </div>
@@ -616,6 +620,12 @@ const metricClose = lang === 'zh' ? '）' : ')';
         chart.update();
       };
 
+      const activateRangeThumb = (target: EventTarget | null) => {
+        if (!minSlider || !maxSlider) return;
+        minSlider.style.zIndex = target === minSlider ? '34' : '31';
+        maxSlider.style.zIndex = target === maxSlider ? '34' : '32';
+      };
+
       const updateSliderUI = (event?: Event) => {
         if (!minSlider || !maxSlider) return;
 
@@ -643,8 +653,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
         if (yearMinVal) yearMinVal.textContent = String(min);
         if (yearMaxVal) yearMaxVal.textContent = String(max);
 
-        minSlider.style.zIndex = event?.target === minSlider ? '34' : '31';
-        maxSlider.style.zIndex = event?.target === maxSlider ? '34' : '32';
+        activateRangeThumb(event?.target ?? null);
 
         const scales = chart.options.scales;
         if (scales?.x) {
@@ -660,6 +669,11 @@ const metricClose = lang === 'zh' ? '）' : ')';
       });
 
       if (minSlider && maxSlider) {
+        const handleThumbPointerDown = (event: PointerEvent) => {
+          activateRangeThumb(event.target);
+        };
+        minSlider.addEventListener('pointerdown', handleThumbPointerDown);
+        maxSlider.addEventListener('pointerdown', handleThumbPointerDown);
         minSlider.addEventListener('input', updateSliderUI);
         maxSlider.addEventListener('input', updateSliderUI);
         minSlider.addEventListener('focus', updateSliderUI);

@@ -12,6 +12,10 @@
  * (positional pair) so i18n stays in one place.
  */
 
+import { escapeHtml } from './html.mjs';
+
+export { escapeHtml };
+
 const STATUS_COLORS = Object.freeze({
   运行中: 'bg-emerald-500',
   Operational: 'bg-emerald-500',
@@ -22,21 +26,6 @@ const STATUS_COLORS = Object.freeze({
   'Under construction': 'bg-amber-500',
   建设中: 'bg-amber-500',
 });
-
-const HTML_ENTITIES = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;',
-};
-
-export function escapeHtml(value) {
-  return String(value ?? '').replace(
-    /[&<>"']/g,
-    (char) => HTML_ENTITIES[char] || char
-  );
-}
 
 export function facilityCardViewModel(item = {}) {
   const estimatedCapacity = Number(item?.estimatedCapacity) || 0;

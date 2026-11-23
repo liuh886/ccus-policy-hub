@@ -151,55 +151,5 @@ import '../styles/light-editorial.css';
     </main>
     {!hideCompareDrawer && <CompareDrawer lang={lang as 'zh' | 'en'} />}
     <Footer lang={lang as string} />
-
-    <script is:inline>
-      (() => {
-        const configureRangeControls = () => {
-          const minSlider = document.getElementById('minYearSlider');
-          const maxSlider = document.getElementById('maxYearSlider');
-          const isEnglish = document.documentElement.lang === 'en';
-
-          minSlider?.setAttribute(
-            'aria-label',
-            isEnglish ? 'Minimum year in active range' : '有效时间范围起始年份'
-          );
-          maxSlider?.setAttribute(
-            'aria-label',
-            isEnglish ? 'Maximum year in active range' : '有效时间范围结束年份'
-          );
-        };
-
-        if (!window.__ccusRangeLayerBound) {
-          const activateRangeThumb = (target) => {
-            if (!(target instanceof HTMLElement)) return;
-            if (target.id !== 'minYearSlider' && target.id !== 'maxYearSlider')
-              return;
-
-            const root = target.closest('[data-capacity-trend]') || document;
-            const minSlider = root.querySelector('#minYearSlider');
-            const maxSlider = root.querySelector('#maxYearSlider');
-            if (
-              !(minSlider instanceof HTMLElement) ||
-              !(maxSlider instanceof HTMLElement)
-            )
-              return;
-
-            minSlider.style.zIndex = target === minSlider ? '34' : '31';
-            maxSlider.style.zIndex = target === maxSlider ? '34' : '32';
-          };
-
-          document.addEventListener('pointerdown', (event) => {
-            activateRangeThumb(event.target);
-          });
-          document.addEventListener('focusin', (event) => {
-            activateRangeThumb(event.target);
-          });
-          document.addEventListener('astro:page-load', configureRangeControls);
-          window.__ccusRangeLayerBound = true;
-        }
-
-        configureRangeControls();
-      })();
-    </script>
   </body>
 </html>

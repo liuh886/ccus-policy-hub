@@ -160,6 +160,7 @@ const mapUrl = `${SITE_BASE}/api/facilities-map.${lang}.json`;
   import { t as translateUi, type UiKey } from '../i18n/ui';
   import { fetchCachedJson } from '../lib/cachedJsonFetch';
   import { hasRenderableCoordinates } from '../lib/dataIndexCore.mjs';
+  import { escapeHtml } from '../lib/html.mjs';
 
   interface MapFacility {
     id: string | number;
@@ -173,21 +174,6 @@ const mapUrl = `${SITE_BASE}/api/facilities-map.${lang}.json`;
   }
 
   let activeMapObserver: IntersectionObserver | null = null;
-
-  const escapeHtml = (value: unknown) =>
-    String(value ?? '').replace(
-      /[&<>"']/g,
-      (char: string) =>
-        (
-          ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;',
-          }) as Record<string, string>
-        )[char] || char
-    );
 
   function renderMapErrorHtml(
     title: string,
