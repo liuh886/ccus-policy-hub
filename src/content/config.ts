@@ -1,6 +1,11 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { POLICY_CATEGORIES, POLICY_STATUSES } from './enums.generated';
+import {
+  ANALYSIS_DIMENSIONS,
+  FACILITY_STATUSES,
+  POLICY_CATEGORIES,
+  POLICY_STATUSES,
+} from './enums.generated';
 
 const provenanceSchema = z.object({
   author: z.string(),
@@ -75,7 +80,7 @@ const policySchema = z.object({
     })
     .optional(),
   analysis: z
-    .record(z.string(), policyAnalysisDimensionSchema)
+    .record(z.enum(ANALYSIS_DIMENSIONS), policyAnalysisDimensionSchema)
     .optional()
     .default({}),
   relatedFacilities: z.array(z.string()).default([]),
@@ -149,6 +154,10 @@ const facilitySchema = z.object({
   provenance: provenanceSchema.optional(),
 });
 
+const facilitySchemaEn = facilitySchema.extend({
+  status: z.enum(FACILITY_STATUSES).optional().default('Planned'),
+});
+
 const policies_zh = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/policies/zh' }),
   schema: policySchema,
@@ -166,7 +175,7 @@ const facilities_zh = defineCollection({
 
 const facilities_en = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/facilities/en' }),
-  schema: facilitySchema,
+  schema: facilitySchemaEn,
 });
 
 const changelog = defineCollection({

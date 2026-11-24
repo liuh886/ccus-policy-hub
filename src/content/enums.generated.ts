@@ -1,4 +1,4 @@
-// GENERATED FILE - DO NOT EDIT
+// Governed content-collection enum contract (mirrors SQLite ui_category / ui_status / ui_dimension; parity enforced by scripts/policy-taxonomy.test.mjs).
 export const POLICY_CATEGORIES = [
   'Incentive',
   'Market',
