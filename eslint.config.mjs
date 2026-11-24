@@ -73,6 +73,12 @@ export default [
     },
   },
   {
-    ignores: ['dist/**', 'node_modules/**', '.astro/**', '.worktrees/**'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      '.astro/**',
+      '.worktrees/**',
+      'scripts/templates/**',
+    ],
   },
 ];

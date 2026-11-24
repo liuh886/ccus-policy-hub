@@ -50,7 +50,7 @@ jobs:
             echo "governed_data=false" >> "$GITHUB_OUTPUT"
           fi
 
-          if grep -Eq '^(public/reports/|scripts/(sync-paper-report|verify-paper-report|lib/report-structure|lib/tex-preprocess)|\.esg30-sync\.json$|\.github/workflows/(ci|sync-esg30-report)\.yml$)' changed-files.txt; then
+          if grep -Eq '^(public/reports/|scripts/(sync-paper-report|verify-paper-report|lib/report-structure|lib/tex-preprocess|lib/esg30-report-template|templates/)|\.esg30-sync\.json$|\.github/workflows/(ci|sync-esg30-report)\.yml$)' changed-files.txt; then
             echo "report_changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "report_changed=false" >> "$GITHUB_OUTPUT"

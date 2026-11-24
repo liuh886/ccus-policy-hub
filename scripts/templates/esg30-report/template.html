@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{DOC_TITLE}} | CCUS Policy Hub</title>
+  <meta name="description" content="{{PROGRAM_NAME}}：{{DOC_TITLE}}" />
+  <meta name="paper-source" content="paper_draft.tex sha256:{{TEX_SHA}}" />
+  
+  <!-- MathJax 3 实时渲染公式 -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" id="MathJax-script" async></script>
+  
+  <!-- 现代精美学术字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+{{STYLES}}
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <div id="citation-popover"></div>
+  <div id="lightbox-modal"><span class="lightbox-hint"><kbd>Esc</kbd> 点击关闭</span><img src="" id="lightbox-img" alt="zoom"></div>
+  <div id="comment-toast"></div>
+
+  <!-- Floating Text Selection Toolbar -->
+  <div id="text-selection-toolbar" class="selection-toolbar" style="display: none;">
+    <button id="btn-add-comment" class="selection-action-btn" title="针对选中文本添加批注">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>添加批注</span>
+    </button>
+  </div>
+
+  <!-- Comment Input Modal -->
+  <div id="comment-input-modal" class="comment-modal-backdrop" style="display: none;">
+    <div class="comment-modal-card">
+      <div class="comment-modal-header">
+        <div class="comment-modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>添加批注</span>
+        </div>
+        <button id="btn-close-comment-modal" class="modal-close-btn" title="关闭">✕</button>
+      </div>
+      <div class="comment-modal-body">
+        <div class="modal-quote-box">
+          <span class="modal-quote-label">引述原文：</span>
+          <p id="modal-quoted-text" class="modal-quoted-content"></p>
+        </div>
+        <div class="comment-input-wrap">
+          <label for="comment-textarea" class="comment-input-label">批注内容：</label>
+          <textarea id="comment-textarea" rows="4" placeholder="输入针对该段落的审阅意见... (Ctrl+Enter 提交)"></textarea>
+        </div>
+      </div>
+      <div class="comment-modal-footer">
+        <button id="btn-cancel-comment" class="btn">取消</button>
+        <button id="btn-save-comment" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>保存批注</span>
+          <kbd class="kbd-key" style="background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); color: #fff;">Ctrl+Enter</kbd>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments Slide-out Drawer -->
+  <div id="comments-drawer-backdrop" class="comments-drawer-backdrop" style="display: none;"></div>
+  <aside id="comments-drawer" class="comments-drawer" aria-label="批注列表">
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="drawer-header-title">批注列表</span>
+        <span id="drawer-comments-count" class="badge">0</span>
+      </div>
+      <button id="btn-close-comments-drawer" class="btn" style="padding: 0.25rem 0.55rem;">✕ 关闭</button>
+    </div>
+
+    <div class="drawer-actions-bar">
+      <button id="btn-export-markdown" class="btn btn-sm btn-primary" title="导出 Markdown">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>导出 Markdown</span>
+      </button>
+      <button id="btn-copy-comments" class="btn btn-sm" title="复制全部批注">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>复制全部</span>
+      </button>
+      <button id="btn-clear-all-comments" class="btn btn-sm btn-danger" title="清空全部批注">
+        <span>清空</span>
+      </button>
+    </div>
+
+    <div id="comments-list-container" class="comments-list-wrap">
+      <!-- 动态生成批注卡片 -->
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer">
+    <div class="drawer-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <span style="font-weight: 700; font-size: 1.1rem;">报告大纲</span>
+        <button id="close-drawer" class="btn" style="padding: 0.3rem 0.6rem;">✕ 关闭</button>
+      </div>
+      <nav class="toc-nav" id="mobile-toc-container"></nav>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="../../" id="nav-brand-link" class="nav-brand" title="返回首页" aria-label="返回首页">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+      <span class="brand-text">CCUS Policy Hub</span>
+      <span class="brand-text-short">CCUS</span>
+      <span class="badge">智库报告</span>
+    </a>
+    <div class="nav-actions">
+      <button class="btn" id="btn-toggle-toc" title="折叠/展开大纲 ([)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M14 9l-3 3 3 3"/></svg>
+        <span id="btn-toggle-toc-text">折叠大纲</span>
+        <kbd class="kbd-key">[</kbd>
+      </button>
+      <button class="btn" id="btn-toggle-comments" title="打开批注抽屉" aria-label="打开批注抽屉">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="btn-label">批注</span>
+        <span id="nav-comment-badge" class="badge badge-comment-count" style="display: none;">0</span>
+      </button>
+      <button class="btn" id="theme-toggle" title="切换深浅模式" aria-label="切换深浅模式"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><span class="btn-label">主题</span></button>
+      <a href="./paper_draft.pdf" download class="btn btn-primary" title="下载原版 PDF{{PDF_PAGE_SUFFIX}}" aria-label="下载原版 PDF">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="btn-label">下载原版 PDF</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Container -->
+  <div class="container">
+    <!-- Floating Tab to re-open TOC when collapsed -->
+    <button id="btn-float-expand-toc" class="floating-toc-tab" title="展开大纲 ([)" aria-label="展开大纲">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>展开大纲</span>
+      <kbd class="kbd-key">[</kbd>
+    </button>
+
+    <!-- TOC Sidebar (Desktop) -->
+    <aside class="toc-sidebar" id="toc-sidebar">
+      <div class="toc-title">
+        <span>报告大纲</span>
+        <button id="btn-collapse-toc-icon" class="toc-collapse-icon-btn" title="折叠大纲 ([)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <nav class="toc-nav" id="toc-container"></nav>
+    </aside>
+
+    <!-- Main Article Body -->
+    <main class="article-wrap">
+      <div class="paper-hero">
+        <div class="paper-type">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>{{PROGRAM_NAME}} · {{REPORT_TYPE}} ({{REPORT_VERSION}})</span>
+        </div>
+        <h1 class="paper-title">{{DOC_TITLE}}</h1>
+        <div class="paper-meta">
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="meta-label">作者</span>
+            <span class="meta-value">{{DOC_AUTHOR}}</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="meta-label">发布日期</span>
+            <span class="meta-value">{{DOC_DATE}}</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span class="meta-label">DOI</span>
+            <span class="meta-value">10.5281/zenodo.21110615</span>
+          </div>
+        </div>
+
+        <div class="reading-stats">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>约 {{CHAR_COUNT_K}}k 字</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{{READ_MINUTES}} 分钟</span>
+        </div>
+
+        <div class="abstract-box">
+          <div class="abstract-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>报告摘要</span>
+          </div>
+          <div class="abstract-content">
+            {{ABSTRACT_TEXT}}
+          </div>
+          <div class="keywords">
+            <strong>关键词：</strong>{{KEYWORDS_TEXT}}
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Body from Pandoc with Citations Linked -->
+      <article class="article-content" id="report-content">
+        {{BODY_HTML}}
+      </article>
+
+      <!-- Citation Card -->
+      <div class="citation-card">
+        <h4 style="font-size: 1.05rem; margin-bottom: 0.5rem;">引用本报告</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          刘志豪, 崔博宇, 吴俊军, 施闻如. (2026). {{DOC_TITLE}} (ESG30 青年学者计划课题报告 {{REPORT_VERSION}}). CCUS Policy Hub. https://doi.org/10.5281/zenodo.21110615
+        </p>
+        <pre class="citation-code"><code>@techreport{liu2026esg30ccus,
+  title={{{DOC_TITLE}}},
+  author={刘志豪, 崔博宇, 吴俊军, 施闻如},
+  year={2026},
+  institution={CCUS Policy Hub / ESG30 青年学者计划},
+  doi={10.5281/zenodo.21110615},
+  url={https://liuh886.github.io/ccus-policy-hub/reports/{{SLUG}}/}
+}</code></pre>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-top: 1rem;">
+          <button class="btn" id="copy-bibtex-btn">📋 复制 BibTeX</button>
+          <a href="./paper_draft.pdf" download class="btn btn-primary">下载原版 PDF{{PDF_PAGE_SUFFIX}}</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" title="返回顶部" aria-label="返回顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Mobile Floating Button -->
+  <button class="btn btn-primary mobile-toc-btn" id="open-drawer" aria-label="打开报告大纲">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+    <span>报告大纲</span>
+  </button>
+
+  <script>
+{{SCRIPT}}
+  </script>
+</body>
+</html>
