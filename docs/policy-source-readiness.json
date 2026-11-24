@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "as_of": "2026-10-30",
-  "inventory_sha256": "7ff3661ad7a992d91b0dce91909fae13c97abe68ee2b843cf4f3b53612e633c8",
+  "inventory_sha256": "a2da1cfea8a63d7b2431f5f3f2ec73de4349db05e2ad5735f9fce862b75e99a4",
   "inputs": {
     "evidence_packet_manifests": [
       {
@@ -44,8 +44,8 @@
     },
     "archive_binding": {
       "exact_inventory_sha256": 0,
-      "policy_url_match": 85,
-      "url_changed_since_capture": 45,
+      "policy_url_match": 75,
+      "url_changed_since_capture": 55,
       "policy_added_since_capture": 0,
       "inventory_mismatch": 0,
       "unbound": 0
@@ -65,8 +65,8 @@
   "totals": {
     "policy_records": 130,
     "url_present": 130,
-    "archive_rows_bound_to_current_inventory": 85,
-    "archive_rows_quarantined_url_changed": 45,
+    "archive_rows_bound_to_current_inventory": 75,
+    "archive_rows_quarantined_url_changed": 55,
     "observed_private_raw_candidates": 32,
     "observed_private_homepage_only": 0,
     "git_document_identities_recorded": 8,
@@ -74,10 +74,10 @@
     "human_locator_review_records": 8,
     "validated_human_reviewed_anchors": 8,
     "primary_instrument_identity_reviewed_policies": 0,
-    "cumulative_private_raw_candidate_policies": 38,
-    "superseded_url_candidate_policies": 17,
-    "policies_without_raw_candidate": 92,
-    "manual_locally_hash_checked_unique_blobs": 8
+    "cumulative_private_raw_candidate_policies": 37,
+    "superseded_url_candidate_policies": 18,
+    "policies_without_raw_candidate": 93,
+    "manual_locally_hash_checked_unique_blobs": 5
   },
   "limitations": [
     "Transfer states and nonempty URLs are not verified primary-document coverage.",
@@ -100,6 +100,7 @@
       "my-netr-ccus-2023",
       "no-storage-framework",
       "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
       "uk-energy-act-2023",
       "vn-decree-119-2025",
       "za-climate-change-act-2024"
@@ -121,6 +122,7 @@
       "my-netr-ccus-2023",
       "no-storage-framework",
       "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
       "uk-energy-act-2023",
       "vn-decree-119-2025",
       "za-climate-change-act-2024"
@@ -128,6 +130,7 @@
     "url_changed_quarantined_policy_ids": [
       "ae-federal-climate-law-2024",
       "au-wa-petroleum-amendment-2024",
+      "be-ccus-strategy-2025",
       "br-anp-ccs-resolution",
       "ca-ccus-itc",
       "ca-sk-ccs-directives",
@@ -146,24 +149,33 @@
       "co-law-2099-energy-transition",
       "denmark-ccfd",
       "dk-ccs-subsidy-scheme-2025",
+      "eg-carbon-market-framework-2024",
+      "es-climate-law-ccs-2025",
       "eu-innovation-fund",
       "fr-ccus-strategy-2024",
+      "gr-ccs-regulatory-framework-2025",
+      "gr-climate-law-2022-update",
       "hr-hydrocarbon-act-ccs",
       "imo-marpol-occs-2024",
       "in-national-mission-ccus-2024",
       "in-union-budget-2026-ccus",
       "is-carbfix-act",
+      "is-onshore-storage-permit-2025",
       "it-law-11-2024-modernization",
       "kr-motie-cluster-district-2025",
       "my-netr-ccus-2023",
       "nl-cdr-roadmap-2025",
       "no-storage-framework",
+      "om-ccus-roadmap-2024",
+      "qa-national-climate-strategy-2024",
+      "ro-emergency-ordinance-2024",
       "ro-law-114-2013-ccs",
       "ru-climate-doctrine-2023",
       "sa-circular-carbon-economy-2024",
       "sa-hydrogen-strategy-ccus",
       "sa-megi-ccus",
       "sg-carbon-tax-ccus-2025",
+      "tr-climate-law-2025",
       "uae-adnoc-ccs-2030",
       "uk-energy-act-2023",
       "us-cifia-lpo",
@@ -176,16 +188,6 @@
   "triage": [
     {
       "policy_id": "ar-rigi-ccus-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "be-ccus-strategy-2025",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -225,56 +227,6 @@
       ]
     },
     {
-      "policy_id": "eg-carbon-market-framework-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "es-climate-law-ccs-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "gr-ccs-regulatory-framework-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "gr-climate-law-2022-update",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "is-onshore-storage-permit-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "kw-kpc-net-zero-2024",
       "priority": "P0",
       "blockers": [
@@ -286,16 +238,6 @@
     },
     {
       "policy_id": "ng-nuprc-decarb-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "om-ccus-roadmap-2024",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -325,26 +267,6 @@
       ]
     },
     {
-      "policy_id": "qa-national-climate-strategy-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "ro-emergency-ordinance-2024",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
       "policy_id": "th-boi-incentives",
       "priority": "P0",
       "blockers": [
@@ -356,16 +278,6 @@
     },
     {
       "policy_id": "th-draft-climate-change-act-2025",
-      "priority": "P0",
-      "blockers": [
-        "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
-      ]
-    },
-    {
-      "policy_id": "tr-climate-law-2025",
       "priority": "P0",
       "blockers": [
         "CURRENTNESS_UNKNOWN",
@@ -427,6 +339,17 @@
     },
     {
       "policy_id": "au-wa-petroleum-amendment-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "be-ccus-strategy-2025",
       "priority": "P1",
       "blockers": [
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
@@ -688,6 +611,28 @@
       ]
     },
     {
+      "policy_id": "eg-carbon-market-framework-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "es-climate-law-ccs-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "eu-cbam",
       "priority": "P1",
       "blockers": [
@@ -772,6 +717,28 @@
       "policy_id": "gold-standard",
       "priority": "P1",
       "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "gr-ccs-regulatory-framework-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "gr-climate-law-2022-update",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -898,6 +865,17 @@
       ]
     },
     {
+      "policy_id": "is-onshore-storage-permit-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "iso-standards",
       "priority": "P1",
       "blockers": [
@@ -1010,9 +988,42 @@
       ]
     },
     {
+      "policy_id": "om-ccus-roadmap-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
       "policy_id": "puro-earth",
       "priority": "P1",
       "blockers": [
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "qa-national-climate-strategy-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "ro-emergency-ordinance-2024",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
@@ -1075,6 +1086,17 @@
     },
     {
       "policy_id": "sg-carbon-tax-ccus-2025",
+      "priority": "P1",
+      "blockers": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
+        "CURRENTNESS_UNKNOWN",
+        "NO_GIT_FROZEN_ORIGINAL",
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
+      ]
+    },
+    {
+      "policy_id": "tr-climate-law-2025",
       "priority": "P1",
       "blockers": [
         "ARCHIVE_OBSERVATION_UNAVAILABLE",
@@ -1476,34 +1498,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://economie.fgov.be/",
+        "reference": "https://www.nationalenergyclimateplan.be/pnec-2025.pdf",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:22:41+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -2835,34 +2858,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://fra.gov.eg/",
+        "reference": "https://fra.gov.eg/%d8%aa%d8%b4%d8%b1%d9%8a%d8%b9%d8%a7%d8%aa-%d8%a7%d9%84%d8%a7%d8%b3%d8%aa%d8%af%d8%a7%d9%85%d8%a9-%d9%88%d8%b3%d9%88%d9%82-%d8%a7%d9%84%d9%83%d8%b1%d8%a8%d9%88%d9%86/",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:30+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -2871,34 +2895,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.miteco.gob.es/",
+        "reference": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-20049",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:30+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3286,34 +3311,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://ypen.gov.gr/",
+        "reference": "https://www.hellenicparliament.gr/nomothetiko-ergo/anazitisi-nomothetikou-ergou?law_id=5b4e715a-2312-47d1-ba04-b3a40000fd38",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:34+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3322,34 +3348,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://ypen.gov.gr",
+        "reference": "https://ypen.gov.gr/perivallon/klimatiki-allagi/ethnikos-klimatikos-nomos/",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:34+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -3825,34 +3852,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.ust.is/",
+        "reference": "https://ust.is/atvinnulif/mengandi-starfsemi/starfsleyfi/fongun-og-geymsla-koldioxids/carbfix-hf.-hellisheidi/",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:36+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -4666,34 +4694,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://mem.gov.om/",
+        "reference": "https://www.ea.gov.om/media/aaslyc3l/oman-net-zero-report-2022_screen.pdf",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -4844,34 +4873,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.mecc.gov.qa/",
+        "reference": "https://unfccc.int/sites/default/files/2025-11/Qatar%20NDC%203.0.pdf",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -4880,34 +4910,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.energie.gov.ro",
+        "reference": "https://www.senat.ro/Legis/Lista.aspx?cod=26580",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -5210,34 +5241,35 @@
       "policy_review_status": "verified",
       "source_url": {
         "present": true,
-        "reference": "https://www.resmigazete.gov.tr/",
+        "reference": "https://cdn.tbmm.gov.tr/KKBSPublicFile/D28/Y3/KanunMetni/c72efad5-63d6-4276-9998-58212adcf8b9.htm",
         "protocol": "https:",
-        "scope": "homepage_like",
+        "scope": "unknown",
         "primary_document_identified": "unknown"
       },
       "document_kind": "unknown",
       "archive": {
-        "binding_mode": "policy_url_match",
-        "state": "no_raw_file",
-        "transfer_status": "source_too_broad",
-        "observed_at": "2026-10-30T04:23:44+00:00",
+        "binding_mode": "url_changed_since_capture",
+        "state": "unknown",
+        "transfer_status": "unknown",
+        "observed_at": null,
         "http_status": null,
-        "has_private_file": false,
+        "has_private_file": null,
         "reported_content_sha256": null,
         "recorded_edition": "unknown",
-        "source_url_scope": "site_homepage",
+        "source_url_scope": "unknown",
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
       "documents": [],
       "evidence_level": "record_summary",
       "currentness": "unknown",
-      "priority": "P0",
+      "priority": "P1",
       "gaps": [
+        "ARCHIVE_OBSERVATION_UNAVAILABLE",
+        "ARCHIVE_URL_CHANGED_SINCE_CAPTURE",
         "CURRENTNESS_UNKNOWN",
         "NO_GIT_FROZEN_ORIGINAL",
-        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
-        "SOURCE_TOO_BROAD"
+        "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
     {
@@ -6020,29 +6052,24 @@
       "private_file_ids_redacted": true
     },
     "transfer_attempts": 52,
-    "bound_transfer_attempts": 24,
-    "quarantined_url_changed_transfer_attempts": 28,
-    "locally_hash_checked_unique_blobs": 8,
-    "superseded_url_locally_hash_checked_unique_blobs": 20,
+    "bound_transfer_attempts": 19,
+    "quarantined_url_changed_transfer_attempts": 33,
+    "locally_hash_checked_unique_blobs": 5,
+    "superseded_url_locally_hash_checked_unique_blobs": 23,
     "manual_candidate_policy_ids": [
       "au-safeguard-mechanism",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
       "gold-standard",
-      "jp-jogmec-advanced-ccs-2024",
-      "tr-climate-law-2025"
+      "jp-jogmec-advanced-ccs-2024"
     ],
-    "supporting_only_policy_ids": [
-      "eg-carbon-market-framework-2024",
-      "qa-national-climate-strategy-2024"
-    ],
+    "supporting_only_policy_ids": [],
     "added_candidate_policy_ids": [
       "au-safeguard-mechanism",
       "br-law-14993-2024",
       "br-sbce-law-15042-2024",
       "gold-standard",
-      "jp-jogmec-advanced-ccs-2024",
-      "tr-climate-law-2025"
+      "jp-jogmec-advanced-ccs-2024"
     ],
     "cumulative_candidate_policy_ids": [
       "au-offshore-ghg-act",
@@ -6072,7 +6099,6 @@
       "nl-mining-act-co2-storage-2011",
       "nl-porthos-sde-subsidy",
       "pl-mining-law-ccs-2024",
-      "tr-climate-law-2025",
       "tx-hb-1284-ccus",
       "uk-ccs-network-code",
       "uk-ccus-vision",
@@ -6167,6 +6193,7 @@
       "sg-carbon-tax-ccus-2025",
       "th-boi-incentives",
       "th-draft-climate-change-act-2025",
+      "tr-climate-law-2025",
       "uae-adnoc-ccs-2030",
       "uk-energy-act-2023",
       "us-cifia-lpo",
@@ -6189,6 +6216,7 @@
       "my-netr-ccus-2023",
       "no-storage-framework",
       "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
       "uk-energy-act-2023",
       "vn-decree-119-2025",
       "za-climate-change-act-2024"
@@ -6197,12 +6225,15 @@
       "ch-co2-act-ccs-2024",
       "cn-js-industrial-decarb-2022",
       "dk-ccs-subsidy-scheme-2025",
-      "hr-hydrocarbon-act-ccs"
+      "eg-carbon-market-framework-2024",
+      "hr-hydrocarbon-act-ccs",
+      "qa-national-climate-strategy-2024"
     ],
     "superseded_url_failed_only_policy_ids": [
       "ae-federal-climate-law-2024",
       "cn-hb-ets-offset",
       "co-law-2099-energy-transition",
+      "ro-emergency-ordinance-2024",
       "ro-law-114-2013-ccs",
       "us-cifia-lpo"
     ],
@@ -6223,6 +6254,7 @@
       "my-netr-ccus-2023",
       "no-storage-framework",
       "ru-climate-doctrine-2023",
+      "tr-climate-law-2025",
       "uk-energy-act-2023",
       "vn-decree-119-2025",
       "za-climate-change-act-2024"

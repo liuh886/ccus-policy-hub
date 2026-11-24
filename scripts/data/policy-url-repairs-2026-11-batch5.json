@@ -1,0 +1,187 @@
+{
+  "as_of": "2026-11-24",
+  "policies": [
+    {
+      "id": "be-ccus-strategy-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.nationalenergyclimateplan.be/pnec-2025.pdf",
+          "finding": "Replaced homepage-only economie.fgov.be with live HTTP 200 official Belgian Final Updated National Energy and Climate Plan 2021-2030 (PNEC 2025 PDF), covering Belgium's federal enabling role, London Protocol CO2 export bilaterals, and Flemish/Walloon CCUS capture projections (~5 Mt by 2030); analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://docs.vlaamsparlement.be/files/pfile?id=2050124",
+          "finding": "Verified live HTTP 200 companion official Flemish Parliament PDF of the 2024 Flemish CO2 Transport Decree establishing regulated third-party access, tariff approval by the Flemish regulator, and CO2 network operator designation; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.nationalenergyclimateplan.be/pnec-2025.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage economie.fgov.be URL with live HTTP 200 official Belgian Final Updated NECP (pnec-2025.pdf), with companion Flemish CO2 Transport Decree PDF cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "es-climate-law-ccs-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-20049",
+          "finding": "Replaced homepage-only miteco.gob.es with live HTTP 200 official Boletín Oficial del Estado (BOE) consolidated statutory text of Law 40/2010 of 29 December on the Geological Storage of Carbon Dioxide (BOE-A-2010-20049), transposing EU Directive 2009/31/EC and governing Spanish storage concessions, site characterisation, financial guarantees, and non-discriminatory transport/storage access; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-20049"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage miteco.gob.es URL with live HTTP 200 official BOE consolidated text of Law 40/2010 (BOE-A-2010-20049); analysis dimensions not re-audited."
+    },
+    {
+      "id": "gr-ccs-regulatory-framework-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.hellenicparliament.gr/nomothetiko-ergo/anazitisi-nomothetikou-ergou?law_id=5b4e715a-2312-47d1-ba04-b3a40000fd38",
+          "finding": "Replaced homepage-only ypen.gov.gr with live HTTP 200 official Hellenic Parliament legislative record for Law 5261/2025 (adopted December 2025), Greece's first comprehensive CCS statute establishing state-owned storage, exploration and full-chain CCUS licensing under HEREMA, plume monitoring and handover liability, per-tonne-fee CCS account, and CCfD support; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.hellenicparliament.gr/UserFiles/bcc26661-143b-4f2d-8916-0e0e66ba4c50/13148985.pdf",
+          "finding": "Verified live HTTP 200 companion official Hellenic Parliament voted bill PDF for Law 5261/2025 setting out the enacted CCS regulatory framework text; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.hellenicparliament.gr/nomothetiko-ergo/anazitisi-nomothetikou-ergou?law_id=5b4e715a-2312-47d1-ba04-b3a40000fd38"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage ypen.gov.gr URL with live HTTP 200 official Hellenic Parliament legislative record for Law 5261/2025, with voted bill PDF cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "gr-climate-law-2022-update",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://ypen.gov.gr/perivallon/klimatiki-allagi/ethnikos-klimatikos-nomos/",
+          "finding": "Replaced homepage-only ypen.gov.gr with live HTTP 200 official Ministry of Environment and Energy National Climate Law portal page for Law 4936/2022, establishing Greece's 2050 climate-neutrality framework, five-year sectoral carbon budgets, and NECP monitoring architecture; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://ypen.gov.gr/perivallon/klimatiki-allagi/ethnikos-klimatikos-nomos/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage ypen.gov.gr URL with live HTTP 200 official YPEN National Climate Law (Law 4936/2022) page; analysis dimensions not re-audited."
+    },
+    {
+      "id": "ro-emergency-ordinance-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.senat.ro/Legis/Lista.aspx?cod=26580",
+          "finding": "Replaced homepage-only energie.gov.ro with live HTTP 200 official Romanian Senate legislative docket (L635/2024, cod=26580) for Government Emergency Ordinance 139/2024 amending GEO 64/2011 to align Romania's CO2 geological storage and transport permitting regime (ANRMPSG/ANRE) with the EU Net-Zero Industry Act; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.senat.ro/legis/PDF/2024/24L635OG.PDF",
+          "finding": "Verified live HTTP 200 companion official Romanian Senate PDF of Government Emergency Ordinance 139/2024 (24L635OG.PDF) containing the operative text for direct storage permitting and ANRE CO2 transport licensing; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.senat.ro/Legis/Lista.aspx?cod=26580"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage energie.gov.ro URL with live HTTP 200 official Romanian Senate legislative docket for GEO 139/2024 (cod=26580), with ordinance PDF cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "is-onshore-storage-permit-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://ust.is/atvinnulif/mengandi-starfsemi/starfsleyfi/fongun-og-geymsla-koldioxids/carbfix-hf.-hellisheidi/",
+          "finding": "Replaced homepage-only ust.is with live HTTP 200 official Environment Agency of Iceland (Umhverfisstofnun) storage permit page for Carbfix hf. at Hellisheiði, authorising Europe's first onshore geological CO2 mineralisation storage site (106,000 t/yr, 3.18 Mt over 30 years); analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://ust.is/atvinnulif/mengandi-starfsemi/starfsleyfi/fongun-og-geymsla-koldioxids/carbfix-hf.-hellisheidi/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage ust.is URL with live HTTP 200 official Environment Agency of Iceland Carbfix Hellisheiði CO2 storage permit page; analysis dimensions not re-audited."
+    },
+    {
+      "id": "tr-climate-law-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://cdn.tbmm.gov.tr/KKBSPublicFile/D28/Y3/KanunMetni/c72efad5-63d6-4276-9998-58212adcf8b9.htm",
+          "finding": "Replaced homepage-only resmigazete.gov.tr with live HTTP 200 official Grand National Assembly of Türkiye (TBMM) full statutory HTML text of Climate Law No. 7552 (adopted July 2025), establishing the Directorate of Climate Change ETS architecture, Carbon Market Board, CBAM feasibility framework, and 2053 net-zero target; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://tbmm.gov.tr/Yasama/Kanun/A0D0D465-837B-41F0-BD57-0195237FAD31",
+          "finding": "Verified live HTTP 200 companion official TBMM legislative record page for Climate Law No. 7552 linking parliamentary enactment metadata and statutory text; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://cdn.tbmm.gov.tr/KKBSPublicFile/D28/Y3/KanunMetni/c72efad5-63d6-4276-9998-58212adcf8b9.htm"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage resmigazete.gov.tr URL with live HTTP 200 official TBMM full statutory text of Climate Law No. 7552, with TBMM legislative record page cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "eg-carbon-market-framework-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://fra.gov.eg/%d8%aa%d8%b4%d8%b1%d9%8a%d8%b9%d8%a7%d8%aa-%d8%a7%d9%84%d8%a7%d8%b3%d8%aa%d8%af%d8%a7%d9%85%d8%a9-%d9%88%d8%b3%d9%88%d9%82-%d8%a7%d9%84%d9%83%d8%b1%d8%a8%d9%88%d9%86/",
+          "finding": "Replaced homepage-only fra.gov.eg with live HTTP 200 official Egyptian Financial Regulatory Authority (FRA) Sustainability and Carbon Market Legislation portal collecting the regulatory decrees governing Egypt's regulated voluntary carbon market on EGX; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://fra.gov.eg/wp-content/uploads/2024/03/alamiria_2024_31.pdf",
+          "finding": "Verified live HTTP 200 companion official FRA Decree No. 31 of 2024 gazetted PDF setting carbon-reduction project listing and registration rules; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://fra.gov.eg/wp-content/uploads/2024/03/alamiria_2024_30.pdf",
+          "finding": "Verified live HTTP 200 companion official FRA Decree No. 30 of 2024 gazetted PDF establishing accreditation rules for local voluntary carbon registries; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://fra.gov.eg/%d8%aa%d8%b4%d8%b1%d9%8a%d8%b9%d8%a7%d8%aa-%d8%a7%d9%84%d8%a7%d8%b3%d8%aa%d8%af%d8%a7%d9%85%d8%a9-%d9%88%d8%b3%d9%88%d9%82-%d8%a7%d9%84%d9%83%d8%b1%d8%a8%d9%88%d9%86/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage fra.gov.eg URL with live HTTP 200 official FRA Sustainability and Carbon Market Legislation page, with FRA Decrees 31/2024 and 30/2024 PDFs cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "qa-national-climate-strategy-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://unfccc.int/sites/default/files/2025-11/Qatar%20NDC%203.0.pdf",
+          "finding": "Replaced homepage-only mecc.gov.qa with live HTTP 200 official UNFCCC PDF of Qatar's NDC 3.0 (November 2025), directly cited in the record for the 42 MtCO2e reduction pledge by 2040 with LNG-integrated CCS as a named leading abatement lever under NDS-3 and Qatar National Vision 2030; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.mecc.gov.qa/Publications/NCCAP-Consolidated_digital-en_new.pdf",
+          "finding": "Verified live HTTP 200 companion official Ministry of Environment and Climate Change PDF of Qatar's National Climate Change Action Plan (NCCAP) setting the earlier 2030/2035 strategy baseline; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://unfccc.int/sites/default/files/2025-11/Qatar%20NDC%203.0.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage mecc.gov.qa URL with live HTTP 200 official UNFCCC Qatar NDC 3.0 PDF, with MECC NCCAP consolidated English PDF cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "om-ccus-roadmap-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.ea.gov.om/media/aaslyc3l/oman-net-zero-report-2022_screen.pdf",
+          "finding": "Replaced homepage-only mem.gov.om with live HTTP 200 official Environment Authority of Oman PDF of the National Strategy for an Orderly Transition to Net Zero (2022), directly cited in the record for Oman's 2030/2040/2050 abatement trajectory, 1,760 Mt carbon budget, and 5-25% CCS share across industrial point sources; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://mem.gov.om/cms/uploads/Carbon_Market_Framework_267d9d11ec.pdf",
+          "finding": "Verified live HTTP 200 companion official Ministry of Energy and Minerals Carbon Market Framework PDF complementing Oman's CCUS and MRV institutional build-out; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.ea.gov.om/media/aaslyc3l/oman-net-zero-report-2022_screen.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage mem.gov.om URL with live HTTP 200 official Environment Authority Oman Net Zero Strategy PDF, with MEM Carbon Market Framework PDF cited in sources; analysis dimensions not re-audited."
+    }
+  ]
+}
