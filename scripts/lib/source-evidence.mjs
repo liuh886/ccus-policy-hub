@@ -3,6 +3,7 @@ import { z } from 'astro/zod';
 
 export const EXTRACTOR_VERSION = 'govinfo-usc-html-v1';
 export const MAX_SOURCE_BYTES = 512 * 1024;
+export const MAX_EXTERNAL_SOURCE_BYTES = 16 * 1024 * 1024;
 export const digest = (bytes) =>
   crypto.createHash('sha256').update(bytes).digest('hex');
 const sha = z.string().regex(/^[a-f0-9]{64}$/);
@@ -95,11 +96,23 @@ export function isErrorOrLoginHtml(snippet) {
   );
 }
 
-function decodeUtf8Strict(raw) {
-  if (raw.length > MAX_SOURCE_BYTES)
+export function formatByteLimit(bytes) {
+  if (bytes >= 1024 * 1024 && bytes % (1024 * 1024) === 0)
+    return `${bytes / (1024 * 1024)} MiB`;
+  if (bytes >= 1024 && bytes % 1024 === 0) return `${bytes / 1024} KiB`;
+  return `${bytes} bytes`;
+}
+
+function decodeUtf8Strict(raw, maxBytes = MAX_SOURCE_BYTES) {
+  if (!Number.isInteger(maxBytes) || maxBytes < 1)
+    throw new EvidenceError(
+      'INVALID_ARGUMENT',
+      'maxBytes must be a positive integer.'
+    );
+  if (raw.length > maxBytes)
     throw new EvidenceError(
       'SOURCE_TOO_LARGE',
-      'The source snapshot exceeds 512 KiB.'
+      `The source snapshot exceeds ${formatByteLimit(maxBytes)}.`
     );
   return new TextDecoder('utf-8', { fatal: true }).decode(raw);
 }
@@ -145,8 +158,8 @@ function normalizeTextLines(text, { spaceRe, stripRe = null }) {
 
 export const EXTRACTORS = Object.freeze({
   'govinfo-usc-html-v1': {
-    normalize(raw) {
-      const html = decodeUtf8Strict(raw);
+    normalize(raw, { maxBytes = MAX_SOURCE_BYTES } = {}) {
+      const html = decodeUtf8Strict(raw, maxBytes);
       if (
         !html.includes('<!-- documentid:26_45Q ') ||
         !html.includes('class="section-head"')
@@ -189,8 +202,8 @@ export const EXTRACTORS = Object.freeze({
     },
   },
   'official-html-v1': {
-    normalize(raw) {
-      const html = decodeUtf8Strict(raw);
+    normalize(raw, { maxBytes = MAX_SOURCE_BYTES } = {}) {
+      const html = decodeUtf8Strict(raw, maxBytes);
       if (CHALLENGE_OR_ERROR_HTML_RE.test(html))
         throw new EvidenceError(
           'UNEXPECTED_SOURCE',
@@ -327,7 +340,8 @@ export const evidencePacketSchema = z
 // entity or unexpected source shape fails closed rather than silently losing text.
 export function normalizeOfficialHtml(
   raw,
-  extractorVersion = EXTRACTOR_VERSION
+  extractorVersion = EXTRACTOR_VERSION,
+  { maxBytes = MAX_SOURCE_BYTES } = {}
 ) {
   const extractor = EXTRACTORS[extractorVersion];
   if (!extractor)
@@ -335,7 +349,7 @@ export function normalizeOfficialHtml(
       'UNSUPPORTED_EXTRACTOR',
       `Unsupported extractor: ${extractorVersion}`
     );
-  return extractor.normalize(raw);
+  return extractor.normalize(raw, { maxBytes });
 }
 
 export function inspectEvidence(
@@ -375,7 +389,9 @@ export function inspectEvidence(
           'RAW_HASH_MISMATCH',
           'Stored bytes do not match the frozen raw hash.'
         );
-      text = normalizeOfficialHtml(raw, packet.extractor_version);
+      text = normalizeOfficialHtml(raw, packet.extractor_version, {
+        maxBytes: MAX_EXTERNAL_SOURCE_BYTES,
+      });
       if (digest(text) !== packet.normalized_sha256)
         throw new EvidenceError(
           'TEXT_HASH_MISMATCH',
