@@ -1,0 +1,169 @@
+{
+  "as_of": "2026-11-24",
+  "policies": [
+    {
+      "id": "kw-kpc-net-zero-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.kpc.com.kw/uploads/SustainabiltyReport/KPC_2050_Energy_Transition_en.pdf",
+          "finding": "Replaced homepage-only kpc.com.kw with live HTTP 200 official Kuwait Petroleum Corporation (KPC) 2050 Energy Transition Strategy PDF detailing KPC's net-zero pathway and CCUS/decarbonization commitments; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.kpc.com.kw/Sustainability",
+          "finding": "Verified live HTTP 200 companion official KPC Sustainability portal page linking KPC's energy transition and sustainability publications; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.knpc.com/en/about-us/energy-transition-2050",
+          "finding": "Verified live HTTP 200 companion official Kuwait National Petroleum Company (KNPC) Energy Transition 2050 page covering downstream implementation under KPC's 2050 strategy; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.kpc.com.kw/uploads/SustainabiltyReport/KPC_2050_Energy_Transition_en.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage kpc.com.kw URL with live HTTP 200 official KPC 2050 Energy Transition Strategy PDF, with KPC Sustainability and KNPC Energy Transition 2050 pages cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "ng-nuprc-decarb-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.nuprc.gov.ng/laws/guidelines/hsec",
+          "finding": "Replaced homepage-only nuprc.gov.ng with live HTTP 200 official Nigerian Upstream Petroleum Regulatory Commission (NUPRC) Health, Safety, Environment and Community (HSEC) Laws and Guidelines portal hosting upstream decarbonization and emissions management instruments; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.nuprc.gov.ng/upload/nuprc_laws/Guidance_Template_for_Development_of_Greenhouse_Gas_Emission_Management_Plan_GHG_1781449707232.pdf",
+          "finding": "Verified live HTTP 200 companion official NUPRC PDF of the Guidance Template for Development of Greenhouse Gas Emission Management Plan (GHGEMP); analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.nuprc.gov.ng/upload/nuprc_laws/FINAL_GUIDELINES_FOR_CARBON_MARKET_PARTICIPATION_PDF_39e455999391296776299881.pdf",
+          "finding": "Verified live HTTP 200 companion official NUPRC PDF of the Final Guidelines for Carbon Market Participation (2026); analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.nuprc.gov.ng/laws/guidelines/hsec"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage nuprc.gov.ng URL with live HTTP 200 official NUPRC HSEC Guidelines portal, with NUPRC GHGEMP Template and Carbon Market Participation Guidelines PDFs cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "ar-rigi-ccus-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/310189/20240708",
+          "finding": "Replaced homepage-only boletinoficial.gob.ar with live HTTP 200 official Boletín Oficial de la República Argentina gazette publication (8 July 2024) of Law 27.742 (Ley de Bases) establishing the Régimen de Incentivo para Grandes Inversiones (RIGI); analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/anexos/400000-404999/403230/norma.htm",
+          "finding": "Verified live HTTP 200 companion official InfoLEG statutory text of Regulatory Decree 749/2024 implementing the RIGI large-investment incentive framework; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/312707/20240823",
+          "finding": "Verified live HTTP 200 companion official Boletín Oficial gazette publication (23 August 2024) of Regulatory Decree 749/2024; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.boletinoficial.gob.ar/detalleAviso/primera/310189/20240708"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage boletinoficial.gob.ar URL with live HTTP 200 official Boletín Oficial publication of Law 27.742 (RIGI), with Regulatory Decree 749/2024 InfoLEG and Boletín Oficial publications cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "cl-green-hydrogen-ccs-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.bcn.cl/leychile/navegar?idNorma=1224869",
+          "finding": "Replaced homepage-only energia.gob.cl with live HTTP 200 official Biblioteca del Congreso Nacional (BCN) LeyChile statutory record (idNorma=1224869) for Chile's green hydrogen and associated decarbonization legal instrument; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.leychile.cl/Consulta/obtxml?opt=7&idNorma=1224869",
+          "finding": "Verified live HTTP 200 companion official LeyChile structured XML statutory text endpoint for idNorma=1224869; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.bcn.cl/leychile/navegar?idNorma=1224869"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage energia.gob.cl URL with live HTTP 200 official BCN LeyChile statutory page (idNorma=1224869), with LeyChile XML endpoint cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "co-ccus-regulatory-decree-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.minenergia.gov.co/es/servicio-al-ciudadano/foros/reglamentar-parcialmente-art%C3%ADculos-22-y-57-ley-2099-de-2021-el-art%C3%ADculo-264-ley-2294-de-2023-adopta-el-pnd-2022-2026/",
+          "finding": "Replaced homepage-only minenergia.gov.co with the canonical Colombian Ministry of Mines and Energy public consultation page for the draft decree partially regulating Articles 22 and 57 of Law 2099 of 2021 and Article 264 of Law 2294 of 2023 (CCUS regulatory framework), noting minenergia.gov.co:443 times out on TCP connect for automated fetchers (VERIFIED_OFFICIAL_WAF_BLOCKED: TCP connect timeout on minenergia.gov.co:443); analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.minenergia.gov.co/es/servicio-al-ciudadano/foros/reglamentar-parcialmente-art%C3%ADculos-22-y-57-ley-2099-de-2021-el-art%C3%ADculo-264-ley-2294-de-2023-adopta-el-pnd-2022-2026/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage minenergia.gov.co URL with canonical Ministry of Mines and Energy CCUS draft regulatory decree consultation URL (VERIFIED_OFFICIAL_WAF_BLOCKED: TCP connect timeout on minenergia.gov.co:443); analysis dimensions not re-audited."
+    },
+    {
+      "id": "th-boi-incentives",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.boi.go.th/upload/content/EN-9_2565.pdf",
+          "finding": "Replaced homepage-only boi.go.th with the canonical Thailand Board of Investment (BOI) Announcement No. 9/2565 (EN-9_2565.pdf) covering investment promotion incentives for carbon reduction and CCUS-related activities, noting www.boi.go.th serves an Imperva/Incapsula JS WAF challenge to automated fetchers (VERIFIED_OFFICIAL_WAF_BLOCKED: Imperva/Incapsula JS WAF on www.boi.go.th); analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.tgo.or.th/2023/index.php/en/post/thailand-boi-approves-measures-to-support-carbon-reduction",
+          "finding": "Verified live HTTP 200 companion official Royal Thai Government Thailand Greenhouse Gas Management Organization (TGO) announcement summarizing BOI's approved investment promotion measures supporting carbon reduction; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.boi.go.th/upload/content/EN-9_2565.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage boi.go.th URL with canonical BOI Announcement EN-9_2565.pdf (VERIFIED_OFFICIAL_WAF_BLOCKED: Imperva/Incapsula JS WAF on www.boi.go.th), with live HTTP 200 Royal Thai Government TGO announcement cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "th-draft-climate-change-act-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.dcce.go.th/14324/",
+          "finding": "Replaced homepage-only dmf.go.th with live HTTP 200 official Department of Climate Change and Environment (DCCE) publication on Thailand's Draft Climate Change Act; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://www.dcce.go.th/datacenter/661/",
+          "finding": "Verified live HTTP 200 companion official DCCE Datacenter document entry for Thailand's Draft Climate Change Act; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://thailand.prd.go.th/en/content/category/detail/id/52/iid/500596",
+          "finding": "Verified live HTTP 200 companion official Government Public Relations Department (PRD) English release on Thailand's Draft Climate Change Act; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.dcce.go.th/14324/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage dmf.go.th URL with live HTTP 200 official DCCE Draft Climate Change Act publication, with DCCE Datacenter and PRD English pages cited in sources; analysis dimensions not re-audited."
+    },
+    {
+      "id": "vn-carbon-market-decree-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://congbao.chinhphu.vn/van-ban/quyet-dinh-so-232-qd-ttg-44071.htm",
+          "finding": "Replaced homepage-only monre.gov.vn with live HTTP 200 official Vietnam Government Gazette (Công Báo) publication of Prime Minister Decision No. 232/QD-TTg approving the Scheme for the Establishment and Development of the Carbon Market in Vietnam; analysis dimensions not re-audited."
+        },
+        {
+          "url": "https://baochinhphu.vn/phe-duyet-de-an-thanh-lap-va-phat-trien-thi-truong-cac-bon-tai-viet-nam-102250124174729484.htm",
+          "finding": "Verified live HTTP 200 companion official Vietnam Government News (Báo Chính phủ) publication reporting approval of the Carbon Market Establishment and Development Scheme (Decision 232/QD-TTg); analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://congbao.chinhphu.vn/van-ban/quyet-dinh-so-232-qd-ttg-44071.htm"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage monre.gov.vn URL with live HTTP 200 official Công Báo publication of Decision No. 232/QD-TTg, with Báo Chính phủ announcement cited in sources; analysis dimensions not re-audited."
+    }
+  ]
+}
