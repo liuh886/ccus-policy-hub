@@ -1,8 +1,9 @@
 ---
 import { SITE_BASE } from '../lib/siteBase';
+import { localePath } from '../lib/i18nRoutes';
 import { render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { policyDetailCopy } from '../i18n/detailCopy.mjs';
+import { policyDetailCopy } from '../i18n/detailCopy';
 import { localizeAnalysis } from '../lib/policyLocalization.mjs';
 import { relationshipLabel } from '../lib/relationshipTrust.mjs';
 import {
@@ -133,7 +134,7 @@ const matchedDirectoryCountry = localeIndex.directoryMeta.countries.find(
     c.canon === country ||
     c.canon === canonicalCountry
 )?.canon;
-const directoryCtaHref = `${SITE_BASE}/${isEn ? 'en/facilities' : 'facilities'}/${
+const directoryCtaHref = `${localePath(lang, '/facilities/', SITE_BASE)}${
   matchedDirectoryCountry
     ? `?country=${encodeURIComponent(matchedDirectoryCountry)}`
     : ''
@@ -175,7 +176,7 @@ const chartLabels = [
               class="flex items-center gap-3 text-xs font-medium text-slate-500 mb-6 uppercase tracking-widest"
             >
               <a
-                href={`${SITE_BASE}/${isEn ? 'en/policy' : 'policy'}/`}
+                href={localePath(lang, '/policy/', SITE_BASE)}
                 class="hover:text-slate-900 dark:hover:text-white transition-colors"
                 >{copy.breadcrumb}</a
               >
@@ -242,7 +243,7 @@ const chartLabels = [
             {
               entry.data.scope && (
                 <p class="border-l-4 border-blue-500 pl-4 text-sm">
-                  <strong>{isEn ? 'Scope: ' : '适用范围：'}</strong>
+                  <strong>{copy.scopePrefix}</strong>
                   {entry.data.scope}
                 </p>
               )
@@ -376,7 +377,11 @@ const chartLabels = [
                     <div class="space-y-6">
                       {supersededPolicies.map((p) => (
                         <a
-                          href={`${SITE_BASE}/${isEn ? 'en/policy' : 'policy'}/${p.id.replace(/^(zh|en)\//, '')}/`}
+                          href={localePath(
+                            lang,
+                            `/policy/${p.id.replace(/^(zh|en)\//, '')}/`,
+                            SITE_BASE
+                          )}
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-slate-400 uppercase mb-1">
@@ -397,7 +402,11 @@ const chartLabels = [
                       </div>
                       {successorPolicy && (
                         <a
-                          href={`${SITE_BASE}/${isEn ? 'en/policy' : 'policy'}/${successorPolicy.id.replace(/^(zh|en)\//, '')}/`}
+                          href={localePath(
+                            lang,
+                            `/policy/${successorPolicy.id.replace(/^(zh|en)\//, '')}/`,
+                            SITE_BASE
+                          )}
                           class="group block"
                         >
                           <div class="text-[9px] font-black text-emerald-500 uppercase mb-1">
@@ -441,7 +450,11 @@ const chartLabels = [
                         .slice(0, 3)
                         .map((p) => (
                           <a
-                            href={`${SITE_BASE}/${isEn ? 'en/policy' : 'policy'}/${p.id.replace(/^(zh|en)\//, '')}/`}
+                            href={localePath(
+                              lang,
+                              `/policy/${p.id.replace(/^(zh|en)\//, '')}/`,
+                              SITE_BASE
+                            )}
                             class="group block"
                           >
                             <div class="flex justify-between items-start mb-1">
@@ -477,7 +490,7 @@ const chartLabels = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {relatedFacilities.map((f) => (
                     <a
-                      href={`${SITE_BASE}/${isEn ? 'en/facilities' : 'facilities'}/${f.id}/`}
+                      href={localePath(lang, `/facilities/${f.id}/`, SITE_BASE)}
                       class="p-6 border border-slate-100 dark:border-slate-900 rounded-2xl hover:border-blue-500 transition-all group"
                     >
                       <p class="text-xs text-slate-500 mb-2">

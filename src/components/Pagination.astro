@@ -1,4 +1,6 @@
 ---
+import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
+
 interface Props {
   prevUrl?: string;
   nextUrl?: string;
@@ -7,8 +9,8 @@ interface Props {
   lang?: 'zh' | 'en';
 }
 
-const { prevUrl, nextUrl, current, total, lang = 'zh' } = Astro.props;
-const isEn = lang === 'en';
+const { prevUrl, nextUrl, current, total, lang = defaultLang } = Astro.props;
+const t = (key: UiKey) => translateUi(lang, key);
 ---
 
 <nav class="flex justify-center items-center gap-4 mt-12">
@@ -18,17 +20,20 @@ const isEn = lang === 'en';
         href={prevUrl}
         class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 transition-colors text-sm font-medium"
       >
-        &larr; {isEn ? 'Previous' : '上一页'}
+        &larr; {t('pagination.prev')}
       </a>
     ) : (
       <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 rounded-lg text-slate-300 text-sm cursor-not-allowed">
-        &larr; {isEn ? 'Previous' : '上一页'}
+        &larr; {t('pagination.prev')}
       </span>
     )
   }
 
   <span class="text-sm font-bold text-slate-500">
-    {isEn ? `Page ${current} of ${total}` : `第 ${current} 页 / 共 ${total} 页`}
+    {t('stats.page')}
+    {current}
+    {t('stats.of')}
+    {total}
   </span>
 
   {
@@ -37,11 +42,11 @@ const isEn = lang === 'en';
         href={nextUrl}
         class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-blue-500 transition-colors text-sm font-medium"
       >
-        {isEn ? 'Next' : '下一页'} &rarr;
+        {t('pagination.next')} &rarr;
       </a>
     ) : (
       <span class="px-4 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-900 rounded-lg text-slate-300 text-sm cursor-not-allowed">
-        {isEn ? 'Next' : '下一页'} &rarr;
+        {t('pagination.next')} &rarr;
       </span>
     )
   }

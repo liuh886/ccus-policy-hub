@@ -42,6 +42,26 @@ export function withTrailingSlash(path: string): string {
 }
 
 /**
+ * Build a locale-aware path with normalized leading and trailing slashes.
+ *
+ * Examples:
+ * - localePath('zh', '/policy/us-45q-ira/', '/ccus-policy-hub') -> '/ccus-policy-hub/policy/us-45q-ira/'
+ * - localePath('en', '/policy/us-45q-ira/', '/ccus-policy-hub') -> '/ccus-policy-hub/en/policy/us-45q-ira/'
+ * - localePath('zh', '/', '/ccus-policy-hub') -> '/ccus-policy-hub/'
+ * - localePath('en', '', '/ccus-policy-hub') -> '/ccus-policy-hub/en/'
+ */
+export function localePath(
+  lang: 'zh' | 'en',
+  subPath: string,
+  siteBase = ''
+): string {
+  const base = siteBase.replace(/\/+$/, '');
+  const prefix = lang === 'en' ? `${base}/en` : base;
+  const cleanSub = subPath.replace(/^\/+|\/+$/g, '');
+  return cleanSub ? `${prefix}/${cleanSub}/` : `${prefix}/`;
+}
+
+/**
  * zh/en URL pairs for hreflang alternates, both site-base aware. When no
  * English counterpart exists, the English alternate falls back to the
  * English homepage.

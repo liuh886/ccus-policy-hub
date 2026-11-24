@@ -81,14 +81,14 @@ html:not(.dark) .site-main h3 {
 /* Research workspaces. */
 html:not(.dark) #policy-grid > .policy-item > div > a > article,
 html:not(.dark) #facility-grid > .facility-item > div > div {
-  border-color: var(--border-subtle) !important;
-  box-shadow: none !important;
+  border-color: var(--border-subtle);
+  box-shadow: none;
 }
 
 html:not(.dark) #policy-grid > .policy-item > div > a > article:hover,
 html:not(.dark) #facility-grid > .facility-item > div > div:hover {
-  border-color: var(--brand-teal-500) !important;
-  box-shadow: var(--shadow-hover) !important;
+  border-color: var(--brand-teal-500);
+  box-shadow: var(--shadow-hover);
 }
 
 html:not(.dark) body:has(#facility-grid) .sticky.top-20 > div,
@@ -97,8 +97,8 @@ html:not(.dark)
   .site-main
   > div:first-child
   > div:has(#search-input) {
-  background: rgb(255 255 255 / 0.96) !important;
-  box-shadow: 0 1px 2px rgb(16 42 58 / 0.04) !important;
+  background: rgb(255 255 255 / 0.96);
+  box-shadow: 0 1px 2px rgb(16 42 58 / 0.04);
   backdrop-filter: blur(10px);
 }
 
