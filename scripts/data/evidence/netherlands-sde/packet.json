@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "netherlands-sde",
+  "policy_id": "netherlands-sde",
+  "title": {
+    "en": "Stimulation of Sustainable Energy Production and Climate Transition (SDE++)",
+    "zh": "荷兰可持续能源生产与气候转型激励计划（SDE++）"
+  },
+  "source_url": "https://english.rvo.nl/subsidies-programmes/sde",
+  "source_language": "en",
+  "edition": null,
+  "fetched_at": "2026-11-24T15:30:50Z",
+  "published_at": null,
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "8bcae0fb8da165bfc68ae67bb380b5a2bdc111faf7a16686accd6ec697247fa9",
+  "normalized_sha256": "3f7ee7cb562461cb201cca4f674048b6d9cc4ea7893386b1b34832da0ea04a3b",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "sde-scheme-overview",
+      "locator": "Netherlands Enterprise Agency (RVO) — Stimulation of sustainable energy production and climate transition (SDE++) (overview)",
+      "exact_quote": "The Sustainable Energy Production and Climate Transition Incentive Scheme (SDE++) provides subsidies to companies and non-profit organisations that generate renewable energy or reduce CO2 emissions on a large scale.",
+      "version_sha256": "8bcae0fb8da165bfc68ae67bb380b5a2bdc111faf7a16686accd6ec697247fa9",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}
