@@ -1,0 +1,140 @@
+{
+  "as_of": "2026-11-24",
+  "policies": [
+    {
+      "id": "ca-sk-spii",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/oil-and-gas-incentives-crown-royalties-and-taxes/saskatchewan-petroleum-innovation-incentive",
+          "finding": "Verified HTTP 200 Government of Saskatchewan SPII program page replacing broken 404 slug; confirms 25% transferable Crown royalty/production tax credits extended through March 31, 2029."
+        }
+      ],
+      "record": {
+        "url": "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/oil-and-gas-incentives-crown-royalties-and-taxes/saskatchewan-petroleum-innovation-incentive"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired broken 404 Saskatchewan SPII URL to canonical Government of Saskatchewan SPII program page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "cn-gd-carbon-inclusive",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://gdee.gd.gov.cn/shbtwj/content/post_4679397.html",
+          "finding": "Verified HTTP 200 Guangdong Department of Ecology and Environment notice (粤环函〔2025〕50号, 2025-03-10) replacing dead 404 path post_4281415.html; establishes 2024 quota allocation and CCER/PHCER offset submission via the Guangdong Carbon Inclusive platform."
+        }
+      ],
+      "record": {
+        "url": "https://gdee.gd.gov.cn/shbtwj/content/post_4679397.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Repaired dead 404 GDEE URL to canonical Guangdong Department of Ecology and Environment notice post_4679397.html (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "cn-js-industrial-decarb-2022",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://gxt.jiangsu.gov.cn/art/2023/1/12/art_80179_10735135.html",
+          "finding": "Verified HTTP 200 HTTPS Jiangsu GXT joint policy notice (苏工信节能〔2023〕16号, 2023-01-12) replacing plain-HTTP homepage; publishes the Jiangsu Industrial and Key Sectors Carbon Peaking Implementation Plan covering CCUS R&D and pilot demonstrations."
+        }
+      ],
+      "record": {
+        "url": "https://gxt.jiangsu.gov.cn/art/2023/1/12/art_80179_10735135.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced plain-HTTP Jiangsu GXT homepage with HTTPS joint policy notice art_80179_10735135.html (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "ru-climate-doctrine-2023",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://meteoinfo.ru/images/media/books-docs/FEDERAL/climatedoctrine-2023.pdf",
+          "finding": "Verified HTTP 200 HTTPS official 22-page gazetted PDF of Presidential Decree No. 812 (2023-10-26) served by Roshydromet (meteoinfo.ru), binary-verified byte-for-byte against publication.pravo.gov.ru (1,981,002 bytes), replacing plain-HTTP kremlin.ru homepage."
+        }
+      ],
+      "record": {
+        "url": "https://meteoinfo.ru/images/media/books-docs/FEDERAL/climatedoctrine-2023.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced plain-HTTP kremlin.ru homepage with HTTPS official Roshydromet PDF of Presidential Decree No. 812 (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "california-lcfs",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://ww2.arb.ca.gov/rulemaking/2024/lcfs2024",
+          "finding": "Official CARB 2024 Low Carbon Fuel Standard (LCFS) Amendments rulemaking docket (17 CCR §§95480-95503, effective 2025-07-01) replacing generic CARB homepage (ww2.arb.ca.gov enforces CloudFront geo-blocking outside US)."
+        }
+      ],
+      "record": {
+        "url": "https://ww2.arb.ca.gov/rulemaking/2024/lcfs2024"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced generic CARB homepage with official CARB 2024 LCFS Amendments rulemaking docket URL; analysis dimensions not re-audited."
+    },
+    {
+      "id": "fr-ccus-strategy-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://portail.documentation.developpement-durable.gouv.fr/pub/MPDOUV00264694-etat-des-lieux-perspectives-deploiement-ccus-franc.html",
+          "finding": "Verified HTTP 200 official Ministry of Ecological Transition documentation portal record (MPDOUV00264694) publishing the full text of the July 2024 French CCUS deployment strategy report, replacing broad ecologie.gouv.fr homepage."
+        }
+      ],
+      "record": {
+        "url": "https://portail.documentation.developpement-durable.gouv.fr/pub/MPDOUV00264694-etat-des-lieux-perspectives-deploiement-ccus-franc.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced broad ecologie.gouv.fr homepage with official MTE documentation portal record MPDOUV00264694 (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "nl-cdr-roadmap-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.government.nl/documents/2025/03/14/netherlands-carbon-dioxide-removal-roadmap",
+          "finding": "Verified HTTP 200 official Government of the Netherlands publication page (2025-03-14) for the 57-page Netherlands Carbon Dioxide Removal Roadmap, replacing broad government.nl homepage."
+        }
+      ],
+      "record": {
+        "url": "https://www.government.nl/documents/2025/03/14/netherlands-carbon-dioxide-removal-roadmap"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced broad government.nl homepage with official Netherlands CDR Roadmap publication page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "ch-co2-act-ccs-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.bafu.admin.ch/en/carbon-capture-removal-and-storage-legislation",
+          "finding": "Verified HTTP 200 official Swiss FOEN (BAFU) CCS and negative-emission technologies legislation page linking the revised CO2 Act (SR 641.71, AS 2024 376) and CO2 Ordinance, replacing broad bafu.admin.ch homepage."
+        }
+      ],
+      "record": {
+        "url": "https://www.bafu.admin.ch/en/carbon-capture-removal-and-storage-legislation"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced broad bafu.admin.ch homepage with official FOEN CCS legislation page (HTTP 200); analysis dimensions not re-audited."
+    },
+    {
+      "id": "za-climate-change-act-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.gov.za/documents/acts/climate-change-act-22-2024-english-tshivenda-23-jul-2024",
+          "finding": "Verified HTTP 200 official South African Government record for Climate Change Act No. 22 of 2024 (2024-07-23, linking Gazette 50966 PDF and Gazette 52319 commencement notice), replacing broad gov.za homepage."
+        }
+      ],
+      "record": {
+        "url": "https://www.gov.za/documents/acts/climate-change-act-22-2024-english-tshivenda-23-jul-2024"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced broad gov.za homepage with official Climate Change Act No. 22 of 2024 record page (HTTP 200); analysis dimensions not re-audited."
+    }
+  ]
+}
