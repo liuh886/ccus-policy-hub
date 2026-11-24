@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocaleDataIndex } from '../lib/dataIndex';
 import { buildProjectLandscape } from '../lib/projectLandscape.mjs';
 
 interface Props {
@@ -7,9 +7,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const facilities = await getCollection(
-  lang === 'zh' ? 'facilities_zh' : 'facilities_en'
-);
+const { facilities } = await getLocaleDataIndex(lang);
 const text =
   lang === 'zh'
     ? {

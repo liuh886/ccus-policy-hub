@@ -1,7 +1,6 @@
 ---
 import '../styles/light-editorial-home.css';
 import '../styles/interaction-controls.css';
-import { getCollection } from 'astro:content';
 import {
   CAPACITY_TREND_END_YEAR,
   CAPACITY_TREND_START_YEAR,
@@ -12,18 +11,19 @@ import {
   projectRecordYear,
   summarizeFacilities,
 } from '../lib/capacityMetrics.mjs';
+import { getLocaleDataIndex, type Locale } from '../lib/dataIndex';
 import { SITE_BASE } from '../lib/siteBase';
 import { t as translateUi } from '../i18n/ui';
 
 interface Props {
   showSummary?: boolean;
+  lang?: Locale;
 }
 
 const showSummary = Astro.props.showSummary ?? true;
-const lang = Astro.currentLocale || 'zh';
-const facilities = await getCollection(
-  lang === 'en' ? 'facilities_en' : 'facilities_zh'
-);
+const lang: Locale =
+  (Astro.props.lang ?? Astro.currentLocale) === 'en' ? 'en' : 'zh';
+const { facilities } = await getLocaleDataIndex(lang);
 
 const startYear = CAPACITY_TREND_START_YEAR;
 const endYear = CAPACITY_TREND_END_YEAR;

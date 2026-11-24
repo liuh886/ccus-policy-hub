@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomepageHero from './HomepageHero.astro';
+import WorldMapNav from './WorldMapNav.astro';
+import CapacityTrend from './CapacityTrend.astro';
+import ProjectLandscape from './ProjectLandscape.astro';
+import DatasetVersion from './DatasetVersion.astro';
+import { getLocaleDataIndex, type Locale } from '../lib/dataIndex';
+import '../styles/home.css';
+
+interface Props {
+  lang: Locale;
+}
+
+type FeatureAccent = 'teal' | 'blue' | 'indigo';
+
+interface FeatureCardCopy {
+  accent: FeatureAccent;
+  title: string;
+  description: string;
+  meta: string;
+}
+
+interface HomeCopy {
+  title: string;
+  description: string;
+  mapKicker: string;
+  mapTitle: string;
+  mapDescription: string;
+  policyCountAria: (count: number) => string;
+  countPrefix: string;
+  countSuffix: string;
+  featuresAria: string;
+  features: [FeatureCardCopy, FeatureCardCopy, FeatureCardCopy];
+}
+
+const COPY: Record<Locale, HomeCopy> = {
+  zh: {
+    title: 'CCUS 政策与设施全球数据库',
+    description: '全球 CCUS 政策、设施、项目记录能力与治理对比数据库。',
+    mapKicker: '全球政策导航',
+    mapTitle: '政策准入控制台',
+    mapDescription:
+      '点击高亮活跃区域，快速查看关键政策框架、准入要求、激励机制与项目部署状态。',
+    policyCountAria: (count) => `当前已纳入 ${count} 项核心政策`,
+    countPrefix: '当前已纳入 ',
+    countSuffix: ' 项核心政策',
+    featuresAria: '平台核心能力',
+    features: [
+      {
+        accent: 'teal',
+        title: '权威数据源',
+        description:
+          '整合 IEA CCUS Projects Database 2026、GCCSI 与各国政府公开信息，并通过统一数据治理流程维护来源、口径与更新状态。',
+        meta: '已核验来源治理',
+      },
+      {
+        accent: 'blue',
+        title: '可视化分析',
+        description:
+          '通过交互式地图、项目能力趋势与多维政策对比，识别治理强度、设施规模和区域部署之间的结构性关系。',
+        meta: '交互式情报分析',
+      },
+      {
+        accent: 'indigo',
+        title: '行业精准对标',
+        description:
+          '面向制氢、电力、钢铁等重点行业，关联政策工具与设施记录，为区域准入、投资判断和治理机制设计提供结构化参照。',
+        meta: '行业专项对标',
+      },
+    ],
+  },
+  en: {
+    title: 'Global CCUS Policy & Facility Database',
+    description:
+      'Global database of CCUS policies, facilities, project-record capacity and governance comparisons.',
+    mapKicker: 'Policy Access Console',
+    mapTitle: 'Global Policy Access Console',
+    mapDescription:
+      'Select an active region to review policy frameworks, market-access requirements, incentive mechanisms and project deployment status.',
+    policyCountAria: (count) => `${count} curated policies currently included`,
+    countPrefix: '',
+    countSuffix: ' curated policies',
+    featuresAria: 'Core platform capabilities',
+    features: [
+      {
+        accent: 'teal',
+        title: 'Authoritative Data',
+        description:
+          'Integrates IEA CCUS Projects Database 2026, GCCSI and official government sources through a governed workflow for provenance, definitions and update status.',
+        meta: 'Verified source governance',
+      },
+      {
+        accent: 'blue',
+        title: 'Visual Analytics',
+        description:
+          'Uses interactive maps, project-capacity trends and multidimensional policy comparison to reveal structural relationships between governance, scale and deployment.',
+        meta: 'Interactive intelligence',
+      },
+      {
+        accent: 'indigo',
+        title: 'Sectoral Benchmarking',
+        description:
+          'Links policy instruments with facility records across hydrogen, power, steel and other priority sectors to support market-entry, investment and governance decisions.',
+        meta: 'Sector-specific benchmarking',
+      },
+    ],
+  },
+};
+
+const { lang } = Astro.props;
+const t = COPY[lang];
+const { policies } = await getLocaleDataIndex(lang);
+const policyCount = policies.length;
+---
+
+<Layout
+  title={t.title}
+  description={t.description}
+  pageClass={`home-page-shell home-page--${lang}`}
+>
+  <div class="home-page-content py-8 sm:py-10">
+    <HomepageHero lang={lang} />
+
+    <CapacityTrend showSummary={false} lang={lang} />
+
+    <ProjectLandscape lang={lang} />
+
+    <section class="home-map-section" aria-labelledby="home-map-title">
+      <header class="home-section-head">
+        <div class="home-section-copy">
+          <p class="home-section-kicker">{t.mapKicker}</p>
+          <h2 id="home-map-title" class="home-section-title">{t.mapTitle}</h2>
+          <p class="home-section-description">{t.mapDescription}</p>
+        </div>
+        <div
+          class="home-policy-count"
+          aria-label={t.policyCountAria(policyCount)}
+        >
+          {t.countPrefix}<strong>{policyCount}</strong>{t.countSuffix}
+        </div>
+      </header>
+      <WorldMapNav lang={lang} />
+    </section>
+
+    <section class="home-feature-grid" aria-label={t.featuresAria}>
+      {
+        t.features.map((feature) => (
+          <article class="home-feature-card" data-accent={feature.accent}>
+            <div class="home-feature-icon" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                {feature.accent === 'teal' && (
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                )}
+                {feature.accent === 'blue' && (
+                  <>
+                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+                    <path d="M22 12A10 10 0 0 0 12 2v10z" />
+                  </>
+                )}
+                {feature.accent === 'indigo' && (
+                  <>
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </>
+                )}
+              </svg>
+            </div>
+            <div>
+              <h3 class="home-feature-title">{feature.title}</h3>
+              <p class="home-feature-description">{feature.description}</p>
+              <div class="home-feature-meta">{feature.meta}</div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 pb-8">
+    <DatasetVersion lang={lang} />
+  </div>
+</Layout>
