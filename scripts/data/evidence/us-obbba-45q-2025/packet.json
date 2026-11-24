@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "storage": "external_archive",
+  "document_id": "us-obbba-45q-2025",
+  "policy_id": "us-obbba-45q-2025",
+  "title": {
+    "en": "Public Law 119-21 (One Big Beautiful Bill Act) — Section 70522: Restrictions on Carbon Oxide Sequestration Credit (IRC § 45Q)",
+    "zh": "美国公法第119-21号（OBBBA）第70522条：碳氧化物封存税收抵免（IRC § 45Q）修订条款"
+  },
+  "source_url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
+  "source_language": "en",
+  "edition": "PLAW-119-21",
+  "fetched_at": "2026-11-24T15:30:50Z",
+  "published_at": "2025-07-04",
+  "source_current_through": null,
+  "external_uri": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/html/PLAW-119publ21.htm",
+  "bytes": 1217741,
+  "raw_file": null,
+  "raw_sha256": "84000b07c382db50ead04ce65b70983e2dcd699a931d80cd3d2edac584e9004d",
+  "normalized_sha256": "f01101eea8255ef5dc24814148300e21955f98155eeb9689a5e121c2a05a01bc",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "sec-70522-a-pfe-restrictions",
+      "locator": "Public Law 119-21 (139 Stat. 279–280), Sec. 70522(a) — Restrictions Relating to Prohibited Foreign Entities",
+      "exact_quote": "SEC. 70522. RESTRICTIONS ON CARBON OXIDE SEQUESTRATION CREDIT.\n(a) Restrictions Relating to Prohibited Foreign Entities.--Section\n45Q(f) is amended by adding at the end the following new paragraph:\n``(10) Restrictions relating to prohibited foreign\nentities.--No credit shall be determined under subsection (a)\nfor any taxable year beginning after the date of enactment of\nthis paragraph if the taxpayer is--\n``(A) a specified foreign entity (as defined in\nsection 7701(a)(51)(B)), or\n``(B) a foreign-influenced entity (as defined in\nsection 7701(a)(51)(D), determined without regard to\nclause (i)(II) thereof).''.",
+      "version_sha256": "84000b07c382db50ead04ce65b70983e2dcd699a931d80cd3d2edac584e9004d",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "sec-70522-b-use-parity",
+      "locator": "Public Law 119-21 (139 Stat. 280), Sec. 70522(b)(1) — Parity for Different Uses and Utilizations of Qualified Carbon Oxide",
+      "exact_quote": "(b) Parity for Different Uses and Utilizations of Qualified Carbon\nOxide.--Section 45Q is amended--\n(1) in subsection (a)--\n(A) in paragraph (2)(B)(ii), by adding ``and'' at\nthe end,\n[[Page 139 STAT. 280]]\n(B) in paragraph (3), by striking subparagraph (B)\nand inserting the following:\n``(B)(i) disposed of by the taxpayer in secure\ngeological storage and not used by the taxpayer as\ndescribed in clause (ii) or (iii),\n``(ii) used by the taxpayer as a tertiary injectant\nin a qualified enhanced oil or natural gas recovery\nproject and disposed of by the taxpayer in secure\ngeological storage, or\n``(iii) utilized by the taxpayer in a manner\ndescribed in subsection (f)(5).'', and",
+      "version_sha256": "84000b07c382db50ead04ce65b70983e2dcd699a931d80cd3d2edac584e9004d",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}

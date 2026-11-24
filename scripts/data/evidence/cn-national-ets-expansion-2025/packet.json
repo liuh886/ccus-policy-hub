@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "cn-national-ets-expansion-2025",
+  "policy_id": "cn-national-ets-expansion-2025",
+  "title": {
+    "en": "Notice on Issuing the Work Plan for Expanding the National Carbon Emissions Trading Market to Cover the Steel, Cement, and Aluminum Smelting Sectors (Huanqihou [2025] No. 23)",
+    "zh": "关于印发《全国碳排放权交易市场覆盖钢铁、水泥、铝冶炼行业工作方案》的通知（环气候〔2025〕23号）"
+  },
+  "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202503/t20250326_1104736.html",
+  "source_language": "zh",
+  "edition": null,
+  "fetched_at": "2026-11-24T15:30:50Z",
+  "published_at": "2025-03-21",
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "581881c26c04bee43065a06613160ccc32300b78aca43eb7086aab0cd46814cb",
+  "normalized_sha256": "068a4258a4dbf32dfefb9b1248eae0680febc1f6be0702d14faa03c1820de3b5",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "ets-expansion-scope",
+      "locator": "生态环境部《关于印发〈全国碳排放权交易市场覆盖钢铁、水泥、铝冶炼行业工作方案〉的通知》（环气候〔2025〕23号）正文",
+      "exact_quote": "为贯彻落实党中央、国务院关于全国碳排放权交易市场建设部署，经国务院批准，钢铁、水泥、铝冶炼三个行业纳入全国碳排放权交易市场管理，覆盖的温室气体种类为二氧化碳（CO2）、四氟化碳（CF4）和六氟化二碳（C2F6）。根据《碳排放权交易管理暂行条例》，我部组织制定了《全国碳排放权交易市场覆盖钢铁、水泥、铝冶炼行业工作方案》，现予印发，请按照执行。",
+      "version_sha256": "581881c26c04bee43065a06613160ccc32300b78aca43eb7086aab0cd46814cb",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}

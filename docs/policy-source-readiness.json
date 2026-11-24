@@ -13,12 +13,24 @@
         "manifest_sha256": "2735059b40bf2d2848e040aab452eef98b44b43d8b7dadfb899ba559e795fe71"
       },
       {
+        "document_id": "cn-national-ets-expansion-2025",
+        "manifest_sha256": "695da20207700e4b31fb64356387e4727c438d3e8ff385e6cb79a32cbb7e98c6"
+      },
+      {
         "document_id": "dk-ens-ccs-funds",
         "manifest_sha256": "3aa0c48cc45629b4876e389bcb7652f6d8cb493a65d652c7df728f50c3cc352f"
       },
       {
         "document_id": "eu-innovation-fund-ec",
         "manifest_sha256": "869f1a90b8663451407d20a40f033cf2724ecfe07a5f1ddd97a293dd69169c79"
+      },
+      {
+        "document_id": "fr-ccus-roadmap",
+        "manifest_sha256": "f833c11217ca315c59e33e37c5a597c53e6dffccb0963366da263b8a969b48ee"
+      },
+      {
+        "document_id": "netherlands-sde",
+        "manifest_sha256": "749958f5655d7a302b251e37e227bc36bd7f56a1225bb0e4c47b3a894fa1c7e2"
       },
       {
         "document_id": "no-for-2014-1517",
@@ -35,6 +47,10 @@
       {
         "document_id": "us-epa-class-vi-primacy",
         "manifest_sha256": "bda5fcba7a2e1f61f1c12c13a0c03427b70c8cec479fe84ca2a1e80c3eb159ca"
+      },
+      {
+        "document_id": "us-obbba-45q-2025",
+        "manifest_sha256": "5505a95fd089d19c4077ec97b54b8595a6e74d95e2e6e338389b1d1875c3db56"
       }
     ],
     "archive_observation_provenance": {
@@ -69,8 +85,8 @@
     "archive_rows_quarantined_url_changed": 63,
     "observed_private_raw_candidates": 32,
     "observed_private_homepage_only": 0,
-    "git_document_identities_recorded": 8,
-    "git_byte_versions_validated": 8,
+    "git_document_identities_recorded": 12,
+    "git_byte_versions_validated": 11,
     "human_locator_review_records": 8,
     "validated_human_reviewed_anchors": 8,
     "primary_instrument_identity_reviewed_policies": 0,
@@ -2409,13 +2425,36 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "cn-national-ets-expansion-2025",
+          "raw_sha256": "581881c26c04bee43065a06613160ccc32300b78aca43eb7086aab0cd46814cb",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -3242,13 +3281,36 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "fr-ccus-roadmap",
+          "raw_sha256": "2561ccc07f7d39f681d275de8011660f3a2901e215237ad9096b86c046b0cf2e",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 2,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -4392,13 +4454,36 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "netherlands-sde",
+          "raw_sha256": "8bcae0fb8da165bfc68ae67bb380b5a2bdc111faf7a16686accd6ec697247fa9",
+          "raw_integrity": "pass",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "unknown",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 1,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },
@@ -5843,13 +5928,38 @@
         "local_original_integrity": "not_checked",
         "content_identity": "not_reviewed"
       },
-      "documents": [],
+      "documents": [
+        {
+          "document_id": "us-obbba-45q-2025",
+          "raw_sha256": "84000b07c382db50ead04ce65b70983e2dcd699a931d80cd3d2edac584e9004d",
+          "raw_integrity": "external_archive",
+          "content_validity": "not_reviewed",
+          "public_redistribution_permission": "unknown",
+          "edition": "PLAW-119-21",
+          "source_current_through": null,
+          "coverage": "not_established",
+          "extractor_version": "official-html-v1",
+          "locator_candidates": 2,
+          "human_review_records": 0,
+          "validated_human_reviewed_anchors": 0,
+          "currentness": "unknown",
+          "gaps": [
+            "EXTERNAL_ARCHIVE_ORIGINAL_BYTES_NOT_INLINE",
+            "HUMAN_DOCUMENT_REVIEW_PENDING",
+            "HUMAN_LOCATOR_REVIEW_PENDING",
+            "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED",
+            "CURRENTNESS_UNKNOWN"
+          ]
+        }
+      ],
       "evidence_level": "record_summary",
       "currentness": "unknown",
       "priority": "P2",
       "gaps": [
         "CURRENTNESS_UNKNOWN",
-        "NO_GIT_FROZEN_ORIGINAL",
+        "EXTERNAL_ARCHIVE_ORIGINAL_BYTES_NOT_INLINE",
+        "HUMAN_DOCUMENT_REVIEW_PENDING",
+        "HUMAN_LOCATOR_REVIEW_PENDING",
         "PRIMARY_INSTRUMENT_IDENTITY_NOT_REVIEWED"
       ]
     },

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "document_id": "fr-ccus-roadmap",
+  "policy_id": "fr-ccus-roadmap",
+  "title": {
+    "en": "Deployment of Carbon Capture, Storage and Utilisation (CCUS) in France",
+    "zh": "法国碳捕集、封存与利用（CCUS）部署路线图"
+  },
+  "source_url": "https://www.entreprises.gouv.fr/la-dge/actualites/deploiement-de-la-capture-du-stockage-et-de-la-valorisation-du-carbone-ccus-en",
+  "source_language": "fr",
+  "edition": null,
+  "fetched_at": "2026-11-24T15:30:50Z",
+  "published_at": "2024-07-04",
+  "source_current_through": null,
+  "raw_file": "source.html",
+  "raw_sha256": "2561ccc07f7d39f681d275de8011660f3a2901e215237ad9096b86c046b0cf2e",
+  "normalized_sha256": "824c4e3b4d9066e262d9abbf2e27790f231eee80b632ba29dbe1e236ff3e9ddc",
+  "extractor_version": "official-html-v1",
+  "review": {
+    "status": "draft",
+    "reviewer": null,
+    "method": "not_reviewed",
+    "reviewed_at": null
+  },
+  "anchors": [
+    {
+      "id": "ccus-deployment-lead",
+      "locator": "Direction générale des Entreprises (DGE) — Déploiement de la capture, du stockage et de la valorisation du carbone (CCUS) en France (introduction)",
+      "exact_quote": "Levier de décarbonation, les technologies de capture, stockage et valorisation du carbone (CCUS) visent à réduire les émissions des secteurs sans autres alternatives. L’État publie ce jour un document dressant l’état des lieux et les perspectives de déploiement du CCUS en France.",
+      "version_sha256": "2561ccc07f7d39f681d275de8011660f3a2901e215237ad9096b86c046b0cf2e",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    },
+    {
+      "id": "ccus-definition",
+      "locator": "Direction générale des Entreprises (DGE) — En quoi consistent la capture, le stockage et la valorisation du carbone ?",
+      "exact_quote": "Le Carbon Capture, Utilisation and Storage (CCUS) se réfère à un ensemble de technologies visant à capturer les émissions de dioxyde de carbone (CO2) pour les injecter et les stocker dans des formations géologiques adaptées et éviter qu’elles soient relâchées dans l’atmosphère où elles contribuerait au réchauffement climatique ainsi qu'à les utiliser comme ressources pour la fabrication de produits.",
+      "version_sha256": "2561ccc07f7d39f681d275de8011660f3a2901e215237ad9096b86c046b0cf2e",
+      "review": {
+        "status": "draft",
+        "reviewer": null,
+        "method": "not_reviewed",
+        "reviewed_at": null
+      }
+    }
+  ]
+}
