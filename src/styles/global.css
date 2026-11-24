@@ -141,14 +141,14 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-input,
+input:not([type='checkbox']):not([type='radio']):not([type='range']),
 select,
 textarea {
   min-height: 42px;
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: var(--radius-control) !important;
-  background: var(--surface-panel) !important;
-  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-control);
+  background: var(--surface-panel);
+  color: var(--text-primary);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28);
 }
 
@@ -157,10 +157,10 @@ textarea::placeholder {
   color: var(--text-muted);
 }
 
-input:hover,
+input:not([type='checkbox']):not([type='radio']):not([type='range']):hover,
 select:hover,
 textarea:hover {
-  border-color: var(--border-strong) !important;
+  border-color: var(--border-strong);
 }
 
 .site-header {
@@ -301,71 +301,71 @@ textarea:hover {
 .site-main [class~='rounded-[3rem]'],
 .site-main [class~='rounded-[2.5rem]'],
 .site-main .rounded-3xl {
-  border-radius: var(--radius-panel) !important;
+  border-radius: var(--radius-panel);
 }
 
 .site-main .rounded-2xl,
 .site-main .rounded-xl {
-  border-radius: var(--radius-card) !important;
+  border-radius: var(--radius-card);
 }
 
 .site-main .shadow-2xl,
 .site-main .shadow-xl,
 .site-main .shadow-lg {
-  box-shadow: var(--shadow-panel) !important;
+  box-shadow: var(--shadow-panel);
 }
 
 .site-main .shadow-md,
 .site-main .shadow-sm {
   box-shadow:
     0 1px 2px rgb(4 31 51 / 0.05),
-    0 5px 16px rgb(4 31 51 / 0.045) !important;
+    0 5px 16px rgb(4 31 51 / 0.045);
 }
 
 .site-main .hover\:-translate-y-3:hover,
 .site-main .hover\:-translate-y-1:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-2px);
 }
 
 .site-main .hover\:shadow-2xl:hover,
 .site-main .hover\:shadow-xl:hover,
 .site-main .hover\:shadow-lg:hover,
 .site-main .hover\:shadow-md:hover {
-  box-shadow: var(--shadow-hover) !important;
+  box-shadow: var(--shadow-hover);
 }
 
 .site-main .bg-blue-600 {
-  background-color: var(--brand-navy-800) !important;
+  background-color: var(--brand-navy-800);
 }
 
 .site-main .hover\:bg-blue-600:hover,
 .site-main .hover\:bg-blue-700:hover {
-  background-color: var(--brand-teal-700) !important;
+  background-color: var(--brand-teal-700);
 }
 
 .site-main .text-blue-600,
 .site-main .dark\:text-blue-400 {
-  color: var(--brand-teal-700) !important;
+  color: var(--brand-teal-700);
 }
 
 .dark .site-main .text-blue-600,
 .dark .site-main .dark\:text-blue-400 {
-  color: #62d1c9 !important;
+  color: #62d1c9;
 }
 
 .site-main .border-blue-100,
 .site-main .border-blue-200 {
-  border-color: rgb(15 143 136 / 0.2) !important;
+  border-color: rgb(15 143 136 / 0.2);
 }
 
 .site-main .bg-blue-50 {
-  background-color: rgb(15 143 136 / 0.08) !important;
+  background-color: rgb(15 143 136 / 0.08);
 }
 
 .dark .site-main .dark\:bg-blue-900\/20,
 .dark .site-main .dark\:bg-blue-900\/30,
 .dark .site-main .dark\:bg-blue-900\/10 {
-  background-color: rgb(15 143 136 / 0.13) !important;
+  background-color: rgb(15 143 136 / 0.13);
 }
 
 /* Data panels and result cards. */
@@ -373,24 +373,24 @@ textarea:hover {
 #facility-grid > .facility-item > div > div,
 #compare-container > div > div,
 .site-main canvas + * {
-  border-color: var(--border-subtle) !important;
+  border-color: var(--border-subtle);
 }
 
 #policy-grid > .policy-item > div > a > article,
 #facility-grid > .facility-item > div > div {
-  background: var(--surface-panel) !important;
-  box-shadow: 0 1px 2px rgb(4 31 51 / 0.04) !important;
+  background: var(--surface-panel);
+  box-shadow: 0 1px 2px rgb(4 31 51 / 0.04);
 }
 
 #policy-grid > .policy-item > div > a > article:hover,
 #facility-grid > .facility-item > div > div:hover {
-  border-color: rgb(15 143 136 / 0.48) !important;
-  box-shadow: var(--shadow-hover) !important;
+  border-color: rgb(15 143 136 / 0.48);
+  box-shadow: var(--shadow-hover);
 }
 
 #policy-grid,
 #facility-grid {
-  gap: 1.25rem !important;
+  gap: 1.25rem;
 }
 
 /* Keep the facilities filter toolbar below the map while refining its surface. */
@@ -400,20 +400,16 @@ body:has(#facility-grid) .sticky.top-20 {
 
 body:has(#facility-grid) .sticky.top-20 > div,
 body:has(#policy-grid) .site-main > div:first-child > div:has(#search-input) {
-  border: 1px solid var(--border-subtle) !important;
-  border-radius: var(--radius-panel) !important;
-  background: color-mix(
-    in srgb,
-    var(--surface-panel) 92%,
-    transparent
-  ) !important;
-  box-shadow: var(--shadow-panel) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-panel);
+  background: color-mix(in srgb, var(--surface-panel) 92%, transparent);
+  box-shadow: var(--shadow-panel);
   backdrop-filter: blur(16px);
 }
 
 body:has(#facility-grid) .group\/map-container > div:first-child,
 body:has(#facility-grid) .leaflet-container {
-  border-radius: var(--radius-panel) !important;
+  border-radius: var(--radius-panel);
 }
 
 body:has(#facility-grid) .group\/map-container {
@@ -426,10 +422,10 @@ body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
   )
   .site-main
   > div
-  > header {
+  > header:not(.home-hero) {
   max-width: 940px;
   margin-inline: auto;
-  margin-bottom: 4.5rem !important;
+  margin-bottom: 4.5rem;
 }
 
 body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
@@ -437,10 +433,10 @@ body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
   )
   .site-main
   > div
-  > header
+  > header:not(.home-hero)
   h1 {
-  font-size: clamp(2.75rem, 6vw, 4.75rem) !important;
-  font-weight: 800 !important;
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 800;
 }
 
 body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
@@ -448,10 +444,10 @@ body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
   )
   .site-main
   > div
-  > header
+  > header:not(.home-hero)
   p {
   max-width: 48rem;
-  font-size: clamp(1rem, 2vw, 1.2rem) !important;
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
@@ -469,7 +465,7 @@ body:not(:has(#policy-grid)):not(:has(#facility-grid)):not(
 
 /* Comparison workspace. */
 body:has(#compare-container) #compare-container {
-  gap: 2rem !important;
+  gap: 2rem;
 }
 
 /* Sticky header only for the regulatory detail table. Scoping this is
@@ -484,7 +480,7 @@ body:has(#compare-container) .reg-details table thead {
 
 body:has(#compare-container) table th,
 body:has(#compare-container) table td {
-  border-color: var(--border-subtle) !important;
+  border-color: var(--border-subtle);
 }
 
 @media (max-width: 1023px) {
@@ -520,7 +516,7 @@ body:has(#compare-container) table td {
   }
 
   .site-main h1 {
-    font-size: clamp(2rem, 10vw, 2.75rem) !important;
+    font-size: clamp(2rem, 10vw, 2.75rem);
   }
 
   body:has(#facility-grid) .sticky.top-20 {

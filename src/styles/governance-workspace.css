@@ -165,10 +165,10 @@
   text-align: left;
 }
 
-.governance-heatmap-country {
+.governance-heatmap-table th.governance-heatmap-country {
   width: 6rem;
-  color: var(--text-primary) !important;
-  text-align: left !important;
+  color: var(--text-primary);
+  text-align: left;
 }
 
 .governance-rank-badge {
@@ -211,8 +211,8 @@
   border-left: 1px solid var(--border-subtle);
 }
 
-.governance-heatmap-sortable {
-  padding: 0 !important;
+.governance-heatmap-table th.governance-heatmap-sortable {
+  padding: 0;
 }
 
 .governance-heatmap-sort {

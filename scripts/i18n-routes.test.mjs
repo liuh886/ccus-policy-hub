@@ -11,6 +11,7 @@ import {
   EN_ROUTE_SEGMENTS,
   hasEnCounterpart,
   localeAlternateURLs,
+  localePath,
   stripSiteBase,
   withTrailingSlash,
 } from '../src/lib/i18nRoutes.ts';
@@ -98,6 +99,55 @@ describe('withTrailingSlash', () => {
     assert.strictEqual(
       withTrailingSlash('/ccus-policy-hub/en/'),
       '/ccus-policy-hub/en/'
+    );
+  });
+});
+
+describe('localePath', () => {
+  const siteBase = '/ccus-policy-hub';
+
+  it('builds zh and en detail paths with a site base', () => {
+    assert.strictEqual(
+      localePath('zh', '/policy/us-45q-ira/', siteBase),
+      '/ccus-policy-hub/policy/us-45q-ira/'
+    );
+    assert.strictEqual(
+      localePath('en', '/policy/us-45q-ira/', siteBase),
+      '/ccus-policy-hub/en/policy/us-45q-ira/'
+    );
+  });
+
+  it('normalizes missing or extra leading/trailing slashes', () => {
+    assert.strictEqual(
+      localePath('zh', 'policy/us-45q-ira', siteBase),
+      '/ccus-policy-hub/policy/us-45q-ira/'
+    );
+    assert.strictEqual(
+      localePath('en', '///policy/us-45q-ira///', `${siteBase}/`),
+      '/ccus-policy-hub/en/policy/us-45q-ira/'
+    );
+  });
+
+  it('handles root paths ("", "/") cleanly with and without a site base', () => {
+    assert.strictEqual(localePath('zh', '', siteBase), '/ccus-policy-hub/');
+    assert.strictEqual(localePath('zh', '/', siteBase), '/ccus-policy-hub/');
+    assert.strictEqual(localePath('en', '', siteBase), '/ccus-policy-hub/en/');
+    assert.strictEqual(localePath('en', '/', siteBase), '/ccus-policy-hub/en/');
+
+    assert.strictEqual(localePath('zh', ''), '/');
+    assert.strictEqual(localePath('zh', '/'), '/');
+    assert.strictEqual(localePath('en', ''), '/en/');
+    assert.strictEqual(localePath('en', '/'), '/en/');
+  });
+
+  it('defaults siteBase to empty string', () => {
+    assert.strictEqual(
+      localePath('zh', '/facilities/quest/'),
+      '/facilities/quest/'
+    );
+    assert.strictEqual(
+      localePath('en', '/facilities/quest/'),
+      '/en/facilities/quest/'
     );
   });
 });

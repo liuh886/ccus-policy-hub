@@ -1,6 +1,7 @@
 ---
 import { t as translateUi, type UiKey } from '../i18n/ui';
 import { getLocaleDataIndex, type Locale } from '../lib/dataIndex';
+import { localePath } from '../lib/i18nRoutes';
 import { SITE_BASE } from '../lib/siteBase';
 import i18nDict from '../data/i18n_dictionary.json';
 
@@ -151,7 +152,6 @@ interface MapBubble {
 interface MapRegion extends RegionLayout {
   bubbles: MapBubble[];
   href: string;
-  enHref: string;
 }
 
 function buildRegions(all: any[]): MapRegion[] {
@@ -194,20 +194,20 @@ function buildRegions(all: any[]): MapRegion[] {
         x: slot.x,
         y: slot.y,
         href: slug
-          ? `${BASE}/${isEn ? 'en/policy' : 'policy'}/${slug}/`
-          : `${BASE}/${isEn ? 'en/policy/' : 'policy/'}`,
+          ? localePath(lang, `/policy/${slug}/`, BASE)
+          : localePath(lang, '/policy/', BASE),
       };
     });
 
     const flagship = layout.flagshipSlug
       ? byId.get(layout.flagshipSlug)
       : undefined;
-    const fallbackHref = `${BASE}/${isEn ? 'en/policy/' : 'policy/'}`;
+    const fallbackHref = localePath(lang, '/policy/', BASE);
     const hubHref = flagship
-      ? `${BASE}/${isEn ? 'en/policy' : 'policy'}/${layout.flagshipSlug}/`
+      ? localePath(lang, `/policy/${layout.flagshipSlug}/`, BASE)
       : fallbackHref;
 
-    return { ...layout, bubbles, href: hubHref, enHref: hubHref };
+    return { ...layout, bubbles, href: hubHref };
   });
 }
 
@@ -331,7 +331,7 @@ const regions = buildRegions(allPolicies);
           >
             <div class="relative group/node">
               <a
-                href={isEn ? r.enHref : r.href}
+                href={r.href}
                 aria-label={
                   isEn
                     ? `${r.enName}: ${t('home.console.node.active')}`

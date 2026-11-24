@@ -187,13 +187,13 @@ body.home-page-shell .site-main {
   max-width: 44rem;
 }
 
-.home-section-kicker {
-  margin: 0 0 0.45rem !important;
-  color: var(--brand-teal-700) !important;
-  font-size: 0.68rem !important;
-  font-weight: 760 !important;
+.home-page-shell .home-section-kicker {
+  margin: 0 0 0.45rem;
+  color: var(--brand-teal-700);
+  font-size: 0.68rem;
+  font-weight: 760;
   letter-spacing: 0.1em;
-  line-height: 1.4 !important;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -206,12 +206,12 @@ body.home-page-shell .site-main {
   line-height: 1.1;
 }
 
-.home-section-description {
+.home-page-shell .home-section-description {
   max-width: 42rem;
-  margin: 0.7rem 0 0 !important;
-  color: var(--text-secondary) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.7 !important;
+  margin: 0.7rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .home-policy-count {
@@ -319,11 +319,11 @@ body.home-page-shell .site-main {
   line-height: 1.25;
 }
 
-.home-feature-description {
-  margin: 0.65rem 0 0 !important;
-  color: var(--text-secondary) !important;
-  font-size: 0.82rem !important;
-  line-height: 1.7 !important;
+.home-page-shell .home-feature-description {
+  margin: 0.65rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.7;
 }
 
 .home-feature-meta {
@@ -512,15 +512,15 @@ html.dark body.home-page-shell .site-mobile-menu {
   font-weight: 660;
 }
 
-.home-page--en .home-hero-eyebrow {
-  font-weight: 700 !important;
+.home-page-shell.home-page--en .home-hero-eyebrow {
+  font-weight: 700;
   letter-spacing: 0.1em;
 }
 
-.home-page--en .home-hero-description {
-  max-width: 40rem !important;
-  font-weight: 410 !important;
-  line-height: 1.72 !important;
+.home-page-shell.home-page--en .home-hero-description {
+  max-width: 40rem;
+  font-weight: 410;
+  line-height: 1.72;
 }
 
 .home-page--en .home-hero-action {
@@ -541,8 +541,8 @@ html.dark body.home-page-shell .site-mobile-menu {
   font-weight: 650;
 }
 
-.home-page--en .home-hero-total p {
-  font-weight: 500 !important;
+.home-page-shell.home-page--en .home-hero .home-hero-total p {
+  font-weight: 500;
 }
 
 .home-page--en .home-hero-metric-label {
@@ -562,12 +562,12 @@ html.dark body.home-page-shell .site-mobile-menu {
   font-weight: 610;
 }
 
-.home-page--en .home-hero-summary-note {
-  font-weight: 450 !important;
+.home-page-shell.home-page--en .home-hero-summary-note {
+  font-weight: 450;
 }
 
-.home-page--en .home-section-kicker {
-  font-weight: 690 !important;
+.home-page-shell.home-page--en .home-section-kicker {
+  font-weight: 690;
 }
 
 .home-page--en .home-section-title {

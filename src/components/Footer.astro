@@ -1,18 +1,24 @@
 ---
-import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
+import {
+  t as translateUi,
+  defaultLang,
+  resolveLang,
+  type UiKey,
+} from '../i18n/ui';
+import { localePath } from '../lib/i18nRoutes';
+import { SITE_BASE } from '../lib/siteBase';
 
 interface Props {
   lang?: string;
 }
 
 const { lang = defaultLang } = Astro.props;
-const t = (key: UiKey) => translateUi(lang, key);
+const resolvedLang = resolveLang(lang);
+const t = (key: UiKey) => translateUi(resolvedLang, key);
+const href = (path: string) => localePath(resolvedLang, path, SITE_BASE);
 
-import { SITE_BASE } from '../lib/siteBase';
 const BASE = SITE_BASE;
-const prefix = lang === 'zh' ? BASE : `${BASE}/${lang}`;
 const currentYear = new Date().getFullYear();
-const isEn = lang === 'en';
 ---
 
 <footer class="site-footer" data-pagefind-ignore>
@@ -43,15 +49,15 @@ const isEn = lang === 'en';
         >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >{isEn ? 'Open data' : '开放数据'}</span
+            >{t('footer.badge.open_data')}</span
           >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >{isEn ? 'Traceable sources' : '溯源可查'}</span
+            >{t('footer.badge.traceable')}</span
           >
           <span
             class="rounded-md border border-slate-200 px-2.5 py-1 dark:border-slate-700"
-            >{isEn ? 'Bilingual' : '中英双语'}</span
+            >{t('footer.badge.bilingual')}</span
           >
         </div>
       </div>
@@ -63,19 +69,15 @@ const isEn = lang === 'en';
           {t('footer.links')}
         </h4>
         <ul class="space-y-3 text-sm">
-          <li><a href={`${prefix}/policy/`}>{t('nav.policy')}</a></li>
-          <li><a href={`${prefix}/facilities/`}>{t('nav.map')}</a></li>
-          <li><a href={`${prefix}/compare/`}>{t('nav.compare')}</a></li>
-          <li><a href={`${prefix}/docs/`}>{t('nav.docs')}</a></li>
+          <li><a href={href('/policy/')}>{t('nav.policy')}</a></li>
+          <li><a href={href('/facilities/')}>{t('nav.map')}</a></li>
+          <li><a href={href('/compare/')}>{t('nav.compare')}</a></li>
+          <li><a href={href('/docs/')}>{t('nav.docs')}</a></li>
           <li>
-            <a href={`${prefix}/quality/`}
-              >{isEn ? 'Data Quality' : '质量看板'}</a
-            >
+            <a href={href('/quality/')}>{t('footer.link.quality')}</a>
           </li>
           <li>
-            <a href={`${prefix}/changelog/`}
-              >{isEn ? 'Changelog' : '更新日志'}</a
-            >
+            <a href={href('/changelog/')}>{t('footer.link.changelog')}</a>
           </li>
         </ul>
       </div>
@@ -90,10 +92,10 @@ const isEn = lang === 'en';
           {t('footer.contact_info')}
         </p>
         <a
-          href={`${prefix}/legal/`}
+          href={href('/legal/')}
           class="inline-flex items-center gap-2 text-xs font-semibold"
         >
-          {isEn ? 'Legal & Privacy' : '法律与隐私声明'}
+          {t('footer.legal')}
           <span aria-hidden="true">↗</span>
         </a>
       </div>
@@ -103,13 +105,7 @@ const isEn = lang === 'en';
       class="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-500 sm:flex-row sm:items-center sm:justify-between"
     >
       <span>&copy; {currentYear} CCUS Policy Hub.</span>
-      <span
-        >{
-          isEn
-            ? 'Open-source intelligence for global CCUS policies and projects.'
-            : '全球 CCUS 政策与项目开源知识基础设施'
-        }</span
-      >
+      <span>{t('footer.tagline')}</span>
     </div>
   </div>
 </footer>

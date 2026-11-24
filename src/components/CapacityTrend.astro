@@ -4,7 +4,6 @@ import '../styles/interaction-controls.css';
 import {
   CAPACITY_TREND_END_YEAR,
   CAPACITY_TREND_START_YEAR,
-  UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
   facilityCapacity,
   normalizeFacilityStatus,
   normalizeFacilityType,
@@ -13,7 +12,7 @@ import {
 } from '../lib/capacityMetrics.mjs';
 import { getLocaleDataIndex, type Locale } from '../lib/dataIndex';
 import { SITE_BASE } from '../lib/siteBase';
-import { t as translateUi } from '../i18n/ui';
+import { capacityTrendCopy, type CapacityTypeId } from '../i18n/capacityCopy';
 
 interface Props {
   showSummary?: boolean;
@@ -44,15 +43,7 @@ const typeOptions = [
   { id: 'ccu', label: 'CCU' },
 ] as const;
 
-type TypeId = (typeof typeOptions)[number]['id'];
-const typeLabels: Record<TypeId, { zh: string; en: string }> = {
-  capture: { zh: '碳捕集 (Capture)', en: 'Capture' },
-  transport: { zh: '碳运输 (Transport)', en: 'Transport' },
-  ts: { zh: '运输与封存 (T&S)', en: 'T&S' },
-  storage: { zh: '地质封存 (Storage)', en: 'Storage' },
-  'full-chain': { zh: '全产业链 (Full chain)', en: 'Full chain' },
-  ccu: { zh: '碳利用 (CCU)', en: 'CCU' },
-};
+type TypeId = CapacityTypeId;
 type ChartPoint = {
   year: number;
   operational: number;
@@ -66,50 +57,7 @@ type CapacityRecord = {
   pipeline: boolean;
 };
 
-const text = {
-  totalTitle:
-    lang === 'zh' ? '全球项目记录能力' : 'Global Project-Record Capacity',
-  totalYearSuffix: lang === 'zh' ? '估' : ' Est.',
-  totalNote:
-    lang === 'zh'
-      ? 'Planned、Operational 与 Under construction 项目记录能力累计；排除 Cancelled / Decommissioned / Suspended。'
-      : 'Cumulative project-record capacity for Planned, Operational and Under construction records; Cancelled / Decommissioned / Suspended excluded.',
-  chartTitle:
-    lang === 'zh'
-      ? '全球 CCUS 项目记录能力增长趋势'
-      : 'CCUS Project-Record Capacity Growth',
-  committedLabel:
-    lang === 'zh'
-      ? '确定性能力（在运+在建）'
-      : 'Committed (Operational + Under construction)',
-  pipelineLabel:
-    lang === 'zh'
-      ? '公开管线（规划+在运+在建）'
-      : 'Pipeline (Planned + Operational + Under construction)',
-  typeFilterTitle: lang === 'zh' ? '类型' : 'Types',
-  operationalTitle:
-    lang === 'zh'
-      ? '在运设施（项目记录规模）'
-      : 'Operational facilities (project-record scale)',
-  constructionTitle:
-    lang === 'zh'
-      ? `在建设施（预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运）`
-      : `Under-construction facilities (operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF})`,
-  storageSubsetLabel: lang === 'zh' ? '其中封存相关' : 'Storage-related subset',
-  storageSubsetNote:
-    lang === 'zh'
-      ? `封存相关包括 T&S、Storage 与 Full chain 项目记录；不等于净可交付地质封存能力。在建卡仅统计预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运记录，全量在建项目见下方项目格局面板。`
-      : `Storage-related includes T&S, Storage and Full chain project records; it is not net deliverable geological storage capacity. The under-construction card counts records operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF}; see Project Landscape below for all active under-construction records.`,
-  chartNote:
-    lang === 'zh'
-      ? '注：本图采用 project-record 口径，按 operation → FID → announcement 年份累计 Planned、Operational、Under construction 项目记录能力；Cancelled、Decommissioned、Suspended 被排除。筛选项覆盖 capture、transport、T&S、storage、full-chain、CCU。数值为跨类型项目记录能力加总，不代表净可交付捕集能力或净封存能力。'
-      : 'Note: This chart uses a project-record methodology, accumulating Planned, Operational and Under construction records by operation → FID → announcement year; Cancelled, Decommissioned and Suspended records are excluded. The type filter covers capture, transport, T&S, storage, full-chain and CCU. Values aggregate project-record capacity across selected types and should not be interpreted as net deliverable capture or storage capacity.',
-  // Error strings are shared keys in src/i18n/ui.ts (single source);
-  // the client catch-block already falls back to the same keys.
-  chartErrorTitle: translateUi(lang, 'capacity.error.title'),
-  chartErrorNote: translateUi(lang, 'capacity.error.note'),
-  chartErrorAction: translateUi(lang, 'capacity.error.action'),
-};
+const text = capacityTrendCopy(lang);
 
 const trendYears = Array.from(
   { length: endYear - startYear + 1 },
@@ -178,8 +126,7 @@ const constructionSummary = summarizeFacilities(
 );
 
 const formatCapacity = (value: number): string => value.toFixed(1);
-const metricOpen = lang === 'zh' ? '（' : '(';
-const metricClose = lang === 'zh' ? '）' : ')';
+const { metricOpen, metricClose } = text;
 ---
 
 <div
@@ -222,7 +169,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
               </h3>
               <p class="text-3xl font-black tracking-tight text-white">
                 {operationalSummary.totalCount}
-                {lang === 'zh' ? '个' : ''}
+                {text.countSuffix}
                 <span class="text-lg font-bold text-blue-300">
                   {metricOpen}
                   {formatCapacity(operationalSummary.totalCapacity)} Mtpa
@@ -232,7 +179,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
               <p class="mt-2 text-sm font-semibold text-emerald-300">
                 {text.storageSubsetLabel}
                 {operationalSummary.storageRelatedCount}
-                {lang === 'zh' ? '个' : ''}
+                {text.countSuffix}
                 {metricOpen}
                 {formatCapacity(operationalSummary.storageRelatedCapacity)} Mtpa
                 {metricClose}
@@ -245,7 +192,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
               </h3>
               <p class="text-3xl font-black tracking-tight text-white">
                 {constructionSummary.totalCount}
-                {lang === 'zh' ? '个' : ''}
+                {text.countSuffix}
                 <span class="text-lg font-bold text-emerald-300">
                   {metricOpen}
                   {formatCapacity(constructionSummary.totalCapacity)} Mtpa
@@ -255,7 +202,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
               <p class="mt-2 text-sm font-semibold text-emerald-300">
                 {text.storageSubsetLabel}
                 {constructionSummary.storageRelatedCount}
-                {lang === 'zh' ? '个' : ''}
+                {text.countSuffix}
                 {metricOpen}
                 {formatCapacity(
                   constructionSummary.storageRelatedCapacity
@@ -316,7 +263,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
           <span
             class="ml-1.5 text-[9px] font-black tracking-tighter text-emerald-500"
           >
-            {lang === 'zh' ? '视图激活' : 'ACTIVE_VIEW'}
+            {text.activeViewBadge}
           </span>
         </div>
         <div
@@ -338,9 +285,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
           min={startYear}
           max={endYear}
           value={defaultMinYear}
-          aria-label={lang === 'en'
-            ? 'Minimum year in active range'
-            : '有效时间范围起始年份'}
+          aria-label={text.minYearAriaLabel}
         />
         <input
           type="range"
@@ -348,9 +293,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
           min={startYear}
           max={endYear}
           value={defaultMaxYear}
-          aria-label={lang === 'en'
-            ? 'Maximum year in active range'
-            : '有效时间范围结束年份'}
+          aria-label={text.maxYearAriaLabel}
         />
       </div>
     </div>
@@ -380,9 +323,7 @@ const metricClose = lang === 'zh' ? '）' : ')';
                   data-capacity-type
                   class="h-3 w-3 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>
-                  {lang === 'zh' ? typeLabels[option.id].zh : option.label}
-                </span>
+                <span>{text.typeLabels[option.id]}</span>
               </label>
             ))
           }
