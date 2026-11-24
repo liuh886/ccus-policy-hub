@@ -22,9 +22,6 @@ src/content/enums.generated.ts
 public/reports/
 scripts/templates/
 
-# --- Complex Interactive Components ---
-src/components/CapacityTrend.astro
-
 # --- OS & IDE ---
 .DS_Store
 Thumbs.db

@@ -67,7 +67,8 @@ type CapacityRecord = {
 };
 
 const text = {
-  totalTitle: lang === 'zh' ? '全球项目记录能力' : 'Global Project-Record Capacity',
+  totalTitle:
+    lang === 'zh' ? '全球项目记录能力' : 'Global Project-Record Capacity',
   totalYearSuffix: lang === 'zh' ? '估' : ' Est.',
   totalNote:
     lang === 'zh'
@@ -94,8 +95,7 @@ const text = {
     lang === 'zh'
       ? `在建设施（预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运）`
       : `Under-construction facilities (operating ≤${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF})`,
-  storageSubsetLabel:
-    lang === 'zh' ? '其中封存相关' : 'Storage-related subset',
+  storageSubsetLabel: lang === 'zh' ? '其中封存相关' : 'Storage-related subset',
   storageSubsetNote:
     lang === 'zh'
       ? `封存相关包括 T&S、Storage 与 Full chain 项目记录；不等于净可交付地质封存能力。在建卡仅统计预计 ${UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF} 年及以前投运记录，全量在建项目见下方项目格局面板。`
@@ -120,7 +120,12 @@ const capacityRecords: CapacityRecord[] = facilities.flatMap((facility) => {
   const year = projectRecordYear(facility);
   const status = normalizeFacilityStatus(facility.data.status);
 
-  if (!year || year < startYear || year > endYear || !pipelineStatuses.has(status)) {
+  if (
+    !year ||
+    year < startYear ||
+    year > endYear ||
+    !pipelineStatuses.has(status)
+  ) {
     return [];
   }
 
@@ -167,7 +172,10 @@ const capacityAtYear = (series: ChartPoint[], year: number): number =>
 
 const totalCapacity = capacityAtYear(chartData, defaultMaxYear).toFixed(1);
 const operationalSummary = summarizeFacilities(facilities, 'operational');
-const constructionSummary = summarizeFacilities(facilities, 'under-construction');
+const constructionSummary = summarizeFacilities(
+  facilities,
+  'under-construction'
+);
 
 const formatCapacity = (value: number): string => value.toFixed(1);
 const metricOpen = lang === 'zh' ? '（' : '(';
@@ -177,29 +185,24 @@ const metricClose = lang === 'zh' ? '）' : ')';
 <div
   data-capacity-trend
   data-show-summary={showSummary ? 'true' : 'false'}
-  class={
-    showSummary
-      ? 'mb-16 grid grid-cols-1 gap-8 lg:grid-cols-3'
-      : 'mb-16 grid grid-cols-1'
-  }
+  class={showSummary
+    ? 'mb-16 grid grid-cols-1 gap-8 lg:grid-cols-3'
+    : 'mb-16 grid grid-cols-1'}
 >
   {
     showSummary && (
       <div class="space-y-6 lg:col-span-1">
-        <section
-          class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:border-emerald-500/50 dark:border-slate-800 dark:bg-slate-900"
-        >
-          <div
-            class="absolute left-0 top-0 h-full w-1.5 bg-emerald-500/0 transition-all group-hover:bg-emerald-500/50"
-          ></div>
-          <div
-            class="absolute right-4 top-2 font-mono text-[8px] text-slate-300 dark:text-slate-700"
-          >
+        <section class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:border-emerald-500/50 dark:border-slate-800 dark:bg-slate-900">
+          <div class="absolute left-0 top-0 h-full w-1.5 bg-emerald-500/0 transition-all group-hover:bg-emerald-500/50" />
+          <div class="absolute right-4 top-2 font-mono text-[8px] text-slate-300 dark:text-slate-700">
             CAP_MONITOR_v3.5
           </div>
           <h3 class="mb-4 text-xs font-black uppercase tracking-widest text-slate-400">
             {text.totalTitle}
-            <span data-capacity-total-year>({defaultMaxYear}{text.totalYearSuffix})</span>
+            <span data-capacity-total-year>
+              ({defaultMaxYear}
+              {text.totalYearSuffix})
+            </span>
           </h3>
           <div class="mb-2 text-5xl font-black tracking-tighter text-emerald-600">
             <span data-capacity-total>{totalCapacity}</span>
@@ -218,15 +221,21 @@ const metricClose = lang === 'zh' ? '）' : ')';
                 {text.operationalTitle}
               </h3>
               <p class="text-3xl font-black tracking-tight text-white">
-                {operationalSummary.totalCount}{lang === 'zh' ? '个' : ''}
+                {operationalSummary.totalCount}
+                {lang === 'zh' ? '个' : ''}
                 <span class="text-lg font-bold text-blue-300">
-                  {metricOpen}{formatCapacity(operationalSummary.totalCapacity)} Mtpa{metricClose}
+                  {metricOpen}
+                  {formatCapacity(operationalSummary.totalCapacity)} Mtpa
+                  {metricClose}
                 </span>
               </p>
               <p class="mt-2 text-sm font-semibold text-emerald-300">
                 {text.storageSubsetLabel}
-                {operationalSummary.storageRelatedCount}{lang === 'zh' ? '个' : ''}
-                {metricOpen}{formatCapacity(operationalSummary.storageRelatedCapacity)} Mtpa{metricClose}
+                {operationalSummary.storageRelatedCount}
+                {lang === 'zh' ? '个' : ''}
+                {metricOpen}
+                {formatCapacity(operationalSummary.storageRelatedCapacity)} Mtpa
+                {metricClose}
               </p>
             </div>
 
@@ -235,15 +244,23 @@ const metricClose = lang === 'zh' ? '）' : ')';
                 {text.constructionTitle}
               </h3>
               <p class="text-3xl font-black tracking-tight text-white">
-                {constructionSummary.totalCount}{lang === 'zh' ? '个' : ''}
+                {constructionSummary.totalCount}
+                {lang === 'zh' ? '个' : ''}
                 <span class="text-lg font-bold text-emerald-300">
-                  {metricOpen}{formatCapacity(constructionSummary.totalCapacity)} Mtpa{metricClose}
+                  {metricOpen}
+                  {formatCapacity(constructionSummary.totalCapacity)} Mtpa
+                  {metricClose}
                 </span>
               </p>
               <p class="mt-2 text-sm font-semibold text-emerald-300">
                 {text.storageSubsetLabel}
-                {constructionSummary.storageRelatedCount}{lang === 'zh' ? '个' : ''}
-                {metricOpen}{formatCapacity(constructionSummary.storageRelatedCapacity)} Mtpa{metricClose}
+                {constructionSummary.storageRelatedCount}
+                {lang === 'zh' ? '个' : ''}
+                {metricOpen}
+                {formatCapacity(
+                  constructionSummary.storageRelatedCapacity
+                )}{' '}
+                Mtpa{metricClose}
               </p>
             </div>
           </div>
@@ -264,13 +281,19 @@ const metricClose = lang === 'zh' ? '）' : ')';
   >
     <div class="relative z-10 mb-4 flex items-start justify-between gap-4">
       <div>
-        <h3 class="mb-1 text-lg font-black uppercase tracking-tight dark:text-white">
+        <h3
+          class="mb-1 text-lg font-black uppercase tracking-tight dark:text-white"
+        >
           {text.chartTitle}
         </h3>
-        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+        <p
+          class="text-[10px] font-bold uppercase tracking-widest text-slate-400"
+        >
           Project-record capacity across selected CCUS types (Mtpa)
           <span class="text-blue-500">1970</span> -
-          <span class="text-emerald-500" data-capacity-subtitle-max>{defaultMaxYear}</span>
+          <span class="text-emerald-500" data-capacity-subtitle-max
+            >{defaultMaxYear}</span
+          >
         </p>
       </div>
       <div
@@ -290,17 +313,24 @@ const metricClose = lang === 'zh' ? '）' : ')';
           <span id="yearMinVal" class="font-bold">{defaultMinYear}</span> -
           <span id="yearMaxVal" class="font-bold">{defaultMaxYear}</span>
           <span class="opacity-40">]</span>
-          <span class="ml-1.5 text-[9px] font-black tracking-tighter text-emerald-500">
+          <span
+            class="ml-1.5 text-[9px] font-black tracking-tighter text-emerald-500"
+          >
             {lang === 'zh' ? '视图激活' : 'ACTIVE_VIEW'}
           </span>
         </div>
-        <div class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400">
+        <div
+          class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400"
+        >
           Timeline viewport
         </div>
       </div>
 
       <div class="group/slider relative flex h-7 w-full items-center">
-        <div class="absolute h-1 w-full rounded-full bg-slate-100 shadow-inner dark:bg-slate-800/50"></div>
+        <div
+          class="absolute h-1 w-full rounded-full bg-slate-100 shadow-inner dark:bg-slate-800/50"
+        >
+        </div>
         <div id="sliderTrackHighlight" class="absolute z-10 rounded-full"></div>
         <input
           type="range"
@@ -330,7 +360,9 @@ const metricClose = lang === 'zh' ? '）' : ')';
         id="capacityTypeFilter"
         class="rounded-xl border border-slate-200 bg-slate-50/70 px-3 py-3 dark:border-slate-800 dark:bg-slate-950/30"
       >
-        <div class="mb-2 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+        <div
+          class="mb-2 text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400"
+        >
           {text.typeFilterTitle}
         </div>
         <div class="space-y-1.5">
@@ -348,7 +380,9 @@ const metricClose = lang === 'zh' ? '）' : ')';
                   data-capacity-type
                   class="h-3 w-3 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
-                <span>{lang === 'zh' ? typeLabels[option.id].zh : option.label}</span>
+                <span>
+                  {lang === 'zh' ? typeLabels[option.id].zh : option.label}
+                </span>
               </label>
             ))
           }
@@ -370,355 +404,19 @@ const metricClose = lang === 'zh' ? '）' : ')';
           data-default-max-year={defaultMaxYear}
           data-start-year={startYear}
           data-end-year={endYear}
-          data-year-suffix={text.totalYearSuffix}
-        ></canvas>
+          data-year-suffix={text.totalYearSuffix}></canvas>
       </div>
     </div>
 
-    <p class="relative z-10 mt-4 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400">
+    <p
+      class="relative z-10 mt-4 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400"
+    >
       {text.chartNote}
     </p>
   </section>
 </div>
 
 <script>
-  // Bundled from npm (versioned in package.json) instead of an unversioned CDN
-  // tag. Chart stays in module scope — no window globals; View Transitions
-  import {
-    Chart,
-    LineController,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-
-  Chart.register(
-    LineController,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    Tooltip,
-    Legend
-  );
-  import { t as translateUi, type UiKey } from '../i18n/ui';
-
-  interface CapacityPoint {
-    year: number;
-    operational: number;
-    pipeline: number;
-  }
-
-  interface CapacitySeries {
-    operational: number[];
-    pipeline: number[];
-  }
-
-  function initCapacityChart() {
-    const canvas = document.getElementById(
-      'capacityChart'
-    ) as HTMLCanvasElement | null;
-    if (!canvas) return;
-    // Both window.load and astro:page-load can fire on the initial visit.
-    // Replacing an existing chart leaves filter listeners pointing at a
-    // destroyed instance, so initialise each live canvas only once.
-    if (Chart.getChart(canvas)) return;
-
-    const root = canvas.closest('[data-capacity-trend]') || document;
-    const minSlider = root.querySelector(
-      '#minYearSlider'
-    ) as HTMLInputElement | null;
-    const maxSlider = root.querySelector(
-      '#maxYearSlider'
-    ) as HTMLInputElement | null;
-    const trackHighlight = root.querySelector(
-      '#sliderTrackHighlight'
-    ) as HTMLElement | null;
-    const yearMinVal = root.querySelector('#yearMinVal') as HTMLElement | null;
-    const yearMaxVal = root.querySelector('#yearMaxVal') as HTMLElement | null;
-    const subtitleMaxYear = root.querySelector(
-      '[data-capacity-subtitle-max]'
-    ) as HTMLElement | null;
-    const totalValue = root.querySelector(
-      '[data-capacity-total]'
-    ) as HTMLElement | null;
-    const totalYear = root.querySelector(
-      '[data-capacity-total-year]'
-    ) as HTMLElement | null;
-    const typeCheckboxes = Array.from(
-      root.querySelectorAll('[data-capacity-type]')
-    ) as HTMLInputElement[];
-
-    try {
-      const allSeries = JSON.parse(
-        canvas.dataset.values || '[]'
-      ) as CapacityPoint[];
-      const typeSeries = JSON.parse(
-        canvas.dataset.typeSeries || '{}'
-      ) as Record<string, CapacityPoint[]>;
-      if (allSeries.length === 0) return;
-
-      const labels = allSeries.map((point) => point.year);
-      const defaultMinYear = Number(canvas.dataset.defaultMinYear || 1990);
-      const defaultMaxYear = Number(canvas.dataset.defaultMaxYear || 2030);
-      const startYear = Number(canvas.dataset.startYear || 1970);
-      const endYear = Number(canvas.dataset.endYear || 2040);
-      const yearSuffix = canvas.dataset.yearSuffix || ' Est.';
-
-      const zeroSeries = () => ({
-        operational: labels.map(() => 0),
-        pipeline: labels.map(() => 0),
-      });
-
-      const selectedTypeIds = () =>
-        typeCheckboxes
-          .filter((checkbox) => checkbox.checked)
-          .map((checkbox) => checkbox.value);
-
-      const combineSelectedSeries = () => {
-        const selectedTypes = selectedTypeIds();
-        if (selectedTypes.length === typeCheckboxes.length) {
-          return {
-            operational: allSeries.map((point) => Number(point.operational || 0)),
-            pipeline: allSeries.map((point) => Number(point.pipeline || 0)),
-          };
-        }
-
-        return selectedTypes.reduce((series, typeId) => {
-          const points = typeSeries[typeId] || [];
-          points.forEach((point, index) => {
-            series.operational[index] += Number(point.operational || 0);
-            series.pipeline[index] += Number(point.pipeline || 0);
-          });
-          return series;
-        }, zeroSeries());
-      };
-
-      const yearIndex = (year: number) => {
-        const index = labels.findIndex((label) => Number(label) === Number(year));
-        return index >= 0 ? index : labels.length - 1;
-      };
-
-      const currentMaxYear = () =>
-        maxSlider ? Number.parseInt(maxSlider.value, 10) : defaultMaxYear;
-
-      const updateTotalDisplay = (
-        series: CapacitySeries,
-        maxYear?: number
-      ) => {
-        const activeYear = maxYear || currentMaxYear();
-        const activePipeline = series.pipeline[yearIndex(activeYear)] || 0;
-        const formattedTotal = Number(activePipeline).toFixed(1);
-
-        if (totalValue) totalValue.textContent = formattedTotal;
-        if (totalYear) totalYear.textContent = `(${activeYear}${yearSuffix})`;
-        if (subtitleMaxYear) subtitleMaxYear.textContent = String(activeYear);
-
-        if (root instanceof HTMLElement) {
-          root.dataset.capacityTotal = formattedTotal;
-          root.dataset.capacityYear = String(activeYear);
-        }
-        root.dispatchEvent(
-          new CustomEvent<{ total: number; year: number }>(
-            'ccus:capacity-summary-change',
-            {
-              bubbles: true,
-              detail: {
-                total: Number(formattedTotal),
-                year: activeYear,
-              },
-            }
-          )
-        );
-      };
-
-      const initialSeries = combineSelectedSeries();
-      const chart = new Chart(canvas, {
-        type: 'line',
-        data: {
-          labels,
-          datasets: [
-            {
-              label: canvas.dataset.labelOp,
-              data: initialSeries.operational,
-              borderColor: '#2563eb',
-              backgroundColor: 'rgba(37, 99, 235, 0.1)',
-              fill: true,
-              tension: 0.3,
-              borderWidth: 4,
-              pointRadius: 0,
-              pointHoverRadius: 6,
-              spanGaps: false,
-            },
-            {
-              label: canvas.dataset.labelPipe,
-              data: initialSeries.pipeline,
-              borderColor: '#10b981',
-              backgroundColor: 'rgba(16, 185, 129, 0.05)',
-              fill: true,
-              tension: 0.3,
-              borderWidth: 4,
-              pointRadius: 0,
-              pointHoverRadius: 6,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
-              align: 'end',
-              labels: { boxWidth: 12, usePointStyle: true, font: { size: 10 } },
-            },
-            tooltip: {
-              padding: 10,
-              backgroundColor: '#0f172a',
-              callbacks: {
-                label(context) {
-                  const value = Number(context.parsed.y || 0).toFixed(1);
-                  return `${context.dataset.label}: ${value} Mtpa`;
-                },
-              },
-            },
-          },
-          scales: {
-            x: {
-              min: defaultMinYear,
-              max: defaultMaxYear,
-              grid: { display: false },
-              ticks: { font: { size: 10 }, color: '#94a3b8', maxTicksLimit: 10 },
-            },
-            y: {
-              beginAtZero: true,
-              grid: { color: 'rgba(148, 163, 184, 0.1)' },
-              ticks: {
-                font: { size: 10 },
-                color: '#94a3b8',
-                callback(value: string | number) {
-                  return Number(value).toFixed(0);
-                },
-              },
-            },
-          },
-        },
-      });
-
-      const updateFilteredSeries = () => {
-        const nextSeries = combineSelectedSeries();
-        chart.data.datasets[0].data = nextSeries.operational;
-        chart.data.datasets[1].data = nextSeries.pipeline;
-        updateTotalDisplay(nextSeries);
-        chart.update();
-      };
-
-      const activateRangeThumb = (target: EventTarget | null) => {
-        if (!minSlider || !maxSlider) return;
-        minSlider.style.zIndex = target === minSlider ? '34' : '31';
-        maxSlider.style.zIndex = target === maxSlider ? '34' : '32';
-      };
-
-      const updateSliderUI = (event?: Event) => {
-        if (!minSlider || !maxSlider) return;
-
-        let min = Number.parseInt(minSlider.value, 10);
-        let max = Number.parseInt(maxSlider.value, 10);
-
-        if (min >= max) {
-          if (event?.target === minSlider) {
-            min = max - 1;
-            minSlider.value = String(min);
-          } else {
-            max = min + 1;
-            maxSlider.value = String(max);
-          }
-        }
-
-        const minPercent = ((min - startYear) / (endYear - startYear)) * 100;
-        const maxPercent = ((max - startYear) / (endYear - startYear)) * 100;
-
-        if (trackHighlight) {
-          trackHighlight.style.left = `${minPercent}%`;
-          trackHighlight.style.width = `${maxPercent - minPercent}%`;
-        }
-
-        if (yearMinVal) yearMinVal.textContent = String(min);
-        if (yearMaxVal) yearMaxVal.textContent = String(max);
-
-        activateRangeThumb(event?.target ?? null);
-
-        const scales = chart.options.scales;
-        if (scales?.x) {
-          scales.x.min = min;
-          scales.x.max = max;
-        }
-        updateTotalDisplay(combineSelectedSeries(), max);
-        chart.update('none');
-      };
-
-      typeCheckboxes.forEach((checkbox) => {
-        checkbox.addEventListener('change', updateFilteredSeries);
-      });
-
-      if (minSlider && maxSlider) {
-        const handleThumbPointerDown = (event: PointerEvent) => {
-          activateRangeThumb(event.target);
-        };
-        minSlider.addEventListener('pointerdown', handleThumbPointerDown);
-        maxSlider.addEventListener('pointerdown', handleThumbPointerDown);
-        minSlider.addEventListener('input', updateSliderUI);
-        maxSlider.addEventListener('input', updateSliderUI);
-        minSlider.addEventListener('focus', updateSliderUI);
-        maxSlider.addEventListener('focus', updateSliderUI);
-        updateSliderUI();
-      } else {
-        updateTotalDisplay(initialSeries, defaultMaxYear);
-      }
-    } catch (error) {
-      console.error('Failed to init capacity chart:', error);
-      const shell = document.getElementById('capacityChartShell');
-      if (shell) {
-        const base = (canvas.dataset.base || '').replace(/\/$/, '');
-        const isEn = document.documentElement.lang === 'en';
-        const t = (key: UiKey) => translateUi(isEn ? 'en' : 'zh', key);
-        shell.innerHTML = `
-        <div class="flex flex-col items-center justify-center h-full min-h-[280px] gap-3 text-center p-8">
-          <div class="text-2xl" aria-hidden="true">⚠️</div>
-          <p class="font-bold text-slate-900 dark:text-white">
-            ${canvas.dataset.errorTitle || t('capacity.error.title')}
-          </p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">
-            ${canvas.dataset.errorNote || ''}
-          </p>
-          <a
-            href="${base}/${isEn ? 'en/facilities' : 'facilities'}/"
-            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors"
-          >
-            ${canvas.dataset.errorAction || t('capacity.error.action')}
-          </a>
-        </div>`;
-      }
-    }
-  }
-
-  document.addEventListener('astro:page-load', initCapacityChart);
-  document.addEventListener('astro:before-swap', () => {
-    const canvas = document.getElementById(
-      'capacityChart'
-    ) as HTMLCanvasElement | null;
-    if (canvas) Chart.getChart(canvas)?.destroy();
-  });
-  if (document.readyState === 'complete') {
-    initCapacityChart();
-  } else {
-    window.addEventListener('load', initCapacityChart);
-  }
+  import { mountCapacityTrend } from '../scripts/capacityTrend';
+  mountCapacityTrend();
 </script>
