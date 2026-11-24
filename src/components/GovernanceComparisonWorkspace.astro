@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import GovernanceAnalyticsPanels from './GovernanceAnalyticsPanels.astro';
 import countryData from '../data/countries.json';
+import { getLocaleDataIndex } from '../lib/dataIndex';
 import { governanceComparisonCopy } from '../lib/governanceCopy.mjs';
 import { governanceClientCopy } from '../lib/governanceCopy.mjs';
 import {
@@ -11,15 +12,10 @@ import {
 } from '../lib/comparePayload.mjs';
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
-const policies = await getCollection(
-  lang === 'en' ? 'policies_en' : 'policies_zh'
-);
-const facilities = await getCollection(
-  lang === 'en' ? 'facilities_en' : 'facilities_zh'
-);
-const profiles = await getCollection(
-  lang === 'en' ? 'countries_en' : 'countries_zh'
-);
+const [{ policies, facilities }, profiles] = await Promise.all([
+  getLocaleDataIndex(lang),
+  getCollection(lang === 'en' ? 'countries_en' : 'countries_zh'),
+]);
 const text = governanceComparisonCopy[lang];
 const clientText = governanceClientCopy[lang];
 const safeJson = (data: unknown) =>

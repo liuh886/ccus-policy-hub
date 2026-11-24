@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-import { t as translateUi, defaultLang, type UiKey } from '../i18n/ui';
+import { t as translateUi, type UiKey } from '../i18n/ui';
+import { getLocaleDataIndex, type Locale } from '../lib/dataIndex';
 import { SITE_BASE } from '../lib/siteBase';
 import i18nDict from '../data/i18n_dictionary.json';
 
-const lang = Astro.props.lang || defaultLang;
+const lang: Locale = Astro.props.lang === 'en' ? 'en' : 'zh';
 const isEn = lang === 'en';
 const t = (key: UiKey) => translateUi(lang, key);
 
@@ -211,7 +211,7 @@ function buildRegions(all: any[]): MapRegion[] {
   });
 }
 
-const allPolicies = await getCollection(isEn ? 'policies_en' : 'policies_zh');
+const { policies: allPolicies } = await getLocaleDataIndex(lang);
 const regions = buildRegions(allPolicies);
 ---
 

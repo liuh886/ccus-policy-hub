@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import { SITE_BASE } from '../lib/siteBase';
+import { getLocaleDataIndex } from '../lib/dataIndex';
 import {
   CAPACITY_TREND_START_YEAR,
   UNDER_CONSTRUCTION_OPERATION_YEAR_CUTOFF,
@@ -15,9 +15,7 @@ interface Props {
 }
 
 const lang = Astro.props.lang === 'en' ? 'en' : 'zh';
-const facilities = await getCollection(
-  lang === 'en' ? 'facilities_en' : 'facilities_zh'
-);
+const { facilities } = await getLocaleDataIndex(lang);
 const defaultMaxYear = 2030;
 const pipelineStatuses = new Set([
   'planned',
