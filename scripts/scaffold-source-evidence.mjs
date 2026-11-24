@@ -4,9 +4,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   EXTRACTORS,
+  MAX_EXTERNAL_SOURCE_BYTES,
   MAX_SOURCE_BYTES,
   EvidenceError,
   digest,
+  formatByteLimit,
   inspectEvidence,
   normalizeOfficialHtml,
 } from './lib/source-evidence.mjs';
@@ -25,11 +27,15 @@ const DRAFT_REVIEW = Object.freeze({
   reviewed_at: null,
 });
 
+const STORAGE_MODES = new Set(['git_inline', 'external_archive']);
+
 const VALUE_FLAGS = Object.freeze({
   '--policy-id': 'policyId',
   '--document-id': 'documentId',
   '--url': 'url',
   '--file': 'file',
+  '--storage': 'storage',
+  '--external-uri': 'externalUri',
   '--extractor': 'extractor',
   '--lang': 'lang',
   '--edition': 'edition',
@@ -45,8 +51,48 @@ const VALUE_FLAGS = Object.freeze({
   '--out-dir': 'outDir',
 });
 
+function validateStorageOptions(storageInput, externalUriInput) {
+  const storage = storageInput ?? 'git_inline';
+  if (!STORAGE_MODES.has(storage)) {
+    throw new EvidenceError(
+      'INVALID_ARGUMENT',
+      `Unsupported --storage mode: ${storage}`
+    );
+  }
+  if (storage === 'external_archive') {
+    if (typeof externalUriInput !== 'string' || !externalUriInput.trim()) {
+      throw new EvidenceError(
+        'INVALID_ARGUMENT',
+        '--external-uri is required when --storage external_archive is used.'
+      );
+    }
+    let parsedExternalUri;
+    try {
+      parsedExternalUri = new URL(externalUriInput);
+    } catch {
+      throw new EvidenceError('INVALID_ARGUMENT', 'Invalid --external-uri.');
+    }
+    if (parsedExternalUri.protocol !== 'https:') {
+      throw new EvidenceError(
+        'INVALID_ARGUMENT',
+        '--external-uri must use https.'
+      );
+    }
+    return { storage, externalUri: parsedExternalUri.href };
+  }
+  if (externalUriInput !== null && externalUriInput !== undefined) {
+    throw new EvidenceError(
+      'INVALID_ARGUMENT',
+      '--external-uri is only allowed with --storage external_archive.'
+    );
+  }
+  return { storage, externalUri: null };
+}
+
 export function parseScaffoldArgs(args) {
   const options = {
+    storage: 'git_inline',
+    externalUri: null,
     extractor: 'official-html-v1',
     lang: 'en',
     edition: null,
@@ -104,6 +150,13 @@ export function parseScaffoldArgs(args) {
       'UNSUPPORTED_EXTRACTOR',
       `Unsupported extractor: ${options.extractor}`
     );
+
+  const storageConfig = validateStorageOptions(
+    options.storage,
+    options.externalUri
+  );
+  options.storage = storageConfig.storage;
+  options.externalUri = storageConfig.externalUri;
 
   let parsedUrl;
   try {
@@ -211,7 +264,17 @@ export function extractUniqueQuote(normalizedText, { query, start, end }) {
   return quote;
 }
 
-async function fetchSourceBytes(url, fetchImpl = fetch) {
+async function fetchSourceBytes(
+  url,
+  fetchImpl = fetch,
+  maxBytes = MAX_SOURCE_BYTES
+) {
+  if (!Number.isInteger(maxBytes) || maxBytes < 1) {
+    throw new EvidenceError(
+      'INVALID_ARGUMENT',
+      'maxBytes must be a positive integer.'
+    );
+  }
   const response = await fetchImpl(url, {
     redirect: 'follow',
     signal: AbortSignal.timeout(30000),
@@ -223,23 +286,30 @@ async function fetchSourceBytes(url, fetchImpl = fetch) {
     );
   }
   const declared = Number(response.headers.get('content-length') || 0);
-  if (declared > MAX_SOURCE_BYTES) {
+  if (declared > maxBytes) {
     throw new EvidenceError(
       'SOURCE_TOO_LARGE',
-      'The source snapshot exceeds 512 KiB.'
+      `The source snapshot exceeds ${formatByteLimit(maxBytes)}.`
     );
   }
   const buf = Buffer.from(await response.arrayBuffer());
-  if (buf.length > MAX_SOURCE_BYTES) {
+  if (buf.length > maxBytes) {
     throw new EvidenceError(
       'SOURCE_TOO_LARGE',
-      'The source snapshot exceeds 512 KiB.'
+      `The source snapshot exceeds ${formatByteLimit(maxBytes)}.`
     );
   }
   return buf;
 }
 
 export async function scaffoldEvidence(options, { fetchImpl = fetch } = {}) {
+  const { storage, externalUri } = validateStorageOptions(
+    options.storage,
+    options.externalUri
+  );
+  const isExternal = storage === 'external_archive';
+  const maxBytes = isExternal ? MAX_EXTERNAL_SOURCE_BYTES : MAX_SOURCE_BYTES;
+
   const targetDir = path.resolve(options.outDir, options.documentId);
   if (
     path.dirname(targetDir) !== path.resolve(options.outDir) ||
@@ -253,12 +323,22 @@ export async function scaffoldEvidence(options, { fetchImpl = fetch } = {}) {
       `Evidence directory already exists: ${targetDir} (pass --overwrite to replace).`
     );
   }
-  const raw =
-    options.file !== undefined
-      ? fs.readFileSync(options.file)
-      : await fetchSourceBytes(options.url, fetchImpl);
+  let raw;
+  if (options.file !== undefined) {
+    if (fs.statSync(options.file).size > maxBytes) {
+      throw new EvidenceError(
+        'SOURCE_TOO_LARGE',
+        `The source snapshot exceeds ${formatByteLimit(maxBytes)}.`
+      );
+    }
+    raw = fs.readFileSync(options.file);
+  } else {
+    raw = await fetchSourceBytes(options.url, fetchImpl, maxBytes);
+  }
 
-  const normalizedText = normalizeOfficialHtml(raw, options.extractor);
+  const normalizedText = normalizeOfficialHtml(raw, options.extractor, {
+    maxBytes,
+  });
   const rawSha256 = digest(raw);
   const normalizedSha256 = digest(normalizedText);
   const exactQuote = extractUniqueQuote(normalizedText, {
@@ -273,6 +353,7 @@ export async function scaffoldEvidence(options, { fetchImpl = fetch } = {}) {
   // Always start in draft/not_reviewed state; human review cannot be minted here.
   const packet = {
     schema_version: '1.0.0',
+    ...(isExternal ? { storage: 'external_archive' } : {}),
     document_id: options.documentId,
     policy_id: options.policyId,
     title: { en: titleEn, zh: titleZh },
@@ -282,7 +363,8 @@ export async function scaffoldEvidence(options, { fetchImpl = fetch } = {}) {
     fetched_at: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),
     published_at: options.publishedAt,
     source_current_through: options.currentThrough,
-    raw_file: 'source.html',
+    ...(isExternal ? { external_uri: externalUri, bytes: raw.length } : {}),
+    raw_file: isExternal ? null : 'source.html',
     raw_sha256: rawSha256,
     normalized_sha256: normalizedSha256,
     extractor_version: options.extractor,
@@ -298,9 +380,25 @@ export async function scaffoldEvidence(options, { fetchImpl = fetch } = {}) {
     ],
   };
 
-  const inspection = inspectEvidence(packet, raw);
+  const inspection = isExternal
+    ? inspectEvidence(packet, null, { normalizedText })
+    : inspectEvidence(packet, raw);
   fs.mkdirSync(targetDir, { recursive: true });
-  fs.writeFileSync(path.join(targetDir, 'source.html'), raw);
+  if (isExternal) {
+    fs.writeFileSync(
+      path.join(targetDir, 'normalized.txt'),
+      normalizedText,
+      'utf8'
+    );
+    if (options.overwrite) {
+      fs.rmSync(path.join(targetDir, 'source.html'), { force: true });
+    }
+  } else {
+    fs.writeFileSync(path.join(targetDir, 'source.html'), raw);
+    if (options.overwrite) {
+      fs.rmSync(path.join(targetDir, 'normalized.txt'), { force: true });
+    }
+  }
   fs.writeFileSync(
     path.join(targetDir, 'packet.json'),
     JSON.stringify(packet, null, 2) + '\n'
@@ -315,6 +413,11 @@ async function main() {
     JSON.stringify(
       {
         directory,
+        storage: inspection.storage,
+        bytes: inspection.bytes,
+        ...(inspection.external_uri
+          ? { external_uri: inspection.external_uri }
+          : {}),
         document_id: inspection.document_id,
         policy_id: inspection.policy_id,
         raw_sha256: inspection.raw_sha256,
