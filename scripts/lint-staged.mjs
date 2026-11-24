@@ -53,12 +53,17 @@ if (stagedFiles.length === 0) {
   process.exit(0);
 }
 
-const prettierFiles = stagedFiles.filter((file) =>
-  /\.(astro|css|js|json|md|mjs|ts|tsx|yml|yaml)$/i.test(file)
+const isTemplateAsset = (file) =>
+  file.replace(/\\/g, '/').startsWith('scripts/templates/');
+
+const prettierFiles = stagedFiles.filter(
+  (file) =>
+    !isTemplateAsset(file) &&
+    /\.(astro|css|js|json|md|mjs|ts|tsx|yml|yaml)$/i.test(file)
 );
 
-const eslintFiles = stagedFiles.filter((file) =>
-  /\.(astro|js|mjs|ts|tsx)$/i.test(file)
+const eslintFiles = stagedFiles.filter(
+  (file) => !isTemplateAsset(file) && /\.(astro|js|mjs|ts|tsx)$/i.test(file)
 );
 
 runCommand('prettier', ['--check'], prettierFiles);
