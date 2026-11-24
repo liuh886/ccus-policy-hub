@@ -1,0 +1,155 @@
+{
+  "as_of": "2026-11-24",
+  "policies": [
+    {
+      "id": "cn-national-standards",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202304/t20230424_1028080.html",
+          "finding": "Replaced homepage-only std.samr.gov.cn with live HTTP 200 co-issuing MEE publication of the SAC-led Carbon Peaking & Carbon Neutrality Standards System Construction Guidelines (国标委联〔2023〕19号), which establishes China's system-level CCUS national standards sub-system without duplicating sibling cn-standards-2024's 2026 SAMR batch URL; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk10/202304/t20230424_1028080.html"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage std.samr.gov.cn URL with live HTTP 200 official publication of SAC-led 国标委联〔2023〕19号 standards system guidelines; analysis dimensions not re-audited."
+    },
+    {
+      "id": "cn-hb-ets-offset",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.hubei.gov.cn/zfwj/ezfml/202401/t20240112_5056763.shtml",
+          "finding": "Replaced homepage-only hubei.gov.cn with the canonical Hubei Provincial Government decree URL for the revised Interim Measures for Carbon Emissions Trading Management (Order No. 430, effective 2024-03-01, superseding Order No. 371 and codifying Article 15 CCER offset rules), noting all *.hubei.gov.cn endpoints return an HTTP 412 RuiShu JS WAF challenge to automated fetchers; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.hubei.gov.cn/zfwj/ezfml/202401/t20240112_5056763.shtml"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage hubei.gov.cn URL with canonical Hubei Provincial Government Order No. 430 decree URL (VERIFIED_OFFICIAL_WAF_BLOCKED: HTTP 412 RuiShu JS WAF); analysis dimensions not re-audited."
+    },
+    {
+      "id": "sg-carbon-tax-ccus-2025",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.nea.gov.sg/our-services/climate-change-energy-efficiency/climate-change/carbon-tax",
+          "finding": "Replaced homepage-only nea.gov.sg with live HTTP 200 National Environment Agency Carbon Tax page detailing the Carbon Pricing Act, 25,000 tCO2e threshold, S$25/S$45/S$50-80 trajectory, and 5% International Carbon Credits offset framework; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.nea.gov.sg/our-services/climate-change-energy-efficiency/climate-change/carbon-tax"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage nea.gov.sg URL with live HTTP 200 NEA Carbon Tax programme page; analysis dimensions not re-audited."
+    },
+    {
+      "id": "in-union-budget-2026-ccus",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.indiabudget.gov.in/doc/Budget_Speech.pdf",
+          "finding": "Replaced homepage-only indiabudget.gov.in with live HTTP 200 official Ministry of Finance Union Budget 2026-27 Speech PDF whose Paragraph 38 (p. 12) verbatim proposes the five-year ₹20,000 crore CCUS outlay across power, steel, cement, refineries, and chemicals; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.indiabudget.gov.in/doc/Budget_Speech.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage indiabudget.gov.in URL with live HTTP 200 official Union Budget 2026-27 Speech PDF (Para 38 CCUS outlay); analysis dimensions not re-audited."
+    },
+    {
+      "id": "in-national-mission-ccus-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2031937",
+          "finding": "Replaced homepage-only niti.gov.in with live HTTP 200 official Press Information Bureau release (9 July 2024) recording the 25th PM-STIAC review of NITI Aayog Advisory Committee's inter-ministerial CCUS policy-framework reports joined by NITI Aayog Member Dr. V.K. Saraswat; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2031937"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage niti.gov.in URL with live HTTP 200 PIB release (PRID=2031937) on PM-STIAC & NITI Aayog CCUS policy framework; analysis dimensions not re-audited."
+    },
+    {
+      "id": "sa-circular-carbon-economy-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://unfccc.int/sites/default/files/2026-01/2nd%20KSA%20NDC%20Document%20Final%20Document%20%2828122025%29_DNA.pdf",
+          "finding": "Replaced unreachable/homepage moenergy.gov.sa with live HTTP 200 official UNFCCC PDF of Saudi Arabia's Second Nationally Determined Contribution (28 December 2025), directly cited in the record for its G20-endorsed Circular Carbon Economy framework, Jubail/Yanbu CCUS hubs (Sec. 5.1.3), CO2-EOR, and KAPSARC DAC pilot; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://unfccc.int/sites/default/files/2026-01/2nd%20KSA%20NDC%20Document%20Final%20Document%20%2828122025%29_DNA.pdf"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage moenergy.gov.sa URL with live HTTP 200 official UNFCCC PDF of Saudi Arabia's 2nd NDC (Dec 2025); analysis dimensions not re-audited."
+    },
+    {
+      "id": "sa-hydrogen-strategy-ccus",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.aramco.com/en/news-media/elements-magazine/2024/heading-for-hydrogen-and-a-lower-carbon-future",
+          "finding": "Replaced unreachable/homepage moenergy.gov.sa with live HTTP 200 Aramco September 2024 Elements hydrogen review directly matching the record's blue hydrogen-CCS coupling, Jazan/Jafurah feedstock, ammonia export, Horse Powertrain (Geely/Renault) equity, and $570B global horizon; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.aramco.com/en/news-media/elements-magazine/2024/heading-for-hydrogen-and-a-lower-carbon-future"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage moenergy.gov.sa URL with live HTTP 200 Aramco Sep 2024 hydrogen/CCS review cited in the record; analysis dimensions not re-audited."
+    },
+    {
+      "id": "sa-megi-ccus",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.aramco.com/en/news-media/news/2024/aramco-linde-and-slb-sign-shareholders-agreement-for-one-of-the-largest-ccs-hubs-globally",
+          "finding": "Replaced unreachable/homepage moenergy.gov.sa with live HTTP 200 Aramco official release (4 December 2024, Saudi Green Initiative Forum) announcing the Jubail CCS Hub Phase 1 (9 Mtpa by 2027) under Saudi Arabia's Circular Carbon Economy approach toward 2060 net-zero; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.aramco.com/en/news-media/news/2024/aramco-linde-and-slb-sign-shareholders-agreement-for-one-of-the-largest-ccs-hubs-globally"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage moenergy.gov.sa URL with live HTTP 200 Aramco Jubail CCS Hub release (Dec 2024); analysis dimensions not re-audited."
+    },
+    {
+      "id": "ae-federal-climate-law-2024",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://uaelegislation.gov.ae/en/legislations/2558",
+          "finding": "Replaced homepage-only moccae.gov.ae with the canonical UAE Legislation Platform statutory URL (Legislation 2558) for Federal Decree-Law No. (11) of 2024 on the Reduction of Climate Change Effects, noting uaelegislation.gov.ae serves a Cloudflare HTTP 403 block to automated fetchers; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://uaelegislation.gov.ae/en/legislations/2558"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage moccae.gov.ae URL with canonical UAE Legislation Platform statutory URL (VERIFIED_OFFICIAL_WAF_BLOCKED: HTTP 403 Cloudflare); analysis dimensions not re-audited."
+    },
+    {
+      "id": "uae-adnoc-ccs-2030",
+      "source_reviewed": false,
+      "sources": [
+        {
+          "url": "https://www.mediaoffice.abudhabi/en/energy/uae-president-chairs-adnoc-board-of-directors-meeting-2024/",
+          "finding": "Replaced WAF-gated homepage adnoc.ae with live HTTP 200 official Abu Dhabi Media Office release of the ADNOC Board of Directors meeting confirming ADNOC's 10 Mtpa by 2030 CCS target, $23 billion lower-carbon allocation, Net Zero by 2045 goal, and Habshan CCS investment; analysis dimensions not re-audited."
+        }
+      ],
+      "record": {
+        "url": "https://www.mediaoffice.abudhabi/en/energy/uae-president-chairs-adnoc-board-of-directors-meeting-2024/"
+      },
+      "review_disposition": "url_repair_only",
+      "review_note": "Replaced homepage adnoc.ae URL with live HTTP 200 Abu Dhabi Media Office release covering ADNOC 10 Mtpa 2030 CCS strategy and $23B allocation; analysis dimensions not re-audited."
+    }
+  ]
+}
