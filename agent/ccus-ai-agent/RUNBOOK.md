@@ -181,8 +181,8 @@ when its stored `source_evidence` differs from the current canonical sentence.
 The generator publishes valid translations in `policy-analysis-localizations.json`.
 
 ```bash
-pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json
-pnpm manage:policy:review -- --file scripts/data/policy-reviews-2026-10.json --write
+pnpm manage:policy:review -- --file scripts/data/patches/policy-reviews-2026-10.json
+pnpm manage:policy:review -- --file scripts/data/patches/policy-reviews-2026-10.json --write
 pnpm manage:policy:review -- --file <new-policies.json> --allow-insert --write
 ```
 
@@ -201,13 +201,17 @@ evidence/citations. New policy inserts require `--allow-insert` with complete
 `source_reviewed: true`, and a non-empty `reviewer` are all provided.
 Review attempts and evidence sources are retained in `db_meta`.
 
-For replay of this delivery, use these inputs in order: `policy-reviews-2026-10.json`,
-`policy-scope-clarifications-2026-10.json`, `policy-tail-reviews-2026-10.json`.
-Supplementary facility research is separately scoped:
+Applied one-shot historical patch files are archived under
+`scripts/data/patches/` (future one-shot applied patches should also be moved
+there after application). For replay of this delivery, use these inputs in
+order: `scripts/data/patches/policy-reviews-2026-10.json`,
+`scripts/data/patches/policy-scope-clarifications-2026-10.json`,
+`scripts/data/patches/policy-tail-reviews-2026-10.json`. Supplementary facility
+research is separately scoped:
 
 ```bash
-pnpm manage:db:import:facility-news-research -- --file scripts/data/facility-news-research-2026-10.json --dry-run
-pnpm manage:db:import:facility-news-research -- --file scripts/data/facility-news-research-2026-10.json
+pnpm manage:db:import:facility-news-research -- --file scripts/data/patches/facility-news-research-2026-10.json --dry-run
+pnpm manage:db:import:facility-news-research -- --file scripts/data/patches/facility-news-research-2026-10.json
 ```
 
 The supplementary file updates only six named facilities. Do not change the old

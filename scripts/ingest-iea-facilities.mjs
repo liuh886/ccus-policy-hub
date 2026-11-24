@@ -10,7 +10,6 @@ import { queryRows } from './lib/sqlite-query.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'agent/ccus-ai-agent/db/ccus_master.sqlite');
-const DICT_PATH = path.join(ROOT, 'src/data/i18n_dictionary.json');
 const REPORT_DIR = path.join(ROOT, 'agent/ccus-ai-agent/governance/reports');
 const DEFAULT_EXCEL_PATH = path.join(
   ROOT,
@@ -25,88 +24,7 @@ const IMPORT_AUTHOR = 'IEA CCUS Projects Database 2026';
 
 const args = process.argv.slice(2);
 
-const TYPE_EN_MAP = new Map([
-  ['CCU', 'CCU'],
-  ['Capture', 'Capture'],
-  ['Full Chain', 'Full chain'],
-  ['Full chain', 'Full chain'],
-  ['Storage', 'Storage'],
-  ['T&S', 'T&S'],
-  ['Transport', 'Transport'],
-]);
-
-const TYPE_ZH_MAP = {
-  CCU: '碳利用',
-  Capture: '碳捕集',
-  'Full chain': '全流程项目',
-  Storage: '碳封存',
-  'T&S': '运输与封存',
-  Transport: '碳运输',
-};
-
-const FATE_EN_MAP = new Map([
-  ['Dedicated Storage', 'Dedicated storage'],
-  ['Dedicated storage', 'Dedicated storage'],
-  ['EOR', 'EOR'],
-  ['EOR and storage', 'EOR and storage'],
-  ['EOR and use', 'EOR and use'],
-  ['Mixed', 'Mixed'],
-  ['Unknown/unspecified', 'Unknown/unspecified'],
-  ['Use', 'Use'],
-  ['Use and storage', 'Use and storage'],
-  ['Use low impact', 'Use low impact'],
-  ['Vented', 'Vented'],
-]);
-
-const FATE_ZH_MAP = {
-  'Dedicated storage': '永久封存',
-  EOR: '强化采油 (EOR)',
-  'EOR and storage': 'EOR与封存',
-  'EOR and use': 'EOR与利用',
-  Mixed: '混合去向',
-  'Unknown/unspecified': '未知/未指定',
-  Use: '工业利用',
-  'Use and storage': '利用与封存',
-  'Use low impact': '低影响利用',
-  Vented: '直接排放',
-};
-
-const STATUS_ZH_MAP = {
-  Cancelled: '已取消',
-  Decommissioned: '已退役',
-  Operational: '运行中',
-  Planned: '计划中',
-  Suspended: '已中止',
-  'Under construction': '建设中',
-};
-
-const REGION_ZH_MAP = {
-  Africa: '非洲',
-  'Australia and New Zealand': '澳大利亚与新西兰',
-  'Australia and Other Asia Pacific': '澳大利亚及其他亚太地区',
-  'Central and South America': '中南美洲',
-  Eurasia: '欧亚大陆',
-  Europe: '欧洲',
-  'Japan and Other Asia Pacific': '日本及其他亚太地区',
-  'Middle East': '中东',
-  'North America': '北美',
-  'Other Asia Pacific': '其他亚太地区',
-  Unknown: '未知',
-};
-
-const COUNTRY_TOKEN_EN_MAP = new Map([
-  ["People's Republic of China", 'China'],
-  ['Lybia', 'Libya'],
-  ['Island', 'Iceland'],
-]);
-
-const COUNTRY_TOKEN_ZH_EXTRA = new Map([
-  ['Chinese Taipei', '中国台湾'],
-  ['Slovakia', '斯洛伐克'],
-  ['Timor Leste', '东帝汶'],
-]);
-
-const SECTOR_MAP = new Map([
+export const IEA_SECTOR_SUBSECTOR_MAP = new Map([
   ['CO2 T&S|CO2 T&S', 'T&S'],
   ['CO2 T&S|CO2 storage', 'Storage'],
   ['CO2 T&S|CO2 transport', 'Transport'],
@@ -140,30 +58,73 @@ const SECTOR_MAP = new Map([
   ['TBD|TBD', 'TBD'],
 ]);
 
-const SECTOR_ZH_MAP = {
-  Aluminium: '铝行业',
-  Biofuels: '生物燃料',
-  'Coal-to-gas': '煤制气',
-  'Coal-to-liquids': '煤制油',
-  Cement: '水泥行业',
-  Chemicals: '化工行业',
-  DAC: '直接空气捕集 (DAC)',
-  Fertilizer: '化肥生产',
-  'Gas-to-liquids': '气制液体燃料',
-  'Hydrogen or ammonia': '制氢/氨',
-  'Iron and steel': '钢铁行业',
-  Lime: '石灰行业',
-  'Natural gas processing/LNG': '天然气处理/LNG',
-  'Oil and gas extraction': '油气开采',
-  'Other industry': '其他工业',
-  'Power and heat': '电力与供热',
-  'Pulp and paper': '造纸行业',
-  Refining: '炼油行业',
-  Storage: '封存设施',
-  'T&S': '运输与封存',
-  TBD: '待定',
-  Transport: '运输设施',
-};
+export function loadLookupMapsFromDb(db) {
+  const typeEnMap = new Map();
+  const typeZhMap = new Map();
+  const fateEnMap = new Map();
+  const fateZhMap = new Map();
+  const sectorEnMap = new Map();
+  const sectorZhMap = new Map();
+  const statusZhMap = new Map();
+  const regionZhMap = new Map();
+  const countryEnMap = new Map();
+  const countryZhMap = new Map();
+
+  for (const row of queryRows(
+    db,
+    'SELECT domain, canonical, zh FROM dict_term ORDER BY domain, canonical'
+  )) {
+    if (row.domain === 'type') typeZhMap.set(row.canonical, row.zh);
+    else if (row.domain === 'fate') fateZhMap.set(row.canonical, row.zh);
+    else if (row.domain === 'sector') sectorZhMap.set(row.canonical, row.zh);
+  }
+
+  for (const row of queryRows(
+    db,
+    'SELECT domain, alias, canonical FROM dict_term_alias ORDER BY domain, alias'
+  )) {
+    if (row.domain === 'type') typeEnMap.set(row.alias, row.canonical);
+    else if (row.domain === 'fate') fateEnMap.set(row.alias, row.canonical);
+    else if (row.domain === 'sector') sectorEnMap.set(row.alias, row.canonical);
+  }
+
+  for (const row of queryRows(
+    db,
+    'SELECT en, zh FROM dict_region_alias ORDER BY en'
+  )) {
+    regionZhMap.set(row.en, row.zh);
+  }
+
+  for (const row of queryRows(
+    db,
+    'SELECT alias, canonical FROM dict_country_alias ORDER BY alias'
+  )) {
+    countryEnMap.set(row.alias, row.canonical);
+    if (/[\u4e00-\u9fff]/.test(row.alias)) {
+      countryZhMap.set(row.canonical, row.alias);
+    }
+  }
+
+  for (const row of queryRows(
+    db,
+    'SELECT key, zh FROM ui_status ORDER BY key'
+  )) {
+    statusZhMap.set(row.key, row.zh);
+  }
+
+  return {
+    typeEnMap,
+    typeZhMap,
+    fateEnMap,
+    fateZhMap,
+    sectorEnMap,
+    sectorZhMap,
+    statusZhMap,
+    regionZhMap,
+    countryEnMap,
+    countryZhMap,
+  };
+}
 
 function getArgValue(flag, fallback = '') {
   const index = args.indexOf(flag);
@@ -240,53 +201,41 @@ function numericText(value) {
     : String(Number.isInteger(number) ? number : number);
 }
 
-function normalizeCountry(rawCountry) {
+export function normalizeCountry(rawCountry, countryEnMap) {
   const value = cleanString(rawCountry);
   if (!value) return '';
   return value
     .split(/(\s*-\s*|\s*,\s*)/)
     .map((part) => {
       if (/^\s*-\s*$/.test(part) || /^\s*,\s*$/.test(part)) return part;
-      return COUNTRY_TOKEN_EN_MAP.get(part) || part;
+      return countryEnMap?.get(part) || part;
     })
     .join('');
 }
 
-function normalizeStatus(rawStatus) {
+export function normalizeStatus(rawStatus) {
   const value = cleanString(rawStatus);
   if (!value) return '';
   return value === 'Under Construction' ? 'Under construction' : value;
 }
 
-function normalizeType(rawType) {
+export function normalizeType(rawType, typeEnMap) {
   const value = cleanString(rawType);
-  return TYPE_EN_MAP.get(value) || value;
+  return typeEnMap?.get(value) || value;
 }
 
-function normalizeFate(rawFate) {
+export function normalizeFate(rawFate, fateEnMap) {
   const value = cleanString(rawFate);
-  return FATE_EN_MAP.get(value) || value;
+  return fateEnMap?.get(value) || value;
 }
 
-function normalizeSector(rawSector, rawSubsector) {
+export function normalizeSector(rawSector, rawSubsector, sectorEnMap) {
   const sector = cleanString(rawSector);
   const subsector = cleanString(rawSubsector);
-  const mapped = SECTOR_MAP.get(`${sector}|${subsector}`);
+  const mapped = IEA_SECTOR_SUBSECTOR_MAP.get(`${sector}|${subsector}`);
   if (mapped) return mapped;
-  return subsector || sector;
-}
-
-function buildCountryZhMap(dict) {
-  const map = new Map();
-  for (const [alias, canonical] of Object.entries(dict.countries || {})) {
-    if (/[\u4e00-\u9fff]/.test(alias)) {
-      map.set(canonical, alias);
-    }
-  }
-  for (const [canonical, zh] of COUNTRY_TOKEN_ZH_EXTRA.entries()) {
-    map.set(canonical, zh);
-  }
-  return map;
+  const fallback = subsector || sector;
+  return sectorEnMap?.get(fallback) || fallback;
 }
 
 function translateComposite(value, translator) {
@@ -299,30 +248,30 @@ function translateComposite(value, translator) {
     .join('');
 }
 
-function translateCountryZh(country, countryZhMap) {
-  const exact = countryZhMap.get(country);
+export function translateCountryZh(country, countryZhMap) {
+  const exact = countryZhMap?.get(country);
   if (exact) return exact;
-  return translateComposite(country, (part) => countryZhMap.get(part) || part);
+  return translateComposite(country, (part) => countryZhMap?.get(part) || part);
 }
 
-function translateRegionZh(region) {
-  return REGION_ZH_MAP[region] || region;
+export function translateRegionZh(region, regionZhMap) {
+  return regionZhMap?.get(region) || region;
 }
 
-function translateTypeZh(type) {
-  return TYPE_ZH_MAP[type] || type;
+export function translateTypeZh(type, typeZhMap) {
+  return typeZhMap?.get(type) || type;
 }
 
-function translateSectorZh(sector) {
-  return SECTOR_ZH_MAP[sector] || sector;
+export function translateSectorZh(sector, sectorZhMap) {
+  return sectorZhMap?.get(sector) || sector;
 }
 
-function translateFateZh(fate) {
-  return FATE_ZH_MAP[fate] || fate;
+export function translateFateZh(fate, fateZhMap) {
+  return fateZhMap?.get(fate) || fate;
 }
 
-function translateStatusZh(status) {
-  return STATUS_ZH_MAP[status] || status;
+export function translateStatusZh(status, statusZhMap) {
+  return statusZhMap?.get(status) || status;
 }
 
 function splitPartners(rawPartners) {
@@ -429,8 +378,7 @@ async function run() {
     const db = new SQL.Database(new Uint8Array(buffer));
     db.run('PRAGMA foreign_keys = ON;');
 
-    const dict = JSON.parse(fs.readFileSync(DICT_PATH, 'utf8'));
-    const countryZhMap = buildCountryZhMap(dict);
+    const lookups = loadLookupMapsFromDb(db);
     const hasMrvJson = tableHasColumn(db, 'facilities', 'mrv_json');
 
     const existingFacilities = new Map(
@@ -474,20 +422,30 @@ async function run() {
       }
       seenIds.add(id);
 
-      const country = normalizeCountry(row['Country or economy']);
+      const country = normalizeCountry(
+        row['Country or economy'],
+        lookups.countryEnMap
+      );
       const status = normalizeStatus(row['Project status']);
-      const typeEn = normalizeType(row['Project type']);
-      const fateEn = normalizeFate(row['Fate of carbon']);
-      const sectorEn = normalizeSector(row.Sector, row.Subsector);
+      const typeEn = normalizeType(row['Project type'], lookups.typeEnMap);
+      const fateEn = normalizeFate(row['Fate of carbon'], lookups.fateEnMap);
+      const sectorEn = normalizeSector(
+        row.Sector,
+        row.Subsector,
+        lookups.sectorEnMap
+      );
 
-      if (!TYPE_EN_MAP.has(cleanString(row['Project type'])) && typeEn) {
+      if (!lookups.typeEnMap.has(cleanString(row['Project type'])) && typeEn) {
         typeWarnings.add(cleanString(row['Project type']));
       }
-      if (!FATE_EN_MAP.has(cleanString(row['Fate of carbon'])) && fateEn) {
+      if (
+        !lookups.fateEnMap.has(cleanString(row['Fate of carbon'])) &&
+        fateEn
+      ) {
         fateWarnings.add(cleanString(row['Fate of carbon']));
       }
       if (
-        !SECTOR_MAP.has(
+        !IEA_SECTOR_SUBSECTOR_MAP.has(
           `${cleanString(row.Sector)}|${cleanString(row.Subsector)}`
         ) &&
         sectorEn
@@ -541,12 +499,12 @@ async function run() {
       });
 
       const zhDescription = buildChineseDescription({
-        country: translateCountryZh(country, countryZhMap),
-        region: translateRegionZh(region),
-        type: translateTypeZh(typeEn),
-        status: translateStatusZh(status),
-        sector: translateSectorZh(sectorEn),
-        fate: translateFateZh(fateEn),
+        country: translateCountryZh(country, lookups.countryZhMap),
+        region: translateRegionZh(region, lookups.regionZhMap),
+        type: translateTypeZh(typeEn, lookups.typeZhMap),
+        status: translateStatusZh(status, lookups.statusZhMap),
+        sector: translateSectorZh(sectorEn, lookups.sectorZhMap),
+        fate: translateFateZh(fateEn, lookups.fateZhMap),
         hub,
         announcement,
         fid,
@@ -602,10 +560,10 @@ async function run() {
           name,
           description: zhDescription,
           region,
-          type: translateTypeZh(typeEn),
+          type: translateTypeZh(typeEn, lookups.typeZhMap),
           phase,
-          sector: translateSectorZh(sectorEn),
-          fate_of_carbon: translateFateZh(fateEn),
+          sector: translateSectorZh(sectorEn, lookups.sectorZhMap),
+          fate_of_carbon: translateFateZh(fateEn, lookups.fateZhMap),
           hub,
           operator: existingFacilityZh.operator ?? '',
           capture_technology: existingFacilityZh.capture_technology ?? '',
@@ -972,7 +930,12 @@ async function run() {
   }
 }
 
-run().catch((error) => {
-  console.error(`Error: ${error.message}`);
-  process.exitCode = 1;
-});
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  run().catch((error) => {
+    console.error(`Error: ${error.message}`);
+    process.exitCode = 1;
+  });
+}

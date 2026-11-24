@@ -11,7 +11,7 @@ test('policy review preserves scores, applies source-bound translations and is i
     fs.readFileSync('agent/ccus-ai-agent/db/ccus_master.sqlite')
   );
   const input = JSON.parse(
-    fs.readFileSync('scripts/data/policy-reviews-2026-10.json')
+    fs.readFileSync('scripts/data/patches/policy-reviews-2026-10.json')
   );
   const scores = db.exec(
     'SELECT policy_id, dimension, score FROM policy_analysis ORDER BY policy_id,dimension'

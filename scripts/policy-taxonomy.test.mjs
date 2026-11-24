@@ -35,6 +35,7 @@ const generated = fs.readFileSync(
 const POLICY_CATEGORIES = parseEnumBlock(generated, 'POLICY_CATEGORIES');
 const POLICY_STATUSES = parseEnumBlock(generated, 'POLICY_STATUSES');
 const FACILITY_STATUSES = parseEnumBlock(generated, 'FACILITY_STATUSES');
+const ANALYSIS_DIMENSIONS = parseEnumBlock(generated, 'ANALYSIS_DIMENSIONS');
 
 // zh markdown carries translated labels (export translates canonical en via
 // ui_category/ui_status). Valid zh values = the dictionary's zh label sets.
@@ -158,5 +159,37 @@ describe('policy taxonomy enums (#69)', () => {
       (key) => !POLICY_CATEGORIES.has(key)
     );
     assert.deepStrictEqual(orphans, [], 'orphan dictionary category keys');
+  });
+
+  it('enums.generated.ts matches SQLite-exported ui_category, ui_status, and ui_dimension keys', () => {
+    const sortSet = (s) => [...s].sort();
+    const dictCategoryKeys = new Set(
+      Object.keys(dictionary.ui?.categories || {})
+    );
+    const dictStatusKeys = new Set(Object.keys(dictionary.ui?.status || {}));
+    const dictDimensionKeys = new Set(
+      Object.keys(dictionary.ui?.dimensions || {})
+    );
+
+    assert.deepStrictEqual(
+      sortSet(POLICY_CATEGORIES),
+      sortSet(dictCategoryKeys),
+      'POLICY_CATEGORIES must exactly match ui_category keys in i18n_dictionary.json'
+    );
+    assert.deepStrictEqual(
+      sortSet(POLICY_STATUSES),
+      sortSet(dictStatusKeys),
+      'POLICY_STATUSES must exactly match ui_status keys in i18n_dictionary.json'
+    );
+    assert.deepStrictEqual(
+      sortSet(FACILITY_STATUSES),
+      sortSet(dictStatusKeys),
+      'FACILITY_STATUSES must exactly match ui_status keys in i18n_dictionary.json'
+    );
+    assert.deepStrictEqual(
+      sortSet(ANALYSIS_DIMENSIONS),
+      sortSet(dictDimensionKeys),
+      'ANALYSIS_DIMENSIONS must exactly match ui_dimension keys in i18n_dictionary.json'
+    );
   });
 });
