@@ -11,9 +11,6 @@ on:
 
 permissions:
   contents: read
-  actions: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -40,13 +37,18 @@ jobs:
           fi
           echo "should_deploy=true" >> "$GITHUB_OUTPUT"
 
-  deploy:
+  package:
     needs: check
     if: needs.check.outputs.should_deploy == 'true'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PAGES_ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+    outputs:
+      artifact_name: ${{ env.PAGES_ARTIFACT_NAME }}
+      artifact_id: ${{ steps.upload.outputs.artifact_id }}
     steps:
       - name: Download validated CI build
         if: github.event_name == 'workflow_run' && github.event.workflow_run.name == 'CI'
@@ -89,18 +91,74 @@ jobs:
           pnpm install --frozen-lockfile && pnpm gen && pnpm build && cp -R dist ../dist
 
       - name: Verify deployment artifact
+        shell: bash
+        env:
+          CI_COMMIT: ${{ github.event.workflow_run.name == 'CI' && github.event.workflow_run.head_sha || '' }}
+          PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
           test -f dist/index.html
           test -d dist/_astro
-          if [ -n "${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}" ]; then
+          expected_commit="${CI_COMMIT:-$(git -C repository rev-parse HEAD)}"
+          artifact_commit=$(jq -er '.commit' dist/data/release.json)
+          if [[ "$artifact_commit" != "$expected_commit" ]]; then
+            echo "::error::Pages artifact commit $artifact_commit does not match $expected_commit."
+            exit 1
+          fi
+          if [[ -n "$PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN" ]]; then
             grep -q 'static.cloudflareinsights.com/beacon.min.js' dist/index.html
           fi
 
       - name: Upload Pages artifact
+        id: upload
         uses: actions/upload-pages-artifact@v4
         with:
+          name: ${{ env.PAGES_ARTIFACT_NAME }}
           path: ./dist
+
+  deploy:
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # The upload can succeed before GitHub lists the artifact for this run.
+      - name: Wait for the uploaded Pages artifact
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: ${{ needs.package.outputs.artifact_name }}
+          ARTIFACT_ID: ${{ needs.package.outputs.artifact_id }}
+        run: |
+          if [[ -z "$ARTIFACT_NAME" || -z "$ARTIFACT_ID" ]]; then
+            echo "::error::Pages packaging did not return the artifact name and ID."
+            exit 1
+          fi
+
+          for attempt in {1..6}; do
+            if visible_id=$(timeout 10s gh api --method GET \
+              "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" \
+              -f "name=$ARTIFACT_NAME" \
+              --jq '.artifacts | select(length == 1 and .[0].expired == false) | .[0].id') \
+              && [[ "$visible_id" == "$ARTIFACT_ID" ]]; then
+              echo "Pages artifact $ARTIFACT_NAME ($ARTIFACT_ID) is visible."
+              exit 0
+            fi
+            if (( attempt < 6 )); then
+              echo "Waiting for Pages artifact $ARTIFACT_NAME ($attempt/6)."
+              sleep 5
+            fi
+          done
+
+          echo "::error::Pages artifact $ARTIFACT_NAME ($ARTIFACT_ID) is missing or does not match this upload."
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.package.outputs.artifact_name }}
